@@ -2,7 +2,7 @@
 
 Experiments of the third kind... This is an attempt at making a
 faithful and accurate HDL implementation of CADR.  There will be no
-%attempt at making this synthesizable!
+attempt at making this synthesizable!
 
 ## Setup
 
@@ -18,7 +18,11 @@ make help
 
   - ttl: contains all the ICs that are used by the CADR.
     Specifically, 74s are organized under sn74.vhd.
-  
+
+  - cadr4.vhd: contains a exact transliteration of the original CADR
+    schematics, with a testbench that is capable of running it in
+    cadr4_tb.vhd.
+
 ## CADR
 
 Guts from Tom Knight's master thesis "Implementation of a list
