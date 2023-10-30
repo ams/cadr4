@@ -1,7 +1,8 @@
 # cadr4
 
 Experiments of the third kind... This is an attempt at making a
-faithful HDL implementation of CADR4.
+faithful and accurate HDL implementation of CADR.  There will be no
+attempt at making this synthesizable!
 
 ## Setup
 
