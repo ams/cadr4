@@ -4,8 +4,18 @@ SIM		= ghdl
 
 GHDLFLAGS	= --work=ttl
 
-SRCS_VHD	= sn74.vhd \
-  sn7400.vhd
+SRCS_VHD	= sn74.vhd			\
+		  sn7400.vhd			\
+		  sn7402.vhd			\
+		  sn7404.vhd			\
+		  sn7408.vhd			\
+		  sn7410.vhd			\
+		  sn7411.vhd			\
+		  sn7420.vhd			\
+		  sn74260.vhd			\
+		  sn7432.vhd			\
+		  sn7451.vhd			\
+		  sn7486.vhd
 
 TB_SRCS_VHD	= sn7400_tb.vhd
 TESTBENCHES	= $(basename $(TB_SRCS_VHD))
