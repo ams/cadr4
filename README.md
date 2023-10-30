@@ -14,6 +14,11 @@ cd cadr4
 make help
 ```
 
+## Organization
+
+  - ttl: contains all the ICs that are used by the CADR.
+    Specifically, 74s are organized under sn74.vhd.
+  
 ## CADR
 
 Guts from Tom Knight's master thesis "Implementation of a list
