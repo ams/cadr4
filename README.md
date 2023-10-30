@@ -4,6 +4,11 @@ Experiments of the third kind... This is an attempt at making a
 faithful and accurate HDL implementation of CADR.  There will be no
 attempt at making this synthesizable!
 
+## Random chit-chat
+
+There is a IRC channel on irc.libera.net, ##lispm for random
+chit-chat.  Feel free to send bugs directly to ams@gnu.org.
+
 ## Setup
 
 ```
