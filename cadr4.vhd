@@ -125,6 +125,190 @@ begin
   iram03_2e08 : 2147 port map(a0 => pc0d, a1 => pc1d, a2 => pc2d, a3 => pc3d, a4 => pc4d, a5 => pc5d, do => i7, we_n => -iwed, ce_n => -ice3a, di => iwr7, a11 => pc11d, a10 => pc10d, a9 => pc9d, a8 => pc8d, a7 => pc7d);
   iram03_2e07 : 2147 port map(a0 => pc0d, a1 => pc1d, a2 => pc2d, a3 => pc3d, a4 => pc4d, a5 => pc5d, do => i6, we_n => -iwed, ce_n => -ice3a, di => iwr6, a11 => pc11d, a10 => pc10d, a9 => pc9d, a8 => pc8d, a7 => pc7d);
 
+  iram10_2e12 : 2147 port map(a0 => pc0e, a1 => pc1e, a2 => pc2e, a3 => pc3e, a4 => pc4e, a5 => pc5e, do => i18, we_n => -iwee, ce_n => -ice0b, di => iwr18, a11 => pc11e, a10 => pc10e, a9 => pc9e, a8 => pc8e, a7 => pc7e);
+  iram10_2e13 : 2147 port map(a0 => pc0e, a1 => pc1e, a2 => pc2e, a3 => pc3e, a4 => pc4e, a5 => pc5e, do => i19, we_n => -iwee, ce_n => -ice0b, di => iwr19, a11 => pc11e, a10 => pc10e, a9 => pc9e, a8 => pc8e, a7 => pc7e);
+  iram10_2e14 : 2147 port map(a0 => pc0e, a1 => pc1e, a2 => pc2e, a3 => pc3e, a4 => pc4e, a5 => pc5e, do => i20, we_n => -iwee, ce_n => -ice0b, di => iwr20, a11 => pc11e, a10 => pc10e, a9 => pc9e, a8 => pc8e, a7 => pc7e);
+  iram10_2e15 : 2147 port map(a0 => pc0e, a1 => pc1e, a2 => pc2e, a3 => pc3e, a4 => pc4e, a5 => pc5e, do => i21, we_n => -iwee, ce_n => -ice0b, di => iwr21, a11 => pc11e, a10 => pc10e, a9 => pc9e, a8 => pc8e, a7 => pc7e);
+  iram10_2d11 : 2147 port map(a0 => pc0e, a1 => pc1e, a2 => pc2e, a3 => pc3e, a4 => pc4e, a5 => pc5e, do => i22, we_n => -iwee, ce_n => -ice0b, di => iwr22, a11 => pc11e, a10 => pc10e, a9 => pc9e, a8 => pc8e, a7 => pc7e);
+  iram10_2d12 : 2147 port map(a0 => pc0e, a1 => pc1e, a2 => pc2e, a3 => pc3e, a4 => pc4e, a5 => pc5e, do => i23, we_n => -iwee, ce_n => -ice0b, di => iwr23, a11 => pc11e, a10 => pc10e, a9 => pc9e, a8 => pc8e, a7 => pc7e);
+  iram10_2f11 : 2147 port map(a0 => pc0e, a1 => pc1e, a2 => pc2e, a3 => pc3e, a4 => pc4e, a5 => pc5e, do => i12, we_n => -iwee, ce_n => -ice0b, di => iwr12, a11 => pc11e, a10 => pc10e, a9 => pc9e, a8 => pc8e, a7 => pc7e);
+  iram10_2f12 : 2147 port map(a0 => pc0e, a1 => pc1e, a2 => pc2e, a3 => pc3e, a4 => pc4e, a5 => pc5e, do => i13, we_n => -iwee, ce_n => -ice0b, di => iwr13, a11 => pc11e, a10 => pc10e, a9 => pc9e, a8 => pc8e, a7 => pc7e);
+  iram10_2f13 : 2147 port map(a0 => pc0e, a1 => pc1e, a2 => pc2e, a3 => pc3e, a4 => pc4e, a5 => pc5e, do => i14, we_n => -iwee, ce_n => -ice0b, di => iwr14, a11 => pc11e, a10 => pc10e, a9 => pc9e, a8 => pc8e, a7 => pc7e);
+  iram10_2f14 : 2147 port map(a0 => pc0e, a1 => pc1e, a2 => pc2e, a3 => pc3e, a4 => pc4e, a5 => pc5e, do => i15, we_n => -iwee, ce_n => -ice0b, di => iwr15, a11 => pc11e, a10 => pc10e, a9 => pc9e, a8 => pc8e, a7 => pc7e);
+  iram10_2f15 : 2147 port map(a0 => pc0e, a1 => pc1e, a2 => pc2e, a3 => pc3e, a4 => pc4e, a5 => pc5e, do => i16, we_n => -iwee, ce_n => -ice0b, di => iwr16, a11 => pc11e, a10 => pc10e, a9 => pc9e, a8 => pc8e, a7 => pc7e);
+  iram10_2e11 : 2147 port map(a0 => pc0e, a1 => pc1e, a2 => pc2e, a3 => pc3e, a4 => pc4e, a5 => pc5e, do => i17, we_n => -iwee, ce_n => -ice0b, di => iwr17, a11 => pc11e, a10 => pc10e, a9 => pc9e, a8 => pc8e, a7 => pc7e);
+  iram10_2d14 : sn74s04 port map(g1a => -pcb0, g1q_n => pc0e, g2a => -pcb1, g2q_n => pc1e, g3a => -pcb2, g3q_n => pc2e, g4q => pc3e, g4a => -pcb3, g5q_n => pc4e, g5a => -pcb4, g6q_n => pc5e);
+  iram10_2d13 : sn74s04 port map(g1a => -pcb6, g1q_n => pc6e, g2a => -pcb7, g2q_n => pc7e, g3a => -pcb8, g3q_n => pc8e, g4q => pc9e, g4a => -pcb9, g5q_n => pc10e, g5a => -pcb10, g6q_n => pc11e);
+
+  iram11_2e17 : 2147 port map(a0 => pc0f, a1 => pc1f, a2 => pc2f, a3 => pc3f, a4 => pc4f, a5 => pc5f, do => i18, we_n => -iwef, ce_n => -ice1b, di => iwr18, a11 => pc11f, a10 => pc10f, a9 => pc9f, a8 => pc8f, a7 => pc7f);
+  iram11_2e18 : 2147 port map(a0 => pc0f, a1 => pc1f, a2 => pc2f, a3 => pc3f, a4 => pc4f, a5 => pc5f, do => i19, we_n => -iwef, ce_n => -ice1b, di => iwr19, a11 => pc11f, a10 => pc10f, a9 => pc9f, a8 => pc8f, a7 => pc7f);
+  iram11_2e19 : 2147 port map(a0 => pc0f, a1 => pc1f, a2 => pc2f, a3 => pc3f, a4 => pc4f, a5 => pc5f, do => i20, we_n => -iwef, ce_n => -ice1b, di => iwr20, a11 => pc11f, a10 => pc10f, a9 => pc9f, a8 => pc8f, a7 => pc7f);
+  iram11_2e20 : 2147 port map(a0 => pc0f, a1 => pc1f, a2 => pc2f, a3 => pc3f, a4 => pc4f, a5 => pc5f, do => i21, we_n => -iwef, ce_n => -ice1b, di => iwr21, a11 => pc11f, a10 => pc10f, a9 => pc9f, a8 => pc8f, a7 => pc7f);
+  iram11_2d16 : 2147 port map(a0 => pc0f, a1 => pc1f, a2 => pc2f, a3 => pc3f, a4 => pc4f, a5 => pc5f, do => i22, we_n => -iwef, ce_n => -ice1b, di => iwr22, a11 => pc11f, a10 => pc10f, a9 => pc9f, a8 => pc8f, a7 => pc7f);
+  iram11_2d17 : 2147 port map(a0 => pc0f, a1 => pc1f, a2 => pc2f, a3 => pc3f, a4 => pc4f, a5 => pc5f, do => i23, we_n => -iwef, ce_n => -ice1b, di => iwr23, a11 => pc11f, a10 => pc10f, a9 => pc9f, a8 => pc8f, a7 => pc7f);
+  iram11_2f16 : 2147 port map(a0 => pc0f, a1 => pc1f, a2 => pc2f, a3 => pc3f, a4 => pc4f, a5 => pc5f, do => i12, we_n => -iwef, ce_n => -ice1b, di => iwr12, a11 => pc11f, a10 => pc10f, a9 => pc9f, a8 => pc8f, a7 => pc7f);
+  iram11_2f17 : 2147 port map(a0 => pc0f, a1 => pc1f, a2 => pc2f, a3 => pc3f, a4 => pc4f, a5 => pc5f, do => i13, we_n => -iwef, ce_n => -ice1b, di => iwr13, a11 => pc11f, a10 => pc10f, a9 => pc9f, a8 => pc8f, a7 => pc7f);
+  iram11_2f18 : 2147 port map(a0 => pc0f, a1 => pc1f, a2 => pc2f, a3 => pc3f, a4 => pc4f, a5 => pc5f, do => i14, we_n => -iwef, ce_n => -ice1b, di => iwr14, a11 => pc11f, a10 => pc10f, a9 => pc9f, a8 => pc8f, a7 => pc7f);
+  iram11_2f19 : 2147 port map(a0 => pc0f, a1 => pc1f, a2 => pc2f, a3 => pc3f, a4 => pc4f, a5 => pc5f, do => i15, we_n => -iwef, ce_n => -ice1b, di => iwr15, a11 => pc11f, a10 => pc10f, a9 => pc9f, a8 => pc8f, a7 => pc7f);
+  iram11_2f20 : 2147 port map(a0 => pc0f, a1 => pc1f, a2 => pc2f, a3 => pc3f, a4 => pc4f, a5 => pc5f, do => i16, we_n => -iwef, ce_n => -ice1b, di => iwr16, a11 => pc11f, a10 => pc10f, a9 => pc9f, a8 => pc8f, a7 => pc7f);
+  iram11_2e16 : 2147 port map(a0 => pc0f, a1 => pc1f, a2 => pc2f, a3 => pc3f, a4 => pc4f, a5 => pc5f, do => i17, we_n => -iwef, ce_n => -ice1b, di => iwr17, a11 => pc11f, a10 => pc10f, a9 => pc9f, a8 => pc8f, a7 => pc7f);
+  iram11_2d19 : sn74s04 port map(g1a => -pcb0, g1q_n => pc0f, g2a => -pcb1, g2q_n => pc1f, g3a => -pcb2, g3q_n => pc2f, g4q => pc3f, g4a => -pcb3, g5q_n => pc4f, g5a => -pcb4, g6q_n => pc5f);
+  iram11_2d18 : sn74s04 port map(g1a => -pcb6, g1q_n => pc6f, g2a => -pcb7, g2q_n => pc7f, g3a => -pcb8, g3q_n => pc8f, g4q => pc9f, g4a => -pcb9, g5q_n => pc10f, g5a => -pcb10, g6q_n => pc11f);
+
+  iram12_2e22 : 2147 port map(a0 => pc0g, a1 => pc1g, a2 => pc2g, a3 => pc3g, a4 => pc4g, a5 => pc5g, do => i18, we_n => -iweg, ce_n => -ice2b, di => iwr18, a11 => pc11g, a10 => pc10g, a9 => pc9g, a8 => pc8g, a7 => pc7g);
+  iram12_2e23 : 2147 port map(a0 => pc0g, a1 => pc1g, a2 => pc2g, a3 => pc3g, a4 => pc4g, a5 => pc5g, do => i19, we_n => -iweg, ce_n => -ice2b, di => iwr19, a11 => pc11g, a10 => pc10g, a9 => pc9g, a8 => pc8g, a7 => pc7g);
+  iram12_2e24 : 2147 port map(a0 => pc0g, a1 => pc1g, a2 => pc2g, a3 => pc3g, a4 => pc4g, a5 => pc5g, do => i20, we_n => -iweg, ce_n => -ice2b, di => iwr20, a11 => pc11g, a10 => pc10g, a9 => pc9g, a8 => pc8g, a7 => pc7g);
+  iram12_2e25 : 2147 port map(a0 => pc0g, a1 => pc1g, a2 => pc2g, a3 => pc3g, a4 => pc4g, a5 => pc5g, do => i21, we_n => -iweg, ce_n => -ice2b, di => iwr21, a11 => pc11g, a10 => pc10g, a9 => pc9g, a8 => pc8g, a7 => pc7g);
+  iram12_2d21 : 2147 port map(a0 => pc0g, a1 => pc1g, a2 => pc2g, a3 => pc3g, a4 => pc4g, a5 => pc5g, do => i22, we_n => -iweg, ce_n => -ice2b, di => iwr22, a11 => pc11g, a10 => pc10g, a9 => pc9g, a8 => pc8g, a7 => pc7g);
+  iram12_2d22 : 2147 port map(a0 => pc0g, a1 => pc1g, a2 => pc2g, a3 => pc3g, a4 => pc4g, a5 => pc5g, do => i23, we_n => -iweg, ce_n => -ice2b, di => iwr23, a11 => pc11g, a10 => pc10g, a9 => pc9g, a8 => pc8g, a7 => pc7g);
+  iram12_2f21 : 2147 port map(a0 => pc0g, a1 => pc1g, a2 => pc2g, a3 => pc3g, a4 => pc4g, a5 => pc5g, do => i12, we_n => -iweg, ce_n => -ice2b, di => iwr12, a11 => pc11g, a10 => pc10g, a9 => pc9g, a8 => pc8g, a7 => pc7g);
+  iram12_2f22 : 2147 port map(a0 => pc0g, a1 => pc1g, a2 => pc2g, a3 => pc3g, a4 => pc4g, a5 => pc5g, do => i13, we_n => -iweg, ce_n => -ice2b, di => iwr13, a11 => pc11g, a10 => pc10g, a9 => pc9g, a8 => pc8g, a7 => pc7g);
+  iram12_2f23 : 2147 port map(a0 => pc0g, a1 => pc1g, a2 => pc2g, a3 => pc3g, a4 => pc4g, a5 => pc5g, do => i14, we_n => -iweg, ce_n => -ice2b, di => iwr14, a11 => pc11g, a10 => pc10g, a9 => pc9g, a8 => pc8g, a7 => pc7g);
+  iram12_2f24 : 2147 port map(a0 => pc0g, a1 => pc1g, a2 => pc2g, a3 => pc3g, a4 => pc4g, a5 => pc5g, do => i15, we_n => -iweg, ce_n => -ice2b, di => iwr15, a11 => pc11g, a10 => pc10g, a9 => pc9g, a8 => pc8g, a7 => pc7g);
+  iram12_2f25 : 2147 port map(a0 => pc0g, a1 => pc1g, a2 => pc2g, a3 => pc3g, a4 => pc4g, a5 => pc5g, do => i16, we_n => -iweg, ce_n => -ice2b, di => iwr16, a11 => pc11g, a10 => pc10g, a9 => pc9g, a8 => pc8g, a7 => pc7g);
+  iram12_2e21 : 2147 port map(a0 => pc0g, a1 => pc1g, a2 => pc2g, a3 => pc3g, a4 => pc4g, a5 => pc5g, do => i17, we_n => -iweg, ce_n => -ice2b, di => iwr17, a11 => pc11g, a10 => pc10g, a9 => pc9g, a8 => pc8g, a7 => pc7g);
+  iram12_2d24 : sn74s04 port map(g1a => -pcb0, g1q_n => pc0g, g2a => -pcb1, g2q_n => pc1g, g3a => -pcb2, g3q_n => pc2g, g4q => pc3g, g4a => -pcb3, g5q_n => pc4g, g5a => -pcb4, g6q_n => pc5g);
+  iram12_2d23 : sn74s04 port map(g1a => -pcb6, g1q_n => pc6g, g2a => -pcb7, g2q_n => pc7g, g3a => -pcb8, g3q_n => pc8g, g4q => pc9g, g4a => -pcb9, g5q_n => pc10g, g5a => -pcb10, g6q_n => pc11g);
+
+  iram13_2e27 : 2147 port map(a0 => pc0h, a1 => pc1h, a2 => pc2h, a3 => pc3h, a4 => pc4h, a5 => pc5h, do => i18, we_n => -iweh, ce_n => -ice3b, di => iwr18, a11 => pc11h, a10 => pc10h, a9 => pc9h, a8 => pc8h, a7 => pc7h);
+  iram13_2e28 : 2147 port map(a0 => pc0h, a1 => pc1h, a2 => pc2h, a3 => pc3h, a4 => pc4h, a5 => pc5h, do => i19, we_n => -iweh, ce_n => -ice3b, di => iwr19, a11 => pc11h, a10 => pc10h, a9 => pc9h, a8 => pc8h, a7 => pc7h);
+  iram13_2e29 : 2147 port map(a0 => pc0h, a1 => pc1h, a2 => pc2h, a3 => pc3h, a4 => pc4h, a5 => pc5h, do => i20, we_n => -iweh, ce_n => -ice3b, di => iwr20, a11 => pc11h, a10 => pc10h, a9 => pc9h, a8 => pc8h, a7 => pc7h);
+  iram13_2e30 : 2147 port map(a0 => pc0h, a1 => pc1h, a2 => pc2h, a3 => pc3h, a4 => pc4h, a5 => pc5h, do => i21, we_n => -iweh, ce_n => -ice3b, di => iwr21, a11 => pc11h, a10 => pc10h, a9 => pc9h, a8 => pc8h, a7 => pc7h);
+  iram13_2d26 : 2147 port map(a0 => pc0h, a1 => pc1h, a2 => pc2h, a3 => pc3h, a4 => pc4h, a5 => pc5h, do => i22, we_n => -iweh, ce_n => -ice3b, di => iwr22, a11 => pc11h, a10 => pc10h, a9 => pc9h, a8 => pc8h, a7 => pc7h);
+  iram13_2d27 : 2147 port map(a0 => pc0h, a1 => pc1h, a2 => pc2h, a3 => pc3h, a4 => pc4h, a5 => pc5h, do => i23, we_n => -iweh, ce_n => -ice3b, di => iwr23, a11 => pc11h, a10 => pc10h, a9 => pc9h, a8 => pc8h, a7 => pc7h);
+  iram13_2f26 : 2147 port map(a0 => pc0h, a1 => pc1h, a2 => pc2h, a3 => pc3h, a4 => pc4h, a5 => pc5h, do => i12, we_n => -iweh, ce_n => -ice3b, di => iwr12, a11 => pc11h, a10 => pc10h, a9 => pc9h, a8 => pc8h, a7 => pc7h);
+  iram13_2f27 : 2147 port map(a0 => pc0h, a1 => pc1h, a2 => pc2h, a3 => pc3h, a4 => pc4h, a5 => pc5h, do => i13, we_n => -iweh, ce_n => -ice3b, di => iwr13, a11 => pc11h, a10 => pc10h, a9 => pc9h, a8 => pc8h, a7 => pc7h);
+  iram13_2f28 : 2147 port map(a0 => pc0h, a1 => pc1h, a2 => pc2h, a3 => pc3h, a4 => pc4h, a5 => pc5h, do => i14, we_n => -iweh, ce_n => -ice3b, di => iwr14, a11 => pc11h, a10 => pc10h, a9 => pc9h, a8 => pc8h, a7 => pc7h);
+  iram13_2f29 : 2147 port map(a0 => pc0h, a1 => pc1h, a2 => pc2h, a3 => pc3h, a4 => pc4h, a5 => pc5h, do => i15, we_n => -iweh, ce_n => -ice3b, di => iwr15, a11 => pc11h, a10 => pc10h, a9 => pc9h, a8 => pc8h, a7 => pc7h);
+  iram13_2f30 : 2147 port map(a0 => pc0h, a1 => pc1h, a2 => pc2h, a3 => pc3h, a4 => pc4h, a5 => pc5h, do => i16, we_n => -iweh, ce_n => -ice3b, di => iwr16, a11 => pc11h, a10 => pc10h, a9 => pc9h, a8 => pc8h, a7 => pc7h);
+  iram13_2e26 : 2147 port map(a0 => pc0h, a1 => pc1h, a2 => pc2h, a3 => pc3h, a4 => pc4h, a5 => pc5h, do => i17, we_n => -iweh, ce_n => -ice3b, di => iwr17, a11 => pc11h, a10 => pc10h, a9 => pc9h, a8 => pc8h, a7 => pc7h);
+  iram13_2d29 : sn74s04 port map(g1a => -pcb0, g1q_n => pc0h, g2a => -pcb1, g2q_n => pc1h, g3a => -pcb2, g3q_n => pc2h, g4q => pc3h, g4a => -pcb3, g5q_n => pc4h, g5a => -pcb4, g6q_n => pc5h);
+  iram13_2d28 : sn74s04 port map(g1a => -pcb6, g1q_n => pc6h, g2a => -pcb7, g2q_n => pc7h, g3a => -pcb8, g3q_n => pc8h, g4q => pc9h, g4a => -pcb9, g5q_n => pc10h, g5a => -pcb10, g6q_n => pc11h);
+
+  iram20_1b25 : 2147 port map(a0 => pc0i, a1 => pc1i, a2 => pc2i, a3 => pc3i, a4 => pc4i, a5 => pc5i, do => i30, we_n => -iwei, ce_n => -ice0c, di => iwr30, a11 => pc11i, a10 => pc10i, a9 => pc9i, a8 => pc8i, a7 => pc7i);
+  iram20_1a21 : 2147 port map(a0 => pc0i, a1 => pc1i, a2 => pc2i, a3 => pc3i, a4 => pc4i, a5 => pc5i, do => i31, we_n => -iwei, ce_n => -ice0c, di => iwr31, a11 => pc11i, a10 => pc10i, a9 => pc9i, a8 => pc8i, a7 => pc7i);
+  iram20_1a22 : 2147 port map(a0 => pc0i, a1 => pc1i, a2 => pc2i, a3 => pc3i, a4 => pc4i, a5 => pc5i, do => i32, we_n => -iwei, ce_n => -ice0c, di => iwr32, a11 => pc11i, a10 => pc10i, a9 => pc9i, a8 => pc8i, a7 => pc7i);
+  iram20_1a23 : 2147 port map(a0 => pc0i, a1 => pc1i, a2 => pc2i, a3 => pc3i, a4 => pc4i, a5 => pc5i, do => i33, we_n => -iwei, ce_n => -ice0c, di => iwr33, a11 => pc11i, a10 => pc10i, a9 => pc9i, a8 => pc8i, a7 => pc7i);
+  iram20_1a24 : 2147 port map(a0 => pc0i, a1 => pc1i, a2 => pc2i, a3 => pc3i, a4 => pc4i, a5 => pc5i, do => i34, we_n => -iwei, ce_n => -ice0c, di => iwr34, a11 => pc11i, a10 => pc10i, a9 => pc9i, a8 => pc8i, a7 => pc7i);
+  iram20_1a25 : 2147 port map(a0 => pc0i, a1 => pc1i, a2 => pc2i, a3 => pc3i, a4 => pc4i, a5 => pc5i, do => i35, we_n => -iwei, ce_n => -ice0c, di => iwr35, a11 => pc11i, a10 => pc10i, a9 => pc9i, a8 => pc8i, a7 => pc7i);
+  iram20_1c24 : 2147 port map(a0 => pc0i, a1 => pc1i, a2 => pc2i, a3 => pc3i, a4 => pc4i, a5 => pc5i, do => i24, we_n => -iwei, ce_n => -ice0c, di => iwr24, a11 => pc11i, a10 => pc10i, a9 => pc9i, a8 => pc8i, a7 => pc7i);
+  iram20_1c25 : 2147 port map(a0 => pc0i, a1 => pc1i, a2 => pc2i, a3 => pc3i, a4 => pc4i, a5 => pc5i, do => i25, we_n => -iwei, ce_n => -ice0c, di => iwr25, a11 => pc11i, a10 => pc10i, a9 => pc9i, a8 => pc8i, a7 => pc7i);
+  iram20_1b21 : 2147 port map(a0 => pc0i, a1 => pc1i, a2 => pc2i, a3 => pc3i, a4 => pc4i, a5 => pc5i, do => i26, we_n => -iwei, ce_n => -ice0c, di => iwr26, a11 => pc11i, a10 => pc10i, a9 => pc9i, a8 => pc8i, a7 => pc7i);
+  iram20_1b22 : 2147 port map(a0 => pc0i, a1 => pc1i, a2 => pc2i, a3 => pc3i, a4 => pc4i, a5 => pc5i, do => i27, we_n => -iwei, ce_n => -ice0c, di => iwr27, a11 => pc11i, a10 => pc10i, a9 => pc9i, a8 => pc8i, a7 => pc7i);
+  iram20_1b23 : 2147 port map(a0 => pc0i, a1 => pc1i, a2 => pc2i, a3 => pc3i, a4 => pc4i, a5 => pc5i, do => i28, we_n => -iwei, ce_n => -ice0c, di => iwr28, a11 => pc11i, a10 => pc10i, a9 => pc9i, a8 => pc8i, a7 => pc7i);
+  iram20_1b24 : 2147 port map(a0 => pc0i, a1 => pc1i, a2 => pc2i, a3 => pc3i, a4 => pc4i, a5 => pc5i, do => i29, we_n => -iwei, ce_n => -ice0c, di => iwr29, a11 => pc11i, a10 => pc10i, a9 => pc9i, a8 => pc8i, a7 => pc7i);
+  iram20_1c23 : sn74s04 port map(g1a => -pcc0, g1q_n => pc0i, g2a => -pcc1, g2q_n => pc1i, g3a => -pcc2, g3q_n => pc2i, g4q => pc3i, g4a => -pcc3, g5q_n => pc4i, g5a => -pcc4, g6q_n => pc5i);
+  iram20_1c22 : sn74s04 port map(g1a => -pcc6, g1q_n => pc6i, g2a => -pcc7, g2q_n => pc7i, g3a => -pcc8, g3q_n => pc8i, g4q => pc9i, g4a => -pcc9, g5q_n => pc10i, g5a => -pcc10, g6q_n => pc11i);
+
+  iram21_1b30 : 2147 port map(a0 => pc0j, a1 => pc1j, a2 => pc2j, a3 => pc3j, a4 => pc4j, a5 => pc5j, do => i30, we_n => -iwej, ce_n => -ice1c, di => iwr30, a11 => pc11j, a10 => pc10j, a9 => pc9j, a8 => pc8j, a7 => pc7j);
+  iram21_1a26 : 2147 port map(a0 => pc0j, a1 => pc1j, a2 => pc2j, a3 => pc3j, a4 => pc4j, a5 => pc5j, do => i31, we_n => -iwej, ce_n => -ice1c, di => iwr31, a11 => pc11j, a10 => pc10j, a9 => pc9j, a8 => pc8j, a7 => pc7j);
+  iram21_1a27 : 2147 port map(a0 => pc0j, a1 => pc1j, a2 => pc2j, a3 => pc3j, a4 => pc4j, a5 => pc5j, do => i32, we_n => -iwej, ce_n => -ice1c, di => iwr32, a11 => pc11j, a10 => pc10j, a9 => pc9j, a8 => pc8j, a7 => pc7j);
+  iram21_1a28 : 2147 port map(a0 => pc0j, a1 => pc1j, a2 => pc2j, a3 => pc3j, a4 => pc4j, a5 => pc5j, do => i33, we_n => -iwej, ce_n => -ice1c, di => iwr33, a11 => pc11j, a10 => pc10j, a9 => pc9j, a8 => pc8j, a7 => pc7j);
+  iram21_1a29 : 2147 port map(a0 => pc0j, a1 => pc1j, a2 => pc2j, a3 => pc3j, a4 => pc4j, a5 => pc5j, do => i34, we_n => -iwej, ce_n => -ice1c, di => iwr34, a11 => pc11j, a10 => pc10j, a9 => pc9j, a8 => pc8j, a7 => pc7j);
+  iram21_1a30 : 2147 port map(a0 => pc0j, a1 => pc1j, a2 => pc2j, a3 => pc3j, a4 => pc4j, a5 => pc5j, do => i35, we_n => -iwej, ce_n => -ice1c, di => iwr35, a11 => pc11j, a10 => pc10j, a9 => pc9j, a8 => pc8j, a7 => pc7j);
+  iram21_1c29 : 2147 port map(a0 => pc0j, a1 => pc1j, a2 => pc2j, a3 => pc3j, a4 => pc4j, a5 => pc5j, do => i24, we_n => -iwej, ce_n => -ice1c, di => iwr24, a11 => pc11j, a10 => pc10j, a9 => pc9j, a8 => pc8j, a7 => pc7j);
+  iram21_1c30 : 2147 port map(a0 => pc0j, a1 => pc1j, a2 => pc2j, a3 => pc3j, a4 => pc4j, a5 => pc5j, do => i25, we_n => -iwej, ce_n => -ice1c, di => iwr25, a11 => pc11j, a10 => pc10j, a9 => pc9j, a8 => pc8j, a7 => pc7j);
+  iram21_1b26 : 2147 port map(a0 => pc0j, a1 => pc1j, a2 => pc2j, a3 => pc3j, a4 => pc4j, a5 => pc5j, do => i26, we_n => -iwej, ce_n => -ice1c, di => iwr26, a11 => pc11j, a10 => pc10j, a9 => pc9j, a8 => pc8j, a7 => pc7j);
+  iram21_1b27 : 2147 port map(a0 => pc0j, a1 => pc1j, a2 => pc2j, a3 => pc3j, a4 => pc4j, a5 => pc5j, do => i27, we_n => -iwej, ce_n => -ice1c, di => iwr27, a11 => pc11j, a10 => pc10j, a9 => pc9j, a8 => pc8j, a7 => pc7j);
+  iram21_1b28 : 2147 port map(a0 => pc0j, a1 => pc1j, a2 => pc2j, a3 => pc3j, a4 => pc4j, a5 => pc5j, do => i28, we_n => -iwej, ce_n => -ice1c, di => iwr28, a11 => pc11j, a10 => pc10j, a9 => pc9j, a8 => pc8j, a7 => pc7j);
+  iram21_1b29 : 2147 port map(a0 => pc0j, a1 => pc1j, a2 => pc2j, a3 => pc3j, a4 => pc4j, a5 => pc5j, do => i29, we_n => -iwej, ce_n => -ice1c, di => iwr29, a11 => pc11j, a10 => pc10j, a9 => pc9j, a8 => pc8j, a7 => pc7j);
+  iram21_1c28 : sn74s04 port map(g1a => -pcc0, g1q_n => pc0j, g2a => -pcc1, g2q_n => pc1j, g3a => -pcc2, g3q_n => pc2j, g4q => pc3j, g4a => -pcc3, g5q_n => pc4j, g5a => -pcc4, g6q_n => pc5j);
+  iram21_1c27 : sn74s04 port map(g1a => -pcc6, g1q_n => pc6j, g2a => -pcc7, g2q_n => pc7j, g3a => -pcc8, g3q_n => pc8j, g4q => pc9j, g4a => -pcc9, g5q_n => pc10j, g5a => -pcc10, g6q_n => pc11j);
+
+  iram22_2b05 : 2147 port map(a0 => pc0k, a1 => pc1k, a2 => pc2k, a3 => pc3k, a4 => pc4k, a5 => pc5k, do => i30, we_n => -iwek, ce_n => -ice2c, di => iwr30, a11 => pc11k, a10 => pc10k, a9 => pc9k, a8 => pc8k, a7 => pc7k);
+  iram22_2a01 : 2147 port map(a0 => pc0k, a1 => pc1k, a2 => pc2k, a3 => pc3k, a4 => pc4k, a5 => pc5k, do => i31, we_n => -iwek, ce_n => -ice2c, di => iwr31, a11 => pc11k, a10 => pc10k, a9 => pc9k, a8 => pc8k, a7 => pc7k);
+  iram22_2a02 : 2147 port map(a0 => pc0k, a1 => pc1k, a2 => pc2k, a3 => pc3k, a4 => pc4k, a5 => pc5k, do => i32, we_n => -iwek, ce_n => -ice2c, di => iwr32, a11 => pc11k, a10 => pc10k, a9 => pc9k, a8 => pc8k, a7 => pc7k);
+  iram22_2a03 : 2147 port map(a0 => pc0k, a1 => pc1k, a2 => pc2k, a3 => pc3k, a4 => pc4k, a5 => pc5k, do => i33, we_n => -iwek, ce_n => -ice2c, di => iwr33, a11 => pc11k, a10 => pc10k, a9 => pc9k, a8 => pc8k, a7 => pc7k);
+  iram22_2a04 : 2147 port map(a0 => pc0k, a1 => pc1k, a2 => pc2k, a3 => pc3k, a4 => pc4k, a5 => pc5k, do => i34, we_n => -iwek, ce_n => -ice2c, di => iwr34, a11 => pc11k, a10 => pc10k, a9 => pc9k, a8 => pc8k, a7 => pc7k);
+  iram22_2a05 : 2147 port map(a0 => pc0k, a1 => pc1k, a2 => pc2k, a3 => pc3k, a4 => pc4k, a5 => pc5k, do => i35, we_n => -iwek, ce_n => -ice2c, di => iwr35, a11 => pc11k, a10 => pc10k, a9 => pc9k, a8 => pc8k, a7 => pc7k);
+  iram22_2c04 : 2147 port map(a0 => pc0k, a1 => pc1k, a2 => pc2k, a3 => pc3k, a4 => pc4k, a5 => pc5k, do => i24, we_n => -iwek, ce_n => -ice2c, di => iwr24, a11 => pc11k, a10 => pc10k, a9 => pc9k, a8 => pc8k, a7 => pc7k);
+  iram22_2c05 : 2147 port map(a0 => pc0k, a1 => pc1k, a2 => pc2k, a3 => pc3k, a4 => pc4k, a5 => pc5k, do => i25, we_n => -iwek, ce_n => -ice2c, di => iwr25, a11 => pc11k, a10 => pc10k, a9 => pc9k, a8 => pc8k, a7 => pc7k);
+  iram22_2b01 : 2147 port map(a0 => pc0k, a1 => pc1k, a2 => pc2k, a3 => pc3k, a4 => pc4k, a5 => pc5k, do => i26, we_n => -iwek, ce_n => -ice2c, di => iwr26, a11 => pc11k, a10 => pc10k, a9 => pc9k, a8 => pc8k, a7 => pc7k);
+  iram22_2b02 : 2147 port map(a0 => pc0k, a1 => pc1k, a2 => pc2k, a3 => pc3k, a4 => pc4k, a5 => pc5k, do => i27, we_n => -iwek, ce_n => -ice2c, di => iwr27, a11 => pc11k, a10 => pc10k, a9 => pc9k, a8 => pc8k, a7 => pc7k);
+  iram22_2b03 : 2147 port map(a0 => pc0k, a1 => pc1k, a2 => pc2k, a3 => pc3k, a4 => pc4k, a5 => pc5k, do => i28, we_n => -iwek, ce_n => -ice2c, di => iwr28, a11 => pc11k, a10 => pc10k, a9 => pc9k, a8 => pc8k, a7 => pc7k);
+  iram22_2b04 : 2147 port map(a0 => pc0k, a1 => pc1k, a2 => pc2k, a3 => pc3k, a4 => pc4k, a5 => pc5k, do => i29, we_n => -iwek, ce_n => -ice2c, di => iwr29, a11 => pc11k, a10 => pc10k, a9 => pc9k, a8 => pc8k, a7 => pc7k);
+  iram22_2c03 : sn74s04 port map(g1a => -pcc0, g1q_n => pc0k, g2a => -pcc1, g2q_n => pc1k, g3a => -pcc2, g3q_n => pc2k, g4q => pc3k, g4a => -pcc3, g5q_n => pc4k, g5a => -pcc4, g6q_n => pc5k);
+  iram22_2c02 : sn74s04 port map(g1a => -pcc6, g1q_n => pc6k, g2a => -pcc7, g2q_n => pc7k, g3a => -pcc8, g3q_n => pc8k, g4q => pc9k, g4a => -pcc9, g5q_n => pc10k, g5a => -pcc10, g6q_n => pc11k);
+
+  iram23_2b10 : 2147 port map(a0 => pc0l, a1 => pc1l, a2 => pc2l, a3 => pc3l, a4 => pc4l, a5 => pc5l, do => i30, we_n => -iwel, ce_n => -ice3c, di => iwr30, a11 => pc11l, a10 => pc10l, a9 => pc9l, a8 => pc8l, a7 => pc7l);
+  iram23_2a06 : 2147 port map(a0 => pc0l, a1 => pc1l, a2 => pc2l, a3 => pc3l, a4 => pc4l, a5 => pc5l, do => i31, we_n => -iwel, ce_n => -ice3c, di => iwr31, a11 => pc11l, a10 => pc10l, a9 => pc9l, a8 => pc8l, a7 => pc7l);
+  iram23_2a07 : 2147 port map(a0 => pc0l, a1 => pc1l, a2 => pc2l, a3 => pc3l, a4 => pc4l, a5 => pc5l, do => i32, we_n => -iwel, ce_n => -ice3c, di => iwr32, a11 => pc11l, a10 => pc10l, a9 => pc9l, a8 => pc8l, a7 => pc7l);
+  iram23_2a08 : 2147 port map(a0 => pc0l, a1 => pc1l, a2 => pc2l, a3 => pc3l, a4 => pc4l, a5 => pc5l, do => i33, we_n => -iwel, ce_n => -ice3c, di => iwr33, a11 => pc11l, a10 => pc10l, a9 => pc9l, a8 => pc8l, a7 => pc7l);
+  iram23_2a09 : 2147 port map(a0 => pc0l, a1 => pc1l, a2 => pc2l, a3 => pc3l, a4 => pc4l, a5 => pc5l, do => i34, we_n => -iwel, ce_n => -ice3c, di => iwr34, a11 => pc11l, a10 => pc10l, a9 => pc9l, a8 => pc8l, a7 => pc7l);
+  iram23_2a10 : 2147 port map(a0 => pc0l, a1 => pc1l, a2 => pc2l, a3 => pc3l, a4 => pc4l, a5 => pc5l, do => i35, we_n => -iwel, ce_n => -ice3c, di => iwr35, a11 => pc11l, a10 => pc10l, a9 => pc9l, a8 => pc8l, a7 => pc7l);
+  iram23_2c09 : 2147 port map(a0 => pc0l, a1 => pc1l, a2 => pc2l, a3 => pc3l, a4 => pc4l, a5 => pc5l, do => i24, we_n => -iwel, ce_n => -ice3c, di => iwr24, a11 => pc11l, a10 => pc10l, a9 => pc9l, a8 => pc8l, a7 => pc7l);
+  iram23_2c10 : 2147 port map(a0 => pc0l, a1 => pc1l, a2 => pc2l, a3 => pc3l, a4 => pc4l, a5 => pc5l, do => i25, we_n => -iwel, ce_n => -ice3c, di => iwr25, a11 => pc11l, a10 => pc10l, a9 => pc9l, a8 => pc8l, a7 => pc7l);
+  iram23_2b06 : 2147 port map(a0 => pc0l, a1 => pc1l, a2 => pc2l, a3 => pc3l, a4 => pc4l, a5 => pc5l, do => i26, we_n => -iwel, ce_n => -ice3c, di => iwr26, a11 => pc11l, a10 => pc10l, a9 => pc9l, a8 => pc8l, a7 => pc7l);
+  iram23_2b07 : 2147 port map(a0 => pc0l, a1 => pc1l, a2 => pc2l, a3 => pc3l, a4 => pc4l, a5 => pc5l, do => i27, we_n => -iwel, ce_n => -ice3c, di => iwr27, a11 => pc11l, a10 => pc10l, a9 => pc9l, a8 => pc8l, a7 => pc7l);
+  iram23_2b08 : 2147 port map(a0 => pc0l, a1 => pc1l, a2 => pc2l, a3 => pc3l, a4 => pc4l, a5 => pc5l, do => i28, we_n => -iwel, ce_n => -ice3c, di => iwr28, a11 => pc11l, a10 => pc10l, a9 => pc9l, a8 => pc8l, a7 => pc7l);
+  iram23_2b09 : 2147 port map(a0 => pc0l, a1 => pc1l, a2 => pc2l, a3 => pc3l, a4 => pc4l, a5 => pc5l, do => i29, we_n => -iwel, ce_n => -ice3c, di => iwr29, a11 => pc11l, a10 => pc10l, a9 => pc9l, a8 => pc8l, a7 => pc7l);
+  iram23_2c08 : sn74s04 port map(g1a => -pcc0, g1q_n => pc0l, g2a => -pcc1, g2q_n => pc1l, g3a => -pcc2, g3q_n => pc2l, g4q => pc3l, g4a => -pcc3, g5q_n => pc4l, g5a => -pcc4, g6q_n => pc5l);
+  iram23_2c07 : sn74s04 port map(g1a => -pcc6, g1q_n => pc6l, g2a => -pcc7, g2q_n => pc7l, g3a => -pcc8, g3q_n => pc8l, g4q => pc9l, g4a => -pcc9, g5q_n => pc10l, g5a => -pcc10, g6q_n => pc11l);
+
+  iram30_2b15 : 2147 port map(a0 => pc0m, a1 => pc1m, a2 => pc2m, a3 => pc3m, a4 => pc4m, a5 => pc5m, do => i43, we_n => -iwem, ce_n => -ice0d, di => iwr43, a11 => pc11m, a10 => pc10m, a9 => pc9m, a8 => pc8m, a7 => pc7m);
+  iram30_2a11 : 2147 port map(a0 => pc0m, a1 => pc1m, a2 => pc2m, a3 => pc3m, a4 => pc4m, a5 => pc5m, do => i44, we_n => -iwem, ce_n => -ice0d, di => iwr44, a11 => pc11m, a10 => pc10m, a9 => pc9m, a8 => pc8m, a7 => pc7m);
+  iram30_2a12 : 2147 port map(a0 => pc0m, a1 => pc1m, a2 => pc2m, a3 => pc3m, a4 => pc4m, a5 => pc5m, do => i45, we_n => -iwem, ce_n => -ice0d, di => iwr45, a11 => pc11m, a10 => pc10m, a9 => pc9m, a8 => pc8m, a7 => pc7m);
+  iram30_2a13 : 2147 port map(a0 => pc0m, a1 => pc1m, a2 => pc2m, a3 => pc3m, a4 => pc4m, a5 => pc5m, do => i46, we_n => -iwem, ce_n => -ice0d, di => iwr46, a11 => pc11m, a10 => pc10m, a9 => pc9m, a8 => pc8m, a7 => pc7m);
+  iram30_2a14 : 2147 port map(a0 => pc0m, a1 => pc1m, a2 => pc2m, a3 => pc3m, a4 => pc4m, a5 => pc5m, do => i47, we_n => -iwem, ce_n => -ice0d, di => iwr47, a11 => pc11m, a10 => pc10m, a9 => pc9m, a8 => pc8m, a7 => pc7m);
+  iram30_2a15 : 2147 port map(a0 => pc0m, a1 => pc1m, a2 => pc2m, a3 => pc3m, a4 => pc4m, a5 => pc5m, do => i48, we_n => -iwem, ce_n => -ice0d, di => iwr48, a11 => pc11m, a10 => pc10m, a9 => pc9m, a8 => pc8m, a7 => pc7m);
+  iram30_2c13 : 2147 port map(a0 => pc0m, a1 => pc1m, a2 => pc2m, a3 => pc3m, a4 => pc4m, a5 => pc5m, do => i36, we_n => -iwem, ce_n => -ice0d, di => iwr36, a11 => pc11m, a10 => pc10m, a9 => pc9m, a8 => pc8m, a7 => pc7m);
+  iram30_2c14 : 2147 port map(a0 => pc0m, a1 => pc1m, a2 => pc2m, a3 => pc3m, a4 => pc4m, a5 => pc5m, do => i37, we_n => -iwem, ce_n => -ice0d, di => iwr37, a11 => pc11m, a10 => pc10m, a9 => pc9m, a8 => pc8m, a7 => pc7m);
+  iram30_2c15 : 2147 port map(a0 => pc0m, a1 => pc1m, a2 => pc2m, a3 => pc3m, a4 => pc4m, a5 => pc5m, do => i38, we_n => -iwem, ce_n => -ice0d, di => iwr38, a11 => pc11m, a10 => pc10m, a9 => pc9m, a8 => pc8m, a7 => pc7m);
+  iram30_2b11 : 2147 port map(a0 => pc0m, a1 => pc1m, a2 => pc2m, a3 => pc3m, a4 => pc4m, a5 => pc5m, do => i39, we_n => -iwem, ce_n => -ice0d, di => iwr39, a11 => pc11m, a10 => pc10m, a9 => pc9m, a8 => pc8m, a7 => pc7m);
+  iram30_2b12 : 2147 port map(a0 => pc0m, a1 => pc1m, a2 => pc2m, a3 => pc3m, a4 => pc4m, a5 => pc5m, do => i40, we_n => -iwem, ce_n => -ice0d, di => iwr40, a11 => pc11m, a10 => pc10m, a9 => pc9m, a8 => pc8m, a7 => pc7m);
+  iram30_2b13 : 2147 port map(a0 => pc0m, a1 => pc1m, a2 => pc2m, a3 => pc3m, a4 => pc4m, a5 => pc5m, do => i41, we_n => -iwem, ce_n => -ice0d, di => iwr41, a11 => pc11m, a10 => pc10m, a9 => pc9m, a8 => pc8m, a7 => pc7m);
+  iram30_2c12 : sn74s04 port map(g1a => -pcc0, g1q_n => pc0m, g2a => -pcc1, g2q_n => pc1m, g3a => -pcc2, g3q_n => pc2m, g4q => pc3m, g4a => -pcc3, g5q_n => pc4m, g5a => -pcc4, g6q_n => pc5m);
+  iram30_2c11 : sn74s04 port map(g1a => -pcc6, g1q_n => pc6m, g2a => -pcc7, g2q_n => pc7m, g3a => -pcc8, g3q_n => pc8m, g4q => pc9m, g4a => -pcc9, g5q_n => pc10m, g5a => -pcc10, g6q_n => pc11m);
+  iram30_2b14 : 2147 port map(a0 => pc0m, a1 => pc1m, a2 => pc2m, a3 => pc3m, a4 => pc4m, a5 => pc5m, do => i42, we_n => -iwem, ce_n => -ice0d, di => iwr42, a11 => pc11m, a10 => pc10m, a9 => pc9m, a8 => pc8m, a7 => pc7m);
+
+  iram31_2b20 : 2147 port map(a0 => pc0n, a1 => pc1n, a2 => pc2n, a3 => pc3n, a4 => pc4n, a5 => pc5n, do => i43, we_n => -iwen, ce_n => -ice1d, di => iwr43, a11 => pc11n, a10 => pc10n, a9 => pc9n, a8 => pc8n, a7 => pc7n);
+  iram31_2a16 : 2147 port map(a0 => pc0n, a1 => pc1n, a2 => pc2n, a3 => pc3n, a4 => pc4n, a5 => pc5n, do => i44, we_n => -iwen, ce_n => -ice1d, di => iwr44, a11 => pc11n, a10 => pc10n, a9 => pc9n, a8 => pc8n, a7 => pc7n);
+  iram31_2a17 : 2147 port map(a0 => pc0n, a1 => pc1n, a2 => pc2n, a3 => pc3n, a4 => pc4n, a5 => pc5n, do => i45, we_n => -iwen, ce_n => -ice1d, di => iwr45, a11 => pc11n, a10 => pc10n, a9 => pc9n, a8 => pc8n, a7 => pc7n);
+  iram31_2a18 : 2147 port map(a0 => pc0n, a1 => pc1n, a2 => pc2n, a3 => pc3n, a4 => pc4n, a5 => pc5n, do => i46, we_n => -iwen, ce_n => -ice1d, di => iwr46, a11 => pc11n, a10 => pc10n, a9 => pc9n, a8 => pc8n, a7 => pc7n);
+  iram31_2a19 : 2147 port map(a0 => pc0n, a1 => pc1n, a2 => pc2n, a3 => pc3n, a4 => pc4n, a5 => pc5n, do => i47, we_n => -iwen, ce_n => -ice1d, di => iwr47, a11 => pc11n, a10 => pc10n, a9 => pc9n, a8 => pc8n, a7 => pc7n);
+  iram31_2a20 : 2147 port map(a0 => pc0n, a1 => pc1n, a2 => pc2n, a3 => pc3n, a4 => pc4n, a5 => pc5n, do => i48, we_n => -iwen, ce_n => -ice1d, di => iwr48, a11 => pc11n, a10 => pc10n, a9 => pc9n, a8 => pc8n, a7 => pc7n);
+  iram31_2c18 : 2147 port map(a0 => pc0n, a1 => pc1n, a2 => pc2n, a3 => pc3n, a4 => pc4n, a5 => pc5n, do => i36, we_n => -iwen, ce_n => -ice1d, di => iwr36, a11 => pc11n, a10 => pc10n, a9 => pc9n, a8 => pc8n, a7 => pc7n);
+  iram31_2c19 : 2147 port map(a0 => pc0n, a1 => pc1n, a2 => pc2n, a3 => pc3n, a4 => pc4n, a5 => pc5n, do => i37, we_n => -iwen, ce_n => -ice1d, di => iwr37, a11 => pc11n, a10 => pc10n, a9 => pc9n, a8 => pc8n, a7 => pc7n);
+  iram31_2c20 : 2147 port map(a0 => pc0n, a1 => pc1n, a2 => pc2n, a3 => pc3n, a4 => pc4n, a5 => pc5n, do => i38, we_n => -iwen, ce_n => -ice1d, di => iwr38, a11 => pc11n, a10 => pc10n, a9 => pc9n, a8 => pc8n, a7 => pc7n);
+  iram31_2b16 : 2147 port map(a0 => pc0n, a1 => pc1n, a2 => pc2n, a3 => pc3n, a4 => pc4n, a5 => pc5n, do => i39, we_n => -iwen, ce_n => -ice1d, di => iwr39, a11 => pc11n, a10 => pc10n, a9 => pc9n, a8 => pc8n, a7 => pc7n);
+  iram31_2b17 : 2147 port map(a0 => pc0n, a1 => pc1n, a2 => pc2n, a3 => pc3n, a4 => pc4n, a5 => pc5n, do => i40, we_n => -iwen, ce_n => -ice1d, di => iwr40, a11 => pc11n, a10 => pc10n, a9 => pc9n, a8 => pc8n, a7 => pc7n);
+  iram31_2b18 : 2147 port map(a0 => pc0n, a1 => pc1n, a2 => pc2n, a3 => pc3n, a4 => pc4n, a5 => pc5n, do => i41, we_n => -iwen, ce_n => -ice1d, di => iwr41, a11 => pc11n, a10 => pc10n, a9 => pc9n, a8 => pc8n, a7 => pc7n);
+  iram31_2c17 : sn74s04 port map(g1a => -pcc0, g1q_n => pc0n, g2a => -pcc1, g2q_n => pc1n, g3a => -pcc2, g3q_n => pc2n, g4q => pc3n, g4a => -pcc3, g5q_n => pc4n, g5a => -pcc4, g6q_n => pc5n);
+  iram31_2c16 : sn74s04 port map(g1a => -pcc6, g1q_n => pc6n, g2a => -pcc7, g2q_n => pc7n, g3a => -pcc8, g3q_n => pc8n, g4q => pc9n, g4a => -pcc9, g5q_n => pc10n, g5a => -pcc10, g6q_n => pc11n);
+  iram31_2b19 : 2147 port map(a0 => pc0n, a1 => pc1n, a2 => pc2n, a3 => pc3n, a4 => pc4n, a5 => pc5n, do => i42, we_n => -iwen, ce_n => -ice1d, di => iwr42, a11 => pc11n, a10 => pc10n, a9 => pc9n, a8 => pc8n, a7 => pc7n);
+
+  iram32_2b25 : 2147 port map(a0 => pc0o, a1 => pc1o, a2 => pc2o, a3 => pc3o, a4 => pc4o, a5 => pc5o, do => i43, we_n => -iweo, ce_n => -ice2d, di => iwr43, a11 => pc11o, a10 => pc10o, a9 => pc9o, a8 => pc8o, a7 => pc7o);
+  iram32_2a21 : 2147 port map(a0 => pc0o, a1 => pc1o, a2 => pc2o, a3 => pc3o, a4 => pc4o, a5 => pc5o, do => i44, we_n => -iweo, ce_n => -ice2d, di => iwr44, a11 => pc11o, a10 => pc10o, a9 => pc9o, a8 => pc8o, a7 => pc7o);
+  iram32_2a22 : 2147 port map(a0 => pc0o, a1 => pc1o, a2 => pc2o, a3 => pc3o, a4 => pc4o, a5 => pc5o, do => i45, we_n => -iweo, ce_n => -ice2d, di => iwr45, a11 => pc11o, a10 => pc10o, a9 => pc9o, a8 => pc8o, a7 => pc7o);
+  iram32_2a23 : 2147 port map(a0 => pc0o, a1 => pc1o, a2 => pc2o, a3 => pc3o, a4 => pc4o, a5 => pc5o, do => i46, we_n => -iweo, ce_n => -ice2d, di => iwr46, a11 => pc11o, a10 => pc10o, a9 => pc9o, a8 => pc8o, a7 => pc7o);
+  iram32_2a24 : 2147 port map(a0 => pc0o, a1 => pc1o, a2 => pc2o, a3 => pc3o, a4 => pc4o, a5 => pc5o, do => i47, we_n => -iweo, ce_n => -ice2d, di => iwr47, a11 => pc11o, a10 => pc10o, a9 => pc9o, a8 => pc8o, a7 => pc7o);
+  iram32_2a25 : 2147 port map(a0 => pc0o, a1 => pc1o, a2 => pc2o, a3 => pc3o, a4 => pc4o, a5 => pc5o, do => i48, we_n => -iweo, ce_n => -ice2d, di => iwr48, a11 => pc11o, a10 => pc10o, a9 => pc9o, a8 => pc8o, a7 => pc7o);
+  iram32_2c23 : 2147 port map(a0 => pc0o, a1 => pc1o, a2 => pc2o, a3 => pc3o, a4 => pc4o, a5 => pc5o, do => i36, we_n => -iweo, ce_n => -ice2d, di => iwr36, a11 => pc11o, a10 => pc10o, a9 => pc9o, a8 => pc8o, a7 => pc7o);
+  iram32_2c24 : 2147 port map(a0 => pc0o, a1 => pc1o, a2 => pc2o, a3 => pc3o, a4 => pc4o, a5 => pc5o, do => i37, we_n => -iweo, ce_n => -ice2d, di => iwr37, a11 => pc11o, a10 => pc10o, a9 => pc9o, a8 => pc8o, a7 => pc7o);
+  iram32_2c25 : 2147 port map(a0 => pc0o, a1 => pc1o, a2 => pc2o, a3 => pc3o, a4 => pc4o, a5 => pc5o, do => i38, we_n => -iweo, ce_n => -ice2d, di => iwr38, a11 => pc11o, a10 => pc10o, a9 => pc9o, a8 => pc8o, a7 => pc7o);
+  iram32_2b21 : 2147 port map(a0 => pc0o, a1 => pc1o, a2 => pc2o, a3 => pc3o, a4 => pc4o, a5 => pc5o, do => i39, we_n => -iweo, ce_n => -ice2d, di => iwr39, a11 => pc11o, a10 => pc10o, a9 => pc9o, a8 => pc8o, a7 => pc7o);
+  iram32_2b22 : 2147 port map(a0 => pc0o, a1 => pc1o, a2 => pc2o, a3 => pc3o, a4 => pc4o, a5 => pc5o, do => i40, we_n => -iweo, ce_n => -ice2d, di => iwr40, a11 => pc11o, a10 => pc10o, a9 => pc9o, a8 => pc8o, a7 => pc7o);
+  iram32_2b23 : 2147 port map(a0 => pc0o, a1 => pc1o, a2 => pc2o, a3 => pc3o, a4 => pc4o, a5 => pc5o, do => i41, we_n => -iweo, ce_n => -ice2d, di => iwr41, a11 => pc11o, a10 => pc10o, a9 => pc9o, a8 => pc8o, a7 => pc7o);
+  iram32_2c22 : sn74s04 port map(g1a => -pcc0, g1q_n => pc0o, g2a => -pcc1, g2q_n => pc1o, g3a => -pcc2, g3q_n => pc2o, g4q => pc3o, g4a => -pcc3, g5q_n => pc4o, g5a => -pcc4, g6q_n => pc5o);
+  iram32_2c21 : sn74s04 port map(g1a => -pcc6, g1q_n => pc6o, g2a => -pcc7, g2q_n => pc7o, g3a => -pcc8, g3q_n => pc8o, g4q => pc9o, g4a => -pcc9, g5q_n => pc10o, g5a => -pcc10, g6q_n => pc11o);
+  iram32_2b24 : 2147 port map(a0 => pc0o, a1 => pc1o, a2 => pc2o, a3 => pc3o, a4 => pc4o, a5 => pc5o, do => i42, we_n => -iweo, ce_n => -ice2d, di => iwr42, a11 => pc11o, a10 => pc10o, a9 => pc9o, a8 => pc8o, a7 => pc7o);
+
+  iram33_2b30 : 2147 port map(a0 => pc0p, a1 => pc1p, a2 => pc2p, a3 => pc3p, a4 => pc4p, a5 => pc5p, do => i43, we_n => -iwep, ce_n => -ice3d, di => iwr43, a11 => pc11p, a10 => pc10p, a9 => pc9p, a8 => pc8p, a7 => pc7p);
+  iram33_2a26 : 2147 port map(a0 => pc0p, a1 => pc1p, a2 => pc2p, a3 => pc3p, a4 => pc4p, a5 => pc5p, do => i44, we_n => -iwep, ce_n => -ice3d, di => iwr44, a11 => pc11p, a10 => pc10p, a9 => pc9p, a8 => pc8p, a7 => pc7p);
+  iram33_2a27 : 2147 port map(a0 => pc0p, a1 => pc1p, a2 => pc2p, a3 => pc3p, a4 => pc4p, a5 => pc5p, do => i45, we_n => -iwep, ce_n => -ice3d, di => iwr45, a11 => pc11p, a10 => pc10p, a9 => pc9p, a8 => pc8p, a7 => pc7p);
+  iram33_2a28 : 2147 port map(a0 => pc0p, a1 => pc1p, a2 => pc2p, a3 => pc3p, a4 => pc4p, a5 => pc5p, do => i46, we_n => -iwep, ce_n => -ice3d, di => iwr46, a11 => pc11p, a10 => pc10p, a9 => pc9p, a8 => pc8p, a7 => pc7p);
+  iram33_2a29 : 2147 port map(a0 => pc0p, a1 => pc1p, a2 => pc2p, a3 => pc3p, a4 => pc4p, a5 => pc5p, do => i47, we_n => -iwep, ce_n => -ice3d, di => iwr47, a11 => pc11p, a10 => pc10p, a9 => pc9p, a8 => pc8p, a7 => pc7p);
+  iram33_2a30 : 2147 port map(a0 => pc0p, a1 => pc1p, a2 => pc2p, a3 => pc3p, a4 => pc4p, a5 => pc5p, do => i48, we_n => -iwep, ce_n => -ice3d, di => iwr48, a11 => pc11p, a10 => pc10p, a9 => pc9p, a8 => pc8p, a7 => pc7p);
+  iram33_2c28 : 2147 port map(a0 => pc0p, a1 => pc1p, a2 => pc2p, a3 => pc3p, a4 => pc4p, a5 => pc5p, do => i36, we_n => -iwep, ce_n => -ice3d, di => iwr36, a11 => pc11p, a10 => pc10p, a9 => pc9p, a8 => pc8p, a7 => pc7p);
+  iram33_2c29 : 2147 port map(a0 => pc0p, a1 => pc1p, a2 => pc2p, a3 => pc3p, a4 => pc4p, a5 => pc5p, do => i37, we_n => -iwep, ce_n => -ice3d, di => iwr37, a11 => pc11p, a10 => pc10p, a9 => pc9p, a8 => pc8p, a7 => pc7p);
+  iram33_2c30 : 2147 port map(a0 => pc0p, a1 => pc1p, a2 => pc2p, a3 => pc3p, a4 => pc4p, a5 => pc5p, do => i38, we_n => -iwep, ce_n => -ice3d, di => iwr38, a11 => pc11p, a10 => pc10p, a9 => pc9p, a8 => pc8p, a7 => pc7p);
+  iram33_2b26 : 2147 port map(a0 => pc0p, a1 => pc1p, a2 => pc2p, a3 => pc3p, a4 => pc4p, a5 => pc5p, do => i39, we_n => -iwep, ce_n => -ice3d, di => iwr39, a11 => pc11p, a10 => pc10p, a9 => pc9p, a8 => pc8p, a7 => pc7p);
+  iram33_2b27 : 2147 port map(a0 => pc0p, a1 => pc1p, a2 => pc2p, a3 => pc3p, a4 => pc4p, a5 => pc5p, do => i40, we_n => -iwep, ce_n => -ice3d, di => iwr40, a11 => pc11p, a10 => pc10p, a9 => pc9p, a8 => pc8p, a7 => pc7p);
+  iram33_2b28 : 2147 port map(a0 => pc0p, a1 => pc1p, a2 => pc2p, a3 => pc3p, a4 => pc4p, a5 => pc5p, do => i41, we_n => -iwep, ce_n => -ice3d, di => iwr41, a11 => pc11p, a10 => pc10p, a9 => pc9p, a8 => pc8p, a7 => pc7p);
+  iram33_2c27 : sn74s04 port map(g1a => -pcc0, g1q_n => pc0p, g2a => -pcc1, g2q_n => pc1p, g3a => -pcc2, g3q_n => pc2p, g4q => pc3p, g4a => -pcc3, g5q_n => pc4p, g5a => -pcc4, g6q_n => pc5p);
+  iram33_2c26 : sn74s04 port map(g1a => -pcc6, g1q_n => pc6p, g2a => -pcc7, g2q_n => pc7p, g3a => -pcc8, g3q_n => pc8p, g4q => pc9p, g4a => -pcc9, g5q_n => pc10p, g5a => -pcc10, g6q_n => pc11p);
+  iram33_2b29 : 2147 port map(a0 => pc0p, a1 => pc1p, a2 => pc2p, a3 => pc3p, a4 => pc4p, a5 => pc5p, do => i42, we_n => -iwep, ce_n => -ice3d, di => iwr42, a11 => pc11p, a10 => pc10p, a9 => pc9p, a8 => pc8p, a7 => pc7p);
+
   iwr_1f12 : sn74s374 port map(oenb_n => gnd, o0 => iwr47, i0 => aa15, i1 => aa14, o1 => iwr46, o2 => iwr45, i2 => aa13, i3 => aa12, o3 => iwr44, clk => clk2c, o4 => iwr43, i4 => aa11, i5 => aa10, o5 => iwr42, o6 => iwr41, i6 => aa9, i7 => aa8);
   iwr_1f14 : sn74s374 port map(oenb_n => gnd, o0 => iwr39, i0 => aa7, i1 => aa6, o1 => iwr38, o2 => iwr37, i2 => aa5, i3 => aa4, o3 => iwr36, clk => clk2c, o4 => iwr35, i4 => aa3, i5 => aa2, o5 => iwr34, o6 => iwr33, i6 => aa1, i7 => aa0);
   iwr_4c04 : sn74s374 port map(oenb_n => gnd, o0 => iwr31, i0 => m31, i1 => m30, o1 => iwr30, o2 => iwr29, i2 => m29, i3 => m28, o3 => iwr28, clk => clk4c, o4 => iwr27, i4 => m27, i5 => m26, o5 => iwr26, o6 => iwr25, i6 => m25, i7 => m24);
@@ -273,6 +457,14 @@ begin
   alatch_3a01 : sn74s373 port map(oenb_n => -amemenb, o0 => a23, i0 => amem23, i1 => amem22, o1 => a22, o2 => a21, i2 => amem21, i3 => amem20, o3 => a20, hold_n => clk3e, o4 => a19, i4 => amem19, i5 => amem18, o5 => a18, o6 => a17, i6 => amem17, i7 => amem16);
   alatch_3b04 : sn74s373 port map(oenb_n => -amemenb, o0 => a31a, i0 => amem31, i1 => amem30, o1 => a30, o2 => a29, i2 => amem29, i3 => amem28, o3 => a28, hold_n => clk3e, o4 => a27, i4 => amem27, i5 => amem26, o5 => a26, o6 => a25, i6 => amem25, i7 => amem24);
   alatch_3b02 : sn74s373 port map(oenb_n => -amemenb, o0 => nc, i0 => nc, i1 => nc, o1 => nc, o2 => nc, i2 => nc, i3 => nc, o3 => nc, hold_n => clk3e, o4 => nc, i4 => nc, i5 => nc, o5 => nc, o6 => aparity, i6 => amemparity, i7 => amem31);
+
+  apar_4a17 : sn74s00 port map(g1b => mpareven, g1a => srcm, g1q_n => mmemparok, g2b => mpareven, g2a => pdlenb, g2q_n => pdlparok);
+  apar_3a28 : 93s48 port map(i6 => a26, i5 => a27, i4 => a28, i3 => a29, i2 => a30, i1 => a31b, i0 => aparity, po => aparok, pe => nc, i11 => aparl, i10 => aparm, i9 => gnd, i8 => a24);
+  apar_3a29 : 93s48 port map(i6 => a17, i5 => a18, i4 => a19, i3 => a20, i2 => a21, i1 => a22, i0 => a23, po => aparm, pe => nc, i11 => a12, i10 => a13, i9 => a14, i8 => a15);
+  apar_3a30 : 93s48 port map(i6 => a5, i5 => a6, i4 => a7, i3 => a8, i2 => a9, i1 => a10, i0 => a11, po => aparl, pe => nc, i11 => a0, i10 => a1, i9 => a2, i8 => a3);
+  apar_4a14 : 93s48 port map(i6 => m5, i5 => m6, i4 => m7, i3 => m8, i2 => m9, i1 => m10, i0 => m11, po => mparl, pe => nc, i11 => m0, i10 => m1, i9 => m2, i8 => m3);
+  apar_4a12 : 93s48 port map(i6 => m17, i5 => m18, i4 => m19, i3 => m20, i2 => m21, i1 => m22, i0 => m23, po => mparm, pe => nc, i11 => m12, i10 => m13, i9 => m14, i8 => m15);
+  apar_4b15 : 93s48 port map(i6 => m26, i5 => m27, i4 => m28, i3 => m29, i2 => m30, i1 => m31, i0 => mparity, po => mparodd, pe => mpareven, i11 => mparl, i10 => mparm, i9 => gnd, i8 => m24);
 
   --- M Memory
 
@@ -645,6 +837,12 @@ begin
   spcw_4e13 : sn74s157 port map(sel => destspcd, a4 => reta4, b4 => l4, y4 => spcw4, b3 => reta5, a3 => l5, y3 => spcw5, y2 => spcw6, b2 => l6, a2 => reta6, y1 => spcw7, b1 => l7, a1 => reta7);
   spcw_4e14 : sn74s157 port map(sel => destspcd, a4 => reta0, b4 => l0, y4 => spcw0, b3 => reta1, a3 => l1, y3 => spcw1, y2 => spcw2, b2 => l2, a2 => reta2, y1 => spcw3, b1 => l3, a1 => reta3);
 
+  spcpar_3e19 : sn74s86 port map(g2a => spcwparh, g2b => -spcwparl, g2y => spcwpar);
+  spcpar_4f16 : 93s48 port map(i6 => spcw17, i5 => spcw18, i4 => gnd, i3 => gnd, i2 => gnd, i1 => gnd, i0 => gnd, po => spcwparh, pe => nc, i11 => spcw12, i10 => spcw13, i9 => spcw14, i8 => spcw15);
+  spcpar_4f17 : 93s48 port map(i6 => spcw5, i5 => spcw6, i4 => spcw7, i3 => spcw8, i2 => spcw9, i1 => spcw10, i0 => spcw11, po => nc, pe => -spcwparl, i11 => spcw0, i10 => spcw1, i9 => spcw2, i8 => spcw3);
+  spcpar_4f21 : 93s48 port map(i6 => spc16, i5 => spc17, i4 => spc18, i3 => spcpar, i2 => gnd, i1 => gnd, i0 => gnd, po => spcparh, pe => nc, i11 => spc11, i10 => spc12, i9 => spc13, i8 => spc14);
+  spcpar_4f26 : 93s48 port map(i6 => spc5, i5 => spc6, i4 => spc7, i3 => spc8, i2 => spc9, i1 => spc10, i0 => spcparh, po => spcparok, pe => nc, i11 => spc0, i10 => spc1, i9 => spc2, i8 => spc3);
+
   lpc_4d02 : sn74s241 port map(aenb_n => gnd, q7 => pc7b, q6 => pc6b, q5 => pc5b, q4 => pc4b, q3 => pc3b, q2 => pc2b, q1 => pc1b, q0 => pc0b);
   lpc_4d01 : sn74s241 port map(aenb_n => gnd, q7 => nc, q6 => nc, q5 => pc13b, q4 => pc12b, q3 => pc11b, q2 => pc10b, q1 => pc9b, q0 => pc8b);
   lpc_4d06 : sn74s08 port map(g1b => irdisp, g1a => ir25);
@@ -901,200 +1099,6 @@ begin
   stat_1c04 : sn74s169 port map(up_dn => hi1, clk => clk5a, i0 => iwr4, i1 => iwr5, i2 => iwr6, i3 => iwr7, enb_p_n => gnd, load_n => -ldstat, enb_t_n => -stc4, o3 => st7, o2 => st6, o1 => st5, o0 => st4);
   stat_1c03 : sn74s169 port map(up_dn => hi1, clk => clk5a, i0 => iwr0, i1 => iwr1, i2 => iwr2, i3 => iwr3, enb_p_n => gnd, load_n => -ldstat, enb_t_n => -statbit, o3 => st3, o2 => st2, o1 => st1, o0 => st0);
 
-  spy4_1d07 : sn74ls244 port map(en1_n => -spy.pc, d0 => pc7, q7 => spy0, d1 => pc6, q6 => spy1, d2 => pc5, q5 => spy2, d3 => pc4, q4 => spy3, d4 => pc3, q3 => spy4, d5 => pc2, q2 => spy5, d6 => pc1, q1 => spy6, d7 => pc0, q0 => spy7);
-  spy4_1d06 : sn74ls244 port map(en1_n => -spy.pc, d0 => gnd, q7 => spy8, d1 => gnd, q6 => spy9, d2 => pc13, q5 => spy10, d3 => pc12, q4 => spy11, d4 => pc11, q3 => spy12, d5 => pc10, q2 => spy13, d6 => pc9, q1 => spy14, d7 => pc8, q0 => spy15);
-  spy4_1a13 : sn74s240 port map(aenb_n => -spy.flag1, ain0 => -higherr, bout3 => spy0, ain1 => -mempe, bout2 => spy1, ain2 => -ipe, bout1 => spy2, ain3 => -dpe, bout0 => spy3, bin0 => -spe, aout3 => spy4, bin1 => -pdlpe, aout2 => spy5, bin2 => -mpe, aout1 => spy6, bin3 => -ape, aout0 => spy7);
-  spy4_1a12 : sn74ls244 port map(en1_n => -spy.flag1, d0 => -wait, q7 => spy8, d1 => -v1pe, q6 => spy9, d2 => -v0pe, q5 => spy10, d3 => promdisable, q4 => spy11, d4 => -stathalt, q3 => spy12, d5 => err, q2 => spy13, d6 => ssdone, q1 => spy14, d7 => srun, q0 => spy15);
-  spy4_1e07 : sn74ls244 port map(en1_n => -spy.opc, d0 => opc7, q7 => spy0, d1 => opc6, q6 => spy1, d2 => opc5, q5 => spy2, d3 => opc4, q4 => spy3, d4 => opc3, q3 => spy4, d5 => opc2, q2 => spy5, d6 => opc1, q1 => spy6, d7 => opc0, q0 => spy7);
-  spy4_1e06 : sn74ls244 port map(en1_n => -spy.opc, d0 => gnd, q7 => spy8, d1 => gnd, q6 => spy9, d2 => opc13, q5 => spy10, d3 => opc12, q4 => spy11, d4 => opc11, q3 => spy12, d5 => opc10, q2 => spy13, d6 => opc9, q1 => spy14, d7 => opc8, q0 => spy15);
-  spy0_1f03 : sn74s138 port map(a => eadr0, b => eadr1, c => eadr2, g2a => -dbwrite, g2b => gnd, g1 => hi1, y7 => nc, y6 => nc, y5 => -ldmode, y4 => -ldopc, y3 => -ldclk, y2 => -lddbirh, y1 => -lddbirm);
-  spy0_1f02 : sn74s138 port map(a => eadr0, b => eadr1, c => eadr2, g2a => -dbread, g2b => gnd, g1 => eadr3, y7 => -spy.sth, y6 => -spy.stl, y5 => -spy.ah, y4 => -spy.al, y3 => -spy.mh, y2 => -spy.ml, y1 => -spy.flag2);
-  spy0_1f01 : sn74s138 port map(a => eadr0, b => eadr1, c => eadr2, g2a => -dbread, g2b => eadr3, g1 => hi1, y7 => -spy.obh, y6 => -spy.obl, y5 => -spy.pc, y4 => -spy.opc, y3 => nc, y2 => -spy.irh, y1 => -spy.irm);
-
-  iram33_2b29 : 2147 port map(a0 => pc0p, a1 => pc1p, a2 => pc2p, a3 => pc3p, a4 => pc4p, a5 => pc5p, do => i42, we_n => -iwep, ce_n => -ice3d, di => iwr42, a11 => pc11p, a10 => pc10p, a9 => pc9p, a8 => pc8p, a7 => pc7p);
-  iram33_2c26 : sn74s04 port map(g1a => -pcc6, g1q_n => pc6p, g2a => -pcc7, g2q_n => pc7p, g3a => -pcc8, g3q_n => pc8p, g4q => pc9p, g4a => -pcc9, g5q_n => pc10p, g5a => -pcc10, g6q_n => pc11p);
-  iram33_2c27 : sn74s04 port map(g1a => -pcc0, g1q_n => pc0p, g2a => -pcc1, g2q_n => pc1p, g3a => -pcc2, g3q_n => pc2p, g4q => pc3p, g4a => -pcc3, g5q_n => pc4p, g5a => -pcc4, g6q_n => pc5p);
-  iram33_2b28 : 2147 port map(a0 => pc0p, a1 => pc1p, a2 => pc2p, a3 => pc3p, a4 => pc4p, a5 => pc5p, do => i41, we_n => -iwep, ce_n => -ice3d, di => iwr41, a11 => pc11p, a10 => pc10p, a9 => pc9p, a8 => pc8p, a7 => pc7p);
-  iram33_2b27 : 2147 port map(a0 => pc0p, a1 => pc1p, a2 => pc2p, a3 => pc3p, a4 => pc4p, a5 => pc5p, do => i40, we_n => -iwep, ce_n => -ice3d, di => iwr40, a11 => pc11p, a10 => pc10p, a9 => pc9p, a8 => pc8p, a7 => pc7p);
-  iram33_2b26 : 2147 port map(a0 => pc0p, a1 => pc1p, a2 => pc2p, a3 => pc3p, a4 => pc4p, a5 => pc5p, do => i39, we_n => -iwep, ce_n => -ice3d, di => iwr39, a11 => pc11p, a10 => pc10p, a9 => pc9p, a8 => pc8p, a7 => pc7p);
-  iram33_2c30 : 2147 port map(a0 => pc0p, a1 => pc1p, a2 => pc2p, a3 => pc3p, a4 => pc4p, a5 => pc5p, do => i38, we_n => -iwep, ce_n => -ice3d, di => iwr38, a11 => pc11p, a10 => pc10p, a9 => pc9p, a8 => pc8p, a7 => pc7p);
-  iram33_2c29 : 2147 port map(a0 => pc0p, a1 => pc1p, a2 => pc2p, a3 => pc3p, a4 => pc4p, a5 => pc5p, do => i37, we_n => -iwep, ce_n => -ice3d, di => iwr37, a11 => pc11p, a10 => pc10p, a9 => pc9p, a8 => pc8p, a7 => pc7p);
-  iram33_2c28 : 2147 port map(a0 => pc0p, a1 => pc1p, a2 => pc2p, a3 => pc3p, a4 => pc4p, a5 => pc5p, do => i36, we_n => -iwep, ce_n => -ice3d, di => iwr36, a11 => pc11p, a10 => pc10p, a9 => pc9p, a8 => pc8p, a7 => pc7p);
-  iram33_2a30 : 2147 port map(a0 => pc0p, a1 => pc1p, a2 => pc2p, a3 => pc3p, a4 => pc4p, a5 => pc5p, do => i48, we_n => -iwep, ce_n => -ice3d, di => iwr48, a11 => pc11p, a10 => pc10p, a9 => pc9p, a8 => pc8p, a7 => pc7p);
-  iram33_2a29 : 2147 port map(a0 => pc0p, a1 => pc1p, a2 => pc2p, a3 => pc3p, a4 => pc4p, a5 => pc5p, do => i47, we_n => -iwep, ce_n => -ice3d, di => iwr47, a11 => pc11p, a10 => pc10p, a9 => pc9p, a8 => pc8p, a7 => pc7p);
-  iram33_2a28 : 2147 port map(a0 => pc0p, a1 => pc1p, a2 => pc2p, a3 => pc3p, a4 => pc4p, a5 => pc5p, do => i46, we_n => -iwep, ce_n => -ice3d, di => iwr46, a11 => pc11p, a10 => pc10p, a9 => pc9p, a8 => pc8p, a7 => pc7p);
-  iram33_2a27 : 2147 port map(a0 => pc0p, a1 => pc1p, a2 => pc2p, a3 => pc3p, a4 => pc4p, a5 => pc5p, do => i45, we_n => -iwep, ce_n => -ice3d, di => iwr45, a11 => pc11p, a10 => pc10p, a9 => pc9p, a8 => pc8p, a7 => pc7p);
-  iram33_2a26 : 2147 port map(a0 => pc0p, a1 => pc1p, a2 => pc2p, a3 => pc3p, a4 => pc4p, a5 => pc5p, do => i44, we_n => -iwep, ce_n => -ice3d, di => iwr44, a11 => pc11p, a10 => pc10p, a9 => pc9p, a8 => pc8p, a7 => pc7p);
-  iram33_2b30 : 2147 port map(a0 => pc0p, a1 => pc1p, a2 => pc2p, a3 => pc3p, a4 => pc4p, a5 => pc5p, do => i43, we_n => -iwep, ce_n => -ice3d, di => iwr43, a11 => pc11p, a10 => pc10p, a9 => pc9p, a8 => pc8p, a7 => pc7p);
-
-  iram32_2b24 : 2147 port map(a0 => pc0o, a1 => pc1o, a2 => pc2o, a3 => pc3o, a4 => pc4o, a5 => pc5o, do => i42, we_n => -iweo, ce_n => -ice2d, di => iwr42, a11 => pc11o, a10 => pc10o, a9 => pc9o, a8 => pc8o, a7 => pc7o);
-  iram32_2c21 : sn74s04 port map(g1a => -pcc6, g1q_n => pc6o, g2a => -pcc7, g2q_n => pc7o, g3a => -pcc8, g3q_n => pc8o, g4q => pc9o, g4a => -pcc9, g5q_n => pc10o, g5a => -pcc10, g6q_n => pc11o);
-  iram32_2c22 : sn74s04 port map(g1a => -pcc0, g1q_n => pc0o, g2a => -pcc1, g2q_n => pc1o, g3a => -pcc2, g3q_n => pc2o, g4q => pc3o, g4a => -pcc3, g5q_n => pc4o, g5a => -pcc4, g6q_n => pc5o);
-  iram32_2b23 : 2147 port map(a0 => pc0o, a1 => pc1o, a2 => pc2o, a3 => pc3o, a4 => pc4o, a5 => pc5o, do => i41, we_n => -iweo, ce_n => -ice2d, di => iwr41, a11 => pc11o, a10 => pc10o, a9 => pc9o, a8 => pc8o, a7 => pc7o);
-  iram32_2b22 : 2147 port map(a0 => pc0o, a1 => pc1o, a2 => pc2o, a3 => pc3o, a4 => pc4o, a5 => pc5o, do => i40, we_n => -iweo, ce_n => -ice2d, di => iwr40, a11 => pc11o, a10 => pc10o, a9 => pc9o, a8 => pc8o, a7 => pc7o);
-  iram32_2b21 : 2147 port map(a0 => pc0o, a1 => pc1o, a2 => pc2o, a3 => pc3o, a4 => pc4o, a5 => pc5o, do => i39, we_n => -iweo, ce_n => -ice2d, di => iwr39, a11 => pc11o, a10 => pc10o, a9 => pc9o, a8 => pc8o, a7 => pc7o);
-  iram32_2c25 : 2147 port map(a0 => pc0o, a1 => pc1o, a2 => pc2o, a3 => pc3o, a4 => pc4o, a5 => pc5o, do => i38, we_n => -iweo, ce_n => -ice2d, di => iwr38, a11 => pc11o, a10 => pc10o, a9 => pc9o, a8 => pc8o, a7 => pc7o);
-  iram32_2c24 : 2147 port map(a0 => pc0o, a1 => pc1o, a2 => pc2o, a3 => pc3o, a4 => pc4o, a5 => pc5o, do => i37, we_n => -iweo, ce_n => -ice2d, di => iwr37, a11 => pc11o, a10 => pc10o, a9 => pc9o, a8 => pc8o, a7 => pc7o);
-  iram32_2c23 : 2147 port map(a0 => pc0o, a1 => pc1o, a2 => pc2o, a3 => pc3o, a4 => pc4o, a5 => pc5o, do => i36, we_n => -iweo, ce_n => -ice2d, di => iwr36, a11 => pc11o, a10 => pc10o, a9 => pc9o, a8 => pc8o, a7 => pc7o);
-  iram32_2a25 : 2147 port map(a0 => pc0o, a1 => pc1o, a2 => pc2o, a3 => pc3o, a4 => pc4o, a5 => pc5o, do => i48, we_n => -iweo, ce_n => -ice2d, di => iwr48, a11 => pc11o, a10 => pc10o, a9 => pc9o, a8 => pc8o, a7 => pc7o);
-  iram32_2a24 : 2147 port map(a0 => pc0o, a1 => pc1o, a2 => pc2o, a3 => pc3o, a4 => pc4o, a5 => pc5o, do => i47, we_n => -iweo, ce_n => -ice2d, di => iwr47, a11 => pc11o, a10 => pc10o, a9 => pc9o, a8 => pc8o, a7 => pc7o);
-  iram32_2a23 : 2147 port map(a0 => pc0o, a1 => pc1o, a2 => pc2o, a3 => pc3o, a4 => pc4o, a5 => pc5o, do => i46, we_n => -iweo, ce_n => -ice2d, di => iwr46, a11 => pc11o, a10 => pc10o, a9 => pc9o, a8 => pc8o, a7 => pc7o);
-  iram32_2a22 : 2147 port map(a0 => pc0o, a1 => pc1o, a2 => pc2o, a3 => pc3o, a4 => pc4o, a5 => pc5o, do => i45, we_n => -iweo, ce_n => -ice2d, di => iwr45, a11 => pc11o, a10 => pc10o, a9 => pc9o, a8 => pc8o, a7 => pc7o);
-  iram32_2a21 : 2147 port map(a0 => pc0o, a1 => pc1o, a2 => pc2o, a3 => pc3o, a4 => pc4o, a5 => pc5o, do => i44, we_n => -iweo, ce_n => -ice2d, di => iwr44, a11 => pc11o, a10 => pc10o, a9 => pc9o, a8 => pc8o, a7 => pc7o);
-  iram32_2b25 : 2147 port map(a0 => pc0o, a1 => pc1o, a2 => pc2o, a3 => pc3o, a4 => pc4o, a5 => pc5o, do => i43, we_n => -iweo, ce_n => -ice2d, di => iwr43, a11 => pc11o, a10 => pc10o, a9 => pc9o, a8 => pc8o, a7 => pc7o);
-
-  iram31_2b19 : 2147 port map(a0 => pc0n, a1 => pc1n, a2 => pc2n, a3 => pc3n, a4 => pc4n, a5 => pc5n, do => i42, we_n => -iwen, ce_n => -ice1d, di => iwr42, a11 => pc11n, a10 => pc10n, a9 => pc9n, a8 => pc8n, a7 => pc7n);
-  iram31_2c16 : sn74s04 port map(g1a => -pcc6, g1q_n => pc6n, g2a => -pcc7, g2q_n => pc7n, g3a => -pcc8, g3q_n => pc8n, g4q => pc9n, g4a => -pcc9, g5q_n => pc10n, g5a => -pcc10, g6q_n => pc11n);
-  iram31_2c17 : sn74s04 port map(g1a => -pcc0, g1q_n => pc0n, g2a => -pcc1, g2q_n => pc1n, g3a => -pcc2, g3q_n => pc2n, g4q => pc3n, g4a => -pcc3, g5q_n => pc4n, g5a => -pcc4, g6q_n => pc5n);
-  iram31_2b18 : 2147 port map(a0 => pc0n, a1 => pc1n, a2 => pc2n, a3 => pc3n, a4 => pc4n, a5 => pc5n, do => i41, we_n => -iwen, ce_n => -ice1d, di => iwr41, a11 => pc11n, a10 => pc10n, a9 => pc9n, a8 => pc8n, a7 => pc7n);
-  iram31_2b17 : 2147 port map(a0 => pc0n, a1 => pc1n, a2 => pc2n, a3 => pc3n, a4 => pc4n, a5 => pc5n, do => i40, we_n => -iwen, ce_n => -ice1d, di => iwr40, a11 => pc11n, a10 => pc10n, a9 => pc9n, a8 => pc8n, a7 => pc7n);
-  iram31_2b16 : 2147 port map(a0 => pc0n, a1 => pc1n, a2 => pc2n, a3 => pc3n, a4 => pc4n, a5 => pc5n, do => i39, we_n => -iwen, ce_n => -ice1d, di => iwr39, a11 => pc11n, a10 => pc10n, a9 => pc9n, a8 => pc8n, a7 => pc7n);
-  iram31_2c20 : 2147 port map(a0 => pc0n, a1 => pc1n, a2 => pc2n, a3 => pc3n, a4 => pc4n, a5 => pc5n, do => i38, we_n => -iwen, ce_n => -ice1d, di => iwr38, a11 => pc11n, a10 => pc10n, a9 => pc9n, a8 => pc8n, a7 => pc7n);
-  iram31_2c19 : 2147 port map(a0 => pc0n, a1 => pc1n, a2 => pc2n, a3 => pc3n, a4 => pc4n, a5 => pc5n, do => i37, we_n => -iwen, ce_n => -ice1d, di => iwr37, a11 => pc11n, a10 => pc10n, a9 => pc9n, a8 => pc8n, a7 => pc7n);
-  iram31_2c18 : 2147 port map(a0 => pc0n, a1 => pc1n, a2 => pc2n, a3 => pc3n, a4 => pc4n, a5 => pc5n, do => i36, we_n => -iwen, ce_n => -ice1d, di => iwr36, a11 => pc11n, a10 => pc10n, a9 => pc9n, a8 => pc8n, a7 => pc7n);
-  iram31_2a20 : 2147 port map(a0 => pc0n, a1 => pc1n, a2 => pc2n, a3 => pc3n, a4 => pc4n, a5 => pc5n, do => i48, we_n => -iwen, ce_n => -ice1d, di => iwr48, a11 => pc11n, a10 => pc10n, a9 => pc9n, a8 => pc8n, a7 => pc7n);
-  iram31_2a19 : 2147 port map(a0 => pc0n, a1 => pc1n, a2 => pc2n, a3 => pc3n, a4 => pc4n, a5 => pc5n, do => i47, we_n => -iwen, ce_n => -ice1d, di => iwr47, a11 => pc11n, a10 => pc10n, a9 => pc9n, a8 => pc8n, a7 => pc7n);
-  iram31_2a18 : 2147 port map(a0 => pc0n, a1 => pc1n, a2 => pc2n, a3 => pc3n, a4 => pc4n, a5 => pc5n, do => i46, we_n => -iwen, ce_n => -ice1d, di => iwr46, a11 => pc11n, a10 => pc10n, a9 => pc9n, a8 => pc8n, a7 => pc7n);
-  iram31_2a17 : 2147 port map(a0 => pc0n, a1 => pc1n, a2 => pc2n, a3 => pc3n, a4 => pc4n, a5 => pc5n, do => i45, we_n => -iwen, ce_n => -ice1d, di => iwr45, a11 => pc11n, a10 => pc10n, a9 => pc9n, a8 => pc8n, a7 => pc7n);
-  iram31_2a16 : 2147 port map(a0 => pc0n, a1 => pc1n, a2 => pc2n, a3 => pc3n, a4 => pc4n, a5 => pc5n, do => i44, we_n => -iwen, ce_n => -ice1d, di => iwr44, a11 => pc11n, a10 => pc10n, a9 => pc9n, a8 => pc8n, a7 => pc7n);
-  iram31_2b20 : 2147 port map(a0 => pc0n, a1 => pc1n, a2 => pc2n, a3 => pc3n, a4 => pc4n, a5 => pc5n, do => i43, we_n => -iwen, ce_n => -ice1d, di => iwr43, a11 => pc11n, a10 => pc10n, a9 => pc9n, a8 => pc8n, a7 => pc7n);
-
-  iram30_2b14 : 2147 port map(a0 => pc0m, a1 => pc1m, a2 => pc2m, a3 => pc3m, a4 => pc4m, a5 => pc5m, do => i42, we_n => -iwem, ce_n => -ice0d, di => iwr42, a11 => pc11m, a10 => pc10m, a9 => pc9m, a8 => pc8m, a7 => pc7m);
-  iram30_2c11 : sn74s04 port map(g1a => -pcc6, g1q_n => pc6m, g2a => -pcc7, g2q_n => pc7m, g3a => -pcc8, g3q_n => pc8m, g4q => pc9m, g4a => -pcc9, g5q_n => pc10m, g5a => -pcc10, g6q_n => pc11m);
-  iram30_2c12 : sn74s04 port map(g1a => -pcc0, g1q_n => pc0m, g2a => -pcc1, g2q_n => pc1m, g3a => -pcc2, g3q_n => pc2m, g4q => pc3m, g4a => -pcc3, g5q_n => pc4m, g5a => -pcc4, g6q_n => pc5m);
-  iram30_2b13 : 2147 port map(a0 => pc0m, a1 => pc1m, a2 => pc2m, a3 => pc3m, a4 => pc4m, a5 => pc5m, do => i41, we_n => -iwem, ce_n => -ice0d, di => iwr41, a11 => pc11m, a10 => pc10m, a9 => pc9m, a8 => pc8m, a7 => pc7m);
-  iram30_2b12 : 2147 port map(a0 => pc0m, a1 => pc1m, a2 => pc2m, a3 => pc3m, a4 => pc4m, a5 => pc5m, do => i40, we_n => -iwem, ce_n => -ice0d, di => iwr40, a11 => pc11m, a10 => pc10m, a9 => pc9m, a8 => pc8m, a7 => pc7m);
-  iram30_2b11 : 2147 port map(a0 => pc0m, a1 => pc1m, a2 => pc2m, a3 => pc3m, a4 => pc4m, a5 => pc5m, do => i39, we_n => -iwem, ce_n => -ice0d, di => iwr39, a11 => pc11m, a10 => pc10m, a9 => pc9m, a8 => pc8m, a7 => pc7m);
-  iram30_2c15 : 2147 port map(a0 => pc0m, a1 => pc1m, a2 => pc2m, a3 => pc3m, a4 => pc4m, a5 => pc5m, do => i38, we_n => -iwem, ce_n => -ice0d, di => iwr38, a11 => pc11m, a10 => pc10m, a9 => pc9m, a8 => pc8m, a7 => pc7m);
-  iram30_2c14 : 2147 port map(a0 => pc0m, a1 => pc1m, a2 => pc2m, a3 => pc3m, a4 => pc4m, a5 => pc5m, do => i37, we_n => -iwem, ce_n => -ice0d, di => iwr37, a11 => pc11m, a10 => pc10m, a9 => pc9m, a8 => pc8m, a7 => pc7m);
-  iram30_2c13 : 2147 port map(a0 => pc0m, a1 => pc1m, a2 => pc2m, a3 => pc3m, a4 => pc4m, a5 => pc5m, do => i36, we_n => -iwem, ce_n => -ice0d, di => iwr36, a11 => pc11m, a10 => pc10m, a9 => pc9m, a8 => pc8m, a7 => pc7m);
-  iram30_2a15 : 2147 port map(a0 => pc0m, a1 => pc1m, a2 => pc2m, a3 => pc3m, a4 => pc4m, a5 => pc5m, do => i48, we_n => -iwem, ce_n => -ice0d, di => iwr48, a11 => pc11m, a10 => pc10m, a9 => pc9m, a8 => pc8m, a7 => pc7m);
-  iram30_2a14 : 2147 port map(a0 => pc0m, a1 => pc1m, a2 => pc2m, a3 => pc3m, a4 => pc4m, a5 => pc5m, do => i47, we_n => -iwem, ce_n => -ice0d, di => iwr47, a11 => pc11m, a10 => pc10m, a9 => pc9m, a8 => pc8m, a7 => pc7m);
-  iram30_2a13 : 2147 port map(a0 => pc0m, a1 => pc1m, a2 => pc2m, a3 => pc3m, a4 => pc4m, a5 => pc5m, do => i46, we_n => -iwem, ce_n => -ice0d, di => iwr46, a11 => pc11m, a10 => pc10m, a9 => pc9m, a8 => pc8m, a7 => pc7m);
-  iram30_2a12 : 2147 port map(a0 => pc0m, a1 => pc1m, a2 => pc2m, a3 => pc3m, a4 => pc4m, a5 => pc5m, do => i45, we_n => -iwem, ce_n => -ice0d, di => iwr45, a11 => pc11m, a10 => pc10m, a9 => pc9m, a8 => pc8m, a7 => pc7m);
-  iram30_2a11 : 2147 port map(a0 => pc0m, a1 => pc1m, a2 => pc2m, a3 => pc3m, a4 => pc4m, a5 => pc5m, do => i44, we_n => -iwem, ce_n => -ice0d, di => iwr44, a11 => pc11m, a10 => pc10m, a9 => pc9m, a8 => pc8m, a7 => pc7m);
-  iram30_2b15 : 2147 port map(a0 => pc0m, a1 => pc1m, a2 => pc2m, a3 => pc3m, a4 => pc4m, a5 => pc5m, do => i43, we_n => -iwem, ce_n => -ice0d, di => iwr43, a11 => pc11m, a10 => pc10m, a9 => pc9m, a8 => pc8m, a7 => pc7m);
-
-  iram23_2c07 : sn74s04 port map(g1a => -pcc6, g1q_n => pc6l, g2a => -pcc7, g2q_n => pc7l, g3a => -pcc8, g3q_n => pc8l, g4q => pc9l, g4a => -pcc9, g5q_n => pc10l, g5a => -pcc10, g6q_n => pc11l);
-  iram23_2c08 : sn74s04 port map(g1a => -pcc0, g1q_n => pc0l, g2a => -pcc1, g2q_n => pc1l, g3a => -pcc2, g3q_n => pc2l, g4q => pc3l, g4a => -pcc3, g5q_n => pc4l, g5a => -pcc4, g6q_n => pc5l);
-  iram23_2b09 : 2147 port map(a0 => pc0l, a1 => pc1l, a2 => pc2l, a3 => pc3l, a4 => pc4l, a5 => pc5l, do => i29, we_n => -iwel, ce_n => -ice3c, di => iwr29, a11 => pc11l, a10 => pc10l, a9 => pc9l, a8 => pc8l, a7 => pc7l);
-  iram23_2b08 : 2147 port map(a0 => pc0l, a1 => pc1l, a2 => pc2l, a3 => pc3l, a4 => pc4l, a5 => pc5l, do => i28, we_n => -iwel, ce_n => -ice3c, di => iwr28, a11 => pc11l, a10 => pc10l, a9 => pc9l, a8 => pc8l, a7 => pc7l);
-  iram23_2b07 : 2147 port map(a0 => pc0l, a1 => pc1l, a2 => pc2l, a3 => pc3l, a4 => pc4l, a5 => pc5l, do => i27, we_n => -iwel, ce_n => -ice3c, di => iwr27, a11 => pc11l, a10 => pc10l, a9 => pc9l, a8 => pc8l, a7 => pc7l);
-  iram23_2b06 : 2147 port map(a0 => pc0l, a1 => pc1l, a2 => pc2l, a3 => pc3l, a4 => pc4l, a5 => pc5l, do => i26, we_n => -iwel, ce_n => -ice3c, di => iwr26, a11 => pc11l, a10 => pc10l, a9 => pc9l, a8 => pc8l, a7 => pc7l);
-  iram23_2c10 : 2147 port map(a0 => pc0l, a1 => pc1l, a2 => pc2l, a3 => pc3l, a4 => pc4l, a5 => pc5l, do => i25, we_n => -iwel, ce_n => -ice3c, di => iwr25, a11 => pc11l, a10 => pc10l, a9 => pc9l, a8 => pc8l, a7 => pc7l);
-  iram23_2c09 : 2147 port map(a0 => pc0l, a1 => pc1l, a2 => pc2l, a3 => pc3l, a4 => pc4l, a5 => pc5l, do => i24, we_n => -iwel, ce_n => -ice3c, di => iwr24, a11 => pc11l, a10 => pc10l, a9 => pc9l, a8 => pc8l, a7 => pc7l);
-  iram23_2a10 : 2147 port map(a0 => pc0l, a1 => pc1l, a2 => pc2l, a3 => pc3l, a4 => pc4l, a5 => pc5l, do => i35, we_n => -iwel, ce_n => -ice3c, di => iwr35, a11 => pc11l, a10 => pc10l, a9 => pc9l, a8 => pc8l, a7 => pc7l);
-  iram23_2a09 : 2147 port map(a0 => pc0l, a1 => pc1l, a2 => pc2l, a3 => pc3l, a4 => pc4l, a5 => pc5l, do => i34, we_n => -iwel, ce_n => -ice3c, di => iwr34, a11 => pc11l, a10 => pc10l, a9 => pc9l, a8 => pc8l, a7 => pc7l);
-  iram23_2a08 : 2147 port map(a0 => pc0l, a1 => pc1l, a2 => pc2l, a3 => pc3l, a4 => pc4l, a5 => pc5l, do => i33, we_n => -iwel, ce_n => -ice3c, di => iwr33, a11 => pc11l, a10 => pc10l, a9 => pc9l, a8 => pc8l, a7 => pc7l);
-  iram23_2a07 : 2147 port map(a0 => pc0l, a1 => pc1l, a2 => pc2l, a3 => pc3l, a4 => pc4l, a5 => pc5l, do => i32, we_n => -iwel, ce_n => -ice3c, di => iwr32, a11 => pc11l, a10 => pc10l, a9 => pc9l, a8 => pc8l, a7 => pc7l);
-  iram23_2a06 : 2147 port map(a0 => pc0l, a1 => pc1l, a2 => pc2l, a3 => pc3l, a4 => pc4l, a5 => pc5l, do => i31, we_n => -iwel, ce_n => -ice3c, di => iwr31, a11 => pc11l, a10 => pc10l, a9 => pc9l, a8 => pc8l, a7 => pc7l);
-  iram23_2b10 : 2147 port map(a0 => pc0l, a1 => pc1l, a2 => pc2l, a3 => pc3l, a4 => pc4l, a5 => pc5l, do => i30, we_n => -iwel, ce_n => -ice3c, di => iwr30, a11 => pc11l, a10 => pc10l, a9 => pc9l, a8 => pc8l, a7 => pc7l);
-
-  iram22_2c02 : sn74s04 port map(g1a => -pcc6, g1q_n => pc6k, g2a => -pcc7, g2q_n => pc7k, g3a => -pcc8, g3q_n => pc8k, g4q => pc9k, g4a => -pcc9, g5q_n => pc10k, g5a => -pcc10, g6q_n => pc11k);
-  iram22_2c03 : sn74s04 port map(g1a => -pcc0, g1q_n => pc0k, g2a => -pcc1, g2q_n => pc1k, g3a => -pcc2, g3q_n => pc2k, g4q => pc3k, g4a => -pcc3, g5q_n => pc4k, g5a => -pcc4, g6q_n => pc5k);
-  iram22_2b04 : 2147 port map(a0 => pc0k, a1 => pc1k, a2 => pc2k, a3 => pc3k, a4 => pc4k, a5 => pc5k, do => i29, we_n => -iwek, ce_n => -ice2c, di => iwr29, a11 => pc11k, a10 => pc10k, a9 => pc9k, a8 => pc8k, a7 => pc7k);
-  iram22_2b03 : 2147 port map(a0 => pc0k, a1 => pc1k, a2 => pc2k, a3 => pc3k, a4 => pc4k, a5 => pc5k, do => i28, we_n => -iwek, ce_n => -ice2c, di => iwr28, a11 => pc11k, a10 => pc10k, a9 => pc9k, a8 => pc8k, a7 => pc7k);
-  iram22_2b02 : 2147 port map(a0 => pc0k, a1 => pc1k, a2 => pc2k, a3 => pc3k, a4 => pc4k, a5 => pc5k, do => i27, we_n => -iwek, ce_n => -ice2c, di => iwr27, a11 => pc11k, a10 => pc10k, a9 => pc9k, a8 => pc8k, a7 => pc7k);
-  iram22_2b01 : 2147 port map(a0 => pc0k, a1 => pc1k, a2 => pc2k, a3 => pc3k, a4 => pc4k, a5 => pc5k, do => i26, we_n => -iwek, ce_n => -ice2c, di => iwr26, a11 => pc11k, a10 => pc10k, a9 => pc9k, a8 => pc8k, a7 => pc7k);
-  iram22_2c05 : 2147 port map(a0 => pc0k, a1 => pc1k, a2 => pc2k, a3 => pc3k, a4 => pc4k, a5 => pc5k, do => i25, we_n => -iwek, ce_n => -ice2c, di => iwr25, a11 => pc11k, a10 => pc10k, a9 => pc9k, a8 => pc8k, a7 => pc7k);
-  iram22_2c04 : 2147 port map(a0 => pc0k, a1 => pc1k, a2 => pc2k, a3 => pc3k, a4 => pc4k, a5 => pc5k, do => i24, we_n => -iwek, ce_n => -ice2c, di => iwr24, a11 => pc11k, a10 => pc10k, a9 => pc9k, a8 => pc8k, a7 => pc7k);
-  iram22_2a05 : 2147 port map(a0 => pc0k, a1 => pc1k, a2 => pc2k, a3 => pc3k, a4 => pc4k, a5 => pc5k, do => i35, we_n => -iwek, ce_n => -ice2c, di => iwr35, a11 => pc11k, a10 => pc10k, a9 => pc9k, a8 => pc8k, a7 => pc7k);
-  iram22_2a04 : 2147 port map(a0 => pc0k, a1 => pc1k, a2 => pc2k, a3 => pc3k, a4 => pc4k, a5 => pc5k, do => i34, we_n => -iwek, ce_n => -ice2c, di => iwr34, a11 => pc11k, a10 => pc10k, a9 => pc9k, a8 => pc8k, a7 => pc7k);
-  iram22_2a03 : 2147 port map(a0 => pc0k, a1 => pc1k, a2 => pc2k, a3 => pc3k, a4 => pc4k, a5 => pc5k, do => i33, we_n => -iwek, ce_n => -ice2c, di => iwr33, a11 => pc11k, a10 => pc10k, a9 => pc9k, a8 => pc8k, a7 => pc7k);
-  iram22_2a02 : 2147 port map(a0 => pc0k, a1 => pc1k, a2 => pc2k, a3 => pc3k, a4 => pc4k, a5 => pc5k, do => i32, we_n => -iwek, ce_n => -ice2c, di => iwr32, a11 => pc11k, a10 => pc10k, a9 => pc9k, a8 => pc8k, a7 => pc7k);
-  iram22_2a01 : 2147 port map(a0 => pc0k, a1 => pc1k, a2 => pc2k, a3 => pc3k, a4 => pc4k, a5 => pc5k, do => i31, we_n => -iwek, ce_n => -ice2c, di => iwr31, a11 => pc11k, a10 => pc10k, a9 => pc9k, a8 => pc8k, a7 => pc7k);
-  iram22_2b05 : 2147 port map(a0 => pc0k, a1 => pc1k, a2 => pc2k, a3 => pc3k, a4 => pc4k, a5 => pc5k, do => i30, we_n => -iwek, ce_n => -ice2c, di => iwr30, a11 => pc11k, a10 => pc10k, a9 => pc9k, a8 => pc8k, a7 => pc7k);
-
-  iram21_1c27 : sn74s04 port map(g1a => -pcc6, g1q_n => pc6j, g2a => -pcc7, g2q_n => pc7j, g3a => -pcc8, g3q_n => pc8j, g4q => pc9j, g4a => -pcc9, g5q_n => pc10j, g5a => -pcc10, g6q_n => pc11j);
-  iram21_1c28 : sn74s04 port map(g1a => -pcc0, g1q_n => pc0j, g2a => -pcc1, g2q_n => pc1j, g3a => -pcc2, g3q_n => pc2j, g4q => pc3j, g4a => -pcc3, g5q_n => pc4j, g5a => -pcc4, g6q_n => pc5j);
-  iram21_1b29 : 2147 port map(a0 => pc0j, a1 => pc1j, a2 => pc2j, a3 => pc3j, a4 => pc4j, a5 => pc5j, do => i29, we_n => -iwej, ce_n => -ice1c, di => iwr29, a11 => pc11j, a10 => pc10j, a9 => pc9j, a8 => pc8j, a7 => pc7j);
-  iram21_1b28 : 2147 port map(a0 => pc0j, a1 => pc1j, a2 => pc2j, a3 => pc3j, a4 => pc4j, a5 => pc5j, do => i28, we_n => -iwej, ce_n => -ice1c, di => iwr28, a11 => pc11j, a10 => pc10j, a9 => pc9j, a8 => pc8j, a7 => pc7j);
-  iram21_1b27 : 2147 port map(a0 => pc0j, a1 => pc1j, a2 => pc2j, a3 => pc3j, a4 => pc4j, a5 => pc5j, do => i27, we_n => -iwej, ce_n => -ice1c, di => iwr27, a11 => pc11j, a10 => pc10j, a9 => pc9j, a8 => pc8j, a7 => pc7j);
-  iram21_1b26 : 2147 port map(a0 => pc0j, a1 => pc1j, a2 => pc2j, a3 => pc3j, a4 => pc4j, a5 => pc5j, do => i26, we_n => -iwej, ce_n => -ice1c, di => iwr26, a11 => pc11j, a10 => pc10j, a9 => pc9j, a8 => pc8j, a7 => pc7j);
-  iram21_1c30 : 2147 port map(a0 => pc0j, a1 => pc1j, a2 => pc2j, a3 => pc3j, a4 => pc4j, a5 => pc5j, do => i25, we_n => -iwej, ce_n => -ice1c, di => iwr25, a11 => pc11j, a10 => pc10j, a9 => pc9j, a8 => pc8j, a7 => pc7j);
-  iram21_1c29 : 2147 port map(a0 => pc0j, a1 => pc1j, a2 => pc2j, a3 => pc3j, a4 => pc4j, a5 => pc5j, do => i24, we_n => -iwej, ce_n => -ice1c, di => iwr24, a11 => pc11j, a10 => pc10j, a9 => pc9j, a8 => pc8j, a7 => pc7j);
-  iram21_1a30 : 2147 port map(a0 => pc0j, a1 => pc1j, a2 => pc2j, a3 => pc3j, a4 => pc4j, a5 => pc5j, do => i35, we_n => -iwej, ce_n => -ice1c, di => iwr35, a11 => pc11j, a10 => pc10j, a9 => pc9j, a8 => pc8j, a7 => pc7j);
-  iram21_1a29 : 2147 port map(a0 => pc0j, a1 => pc1j, a2 => pc2j, a3 => pc3j, a4 => pc4j, a5 => pc5j, do => i34, we_n => -iwej, ce_n => -ice1c, di => iwr34, a11 => pc11j, a10 => pc10j, a9 => pc9j, a8 => pc8j, a7 => pc7j);
-  iram21_1a28 : 2147 port map(a0 => pc0j, a1 => pc1j, a2 => pc2j, a3 => pc3j, a4 => pc4j, a5 => pc5j, do => i33, we_n => -iwej, ce_n => -ice1c, di => iwr33, a11 => pc11j, a10 => pc10j, a9 => pc9j, a8 => pc8j, a7 => pc7j);
-  iram21_1a27 : 2147 port map(a0 => pc0j, a1 => pc1j, a2 => pc2j, a3 => pc3j, a4 => pc4j, a5 => pc5j, do => i32, we_n => -iwej, ce_n => -ice1c, di => iwr32, a11 => pc11j, a10 => pc10j, a9 => pc9j, a8 => pc8j, a7 => pc7j);
-  iram21_1a26 : 2147 port map(a0 => pc0j, a1 => pc1j, a2 => pc2j, a3 => pc3j, a4 => pc4j, a5 => pc5j, do => i31, we_n => -iwej, ce_n => -ice1c, di => iwr31, a11 => pc11j, a10 => pc10j, a9 => pc9j, a8 => pc8j, a7 => pc7j);
-  iram21_1b30 : 2147 port map(a0 => pc0j, a1 => pc1j, a2 => pc2j, a3 => pc3j, a4 => pc4j, a5 => pc5j, do => i30, we_n => -iwej, ce_n => -ice1c, di => iwr30, a11 => pc11j, a10 => pc10j, a9 => pc9j, a8 => pc8j, a7 => pc7j);
-
-  iram20_1c22 : sn74s04 port map(g1a => -pcc6, g1q_n => pc6i, g2a => -pcc7, g2q_n => pc7i, g3a => -pcc8, g3q_n => pc8i, g4q => pc9i, g4a => -pcc9, g5q_n => pc10i, g5a => -pcc10, g6q_n => pc11i);
-  iram20_1c23 : sn74s04 port map(g1a => -pcc0, g1q_n => pc0i, g2a => -pcc1, g2q_n => pc1i, g3a => -pcc2, g3q_n => pc2i, g4q => pc3i, g4a => -pcc3, g5q_n => pc4i, g5a => -pcc4, g6q_n => pc5i);
-  iram20_1b24 : 2147 port map(a0 => pc0i, a1 => pc1i, a2 => pc2i, a3 => pc3i, a4 => pc4i, a5 => pc5i, do => i29, we_n => -iwei, ce_n => -ice0c, di => iwr29, a11 => pc11i, a10 => pc10i, a9 => pc9i, a8 => pc8i, a7 => pc7i);
-  iram20_1b23 : 2147 port map(a0 => pc0i, a1 => pc1i, a2 => pc2i, a3 => pc3i, a4 => pc4i, a5 => pc5i, do => i28, we_n => -iwei, ce_n => -ice0c, di => iwr28, a11 => pc11i, a10 => pc10i, a9 => pc9i, a8 => pc8i, a7 => pc7i);
-  iram20_1b22 : 2147 port map(a0 => pc0i, a1 => pc1i, a2 => pc2i, a3 => pc3i, a4 => pc4i, a5 => pc5i, do => i27, we_n => -iwei, ce_n => -ice0c, di => iwr27, a11 => pc11i, a10 => pc10i, a9 => pc9i, a8 => pc8i, a7 => pc7i);
-  iram20_1b21 : 2147 port map(a0 => pc0i, a1 => pc1i, a2 => pc2i, a3 => pc3i, a4 => pc4i, a5 => pc5i, do => i26, we_n => -iwei, ce_n => -ice0c, di => iwr26, a11 => pc11i, a10 => pc10i, a9 => pc9i, a8 => pc8i, a7 => pc7i);
-  iram20_1c25 : 2147 port map(a0 => pc0i, a1 => pc1i, a2 => pc2i, a3 => pc3i, a4 => pc4i, a5 => pc5i, do => i25, we_n => -iwei, ce_n => -ice0c, di => iwr25, a11 => pc11i, a10 => pc10i, a9 => pc9i, a8 => pc8i, a7 => pc7i);
-  iram20_1c24 : 2147 port map(a0 => pc0i, a1 => pc1i, a2 => pc2i, a3 => pc3i, a4 => pc4i, a5 => pc5i, do => i24, we_n => -iwei, ce_n => -ice0c, di => iwr24, a11 => pc11i, a10 => pc10i, a9 => pc9i, a8 => pc8i, a7 => pc7i);
-  iram20_1a25 : 2147 port map(a0 => pc0i, a1 => pc1i, a2 => pc2i, a3 => pc3i, a4 => pc4i, a5 => pc5i, do => i35, we_n => -iwei, ce_n => -ice0c, di => iwr35, a11 => pc11i, a10 => pc10i, a9 => pc9i, a8 => pc8i, a7 => pc7i);
-  iram20_1a24 : 2147 port map(a0 => pc0i, a1 => pc1i, a2 => pc2i, a3 => pc3i, a4 => pc4i, a5 => pc5i, do => i34, we_n => -iwei, ce_n => -ice0c, di => iwr34, a11 => pc11i, a10 => pc10i, a9 => pc9i, a8 => pc8i, a7 => pc7i);
-  iram20_1a23 : 2147 port map(a0 => pc0i, a1 => pc1i, a2 => pc2i, a3 => pc3i, a4 => pc4i, a5 => pc5i, do => i33, we_n => -iwei, ce_n => -ice0c, di => iwr33, a11 => pc11i, a10 => pc10i, a9 => pc9i, a8 => pc8i, a7 => pc7i);
-  iram20_1a22 : 2147 port map(a0 => pc0i, a1 => pc1i, a2 => pc2i, a3 => pc3i, a4 => pc4i, a5 => pc5i, do => i32, we_n => -iwei, ce_n => -ice0c, di => iwr32, a11 => pc11i, a10 => pc10i, a9 => pc9i, a8 => pc8i, a7 => pc7i);
-  iram20_1a21 : 2147 port map(a0 => pc0i, a1 => pc1i, a2 => pc2i, a3 => pc3i, a4 => pc4i, a5 => pc5i, do => i31, we_n => -iwei, ce_n => -ice0c, di => iwr31, a11 => pc11i, a10 => pc10i, a9 => pc9i, a8 => pc8i, a7 => pc7i);
-  iram20_1b25 : 2147 port map(a0 => pc0i, a1 => pc1i, a2 => pc2i, a3 => pc3i, a4 => pc4i, a5 => pc5i, do => i30, we_n => -iwei, ce_n => -ice0c, di => iwr30, a11 => pc11i, a10 => pc10i, a9 => pc9i, a8 => pc8i, a7 => pc7i);
-
-  iram13_2d28 : sn74s04 port map(g1a => -pcb6, g1q_n => pc6h, g2a => -pcb7, g2q_n => pc7h, g3a => -pcb8, g3q_n => pc8h, g4q => pc9h, g4a => -pcb9, g5q_n => pc10h, g5a => -pcb10, g6q_n => pc11h);
-  iram13_2d29 : sn74s04 port map(g1a => -pcb0, g1q_n => pc0h, g2a => -pcb1, g2q_n => pc1h, g3a => -pcb2, g3q_n => pc2h, g4q => pc3h, g4a => -pcb3, g5q_n => pc4h, g5a => -pcb4, g6q_n => pc5h);
-  iram13_2e26 : 2147 port map(a0 => pc0h, a1 => pc1h, a2 => pc2h, a3 => pc3h, a4 => pc4h, a5 => pc5h, do => i17, we_n => -iweh, ce_n => -ice3b, di => iwr17, a11 => pc11h, a10 => pc10h, a9 => pc9h, a8 => pc8h, a7 => pc7h);
-  iram13_2f30 : 2147 port map(a0 => pc0h, a1 => pc1h, a2 => pc2h, a3 => pc3h, a4 => pc4h, a5 => pc5h, do => i16, we_n => -iweh, ce_n => -ice3b, di => iwr16, a11 => pc11h, a10 => pc10h, a9 => pc9h, a8 => pc8h, a7 => pc7h);
-  iram13_2f29 : 2147 port map(a0 => pc0h, a1 => pc1h, a2 => pc2h, a3 => pc3h, a4 => pc4h, a5 => pc5h, do => i15, we_n => -iweh, ce_n => -ice3b, di => iwr15, a11 => pc11h, a10 => pc10h, a9 => pc9h, a8 => pc8h, a7 => pc7h);
-  iram13_2f28 : 2147 port map(a0 => pc0h, a1 => pc1h, a2 => pc2h, a3 => pc3h, a4 => pc4h, a5 => pc5h, do => i14, we_n => -iweh, ce_n => -ice3b, di => iwr14, a11 => pc11h, a10 => pc10h, a9 => pc9h, a8 => pc8h, a7 => pc7h);
-  iram13_2f27 : 2147 port map(a0 => pc0h, a1 => pc1h, a2 => pc2h, a3 => pc3h, a4 => pc4h, a5 => pc5h, do => i13, we_n => -iweh, ce_n => -ice3b, di => iwr13, a11 => pc11h, a10 => pc10h, a9 => pc9h, a8 => pc8h, a7 => pc7h);
-  iram13_2f26 : 2147 port map(a0 => pc0h, a1 => pc1h, a2 => pc2h, a3 => pc3h, a4 => pc4h, a5 => pc5h, do => i12, we_n => -iweh, ce_n => -ice3b, di => iwr12, a11 => pc11h, a10 => pc10h, a9 => pc9h, a8 => pc8h, a7 => pc7h);
-  iram13_2d27 : 2147 port map(a0 => pc0h, a1 => pc1h, a2 => pc2h, a3 => pc3h, a4 => pc4h, a5 => pc5h, do => i23, we_n => -iweh, ce_n => -ice3b, di => iwr23, a11 => pc11h, a10 => pc10h, a9 => pc9h, a8 => pc8h, a7 => pc7h);
-  iram13_2d26 : 2147 port map(a0 => pc0h, a1 => pc1h, a2 => pc2h, a3 => pc3h, a4 => pc4h, a5 => pc5h, do => i22, we_n => -iweh, ce_n => -ice3b, di => iwr22, a11 => pc11h, a10 => pc10h, a9 => pc9h, a8 => pc8h, a7 => pc7h);
-  iram13_2e30 : 2147 port map(a0 => pc0h, a1 => pc1h, a2 => pc2h, a3 => pc3h, a4 => pc4h, a5 => pc5h, do => i21, we_n => -iweh, ce_n => -ice3b, di => iwr21, a11 => pc11h, a10 => pc10h, a9 => pc9h, a8 => pc8h, a7 => pc7h);
-  iram13_2e29 : 2147 port map(a0 => pc0h, a1 => pc1h, a2 => pc2h, a3 => pc3h, a4 => pc4h, a5 => pc5h, do => i20, we_n => -iweh, ce_n => -ice3b, di => iwr20, a11 => pc11h, a10 => pc10h, a9 => pc9h, a8 => pc8h, a7 => pc7h);
-  iram13_2e28 : 2147 port map(a0 => pc0h, a1 => pc1h, a2 => pc2h, a3 => pc3h, a4 => pc4h, a5 => pc5h, do => i19, we_n => -iweh, ce_n => -ice3b, di => iwr19, a11 => pc11h, a10 => pc10h, a9 => pc9h, a8 => pc8h, a7 => pc7h);
-  iram13_2e27 : 2147 port map(a0 => pc0h, a1 => pc1h, a2 => pc2h, a3 => pc3h, a4 => pc4h, a5 => pc5h, do => i18, we_n => -iweh, ce_n => -ice3b, di => iwr18, a11 => pc11h, a10 => pc10h, a9 => pc9h, a8 => pc8h, a7 => pc7h);
-
-  iram12_2d23 : sn74s04 port map(g1a => -pcb6, g1q_n => pc6g, g2a => -pcb7, g2q_n => pc7g, g3a => -pcb8, g3q_n => pc8g, g4q => pc9g, g4a => -pcb9, g5q_n => pc10g, g5a => -pcb10, g6q_n => pc11g);
-  iram12_2d24 : sn74s04 port map(g1a => -pcb0, g1q_n => pc0g, g2a => -pcb1, g2q_n => pc1g, g3a => -pcb2, g3q_n => pc2g, g4q => pc3g, g4a => -pcb3, g5q_n => pc4g, g5a => -pcb4, g6q_n => pc5g);
-  iram12_2e21 : 2147 port map(a0 => pc0g, a1 => pc1g, a2 => pc2g, a3 => pc3g, a4 => pc4g, a5 => pc5g, do => i17, we_n => -iweg, ce_n => -ice2b, di => iwr17, a11 => pc11g, a10 => pc10g, a9 => pc9g, a8 => pc8g, a7 => pc7g);
-  iram12_2f25 : 2147 port map(a0 => pc0g, a1 => pc1g, a2 => pc2g, a3 => pc3g, a4 => pc4g, a5 => pc5g, do => i16, we_n => -iweg, ce_n => -ice2b, di => iwr16, a11 => pc11g, a10 => pc10g, a9 => pc9g, a8 => pc8g, a7 => pc7g);
-  iram12_2f24 : 2147 port map(a0 => pc0g, a1 => pc1g, a2 => pc2g, a3 => pc3g, a4 => pc4g, a5 => pc5g, do => i15, we_n => -iweg, ce_n => -ice2b, di => iwr15, a11 => pc11g, a10 => pc10g, a9 => pc9g, a8 => pc8g, a7 => pc7g);
-  iram12_2f23 : 2147 port map(a0 => pc0g, a1 => pc1g, a2 => pc2g, a3 => pc3g, a4 => pc4g, a5 => pc5g, do => i14, we_n => -iweg, ce_n => -ice2b, di => iwr14, a11 => pc11g, a10 => pc10g, a9 => pc9g, a8 => pc8g, a7 => pc7g);
-  iram12_2f22 : 2147 port map(a0 => pc0g, a1 => pc1g, a2 => pc2g, a3 => pc3g, a4 => pc4g, a5 => pc5g, do => i13, we_n => -iweg, ce_n => -ice2b, di => iwr13, a11 => pc11g, a10 => pc10g, a9 => pc9g, a8 => pc8g, a7 => pc7g);
-  iram12_2f21 : 2147 port map(a0 => pc0g, a1 => pc1g, a2 => pc2g, a3 => pc3g, a4 => pc4g, a5 => pc5g, do => i12, we_n => -iweg, ce_n => -ice2b, di => iwr12, a11 => pc11g, a10 => pc10g, a9 => pc9g, a8 => pc8g, a7 => pc7g);
-  iram12_2d22 : 2147 port map(a0 => pc0g, a1 => pc1g, a2 => pc2g, a3 => pc3g, a4 => pc4g, a5 => pc5g, do => i23, we_n => -iweg, ce_n => -ice2b, di => iwr23, a11 => pc11g, a10 => pc10g, a9 => pc9g, a8 => pc8g, a7 => pc7g);
-  iram12_2d21 : 2147 port map(a0 => pc0g, a1 => pc1g, a2 => pc2g, a3 => pc3g, a4 => pc4g, a5 => pc5g, do => i22, we_n => -iweg, ce_n => -ice2b, di => iwr22, a11 => pc11g, a10 => pc10g, a9 => pc9g, a8 => pc8g, a7 => pc7g);
-  iram12_2e25 : 2147 port map(a0 => pc0g, a1 => pc1g, a2 => pc2g, a3 => pc3g, a4 => pc4g, a5 => pc5g, do => i21, we_n => -iweg, ce_n => -ice2b, di => iwr21, a11 => pc11g, a10 => pc10g, a9 => pc9g, a8 => pc8g, a7 => pc7g);
-  iram12_2e24 : 2147 port map(a0 => pc0g, a1 => pc1g, a2 => pc2g, a3 => pc3g, a4 => pc4g, a5 => pc5g, do => i20, we_n => -iweg, ce_n => -ice2b, di => iwr20, a11 => pc11g, a10 => pc10g, a9 => pc9g, a8 => pc8g, a7 => pc7g);
-  iram12_2e23 : 2147 port map(a0 => pc0g, a1 => pc1g, a2 => pc2g, a3 => pc3g, a4 => pc4g, a5 => pc5g, do => i19, we_n => -iweg, ce_n => -ice2b, di => iwr19, a11 => pc11g, a10 => pc10g, a9 => pc9g, a8 => pc8g, a7 => pc7g);
-  iram12_2e22 : 2147 port map(a0 => pc0g, a1 => pc1g, a2 => pc2g, a3 => pc3g, a4 => pc4g, a5 => pc5g, do => i18, we_n => -iweg, ce_n => -ice2b, di => iwr18, a11 => pc11g, a10 => pc10g, a9 => pc9g, a8 => pc8g, a7 => pc7g);
-
-  iram11_2d18 : sn74s04 port map(g1a => -pcb6, g1q_n => pc6f, g2a => -pcb7, g2q_n => pc7f, g3a => -pcb8, g3q_n => pc8f, g4q => pc9f, g4a => -pcb9, g5q_n => pc10f, g5a => -pcb10, g6q_n => pc11f);
-  iram11_2d19 : sn74s04 port map(g1a => -pcb0, g1q_n => pc0f, g2a => -pcb1, g2q_n => pc1f, g3a => -pcb2, g3q_n => pc2f, g4q => pc3f, g4a => -pcb3, g5q_n => pc4f, g5a => -pcb4, g6q_n => pc5f);
-  iram11_2e16 : 2147 port map(a0 => pc0f, a1 => pc1f, a2 => pc2f, a3 => pc3f, a4 => pc4f, a5 => pc5f, do => i17, we_n => -iwef, ce_n => -ice1b, di => iwr17, a11 => pc11f, a10 => pc10f, a9 => pc9f, a8 => pc8f, a7 => pc7f);
-  iram11_2f20 : 2147 port map(a0 => pc0f, a1 => pc1f, a2 => pc2f, a3 => pc3f, a4 => pc4f, a5 => pc5f, do => i16, we_n => -iwef, ce_n => -ice1b, di => iwr16, a11 => pc11f, a10 => pc10f, a9 => pc9f, a8 => pc8f, a7 => pc7f);
-  iram11_2f19 : 2147 port map(a0 => pc0f, a1 => pc1f, a2 => pc2f, a3 => pc3f, a4 => pc4f, a5 => pc5f, do => i15, we_n => -iwef, ce_n => -ice1b, di => iwr15, a11 => pc11f, a10 => pc10f, a9 => pc9f, a8 => pc8f, a7 => pc7f);
-  iram11_2f18 : 2147 port map(a0 => pc0f, a1 => pc1f, a2 => pc2f, a3 => pc3f, a4 => pc4f, a5 => pc5f, do => i14, we_n => -iwef, ce_n => -ice1b, di => iwr14, a11 => pc11f, a10 => pc10f, a9 => pc9f, a8 => pc8f, a7 => pc7f);
-  iram11_2f17 : 2147 port map(a0 => pc0f, a1 => pc1f, a2 => pc2f, a3 => pc3f, a4 => pc4f, a5 => pc5f, do => i13, we_n => -iwef, ce_n => -ice1b, di => iwr13, a11 => pc11f, a10 => pc10f, a9 => pc9f, a8 => pc8f, a7 => pc7f);
-  iram11_2f16 : 2147 port map(a0 => pc0f, a1 => pc1f, a2 => pc2f, a3 => pc3f, a4 => pc4f, a5 => pc5f, do => i12, we_n => -iwef, ce_n => -ice1b, di => iwr12, a11 => pc11f, a10 => pc10f, a9 => pc9f, a8 => pc8f, a7 => pc7f);
-  iram11_2d17 : 2147 port map(a0 => pc0f, a1 => pc1f, a2 => pc2f, a3 => pc3f, a4 => pc4f, a5 => pc5f, do => i23, we_n => -iwef, ce_n => -ice1b, di => iwr23, a11 => pc11f, a10 => pc10f, a9 => pc9f, a8 => pc8f, a7 => pc7f);
-  iram11_2d16 : 2147 port map(a0 => pc0f, a1 => pc1f, a2 => pc2f, a3 => pc3f, a4 => pc4f, a5 => pc5f, do => i22, we_n => -iwef, ce_n => -ice1b, di => iwr22, a11 => pc11f, a10 => pc10f, a9 => pc9f, a8 => pc8f, a7 => pc7f);
-  iram11_2e20 : 2147 port map(a0 => pc0f, a1 => pc1f, a2 => pc2f, a3 => pc3f, a4 => pc4f, a5 => pc5f, do => i21, we_n => -iwef, ce_n => -ice1b, di => iwr21, a11 => pc11f, a10 => pc10f, a9 => pc9f, a8 => pc8f, a7 => pc7f);
-  iram11_2e19 : 2147 port map(a0 => pc0f, a1 => pc1f, a2 => pc2f, a3 => pc3f, a4 => pc4f, a5 => pc5f, do => i20, we_n => -iwef, ce_n => -ice1b, di => iwr20, a11 => pc11f, a10 => pc10f, a9 => pc9f, a8 => pc8f, a7 => pc7f);
-  iram11_2e18 : 2147 port map(a0 => pc0f, a1 => pc1f, a2 => pc2f, a3 => pc3f, a4 => pc4f, a5 => pc5f, do => i19, we_n => -iwef, ce_n => -ice1b, di => iwr19, a11 => pc11f, a10 => pc10f, a9 => pc9f, a8 => pc8f, a7 => pc7f);
-  iram11_2e17 : 2147 port map(a0 => pc0f, a1 => pc1f, a2 => pc2f, a3 => pc3f, a4 => pc4f, a5 => pc5f, do => i18, we_n => -iwef, ce_n => -ice1b, di => iwr18, a11 => pc11f, a10 => pc10f, a9 => pc9f, a8 => pc8f, a7 => pc7f);
-
-  iram10_2d13 : sn74s04 port map(g1a => -pcb6, g1q_n => pc6e, g2a => -pcb7, g2q_n => pc7e, g3a => -pcb8, g3q_n => pc8e, g4q => pc9e, g4a => -pcb9, g5q_n => pc10e, g5a => -pcb10, g6q_n => pc11e);
-  iram10_2d14 : sn74s04 port map(g1a => -pcb0, g1q_n => pc0e, g2a => -pcb1, g2q_n => pc1e, g3a => -pcb2, g3q_n => pc2e, g4q => pc3e, g4a => -pcb3, g5q_n => pc4e, g5a => -pcb4, g6q_n => pc5e);
-  iram10_2e11 : 2147 port map(a0 => pc0e, a1 => pc1e, a2 => pc2e, a3 => pc3e, a4 => pc4e, a5 => pc5e, do => i17, we_n => -iwee, ce_n => -ice0b, di => iwr17, a11 => pc11e, a10 => pc10e, a9 => pc9e, a8 => pc8e, a7 => pc7e);
-  iram10_2f15 : 2147 port map(a0 => pc0e, a1 => pc1e, a2 => pc2e, a3 => pc3e, a4 => pc4e, a5 => pc5e, do => i16, we_n => -iwee, ce_n => -ice0b, di => iwr16, a11 => pc11e, a10 => pc10e, a9 => pc9e, a8 => pc8e, a7 => pc7e);
-  iram10_2f14 : 2147 port map(a0 => pc0e, a1 => pc1e, a2 => pc2e, a3 => pc3e, a4 => pc4e, a5 => pc5e, do => i15, we_n => -iwee, ce_n => -ice0b, di => iwr15, a11 => pc11e, a10 => pc10e, a9 => pc9e, a8 => pc8e, a7 => pc7e);
-  iram10_2f13 : 2147 port map(a0 => pc0e, a1 => pc1e, a2 => pc2e, a3 => pc3e, a4 => pc4e, a5 => pc5e, do => i14, we_n => -iwee, ce_n => -ice0b, di => iwr14, a11 => pc11e, a10 => pc10e, a9 => pc9e, a8 => pc8e, a7 => pc7e);
-  iram10_2f12 : 2147 port map(a0 => pc0e, a1 => pc1e, a2 => pc2e, a3 => pc3e, a4 => pc4e, a5 => pc5e, do => i13, we_n => -iwee, ce_n => -ice0b, di => iwr13, a11 => pc11e, a10 => pc10e, a9 => pc9e, a8 => pc8e, a7 => pc7e);
-  iram10_2f11 : 2147 port map(a0 => pc0e, a1 => pc1e, a2 => pc2e, a3 => pc3e, a4 => pc4e, a5 => pc5e, do => i12, we_n => -iwee, ce_n => -ice0b, di => iwr12, a11 => pc11e, a10 => pc10e, a9 => pc9e, a8 => pc8e, a7 => pc7e);
-  iram10_2d12 : 2147 port map(a0 => pc0e, a1 => pc1e, a2 => pc2e, a3 => pc3e, a4 => pc4e, a5 => pc5e, do => i23, we_n => -iwee, ce_n => -ice0b, di => iwr23, a11 => pc11e, a10 => pc10e, a9 => pc9e, a8 => pc8e, a7 => pc7e);
-  iram10_2d11 : 2147 port map(a0 => pc0e, a1 => pc1e, a2 => pc2e, a3 => pc3e, a4 => pc4e, a5 => pc5e, do => i22, we_n => -iwee, ce_n => -ice0b, di => iwr22, a11 => pc11e, a10 => pc10e, a9 => pc9e, a8 => pc8e, a7 => pc7e);
-  iram10_2e15 : 2147 port map(a0 => pc0e, a1 => pc1e, a2 => pc2e, a3 => pc3e, a4 => pc4e, a5 => pc5e, do => i21, we_n => -iwee, ce_n => -ice0b, di => iwr21, a11 => pc11e, a10 => pc10e, a9 => pc9e, a8 => pc8e, a7 => pc7e);
-  iram10_2e14 : 2147 port map(a0 => pc0e, a1 => pc1e, a2 => pc2e, a3 => pc3e, a4 => pc4e, a5 => pc5e, do => i20, we_n => -iwee, ce_n => -ice0b, di => iwr20, a11 => pc11e, a10 => pc10e, a9 => pc9e, a8 => pc8e, a7 => pc7e);
-  iram10_2e13 : 2147 port map(a0 => pc0e, a1 => pc1e, a2 => pc2e, a3 => pc3e, a4 => pc4e, a5 => pc5e, do => i19, we_n => -iwee, ce_n => -ice0b, di => iwr19, a11 => pc11e, a10 => pc10e, a9 => pc9e, a8 => pc8e, a7 => pc7e);
-  iram10_2e12 : 2147 port map(a0 => pc0e, a1 => pc1e, a2 => pc2e, a3 => pc3e, a4 => pc4e, a5 => pc5e, do => i18, we_n => -iwee, ce_n => -ice0b, di => iwr18, a11 => pc11e, a10 => pc10e, a9 => pc9e, a8 => pc8e, a7 => pc7e);
-
   opcs_1f14 : sn74s02 port map(g1q_n => opcclka, g1a => -clk5, g1b => opcclk, g2q_n => opcclkb, g2a => -clk5, g2b => opcclk, g3b => opcclk, g3a => -clk5, g3q_n => opcclkc);
   opcs_1f10 : sn74s04 port map(g1a => -opcinh, g1q_n => opcinha, g2a => -opcinh, g2q_n => opcinhb);
   opcs_1f13 : 9328 port map(clr_n => hi2, aq_n => nc, aq => opc1, asel => gnd, ai1 => nc, ai0 => pc1, aclk => opcinhb, comclk => opcclkb, bclk => opcinhb, bi0 => pc0, bi1 => nc, bsel => gnd, bq => opc0);
@@ -1119,16 +1123,9 @@ begin
   trap_1e29 : 93s48 port map(i6 => -md17, i5 => -md18, i4 => -md19, i3 => -md20, i2 => -md21, i1 => -md22, i0 => -md23, po => mdparm, pe => nc, i11 => -md12, i10 => -md13, i9 => -md14, i8 => -md15);
   trap_1e28 : 93s48 port map(i6 => -md5, i5 => -md6, i4 => -md7, i3 => -md8, i2 => -md9, i1 => -md10, i0 => -md11, po => mdparl, pe => nc, i11 => -md0, i10 => -md1, i9 => -md2, i8 => -md3);
 
-  spy2_3e16 : sn74ls244 port map(en1_n => -spy.flag2, d0 => nc, q7 => spy0, d1 => nc, q6 => spy1, d2 => ir48, q5 => spy2, d3 => nop, q4 => spy3, d4 => -vmaok, q3 => spy4, d5 => jcond, q2 => spy5, d6 => pcs1, q1 => spy6, d7 => pcs0, q0 => spy7);
-  spy2_3f15 : sn74ls244 port map(en1_n => -spy.flag2, d0 => nc, q7 => spy8, d1 => nc, q6 => spy9, d2 => wmapd, q5 => spy10, d3 => destspcd, q4 => spy11, d4 => iwrited, q3 => spy12, d5 => imodd, q2 => spy13, d6 => pdlwrited, q1 => spy14, d7 => spushd, q0 => spy15);
-  spy2_4a15 : sn74ls244 port map(en1_n => -spy.ml, d0 => m7, q7 => spy0, d1 => m6, q6 => spy1, d2 => m5, q5 => spy2, d3 => m4, q4 => spy3, d4 => m3, q3 => spy4, d5 => m2, q2 => spy5, d6 => m1, q1 => spy6, d7 => m0, q0 => spy7);
-  spy2_4a13 : sn74ls244 port map(en1_n => -spy.ml, d0 => m15, q7 => spy8, d1 => m14, q6 => spy9, d2 => m13, q5 => spy10, d3 => m12, q4 => spy11, d4 => m11, q3 => spy12, d5 => m10, q2 => spy13, d6 => m9, q1 => spy14, d7 => m8, q0 => spy15);
-  spy2_4b13 : sn74ls244 port map(en1_n => -spy.mh, d0 => m23, q7 => spy0, d1 => m22, q6 => spy1, d2 => m21, q5 => spy2, d3 => m20, q4 => spy3, d4 => m19, q3 => spy4, d5 => m18, q2 => spy5, d6 => m17, q1 => spy6, d7 => m16, q0 => spy7);
-  spy2_4b17 : sn74ls244 port map(en1_n => -spy.mh, d0 => m31, q7 => spy8, d1 => m30, q6 => spy9, d2 => m29, q5 => spy10, d3 => m28, q4 => spy11, d4 => m27, q3 => spy12, d5 => m26, q2 => spy13, d6 => m25, q1 => spy14, d7 => m24, q0 => spy15);
-  spy2_1f13 : sn74ls244 port map(en1_n => -spy.al, d0 => aa7, q7 => spy0, d1 => aa6, q6 => spy1, d2 => aa5, q5 => spy2, d3 => aa4, q4 => spy3, d4 => aa3, q3 => spy4, d5 => aa2, q2 => spy5, d6 => aa1, q1 => spy6, d7 => aa0, q0 => spy7);
-  spy2_1f11 : sn74ls244 port map(en1_n => -spy.al, d0 => aa15, q7 => spy8, d1 => aa14, q6 => spy9, d2 => aa13, q5 => spy10, d3 => aa12, q4 => spy11, d4 => aa11, q3 => spy12, d5 => aa10, q2 => spy13, d6 => aa9, q1 => spy14, d7 => aa8, q0 => spy15);
-  spy2_3a27 : sn74ls244 port map(en1_n => -spy.ah, d0 => a23, q7 => spy0, d1 => a22, q6 => spy1, d2 => a21, q5 => spy2, d3 => a20, q4 => spy3, d4 => a19, q3 => spy4, d5 => a18, q2 => spy5, d6 => a17, q1 => spy6, d7 => a16, q0 => spy7);
-  spy2_3a26 : sn74ls244 port map(en1_n => -spy.ah, d0 => a31a, q7 => spy8, d1 => a30, q6 => spy9, d2 => a29, q5 => spy10, d3 => a28, q4 => spy11, d4 => a27, q3 => spy12, d5 => a26, q2 => spy13, d6 => a25, q1 => spy14, d7 => a24, q0 => spy15);
+  spy0_1f03 : sn74s138 port map(a => eadr0, b => eadr1, c => eadr2, g2a => -dbwrite, g2b => gnd, g1 => hi1, y7 => nc, y6 => nc, y5 => -ldmode, y4 => -ldopc, y3 => -ldclk, y2 => -lddbirh, y1 => -lddbirm);
+  spy0_1f02 : sn74s138 port map(a => eadr0, b => eadr1, c => eadr2, g2a => -dbread, g2b => gnd, g1 => eadr3, y7 => -spy.sth, y6 => -spy.stl, y5 => -spy.ah, y4 => -spy.al, y3 => -spy.mh, y2 => -spy.ml, y1 => -spy.flag2);
+  spy0_1f01 : sn74s138 port map(a => eadr0, b => eadr1, c => eadr2, g2a => -dbread, g2b => eadr3, g1 => hi1, y7 => -spy.obh, y6 => -spy.obl, y5 => -spy.pc, y4 => -spy.opc, y3 => nc, y2 => -spy.irh, y1 => -spy.irm);
 
   spy1_2c17 : sn74ls244 port map(en1_n => -spy.obl, d0 => ob7, q7 => spy0, d1 => ob6, q6 => spy1, d2 => ob5, q5 => spy2, d3 => ob4, q4 => spy3, d4 => ob3, q3 => spy4, d5 => ob2, q2 => spy5, d6 => ob1, q1 => spy6, d7 => ob0, q0 => spy7);
   spy1_2c18 : sn74ls244 port map(en1_n => -spy.obl, d0 => ob15, q7 => spy8, d1 => ob14, q6 => spy9, d2 => ob13, q5 => spy10, d3 => ob12, q4 => spy11, d4 => ob11, q3 => spy12, d5 => ob10, q2 => spy13, d6 => ob9, q1 => spy14, d7 => ob8, q0 => spy15);
@@ -1141,11 +1138,23 @@ begin
   spy1_3f21 : sn74ls244 port map(en1_n => -spy.irh, d0 => ir39, q7 => spy0, d1 => ir38, q6 => spy1, d2 => ir37, q5 => spy2, d3 => ir36, q4 => spy3, d4 => ir35, q3 => spy4, d5 => ir34, q2 => spy5, d6 => ir33, q1 => spy6, d7 => ir32, q0 => spy7);
   spy1_3e06 : sn74ls244 port map(en1_n => -spy.irh, d0 => ir47, q7 => spy8, d1 => ir46, q6 => spy9, d2 => ir45, q5 => spy10, d3 => ir44, q4 => spy11, d4 => ir43, q3 => spy12, d5 => ir42, q2 => spy13, d6 => ir41, q1 => spy14, d7 => ir40, q0 => spy15);
 
-  spcpar_3e19 : sn74s86 port map(g2a => spcwparh, g2b => -spcwparl, g2y => spcwpar);
-  spcpar_4f16 : 93s48 port map(i6 => spcw17, i5 => spcw18, i4 => gnd, i3 => gnd, i2 => gnd, i1 => gnd, i0 => gnd, po => spcwparh, pe => nc, i11 => spcw12, i10 => spcw13, i9 => spcw14, i8 => spcw15);
-  spcpar_4f17 : 93s48 port map(i6 => spcw5, i5 => spcw6, i4 => spcw7, i3 => spcw8, i2 => spcw9, i1 => spcw10, i0 => spcw11, po => nc, pe => -spcwparl, i11 => spcw0, i10 => spcw1, i9 => spcw2, i8 => spcw3);
-  spcpar_4f21 : 93s48 port map(i6 => spc16, i5 => spc17, i4 => spc18, i3 => spcpar, i2 => gnd, i1 => gnd, i0 => gnd, po => spcparh, pe => nc, i11 => spc11, i10 => spc12, i9 => spc13, i8 => spc14);
-  spcpar_4f26 : 93s48 port map(i6 => spc5, i5 => spc6, i4 => spc7, i3 => spc8, i2 => spc9, i1 => spc10, i0 => spcparh, po => spcparok, pe => nc, i11 => spc0, i10 => spc1, i9 => spc2, i8 => spc3);
+  spy2_3e16 : sn74ls244 port map(en1_n => -spy.flag2, d0 => nc, q7 => spy0, d1 => nc, q6 => spy1, d2 => ir48, q5 => spy2, d3 => nop, q4 => spy3, d4 => -vmaok, q3 => spy4, d5 => jcond, q2 => spy5, d6 => pcs1, q1 => spy6, d7 => pcs0, q0 => spy7);
+  spy2_3f15 : sn74ls244 port map(en1_n => -spy.flag2, d0 => nc, q7 => spy8, d1 => nc, q6 => spy9, d2 => wmapd, q5 => spy10, d3 => destspcd, q4 => spy11, d4 => iwrited, q3 => spy12, d5 => imodd, q2 => spy13, d6 => pdlwrited, q1 => spy14, d7 => spushd, q0 => spy15);
+  spy2_4a15 : sn74ls244 port map(en1_n => -spy.ml, d0 => m7, q7 => spy0, d1 => m6, q6 => spy1, d2 => m5, q5 => spy2, d3 => m4, q4 => spy3, d4 => m3, q3 => spy4, d5 => m2, q2 => spy5, d6 => m1, q1 => spy6, d7 => m0, q0 => spy7);
+  spy2_4a13 : sn74ls244 port map(en1_n => -spy.ml, d0 => m15, q7 => spy8, d1 => m14, q6 => spy9, d2 => m13, q5 => spy10, d3 => m12, q4 => spy11, d4 => m11, q3 => spy12, d5 => m10, q2 => spy13, d6 => m9, q1 => spy14, d7 => m8, q0 => spy15);
+  spy2_4b13 : sn74ls244 port map(en1_n => -spy.mh, d0 => m23, q7 => spy0, d1 => m22, q6 => spy1, d2 => m21, q5 => spy2, d3 => m20, q4 => spy3, d4 => m19, q3 => spy4, d5 => m18, q2 => spy5, d6 => m17, q1 => spy6, d7 => m16, q0 => spy7);
+  spy2_4b17 : sn74ls244 port map(en1_n => -spy.mh, d0 => m31, q7 => spy8, d1 => m30, q6 => spy9, d2 => m29, q5 => spy10, d3 => m28, q4 => spy11, d4 => m27, q3 => spy12, d5 => m26, q2 => spy13, d6 => m25, q1 => spy14, d7 => m24, q0 => spy15);
+  spy2_1f13 : sn74ls244 port map(en1_n => -spy.al, d0 => aa7, q7 => spy0, d1 => aa6, q6 => spy1, d2 => aa5, q5 => spy2, d3 => aa4, q4 => spy3, d4 => aa3, q3 => spy4, d5 => aa2, q2 => spy5, d6 => aa1, q1 => spy6, d7 => aa0, q0 => spy7);
+  spy2_1f11 : sn74ls244 port map(en1_n => -spy.al, d0 => aa15, q7 => spy8, d1 => aa14, q6 => spy9, d2 => aa13, q5 => spy10, d3 => aa12, q4 => spy11, d4 => aa11, q3 => spy12, d5 => aa10, q2 => spy13, d6 => aa9, q1 => spy14, d7 => aa8, q0 => spy15);
+  spy2_3a27 : sn74ls244 port map(en1_n => -spy.ah, d0 => a23, q7 => spy0, d1 => a22, q6 => spy1, d2 => a21, q5 => spy2, d3 => a20, q4 => spy3, d4 => a19, q3 => spy4, d5 => a18, q2 => spy5, d6 => a17, q1 => spy6, d7 => a16, q0 => spy7);
+  spy2_3a26 : sn74ls244 port map(en1_n => -spy.ah, d0 => a31a, q7 => spy8, d1 => a30, q6 => spy9, d2 => a29, q5 => spy10, d3 => a28, q4 => spy11, d4 => a27, q3 => spy12, d5 => a26, q2 => spy13, d6 => a25, q1 => spy14, d7 => a24, q0 => spy15);
+
+  spy4_1d07 : sn74ls244 port map(en1_n => -spy.pc, d0 => pc7, q7 => spy0, d1 => pc6, q6 => spy1, d2 => pc5, q5 => spy2, d3 => pc4, q4 => spy3, d4 => pc3, q3 => spy4, d5 => pc2, q2 => spy5, d6 => pc1, q1 => spy6, d7 => pc0, q0 => spy7);
+  spy4_1d06 : sn74ls244 port map(en1_n => -spy.pc, d0 => gnd, q7 => spy8, d1 => gnd, q6 => spy9, d2 => pc13, q5 => spy10, d3 => pc12, q4 => spy11, d4 => pc11, q3 => spy12, d5 => pc10, q2 => spy13, d6 => pc9, q1 => spy14, d7 => pc8, q0 => spy15);
+  spy4_1a13 : sn74s240 port map(aenb_n => -spy.flag1, ain0 => -higherr, bout3 => spy0, ain1 => -mempe, bout2 => spy1, ain2 => -ipe, bout1 => spy2, ain3 => -dpe, bout0 => spy3, bin0 => -spe, aout3 => spy4, bin1 => -pdlpe, aout2 => spy5, bin2 => -mpe, aout1 => spy6, bin3 => -ape, aout0 => spy7);
+  spy4_1a12 : sn74ls244 port map(en1_n => -spy.flag1, d0 => -wait, q7 => spy8, d1 => -v1pe, q6 => spy9, d2 => -v0pe, q5 => spy10, d3 => promdisable, q4 => spy11, d4 => -stathalt, q3 => spy12, d5 => err, q2 => spy13, d6 => ssdone, q1 => spy14, d7 => srun, q0 => spy15);
+  spy4_1e07 : sn74ls244 port map(en1_n => -spy.opc, d0 => opc7, q7 => spy0, d1 => opc6, q6 => spy1, d2 => opc5, q5 => spy2, d3 => opc4, q4 => spy3, d4 => opc3, q3 => spy4, d5 => opc2, q2 => spy5, d6 => opc1, q1 => spy6, d7 => opc0, q0 => spy7);
+  spy4_1e06 : sn74ls244 port map(en1_n => -spy.opc, d0 => gnd, q7 => spy8, d1 => gnd, q6 => spy9, d2 => opc13, q5 => spy10, d3 => opc12, q4 => spy11, d4 => opc11, q3 => spy12, d5 => opc10, q2 => spy13, d6 => opc9, q1 => spy14, d7 => opc8, q0 => spy15);
 
   opcd_1e07 : sn74s08 port map(g1b => tse1b, g1q => dcdrive, g2b => zero16, g2a => tse1b, g2q => zero16.drive);
   opcd_1d18 : sn74s04 port map(g2a => -srcdc, g2q_n => internal23, g3a => -srcopc);
@@ -1158,23 +1167,6 @@ begin
   opcd_1f04 : sn74s241 port map(aenb_n => -opcdrive, q7 => mf8, q6 => mf9, q5 => mf10, q4 => mf11, q3 => mf8, q2 => mf9, q1 => mf10, q0 => mf11);
   opcd_1e01 : sn74s241 port map(aenb_n => -opcdrive, q7 => mf4, q6 => mf5, q5 => mf6, q4 => mf7, q3 => mf4, q2 => mf5, q1 => mf6, q0 => mf7);
   opcd_1e03 : sn74s241 port map(aenb_n => -opcdrive, q7 => mf0, q6 => mf1, q5 => mf2, q4 => mf3, q3 => mf0, q2 => mf1, q1 => mf2, q0 => mf3);
-
-  mo1_2d19 : sn74s151 port map(i3 => alu16, i2 => alu16, i1 => r16, i0 => a16, q => ob16, q_n => nc, ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk16, i7 => alu15, i6 => alu15, i5 => alu17);
-  mo1_2d18 : sn74s151 port map(i3 => alu17, i2 => alu17, i1 => r17, i0 => a17, q => ob17, q_n => nc, ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk17, i7 => alu16, i6 => alu16, i5 => alu18);
-  mo1_2d14 : sn74s151 port map(i3 => alu18, i2 => alu18, i1 => r18, i0 => a18, q => ob18, q_n => nc, ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk18, i7 => alu17, i6 => alu17, i5 => alu19);
-  mo1_2d13 : sn74s151 port map(i3 => alu19, i2 => alu19, i1 => r19, i0 => a19, q => ob19, q_n => nc, ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk19, i7 => alu18, i6 => alu18, i5 => alu20);
-  mo1_2b15 : sn74s151 port map(i3 => alu20, i2 => alu20, i1 => r20, i0 => a20, q => ob20, q_n => nc, ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk20, i7 => alu19, i6 => alu19, i5 => alu21);
-  mo1_2b14 : sn74s151 port map(i3 => alu21, i2 => alu21, i1 => r21, i0 => a21, q => ob21, q_n => nc, ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk21, i7 => alu20, i6 => alu20, i5 => alu22);
-  mo1_2b10 : sn74s151 port map(i3 => alu22, i2 => alu22, i1 => r22, i0 => a22, q => ob22, q_n => nc, ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk22, i7 => alu21, i6 => alu21, i5 => alu23);
-  mo1_2b09 : sn74s151 port map(i3 => alu23, i2 => alu23, i1 => r23, i0 => a23, q => ob23, q_n => nc, ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk23, i7 => alu22, i6 => alu22, i5 => alu24);
-  mo1_2c14 : sn74s151 port map(i3 => alu24, i2 => alu24, i1 => r24, i0 => a24, q => ob24, q_n => nc, ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk24, i7 => alu23, i6 => alu23, i5 => alu25);
-  mo1_2d09 : sn74s151 port map(i3 => alu25, i2 => alu25, i1 => r25, i0 => a25, q => ob25, q_n => nc, ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk25, i7 => alu24, i6 => alu24, i5 => alu26);
-  mo1_2d04 : sn74s151 port map(i3 => alu26, i2 => alu26, i1 => r26, i0 => a26, q => ob26, q_n => nc, ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk26, i7 => alu25, i6 => alu25, i5 => alu27);
-  mo1_2c09 : sn74s151 port map(i3 => alu27, i2 => alu27, i1 => r27, i0 => a27, q => ob27, q_n => nc, ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk27, i7 => alu26, i6 => alu26, i5 => alu28);
-  mo1_2a15 : sn74s151 port map(i3 => alu28, i2 => alu28, i1 => r28, i0 => a28, q => ob28, q_n => nc, ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk28, i7 => alu27, i6 => alu27, i5 => alu29);
-  mo1_2a14 : sn74s151 port map(i3 => alu29, i2 => alu29, i1 => r29, i0 => a29, q => ob29, q_n => nc, ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk29, i7 => alu28, i6 => alu28, i5 => alu30);
-  mo1_2a10 : sn74s151 port map(i3 => alu30, i2 => alu30, i1 => r30, i0 => a30, q => ob30, q_n => nc, ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk30, i7 => alu29, i6 => alu29, i5 => alu31);
-  mo1_2a09 : sn74s151 port map(i3 => alu31, i2 => alu31, i1 => r31, i0 => a31b, q => ob31, q_n => nc, ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk31, i7 => alu30, i6 => alu30, i5 => alu32);
 
   mo0_2d29 : sn74s151 port map(i3 => alu0, i2 => alu0, i1 => r0, i0 => a0, q => ob0, q_n => nc, ce_n => gnd, sel2 => osel1b, sel1 => osel0b, sel0 => msk0, i7 => q31, i6 => q31, i5 => alu1);
   mo0_2d28 : sn74s151 port map(i3 => alu1, i2 => alu1, i1 => r1, i0 => a1, q => ob1, q_n => nc, ce_n => gnd, sel2 => osel1b, sel1 => osel0b, sel0 => msk1, i7 => alu0, i6 => alu0, i5 => alu2);
@@ -1193,25 +1185,34 @@ begin
   mo0_2a25 : sn74s151 port map(i3 => alu14, i2 => alu14, i1 => r14, i0 => a14, q => ob14, q_n => nc, ce_n => gnd, sel2 => osel1b, sel1 => osel0b, sel0 => msk14, i7 => alu13, i6 => alu13, i5 => alu15);
   mo0_2a24 : sn74s151 port map(i3 => alu15, i2 => alu15, i1 => r15, i0 => a15, q => ob15, q_n => nc, ce_n => gnd, sel2 => osel1b, sel1 => osel0b, sel0 => msk15, i7 => alu14, i6 => alu14, i5 => alu16);
 
-  ipar_4e03 : sn74s32 port map(g2a => imodd, g2b => iparity, g2y => iparok);
-  ipar_3f22 : 93s48 port map(i6 => gnd, i5 => gnd, i4 => gnd, i3 => gnd, i2 => gnd, i1 => gnd, i0 => gnd, po => iparity, pe => nc, i11 => ipar0, i10 => ipar1, i9 => ipar2, i8 => ipar3);
-  ipar_3e02 : 93s48 port map(i6 => ir41, i5 => ir42, i4 => ir43, i3 => ir44, i2 => ir45, i1 => ir46, i0 => ir47, po => ipar3, pe => nc, i11 => ir36, i10 => ir37, i9 => ir38, i8 => ir39);
-  ipar_3e21 : 93s48 port map(i6 => ir29, i5 => ir30, i4 => ir31, i3 => ir32, i2 => ir33, i1 => ir34, i0 => ir35, po => ipar2, pe => nc, i11 => ir24, i10 => ir25, i9 => ir26, i8 => ir27);
-  ipar_3f24 : 93s48 port map(i6 => ir17, i5 => ir18, i4 => ir19, i3 => ir20, i2 => ir21, i1 => ir22, i0 => ir23, po => ipar1, pe => nc, i11 => ir12, i10 => ir13, i9 => ir14, i8 => ir15);
-  ipar_3e04 : 93s48 port map(i6 => ir5, i5 => ir6, i4 => ir7, i3 => ir8, i2 => ir9, i1 => ir10, i0 => ir11, po => ipar0, pe => nc, i11 => ir0, i10 => ir1, i9 => ir2, i8 => ir3);
+  mo1_2d19 : sn74s151 port map(i3 => alu16, i2 => alu16, i1 => r16, i0 => a16, q => ob16, q_n => nc, ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk16, i7 => alu15, i6 => alu15, i5 => alu17);
+  mo1_2d18 : sn74s151 port map(i3 => alu17, i2 => alu17, i1 => r17, i0 => a17, q => ob17, q_n => nc, ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk17, i7 => alu16, i6 => alu16, i5 => alu18);
+  mo1_2d14 : sn74s151 port map(i3 => alu18, i2 => alu18, i1 => r18, i0 => a18, q => ob18, q_n => nc, ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk18, i7 => alu17, i6 => alu17, i5 => alu19);
+  mo1_2d13 : sn74s151 port map(i3 => alu19, i2 => alu19, i1 => r19, i0 => a19, q => ob19, q_n => nc, ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk19, i7 => alu18, i6 => alu18, i5 => alu20);
+  mo1_2b15 : sn74s151 port map(i3 => alu20, i2 => alu20, i1 => r20, i0 => a20, q => ob20, q_n => nc, ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk20, i7 => alu19, i6 => alu19, i5 => alu21);
+  mo1_2b14 : sn74s151 port map(i3 => alu21, i2 => alu21, i1 => r21, i0 => a21, q => ob21, q_n => nc, ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk21, i7 => alu20, i6 => alu20, i5 => alu22);
+  mo1_2b10 : sn74s151 port map(i3 => alu22, i2 => alu22, i1 => r22, i0 => a22, q => ob22, q_n => nc, ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk22, i7 => alu21, i6 => alu21, i5 => alu23);
+  mo1_2b09 : sn74s151 port map(i3 => alu23, i2 => alu23, i1 => r23, i0 => a23, q => ob23, q_n => nc, ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk23, i7 => alu22, i6 => alu22, i5 => alu24);
+  mo1_2c14 : sn74s151 port map(i3 => alu24, i2 => alu24, i1 => r24, i0 => a24, q => ob24, q_n => nc, ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk24, i7 => alu23, i6 => alu23, i5 => alu25);
+  mo1_2d09 : sn74s151 port map(i3 => alu25, i2 => alu25, i1 => r25, i0 => a25, q => ob25, q_n => nc, ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk25, i7 => alu24, i6 => alu24, i5 => alu26);
+  mo1_2d04 : sn74s151 port map(i3 => alu26, i2 => alu26, i1 => r26, i0 => a26, q => ob26, q_n => nc, ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk26, i7 => alu25, i6 => alu25, i5 => alu27);
+  mo1_2c09 : sn74s151 port map(i3 => alu27, i2 => alu27, i1 => r27, i0 => a27, q => ob27, q_n => nc, ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk27, i7 => alu26, i6 => alu26, i5 => alu28);
+  mo1_2a15 : sn74s151 port map(i3 => alu28, i2 => alu28, i1 => r28, i0 => a28, q => ob28, q_n => nc, ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk28, i7 => alu27, i6 => alu27, i5 => alu29);
+  mo1_2a14 : sn74s151 port map(i3 => alu29, i2 => alu29, i1 => r29, i0 => a29, q => ob29, q_n => nc, ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk29, i7 => alu28, i6 => alu28, i5 => alu30);
+  mo1_2a10 : sn74s151 port map(i3 => alu30, i2 => alu30, i1 => r30, i0 => a30, q => ob30, q_n => nc, ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk30, i7 => alu29, i6 => alu29, i5 => alu31);
+  mo1_2a09 : sn74s151 port map(i3 => alu31, i2 => alu31, i1 => r31, i0 => a31b, q => ob31, q_n => nc, ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk31, i7 => alu30, i6 => alu30, i5 => alu32);
 
   bcterm_2c25 : sip330_470_8 port map(r2 => -memgrant, r3 => int, r4 => -loadmd, r5 => -ignpar, r6 => -memack);
   bcterm_1b25 : sip220_330_8 port map(r2 => mem24, r3 => mem25, r4 => mem26, r5 => mem27, r6 => mem28);
   bcterm_1b20 : sip220_330_8 port map(r2 => mem12, r3 => mem13, r4 => mem14, r5 => mem15, r6 => mem16);
   bcterm_1b15 : sip220_330_8 port map(r2 => mem0, r3 => mem1, r4 => mem2, r5 => mem3, r6 => mem4);
 
-  apar_4a17 : sn74s00 port map(g1b => mpareven, g1a => srcm, g1q_n => mmemparok, g2b => mpareven, g2a => pdlenb, g2q_n => pdlparok);
-  apar_3a28 : 93s48 port map(i6 => a26, i5 => a27, i4 => a28, i3 => a29, i2 => a30, i1 => a31b, i0 => aparity, po => aparok, pe => nc, i11 => aparl, i10 => aparm, i9 => gnd, i8 => a24);
-  apar_3a29 : 93s48 port map(i6 => a17, i5 => a18, i4 => a19, i3 => a20, i2 => a21, i1 => a22, i0 => a23, po => aparm, pe => nc, i11 => a12, i10 => a13, i9 => a14, i8 => a15);
-  apar_3a30 : 93s48 port map(i6 => a5, i5 => a6, i4 => a7, i3 => a8, i2 => a9, i1 => a10, i0 => a11, po => aparl, pe => nc, i11 => a0, i10 => a1, i9 => a2, i8 => a3);
-  apar_4a14 : 93s48 port map(i6 => m5, i5 => m6, i4 => m7, i3 => m8, i2 => m9, i1 => m10, i0 => m11, po => mparl, pe => nc, i11 => m0, i10 => m1, i9 => m2, i8 => m3);
-  apar_4a12 : 93s48 port map(i6 => m17, i5 => m18, i4 => m19, i3 => m20, i2 => m21, i1 => m22, i0 => m23, po => mparm, pe => nc, i11 => m12, i10 => m13, i9 => m14, i8 => m15);
-  apar_4b15 : 93s48 port map(i6 => m26, i5 => m27, i4 => m28, i3 => m29, i2 => m30, i1 => m31, i0 => mparity, po => mparodd, pe => mpareven, i11 => mparl, i10 => mparm, i9 => gnd, i8 => m24);
+  ipar_4e03 : sn74s32 port map(g2a => imodd, g2b => iparity, g2y => iparok);
+  ipar_3f22 : 93s48 port map(i6 => gnd, i5 => gnd, i4 => gnd, i3 => gnd, i2 => gnd, i1 => gnd, i0 => gnd, po => iparity, pe => nc, i11 => ipar0, i10 => ipar1, i9 => ipar2, i8 => ipar3);
+  ipar_3e02 : 93s48 port map(i6 => ir41, i5 => ir42, i4 => ir43, i3 => ir44, i2 => ir45, i1 => ir46, i0 => ir47, po => ipar3, pe => nc, i11 => ir36, i10 => ir37, i9 => ir38, i8 => ir39);
+  ipar_3e21 : 93s48 port map(i6 => ir29, i5 => ir30, i4 => ir31, i3 => ir32, i2 => ir33, i1 => ir34, i0 => ir35, po => ipar2, pe => nc, i11 => ir24, i10 => ir25, i9 => ir26, i8 => ir27);
+  ipar_3f24 : 93s48 port map(i6 => ir17, i5 => ir18, i4 => ir19, i3 => ir20, i2 => ir21, i1 => ir22, i0 => ir23, po => ipar1, pe => nc, i11 => ir12, i10 => ir13, i9 => ir14, i8 => ir15);
+  ipar_3e04 : 93s48 port map(i6 => ir5, i5 => ir6, i4 => ir7, i3 => ir8, i2 => ir9, i1 => ir10, i0 => ir11, po => ipar0, pe => nc, i11 => ir0, i10 => ir1, i9 => ir2, i8 => ir3);
 
   --------------------------------------------------------------------------------
 
