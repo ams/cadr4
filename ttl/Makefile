@@ -18,7 +18,8 @@ SRCS_VHD	= sn74.vhd			\
 		  sn7432.vhd			\
 		  sn7451.vhd			\
 		  sn7486.vhd			\
-		  sn74244.vhd
+		  sn74244.vhd \
+		  sn7414.vhd
 
 TB_SRCS_VHD	= sn7400_tb.vhd
 TESTBENCHES	= $(basename $(TB_SRCS_VHD))
