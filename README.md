@@ -34,7 +34,7 @@ Guts from Tom Knight's master thesis [Implementation of a list
 processing machine](http://dspace.mit.edu/handle/1721.1/16033).  For a
 description of the CADR processor see [The CADR
 processor](https://tumbleweed.nu/r/lm-3/uv/cadr.html), by Knight,
-README.mdMoon, et al.
+Moon, et al.
 
 ### Clock Generation
 
