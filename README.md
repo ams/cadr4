@@ -17,7 +17,8 @@ Prerequisites:
   - Git
   - GNU Make
   - [GHDL](http://ghdl.free.fr/)
-    Ideally using the GCC or LLVM backend, since at some point there will be a simulatd UART to talk to the core.
+    
+    Ideally using the GCC or LLVM code generator, since at some point there will be a simulatd UART to talk to the core.
   - [GTKWave](https://gtkwave.sourceforge.net/), [vcd](https://github.com/yne/vcd) or some other VCD viewer.
 
 ```
