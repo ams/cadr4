@@ -29,7 +29,7 @@ cd cadr4
 make help
 ```
 
-If writing or testing CADR microcode, then it is useful to have (usim)[https://tumbleweed.nu/r/usim] configured to be able to run [CADRLP](https://tumbleweed.nu/r/lm-3/uv/cadr.html#The-CADRLP-Assembler) or the CADR Console debugger (CC).
+If writing or testing CADR microcode, then it is useful to have [usim](https://tumbleweed.nu/r/usim) configured to be able to run [CADRLP](https://tumbleweed.nu/r/lm-3/uv/cadr.html#The-CADRLP-Assembler) or the CADR Console debugger (CC).
 
 ## Organization
 
