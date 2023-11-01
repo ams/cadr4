@@ -6,8 +6,7 @@ GHDLFLAGS	= --work=ttl
 
 VCDVIEWER = vcd
 
-SRCS_VHD	= \
-sn74.vhd \
+SN74_SRCS = \
 sn7400.vhd \
 sn7402.vhd \
 sn7404.vhd \
@@ -25,7 +24,11 @@ sn74240.vhd \
 sn74244.vhd \
 sn74260.vhd
 
-TB_SRCS_VHD	= sn7400_tb.vhd
+SRCS_VHD	= \
+sn74.vhd \
+$(SN74_SRCS)
+
+TB_SRCS_VHD	= $(addsuffix _tb.vhd, $(basename $(SN74_SRCS)))
 TESTBENCHES	= $(basename $(TB_SRCS_VHD))
 
 include ~/hdlmake.mk/hdlmake.mk
