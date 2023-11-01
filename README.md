@@ -92,11 +92,11 @@ diagram of the A and M source section of the processor.
 
 ## The ALU Datapath
 
-page 26 / Figure 4 Main Data Paths
+![Figure 4 Main Data Paths](https://github.com/ams/cadr4/assets/7945138/cf6ab70b-f2b1-4443-9f6b-aa41a1f3ef76)
 
-page 27 / Figure 5 Micro Instruction Format
+![Figure 5 Micro Instruction Format](https://github.com/ams/cadr4/assets/7945138/0e87bcbc-e3f2-44bb-83b9-22ba6980af26)
 
-page 28 / Figure 6 Detailed M Bus Block Diagram
+![Figure 6 Detailed M Bus Block Diagram](https://github.com/ams/cadr4/assets/7945138/50760e78-5fc4-45fe-a156-0205d8900f55)
 
 The ALU instruction provides basic arithmetic and logical data manipulation in the
 machine. The two operands supplied on the A and M busses are gated into an arithmetic logic
@@ -322,7 +322,7 @@ Read memory cycles are initiated by loading the functional destination VMA-START
 with the address of the location to be read. This initiates a map cycle (see below), and if
 the map is set up, it starts a main memory fetch at the physical address specified by the map. The
 
-page 36 / Figure 7 Dispatch Datapath
+![Figure 7 Dispatch Datapath](https://github.com/ams/cadr4/assets/7945138/62642bbc-b2f0-403f-b8e1-3b2697fc0b61)
 
 processor is free to execute additional microinstructions following the read cycle initiation.
 Testing of map misses and page faults is recommended as the immediately following cycle. The
@@ -378,7 +378,7 @@ directly to main memory from the address register, implying a page size in the s
 locations. The high order eleven bits of the memory address register index into a table of 2048
 entries of five bits each. Out of all of these entries, a maximum of 31, each with a different table
 
-page 35 / Figure 8 Memory Map Data Flow
+![Figure 8 Memory Map Data Flow](https://github.com/ams/cadr4/assets/7945138/c04458b6-6377-4b4d-a2a9-9978b87b121b)
 
 value, are non-zero and are designated as "valid".
 
