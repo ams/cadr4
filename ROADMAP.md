@@ -15,7 +15,7 @@ through the boot PROM and failing at either the first memory access,
 or looping in DISK-WAIT.  It would also most probobly not be
 syntheziable.
 
-## SPY bus
+## Two-Machine Lashup
 
 Implement a SPY bus that can access the core via GHDL co-simulation
 over a TCP/IP or PTY link that can exercise the design.  This would be
