@@ -34,8 +34,10 @@ If writing or testing CADR microcode, then it is useful to have [usim](https://t
 ## Organization
 
   - ttl: contains all the ICs that are used by the CADR.
-    Specifically, 74s are organized under sn74.vhd.
+    Specifically, 74s are in sn74.vhd.
 
   - cadr4.vhd: contains a exact transliteration of the original CADR
     schematics, with a testbench that is capable of running it in
     cadr4_tb.vhd.
+
+New documentation should be written in Markdown. At some point this should be migrated back into the [Lisp Machine Manual](https://tumbleweed.nu/r/lm-3/uv/chinual.html) or other suitable places.
