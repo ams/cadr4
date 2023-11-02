@@ -29,4 +29,3 @@ begin
   g4q_n <= not (g4a or g4b);
 
 end ttl;
-

@@ -9,18 +9,10 @@ end sn7486_tb;
 
 architecture testbench of sn7486_tb is
 
-  signal g1a : std_logic;
-  signal g1b : std_logic;
-  signal g1y : std_logic;
-  signal g2a : std_logic;
-  signal g2b : std_logic;
-  signal g2y : std_logic;
-  signal g3a : std_logic;
-  signal g3b : std_logic;
-  signal g3y : std_logic;
-  signal g4a : std_logic;
-  signal g4b : std_logic;
-  signal g4y : std_logic;
+  signal g1a, g1b, g1y : std_logic;
+  signal g2a, g2b, g2y : std_logic;
+  signal g3a, g3b, g3y : std_logic;
+  signal g4a, g4b, g4y : std_logic;
 
 begin
 

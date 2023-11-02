@@ -21,4 +21,3 @@ begin
   g2y <= not ((g2a and g2b) or (g2c and g2d));
 
 end ttl;
-

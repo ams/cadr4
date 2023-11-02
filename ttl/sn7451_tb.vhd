@@ -9,10 +9,15 @@ end sn7451_tb;
 
 architecture testbench of sn7451_tb is
 
+  signal g1a, g1b, g1c, g1d, g1y : std_logic;
+  signal g2a, g2b, g2c, g2d, g2y : std_logic;
+
 begin
 
---  uut : sn7451 port map(
---    );
+  uut : sn7451 port map(
+    g1a => g1a, g1b => g1b, g1c => g1c, g1d => g1d, g1y => g1y,
+    g2a => g2a, g2b => g2b, g2c => g2c, g2d => g2d, g2y => g2y
+    );
 
   process
   begin

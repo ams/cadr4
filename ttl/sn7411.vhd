@@ -23,4 +23,3 @@ begin
   g3y <= g3a and g3b and g3c;
 
 end ttl;
-

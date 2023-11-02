@@ -21,4 +21,3 @@ begin
   g2y_n <= not (g2a and g2b and g2c);
 
 end ttl;
-

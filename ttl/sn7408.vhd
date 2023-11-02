@@ -29,4 +29,3 @@ begin
   g4q <= g4a or g4b;
 
 end ttl;
-

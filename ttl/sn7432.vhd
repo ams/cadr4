@@ -29,4 +29,3 @@ begin
   g4y <= g4a or g4b;
 
 end ttl;
-

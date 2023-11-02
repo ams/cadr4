@@ -25,4 +25,3 @@ begin
   g3y_n <= not (g3a and g3b and g3c);
 
 end ttl;
-
