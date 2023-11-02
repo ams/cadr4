@@ -15,12 +15,12 @@ architecture testbench of sn74260_tb is
 begin
 
   uut : sn74260 port map(
-    g1a   => g1a
+    g1a   => g1a,
     g2a   => g2a,
     g3a   => g3a,
     g4a   => g4a,
     g5a   => g5a,
-    g1y_n => g1y_n,
+    g1y_n => g1y_n
     );
 
   process
