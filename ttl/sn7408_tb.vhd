@@ -27,6 +27,26 @@ begin
   begin
     wait for 5 ns;
 
+    g1a <= '0'; g1b <= '0'; wait for 5 ns; assert g1q = '0';
+    g1a <= '0'; g1b <= '1'; wait for 5 ns; assert g1q = '0';
+    g1a <= '1'; g1b <= '0'; wait for 5 ns; assert g1q = '0';
+    g1a <= '1'; g1b <= '1'; wait for 5 ns; assert g1q = '1';
+
+    g2a <= '0'; g2b <= '0'; wait for 5 ns; assert g2q = '0';
+    g2a <= '0'; g2b <= '1'; wait for 5 ns; assert g2q = '0';
+    g2a <= '1'; g2b <= '0'; wait for 5 ns; assert g2q = '0';
+    g2a <= '1'; g2b <= '1'; wait for 5 ns; assert g2q = '1';
+
+    g3a <= '0'; g3b <= '0'; wait for 5 ns; assert g3q = '0';
+    g3a <= '0'; g3b <= '1'; wait for 5 ns; assert g3q = '0';
+    g3a <= '1'; g3b <= '0'; wait for 5 ns; assert g3q = '0';
+    g3a <= '1'; g3b <= '1'; wait for 5 ns; assert g3q = '1';
+
+    g4a <= '0'; g4b <= '0'; wait for 5 ns; assert g4q = '0';
+    g4a <= '0'; g4b <= '1'; wait for 5 ns; assert g4q = '0';
+    g4a <= '1'; g4b <= '0'; wait for 5 ns; assert g4q = '0';
+    g4a <= '1'; g4b <= '1'; wait for 5 ns; assert g4q = '1';
+
     wait;
   end process;
 

@@ -23,9 +23,9 @@ end sn7408;
 architecture ttl of sn7408 is
 begin
 
-  g1q <= g1a or g1b;
-  g2q <= g2a or g2b;
-  g3q <= g3a or g3b;
-  g4q <= g4a or g4b;
+  g1q <= g1a and g1b;
+  g2q <= g2a and g2b;
+  g3q <= g3a and g3b;
+  g4q <= g4a and g4b;
 
 end ttl;
