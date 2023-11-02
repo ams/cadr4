@@ -8,3 +8,5 @@
 *_tb
 *.ghw
 *.vcd
+
+.DS_Store
