@@ -31,6 +31,24 @@ begin
   begin
     wait for 5 ns;
 
+    g1a <= '1'; wait for 5 ns; assert g1q_n = '0';
+    g1a <= '0'; wait for 5 ns; assert g1q_n = '1';
+
+    g2a <= '1'; wait for 5 ns; assert g2q_n = '0';
+    g2a <= '0'; wait for 5 ns; assert g2q_n = '1';
+
+    g3a <= '1'; wait for 5 ns; assert g3q_n = '0';
+    g3a <= '0'; wait for 5 ns; assert g3q_n = '1';
+
+    g4a <= '1'; wait for 5 ns; assert g4q_n = '0';
+    g4a <= '0'; wait for 5 ns; assert g4q_n = '1';
+
+    g5a <= '1'; wait for 5 ns; assert g5q_n = '0';
+    g5a <= '0'; wait for 5 ns; assert g5q_n = '1';
+
+    g6a <= '1'; wait for 5 ns; assert g6q_n = '0';
+    g6a <= '0'; wait for 5 ns; assert g6q_n = '1';
+
     wait;
   end process;
 
