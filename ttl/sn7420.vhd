@@ -17,7 +17,7 @@ end sn7420;
 architecture ttl of sn7420 is
 begin
 
-  g1y_n <= not (g1a and g1b and g1c);
-  g2y_n <= not (g2a and g2b and g2c);
+  g1y_n <= not (g1a and g1b and g1c and g1d);
+  g2y_n <= not (g2a and g2b and g2c and g2d);
 
 end ttl;

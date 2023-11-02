@@ -21,7 +21,6 @@ sn7437.vhd					\
 sn7451.vhd					\
 sn7486.vhd					\
 sn74240.vhd					\
-sn74244.vhd					\
 sn74260.vhd
 
 SRCS_VHD	=				\

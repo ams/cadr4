@@ -25,6 +25,14 @@ begin
   begin
     wait for 5 ns;
 
+    g1a <= 'X'; g1b <= 'X'; g1c <= '0'; wait for 5 ns; assert g1y_n = '1';
+    g1a <= 'X'; g1b <= '0'; g1c <= 'X'; wait for 5 ns; assert g1y_n = '1';
+    g1a <= '0'; g1b <= 'X'; g1c <= 'X'; wait for 5 ns; assert g1y_n = '1';
+    g1a <= '1'; g1b <= '1'; g1c <= '1'; wait for 5 ns; assert g1y_n = '0';
+
+
+---!!!
+
     wait;
   end process;
 

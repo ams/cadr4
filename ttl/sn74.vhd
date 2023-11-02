@@ -109,8 +109,8 @@ package sn74 is
 
   component sn74260 is
     port (
-      i1, i2, i3, i4, i5 : in  std_logic;
-      o1                 : out std_logic
+      g1a, g2a, g3a, g4a, g5a : in  std_logic;
+      g1y_n                   : out std_logic
       );
   end component sn74260;
 
