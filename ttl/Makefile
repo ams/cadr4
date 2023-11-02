@@ -26,6 +26,10 @@ sn74240.vhd
 SRCS_VHD	=				\
 misc.vhd					\
 other.vhd					\
+td25.vhd \
+td50.vhd \
+td100.vhd \
+td250.vhd \
 sn74.vhd					\
 $(SN74_SRCS)
 
