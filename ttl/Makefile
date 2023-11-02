@@ -30,6 +30,7 @@ td25.vhd \
 td50.vhd \
 td100.vhd \
 td250.vhd \
+am93s48.vhd \
 sn74.vhd					\
 $(SN74_SRCS)
 
