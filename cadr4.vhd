@@ -5,11 +5,27 @@ use ieee.std_logic_1164.all;
 
 library ttl;
 use ttl.sn74.all;
+use ttl.other.all;
+
+use work.utilities.all;
 
 entity cadr4 is
 end cadr4;
 
 architecture structural of cadr4 is
+
+  signal pc0, pc1, pc2, pc3, pc4, pc5, pc6, pc7, pc8, pc9, pc10, pc11, pc12, pc13 : std_logic;
+
+  signal tilt1 : std_logic;
+  signal tilt0 : std_logic;
+  signal dpe : std_logic;
+  signal ipe : std_logic;
+  signal promenable : std_logic;
+  signal cyclecompleted : std_logic;
+
+  --- Aliases for some of the above signals to make life easier.
+
+  signal pc : std_logic_vector(0 to 13);  -- Same as PC0, ..., PC13.
 
 begin
   --- Clock Generation
@@ -1216,6 +1232,21 @@ begin
 --  ipar_3e04 : 93s48 port map(i6 => ir5, i5 => ir6, i4 => ir7, i3 => ir8, i2 => ir9, i1 => ir10, i0 => ir11, po => ipar0, pe => nc, i11 => ir0, i10 => ir1, i9 => ir2, i8 => ir3);
 
   --------------------------------------------------------------------------------
+
+  -- Poor substitute for the 5 octal display that was on the lower
+  -- left-hand corner of the front door on the CADR.  See the PCTL
+  -- prints.
+  process (cyclecompleted)
+  begin
+    pc <= pc0 & pc1 & pc2 & pc3 & pc4 & pc5 & pc6 & pc7 & pc8 & pc9 & pc10 & pc12 & pc13;
+
+    report "PC: " & to_hstring(pc);
+    if tilt1 then report "TILT1"; end if;
+    if tilt0 then report "TILT0"; end if;
+    if dpe then report "DPE"; end if;
+    if ipe then report "IPE"; end if;
+    if promenable then report "PROMENABLE"; end if;
+  end process;
 
   process
   begin
