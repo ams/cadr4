@@ -10,7 +10,7 @@ use ttl.other.all;
 use work.utilities.all;
 
 entity cadr4 is
-end cadr4;
+end;
 
 architecture structural of cadr4 is
 
@@ -1253,4 +1253,4 @@ begin
     wait for 0.1 ns;
   end process;
 
-end structural;
+end;

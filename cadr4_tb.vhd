@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 entity cadr4_tb is
-end cadr4_tb;
+end;
 
 architecture testbench of cadr4_tb is
 
@@ -11,4 +11,4 @@ architecture testbench of cadr4_tb is
 
 begin
 
-end testbench;
+end;
