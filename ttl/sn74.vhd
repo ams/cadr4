@@ -17,7 +17,7 @@ package sn74 is
       g4a, g4b : in  std_logic;
       g4q_n    : out std_logic
       );
-  end component sn7400;
+  end component;
 
   component sn7402 is                   -- Quadruple 2-Input Positive-NOR Gates
     port (
@@ -33,7 +33,7 @@ package sn74 is
       g4a, g4b : in  std_logic;
       g4q_n    : out std_logic
       );
-  end component sn7402;
+  end component;
 
   component sn7404 is                   -- Hex Inverters
     port (
@@ -55,7 +55,7 @@ package sn74 is
       g6a   : in  std_logic;
       g6q_n : out std_logic
       );
-  end component sn7404;
+  end component;
 
   component sn7408 is                   -- Quadruple 2-Input Positive-AND Gates
     port (
@@ -71,7 +71,7 @@ package sn74 is
       g4a, g4b : in  std_logic;
       g4q      : out std_logic
       );
-  end component sn7408;
+  end component;
 
   component sn7410 is                   -- Tripple 3-Input Positive-NAND Gates
     port (
@@ -84,7 +84,7 @@ package sn74 is
       g3a, g3b, g3c : in  std_logic;
       g3y_n         : out std_logic
       );
-  end component sn7410;
+  end component;
 
   component sn7411 is                   -- Triple 3-Input Positive-AND Gates
     port (
@@ -95,7 +95,7 @@ package sn74 is
       g3a, g3b, g3c : in  std_logic;
       g3y           : out std_logic
       );
-  end component sn7411;
+  end component;
 
   component sn7420 is                   -- Dual 4-Input Positive-NAND Gates
     port (
@@ -105,7 +105,7 @@ package sn74 is
       g2a, g2b, g2c, g2d : in  std_logic;
       g2y_n              : out std_logic
       );
-  end component sn7420;
+  end component;
 
   component sn7428 is                   -- Quadruple 2-input Positive-NOR Gates
     port (
@@ -121,7 +121,7 @@ package sn74 is
       g4a, g4b : in  std_logic;
       g4q_n    : out std_logic
       );
-  end component sn7428;
+  end component;
 
   component sn7432 is                   -- Quadruple 2-Input Positive-OR Gates
     port (
@@ -137,7 +137,7 @@ package sn74 is
       g4a, g4b : in  std_logic;
       g4y      : out std_logic
       );
-  end component sn7432;
+  end component;
 
   component sn7437 is  -- Quadruple 2-Input Positive-NAND Buffers
     port (
@@ -153,7 +153,7 @@ package sn74 is
       g4a, g4b : in  std_logic;
       g4y      : out std_logic
       );
-  end component sn7437;
+  end component;
 
   component sn7451 is                   -- AND-OR-invert gates
     port (
@@ -163,7 +163,7 @@ package sn74 is
       g2a, g2b, g2c, g2d : in  std_logic;
       g2y                : out std_logic
       );
-  end component sn7451;
+  end component;
 
   --- Unsorted
 
@@ -181,14 +181,14 @@ package sn74 is
       g4a, g4b : in  std_logic;
       g4y      : out std_logic
       );
-  end component sn7486;
+  end component;
 
   component sn74260 is                  -- Dual 5-Input Positive-NOR Gates
     port (
       g1a, g2a, g3a, g4a, g5a : in  std_logic;
       g1y_n                   : out std_logic
       );
-  end component sn74260;
+  end component;
 
   component sn74240 is  -- Octal Buffers and Line Drivers With 3-State Outputs
     port (
@@ -201,10 +201,10 @@ package sn74 is
       bin1, bin2, bin3           : in  std_logic;
       bout0, bout1, bout2, bout3 : out std_logic
       );
-  end component sn74240;
+  end component;
 
-end package sn74;
+end;
 
 package body sn74 is
 
-end package body sn74;
+end;

@@ -18,7 +18,7 @@ entity sn7432 is
     g4a, g4b : in  std_logic;
     g4y      : out std_logic
     );
-end sn7432;
+end;
 
 architecture ttl of sn7432 is
 begin
@@ -28,4 +28,4 @@ begin
   g3y <= g3a or g3b;
   g4y <= g4a or g4b;
 
-end ttl;
+end;

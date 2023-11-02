@@ -13,7 +13,7 @@ entity td50 is
     o_40ns : out std_logic;
     o_50ns : out std_logic
     );
-end td50;
+end;
 
 architecture ttl of td50 is
 begin
@@ -50,5 +50,4 @@ begin
     end if;
   end process;
 
-end architecture;
-
+end;

@@ -3,8 +3,8 @@ use ieee.std_logic_1164.all;
 
 package utilities is
 
-end package utilities;
+end package;
 
 package body utilities is
 
-end package body utilities;
+end package body;

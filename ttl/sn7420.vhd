@@ -12,7 +12,7 @@ entity sn7420 is
     g2a, g2b, g2c, g2d : in  std_logic;
     g2y_n              : out std_logic
     );
-end sn7420;
+end;
 
 architecture ttl of sn7420 is
 begin
@@ -20,4 +20,4 @@ begin
   g1y_n <= not (g1a and g1b and g1c and g1d);
   g2y_n <= not (g2a and g2b and g2c and g2d);
 
-end ttl;
+end;

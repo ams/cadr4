@@ -17,7 +17,7 @@ entity sn7400 is
     g4a, g4b : in  std_logic;
     g4q_n    : out std_logic
     );
-end sn7400;
+end;
 
 architecture ttl of sn7400 is
 begin
@@ -27,4 +27,4 @@ begin
   g3q_n <= not (g3a and g3b);
   g4q_n <= not (g4a and g4b);
 
-end ttl;
+end;

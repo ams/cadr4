@@ -17,7 +17,7 @@ entity sn7486 is
     g4a, g4b : in  std_logic;
     g4y      : out std_logic
     );
-end sn7486;
+end;
 
 architecture ttl of sn7486 is
 begin
@@ -27,4 +27,4 @@ begin
   g3y <= g3a xor g3b;
   g4y <= g4a xor g4b;
 
-end ttl;
+end;

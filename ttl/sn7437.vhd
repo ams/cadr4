@@ -17,7 +17,7 @@ entity sn7437 is
     g4a, g4b : in  std_logic;
     g4y      : out std_logic
     );
-end sn7437;
+end;
 
 architecture ttl of sn7437 is
 begin
@@ -27,4 +27,4 @@ begin
   g3y <= not (g3a and g3b);
   g4y <= not (g4a and g4b);
 
-end ttl;
+end;

@@ -8,11 +8,11 @@ entity sn74260 is
     g1a, g2a, g3a, g4a, g5a : in  std_logic;
     g1y_n                   : out std_logic
     );
-end sn74260;
+end;
 
 architecture ttl of sn74260 is
 begin
 
   g1y_n <= not (g1a or g2a or g3a or g4a or g5a);
 
-end ttl;
+end;

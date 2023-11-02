@@ -13,7 +13,7 @@ entity td250 is
     o_200ns : out std_logic;
     o_250ns : out std_logic
     );
-end td250;
+end;
 
 architecture ttl of td250 is
 begin
@@ -50,5 +50,4 @@ begin
     end if;
   end process;
 
-end architecture;
-
+end;

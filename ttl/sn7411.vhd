@@ -13,7 +13,7 @@ entity sn7411 is
     g3a, g3b, g3c : in  std_logic;
     g3y           : out std_logic
     );
-end sn7411;
+end;
 
 architecture ttl of sn7411 is
 begin
@@ -22,4 +22,4 @@ begin
   g2y <= g2a and g2b and g2c;
   g3y <= g3a and g3b and g3c;
 
-end ttl;
+end;

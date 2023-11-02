@@ -23,7 +23,7 @@ entity sn7404 is
     g6a   : in  std_logic;
     g6q_n : out std_logic
     );
-end sn7404;
+end;
 
 architecture ttl of sn7404 is
 begin
@@ -35,4 +35,4 @@ begin
   g5q_n <= not g5a;
   g6q_n <= not g6a;
 
-end ttl;
+end;

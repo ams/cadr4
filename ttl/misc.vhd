@@ -14,7 +14,7 @@ package misc is
       );
   end component;
 
-end package misc;
+end;
 
 package body misc is
 
@@ -26,7 +26,7 @@ package body misc is
       when others    => pull := 'Z';
     end case;
     return pull;
-  end pullup;
+  end;
 
   function pulldown(s : std_logic) return std_logic is
     variable pull : std_logic;
@@ -36,6 +36,6 @@ package body misc is
       when others    => pull := 'Z';
     end case;
     return pull;
-  end pulldown;
+  end;
 
-end package body misc;
+end;

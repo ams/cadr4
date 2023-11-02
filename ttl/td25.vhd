@@ -13,7 +13,7 @@ entity td25 is
     o_20ns : out std_logic;
     o_25ns : out std_logic
     );
-end td25;
+end;
 
 architecture ttl of td25 is
 begin
@@ -50,5 +50,4 @@ begin
     end if;
   end process;
 
-end architecture;
-
+end;

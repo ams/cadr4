@@ -12,7 +12,7 @@ entity sn7451 is
     g2a, g2b, g2c, g2d : in  std_logic;
     g2y                : out std_logic
     );
-end sn7451;
+end;
 
 architecture ttl of sn7451 is
 begin
@@ -20,4 +20,4 @@ begin
   g1y <= not ((g1a and g1b) or (g1c and g1d));
   g2y <= not ((g2a and g2b) or (g2c and g2d));
 
-end ttl;
+end;

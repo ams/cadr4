@@ -8,28 +8,28 @@ package other is
       clk                                   : in  std_logic;
       o_5ns, o_10ns, o_15ns, o_20ns, o_25ns : out std_logic
       );
-  end component td25;
+  end component;
 
   component td50 is
     port (
       clk                                    : in  std_logic;
       o_10ns, o_20ns, o_30ns, o_40ns, o_50ns : out std_logic
       );
-  end component td50;
+  end component;
 
   component td100 is
     port (
       clk                                     : in  std_logic;
       o_20ns, o_40ns, o_60ns, o_80ns, o_100ns : out std_logic
       );
-  end component td100;
+  end component;
 
   component td250 is
     port (
       clk                                        : in  std_logic;
       o_50ns, o_100ns, o_150ns, o_200ns, o_250ns : out std_logic
       );
-  end component td250;
+  end component;
 
   component am93s48 is
     port (
@@ -37,10 +37,10 @@ package other is
       pe                                               : out std_logic;
       po                                               : out std_logic
       );
-  end component am93s48;
+  end component;
 
-end package other;
+end;
 
 package body other is
 
-end package body other;
+end;

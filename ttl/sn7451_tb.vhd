@@ -5,7 +5,7 @@ library ttl;
 use ttl.sn74.all;
 
 entity sn7451_tb is
-end sn7451_tb;
+end;
 
 architecture testbench of sn7451_tb is
 
@@ -28,4 +28,4 @@ begin
     wait;
   end process;
 
-end testbench;
+end;

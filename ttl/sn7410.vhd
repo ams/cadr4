@@ -15,7 +15,7 @@ entity sn7410 is
     g3a, g3b, g3c : in  std_logic;
     g3y_n         : out std_logic
     );
-end sn7410;
+end;
 
 architecture ttl of sn7410 is
 begin
@@ -24,4 +24,4 @@ begin
   g2y_n <= not (g2a and g2b and g2c);
   g3y_n <= not (g3a and g3b and g3c);
 
-end ttl;
+end;

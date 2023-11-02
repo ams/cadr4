@@ -18,7 +18,7 @@ entity sn7408 is
     g4a, g4b : in  std_logic;
     g4q      : out std_logic
     );
-end sn7408;
+end;
 
 architecture ttl of sn7408 is
 begin
@@ -28,4 +28,4 @@ begin
   g3q <= g3a and g3b;
   g4q <= g4a and g4b;
 
-end ttl;
+end;

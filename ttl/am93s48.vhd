@@ -10,7 +10,7 @@ entity am93s48 is
     pe                                               : out std_logic;
     po                                               : out std_logic
     );
-end am93s48;
+end;
 
 architecture ttl of am93s48 is
 
@@ -18,4 +18,4 @@ begin
 
   ---!!!
 
-end architecture;
+end;

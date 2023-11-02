@@ -10,7 +10,7 @@ entity ff_jk is
     j, k   : in  std_logic;
     q, q_n : out std_logic
     );
-end entity;
+end;
 
 architecture ttl of ff_jk is
 begin
@@ -21,12 +21,12 @@ begin
     if rising_edge(clk) then
       jk := j & k;
       case jk is
-        when "01"   => q <= '0';   q_n <= '1';
-        when "10"   => q <= '1';   q_n <= '0';
+        when "01"   => q <= '0'; q_n <= '1';
+        when "10"   => q <= '1'; q_n <= '0';
         when "11"   => q <= not q; q_n <= q;
         when others => null;
       end case;
     end if;
   end process;
 
-end architecture;
+end;

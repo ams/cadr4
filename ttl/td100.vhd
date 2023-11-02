@@ -13,7 +13,7 @@ entity td100 is
     o_80ns  : out std_logic;
     o_100ns : out std_logic
     );
-end td100;
+end;
 
 architecture ttl of td100 is
 begin
@@ -50,5 +50,4 @@ begin
     end if;
   end process;
 
-end architecture;
-
+end;

@@ -14,7 +14,7 @@ entity sn74240 is
     bin1, bin2, bin3           : in  std_logic;
     bout0, bout1, bout2, bout3 : out std_logic
     );
-end sn74240;
+end;
 
 architecture ttl of sn74240 is
 begin
@@ -37,4 +37,4 @@ begin
     end if;
   end process;
 
-end ttl;
+end;
