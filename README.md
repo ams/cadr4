@@ -17,8 +17,8 @@ Prerequisites:
   - Git
   - GNU Make
   - [GHDL](http://ghdl.free.fr/)
-    
-    Ideally using the GCC or LLVM code generator, since at some point there will be a simulatd UART to talk to the core.
+
+	Ideally using the GCC or LLVM code generator, since at some point there will be a simulatd UART to talk to the core.
   - [GTKWave](https://gtkwave.sourceforge.net/), [vcd](https://github.com/yne/vcd) or some other VCD viewer.
 
 ```
@@ -34,11 +34,17 @@ If writing or testing CADR microcode, then it is useful to have [usim](https://t
 ## Organization
 
   - ttl: contains all the ICs that are used by the CADR.
-    Specifically, 74s are in sn74.vhd.
+
+	* sn74: 74xx logic.
+
+	* other: other ICs that do not fall into above categories.
+
+	* unsorted: contains skeletons directly translated from the
+	  schematics; these are to be deleted / merged at some point.
 
   - cadr4.vhd: contains a exact transliteration of the original CADR
-    schematics, with a testbench that is capable of running it in
-    cadr4_tb.vhd.
+	schematics, with a testbench that is capable of running it in
+	cadr4_tb.vhd.
 
 New documentation should be written in Markdown. At some point this
 should be migrated back into the [Lisp Machine
