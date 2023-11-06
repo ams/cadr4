@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity ic_9346 is
+entity dm9346 is
   port (
     a5  : in  std_logic;
     a4  : in  std_logic;
@@ -19,9 +19,9 @@ entity ic_9346 is
     enb : in  std_logic;
     eq  : out std_logic
     );
-end ic_9346;
+end dm9346;
 
-architecture ttl of ic_9346 is
+architecture ttl of dm9346 is
 begin
 
 end ttl;
