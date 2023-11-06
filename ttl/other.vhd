@@ -76,6 +76,7 @@ package other is
       clk   : in  std_logic;
       enb_n : in  std_logic);
   end component;
+  alias am25s07 is am2507;
 
   component am2509
     port(
@@ -94,6 +95,7 @@ package other is
       sel : in  std_logic;
       clk : in  std_logic);
   end component;
+  alias am25s09 is am2509;
 
   component am2510
     port(
@@ -111,6 +113,26 @@ package other is
       o2   : out std_logic;
       o1   : out std_logic;
       o0   : out std_logic);
+  end component;
+  alias am25s10 is am2510;
+
+  component am93425a is
+    port (
+      a0   : in  std_logic;
+      a1   : in  std_logic;
+      a2   : in  std_logic;
+      a3   : in  std_logic;
+      a4   : in  std_logic;
+      a5   : in  std_logic;
+      a6   : in  std_logic;
+      a7   : in  std_logic;
+      a8   : in  std_logic;
+      a9   : in  std_logic;
+      ce_n : in  std_logic;
+      we_n : in  std_logic;
+      di   : in  std_logic;
+      do   : out std_logic
+      );
   end component;
 
   component am252519 is
@@ -135,6 +157,7 @@ package other is
       q3b        : out std_logic
       );
   end component;
+  alias am25ls2519 is am252519;
 
   component im5600 is
     port (
@@ -211,7 +234,6 @@ package other is
       ce     : in  std_logic
       );
   end component;
-
   alias dm82s21 is dm8221;
 
   component til309 is
@@ -270,10 +292,6 @@ package other is
       r7 : out std_logic
       );
   end component;
-
-  alias am25s07 is am2507;
-  alias am25s09 is am2509;
-  alias am25s10 is am2510;
 
 end;
 

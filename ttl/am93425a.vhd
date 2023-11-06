@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity ic_93425a is
+entity am93425a is
   port (
     a0   : in  std_logic;
     a1   : in  std_logic;
@@ -19,9 +19,9 @@ entity ic_93425a is
     di   : in  std_logic;
     do   : out std_logic
     );
-end ic_93425a;
+end am93425a;
 
-architecture ttl of ic_93425a is
+architecture ttl of am93425a is
 begin
 
 end ttl;
