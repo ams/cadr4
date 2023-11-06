@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity ic_9328 is
+entity dm9328 is
   port (
     clr_n  : in  std_logic;
     aq_n   : out std_logic;
@@ -19,9 +19,9 @@ entity ic_9328 is
     bq     : out std_logic;
     bq_n   : out std_logic
     );
-end ic_9328;
+end dm9328;
 
-architecture ttl of ic_9328 is
+architecture ttl of dm9328 is
 begin
 
 end ttl;

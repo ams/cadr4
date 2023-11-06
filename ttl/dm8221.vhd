@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity ic_8221 is
+entity dm8221 is
   port (
     d1     : out std_logic;
     i1     : in  std_logic;
@@ -19,9 +19,9 @@ entity ic_8221 is
     wclk_n : in  std_logic;
     ce     : in  std_logic
     );
-end ic_8221;
+end dm8221;
 
-architecture ttl of ic_8221 is
+architecture ttl of dm8221 is
 begin
 
 end ttl;

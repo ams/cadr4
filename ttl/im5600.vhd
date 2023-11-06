@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity ic_5600 is
+entity im5600 is
   port (
     o7   : out std_logic;
     o6   : out std_logic;
@@ -19,9 +19,9 @@ entity ic_5600 is
     a0   : in  std_logic;
     ce_n : in  std_logic
     );
-end ic_5600;
+end im5600;
 
-architecture ttl of ic_5600 is
+architecture ttl of im5600 is
 begin
 
 end ttl;

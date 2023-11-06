@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity ic_5610 is
+entity im5610 is
   port (
     o7   : out std_logic;
     o6   : out std_logic;
@@ -19,9 +19,9 @@ entity ic_5610 is
     a0   : in  std_logic;
     ce_n : in  std_logic
     );
-end ic_5610;
+end im5610;
 
-architecture ttl of ic_5610 is
+architecture ttl of im5610 is
 begin
 
 end ttl;

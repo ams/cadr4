@@ -136,6 +136,84 @@ package other is
       );
   end component;
 
+  component im5600 is
+    port (
+      o7   : out std_logic;
+      o6   : out std_logic;
+      o5   : out std_logic;
+      o4   : out std_logic;
+      o3   : out std_logic;
+      o2   : out std_logic;
+      o1   : out std_logic;
+      o0   : out std_logic;
+      a4   : in  std_logic;
+      a3   : in  std_logic;
+      a2   : in  std_logic;
+      a1   : in  std_logic;
+      a0   : in  std_logic;
+      ce_n : in  std_logic
+      );
+  end component;
+
+  component im5610 is
+    port (
+      o7   : out std_logic;
+      o6   : out std_logic;
+      o5   : out std_logic;
+      o4   : out std_logic;
+      o3   : out std_logic;
+      o2   : out std_logic;
+      o1   : out std_logic;
+      o0   : out std_logic;
+      a4   : in  std_logic;
+      a3   : in  std_logic;
+      a2   : in  std_logic;
+      a1   : in  std_logic;
+      a0   : in  std_logic;
+      ce_n : in  std_logic
+      );
+  end component;
+
+  component dm9328 is
+    port (
+      clr_n  : in  std_logic;
+      aq_n   : out std_logic;
+      aq     : out std_logic;
+      asel   : in  std_logic;
+      ai1    : in  std_logic;
+      ai0    : in  std_logic;
+      aclk   : in  std_logic;
+      comclk : in  std_logic;
+      bclk   : in  std_logic;
+      bi0    : in  std_logic;
+      bi1    : in  std_logic;
+      bsel   : in  std_logic;
+      bq     : out std_logic;
+      bq_n   : out std_logic
+      );
+  end component;
+
+  component dm8221 is
+    port (
+      d1     : out std_logic;
+      i1     : in  std_logic;
+      we1_n  : in  std_logic;
+      i0     : in  std_logic;
+      d0     : out std_logic;
+      we0_n  : in  std_logic;
+      a0     : in  std_logic;
+      a1     : in  std_logic;
+      a2     : in  std_logic;
+      a3     : in  std_logic;
+      a4     : in  std_logic;
+      strobe : in  std_logic;
+      wclk_n : in  std_logic;
+      ce     : in  std_logic
+      );
+  end component;
+
+  alias dm82s21 is dm8221;
+
   component til309 is
     port (
       i1, i2, i4, i8 : in  std_logic;

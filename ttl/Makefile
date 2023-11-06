@@ -6,10 +6,6 @@ VCDVIEWER	= vcd
 
 UNSORTED_SRCS	= \
 ic_16dummy.vhd \
-ic_5600.vhd \
-ic_5610.vhd \
-ic_8221.vhd \
-ic_9328.vhd \
 ic_93425a.vhd \
 ic_9346.vhd \
 ic_942_1.vhd \
@@ -66,6 +62,10 @@ OTHER_SRCS = \
  am2509.vhd \
  am2510.vhd \
  am252519.vhd \
+ im5600.vhd \
+ im5610.vhd \
+ dm9328.vhd \
+ dm8221.vhd \
  til309.vhd \
  res20.vhd \
  sip220_330_8.vhd \
