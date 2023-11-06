@@ -256,6 +256,26 @@ package other is
   end component;
   alias dm93s46 is dm9346;
 
+  component dm942
+    port (
+      g1a1 : in  std_logic;
+      g1b1 : in  std_logic;
+      g2a1 : in  std_logic;
+      g2b1 : in  std_logic;
+      g2c1 : in  std_logic;
+      g2d1 : in  std_logic;
+      out1 : out std_logic;
+      g1a2 : in  std_logic;
+      g1b2 : in  std_logic;
+      g2a2 : in  std_logic;
+      g2b2 : in  std_logic;
+      g2c2 : in  std_logic;
+      g2d2 : in  std_logic;
+      out2 : out std_logic
+      );
+  end component;
+  alias dm9s42_1 is dm942;
+
   component til309 is
     port (
       i1, i2, i4, i8 : in  std_logic;

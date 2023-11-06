@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity ic_942_1 is
+entity dm942 is
   port (
     g1a1 : in  std_logic;
     g1b1 : in  std_logic;
@@ -19,9 +19,9 @@ entity ic_942_1 is
     g2d2 : in  std_logic;
     out2 : out std_logic
     );
-end ic_942_1;
+end dm942;
 
-architecture ttl of ic_942_1 is
+architecture ttl of dm942 is
 begin
 
 end ttl;
