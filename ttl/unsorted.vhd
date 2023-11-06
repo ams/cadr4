@@ -16,10 +16,6 @@ package unsorted is
   component ic_93425a port(a0       : in  std_logic; a1 : in std_logic; a2 : in std_logic; a3 : in std_logic; a4 : in std_logic; a5 : in std_logic; a6 : in std_logic; a7 : in std_logic; a8 : in std_logic; a9 : in std_logic; ce_n : in std_logic; we_n : in std_logic; di : in std_logic; do : out std_logic); end component;
   component ic_9346 port(a5         : in  std_logic; a4 : in std_logic; a3 : in std_logic; a2 : in std_logic; a1 : in std_logic; a0 : in std_logic; b5 : in std_logic; b4 : in std_logic; b3 : in std_logic; b2 : in std_logic; b1 : in std_logic; b0 : in std_logic; enb : in std_logic; eq : out std_logic); end component;
   component ic_942_1 port(g1a1      : in  std_logic; g1b1 : in std_logic; g2a1 : in std_logic; g2b1 : in std_logic; g2c1 : in std_logic; g2d1 : in std_logic; out1 : out std_logic; g1a2 : in std_logic; g1b2 : in std_logic; g2a2 : in std_logic; g2b2 : in std_logic; g2c2 : in std_logic; g2d2 : in std_logic; out2 : out std_logic); end component;
-  component ic_res20 port(r2        : in  std_logic; r3 : in std_logic; r4 : in std_logic; r5 : in std_logic; r6 : in std_logic; r7 : in std_logic; r8 : in std_logic; r9 : in std_logic; r10 : in std_logic; r11 : in std_logic; r12 : in std_logic; r13 : in std_logic; r14 : in std_logic; r15 : in std_logic; r16 : in std_logic; r17 : in std_logic; r18 : in std_logic; r19 : in std_logic); end component;
-  component ic_sip220_330_8 port(r2 : in  std_logic; r3 : in std_logic; r4 : in std_logic; r5 : in std_logic; r6 : in std_logic; r7 : in std_logic); end component;
-  component ic_sip330_470_8 port(r2 : in  std_logic; r3 : in std_logic; r4 : in std_logic; r5 : in std_logic; r6 : in std_logic; r7 : in std_logic); end component;
-  component ic_til309 port(l2       : in  std_logic; l4 : in std_logic; l8 : in std_logic; l1 : in std_logic; latch : in std_logic; i4 : in std_logic; i8 : in std_logic; i2 : in std_logic; blank_n : in std_logic; dp : in std_logic; test_n : in std_logic; ldp : in std_logic; i1 : in std_logic); end component;
 
   alias ic_25ls2519 is ic_252519;
   alias ic_25s07 is ic_2507;

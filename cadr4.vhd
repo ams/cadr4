@@ -1191,13 +1191,13 @@ begin
 
   mctl_4a16 : sn74s258 port map(sel => clk4e, d0 => wadr(4), d1 => ir(30), dy => \-madr4a\, c0 => nc(335), c1 => nc(336), cy => nc(337), by => nc(338), b1 => nc(339), b0 => nc(340), ay => \-madr4b\, a1 => ir(30), a0 => wadr(4), enb_n => gnd);
   mctl_4a18 : sn74s258 port map(sel => clk4e, d0 => wadr(0), d1 => ir(26), dy => \-madr0b\, c0 => wadr(1), c1 => ir(27), cy => \-madr1b\, by => \-madr2b\, b1 => ir(28), b0 => wadr(2), ay => \-madr3b\, a1 => ir(29), a0 => wadr(3), enb_n => gnd);
-  mctl_4a19 : ic_res20 port map(r2 => nc(334), r3 => mmem(15), r4 => mmem(14), r5 => mmem(13), r6 => mmem(12), r7 => mmem(11), r8 => mmem(10), r9 => mmem(9), r11 => mmem(8), r12 => mmem(7), r13 => mmem(6), r14 => mmem(5), r15 => mmem(4), r16 => mmem(3), r17 => mmem(2), r18 => mmem(1), r19 => mmem(0), r10 => '0');
+  mctl_4a19 : res20 port map(r2 => nc(334), r3 => mmem(15), r4 => mmem(14), r5 => mmem(13), r6 => mmem(12), r7 => mmem(11), r8 => mmem(10), r9 => mmem(9), r11 => mmem(8), r12 => mmem(7), r13 => mmem(6), r14 => mmem(5), r15 => mmem(4), r16 => mmem(3), r17 => mmem(2), r18 => mmem(1), r19 => mmem(0));
   mctl_4b11 : sn74s11 port map(g1a => mpass, g1b => tse4a, g3y => srcm, g3a => hi2, g3b => \-ir31\, g3c => \-mpass\, g1y => mpassl, g1c => \-ir31\, g2a => '0', g2b => '0', g2c => '0');
   mctl_4b12 : sn74s04 port map(g1a => mpass, g1q_n => \-mpass\, g2a => '0', g3a => '0', g4a => '0', g5a => '0', g6a => '0');
   mctl_4b14 : sn74s10 port map(g1a => mpass, g1b => tse4a, g2a => tse4a, g2b => \-ir31\, g2c => \-mpass\, g2y_n => \-mpassm\, g1y_n => \-mpassl\, g1c => \-ir31\, g3a => '0', g3b => '0', g3c => '0');
   mctl_4b18 : ic_93s46 port map(a0 => ir(26), b0 => wadr(0), a1 => ir(27), b1 => wadr(1), a2 => ir(28), b2 => wadr(2), enb => hi2, eq => mpass, a3 => ir(29), b3 => wadr(3), a4 => ir(30), b4 => wadr(4), a5 => hi2, b5 => destmd);
   mctl_4b19 : sn74s258 port map(sel => clk4e, d0 => wadr(0), d1 => ir(26), dy => \-madr0a\, c0 => wadr(1), c1 => ir(27), cy => \-madr1a\, by => \-madr2a\, b1 => ir(28), b0 => wadr(2), ay => \-madr3a\, a1 => ir(29), a0 => wadr(3), enb_n => gnd);
-  mctl_4b20 : ic_res20 port map(r2 => mmemparity, r3 => mmem(31), r4 => mmem(30), r5 => mmem(29), r6 => mmem(28), r7 => mmem(27), r8 => mmem(26), r9 => mmem(25), r11 => mmem(24), r12 => mmem(23), r13 => mmem(22), r14 => mmem(21), r15 => mmem(20), r16 => mmem(19), r17 => mmem(18), r18 => mmem(17), r19 => mmem(16), r10 => '0');
+  mctl_4b20 : res20 port map(r2 => mmemparity, r3 => mmem(31), r4 => mmem(30), r5 => mmem(29), r6 => mmem(28), r7 => mmem(27), r8 => mmem(26), r9 => mmem(25), r11 => mmem(24), r12 => mmem(23), r13 => mmem(22), r14 => mmem(21), r15 => mmem(20), r16 => mmem(19), r17 => mmem(18), r18 => mmem(17), r19 => mmem(16));
   mctl_4b22 : sn74s37 port map(g1a => destmd, g1b => wp4b, g1y => \-mwpa\, g2a => destmd, g2b => wp4b, g2y => \-mwpb\, g3a => '0', g3b => '0', g4a => '0', g4b => '0');
 
   mmem_4a21 : ic_82s21 port map(wclk_n => \-mwpa\, we0_n => gnd, i0 => l(16), a4 => \-madr4a\, ce => hi3, strobe => hi3, d0 => mmem(16), d1 => mmem(17), a3 => \-madr3a\, a2 => \-madr2a\, a1 => \-madr1a\, a0 => \-madr0a\, i1 => l(17), we1_n => gnd);
@@ -1348,10 +1348,10 @@ begin
   mskg4_2d26 : sn74s04 port map(g1a => nc(253), g1q_n => nc(254), g2a => ir(31), g2q_n => \-ir31\, g3a => ir(13), g3q_n => \-ir13\, g4q_n => \-ir12\, g4a => ir(12), g5q_n => nc(255), g5a => nc(256), g6q_n => nc(257), g6a => nc(258));
   mskg4_2e11 : ic_5600 port map(o0 => msk(16), o1 => msk(17), o2 => msk(18), o3 => msk(19), o4 => msk(20), o5 => msk(21), o6 => msk(22), o7 => msk(23), a0 => mskl0, a1 => mskl1, a2 => mskl2, a3 => mskl3, a4 => mskl4, ce_n => gnd);
   mskg4_2e12 : ic_5600 port map(o0 => msk(16), o1 => msk(17), o2 => msk(18), o3 => msk(19), o4 => msk(20), o5 => msk(21), o6 => msk(22), o7 => msk(23), a0 => mskr0, a1 => mskr1, a2 => mskr2, a3 => mskr3, a4 => mskr4, ce_n => gnd);
-  mskg4_2e15 : ic_res20 port map(r2 => aeqm, r3 => msk(31), r4 => msk(30), r5 => msk(29), r6 => msk(28), r7 => msk(27), r8 => msk(26), r9 => msk(25), r11 => msk(24), r12 => msk(23), r13 => msk(22), r14 => msk(21), r15 => msk(20), r16 => msk(19), r17 => msk(18), r18 => msk(17), r19 => msk(16), r10 => '0');
+  mskg4_2e15 : res20 port map(r2 => aeqm, r3 => msk(31), r4 => msk(30), r5 => msk(29), r6 => msk(28), r7 => msk(27), r8 => msk(26), r9 => msk(25), r11 => msk(24), r12 => msk(23), r13 => msk(22), r14 => msk(21), r15 => msk(20), r16 => msk(19), r17 => msk(18), r18 => msk(17), r19 => msk(16));
   mskg4_2e16 : ic_5600 port map(o0 => msk(0), o1 => msk(1), o2 => msk(2), o3 => msk(3), o4 => msk(4), o5 => msk(5), o6 => msk(6), o7 => msk(7), a0 => mskl0, a1 => mskl1, a2 => mskl2, a3 => mskl3, a4 => mskl4, ce_n => gnd);
   mskg4_2e17 : ic_5600 port map(o0 => msk(0), o1 => msk(1), o2 => msk(2), o3 => msk(3), o4 => msk(4), o5 => msk(5), o6 => msk(6), o7 => msk(7), a0 => mskr0, a1 => mskr1, a2 => mskr2, a3 => mskr3, a4 => mskr4, ce_n => gnd);
-  mskg4_2e20 : ic_res20 port map(r2 => nc(252), r3 => msk(15), r4 => msk(14), r5 => msk(13), r6 => msk(12), r7 => msk(11), r8 => msk(10), r9 => msk(9), r11 => msk(8), r12 => msk(7), r13 => msk(6), r14 => msk(5), r15 => msk(4), r16 => msk(3), r17 => msk(2), r18 => msk(1), r19 => msk(0), r10 => '0');
+  mskg4_2e20 : res20 port map(r2 => nc(252), r3 => msk(15), r4 => msk(14), r5 => msk(13), r6 => msk(12), r7 => msk(11), r8 => msk(10), r9 => msk(9), r11 => msk(8), r12 => msk(7), r13 => msk(6), r14 => msk(5), r15 => msk(4), r16 => msk(3), r17 => msk(2), r18 => msk(1), r19 => msk(0));
 
   --- The ALU
 
@@ -1525,11 +1525,11 @@ begin
   spc_4e21 : ic_82s21 port map(wclk_n => \-swpa\, we0_n => gnd, i0 => spcw(14), a4 => spcptr4, ce => hi1, strobe => hi1, d0 => spco(14), d1 => spco(15), a3 => spcptr3, a2 => spcptr2, a1 => spcptr1, a0 => spcptr0, i1 => spcw(15), we1_n => gnd);
   spc_4e22 : ic_82s21 port map(wclk_n => \-swpa\, we0_n => gnd, i0 => spcw(12), a4 => spcptr4, ce => hi1, strobe => hi1, d0 => spco(12), d1 => spco(13), a3 => spcptr3, a2 => spcptr2, a1 => spcptr1, a0 => spcptr0, i1 => spcw(13), we1_n => gnd);
   spc_4e23 : ic_82s21 port map(wclk_n => \-swpa\, we0_n => gnd, i0 => spcw(10), a4 => spcptr4, ce => hi1, strobe => hi1, d0 => spco(10), d1 => spco(11), a3 => spcptr3, a2 => spcptr2, a1 => spcptr1, a0 => spcptr0, i1 => spcw(11), we1_n => gnd);
-  spc_4e24 : ic_res20 port map(r2 => spcopar, r3 => spco(18), r4 => spco(17), r5 => spco(16), r6 => spco(15), r7 => hi1, r8 => hi2, r9 => hi3, r11 => hi4, r12 => hi5, r13 => hi6, r14 => hi7, r15 => spco(14), r16 => spco(13), r17 => spco(12), r18 => spco(11), r19 => spco(10), r10 => '0');
+  spc_4e24 : res20 port map(r2 => spcopar, r3 => spco(18), r4 => spco(17), r5 => spco(16), r6 => spco(15), r7 => hi1, r8 => hi2, r9 => hi3, r11 => hi4, r12 => hi5, r13 => hi6, r14 => hi7, r15 => spco(14), r16 => spco(13), r17 => spco(12), r18 => spco(11), r19 => spco(10));
   spc_4e26 : ic_82s21 port map(wclk_n => \-swpb\, we0_n => gnd, i0 => spcw(4), a4 => spcptr4, ce => hi1, strobe => hi1, d0 => spco(4), d1 => spco(5), a3 => spcptr3, a2 => spcptr2, a1 => spcptr1, a0 => spcptr0, i1 => spcw(5), we1_n => gnd);
   spc_4e27 : ic_82s21 port map(wclk_n => \-swpb\, we0_n => gnd, i0 => spcw(2), a4 => spcptr4, ce => hi1, strobe => hi1, d0 => spco(2), d1 => spco(3), a3 => spcptr3, a2 => spcptr2, a1 => spcptr1, a0 => spcptr0, i1 => spcw(3), we1_n => gnd);
   spc_4e28 : ic_82s21 port map(wclk_n => \-swpb\, we0_n => gnd, i0 => spcw(0), a4 => spcptr4, ce => hi1, strobe => hi1, d0 => spco(0), d1 => spco(1), a3 => spcptr3, a2 => spcptr2, a1 => spcptr1, a0 => spcptr0, i1 => spcw(1), we1_n => gnd);
-  spc_4e29 : ic_res20 port map(r2 => spco(9), r3 => spco(8), r4 => spco(7), r5 => spco(6), r6 => spco(5), r7 => hi8, r8 => hi9, r9 => hi10, r11 => hi11, r12 => hi12, r13 => nc(182), r14 => nc(183), r15 => spco(4), r16 => spco(3), r17 => spco(2), r18 => spco(1), r19 => spco(0), r10 => '0');
+  spc_4e29 : res20 port map(r2 => spco(9), r3 => spco(8), r4 => spco(7), r5 => spco(6), r6 => spco(5), r7 => hi8, r8 => hi9, r9 => hi10, r11 => hi11, r12 => hi12, r13 => nc(182), r14 => nc(183), r15 => spco(4), r16 => spco(3), r17 => spco(2), r18 => spco(1), r19 => spco(0));
   spc_4f23 : sn74s169 port map(up_dn => spush, clk => clk4f, i0 => nc(192), i1 => nc(193), i2 => nc(194), i3 => nc(195), enb_p_n => gnd, load_n => hi1, enb_t_n => \-spcnt\, o3 => spcptr3, o2 => spcptr2, o1 => spcptr1, o0 => spcptr0, co_n => \-spccry\);
   spc_4f24 : ic_82s21 port map(wclk_n => \-swpa\, we0_n => gnd, i0 => spcw(18), a4 => spcptr4, ce => hi1, strobe => hi1, d0 => spco(18), d1 => spcopar, a3 => spcptr3, a2 => spcptr2, a1 => spcptr1, a0 => spcptr0, i1 => spcwpar, we1_n => gnd);
   spc_4f25 : ic_82s21 port map(wclk_n => \-swpa\, we0_n => gnd, i0 => spcw(16), a4 => spcptr4, ce => hi1, strobe => hi1, d0 => spco(16), d1 => spco(17), a3 => spcptr3, a2 => spcptr2, a1 => spcptr1, a0 => spcptr0, i1 => spcw(17), we1_n => gnd);
@@ -1922,10 +1922,10 @@ begin
   mo1_2d18 : sn74s151 port map(i3 => alu(17), i2 => alu(17), i1 => r(17), i0 => a17, q => ob(17), q_n => nc(260), ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk(17), i7 => alu(16), i6 => alu(16), i5 => alu(18), i4 => alu(18));
   mo1_2d19 : sn74s151 port map(i3 => alu(16), i2 => alu(16), i1 => r(16), i0 => a16, q => ob(16), q_n => nc(259), ce_n => gnd, sel2 => osel1a, sel1 => osel0a, sel0 => msk(16), i7 => alu(15), i6 => alu(15), i5 => alu(17), i4 => alu(17));
 
-  bcterm_1b15 : ic_sip220_330_8 port map(r2 => mem(0), r3 => mem(1), r4 => mem(2), r5 => mem(3), r6 => mem(4), r7 => mem(5));
-  bcterm_1b20 : ic_sip220_330_8 port map(r2 => mem(12), r3 => mem(13), r4 => mem(14), r5 => mem(15), r6 => mem(16), r7 => mem(17));
-  bcterm_1b25 : ic_sip220_330_8 port map(r2 => mem(24), r3 => mem(25), r4 => mem(26), r5 => mem(27), r6 => mem(28), r7 => mem(29));
-  bcterm_2c25 : ic_sip330_470_8 port map(r2 => \-memgrant\, r3 => int, r4 => \-loadmd\, r5 => \-ignpar\, r6 => \-memack\, r7 => nc(431));
+  bcterm_1b15 : sip220_330_8 port map(r2 => mem(0), r3 => mem(1), r4 => mem(2), r5 => mem(3), r6 => mem(4), r7 => mem(5));
+  bcterm_1b20 : sip220_330_8 port map(r2 => mem(12), r3 => mem(13), r4 => mem(14), r5 => mem(15), r6 => mem(16), r7 => mem(17));
+  bcterm_1b25 : sip220_330_8 port map(r2 => mem(24), r3 => mem(25), r4 => mem(26), r5 => mem(27), r6 => mem(28), r7 => mem(29));
+  bcterm_2c25 : sip330_470_8 port map(r2 => \-memgrant\, r3 => int, r4 => \-loadmd\, r5 => \-ignpar\, r6 => \-memack\, r7 => nc(431));
 
   ipar_3e02 : am93s48 port map(i6 => ir(41), i5 => ir(42), i4 => ir(43), i3 => ir(44), i2 => ir(45), i1 => ir(46), i0 => ir(47), po => ipar3, pe => nc(381), i11 => ir(36), i10 => ir(37), i9 => ir(38), i8 => ir(39), i7 => ir(40));
   ipar_3e04 : am93s48 port map(i6 => ir(5), i5 => ir(6), i4 => ir(7), i3 => ir(8), i2 => ir(9), i1 => ir(10), i0 => ir(11), po => ipar0, pe => nc(384), i11 => ir(0), i10 => ir(1), i9 => ir(2), i8 => ir(3), i7 => ir(4));

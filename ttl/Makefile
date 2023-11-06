@@ -20,9 +20,6 @@ ic_9328.vhd \
 ic_93425a.vhd \
 ic_9346.vhd \
 ic_942_1.vhd \
-ic_res20.vhd \
-ic_sip220_330_8.vhd \
-ic_sip330_470_8.vhd \
  \
 sn74109.vhd \
 sn74133.vhd \
@@ -75,6 +72,9 @@ other.vhd \
  td250.vhd \
  am93s48.vhd \
  til309.vhd \
+ res20.vhd \
+ sip220_330_8.vhd \
+ sip330_470_8.vhd \
 sn74.vhd \
  $(SN74_SRCS) \
 unsorted.vhd \
