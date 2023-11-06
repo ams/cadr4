@@ -1,8 +1,10 @@
+-- Six-Bit Register with Common Clock Enable
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity ic_2507 is
+entity am2507 is
   port (
     i0    : in  std_logic;
     i1    : in  std_logic;
@@ -19,9 +21,9 @@ entity ic_2507 is
     clk   : in  std_logic;
     enb_n : in  std_logic
     );
-end ic_2507;
+end am2507;
 
-architecture ttl of ic_2507 is
+architecture ttl of am2507 is
 begin
 
 end ttl;

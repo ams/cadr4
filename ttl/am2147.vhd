@@ -1,8 +1,10 @@
+-- 4096 X 1 Static RAM
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity ic_2147 is
+entity am2147 is
   port (
     a0   : in  std_logic;
     a1   : in  std_logic;
@@ -21,9 +23,9 @@ entity ic_2147 is
     a7   : in  std_logic;
     a6   : in  std_logic
     );
-end ic_2147;
+end am2147;
 
-architecture ttl of ic_2147 is
+architecture ttl of am2147 is
 begin
 
 end ttl;
