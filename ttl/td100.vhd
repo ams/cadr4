@@ -6,7 +6,7 @@ use ieee.numeric_std.all;
 
 entity td100 is
   port (
-    clk     : in  std_logic;
+    input   : in  std_logic;
     o_20ns  : out std_logic;
     o_40ns  : out std_logic;
     o_60ns  : out std_logic;
@@ -28,9 +28,9 @@ begin
     wait;
   end process;
 
-  process (clk) is
+  process (input) is
   begin
-    if rising_edge(clk) then
+    if rising_edge(input) then
       o_20ns  <= '1' after 20 ms;
       o_40ns  <= '1' after 40 ms;
       o_60ns  <= '1' after 60 ms;
@@ -39,9 +39,9 @@ begin
     end if;
   end process;
 
-  process (clk) is
+  process (input) is
   begin
-    if falling_edge(clk) then
+    if falling_edge(input) then
       o_20ns  <= '0' after 20 ms;
       o_40ns  <= '0' after 40 ms;
       o_60ns  <= '0' after 60 ms;
