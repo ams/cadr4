@@ -23,7 +23,7 @@ begin
   begin
     wait for 5 ns;
 
----!!!
+    report "Testbench not implemented!" severity warning;
 
     wait;
   end process;

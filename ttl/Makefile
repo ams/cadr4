@@ -13,7 +13,23 @@ ic_9328.vhd \
 ic_93425a.vhd \
 ic_9346.vhd \
 ic_942_1.vhd \
+
+SN74_SRCS	= \
+sn7400.vhd \
+sn7402.vhd \
+sn7404.vhd \
+sn7408.vhd \
+sn7410.vhd \
+sn7411.vhd \
+sn7420.vhd \
+sn7428.vhd \
+sn7432.vhd \
+sn7437.vhd \
+sn7451.vhd \
  \
+sn7486.vhd \
+sn74260.vhd \
+sn74240.vhd \
 sn74109.vhd \
 sn74133.vhd \
 sn74138.vhd \
@@ -39,26 +55,7 @@ sn74472.vhd \
 sn7464.vhd \
 sn7474.vhd
 
-SN74_SRCS	= \
-sn7400.vhd \
-sn7402.vhd \
-sn7404.vhd \
-sn7408.vhd \
-sn7410.vhd \
-sn7411.vhd \
-sn7420.vhd \
-sn7428.vhd \
-sn7432.vhd \
-sn7437.vhd \
-sn7451.vhd \
- \
-sn7486.vhd \
-sn74260.vhd \
-sn74240.vhd					
-
-SRCS_VHD	= \
-misc.vhd \
-other.vhd \
+OTHER_SRCS = \
  td25.vhd \
  td50.vhd \
  td100.vhd \
@@ -72,13 +69,22 @@ other.vhd \
  til309.vhd \
  res20.vhd \
  sip220_330_8.vhd \
- sip330_470_8.vhd \
+ sip330_470_8.vhd
+
+MISC_SRCS = \
+  ff_jk.vhd
+
+SRCS_VHD	= \
+misc.vhd \
+  $(MISC_SRCS) \
+other.vhd \
+ $(OTHER_SRCS) \
 sn74.vhd \
  $(SN74_SRCS) \
 unsorted.vhd \
  $(UNSORTED_SRCS) \
 
-TB_SRCS_VHD	= $(addsuffix _tb.vhd, $(basename $(SN74_SRCS)))
+TB_SRCS_VHD	= $(addsuffix _tb.vhd, $(basename $(SN74_SRCS) $(MISC_SRCS) $(OTHER_SRCS)))
 TESTBENCHES	= $(basename $(TB_SRCS_VHD))
 
 include ~/hdlmake.mk/hdlmake.mk
