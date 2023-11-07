@@ -1,0 +1,498 @@
+* TODO TTLs [0/60]
+
+Header template for files:
+
+
+    --- filename.vdhd --- One line description of component
+    ---
+    ---        Functional Table
+    ---        +--IN--+--OUT--+
+    ---        |  H   |   L   |
+    ---        |  L   |   H   |
+    ---        |  X   |   X   |
+    ---        +--------------+
+    ---
+    --- References:
+    ---   + URL
+    ---   + doc/foo.pdf
+
+** TODO sn74s10 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s00 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s02 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO td50 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO td25 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s151 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO td100 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn7428 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s08 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s37 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s04 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s133 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO dm9s42_1 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s139 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO am2147 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s374 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74ls244 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s32 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s20 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s260 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO til309 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s472 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO am25s09 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s138 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s258 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO dm93s46 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s174 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s11 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO am93425a [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s373 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s241 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO am93s48 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO res20 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO dm82s21 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s169 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO am25s07 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s175 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s51 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s283 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO am25s10 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO im5600 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s182 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s153 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s181 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s194 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO im5610 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s86 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s280 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s64 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO am25ls2519 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s157 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s240 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74s74 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO td250 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74ls109 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO ic_16dummy [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sn74ls14 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO dm9328 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sip220_330_8 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO sip330_470_8 [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
