@@ -63,7 +63,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s151 [0/5]
  - [ ] Store datasheet and upstream URL.
-	https://www.ti.com/lit/ds/symlink/sn74s151.pdf
+	https://www.ti.com/lit/ds/symlink/sn74ls151.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -141,6 +141,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO am2147 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://web.stanford.edu/class/ee183/datasheets/sram.pdf --- secondary, this is for the 2147
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -194,13 +195,14 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO til309 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.datasheetarchive.com/datasheet?id=a86f7a166b23f57a70b3523a390a0a4b351ff1&type=M&term=til308 -- secondary
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s472 [0/5]
+** TODO sn74s472 [0/5] --- should be dm?
  - [ ] Store datasheet and upstream URL.
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
@@ -210,6 +212,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO am25s09 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://datasheetspdf.com/pdf-file/520166/AMD/AM25S09/1 -- secondary
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -227,7 +230,8 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s258 [0/5]
  - [ ] Store datasheet and upstream URL.
-	https://www.ti.com/lit/ds/symlink/sn74f258.pdf 
+IS THIS RIGHT?	https://www.ti.com/lit/ds/symlink/sn74f258.pdf
+	https://www.digchip.com/datasheets/parts/datasheet/477/SN74S258-pdf.php -- secondary
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -236,6 +240,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO dm93s46 [0/5]
  - [ ] Store datasheet and upstream URL.
+https://digchip.com/datasheets/parts/datasheet/321/DM93S46-pdf.php -- secondary
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -389,7 +394,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s181 [0/5]
  - [ ] Store datasheet and upstream URL.
-	https://www.ti.com/lit/ds/symlink/sn74ls181.pdf
+BROKEN	https://www.ti.com/lit/ds/symlink/sn74ls181.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -415,7 +420,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s86 [0/5]
  - [ ] Store datasheet and upstream URL.
-	https://www.ti.com/lit/ds/symlink/sn74s86.pdf
+	https://www.ti.com/lit/ds/symlink/sn54s86.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -424,7 +429,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s280 [0/5]
  - [ ] Store datasheet and upstream URL.
-	https://www.ti.com/lit/ds/symlink/sn74s280.pdf
+	https://www.ti.com/lit/ds/symlink/sn54ls280.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
