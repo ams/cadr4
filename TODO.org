@@ -1,3 +1,5 @@
+TODO List for the CADR4 project
+
 * TODO TTLs [0/60]
 
 Header template for files:
@@ -6,11 +8,11 @@ Header template for files:
     --- filename.vdhd --- One line description of component
     ---
     ---        Functional Table
-    ---        +--IN--+--OUT--+
+    ---        |  IN  |  OUT  |
+    ---        |------+-------|
     ---        |  H   |   L   |
     ---        |  L   |   H   |
     ---        |  X   |   X   |
-    ---        +--------------+
     ---
     --- References:
     ---   + URL
@@ -18,6 +20,7 @@ Header template for files:
 
 ** TODO sn74s10 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn74s10.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -26,6 +29,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s00 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn74s00.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -34,6 +38,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s02 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn74s02.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -58,6 +63,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s151 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn74s151.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -74,6 +80,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn7428 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn5428.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -82,6 +89,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s08 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn74s08.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -90,6 +98,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s37 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn74s37.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -98,6 +107,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s04 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn74s04.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -122,6 +132,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s139 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn54ls139a-sp.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -138,6 +149,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s374 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn74s374.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -146,6 +158,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74ls244 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn74ls244.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -154,6 +167,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s32 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn74s32.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -162,6 +176,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s20 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn74s20.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -170,6 +185,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s260 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn74s260.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -202,6 +218,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s138 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn74ls138.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -210,6 +227,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s258 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn74f258.pdf 
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -226,6 +244,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s174 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn74ls174.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -234,6 +253,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s11 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn74ls11.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -250,6 +270,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s373 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn74s373.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -258,6 +279,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s241 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn74s241.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -306,6 +328,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s175 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn74s175.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -314,6 +337,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s51 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn74s51.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -322,6 +346,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s283 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn74s283.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -346,6 +371,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s182 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn54s182.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -354,6 +380,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s153 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn74ls153.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -362,6 +389,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s181 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn74ls181.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -370,6 +398,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s194 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn74ls194a.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -386,6 +415,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s86 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn74s86.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -394,6 +424,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s280 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn74s280.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -418,6 +449,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s157 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn74ls157.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -426,6 +458,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s240 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn74s240.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -434,6 +467,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74s74 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn74s74.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -450,6 +484,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74ls109 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn74ls109a.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -466,6 +501,7 @@ Header template for files:
  - [ ] Implement rudimentary testbench
 ** TODO sn74ls14 [0/5]
  - [ ] Store datasheet and upstream URL.
+	https://www.ti.com/lit/ds/symlink/sn74ls14.pdf
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
