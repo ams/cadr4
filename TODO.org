@@ -44,7 +44,7 @@ Header template for files:
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO td25 [0/5]
+** TODO td25 (DELAY 50NS INCS) [0/5]
  - [ ] Store datasheet and upstream URL.
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
@@ -52,7 +52,7 @@ Header template for files:
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO td50 [0/5]
+** TODO td50 (DELAY 10NS INCS) [0/5]
  - [ ] Store datasheet and upstream URL.
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
@@ -60,7 +60,7 @@ Header template for files:
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO td100 [0/5]
+** TODO td100 (DELAY 20NS INCS) [0/5]
  - [ ] Store datasheet and upstream URL.
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
@@ -68,8 +68,7 @@ Header template for files:
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-
-** TODO td250 [0/5]
+** TODO td250 (DELAY 50NS INCS) [0/5]
  - [ ] Store datasheet and upstream URL.
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
@@ -77,7 +76,7 @@ Header template for files:
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s151 [1/5]
+** TODO sn74s151 (8 IN SELECT) [1/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74ls151.pdf
  - [ ] Implement skeleton component.
@@ -104,7 +103,7 @@ Header template for files:
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s37 [1/5]
+** TODO sn74s37 (OCT LATCH) [1/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74s37.pdf
  - [ ] Implement skeleton component.
@@ -131,7 +130,7 @@ Header template for files:
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO dm9s42_1 [0/5]
+** TODO dm9s42_1 (DUAL 4-2 AND/OR) [0/5]
  - [ ] Store datasheet and upstream URL.
 https://rocelec.widen.net/view/pdf/lkdtgew4vv/FAIRS32638-1.pdf?t.download=true&u=5oefqw
  - [ ] Implement skeleton component.
@@ -140,7 +139,7 @@ https://rocelec.widen.net/view/pdf/lkdtgew4vv/FAIRS32638-1.pdf?t.download=true&u
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s139 [1/5]
+** TODO sn74s139 (4 WAY DECODE) [1/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn54ls139a-sp.pdf
  - [ ] Implement skeleton component.
@@ -149,7 +148,7 @@ https://rocelec.widen.net/view/pdf/lkdtgew4vv/FAIRS32638-1.pdf?t.download=true&u
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO am2147 [0/5]
+** TODO am2147 (4K RAM) [0/5]
  - [ ] Store datasheet and upstream URL.
 https://web.stanford.edu/class/ee183/datasheets/sram.pdf --- secondary, this is for the 2147
  - [ ] Implement skeleton component.
@@ -158,7 +157,7 @@ https://web.stanford.edu/class/ee183/datasheets/sram.pdf --- secondary, this is 
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s374 [1/5]
+** TODO sn74s374 (OCT REG) [1/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74s374.pdf
  - [ ] Implement skeleton component.
@@ -167,7 +166,7 @@ https://web.stanford.edu/class/ee183/datasheets/sram.pdf --- secondary, this is 
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74ls244 [1/5]
+** TODO sn74ls244 (TS BUS DVR) [1/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74ls244.pdf
  - [ ] Implement skeleton component.
@@ -185,7 +184,7 @@ https://web.stanford.edu/class/ee183/datasheets/sram.pdf --- secondary, this is 
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s20 [1/5]
+** TODO sn74s20 (TS BUS DVR) [1/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74s20.pdf
  - [ ] Implement skeleton component.
@@ -194,7 +193,7 @@ https://web.stanford.edu/class/ee183/datasheets/sram.pdf --- secondary, this is 
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s260 [1/5]
+** TODO sn74s260 (74S260O) [1/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74s260.pdf
  - [ ] Implement skeleton component.
@@ -203,7 +202,7 @@ https://web.stanford.edu/class/ee183/datasheets/sram.pdf --- secondary, this is 
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO til309 [0/5]
+** TODO til309 (LED DISPLAY) [0/5]
  - [ ] Store datasheet and upstream URL.
 https://www.datasheetarchive.com/datasheet?id=a86f7a166b23f57a70b3523a390a0a4b351ff1&type=M&term=til308 -- secondary
  - [ ] Implement skeleton component.
@@ -212,7 +211,7 @@ https://www.datasheetarchive.com/datasheet?id=a86f7a166b23f57a70b3523a390a0a4b35
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s472 [0/5]
+** TODO sn74s472 (512X8 TS PROM) [0/5]
 should be dm?
 https://www.electronicsdatasheets.com/manufacturers/rochester-electronics/parts/74s472an
  - [ ] Store datasheet and upstream URL.
@@ -222,7 +221,7 @@ https://www.electronicsdatasheets.com/manufacturers/rochester-electronics/parts/
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO am25s09 [0/5]
+** TODO am25s09 (QUAD 2 IN SEL-D FF) [0/5]
  - [ ] Store datasheet and upstream URL.
 https://datasheetspdf.com/pdf-file/520166/AMD/AM25S09/1 -- secondary
  - [ ] Implement skeleton component.
@@ -231,7 +230,7 @@ https://datasheetspdf.com/pdf-file/520166/AMD/AM25S09/1 -- secondary
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s138 [1/5]
+** TODO sn74s138 (3-8 DECODE) [1/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74ls138.pdf
  - [ ] Implement skeleton component.
@@ -240,7 +239,7 @@ https://datasheetspdf.com/pdf-file/520166/AMD/AM25S09/1 -- secondary
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s258 [0/5]
+** TODO sn74s258 (QUAD 2 IN INV SELECT) [0/5]
  - [ ] Store datasheet and upstream URL.
 IS THIS RIGHT?	https://www.ti.com/lit/ds/symlink/sn74f258.pdf
 https://www.digchip.com/datasheets/parts/datasheet/477/SN74S258-pdf.php -- secondary
@@ -250,7 +249,7 @@ https://www.digchip.com/datasheets/parts/datasheet/477/SN74S258-pdf.php -- secon
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO dm93s46 [0/5]
+** TODO dm93s46 (6 BIT =) [0/5]
  - [ ] Store datasheet and upstream URL.
 https://digchip.com/datasheets/parts/datasheet/321/DM93S46-pdf.php -- secondary
  - [ ] Implement skeleton component.
@@ -259,7 +258,7 @@ https://digchip.com/datasheets/parts/datasheet/321/DM93S46-pdf.php -- secondary
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s174 [1/5]
+** TODO sn74s174 (HEX FF) [1/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74ls174.pdf
  - [ ] Implement skeleton component.
@@ -277,7 +276,7 @@ https://digchip.com/datasheets/parts/datasheet/321/DM93S46-pdf.php -- secondary
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO am93425a [0/5]
+** TODO am93425a (1K X 1 RAM) [0/5]
  - [ ] Store datasheet and upstream URL.
 http://www.bitsavers.org/components/amd/_dataBooks/1982_AMD_Bipolar_MOS_Memories_Data_Book.pdf
  - [ ] Implement skeleton component.
@@ -286,7 +285,7 @@ http://www.bitsavers.org/components/amd/_dataBooks/1982_AMD_Bipolar_MOS_Memories
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s373 [1/5]
+** TODO sn74s373 (OCT LATCH) [1/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74s373.pdf
  - [ ] Implement skeleton component.
@@ -295,7 +294,7 @@ http://www.bitsavers.org/components/amd/_dataBooks/1982_AMD_Bipolar_MOS_Memories
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s241 [1/5]
+** TODO sn74s241 (TS BUS DVR) [1/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74s241.pdf
  - [ ] Implement skeleton component.
@@ -304,7 +303,7 @@ http://www.bitsavers.org/components/amd/_dataBooks/1982_AMD_Bipolar_MOS_Memories
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO am93s48 [0/5]
+** TODO am93s48 (12 IN PARITY) [0/5]
  - [ ] Store datasheet and upstream URL.
 https://rocelec.widen.net/view/pdf/inqefoehbr/AMDIS02355-1.pdf
  - [ ] Implement skeleton component.
@@ -321,7 +320,7 @@ https://rocelec.widen.net/view/pdf/inqefoehbr/AMDIS02355-1.pdf
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO dm82s21 [0/5]
+** TODO dm82s21 (32 X 2 RAM) [0/5]
 ??? 82S21 - Signetics 32x2 SRAM
  - [ ] Store datasheet and upstream URL.
  - [ ] Implement skeleton component.
@@ -330,7 +329,7 @@ https://rocelec.widen.net/view/pdf/inqefoehbr/AMDIS02355-1.pdf
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s169 [1/5]
+** TODO sn74s169 (UP/DOWN CTR) [1/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74ls169b.pdf
  - [ ] Implement skeleton component.
@@ -339,7 +338,7 @@ https://rocelec.widen.net/view/pdf/inqefoehbr/AMDIS02355-1.pdf
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO am25s07 [0/5]
+** TODO am25s07 (HEX FF) [0/5]
  - [ ] Store datasheet and upstream URL.
 https://www.datasheetarchive.com/pdf/download/distributors/Datasheets-115/DSAP00464.pdf?h=47c4a49544e2d7e13c61599cb6dee4de%3Ad9e38692982dffbf8b%3A5f134e0a85a96c64fdcf1426f6c7a138
  - [ ] Implement skeleton component.
@@ -348,7 +347,7 @@ https://www.datasheetarchive.com/pdf/download/distributors/Datasheets-115/DSAP00
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s175 [1/5]
+** TODO sn74s175 (QUAD FF) [1/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74s175.pdf
  - [ ] Implement skeleton component.
@@ -366,7 +365,7 @@ https://www.datasheetarchive.com/pdf/download/distributors/Datasheets-115/DSAP00
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s283 [1/5]
+** TODO sn74s283 (4 BIT ADD) [1/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74s283.pdf
  - [ ] Implement skeleton component.
@@ -375,7 +374,7 @@ https://www.datasheetarchive.com/pdf/download/distributors/Datasheets-115/DSAP00
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO am25s10 [0/5]
+** TODO am25s10 (4 BIT SHIFTER) [0/5]
  - [ ] Store datasheet and upstream URL.
 https://pdf.datasheetcatalog.com/datasheets/320/501505_DS.pdf
  - [ ] Implement skeleton component.
@@ -384,7 +383,7 @@ https://pdf.datasheetcatalog.com/datasheets/320/501505_DS.pdf
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO im5600 [0/5]
+** TODO im5600 (32X8 PROM) [0/5]
  - [ ] Store datasheet and upstream URL.
 https://www.digchip.com/datasheets/parts/datasheet/235/IM5600-pdf.php
  - [ ] Implement skeleton component.
@@ -393,7 +392,7 @@ https://www.digchip.com/datasheets/parts/datasheet/235/IM5600-pdf.php
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s182 [1/5]
+** TODO sn74s182 (CARRY NET) [1/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn54s182.pdf
  - [ ] Implement skeleton component.
@@ -402,7 +401,7 @@ https://www.digchip.com/datasheets/parts/datasheet/235/IM5600-pdf.php
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s153 [1/5]
+** TODO sn74s153 (DUAL 4-1 SELECT) [1/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74ls153.pdf
  - [ ] Implement skeleton component.
@@ -411,7 +410,7 @@ https://www.digchip.com/datasheets/parts/datasheet/235/IM5600-pdf.php
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s181 [1/5]
+** TODO sn74s181 (ALU) [1/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn54ls181.pd
  - [ ] Implement skeleton component.
@@ -420,7 +419,7 @@ https://www.digchip.com/datasheets/parts/datasheet/235/IM5600-pdf.php
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s194 [1/5]
+** TODO sn74s194 (4 BIT SR) [1/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74ls194a.pdf
  - [ ] Implement skeleton component.
@@ -429,7 +428,7 @@ https://www.digchip.com/datasheets/parts/datasheet/235/IM5600-pdf.php
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO im5610 [0/5]
+** TODO im5610 (32X8 PROM) [0/5]
  - [ ] Store datasheet and upstream URL.
 https://www.digchip.com/datasheets/parts/datasheet/235/IM5610-pdf.php
  - [ ] Implement skeleton component.
@@ -447,7 +446,7 @@ https://www.digchip.com/datasheets/parts/datasheet/235/IM5610-pdf.php
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s280 [1/5]
+** TODO sn74s280 (9 INPUT PARITY) [1/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn54ls280.pdf
  - [ ] Implement skeleton component.
@@ -456,7 +455,7 @@ https://www.digchip.com/datasheets/parts/datasheet/235/IM5610-pdf.php
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s64 [1/5]
+** TODO sn74s64 (AOI) [1/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn54s64.pdf
  - [ ] Implement skeleton component.
@@ -465,7 +464,7 @@ https://www.digchip.com/datasheets/parts/datasheet/235/IM5610-pdf.php
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO am25ls2519 [0/5]
+** TODO am25ls2519 (QUAD REG DUAL OUTPUT) [0/5]
  - [ ] Store datasheet and upstream URL.
 https://digchip.com/datasheets/parts/datasheet/013/AM25LS2519-pdf.php
  - [ ] Implement skeleton component.
@@ -474,7 +473,7 @@ https://digchip.com/datasheets/parts/datasheet/013/AM25LS2519-pdf.php
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s157 [1/5]
+** TODO sn74s157 (QUAD 2 IN SELECT) [1/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74ls157.pdf
  - [ ] Implement skeleton component.
@@ -483,7 +482,7 @@ https://digchip.com/datasheets/parts/datasheet/013/AM25LS2519-pdf.php
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s240 [1/5]
+** TODO sn74s240 (TS BUS DVR) [1/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74s240.pdf
  - [ ] Implement skeleton component.
@@ -527,7 +526,7 @@ https://digchip.com/datasheets/parts/datasheet/013/AM25LS2519-pdf.php
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO dm9328 [0/5]
+** TODO dm9328 (DUAL 8 BIT SHIFT REG) [0/5]
  - [ ] Store datasheet and upstream URL.
 https://www.datasheetq.com/pdf-view/DM9328-Fairchild
  - [ ] Implement skeleton component.
@@ -536,7 +535,7 @@ https://www.datasheetq.com/pdf-view/DM9328-Fairchild
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sip220_330_8 [0/5]
+** TODO sip220_330_8 (220/330 OHM 8 PIN SIP TERM) [0/5]
  - [ ] Store datasheet and upstream URL.
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
@@ -544,7 +543,7 @@ https://www.datasheetq.com/pdf-view/DM9328-Fairchild
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sip330_470_8 [0/5]
+** TODO sip330_470_8 (330/470 OHM 8 PIN SIP TERM) [0/5]
  - [ ] Store datasheet and upstream URL.
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
