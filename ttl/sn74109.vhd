@@ -1,3 +1,5 @@
+-- Dual J-K Positive-Edge-Triggered Flip-Flops With Preset And Clear
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;

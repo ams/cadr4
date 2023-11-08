@@ -1,3 +1,5 @@
+-- Dual 2-Line To 4-Line Decoders/Demultiplexers
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;

@@ -17,525 +17,524 @@ Header template for files:
     ---   + URL
     ---   + doc/foo.pdf
 
-** TODO sn74s10 [1/5]
+** TODO sn74s10 [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74s10.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s00 [1/5]
+** TODO sn74s00 [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74s00.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s02 [1/5]
+** TODO sn74s02 [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74s02.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO td25 (DELAY 50NS INCS) [0/5]
+** TODO td25 (DELAY 50NS INCS) [2/5]
  - [ ] Store datasheet and upstream URL.
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO td50 (DELAY 10NS INCS) [0/5]
+** TODO td50 (DELAY 10NS INCS) [2/5]
  - [ ] Store datasheet and upstream URL.
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO td100 (DELAY 20NS INCS) [0/5]
+** TODO td100 (DELAY 20NS INCS) [2/5]
  - [ ] Store datasheet and upstream URL.
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO td250 (DELAY 50NS INCS) [0/5]
+** TODO td250 (DELAY 50NS INCS) [2/5]
  - [ ] Store datasheet and upstream URL.
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s151 (8 IN SELECT) [1/5]
+** TODO sn74s151 (8 IN SELECT) [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74ls151.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn7428 [1/5]
+** TODO sn7428 [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn5428.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s08 [1/5]
+** TODO sn74s08 [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74s08.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s37 (OCT LATCH) [1/5]
+** TODO sn74s37 (OCT LATCH) [3/5] -- IS THIS RIGHT?! SHOULDN'T THIS BE A SN74LS373 ?
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74s37.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s04 [1/5]
+** TODO sn74s04 [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74s04.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s133 [1/5]
+** TODO sn74s133 [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn54als133.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO dm9s42_1 (DUAL 4-2 AND/OR) [0/5]
+** TODO dm9s42_1 (DUAL 4-2 AND/OR) [2/5]
  - [ ] Store datasheet and upstream URL.
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s139 (4 WAY DECODE) [1/5]
+** TODO sn74s139 (4 WAY DECODE) [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn54ls139a-sp.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO am2147 (4K RAM) [1/5]
+** TODO am2147 (4K RAM) [3/5]
  - [X] Store datasheet and upstream URL.
 	https://web.stanford.edu/class/ee183/datasheets/sram.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s374 (OCT REG) [1/5]
+** TODO sn74s374 (OCT REG) [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74s374.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74ls244 (TS BUS DVR) [1/5]
+** TODO sn74ls244 (TS BUS DVR) [3/5] -- DOESN'T LOOK RIGHT ?
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74ls244.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s32 [1/5]
+** TODO sn74s32 [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74s32.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s20 (TS BUS DVR) [1/5]
+** TODO sn74s20 (TS BUS DVR) [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74s20.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s260 (74S260O) [1/5]
+** TODO sn74s260 [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74s260.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO til309 (LED DISPLAY) [1/5]
+** TODO til309 (LED DISPLAY) [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.datasheetarchive.com/datasheet?id=a86f7a166b23f57a70b3523a390a0a4b351ff1&type=M&term=til308
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO dm74s472 (512X8 TS PROM) [1/5]
+** TODO dm74s472 (512X8 TS PROM) [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.semiee.com/file/EOL2/National-Semiconductor-DM54S472.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO am25s09 (QUAD 2 IN SEL-D FF) [1/5]
+** TODO am25s09 (QUAD 2 IN SEL-D FF) [3/5]
  - [X] Store datasheet and upstream URL.
 	https://rocelec.widen.net/view/pdf/6iojofymrn/AMDIS02025-1.pdf?t.download=true&u=5oefqw
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s138 (3-8 DECODE) [1/5]
+** TODO sn74s138 (3-8 DECODE) [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74ls138.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s258 (QUAD 2 IN INV SELECT) [1/5]
+** TODO sn74s258 (QUAD 2 IN INV SELECT) [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74f258.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO dm93s46 (6 BIT =) [1/5]
+** TODO dm93s46 (6 BIT =) [3/5]
  - [X] Store datasheet and upstream URL.
 	https://datasheetspdf.com/pdf-file/501837/Fairchild/93S46/1
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s174 (HEX FF) [1/5]
+** TODO sn74s174 (HEX FF) [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74ls174.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s11 [1/5]
+** TODO sn74s11 [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74ls11.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO am93425a (1K X 1 RAM) [1/5]
+** TODO am93425a (1K X 1 RAM) [3/5]
  - [X] Store datasheet and upstream URL.
 	https://4donline.ihs.com/images/VipMasterIC/IC/AMDI/AMDIS02337/AMDIS02337-1.pdf?hkey=D9A213CC6FEE7D103EF6B88F2AEB20B8
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s373 (OCT LATCH) [1/5]
+** TODO sn74s373 (OCT LATCH) [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74s373.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s241 (TS BUS DVR) [1/5]
+** TODO sn74s241 (TS BUS DVR) [3/5] -- same as the other ts bus dvr?
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74s241.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO am93s48 (12 IN PARITY) [1/5]
+** TODO am93s48 (12 IN PARITY) [3/5]
  - [X] Store datasheet and upstream URL.
 	https://rocelec.widen.net/view/pdf/inqefoehbr/AMDIS02355-1.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO res20 [0/5]
+** TODO res20 [2/5]
  - [ ] Store datasheet and upstream URL.
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO dm82s21 (32 X 2 RAM) [1/5]
+** TODO dm82s21 (32 X 2 RAM) [3/5]
  - [X] Store datasheet and upstream URL.
 	http://www.elektronikjk.com/elementy_czynne/IC/82S21-3.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s169 (UP/DOWN CTR) [1/5]
+** TODO sn74s169 (UP/DOWN CTR) [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74ls169b.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO am25s07 (HEX FF) [0/5]
+** TODO am25s07 (HEX FF) [2/5]
  - [ ] Store datasheet and upstream URL.
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s175 (QUAD FF) [1/5]
+** TODO sn74s175 (QUAD FF) [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74s175.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s51 [1/5]
+** TODO sn74s51 [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74s51.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s283 (4 BIT ADD) [1/5]
+** TODO sn74s283 (4 BIT ADD) [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74s283.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO am25s10 (4 BIT SHIFTER) [1/5]
+** TODO am25s10 (4 BIT SHIFTER) [3/5]
  - [X] Store datasheet and upstream URL.
 	https://pdf.datasheetcatalog.com/datasheets/320/501505_DS.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s182 (CARRY NET) [1/5]
+** TODO sn74s182 (CARRY NET) [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn54s182.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s153 (DUAL 4-1 SELECT) [1/5]
+** TODO sn74s153 (DUAL 4-1 SELECT) [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74ls153.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s181 (ALU) [1/5]
+** TODO sn74s181 (ALU) [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn54ls181.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s194 (4 BIT SR) [1/5]
+** TODO sn74s194 (4 BIT SR) [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74ls194a.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO im5610, im5600 (32X8 PROM) [1/5]
+** TODO im5610, im5600 (32X8 PROM) [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.digchip.com/datasheets/parts/datasheet/235/IM5610-pdf.php
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s86 [1/5]
+** TODO sn74s86 [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn54s86.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s280 (9 INPUT PARITY) [1/5]
+** TODO sn74s280 (9 INPUT PARITY) [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn54ls280.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s64 (AOI) [1/5]
+** TODO sn74s64 (AOI) [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn54s64.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO am25ls2519 (QUAD REG DUAL OUTPUT) [1/5]
+** TODO am25ls2519 (QUAD REG DUAL OUTPUT) [3/5]
  - [X] Store datasheet and upstream URL.
 	https://pdf.datasheetcatalog.com/datasheets2/16/168960_1.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s157 (QUAD 2 IN SELECT) [1/5]
+** TODO sn74s157 (QUAD 2 IN SELECT) [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74ls157.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s240 (TS BUS DVR) [1/5]
+** TODO sn74s240 (TS BUS DVR) [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74s240.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74s74 [1/5]
+** TODO sn74s74 [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74s74.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74ls109 [1/5]
+** TODO sn74ls109 [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74ls109a.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO ic_16dummy [0/5]
+** TODO ic_16dummy [2/5]
  - [ ] Store datasheet and upstream URL.
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sn74ls14 [1/5]
+** TODO sn74ls14 [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74ls14.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO dm9328 (DUAL 8 BIT SHIFT REG) [1/5]
+** TODO dm9328 (DUAL 8 BIT SHIFT REG) [3/5]
  - [X] Store datasheet and upstream URL.
 	https://pdf.datasheetcatalog.com/datasheet/fairchild/DM9328.pdf
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sip220_330_8 (220/330 OHM 8 PIN SIP TERM) [0/5]
+** TODO sip220_330_8 (220/330 OHM 8 PIN SIP TERM) [2/5]
  - [ ] Store datasheet and upstream URL.
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO sip330_470_8 (330/470 OHM 8 PIN SIP TERM) [0/5]
+** TODO sip330_470_8 (330/470 OHM 8 PIN SIP TERM) [2/5]
  - [ ] Store datasheet and upstream URL.
- - [ ] Implement skeleton component.
+ - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
  - [ ] Implement component
- - [ ] Implement skeleton testbench
+ - [X] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-   

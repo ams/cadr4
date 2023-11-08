@@ -1,3 +1,5 @@
+-- Synchronous 4-Bit Up/Down Binary Counters
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;

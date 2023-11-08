@@ -1,4 +1,4 @@
--- 50ns time delay, 10ns increments
+-- 50ns Time Delay, 10ns Increments
 
 library ieee;
 use ieee.std_logic_1164.all;

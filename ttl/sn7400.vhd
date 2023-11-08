@@ -1,4 +1,4 @@
--- Quadruple 2-input Positive-NAND Gates
+-- Quadruple 2-Input Positive-NAND Gates
 
 library ieee;
 use ieee.std_logic_1164.all;

@@ -1,4 +1,4 @@
--- 6-Bit Identity Comparator
+-- High Speed 6-Bit Identify Comparator
 
 library ieee;
 use ieee.std_logic_1164.all;
