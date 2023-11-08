@@ -44,7 +44,6 @@ sn74280.vhd \
 sn74283.vhd \
 sn74373.vhd \
 sn74374.vhd \
-sn74472.vhd \
 sn7464.vhd \
 sn7474.vhd
 
@@ -66,6 +65,7 @@ OTHER_SRCS = \
  dm8221.vhd \
  dm9346.vhd \
  dm942.vhd \
+ dm74472.vhd \
  til309.vhd \
  res20.vhd \
  sip220_330_8.vhd \

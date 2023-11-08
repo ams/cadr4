@@ -276,6 +276,30 @@ package other is
   end component;
   alias dm9s42_1 is dm942;
 
+  component dm74472 is
+    port (
+      a0   : in  std_logic;
+      a1   : in  std_logic;
+      a2   : in  std_logic;
+      a3   : in  std_logic;
+      a4   : in  std_logic;
+      d0   : out std_logic;
+      d1   : out std_logic;
+      d2   : out std_logic;
+      d3   : out std_logic;
+      d4   : out std_logic;
+      d5   : out std_logic;
+      d6   : out std_logic;
+      d7   : out std_logic;
+      ce_n : in  std_logic;
+      a5   : in  std_logic;
+      a6   : in  std_logic;
+      a7   : in  std_logic;
+      a8   : in  std_logic
+      );
+  end component;
+  alias dm74s472 is dm74472;
+
   component til309 is
     port (
       i1, i2, i4, i8 : in  std_logic;

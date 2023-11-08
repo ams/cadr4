@@ -2,12 +2,12 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 library ttl;
-use ttl.sn74.all;
+use ttl.other.all;
 
-entity sn74472_tb is
+entity dm74472_tb is
 end;
 
-architecture testbench of sn74472_tb is
+architecture testbench of dm74472_tb is
 
   signal a8   : std_logic;
   signal a7   : std_logic;
@@ -30,7 +30,7 @@ architecture testbench of sn74472_tb is
 
 begin
 
-  uut : sn74472 port map(
+  uut : dm74472 port map(
     a0   => a0,
     a1   => a1,
     a2   => a2,

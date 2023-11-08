@@ -676,30 +676,6 @@ package sn74 is
   end component;
   alias sn74s374 is sn74374;
 
-  component sn74472 is
-    port (
-      a0   : in  std_logic;
-      a1   : in  std_logic;
-      a2   : in  std_logic;
-      a3   : in  std_logic;
-      a4   : in  std_logic;
-      d0   : out std_logic;
-      d1   : out std_logic;
-      d2   : out std_logic;
-      d3   : out std_logic;
-      d4   : out std_logic;
-      d5   : out std_logic;
-      d6   : out std_logic;
-      d7   : out std_logic;
-      ce_n : in  std_logic;
-      a5   : in  std_logic;
-      a6   : in  std_logic;
-      a7   : in  std_logic;
-      a8   : in  std_logic
-      );
-  end component;
-  alias sn74s472 is sn74472;
-
   component sn7464 is
     port (
       d4    : in  std_logic;

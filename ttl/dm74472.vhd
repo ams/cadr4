@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity sn74472 is
+entity dm74472 is
   port (
     a0   : in  std_logic;
     a1   : in  std_logic;
@@ -25,7 +25,7 @@ entity sn74472 is
     );
 end;
 
-architecture ttl of sn74472 is
+architecture ttl of dm74472 is
 begin
 
 end;
