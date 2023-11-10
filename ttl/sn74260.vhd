@@ -13,6 +13,6 @@ end;
 architecture ttl of sn74260 is
 begin
 
-  g1y_n <= not (g1a or g2a or g3a or g4a or g5a);
+  g1y_n <= g1a nor g2a nor g3a nor g4a nor g5a;
 
 end;

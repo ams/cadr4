@@ -22,9 +22,9 @@ end;
 architecture ttl of sn7428 is
 begin
 
-  g1q_n <= not (g1a or g1b);
-  g2q_n <= not (g2a or g2b);
-  g3q_n <= not (g3a or g3b);
-  g4q_n <= not (g4a or g4b);
+  g1q_n <= g1a nor g1b;
+  g2q_n <= g2a nor g2b;
+  g3q_n <= g3a nor g3b;
+  g4q_n <= g4a nor g4b;
 
 end;
