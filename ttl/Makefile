@@ -72,7 +72,8 @@ OTHER_SRCS = \
  sip330_470_8.vhd
 
 MISC_SRCS = \
-  ff_jk.vhd
+  ff_jk.vhd \
+  ff_d.vhd
 
 SRCS_VHD	= \
 misc.vhd \

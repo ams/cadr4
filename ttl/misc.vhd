@@ -16,6 +16,14 @@ package misc is
       );
   end component;
 
+  component ff_d is
+    port (
+      clk    : in  std_logic;
+      d      : in  std_logic;
+      q, q_n : out std_logic
+      );
+  end component;
+
 end;
 
 package body misc is
