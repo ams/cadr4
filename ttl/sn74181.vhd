@@ -6,7 +6,7 @@ use ieee.numeric_std.all;
 
 entity sn74181 is
   port (
-    cin_n : in std_logic
+    cin_n : in std_logic;
 
     f0, f1, f2, f3 : out std_logic;
 
@@ -17,9 +17,8 @@ entity sn74181 is
     s0, s1, s2, s3 : in std_logic;
 
     cout_n : out std_logic;
-    x, y   : out std_logic;
-
-    aeb : out std_logic;
+    aeb    : out std_logic;
+    x, y   : out std_logic
     );
 end;
 

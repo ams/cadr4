@@ -14,7 +14,7 @@ entity sn74194 is
     i0, i1, i2, i3 : in std_logic;
     s0, s1         : in std_logic;
 
-    q0, q1, q2, q3 : out std_logic;
+    q0, q1, q2, q3 : out std_logic
     );
 end;
 

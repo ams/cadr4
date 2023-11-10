@@ -6,7 +6,7 @@ use ieee.numeric_std.all;
 
 entity sn74258 is
   port (
-    enb_n : in std_logic
+    enb_n : in std_logic;
     sel   : in std_logic;
 
     a0, a1 : in  std_logic;
@@ -19,7 +19,7 @@ entity sn74258 is
     cy     : out std_logic;
 
     d0, d1 : in  std_logic;
-    dy     : out std_logic;
+    dy     : out std_logic
     );
 end;
 
