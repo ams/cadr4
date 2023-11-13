@@ -26,22 +26,24 @@ architecture testbench of im5600_tb is
 
 begin
 
-  uut : im5600 port map(
-    o7   => o7,
-    o6   => o6,
-    o5   => o5,
-    o4   => o4,
-    o3   => o3,
-    o2   => o2,
-    o1   => o1,
-    o0   => o0,
-    a4   => a4,
-    a3   => a3,
-    a2   => a2,
-    a1   => a1,
-    a0   => a0,
-    ce_n => ce_n
-    );
+  uut : im5600
+    generic map(fn => "im5600_tb.hex")
+    port map(
+      o7   => o7,
+      o6   => o6,
+      o5   => o5,
+      o4   => o4,
+      o3   => o3,
+      o2   => o2,
+      o1   => o1,
+      o0   => o0,
+      a4   => a4,
+      a3   => a3,
+      a2   => a2,
+      a1   => a1,
+      a0   => a0,
+      ce_n => ce_n
+      );
 
   process
   begin

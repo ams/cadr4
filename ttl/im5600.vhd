@@ -5,10 +5,11 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity im5600 is
+  generic (fn : string := "");
   port (
-    ce_n                           : in  std_logic
+    ce_n                           : in  std_logic;
     a0, a1, a2, a3, a4             : in  std_logic;
-    o0, o1, o2, o3, o4, o5, o6, o7 : out std_logic;
+    o0, o1, o2, o3, o4, o5, o6, o7 : out std_logic
     );
 end im5600;
 

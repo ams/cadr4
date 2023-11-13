@@ -160,6 +160,7 @@ package other is
   alias am25ls2519 is am252519;
 
   component im5600 is
+    generic (fn : string);
     port (
       o7   : out std_logic;
       o6   : out std_logic;
@@ -177,8 +178,8 @@ package other is
       ce_n : in  std_logic
       );
   end component;
-  alias im5600 is im5600;
-  
+  alias im5610 is im5600;
+
   component dm9328 is
     port (
       clr_n  : in  std_logic;
@@ -259,6 +260,7 @@ package other is
   alias dm9s42_1 is dm942;
 
   component dm74472 is
+    generic (fn : string := "");
     port (
       a0   : in  std_logic;
       a1   : in  std_logic;
