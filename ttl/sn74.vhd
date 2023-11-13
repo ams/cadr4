@@ -245,12 +245,12 @@ package sn74 is
       g2q_n : out std_logic;
       g3a   : in  std_logic;
       g3q_n : out std_logic;
-      g4q   : out std_logic;
       g4a   : in  std_logic;
-      g5q_n : out std_logic;
+      g4q_n : out std_logic;
       g5a   : in  std_logic;
-      g6q_n : out std_logic;
-      g6a   : in  std_logic
+      g5q_n : out std_logic;
+      g6a   : in  std_logic;
+      g6q_n : out std_logic
       );
   end component;
   alias sn74ls14 is sn7414;

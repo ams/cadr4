@@ -9,18 +9,18 @@ end;
 
 architecture testbench of sn7414_tb is
 
-  signal g6a   : std_logic;
-  signal g6q_n : std_logic;
+  signal g1a   : std_logic;
+  signal g1q_n : std_logic;
+  signal g2a   : std_logic;
+  signal g2q_n : std_logic;
+  signal g3a   : std_logic;
+  signal g3q_n : std_logic;
+  signal g4a   : std_logic;
+  signal g4q_n : std_logic;
   signal g5a   : std_logic;
   signal g5q_n : std_logic;
-  signal g4a   : std_logic;
-  signal g4q   : std_logic;
-  signal g3q_n : std_logic;
-  signal g3a   : std_logic;
-  signal g2q_n : std_logic;
-  signal g2a   : std_logic;
-  signal g1q_n : std_logic;
-  signal g1a   : std_logic;
+  signal g6a   : std_logic;
+  signal g6q_n : std_logic;
 
 begin
 
@@ -31,12 +31,12 @@ begin
     g2q_n => g2q_n,
     g3a   => g3a,
     g3q_n => g3q_n,
-    g4q   => g4q,
     g4a   => g4a,
-    g5q_n => g5q_n,
+    g4q_n => g4q_n,
     g5a   => g5a,
-    g6q_n => g6q_n,
-    g6a   => g6a
+    g5q_n => g5q_n,
+    g6a   => g6a,
+    g6q_n => g6q_n
     );
 
   process
