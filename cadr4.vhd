@@ -11,6 +11,11 @@ use ttl.unsorted.all;
 use work.utilities.all;
 
 entity cadr4 is
+  port (
+    \-boot1\       : in std_logic;
+    \-boot2\       : in std_logic;
+    \-power_reset\ : in std_logic
+    );
 end;
 
 architecture structural of cadr4 is
@@ -29,8 +34,8 @@ architecture structural of cadr4 is
   signal \-awpa\ : std_logic;
   signal \-awpb\ : std_logic;
   signal \-awpc\ : std_logic;
-  signal \-boot1\ : std_logic;
-  signal \-boot2\ : std_logic;
+--  signal \-boot1\ : std_logic;
+--  signal \-boot2\ : std_logic;
   signal \-boot\ : std_logic;
   signal \-bus.reset\ : std_logic;
   signal \-busint.lm.reset\ : std_logic;
@@ -194,7 +199,7 @@ architecture structural of cadr4 is
   signal \-pfw\ : std_logic;
   signal \-pma8\, \-pma9\, \-pma10\, \-pma11\, \-pma12\, \-pma13\, \-pma14\, \-pma15\, \-pma16\, \-pma17\, \-pma18\, \-pma19\, \-pma20\, \-pma21\ : std_logic;
   signal \-popj\ : std_logic;
-  signal \-power_reset\ : std_logic;
+--  signal \-power_reset\ : std_logic;
   signal \-ppdrive\ : std_logic;
   signal \-prog.reset\ : std_logic;
   signal \-promce0\, \-promce1\ : std_logic;
@@ -525,7 +530,7 @@ architecture structural of cadr4 is
   signal mskl3cry : std_logic;
   signal mskr0, mskr1, mskr2, mskr3, mskr4 : std_logic;
   signal n : std_logic;
-  signal nc : std_logic_vector(0 to 500); -- Not connected ...
+  signal nc : std_logic_vector(0 to 500);  -- Not connected ...
   signal needfetch : std_logic;
   signal newlc : std_logic;
   signal nop11 : std_logic;
@@ -607,7 +612,7 @@ architecture structural of cadr4 is
   signal spcptr2 : std_logic;
   signal spcptr3 : std_logic;
   signal spcptr4 : std_logic;
-  signal spcw :std_logic_vector(0 to 18);
+  signal spcw : std_logic_vector(0 to 18);
   signal spcwpar : std_logic;
   signal spcwparh : std_logic;
   signal spcwpass : std_logic;
@@ -1947,11 +1952,6 @@ begin
     if dpe then report "DPE"; end if;
     if ipe then report "IPE"; end if;
     if promenable then report "PROMENABLE"; end if;
-  end process;
-
-  process
-  begin
-    wait for 0.1 ns;
   end process;
 
 end;
