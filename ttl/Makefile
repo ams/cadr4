@@ -1,8 +1,7 @@
 PROJECT		= ttl
 
 SIM		= ghdl
-GHDLFLAGS	= --std=08 --work=ttl
-VCDVIEWER	= vcd
+VCDFORMAT	= vcd
 
 UNSORTED_SRCS	= \
 ic_16dummy.vhd \

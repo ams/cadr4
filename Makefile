@@ -1,8 +1,7 @@
 PROJECT		= cadr4
 
 SIM		= ghdl
-GHDLFLAGS	= --std=08 -Pttl
-VCDVIEWER	= vcd
+VCDFORMAT	= vcd
 
 SRCS_VHD	=				\
 utilities.vhd					\
