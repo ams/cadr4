@@ -6,24 +6,9 @@ use ieee.numeric_std.all;
 
 entity dm74472 is
   port (
-    a0   : in  std_logic;
-    a1   : in  std_logic;
-    a2   : in  std_logic;
-    a3   : in  std_logic;
-    a4   : in  std_logic;
-    d0   : out std_logic;
-    d1   : out std_logic;
-    d2   : out std_logic;
-    d3   : out std_logic;
-    d4   : out std_logic;
-    d5   : out std_logic;
-    d6   : out std_logic;
-    d7   : out std_logic;
-    ce_n : in  std_logic;
-    a5   : in  std_logic;
-    a6   : in  std_logic;
-    a7   : in  std_logic;
-    a8   : in  std_logic
+    a0, a1, a2, a3, a4, a5, a6, a7, a8 : in  std_logic;
+    d0, d1, d2, d3, d4, d5, d6, d7     : out std_logic;
+    ce_n                               : in  std_logic
     );
 end;
 
