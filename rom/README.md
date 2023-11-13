@@ -13,6 +13,6 @@ MSKG4_2E17	// r, 0-7
 MSKG4_2D11	// l, 24-31
 MSKG4_2E11	// l, 16-23
 MSKG4_2D16	// l, 8-15
-MSKG4_2E16	// l, 0, 7
+MSKG4_2E16	// l, 0-7
 
 DSPCTL_2F22	// dispatch prom
