@@ -59,7 +59,6 @@ OTHER_SRCS = \
  am2510.vhd \
  am252519.vhd \
  im5600.vhd \
- im5610.vhd \
  dm9328.vhd \
  dm8221.vhd \
  dm9346.vhd \
