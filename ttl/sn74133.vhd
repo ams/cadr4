@@ -6,24 +6,15 @@ use ieee.numeric_std.all;
 
 entity sn74133 is
   port (
-    g   : in  std_logic;
-    f   : in  std_logic;
-    e   : in  std_logic;
-    d   : in  std_logic;
-    c   : in  std_logic;
-    b   : in  std_logic;
-    a   : in  std_logic;
-    q_n : out std_logic;
-    h   : in  std_logic;
-    i   : in  std_logic;
-    j   : in  std_logic;
-    k   : in  std_logic;
-    l   : in  std_logic;
-    m   : in  std_logic
+    a, b, c, d, e, f, g, h, i, j, k, l, m : in std_logic;
+
+    q_n : out std_logic
     );
 end;
 
 architecture ttl of sn74133 is
 begin
+
+  q_n <= not (a and b and c and d and e and f and g and h and i and j and k and l and m);
 
 end;
