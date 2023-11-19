@@ -12,9 +12,8 @@ cadr4.vhd					\
 utilities.vhd					\
 cpu.vhd
 
-check::
-	(cd ttl; make check)
-clean::
-	(cd ttl; make clean)
+all::;	 	(cd ttl; make all)
+check::;	(cd ttl; make check)
+clean::;	(cd ttl; make clean)
 
 include ~/hdlmake.mk/hdlmake.mk

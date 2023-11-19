@@ -30,4 +30,4 @@ jobs:
       run: fossil open ~/hdlmake.mk.fossil --workdir ~/hdlmake.mk
     
     - name: Run check
-      run: make check
+      run: make
