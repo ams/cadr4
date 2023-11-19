@@ -27,7 +27,7 @@ jobs:
       run: mkdir ~/hdlmake.mk
 
     - name: Open hdlmake.mk
-      run: fossil open ~/hdlmake.mk.fossil ~/hdlmake.mk
+      run: fossil open ~/hdlmake.mk.fossil --workdir ~/hdlmake.mk
     
     - name: Run check
       run: make check
