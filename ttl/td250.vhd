@@ -18,36 +18,13 @@ end;
 architecture ttl of td250 is
 begin
 
-  process is
-  begin
-    o_50ns  <= '0';
-    o_100ns <= '0';
-    o_150ns <= '0';
-    o_200ns <= '0';
-    o_250ns <= '0';
-    wait;
-  end process;
-
   process (input) is
   begin
-    if rising_edge(input) then
-      o_50ns  <= '1' after 50 ns;
-      o_100ns <= '1' after 100 ns;
-      o_150ns <= '1' after 150 ns;
-      o_200ns <= '1' after 200 ns;
-      o_250ns <= '1' after 250 ns;
-    end if;
-  end process;
-
-  process (input) is
-  begin
-    if falling_edge(input) then
-      o_50ns  <= '0' after 50 ns;
-      o_100ns <= '0' after 100 ns;
-      o_150ns <= '0' after 150 ns;
-      o_200ns <= '0' after 200 ns;
-      o_250ns <= '0' after 250 ns;
-    end if;
+    o_50ns  <= '0' after 0 ns, '1' after 50 ns;
+    o_100ns <= '0' after 50 ns, '1' after 100 ns;
+    o_150ns <= '0' after 100 ns, '1' after 150 ns;
+    o_200ns <= '0' after 150 ns, '1' after 200 ns;
+    o_250ns <= '0' after 200 ns, '1' after 250 ns;
   end process;
 
 end;

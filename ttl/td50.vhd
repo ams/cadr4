@@ -18,36 +18,13 @@ end;
 architecture ttl of td50 is
 begin
 
-  process is
-  begin
-    o_10ns <= '0';
-    o_20ns <= '0';
-    o_30ns <= '0';
-    o_40ns <= '0';
-    o_50ns <= '0';
-    wait;
-  end process;
-
   process (input) is
   begin
-    if rising_edge(input) then
-      o_10ns <= '1' after 10 ns;
-      o_20ns <= '1' after 20 ns;
-      o_30ns <= '1' after 30 ns;
-      o_40ns <= '1' after 40 ns;
-      o_50ns <= '1' after 50 ns;
-    end if;
-  end process;
-
-  process (input) is
-  begin
-    if falling_edge(input) then
-      o_10ns <= '0' after 10 ns;
-      o_20ns <= '0' after 20 ns;
-      o_30ns <= '0' after 30 ns;
-      o_40ns <= '0' after 40 ns;
-      o_50ns <= '0' after 50 ns;
-    end if;
+    o_10ns <= '0' after 0 ns, '1' after 10 ns;
+    o_20ns <= '0' after 10 ns, '1' after 20 ns;
+    o_30ns <= '0' after 20 ns, '1' after 30 ns;
+    o_40ns <= '0' after 30 ns, '1' after 40 ns;
+    o_50ns <= '0' after 40 ns, '1' after 50 ns;
   end process;
 
 end;
