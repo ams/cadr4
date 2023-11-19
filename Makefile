@@ -1,7 +1,7 @@
 PROJECT		= cadr4
 
 SIM		= ghdl
-VCDFORMAT	= vcd
+VCDFORMAT	= ghw
 
 VHDSTND		= 08
 

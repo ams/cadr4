@@ -3,7 +3,7 @@ PROJECT		= ttl
 VHDSTND		= 08
 
 SIM		= ghdl
-VCDFORMAT	= vcd
+VCDFORMAT	= ghw
 
 UNSORTED_SRCS	= \
 ic_16dummy.vhd \
