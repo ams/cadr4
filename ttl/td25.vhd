@@ -31,22 +31,22 @@ begin
   process (input) is
   begin
     if rising_edge(input) then
-      o_5ns  <= '1' after 5 ms;
-      o_10ns <= '1' after 10 ms;
-      o_15ns <= '1' after 15 ms;
-      o_20ns <= '1' after 20 ms;
-      o_25ns <= '1' after 25 ms;
+      o_5ns  <= '1' after 5 ns;
+      o_10ns <= '1' after 10 ns;
+      o_15ns <= '1' after 15 ns;
+      o_20ns <= '1' after 20 ns;
+      o_25ns <= '1' after 25 ns;
     end if;
   end process;
 
   process (input) is
   begin
     if falling_edge(input) then
-      o_5ns  <= '0' after 5 ms;
-      o_10ns <= '0' after 10 ms;
-      o_15ns <= '0' after 15 ms;
-      o_20ns <= '0' after 20 ms;
-      o_25ns <= '0' after 25 ms;
+      o_5ns  <= '0' after 5 ns;
+      o_10ns <= '0' after 10 ns;
+      o_15ns <= '0' after 15 ns;
+      o_20ns <= '0' after 20 ns;
+      o_25ns <= '0' after 25 ns;
     end if;
   end process;
 
