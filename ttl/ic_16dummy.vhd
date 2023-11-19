@@ -6,7 +6,7 @@ entity ic_16dummy is
   port (
     dummy : in std_logic
     );
-end ic_16dummy;
+end;
 
 architecture ttl of ic_16dummy is
 begin

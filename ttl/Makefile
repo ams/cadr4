@@ -1,5 +1,7 @@
 PROJECT		= ttl
 
+VHDSTND		= 08
+
 SIM		= ghdl
 VCDFORMAT	= vcd
 
@@ -83,7 +85,7 @@ sn74.vhd \
 unsorted.vhd \
  $(UNSORTED_SRCS) \
 
-TB_SRCS_VHD	= $(addsuffix _tb.vhd, $(basename $(SN74_SRCS) $(MISC_SRCS) $(OTHER_SRCS)))
+TB_SRCS_VHD	= $(addsuffix _tb.vhd, $(basename $(SN74_SRCS) $(MISC_SRCS) $(OTHER_SRCS) $(UNSORTED_SRCS)))
 TESTBENCHES	= $(basename $(TB_SRCS_VHD))
 
 include ~/hdlmake.mk/hdlmake.mk
