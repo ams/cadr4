@@ -1937,6 +1937,25 @@ begin
 
   --------------------------------------------------------------------------------
 
+  gnd <= '0';
+
+  \-hang\ <= '1';
+
+  \-ilong\ <= '1';
+  sspeed1  <= '0';
+  sspeed0  <= '0';
+
+  \machruna_l\ <= '0';
+
+  process
+  begin
+    \-clock_reset_b\ <= '0';
+    wait for 200 ns;
+    \-clock_reset_b\ <= '1';
+
+    wait for 2500 ns;
+  end process;
+
   -- Poor substitute for the 5 octal display that was on the lower
   -- left-hand corner of the front door on the CADR.  See the PCTL
   -- prints.
