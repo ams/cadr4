@@ -28,20 +28,34 @@ begin
     );
 
   process
+    type pt is record
+      i0 : std_logic;
+      q  : std_logic;
+    end record;
+    type pa is array (natural range <>) of pt;
+
+    constant p : pa :=
+      (('0', '1'),
+       ('1', '0'));
+
   begin
-    wait for 5 ns;
+    for i in p'range loop
+      g1a <= p(i).i0;
+      g2a <= p(i).i0;
+      g3a <= p(i).i0;
+      g4a <= p(i).i0;
+      g5a <= p(i).i0;
+      g6a <= p(i).i0;
 
-    g1a <= '0'; wait for 5 ns; assert g1q_n = '1';
-    g1a <= '1'; wait for 5 ns; assert g1q_n = '0';
+      wait for 1 ns;
 
-    g2a <= '0'; wait for 5 ns; assert g2q_n = '1';
-    g2a <= '1'; wait for 5 ns; assert g2q_n = '0';
-
-    g3a <= '0'; wait for 5 ns; assert g3q_n = '1';
-    g3a <= '1'; wait for 5 ns; assert g3q_n = '0';
-
-    g4a <= '0'; wait for 5 ns; assert g4q_n = '1';
-    g4a <= '1'; wait for 5 ns; assert g4q_n = '0';
+      assert g1q_n = p(i).q;
+      assert g2q_n = p(i).q;
+      assert g3q_n = p(i).q;
+      assert g4q_n = p(i).q;
+      assert g5q_n = p(i).q;
+      assert g6q_n = p(i).q;
+    end loop;
 
     wait;
   end process;
