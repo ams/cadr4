@@ -20,5 +20,8 @@ jobs:
     - name: Install GHDL
       run: sudo apt-get install -y ghdl
 
+    - name: Clone hdlmake.mk
+      run: fossil open https://tumbleweed.nu/r/hdlmake.mk hdlmake.mk --workdir ~/hdlmake.mk    
+    
     - name: Run check
       run: make check
