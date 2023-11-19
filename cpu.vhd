@@ -607,7 +607,7 @@ architecture structural of cpu is
   signal spcpar : std_logic;
   signal spcparh : std_logic;
   signal spcparok : std_logic;
-  signal spcptr0, spcptr1, spcptr2, spcptr3, spcptr4 : std_logic;
+  signal spcptr : std_logic_vector(0 to 4);
   signal spcw : std_logic_vector(0 to 18);
   signal spcwpar : std_logic;
   signal spcwparh : std_logic;
@@ -1523,25 +1523,25 @@ begin
 
   --- Microcode Subroutine Return Stack
 
-  spc_4e21 : dm82s21 port map(wclk_n => \-swpa\, we0_n => gnd, i0 => spcw(14), a4 => spcptr4, ce => hi1, strobe => hi1, d0 => spco(14), d1 => spco(15), a3 => spcptr3, a2 => spcptr2, a1 => spcptr1, a0 => spcptr0, i1 => spcw(15), we1_n => gnd);
-  spc_4e22 : dm82s21 port map(wclk_n => \-swpa\, we0_n => gnd, i0 => spcw(12), a4 => spcptr4, ce => hi1, strobe => hi1, d0 => spco(12), d1 => spco(13), a3 => spcptr3, a2 => spcptr2, a1 => spcptr1, a0 => spcptr0, i1 => spcw(13), we1_n => gnd);
-  spc_4e23 : dm82s21 port map(wclk_n => \-swpa\, we0_n => gnd, i0 => spcw(10), a4 => spcptr4, ce => hi1, strobe => hi1, d0 => spco(10), d1 => spco(11), a3 => spcptr3, a2 => spcptr2, a1 => spcptr1, a0 => spcptr0, i1 => spcw(11), we1_n => gnd);
+  spc_4e21 : dm82s21 port map(wclk_n => \-swpa\, we0_n => gnd, i0 => spcw(14), a4 => spcptr(4), ce => hi1, strobe => hi1, d0 => spco(14), d1 => spco(15), a3 => spcptr(3), a2 => spcptr(2), a1 => spcptr(1), a0 => spcptr(0), i1 => spcw(15), we1_n => gnd);
+  spc_4e22 : dm82s21 port map(wclk_n => \-swpa\, we0_n => gnd, i0 => spcw(12), a4 => spcptr(4), ce => hi1, strobe => hi1, d0 => spco(12), d1 => spco(13), a3 => spcptr(3), a2 => spcptr(2), a1 => spcptr(1), a0 => spcptr(0), i1 => spcw(13), we1_n => gnd);
+  spc_4e23 : dm82s21 port map(wclk_n => \-swpa\, we0_n => gnd, i0 => spcw(10), a4 => spcptr(4), ce => hi1, strobe => hi1, d0 => spco(10), d1 => spco(11), a3 => spcptr(3), a2 => spcptr(2), a1 => spcptr(1), a0 => spcptr(0), i1 => spcw(11), we1_n => gnd);
   spc_4e24 : res20 port map(r2 => spcopar, r3 => spco(18), r4 => spco(17), r5 => spco(16), r6 => spco(15), r7 => hi1, r8 => hi2, r9 => hi3, r11 => hi4, r12 => hi5, r13 => hi6, r14 => hi7, r15 => spco(14), r16 => spco(13), r17 => spco(12), r18 => spco(11), r19 => spco(10));
-  spc_4e26 : dm82s21 port map(wclk_n => \-swpb\, we0_n => gnd, i0 => spcw(4), a4 => spcptr4, ce => hi1, strobe => hi1, d0 => spco(4), d1 => spco(5), a3 => spcptr3, a2 => spcptr2, a1 => spcptr1, a0 => spcptr0, i1 => spcw(5), we1_n => gnd);
-  spc_4e27 : dm82s21 port map(wclk_n => \-swpb\, we0_n => gnd, i0 => spcw(2), a4 => spcptr4, ce => hi1, strobe => hi1, d0 => spco(2), d1 => spco(3), a3 => spcptr3, a2 => spcptr2, a1 => spcptr1, a0 => spcptr0, i1 => spcw(3), we1_n => gnd);
-  spc_4e28 : dm82s21 port map(wclk_n => \-swpb\, we0_n => gnd, i0 => spcw(0), a4 => spcptr4, ce => hi1, strobe => hi1, d0 => spco(0), d1 => spco(1), a3 => spcptr3, a2 => spcptr2, a1 => spcptr1, a0 => spcptr0, i1 => spcw(1), we1_n => gnd);
+  spc_4e26 : dm82s21 port map(wclk_n => \-swpb\, we0_n => gnd, i0 => spcw(4), a4 => spcptr(4), ce => hi1, strobe => hi1, d0 => spco(4), d1 => spco(5), a3 => spcptr(3), a2 => spcptr(2), a1 => spcptr(1), a0 => spcptr(0), i1 => spcw(5), we1_n => gnd);
+  spc_4e27 : dm82s21 port map(wclk_n => \-swpb\, we0_n => gnd, i0 => spcw(2), a4 => spcptr(4), ce => hi1, strobe => hi1, d0 => spco(2), d1 => spco(3), a3 => spcptr(3), a2 => spcptr(2), a1 => spcptr(1), a0 => spcptr(0), i1 => spcw(3), we1_n => gnd);
+  spc_4e28 : dm82s21 port map(wclk_n => \-swpb\, we0_n => gnd, i0 => spcw(0), a4 => spcptr(4), ce => hi1, strobe => hi1, d0 => spco(0), d1 => spco(1), a3 => spcptr(3), a2 => spcptr(2), a1 => spcptr(1), a0 => spcptr(0), i1 => spcw(1), we1_n => gnd);
   spc_4e29 : res20 port map(r2 => spco(9), r3 => spco(8), r4 => spco(7), r5 => spco(6), r6 => spco(5), r7 => hi8, r8 => hi9, r9 => hi10, r11 => hi11, r12 => hi12, r13 => nc(182), r14 => nc(183), r15 => spco(4), r16 => spco(3), r17 => spco(2), r18 => spco(1), r19 => spco(0));
-  spc_4f23 : sn74s169 port map(up_dn => spush, clk => clk4f, i0 => nc(192), i1 => nc(193), i2 => nc(194), i3 => nc(195), enb_p_n => gnd, load_n => hi1, enb_t_n => \-spcnt\, o3 => spcptr3, o2 => spcptr2, o1 => spcptr1, o0 => spcptr0, co_n => \-spccry\);
-  spc_4f24 : dm82s21 port map(wclk_n => \-swpa\, we0_n => gnd, i0 => spcw(18), a4 => spcptr4, ce => hi1, strobe => hi1, d0 => spco(18), d1 => spcopar, a3 => spcptr3, a2 => spcptr2, a1 => spcptr1, a0 => spcptr0, i1 => spcwpar, we1_n => gnd);
-  spc_4f25 : dm82s21 port map(wclk_n => \-swpa\, we0_n => gnd, i0 => spcw(16), a4 => spcptr4, ce => hi1, strobe => hi1, d0 => spco(16), d1 => spco(17), a3 => spcptr3, a2 => spcptr2, a1 => spcptr1, a0 => spcptr0, i1 => spcw(17), we1_n => gnd);
-  spc_4f28 : sn74s169 port map(up_dn => spush, clk => clk4f, i0 => nc(184), i1 => nc(185), i2 => nc(186), i3 => nc(187), enb_p_n => gnd, load_n => hi1, enb_t_n => \-spccry\, o3 => nc(188), o2 => nc(189), o1 => nc(190), o0 => spcptr4, co_n => nc(191));
-  spc_4f29 : dm82s21 port map(wclk_n => \-swpb\, we0_n => gnd, i0 => spcw(8), a4 => spcptr4, ce => hi1, strobe => hi1, d0 => spco(8), d1 => spco(9), a3 => spcptr3, a2 => spcptr2, a1 => spcptr1, a0 => spcptr0, i1 => spcw(9), we1_n => gnd);
-  spc_4f30 : dm82s21 port map(wclk_n => \-swpb\, we0_n => gnd, i0 => spcw(6), a4 => spcptr4, ce => hi1, strobe => hi1, d0 => spco(6), d1 => spco(7), a3 => spcptr3, a2 => spcptr2, a1 => spcptr1, a0 => spcptr0, i1 => spcw(7), we1_n => gnd);
+  spc_4f23 : sn74s169 port map(up_dn => spush, clk => clk4f, i0 => nc(192), i1 => nc(193), i2 => nc(194), i3 => nc(195), enb_p_n => gnd, load_n => hi1, enb_t_n => \-spcnt\, o3 => spcptr(3), o2 => spcptr(2), o1 => spcptr(1), o0 => spcptr(0), co_n => \-spccry\);
+  spc_4f24 : dm82s21 port map(wclk_n => \-swpa\, we0_n => gnd, i0 => spcw(18), a4 => spcptr(4), ce => hi1, strobe => hi1, d0 => spco(18), d1 => spcopar, a3 => spcptr(3), a2 => spcptr(2), a1 => spcptr(1), a0 => spcptr(0), i1 => spcwpar, we1_n => gnd);
+  spc_4f25 : dm82s21 port map(wclk_n => \-swpa\, we0_n => gnd, i0 => spcw(16), a4 => spcptr(4), ce => hi1, strobe => hi1, d0 => spco(16), d1 => spco(17), a3 => spcptr(3), a2 => spcptr(2), a1 => spcptr(1), a0 => spcptr(0), i1 => spcw(17), we1_n => gnd);
+  spc_4f28 : sn74s169 port map(up_dn => spush, clk => clk4f, i0 => nc(184), i1 => nc(185), i2 => nc(186), i3 => nc(187), enb_p_n => gnd, load_n => hi1, enb_t_n => \-spccry\, o3 => nc(188), o2 => nc(189), o1 => nc(190), o0 => spcptr(4), co_n => nc(191));
+  spc_4f29 : dm82s21 port map(wclk_n => \-swpb\, we0_n => gnd, i0 => spcw(8), a4 => spcptr(4), ce => hi1, strobe => hi1, d0 => spco(8), d1 => spco(9), a3 => spcptr(3), a2 => spcptr(2), a1 => spcptr(1), a0 => spcptr(0), i1 => spcw(9), we1_n => gnd);
+  spc_4f30 : dm82s21 port map(wclk_n => \-swpb\, we0_n => gnd, i0 => spcw(6), a4 => spcptr(4), ce => hi1, strobe => hi1, d0 => spco(6), d1 => spco(7), a3 => spcptr(3), a2 => spcptr(2), a1 => spcptr(1), a0 => spcptr(0), i1 => spcw(7), we1_n => gnd);
 
   spclch_4a07 : sn74s373 port map(oenb_n => \-spcdrive\, o0 => m(23), i0 => gnd, i1 => gnd, o1 => m(22), o2 => m(21), i2 => gnd, i3 => gnd, o3 => m(20), hold_n => clk4c, o4 => m(19), i4 => gnd, i5 => spco(18), o5 => m(18), o6 => m(17), i6 => spco(17), i7 => spco(16), o7 => m(16));
   spclch_4a09 : sn74s373 port map(oenb_n => \-spcdrive\, o0 => m(15), i0 => spco(15), i1 => spco(14), o1 => m(14), o2 => m(13), i2 => spco(13), i3 => spco(12), o3 => m(12), hold_n => clk4c, o4 => m(11), i4 => spco(11), i5 => spco(10), o5 => m(10), o6 => m(9), i6 => spco(9), i7 => spco(8), o7 => m(8));
   spclch_4a10 : sn74s373 port map(oenb_n => \-spcdrive\, o0 => m(7), i0 => spco(7), i1 => spco(6), o1 => m(6), o2 => m(5), i2 => spco(5), i3 => spco(4), o3 => m(4), hold_n => clk4c, o4 => m(3), i4 => spco(3), i5 => spco(2), o5 => m(2), o6 => m(1), i6 => spco(1), i7 => spco(0), o7 => m(0));
-  spclch_4b10 : sn74s241 port map(aenb_n => \-spcdrive\, ain0 => gnd, bout3 => m(24), ain1 => gnd, bout2 => m(25), ain2 => gnd, bout1 => m(26), ain3 => spcptr4, bout0 => m(27), bin0 => spcptr3, aout3 => m(28), bin1 => spcptr2, aout2 => m(29), bin2 => spcptr1, aout1 => m(30), bin3 => spcptr0, aout0 => m(31), benb => spcdrive);
+  spclch_4b10 : sn74s241 port map(aenb_n => \-spcdrive\, ain0 => gnd, bout3 => m(24), ain1 => gnd, bout2 => m(25), ain2 => gnd, bout1 => m(26), ain3 => spcptr(4), bout0 => m(27), bin0 => spcptr(3), aout3 => m(28), bin1 => spcptr(2), aout2 => m(29), bin2 => spcptr(1), aout1 => m(30), bin3 => spcptr(0), aout0 => m(31), benb => spcdrive);
   spclch_4e16 : sn74s241 port map(aenb_n => hi1, ain0 => nc(166), bout3 => spc(16), ain1 => nc(167), bout2 => spc(17), ain2 => nc(168), bout1 => spc(18), ain3 => nc(169), bout0 => spcpar, bin0 => spcwpar, aout3 => nc(170), bin1 => spcw(18), aout2 => nc(171), bin2 => spcw(17), aout1 => nc(172), bin3 => spcw(16), aout0 => nc(173), benb => spcwpass);
   spclch_4e17 : sn74s241 port map(aenb_n => \-spcwpass\, ain0 => spcw(15), bout3 => spc(8), ain1 => spcw(14), bout2 => spc(9), ain2 => spcw(13), bout1 => spc(10), ain3 => spcw(12), bout0 => spc(11), bin0 => spcw(11), aout3 => spc(12), bin1 => spcw(10), aout2 => spc(13), bin2 => spcw(9), aout1 => spc(14), bin3 => spcw(8), aout0 => spc(15), benb => spcwpass);
   spclch_4e18 : sn74s241 port map(aenb_n => \-spcwpass\, ain0 => spcw(7), bout3 => spc(0), ain1 => spcw(6), bout2 => spc(1), ain2 => spcw(5), bout1 => spc(2), ain3 => spcw(4), bout0 => spc(3), bin0 => spcw(3), aout3 => spc(4), bin1 => spcw(2), aout2 => spc(5), bin2 => spcw(1), aout1 => spc(6), bin3 => spcw(0), aout0 => spc(7), benb => spcwpass);
