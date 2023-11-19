@@ -22,10 +22,35 @@ begin
     );
 
   process
-  begin
-    wait for 5 ns;
+    type pt is record
+      i0, i1, i2 : std_logic;
+      q          : std_logic;
+    end record;
+    type pa is array (natural range <>) of pt;
 
-    report "Testbench not implemented!" severity warning;
+    constant p : pa :=
+      (('0', '0', '0', '0'),
+       ('0', '0', '1', '0'),
+       ('0', '1', '0', '0'),
+       ('0', '1', '0', '0'),
+       ('1', '0', '0', '0'),
+       ('1', '0', '1', '0'),
+       ('1', '1', '0', '0'),
+       ('1', '1', '1', '1')
+       );
+
+  begin
+    for i in p'range loop
+      g1a <= p(i).i0; g1b <= p(i).i1; g1c <= p(i).i2;
+      g2a <= p(i).i0; g2b <= p(i).i1; g2c <= p(i).i2;
+      g3a <= p(i).i0; g3b <= p(i).i1; g3c <= p(i).i2;
+
+      wait for 1 ns;
+
+      assert g1y = p(i).q;
+      assert g2y = p(i).q;
+      assert g3y = p(i).q;
+    end loop;
 
     wait;
   end process;
