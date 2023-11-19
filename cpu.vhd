@@ -8,13 +8,13 @@ use ttl.sn74.all;
 use ttl.other.all;
 use ttl.unsorted.all;
 
-use work.utilities.all;
+library cadr4;
+use cadr4.utilities.all;
 
 entity cpu is
   port (
     \-boot1\       : in std_logic;
-    \-boot2\       : in std_logic;
-    \-power_reset\ : in std_logic
+    \-boot2\       : in std_logic
     );
 end;
 
@@ -199,7 +199,7 @@ architecture structural of cpu is
   signal \-pfw\ : std_logic;
   signal \-pma8\, \-pma9\, \-pma10\, \-pma11\, \-pma12\, \-pma13\, \-pma14\, \-pma15\, \-pma16\, \-pma17\, \-pma18\, \-pma19\, \-pma20\, \-pma21\ : std_logic;
   signal \-popj\ : std_logic;
---  signal \-power_reset\ : std_logic;
+  signal \-power_reset\ : std_logic;
   signal \-ppdrive\ : std_logic;
   signal \-prog.reset\ : std_logic;
   signal \-promce0\, \-promce1\ : std_logic;
@@ -1350,10 +1350,10 @@ begin
   mskg4_2d12 : im5600 generic map(fn => "rom/mskg4_2d12.hex") port map(o0 => msk(24), o1 => msk(25), o2 => msk(26), o3 => msk(27), o4 => msk(28), o5 => msk(29), o6 => msk(30), o7 => msk(31), a0 => mskr0, a1 => mskr1, a2 => mskr2, a3 => mskr3, a4 => mskr4, ce_n => gnd);
   mskg4_2d16 : im5600 generic map(fn => "rom/mskg4_2d16.hex") port map(o0 => msk(8), o1 => msk(9), o2 => msk(10), o3 => msk(11), o4 => msk(12), o5 => msk(13), o6 => msk(14), o7 => msk(15), a0 => mskl0, a1 => mskl1, a2 => mskl2, a3 => mskl3, a4 => mskl4, ce_n => gnd);
   mskg4_2d17 : im5600 generic map(fn => "rom/mskg4_2d17.hex") port map(o0 => msk(8), o1 => msk(9), o2 => msk(10), o3 => msk(11), o4 => msk(12), o5 => msk(13), o6 => msk(14), o7 => msk(15), a0 => mskr0, a1 => mskr1, a2 => mskr2, a3 => mskr3, a4 => mskr4, ce_n => gnd);
-  mskg4_2d26 : sn74s04 generic map(fn => "rom/mskg4_2d26.hex") port map(g1a => nc(253), g1q_n => nc(254), g2a => ir(31), g2q_n => \-ir31\, g3a => ir(13), g3q_n => \-ir13\, g4q_n => \-ir12\, g4a => ir(12), g5q_n => nc(255), g5a => nc(256), g6q_n => nc(257), g6a => nc(258));
+  mskg4_2d26 : sn74s04 port map(g1a => nc(253), g1q_n => nc(254), g2a => ir(31), g2q_n => \-ir31\, g3a => ir(13), g3q_n => \-ir13\, g4q_n => \-ir12\, g4a => ir(12), g5q_n => nc(255), g5a => nc(256), g6q_n => nc(257), g6a => nc(258));
   mskg4_2e11 : im5600 generic map(fn => "rom/mskg4_2e11.hex") port map(o0 => msk(16), o1 => msk(17), o2 => msk(18), o3 => msk(19), o4 => msk(20), o5 => msk(21), o6 => msk(22), o7 => msk(23), a0 => mskl0, a1 => mskl1, a2 => mskl2, a3 => mskl3, a4 => mskl4, ce_n => gnd);
   mskg4_2e12 : im5600 generic map(fn => "rom/mskg4_2e12.hex") port map(o0 => msk(16), o1 => msk(17), o2 => msk(18), o3 => msk(19), o4 => msk(20), o5 => msk(21), o6 => msk(22), o7 => msk(23), a0 => mskr0, a1 => mskr1, a2 => mskr2, a3 => mskr3, a4 => mskr4, ce_n => gnd);
-  mskg4_2e15 : res20 generic map(fn => "rom/mskg4_2e15.hex") port map(r2 => aeqm, r3 => msk(31), r4 => msk(30), r5 => msk(29), r6 => msk(28), r7 => msk(27), r8 => msk(26), r9 => msk(25), r11 => msk(24), r12 => msk(23), r13 => msk(22), r14 => msk(21), r15 => msk(20), r16 => msk(19), r17 => msk(18), r18 => msk(17), r19 => msk(16));
+  mskg4_2e15 : res20 port map(r2 => aeqm, r3 => msk(31), r4 => msk(30), r5 => msk(29), r6 => msk(28), r7 => msk(27), r8 => msk(26), r9 => msk(25), r11 => msk(24), r12 => msk(23), r13 => msk(22), r14 => msk(21), r15 => msk(20), r16 => msk(19), r17 => msk(18), r18 => msk(17), r19 => msk(16));
   mskg4_2e16 : im5600 generic map(fn => "rom/mskg4_2e16.hex") port map(o0 => msk(0), o1 => msk(1), o2 => msk(2), o3 => msk(3), o4 => msk(4), o5 => msk(5), o6 => msk(6), o7 => msk(7), a0 => mskl0, a1 => mskl1, a2 => mskl2, a3 => mskl3, a4 => mskl4, ce_n => gnd);
   mskg4_2e17 : im5600 generic map(fn => "rom/mskg4_2e17.hex") port map(o0 => msk(0), o1 => msk(1), o2 => msk(2), o3 => msk(3), o4 => msk(4), o5 => msk(5), o6 => msk(6), o7 => msk(7), a0 => mskr0, a1 => mskr1, a2 => mskr2, a3 => mskr3, a4 => mskr4, ce_n => gnd);
   mskg4_2e20 : res20 port map(r2 => nc(252), r3 => msk(15), r4 => msk(14), r5 => msk(13), r6 => msk(12), r7 => msk(11), r8 => msk(10), r9 => msk(9), r11 => msk(8), r12 => msk(7), r13 => msk(6), r14 => msk(5), r15 => msk(4), r16 => msk(3), r17 => msk(2), r18 => msk(1), r19 => msk(0));
@@ -1801,7 +1801,7 @@ begin
   olord2_1a11 : sn74s02 port map(g1q_n => \-clock_reset_b\, g1a => \power_reset_a\, g1b => internal1, g2q_n => \-clock_reset_a\, g2a => \power_reset_a\, g2b => internal1, g3b => gnd, g3a => \-power_reset\, g3q_n => \power_reset_a\, g4b => '0', g4a => '0');
   olord2_1a18 : sn74ls109 port map(clr1_n => \-boot\, j1 => srun, k1_n => hi1, clk1 => mclk5a, pre1_n => \-clock_reset_a\, q1 => nc(75), q1_n => \boot.trap\, clr2_n => '0', j2 => '0', k2_n => '0', clk2 => '0', pre2_n => '0');
   olord2_1a19 : ic_16dummy port map(dummy => vcc);
-  olord2_1a20 : sn74ls14 port map(g1q_n => internal4, g2a => \-boot1\, g2q_n => internal5, g3a => \-boot2\, g3q_n => internal3, g4q => \-power_reset\, g4a => internal4, g1a => '0', g5a => '0', g6a => '0');
+  olord2_1a20 : sn74ls14 port map(g1q_n => internal4, g2a => \-boot1\, g2q_n => internal5, g3a => \-boot2\, g3q_n => internal3, g4q_n => \-power_reset\, g4a => internal4, g1a => '0', g5a => '0', g6a => '0');
   olord2_1b10 : sn74s04 port map(g1a => \-ldmode\, g1q_n => ldmode, g3a => mclk5, g3q_n => \-mclk5\, g4q_n => \-clk5\, g4a => clk5, g6q_n => internal1, g6a => \-busint.lm.reset\, g2a => '0', g5a => '0');
   olord2_1c07 : sn74s00 port map(g4q_n => \-lowerhighok\, g4a => hi2, g4b => hi1, g1b => '0', g1a => '0', g2b => '0', g2a => '0', g3b => '0', g3a => '0');
   olord2_1c08 : sn74s10 port map(g3y_n => reset, g3a => \-boot\, g3b => \-clock_reset_b\, g3c => \-prog.reset\, g1a => '0', g1b => '0', g2a => '0', g2b => '0', g2c => '0', g1c => '0');
