@@ -24,28 +24,33 @@ begin
     );
 
   process
+
+    type pt is record
+      i0, i1 : std_logic;
+      q      : std_logic;
+    end record;
+    type pa is array (natural range <>) of pt;
+
+    constant p : pa :=
+      (('0', '0', '0'),
+       ('0', '1', '1'),
+       ('1', '0', '1'),
+       ('1', '1', '0'));
+
   begin
-    wait for 5 ns;
+    for i in p'range loop
+      g1a <= p(i).i0; g1b <= p(i).i1;
+      g2a <= p(i).i0; g2b <= p(i).i1;
+      g3a <= p(i).i0; g3b <= p(i).i1;
+      g4a <= p(i).i0; g4b <= p(i).i1;
 
-    g1a <= '0'; g1b <= '0'; wait for 5 ns; assert g1y = '0';
-    g1a <= '0'; g1b <= '1'; wait for 5 ns; assert g1y = '1';
-    g1a <= '1'; g1b <= '0'; wait for 5 ns; assert g1y = '1';
-    g1a <= '1'; g1b <= '1'; wait for 5 ns; assert g1y = '0';
+      wait for 1 ns;
 
-    g2a <= '0'; g2b <= '0'; wait for 5 ns; assert g2y = '0';
-    g2a <= '0'; g2b <= '1'; wait for 5 ns; assert g2y = '1';
-    g2a <= '1'; g2b <= '0'; wait for 5 ns; assert g2y = '1';
-    g2a <= '1'; g2b <= '1'; wait for 5 ns; assert g2y = '0';
-
-    g3a <= '0'; g3b <= '0'; wait for 5 ns; assert g3y = '0';
-    g3a <= '0'; g3b <= '1'; wait for 5 ns; assert g3y = '1';
-    g3a <= '1'; g3b <= '0'; wait for 5 ns; assert g3y = '1';
-    g3a <= '1'; g3b <= '1'; wait for 5 ns; assert g3y = '0';
-
-    g4a <= '0'; g4b <= '0'; wait for 5 ns; assert g4y = '0';
-    g4a <= '0'; g4b <= '1'; wait for 5 ns; assert g4y = '1';
-    g4a <= '1'; g4b <= '0'; wait for 5 ns; assert g4y = '1';
-    g4a <= '1'; g4b <= '1'; wait for 5 ns; assert g4y = '0';
+      assert g1y = p(i).q;
+      assert g2y = p(i).q;
+      assert g3y = p(i).q;
+      assert g4y = p(i).q;
+    end loop;
 
     wait;
   end process;
