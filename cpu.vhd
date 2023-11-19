@@ -20,6 +20,77 @@ end;
 
 architecture structural of cpu is
 
+  -- CLOCK1 (outbound) signals
+
+  signal \-tpr0\ : std_logic;
+  signal \-tpr5\ : std_logic;
+  signal \-tpr10\ : std_logic;
+  signal \-tpr15\ : std_logic;
+  signal \-tpr20\ : std_logic;
+  signal \-tpr20a\ : std_logic;
+  signal \-tpr25\ : std_logic;
+  signal \-tpr40\ : std_logic;
+  signal \-tpr60\ : std_logic;
+  signal \-tpr65\ : std_logic;
+  signal \-tpr70\ : std_logic;
+  signal \-tpr75\ : std_logic;
+  signal \-tpr80\ : std_logic;
+  signal \-tpr80a\ : std_logic;
+  signal \-tpr85\ : std_logic;
+  signal \-tpr100\ : std_logic;
+  signal \-tpr105\ : std_logic;
+  signal \-tpr110\ : std_logic;
+  signal \-tpr115\ : std_logic;
+  signal \-tpr120\ : std_logic;
+  signal \-tpr120a\ : std_logic;
+  signal \-tpr125\ : std_logic;
+  signal \-tpr140\ : std_logic;
+  signal \-tpr160\ : std_logic;
+  signal \-tpr180\ : std_logic;
+  signal \-tpr200\ : std_logic;
+
+  signal tprend, \-tprend\ : std_logic;
+
+  signal \-tpw10\ : std_logic;
+  signal \-tpw20\ : std_logic;
+  signal \-tpw25\ : std_logic;
+  signal \-tpw30\ : std_logic;
+  signal \-tpw30a\ : std_logic;
+  signal \-tpw35\ : std_logic;
+  signal \-tpw40\ : std_logic;
+  signal \-tpw40a\ : std_logic;
+  signal \-tpw45\ : std_logic;
+  signal \-tpw50\ : std_logic;
+  signal \-tpw60\ : std_logic;
+  signal \-tpw55\ : std_logic;
+  signal \-tpw65\ : std_logic;
+  signal \-tpw70\ : std_logic;
+  signal \-tpw75\ : std_logic;
+
+  alias \-tpdone\ is \-tpw60\;
+
+  -- CLOCK2 (outbound) signals
+
+  signal tpclk, \-tpclk\ : std_logic;
+
+  signal \-clk0\, clk1 , clk2 , clk3 , clk4 , clk5 , clk6 : std_logic;
+
+  signal   mclk5 : std_logic;
+  signal   mclk7 : std_logic;
+  signal   mclk1 : std_logic;
+  signal \-mclk0\ : std_logic;
+
+  signal \-wp1\ , \-wp2\ , \-wp3\ , \-wp4\ , \-wp5\ : std_logic;
+
+  signal \-tse1\ , \-tse2\ , \-tse3\ , \-tse4\ : std_logic;
+
+  signal tptse , \-tptse\ : std_logic;
+
+  signal tpwpiram : std_logic;
+  signal tpwp : std_logic;
+
+  --------------------------------------------------------------------------------
+
   signal \-a31\ : std_logic;
   signal \-aadr0a\, \-aadr1a\, \-aadr2a\, \-aadr3a\, \-aadr4a\, \-aadr5a\, \-aadr6a\, \-aadr7a\, \-aadr8a\, \-aadr9a\ : std_logic;
   signal \-aadr0b\, \-aadr1b\, \-aadr2b\, \-aadr3b\, \-aadr4b\, \-aadr5b\, \-aadr6b\, \-aadr7b\, \-aadr8b\, \-aadr9b\ : std_logic;
@@ -40,7 +111,6 @@ architecture structural of cpu is
   signal \-bus.reset\ : std_logic;
   signal \-busint.lm.reset\ : std_logic;
   signal \-cin0\, \-cin4\, \-cin8\, \-cin12\, \-cin16\, \-cin20\, \-cin24\, \-cin28\, \-cin32\ : std_logic;
-  signal \-clk0\ : std_logic;
   signal \-clk1\ : std_logic;
   signal \-clk2a\ : std_logic;
   signal \-clk2c\ : std_logic;
@@ -142,7 +212,6 @@ architecture structural of cpu is
   signal \-mapi8a\, \-mapi9a\, \-mapi10a\, \-mapi11a\, \-mapi12a\ : std_logic;
   signal \-mapi23\ : std_logic;
   signal \-mbusy.sync\ : std_logic;
-  signal \-mclk0\ : std_logic;
   signal \-mclk1\ : std_logic;
   signal \-mclk5\ : std_logic;
   signal \-md\ : std_logic_vector(0 to 31);
@@ -265,40 +334,8 @@ architecture structural of cpu is
   signal \-step\ : std_logic;
   signal \-swpa\ : std_logic;
   signal \-swpb\ : std_logic;
-  signal \-tpclk\ : std_logic;
-  signal \-tpdone\ : std_logic;
-  signal \-tpr0\ : std_logic;
-  signal \-tpr5\ : std_logic;
-  signal \-tpr10\ : std_logic;
-  signal \-tpr15\ : std_logic;
-  signal \-tpr20\ : std_logic;
-  signal \-tpr20a\ : std_logic;
-  signal \-tpr25\ : std_logic;
-  signal \-tpr40\ : std_logic;
-  signal \-tpr60\ : std_logic;
-  signal \-tpr65\ : std_logic;
-  signal \-tpr70\ : std_logic;
-  signal \-tpr75\ : std_logic;
-  signal \-tpr80\ : std_logic;
-  signal \-tpr80a\ : std_logic;
-  signal \-tpr85\ : std_logic;
-  signal \-tpr100\ : std_logic;
-  signal \-tpr105\ : std_logic;
-  signal \-tpr110\ : std_logic;
-  signal \-tpr115\ : std_logic;
-  signal \-tpr120\ : std_logic;
-  signal \-tpr120a\ : std_logic;
-  signal \-tpr125\ : std_logic;
-  signal \-tpr140\ : std_logic;
-  signal \-tpr160\ : std_logic;
-  signal \-tpr180\ : std_logic;
-  signal \-tpr200\ : std_logic;
-  signal \-tprend\ : std_logic;
-  signal \-tptse\ : std_logic;
-  signal \-tpw10\, \-tpw20\, \-tpw25\, \-tpw30\, \-tpw30a\, \-tpw35\, \-tpw40\, \-tpw40a\, \-tpw45\, \-tpw50\, \-tpw55\, \-tpw60\, \-tpw65\, \-tpw70\, \-tpw75\ : std_logic;
   signal \-trap\ : std_logic;
   signal \-trapenb\ : std_logic;
-  signal \-tse1\, \-tse2\, \-tse3\, \-tse4\ : std_logic;
   signal \-upperhighok\ : std_logic;
   signal \-use.map\ : std_logic;
   signal \-v0pe\ : std_logic;
@@ -316,7 +353,6 @@ architecture structural of cpu is
   signal \-wait\ : std_logic;
   signal \-wmap\ : std_logic;
   signal \-wmapd\ : std_logic;
-  signal \-wp1\, \-wp2\, \-wp3\, \-wp4\, \-wp5\ : std_logic;
   signal \-zero16.drive\ : std_logic;
   signal \boot.trap\ : std_logic;
   signal \bottom.1k\ : std_logic;
@@ -369,27 +405,22 @@ architecture structural of cpu is
   signal apass1 : std_logic;
   signal apass2 : std_logic;
   signal apassenb : std_logic;
-  signal clk1 : std_logic;
   signal clk1a : std_logic;
-  signal clk2 : std_logic;
   signal clk2a : std_logic;
   signal clk2b : std_logic;
   signal clk2c : std_logic;
-  signal clk3 : std_logic;
   signal clk3a : std_logic;
   signal clk3b : std_logic;
   signal clk3c : std_logic;
   signal clk3d : std_logic;
   signal clk3e : std_logic;
   signal clk3f : std_logic;
-  signal clk4 : std_logic;
   signal clk4a : std_logic;
   signal clk4b : std_logic;
   signal clk4c : std_logic;
   signal clk4d : std_logic;
   signal clk4e : std_logic;
   signal clk4f : std_logic;
-  signal clk5 : std_logic;
   signal clk5a : std_logic;
   signal conds0 : std_logic;
   signal conds1 : std_logic;
@@ -491,11 +522,8 @@ architecture structural of cpu is
   signal mapwr0d : std_logic;
   signal mapwr1d : std_logic;
   signal mbusy : std_logic;
-  signal mclk1 : std_logic;
   signal mclk1a : std_logic;
-  signal mclk5 : std_logic;
   signal mclk5a : std_logic;
-  signal mclk7 : std_logic;
   signal mdclk : std_logic;
   signal mdgetspar : std_logic;
   signal mdhaspar : std_logic;
@@ -639,11 +667,6 @@ architecture structural of cpu is
   signal step : std_logic;
   signal tilt0 : std_logic;
   signal tilt1 : std_logic;
-  signal tpclk : std_logic;
-  signal tprend : std_logic;
-  signal tptse : std_logic;
-  signal tpwp : std_logic;
-  signal tpwpiram : std_logic;
   signal trapa : std_logic;
   signal trapb : std_logic;
   signal trapenb : std_logic;
