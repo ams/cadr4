@@ -33,7 +33,7 @@ If writing or testing CADR microcode, then it is useful to have [usim](https://t
 
 ## Organization
 
-  - ttl: contains all the ICs that are used by the CADR.
+  - ttl (package): contains all the ICs that are used by the CADR.
 
 	* sn74: 74xx logic.
 
@@ -42,9 +42,13 @@ If writing or testing CADR microcode, then it is useful to have [usim](https://t
 	* unsorted: contains skeletons directly translated from the
 	  schematics; these are to be deleted / merged at some point.
 
-  - cadr4.vhd: contains a exact transliteration of the original CADR
-	schematics, with a testbench that is capable of running it in
-	cadr4_tb.vhd.
+  - cadr4 (package):
+
+	* cpu.vhd: contains a exact transliteration of the original CADR
+	  schematics
+
+	* cadr4_tb.vhd: with a testbench that is capable of exercising the
+	  CADR.
 
 New documentation should be written in Markdown. At some point this
 should be migrated back into the [Lisp Machine
