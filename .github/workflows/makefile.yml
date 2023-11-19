@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Install Fossil
-      run: sudo apt-get install -y fossil-scm
+      run: sudo apt-get install -y fossil
 
     - name: Install GHDL
       run: sudo apt-get install -y ghdl
