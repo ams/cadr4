@@ -9,12 +9,12 @@ end;
 
 architecture testbench of ic_16dummy_tb is
 
-  signal dummy      : std_logic;
+  signal dummy : std_logic;
 
 begin
 
   uut : ic_16dummy port map(
-    dummy      => dummy
+    dummy => dummy
     );
 
   process
