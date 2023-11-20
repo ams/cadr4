@@ -22,15 +22,35 @@ begin
     );
 
   process
+
+    type pt is record
+      i0, i1, i2 : std_logic;
+      q          : std_logic;
+    end record;
+    type pa is array (natural range <>) of pt;
+
+    constant p : pa :=
+      (('0', '0', '0', '1'),
+       ('0', '0', '1', '1'),
+       ('0', '1', '0', '1'),
+       ('0', '1', '1', '1'),
+       ('1', '0', '0', '1'),
+       ('1', '0', '1', '1'),
+       ('1', '1', '0', '1'),
+       ('1', '1', '1', '0'));
+
   begin
-    wait for 5 ns;
+    for i in p'range loop
+      g1a <= p(i).i0; g1b <= p(i).i1; g1c <= p(i).i2;
+      g2a <= p(i).i0; g2b <= p(i).i1; g2c <= p(i).i2;
+      g3a <= p(i).i0; g3b <= p(i).i1; g3c <= p(i).i2;
 
---    g1a <= 'X'; g1b <= 'X'; g1c <= '0'; wait for 5 ns; assert g1y_n = '1';
---    g1a <= 'X'; g1b <= '0'; g1c <= 'X'; wait for 5 ns; assert g1y_n = '1';
---    g1a <= '0'; g1b <= 'X'; g1c <= 'X'; wait for 5 ns; assert g1y_n = '1';
---    g1a <= '1'; g1b <= '1'; g1c <= '1'; wait for 5 ns; assert g1y_n = '0';
+      wait for 1 ns;
 
-    report "Testbench not implemented!" severity warning;
+      assert g1y_n = p(i).q;
+      assert g2y_n = p(i).q;
+      assert g3y_n = p(i).q;
+    end loop;
 
     wait;
   end process;
