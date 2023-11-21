@@ -8,9 +8,7 @@ VHDSTND		= 08
 GHDLFLAGS	= -Pttl
 
 SRCS_VHD	=				\
-cadr4.vhd					\
 utilities.vhd					\
-cpu.vhd
 
 all::;	 	(cd ttl; make all)
 check::;	(cd ttl; make check)
