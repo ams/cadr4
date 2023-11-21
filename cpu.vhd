@@ -12,13 +12,12 @@ library cadr4;
 use cadr4.utilities.all;
 
 entity cpu is
-  port (
-    \-boot1\ : in std_logic;
-    \-boot2\ : in std_logic
-    );
 end;
 
 architecture structural of cpu is
+
+  signal gnd : std_logic;
+  signal vcc : std_logic;
 
   -- CLOCK1 (outbound) signals
 
@@ -73,18 +72,18 @@ architecture structural of cpu is
 
   signal tpclk, \-tpclk\ : std_logic;
 
-  signal \-clk0\, clk1 , clk2 , clk3 , clk4 , clk5 , clk6 : std_logic;
+  signal \-clk0\, clk1, clk2, clk3, clk4, clk5, clk6 : std_logic;
 
-  signal   mclk5 : std_logic;
-  signal   mclk7 : std_logic;
-  signal   mclk1 : std_logic;
+  signal mclk5 : std_logic;
+  signal mclk7 : std_logic;
+  signal mclk1 : std_logic;
   signal \-mclk0\ : std_logic;
 
-  signal \-wp1\ , \-wp2\ , \-wp3\ , \-wp4\ , \-wp5\ : std_logic;
+  signal \-wp1\, \-wp2\, \-wp3\, \-wp4\, \-wp5\ : std_logic;
 
-  signal \-tse1\ , \-tse2\ , \-tse3\ , \-tse4\ : std_logic;
+  signal \-tse1\, \-tse2\, \-tse3\, \-tse4\ : std_logic;
 
-  signal tptse , \-tptse\ : std_logic;
+  signal tptse, \-tptse\ : std_logic;
 
   signal tpwpiram : std_logic;
   signal tpwp : std_logic;
@@ -105,8 +104,8 @@ architecture structural of cpu is
   signal \-awpa\ : std_logic;
   signal \-awpb\ : std_logic;
   signal \-awpc\ : std_logic;
---  signal \-boot1\ : std_logic;
---  signal \-boot2\ : std_logic;
+  signal \-boot1\ : std_logic;
+  signal \-boot2\ : std_logic;
   signal \-boot\ : std_logic;
   signal \-bus.reset\ : std_logic;
   signal \-busint.lm.reset\ : std_logic;
@@ -456,7 +455,6 @@ architecture structural of cpu is
   signal err : std_logic;
   signal errstop : std_logic;
   signal g2b : std_logic;
-  signal gnd : std_logic;
   signal hi1, hi2, hi3, hi4, hi5, hi6, hi7, hi8, hi9, hi10, hi11, hi12 : std_logic;
   signal highok : std_logic;
   signal i : std_logic_vector(0 to 48);
@@ -677,7 +675,7 @@ architecture structural of cpu is
   signal tse4a : std_logic;
   signal tse4b : std_logic;
   signal v0parok : std_logic;
-  signal vcc : std_logic;
+
   signal vm0pari : std_logic;
   signal vm1mpar : std_logic;
   signal vm1pari : std_logic;
@@ -1819,7 +1817,8 @@ begin
   olord2_1a07 : sn74s02 port map(g1q_n => highok, g1a => \-upperhighok\, g1b => \-lowerhighok\, g2q_n => \-boot\, g2a => internal5, g2b => internal2, g3b => \power_reset_a\, g3a => \prog.bus.reset\, g3q_n => \-bus.reset\, g4b => '0', g4a => '0');
   olord2_1a11 : sn74s02 port map(g1q_n => \-clock_reset_b\, g1a => \power_reset_a\, g1b => internal1, g2q_n => \-clock_reset_a\, g2a => \power_reset_a\, g2b => internal1, g3b => gnd, g3a => \-power_reset\, g3q_n => \power_reset_a\, g4b => '0', g4a => '0');
   olord2_1a18 : sn74ls109 port map(clr1_n => \-boot\, j1 => srun, k1_n => hi1, clk1 => mclk5a, pre1_n => \-clock_reset_a\, q1 => nc(75), q1_n => \boot.trap\, clr2_n => '0', j2 => '0', k2_n => '0', clk2 => '0', pre2_n => '0');
-  olord2_1a19 : ic_16dummy port map(dummy => vcc);
+  olord2_1a19 : ic_16dummy port map(hi1 => hi1, hi2 => hi2, \-boot1\ => \-boot1\, \-boot2\ => \-boot2\, \-power_reset\ => \-power_reset\);
+
   olord2_1a20 : sn74ls14 port map(g1q_n => internal4, g2a => \-boot1\, g2q_n => internal5, g3a => \-boot2\, g3q_n => internal3, g4q_n => \-power_reset\, g4a => internal4, g1a => '0', g5a => '0', g6a => '0');
   olord2_1b10 : sn74s04 port map(g1a => \-ldmode\, g1q_n => ldmode, g3a => mclk5, g3q_n => \-mclk5\, g4q_n => \-clk5\, g4a => clk5, g6q_n => internal1, g6a => \-busint.lm.reset\, g2a => '0', g5a => '0');
   olord2_1c07 : sn74s00 port map(g4q_n => \-lowerhighok\, g4a => hi2, g4b => hi1, g1b => '0', g1a => '0', g2b => '0', g2a => '0', g3b => '0', g3a => '0');
@@ -1960,23 +1959,24 @@ begin
 
   --------------------------------------------------------------------------------
 
+  vcc <= '1';
   gnd <= '0';
 
-  \-hang\ <= '1';
+  -- Manual Overlord.
 
-  \-ilong\ <= '1';
-  sspeed1  <= '0';
-  sspeed0  <= '0';
-
-  \machruna_l\ <= '0';
+  speed0   <= '0';
+  speed1   <= '0';
+  \-ilong\ <= not '0';
 
   process
   begin
-    \-clock_reset_b\ <= '0';
+    \-hang\          <= not '0';
+    \-clock_reset_b\ <= not '0';
     wait for 200 ns;
-    \-clock_reset_b\ <= '1';
 
-    wait for 2500 ns;
+    \-clock_reset_b\ <= not '1';
+
+    wait;
   end process;
 
   -- Poor substitute for the 5 octal display that was on the lower
