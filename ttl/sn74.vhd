@@ -713,7 +713,3 @@ package sn74 is
   alias sn74s74 is sn7474;
 
 end;
-
-package body sn74 is
-
-end;

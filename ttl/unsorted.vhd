@@ -12,7 +12,3 @@ package unsorted is
     ); end component;
 
 end;
-
-package body unsorted is
-
-end;

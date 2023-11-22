@@ -342,7 +342,3 @@ package other is
   end component;
 
 end;
-
-package body other is
-
-end;
