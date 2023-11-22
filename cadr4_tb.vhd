@@ -72,7 +72,7 @@ architecture testbench of cadr4_tb is
 
   signal tpclk, \-tpclk\ : std_logic;
 
-  signal \-clk0\, clk1, clk2, clk3, clk4, clk5, clk6 : std_logic;
+  signal \-clk0\, clk1, clk2, clk3, clk4, clk5 : std_logic;
 
   signal mclk5 : std_logic;
   signal mclk7 : std_logic;
@@ -454,7 +454,6 @@ architecture testbench of cadr4_tb is
   signal eadr : std_logic_vector(0 to 3);
   signal err : std_logic;
   signal errstop : std_logic;
-  signal g2b : std_logic;
   signal hi1, hi2, hi3, hi4, hi5, hi6, hi7, hi8, hi9, hi10, hi11, hi12 : std_logic;
   signal highok : std_logic;
   signal i : std_logic_vector(0 to 48);
