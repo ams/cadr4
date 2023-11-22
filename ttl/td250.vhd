@@ -4,6 +4,9 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+library ttl;
+use ttl.misc.all;
+
 entity td250 is
   port (
     input   : in  std_logic;
@@ -16,15 +19,24 @@ entity td250 is
 end;
 
 architecture ttl of td250 is
+  signal delayed : std_logic_vector(4 downto 0);
 begin
 
-  process (input) is
-  begin
-    o_50ns  <= '0' after 0 ns, '1' after 50 ns;
-    o_100ns <= '0' after 50 ns, '1' after 100 ns;
-    o_150ns <= '0' after 100 ns, '1' after 150 ns;
-    o_200ns <= '0' after 150 ns, '1' after 200 ns;
-    o_250ns <= '0' after 200 ns, '1' after 250 ns;
-  end process;
+  td : timedelay
+    generic map (
+      initial   => 250 ns,
+      increment => 50 ns,
+      taps      => 5
+      )
+    port map (
+      input   => input,
+      delayed => delayed
+      );
+
+  o_50ns  <= delayed(0);
+  o_100ns <= delayed(1);
+  o_150ns <= delayed(2);
+  o_200ns <= delayed(3);
+  o_250ns <= delayed(4);
 
 end;

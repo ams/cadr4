@@ -5,6 +5,18 @@ package misc is
 
   procedure clkgen(signal clk : out std_logic; constant frequency : real);
 
+  component timedelay is
+    generic (
+      initial   : time     := 50 ns;
+      increment : time     := 10 ns;
+      taps      : positive := 5
+      );
+    port (
+      input   : in  std_logic;
+      delayed : out std_logic_vector(taps-1 downto 0)
+      );
+  end component;
+
   function pullup(s   : std_logic) return std_logic;
   function pulldown(s : std_logic) return std_logic;
 
