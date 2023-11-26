@@ -1,59 +1,18 @@
-library ieee;
-use ieee.std_logic_1164.all;
-
-library ttl;
-use ttl.sn74.all;
+library IEEE;
+use IEEE.std_logic_1164.all;
 
 entity sn74182_tb is
-end;
+end sn74182_tb;
 
-architecture testbench of sn74182_tb is
-
-  signal cin_n   : std_logic;
-  signal y0      : std_logic;
-  signal x0      : std_logic;
-  signal cout0_n : std_logic;
-  signal y1      : std_logic;
-  signal x1      : std_logic;
-  signal cout1_n : std_logic;
-  signal y2      : std_logic;
-  signal x2      : std_logic;
-  signal cout2_n : std_logic;
-  signal y3      : std_logic;
-  signal x3      : std_logic;
-  signal yout    : std_logic;
-  signal xout    : std_logic;
-
+architecture behaviour of sn74182_tb is
+  signal X, Y: std_logic_vector (3 downto 0);
+  signal nC, X_out, Y_out, C_0, C_1, C_2 : std_logic;
 begin
-
-  uut : sn74182 port map(
-    xout => xout,
-    yout => yout,
-    x3   => x3,
-    y3   => y3,
-
-    cout2_n => cout2_n,
-    x2      => x2,
-    y2      => y2,
-
-    cout1_n => cout1_n,
-    x1      => x1,
-    y1      => y1,
-
-    cout0_n => cout0_n,
-    x0      => x0,
-    y0      => y0,
-
-    cin_n => cin_n
-    );
-
-  process
-  begin
-    wait for 5 ns;
-
-    report "Testbench not implemented!" severity warning;
-
+  dut: entity work.sn74182(rtl) port map (nC => nC, X0 => X(0), Y0 => Y(0), X1 => X(1), Y1 => Y(1), X2 => X(2), Y2 => Y(2), X3 => X(3), Y3 => Y(3),
+                                          X => X_out, Y => Y_out, C_0 => C_0, C_1 => C_1, C_2 => C_2
+                                           );
+  process begin
+    report "Not implemented yet" severity error;
     wait;
   end process;
-
-end;
+end behaviour;

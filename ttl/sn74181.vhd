@@ -44,7 +44,7 @@ begin
   nM <= (not M);
 
   xF0 <= (xAB0u xor xAB0l) xor (nM nand nC_in);
-  xF1 <= (xAB1u xor xAB1l) xor ((nC_in and xAB0u and nM) nor (xAB0l and M));
+  xF1 <= (xAB1u xor xAB1l) xor ((nC_in and xAB0u and nM) nor (xAB0l and nM));
   xF2 <= (xAB2u xor xAB2l) xor (not ((nC_in and xAB0u and xAB1u and nM) or (xAB1u and xAB0l and nM) or (xAB1l and nM)));
   xF3 <= (xAB3u xor xAB3l) xor (not ((nC_in and xAB0u and xAB1u and xAB2u and nM) or (xAB1u and xAB2u and xAB0l and nM) or (xAB2u and xAB1l and nM) or (xAB2l and nM)));
 
