@@ -1,5 +1,4 @@
--- Arithmetic Logic Units/Function Generators
-
+--- Arithmetic Logic Units/Function Generators
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -7,21 +6,21 @@ use ieee.numeric_std.all;
 entity sn74181 is
   port (
     -- function
-    S0, S1, S2, S3 : in std_logic;
+    S : in std_logic_vector (3 downto 0);
     -- inputs
-    A0, A1, A2, A3 : in std_logic;
-    B0, B1, B2, B3 : in std_logic;
+    A : in std_logic_vector (3 downto 0);
+    B : in std_logic_vector (3 downto 0);
     -- mode
     M              : in std_logic;
     -- carry in
     nC_in : in std_logic;
     -- output
-    F0, F1, F2, F3 : out std_logic;
+    F : out std_logic_vector (3 downto 0);
     -- carry out
     nC_out : out std_logic;
     -- A = B, only valid with subtraction and no carry
     A_EQ_B    : out std_logic;
-    -- more outputs
+    -- more carry outputs
     X, Y   : out std_logic
 
     );
@@ -32,14 +31,14 @@ architecture rtl of sn74181 is
   signal xF0, xF1, xF2, xF3, xY : std_logic;
 begin
   -- these are the "middle" results, Ax and Bx upper / lower
-  xAB3u <= (B3 and S3 and A3) nor (A3 and S2 and (not B3));
-  xAB3l <= not (((not B3) and S1) or (S0 and B3) or (A3));
-  xAB2u <= (B2 and S3 and A2) nor (A2 and S2 and (not B2));
-  xAB2l <= not (((not B2) and S1) or (S0 and B2) or (A2));
-  xAB1u <= (B1 and S3 and A1) nor (A1 and S2 and (not B1));
-  xAB1l <= not (((not B1) and S1) or (S0 and B1) or (A1));
-  xAB0u <= (B0 and S3 and A0) nor (A0 and S2 and (not B0));
-  xAB0l <= not (((not B0) and S1) or (S0 and B0) or (A0));
+  xAB3u <= (B(3) and S(3) and A(3)) nor (A(3) and S(2) and (not B(3)));
+  xAB3l <= not (((not B(3)) and S(1)) or (S(0) and B(3)) or A(3));
+  xAB2u <= (B(2) and S(3) and A(2)) nor (A(2) and S(2) and (not B(2)));
+  xAB2l <= not (((not B(2)) and S(1)) or (S(0) and B(2)) or A(2));
+  xAB1u <= (B(1) and S(3) and A(1)) nor (A(1) and S(2) and (not B(1)));
+  xAB1l <= not (((not B(1)) and S(1)) or (S(0) and B(1)) or (A(1)));
+  xAB0u <= (B(0) and S(3) and A(0)) nor (A(0) and S(2) and (not B(0)));
+  xAB0l <= not (((not B(0)) and S(1)) or (S(0) and B(0)) or A(0));
 
   nM <= (not M);
 
@@ -54,10 +53,10 @@ begin
   nC_out <= (not xY) or (not (not (xAB3u and xAB2u and xAB1u and xAB0u and nC_in)));
   A_EQ_B <= xF0 and xF1 and xF2 and xF3;
 
-  F0 <= xF0;
-  F1 <= xF1;
-  F2 <= xF2;
-  F3 <= xF3;
+  F(0) <= xF0;
+  F(1) <= xF1;
+  F(2) <= xF2;
+  F(3) <= xF3;
 
   Y <= xY;
 end;
