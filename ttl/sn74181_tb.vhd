@@ -1,76 +1,44 @@
-library ieee;
-use ieee.std_logic_1164.all;
-
-library ttl;
-use ttl.sn74.all;
+library IEEE;
+use IEEE.std_logic_1164.all;
 
 entity sn74181_tb is
-end;
+end sn74181_tb;
 
-architecture testbench of sn74181_tb is
-
-  signal cin_n  : std_logic;
-  signal s0     : std_logic;
-  signal s1     : std_logic;
-  signal s2     : std_logic;
-  signal s3     : std_logic;
-  signal m      : std_logic;
-  signal a0     : std_logic;
-  signal a1     : std_logic;
-  signal a2     : std_logic;
-  signal a3     : std_logic;
-  signal b0     : std_logic;
-  signal b1     : std_logic;
-  signal b2     : std_logic;
-  signal b3     : std_logic;
-  signal f0     : std_logic;
-  signal f1     : std_logic;
-  signal f2     : std_logic;
-  signal f3     : std_logic;
-  signal aeb    : std_logic;
-  signal x      : std_logic;
-  signal y      : std_logic;
-  signal cout_n : std_logic;
-
+architecture behaviour of sn74181_tb is
+  signal S, A, B, F : std_logic_vector (3 downto 0);
+  signal M, nC_in, nC_out, A_EQ_B, X, Y : std_logic;
 begin
-
-  uut : sn74181 port map(
-    cout_n => cout_n,
-    y      => y,
-    x      => x,
-    aeb    => aeb,
-
-    f3 => f3,
-    f2 => f2,
-    f1 => f1,
-    f0 => f0,
-
-    b3 => b3,
-    b2 => b2,
-    b1 => b1,
-    b0 => b0,
-
-    a3 => a3,
-    a2 => a2,
-    a1 => a1,
-    a0 => a0,
-
-    m  => m,
-    s3 => s3,
-    s2 => s2,
-    s1 => s1,
-    s0 => s0,
-
-    cin_n => cin_n
-    );
-
-  process
-  begin
+  dut: entity work.sn74181(rtl) port map (S0 => S(0), S1 => S(1), S2 => S(2), S3 => S(3),
+                                           A0 => A(0), A1 => A(1), A2 => A(2), A3 => A(3),
+                                           B0 => B(0), B1 => B(1), B2 => B(2), B3 => B(3),
+                                           F0 => F(0), F1 => F(1), F2 => F(2), F3 => F(3),
+                                           M => M, X => X, Y => Y, A_EQ_B => A_EQ_B, nC_in => nC_in, nC_out => nC_out
+                                           );
+  process begin
+    nC_in <= '1';
+    M <= '0'; -- 0 arithmetic, 1 logic
+    S <= "1001"; -- 0001 -> A + B, 1001 -> A PLUS B
+    A <= "0001";
+    B <= "0001";
     wait for 5 ns;
+    assert F = "0010" and nC_out = '1' report "Incorrect: 0001 plus 0001" severity error;
 
-    report "Testbench not implemented!" severity warning;
+    S <= "0110"; -- 0110 -> A MINUS B MINUS 1
+    wait for 5 ns;
+    assert A_EQ_B = '1' report "Incorrect: 0001 = 0001" severity error;
 
+    S <= "1001";
+    A <= "1111";
+    B <= "0001";
+    wait for 5 ns;
+    assert F = "0000" and nC_out = '0' report "Incorrect: 1111 plus 0001" severity error;
+
+    M <= '1';
+    S <= "0110"; -- xor
+    A <= "0011";
+    B <= "1110";
+    wait for 5 ns;
+    assert F = "1101" report "Incorrect: 0011 xor 1110" severity error;
     wait;
   end process;
-
-end;
+end behaviour;
