@@ -1,54 +1,61 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-library ttl;
-use ttl.sn74.all;
+-- library ttl;
+-- use ttl.sn74.all;
 
 entity sn74138_tb is
 end;
 
 architecture testbench of sn74138_tb is
 
-  signal y0  : std_logic;
-  signal y1  : std_logic;
-  signal y2  : std_logic;
-  signal y3  : std_logic;
-  signal y4  : std_logic;
-  signal y5  : std_logic;
-  signal y6  : std_logic;
-  signal y7  : std_logic;
-  signal g1  : std_logic;
-  signal g2b : std_logic;
-  signal g2a : std_logic;
-  signal c   : std_logic;
-  signal b   : std_logic;
-  signal a   : std_logic;
+  signal nY   : std_logic_vector (7 downto 0);
+  signal SEL  : std_logic_vector (2 downto 0);
+
+  signal nCE0 : std_logic;
+  signal nCE1 : std_logic;
+  signal  CE2 : std_logic;
 
 begin
 
-  uut : sn74138 port map(
-    a   => a,
-    b   => b,
-    c   => c,
-    g2a => g2a,
-    g2b => g2b,
-    g1  => g1,
-    y7  => y7,
-    y6  => y6,
-    y5  => y5,
-    y4  => y4,
-    y3  => y3,
-    y2  => y2,
-    y1  => y1,
-    y0  => y0
+  uut : entity work.sn74138(rtl) port map(
+    SEL   => SEL,
+    nY    => nY,
+    nCE0  => nCE0,
+    nCE1  => nCE1,
+    CE2   => CE2
     );
 
   process
   begin
+    nCE0 <= '0';
+    nCE1 <= '0';
+    CE2 <= '1';
+    SEL <= "000";
     wait for 5 ns;
+    assert nY = x"FE" report "ERROR: sel 0" severity error;
 
-    report "Testbench not implemented!" severity warning;
+    SEL <= "111";
+    wait for 5 ns;
+    assert nY(7) = '0' report "ERROR: sel 7" severity error;
 
+    SEL <= "101";
+    wait for 5 ns;
+    assert nY(5) = '0' report "ERROR: sel 5" severity error;
+
+    CE2 <= '0';
+    wait for 5 ns;
+    assert nY = x"FF" report "ERROR: disable CE2" severity error;
+
+    CE2 <= '1';
+    nCE1 <= '1';
+    wait for 5 ns;
+    assert nY = x"FF" report "ERROR: disable nCE1" severity error;
+
+    nCE1 <= '0';
+    nCE0 <= '1';
+    wait for 5 ns;
+    assert nY = x"FF" report "ERROR: disable nCE0" severity error;
     wait;
   end process;
 
