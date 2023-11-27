@@ -1394,8 +1394,17 @@ begin
 --  aluc4_2d15 : sn74s32 port map(g2a => \-mul\, g2b => q(0), g2y => \-mulnop\, g1a => '0', g1b => '0', g3a => '0', g3b => '0', g4a => '0', g4b => '0');
 --  aluc4_2d21 : sn7428 port map(g1q_n => osel1a, g1a => \-ir13\, g1b => \-iralu\, g2q_n => osel0a, g2a => \-ir12\, g2b => \-iralu\, g3a => \-iralu\, g3b => \-ir13\, g3q_n => osel1b, g4a => \-iralu\, g4b => \-ir12\, g4q_n => osel0b);
 
---  alu0_2a23 : sn74s181 port map(b0 => a12, a0 => m(12), s3 => aluf3b, s2 => aluf2b, s1 => aluf1b, s0 => aluf0b, cin_n => \-cin12\, m => alumode, f0 => alu(12), f1 => alu(13), f2 => alu(14), f3 => alu(15), aeb => aeqm, x => xout15, cout_n => nc(461), y => yout15, b3 => a15, a3 => m(15), b2 => a14, a2 => m(14), b1 => a13, a1 => m(13));
---  alu0_2a28 : sn74s181 port map(b0 => a4, a0 => m(4), s3 => aluf3b, s2 => aluf2b, s1 => aluf1b, s0 => aluf0b, cin_n => \-cin4\, m => alumode, f0 => alu(4), f1 => alu(5), f2 => alu(6), f3 => alu(7), aeb => aeqm, x => xout7, cout_n => nc(463), y => yout7, b3 => a7, a3 => m(7), b2 => a6, a2 => m(6), b1 => a5, a1 => m(5));
+  alu0_2a23 : sn74s181 port map(B(0) => a12, B(1) => a13, B(2) => a14, B(3) => a15,
+                                A(0) => m(12), A(1) => m(13), A(2) => m(14), A(3) => m(15),
+                                S(3) => aluf3b, S(2) => aluf2b, S(1) => aluf1b, S(0) => aluf0b,
+                                nC_in => \-cin12\, M => alumode,
+                                F(0) => alu(12), F(1) => alu(13), F(2) => alu(14), F(3) => alu(15),
+                                A_EQ_B => aeqm, X => xout15, nC_out => nc(461), Y => yout15);
+  alu0_2a28 : sn74s181 port map(B(3) => a7, B(2) => a6, B(1) => a5, B(0) => a4,
+                                A(3) => m(7), A(2) => m(6), A(1) => m(5), A(0) => m(4),
+                                S(3) => aluf3b, S(2) => aluf2b, S(1) => aluf1b, S(0) => aluf0b, nC_in => \-cin4\, M => alumode,
+                                F(0) => alu(4), F(1) => alu(5), F(2)=> alu(6), F(3) => alu(7),
+                                A_EQ_B => aeqm, X => xout7, nC_out => nc(463), Y => yout7);
 --  alu0_2b23 : sn74s181 port map(b0 => a8, a0 => m(8), s3 => aluf3b, s2 => aluf2b, s1 => aluf1b, s0 => aluf0b, cin_n => \-cin8\, m => alumode, f0 => alu(8), f1 => alu(9), f2 => alu(10), f3 => alu(11), aeb => aeqm, x => xout11, cout_n => nc(462), y => yout11, b3 => a11, a3 => m(11), b2 => a10, a2 => m(10), b1 => a9, a1 => m(9));
 --  alu0_2b28 : sn74s181 port map(b0 => a0, a0 => m(0), s3 => aluf3b, s2 => aluf2b, s1 => aluf1b, s0 => aluf0b, cin_n => \-cin0\, m => alumode, f0 => alu(0), f1 => alu(1), f2 => alu(2), f3 => alu(3), aeb => aeqm, x => xout3, cout_n => nc(464), y => yout3, b3 => a3, a3 => m(3), b2 => a2, a2 => m(2), b1 => a1, a1 => m(1));
 
