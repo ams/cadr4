@@ -12,7 +12,7 @@ entity sn74138 is
     );
 end;
 
-architecture rtl of sn74138 is
+architecture ttl of sn74138 is
   signal enable : std_logic;
   signal nS0, nS1, nS2 : std_logic;
   signal S0, S1, S2 : std_logic;

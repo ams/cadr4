@@ -1,6 +1,9 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 
+library ttl;
+use ttl.sn74.all;
+
 entity sn74181_tb is
 end sn74181_tb;
 
@@ -8,9 +11,9 @@ architecture behaviour of sn74181_tb is
   signal S, A, B, F : std_logic_vector (3 downto 0);
   signal M, nC_in, nC_out, A_EQ_B, X, Y : std_logic;
 begin
-  dut: entity work.sn74181(rtl) port map (S => S, A => A, B => B, F => F,
-                                          M => M, X => X, Y => Y, A_EQ_B => A_EQ_B, nC_in => nC_in, nC_out => nC_out
-                                          );
+  dut: sn74181 port map (S => S, A => A, B => B, F => F,
+                         M => M, X => X, Y => Y, A_EQ_B => A_EQ_B, nC_in => nC_in, nC_out => nC_out
+                         );
   process begin
     nC_in <= '1';
     M <= '0'; -- 0 arithmetic, 1 logic

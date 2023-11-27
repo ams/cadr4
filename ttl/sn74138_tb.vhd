@@ -1,8 +1,8 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
--- library ttl;
--- use ttl.sn74.all;
+library ttl;
+use ttl.sn74.all;
 
 entity sn74138_tb is
 end;
@@ -18,7 +18,7 @@ architecture testbench of sn74138_tb is
 
 begin
 
-  uut : entity work.sn74138(rtl) port map(
+  uut : sn74138 port map(
     SEL   => SEL,
     nY    => nY,
     nCE0  => nCE0,

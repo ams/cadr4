@@ -1,8 +1,8 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
--- library ttl;
--- use ttl.sn74.all;
+library ttl;
+use ttl.sn74.all;
 
 entity sn74139_tb is
 end;
@@ -13,7 +13,7 @@ architecture testbench of sn74139_tb is
     signal nY   : std_logic_vector (3 downto 0);
 begin
 
-  uut : entity work.sn74139(rtl) port map(SEL => SEL, nENB => nENB, nY => nY
+  uut : sn74139 port map(SEL => SEL, nENB => nENB, nY => nY
     );
 
   process
