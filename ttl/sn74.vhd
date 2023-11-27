@@ -310,9 +310,9 @@ package sn74 is
 
   component sn74139 is
     port (
-      signal SEL  : in std_logic_vector (1 downto 0);
-      signal nENB : in std_logic;
-      signal nY   : out std_logic_vector (3 downto 0)
+      SEL  : in std_logic_vector (1 downto 0);
+      nENB : in std_logic;
+      nY   : out std_logic_vector (3 downto 0)
       );
   end component;
   alias sn74s139 is sn74139;
