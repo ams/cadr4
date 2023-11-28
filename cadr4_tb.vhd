@@ -756,19 +756,61 @@ begin
 
 --- Clock Generation
 
-  clock1_1c08 : sn74s10 port map(g1a => \-clock_reset_b\, g1b => \-tpdone\, g2a => \-hang\, g2b => \-clock_reset_b\, g2c => cyclecompleted, g2y_n => \-tpr0\, g1y_n => internal12, g1c => internal11, g3a => '0', g3b => '0', g3c => '0');
-  clock1_1c09 : sn74s00 port map(g1b => internal12, g1a => \-tpr40\, g1q_n => internal11, g2b => '0', g2a => '0', g3b => '0', g3a => '0', g4a => '0', g4b => '0');
-  clock1_1c10 : sn74s02 port map(g4b => internal11, g4a => gnd, g4q_n => cyclecompleted, g1a => '0', g1b => '0', g2a => '0', g2b => '0', g3b => '0', g3a => '0');
-  clock1_1c12 : td50 port map(input => \-tprend\, o_20ns => \-tpw20\, o_40ns => \-tpw40\, o_50ns => \-tpw50\, o_30ns => \-tpw30\, o_10ns => \-tpw10\);
-  clock1_1c14 : td25 port map(input => \-tpw50\, o_10ns => \-tpw60\, o_20ns => \-tpw70\, o_25ns => \-tpw75\, o_15ns => \-tpw65\, o_5ns => \-tpw55\);
-  clock1_1c15 : td25 port map(input => \-tpw20\, o_10ns => \-tpw30a\, o_20ns => \-tpw40a\, o_25ns => \-tpw45\, o_15ns => \-tpw35\, o_5ns => \-tpw25\);
-  clock1_1d08 : sn74s151 port map(i3 => \-tpr100\, i2 => \-tpr140\, i1 => \-tpr160\, i0 => \-tpr160\, q => \-tprend\, q_n => tprend, ce_n => gnd, sel2 => sspeed1, sel1 => sspeed0, sel0 => \-ilong\, i7 => \-tpr75\, i6 => \-tpr115\, i5 => \-tpr85\, i4 => \-tpr125\);
-  clock1_1d11 : td25 port map(input => \-tpr0\, o_10ns => \-tpr10\, o_20ns => \-tpr20a\, o_25ns => \-tpr25\, o_15ns => \-tpr15\, o_5ns => \-tpr5\);
-  clock1_1d12 : td100 port map(input => \-tpr0\, o_40ns => \-tpr40\, o_80ns => \-tpr80\, o_100ns => \-tpr100\, o_60ns => \-tpr60\, o_20ns => \-tpr20\);
-  clock1_1d13 : td100 port map(input => \-tpr100\, o_40ns => \-tpr140\, o_80ns => \-tpr180\, o_100ns => \-tpr200\, o_60ns => \-tpr160\, o_20ns => \-tpr120\);
-  clock1_1d14 : td25 port map(input => \-tpr100\, o_10ns => \-tpr110\, o_20ns => \-tpr120a\, o_25ns => \-tpr125\, o_15ns => \-tpr115\, o_5ns => \-tpr105\);
-  clock1_1d15 : td25 port map(input => \-tpr60\, o_10ns => \-tpr70\, o_20ns => \-tpr80a\, o_25ns => \-tpr85\, o_15ns => \-tpr75\, o_5ns => \-tpr65\);
-
+  clock1 : entity cadr4.cadr4_clock1(ttl) port map
+    (
+      \-clock_reset_b\ => \-clock_reset_b\,
+      \-hang\ => \-hang\,
+      \-ilong\ => \-ilong\,
+      \-tpdone\ => \-tpdone\,
+      \-tpr0\ => \-tpr0\,
+      \-tpr100\ => \-tpr100\,
+      \-tpr105\ => \-tpr105\,
+      \-tpr10\ => \-tpr10\,
+      \-tpr110\ => \-tpr110\,
+      \-tpr115\ => \-tpr115\,
+      \-tpr120\ => \-tpr120\,
+      \-tpr120a\ => \-tpr120a\,
+      \-tpr125\ => \-tpr125\,
+      \-tpr140\ => \-tpr140\,
+      \-tpr15\ => \-tpr15\,
+      \-tpr160\ => \-tpr160\,
+      \-tpr180\ => \-tpr180\,
+      \-tpr200\ => \-tpr200\,
+      \-tpr20\ => \-tpr20\,
+      \-tpr20a\ => \-tpr20a\,
+      \-tpr25\ => \-tpr25\,
+      \-tpr40\ => \-tpr40\,
+      \-tpr5\ => \-tpr5\,
+      \-tpr60\ => \-tpr60\,
+      \-tpr65\ => \-tpr65\,
+      \-tpr70\ => \-tpr70\,
+      \-tpr75\ => \-tpr75\,
+      \-tpr80\ => \-tpr80\,
+      \-tpr80a\ => \-tpr80a\,
+      \-tpr85\ => \-tpr85\,
+      \-tprend\ => \-tprend\,
+      \-tpw10\ => \-tpw10\,
+      \-tpw20\ => \-tpw20\,
+      \-tpw25\ => \-tpw25\,
+      \-tpw30\ => \-tpw30\,
+      \-tpw30a\ => \-tpw30a\,
+      \-tpw35\ => \-tpw35\,
+      \-tpw40\ => \-tpw40\,
+      \-tpw40a\ => \-tpw40a\,
+      \-tpw45\ => \-tpw45\,
+      \-tpw50\ => \-tpw50\,
+      \-tpw55\ => \-tpw55\,
+      \-tpw60\ => \-tpw60\,
+      \-tpw65\ => \-tpw65\,
+      \-tpw70\ => \-tpw70\,
+      \-tpw75\ => \-tpw75\,
+      cyclecompleted => cyclecompleted,
+      gnd => gnd,
+      sspeed0 => sspeed0,
+      sspeed1 => sspeed1,
+      tprend => tprend
+      );
+  
 --  clock2_1c01 : sn7428 port map(g1q_n => clk4, g1a => \-clk0\, g1b => gnd, g2q_n => mclk7, g2a => \-mclk0\, g2b => gnd, g3a => '0', g4a => '0', g4b => '0', g3b => '0');
 --  clock2_1c02 : sn7428 port map(g1q_n => \-wp1\, g1a => tpwp, g1b => gnd, g2q_n => \-wp2\, g2a => tpwp, g2b => gnd, g3a => gnd, g3b => tpwp, g3q_n => \-wp3\, g4a => gnd, g4b => tpwp, g4q_n => \-wp4\);
 --  clock2_1c06 : sn74s10 port map(g1a => \-tprend\, g1b => tpclk, g2a => \-tptse\, g2b => \-tpr25\, g2c => \-clock_reset_b\, g2y_n => tptse, g3y_n => internal7, g3a => \-clock_reset_b\, g3b => \-tpw70\, g3c => internal10, g1y_n => \-tpclk\, g1c => \-clock_reset_b\);

@@ -8,6 +8,8 @@ VHDSTND		= 08
 GHDLFLAGS	= -Pttl
 
 SRCS_VHD	=				\
+cadr4_pages.vhd 				\
+  cadr4_clock1.vhd 				\
 utilities.vhd					\
 
 all::;	 	(cd ttl; make all)
