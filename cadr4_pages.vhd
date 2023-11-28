@@ -59,4 +59,62 @@ package pages is
       );
   end component;
 
+component cadr4_clock1 is
+  port (
+    \-destimod0\  : in std_logic;
+    \-destimod1\  : in std_logic;
+    \-destintctl\ : in std_logic;
+    \-destlc\     : in std_logic;
+    \-destmdr\    : in std_logic;
+    \-destmem\    : in std_logic;
+    \-destpdl(p)\ : in std_logic;
+    \-destpdl(x)\ : in std_logic;
+    \-destpdlp\   : in std_logic;
+    \-destpdltop\ : in std_logic;
+    \-destpdlx\   : in std_logic;
+    \-destspc\    : in std_logic;
+    \-destvma\    : in std_logic;
+    \-div\        : in std_logic;
+    \-funct0\     : in std_logic;
+    \-funct1\     : in std_logic;
+    \-funct2\     : in std_logic;
+    \-funct3\     : in std_logic;
+    \-idebug\     : in std_logic;
+    \-ir22\       : in std_logic;
+    \-ir25\       : in std_logic;
+    \-ir31\       : in std_logic;
+    \-iralu\      : in std_logic;
+    \-irbyte\     : in std_logic;
+    \-irdisp\     : in std_logic;
+    \-irjump\     : in std_logic;
+    \-mul\        : in std_logic;
+    \-specalu\    : in std_logic;
+    \-srcdc\      : in std_logic;
+    \-srclc\      : in std_logic;
+    \-srcmap\     : in std_logic;
+    \-srcmd\      : in std_logic;
+    \-srcopc\     : in std_logic;
+    \-srcpdlidx\  : in std_logic;
+    \-srcpdlpop\  : in std_logic;
+    \-srcpdlptr\  : in std_logic;
+    \-srcpdltop\  : in std_logic;
+    \-srcq\       : in std_logic;
+    \-srcspc\     : in std_logic;
+    \-srcspcpop\  : in std_logic;
+    \-srcvma\     : in std_logic;
+    \destimod0_l\ : in std_logic;
+    \iwrited_l\   : in std_logic;
+    dest          : in std_logic;
+    destm         : in std_logic;
+    gnd           : in std_logic;
+    hi5           : in std_logic;
+    imod          : in std_logic;
+    ir            : in std_logic_vector(0 to 48);
+    iralu         : in std_logic;
+    irdisp        : in std_logic;
+    irjump        : in std_logic;
+    nc            : in std_logic_vector(0 to 500)  -- Not connected ...
+    );
+end component;
+
 end package;
