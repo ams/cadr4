@@ -1,0 +1,42 @@
+[*]
+[*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
+[*] Wed Nov 22 08:21:12 2023
+[*]
+[dumpfile] "cadr4_tb.ghw"
+[dumpfile_mtime] "Wed Nov 22 08:07:02 2023"
+[dumpfile_size] 130158
+[savefile] "/Users/ams/cadr4/cadr4_tb.gtkw"
+[timestart] 0
+[size] 2240 1260
+[pos] -234 -26
+*-23.000000 44960000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+[treeopen] top.
+[treeopen] top.cadr4_tb.
+[sst_width] 253
+[signals_width] 161
+[sst_expanded] 1
+[sst_vpaned_height] 390
+@28
+top.cadr4_tb.\-hang\
+top.cadr4_tb.\-clock_reset_b\
+@200
+-
+@28
+top.cadr4_tb.speed0
+top.cadr4_tb.speed1
+top.cadr4_tb.\-ilong\
+top.cadr4_tb.\-tprend\
+@200
+-
+@28
+top.cadr4_tb.\-tpr0\
+top.cadr4_tb.\-tpr40\
+top.cadr4_tb.\-tpw60\
+@200
+-
+@28
+top.cadr4_tb.cyclecompleted
+@201
+-
+[pattern_trace] 1
+[pattern_trace] 0

@@ -753,8 +753,8 @@ architecture testbench of cadr4_tb is
   signal zero16 : std_logic;
 
 begin
-
-  --- Clock Generation
+
+--- Clock Generation
 
   clock1_1c08 : sn74s10 port map(g1a => \-clock_reset_b\, g1b => \-tpdone\, g2a => \-hang\, g2b => \-clock_reset_b\, g2c => cyclecompleted, g2y_n => \-tpr0\, g1y_n => internal12, g1c => internal11, g3a => '0', g3b => '0', g3c => '0');
   clock1_1c09 : sn74s00 port map(g1b => internal12, g1a => \-tpr40\, g1q_n => internal11, g2b => '0', g2a => '0', g3b => '0', g3a => '0', g4a => '0', g4b => '0');
@@ -792,8 +792,8 @@ begin
 --  clockd_4c06 : sn74s04 port map(g1a => clk4, g1q_n => \-clk4e\, g2a => clk4, g2q_n => \-clk4d\, g3a => clk4, g3q_n => \-clk4a\, g4q_n => wp4c, g4a => \-wp4\, g5q_n => wp4b, g5a => \-wp4\, g6q_n => wp4a, g6a => \-wp4\);
 --  clockd_4c07 : sn74s37 port map(g1a => \-clk4d\, g1b => hi2, g1y => clk4d, g2a => \-clk4d\, g2b => hi2, g2y => clk4e, g3y => clk4f, g3a => hi2, g3b => \-clk4d\, g4a => '0', g4b => '0');
 --  clockd_4d03 : sn74s04 port map(g1a => nc(423), g1q_n => nc(424), g2a => nc(425), g2q_n => nc(426), g3a => \-tse4\, g3q_n => tse4b, g4q_n => tse4a, g4a => \-tse4\, g5q_n => srcpdlptr, g5a => \-srcpdlptr\, g6q_n => srcpdlidx, g6a => \-srcpdlidx\);
-
-  --- Microinstruction Fetch
+
+--- Microinstruction Fetch
 
 --  ictl_1a15 : dm9s42_1 port map(out2 => ramdisable, g2d2 => hi1, g2c2 => hi1, g2b2 => \-iwriteda\, g2a2 => \-promdisabled\, g1b2 => hi1, g1a2 => idebug, g1a1 => '0', g1b1 => '0', g2a1 => '0', g2b1 => '0', g2c1 => '0', g2d1 => '0');
 --  ictl_1c16 : sn74s04 port map(g1a => iwriteda, g1q_n => \-iwriteda\, g2a => promdisabled, g2q_n => \-promdisabled\, g3a => \-wp5\, g3q_n => wp5d, g4q_n => wp5c, g4a => \-wp5\, g5q_n => wp5b, g5a => \-wp5\, g6q_n => wp5a, g6a => \-wp5\);
@@ -1094,8 +1094,8 @@ begin
 --  debug_1e14 : sn74s374 port map(oenb_n => \-idebug\, o0 => i(15), i0 => spy(15), i1 => spy(14), o1 => i(14), o2 => i(13), i2 => spy(13), i3 => spy(12), o3 => i(12), clk => \-lddbirl\, o4 => i(11), i4 => spy(11), i5 => spy(10), o5 => i(10), o6 => i(9), i6 => spy(9), i7 => spy(8), o7 => i(8));
 --  debug_1e15 : sn74s374 port map(oenb_n => \-idebug\, o0 => i(7), i0 => spy(7), i1 => spy(6), o1 => i(6), o2 => i(5), i2 => spy(5), i3 => spy(4), o3 => i(4), clk => \-lddbirl\, o4 => i(3), i4 => spy(3), i5 => spy(2), o5 => i(2), o6 => i(1), i6 => spy(1), i7 => spy(0), o7 => i(0));
 --  debug_1f15 : sn74s374 port map(oenb_n => \-idebug\, o0 => i(47), i0 => spy(15), i1 => spy(14), o1 => i(46), o2 => i(45), i2 => spy(13), i3 => spy(12), o3 => i(44), clk => \-lddbirh\, o4 => i(43), i4 => spy(11), i5 => spy(10), o5 => i(42), o6 => i(41), i6 => spy(9), i7 => spy(8), o7 => i(40));
-
-  --- Microinstrction Modification and Main Instruction Register
+
+--- Microinstrction Modification and Main Instruction Register
 
 --  ior_3c06 : sn74s32 port map(g1a => i(12), g1b => ob(12), g1y => iob(12), g2a => i(13), g2b => ob(13), g2y => iob(13), g3y => iob(14), g3a => i(14), g3b => ob(14), g4y => iob(15), g4a => i(15), g4b => ob(15));
 --  ior_3c07 : sn74s32 port map(g1a => i(8), g1b => ob(8), g1y => iob(8), g2a => i(9), g2b => ob(9), g2y => iob(9), g3y => iob(10), g3a => i(10), g3b => ob(10), g4y => iob(11), g4a => i(11), g4b => ob(11));
@@ -1123,8 +1123,8 @@ begin
 --  ireg_3d18 : am25s09 port map(sel => \-destimod1\, aq => ir(33), a0 => iob(33), a1 => i(33), b1 => i(32), b0 => iob(32), bq => ir(32), clk => clk3b, cq => ir(31), c0 => iob(31), c1 => i(31), d1 => i(30), d0 => iob(30), dq => ir(30));
 --  ireg_3d19 : am25s09 port map(sel => \-destimod1\, aq => ir(29), a0 => iob(29), a1 => i(29), b1 => i(28), b0 => iob(28), bq => ir(28), clk => clk3b, cq => ir(27), c0 => iob(27), c1 => i(27), d1 => i(26), d0 => iob(26), dq => ir(26));
 --  ireg_3d20 : am25s09 port map(sel => \-destimod0\, aq => nc(374), a0 => nc(375), a1 => nc(376), b1 => nc(377), b0 => nc(378), bq => nc(379), clk => clk3b, cq => ir(25), c0 => iob(25), c1 => i(25), d1 => i(24), d0 => iob(24), dq => ir(24));
-
-  --- IR Decoding
+
+--- IR Decoding
 
 --  source_3d02 : sn74s00 port map(g2b => \-iralu\, g2a => \-irbyte\, g2q_n => dest, g3q_n => \-destmem\, g3b => ir(23), g3a => destm, g4q_n => \-specalu\, g4a => ir(8), g4b => iralu, g1b => '0', g1a => '0');
 --  source_3d03 : sn74s04 port map(g1a => ir(22), g1q_n => \-ir22\, g2a => ir(25), g2q_n => \-ir25\, g3a => nc(198), g3q_n => nc(199), g4q_n => irdisp, g4a => \-irdisp\, g5q_n => irjump, g5a => \-irjump\, g6q_n => iralu, g6a => \-iralu\);
@@ -1154,8 +1154,8 @@ begin
 --  source_3e05 : sn74s08 port map(g2b => \destimod0_l\, g2a => \iwrited_l\, g2q => internal18, g1b => '0', g1a => '0', g3a => '0', g3b => '0', g4a => '0', g4b => '0');
 --  source_3e09 : sn74s32 port map(g2a => \-destmem\, g2b => \-ir22\, g2y => \-destmdr\, g3y => \-destvma\, g3a => ir(22), g3b => \-destmem\, g1a => '0', g1b => '0', g4a => '0', g4b => '0');
 --  source_4d10 : sn74s10 port map(g2a => internal18, g2b => \-destimod1\, g2c => \-idebug\, g2y_n => imod, g1a => '0', g1b => '0', g3a => '0', g3b => '0', g3c => '0', g1c => '0');
-
-  --- A Memory
+
+--- A Memory
 
 --  actl_3a06 : sn74s258 port map(sel => clk3e, d0 => wadr(0), d1 => ir(32), dy => \-aadr0b\, c0 => wadr(1), c1 => ir(33), cy => \-aadr1b\, by => \-aadr2b\, b1 => ir(34), b0 => wadr(2), ay => \-aadr3b\, a1 => ir(35), a0 => wadr(3), enb_n => gnd);
 --  actl_3a12 : sn74s258 port map(sel => clk3d, d0 => wadr(4), d1 => ir(36), dy => \-aadr4b\, c0 => wadr(5), c1 => ir(37), cy => \-aadr5b\, by => \-aadr6b\, b1 => ir(38), b0 => wadr(6), ay => \-aadr7b\, a1 => ir(39), a0 => wadr(7), enb_n => gnd);
@@ -1225,8 +1225,8 @@ begin
 --  apar_4a14 : am93s48 port map(i6 => m(5), i5 => m(6), i4 => m(7), i3 => m(8), i2 => m(9), i1 => m(10), i0 => m(11), po => mparl, pe => nc(435), i11 => m(0), i10 => m(1), i9 => m(2), i8 => m(3), i7 => m(4));
 --  apar_4a17 : sn74s00 port map(g1b => mpareven, g1a => srcm, g1q_n => mmemparok, g2b => mpareven, g2a => pdlenb, g2q_n => pdlparok, g3b => '0', g3a => '0', g4a => '0', g4b => '0');
 --  apar_4b15 : am93s48 port map(i6 => m(26), i5 => m(27), i4 => m(28), i3 => m(29), i2 => m(30), i1 => m(31), i0 => mparity, po => mparodd, pe => mpareven, i11 => mparl, i10 => mparm, i9 => gnd, i8 => m(24), i7 => m(25));
-
-  --- M Memory
+
+--- M Memory
 
 --  mctl_4a16 : sn74s258 port map(sel => clk4e, d0 => wadr(4), d1 => ir(30), dy => \-madr4a\, c0 => nc(335), c1 => nc(336), cy => nc(337), by => nc(338), b1 => nc(339), b0 => nc(340), ay => \-madr4b\, a1 => ir(30), a0 => wadr(4), enb_n => gnd);
 --  mctl_4a18 : sn74s258 port map(sel => clk4e, d0 => wadr(0), d1 => ir(26), dy => \-madr0b\, c0 => wadr(1), c1 => ir(27), cy => \-madr1b\, by => \-madr2b\, b1 => ir(28), b0 => wadr(2), ay => \-madr3b\, a1 => ir(29), a0 => wadr(3), enb_n => gnd);
@@ -1276,8 +1276,8 @@ begin
 --  mf_3f14 : sn74s02 port map(g3b => pdlenb, g3a => spcenb, g3q_n => internal22, g1a => '0', g1b => '0', g2a => '0', g2b => '0', g4b => '0', g4a => '0');
 --  mf_4d06 : sn74s08 port map(g4q => mfenb, g4a => internal22, g4b => \-srcm\, g1b => '0', g1a => '0', g2b => '0', g2a => '0', g3a => '0', g3b => '0');
 --  mf_4d08 : sn74s00 port map(g4q_n => \-srcm\, g4a => \-ir31\, g4b => \-mpass\, g1b => '0', g1a => '0', g2b => '0', g2a => '0', g3b => '0', g3a => '0');
-
-  --- Stack Buffer
+
+--- Stack Buffer
 
 --  pdlptr_3c21 : sn74s169 port map(up_dn => \-srcpdlpop\, clk => clk3f, i0 => ob(8), i1 => ob(9), i2 => nc(237), i3 => nc(238), enb_p_n => gnd, load_n => \-destpdlp\, enb_t_n => \-pdlcry7\, o3 => nc(239), o2 => nc(240), o1 => pdlptr(9), o0 => pdlptr(8), co_n => nc(241));
 --  pdlptr_3c22 : am25s07 port map(enb_n => \-destpdlx\, d0 => pdlidx(6), i0 => ob(6), i1 => ob(7), d1 => pdlidx(7), i2 => ob(8), d2 => pdlidx(8), clk => clk3f, d3 => pdlidx(9), i3 => ob(9), d4 => nc(233), i4 => nc(234), i5 => nc(235), d5 => nc(236));
@@ -1343,8 +1343,8 @@ begin
 --  platch_4b03 : sn74s373 port map(oenb_n => \-pdldrive\, o0 => m(31), i0 => pdl(31), i1 => pdl(30), o1 => m(30), o2 => m(29), i2 => pdl(29), i3 => pdl(28), o3 => m(28), hold_n => clk4a, o4 => m(27), i4 => pdl(27), i5 => pdl(26), o5 => m(26), o6 => m(25), i6 => pdl(25), i7 => pdl(24), o7 => m(24));
 --  platch_4b05 : sn74s373 port map(oenb_n => \-pdldrive\, o0 => m(23), i0 => pdl(23), i1 => pdl(22), o1 => m(22), o2 => m(21), i2 => pdl(21), i3 => pdl(20), o3 => m(20), hold_n => clk4a, o4 => m(19), i4 => pdl(19), i5 => pdl(18), o5 => m(18), o6 => m(17), i6 => pdl(17), i7 => pdl(16), o7 => m(16));
 --  platch_4b08 : sn74s373 port map(oenb_n => \-pdldrive\, o0 => nc(219), i0 => nc(220), i1 => nc(221), o1 => nc(222), o2 => nc(223), i2 => nc(224), i3 => nc(225), o3 => nc(226), hold_n => clk4a, o4 => nc(227), i4 => nc(228), i5 => nc(229), o5 => nc(230), o6 => nc(231), i6 => nc(232), i7 => pdlparity, o7 => mparity);
-
-  --- The Shifter\Masker
+
+--- The Shifter\Masker
 
 --  smctl_2d15 : sn74s32 port map(g1a => \-sh4\, g1b => \-sr\, g1y => \-s4\, g2a => '0', g2b => '0', g3a => '0', g3b => '0', g4a => '0', g4b => '0');
 --  smctl_2d20 : sn74s02 port map(g1q_n => \-mr\, g1a => \-irbyte\, g1b => ir(13), g2q_n => \-sr\, g2a => \-irbyte\, g2b => ir(12), g3b => \-ir0\, g3a => \-sr\, g3q_n => s0, g4b => \-ir1\, g4a => \-sr\, g4q_n => s1);
@@ -1391,8 +1391,8 @@ begin
 --  mskg4_2e16 : im5600 generic map(fn => "rom/mskg4_2e16.hex") port map(o0 => msk(0), o1 => msk(1), o2 => msk(2), o3 => msk(3), o4 => msk(4), o5 => msk(5), o6 => msk(6), o7 => msk(7), a0 => mskl(0), a1 => mskl(1), a2 => mskl(2), a3 => mskl(3), a4 => mskl(4), ce_n => gnd);
 --  mskg4_2e17 : im5600 generic map(fn => "rom/mskg4_2e17.hex") port map(o0 => msk(0), o1 => msk(1), o2 => msk(2), o3 => msk(3), o4 => msk(4), o5 => msk(5), o6 => msk(6), o7 => msk(7), a0 => mskr(0), a1 => mskr(1), a2 => mskr(2), a3 => mskr(3), a4 => mskr(4), ce_n => gnd);
 --  mskg4_2e20 : res20 port map(r2 => nc(252), r3 => msk(15), r4 => msk(14), r5 => msk(13), r6 => msk(12), r7 => msk(11), r8 => msk(10), r9 => msk(9), r11 => msk(8), r12 => msk(7), r13 => msk(6), r14 => msk(5), r15 => msk(4), r16 => msk(3), r17 => msk(2), r18 => msk(1), r19 => msk(0));
-
-  --- The ALU
+
+--- The ALU
 
 --  aluc4_2a16 : sn74s37 port map(g1a => \-aluf0\, g1b => \-aluf0\, g1y => aluf0b, g2a => \-aluf1\, g2b => \-aluf1\, g2y => aluf1b, g3y => aluf2b, g3a => \-aluf2\, g3b => \-aluf2\, g4y => aluf3b, g4a => \-aluf3\, g4b => \-aluf3\);
 --  aluc4_2a17 : sn74s37 port map(g1a => \-aluf0\, g1b => \-aluf0\, g1y => aluf0a, g2a => \-aluf1\, g2b => \-aluf1\, g2y => aluf1a, g3y => aluf2a, g3a => \-aluf2\, g3b => \-aluf2\, g4y => aluf3a, g4a => \-aluf3\, g4b => \-aluf3\);
@@ -1430,8 +1430,8 @@ begin
 --  alu1_2a13 : sn74s181 port map(b0 => a20, a0 => m(20), s3 => aluf3a, s2 => aluf2a, s1 => aluf1a, s0 => aluf0a, cin_n => \-cin20\, m => alumode, f0 => alu(20), f1 => alu(21), f2 => alu(22), f3 => alu(23), aeb => aeqm, x => xout23, cout_n => nc(459), y => yout23, b3 => a23, a3 => m(23), b2 => a22, a2 => m(22), b1 => a21, a1 => m(21));
 --  alu1_2b08 : sn74s181 port map(b0 => a24, a0 => m(24), s3 => aluf3a, s2 => aluf2a, s1 => aluf1a, s0 => aluf0a, cin_n => \-cin24\, m => alumode, f0 => alu(24), f1 => alu(25), f2 => alu(26), f3 => alu(27), aeb => aeqm, x => xout27, cout_n => nc(458), y => yout27, b3 => a27, a3 => m(27), b2 => a26, a2 => m(26), b1 => a25, a1 => m(25));
 --  alu1_2b13 : sn74s181 port map(b0 => a16, a0 => m(16), s3 => aluf3a, s2 => aluf2a, s1 => aluf1a, s0 => aluf0a, cin_n => \-cin16\, m => alumode, f0 => alu(16), f1 => alu(17), f2 => alu(18), f3 => alu(19), aeb => aeqm, x => xout19, cout_n => nc(460), y => yout19, b3 => a19, a3 => m(19), b2 => a18, a2 => m(18), b1 => a17, a1 => m(17));
-
-  --- The Q Register
+
+--- The Q Register
 
 --  qctl_1a18 : sn74s00 port map(g3q_n => \-qdrive\, g3b => tse2, g3a => srcq, g1b => '0', g1a => '0', g2b => '0', g2a => '0', g4a => '0', g4b => '0');
 --  qctl_1e12 : sn74s241 port map(aenb_n => \-qdrive\, ain0 => q(7), bout3 => mf(0), ain1 => q(6), bout2 => mf(1), ain2 => q(5), bout1 => mf(2), ain3 => q(4), bout0 => mf(3), bin0 => q(3), aout3 => mf(4), bin1 => q(2), aout2 => mf(5), bin2 => q(1), aout1 => mf(6), bin3 => q(0), aout0 => mf(7), benb => qdrive);
@@ -1450,8 +1450,8 @@ begin
 --  q_2c23 : sn74s194 port map(clr_n => hi7, sir => q(11), i0 => alu(12), i1 => alu(13), i2 => alu(14), i3 => alu(15), sil => q(16), s0 => qs0, s1 => qs1, clk => clk2b, q3 => q(15), q2 => q(14), q1 => q(13), q0 => q(12));
 --  q_2c27 : sn74s194 port map(clr_n => hi7, sir => \-alu31\, i0 => alu(0), i1 => alu(1), i2 => alu(2), i3 => alu(3), sil => q(4), s0 => qs0, s1 => qs1, clk => clk2b, q3 => q(3), q2 => q(2), q1 => q(1), q0 => q(0));
 --  q_2c28 : sn74s194 port map(clr_n => hi7, sir => q(3), i0 => alu(4), i1 => alu(5), i2 => alu(6), i3 => alu(7), sil => q(8), s0 => qs0, s1 => qs1, clk => clk2b, q3 => q(7), q2 => q(6), q1 => q(5), q0 => q(4));
-
-  --- The L Register
+
+--- The L Register
 
 --  l_3c26 : sn74s374 port map(oenb_n => gnd, o0 => l(7), i0 => ob(7), i1 => ob(6), o1 => l(6), o2 => l(5), i2 => ob(5), i3 => ob(4), o3 => l(4), clk => clk3f, o4 => l(3), i4 => ob(3), i5 => ob(2), o5 => l(2), o6 => l(1), i6 => ob(1), i7 => ob(0), o7 => l(0));
 --  l_3c27 : sn74s374 port map(oenb_n => gnd, o0 => l(15), i0 => ob(15), i1 => ob(14), o1 => l(14), o2 => l(13), i2 => ob(13), i3 => ob(12), o3 => l(12), clk => clk3f, o4 => l(11), i4 => ob(11), i5 => ob(10), o5 => l(10), o6 => l(9), i6 => ob(9), i7 => ob(8), o7 => l(8));
@@ -1460,8 +1460,8 @@ begin
 --  l_4c03 : am93s48 port map(i6 => l(5), i5 => l(6), i4 => l(7), i3 => l(8), i2 => l(9), i1 => l(10), i0 => l(11), po => lparl, pe => nc(369), i11 => l(0), i10 => l(1), i9 => l(2), i8 => l(3), i7 => l(4));
 --  l_4c08 : am93s48 port map(i6 => l(17), i5 => l(18), i4 => l(19), i3 => l(20), i2 => l(21), i1 => l(22), i0 => l(23), po => nc(370), pe => \-lparm\, i11 => l(12), i10 => l(13), i9 => l(14), i8 => l(15), i7 => l(16));
 --  l_4c09 : am93s48 port map(i6 => l(25), i5 => l(26), i4 => l(27), i3 => l(28), i2 => l(29), i1 => l(30), i0 => l(31), po => lparity, pe => \-lparity\, i11 => lparl, i10 => \-lparm\, i9 => gnd, i8 => gnd, i7 => l(24));
-
-  --- The Dispatch Memory
+
+--- The Dispatch Memory
 
 --  dspctl_2f22 : im5610 generic map (fn => "rom/dspctl_2f22.hex") port map(o0 => dmask(0), o1 => dmask(1), o2 => dmask(2), o3 => dmask(3), o4 => dmask(4), o5 => dmask(5), o6 => dmask(6), o7 => nc(407), a0 => ir(5), a1 => ir(6), a2 => ir(7), a3 => gnd, a4 => gnd, ce_n => gnd);
 --  dspctl_3c14 : am25s07 port map(enb_n => \-irdisp\, d0 => dc(6), i0 => ir(38), i1 => ir(39), d1 => dc(7), i2 => ir(40), d2 => dc(8), clk => clk3e, d3 => dc(9), i3 => ir(41), d4 => nc(403), i4 => nc(404), i5 => nc(405), d5 => nc(406));
@@ -1533,8 +1533,8 @@ begin
 --  dram2_2f01 : sn74s64 port map(d4 => ir12b, b2 => vmo19, a2 => ir9b, c3 => r(0), b3 => dmask(0), a3 => \-dmapbenb\, \out\ => \-dadr0c\, a1 => vmo18, b1 => ir8b, c4 => hi6, b4 => hi6, a4 => hi6);
 --  dram2_2f02 : sn74s04 port map(g1a => nc(408), g1q_n => nc(409), g2a => \-dadr10c\, g2q_n => dadr10c, g3a => ir22b, g3q_n => \-dadr10c\, g4q_n => \-dadr9c\, g4a => ir21b, g5q_n => \-dadr8c\, g5a => ir20b, g6q_n => \-dadr7c\, g6a => ir19b);
 --  dram2_2f03 : sn74s37 port map(g3y => \-dwec\, g3a => dispwr, g3b => wp2, g1a => '0', g1b => '0', g2a => '0', g2b => '0', g4a => '0', g4b => '0');
-
-  --- Jump Conditions
+
+--- Jump Conditions
 
 --  flag_3e07 : sn74s00 port map(g1b => ir(45), g1a => \-nopa\, g1q_n => \-ilong\, g2b => '0', g2a => '0', g3b => '0', g3a => '0', g4a => '0', g4b => '0');
 --  flag_3e08 : am25ls2519 port map(i0 => ob(29), q0a => nc(385), q0b => \lc_byte_mode\, i1 => ob(28), q1a => nc(386), q1b => \prog.unibus.reset\, o_enb_n => hi4, out_enb_n => gnd, clk => clk3c, q2b => \int.enable\, q2a => nc(387), i2 => ob(27), q3b => \sequence.break\, q3a => nc(388), i3 => ob(26), clk_enb_n => \-destintctl\, inv => hi4, asyn_clr_n => \-reset\);
@@ -1545,8 +1545,8 @@ begin
 --  flag_3e18 : sn74s32 port map(g2a => \-vmaok\, g2b => sint, g2y => \pgf.or.int\, g3y => internal30, g3a => \sequence.break\, g3b => sint, g4y => \pgf.or.int.or.sb\, g4a => internal30, g4b => \-vmaok\, g1a => '0', g1b => '0');
 --  flag_3e22 : sn74s04 port map(g4q_n => \-alu32\, g4a => alu(32), g1a => '0', g2a => '0', g3a => '0', g5a => '0', g6a => '0');
 --  flag_4d09 : sn74s08 port map(g3q => sint, g3a => \int.enable\, g3b => sintr, g1b => '0', g1a => '0', g2b => '0', g2a => '0', g4a => '0', g4b => '0');
-
-  --- Flow of Control
+
+--- Flow of Control
 
 --  contrl_3d21 : sn74s08 port map(g1b => spushd, g1a => tse3a, g1q => spcwpass, g2b => \-ipopj\, g2a => \-iwrited\, g2q => \-popj\, g3q => spcdrive, g3a => spcenb, g3b => tse3a, g4a => '0', g4b => '0');
 --  contrl_3d26 : sn74s175 port map(clr_n => \-reset\, q0 => inop, q0_n => \-inop\, d0 => n, d1 => nc(420), q1_n => nc(421), q1 => nc(422), clk => clk3c, q2 => spushd, q2_n => \-spushd\, d2 => spush, d3 => iwrite, q3_n => \-iwrited\, q3 => iwrited);
@@ -1567,8 +1567,8 @@ begin
 --  contrl_3f30 : sn74s64 port map(d4 => hi4, b2 => \-dfall\, a2 => dispenb, c3 => hi4, b3 => \-jcond\, a3 => jretf, \out\ => pcs0, a1 => hi4, b1 => popj, c4 => jcond, b4 => \-ir6\, a4 => jret);
 --  contrl_4d09 : sn74s08 port map(g1b => \-spush\, g1a => \-spop\, g1q => \-spcnt\, g2b => '0', g2a => '0', g3a => '0', g3b => '0', g4a => '0', g4b => '0');
 --  contrl_4e30 : sn74s37 port map(g1a => \-destspcd\, g1b => \-destspcd\, g1y => destspcd, g2a => wp4c, g2b => spushd, g2y => \-swpb\, g3y => \-swpa\, g3a => spushd, g3b => wp4c, g4a => '0', g4b => '0');
-
-  --- Microcode Subroutine Return Stack
+
+--- Microcode Subroutine Return Stack
 
 --  spc_4e21 : dm82s21 port map(wclk_n => \-swpa\, we0_n => gnd, i0 => spcw(14), a4 => spcptr(4), ce => hi1, strobe => hi1, d0 => spco(14), d1 => spco(15), a3 => spcptr(3), a2 => spcptr(2), a1 => spcptr(1), a0 => spcptr(0), i1 => spcw(15), we1_n => gnd);
 --  spc_4e22 : dm82s21 port map(wclk_n => \-swpa\, we0_n => gnd, i0 => spcw(12), a4 => spcptr(4), ce => hi1, strobe => hi1, d0 => spco(12), d1 => spco(13), a3 => spcptr(3), a2 => spcptr(2), a1 => spcptr(1), a0 => spcptr(0), i1 => spcw(13), we1_n => gnd);
@@ -1622,8 +1622,8 @@ begin
 --  lpc_4f06 : am25s07 port map(enb_n => \lpc.hold\, d0 => lpc(5), i0 => pc(5), i1 => pc(4), d1 => lpc(4), i2 => pc(3), d2 => lpc(3), clk => clk4b, d3 => lpc(2), i3 => pc(2), d4 => lpc(1), i4 => pc(1), i5 => pc(0), d5 => lpc(0));
 --  lpc_4f07 : am25s07 port map(enb_n => \lpc.hold\, d0 => lpc(11), i0 => pc(11), i1 => pc(10), d1 => lpc(10), i2 => pc(9), d2 => lpc(9), clk => clk4b, d3 => lpc(8), i3 => pc(8), d4 => lpc(7), i4 => pc(7), i5 => pc(6), d5 => lpc(6));
 --  lpc_4f08 : am25s07 port map(enb_n => \lpc.hold\, d0 => nc(351), i0 => nc(352), i1 => nc(353), d1 => nc(354), i2 => nc(355), d2 => nc(356), clk => clk4b, d3 => nc(357), i3 => nc(358), d4 => lpc(13), i4 => pc(13), i5 => pc(12), d5 => lpc(12));
-
-  --- Next PC Selector
+
+--- Next PC Selector
 
 --  npc_3f26 : sn74s283 port map(s1 => ipc(13), b1 => gnd, a1 => pc(13), s0 => ipc(12), a0 => pc(12), b0 => gnd, c0 => pccry11, c4 => nc(243), s3 => nc(244), b3 => gnd, a3 => nc(245), s2 => nc(246), a2 => nc(247), b2 => gnd);
 --  npc_3f27 : sn74s283 port map(s1 => ipc(9), b1 => gnd, a1 => pc(9), s0 => ipc(8), a0 => pc(8), b0 => gnd, c0 => pccry7, c4 => pccry11, s3 => ipc(11), b3 => gnd, a3 => pc(11), s2 => ipc(10), a2 => pc(10), b2 => gnd);
@@ -1638,8 +1638,8 @@ begin
 --  npc_4f03 : sn74s153 port map(enb1_n => trapa, sel1 => pcs1, g1c3 => ipc(9), g1c2 => dpc(9), g1c1 => ir(21), g1c0 => spc(9), g1q => npc((9)), g2q => npc(8), g2c0 => spc(8), g2c1 => ir(20), g2c2 => dpc(8), g2c3 => ipc(8), sel0 => pcs0, enb2_n => trapa);
 --  npc_4f04 : sn74s153 port map(enb1_n => trapa, sel1 => pcs1, g1c3 => ipc(7), g1c2 => dpc(7), g1c1 => ir(19), g1c0 => spc(7), g1q => npc(7), g2q => npc(6), g2c0 => spc(6), g2c1 => ir(18), g2c2 => dpc(6), g2c3 => ipc(6), sel0 => pcs0, enb2_n => trapb);
 --  npc_4f05 : sn74s153 port map(enb1_n => trapb, sel1 => pcs1, g1c3 => ipc(5), g1c2 => dpc(5), g1c1 => ir(17), g1c0 => spc(5), g1q => npc(5), g2q => npc(4), g2c0 => spc(4), g2c1 => ir(16), g2c2 => dpc(4), g2c3 => ipc(4), sel0 => pcs0, enb2_n => trapb);
-
-  --- The LC register and Instruction Prefetch
+
+--- The LC register and Instruction Prefetch
 
 --  lc_1a16 : sn74s241 port map(aenb_n => \-lcdrive\, ain0 => needfetch, bout3 => mf(24), ain1 => gnd, bout2 => mf(25), ain2 => \lc_byte_mode\, bout1 => mf(26), ain3 => \prog.unibus.reset\, bout0 => mf(27), bin0 => \int.enable\, aout3 => mf(28), bin1 => \sequence.break\, aout2 => mf(29), bin2 => lc(25), aout1 => mf(30), bin3 => lc(24), aout0 => mf(31), benb => lcdrive);
 --  lc_1a18 : sn74s00 port map(g2b => srclc, g2a => tse1a, g2q_n => \-lcdrive\, g1b => '0', g1a => '0', g3b => '0', g3a => '0', g4a => '0', g4b => '0');
@@ -1670,8 +1670,8 @@ begin
 --  lcc_3e22 : sn74s04 port map(g3a => needfetch, g3q_n => \-needfetch\, g1a => '0', g2a => '0', g4a => '0', g5a => '0', g6a => '0');
 --  lcc_4d09 : sn74s08 port map(g2b => spc(14), g2a => \-needfetch\, g2q => spcmung, g4q => internal29, g4a => ir(24), g4b => irdisp, g1b => '0', g1a => '0', g3a => '0', g3b => '0');
 --  lcc_4e03 : sn74s32 port map(g1a => spcmung, g1b => spc(1), g1y => spc1a, g4y => lcinc, g4a => \next.instrd\, g4b => internal29, g2a => '0', g2b => '0', g3a => '0', g3b => '0');
-
-  --- The VMA and VMA Selector
+
+--- The VMA and VMA Selector
 
 --  vma_1a06 : sn74s240 port map(aenb_n => \-vmadrive\, ain0 => \-vma\(31), bout3 => mf(24), ain1 => \-vma\(30), bout2 => mf(25), ain2 => \-vma\(29), bout1 => mf(26), ain3 => \-vma\(28), bout0 => mf(27), bin0 => \-vma\(27), aout3 => mf(28), bin1 => \-vma\(26), aout2 => mf(29), bin2 => \-vma\(25), aout1 => mf(30), bin3 => \-vma\(24), aout0 => mf(31), benb_n => \-vmadrive\);
 --  vma_1a10 : sn74s240 port map(aenb_n => \-vmadrive\, ain0 => \-vma\(7), bout3 => mf(0), ain1 => \-vma\(6), bout2 => mf(1), ain2 => \-vma\(5), bout1 => mf(2), ain3 => \-vma\(4), bout0 => mf(3), bin0 => \-vma\(3), aout3 => mf(4), bin1 => \-vma\(2), aout2 => mf(5), bin2 => \-vma\(1), aout1 => mf(6), bin3 => \-vma\(0), aout0 => mf(7), benb_n => \-vmadrive\);
@@ -1698,8 +1698,8 @@ begin
 --  vmas_1d30 : sn74s258 port map(sel => vmaselb, d0 => lc(10), d1 => ob(8), dy => \-vmas\(8), c0 => lc(11), c1 => ob(9), cy => \-vmas\(9), by => \-vmas\(10), b1 => ob(10), b0 => lc(12), ay => \-vmas\(11), a1 => ob(11), a0 => lc(13), enb_n => gnd);
 --  vmas_2b01 : sn74s258 port map(sel => vmaselb, d0 => lc(6), d1 => ob(4), dy => \-vmas\(4), c0 => lc(7), c1 => ob(5), cy => \-vmas\(5), by => \-vmas\(6), b1 => ob(6), b0 => lc(8), ay => \-vmas\(7), a1 => ob(7), a0 => lc(9), enb_n => gnd);
 --  vmas_2b04 : sn74s258 port map(sel => vmasela, d0 => gnd, d1 => ob(24), dy => \-vmas\(24), c0 => gnd, c1 => ob(25), cy => \-vmas\(25), by => \-vmas\(26), b1 => ob(26), b0 => gnd, ay => \-vmas\(27), a1 => ob(27), a0 => gnd, enb_n => gnd);
-
-  --- The MD and the MD Selector
+
+--- The MD and the MD Selector
 
 --  md_1a02 : sn74s240 port map(aenb_n => \-mddrive\, ain0 => \-md\(31), bout3 => mf(24), ain1 => \-md\(30), bout2 => mf(25), ain2 => \-md\(29), bout1 => mf(26), ain3 => \-md\(28), bout0 => mf(27), bin0 => \-md\(27), aout3 => mf(28), bin1 => \-md\(26), aout2 => mf(29), bin2 => \-md\(25), aout1 => mf(30), bin3 => \-md\(24), aout0 => mf(31), benb_n => \-mddrive\);
 --  md_1a04 : sn74s240 port map(aenb_n => \-mddrive\, ain0 => \-md\(23), bout3 => mf(16), ain1 => \-md\(22), bout2 => mf(17), ain2 => \-md\(21), bout1 => mf(18), ain3 => \-md\(20), bout0 => mf(19), bin0 => \-md\(19), aout3 => mf(20), bin1 => \-md\(18), aout2 => mf(21), bin2 => \-md\(17), aout1 => mf(22), bin3 => \-md\(16), aout0 => mf(23), benb_n => \-mddrive\);
@@ -1729,8 +1729,8 @@ begin
 --  mds_1c29 : sn74s258 port map(sel => mdselb, d0 => mem(0), d1 => ob(0), dy => \-mds\(0), c0 => mem(1), c1 => ob(1), cy => \-mds\(1), by => \-mds\(2), b1 => ob(2), b0 => mem(2), ay => \-mds\(3), a1 => ob(3), a0 => mem(3), enb_n => gnd);
 --  mds_2b02 : sn74s258 port map(sel => mdselb, d0 => mem(4), d1 => ob(4), dy => \-mds\(4), c0 => mem(5), c1 => ob(5), cy => \-mds\(5), by => \-mds\(6), b1 => ob(6), b0 => mem(6), ay => \-mds\(7), a1 => ob(7), a0 => mem(7), enb_n => gnd);
 --  mds_2b05 : sn74s258 port map(sel => mdsela, d0 => mem(24), d1 => ob(24), dy => \-mds\(24), c0 => mem(25), c1 => ob(25), cy => \-mds\(25), by => \-mds\(26), b1 => ob(26), b0 => mem(26), ay => \-mds\(27), a1 => ob(27), a0 => mem(27), enb_n => gnd);
-
-  --- First and Second Level Maps
+
+--- First and Second Level Maps
 
 --  vmem0_1c01 : sn74s280 port map(i0 => \-vmap0\, i1 => \-vmap1\, i2 => \-vmap2\, even => nc(113), odd => internal14, i3 => \-vmap3\, i4 => \-vmap4\, i5 => vpari, i6 => gnd, i7 => gnd, i8 => gnd);
 --  vmem0_1c02 : sn74s280 port map(i0 => \-vma\(27), i1 => \-vma\(28), i2 => \-vma\(29), even => vm0pari, odd => nc(114), i3 => \-vma\(30), i4 => \-vma\(31), i5 => gnd, i6 => gnd, i7 => gnd, i8 => gnd);
@@ -1796,8 +1796,8 @@ begin
 --  vmemdr_1e17 : am93s48 port map(i6 => \-vma\(6), i5 => \-vma\(5), i4 => \-vma\(4), i3 => \-vma\(3), i2 => \-vma\(2), i1 => \-vma\(1), i0 => \-vma\(0), po => internal13, pe => nc(100), i11 => \-pma11\, i10 => \-pma10\, i9 => \-pma9\, i8 => \-pma8\, i7 => \-vma\(7));
 --  vmemdr_1e18 : am93s48 port map(i6 => \-pma18\, i5 => \-pma17\, i4 => \-pma16\, i3 => \-pma15\, i2 => \-pma14\, i1 => \-pma13\, i0 => \-pma12\, po => \-adrpar\, pe => nc(99), i11 => internal13, i10 => gnd, i9 => \-pma21\, i8 => \-pma20\, i7 => \-pma19\);
 --  vmemdr_2a05 : sn74s04 port map(g4q_n => srcmap, g4a => \-srcmap\, g1a => '0', g2a => '0', g3a => '0', g5a => '0', g6a => '0');
-
-  --- Memory Control Logic
+
+--- Memory Control Logic
 
 --  vctl1_1c23 : sn74s175 port map(clr_n => \-reset\, q0 => nc(126), q0_n => nc(127), d0 => nc(128), d1 => internal15, q1_n => rdcyc, q1 => wrcyc, clk => clk2a, q2 => nc(129), q2_n => nc(130), d2 => nc(131), d3 => wmap, q3_n => \-wmapd\, q3 => wmapd);
 --  vctl1_1d16 : sn74s51 port map(g1a => rdcyc, g1y => internal15, g1c => memprepare, g1d => \-memwr\, g1b => \-memprepare\, g2a => '0', g2b => '0', g2c => '0', g2d => '0');
@@ -1852,8 +1852,8 @@ begin
 --  olord2_1c09 : sn74s00 port map(g2b => ldmode, g2a => spy(6), g2q_n => \-prog.reset\, g4q_n => \-errhalt\, g4a => errstop, g4b => err, g1b => '0', g1a => '0', g3b => '0', g3a => '0');
 --  olord2_1c18 : sn74s32 port map(g3y => internal2, g3a => internal3, g3b => \prog.boot\, g1a => '0', g1b => '0', g2a => '0', g2b => '0', g4a => '0', g4b => '0');
 --  olord2_1d10 : sn74s08 port map(g2b => ldmode, g2a => spy(7), g2q => \prog.boot\, g1b => '0', g1a => '0', g3a => '0', g3b => '0', g4a => '0', g4b => '0');
-
-  --- Other
+
+--- Other
 
 --  stat_1b01 : sn74s169 port map(up_dn => hi1, clk => clk5a, i0 => iwr(12), i1 => iwr(13), i2 => iwr(14), i3 => iwr(15), enb_p_n => gnd, load_n => \-ldstat\, enb_t_n => \-stc12\, o3 => st(15), o2 => st(14), o1 => st(13), o0 => st(12), co_n => \-stc16\);
 --  stat_1b02 : sn74s169 port map(up_dn => hi1, clk => clk5a, i0 => iwr(16), i1 => iwr(17), i2 => iwr(18), i3 => iwr(19), enb_p_n => gnd, load_n => \-ldstat\, enb_t_n => \-stc16\, o3 => st(19), o2 => st(18), o1 => st(17), o0 => st(16), co_n => \-stc20\);
@@ -1982,9 +1982,7 @@ begin
 --  ipar_3f22 : am93s48 port map(i6 => gnd, i5 => gnd, i4 => gnd, i3 => gnd, i2 => gnd, i1 => gnd, i0 => gnd, po => iparity, pe => nc(380), i11 => ipar0, i10 => ipar1, i9 => ipar2, i8 => ipar3, i7 => ir(48));
 --  ipar_3f24 : am93s48 port map(i6 => ir(17), i5 => ir(18), i4 => ir(19), i3 => ir(20), i2 => ir(21), i1 => ir(22), i0 => ir(23), po => ipar1, pe => nc(383), i11 => ir(12), i10 => ir(13), i9 => ir(14), i8 => ir(15), i7 => ir(16));
 --  ipar_4e03 : sn74s32 port map(g2a => imodd, g2b => iparity, g2y => iparok, g1a => '0', g1b => '0', g3a => '0', g3b => '0', g4a => '0', g4b => '0');
-
-  --------------------------------------------------------------------------------
-
+
   vcc <= '1';
   gnd <= '0';
 
