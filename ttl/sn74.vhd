@@ -245,12 +245,12 @@ package sn74 is
       g2q_n : out std_logic;
       g3a   : in  std_logic;
       g3q_n : out std_logic;
-      g4a   : in  std_logic;
       g4q_n : out std_logic;
-      g5a   : in  std_logic;
+      g4a   : in  std_logic;
       g5q_n : out std_logic;
-      g6a   : in  std_logic;
-      g6q_n : out std_logic
+      g5a   : in  std_logic;
+      g6q_n : out std_logic;
+      g6a   : in  std_logic
       );
   end component;
   alias sn74ls14 is sn7414;
@@ -301,18 +301,40 @@ package sn74 is
 
   component sn74138 is
     port (
-      SEL             : in  std_logic_vector (2 downto 0);
-      nY              : out std_logic_vector (7 downto 0);
-      nCE0, nCE1, CE2 : in  std_logic
+      a   : in  std_logic;
+      b   : in  std_logic;
+      c   : in  std_logic;
+      g2a : in  std_logic;
+      g2b : in  std_logic;
+      g1  : in  std_logic;
+      y7  : out std_logic;
+      y6  : out std_logic;
+      y5  : out std_logic;
+      y4  : out std_logic;
+      y3  : out std_logic;
+      y2  : out std_logic;
+      y1  : out std_logic;
+      y0  : out std_logic
       );
   end component;
   alias sn74s138 is sn74138;
 
   component sn74139 is
     port (
-      SEL  : in std_logic_vector (1 downto 0);
-      nENB : in std_logic;
-      nY   : out std_logic_vector (3 downto 0)
+      g1   : in  std_logic;
+      a1   : in  std_logic;
+      b1   : in  std_logic;
+      g1y0 : out std_logic;
+      g1y1 : out std_logic;
+      g1y2 : out std_logic;
+      g1y3 : out std_logic;
+      g2y3 : out std_logic;
+      g2y2 : out std_logic;
+      g2y1 : out std_logic;
+      g2y0 : out std_logic;
+      b2   : in  std_logic;
+      a2   : in  std_logic;
+      g2   : in  std_logic
       );
   end component;
   alias sn74s139 is sn74139;
@@ -445,31 +467,57 @@ package sn74 is
 
   component sn74181 is
     port (
-      -- function
-      S : in std_logic_vector (3 downto 0);
-      -- inputs
-      A : in std_logic_vector (3 downto 0);
-      B : in std_logic_vector (3 downto 0);
-      -- mode
-      M              : in std_logic;
-      -- carry in
-      nC_in : in std_logic;
-      -- output
-      F : out std_logic_vector (3 downto 0);
-      -- carry out
-      nC_out : out std_logic;
-      -- A = B, only valid with subtraction and no carry
-      A_EQ_B    : out std_logic;
-      -- more carry outputs
-      X, Y   : out std_logic
+      cout_n : out std_logic;
+      y      : out std_logic;
+      x      : out std_logic;
+      aeb    : out std_logic;
+
+      f3 : out std_logic;
+      f2 : out std_logic;
+      f1 : out std_logic;
+      f0 : out std_logic;
+
+      b3 : in std_logic;
+      b2 : in std_logic;
+      b1 : in std_logic;
+      b0 : in std_logic;
+
+      a3 : in std_logic;
+      a2 : in std_logic;
+      a1 : in std_logic;
+      a0 : in std_logic;
+
+      m  : in std_logic;
+      s3 : in std_logic;
+      s2 : in std_logic;
+      s1 : in std_logic;
+      s0 : in std_logic;
+
+      cin_n : in std_logic
       );
   end component;
   alias sn74s181 is sn74181;
 
   component sn74182 is
     port (
-      nC, X0, Y0, X1, Y1, X2, Y2, X3, Y3 : in std_logic;
-      nCOUT0, nCOUT1, nCOUT2, XOUT, YOUT : out std_logic
+      xout : out std_logic;
+      yout : out std_logic;
+      x3   : out std_logic;
+      y3   : out std_logic;
+
+      cout2_n : out std_logic;
+      x2      : in  std_logic;
+      y2      : in  std_logic;
+
+      cout1_n : out std_logic;
+      x1      : in  std_logic;
+      y1      : in  std_logic;
+
+      cout0_n : out std_logic;
+      x0      : in  std_logic;
+      y0      : in  std_logic;
+
+      cin_n : in std_logic
       );
   end component;
   alias sn74s182 is sn74182;
@@ -663,5 +711,9 @@ package sn74 is
       );
   end component;
   alias sn74s74 is sn7474;
+
+end;
+
+package body sn74 is
 
 end;

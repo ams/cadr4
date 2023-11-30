@@ -1,0 +1,91 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+library ttl;
+use ttl.sn74.all;
+use ttl.other.all;
+
+library cadr4;
+use cadr4.utilities.all;
+
+entity cadr4_debug is
+  port (
+    \-idebug\  : in  std_logic;
+    i39        : out std_logic;
+    spy7       : in  std_logic;
+    spy6       : in  std_logic;
+    i38        : out std_logic;
+    i37        : out std_logic;
+    spy5       : in  std_logic;
+    spy4       : in  std_logic;
+    i36        : out std_logic;
+    \-lddbirh\ : in  std_logic;
+    i35        : out std_logic;
+    spy3       : in  std_logic;
+    spy2       : in  std_logic;
+    i34        : out std_logic;
+    i33        : out std_logic;
+    spy1       : in  std_logic;
+    spy0       : in  std_logic;
+    i32        : out std_logic;
+    i31        : out std_logic;
+    spy15      : in  std_logic;
+    spy14      : in  std_logic;
+    i30        : out std_logic;
+    i29        : out std_logic;
+    spy13      : in  std_logic;
+    spy12      : in  std_logic;
+    i28        : out std_logic;
+    \-lddbirm\ : in  std_logic;
+    i27        : out std_logic;
+    spy11      : in  std_logic;
+    spy10      : in  std_logic;
+    i26        : out std_logic;
+    i25        : out std_logic;
+    spy9       : in  std_logic;
+    spy8       : in  std_logic;
+    i24        : out std_logic;
+    i23        : out std_logic;
+    i22        : out std_logic;
+    i21        : out std_logic;
+    i20        : out std_logic;
+    i19        : out std_logic;
+    i18        : out std_logic;
+    i17        : out std_logic;
+    i16        : out std_logic;
+    i15        : out std_logic;
+    i14        : out std_logic;
+    i13        : out std_logic;
+    i12        : out std_logic;
+    \-lddbirl\ : in  std_logic;
+    i11        : out std_logic;
+    i10        : out std_logic;
+    i9         : out std_logic;
+    i8         : out std_logic;
+    i7         : out std_logic;
+    i6         : out std_logic;
+    i5         : out std_logic;
+    i4         : out std_logic;
+    i3         : out std_logic;
+    i2         : out std_logic;
+    i1         : out std_logic;
+    i0         : out std_logic;
+    i47        : out std_logic;
+    i46        : out std_logic;
+    i45        : out std_logic;
+    i44        : out std_logic;
+    i43        : out std_logic;
+    i42        : out std_logic;
+    i41        : out std_logic;
+    i40        : out std_logic);
+end;
+
+architecture ttl of cadr4_debug is
+begin
+  debug_1e11 : sn74s374 port map(oenb_n => \-idebug\, o0 => i39, i0 => spy7, i1 => spy6, o1 => i38, o2 => i37, i2 => spy5, i3 => spy4, o3 => i36, clk => \-lddbirh\, o4 => i35, i4 => spy3, i5 => spy2, o5 => i34, o6 => i33, i6 => spy1, i7 => spy0, o7 => i32);
+  debug_1e12 : sn74s374 port map(oenb_n => \-idebug\, o0 => i31, i0 => spy15, i1 => spy14, o1 => i30, o2 => i29, i2 => spy13, i3 => spy12, o3 => i28, clk => \-lddbirm\, o4 => i27, i4 => spy11, i5 => spy10, o5 => i26, o6 => i25, i6 => spy9, i7 => spy8, o7 => i24);
+  debug_1e13 : sn74s374 port map(oenb_n => \-idebug\, o0 => i23, i0 => spy7, i1 => spy6, o1 => i22, o2 => i21, i2 => spy5, i3 => spy4, o3 => i20, clk => \-lddbirm\, o4 => i19, i4 => spy3, i5 => spy2, o5 => i18, o6 => i17, i6 => spy1, i7 => spy0, o7 => i16);
+  debug_1e14 : sn74s374 port map(oenb_n => \-idebug\, o0 => i15, i0 => spy15, i1 => spy14, o1 => i14, o2 => i13, i2 => spy13, i3 => spy12, o3 => i12, clk => \-lddbirl\, o4 => i11, i4 => spy11, i5 => spy10, o5 => i10, o6 => i9, i6 => spy9, i7 => spy8, o7 => i8);
+  debug_1e15 : sn74s374 port map(oenb_n => \-idebug\, o0 => i7, i0 => spy7, i1 => spy6, o1 => i6, o2 => i5, i2 => spy5, i3 => spy4, o3 => i4, clk => \-lddbirl\, o4 => i3, i4 => spy3, i5 => spy2, o5 => i2, o6 => i1, i6 => spy1, i7 => spy0, o7 => i0);
+  debug_1f15 : sn74s374 port map(oenb_n => \-idebug\, o0 => i47, i0 => spy15, i1 => spy14, o1 => i46, o2 => i45, i2 => spy13, i3 => spy12, o3 => i44, clk => \-lddbirh\, o4 => i43, i4 => spy11, i5 => spy10, o5 => i42, o6 => i41, i6 => spy9, i7 => spy8, o7 => i40);
+end architecture;

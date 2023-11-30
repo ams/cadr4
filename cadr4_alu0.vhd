@@ -1,0 +1,91 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+library ttl;
+use ttl.sn74.all;
+use ttl.other.all;
+
+library cadr4;
+use cadr4.utilities.all;
+
+entity cadr4_alu0 is
+  port (
+    a12      : out std_logic;
+    m12      : in  std_logic;
+    aluf3b   : in  std_logic;
+    aluf2b   : in  std_logic;
+    aluf1b   : in  std_logic;
+    aluf0b   : in  std_logic;
+    \-cin12\ : in  std_logic;
+    alumode  : in  std_logic;
+    alu12    : out std_logic;
+    alu13    : out std_logic;
+    alu14    : out std_logic;
+    alu15    : out std_logic;
+    aeqm     : out std_logic;
+    xout15   : out std_logic;
+    nc461    : out std_logic;
+    yout15   : out std_logic;
+    a15      : in  std_logic;
+    m15      : in  std_logic;
+    a14      : in  std_logic;
+    m14      : in  std_logic;
+    a13      : in  std_logic;
+    m13      : in  std_logic;
+    a4       : in  std_logic;
+    m4       : in  std_logic;
+    \-cin4\  : in  std_logic;
+    alu4     : out std_logic;
+    alu5     : out std_logic;
+    alu6     : out std_logic;
+    alu7     : out std_logic;
+    xout7    : out std_logic;
+    nc463    : out std_logic;
+    yout7    : out std_logic;
+    a7       : in  std_logic;
+    m7       : in  std_logic;
+    a6       : in  std_logic;
+    m6       : in  std_logic;
+    a5       : in  std_logic;
+    m5       : in  std_logic;
+    a8       : in  std_logic;
+    m8       : in  std_logic;
+    \-cin8\  : in  std_logic;
+    alu8     : out std_logic;
+    alu9     : out std_logic;
+    alu10    : out std_logic;
+    alu11    : out std_logic;
+    xout11   : out std_logic;
+    nc462    : out std_logic;
+    yout11   : out std_logic;
+    a11      : in  std_logic;
+    m11      : in  std_logic;
+    a10      : in  std_logic;
+    m10      : in  std_logic;
+    a9       : in  std_logic;
+    m9       : in  std_logic;
+    a0       : in  std_logic;
+    m0       : in  std_logic;
+    \-cin0\  : in  std_logic;
+    alu0     : out std_logic;
+    alu1     : out std_logic;
+    alu2     : out std_logic;
+    alu3     : out std_logic;
+    xout3    : out std_logic;
+    nc464    : out std_logic;
+    yout3    : out std_logic;
+    a3       : in  std_logic;
+    m3       : in  std_logic;
+    a2       : in  std_logic;
+    m2       : in  std_logic;
+    a1       : in  std_logic;
+    m1       : in  std_logic);
+end;
+
+architecture ttl of cadr4_alu0 is
+begin
+  alu0_2a23 : sn74s181 port map(b0 => a12, a0 => m12, s3 => aluf3b, s2 => aluf2b, s1 => aluf1b, s0 => aluf0b, cin_n => \-cin12\, m => alumode, f0 => alu12, f1 => alu13, f2 => alu14, f3 => alu15, aeb => aeqm, x => xout15, cout_n => nc461, y => yout15, b3 => a15, a3 => m15, b2 => a14, a2 => m14, b1 => a13, a1 => m13);
+  alu0_2a28 : sn74s181 port map(b0 => a4, a0 => m4, s3 => aluf3b, s2 => aluf2b, s1 => aluf1b, s0 => aluf0b, cin_n => \-cin4\, m => alumode, f0 => alu4, f1 => alu5, f2 => alu6, f3 => alu7, aeb => aeqm, x => xout7, cout_n => nc463, y => yout7, b3 => a7, a3 => m7, b2 => a6, a2 => m6, b1 => a5, a1 => m5);
+  alu0_2b23 : sn74s181 port map(b0 => a8, a0 => m8, s3 => aluf3b, s2 => aluf2b, s1 => aluf1b, s0 => aluf0b, cin_n => \-cin8\, m => alumode, f0 => alu8, f1 => alu9, f2 => alu10, f3 => alu11, aeb => aeqm, x => xout11, cout_n => nc462, y => yout11, b3 => a11, a3 => m11, b2 => a10, a2 => m10, b1 => a9, a1 => m9);
+  alu0_2b28 : sn74s181 port map(b0 => a0, a0 => m0, s3 => aluf3b, s2 => aluf2b, s1 => aluf1b, s0 => aluf0b, cin_n => \-cin0\, m => alumode, f0 => alu0, f1 => alu1, f2 => alu2, f3 => alu3, aeb => aeqm, x => xout3, cout_n => nc464, y => yout3, b3 => a3, a3 => m3, b2 => a2, a2 => m2, b1 => a1, a1 => m1);
+end architecture;

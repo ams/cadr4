@@ -1,0 +1,95 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+library ttl;
+use ttl.sn74.all;
+use ttl.other.all;
+
+library cadr4;
+use cadr4.utilities.all;
+
+entity cadr4_vctl1 is
+  port (
+    \-reset\             : in  std_logic;
+    nc126                : out std_logic;
+    nc127                : out std_logic;
+    nc128                : in  std_logic;
+    internal15           : out std_logic;
+    rdcyc                : out std_logic;
+    wrcyc                : out std_logic;
+    clk2a                : in  std_logic;
+    nc129                : out std_logic;
+    nc130                : out std_logic;
+    nc131                : in  std_logic;
+    wmap                 : in  std_logic;
+    \-wmapd\             : out std_logic;
+    wmapd                : out std_logic;
+    memprepare           : out std_logic;
+    \-memwr\             : in  std_logic;
+    \-memprepare\        : in  std_logic;
+    \-lvmo22\            : in  std_logic;
+    \-pfw\               : out std_logic;
+    \-pfr\               : in  std_logic;
+    \-vmaok\             : out std_logic;
+    \-mfinishd\          : out std_logic;
+    memrq                : out std_logic;
+    mclk1a               : in  std_logic;
+    hi11                 : in  std_logic;
+    mbusy                : out std_logic;
+    nc139                : out std_logic;
+    nc140                : out std_logic;
+    \rd.in.progress\     : out std_logic;
+    \set.rd.in.progress\ : out std_logic;
+    \-rdfinish\          : out std_logic;
+    internal16           : out std_logic;
+    nc132                : out std_logic;
+    nc133                : out std_logic;
+    nc134                : out std_logic;
+    nc135                : out std_logic;
+    \-mfinish\           : out std_logic;
+    nc136                : out std_logic;
+    nc137                : out std_logic;
+    nc138                : out std_logic;
+    clk2c                : in  std_logic;
+    \-memop\             : out std_logic;
+    \-memack\            : in  std_logic;
+    \-memrd\             : in  std_logic;
+    \-ifetch\            : in  std_logic;
+    memstart             : out std_logic;
+    \-memstart\          : out std_logic;
+    \-mbusy.sync\        : out std_logic;
+    \mbusy.sync\         : out std_logic;
+    nc141                : out std_logic;
+    nc142                : out std_logic;
+    nc143                : in  std_logic;
+    nc144                : in  std_logic;
+    nc145                : out std_logic;
+    nc146                : out std_logic;
+    hi4                  : in  std_logic;
+    destmem              : in  std_logic;
+    \-memgrant\          : in  std_logic;
+    \use.md\             : in  std_logic;
+    \-wait\              : out std_logic;
+    gnd                  : in  std_logic;
+    needfetch            : in  std_logic;
+    lcinc                : in  std_logic;
+    \-hang\              : out std_logic;
+    \-clk3g\             : in  std_logic);
+end;
+
+architecture ttl of cadr4_vctl1 is
+begin
+  vctl1_1c23 : sn74s175 port map(clr_n => \-reset\, q0 => nc126, q0_n => nc127, d0 => nc128, d1 => internal15, q1_n => rdcyc, q1 => wrcyc, clk => clk2a, q2 => nc129, q2_n => nc130, d2 => nc131, d3 => wmap, q3_n => \-wmapd\, q3 => wmapd);
+  vctl1_1d16 : sn74s51 port map(g1a    => rdcyc, g1y => internal15, g1c => memprepare, g1d => \-memwr\, g1b => \-memprepare\, g2a => '0', g2b => '0', g2c => '0', g2d => '0');
+  vctl1_1d17 : sn74s00 port map(g1b    => \-lvmo22\, g1a => wrcyc, g1q_n => \-pfw\, g2b => \-pfr\, g2a => \-pfw\, g2q_n => \-vmaok\, g3b => '0', g3a => '0', g4a => '0', g4b => '0');
+  vctl1_1d21 : sn74s74 port map(g1r_n  => \-mfinishd\, g1d => memrq, g1clk => mclk1a, g1s_n => hi11, g1q => mbusy, g1q_n => nc139, g2q_n => nc140, g2q => \rd.in.progress\, g2s_n => hi11, g2clk => mclk1a, g2d => \set.rd.in.progress\, g2r_n => \-rdfinish\);
+  vctl1_1d22 : td250 port map(input    => internal16, o_100ns => \-rdfinish\, o_200ns => nc132, o_250ns => nc133, o_150ns => nc134, o_50ns => nc135);
+  vctl1_1d23 : td50 port map(input     => \-mfinish\, o_20ns => nc136, o_40ns => internal16, o_50ns => nc137, o_30ns => \-mfinishd\, o_10ns => nc138);
+  vctl1_1d27 : sn74s02 port map(g3b    => clk2c, g3a => \-memop\, g3q_n => memprepare, g1a => '0', g1b => '0', g2a => '0', g2b => '0', g4b => '0', g4a => '0');
+  vctl1_1d28 : sn74s08 port map(g4q    => \-mfinish\, g4a => \-reset\, g4b => \-memack\, g1b => '0', g1a => '0', g2b => '0', g2a => '0', g3a => '0', g3b => '0');
+  vctl1_1e16 : sn74s11 port map(g2a    => \-memrd\, g2b => \-memwr\, g2c => \-ifetch\, g2y => \-memop\, g1a => '0', g1b => '0', g3a => '0', g3b => '0', g3c => '0', g1c => '0');
+  vctl1_1e20 : sn74s175 port map(clr_n => \-reset\, q0 => memstart, q0_n => \-memstart\, d0 => memprepare, d1 => memrq, q1_n => \-mbusy.sync\, q1 => \mbusy.sync\, clk => mclk1a, q2 => nc141, q2_n => nc142, d2 => nc143, d3 => nc144, q3_n => nc145, q3 => nc146);
+  vctl1_1e25 : dm9s42_1 port map(g1a1  => mbusy, g1b1 => hi11, g2a1 => memstart, g2b1 => \-pfr\, g2c1 => \-pfw\, g2d1 => hi11, out1 => memrq, out2 => \set.rd.in.progress\, g2d2 => hi11, g2c2 => rdcyc, g2b2 => \-pfr\, g2a2 => memstart, g1b2 => hi11, g1a2 => \rd.in.progress\);
+  vctl1_3f16 : sn74s64 port map(d4     => hi4, b2 => \mbusy.sync\, a2 => destmem, c3 => \-memgrant\, b3 => mbusy, a3 => \use.md\, \out\ => \-wait\, a1 => gnd, b1 => gnd, c4 => \mbusy.sync\, b4 => needfetch, a4 => lcinc);
+  vctl1_3f17 : sn74s10 port map(g1a    => \rd.in.progress\, g1b => \use.md\, g1y_n => \-hang\, g1c => \-clk3g\, g2a => '0', g2b => '0', g2c => '0', g3a => '0', g3b => '0', g3c => '0');
+end architecture;

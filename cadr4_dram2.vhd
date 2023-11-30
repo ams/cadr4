@@ -1,0 +1,96 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+library ttl;
+use ttl.sn74.all;
+use ttl.other.all;
+
+library cadr4;
+use cadr4.utilities.all;
+
+entity cadr4_dram2 is
+  port (
+    dadr10c     : out std_logic;
+    \-dadr0c\   : out std_logic;
+    \-dadr1c\   : out std_logic;
+    \-dadr2c\   : out std_logic;
+    \-dadr3c\   : out std_logic;
+    \-dadr4c\   : out std_logic;
+    dpar        : out std_logic;
+    \-dadr5c\   : out std_logic;
+    \-dadr6c\   : out std_logic;
+    \-dadr7c\   : out std_logic;
+    \-dadr8c\   : out std_logic;
+    \-dadr9c\   : out std_logic;
+    \-dwec\     : out std_logic;
+    aa17        : in  std_logic;
+    \-dadr10c\  : out std_logic;
+    dr          : out std_logic;
+    aa16        : in  std_logic;
+    r3          : in  std_logic;
+    ir18b       : in  std_logic;
+    hi11        : in  std_logic;
+    dmask6      : in  std_logic;
+    r6          : in  std_logic;
+    ir15b       : in  std_logic;
+    dmask3      : in  std_logic;
+    dp          : out std_logic;
+    aa15        : in  std_logic;
+    dn          : out std_logic;
+    aa14        : in  std_logic;
+    r2          : in  std_logic;
+    ir17b       : in  std_logic;
+    dmask5      : in  std_logic;
+    r5          : in  std_logic;
+    ir14b       : in  std_logic;
+    dmask2      : in  std_logic;
+    dpc13       : out std_logic;
+    aa13        : in  std_logic;
+    dpc12       : out std_logic;
+    aa12        : in  std_logic;
+    r1          : in  std_logic;
+    ir16b       : in  std_logic;
+    dmask4      : in  std_logic;
+    r4          : in  std_logic;
+    ir13b       : in  std_logic;
+    dmask1      : in  std_logic;
+    ir12b       : in  std_logic;
+    vmo19       : in  std_logic;
+    ir9b        : in  std_logic;
+    r0          : in  std_logic;
+    dmask0      : in  std_logic;
+    \-dmapbenb\ : in  std_logic;
+    vmo18       : in  std_logic;
+    ir8b        : in  std_logic;
+    hi6         : in  std_logic;
+    nc408       : in  std_logic;
+    nc409       : out std_logic;
+    ir22b       : in  std_logic;
+    ir21b       : in  std_logic;
+    ir20b       : in  std_logic;
+    ir19b       : in  std_logic;
+    dispwr      : in  std_logic;
+    wp2         : in  std_logic);
+end;
+
+architecture ttl of cadr4_dram2 is
+begin
+  dram2_1f16 : am93425a port map(ce_n => dadr10c, a0 => \-dadr0c\, a1 => \-dadr1c\, a2 => \-dadr2c\, a3 => \-dadr3c\, a4 => \-dadr4c\, do => dpar, a5 => \-dadr5c\, a6 => \-dadr6c\, a7 => \-dadr7c\, a8 => \-dadr8c\, a9 => \-dadr9c\, we_n => \-dwec\, di => aa17);
+  dram2_1f17 : am93425a port map(ce_n => \-dadr10c\, a0 => \-dadr0c\, a1 => \-dadr1c\, a2 => \-dadr2c\, a3 => \-dadr3c\, a4 => \-dadr4c\, do => dpar, a5 => \-dadr5c\, a6 => \-dadr6c\, a7 => \-dadr7c\, a8 => \-dadr8c\, a9 => \-dadr9c\, we_n => \-dwec\, di => aa17);
+  dram2_1f18 : am93425a port map(ce_n => dadr10c, a0 => \-dadr0c\, a1 => \-dadr1c\, a2 => \-dadr2c\, a3 => \-dadr3c\, a4 => \-dadr4c\, do => dr, a5 => \-dadr5c\, a6 => \-dadr6c\, a7 => \-dadr7c\, a8 => \-dadr8c\, a9 => \-dadr9c\, we_n => \-dwec\, di => aa16);
+  dram2_1f19 : am93425a port map(ce_n => \-dadr10c\, a0 => \-dadr0c\, a1 => \-dadr1c\, a2 => \-dadr2c\, a3 => \-dadr3c\, a4 => \-dadr4c\, do => dr, a5 => \-dadr5c\, a6 => \-dadr6c\, a7 => \-dadr7c\, a8 => \-dadr8c\, a9 => \-dadr9c\, we_n => \-dwec\, di => aa16);
+  dram2_1f20 : sn74s51 port map(g1a   => r3, g2a => ir18b, g2b => hi11, g2c => dmask6, g2d => r6, g2y => \-dadr6c\, g1y => \-dadr3c\, g1c => ir15b, g1d => hi11, g1b => dmask3);
+  dram2_1f21 : am93425a port map(ce_n => dadr10c, a0 => \-dadr0c\, a1 => \-dadr1c\, a2 => \-dadr2c\, a3 => \-dadr3c\, a4 => \-dadr4c\, do => dp, a5 => \-dadr5c\, a6 => \-dadr6c\, a7 => \-dadr7c\, a8 => \-dadr8c\, a9 => \-dadr9c\, we_n => \-dwec\, di => aa15);
+  dram2_1f22 : am93425a port map(ce_n => \-dadr10c\, a0 => \-dadr0c\, a1 => \-dadr1c\, a2 => \-dadr2c\, a3 => \-dadr3c\, a4 => \-dadr4c\, do => dp, a5 => \-dadr5c\, a6 => \-dadr6c\, a7 => \-dadr7c\, a8 => \-dadr8c\, a9 => \-dadr9c\, we_n => \-dwec\, di => aa15);
+  dram2_1f23 : am93425a port map(ce_n => dadr10c, a0 => \-dadr0c\, a1 => \-dadr1c\, a2 => \-dadr2c\, a3 => \-dadr3c\, a4 => \-dadr4c\, do => dn, a5 => \-dadr5c\, a6 => \-dadr6c\, a7 => \-dadr7c\, a8 => \-dadr8c\, a9 => \-dadr9c\, we_n => \-dwec\, di => aa14);
+  dram2_1f24 : am93425a port map(ce_n => \-dadr10c\, a0 => \-dadr0c\, a1 => \-dadr1c\, a2 => \-dadr2c\, a3 => \-dadr3c\, a4 => \-dadr4c\, do => dn, a5 => \-dadr5c\, a6 => \-dadr6c\, a7 => \-dadr7c\, a8 => \-dadr8c\, a9 => \-dadr9c\, we_n => \-dwec\, di => aa14);
+  dram2_1f25 : sn74s51 port map(g1a   => r2, g2a => ir17b, g2b => hi11, g2c => dmask5, g2d => r5, g2y => \-dadr5c\, g1y => \-dadr2c\, g1c => ir14b, g1d => hi11, g1b => dmask2);
+  dram2_1f26 : am93425a port map(ce_n => dadr10c, a0 => \-dadr0c\, a1 => \-dadr1c\, a2 => \-dadr2c\, a3 => \-dadr3c\, a4 => \-dadr4c\, do => dpc13, a5 => \-dadr5c\, a6 => \-dadr6c\, a7 => \-dadr7c\, a8 => \-dadr8c\, a9 => \-dadr9c\, we_n => \-dwec\, di => aa13);
+  dram2_1f27 : am93425a port map(ce_n => \-dadr10c\, a0 => \-dadr0c\, a1 => \-dadr1c\, a2 => \-dadr2c\, a3 => \-dadr3c\, a4 => \-dadr4c\, do => dpc13, a5 => \-dadr5c\, a6 => \-dadr6c\, a7 => \-dadr7c\, a8 => \-dadr8c\, a9 => \-dadr9c\, we_n => \-dwec\, di => aa13);
+  dram2_1f28 : am93425a port map(ce_n => dadr10c, a0 => \-dadr0c\, a1 => \-dadr1c\, a2 => \-dadr2c\, a3 => \-dadr3c\, a4 => \-dadr4c\, do => dpc12, a5 => \-dadr5c\, a6 => \-dadr6c\, a7 => \-dadr7c\, a8 => \-dadr8c\, a9 => \-dadr9c\, we_n => \-dwec\, di => aa12);
+  dram2_1f29 : am93425a port map(ce_n => \-dadr10c\, a0 => \-dadr0c\, a1 => \-dadr1c\, a2 => \-dadr2c\, a3 => \-dadr3c\, a4 => \-dadr4c\, do => dpc12, a5 => \-dadr5c\, a6 => \-dadr6c\, a7 => \-dadr7c\, a8 => \-dadr8c\, a9 => \-dadr9c\, we_n => \-dwec\, di => aa12);
+  dram2_1f30 : sn74s51 port map(g1a   => r1, g2a => ir16b, g2b => hi11, g2c => dmask4, g2d => r4, g2y => \-dadr4c\, g1y => \-dadr1c\, g1c => ir13b, g1d => hi11, g1b => dmask1);
+  dram2_2f01 : sn74s64 port map(d4    => ir12b, b2 => vmo19, a2 => ir9b, c3 => r0, b3 => dmask0, a3 => \-dmapbenb\, \out\ => \-dadr0c\, a1 => vmo18, b1 => ir8b, c4 => hi6, b4 => hi6, a4 => hi6);
+  dram2_2f02 : sn74s04 port map(g1a   => nc408, g1q_n => nc409, g2a => \-dadr10c\, g2q_n => dadr10c, g3a => ir22b, g3q_n => \-dadr10c\, g4q_n => \-dadr9c\, g4a => ir21b, g5q_n => \-dadr8c\, g5a => ir20b, g6q_n => \-dadr7c\, g6a => ir19b);
+  dram2_2f03 : sn74s37 port map(g3y   => \-dwec\, g3a => dispwr, g3b => wp2, g1a => '0', g1b => '0', g2a => '0', g2b => '0', g4a => '0', g4b => '0');
+end architecture;
