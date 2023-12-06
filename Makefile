@@ -7,6 +7,9 @@ VHDSTND		= 08
 
 GHDLFLAGS	= -Pttl
 
+TB_SRCS_VHD	= $(addsuffix _tb.vhd, cadr4 cadr4_clock1)
+TESTBENCHES	= $(basename $(TB_SRCS_VHD))
+
 SRCS_VHD	=				\
 pages.vhd \
   cadr4_clock1.vhd				\
