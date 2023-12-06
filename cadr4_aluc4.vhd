@@ -71,7 +71,6 @@ entity cadr4_aluc4 is
     \-ir2\            : out std_logic;
     irjump            : in  std_logic;
     alumode           : out std_logic;
-    internal33        : out std_logic;
     \-divposlasttime\ : out std_logic;
     q0                : in  std_logic;
     \-div\            : in  std_logic;
@@ -86,11 +85,7 @@ entity cadr4_aluc4 is
     ir1               : in  std_logic;
     \-ir0\            : out std_logic;
     ir0               : in  std_logic;
-    internal34        : out std_logic;
     a31a              : in  std_logic;
-    internal35        : out std_logic;
-    internal36        : out std_logic;
-    internal37        : out std_logic;
     \-mulnop\         : out std_logic;
     \-irjump\         : in  std_logic;
     \-mul\            : in  std_logic;
@@ -104,6 +99,13 @@ entity cadr4_aluc4 is
 end;
 
 architecture ttl of cadr4_aluc4 is
+
+  signal internal33 : std_logic;
+  signal internal34 : std_logic;
+  signal internal35 : std_logic;
+  signal internal36 : std_logic;
+  signal internal37 : std_logic;
+		      
 begin
   aluc4_2a16 : sn74s37 port map(g1a     => \-aluf0\, g1b => \-aluf0\, g1y => aluf0b, g2a => \-aluf1\, g2b => \-aluf1\, g2y => aluf1b, g3y => aluf2b, g3a => \-aluf2\, g3b => \-aluf2\, g4y => aluf3b, g4a => \-aluf3\, g4b => \-aluf3\);
   aluc4_2a17 : sn74s37 port map(g1a     => \-aluf0\, g1b => \-aluf0\, g1y => aluf0a, g2a => \-aluf1\, g2b => \-aluf1\, g2y => aluf1a, g3y => aluf2a, g3a => \-aluf2\, g3b => \-aluf2\, g4y => aluf3a, g4a => \-aluf3\, g4b => \-aluf3\);

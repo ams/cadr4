@@ -447,7 +447,6 @@ package pages is
       \-ir2\            : out std_logic;
       irjump            : in  std_logic;
       alumode           : out std_logic;
-      internal33        : out std_logic;
       \-divposlasttime\ : out std_logic;
       q0                : in  std_logic;
       \-div\            : in  std_logic;
@@ -462,11 +461,7 @@ package pages is
       ir1               : in  std_logic;
       \-ir0\            : out std_logic;
       ir0               : in  std_logic;
-      internal34        : out std_logic;
       a31a              : in  std_logic;
-      internal35        : out std_logic;
-      internal36        : out std_logic;
-      internal37        : out std_logic;
       \-mulnop\         : out std_logic;
       \-irjump\         : in  std_logic;
       \-mul\            : in  std_logic;
