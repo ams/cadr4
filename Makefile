@@ -124,8 +124,8 @@ pages.vhd \
   cadr4_ipar.vhd				\
 utilities.vhd
 
-# all::;	 	(cd ttl; make all)
-# check::;	(cd ttl; make check)
-# clean::;	(cd ttl; make clean)
+all::;	 	(cd ttl; make all)
+check::;	(cd ttl; make check)
+clean::;	(cd ttl; make clean)
 
 include ~/hdlmake.mk/hdlmake.mk
