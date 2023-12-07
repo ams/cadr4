@@ -14,16 +14,11 @@ entity cadr4_pdlptr is
     clk3f        : in  std_logic;
     ob8          : in  std_logic;
     ob9          : in  std_logic;
-    nc237        : in  std_logic;
-    nc238        : in  std_logic;
     gnd          : in  std_logic;
     \-destpdlp\  : in  std_logic;
     \-pdlcry7\   : out std_logic;
-    nc239        : out std_logic;
-    nc240        : out std_logic;
     pdlptr9      : out std_logic;
     pdlptr8      : out std_logic;
-    nc241        : out std_logic;
     \-destpdlx\  : in  std_logic;
     pdlidx6      : out std_logic;
     ob6          : in  std_logic;
@@ -31,10 +26,6 @@ entity cadr4_pdlptr is
     pdlidx7      : out std_logic;
     pdlidx8      : out std_logic;
     pdlidx9      : out std_logic;
-    nc233        : out std_logic;
-    nc234        : in  std_logic;
-    nc235        : in  std_logic;
-    nc236        : out std_logic;
     ob4          : in  std_logic;
     ob5          : in  std_logic;
     \-pdlcry3\   : out std_logic;
@@ -77,6 +68,15 @@ entity cadr4_pdlptr is
 end;
 
 architecture ttl of cadr4_pdlptr is
+  signal nc233 : std_logic;
+  signal nc234 : std_logic;
+  signal nc235 : std_logic;
+  signal nc236 : std_logic;
+  signal nc237 : std_logic;
+  signal nc238 : std_logic;
+  signal nc239 : std_logic;
+  signal nc240 : std_logic;
+  signal nc241 : std_logic;
 begin
   pdlptr_3c21 : sn74s169 port map(up_dn  => \-srcpdlpop\, clk => clk3f, i0 => ob8, i1 => ob9, i2 => nc237, i3 => nc238, enb_p_n => gnd, load_n => \-destpdlp\, enb_t_n => \-pdlcry7\, o3 => nc239, o2 => nc240, o1 => pdlptr9, o0 => pdlptr8, co_n => nc241);
   pdlptr_3c22 : am25s07 port map(enb_n   => \-destpdlx\, d0 => pdlidx6, i0 => ob6, i1 => ob7, d1 => pdlidx7, i2 => ob8, d2 => pdlidx8, clk => clk3f, d3 => pdlidx9, i3 => ob9, d4 => nc233, i4 => nc234, i5 => nc235, d5 => nc236);

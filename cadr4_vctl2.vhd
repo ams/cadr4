@@ -21,8 +21,6 @@ entity cadr4_vctl2 is
     \-vm1wpa\      : out std_logic;
     wp1b           : in  std_logic;
     \-vm1wpb\      : out std_logic;
-    nc123          : in  std_logic;
-    nc124          : out std_logic;
     \-lvmo23\      : in  std_logic;
     \-pfr\         : out std_logic;
     \-wmap\        : out std_logic;
@@ -49,7 +47,6 @@ entity cadr4_vctl2 is
     \-memdrive.b\  : out std_logic;
     \-memwr\       : out std_logic;
     \-memrd\       : out std_logic;
-    nc125          : out std_logic;
     ir20           : in  std_logic;
     ir19           : in  std_logic;
     \use.md\       : out std_logic;
@@ -59,6 +56,9 @@ entity cadr4_vctl2 is
 end;
 
 architecture ttl of cadr4_vctl2 is
+  signal nc123 : std_logic;
+  signal nc124 : std_logic;
+  signal nc125 : std_logic;
 begin
   vctl2_1c15 : sn74s02 port map(g1q_n => mapwr0d, g1a => \-wmapd\, g1b => \-vma26\, g2q_n => mapwr1d, g2a => \-wmapd\, g2b => \-vma25\, g3b => '0', g3a => '0', g4b => '0', g4a => '0');
   vctl2_1d07 : sn74s37 port map(g1a   => mapwr0d, g1b => wp1a, g1y => \-vm0wpa\, g2a => mapwr0d, g2b => wp1a, g2y => \-vm0wpb\, g3y => \-vm1wpa\, g3a => wp1b, g3b => mapwr1d, g4y => \-vm1wpb\, g4a => wp1b, g4b => mapwr1d);

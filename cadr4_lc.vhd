@@ -107,11 +107,6 @@ entity cadr4_lc is
     \-srclc\            : in  std_logic;
     ob24                : in  std_logic;
     ob25                : in  std_logic;
-    nc364               : in  std_logic;
-    nc365               : in  std_logic;
-    nc366               : out std_logic;
-    nc367               : out std_logic;
-    nc368               : out std_logic;
     ob4                 : in  std_logic;
     ob5                 : in  std_logic;
     ob6                 : in  std_logic;
@@ -120,6 +115,11 @@ entity cadr4_lc is
 end;
 
 architecture ttl of cadr4_lc is
+  signal nc364 : std_logic;
+  signal nc365 : std_logic;
+  signal nc366 : std_logic;
+  signal nc367 : std_logic;
+  signal nc368 : std_logic;
 begin
   lc_1a16 : sn74s241 port map(aenb_n => \-lcdrive\, ain0 => needfetch, bout3 => mf24, ain1 => gnd, bout2 => mf25, ain2 => \lc_byte_mode\, bout1 => mf26, ain3 => \prog.unibus.reset\, bout0 => mf27, bin0 => \int.enable\, aout3 => mf28, bin1 => \sequence.break\, aout2 => mf29, bin2 => lc25, aout1 => mf30, bin3 => lc24, aout0 => mf31, benb => lcdrive);
   lc_1a18 : sn74s00 port map(g2b     => srclc, g2a => tse1a, g2q_n => \-lcdrive\, g1b => '0', g1a => '0', g3b => '0', g3a => '0', g4a => '0', g4b => '0');

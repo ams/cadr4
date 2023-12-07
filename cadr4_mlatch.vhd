@@ -94,20 +94,6 @@ entity cadr4_mlatch is
     mf6        : out std_logic;
     l0         : in  std_logic;
     mf7        : out std_logic;
-    nc294      : out std_logic;
-    nc295      : in  std_logic;
-    nc296      : in  std_logic;
-    nc297      : out std_logic;
-    nc298      : out std_logic;
-    nc299      : in  std_logic;
-    nc300      : in  std_logic;
-    nc301      : out std_logic;
-    nc302      : out std_logic;
-    nc303      : in  std_logic;
-    nc304      : in  std_logic;
-    nc305      : out std_logic;
-    nc306      : out std_logic;
-    nc307      : in  std_logic;
     mmemparity : out std_logic;
     mparity    : out std_logic;
     m31        : out std_logic;
@@ -161,6 +147,20 @@ entity cadr4_mlatch is
 end;
 
 architecture ttl of cadr4_mlatch is
+  signal nc294 : std_logic;
+  signal nc295 : std_logic;
+  signal nc296 : std_logic;
+  signal nc297 : std_logic;
+  signal nc298 : std_logic;
+  signal nc299 : std_logic;
+  signal nc300 : std_logic;
+  signal nc301 : std_logic;
+  signal nc302 : std_logic;
+  signal nc303 : std_logic;
+  signal nc304 : std_logic;
+  signal nc305 : std_logic;
+  signal nc306 : std_logic;
+  signal nc307 : std_logic;
 begin
   mlatch_4a01 : sn74s373 port map(oenb_n => \-mpassm\, o0 => m23, i0 => mmem23, i1 => mmem22, o1 => m22, o2 => m21, i2 => mmem21, i3 => mmem20, o3 => m20, hold_n => clk4a, o4 => m19, i4 => mmem19, i5 => mmem18, o5 => m18, o6 => m17, i6 => mmem17, i7 => mmem16, o7 => m16);
   mlatch_4a03 : sn74s373 port map(oenb_n => \-mpassm\, o0 => m15, i0 => mmem15, i1 => mmem14, o1 => m14, o2 => m13, i2 => mmem13, i3 => mmem12, o3 => m12, hold_n => clk4a, o4 => m11, i4 => mmem11, i5 => mmem10, o5 => m10, o6 => m9, i6 => mmem9, i7 => mmem8, o7 => m8);

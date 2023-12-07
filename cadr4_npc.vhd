@@ -16,11 +16,6 @@ entity cadr4_npc is
     ipc12   : out std_logic;
     pc12    : out std_logic;
     pccry11 : out std_logic;
-    nc243   : out std_logic;
-    nc244   : out std_logic;
-    nc245   : in  std_logic;
-    nc246   : out std_logic;
-    nc247   : in  std_logic;
     ipc9    : out std_logic;
     pc9     : out std_logic;
     ipc8    : out std_logic;
@@ -67,10 +62,6 @@ entity cadr4_npc is
     spc0    : out std_logic;
     ir12    : in  std_logic;
     dpc0    : out std_logic;
-    nc248   : out std_logic;
-    nc249   : in  std_logic;
-    nc250   : in  std_logic;
-    nc251   : out std_logic;
     npc13   : out std_logic;
     npc12   : out std_logic;
     clk4b   : in  std_logic;
@@ -116,6 +107,15 @@ entity cadr4_npc is
 end;
 
 architecture ttl of cadr4_npc is
+  signal nc243 : std_logic;
+  signal nc244 : std_logic;
+  signal nc245 : std_logic;
+  signal nc246 : std_logic;
+  signal nc247 : std_logic;
+  signal nc248 : std_logic;
+  signal nc249 : std_logic;
+  signal nc250 : std_logic;
+  signal nc251 : std_logic;
 begin
   npc_3f26 : sn74s283 port map(s1     => ipc13, b1 => gnd, a1 => pc13, s0 => ipc12, a0 => pc12, b0 => gnd, c0 => pccry11, c4 => nc243, s3 => nc244, b3 => gnd, a3 => nc245, s2 => nc246, a2 => nc247, b2 => gnd);
   npc_3f27 : sn74s283 port map(s1     => ipc9, b1 => gnd, a1 => pc9, s0 => ipc8, a0 => pc8, b0 => gnd, c0 => pccry7, c4 => pccry11, s3 => ipc11, b3 => gnd, a3 => pc11, s2 => ipc10, a2 => pc10, b2 => gnd);

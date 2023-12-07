@@ -37,18 +37,12 @@ entity cadr4_mskg4 is
     msk13   : out std_logic;
     msk14   : out std_logic;
     msk15   : out std_logic;
-    nc253   : in  std_logic;
-    nc254   : out std_logic;
     ir31    : in  std_logic;
     \-ir31\ : out std_logic;
     ir13    : in  std_logic;
     \-ir13\ : out std_logic;
     \-ir12\ : out std_logic;
     ir12    : in  std_logic;
-    nc255   : out std_logic;
-    nc256   : in  std_logic;
-    nc257   : out std_logic;
-    nc258   : in  std_logic;
     msk16   : out std_logic;
     msk17   : out std_logic;
     msk18   : out std_logic;
@@ -65,11 +59,17 @@ entity cadr4_mskg4 is
     msk4    : out std_logic;
     msk5    : out std_logic;
     msk6    : out std_logic;
-    msk7    : out std_logic;
-    nc252   : out std_logic);
+    msk7    : out std_logic);
 end;
 
 architecture ttl of cadr4_mskg4 is
+  signal nc252 : std_logic;
+  signal nc253 : std_logic;
+  signal nc254 : std_logic;
+  signal nc255 : std_logic;
+  signal nc256 : std_logic;
+  signal nc257 : std_logic;
+  signal nc258 : std_logic;
 begin
   mskg4_2d11 : im5600 generic map(fn => "rom/mskg4_2d11.hex") port map(o0 => msk24, o1 => msk25, o2 => msk26, o3 => msk27, o4 => msk28, o5 => msk29, o6 => msk30, o7 => msk31, a0 => mskl0, a1 => mskl1, a2 => mskl2, a3 => mskl3, a4 => mskl4, ce_n => gnd);
   mskg4_2d12 : im5600 generic map(fn => "rom/mskg4_2d12.hex") port map(o0 => msk24, o1 => msk25, o2 => msk26, o3 => msk27, o4 => msk28, o5 => msk29, o6 => msk30, o7 => msk31, a0 => mskr0, a1 => mskr1, a2 => mskr2, a3 => mskr3, a4 => mskr4, ce_n => gnd);

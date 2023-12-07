@@ -22,9 +22,6 @@ entity cadr4_contrl is
     inop             : out std_logic;
     \-inop\          : out std_logic;
     n                : out std_logic;
-    nc420            : in  std_logic;
-    nc421            : out std_logic;
-    nc422            : out std_logic;
     clk3c            : in  std_logic;
     \-spushd\        : out std_logic;
     spush            : out std_logic;
@@ -49,8 +46,6 @@ entity cadr4_contrl is
     dp               : in  std_logic;
     \-dfall\         : out std_logic;
     \-trap\          : in  std_logic;
-    internal32       : out std_logic;
-    internal31       : out std_logic;
     irdisp           : in  std_logic;
     \-funct2\        : in  std_logic;
     dispenb          : out std_logic;
@@ -85,6 +80,11 @@ entity cadr4_contrl is
 end;
 
 architecture ttl of cadr4_contrl is
+  signal internal31 : std_logic;
+  signal internal32 : std_logic;
+  signal nc420      : std_logic;
+  signal nc421      : std_logic;
+  signal nc422      : std_logic;
 begin
   contrl_3d21 : sn74s08 port map(g1b    => spushd, g1a => tse3a, g1q => spcwpass, g2b => \-ipopj\, g2a => \-iwrited\, g2q => \-popj\, g3q => spcdrive, g3a => spcenb, g3b => tse3a, g4a => '0', g4b => '0');
   contrl_3d26 : sn74s175 port map(clr_n => \-reset\, q0 => inop, q0_n => \-inop\, d0 => n, d1 => nc420, q1_n => nc421, q1 => nc422, clk => clk3c, q2 => spushd, q2_n => \-spushd\, d2 => spush, d3 => iwrite, q3_n => \-iwrited\, q3 => iwrited);

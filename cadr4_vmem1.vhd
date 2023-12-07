@@ -18,7 +18,6 @@ entity cadr4_vmem1 is
     \-vma22\   : in  std_logic;
     \-vma23\   : in  std_logic;
     vm1mpar    : out std_logic;
-    nc109      : out std_logic;
     \-vma12\   : in  std_logic;
     \-vma13\   : in  std_logic;
     \-vma14\   : in  std_logic;
@@ -31,7 +30,6 @@ entity cadr4_vmem1 is
     \-vma9\    : in  std_logic;
     \-vma10\   : in  std_logic;
     \-vma11\   : in  std_logic;
-    nc110      : out std_logic;
     \-vm1lpar\ : out std_logic;
     \-vma0\    : in  std_logic;
     \-vma1\    : in  std_logic;
@@ -65,10 +63,8 @@ entity cadr4_vmem1 is
     vm1pari    : out std_logic;
     mapi12     : in  std_logic;
     mapi11     : in  std_logic;
-    nc111      : out std_logic;
     \-mapi8b\  : out std_logic;
     \-mapi9b\  : out std_logic;
-    nc112      : in  std_logic;
     \-mapi10b\ : out std_logic;
     \-mapi11b\ : out std_logic;
     \-mapi12b\ : out std_logic;
@@ -83,6 +79,10 @@ entity cadr4_vmem1 is
 end;
 
 architecture ttl of cadr4_vmem1 is
+  signal nc109 : std_logic;
+  signal nc110 : std_logic;
+  signal nc111 : std_logic;
+  signal nc112 : std_logic;
 begin
   vmem1_1c03 : am93s48 port map(i6      => \-vma17\, i5 => \-vma18\, i4 => \-vma19\, i3 => \-vma20\, i2 => \-vma21\, i1 => \-vma22\, i0 => \-vma23\, po => vm1mpar, pe => nc109, i11 => \-vma12\, i10 => \-vma13\, i9 => \-vma14\, i8 => \-vma15\, i7 => \-vma16\);
   vmem1_1c04 : am93s48 port map(i6      => \-vma5\, i5 => \-vma6\, i4 => \-vma7\, i3 => \-vma8\, i2 => \-vma9\, i1 => \-vma10\, i0 => \-vma11\, po => nc110, pe => \-vm1lpar\, i11 => \-vma0\, i10 => \-vma1\, i9 => \-vma2\, i8 => \-vma3\, i7 => \-vma4\);

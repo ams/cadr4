@@ -39,14 +39,6 @@ entity cadr4_olord2 is
     statstop            : out std_logic;
     \stat.ovf\          : in  std_logic;
     \-halt\             : in  std_logic;
-    nc76                : out std_logic;
-    nc77                : in  std_logic;
-    nc78                : in  std_logic;
-    nc79                : out std_logic;
-    nc80                : out std_logic;
-    nc81                : in  std_logic;
-    nc82                : in  std_logic;
-    nc83                : out std_logic;
     \-mclk5\            : out std_logic;
     mclk5a              : out std_logic;
     \-clk5\             : out std_logic;
@@ -57,22 +49,16 @@ entity cadr4_olord2 is
     \-upperhighok\      : in  std_logic;
     \-lowerhighok\      : out std_logic;
     \-boot\             : out std_logic;
-    internal5           : out std_logic;
-    internal2           : out std_logic;
     \prog.bus.reset\    : out std_logic;
     \-bus.reset\        : out std_logic;
     \-clock_reset_b\    : out std_logic;
-    internal1           : out std_logic;
     \-clock_reset_a\    : out std_logic;
     \-power_reset\      : out std_logic;
     srun                : in  std_logic;
-    nc75                : out std_logic;
     \boot.trap\         : out std_logic;
     hi2                 : out std_logic;
     \-boot1\            : out std_logic;
     \-boot2\            : out std_logic;
-    internal4           : out std_logic;
-    internal3           : out std_logic;
     \-ldmode\           : out std_logic;
     ldmode              : out std_logic;
     mclk5               : in  std_logic;
@@ -87,6 +73,20 @@ entity cadr4_olord2 is
 end;
 
 architecture ttl of cadr4_olord2 is
+  signal internal1 : std_logic;
+  signal internal2 : std_logic;
+  signal internal3 : std_logic;
+  signal internal4 : std_logic;
+  signal internal5 : std_logic;
+  signal nc75      : std_logic;
+  signal nc76      : std_logic;
+  signal nc77      : std_logic;
+  signal nc78      : std_logic;
+  signal nc79      : std_logic;
+  signal nc80      : std_logic;
+  signal nc81      : std_logic;
+  signal nc82      : std_logic;
+  signal nc83      : std_logic;
 begin
   olord2_1a02 : sn74s133 port map(g       => \-ape\, f => \-mpe\, e => \-pdlpe\, d => \-dpe\, c => \-ipe\, b => \-spe\, a => \-higherr\, q_n => err, h => \-mempe\, i => \-v0pe\, j => \-v1pe\, k => \-halted\, l => hi1, m => hi1);
   olord2_1a03 : sn74s374 port map(oenb_n  => gnd, o0 => \-ape\, i0 => aparok, i1 => mmemparok, o1 => \-mpe\, o2 => \-pdlpe\, i2 => pdlparok, i3 => dparok, o3 => \-dpe\, clk => clk5a, o4 => \-ipe\, i4 => iparok, i5 => spcparok, o5 => \-spe\, o6 => \-higherr\, i6 => highok, i7 => memparok, o7 => \-mempe\);

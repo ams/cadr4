@@ -12,9 +12,7 @@ entity cadr4_lpc is
   port (
     gnd        : in  std_logic;
     pc8        : in  std_logic;
-    nc341      : out std_logic;
     pc9        : in  std_logic;
-    nc342      : out std_logic;
     pc10       : in  std_logic;
     pc13b      : out std_logic;
     pc11       : in  std_logic;
@@ -23,9 +21,7 @@ entity cadr4_lpc is
     pc11b      : out std_logic;
     pc13       : in  std_logic;
     pc10b      : out std_logic;
-    nc343      : in  std_logic;
     pc9b       : out std_logic;
-    nc344      : in  std_logic;
     pc8b       : out std_logic;
     hi5        : in  std_logic;
     pc0        : in  std_logic;
@@ -46,18 +42,10 @@ entity cadr4_lpc is
     pc0b       : out std_logic;
     irdisp     : in  std_logic;
     ir25       : in  std_logic;
-    internal23 : out std_logic;
     lpc12      : out std_logic;
     wpc12      : out std_logic;
     lpc13      : out std_logic;
     wpc13      : out std_logic;
-    nc345      : out std_logic;
-    nc346      : in  std_logic;
-    nc347      : in  std_logic;
-    nc348      : out std_logic;
-    nc349      : in  std_logic;
-    nc350      : in  std_logic;
-    internal24 : in  std_logic;
     lpc8       : out std_logic;
     wpc8       : out std_logic;
     lpc9       : out std_logic;
@@ -83,18 +71,30 @@ entity cadr4_lpc is
     wpc3       : out std_logic;
     lpc3       : out std_logic;
     \lpc.hold\ : in  std_logic;
-    clk4b      : in  std_logic;
-    nc351      : out std_logic;
-    nc352      : in  std_logic;
-    nc353      : in  std_logic;
-    nc354      : out std_logic;
-    nc355      : in  std_logic;
-    nc356      : out std_logic;
-    nc357      : out std_logic;
-    nc358      : in  std_logic);
+    clk4b      : in  std_logic);
 end;
 
 architecture ttl of cadr4_lpc is
+  signal internal23 : std_logic;
+  signal internal24 : std_logic;
+  signal nc341      : std_logic;
+  signal nc342      : std_logic;
+  signal nc343      : std_logic;
+  signal nc344      : std_logic;
+  signal nc345      : std_logic;
+  signal nc346      : std_logic;
+  signal nc347      : std_logic;
+  signal nc348      : std_logic;
+  signal nc349      : std_logic;
+  signal nc350      : std_logic;
+  signal nc351      : std_logic;
+  signal nc352      : std_logic;
+  signal nc353      : std_logic;
+  signal nc354      : std_logic;
+  signal nc355      : std_logic;
+  signal nc356      : std_logic;
+  signal nc357      : std_logic;
+  signal nc358      : std_logic;
 begin
   lpc_4d01 : sn74s241 port map(aenb_n => gnd, ain0 => pc8, bout3 => nc341, ain1 => pc9, bout2 => nc342, ain2 => pc10, bout1 => pc13b, ain3 => pc11, bout0 => pc12b, bin0 => pc12, aout3 => pc11b, bin1 => pc13, aout2 => pc10b, bin2 => nc343, aout1 => pc9b, bin3 => nc344, aout0 => pc8b, benb => hi5);
   lpc_4d02 : sn74s241 port map(aenb_n => gnd, ain0 => pc0, bout3 => pc7b, ain1 => pc1, bout2 => pc6b, ain2 => pc2, bout1 => pc5b, ain3 => pc3, bout0 => pc4b, bin0 => pc4, aout3 => pc3b, bin1 => pc5, aout2 => pc2b, bin2 => pc6, aout1 => pc1b, bin3 => pc7, aout0 => pc0b, benb => hi5);

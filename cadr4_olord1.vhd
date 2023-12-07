@@ -11,10 +11,6 @@ use cadr4.utilities.all;
 entity cadr4_olord1 is
   port (
     \-clock_reset_a\ : in  std_logic;
-    nc84             : out std_logic;
-    nc85             : in  std_logic;
-    nc86             : in  std_logic;
-    nc87             : out std_logic;
     speed1a          : out std_logic;
     sspeed1          : out std_logic;
     speedclk         : out std_logic;
@@ -34,8 +30,6 @@ entity cadr4_olord1 is
     spy4             : in  std_logic;
     spy5             : in  std_logic;
     promdisable      : out std_logic;
-    nc92             : out std_logic;
-    nc93             : out std_logic;
     \-opcinh\        : out std_logic;
     opcinh           : out std_logic;
     \-ldopc\         : in  std_logic;
@@ -58,10 +52,6 @@ entity cadr4_olord1 is
     mclk5a           : in  std_logic;
     srun             : out std_logic;
     run              : out std_logic;
-    nc88             : out std_logic;
-    nc89             : in  std_logic;
-    nc90             : in  std_logic;
-    nc91             : out std_logic;
     \-boot\          : in  std_logic;
     \-run\           : out std_logic;
     \-ssdone\        : out std_logic;
@@ -79,6 +69,16 @@ entity cadr4_olord1 is
 end;
 
 architecture ttl of cadr4_olord1 is
+  signal nc84 : std_logic;
+  signal nc85 : std_logic;
+  signal nc86 : std_logic;
+  signal nc87 : std_logic;
+  signal nc88 : std_logic;
+  signal nc89 : std_logic;
+  signal nc90 : std_logic;
+  signal nc91 : std_logic;
+  signal nc92 : std_logic;
+  signal nc93 : std_logic;
 begin
   olord1_1a01 : sn74s174 port map(clr_n => \-clock_reset_a\, q1 => nc84, d1 => nc85, d2 => nc86, q2 => nc87, d3 => speed1a, q3 => sspeed1, clk => speedclk, q4 => sspeed0, d4 => speed0a, q5 => speed1a, d5 => speed1, d6 => speed0, q6 => speed0a);
   olord1_1a04 : sn74s174 port map(clr_n => \-reset\, q1 => speed0, d1 => spy0, d2 => spy1, q2 => speed1, d3 => spy2, q3 => errstop, clk => \-ldmode\, q4 => stathenb, d4 => spy3, q5 => trapenb, d5 => spy4, d6 => spy5, q6 => promdisable);

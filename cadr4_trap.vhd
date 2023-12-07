@@ -21,7 +21,6 @@ entity cadr4_trap is
     \-md10\     : in  std_logic;
     \-md11\     : in  std_logic;
     mdparl      : out std_logic;
-    nc148       : out std_logic;
     \-md0\      : in  std_logic;
     \-md1\      : in  std_logic;
     \-md2\      : in  std_logic;
@@ -35,7 +34,6 @@ entity cadr4_trap is
     \-md22\     : in  std_logic;
     \-md23\     : in  std_logic;
     mdparm      : out std_logic;
-    nc147       : out std_logic;
     \-md12\     : in  std_logic;
     \-md13\     : in  std_logic;
     \-md14\     : in  std_logic;
@@ -56,7 +54,6 @@ entity cadr4_trap is
     \-wait\     : in  std_logic;
     \-parerr\   : out std_logic;
     \-trap\     : out std_logic;
-    internal17  : out std_logic;
     \boot.trap\ : in  std_logic;
     \-trapenb\  : out std_logic;
     trapenb     : in  std_logic;
@@ -67,6 +64,9 @@ entity cadr4_trap is
 end;
 
 architecture ttl of cadr4_trap is
+  signal internal17 : std_logic;
+  signal nc147      : std_logic;
+  signal nc148      : std_logic;
 begin
   trap_1d12 : sn74s86 port map(g4y   => mdparerr, g4a => mdpareven, g4b => mdpar, g1a => '0', g1b => '0', g2a => '0', g2b => '0', g3a => '0', g3b => '0');
   trap_1e28 : am93s48 port map(i6    => \-md5\, i5 => \-md6\, i4 => \-md7\, i3 => \-md8\, i2 => \-md9\, i1 => \-md10\, i0 => \-md11\, po => mdparl, pe => nc148, i11 => \-md0\, i10 => \-md1\, i9 => \-md2\, i8 => \-md3\, i7 => \-md4\);

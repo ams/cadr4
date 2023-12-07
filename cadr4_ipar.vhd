@@ -18,7 +18,6 @@ entity cadr4_ipar is
     ir46    : in  std_logic;
     ir47    : in  std_logic;
     ipar3   : out std_logic;
-    nc381   : out std_logic;
     ir36    : in  std_logic;
     ir37    : in  std_logic;
     ir38    : in  std_logic;
@@ -32,7 +31,6 @@ entity cadr4_ipar is
     ir10    : in  std_logic;
     ir11    : in  std_logic;
     ipar0   : out std_logic;
-    nc384   : out std_logic;
     ir0     : in  std_logic;
     ir1     : in  std_logic;
     ir2     : in  std_logic;
@@ -46,7 +44,6 @@ entity cadr4_ipar is
     ir34    : in  std_logic;
     ir35    : in  std_logic;
     ipar2   : out std_logic;
-    nc382   : out std_logic;
     ir24    : in  std_logic;
     ir25    : in  std_logic;
     ir26    : in  std_logic;
@@ -54,7 +51,6 @@ entity cadr4_ipar is
     ir28    : in  std_logic;
     gnd     : in  std_logic;
     iparity : out std_logic;
-    nc380   : out std_logic;
     ipar1   : out std_logic;
     ir48    : in  std_logic;
     ir17    : in  std_logic;
@@ -64,7 +60,6 @@ entity cadr4_ipar is
     ir21    : in  std_logic;
     ir22    : in  std_logic;
     ir23    : in  std_logic;
-    nc383   : out std_logic;
     ir12    : in  std_logic;
     ir13    : in  std_logic;
     ir14    : in  std_logic;
@@ -76,6 +71,11 @@ entity cadr4_ipar is
 end;
 
 architecture ttl of cadr4_ipar is
+  signal nc380 : std_logic;
+  signal nc381 : std_logic;
+  signal nc382 : std_logic;
+  signal nc383 : std_logic;
+  signal nc384 : std_logic;
 begin
   ipar_3e02 : am93s48 port map(i6  => ir41, i5 => ir42, i4 => ir43, i3 => ir44, i2 => ir45, i1 => ir46, i0 => ir47, po => ipar3, pe => nc381, i11 => ir36, i10 => ir37, i9 => ir38, i8 => ir39, i7 => ir40);
   ipar_3e04 : am93s48 port map(i6  => ir5, i5 => ir6, i4 => ir7, i3 => ir8, i2 => ir9, i1 => ir10, i0 => ir11, po => ipar0, pe => nc384, i11 => ir0, i10 => ir1, i9 => ir2, i8 => ir3, i7 => ir4);

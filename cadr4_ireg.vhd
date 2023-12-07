@@ -86,9 +86,6 @@ entity cadr4_ireg is
     iob16        : in  std_logic;
     ir16         : out std_logic;
     \-destimod1\ : in  std_logic;
-    nc371        : out std_logic;
-    nc372        : in  std_logic;
-    nc373        : in  std_logic;
     i48          : in  std_logic;
     gnd          : in  std_logic;
     ir48         : out std_logic;
@@ -158,12 +155,6 @@ entity cadr4_ireg is
     i26          : in  std_logic;
     iob26        : in  std_logic;
     ir26         : out std_logic;
-    nc374        : out std_logic;
-    nc375        : in  std_logic;
-    nc376        : in  std_logic;
-    nc377        : in  std_logic;
-    nc378        : in  std_logic;
-    nc379        : out std_logic;
     ir25         : out std_logic;
     iob25        : in  std_logic;
     i25          : in  std_logic;
@@ -173,6 +164,15 @@ entity cadr4_ireg is
 end;
 
 architecture ttl of cadr4_ireg is
+  signal nc371 : std_logic;
+  signal nc372 : std_logic;
+  signal nc373 : std_logic;
+  signal nc374 : std_logic;
+  signal nc375 : std_logic;
+  signal nc376 : std_logic;
+  signal nc377 : std_logic;
+  signal nc378 : std_logic;
+  signal nc379 : std_logic;
 begin
   ireg_3c01 : am25s09 port map(sel => \-destimod0\, aq => ir15, a0 => iob15, a1 => i15, b1 => i14, b0 => iob14, bq => ir14, clk => clk3a, cq => ir13, c0 => iob13, c1 => i13, d1 => i12, d0 => iob12, dq => ir12);
   ireg_3c02 : am25s09 port map(sel => \-destimod0\, aq => ir11, a0 => iob11, a1 => i11, b1 => i10, b0 => iob10, bq => ir10, clk => clk3a, cq => ir9, c0 => iob9, c1 => i9, d1 => i8, d0 => iob8, dq => ir8);

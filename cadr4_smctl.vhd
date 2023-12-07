@@ -21,20 +21,10 @@ entity cadr4_smctl is
     s0        : out std_logic;
     \-ir1\    : in  std_logic;
     s1        : out std_logic;
-    nc209     : out std_logic;
-    nc210     : in  std_logic;
-    nc211     : in  std_logic;
     mskl4     : out std_logic;
     ir9       : in  std_logic;
     mskr4     : out std_logic;
     mskl3cry  : out std_logic;
-    nc212     : out std_logic;
-    nc213     : out std_logic;
-    nc214     : in  std_logic;
-    nc215     : in  std_logic;
-    nc216     : out std_logic;
-    nc217     : in  std_logic;
-    nc218     : in  std_logic;
     s3a       : out std_logic;
     \-sh3\    : in  std_logic;
     s3b       : out std_logic;
@@ -58,6 +48,16 @@ entity cadr4_smctl is
 end;
 
 architecture ttl of cadr4_smctl is
+  signal nc209 : std_logic;
+  signal nc210 : std_logic;
+  signal nc211 : std_logic;
+  signal nc212 : std_logic;
+  signal nc213 : std_logic;
+  signal nc214 : std_logic;
+  signal nc215 : std_logic;
+  signal nc216 : std_logic;
+  signal nc217 : std_logic;
+  signal nc218 : std_logic;
 begin
   smctl_2d15 : sn74s32 port map(g1a   => \-sh4\, g1b => \-sr\, g1y => \-s4\, g2a => '0', g2b => '0', g3a => '0', g3b => '0', g4a => '0', g4b => '0');
   smctl_2d20 : sn74s02 port map(g1q_n => \-mr\, g1a => \-irbyte\, g1b => ir13, g2q_n => \-sr\, g2a => \-irbyte\, g2b => ir12, g3b => \-ir0\, g3a => \-sr\, g3q_n => s0, g4b => \-ir1\, g4a => \-sr\, g4q_n => s1);

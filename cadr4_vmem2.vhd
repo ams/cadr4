@@ -47,20 +47,13 @@ entity cadr4_vmem2 is
     \-vmo15\   : out std_logic;
     \-vma15\   : in  std_logic;
     vmoparm    : out std_logic;
-    nc107      : out std_logic;
     vmopar     : out std_logic;
     vm1pari    : in  std_logic;
-    nc101      : in  std_logic;
-    nc102      : in  std_logic;
-    nc103      : in  std_logic;
     \-vmap4\   : in  std_logic;
     \-vmap3\   : in  std_logic;
     \-vmap2\   : in  std_logic;
-    nc104      : out std_logic;
     \-vmap1\   : in  std_logic;
-    nc105      : out std_logic;
     \-vmap0\   : in  std_logic;
-    nc106      : out std_logic;
     \-vmo5\    : in  std_logic;
     \-vmo6\    : in  std_logic;
     \-vmo7\    : in  std_logic;
@@ -69,7 +62,6 @@ entity cadr4_vmem2 is
     \-vmo10\   : in  std_logic;
     \-vmo11\   : in  std_logic;
     vmoparl    : out std_logic;
-    nc108      : out std_logic;
     \-vmo0\    : in  std_logic;
     \-vmo1\    : in  std_logic;
     \-vmo2\    : in  std_logic;
@@ -81,6 +73,14 @@ entity cadr4_vmem2 is
 end;
 
 architecture ttl of cadr4_vmem2 is
+  signal nc101 : std_logic;
+  signal nc102 : std_logic;
+  signal nc103 : std_logic;
+  signal nc104 : std_logic;
+  signal nc105 : std_logic;
+  signal nc106 : std_logic;
+  signal nc107 : std_logic;
+  signal nc108 : std_logic;
 begin
   vmem2_1b01 : am93425a port map(ce_n   => gnd, a0 => vmap4b, a1 => vmap3b, a2 => vmap2b, a3 => vmap1b, a4 => vmap0b, do => \-vmo20\, a5 => \-mapi12b\, a6 => \-mapi11b\, a7 => \-mapi10b\, a8 => \-mapi9b\, a9 => \-mapi8b\, we_n => \-vm1wpb\, di => \-vma20\);
   vmem2_1b02 : am93425a port map(ce_n   => gnd, a0 => vmap4b, a1 => vmap3b, a2 => vmap2b, a3 => vmap1b, a4 => vmap0b, do => \-vmo21\, a5 => \-mapi12b\, a6 => \-mapi11b\, a7 => \-mapi10b\, a8 => \-mapi9b\, a9 => \-mapi8b\, we_n => \-vm1wpb\, di => \-vma21\);

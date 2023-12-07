@@ -102,15 +102,15 @@ entity cadr4_vmemdr is
     \-vma2\     : in  std_logic;
     \-vma1\     : in  std_logic;
     \-vma0\     : in  std_logic;
-    internal13  : out std_logic;
-    nc100       : out std_logic;
     \-vma7\     : in  std_logic;
     \-adrpar\   : out std_logic;
-    nc99        : out std_logic;
     \-srcmap\   : in  std_logic);
 end;
 
 architecture ttl of cadr4_vmemdr is
+  signal internal13 : std_logic;
+  signal nc100      : std_logic;
+  signal nc99       : std_logic;
 begin
   vmemdr_1a01 : sn74s240 port map(aenb_n => \-mapdrive\, ain0 => \-pfw\, bout3 => mf24, ain1 => \-pfr\, bout2 => mf25, ain2 => hi12, bout1 => mf26, ain3 => \-vmap4\, bout0 => mf27, bin0 => \-vmap3\, aout3 => mf28, bin1 => \-vmap2\, aout2 => mf29, bin2 => \-vmap1\, aout1 => mf30, bin3 => \-vmap0\, aout0 => mf31, benb_n => \-mapdrive\);
   vmemdr_1a03 : sn74s240 port map(aenb_n => \-mapdrive\, ain0 => \-vmo15\, bout3 => mf8, ain1 => \-vmo14\, bout2 => mf9, ain2 => \-vmo13\, bout1 => mf10, ain3 => \-vmo12\, bout0 => mf11, bin0 => \-vmo11\, aout3 => mf12, bin1 => \-vmo10\, aout2 => mf13, bin2 => \-vmo9\, aout1 => mf14, bin3 => \-vmo8\, aout0 => mf15, benb_n => \-mapdrive\);

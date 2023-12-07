@@ -26,16 +26,9 @@ entity cadr4_aluc4 is
     xx1               : out std_logic;
     yy0               : out std_logic;
     xx0               : out std_logic;
-    nc437             : out std_logic;
-    nc438             : out std_logic;
-    nc439             : out std_logic;
-    nc440             : out std_logic;
-    nc441             : out std_logic;
     \-cin32\          : out std_logic;
     \-cin16\          : out std_logic;
     \-cin0\           : out std_logic;
-    nc442             : in  std_logic;
-    nc443             : in  std_logic;
     yout23            : in  std_logic;
     xout23            : in  std_logic;
     yout19            : in  std_logic;
@@ -99,13 +92,18 @@ entity cadr4_aluc4 is
 end;
 
 architecture ttl of cadr4_aluc4 is
-
   signal internal33 : std_logic;
   signal internal34 : std_logic;
   signal internal35 : std_logic;
   signal internal36 : std_logic;
   signal internal37 : std_logic;
-		      
+  signal nc437      : std_logic;
+  signal nc438      : std_logic;
+  signal nc439      : std_logic;
+  signal nc440      : std_logic;
+  signal nc441      : std_logic;
+  signal nc442      : std_logic;
+  signal nc443      : std_logic;
 begin
   aluc4_2a16 : sn74s37 port map(g1a     => \-aluf0\, g1b => \-aluf0\, g1y => aluf0b, g2a => \-aluf1\, g2b => \-aluf1\, g2y => aluf1b, g3y => aluf2b, g3a => \-aluf2\, g3b => \-aluf2\, g4y => aluf3b, g4a => \-aluf3\, g4b => \-aluf3\);
   aluc4_2a17 : sn74s37 port map(g1a     => \-aluf0\, g1b => \-aluf0\, g1y => aluf0a, g2a => \-aluf1\, g2b => \-aluf1\, g2y => aluf1a, g3y => aluf2a, g3a => \-aluf2\, g3b => \-aluf2\, g4y => aluf3a, g4a => \-aluf3\, g4b => \-aluf3\);

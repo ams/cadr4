@@ -12,7 +12,6 @@ entity cadr4_lcc is
   port (
     \lc_byte_mode\               : in  std_logic;
     \-lcinc\                     : out std_logic;
-    internal25                   : out std_logic;
     lca1                         : out std_logic;
     gnd                          : in  std_logic;
     lc1                          : out std_logic;
@@ -34,13 +33,10 @@ entity cadr4_lcc is
     \inst_in_left_half\          : out std_logic;
     \-ir4\                       : in  std_logic;
     \-sh4\                       : out std_logic;
-    internal27                   : out std_logic;
     \-sh3\                       : out std_logic;
     \-ir3\                       : in  std_logic;
     \inst_in_2nd_or_4th_quarter\ : out std_logic;
     \-lc_modifies_mrot\          : out std_logic;
-    internal26                   : out std_logic;
-    internal28                   : out std_logic;
     spc14                        : in  std_logic;
     \-srcspcpopreal\             : in  std_logic;
     \-ifetch\                    : out std_logic;
@@ -54,17 +50,11 @@ entity cadr4_lcc is
     \-reset\                     : in  std_logic;
     newlc                        : out std_logic;
     int                          : in  std_logic;
-    nc359                        : out std_logic;
     sintr                        : out std_logic;
     clk3c                        : in  std_logic;
     \next.instrd\                : out std_logic;
-    nc360                        : out std_logic;
     \next.instr\                 : out std_logic;
-    nc361                        : in  std_logic;
-    nc362                        : out std_logic;
-    nc363                        : out std_logic;
     \-spop\                      : in  std_logic;
-    internal29                   : out std_logic;
     \-needfetch\                 : out std_logic;
     spcmung                      : out std_logic;
     ir24                         : in  std_logic;
@@ -74,6 +64,16 @@ entity cadr4_lcc is
 end;
 
 architecture ttl of cadr4_lcc is
+  signal internal25 : std_logic;
+  signal internal26 : std_logic;
+  signal internal27 : std_logic;
+  signal internal28 : std_logic;
+  signal internal29 : std_logic;
+  signal nc359      : std_logic;
+  signal nc360      : std_logic;
+  signal nc361      : std_logic;
+  signal nc362      : std_logic;
+  signal nc363      : std_logic;
 begin
   lcc_1c15 : sn74s02 port map(g3b    => \lc_byte_mode\, g3a => \-lcinc\, g3q_n => internal25, g1a => '0', g1b => '0', g2a => '0', g2b => '0', g4b => '0', g4a => '0');
   lcc_1c21 : sn74s283 port map(s1    => lca1, b1 => gnd, a1 => lc1, s0 => lca0, a0 => lc0, b0 => internal25, c0 => lcinc, c4 => lcry3, s3 => lca3, b3 => gnd, a3 => lc3, s2 => lca2, a2 => lc2, b2 => gnd);

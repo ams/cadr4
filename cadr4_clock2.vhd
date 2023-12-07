@@ -26,20 +26,16 @@ entity cadr4_clock2 is
     \-tpr25\         : in  std_logic;
     \-clock_reset_b\ : in  std_logic;
     tptse            : out std_logic;
-    internal7        : out std_logic;
     \-tpw70\         : in  std_logic;
-    internal10       : out std_logic;
     \-tpclk\         : out std_logic;
     \-tpr0\          : in  std_logic;
     \-tpr5\          : in  std_logic;
     \-tpw30\         : in  std_logic;
     \machruna_l\     : in  std_logic;
-    internal8        : out std_logic;
     tpwpiram         : out std_logic;
     \-wp5\           : out std_logic;
     clk5             : out std_logic;
     mclk5            : out std_logic;
-    internal9        : out std_logic;
     \-tpw45\         : in  std_logic;
     \-tse1\          : out std_logic;
     \-tse2\          : out std_logic;
@@ -54,6 +50,10 @@ entity cadr4_clock2 is
 end;
 
 architecture ttl of cadr4_clock2 is
+  signal internal10 : std_logic;
+  signal internal8  : std_logic;
+  signal internal9  : std_logic;
+  signal internal7  : std_logic;
 begin
   clock2_1c01 : sn7428 port map(g1q_n  => clk4, g1a => \-clk0\, g1b => gnd, g2q_n => mclk7, g2a => \-mclk0\, g2b => gnd, g3a => '0', g4a => '0', g4b => '0', g3b => '0');
   clock2_1c02 : sn7428 port map(g1q_n  => \-wp1\, g1a => tpwp, g1b => gnd, g2q_n => \-wp2\, g2a => tpwp, g2b => gnd, g3a => gnd, g3b => tpwp, g3q_n => \-wp3\, g4a => gnd, g4b => tpwp, g4q_n => \-wp4\);

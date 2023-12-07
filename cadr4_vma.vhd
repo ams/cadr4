@@ -87,14 +87,6 @@ entity cadr4_vma is
     \-vmas29\   : in  std_logic;
     \-vmas30\   : in  std_logic;
     \-vmas31\   : in  std_logic;
-    nc115       : in  std_logic;
-    nc116       : out std_logic;
-    nc117       : out std_logic;
-    nc118       : in  std_logic;
-    nc119       : out std_logic;
-    nc120       : in  std_logic;
-    nc121       : in  std_logic;
-    nc122       : out std_logic;
     \-vmas0\    : in  std_logic;
     \-vmas1\    : in  std_logic;
     \-vmas2\    : in  std_logic;
@@ -125,6 +117,14 @@ entity cadr4_vma is
 end;
 
 architecture ttl of cadr4_vma is
+  signal nc115 : std_logic;
+  signal nc116 : std_logic;
+  signal nc117 : std_logic;
+  signal nc118 : std_logic;
+  signal nc119 : std_logic;
+  signal nc120 : std_logic;
+  signal nc121 : std_logic;
+  signal nc122 : std_logic;
 begin
   vma_1a06 : sn74s240 port map(aenb_n => \-vmadrive\, ain0 => \-vma31\, bout3 => mf24, ain1 => \-vma30\, bout2 => mf25, ain2 => \-vma29\, bout1 => mf26, ain3 => \-vma28\, bout0 => mf27, bin0 => \-vma27\, aout3 => mf28, bin1 => \-vma26\, aout2 => mf29, bin2 => \-vma25\, aout1 => mf30, bin3 => \-vma24\, aout0 => mf31, benb_n => \-vmadrive\);
   vma_1a10 : sn74s240 port map(aenb_n => \-vmadrive\, ain0 => \-vma7\, bout3 => mf0, ain1 => \-vma6\, bout2 => mf1, ain2 => \-vma5\, bout1 => mf2, ain3 => \-vma4\, bout0 => mf3, bin0 => \-vma3\, aout3 => mf4, bin1 => \-vma2\, aout2 => mf5, bin2 => \-vma1\, aout1 => mf6, bin3 => \-vma0\, aout0 => mf7, benb_n => \-vmadrive\);

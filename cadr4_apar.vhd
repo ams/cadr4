@@ -18,7 +18,6 @@ entity cadr4_apar is
     a31b      : in  std_logic;
     aparity   : in  std_logic;
     aparok    : out std_logic;
-    nc432     : out std_logic;
     aparl     : out std_logic;
     aparm     : out std_logic;
     gnd       : in  std_logic;
@@ -31,7 +30,6 @@ entity cadr4_apar is
     a21       : in  std_logic;
     a22       : in  std_logic;
     a23       : in  std_logic;
-    nc433     : out std_logic;
     a12       : in  std_logic;
     a13       : in  std_logic;
     a14       : in  std_logic;
@@ -44,7 +42,6 @@ entity cadr4_apar is
     a9        : in  std_logic;
     a10       : in  std_logic;
     a11       : in  std_logic;
-    nc434     : out std_logic;
     a0        : in  std_logic;
     a1        : in  std_logic;
     a2        : in  std_logic;
@@ -58,7 +55,6 @@ entity cadr4_apar is
     m22       : in  std_logic;
     m23       : in  std_logic;
     mparm     : out std_logic;
-    nc436     : out std_logic;
     m12       : in  std_logic;
     m13       : in  std_logic;
     m14       : in  std_logic;
@@ -72,7 +68,6 @@ entity cadr4_apar is
     m10       : in  std_logic;
     m11       : in  std_logic;
     mparl     : out std_logic;
-    nc435     : out std_logic;
     m0        : in  std_logic;
     m1        : in  std_logic;
     m2        : in  std_logic;
@@ -96,6 +91,11 @@ entity cadr4_apar is
 end;
 
 architecture ttl of cadr4_apar is
+  signal nc432 : std_logic;
+  signal nc433 : std_logic;
+  signal nc434 : std_logic;
+  signal nc435 : std_logic;
+  signal nc436 : std_logic;
 begin
   apar_3a28 : am93s48 port map(i6  => a26, i5 => a27, i4 => a28, i3 => a29, i2 => a30, i1 => a31b, i0 => aparity, po => aparok, pe => nc432, i11 => aparl, i10 => aparm, i9 => gnd, i8 => a24, i7 => a25);
   apar_3a29 : am93s48 port map(i6  => a17, i5 => a18, i4 => a19, i3 => a20, i2 => a21, i1 => a22, i0 => a23, po => aparm, pe => nc433, i11 => a12, i10 => a13, i9 => a14, i8 => a15, i7 => a16);

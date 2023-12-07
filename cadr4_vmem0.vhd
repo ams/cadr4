@@ -13,8 +13,6 @@ entity cadr4_vmem0 is
     \-vmap0\   : out std_logic;
     \-vmap1\   : out std_logic;
     \-vmap2\   : out std_logic;
-    nc113      : out std_logic;
-    internal14 : out std_logic;
     \-vmap3\   : out std_logic;
     \-vmap4\   : out std_logic;
     vpari      : out std_logic;
@@ -23,7 +21,6 @@ entity cadr4_vmem0 is
     \-vma28\   : in  std_logic;
     \-vma29\   : in  std_logic;
     vm0pari    : out std_logic;
-    nc114      : out std_logic;
     \-vma30\   : in  std_logic;
     \-vma31\   : in  std_logic;
     \-mapi23\  : out std_logic;
@@ -49,6 +46,9 @@ entity cadr4_vmem0 is
 end;
 
 architecture ttl of cadr4_vmem0 is
+  signal internal14 : std_logic;
+  signal nc113      : std_logic;
+  signal nc114      : std_logic;
 begin
   vmem0_1c01 : sn74s280 port map(i0   => \-vmap0\, i1 => \-vmap1\, i2 => \-vmap2\, even => nc113, odd => internal14, i3 => \-vmap3\, i4 => \-vmap4\, i5 => vpari, i6 => gnd, i7 => gnd, i8 => gnd);
   vmem0_1c02 : sn74s280 port map(i0   => \-vma27\, i1 => \-vma28\, i2 => \-vma29\, even => vm0pari, odd => nc114, i3 => \-vma30\, i4 => \-vma31\, i5 => gnd, i6 => gnd, i7 => gnd, i8 => gnd);

@@ -19,19 +19,6 @@ entity cadr4_alu1 is
     \-cin32\ : in  std_logic;
     alumode  : in  std_logic;
     alu32    : out std_logic;
-    nc444    : out std_logic;
-    nc445    : out std_logic;
-    nc446    : out std_logic;
-    nc447    : out std_logic;
-    nc448    : out std_logic;
-    nc449    : out std_logic;
-    nc450    : out std_logic;
-    nc451    : in  std_logic;
-    nc452    : in  std_logic;
-    nc453    : in  std_logic;
-    nc454    : in  std_logic;
-    nc455    : in  std_logic;
-    nc456    : in  std_logic;
     m31      : in  std_logic;
     hi12     : in  std_logic;
     a28      : in  std_logic;
@@ -43,7 +30,6 @@ entity cadr4_alu1 is
     alu31    : out std_logic;
     aeqm     : out std_logic;
     xout31   : out std_logic;
-    nc457    : out std_logic;
     yout31   : out std_logic;
     a31b     : in  std_logic;
     a30      : in  std_logic;
@@ -58,7 +44,6 @@ entity cadr4_alu1 is
     alu22    : out std_logic;
     alu23    : out std_logic;
     xout23   : out std_logic;
-    nc459    : out std_logic;
     yout23   : out std_logic;
     a23      : in  std_logic;
     m23      : in  std_logic;
@@ -74,7 +59,6 @@ entity cadr4_alu1 is
     alu26    : out std_logic;
     alu27    : out std_logic;
     xout27   : out std_logic;
-    nc458    : out std_logic;
     yout27   : out std_logic;
     a27      : in  std_logic;
     m27      : in  std_logic;
@@ -90,7 +74,6 @@ entity cadr4_alu1 is
     alu18    : out std_logic;
     alu19    : out std_logic;
     xout19   : out std_logic;
-    nc460    : out std_logic;
     yout19   : out std_logic;
     a19      : in  std_logic;
     m19      : in  std_logic;
@@ -101,6 +84,23 @@ entity cadr4_alu1 is
 end;
 
 architecture ttl of cadr4_alu1 is
+  signal nc444 : std_logic;
+  signal nc445 : std_logic;
+  signal nc446 : std_logic;
+  signal nc447 : std_logic;
+  signal nc448 : std_logic;
+  signal nc449 : std_logic;
+  signal nc450 : std_logic;
+  signal nc451 : std_logic;
+  signal nc452 : std_logic;
+  signal nc453 : std_logic;
+  signal nc454 : std_logic;
+  signal nc455 : std_logic;
+  signal nc456 : std_logic;
+  signal nc457 : std_logic;
+  signal nc458 : std_logic;
+  signal nc459 : std_logic;
+  signal nc460 : std_logic;
 begin
   alu1_2a03 : sn74s181 port map(b0 => a31a, a0 => m31b, s3 => aluf3a, s2 => aluf2a, s1 => aluf1a, s0 => aluf0a, cin_n => \-cin32\, m => alumode, f0 => alu32, f1 => nc444, f2 => nc445, f3 => nc446, aeb => nc447, x => nc448, cout_n => nc449, y => nc450, b3 => nc451, a3 => nc452, b2 => nc453, a2 => nc454, b1 => nc455, a1 => nc456);
   alu1_2a04 : sn74s08 port map(g1b => m31, g1a => hi12, g1q => m31b, g2b => '0', g2a => '0', g3a => '0', g3b => '0', g4a => '0', g4b => '0');

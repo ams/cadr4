@@ -72,12 +72,6 @@ entity cadr4_actl is
     ir20        : in  std_logic;
     ir19        : in  std_logic;
     ir18        : in  std_logic;
-    nc489       : out std_logic;
-    nc490       : in  std_logic;
-    nc491       : in  std_logic;
-    nc492       : in  std_logic;
-    nc493       : in  std_logic;
-    nc494       : out std_logic;
     ir23        : in  std_logic;
     ir22        : in  std_logic;
     wp3a        : in  std_logic;
@@ -91,6 +85,12 @@ entity cadr4_actl is
 end;
 
 architecture ttl of cadr4_actl is
+  signal nc489 : std_logic;
+  signal nc490 : std_logic;
+  signal nc491 : std_logic;
+  signal nc492 : std_logic;
+  signal nc493 : std_logic;
+  signal nc494 : std_logic;
 begin
   actl_3a06 : sn74s258 port map(sel   => clk3e, d0 => wadr0, d1 => ir32, dy => \-aadr0b\, c0 => wadr1, c1 => ir33, cy => \-aadr1b\, by => \-aadr2b\, b1 => ir34, b0 => wadr2, ay => \-aadr3b\, a1 => ir35, a0 => wadr3, enb_n => gnd);
   actl_3a12 : sn74s258 port map(sel   => clk3d, d0 => wadr4, d1 => ir36, dy => \-aadr4b\, c0 => wadr5, c1 => ir37, cy => \-aadr5b\, by => \-aadr6b\, b1 => ir38, b0 => wadr6, ay => \-aadr7b\, a1 => ir39, a0 => wadr7, enb_n => gnd);

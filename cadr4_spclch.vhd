@@ -71,22 +71,14 @@ entity cadr4_spclch is
     m31         : out std_logic;
     spcdrive    : in  std_logic;
     hi1         : in  std_logic;
-    nc166       : in  std_logic;
     spc16       : out std_logic;
-    nc167       : in  std_logic;
     spc17       : out std_logic;
-    nc168       : in  std_logic;
     spc18       : out std_logic;
-    nc169       : in  std_logic;
     spcpar      : out std_logic;
     spcwpar     : in  std_logic;
-    nc170       : out std_logic;
     spcw18      : in  std_logic;
-    nc171       : out std_logic;
     spcw17      : in  std_logic;
-    nc172       : out std_logic;
     spcw16      : in  std_logic;
-    nc173       : out std_logic;
     spcwpass    : in  std_logic;
     \-spcwpass\ : in  std_logic;
     spcw15      : in  std_logic;
@@ -122,19 +114,27 @@ entity cadr4_spclch is
     spcw0       : in  std_logic;
     spc7        : out std_logic;
     \-spcpass\  : in  std_logic;
-    nc174       : out std_logic;
-    nc175       : in  std_logic;
-    nc176       : in  std_logic;
-    nc177       : out std_logic;
-    nc178       : out std_logic;
-    nc179       : in  std_logic;
-    nc180       : in  std_logic;
-    nc181       : out std_logic;
     clk4d       : in  std_logic;
     spcopar     : in  std_logic);
 end;
 
 architecture ttl of cadr4_spclch is
+  signal nc166 : std_logic;
+  signal nc167 : std_logic;
+  signal nc168 : std_logic;
+  signal nc169 : std_logic;
+  signal nc170 : std_logic;
+  signal nc171 : std_logic;
+  signal nc172 : std_logic;
+  signal nc173 : std_logic;
+  signal nc174 : std_logic;
+  signal nc175 : std_logic;
+  signal nc176 : std_logic;
+  signal nc177 : std_logic;
+  signal nc178 : std_logic;
+  signal nc179 : std_logic;
+  signal nc180 : std_logic;
+  signal nc181 : std_logic;
 begin
   spclch_4a07 : sn74s373 port map(oenb_n => \-spcdrive\, o0 => m23, i0 => gnd, i1 => gnd, o1 => m22, o2 => m21, i2 => gnd, i3 => gnd, o3 => m20, hold_n => clk4c, o4 => m19, i4 => gnd, i5 => spco18, o5 => m18, o6 => m17, i6 => spco17, i7 => spco16, o7 => m16);
   spclch_4a09 : sn74s373 port map(oenb_n => \-spcdrive\, o0 => m15, i0 => spco15, i1 => spco14, o1 => m14, o2 => m13, i2 => spco13, i3 => spco12, o3 => m12, hold_n => clk4c, o4 => m11, i4 => spco11, i5 => spco10, o5 => m10, o6 => m9, i6 => spco9, i7 => spco8, o7 => m8);

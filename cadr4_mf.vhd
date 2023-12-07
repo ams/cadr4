@@ -80,13 +80,13 @@ entity cadr4_mf is
     m31        : out std_logic;
     pdlenb     : in  std_logic;
     spcenb     : in  std_logic;
-    internal22 : out std_logic;
     \-srcm\    : out std_logic;
     \-ir31\    : in  std_logic;
     \-mpass\   : in  std_logic);
 end;
 
 architecture ttl of cadr4_mf is
+  signal internal22 : std_logic;
 begin
   mf_1a18 : sn74s00 port map(g1b     => tse1a, g1a => mfenb, g1q_n => \-mfdrive\, g2b => '0', g2a => '0', g3b => '0', g3a => '0', g4a => '0', g4b => '0');
   mf_1a21 : sn74s241 port map(aenb_n => \-mfdrive\, ain0 => mf23, bout3 => m16, ain1 => mf22, bout2 => m17, ain2 => mf21, bout1 => m18, ain3 => mf20, bout0 => m19, bin0 => mf19, aout3 => m20, bin1 => mf18, aout2 => m21, bin2 => mf17, aout1 => m22, bin3 => mf16, aout0 => m23, benb => mfdrive);

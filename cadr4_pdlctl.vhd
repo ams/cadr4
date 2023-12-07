@@ -22,7 +22,6 @@ entity cadr4_pdlctl is
     \-imodd\      : out std_logic;
     imod          : in  std_logic;
     \-destspc\    : in  std_logic;
-    nc242         : out std_logic;
     \-destspcd\   : out std_logic;
     \-pdlpb\      : out std_logic;
     pdlptr0       : in  std_logic;
@@ -55,7 +54,6 @@ entity cadr4_pdlctl is
     \-pdla5a\     : out std_logic;
     pdlidx5       : in  std_logic;
     pdlptr5       : in  std_logic;
-    internal19    : out std_logic;
     \-destpdl(p)\ : in  std_logic;
     \-pdlcnt\     : out std_logic;
     clk4b         : in  std_logic;
@@ -87,6 +85,8 @@ entity cadr4_pdlctl is
 end;
 
 architecture ttl of cadr4_pdlctl is
+  signal internal19 : std_logic;
+  signal nc242      : std_logic;
 begin
   pdlctl_4c11 : sn74s175 port map(clr_n => \-reset\, q0 => pdlwrited, q0_n => \-pdlwrited\, d0 => pdlwrite, d1 => \-destpdl(x)\, q1_n => pwidx, q1 => \-pwidx\, clk => clk4f, q2 => imodd, q2_n => \-imodd\, d2 => imod, d3 => \-destspc\, q3_n => nc242, q3 => \-destspcd\);
   pdlctl_4c12 : sn74s258 port map(sel   => \-pdlpb\, d0 => pdlptr0, d1 => pdlidx0, dy => \-pdla0b\, c0 => pdlptr1, c1 => pdlidx1, cy => \-pdla1b\, by => \-pdla2b\, b1 => pdlidx2, b0 => pdlptr2, ay => \-pdla3b\, a1 => pdlidx3, a0 => pdlptr3, enb_n => gnd);

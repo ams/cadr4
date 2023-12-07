@@ -76,25 +76,25 @@ entity cadr4_platch is
     pdl17       : in  std_logic;
     pdl16       : in  std_logic;
     m16         : out std_logic;
-    nc219       : out std_logic;
-    nc220       : in  std_logic;
-    nc221       : in  std_logic;
-    nc222       : out std_logic;
-    nc223       : out std_logic;
-    nc224       : in  std_logic;
-    nc225       : in  std_logic;
-    nc226       : out std_logic;
-    nc227       : out std_logic;
-    nc228       : in  std_logic;
-    nc229       : in  std_logic;
-    nc230       : out std_logic;
-    nc231       : out std_logic;
-    nc232       : in  std_logic;
     pdlparity   : in  std_logic;
     mparity     : out std_logic);
 end;
 
 architecture ttl of cadr4_platch is
+  signal nc219 : std_logic;
+  signal nc220 : std_logic;
+  signal nc221 : std_logic;
+  signal nc222 : std_logic;
+  signal nc223 : std_logic;
+  signal nc224 : std_logic;
+  signal nc225 : std_logic;
+  signal nc226 : std_logic;
+  signal nc227 : std_logic;
+  signal nc228 : std_logic;
+  signal nc229 : std_logic;
+  signal nc230 : std_logic;
+  signal nc231 : std_logic;
+  signal nc232 : std_logic;
 begin
   platch_4a02 : sn74s373 port map(oenb_n => \-pdldrive\, o0 => m15, i0 => pdl15, i1 => pdl14, o1 => m14, o2 => m13, i2 => pdl13, i3 => pdl12, o3 => m12, hold_n => clk4a, o4 => m11, i4 => pdl11, i5 => pdl10, o5 => m10, o6 => m9, i6 => pdl9, i7 => pdl8, o7 => m8);
   platch_4a04 : sn74s373 port map(oenb_n => \-pdldrive\, o0 => m7, i0 => pdl7, i1 => pdl6, o1 => m6, o2 => m5, i2 => pdl5, i3 => pdl4, o3 => m4, hold_n => clk4a, o4 => m3, i4 => pdl3, i5 => pdl2, o5 => m2, o6 => m1, i6 => pdl1, i7 => pdl0, o7 => m0);

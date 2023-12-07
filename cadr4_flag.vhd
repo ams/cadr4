@@ -14,19 +14,15 @@ entity cadr4_flag is
     \-nopa\             : in  std_logic;
     \-ilong\            : out std_logic;
     ob29                : in  std_logic;
-    nc385               : out std_logic;
     \lc_byte_mode\      : out std_logic;
     ob28                : in  std_logic;
-    nc386               : out std_logic;
     \prog.unibus.reset\ : out std_logic;
     hi4                 : in  std_logic;
     gnd                 : in  std_logic;
     clk3c               : in  std_logic;
     \int.enable\        : out std_logic;
-    nc387               : out std_logic;
     ob27                : in  std_logic;
     \sequence.break\    : out std_logic;
-    nc388               : out std_logic;
     ob26                : in  std_logic;
     \-destintctl\       : in  std_logic;
     \-reset\            : in  std_logic;
@@ -50,11 +46,15 @@ entity cadr4_flag is
     ir0                 : in  std_logic;
     \-alu32\            : out std_logic;
     sint                : out std_logic;
-    internal30          : out std_logic;
     sintr               : in  std_logic);
 end;
 
 architecture ttl of cadr4_flag is
+  signal internal30 : std_logic;
+  signal nc385      : std_logic;
+  signal nc386      : std_logic;
+  signal nc387      : std_logic;
+  signal nc388      : std_logic;
 begin
   flag_3e07 : sn74s00 port map(g1b   => ir45, g1a => \-nopa\, g1q_n => \-ilong\, g2b => '0', g2a => '0', g3b => '0', g3a => '0', g4a => '0', g4b => '0');
   flag_3e08 : am25ls2519 port map(i0 => ob29, q0a => nc385, q0b => \lc_byte_mode\, i1 => ob28, q1a => nc386, q1b => \prog.unibus.reset\, o_enb_n => hi4, out_enb_n => gnd, clk => clk3c, q2b => \int.enable\, q2a => nc387, i2 => ob27, q3b => \sequence.break\, q3a => nc388, i3 => ob26, clk_enb_n => \-destintctl\, inv => hi4, asyn_clr_n => \-reset\);

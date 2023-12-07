@@ -23,8 +23,6 @@ entity cadr4_source is
     \-ir22\       : out std_logic;
     ir25          : in  std_logic;
     \-ir25\       : out std_logic;
-    nc198         : in  std_logic;
-    nc199         : out std_logic;
     irdisp        : out std_logic;
     \-irdisp\     : out std_logic;
     irjump        : out std_logic;
@@ -33,8 +31,6 @@ entity cadr4_source is
     ir4           : in  std_logic;
     \-mul\        : out std_logic;
     \-div\        : out std_logic;
-    nc196         : out std_logic;
-    nc197         : out std_logic;
     nop           : in  std_logic;
     ir43          : in  std_logic;
     ir44          : in  std_logic;
@@ -47,14 +43,8 @@ entity cadr4_source is
     ir19          : in  std_logic;
     ir20          : in  std_logic;
     ir21          : in  std_logic;
-    nc200         : out std_logic;
-    nc201         : out std_logic;
-    nc202         : out std_logic;
-    nc203         : out std_logic;
-    nc204         : out std_logic;
     \-destintctl\ : out std_logic;
     \-destlc\     : out std_logic;
-    nc205         : out std_logic;
     \-destimod1\  : out std_logic;
     \-destimod0\  : out std_logic;
     \-destspc\    : out std_logic;
@@ -78,9 +68,6 @@ entity cadr4_source is
     \-srcspc\     : out std_logic;
     \-srcdc\      : out std_logic;
     gnd           : in  std_logic;
-    nc206         : out std_logic;
-    nc207         : out std_logic;
-    nc208         : out std_logic;
     \-srcspcpop\  : out std_logic;
     \-srclc\      : out std_logic;
     \-srcmd\      : out std_logic;
@@ -88,7 +75,6 @@ entity cadr4_source is
     \-srcvma\     : out std_logic;
     \destimod0_l\ : in  std_logic;
     \iwrited_l\   : in  std_logic;
-    internal18    : out std_logic;
     \-destmdr\    : out std_logic;
     \-destvma\    : out std_logic;
     \-idebug\     : in  std_logic;
@@ -96,6 +82,20 @@ entity cadr4_source is
 end;
 
 architecture ttl of cadr4_source is
+  signal internal18 : std_logic;
+  signal nc196      : std_logic;
+  signal nc197      : std_logic;
+  signal nc198      : std_logic;
+  signal nc199      : std_logic;
+  signal nc200      : std_logic;
+  signal nc201      : std_logic;
+  signal nc202      : std_logic;
+  signal nc203      : std_logic;
+  signal nc204      : std_logic;
+  signal nc205      : std_logic;
+  signal nc206      : std_logic;
+  signal nc207      : std_logic;
+  signal nc208      : std_logic;
 begin
   source_3d02 : sn74s00 port map(g2b => \-iralu\, g2a => \-irbyte\, g2q_n => dest, g3q_n => \-destmem\, g3b => ir23, g3a => destm, g4q_n => \-specalu\, g4a => ir8, g4b => iralu, g1b => '0', g1a => '0');
   source_3d03 : sn74s04 port map(g1a => ir22, g1q_n => \-ir22\, g2a => ir25, g2q_n => \-ir25\, g3a => nc198, g3q_n => nc199, g4q_n => irdisp, g4a => \-irdisp\, g5q_n => irjump, g5a => \-irjump\, g6q_n => iralu, g6a => \-iralu\);

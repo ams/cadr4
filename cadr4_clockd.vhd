@@ -39,8 +39,6 @@ entity cadr4_clockd is
     hi11           : in  std_logic;
     lcry3          : in  std_logic;
     \-lcry3\       : out std_logic;
-    nc429          : in  std_logic;
-    nc430          : out std_logic;
     clk2           : in  std_logic;
     \-clk2c\       : out std_logic;
     \-clk2a\       : out std_logic;
@@ -55,8 +53,6 @@ entity cadr4_clockd is
     clk3a          : out std_logic;
     clk3b          : out std_logic;
     clk3c          : out std_logic;
-    nc427          : in  std_logic;
-    nc428          : out std_logic;
     clk3           : in  std_logic;
     \-clk3g\       : out std_logic;
     \-clk3d\       : out std_logic;
@@ -81,10 +77,6 @@ entity cadr4_clockd is
     clk4d          : out std_logic;
     clk4e          : out std_logic;
     clk4f          : out std_logic;
-    nc423          : in  std_logic;
-    nc424          : out std_logic;
-    nc425          : in  std_logic;
-    nc426          : out std_logic;
     \-tse4\        : in  std_logic;
     tse4b          : out std_logic;
     tse4a          : out std_logic;
@@ -95,6 +87,14 @@ entity cadr4_clockd is
 end;
 
 architecture ttl of cadr4_clockd is
+  signal nc423 : std_logic;
+  signal nc424 : std_logic;
+  signal nc425 : std_logic;
+  signal nc426 : std_logic;
+  signal nc427 : std_logic;
+  signal nc428 : std_logic;
+  signal nc429 : std_logic;
+  signal nc430 : std_logic;
 begin
   clockd_1b18 : sn74s37 port map(g1a => \-clk1\, g1b => hi12, g1y => clk1a, g2a => reset, g2b => hi12, g2y => \-reset\, g3y => mclk1a, g3a => hi12, g3b => \-mclk1\, g4a => '0', g4b => '0');
   clockd_1b19 : sn74s04 port map(g1a => mclk1, g1q_n => \-mclk1\, g2a => clk1, g2q_n => \-clk1\, g3a => \-wp1\, g3q_n => wp1b, g4q_n => wp1a, g4a => \-wp1\, g5q_n => tse1b, g5a => \-tse1\, g6q_n => tse1a, g6a => \-tse1\);

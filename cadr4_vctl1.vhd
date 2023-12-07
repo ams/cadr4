@@ -11,16 +11,9 @@ use cadr4.utilities.all;
 entity cadr4_vctl1 is
   port (
     \-reset\             : in  std_logic;
-    nc126                : out std_logic;
-    nc127                : out std_logic;
-    nc128                : in  std_logic;
-    internal15           : out std_logic;
     rdcyc                : out std_logic;
     wrcyc                : out std_logic;
     clk2a                : in  std_logic;
-    nc129                : out std_logic;
-    nc130                : out std_logic;
-    nc131                : in  std_logic;
     wmap                 : in  std_logic;
     \-wmapd\             : out std_logic;
     wmapd                : out std_logic;
@@ -36,20 +29,10 @@ entity cadr4_vctl1 is
     mclk1a               : in  std_logic;
     hi11                 : in  std_logic;
     mbusy                : out std_logic;
-    nc139                : out std_logic;
-    nc140                : out std_logic;
     \rd.in.progress\     : out std_logic;
     \set.rd.in.progress\ : out std_logic;
     \-rdfinish\          : out std_logic;
-    internal16           : out std_logic;
-    nc132                : out std_logic;
-    nc133                : out std_logic;
-    nc134                : out std_logic;
-    nc135                : out std_logic;
     \-mfinish\           : out std_logic;
-    nc136                : out std_logic;
-    nc137                : out std_logic;
-    nc138                : out std_logic;
     clk2c                : in  std_logic;
     \-memop\             : out std_logic;
     \-memack\            : in  std_logic;
@@ -59,12 +42,6 @@ entity cadr4_vctl1 is
     \-memstart\          : out std_logic;
     \-mbusy.sync\        : out std_logic;
     \mbusy.sync\         : out std_logic;
-    nc141                : out std_logic;
-    nc142                : out std_logic;
-    nc143                : in  std_logic;
-    nc144                : in  std_logic;
-    nc145                : out std_logic;
-    nc146                : out std_logic;
     hi4                  : in  std_logic;
     destmem              : in  std_logic;
     \-memgrant\          : in  std_logic;
@@ -78,6 +55,29 @@ entity cadr4_vctl1 is
 end;
 
 architecture ttl of cadr4_vctl1 is
+  signal internal15 : std_logic;
+  signal internal16 : std_logic;
+  signal nc126      : std_logic;
+  signal nc127      : std_logic;
+  signal nc128      : std_logic;
+  signal nc129      : std_logic;
+  signal nc130      : std_logic;
+  signal nc131      : std_logic;
+  signal nc132      : std_logic;
+  signal nc133      : std_logic;
+  signal nc134      : std_logic;
+  signal nc135      : std_logic;
+  signal nc136      : std_logic;
+  signal nc137      : std_logic;
+  signal nc138      : std_logic;
+  signal nc139      : std_logic;
+  signal nc140      : std_logic;
+  signal nc141      : std_logic;
+  signal nc142      : std_logic;
+  signal nc143      : std_logic;
+  signal nc144      : std_logic;
+  signal nc145      : std_logic;
+  signal nc146      : std_logic;
 begin
   vctl1_1c23 : sn74s175 port map(clr_n => \-reset\, q0 => nc126, q0_n => nc127, d0 => nc128, d1 => internal15, q1_n => rdcyc, q1 => wrcyc, clk => clk2a, q2 => nc129, q2_n => nc130, d2 => nc131, d3 => wmap, q3_n => \-wmapd\, q3 => wmapd);
   vctl1_1d16 : sn74s51 port map(g1a    => rdcyc, g1y => internal15, g1c => memprepare, g1d => \-memwr\, g1b => \-memprepare\, g2a => '0', g2b => '0', g2c => '0', g2d => '0');

@@ -79,9 +79,6 @@ entity cadr4_mmem is
     l21        : in  std_logic;
     lparity    : in  std_logic;
     mmemparity : out std_logic;
-    nc291      : out std_logic;
-    nc292      : in  std_logic;
-    nc293      : in  std_logic;
     l30        : in  std_logic;
     mmem30     : out std_logic;
     mmem31     : out std_logic;
@@ -97,6 +94,9 @@ entity cadr4_mmem is
 end;
 
 architecture ttl of cadr4_mmem is
+  signal nc291 : std_logic;
+  signal nc292 : std_logic;
+  signal nc293 : std_logic;
 begin
   mmem_4a21 : dm82s21 port map(wclk_n => \-mwpa\, we0_n => gnd, i0 => l16, a4 => \-madr4a\, ce => hi3, strobe => hi3, d0 => mmem16, d1 => mmem17, a3 => \-madr3a\, a2 => \-madr2a\, a1 => \-madr1a\, a0 => \-madr0a\, i1 => l17, we1_n => gnd);
   mmem_4a22 : dm82s21 port map(wclk_n => \-mwpb\, we0_n => gnd, i0 => l12, a4 => \-madr4b\, ce => hi2, strobe => hi2, d0 => mmem12, d1 => mmem13, a3 => \-madr3b\, a2 => \-madr2b\, a1 => \-madr1b\, a0 => \-madr0b\, i1 => l13, we1_n => gnd);

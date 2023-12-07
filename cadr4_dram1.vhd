@@ -13,8 +13,6 @@ entity cadr4_dram1 is
     wp2         : in  std_logic;
     dispwr      : in  std_logic;
     \-dweb\     : out std_logic;
-    nc416       : in  std_logic;
-    nc417       : out std_logic;
     \-vmo19\    : out std_logic;
     vmo19       : out std_logic;
     \-vmo18\    : out std_logic;
@@ -75,20 +73,22 @@ entity cadr4_dram1 is
     dmask1      : in  std_logic;
     gnd         : in  std_logic;
     ir20        : in  std_logic;
-    nc410       : out std_logic;
     ir21        : in  std_logic;
-    nc411       : out std_logic;
     ir22        : in  std_logic;
-    nc412       : out std_logic;
     ir8         : in  std_logic;
     ir9         : in  std_logic;
-    nc413       : in  std_logic;
-    ir22b       : out std_logic;
-    nc414       : in  std_logic;
-    nc415       :     std_logic);
+    ir22b       : out std_logic);
 end;
 
 architecture ttl of cadr4_dram1 is
+  signal nc410 : std_logic;
+  signal nc411 : std_logic;
+  signal nc412 : std_logic;
+  signal nc413 : std_logic;
+  signal nc414 : std_logic;
+  signal nc415 : std_logic;
+  signal nc416 : std_logic;
+  signal nc417 : std_logic;
 begin
   dram1_2f03 : sn74s37 port map(g2a     => wp2, g2b => dispwr, g2y => \-dweb\, g1a => '0', g1b => '0', g3a => '0', g3b => '0', g4a => '0', g4b => '0');
   dram1_2f04 : sn74s04 port map(g1a     => nc416, g1q_n => nc417, g2a => \-vmo19\, g2q_n => vmo19, g3a => \-vmo18\, g3q_n => vmo18, g4q_n => \-dadr9b\, g4a => ir21b, g5q_n => \-dadr8b\, g5a => ir20b, g6q_n => \-dadr7b\, g6a => ir19b);

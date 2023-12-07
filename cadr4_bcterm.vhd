@@ -32,11 +32,11 @@ entity cadr4_bcterm is
     int         : out std_logic;
     \-loadmd\   : out std_logic;
     \-ignpar\   : out std_logic;
-    \-memack\   : out std_logic;
-    nc431       : out std_logic);
+    \-memack\   : out std_logic);
 end;
 
 architecture ttl of cadr4_bcterm is
+  signal nc431 : std_logic;
 begin
   bcterm_1b15 : sip220_330_8 port map(r2 => mem0, r3 => mem1, r4 => mem2, r5 => mem3, r6 => mem4, r7 => mem5);
   bcterm_1b20 : sip220_330_8 port map(r2 => mem12, r3 => mem13, r4 => mem14, r5 => mem15, r6 => mem16, r7 => mem17);

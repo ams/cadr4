@@ -118,18 +118,6 @@ entity cadr4_md is
     \-mds8\     : in  std_logic;
     mdgetspar   : out std_logic;
     \-ignpar\   : in  std_logic;
-    nc322       : out std_logic;
-    nc323       : in  std_logic;
-    nc324       : in  std_logic;
-    nc325       : out std_logic;
-    nc326       : out std_logic;
-    nc327       : in  std_logic;
-    nc328       : in  std_logic;
-    nc329       : out std_logic;
-    nc330       : out std_logic;
-    nc331       : in  std_logic;
-    nc332       : in  std_logic;
-    nc333       : out std_logic;
     mdhaspar    : out std_logic;
     \mempar_in\ : in  std_logic;
     mdpar       : out std_logic;
@@ -137,6 +125,18 @@ entity cadr4_md is
 end;
 
 architecture ttl of cadr4_md is
+  signal nc322 : std_logic;
+  signal nc323 : std_logic;
+  signal nc324 : std_logic;
+  signal nc325 : std_logic;
+  signal nc326 : std_logic;
+  signal nc327 : std_logic;
+  signal nc328 : std_logic;
+  signal nc329 : std_logic;
+  signal nc330 : std_logic;
+  signal nc331 : std_logic;
+  signal nc332 : std_logic;
+  signal nc333 : std_logic;
 begin
   md_1a02 : sn74s240 port map(aenb_n => \-mddrive\, ain0 => \-md31\, bout3 => mf24, ain1 => \-md30\, bout2 => mf25, ain2 => \-md29\, bout1 => mf26, ain3 => \-md28\, bout0 => mf27, bin0 => \-md27\, aout3 => mf28, bin1 => \-md26\, aout2 => mf29, bin2 => \-md25\, aout1 => mf30, bin3 => \-md24\, aout0 => mf31, benb_n => \-mddrive\);
   md_1a04 : sn74s240 port map(aenb_n => \-mddrive\, ain0 => \-md23\, bout3 => mf16, ain1 => \-md22\, bout2 => mf17, ain2 => \-md21\, bout1 => mf18, ain3 => \-md20\, bout0 => mf19, bin0 => \-md19\, aout3 => mf20, bin1 => \-md18\, aout2 => mf21, bin2 => \-md17\, aout1 => mf22, bin3 => \-md16\, aout0 => mf23, benb_n => \-mddrive\);

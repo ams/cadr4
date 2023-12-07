@@ -64,12 +64,6 @@ entity cadr4_spcw is
     wpc13    : in  std_logic;
     ipc13    : in  std_logic;
     clk4d    : in  std_logic;
-    nc153    : out std_logic;
-    nc154    : in  std_logic;
-    nc155    : in  std_logic;
-    nc156    : in  std_logic;
-    nc157    : in  std_logic;
-    nc158    : out std_logic;
     ipc8     : in  std_logic;
     wpc8     : in  std_logic;
     wpc9     : in  std_logic;
@@ -99,13 +93,19 @@ entity cadr4_spcw is
     l17      : in  std_logic;
     spcw17   : out std_logic;
     spcw18   : out std_logic;
-    l18      : in  std_logic;
-    nc159    : out std_logic;
-    nc160    : in  std_logic;
-    nc161    : in  std_logic);
+    l18      : in  std_logic);
 end;
 
 architecture ttl of cadr4_spcw is
+  signal nc153 : std_logic;
+  signal nc154 : std_logic;
+  signal nc155 : std_logic;
+  signal nc156 : std_logic;
+  signal nc157 : std_logic;
+  signal nc158 : std_logic;
+  signal nc159 : std_logic;
+  signal nc160 : std_logic;
+  signal nc161 : std_logic;
 begin
   spcw_4e11 : sn74s157 port map(sel => destspcd, a4 => reta12, b4 => l12, y4 => spcw12, a3 => reta13, b3 => l13, y3 => spcw13, y2 => spcw14, b2 => l14, a2 => gnd, y1 => spcw15, b1 => l15, a1 => gnd, enb_n => gnd);
   spcw_4e12 : sn74s157 port map(sel => destspcd, a4 => reta8, b4 => l8, y4 => spcw8, a3 => reta9, b3 => l9, y3 => spcw9, y2 => spcw10, b2 => l10, a2 => reta10, y1 => spcw11, b1 => l11, a1 => reta11, enb_n => gnd);

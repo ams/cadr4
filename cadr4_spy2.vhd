@@ -61,16 +61,12 @@ entity cadr4_spy2 is
     a17          : in  std_logic;
     a16          : in  std_logic;
     \-spy.flag2\ : in  std_logic;
-    nc149        : in  std_logic;
-    nc150        : in  std_logic;
     ir48         : in  std_logic;
     nop          : in  std_logic;
     \-vmaok\     : in  std_logic;
     jcond        : in  std_logic;
     pcs1         : in  std_logic;
     pcs0         : in  std_logic;
-    nc151        : in  std_logic;
-    nc152        : in  std_logic;
     wmapd        : in  std_logic;
     destspcd     : in  std_logic;
     iwrited      : in  std_logic;
@@ -114,6 +110,10 @@ entity cadr4_spy2 is
 end;
 
 architecture ttl of cadr4_spy2 is
+  signal nc149 : std_logic;
+  signal nc150 : std_logic;
+  signal nc151 : std_logic;
+  signal nc152 : std_logic;
 begin
   spy2_1f11 : sn74ls244 port map(aenb_n => \-spy.al\, ain0 => aa15, bout3 => spy8, ain1 => aa14, bout2 => spy9, ain2 => aa13, bout1 => spy10, ain3 => aa12, bout0 => spy11, bin0 => aa11, aout3 => spy12, bin1 => aa10, aout2 => spy13, bin2 => aa9, aout1 => spy14, bin3 => aa8, aout0 => spy15, benb_n => \-spy.al\);
   spy2_1f13 : sn74ls244 port map(aenb_n => \-spy.al\, ain0 => aa7, bout3 => spy0, ain1 => aa6, bout2 => spy1, ain2 => aa5, bout1 => spy2, ain3 => aa4, bout0 => spy3, bin0 => aa3, aout3 => spy4, bin1 => aa2, aout2 => spy5, bin2 => aa1, aout1 => spy6, bin3 => aa0, aout0 => spy7, benb_n => \-spy.al\);

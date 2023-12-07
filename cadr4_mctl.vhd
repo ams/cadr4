@@ -14,12 +14,6 @@ entity cadr4_mctl is
     wadr4      : in  std_logic;
     ir30       : in  std_logic;
     \-madr4a\  : out std_logic;
-    nc335      : in  std_logic;
-    nc336      : in  std_logic;
-    nc337      : out std_logic;
-    nc338      : out std_logic;
-    nc339      : in  std_logic;
-    nc340      : in  std_logic;
     \-madr4b\  : out std_logic;
     gnd        : in  std_logic;
     wadr0      : in  std_logic;
@@ -34,7 +28,6 @@ entity cadr4_mctl is
     \-madr3b\  : out std_logic;
     ir29       : in  std_logic;
     wadr3      : in  std_logic;
-    nc334      : out std_logic;
     mmem15     : out std_logic;
     mmem14     : out std_logic;
     mmem13     : out std_logic;
@@ -88,6 +81,13 @@ entity cadr4_mctl is
 end;
 
 architecture ttl of cadr4_mctl is
+  signal nc334 : std_logic;
+  signal nc335 : std_logic;
+  signal nc336 : std_logic;
+  signal nc337 : std_logic;
+  signal nc338 : std_logic;
+  signal nc339 : std_logic;
+  signal nc340 : std_logic;
 begin
   mctl_4a16 : sn74s258 port map(sel => clk4e, d0 => wadr4, d1 => ir30, dy => \-madr4a\, c0 => nc335, c1 => nc336, cy => nc337, by => nc338, b1 => nc339, b0 => nc340, ay => \-madr4b\, a1 => ir30, a0 => wadr4, enb_n => gnd);
   mctl_4a18 : sn74s258 port map(sel => clk4e, d0 => wadr0, d1 => ir26, dy => \-madr0b\, c0 => wadr1, c1 => ir27, cy => \-madr1b\, by => \-madr2b\, b1 => ir28, b0 => wadr2, ay => \-madr3b\, a1 => ir29, a0 => wadr3, enb_n => gnd);

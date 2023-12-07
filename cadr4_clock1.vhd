@@ -15,8 +15,6 @@ entity cadr4_clock1 is
     \-hang\          : in  std_logic;
     cyclecompleted   : out std_logic;
     \-tpr0\          : out std_logic;
-    internal12       : out std_logic;
-    internal11       : out std_logic;
     \-tpr40\         : out std_logic;
     gnd              : in  std_logic;
     \-tprend\        : out std_logic;
@@ -66,6 +64,8 @@ entity cadr4_clock1 is
 end;
 
 architecture ttl of cadr4_clock1 is
+  signal internal12 : std_logic;
+  signal internal11 : std_logic;
 begin
   clock1_1c08 : sn74s10 port map(g1a => \-clock_reset_b\, g1b => \-tpdone\, g2a => \-hang\, g2b => \-clock_reset_b\, g2c => cyclecompleted, g2y_n => \-tpr0\, g1y_n => internal12, g1c => internal11, g3a => '0', g3b => '0', g3c => '0');
   clock1_1c09 : sn74s00 port map(g1b => internal12, g1a => \-tpr40\, g1q_n => internal11, g2b => '0', g2a => '0', g3b => '0', g3a => '0', g4a => '0', g4b => '0');

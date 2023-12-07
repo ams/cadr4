@@ -63,8 +63,6 @@ entity cadr4_dram2 is
     vmo18       : in  std_logic;
     ir8b        : in  std_logic;
     hi6         : in  std_logic;
-    nc408       : in  std_logic;
-    nc409       : out std_logic;
     ir22b       : in  std_logic;
     ir21b       : in  std_logic;
     ir20b       : in  std_logic;
@@ -74,6 +72,8 @@ entity cadr4_dram2 is
 end;
 
 architecture ttl of cadr4_dram2 is
+  signal nc408 : std_logic;
+  signal nc409 : std_logic;
 begin
   dram2_1f16 : am93425a port map(ce_n => dadr10c, a0 => \-dadr0c\, a1 => \-dadr1c\, a2 => \-dadr2c\, a3 => \-dadr3c\, a4 => \-dadr4c\, do => dpar, a5 => \-dadr5c\, a6 => \-dadr6c\, a7 => \-dadr7c\, a8 => \-dadr8c\, a9 => \-dadr9c\, we_n => \-dwec\, di => aa17);
   dram2_1f17 : am93425a port map(ce_n => \-dadr10c\, a0 => \-dadr0c\, a1 => \-dadr1c\, a2 => \-dadr2c\, a3 => \-dadr3c\, a4 => \-dadr4c\, do => dpar, a5 => \-dadr5c\, a6 => \-dadr6c\, a7 => \-dadr7c\, a8 => \-dadr8c\, a9 => \-dadr9c\, we_n => \-dwec\, di => aa17);

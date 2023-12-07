@@ -13,8 +13,6 @@ entity cadr4_dram0 is
     wp2         : in  std_logic;
     dispwr      : in  std_logic;
     \-dwea\     : out std_logic;
-    nc418       : in  std_logic;
-    nc419       : out std_logic;
     \-dadr10a\  : out std_logic;
     dadr10a     : out std_logic;
     ir22b       : in  std_logic;
@@ -83,6 +81,8 @@ entity cadr4_dram0 is
 end;
 
 architecture ttl of cadr4_dram0 is
+  signal nc418 : std_logic;
+  signal nc419 : std_logic;
 begin
   dram0_2f03 : sn74s37 port map(g1a     => wp2, g1b => dispwr, g1y => \-dwea\, g2a => '0', g2b => '0', g3a => '0', g3b => '0', g4a => '0', g4b => '0');
   dram0_2f21 : sn74s04 port map(g1a     => nc418, g1q_n => nc419, g2a => \-dadr10a\, g2q_n => dadr10a, g3a => ir22b, g3q_n => \-dadr10a\, g4q_n => \-dadr9a\, g4a => ir21b, g5q_n => \-dadr8a\, g5a => ir20b, g6q_n => \-dadr7a\, g6a => ir19b);

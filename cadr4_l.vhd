@@ -77,14 +77,14 @@ entity cadr4_l is
     ob24       : in  std_logic;
     l24        : out std_logic;
     lparl      : out std_logic;
-    nc369      : out std_logic;
-    nc370      : out std_logic;
     \-lparm\   : out std_logic;
     lparity    : out std_logic;
     \-lparity\ : out std_logic);
 end;
 
 architecture ttl of cadr4_l is
+  signal nc369 : std_logic;
+  signal nc370 : std_logic;
 begin
   l_3c26 : sn74s374 port map(oenb_n => gnd, o0 => l7, i0 => ob7, i1 => ob6, o1 => l6, o2 => l5, i2 => ob5, i3 => ob4, o3 => l4, clk => clk3f, o4 => l3, i4 => ob3, i5 => ob2, o5 => l2, o6 => l1, i6 => ob1, i7 => ob0, o7 => l0);
   l_3c27 : sn74s374 port map(oenb_n => gnd, o0 => l15, i0 => ob15, i1 => ob14, o1 => l14, o2 => l13, i2 => ob13, i3 => ob12, o3 => l12, clk => clk3f, o4 => l11, i4 => ob11, i5 => ob10, o5 => l10, o6 => l9, i6 => ob9, i7 => ob8, o7 => l8);

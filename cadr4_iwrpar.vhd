@@ -18,7 +18,6 @@ entity cadr4_iwrpar is
     iwr46 : in  std_logic;
     iwr47 : in  std_logic;
     iwrp4 : out std_logic;
-    nc98  : out std_logic;
     iwr36 : in  std_logic;
     iwr37 : in  std_logic;
     iwr38 : in  std_logic;
@@ -32,7 +31,6 @@ entity cadr4_iwrpar is
     iwr34 : in  std_logic;
     iwr35 : in  std_logic;
     iwrp3 : out std_logic;
-    nc97  : out std_logic;
     iwr24 : in  std_logic;
     iwr25 : in  std_logic;
     iwr26 : in  std_logic;
@@ -46,7 +44,6 @@ entity cadr4_iwrpar is
     iwr22 : in  std_logic;
     iwr23 : in  std_logic;
     iwrp2 : out std_logic;
-    nc96  : out std_logic;
     iwr12 : in  std_logic;
     iwr13 : in  std_logic;
     iwr14 : in  std_logic;
@@ -60,18 +57,21 @@ entity cadr4_iwrpar is
     iwr10 : in  std_logic;
     iwr11 : in  std_logic;
     iwrp1 : out std_logic;
-    nc95  : out std_logic;
     iwr0  : in  std_logic;
     iwr1  : in  std_logic;
     iwr2  : in  std_logic;
     iwr3  : in  std_logic;
     iwr4  : in  std_logic;
     gnd   : in  std_logic;
-    nc94  : out std_logic;
     iwr48 : out std_logic);
 end;
 
 architecture ttl of cadr4_iwrpar is
+  signal nc94 : std_logic;
+  signal nc95 : std_logic;
+  signal nc96 : std_logic;
+  signal nc97 : std_logic;
+  signal nc98 : std_logic;
 begin
   iwrpar_1b11 : am93s48 port map(i6 => iwr41, i5 => iwr42, i4 => iwr43, i3 => iwr44, i2 => iwr45, i1 => iwr46, i0 => iwr47, po => iwrp4, pe => nc98, i11 => iwr36, i10 => iwr37, i9 => iwr38, i8 => iwr39, i7 => iwr40);
   iwrpar_1b12 : am93s48 port map(i6 => iwr29, i5 => iwr30, i4 => iwr31, i3 => iwr32, i2 => iwr33, i1 => iwr34, i0 => iwr35, po => iwrp3, pe => nc97, i11 => iwr24, i10 => iwr25, i9 => iwr26, i8 => iwr27, i7 => iwr28);

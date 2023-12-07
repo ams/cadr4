@@ -17,7 +17,6 @@ entity cadr4_dspctl is
     dmask4      : out std_logic;
     dmask5      : out std_logic;
     dmask6      : out std_logic;
-    nc407       : out std_logic;
     ir5         : in  std_logic;
     ir6         : in  std_logic;
     ir7         : in  std_logic;
@@ -32,10 +31,6 @@ entity cadr4_dspctl is
     clk3e       : in  std_logic;
     dc9         : out std_logic;
     ir41        : in  std_logic;
-    nc403       : out std_logic;
-    nc404       : in  std_logic;
-    nc405       : in  std_logic;
-    nc406       : out std_logic;
     dc0         : out std_logic;
     ir32        : in  std_logic;
     ir33        : in  std_logic;
@@ -54,22 +49,10 @@ entity cadr4_dspctl is
     \-dparh\    : out std_logic;
     dparl       : out std_logic;
     hi4         : in  std_logic;
-    nc389       : in  std_logic;
     aa16        : out std_logic;
-    nc390       : in  std_logic;
     aa17        : out std_logic;
-    nc391       : in  std_logic;
-    nc392       : out std_logic;
-    nc393       : in  std_logic;
-    nc394       : out std_logic;
-    nc395       : in  std_logic;
-    nc396       : out std_logic;
-    nc397       : in  std_logic;
-    nc398       : out std_logic;
     a17         : in  std_logic;
-    nc399       : out std_logic;
     a16         : in  std_logic;
-    nc400       : out std_logic;
     a15         : in  std_logic;
     aa8         : out std_logic;
     a14         : in  std_logic;
@@ -110,7 +93,6 @@ entity cadr4_dspctl is
     dpc9        : in  std_logic;
     dpc10       : in  std_logic;
     dpc11       : in  std_logic;
-    nc402       : out std_logic;
     dpc12       : in  std_logic;
     dpc13       : in  std_logic;
     dn          : in  std_logic;
@@ -120,7 +102,6 @@ entity cadr4_dspctl is
     dpc0        : in  std_logic;
     dpc1        : in  std_logic;
     dpc2        : in  std_logic;
-    nc401       : out std_logic;
     dpc3        : in  std_logic;
     dpc4        : in  std_logic;
     dpc5        : in  std_logic;
@@ -130,6 +111,25 @@ entity cadr4_dspctl is
 end;
 
 architecture ttl of cadr4_dspctl is
+  signal nc389 : std_logic;
+  signal nc390 : std_logic;
+  signal nc391 : std_logic;
+  signal nc392 : std_logic;
+  signal nc393 : std_logic;
+  signal nc394 : std_logic;
+  signal nc395 : std_logic;
+  signal nc396 : std_logic;
+  signal nc397 : std_logic;
+  signal nc398 : std_logic;
+  signal nc399 : std_logic;
+  signal nc400 : std_logic;
+  signal nc401 : std_logic;
+  signal nc402 : std_logic;
+  signal nc403 : std_logic;
+  signal nc404 : std_logic;
+  signal nc405 : std_logic;
+  signal nc406 : std_logic;
+  signal nc407 : std_logic;
 begin
   dspctl_2f22 : im5610 generic map (fn   => "rom/dspctl_2f22.hex") port map(o0 => dmask0, o1 => dmask1, o2 => dmask2, o3 => dmask3, o4 => dmask4, o5 => dmask5, o6 => dmask6, o7 => nc407, a0 => ir5, a1 => ir6, a2 => ir7, a3 => gnd, a4 => gnd, ce_n => gnd);
   dspctl_3c14 : am25s07 port map(enb_n   => \-irdisp\, d0 => dc6, i0 => ir38, i1 => ir39, d1 => dc7, i2 => ir40, d2 => dc8, clk => clk3e, d3 => dc9, i3 => ir41, d4 => nc403, i4 => nc404, i5 => nc405, d5 => nc406);

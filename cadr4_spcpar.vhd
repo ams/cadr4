@@ -16,7 +16,6 @@ entity cadr4_spcpar is
     spcw17      : in  std_logic;
     spcw18      : in  std_logic;
     gnd         : in  std_logic;
-    nc162       : out std_logic;
     spcw12      : in  std_logic;
     spcw13      : in  std_logic;
     spcw14      : in  std_logic;
@@ -29,7 +28,6 @@ entity cadr4_spcpar is
     spcw9       : in  std_logic;
     spcw10      : in  std_logic;
     spcw11      : in  std_logic;
-    nc163       : out std_logic;
     spcw0       : in  std_logic;
     spcw1       : in  std_logic;
     spcw2       : in  std_logic;
@@ -40,7 +38,6 @@ entity cadr4_spcpar is
     spc18       : in  std_logic;
     spcpar      : in  std_logic;
     spcparh     : out std_logic;
-    nc164       : out std_logic;
     spc11       : in  std_logic;
     spc12       : in  std_logic;
     spc13       : in  std_logic;
@@ -53,7 +50,6 @@ entity cadr4_spcpar is
     spc9        : in  std_logic;
     spc10       : in  std_logic;
     spcparok    : out std_logic;
-    nc165       : out std_logic;
     spc0        : in  std_logic;
     spc1        : in  std_logic;
     spc2        : in  std_logic;
@@ -62,6 +58,10 @@ entity cadr4_spcpar is
 end;
 
 architecture ttl of cadr4_spcpar is
+  signal nc162 : std_logic;
+  signal nc163 : std_logic;
+  signal nc164 : std_logic;
+  signal nc165 : std_logic;
 begin
   spcpar_3e19 : sn74s86 port map(g2a => spcwparh, g2b => \-spcwparl\, g2y => spcwpar, g1a => '0', g1b => '0', g3a => '0', g3b => '0', g4a => '0', g4b => '0');
   spcpar_4f16 : am93s48 port map(i6  => spcw17, i5 => spcw18, i4 => gnd, i3 => gnd, i2 => gnd, i1 => gnd, i0 => gnd, po => spcwparh, pe => nc162, i11 => spcw12, i10 => spcw13, i9 => spcw14, i8 => spcw15, i7 => spcw16);

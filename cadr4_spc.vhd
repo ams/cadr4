@@ -62,28 +62,14 @@ entity cadr4_spc is
     hi10      : out std_logic;
     hi11      : out std_logic;
     hi12      : out std_logic;
-    nc182     : out std_logic;
-    nc183     : out std_logic;
     spush     : in  std_logic;
     clk4f     : in  std_logic;
-    nc192     : in  std_logic;
-    nc193     : in  std_logic;
-    nc194     : in  std_logic;
-    nc195     : in  std_logic;
     \-spcnt\  : in  std_logic;
     \-spccry\ : out std_logic;
     spcw18    : in  std_logic;
     spcwpar   : in  std_logic;
     spcw16    : in  std_logic;
     spcw17    : in  std_logic;
-    nc184     : in  std_logic;
-    nc185     : in  std_logic;
-    nc186     : in  std_logic;
-    nc187     : in  std_logic;
-    nc188     : out std_logic;
-    nc189     : out std_logic;
-    nc190     : out std_logic;
-    nc191     : out std_logic;
     spcw8     : in  std_logic;
     spcw9     : in  std_logic;
     spcw6     : in  std_logic;
@@ -91,6 +77,20 @@ entity cadr4_spc is
 end;
 
 architecture ttl of cadr4_spc is
+  signal nc182 : std_logic;
+  signal nc183 : std_logic;
+  signal nc184 : std_logic;
+  signal nc185 : std_logic;
+  signal nc186 : std_logic;
+  signal nc187 : std_logic;
+  signal nc188 : std_logic;
+  signal nc189 : std_logic;
+  signal nc190 : std_logic;
+  signal nc191 : std_logic;
+  signal nc192 : std_logic;
+  signal nc193 : std_logic;
+  signal nc194 : std_logic;
+  signal nc195 : std_logic;
 begin
   spc_4e21 : dm82s21 port map(wclk_n => \-swpa\, we0_n => gnd, i0 => spcw14, a4 => spcptr4, ce => hi1, strobe => hi1, d0 => spco14, d1 => spco15, a3 => spcptr3, a2 => spcptr2, a1 => spcptr1, a0 => spcptr0, i1 => spcw15, we1_n => gnd);
   spc_4e22 : dm82s21 port map(wclk_n => \-swpa\, we0_n => gnd, i0 => spcw12, a4 => spcptr4, ce => hi1, strobe => hi1, d0 => spco12, d1 => spco13, a3 => spcptr3, a2 => spcptr2, a1 => spcptr1, a0 => spcptr0, i1 => spcw13, we1_n => gnd);

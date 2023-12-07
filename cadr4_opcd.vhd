@@ -11,9 +11,7 @@ use cadr4.utilities.all;
 entity cadr4_opcd is
   port (
     \-srcdc\        : in  std_logic;
-    internal20      : out std_logic;
     \-srcopc\       : in  std_logic;
-    internal21      : out std_logic;
     \-opcdrive\     : out std_logic;
     opc7            : in  std_logic;
     mf4             : out std_logic;
@@ -83,6 +81,8 @@ entity cadr4_opcd is
 end;
 
 architecture ttl of cadr4_opcd is
+  signal internal20 : std_logic;
+  signal internal21 : std_logic;
 begin
   opcd_1d18 : sn74s04 port map(g2a     => \-srcdc\, g2q_n => internal20, g3a => \-srcopc\, g3q_n => internal21, g1a => '0', g4a => '0', g5a => '0', g6a => '0');
   opcd_1e01 : sn74s241 port map(aenb_n => \-opcdrive\, ain0 => opc7, bout3 => mf4, ain1 => opc6, bout2 => mf5, ain2 => opc5, bout1 => mf6, ain3 => opc4, bout0 => mf7, bin0 => dc7, aout3 => mf4, bin1 => dc6, aout2 => mf5, bin2 => dc5, aout1 => mf6, bin3 => dc4, aout0 => mf7, benb => dcdrive);

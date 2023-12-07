@@ -24,7 +24,6 @@ entity cadr4_alu0 is
     alu15    : out std_logic;
     aeqm     : out std_logic;
     xout15   : out std_logic;
-    nc461    : out std_logic;
     yout15   : out std_logic;
     a15      : in  std_logic;
     m15      : in  std_logic;
@@ -40,7 +39,6 @@ entity cadr4_alu0 is
     alu6     : out std_logic;
     alu7     : out std_logic;
     xout7    : out std_logic;
-    nc463    : out std_logic;
     yout7    : out std_logic;
     a7       : in  std_logic;
     m7       : in  std_logic;
@@ -56,7 +54,6 @@ entity cadr4_alu0 is
     alu10    : out std_logic;
     alu11    : out std_logic;
     xout11   : out std_logic;
-    nc462    : out std_logic;
     yout11   : out std_logic;
     a11      : in  std_logic;
     m11      : in  std_logic;
@@ -72,7 +69,6 @@ entity cadr4_alu0 is
     alu2     : out std_logic;
     alu3     : out std_logic;
     xout3    : out std_logic;
-    nc464    : out std_logic;
     yout3    : out std_logic;
     a3       : in  std_logic;
     m3       : in  std_logic;
@@ -83,6 +79,10 @@ entity cadr4_alu0 is
 end;
 
 architecture ttl of cadr4_alu0 is
+  signal nc461 : std_logic;
+  signal nc462 : std_logic;
+  signal nc463 : std_logic;
+  signal nc464 : std_logic;
 begin
   alu0_2a23 : sn74s181 port map(b0 => a12, a0 => m12, s3 => aluf3b, s2 => aluf2b, s1 => aluf1b, s0 => aluf0b, cin_n => \-cin12\, m => alumode, f0 => alu12, f1 => alu13, f2 => alu14, f3 => alu15, aeb => aeqm, x => xout15, cout_n => nc461, y => yout15, b3 => a15, a3 => m15, b2 => a14, a2 => m14, b1 => a13, a1 => m13);
   alu0_2a28 : sn74s181 port map(b0 => a4, a0 => m4, s3 => aluf3b, s2 => aluf2b, s1 => aluf1b, s0 => aluf0b, cin_n => \-cin4\, m => alumode, f0 => alu4, f1 => alu5, f2 => alu6, f3 => alu7, aeb => aeqm, x => xout7, cout_n => nc463, y => yout7, b3 => a7, a3 => m7, b2 => a6, a2 => m6, b1 => a5, a1 => m5);
