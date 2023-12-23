@@ -11,26 +11,14 @@ entity sn74181 is
     x      : out std_logic;
     aeb    : out std_logic;
 
-    f3 : out std_logic;
-    f2 : out std_logic;
-    f1 : out std_logic;
-    f0 : out std_logic;
+    f0, f1, f2, f3 : out std_logic;
 
-    b3 : in std_logic;
-    b2 : in std_logic;
-    b1 : in std_logic;
-    b0 : in std_logic;
+    b0, b1, b2, b3 : in std_logic;
 
-    a3 : in std_logic;
-    a2 : in std_logic;
-    a1 : in std_logic;
-    a0 : in std_logic;
+    a0, a1, a2, a3 : in std_logic;
 
-    m  : in std_logic;
-    s3 : in std_logic;
-    s2 : in std_logic;
-    s1 : in std_logic;
-    s0 : in std_logic;
+    m              : in std_logic;
+    s0, s1, s2, s3 : in std_logic;
 
     cin_n : in std_logic
     );

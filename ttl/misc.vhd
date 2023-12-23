@@ -28,9 +28,27 @@ package misc is
       );
   end component;
 
+  component ff_jkpc is
+    port (
+      clk      : in  std_logic;
+      pre, clr : in  std_logic;
+      j, k     : in  std_logic;
+      q, q_n   : out std_logic
+      );
+  end component;
+
   component ff_d is
     port (
       clk    : in  std_logic;
+      d      : in  std_logic;
+      q, q_n : out std_logic
+      );
+  end component;
+
+  component ff_dc is
+    port (
+      clk    : in  std_logic;
+      clr    : in  std_logic;
       d      : in  std_logic;
       q, q_n : out std_logic
       );

@@ -6,20 +6,18 @@ use ieee.numeric_std.all;
 
 entity sn74153 is
   port (
-    enb1_n : in  std_logic;
+    enb1_n                 : in  std_logic;
+    sel0                   : in  std_logic;
+    g1c0, g1c1, g1c2, g1c3 : in  std_logic;
+    g1q                    : out std_logic;
+
+    enb2_n : in  std_logic;
     sel1   : in  std_logic;
-    g1c3   : in  std_logic;
-    g1c2   : in  std_logic;
-    g1c1   : in  std_logic;
-    g1c0   : in  std_logic;
-    g1q    : out std_logic;
-    g2q    : out std_logic;
-    g2c0   : in  std_logic;
-    g2c1   : in  std_logic;
-    g2c2   : in  std_logic;
+    g2c0,
+    g2c1,
+    g2c2,
     g2c3   : in  std_logic;
-    sel0   : in  std_logic;
-    enb2_n : in  std_logic
+    g2q    : out std_logic
     );
 end;
 

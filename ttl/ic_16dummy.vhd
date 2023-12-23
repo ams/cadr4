@@ -23,4 +23,4 @@ begin
 
   \-power_reset\ <= not '1';
 
-end ttl;
+end;

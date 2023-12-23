@@ -73,7 +73,9 @@ OTHER_SRCS =					\
 
 MISC_SRCS =					\
   ff_jk.vhd					\
+  ff_jkpc.vhd					\
   ff_d.vhd \
+  ff_dc.vhd \
   timedelay.vhd
 
 SRCS_VHD	=				\

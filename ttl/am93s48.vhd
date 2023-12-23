@@ -13,9 +13,6 @@ entity am93s48 is
 end;
 
 architecture ttl of am93s48 is
-
 begin
-
-  ---!!!
 
 end;

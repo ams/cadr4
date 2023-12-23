@@ -19,4 +19,4 @@ end dm8221;
 architecture ttl of dm8221 is
 begin
 
-end ttl;
+end;

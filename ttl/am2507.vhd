@@ -16,4 +16,4 @@ end am2507;
 architecture ttl of am2507 is
 begin
 
-end ttl;
+end;

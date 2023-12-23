@@ -17,4 +17,4 @@ end dm942;
 architecture ttl of dm942 is
 begin
 
-end ttl;
+end;

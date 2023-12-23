@@ -16,4 +16,4 @@ end am2510;
 architecture ttl of am2510 is
 begin
 
-end ttl;
+end;

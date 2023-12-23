@@ -14,7 +14,9 @@ entity timedelay is
 end timedelay;
 
 architecture behavioral of timedelay is
+
   signal delayed_buffers : std_logic_vector(taps-1 downto 0) := (others => '0');
+
 begin
 
   process

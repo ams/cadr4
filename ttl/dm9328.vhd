@@ -24,4 +24,4 @@ end dm9328;
 architecture ttl of dm9328 is
 begin
 
-end ttl;
+end;

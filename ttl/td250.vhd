@@ -19,7 +19,9 @@ entity td250 is
 end;
 
 architecture ttl of td250 is
+
   signal delayed : std_logic_vector(4 downto 0);
+
 begin
 
   td : timedelay

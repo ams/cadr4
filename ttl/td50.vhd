@@ -19,7 +19,9 @@ entity td50 is
 end;
 
 architecture ttl of td50 is
+
   signal delayed : std_logic_vector(4 downto 0);
+
 begin
 
   td : timedelay

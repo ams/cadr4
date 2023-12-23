@@ -17,4 +17,4 @@ end am93425a;
 architecture ttl of am93425a is
 begin
 
-end ttl;
+end;

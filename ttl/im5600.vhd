@@ -16,4 +16,4 @@ end im5600;
 architecture ttl of im5600 is
 begin
 
-end ttl;
+end;

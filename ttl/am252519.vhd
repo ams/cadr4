@@ -21,4 +21,4 @@ end am252519;
 architecture ttl of am252519 is
 begin
 
-end ttl;
+end;

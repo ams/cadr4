@@ -17,4 +17,4 @@ end am2147;
 architecture ttl of am2147 is
 begin
 
-end ttl;
+end;
