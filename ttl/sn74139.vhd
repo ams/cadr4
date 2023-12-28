@@ -26,7 +26,7 @@ begin
     sel := a1 & b1;
     y   := g1y0 & g1y1 & g1y2 & g1y3;
 
-    if (g1 = '0') then
+    if g1 = '0' then
       case sel is
         when "00"   => y := "0111";
         when "01"   => y := "1011";
@@ -46,7 +46,7 @@ begin
     sel := a2 & b2;
     y   := g2y0 & g2y1 & g2y2 & g2y3;
 
-    if (g2 = '0') then
+    if g2 = '0' then
       case sel is
         when "00"   => y := "0111";
         when "01"   => y := "1011";

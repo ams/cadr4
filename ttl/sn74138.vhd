@@ -25,7 +25,7 @@ begin
     g2  := g2a and g2b;
     y   := y0 & y1 & y2 & y3 & y4 & y5 & y6 & y7;
 
-    if (g1 = '1' and g2 = '0') then
+    if g1 = '1' and g2 = '0' then
       case sel is
         when "000"  => y := "01111111";
         when "001"  => y := "10111111";
