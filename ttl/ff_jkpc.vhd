@@ -4,6 +4,9 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+library ttl;
+use ttl.misc.all;
+
 entity ff_jkpc is
   port (
     clk      : in  std_logic;
@@ -15,5 +18,19 @@ end;
 
 architecture ttl of ff_jkpc is
 begin
+
+  u0 : ff_jk port map (clk => clk, j => j, k => k, q => q, q_n => q_n);
+
+  process (pre, clr)
+    variable rs : unsigned(1 downto 0);
+  begin
+    rs := clr & pre;
+    case rs is
+      when "01"   => q <= '0'; q_n <= '1';
+      when "10"   => q <= '1'; q_n <= '0';
+      when "11"   => q <= 'X'; q_n <= 'X';
+      when others => null;
+    end case;
+  end process;
 
 end;
