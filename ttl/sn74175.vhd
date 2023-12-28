@@ -30,3 +30,25 @@ begin
   u3 : ff_dc port map (clk => clk, clr => clr_n, d => d3, q => q3, q_n => q3_n);
 
 end;
+
+architecture behavioral of sn74175 is
+begin
+
+  process (clk)
+  begin
+    if rising_edge(clk) then
+      if clr_n then
+        q0 <= d0; q0_n <= not d0;
+        q1 <= d1; q1_n <= not d1;
+        q2 <= d2; q2_n <= not d2;
+        q3 <= d3; q3_n <= not d3;
+      else
+        q0 <= '0'; q0_n <= '1';
+        q1 <= '0'; q1_n <= '1';
+        q2 <= '0'; q2_n <= '1';
+        q3 <= '0'; q3_n <= '1';
+      end if;
+    end if;
+  end process;
+
+end;
