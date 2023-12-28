@@ -24,7 +24,7 @@ end;
 architecture ttl of sn74109 is
 begin
 
-  u0 : ff_jkpc port map (clk => clk1, pre => pre1_n, clr => clr1_n, j => j1, k => k1_n, q => q1, q_n => q1_n);
-  u1 : ff_jkpc port map (clk => clk2, pre => pre2_n, clr => clr2_n, j => j2, k => k2_n, q => q2, q_n => q2_n);
+  u0 : ff_jkpc port map (clk => clk1, pre => pre1_n, clr => clr1_n, j => j1, k => not k1_n, q => q1, q_n => q1_n);
+  u1 : ff_jkpc port map (clk => clk2, pre => pre2_n, clr => clr2_n, j => j2, k => not k2_n, q => q2, q_n => q2_n);
 
 end;
