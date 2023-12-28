@@ -6,25 +6,25 @@ use ieee.std_logic_1164.all;
 library ttl;
 use ttl.misc.all;
 
-entity latch_sr_tb is
+entity latch_rs_tb is
 end;
 
-architecture testbench of latch_sr_tb is
+architecture testbench of latch_rs_tb is
 
   signal s_n, r_n : std_logic;
   signal q, q_n   : std_logic;
 
 begin
 
-  uut : latch_sr port map(
-    s_n => s_n, r_n => r_n,
+  uut : latch_rs port map(
+    r_n => r_n, s_n => s_n,
     q   => q, q_n => q_n
     );
 
   process
 
     type pt is record
-      s_n, r_n : std_logic;
+      r_n, s_n : std_logic;
       q, q_n   : std_logic;
     end record;
     type pa is array (natural range <>) of pt;
@@ -47,7 +47,7 @@ begin
 
   begin
     for i in p'range loop
-      s_n <= p(i).s_n; r_n <= p(i).r_n;
+      r_n <= p(i).r_n; s_n <= p(i).s_n;
 
       wait for 5 ns;
 

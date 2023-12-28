@@ -20,9 +20,9 @@ package misc is
   function pullup(s   : std_logic) return std_logic;
   function pulldown(s : std_logic) return std_logic;
 
-  component latch_sr is
+  component latch_rs is
     port (
-      s_n, r_n : in  std_logic;
+      r_n, s_n : in  std_logic;
       q, q_n   : out std_logic
       );
   end component;

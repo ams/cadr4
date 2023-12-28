@@ -4,17 +4,17 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity latch_sr is
+entity latch_rs is
   port(
     s_n, r_n : in     std_logic;
     q, q_n   : buffer std_logic
     );
 end;
 
-architecture behavioral of latch_sr is
+architecture behavioral of latch_rs is
 begin
 
-  q   <= s_n nand q_n;
-  q_n <= r_n nand q;
+  q   <= r_n nand q_n;
+  q_n <= s_n nand q;
 
 end;
