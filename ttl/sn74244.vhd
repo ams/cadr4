@@ -2,7 +2,6 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
 
 entity sn74244 is
   port (
@@ -18,5 +17,23 @@ end;
 
 architecture ttl of sn74244 is
 begin
+
+  process (aenb_n)
+  begin
+    if (aenb_n = '1') then
+      aout0 <= 'Z'; aout1 <= 'Z'; aout2 <= 'Z'; aout3 <= 'Z';
+    else
+      aout0 <= ain0; aout1 <= ain1; aout2 <= ain2; aout3 <= ain3;
+    end if;
+  end process;
+
+  process (benb_n)
+  begin
+    if (benb_n = '1') then
+      bout0 <= 'Z'; bout1 <= 'Z'; bout2 <= 'Z'; bout3 <= 'Z';
+    else
+      bout0 <= bin0; bout1 <= bin1; bout2 <= bin2; bout3 <= bin3;
+    end if;
+  end process;
 
 end;
