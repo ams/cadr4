@@ -209,12 +209,37 @@ package sn74 is
       aout0, aout1, aout2, aout3 : out std_logic;
 
       benb_n                     : in  std_logic;
-      bin0                       : in  std_logic;
-      bin1, bin2, bin3           : in  std_logic;
+      bin0, bin1, bin2, bin3     : in  std_logic;
       bout0, bout1, bout2, bout3 : out std_logic
       );
   end component;
   alias sn74s240 is sn74240;
+
+  component sn74244 is
+    port (
+      aenb_n                     : in  std_logic;
+      ain0, ain1, ain2, ain3     : in  std_logic;
+      aout0, aout1, aout2, aout3 : out std_logic;
+
+      benb_n                     : in  std_logic;
+      bin0, bin1, bin2, bin3     : in  std_logic;
+      bout0, bout1, bout2, bout3 : out std_logic
+      );
+  end component;
+  alias sn74ls244 is sn74244;
+
+  component sn74241 is
+    port (
+      aenb_n                     : in  std_logic;
+      ain0, ain1, ain2, ain3     : in  std_logic;
+      aout0, aout1, aout2, aout3 : out std_logic;
+
+      benb                       : in  std_logic;
+      bin0, bin1, bin2, bin3     : in  std_logic;
+      bout0, bout1, bout2, bout3 : out std_logic
+      );
+  end component;
+  alias sn74s241 is sn74241;
 
   component sn74109 is
     port (
@@ -254,30 +279,6 @@ package sn74 is
       );
   end component;
   alias sn74ls14 is sn7414;
-
-  component sn74244 is
-    port (
-      aenb_n : in  std_logic;
-      ain0   : in  std_logic;
-      bout3  : out std_logic;
-      ain1   : in  std_logic;
-      bout2  : out std_logic;
-      ain2   : in  std_logic;
-      bout1  : out std_logic;
-      ain3   : in  std_logic;
-      bout0  : out std_logic;
-      bin0   : in  std_logic;
-      aout3  : out std_logic;
-      bin1   : in  std_logic;
-      aout2  : out std_logic;
-      bin2   : in  std_logic;
-      aout1  : out std_logic;
-      bin3   : in  std_logic;
-      aout0  : out std_logic;
-      benb_n : in  std_logic
-      );
-  end component;
-  alias sn74ls244 is sn74244;
 
   component sn74133 is
     port (
@@ -541,31 +542,6 @@ package sn74 is
       );
   end component;
   alias sn74s194 is sn74194;
-
-
-  component sn74241 is
-    port (
-      aenb_n : in  std_logic;
-      ain0   : in  std_logic;
-      bout3  : out std_logic;
-      ain1   : in  std_logic;
-      bout2  : out std_logic;
-      ain2   : in  std_logic;
-      bout1  : out std_logic;
-      ain3   : in  std_logic;
-      bout0  : out std_logic;
-      bin0   : in  std_logic;
-      aout3  : out std_logic;
-      bin1   : in  std_logic;
-      aout2  : out std_logic;
-      bin2   : in  std_logic;
-      aout1  : out std_logic;
-      bin3   : in  std_logic;
-      aout0  : out std_logic;
-      benb   : in  std_logic
-      );
-  end component;
-  alias sn74s241 is sn74241;
 
   component sn74258 is
     port (
