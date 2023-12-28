@@ -22,8 +22,8 @@ package misc is
 
   component latch_rs is
     port (
-      r_n, s_n : in  std_logic;
-      q, q_n   : out std_logic
+      r, s   : in  std_logic;
+      q, q_n : out std_logic
       );
   end component;
 

@@ -1,4 +1,4 @@
--- Set/Reset latch
+-- Reset/Set latch
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -11,21 +11,21 @@ end;
 
 architecture testbench of latch_rs_tb is
 
-  signal s_n, r_n : std_logic;
-  signal q, q_n   : std_logic;
+  signal r, s   : std_logic;
+  signal q, q_n : std_logic;
 
 begin
 
   uut : latch_rs port map(
-    r_n => r_n, s_n => s_n,
-    q   => q, q_n => q_n
+    r => r, s => s,
+    q => q, q_n => q_n
     );
 
   process
 
     type pt is record
-      r_n, s_n : std_logic;
-      q, q_n   : std_logic;
+      r, s   : std_logic;
+      q, q_n : std_logic;
     end record;
     type pa is array (natural range <>) of pt;
 
@@ -47,7 +47,7 @@ begin
 
   begin
     for i in p'range loop
-      r_n <= p(i).r_n; s_n <= p(i).s_n;
+      r <= p(i).r; s <= p(i).s;
 
       wait for 5 ns;
 
