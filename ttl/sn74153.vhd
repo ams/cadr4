@@ -23,5 +23,32 @@ end;
 
 architecture ttl of sn74153 is
 begin
-
+  process (enb1_n, sel0, g1c0, g1c1, g1c2, g1c3,
+           enb2_n, sel1, g2c0, g2c1, g2c2, g2c3)
+    variable sel: std_logic_vector(0 to 1);
+  begin
+    sel := sel1 & sel0;
+    if enb1_n then
+      g1q <= '0';
+    else
+      case sel is
+        when "00" => g1q <= g1c0;
+        when "01" => g1q <= g1c1;
+        when "10" => g1q <= g1c2;
+        when "11" => g1q <= g1c3;
+        when others => g1q <= 'X';
+      end case;
+    end if;
+    if enb2_n then
+      g2q <= '0';
+    else
+      case sel is
+        when "00" => g2q <= g2c0;
+        when "01" => g2q <= g2c1;
+        when "10" => g2q <= g2c2;
+        when "11" => g2q <= g2c3;
+        when others => g2q <= 'X';
+      end case;
+    end if;
+end process;
 end;
