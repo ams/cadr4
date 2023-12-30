@@ -1,6 +1,6 @@
 TODO List for the CADR4 project
 
-* TODO TTLs [17/59]
+* TODO TTLs [18/59]
 
 Header template for files:
 
@@ -415,15 +415,15 @@ Header template for files:
  - [X] Implement component
  - [X] Implement skeleton testbench
  - [X] Implement rudimentary testbench
-** TODO sn74s153 (DUAL 4-1 SELECT) [3/5]
+** DONE sn74s153 (DUAL 4-1 SELECT) [5/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn74ls153.pdf
  - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
- - [ ] Implement component
+ - [X] Implement component
  - [X] Implement skeleton testbench
- - [ ] Implement rudimentary testbench
+ - [X] Implement rudimentary testbench
 ** TODO sn74s181 (ALU) [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn54ls181.pdf
