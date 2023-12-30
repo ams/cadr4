@@ -38,11 +38,35 @@ begin
     );
 
   process
+    type test_vec is record
+      i0, i1, i2, i3, i4, i5, i6, i7, i8: std_logic;
+      e, o: std_logic;
+    end record;
+    type test_vecs is array (natural range <>) of test_vec;
+
+    constant tests : test_vecs :=
+      (('0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '0'),
+       ('1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'),
+       ('1', '0', '1', '0', '1', '0', '1', '0', '0', '1', '0'),
+       ('1', '1', '1', '1', '1', '0', '1', '0', '0', '1', '0'),
+       ('1', '0', '1', '1', '1', '0', '1', '0', '0', '0', '1'),
+       ('1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1'));
+
   begin
-    wait for 5 ns;
-
-    report "Testbench not implemented!" severity warning;
-
+    for i in tests'range loop
+      i0 <= tests(i).i0;
+      i1 <= tests(i).i1;
+      i2 <= tests(i).i2;
+      i3 <= tests(i).i3;
+      i4 <= tests(i).i4;
+      i5 <= tests(i).i5;
+      i6 <= tests(i).i6;
+      i7 <= tests(i).i7;
+      i8 <= tests(i).i8;
+      wait for 5 ns;
+      assert even = tests(i).e report "failure in case: " & integer'image(i);
+      assert odd = tests(i).o report "failure in case: " & integer'image(i);
+    end loop;
     wait;
   end process;
 

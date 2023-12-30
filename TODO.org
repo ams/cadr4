@@ -460,15 +460,15 @@ Header template for files:
  - [X] Implement component
  - [X] Implement skeleton testbench
  - [X] Implement rudimentary testbench
-** TODO sn74s280 (9 INPUT PARITY) [3/5]
+** DONE sn74s280 (9 INPUT PARITY) [5/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn54ls280.pdf
  - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
- - [ ] Implement component
+ - [X] Implement component
  - [X] Implement skeleton testbench
- - [ ] Implement rudimentary testbench
+ - [X] Implement rudimentary testbench
 ** TODO sn74s64 (AOI) [3/5]
  - [X] Store datasheet and upstream URL.
 	https://www.ti.com/lit/ds/symlink/sn54s64.pdf
