@@ -44,10 +44,27 @@ begin
     );
 
   process
+    variable sel : unsigned(2 downto 0);
+    variable exp : std_logic_vector(7 downto 0);
   begin
-    wait for 5 ns;
+    g1  <= '1';
+    g2a <= '0';
+    g2b <= '0';
 
-    report "Testbench not implemented!" severity warning;
+    for i in 0 to 7 loop
+      sel := to_unsigned(i, 3);
+      a <= sel(2); b <= sel(1); c <= sel(0);
+      wait for 1 ns;
+
+      exp := (others => '1');
+      exp(7 - i) := '0';
+      assert (y7 & y6 & y5 & y4 & y3 & y2 & y1 & y0) = exp;
+    end loop;
+
+    -- disabled outputs when g1 is low
+    g1 <= '0';
+    wait for 1 ns;
+    assert (y7 & y6 & y5 & y4 & y3 & y2 & y1 & y0) = (others => '1');
 
     wait;
   end process;

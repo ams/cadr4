@@ -48,10 +48,30 @@ begin
     );
 
   process
+    variable f : std_logic_vector(3 downto 0);
   begin
-    wait for 5 ns;
+    -- 3 + 5 = 8
+    c0 <= '0';
+    a3 <= '0'; a2 <= '0'; a1 <= '1'; a0 <= '1';
+    b3 <= '0'; b2 <= '1'; b1 <= '0'; b0 <= '1';
+    wait for 1 ns;
+    f := s3 & s2 & s1 & s0;
+    assert f = "1000" and c4 = '0';
 
-    report "Testbench not implemented!" severity warning;
+    -- 15 + 1 = 16
+    a3 <= '1'; a2 <= '1'; a1 <= '1'; a0 <= '1';
+    b3 <= '0'; b2 <= '0'; b1 <= '0'; b0 <= '1';
+    wait for 1 ns;
+    f := s3 & s2 & s1 & s0;
+    assert f = "0000" and c4 = '1';
+
+    -- 6 + 7 + carry
+    c0 <= '1';
+    a3 <= '0'; a2 <= '1'; a1 <= '1'; a0 <= '0';
+    b3 <= '0'; b2 <= '1'; b1 <= '1'; b0 <= '1';
+    wait for 1 ns;
+    f := s3 & s2 & s1 & s0;
+    assert f = "1110" and c4 = '0';
 
     wait;
   end process;

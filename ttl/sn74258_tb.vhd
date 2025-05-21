@@ -45,9 +45,26 @@ begin
 
   process
   begin
-    wait for 5 ns;
+    -- outputs should be high impedance when disabled
+    enb_n <= '1'; sel <= '0';
+    a0 <= '1'; a1 <= '0';
+    b0 <= '0'; b1 <= '1';
+    c0 <= '1'; c1 <= '0';
+    d0 <= '0'; d1 <= '1';
+    wait for 1 ns;
+    assert ay = 'Z' and by = 'Z' and cy = 'Z' and dy = 'Z';
 
-    report "Testbench not implemented!" severity warning;
+    -- select input 0
+    enb_n <= '0'; sel <= '0';
+    a0 <= '0'; b0 <= '1'; c0 <= '0'; d0 <= '1';
+    wait for 1 ns;
+    assert ay = a0 and by = b0 and cy = c0 and dy = d0;
+
+    -- select input 1
+    sel <= '1';
+    a1 <= '1'; b1 <= '0'; c1 <= '1'; d1 <= '0';
+    wait for 1 ns;
+    assert ay = a1 and by = b1 and cy = c1 and dy = d1;
 
     wait;
   end process;
