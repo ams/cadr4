@@ -92,4 +92,5 @@ unsorted.vhd					\
 TB_SRCS_VHD	= $(addsuffix _tb.vhd, $(basename $(SN74_SRCS) $(MISC_SRCS) $(OTHER_SRCS) $(UNSORTED_SRCS)))
 TESTBENCHES	= $(basename $(TB_SRCS_VHD))
 
-include ~/hdlmake.mk/hdlmake.mk
+HDLMAKE_MK ?= ~/hdlmake.mk/hdlmake.mk
+include $(HDLMAKE_MK)

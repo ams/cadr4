@@ -131,4 +131,5 @@ all::;	 	(cd ttl; make all)
 check::;	(cd ttl; make check)
 clean::;	(cd ttl; make clean)
 
-include ~/hdlmake.mk/hdlmake.mk
+HDLMAKE_MK ?= ~/hdlmake.mk/hdlmake.mk
+include $(HDLMAKE_MK)
