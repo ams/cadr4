@@ -99,6 +99,7 @@ architecture ttl of cadr4_pctl is
   signal nc44 : std_logic;
   signal nc45 : std_logic;
   signal nc46 : std_logic;
+  signal nc47 : std_logic;
   signal nc5  : std_logic;
   signal nc6  : std_logic;
   signal nc7  : std_logic;
@@ -109,7 +110,18 @@ begin
   pctl_1c17 : sn74s04 port map(g1a      => pc0, g1q_n => \-prompc0\, g2a => pc1, g2q_n => \-prompc1\, g3a => pc2, g3q_n => \-prompc2\, g4q_n => \-prompc3\, g4a => pc3, g5q_n => \-prompc4\, g5a => pc4, g6q_n => nc45, g6a => nc46);
   pctl_1c18 : sn74s32 port map(g1a      => \-promenable\, g1b => pc9, g1y => \-promce0\, g2a => \-prompc9\, g2b => \-promenable\, g2y => \-promce1\, g3a => '0', g3b => '0', g4a => '0', g4b => '0');
   pctl_1c19 : sn74s20 port map(g1a      => \bottom.1k\, g1b => \-idebug\, g1c => \-promdisabled\, g1d => \-iwriteda\, g1y_n => \-promenable\, g2a => '0', g2b => '0', g2c => '0', g2d => '0');
-  pctl_1d18 : sn74s260 port map(g1a     => gnd, g2a => pc13, g3a => pc12, g1y_n => \bottom.1k\, g4a => pc11, g5a => pc10);
+  pctl_1d18 : sn74s260 port map(g1a     => gnd,
+                                g2a     => pc13,
+                                g3a     => pc12,
+                                g4a     => pc11,
+                                g5a     => pc10,
+                                g1y_n   => \bottom.1k\,
+                                g1b     => '0',
+                                g2b     => '0',
+                                g3b     => '0',
+                                g4b     => '0',
+                                g5b     => '0',
+                                g2y_n   => nc47);
   pctl_1d19 : sn74s04 port map(g1a      => pc5, g1q_n => \-prompc5\, g2a => pc6, g2q_n => \-prompc6\, g3a => pc7, g3q_n => \-prompc7\, g4q_n => \-prompc8\, g4a => pc8, g5q_n => \-prompc9\, g5a => pc9, g6q_n => nc43, g6a => nc44);
   pctl_1e16 : sn74s20 port map(g1a      => \-ape\, g1b => \-pdlpe\, g1c => \-spe\, g1d => \-mpe\, g1y_n => tilt1, g2y_n => tilt0, g2a => hi2, g2b => \-mempe\, g2c => \-v1pe\, g2d => \-v0pe\);
   pctl_1f10 : sn74s04 port map(g3a      => \-promenable\, g3q_n => promenable, g5q_n => dpe, g5a => \-dpe\, g6q_n => ipe, g6a => \-ipe\, g1a => '0', g2a => '0', g4a => '0');
