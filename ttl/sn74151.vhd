@@ -33,11 +33,13 @@ begin
 
     -- core multiplexer with active-low chip-enable
     process(all)
+        variable sel : unsigned(2 downto 0);
     begin
         if ce_n = '0' then
-            q   <= data_bus(to_integer(unsigned(sel2 & sel1 & sel0)));
-            q_n <= not data_bus(to_integer(unsigned(sel2 & sel1 & sel0)));
-        else                      -- disabled: true output LOW, complement HIGH
+            sel := sel2 & sel1 & sel0;         -- now the result type is known
+            q   <= data_bus(to_integer(sel));
+            q_n <= not data_bus(to_integer(sel));
+        else
             q   <= '0';
             q_n <= '1';
         end if;
