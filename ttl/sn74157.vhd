@@ -15,12 +15,17 @@ entity sn74157 is
     );
 end;
 
+-- OpenAI Codex implementation
 architecture ttl of sn74157 is
 begin
-
-  y1 <= (sel and enb_n and a1) or (sel and enb_n and b1);
-  y2 <= (sel and enb_n and a2) or (sel and enb_n and b2);
-  y3 <= (sel and enb_n and a3) or (sel and enb_n and b3);
-  y4 <= (sel and enb_n and a4) or (sel and enb_n and b4);
-
+  process(all)
+  begin
+    if enb_n = '1' then
+      y1 <= '0'; y2 <= '0'; y3 <= '0'; y4 <= '0';
+    elsif sel = '0' then
+      y1 <= a1; y2 <= a2; y3 <= a3; y4 <= a4;
+    else
+      y1 <= b1; y2 <= b2; y3 <= b3; y4 <= b4;
+    end if;
+  end process;
 end architecture;
