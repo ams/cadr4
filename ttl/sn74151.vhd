@@ -36,10 +36,10 @@ begin
         variable sel : unsigned(2 downto 0);
     begin
         if ce_n = '0' then
-            sel := unsigned'(sel2 & sel1 & sel0);
+            sel := sel2 & sel1 & sel0;         -- now the result type is known
             q   <= data_bus(to_integer(sel));
             q_n <= not data_bus(to_integer(sel));
-        else                      -- disabled: true output LOW, complement HIGH
+        else
             q   <= '0';
             q_n <= '1';
         end if;

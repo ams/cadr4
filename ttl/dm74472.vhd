@@ -3,6 +3,8 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+use std.textio.all;
+use ieee.std_logic_textio.all;
 
 entity dm74472 is
   generic (fn : string := "");
@@ -16,7 +18,28 @@ end;
 -- ChatGPT Codex implementation
 architecture ttl of dm74472 is
   type rom_t is array (0 to 511) of std_logic_vector(7 downto 0);
-  signal rom  : rom_t := (others => (others => '0'));
+
+  impure function load_rom return rom_t is
+    file f    : text;
+    variable l : line;
+    variable mem : rom_t := (others => (others => '0'));
+    variable d   : std_logic_vector(7 downto 0);
+    variable i   : integer := 0;
+  begin
+    if fn /= "" then
+      file_open(f, fn, read_mode);
+      while not endfile(f) and i < mem'length loop
+        readline(f, l);
+        hread(l, d);
+        mem(i) := d;
+        i := i + 1;
+      end loop;
+      file_close(f);
+    end if;
+    return mem;
+  end function;
+
+  signal rom  : rom_t := load_rom;
   signal addr : unsigned(8 downto 0);
 begin
   addr <= a8 & a7 & a6 & a5 & a4 & a3 & a2 & a1 & a0;
