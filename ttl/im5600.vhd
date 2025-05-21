@@ -13,6 +13,7 @@ entity im5600 is
     );
 end im5600;
 
+-- ChatGPT Codex implementation
 architecture ttl of im5600 is
   type rom_t is array (0 to 31) of std_logic_vector(7 downto 0);
   signal rom  : rom_t := (others => (others => '0'));

@@ -15,6 +15,7 @@ entity sn74283 is
     );
 end;
 
+-- ChatGPT Codex implementation
 architecture ttl of sn74283 is
   signal a : unsigned(3 downto 0);
   signal b : unsigned(3 downto 0);

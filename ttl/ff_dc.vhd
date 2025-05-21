@@ -13,6 +13,7 @@ entity ff_dc is
     );
 end;
 
+-- ChatGPT Codex implementation
 architecture ttl of ff_dc is
 begin
   process(clk, clr)

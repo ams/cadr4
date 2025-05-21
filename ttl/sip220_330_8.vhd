@@ -13,6 +13,7 @@ entity sip220_330_8 is
     );
 end;
 
+-- ChatGPT Codex implementation
 architecture ttl of sip220_330_8 is
 begin
   r2 <= '1'; r3 <= '1'; r4 <= '1';

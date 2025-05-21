@@ -13,6 +13,7 @@ entity dm74472 is
     );
 end;
 
+-- ChatGPT Codex implementation
 architecture ttl of dm74472 is
   type rom_t is array (0 to 511) of std_logic_vector(7 downto 0);
   signal rom  : rom_t := (others => (others => '0'));

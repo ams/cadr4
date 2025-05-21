@@ -13,6 +13,7 @@ entity sn74373 is
     );
 end;
 
+-- ChatGPT Codex implementation
 architecture ttl of sn74373 is
   signal data : std_logic_vector(7 downto 0) := (others => '0');
 begin

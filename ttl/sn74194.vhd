@@ -18,6 +18,7 @@ entity sn74194 is
     );
 end;
 
+-- ChatGPT Codex implementation
 architecture ttl of sn74194 is
   signal reg : std_logic_vector(3 downto 0) := (others => '0');
 begin

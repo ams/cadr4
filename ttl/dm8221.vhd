@@ -16,6 +16,7 @@ entity dm8221 is
     );
 end dm8221;
 
+-- ChatGPT Codex implementation
 architecture ttl of dm8221 is
   type ram_t is array (0 to 31) of std_logic_vector(1 downto 0);
   signal ram  : ram_t := (others => (others => '0'));

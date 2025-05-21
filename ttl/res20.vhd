@@ -25,6 +25,7 @@ entity res20 is
     );
 end;
 
+-- ChatGPT Codex implementation
 architecture ttl of res20 is
 begin
   r2  <= '1'; r3  <= '1'; r4  <= '1'; r5  <= '1';
