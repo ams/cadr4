@@ -47,8 +47,8 @@ begin
   process(all)
     variable data : std_logic_vector(7 downto 0);
   begin
-    data := rom(to_integer(addr));
     if ce_n = '0' then
+      data := rom(to_integer(addr));
       o7 <= data(7); o6 <= data(6); o5 <= data(5); o4 <= data(4);
       o3 <= data(3); o2 <= data(2); o1 <= data(1); o0 <= data(0);
     else
