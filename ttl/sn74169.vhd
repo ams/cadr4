@@ -27,17 +27,19 @@ end;
 
 -- ChatGPT o3 implementation
 architecture ttl of sn74169 is
-    signal cnt : unsigned(3 downto 0);  -- internal 4-bit register
+  signal cnt : unsigned(3 downto 0);  -- internal 4-bit register
 begin
     ------------------------------------------------------------------
     -- synchronous logic
     ------------------------------------------------------------------
     process(clk)
+        variable load_val : unsigned(3 downto 0);
     begin
         if rising_edge(clk) then
             -- synchronous parallel load has top priority
             if load_n = '0' then
-                cnt <= unsigned(i3 & i2 & i1 & i0);
+                load_val := unsigned'(i3 & i2 & i1 & i0);
+                cnt <= load_val;
 
             -- otherwise count when both enables are asserted (low)
             elsif (enb_t_n = '0' and enb_p_n = '0') then
