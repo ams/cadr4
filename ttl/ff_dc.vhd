@@ -15,5 +15,14 @@ end;
 
 architecture ttl of ff_dc is
 begin
-
+  process(clk, clr)
+  begin
+    if clr = '0' then
+      q <= '0';
+      q_n <= '1';
+    elsif rising_edge(clk) then
+      q <= d;
+      q_n <= not d;
+    end if;
+  end process;
 end;
