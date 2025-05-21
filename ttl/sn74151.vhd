@@ -23,7 +23,23 @@ entity sn74151 is
     );
 end;
 
+-- ChatGPT o3 implementation
 architecture ttl of sn74151 is
+    -- handy vector to index the inputs
+    signal data_bus : std_logic_vector(7 downto 0);
 begin
+    -- concatenate the individual inputs into a vector
+    data_bus <= i7 & i6 & i5 & i4 & i3 & i2 & i1 & i0;
 
-end;
+    -- core multiplexer with active-low chip-enable
+    process(all)
+    begin
+        if ce_n = '0' then
+            q   <= data_bus(to_integer(unsigned(sel2 & sel1 & sel0)));
+            q_n <= not data_bus(to_integer(unsigned(sel2 & sel1 & sel0)));
+        else                      -- disabled: true output LOW, complement HIGH
+            q   <= '0';
+            q_n <= '1';
+        end if;
+    end process;
+end architecture;
