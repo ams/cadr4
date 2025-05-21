@@ -17,46 +17,48 @@ entity sn74139 is
 end;
 
 architecture ttl of sn74139 is
+  signal y1 : unsigned(3 downto 0);
+  signal y2 : unsigned(3 downto 0);
 begin
 
   process (g1, a1, b1) is
     variable sel : unsigned(1 downto 0);
-    variable y   : unsigned(3 downto 0);
   begin
     sel := a1 & b1;
-    y   := g1y0 & g1y1 & g1y2 & g1y3;
 
     if g1 = '0' then
       case sel is
-        when "00"   => y := "0111";
-        when "01"   => y := "1011";
-        when "10"   => y := "1101";
-        when "11"   => y := "1110";
-        when others => y := "1111";
+        when "00"   => y1 <= "0111";
+        when "01"   => y1 <= "1011";
+        when "10"   => y1 <= "1101";
+        when "11"   => y1 <= "1110";
+        when others => y1 <= "1111";
       end case;
     else
-      y := "1111";
+      y1 <= "1111";
     end if;
   end process;
 
   process (g2, a2, b2) is
     variable sel : unsigned(1 downto 0);
-    variable y   : unsigned(3 downto 0);
   begin
     sel := a2 & b2;
-    y   := g2y0 & g2y1 & g2y2 & g2y3;
 
     if g2 = '0' then
       case sel is
-        when "00"   => y := "0111";
-        when "01"   => y := "1011";
-        when "10"   => y := "1101";
-        when "11"   => y := "1110";
-        when others => y := "1111";
+        when "00"   => y2 <= "0111";
+        when "01"   => y2 <= "1011";
+        when "10"   => y2 <= "1101";
+        when "11"   => y2 <= "1110";
+        when others => y2 <= "1111";
       end case;
     else
-      y := "1111";
+      y2 <= "1111";
     end if;
   end process;
+
+  -- drive output pins from internal vectors
+  g1y0 <= y1(3); g1y1 <= y1(2); g1y2 <= y1(1); g1y3 <= y1(0);
+  g2y3 <= y2(0); g2y2 <= y2(1); g2y1 <= y2(2); g2y0 <= y2(3);
 
 end architecture;
