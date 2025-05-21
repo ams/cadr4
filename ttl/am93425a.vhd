@@ -14,6 +14,7 @@ entity am93425a is
     );
 end am93425a;
 
+-- ChatGPT Codex implementation
 architecture ttl of am93425a is
   type ram_t is array (0 to 1023) of std_logic;
   signal ram  : ram_t := (others => '0');

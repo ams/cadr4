@@ -18,6 +18,7 @@ entity am252519 is
     );
 end am252519;
 
+-- ChatGPT Codex implementation
 architecture ttl of am252519 is
   signal reg4 : std_logic_vector(3 downto 0);
 begin

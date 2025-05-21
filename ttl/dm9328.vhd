@@ -21,6 +21,7 @@ entity dm9328 is
     );
 end dm9328;
 
+-- ChatGPT Codex implementation
 architecture ttl of dm9328 is
   signal rega : std_logic_vector(7 downto 0) := (others => '0');
   signal regb : std_logic_vector(7 downto 0) := (others => '0');

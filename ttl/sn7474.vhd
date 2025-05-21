@@ -21,6 +21,7 @@ entity sn7474 is
     );
 end;
 
+-- ChatGPT Codex implementation
 architecture ttl of sn7474 is
 begin
   -- first flip-flop

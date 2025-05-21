@@ -23,6 +23,7 @@ entity sn74258 is
     );
 end;
 
+-- ChatGPT Codex implementation
 architecture ttl of sn74258 is
 begin
   process(all)
