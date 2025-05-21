@@ -45,9 +45,23 @@ begin
 
   process
   begin
-    wait for 5 ns;
+    -- clear registers
+    clr_n <= '0'; wait for 1 ns; clr_n <= '1';
+    assert aq = '0' and aq_n = '1' and bq = '0' and bq_n = '1';
 
-    report "Testbench not implemented!" severity warning;
+    -- shift ones into register A using ai0
+    asel <= '0'; ai0 <= '1';
+    for i in 0 to 7 loop
+      aclk <= '1'; wait for 1 ns; aclk <= '0'; wait for 1 ns;
+    end loop;
+    assert aq = '1' and aq_n = '0';
+
+    -- shift ones into register B using bi1
+    bsel <= '1'; bi1 <= '1';
+    for i in 0 to 7 loop
+      bclk <= '1'; wait for 1 ns; bclk <= '0'; wait for 1 ns;
+    end loop;
+    assert bq = '1' and bq_n = '0';
 
     wait;
   end process;

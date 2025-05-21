@@ -45,9 +45,32 @@ begin
 
   process
   begin
-    wait for 5 ns;
+    -- write 1 to address 0
+    ce_n <= '0';
+    we_n <= '0';
+    di   <= '1';
+    a0 <= '0'; a1 <= '0'; a2 <= '0'; a3 <= '0'; a4 <= '0';
+    a5 <= '0'; a6 <= '0'; a7 <= '0'; a8 <= '0'; a9 <= '0';
+    wait for 1 ns;
 
-    report "Testbench not implemented!" severity warning;
+    -- read back
+    we_n <= '1';
+    wait for 1 ns;
+    assert do = '1';
+
+    -- write 0 to address 1
+    we_n <= '0'; di <= '0'; a0 <= '1';
+    wait for 1 ns;
+
+    -- read back
+    we_n <= '1';
+    wait for 1 ns;
+    assert do = '0';
+
+    -- chip disabled
+    ce_n <= '1';
+    wait for 1 ns;
+    assert do = 'Z';
 
     wait;
   end process;

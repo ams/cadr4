@@ -53,9 +53,33 @@ begin
 
   process
   begin
-    wait for 5 ns;
+    clk <= '0';
+    oenb_n <= '1';
 
-    report "Testbench not implemented!" severity warning;
+    -- load first value
+    i0 <= '0'; i1 <= '1'; i2 <= '0'; i3 <= '1';
+    i4 <= '0'; i5 <= '1'; i6 <= '0'; i7 <= '1';
+    clk <= '1'; wait for 1 ns; clk <= '0';
+
+    oenb_n <= '0';
+    wait for 1 ns;
+    assert (o7 & o6 & o5 & o4 & o3 & o2 & o1 & o0) = "10101010";
+
+    -- load second value
+    oenb_n <= '1';
+    i0 <= '1'; i1 <= '0'; i2 <= '1'; i3 <= '0';
+    i4 <= '1'; i5 <= '0'; i6 <= '1'; i7 <= '0';
+    clk <= '1'; wait for 1 ns; clk <= '0';
+
+    oenb_n <= '0';
+    wait for 1 ns;
+    assert (o7 & o6 & o5 & o4 & o3 & o2 & o1 & o0) = "01010101";
+
+    -- outputs disabled
+    oenb_n <= '1';
+    wait for 1 ns;
+    assert o0 = 'Z' and o1 = 'Z' and o2 = 'Z' and o3 = 'Z' and
+           o4 = 'Z' and o5 = 'Z' and o6 = 'Z' and o7 = 'Z';
 
     wait;
   end process;

@@ -65,10 +65,39 @@ begin
     );
 
   process
+    variable f : std_logic_vector(3 downto 0);
   begin
-    wait for 5 ns;
+    -- arithmetic mode
+    m <= '0'; cin_n <= '1';
+    a3 <= '0'; a2 <= '0'; a1 <= '1'; a0 <= '1'; -- 3
+    b3 <= '0'; b2 <= '1'; b1 <= '0'; b0 <= '1'; -- 5
+    wait for 1 ns;
+    f := f3 & f2 & f1 & f0;
+    assert f = "1000" and cout_n = '1';
 
-    report "Testbench not implemented!" severity warning;
+    a3 <= '0'; a2 <= '1'; a1 <= '0'; a0 <= '1'; -- 5
+    b3 <= '0'; b2 <= '1'; b1 <= '0'; b0 <= '1'; -- 5
+    wait for 1 ns;
+    f := f3 & f2 & f1 & f0;
+    assert f = "1010" and cout_n = '1' and aeb = '1';
+
+    -- logic mode tests
+    m <= '1';
+    a3 <= '1'; a2 <= '1'; a1 <= '0'; a0 <= '0'; -- 12
+    b3 <= '1'; b2 <= '0'; b1 <= '1'; b0 <= '0'; -- 10
+    cin_n <= '1';
+
+    s3 <= '0'; s2 <= '0'; s1 <= '0'; s0 <= '0';
+    wait for 1 ns; assert (f3 & f2 & f1 & f0) = "1000";
+
+    s3 <= '0'; s2 <= '0'; s1 <= '0'; s0 <= '1';
+    wait for 1 ns; assert (f3 & f2 & f1 & f0) = "1110";
+
+    s3 <= '0'; s2 <= '0'; s1 <= '1'; s0 <= '0';
+    wait for 1 ns; assert (f3 & f2 & f1 & f0) = "0110";
+
+    s3 <= '0'; s2 <= '0'; s1 <= '1'; s0 <= '1';
+    wait for 1 ns; assert (f3 & f2 & f1 & f0) = "1001";
 
     wait;
   end process;
