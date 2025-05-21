@@ -9,25 +9,25 @@ end;
 
 architecture testbench of sn74260_tb is
 
-  signal g1a, g1b, g1c, g1d, g1e : std_logic;
-  signal g2a, g2b, g2c, g2d, g2e : std_logic;
+  signal g1a, g2a, g3a, g4a, g5a : std_logic;
+  signal g1b, g2b, g3b, g4b, g5b : std_logic;
   signal g1y_n, g2y_n            : std_logic;
 
 begin
 
   uut : sn74260 port map(
     g1a   => g1a,
-    g1b   => g1b,
-    g1c   => g1c,
-    g1d   => g1d,
-    g1e   => g1e,
+    g2a   => g2a,
+    g3a   => g3a,
+    g4a   => g4a,
+    g5a   => g5a,
     g1y_n => g1y_n,
 
-    g2a   => g2a,
+    g1b   => g1b,
     g2b   => g2b,
-    g2c   => g2c,
-    g2d   => g2d,
-    g2e   => g2e,
+    g3b   => g3b,
+    g4b   => g4b,
+    g5b   => g5b,
     g2y_n => g2y_n
     );
 
@@ -76,8 +76,8 @@ begin
 
   begin
     for i in p'range loop
-      g1a <= p(i).i0; g1b <= p(i).i1; g1c <= p(i).i2; g1d <= p(i).i3; g1e <= p(i).i4;
-      g2a <= p(i).i0; g2b <= p(i).i1; g2c <= p(i).i2; g2d <= p(i).i3; g2e <= p(i).i4;
+      g1a <= p(i).i0; g2a <= p(i).i1; g3a <= p(i).i2; g4a <= p(i).i3; g5a <= p(i).i4;
+      g1b <= p(i).i0; g2b <= p(i).i1; g3b <= p(i).i2; g4b <= p(i).i3; g5b <= p(i).i4;
 
       wait for 1 ns;
 
