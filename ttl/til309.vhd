@@ -16,7 +16,26 @@ entity til309 is
     );
 end;
 
+-- ChatGPT Codex implementation
 architecture ttl of til309 is
+  signal reg : std_logic_vector(3 downto 0) := (others => '0');
 begin
+  process(latch)
+  begin
+    if rising_edge(latch) then
+      reg <= i8 & i4 & i2 & i1;
+    end if;
+  end process;
 
+  process(all)
+    variable disp : std_logic_vector(3 downto 0);
+  begin
+    disp := reg;
+    if test_n = '0' then
+      disp := (others => '1');
+    elsif blank_n = '0' then
+      disp := (others => '0');
+    end if;
+    l8 <= disp(3); l4 <= disp(2); l2 <= disp(1); l1 <= disp(0);
+  end process;
 end;

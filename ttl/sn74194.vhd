@@ -18,7 +18,25 @@ entity sn74194 is
     );
 end;
 
+-- ChatGPT Codex implementation
 architecture ttl of sn74194 is
+  signal reg : std_logic_vector(3 downto 0) := (others => '0');
 begin
+  process(clk, clr_n)
+    variable sel : std_logic_vector(1 downto 0);
+  begin
+    if clr_n = '0' then
+      reg <= (others => '0');
+    elsif rising_edge(clk) then
+      sel := s1 & s0;
+      case sel is
+        when "00"   => null;                  -- hold
+        when "01"   => reg <= sir & reg(3 downto 1);       -- shift right
+        when "10"   => reg <= reg(2 downto 0) & sil;       -- shift left
+        when others => reg <= i3 & i2 & i1 & i0;             -- load
+      end case;
+    end if;
+  end process;
 
+  q3 <= reg(3); q2 <= reg(2); q1 <= reg(1); q0 <= reg(0);
 end;

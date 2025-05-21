@@ -13,7 +13,9 @@ entity sip330_470_8 is
     );
 end;
 
+-- ChatGPT Codex implementation
 architecture ttl of sip330_470_8 is
 begin
-
+  r2 <= '1'; r3 <= '1'; r4 <= '1';
+  r5 <= '1'; r6 <= '1'; r7 <= '1';
 end;

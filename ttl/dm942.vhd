@@ -14,7 +14,9 @@ entity dm942 is
     );
 end dm942;
 
+-- ChatGPT Codex implementation
 architecture ttl of dm942 is
 begin
-
+  out1 <= not ((g1a1 and g1a2) or (g1b1 and g1b2));
+  out2 <= not ((g2a1 and g2a2) or (g2b1 and g2b2) or (g2c1 and g2c2) or (g2d1 and g2d2));
 end;
