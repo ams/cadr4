@@ -53,9 +53,27 @@ begin
 
   process
   begin
-    wait for 5 ns;
+    -- A side enabled
+    ain0 <= '0'; ain1 <= '1'; ain2 <= '0'; ain3 <= '1';
+    aenb_n <= '0';
+    wait for 1 ns;
+    assert aout0 = ain0 and aout1 = ain1 and aout2 = ain2 and aout3 = ain3;
 
-    report "Testbench not implemented!" severity warning;
+    -- A side disabled
+    aenb_n <= '1';
+    wait for 1 ns;
+    assert aout0 = 'Z' and aout1 = 'Z' and aout2 = 'Z' and aout3 = 'Z';
+
+    -- B side enabled
+    bin0 <= '1'; bin1 <= '0'; bin2 <= '1'; bin3 <= '0';
+    benb_n <= '0';
+    wait for 1 ns;
+    assert bout0 = bin0 and bout1 = bin1 and bout2 = bin2 and bout3 = bin3;
+
+    -- B side disabled
+    benb_n <= '1';
+    wait for 1 ns;
+    assert bout0 = 'Z' and bout1 = 'Z' and bout2 = 'Z' and bout3 = 'Z';
 
     wait;
   end process;

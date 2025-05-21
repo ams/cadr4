@@ -27,9 +27,27 @@ begin
 
   process
   begin
-    wait for 5 ns;
+    clk <= '0';
 
-    report "Testbench not implemented!" severity warning;
+    -- clear to 0 using JK=01
+    j <= '0'; k <= '1';
+    clk <= '1'; wait for 1 ns; clk <= '0';
+    assert q = '0' and q_n = '1';
+
+    -- set to 1 using JK=10
+    j <= '1'; k <= '0';
+    clk <= '1'; wait for 1 ns; clk <= '0';
+    assert q = '1' and q_n = '0';
+
+    -- reset to 0 using JK=01
+    j <= '0'; k <= '1';
+    clk <= '1'; wait for 1 ns; clk <= '0';
+    assert q = '0' and q_n = '1';
+
+    -- toggle using JK=11
+    j <= '1'; k <= '1';
+    clk <= '1'; wait for 1 ns; clk <= '0';
+    assert q = '1' and q_n = '0';
 
     wait;
   end process;
