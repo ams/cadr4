@@ -1,5 +1,6 @@
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 library ttl;
 use ttl.sn74.all;
@@ -64,7 +65,8 @@ begin
     -- disabled outputs when g1 is low
     g1 <= '0';
     wait for 1 ns;
-    assert (y7 & y6 & y5 & y4 & y3 & y2 & y1 & y0) = (others => '1');
+    exp := (others => '1');
+    assert (y7 & y6 & y5 & y4 & y3 & y2 & y1 & y0) = exp;
 
     wait;
   end process;
