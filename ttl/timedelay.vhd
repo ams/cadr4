@@ -14,17 +14,14 @@ entity timedelay is
 end timedelay;
 
 architecture behavioral of timedelay is
-
-  signal delayed_buffers : std_logic_vector(taps-1 downto 0) := (others => '0');
-
 begin
 
-  process
-    variable delay : time := initial;
+  process (input)
+    variable delay : time;
   begin
+    delay := initial;
     for i in 0 to taps-1 loop
-      wait for delay;
-      delayed(i) <= input;
+      delayed(i) <= input after delay;
       delay      := delay + increment;
     end loop;
   end process;

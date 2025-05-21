@@ -19,11 +19,48 @@ begin
     delayed => delayed
     );
 
-  process
+  stimulus : process
   begin
-    wait for 5 ns;
+    input <= '0';
+    wait for 10 ns;
+    input <= '1';
 
-    report "Testbench not implemented!" severity warning;
+    wait for 50 ns;                     -- 10 ns + 50 ns = 60 ns
+    assert delayed(0) = '1';
+    assert delayed(1) = '0';
+    assert delayed(2) = '0';
+    assert delayed(3) = '0';
+    assert delayed(4) = '0';
+
+    wait for 10 ns;                     -- 70 ns
+    assert delayed(1) = '1';
+
+    wait for 10 ns;                     -- 80 ns
+    assert delayed(2) = '1';
+
+    wait for 10 ns;                     -- 90 ns
+    assert delayed(3) = '1';
+
+    wait for 10 ns;                     -- 100 ns
+    assert delayed(4) = '1';
+
+    wait for 20 ns;                     -- 120 ns
+    input <= '0';
+
+    wait for 50 ns;                     -- 170 ns
+    assert delayed(0) = '0';
+
+    wait for 10 ns;                     -- 180 ns
+    assert delayed(1) = '0';
+
+    wait for 10 ns;                     -- 190 ns
+    assert delayed(2) = '0';
+
+    wait for 10 ns;                     -- 200 ns
+    assert delayed(3) = '0';
+
+    wait for 10 ns;                     -- 210 ns
+    assert delayed(4) = '0';
 
     wait;
   end process;
