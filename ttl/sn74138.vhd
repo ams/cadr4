@@ -13,6 +13,7 @@ entity sn74138 is
     );
 end;
 
+-- OpenAI Codex implementation
 architecture ttl of sn74138 is
   signal y : unsigned(7 downto 0);
 begin
