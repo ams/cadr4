@@ -25,5 +25,16 @@ end;
 
 architecture ttl of sn74258 is
 begin
-
+  process(all)
+  begin
+    if enb_n = '1' then
+      ay <= 'Z'; by <= 'Z'; cy <= 'Z'; dy <= 'Z';
+    else
+      if sel = '0' then
+        ay <= a0; by <= b0; cy <= c0; dy <= d0;
+      else
+        ay <= a1; by <= b1; cy <= c1; dy <= d1;
+      end if;
+    end if;
+  end process;
 end;

@@ -22,6 +22,38 @@ entity dm9328 is
 end dm9328;
 
 architecture ttl of dm9328 is
+  signal rega : std_logic_vector(7 downto 0) := (others => '0');
+  signal regb : std_logic_vector(7 downto 0) := (others => '0');
 begin
+  -- Shift register A
+  process(aclk, clr_n)
+  begin
+    if clr_n = '0' then
+      rega <= (others => '0');
+    elsif rising_edge(aclk) then
+      if asel = '0' then
+        rega <= rega(6 downto 0) & ai0;
+      else
+        rega <= rega(6 downto 0) & ai1;
+      end if;
+    end if;
+  end process;
+  aq <= rega(7);
+  aq_n <= not rega(7);
 
+  -- Shift register B
+  process(bclk, clr_n)
+  begin
+    if clr_n = '0' then
+      regb <= (others => '0');
+    elsif rising_edge(bclk) then
+      if bsel = '0' then
+        regb <= regb(6 downto 0) & bi0;
+      else
+        regb <= regb(6 downto 0) & bi1;
+      end if;
+    end if;
+  end process;
+  bq <= regb(7);
+  bq_n <= not regb(7);
 end;

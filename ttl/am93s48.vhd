@@ -14,5 +14,11 @@ end;
 
 architecture ttl of am93s48 is
 begin
-
+  process(all)
+    variable parity : std_logic;
+  begin
+    parity := i0 xor i1 xor i2 xor i3 xor i4 xor i5 xor i6 xor i7 xor i8 xor i9 xor i10 xor i11;
+    pe <= not parity;
+    po <= parity;
+  end process;
 end;
