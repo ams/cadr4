@@ -1,9 +1,15 @@
+.NOTPARALLEL:
+
 PROJECT		= ttl
 
 VHDSTND		= 08
 
 SIM		= ghdl
 VCDFORMAT	= ghw
+
+GHDLFLAGS		=
+GHDLMAKEFLAGS 	= -g
+GHDLRUNFLAGS 	= --assert-level=warning --backtrace-severity=warning
 
 UNSORTED_SRCS	=				\
 ic_16dummy.vhd
@@ -92,5 +98,4 @@ unsorted.vhd					\
 TB_SRCS_VHD	= $(addsuffix _tb.vhd, $(basename $(SN74_SRCS) $(MISC_SRCS) $(OTHER_SRCS) $(UNSORTED_SRCS)))
 TESTBENCHES	= $(basename $(TB_SRCS_VHD))
 
-HDLMAKE_MK ?= ~/hdlmake.mk/hdlmake.mk
-include $(HDLMAKE_MK)
+include ../hdlmake.mk

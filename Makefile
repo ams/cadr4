@@ -1,11 +1,15 @@
+.NOTPARALLEL:
+
 PROJECT		= cadr4
 
 SIM		= ghdl
-VCDFORMAT	= ghw
+VCDFORMAT	= vcd
 
 VHDSTND		= 08
 
-GHDLFLAGS	= -Pttl
+GHDLFLAGS		= -Pttl
+GHDLMAKEFLAGS 	= -g
+GHDLRUNFLAGS 	= --assert-level=warning --backtrace-severity=warning
 
 TB_SRCS_VHD	= $(addsuffix _tb.vhd, cadr4 cadr4_clock1)
 TESTBENCHES	= $(basename $(TB_SRCS_VHD))
@@ -131,5 +135,4 @@ all::;	 	(cd ttl; make all)
 check::;	(cd ttl; make check)
 clean::;	(cd ttl; make clean)
 
-HDLMAKE_MK ?= ~/hdlmake.mk/hdlmake.mk
-include $(HDLMAKE_MK)
+include hdlmake.mk
