@@ -9,7 +9,8 @@ VCDFORMAT	= ghw
 
 GHDLFLAGS		=
 GHDLMAKEFLAGS 	= -g
-GHDLRUNFLAGS 	= --assert-level=warning --backtrace-severity=warning
+GHDLRUNFLAGS 	= --backtrace-severity=warning
+#GHDLRUNFLAGS	+= --assert-level=warning
 
 UNSORTED_SRCS	=				\
 ic_16dummy.vhd

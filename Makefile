@@ -9,7 +9,8 @@ VHDSTND		= 08
 
 GHDLFLAGS		= -Pttl
 GHDLMAKEFLAGS 	= -g
-GHDLRUNFLAGS 	= --assert-level=warning --backtrace-severity=warning
+GHDLRUNFLAGS 	= --backtrace-severity=warning
+#GHDLRUNFLAGS	+= --assert-level=warning
 
 TB_SRCS_VHD	= $(addsuffix _tb.vhd, cadr4 cadr4_clock1)
 TESTBENCHES	= $(basename $(TB_SRCS_VHD))
