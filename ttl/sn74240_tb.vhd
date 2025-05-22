@@ -31,9 +31,31 @@ begin
 
   process
   begin
-    wait for 5 ns;
+    -- A side enabled, outputs should be inverted
+    ain0 <= '0'; ain1 <= '1'; ain2 <= '0'; ain3 <= '1';
+    aenb_n <= '0';
+    wait for 1 ns;
+    assert aout0 = not ain0 and aout1 = not ain1 and
+           aout2 = not ain2 and aout3 = not ain3;
 
-    report "Testbench not implemented!" severity warning;
+    -- A side disabled, outputs high impedance
+    aenb_n <= '1';
+    wait for 1 ns;
+    assert aout0 = 'Z' and aout1 = 'Z' and
+           aout2 = 'Z' and aout3 = 'Z';
+
+    -- B side enabled, outputs should be inverted
+    bin0 <= '1'; bin1 <= '0'; bin2 <= '1'; bin3 <= '0';
+    benb_n <= '0';
+    wait for 1 ns;
+    assert bout0 = not bin0 and bout1 = not bin1 and
+           bout2 = not bin2 and bout3 = not bin3;
+
+    -- B side disabled, outputs high impedance
+    benb_n <= '1';
+    wait for 1 ns;
+    assert bout0 = 'Z' and bout1 = 'Z' and
+           bout2 = 'Z' and bout3 = 'Z';
 
     wait;
   end process;
