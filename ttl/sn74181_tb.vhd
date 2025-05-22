@@ -9,28 +9,29 @@ end;
 
 architecture testbench of sn74181_tb is
 
-  signal cin_n  : std_logic;
-  signal s0     : std_logic;
-  signal s1     : std_logic;
-  signal s2     : std_logic;
-  signal s3     : std_logic;
-  signal m      : std_logic;
-  signal a0     : std_logic;
-  signal a1     : std_logic;
-  signal a2     : std_logic;
-  signal a3     : std_logic;
-  signal b0     : std_logic;
-  signal b1     : std_logic;
-  signal b2     : std_logic;
-  signal b3     : std_logic;
-  signal f0     : std_logic;
-  signal f1     : std_logic;
-  signal f2     : std_logic;
-  signal f3     : std_logic;
-  signal aeb    : std_logic;
-  signal x      : std_logic;
-  signal y      : std_logic;
-  signal cout_n : std_logic;
+  -- Initialize signals to avoid metavalue assertions from ieee.numeric_std
+  signal cin_n  : std_logic := '0';
+  signal s0     : std_logic := '0';
+  signal s1     : std_logic := '0';
+  signal s2     : std_logic := '0';
+  signal s3     : std_logic := '0';
+  signal m      : std_logic := '0';
+  signal a0     : std_logic := '0';
+  signal a1     : std_logic := '0';
+  signal a2     : std_logic := '0';
+  signal a3     : std_logic := '0';
+  signal b0     : std_logic := '0';
+  signal b1     : std_logic := '0';
+  signal b2     : std_logic := '0';
+  signal b3     : std_logic := '0';
+  signal f0     : std_logic := '0';
+  signal f1     : std_logic := '0';
+  signal f2     : std_logic := '0';
+  signal f3     : std_logic := '0';
+  signal aeb    : std_logic := '0';
+  signal x      : std_logic := '0';
+  signal y      : std_logic := '0';
+  signal cout_n : std_logic := '0';
 
 begin
 
