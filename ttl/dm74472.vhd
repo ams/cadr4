@@ -40,7 +40,7 @@ architecture ttl of dm74472 is
   end function;
 
   signal rom  : rom_t := load_rom;
-  signal addr : unsigned(8 downto 0);
+  signal addr : unsigned(8 downto 0) := (others => '0');
 begin
   addr <= a8 & a7 & a6 & a5 & a4 & a3 & a2 & a1 & a0;
 

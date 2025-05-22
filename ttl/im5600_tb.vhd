@@ -12,20 +12,21 @@ end;
 
 architecture testbench of im5600_tb is
 
-  signal o7   : std_logic;
-  signal o6   : std_logic;
-  signal o5   : std_logic;
-  signal o4   : std_logic;
-  signal o3   : std_logic;
-  signal o2   : std_logic;
-  signal o1   : std_logic;
-  signal o0   : std_logic;
-  signal a4   : std_logic;
-  signal a3   : std_logic;
-  signal a2   : std_logic;
-  signal a1   : std_logic;
-  signal a0   : std_logic;
-  signal ce_n : std_logic;
+  -- Initialize signals to avoid metavalue assertions from ieee.numeric_std
+  signal o7   : std_logic := '0';
+  signal o6   : std_logic := '0';
+  signal o5   : std_logic := '0';
+  signal o4   : std_logic := '0';
+  signal o3   : std_logic := '0';
+  signal o2   : std_logic := '0';
+  signal o1   : std_logic := '0';
+  signal o0   : std_logic := '0';
+  signal a4   : std_logic := '0';
+  signal a3   : std_logic := '0';
+  signal a2   : std_logic := '0';
+  signal a1   : std_logic := '0';
+  signal a0   : std_logic := '0';
+  signal ce_n : std_logic := '0';
 
   type rom_t is array (0 to 31) of std_logic_vector(7 downto 0);
 
