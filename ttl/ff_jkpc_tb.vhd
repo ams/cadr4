@@ -1,6 +1,8 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
+-- Testbench created by OpenAI Codex
+
 library ttl;
 use ttl.misc.all;
 
@@ -28,13 +30,32 @@ begin
     q_n => q_n
     );
 
+  -- Stimulus created by OpenAI Codex
   process
   begin
-    wait for 5 ns;
+    clk <= '0';
+    j   <= '0';
+    k   <= '0';
 
-    report "Testbench not implemented!" severity warning;
+    -- asynchronous clear
+    pre <= '1'; clr <= '0';
+    wait for 1 ns;
+    assert q = '0' and q_n = '1';
+
+    -- asynchronous preset
+    clr <= '1'; pre <= '0';
+    wait for 1 ns;
+    assert q = '1' and q_n = '0';
+
+    -- when both preset and clear are inactive, value should hold
+    pre <= '1'; clr <= '1';
+    for i in 1 to 3 loop
+      clk <= '1'; wait for 1 ns; clk <= '0'; wait for 1 ns;
+      assert q = '1' and q_n = '0';
+    end loop;
 
     wait;
   end process;
 
 end;
+
