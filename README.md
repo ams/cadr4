@@ -23,7 +23,6 @@ Prerequisites:
 
 ```
 cd ~/
-fossil open https://tumbleweed.nu/r/hdlmake.mk
 git clone https://github.com/ams/cadr4
 cd cadr4
 make help
