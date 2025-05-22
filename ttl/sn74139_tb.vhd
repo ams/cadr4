@@ -1,5 +1,6 @@
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 library ttl;
 use ttl.sn74.all;
@@ -44,12 +45,50 @@ begin
     );
 
   process
+    variable sel : unsigned(1 downto 0);
+    variable exp : std_logic_vector(3 downto 0);
   begin
-    wait for 5 ns;
+    -- initialize inputs
+    g1 <= '1'; g2 <= '1';
+    a1 <= '0'; b1 <= '0';
+    a2 <= '0'; b2 <= '0';
+    wait for 1 ns;
 
-    report "Testbench not implemented!" severity warning;
+    -- test first decoder
+    g2 <= '1';
+    for i in 0 to 3 loop
+      sel := to_unsigned(i, 2);
+      a1 <= sel(1); b1 <= sel(0); g1 <= '0';
+      wait for 1 ns;
+      exp := (others => '1');
+      exp(3 - i) := '0';
+      assert (g1y0 & g1y1 & g1y2 & g1y3) = exp;
+      exp := "1111";
+      assert (g2y3 & g2y2 & g2y1 & g2y0) = exp;
+    end loop;
+    g1 <= '1';
+    wait for 1 ns;
+    exp := "1111";
+    assert (g1y0 & g1y1 & g1y2 & g1y3) = exp;
+
+    -- test second decoder
+    g1 <= '1';
+    for i in 0 to 3 loop
+      sel := to_unsigned(i, 2);
+      a2 <= sel(1); b2 <= sel(0); g2 <= '0';
+      wait for 1 ns;
+      exp := (others => '1');
+      exp(i) := '0';
+      assert (g2y3 & g2y2 & g2y1 & g2y0) = exp;
+      exp := "1111";
+      assert (g1y0 & g1y1 & g1y2 & g1y3) = exp;
+    end loop;
+    g2 <= '1';
+    wait for 1 ns;
+    exp := "1111";
+    assert (g2y3 & g2y2 & g2y1 & g2y0) = exp;
 
     wait;
   end process;
 
-end;
+end architecture testbench;
