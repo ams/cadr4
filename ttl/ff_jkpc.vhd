@@ -1,5 +1,8 @@
 -- J-K Flip-Flop (with preset and clear)
 
+-- 'pre' and 'clr' are active-low asynchronous inputs. When both are
+-- high, the flip-flop retains its previous state.
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -28,9 +31,10 @@ begin
     case rs is
       when "01"   => q <= '0'; q_n <= '1';
       when "10"   => q <= '1'; q_n <= '0';
-      when "11"   => q <= 'X'; q_n <= 'X';
+      when "11"   => null;
       when others => null;
     end case;
   end process;
 
 end;
+
