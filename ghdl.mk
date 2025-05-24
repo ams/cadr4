@@ -17,7 +17,6 @@ GHDLOPTIONS 	?=
 GHDLSIMOPTIONS	?=
 
 SRCS			?= $(error SRCS: variable not set)
-TB_DEPS			?=
 
 # ===
 
@@ -37,7 +36,7 @@ $(PROJECT)-obj$(GHDLSTD).cf: $(SRCS)
 
 # make compiles (analyze, elaborate) everything needed to build the test bench X_tb
 
-%_tb: %_tb.vhd $(PROJECT)-obj$(GHDLSTD).cf $(TB_DEPS)
+%_tb: %_tb.vhd $(PROJECT)-obj$(GHDLSTD).cf
 	$(GHDL) import $(GHDLOPTIONS) --std=$(GHDLSTD) $<
 	$(GHDL) make $(GHDLOPTIONS) --std=$(GHDLSTD) $@
 
@@ -53,6 +52,9 @@ $(TESTBENCH).vcd: $(TESTBENCH)
 
 # PHONY TARGETS
 
+# it is odd to build TESTBENCHES but without calling ghdl make
+# entities are not analyzed so object files are not created, 
+# which is required for users of this library
 all: $(PROJECT)-obj$(GHDLSTD).cf $(TESTBENCHES)
 
 # check runs tb-X targets, which in turn builds X tb and runs it
