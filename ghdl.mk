@@ -1,59 +1,103 @@
 # ghdl.mk --- simulation using GHDL
 
+# disable all built-in rules
+.SUFFIXES:
+
+# do not run in parallel
+.NOTPARALLEL:
+
+# === THESE SHOULD BE DEFINED IN A PROJECT ===
+
 PROJECT		?= $(error PROJECT: variable not set)
+VCDFORMAT	?= $(error VCDFORMAT: variable not set)
 
-TESTBENCHES	?= $(PROJECT)_tb
+GHDL			?= ghdl 
+GHDLSTD			?= $(error GHDLSTD: variable not set)
+GHDLOPTIONS 	?=
+GHDLSIMOPTIONS	?=
+
+SRCS			?= $(error SRCS: variable not set)
+TB_DEPS			?=
+
+# ===
+
+TB_SRCS		= $(wildcard *_tb.vhd)
+TESTBENCHES	= $(basename $(TB_SRCS))
 TESTBENCH	?= $(firstword $(TESTBENCHES))
-TB_SRCS_VHD	?=
 
-SRCS_VHD	?= $(PROJECT).vhd
+.DEFAULT_GOAL := all
 
-VHDSTND		?= 93
-GHDL		?= ghdl 
+.PHONY: all check clean help list tb vcd tb-% vcd-%
 
-GHDLFLAGS		?=
-GHDLMAKEFLAGS 	?=
-GHDLRUNFLAGS  	?=
+# cf is used to figure out the dependencies
+# import does not analyze files, so it does not find all errors
 
-ifneq ($(VCDFORMAT),ghw)
+$(PROJECT)-obj$(GHDLSTD).cf: $(SRCS)
+	$(GHDL) import $(GHDLOPTIONS) --std=$(GHDLSTD) --work=$(PROJECT) $^
+
+# make compiles (analyze, elaborate) everything needed to build the test bench X_tb
+
+%_tb: %_tb.vhd $(PROJECT)-obj$(GHDLSTD).cf $(TB_DEPS)
+	$(GHDL) import $(GHDLOPTIONS) --std=$(GHDLSTD) $<
+	$(GHDL) make $(GHDLOPTIONS) --std=$(GHDLSTD) $@
+
+## TESTBENCH below is a _tb executable that would be built by the rule above
+
 GHWOPT_FILE	= $(wildcard $(TESTBENCH).ghwopt)
-endif
 
-$(PROJECT)-obj$(VHDSTND).cf: $(SRCS_VHD)
-	$(GHDL) import --std=$(VHDSTND) $(GHDLFLAGS) --work=$(PROJECT) $^
+$(TESTBENCH).ghw: $(TESTBENCH)
+	$(GHDL) run $(GHDLOPTIONS) $(TESTBENCH) --wave=$(TESTBENCH).ghw $(if $(GHWOPT_FILE), --read-wave-opt=$(GHWOPT_FILE)) $(GHDLSIMOPTIONS)
 
-work-obj$(VHDSTND).cf: $(TB_SRCS_VHD) $(TESTBENCH).vhd
-	$(GHDL) import --std=$(VHDSTND) $(GHDLFLAGS) --work=work $^
+$(TESTBENCH).vcd: $(TESTBENCH)
+	$(GHDL) run $(GHDLOPTIONS) $(TESTBENCH) --vcd=$(TESTBENCH).vcd $(GHDLSIMOPTIONS)
 
-$(TESTBENCHES): $$@.vhd work-obj$(VHDSTND).cf $(PROJECT)-obj$(VHDSTND).cf
-	$(GHDL) make --std=$(VHDSTND) $(GHDLFLAGS) $(GHDLMAKEFLAGS) -P$(PROJECT) $@
+# PHONY TARGETS
 
-$(TESTBENCH).fst:
-	$(GHDL) run $(GHDLFLAGS) $(TESTBENCH) --fst=$(TESTBENCH).fst $(GHDLRUNFLAGS)
+all: $(PROJECT)-obj$(GHDLSTD).cf $(TESTBENCHES)
 
-$(TESTBENCH).ghw:
-	$(GHDL) run $(GHDLFLAGS) $(TESTBENCH) --wave=$(TESTBENCH).ghw $(if $(GHWOPT_FILE), --read-wave-opt=$(GHWOPT_FILE)) $(GHDLRUNFLAGS)
+# check runs tb-X targets, which in turn builds X tb and runs it
+check:
+	$(MAKE) $(addprefix tb-,$(TESTBENCHES))
 
-$(TESTBENCH).vcd:
-	$(GHDL) run $(GHDLFLAGS) $(TESTBENCH) --vcd=$(TESTBENCH).vcd $(GHDLRUNFLAGS)
+list:
+	@echo $(TESTBENCHES)
 
-.PHONY: tb
-tb: $(TESTBENCH) $(TESTBENCH).$(VCDFORMAT)
+# build tb TESTBENCH and run it
+tb: $(TESTBENCH)
+	$(GHDL) run $(GHDLOPTIONS) $(TESTBENCH)
 
-.PHONY: vcd
-vcd: tb
+vcd: $(TESTBENCH).$(VCDFORMAT)
 ifeq ($(VCDFORMAT),vcd)
 	cat $(TESTBENCH).vcd | vcd
-else
+else ifeq ($(VCDFORMAT),ghw)
 	gtkwave $(TESTBENCH).$(VCDFORMAT) $(wildcard $(TESTBENCH).gtkw)
 endif
 
-.PHONY: clean-ghdl
-clean-ghdl:
-	rm -f $(TESTBENCHES)
+tb-%:
+	TESTBENCH=$* $(MAKE) tb
+
+vcd-%:
+	TESTBENCH=$* $(MAKE) vcd
+
+clean:
 	rm -f *_tb
-	rm -f *.ghw *.vcd *.fst
+	rm -f *.ghw *.vcd
 	rm -f *.o
 	rm -f *.cf
+
+help:
+	@echo "Available targets:"
+	@echo "	all         Compiles all sources."
+	@echo "	check       Runs all test-benches."
+	@echo "	clean       Cleans up any build artifacts."
+	@echo "	help        Shows available targets."
+	@echo "	list        List all test-benches."
+	@echo "	tb          Runs the default ($(TESTBENCH)) test-bench."
+	@echo "	vcd         Same as above, but starts a VCD viewer."
+	@echo "	tb-TB       Runs the test-bench TB."
+	@echo "	vcd-TB      Same as above, but starts a VCD viewer."
+
+deps.mk: $(wildcard *.vhd)
+	$(GHDL) --gen-makefile $(GHDLOPTIONS) *.vhd > deps.mk
 
 # ghdl.mk ends here.
