@@ -44,10 +44,100 @@ begin
     );
 
   process
+    variable expected_parity : std_logic;
   begin
     wait for 5 ns;
 
-    report "Testbench not implemented!" severity warning;
+    -- Test 1: All inputs '0' - even parity
+    i0 <= '0'; i1 <= '0'; i2 <= '0'; i3 <= '0';
+    i4 <= '0'; i5 <= '0'; i6 <= '0'; i7 <= '0';
+    i8 <= '0'; i9 <= '0'; i10 <= '0'; i11 <= '0';
+    wait for 5 ns;
+    expected_parity := '0';
+    assert po = expected_parity report "Test 1 failed: po incorrect" severity error;
+    assert pe = not expected_parity report "Test 1 failed: pe incorrect" severity error;
+
+    -- Test 2: Single '1' input - odd parity
+    i0 <= '1'; i1 <= '0'; i2 <= '0'; i3 <= '0';
+    i4 <= '0'; i5 <= '0'; i6 <= '0'; i7 <= '0';
+    i8 <= '0'; i9 <= '0'; i10 <= '0'; i11 <= '0';
+    wait for 5 ns;
+    expected_parity := '1';
+    assert po = expected_parity report "Test 2 failed: po incorrect" severity error;
+    assert pe = not expected_parity report "Test 2 failed: pe incorrect" severity error;
+
+    -- Test 3: Two '1' inputs - even parity
+    i0 <= '1'; i1 <= '1'; i2 <= '0'; i3 <= '0';
+    i4 <= '0'; i5 <= '0'; i6 <= '0'; i7 <= '0';
+    i8 <= '0'; i9 <= '0'; i10 <= '0'; i11 <= '0';
+    wait for 5 ns;
+    expected_parity := '0';
+    assert po = expected_parity report "Test 3 failed: po incorrect" severity error;
+    assert pe = not expected_parity report "Test 3 failed: pe incorrect" severity error;
+
+    -- Test 4: Three '1' inputs - odd parity
+    i0 <= '1'; i1 <= '1'; i2 <= '1'; i3 <= '0';
+    i4 <= '0'; i5 <= '0'; i6 <= '0'; i7 <= '0';
+    i8 <= '0'; i9 <= '0'; i10 <= '0'; i11 <= '0';
+    wait for 5 ns;
+    expected_parity := '1';
+    assert po = expected_parity report "Test 4 failed: po incorrect" severity error;
+    assert pe = not expected_parity report "Test 4 failed: pe incorrect" severity error;
+
+    -- Test 5: All inputs '1' - even parity (12 ones)
+    i0 <= '1'; i1 <= '1'; i2 <= '1'; i3 <= '1';
+    i4 <= '1'; i5 <= '1'; i6 <= '1'; i7 <= '1';
+    i8 <= '1'; i9 <= '1'; i10 <= '1'; i11 <= '1';
+    wait for 5 ns;
+    expected_parity := '0';
+    assert po = expected_parity report "Test 5 failed: po incorrect" severity error;
+    assert pe = not expected_parity report "Test 5 failed: pe incorrect" severity error;
+
+    -- Test 6: Eleven '1' inputs - odd parity
+    i0 <= '1'; i1 <= '1'; i2 <= '1'; i3 <= '1';
+    i4 <= '1'; i5 <= '1'; i6 <= '1'; i7 <= '1';
+    i8 <= '1'; i9 <= '1'; i10 <= '1'; i11 <= '0';
+    wait for 5 ns;
+    expected_parity := '1';
+    assert po = expected_parity report "Test 6 failed: po incorrect" severity error;
+    assert pe = not expected_parity report "Test 6 failed: pe incorrect" severity error;
+
+    -- Test 7: Mixed pattern - 6 ones (even parity)
+    i0 <= '1'; i1 <= '0'; i2 <= '1'; i3 <= '0';
+    i4 <= '1'; i5 <= '0'; i6 <= '1'; i7 <= '0';
+    i8 <= '1'; i9 <= '0'; i10 <= '1'; i11 <= '0';
+    wait for 5 ns;
+    expected_parity := '0';
+    assert po = expected_parity report "Test 7 failed: po incorrect" severity error;
+    assert pe = not expected_parity report "Test 7 failed: pe incorrect" severity error;
+
+    -- Test 8: Mixed pattern - 5 ones (odd parity)
+    i0 <= '1'; i1 <= '0'; i2 <= '1'; i3 <= '0';
+    i4 <= '1'; i5 <= '0'; i6 <= '1'; i7 <= '0';
+    i8 <= '1'; i9 <= '0'; i10 <= '0'; i11 <= '0';
+    wait for 5 ns;
+    expected_parity := '1';
+    assert po = expected_parity report "Test 8 failed: po incorrect" severity error;
+    assert pe = not expected_parity report "Test 8 failed: pe incorrect" severity error;
+
+    -- Test 9: Test each individual input bit
+    -- Only i11 = '1', rest = '0'
+    i0 <= '0'; i1 <= '0'; i2 <= '0'; i3 <= '0';
+    i4 <= '0'; i5 <= '0'; i6 <= '0'; i7 <= '0';
+    i8 <= '0'; i9 <= '0'; i10 <= '0'; i11 <= '1';
+    wait for 5 ns;
+    expected_parity := '1';
+    assert po = expected_parity report "Test 9 failed: po incorrect" severity error;
+    assert pe = not expected_parity report "Test 9 failed: pe incorrect" severity error;
+
+    -- Test 10: Only i10 = '1', rest = '0'
+    i0 <= '0'; i1 <= '0'; i2 <= '0'; i3 <= '0';
+    i4 <= '0'; i5 <= '0'; i6 <= '0'; i7 <= '0';
+    i8 <= '0'; i9 <= '0'; i10 <= '1'; i11 <= '0';
+    wait for 5 ns;
+    expected_parity := '1';
+    assert po = expected_parity report "Test 10 failed: po incorrect" severity error;
+    assert pe = not expected_parity report "Test 10 failed: pe incorrect" severity error;
 
     wait;
   end process;
