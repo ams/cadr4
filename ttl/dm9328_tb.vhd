@@ -45,22 +45,48 @@ begin
 
   process
   begin
+    -- initialize signals
+    aclk <= '0';
+    bclk <= '0';
+    ai0 <= '0';
+    ai1 <= '0';
+    bi0 <= '0';
+    bi1 <= '0';
+    asel <= '0';
+    bsel <= '0';
+    comclk <= '0';
+    
     -- clear registers
-    clr_n <= '0'; wait for 1 ns; clr_n <= '1';
+    clr_n <= '0'; 
+    wait for 1 ns; 
+    clr_n <= '1';
+    wait for 1 ns;
     assert aq = '0' and aq_n = '1' and bq = '0' and bq_n = '1';
 
     -- shift ones into register A using ai0
-    asel <= '0'; ai0 <= '1';
+    asel <= '0'; 
+    ai0 <= '1';
+    wait for 1 ns;
     for i in 0 to 7 loop
-      aclk <= '1'; wait for 1 ns; aclk <= '0'; wait for 1 ns;
+      aclk <= '1'; 
+      wait for 1 ns; 
+      aclk <= '0'; 
+      wait for 1 ns;
     end loop;
+    wait for 1 ns;
     assert aq = '1' and aq_n = '0';
 
     -- shift ones into register B using bi1
-    bsel <= '1'; bi1 <= '1';
+    bsel <= '1'; 
+    bi1 <= '1';
+    wait for 1 ns;
     for i in 0 to 7 loop
-      bclk <= '1'; wait for 1 ns; bclk <= '0'; wait for 1 ns;
+      bclk <= '1'; 
+      wait for 1 ns; 
+      bclk <= '0'; 
+      wait for 1 ns;
     end loop;
+    wait for 1 ns;
     assert bq = '1' and bq_n = '0';
 
     wait;

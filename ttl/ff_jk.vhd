@@ -13,17 +13,21 @@ entity ff_jk is
 end;
 
 architecture ttl of ff_jk is
+  signal q_int : std_logic := '0';
 begin
 
+  q <= q_int;
+  q_n <= not q_int;
+
   process (clk) is
-    variable jk : unsigned(1 downto 0);
+    variable jk : std_logic_vector(1 downto 0);
   begin
     if rising_edge(clk) then
       jk := j & k;
       case jk is
-        when "01"   => q <= '0'; q_n <= '1';
-        when "10"   => q <= '1'; q_n <= '0';
-        when "11"   => q <= not q; q_n <= q;
+        when "01"   => q_int <= '0';
+        when "10"   => q_int <= '1';
+        when "11"   => q_int <= not q_int;
         when others => null;
       end case;
     end if;

@@ -27,9 +27,34 @@ begin
 
   process
   begin
-    wait for 5 ns;
+    -- Initialize
+    d <= '0'; clk <= '0'; clr <= '1';
+    wait for 1 ns;
 
-    report "Testbench not implemented!" severity warning;
+    -- Test 1: Asynchronous clear
+    clr <= '0';
+    wait for 1 ns;
+    assert q = '0' and q_n = '1' report "Failed to clear asynchronously";
+
+    -- Test 2: Clock in '1' while clear is active (should remain cleared)
+    d <= '1';
+    clk <= '1'; wait for 1 ns; clk <= '0'; wait for 1 ns;
+    assert q = '0' and q_n = '1' report "Clear override failed";
+
+    -- Test 3: Release clear and clock in '1'
+    clr <= '1';
+    clk <= '1'; wait for 1 ns; clk <= '0'; wait for 1 ns;
+    assert q = '1' and q_n = '0' report "Failed to clock in '1' after clear release";
+
+    -- Test 4: Clock in '0'
+    d <= '0';
+    clk <= '1'; wait for 1 ns; clk <= '0'; wait for 1 ns;
+    assert q = '0' and q_n = '1' report "Failed to clock in '0'";
+
+    -- Test 5: Clear again while q='0'
+    clr <= '0';
+    wait for 1 ns;
+    assert q = '0' and q_n = '1' report "Clear failed when q was already '0'";
 
     wait;
   end process;

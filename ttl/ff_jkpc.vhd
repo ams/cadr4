@@ -20,20 +20,28 @@ entity ff_jkpc is
 end;
 
 architecture ttl of ff_jkpc is
+  signal q_int : std_logic := '0';
 begin
 
-  u0 : ff_jk port map (clk => clk, j => j, k => k, q => q, q_n => q_n);
+  q <= q_int;
+  q_n <= not q_int;
 
-  process (pre, clr)
-    variable rs : unsigned(1 downto 0);
+  process (clk, pre, clr)
+    variable jk : std_logic_vector(1 downto 0);
   begin
-    rs := clr & pre;
-    case rs is
-      when "01"   => q <= '0'; q_n <= '1';
-      when "10"   => q <= '1'; q_n <= '0';
-      when "11"   => null;
-      when others => null;
-    end case;
+    if pre = '0' then
+      q_int <= '1';
+    elsif clr = '0' then
+      q_int <= '0';
+    elsif rising_edge(clk) then
+      jk := j & k;
+      case jk is
+        when "01"   => q_int <= '0';
+        when "10"   => q_int <= '1';
+        when "11"   => q_int <= not q_int;
+        when others => null;
+      end case;
+    end if;
   end process;
 
 end;

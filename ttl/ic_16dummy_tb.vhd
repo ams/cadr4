@@ -27,9 +27,14 @@ begin
 
   process
   begin
-    wait for 5 ns;
-
-    report "Testbench not implemented!" severity warning;
+    wait for 1 ns;
+    
+    -- Test static outputs
+    assert hi1 = '1' report "hi1 should be '1'";
+    assert hi2 = '1' report "hi2 should be '1'";
+    assert \-boot1\ = '0' report "-boot1 should be '0'";
+    assert \-boot2\ = '0' report "-boot2 should be '0'";
+    assert \-power_reset\ = '0' report "-power_reset should be '0'";
 
     wait;
   end process;

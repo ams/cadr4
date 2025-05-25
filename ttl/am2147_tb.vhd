@@ -49,9 +49,52 @@ begin
 
   process
   begin
-    wait for 5 ns;
+    -- Test 1: Initialize with chip disabled
+    ce_n <= '1'; we_n <= '1'; di <= '0';
+    a11 <= '0'; a10 <= '0'; a9 <= '0'; a8 <= '0';
+    a7 <= '0'; a6 <= '0'; a5 <= '0'; a4 <= '0';
+    a3 <= '0'; a2 <= '0'; a1 <= '0'; a0 <= '0';
+    wait for 1 ns;
+    assert do = 'Z' report "Output should be high-Z when chip disabled";
 
-    report "Testbench not implemented!" severity warning;
+    -- Test 2: Write '1' to address 0
+    ce_n <= '0'; we_n <= '0'; di <= '1';
+    wait for 1 ns;
+    
+    -- Test 3: Read from address 0
+    we_n <= '1';
+    wait for 1 ns;
+    assert do = '1' report "Failed to read '1' from address 0";
+
+    -- Test 4: Write '0' to address 1
+    we_n <= '1'; -- Disable write first
+    a0 <= '1';   -- Change address
+    wait for 1 ns;
+    we_n <= '0'; di <= '0'; -- Enable write
+    wait for 1 ns;
+    
+    -- Test 5: Read from address 1
+    we_n <= '1';
+    wait for 1 ns;
+    assert do = '0' report "Failed to read '0' from address 1";
+
+    -- Test 6: Verify address 0 still contains '1'
+    a0 <= '0';
+    wait for 1 ns;
+    assert do = '1' report "Address 0 lost its data";
+
+    -- Test 7: Test higher address (address 4095)
+    we_n <= '1'; -- Disable write first
+    a11 <= '1'; a10 <= '1'; a9 <= '1'; a8 <= '1';
+    a7 <= '1'; a6 <= '1'; a5 <= '1'; a4 <= '1';
+    a3 <= '1'; a2 <= '1'; a1 <= '1'; a0 <= '1';
+    wait for 1 ns;
+    we_n <= '0'; di <= '1'; -- Enable write
+    wait for 1 ns;
+    
+    we_n <= '1';
+    wait for 1 ns;
+    assert do = '1' report "Failed to write/read from max address";
 
     wait;
   end process;

@@ -25,9 +25,28 @@ begin
 
   process
   begin
-    wait for 5 ns;
+    -- Initialize
+    d <= '0'; clk <= '0';
+    wait for 1 ns;
 
-    report "Testbench not implemented!" severity warning;
+    -- Test 1: Clock in '1'
+    d <= '1';
+    clk <= '1'; wait for 1 ns; clk <= '0'; wait for 1 ns;
+    assert q = '1' and q_n = '0' report "Failed to clock in '1'";
+
+    -- Test 2: Clock in '0'
+    d <= '0';
+    clk <= '1'; wait for 1 ns; clk <= '0'; wait for 1 ns;
+    assert q = '0' and q_n = '1' report "Failed to clock in '0'";
+
+    -- Test 3: Verify level changes don't affect output
+    d <= '1';
+    wait for 1 ns;
+    assert q = '0' and q_n = '1' report "Output changed without clock edge";
+
+    -- Test 4: Clock in the new value
+    clk <= '1'; wait for 1 ns; clk <= '0'; wait for 1 ns;
+    assert q = '1' and q_n = '0' report "Failed to clock in new value";
 
     wait;
   end process;

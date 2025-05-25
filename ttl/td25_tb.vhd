@@ -29,9 +29,39 @@ begin
 
   process
   begin
-    wait for 5 ns;
+    -- Initialize
+    input <= '0';
+    wait for 100 ns;
 
-    report "Testbench not implemented!" severity warning;
+    -- Test 1: Rising edge and verify delays
+    -- Actual delays are: 50ns, 60ns, 70ns, 80ns, 90ns (initial=50ns, increment=10ns)
+    input <= '1';
+    wait for 49 ns;
+    assert o_5ns = '0' report "o_5ns should not have changed yet";
+    wait for 2 ns; -- total 51ns
+    assert o_5ns = '1' report "o_5ns should be '1' after 50ns delay";
+    assert o_10ns = '0' report "o_10ns should not have changed yet";
+    
+    wait for 10 ns; -- total 61ns
+    assert o_10ns = '1' report "o_10ns should be '1' after 60ns delay";
+    assert o_15ns = '0' report "o_15ns should not have changed yet";
+    
+    wait for 10 ns; -- total 71ns
+    assert o_15ns = '1' report "o_15ns should be '1' after 70ns delay";
+    assert o_20ns = '0' report "o_20ns should not have changed yet";
+    
+    wait for 10 ns; -- total 81ns
+    assert o_20ns = '1' report "o_20ns should be '1' after 80ns delay";
+    assert o_25ns = '0' report "o_25ns should not have changed yet";
+    
+    wait for 10 ns; -- total 91ns
+    assert o_25ns = '1' report "o_25ns should be '1' after 90ns delay";
+
+    -- Test 2: Falling edge
+    input <= '0';
+    wait for 100 ns; -- Wait for all delays to complete
+    assert o_5ns = '0' and o_10ns = '0' and o_15ns = '0' and o_20ns = '0' and o_25ns = '0'
+      report "All outputs should be '0' after falling edge delay";
 
     wait;
   end process;

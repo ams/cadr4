@@ -26,11 +26,12 @@ begin
     input <= '1';
 
     wait for 50 ns;                     -- 10 ns + 50 ns = 60 ns
-    assert delayed(0) = '1';
-    assert delayed(1) = '0';
-    assert delayed(2) = '0';
-    assert delayed(3) = '0';
-    assert delayed(4) = '0';
+    wait for 1 ps;                      -- small delta delay
+    assert delayed(0) = '1' report "delayed(0) should be 1 but is " & std_logic'image(delayed(0));
+    assert delayed(1) = '0' report "delayed(1) should be 0 but is " & std_logic'image(delayed(1));
+    assert delayed(2) = '0' report "delayed(2) should be 0 but is " & std_logic'image(delayed(2));
+    assert delayed(3) = '0' report "delayed(3) should be 0 but is " & std_logic'image(delayed(3));
+    assert delayed(4) = '0' report "delayed(4) should be 0 but is " & std_logic'image(delayed(4));
 
     wait for 10 ns;                     -- 70 ns
     assert delayed(1) = '1';
@@ -44,22 +45,22 @@ begin
     wait for 10 ns;                     -- 100 ns
     assert delayed(4) = '1';
 
-    wait for 20 ns;                     -- 120 ns
+    wait for 20 ns;                     -- 110 ns
     input <= '0';
 
-    wait for 50 ns;                     -- 170 ns
+    wait for 50 ns;                     -- 160 ns
     assert delayed(0) = '0';
 
-    wait for 10 ns;                     -- 180 ns
+    wait for 10 ns;                     -- 170 ns
     assert delayed(1) = '0';
 
-    wait for 10 ns;                     -- 190 ns
+    wait for 10 ns;                     -- 180 ns
     assert delayed(2) = '0';
 
-    wait for 10 ns;                     -- 200 ns
+    wait for 10 ns;                     -- 190 ns
     assert delayed(3) = '0';
 
-    wait for 10 ns;                     -- 210 ns
+    wait for 10 ns;                     -- 200 ns
     assert delayed(4) = '0';
 
     wait;

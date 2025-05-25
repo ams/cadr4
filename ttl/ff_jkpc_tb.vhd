@@ -36,6 +36,9 @@ begin
     clk <= '0';
     j   <= '0';
     k   <= '0';
+    pre <= '1';
+    clr <= '1';
+    wait for 1 ns;
 
     -- asynchronous clear
     pre <= '1'; clr <= '0';
@@ -49,6 +52,7 @@ begin
 
     -- when both preset and clear are inactive, value should hold
     pre <= '1'; clr <= '1';
+    wait for 1 ns;
     for i in 1 to 3 loop
       clk <= '1'; wait for 1 ns; clk <= '0'; wait for 1 ns;
       assert q = '1' and q_n = '0';
