@@ -61,6 +61,9 @@ all: $(PROJECT)-obj$(GHDLSTD).cf $(TESTBENCHES)
 check:
 	$(MAKE) $(addprefix tb-,$(TESTBENCHES))
 
+test: 
+	$(MAKE) $(addprefix tb-,$(TESTBENCHES))
+
 list:
 	@echo $(TESTBENCHES)
 
@@ -90,7 +93,8 @@ clean:
 help:
 	@echo "Available targets:"
 	@echo "	all         Compiles all sources."
-	@echo "	check       Runs all test-benches."
+	@echo "	test        Runs all test-benches."
+	@echo "	check       Same as above."
 	@echo "	clean       Cleans up any build artifacts."
 	@echo "	help        Shows available targets."
 	@echo "	list        List all test-benches."
