@@ -43,9 +43,53 @@ begin
 
   process
   begin
-    wait for 5 ns;
+    -- Initialize
+    i1 <= '0'; i2 <= '0'; i4 <= '0'; i8 <= '0';
+    dp <= '0';
+    latch <= '0';
+    blank_n <= '1';
+    ldp <= '0';
+    test_n <= '1';
+    wait for 10 ns;
 
-    report "Testbench not implemented!" severity warning;
+    -- Test 1: Display digit 5 (0101)
+    i1 <= '1'; i2 <= '0'; i4 <= '1'; i8 <= '0';
+    latch <= '1';
+    wait for 10 ns;
+    latch <= '0';
+    wait for 10 ns;
+    assert l1 = '1' and l2 = '0' and l4 = '1' and l8 = '0'
+      report "Failed to display digit 5";
+
+    -- Test 2: Display digit 9 (1001)
+    i1 <= '1'; i2 <= '0'; i4 <= '0'; i8 <= '1';
+    latch <= '1';
+    wait for 10 ns;
+    latch <= '0';
+    wait for 10 ns;
+    assert l1 = '1' and l2 = '0' and l4 = '0' and l8 = '1'
+      report "Failed to display digit 9";
+
+    -- Test 3: Blank display
+    blank_n <= '0';
+    wait for 10 ns;
+    assert l1 = '0' and l2 = '0' and l4 = '0' and l8 = '0'
+      report "Failed to blank display";
+    blank_n <= '1';
+
+    -- Test 4: Test mode
+    test_n <= '0';
+    wait for 10 ns;
+    assert l1 = '1' and l2 = '1' and l4 = '1' and l8 = '1'
+      report "Failed to enter test mode";
+    test_n <= '1';
+
+    -- Test 5: Decimal point
+    dp <= '1';
+    ldp <= '1';
+    wait for 10 ns;
+    assert l1 = '1' and l2 = '0' and l4 = '0' and l8 = '1'
+      report "Failed to display decimal point";
 
     wait;
   end process;
