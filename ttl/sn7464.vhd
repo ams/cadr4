@@ -28,9 +28,6 @@ end;
 architecture ttl of sn7464 is
 begin
 
-  \out\ <= not ((a1 and b2)
-                or (a2 and b2)
-                or (a3 and b3 and b4)
-                or (a4 and b4 and c4 and d4));
+  \out\ <= not ((a1 and b1) or (a2 and b2) or (a3 and b3 and c3) or (a4 and b4 and c4 and d4));
 
 end;
