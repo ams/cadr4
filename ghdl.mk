@@ -55,7 +55,7 @@ $(TESTBENCH).vcd: $(TESTBENCH)
 # it is odd to build TESTBENCHES but without calling ghdl make
 # entities are not analyzed so object files are not created, 
 # which is required for users of this library
-all: $(PROJECT)-obj$(GHDLSTD).cf $(TESTBENCHES)
+all: $(PROJECT)-obj$(GHDLSTD).cf $(addsuffix, _tb, $(TESTBENCHES))
 
 # check runs tb-X targets, which in turn builds X tb and runs it
 check:
