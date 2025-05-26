@@ -9,16 +9,22 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
     - uses: actions/checkout@v3
 
-    - name: Install Fossil
-      run: sudo apt-get install -y fossil
+    - name: Install build-essential
+      run: sudo apt-get install -y build-essential
 
     - name: Install GHDL
       run: sudo apt-get install -y ghdl-llvm
+
+    - name: Install latest LLVM (18 and 19)
+      run: sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
+
+    - name: Fix libLLVM-18.so.18.1 path (symlink)
+      run: sudo ln -s /lib/x86_64-linux-gnu/libLLVM.so.18.1 /lib/x86_64-linux-gnu/libLLVM-18.so.18.1
 
     - name: Build ttl
       run: make all
