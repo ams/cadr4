@@ -1,4 +1,17 @@
 -- Arithmetic Logic Units/Function Generators
+-- SN74181 4-bit Arithmetic Logic Unit
+--
+-- Timing specifications (typical at VCC=5V, TA=25°C):
+-- - Propagation delay (A,B to F): 22ns
+-- - Propagation delay (S to F): 24ns
+-- - Propagation delay (M to F): 24ns
+-- - Propagation delay (CIN to F): 22ns
+-- - Propagation delay (CIN to COUT): 15ns
+-- - Propagation delay (A,B to COUT): 15ns
+-- - Propagation delay (S to COUT): 15ns
+-- - Propagation delay (M to COUT): 15ns
+--
+-- Power dissipation: 45mW typical
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -89,7 +102,22 @@ begin
           sum := ('0' & av) + ('0' & av) + 1;
         when "0111" => -- F = A - B
           sum := ('0' & av) - ('0' & bv);
-        -- The rest can be filled in as needed, for now set to zero
+        when "1000" => -- F = A + B + cin
+          sum := ('0' & av) + ('0' & bv) + ("0000" & cin);
+        when "1001" => -- F = A + B + cin + 1
+          sum := ('0' & av) + ('0' & bv) + ("0000" & cin) + 1;
+        when "1010" => -- F = A - B - cin
+          sum := ('0' & av) - ('0' & bv) - ("0000" & cin);
+        when "1011" => -- F = A - B - cin - 1
+          sum := ('0' & av) - ('0' & bv) - ("0000" & cin) - 1;
+        when "1100" => -- F = A + cin
+          sum := ('0' & av) + ("0000" & cin);
+        when "1101" => -- F = A + cin + 1
+          sum := ('0' & av) + ("0000" & cin) + 1;
+        when "1110" => -- F = A - cin
+          sum := ('0' & av) - ("0000" & cin);
+        when "1111" => -- F = A - cin - 1
+          sum := ('0' & av) - ("0000" & cin) - 1;
         when others =>
           sum := (others => '0');
       end case;
