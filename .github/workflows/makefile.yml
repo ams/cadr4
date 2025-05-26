@@ -30,12 +30,12 @@ jobs:
       run: make all
       working-directory: ./ttl
 
-    - name: Test ttl
-      run: make test
+    - name: Check ttl
+      run: make check
       working-directory: ./ttl
 
     - name: Build cadr
       run: make all
 
-    - name: Test cadr
-      run: make test
+    - name: Check cadr
+      run: make check
