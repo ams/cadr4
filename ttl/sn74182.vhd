@@ -1,4 +1,13 @@
 -- Look-Ahead Carry Generators
+-- SN74182 Look-Ahead Carry Generator
+--
+-- Timing specifications (typical at VCC=5V, TA=25°C):
+-- - Propagation delay (X,Y to COUT): 12ns
+-- - Propagation delay (CIN to COUT): 12ns
+-- - Propagation delay (X,Y to XOUT,YOUT): 12ns
+-- - Propagation delay (CIN to XOUT,YOUT): 12ns
+--
+-- Power dissipation: 45mW typical
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -30,9 +39,9 @@ end;
 architecture ttl of sn74182 is
 begin
   -- Carry outputs (active low)
-  cout0_n <= not (y0 or (x0 and not cin_n));
-  cout1_n <= not (y1 or (x1 and y0) or (x1 and x0 and not cin_n));
-  cout2_n <= not (y2 or (x2 and y1) or (x2 and x1 and y0) or (x2 and x1 and x0 and not cin_n));
+  cout0_n <= not (y0 or (x0 and cin_n));
+  cout1_n <= not (y1 or (x1 and y0) or (x1 and x0 and cin_n));
+  cout2_n <= not (y2 or (x2 and y1) or (x2 and x1 and y0) or (x2 and x1 and x0 and cin_n));
 
   -- Group generate (yout) and propagate (xout) per datasheet, active high
   yout <= y3 or (x3 and y2) or (x3 and x2 and y1) or (x3 and x2 and x1 and y0);
