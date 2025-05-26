@@ -7,57 +7,58 @@ use ttl.sn74.all;
 entity sn74373_tb is
 end;
 
-architecture testbench of sn74373_tb is
-
-  signal oenb_n : std_logic;
-  signal hold_n : std_logic;
-  signal o7     : std_logic;
-  signal o6     : std_logic;
-  signal o5     : std_logic;
-  signal o4     : std_logic;
-  signal o3     : std_logic;
-  signal o2     : std_logic;
-  signal o1     : std_logic;
-  signal o0     : std_logic;
-  signal i7     : std_logic;
-  signal i6     : std_logic;
-  signal i5     : std_logic;
-  signal i4     : std_logic;
-  signal i3     : std_logic;
-  signal i2     : std_logic;
-  signal i1     : std_logic;
-  signal i0     : std_logic;
-
+architecture sim of sn74373_tb is
+  signal hold_n, oenb_n : std_logic;
+  signal i : std_logic_vector(7 downto 0);
+  signal o : std_logic_vector(7 downto 0);
 begin
-
-  uut : sn74373 port map(
-    i0     => i0,
-    i1     => i1,
-    i2     => i2,
-    i3     => i3,
-    i4     => i4,
-    i5     => i5,
-    i6     => i6,
-    i7     => i7,
-    o0     => o0,
-    o1     => o1,
-    o2     => o2,
-    o3     => o3,
-    o4     => o4,
-    o5     => o5,
-    o6     => o6,
-    o7     => o7,
-    hold_n => hold_n,
-    oenb_n => oenb_n
+  dut : sn74373
+    port map (
+      hold_n => hold_n,
+      oenb_n => oenb_n,
+      i7 => i(7), i6 => i(6), i5 => i(5), i4 => i(4),
+      i3 => i(3), i2 => i(2), i1 => i(1), i0 => i(0),
+      o7 => o(7), o6 => o(6), o5 => o(5), o4 => o(4),
+      o3 => o(3), o2 => o(2), o1 => o(1), o0 => o(0)
     );
 
   process
   begin
-    wait for 5 ns;
+    -- Test 1: Transparent latch behavior
+    hold_n <= '1';
+    oenb_n <= '0';
+    i <= "10101010";
+    wait for 10 ns;
+    assert o = "10101010" report "Test 1 failed: Latch not transparent" severity error;
 
-    report "Testbench not implemented!" severity warning;
+    -- Test 2: Latch hold behavior
+    hold_n <= '0';
+    i <= "01010101";
+    wait for 10 ns;
+    assert o = "10101010" report "Test 2 failed: Latch not holding" severity error;
+
+    -- Test 3: Tri-state output when disabled
+    oenb_n <= '1';
+    wait for 10 ns;
+    assert o = "ZZZZZZZZ" report "Test 3 failed: Output not tri-stated" severity error;
+
+    -- Test 4: Output enabled after tri-state
+    oenb_n <= '0';
+    wait for 10 ns;
+    assert o = "10101010" report "Test 4 failed: Output not restored" severity error;
+
+    -- Test 5: New data latched when enabled
+    hold_n <= '1';
+    i <= "11110000";
+    wait for 10 ns;
+    assert o = "11110000" report "Test 5 failed: New data not latched" severity error;
+
+    -- Test 6: Data held after disable
+    hold_n <= '0';
+    i <= "00001111";
+    wait for 10 ns;
+    assert o = "11110000" report "Test 6 failed: Data not held" severity error;
 
     wait;
   end process;
-
 end;

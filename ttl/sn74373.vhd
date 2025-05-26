@@ -17,10 +17,10 @@ end;
 architecture ttl of sn74373 is
   signal data : std_logic_vector(7 downto 0) := (others => '0');
 begin
-  -- transparent latch when hold_n = 0
+  -- transparent latch when hold_n = 1
   process(all)
   begin
-    if hold_n = '0' then
+    if hold_n = '1' then
       data <= i7 & i6 & i5 & i4 & i3 & i2 & i1 & i0;
     end if;
   end process;
