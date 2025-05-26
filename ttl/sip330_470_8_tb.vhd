@@ -29,9 +29,15 @@ begin
 
   process
   begin
-    wait for 5 ns;
-
-    report "Testbench not implemented!" severity warning;
+    wait for 1 ns;
+    
+    -- Test all outputs are '1'
+    assert r2 = '1' report "r2 should be '1'";
+    assert r3 = '1' report "r3 should be '1'";
+    assert r4 = '1' report "r4 should be '1'";
+    assert r5 = '1' report "r5 should be '1'";
+    assert r6 = '1' report "r6 should be '1'";
+    assert r7 = '1' report "r7 should be '1'";
 
     wait;
   end process;

@@ -46,9 +46,58 @@ begin
 
   process
   begin
-    wait for 5 ns;
+    -- initialize all signals
+    pre1_n <= '1'; clr1_n <= '1'; j1 <= '0'; k1_n <= '1'; clk1 <= '0';
+    pre2_n <= '1'; clr2_n <= '1'; j2 <= '0'; k2_n <= '1'; clk2 <= '0';
+    wait for 1 ns;
 
-    report "Testbench not implemented!" severity warning;
+    -- asynchronous clear then preset on flip-flop 1
+    pre1_n <= '1'; clr1_n <= '0';
+    wait for 1 ns;
+    assert q1 = '0' and q1_n = '1';
+
+    clr1_n <= '1'; pre1_n <= '0';
+    wait for 1 ns;
+    assert q1 = '1' and q1_n = '0';
+
+    -- synchronous operations on flip-flop 1
+    pre1_n <= '1'; clr1_n <= '1';
+    j1 <= '1'; k1_n <= '1';
+    clk1 <= '0'; clk1 <= '1'; wait for 1 ns; clk1 <= '0';
+    assert q1 = '1' and q1_n = '0';
+
+    k1_n <= '0';
+    wait for 1 ns;
+    clk1 <= '1'; wait for 1 ns; clk1 <= '0';
+    wait for 1 ns;
+    assert q1 = '0' and q1_n = '1';
+
+    j1 <= '0'; k1_n <= '1';
+    clk1 <= '1'; wait for 1 ns; clk1 <= '0';
+    wait for 1 ns;
+    assert q1 = '0' and q1_n = '1';
+
+    -- asynchronous preset and clear on flip-flop 2
+    clr2_n <= '1'; pre2_n <= '0';
+    wait for 1 ns;
+    assert q2 = '1' and q2_n = '0';
+
+    pre2_n <= '1'; clr2_n <= '0';
+    wait for 1 ns;
+    assert q2 = '0' and q2_n = '1';
+
+    -- synchronous operations on flip-flop 2
+    pre2_n <= '1'; clr2_n <= '1';
+    j2 <= '1'; k2_n <= '1';
+    clk2 <= '0'; clk2 <= '1'; wait for 1 ns; clk2 <= '0';
+    wait for 1 ns;
+    assert q2 = '1' and q2_n = '0';
+
+    k2_n <= '0';
+    wait for 1 ns;
+    clk2 <= '1'; wait for 1 ns; clk2 <= '0';
+    wait for 1 ns;
+    assert q2 = '0' and q2_n = '1';
 
     wait;
   end process;

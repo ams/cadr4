@@ -47,7 +47,92 @@ begin
   begin
     wait for 5 ns;
 
-    report "Testbench not implemented!" severity warning;
+    -- Test 1: Enable disabled (enb_n = '1') - all outputs should be '0'
+    enb_n <= '1';
+    sel <= '0';
+    a1 <= '1'; a2 <= '1'; a3 <= '1'; a4 <= '1';
+    b1 <= '1'; b2 <= '1'; b3 <= '1'; b4 <= '1';
+    wait for 10 ns;
+    assert y1 = '0' and y2 = '0' and y3 = '0' and y4 = '0'
+      report "Test 1 failed: outputs should be '0' when disabled" severity error;
+
+    -- Test 2: Enable active, select A inputs (sel = '0')
+    enb_n <= '0';
+    sel <= '0';
+    a1 <= '1'; a2 <= '0'; a3 <= '1'; a4 <= '0';
+    b1 <= '0'; b2 <= '1'; b3 <= '0'; b4 <= '1';
+    wait for 10 ns;
+    assert y1 = '1' and y2 = '0' and y3 = '1' and y4 = '0'
+      report "Test 2 failed: A inputs not selected properly" severity error;
+
+    -- Test 3: Enable active, select B inputs (sel = '1')
+    enb_n <= '0';
+    sel <= '1';
+    a1 <= '1'; a2 <= '0'; a3 <= '1'; a4 <= '0';
+    b1 <= '0'; b2 <= '1'; b3 <= '0'; b4 <= '1';
+    wait for 10 ns;
+    assert y1 = '0' and y2 = '1' and y3 = '0' and y4 = '1'
+      report "Test 3 failed: B inputs not selected properly" severity error;
+
+    -- Test 4: All A inputs high, select A
+    enb_n <= '0';
+    sel <= '0';
+    a1 <= '1'; a2 <= '1'; a3 <= '1'; a4 <= '1';
+    b1 <= '0'; b2 <= '0'; b3 <= '0'; b4 <= '0';
+    wait for 10 ns;
+    assert y1 = '1' and y2 = '1' and y3 = '1' and y4 = '1'
+      report "Test 4 failed: all A inputs high" severity error;
+
+    -- Test 5: All B inputs high, select B
+    enb_n <= '0';
+    sel <= '1';
+    a1 <= '0'; a2 <= '0'; a3 <= '0'; a4 <= '0';
+    b1 <= '1'; b2 <= '1'; b3 <= '1'; b4 <= '1';
+    wait for 10 ns;
+    assert y1 = '1' and y2 = '1' and y3 = '1' and y4 = '1'
+      report "Test 5 failed: all B inputs high" severity error;
+
+    -- Test 6: All inputs low, both select states
+    enb_n <= '0';
+    sel <= '0';
+    a1 <= '0'; a2 <= '0'; a3 <= '0'; a4 <= '0';
+    b1 <= '0'; b2 <= '0'; b3 <= '0'; b4 <= '0';
+    wait for 10 ns;
+    assert y1 = '0' and y2 = '0' and y3 = '0' and y4 = '0'
+      report "Test 6a failed: all inputs low, select A" severity error;
+
+    sel <= '1';
+    wait for 10 ns;
+    assert y1 = '0' and y2 = '0' and y3 = '0' and y4 = '0'
+      report "Test 6b failed: all inputs low, select B" severity error;
+
+    -- Test 7: Mixed pattern test
+    enb_n <= '0';
+    sel <= '0';
+    a1 <= '0'; a2 <= '1'; a3 <= '0'; a4 <= '1';
+    b1 <= '1'; b2 <= '0'; b3 <= '1'; b4 <= '0';
+    wait for 10 ns;
+    assert y1 = '0' and y2 = '1' and y3 = '0' and y4 = '1'
+      report "Test 7a failed: mixed pattern, select A" severity error;
+
+    sel <= '1';
+    wait for 10 ns;
+    assert y1 = '1' and y2 = '0' and y3 = '1' and y4 = '0'
+      report "Test 7b failed: mixed pattern, select B" severity error;
+
+    -- Test 8: Transition from enabled to disabled
+    enb_n <= '0';
+    sel <= '1';
+    a1 <= '0'; a2 <= '0'; a3 <= '0'; a4 <= '0';
+    b1 <= '1'; b2 <= '1'; b3 <= '1'; b4 <= '1';
+    wait for 10 ns;
+    assert y1 = '1' and y2 = '1' and y3 = '1' and y4 = '1'
+      report "Test 8a failed: before disable" severity error;
+
+    enb_n <= '1';
+    wait for 10 ns;
+    assert y1 = '0' and y2 = '0' and y3 = '0' and y4 = '0'
+      report "Test 8b failed: after disable" severity error;
 
     wait;
   end process;

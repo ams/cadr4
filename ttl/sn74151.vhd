@@ -33,15 +33,17 @@ begin
 
     -- core multiplexer with active-low chip-enable
     process(all)
-        variable sel : unsigned(2 downto 0);
+        variable sel : std_logic_vector(2 downto 0);
+        variable sel_int : integer;
     begin
         if ce_n = '0' then
-            sel := sel2 & sel1 & sel0;         -- now the result type is known
-            q   <= data_bus(to_integer(sel));
-            q_n <= not data_bus(to_integer(sel));
+            sel := sel0 & sel1 & sel2;
+            sel_int := to_integer(unsigned(sel));
+            q   <= data_bus(sel_int);
+            q_n <= not data_bus(sel_int);
         else
-            q   <= '0';
-            q_n <= '1';
+            q   <= 'X';
+            q_n <= 'X';
         end if;
     end process;
 end architecture;

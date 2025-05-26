@@ -59,7 +59,9 @@ begin
     -- load first value
     i0 <= '0'; i1 <= '1'; i2 <= '0'; i3 <= '1';
     i4 <= '0'; i5 <= '1'; i6 <= '0'; i7 <= '1';
+    wait for 1 ns;
     clk <= '1'; wait for 1 ns; clk <= '0';
+    wait for 1 ns;
 
     oenb_n <= '0';
     wait for 1 ns;

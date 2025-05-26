@@ -47,8 +47,8 @@ begin
   process(all)
     variable word : std_logic_vector(1 downto 0);
   begin
-    word := ram(to_integer(addr));
     if ce = '1' then
+      word := ram(to_integer(addr));
       d0 <= word(0); d1 <= word(1);
     else
       d0 <= 'Z'; d1 <= 'Z';

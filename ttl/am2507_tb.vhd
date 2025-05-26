@@ -45,9 +45,39 @@ begin
 
   process
   begin
-    wait for 5 ns;
+    -- Initialize
+    clk <= '0'; enb_n <= '1';
+    i0 <= '0'; i1 <= '0'; i2 <= '0'; i3 <= '0'; i4 <= '0'; i5 <= '0';
+    wait for 1 ns;
 
-    report "Testbench not implemented!" severity warning;
+    -- Test 1: Load data with enable disabled (should not change outputs)
+    i0 <= '1'; i1 <= '1'; i2 <= '1'; i3 <= '1'; i4 <= '1'; i5 <= '1';
+    clk <= '1'; wait for 1 ns; clk <= '0'; wait for 1 ns;
+    -- Outputs should remain unchanged (uninitialized)
+
+    -- Test 2: Load data with enable active
+    enb_n <= '0';
+    clk <= '1'; wait for 1 ns; clk <= '0'; wait for 1 ns;
+    assert d0 = '1' and d1 = '1' and d2 = '1' and d3 = '1' and d4 = '1' and d5 = '1'
+      report "Failed to load data when enabled";
+
+    -- Test 3: Change inputs and verify they don't affect outputs until clock edge
+    i0 <= '0'; i1 <= '0'; i2 <= '0'; i3 <= '0'; i4 <= '0'; i5 <= '0';
+    wait for 1 ns;
+    assert d0 = '1' and d1 = '1' and d2 = '1' and d3 = '1' and d4 = '1' and d5 = '1'
+      report "Outputs changed without clock edge";
+
+    -- Test 4: Clock with new data
+    clk <= '1'; wait for 1 ns; clk <= '0'; wait for 1 ns;
+    assert d0 = '0' and d1 = '0' and d2 = '0' and d3 = '0' and d4 = '0' and d5 = '0'
+      report "Failed to load new data";
+
+    -- Test 5: Disable enable and verify no change on clock edge
+    i0 <= '1'; i1 <= '1'; i2 <= '1'; i3 <= '1'; i4 <= '1'; i5 <= '1';
+    enb_n <= '1';
+    clk <= '1'; wait for 1 ns; clk <= '0'; wait for 1 ns;
+    assert d0 = '0' and d1 = '0' and d2 = '0' and d3 = '0' and d4 = '0' and d5 = '0'
+      report "Outputs changed when enable disabled";
 
     wait;
   end process;

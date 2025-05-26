@@ -45,9 +45,68 @@ begin
 
   process
   begin
-    wait for 5 ns;
+    -- Initialize signals
+    clk <= '0';
+    sel <= '0';
+    a0 <= '0'; a1 <= '0';
+    b0 <= '0'; b1 <= '0';
+    c0 <= '0'; c1 <= '0';
+    d0 <= '0'; d1 <= '0';
+    wait for 10 ns;
 
-    report "Testbench not implemented!" severity warning;
+    -- Test 1: sel = '0', outputs should be forced to '0' on clock edge
+    a0 <= '1'; b1 <= '1'; c0 <= '1'; d1 <= '1';
+    clk <= '1';
+    wait for 10 ns;
+    clk <= '0';
+    wait for 10 ns;
+    assert aq = '0' and bq = '0' and cq = '0' and dq = '0'
+      report "Test 1 failed: outputs should be 0 when sel=0" severity error;
+
+    -- Test 2: sel = '1', data should be latched on clock edge
+    sel <= '1';
+    a0 <= '1'; a1 <= '0';  -- a0 OR a1 = '1'
+    b0 <= '0'; b1 <= '1';  -- b0 OR b1 = '1'
+    c0 <= '1'; c1 <= '1';  -- c0 OR c1 = '1'
+    d0 <= '0'; d1 <= '0';  -- d0 OR d1 = '0'
+    wait for 5 ns;  -- Let inputs settle
+    clk <= '1';
+    wait for 10 ns;
+    clk <= '0';
+    wait for 10 ns;
+    assert aq = '1' and bq = '1' and cq = '1' and dq = '0'
+      report "Test 2 failed: incorrect latching with sel=1" severity error;
+
+    -- Test 3: Change inputs, outputs should remain stable until next clock
+    a0 <= '0'; a1 <= '0';  -- a0 OR a1 = '0'
+    b0 <= '0'; b1 <= '0';  -- b0 OR b1 = '0'
+    c0 <= '0'; c1 <= '0';  -- c0 OR c1 = '0'
+    d0 <= '1'; d1 <= '1';  -- d0 OR d1 = '1'
+    wait for 10 ns;
+    assert aq = '1' and bq = '1' and cq = '1' and dq = '0'
+      report "Test 3 failed: outputs changed without clock edge" severity error;
+
+    -- Test 4: Clock edge with new data
+    clk <= '1';
+    wait for 10 ns;
+    clk <= '0';
+    wait for 10 ns;
+    assert aq = '0' and bq = '0' and cq = '0' and dq = '1'
+      report "Test 4 failed: new data not latched correctly" severity error;
+
+    -- Test 5: sel = '0', all outputs forced to '0' regardless of inputs
+    sel <= '0';
+    a0 <= '1'; a1 <= '1';
+    b0 <= '1'; b1 <= '1';
+    c0 <= '1'; c1 <= '1';
+    d0 <= '1'; d1 <= '1';
+    wait for 5 ns;  -- Let inputs settle
+    clk <= '1';
+    wait for 10 ns;
+    clk <= '0';
+    wait for 10 ns;
+    assert aq = '0' and bq = '0' and cq = '0' and dq = '0'
+      report "Test 5 failed: outputs should be 0 when sel=0" severity error;
 
     wait;
   end process;

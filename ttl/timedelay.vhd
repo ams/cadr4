@@ -19,11 +19,16 @@ begin
   process (input)
     variable delay : time;
   begin
-    delay := initial;
-    for i in 0 to taps-1 loop
-      delayed(i) <= input after delay;
-      delay      := delay + increment;
-    end loop;
+    if input'event then
+      delay := initial;
+      for i in 0 to taps-1 loop
+        delayed(i) <= input after delay;
+        delay      := delay + increment;
+      end loop;
+    else
+      -- Initialize on first delta cycle
+      delayed <= (others => '0');
+    end if;
   end process;
 
 end;

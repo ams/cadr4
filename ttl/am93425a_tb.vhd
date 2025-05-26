@@ -9,20 +9,21 @@ end;
 
 architecture testbench of am93425a_tb is
 
-  signal a0   : std_logic;
-  signal a1   : std_logic;
-  signal a2   : std_logic;
-  signal a3   : std_logic;
-  signal a4   : std_logic;
-  signal a5   : std_logic;
-  signal a6   : std_logic;
-  signal a7   : std_logic;
-  signal a8   : std_logic;
-  signal a9   : std_logic;
-  signal ce_n : std_logic;
-  signal we_n : std_logic;
-  signal di   : std_logic;
-  signal do   : std_logic;
+  -- Initialize signals to avoid metavalue assertions from ieee.numeric_std
+  signal a0   : std_logic := '0';
+  signal a1   : std_logic := '0';
+  signal a2   : std_logic := '0';
+  signal a3   : std_logic := '0';
+  signal a4   : std_logic := '0';
+  signal a5   : std_logic := '0';
+  signal a6   : std_logic := '0';
+  signal a7   : std_logic := '0';
+  signal a8   : std_logic := '0';
+  signal a9   : std_logic := '0';
+  signal ce_n : std_logic := '0';
+  signal we_n : std_logic := '0';
+  signal di   : std_logic := '0';
+  signal do   : std_logic := '0';
 
 begin
 

@@ -40,15 +40,15 @@ architecture ttl of im5600 is
   end function;
 
   signal rom  : rom_t := load_rom;
-  signal addr : unsigned(4 downto 0);
+  signal addr : unsigned(4 downto 0) := (others => '0');
 begin
   addr <= a4 & a3 & a2 & a1 & a0;
 
   process(all)
     variable data : std_logic_vector(7 downto 0);
   begin
-    data := rom(to_integer(addr));
     if ce_n = '0' then
+      data := rom(to_integer(addr));
       o7 <= data(7); o6 <= data(6); o5 <= data(5); o4 <= data(4);
       o3 <= data(3); o2 <= data(2); o1 <= data(1); o0 <= data(0);
     else

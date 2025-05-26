@@ -53,9 +53,28 @@ begin
 
   process
   begin
+    -- Wait for initial propagation
     wait for 5 ns;
 
-    report "Testbench not implemented!" severity warning;
+    -- Test that all outputs are '1'
+    assert r2 = '1' report "r2 should be '1'" severity error;
+    assert r3 = '1' report "r3 should be '1'" severity error;
+    assert r4 = '1' report "r4 should be '1'" severity error;
+    assert r5 = '1' report "r5 should be '1'" severity error;
+    assert r6 = '1' report "r6 should be '1'" severity error;
+    assert r7 = '1' report "r7 should be '1'" severity error;
+    assert r8 = '1' report "r8 should be '1'" severity error;
+    assert r9 = '1' report "r9 should be '1'" severity error;
+    assert r10 = '1' report "r10 should be '1'" severity error;
+    assert r11 = '1' report "r11 should be '1'" severity error;
+    assert r12 = '1' report "r12 should be '1'" severity error;
+    assert r13 = '1' report "r13 should be '1'" severity error;
+    assert r14 = '1' report "r14 should be '1'" severity error;
+    assert r15 = '1' report "r15 should be '1'" severity error;
+    assert r16 = '1' report "r16 should be '1'" severity error;
+    assert r17 = '1' report "r17 should be '1'" severity error;
+    assert r18 = '1' report "r18 should be '1'" severity error;
+    assert r19 = '1' report "r19 should be '1'" severity error;
 
     wait;
   end process;
