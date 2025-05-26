@@ -13,19 +13,21 @@ entity sn74373 is
     );
 end;
 
--- ChatGPT Codex implementation
 architecture ttl of sn74373 is
-  signal data : std_logic_vector(7 downto 0) := (others => '0');
+  signal data : std_logic_vector(7 downto 0);
+  signal next_data : std_logic_vector(7 downto 0);
 begin
-  -- transparent latch when hold_n = 1
-  process(all)
+  -- transparent latch when hold_n = 1, hold when hold_n = 0
+  next_data <= i7 & i6 & i5 & i4 & i3 & i2 & i1 & i0;
+  
+  process(hold_n, next_data)
   begin
     if hold_n = '1' then
-      data <= i7 & i6 & i5 & i4 & i3 & i2 & i1 & i0;
+      data <= next_data;
     end if;
   end process;
 
-  process(all)
+  process(oenb_n, data)
   begin
     if oenb_n = '1' then
       o7 <= 'Z'; o6 <= 'Z'; o5 <= 'Z'; o4 <= 'Z';
