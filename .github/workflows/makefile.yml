@@ -18,7 +18,7 @@ jobs:
       run: sudo apt-get install -y fossil
 
     - name: Install GHDL
-      run: sudo apt-get install -y ghdl
+      run: sudo apt-get install -y ghdl-llvm
 
     - name: Build ttl
       run: make all
