@@ -21,7 +21,7 @@ begin
   process(all)
   begin
     if enb_n = '1' then
-      y1 <= '0'; y2 <= '0'; y3 <= '0'; y4 <= '0';
+      y1 <= 'Z'; y2 <= 'Z'; y3 <= 'Z'; y4 <= 'Z';
     elsif sel = '0' then
       y1 <= a1; y2 <= a2; y3 <= a3; y4 <= a4;
     else
