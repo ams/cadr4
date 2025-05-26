@@ -10,7 +10,7 @@ end;
 architecture testbench of sn74151_tb is
 
   signal ce_n : std_logic;
-  signal sel  : std_logic_vector(0 to 2);
+  signal sel  : std_logic_vector(2 downto 0);
   signal i    : std_logic_vector(0 to 7);
 
   signal q, q_n : std_logic;
@@ -26,16 +26,21 @@ begin
 
   process
     procedure x(xce_n    : std_logic;
-                xsel     : std_logic_vector(0 to 2);
+                xsel     : std_logic_vector(2 downto 0);
                 xi       : std_logic_vector(0 to 7);
                 expected : std_logic) is
     begin
-
       wait for 5 ns;
       ce_n <= xce_n; sel <= xsel; i <= xi;
       wait for 5 ns;
-      assert q = expected and q_n = not expected;
-
+      assert q = expected and q_n = not expected
+        report "ce_n=" & std_logic'image(xce_n) &
+               " sel=" & std_logic'image(xsel(2)) & std_logic'image(xsel(1)) & std_logic'image(xsel(0)) &
+               " i=" & to_string(xi) &
+               " expected=" & std_logic'image(expected) &
+               " q=" & std_logic'image(q) &
+               " q_n=" & std_logic'image(q_n)
+        severity error;
     end procedure;
 
   begin

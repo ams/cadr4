@@ -26,10 +26,10 @@ end;
 -- ChatGPT o3 implementation
 architecture ttl of sn74151 is
     -- handy vector to index the inputs
-    signal data_bus : std_logic_vector(7 downto 0);
+    signal data_bus : std_logic_vector(0 to 7);
 begin
     -- concatenate the individual inputs into a vector
-    data_bus <= i7 & i6 & i5 & i4 & i3 & i2 & i1 & i0;
+    data_bus <= i0 & i1 & i2 & i3 & i4 & i5 & i6 & i7;
 
     -- core multiplexer with active-low chip-enable
     process(all)
@@ -37,7 +37,7 @@ begin
         variable sel_int : integer;
     begin
         if ce_n = '0' then
-            sel := sel0 & sel1 & sel2;
+            sel := sel2 & sel1 & sel0;  -- sel2 is MSB, sel0 is LSB
             sel_int := to_integer(unsigned(sel));
             q   <= data_bus(sel_int);
             q_n <= not data_bus(sel_int);
