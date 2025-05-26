@@ -20,5 +20,14 @@ jobs:
     - name: Install GHDL
       run: sudo apt-get install -y ghdl
 
-    - name: Run test
+    - name: Build ttl
+      run: make -C ttl all
+
+    - name: Test ttl
+      run: make -C ttl test
+
+    - name: Build cadr
+      run: make all
+
+    - name: Test cadr
       run: make test
