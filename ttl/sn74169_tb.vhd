@@ -1,6 +1,8 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
+use std.env.all;
+
 library ttl;
 use ttl.sn74.all;
 
@@ -185,6 +187,8 @@ begin
     load_n <= '1';
     wait for 5 ns;
     assert co_n = '0' report "Carry should be active at 0 with down count enabled" severity error;
+
+    std.env.stop;
     
     wait;
   end process;
