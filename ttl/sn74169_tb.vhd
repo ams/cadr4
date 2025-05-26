@@ -183,10 +183,10 @@ begin
     i1 <= '0';
     i0 <= '0';
     load_n <= '0';
-    wait for 10 ns;
-    load_n <= '1';
-    wait for 5 ns;
+    wait for 5 ns;  -- Wait for combinational logic to settle
     assert co_n = '0' report "Carry should be active at 0 with down count enabled" severity error;
+    wait for 5 ns;  -- Complete the clock cycle
+    load_n <= '1';
 
     std.env.stop;
     

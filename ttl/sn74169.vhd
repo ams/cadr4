@@ -62,8 +62,9 @@ begin
     o0 <= cnt(0);
 
     -- terminal count / ripple-carry (active-low)
-    co_n <= '0' when (enb_t_n = '0' and enb_p_n = '0' and
-                      ((up_dn = '1' and cnt = "1111") or   -- overflow when counting up
-                       (up_dn = '0' and cnt = "0000")))    -- underflow when counting down
+    co_n <= '0' when (enb_t_n = '0' and enb_p_n = '0' and (
+                        (load_n = '0' and ((up_dn = '1' and unsigned(std_logic_vector'(i3 & i2 & i1 & i0)) = to_unsigned(15, 4)) or (up_dn = '0' and unsigned(std_logic_vector'(i3 & i2 & i1 & i0)) = to_unsigned(0, 4)))) or
+                        (load_n = '1' and ((up_dn = '1' and cnt = to_unsigned(15, 4)) or (up_dn = '0' and cnt = to_unsigned(0, 4))) )
+                      ))
             else '1';
 end architecture;
