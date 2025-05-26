@@ -22,6 +22,17 @@ architecture testbench of sn7474_tb is
   signal g1d   : std_logic;
   signal g1r_n : std_logic;
 
+  procedure check_outputs(
+    g1q_expected, g1q_n_expected,
+    g2q_expected, g2q_n_expected : in std_logic;
+    msg : in string) is
+  begin
+    assert g1q = g1q_expected report "g1q " & msg severity error;
+    assert g1q_n = g1q_n_expected report "g1q_n " & msg severity error;
+    assert g2q = g2q_expected report "g2q " & msg severity error;
+    assert g2q_n = g2q_n_expected report "g2q_n " & msg severity error;
+  end procedure;
+
 begin
 
   uut : sn7474 port map(
@@ -41,10 +52,67 @@ begin
 
   process
   begin
+    -- Initialize
+    g1clk <= '0'; g2clk <= '0';
+    g1r_n <= '1'; g2r_n <= '1';
+    g1s_n <= '1'; g2s_n <= '1';
+    g1d <= '0'; g2d <= '0';
     wait for 5 ns;
 
-    report "Testbench not implemented!" severity warning;
+    -- Test clear (reset) for both
+    g1r_n <= '0'; g2r_n <= '0';
+    wait for 5 ns;
+    check_outputs('0', '1', '0', '1', "should be cleared");
 
+    -- Test preset for both
+    g1r_n <= '1'; g2r_n <= '1';
+    g1s_n <= '0'; g2s_n <= '0';
+    wait for 5 ns;
+    check_outputs('1', '0', '1', '0', "should be preset");
+
+    -- Test data loading on rising edge
+    g1s_n <= '1'; g2s_n <= '1';
+    g1d <= '1'; g2d <= '0';
+    wait for 5 ns;
+    check_outputs('1', '0', '1', '0', "should not change without clock");
+
+    g1clk <= '1'; g2clk <= '1';
+    wait for 5 ns;
+    check_outputs('1', '0', '0', '1', "should load data on rising edge");
+
+    -- Test complementary outputs
+    g1d <= '0'; g2d <= '1';
+    g1clk <= '0'; g2clk <= '0';
+    wait for 5 ns;
+    check_outputs('1', '0', '0', '1', "should not change without clock");
+
+    g1clk <= '1'; g2clk <= '1';
+    wait for 5 ns;
+    check_outputs('0', '1', '1', '0', "should load new data on rising edge");
+
+    -- Test clear during operation
+    g1r_n <= '0'; g2r_n <= '0';
+    wait for 5 ns;
+    check_outputs('0', '1', '0', '1', "should clear immediately");
+
+    -- Test preset during operation
+    g1r_n <= '1'; g2r_n <= '1';
+    g1s_n <= '0'; g2s_n <= '0';
+    wait for 5 ns;
+    check_outputs('1', '0', '1', '0', "should preset immediately");
+
+    -- Test clock edge sensitivity
+    g1s_n <= '1'; g2s_n <= '1';
+    g1d <= '1'; g2d <= '1';
+    g1clk <= '0'; g2clk <= '0';
+    wait for 5 ns;
+    check_outputs('1', '0', '1', '0', "should not change on falling edge");
+
+    g1clk <= '1'; g2clk <= '1';
+    wait for 5 ns;
+    check_outputs('1', '0', '1', '0', "should change on rising edge");
+
+    report "Test completed successfully" severity note;
     wait;
   end process;
 
