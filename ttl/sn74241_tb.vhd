@@ -53,9 +53,41 @@ begin
 
   process
   begin
-    wait for 5 ns;
+    -- Initialize
+    aenb_n <= '1';
+    benb <= '0';
+    ain0 <= '0'; ain1 <= '0'; ain2 <= '0'; ain3 <= '0';
+    bin0 <= '0'; bin1 <= '0'; bin2 <= '0'; bin3 <= '0';
+    wait for 10 ns;
 
-    report "Testbench not implemented!" severity warning;
+    -- Test 1: A outputs enabled, B outputs disabled
+    aenb_n <= '0';
+    benb <= '0';
+    ain0 <= '1'; ain1 <= '0'; ain2 <= '1'; ain3 <= '0';
+    wait for 10 ns;
+    assert aout0 = '1' and aout1 = '0' and aout2 = '1' and aout3 = '0'
+      report "A outputs not matching inputs";
+    assert bout0 = 'Z' and bout1 = 'Z' and bout2 = 'Z' and bout3 = 'Z'
+      report "B outputs not high-Z when disabled";
+
+    -- Test 2: A outputs disabled, B outputs enabled
+    aenb_n <= '1';
+    benb <= '1';
+    bin0 <= '0'; bin1 <= '1'; bin2 <= '0'; bin3 <= '1';
+    wait for 10 ns;
+    assert aout0 = 'Z' and aout1 = 'Z' and aout2 = 'Z' and aout3 = 'Z'
+      report "A outputs not high-Z when disabled";
+    assert bout0 = '0' and bout1 = '1' and bout2 = '0' and bout3 = '1'
+      report "B outputs not matching inputs";
+
+    -- Test 3: Both outputs disabled
+    aenb_n <= '1';
+    benb <= '0';
+    wait for 10 ns;
+    assert aout0 = 'Z' and aout1 = 'Z' and aout2 = 'Z' and aout3 = 'Z'
+      report "A outputs not high-Z when disabled";
+    assert bout0 = 'Z' and bout1 = 'Z' and bout2 = 'Z' and bout3 = 'Z'
+      report "B outputs not high-Z when disabled";
 
     wait;
   end process;
