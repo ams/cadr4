@@ -21,10 +21,12 @@ jobs:
       run: sudo apt-get install -y ghdl
 
     - name: Build ttl
-      run: make -C ttl all
+      run: make all
+      working-directory: ./ttl
 
     - name: Test ttl
-      run: make -C ttl test
+      run: make test
+      working-directory: ./ttl
 
     - name: Build cadr
       run: make all
