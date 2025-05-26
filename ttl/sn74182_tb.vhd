@@ -24,6 +24,30 @@ architecture testbench of sn74182_tb is
   signal yout    : std_logic;
   signal xout    : std_logic;
 
+  type vec4 is array(0 to 3) of std_logic;
+
+  -- Test vector: {cin_n, x0, y0, x1, y1, x2, y2, x3, y3, exp_cout0_n, exp_cout1_n, exp_cout2_n, exp_xout, exp_yout}
+  type testvec is record
+    cin_n : std_logic;
+    x     : vec4;
+    y     : vec4;
+    exp_cout : vec4; -- [0]=cout0_n, [1]=cout1_n, [2]=cout2_n, [3]=unused
+    exp_xout : std_logic;
+    exp_yout : std_logic;
+  end record;
+
+  type testvec_array is array (natural range <>) of testvec;
+  constant tests : testvec_array := (
+    -- cin_n, x0,y0, x1,y1, x2,y2, x3,y3, cout0_n, cout1_n, cout2_n, xout, yout
+    ( '1', ( '0','0','0','0' ), ( '0','0','0','0' ), ( '1','1','1','1' ), '0', '0' ), -- all propagate, no generate, no carry in
+    ( '0', ( '1','1','1','1' ), ( '0','0','0','0' ), ( '0','0','0','0' ), '1', '0' ), -- all propagate, carry in
+    ( '1', ( '0','0','0','0' ), ( '1','1','1','1' ), ( '0','0','0','0' ), '0', '1' ), -- all generate
+    ( '0', ( '1','0','1','0' ), ( '0','1','0','1' ), ( '0','0','0','0' ), '0', '1' ), -- mixed
+    ( '0', ( '1','1','0','0' ), ( '0','0','0','0' ), ( '0','0','1','1' ), '0', '0' ), -- partial propagate
+    ( '1', ( '0','0','0','0' ), ( '1','1','0','0' ), ( '0','0','1','1' ), '0', '0' ), -- partial generate
+    ( '0', ( '1','0','1','1' ), ( '0','1','0','0' ), ( '0','0','0','0' ), '0', '1' )  -- complex chain
+  );
+
 begin
 
   uut : sn74182 port map(
@@ -31,141 +55,42 @@ begin
     yout => yout,
     x3   => x3,
     y3   => y3,
-
     cout2_n => cout2_n,
     x2      => x2,
     y2      => y2,
-
     cout1_n => cout1_n,
     x1      => x1,
     y1      => y1,
-
     cout0_n => cout0_n,
     x0      => x0,
     y0      => y0,
-
     cin_n => cin_n
-    );
+  );
 
   process
-    type gpt is record
-      y3, y2, y1, y0 : std_logic;
-      x3, x2, x1 : std_logic;
-      y : std_logic;
-    end record;
-    type gpa is array (natural range <>) of gpt;
-
-    type ppt is record
-      x3, x2, x1, x0 : std_logic;
-      x : std_logic;
-    end record;
-    type ppa is array (natural range <>) of ppt;
-
-    type cxpt is record
-      y0, x0, cn : std_logic;
-      cx : std_logic;
-    end record;
-    type cxpa is array (natural range <>) of cxpt;
-
-    type cypt is record
-      y1, y0, x1, x0, cn : std_logic;
-      cy : std_logic;
-    end record;
-    type cypa is array (natural range <>) of cypt;
-
-    type czpt is record
-      y2, y1, y0, x2, x1, x0, cn : std_logic;
-      cz : std_logic;
-    end record;
-    type czpa is array (natural range <>) of czpt;
-
-    constant g : gpa :=
-      (('0', '1', '1', '0', '1', '1', '0', '0'),
-       ('1', '0', '1', '0', '0', '1', '0', '0'),
-       ('1', '0', '0', '1', '0', '0', '0', '0'),
-       ('1', '0', '1', '0', '0', '0', '0', '0'),
-       ('1', '1', '1', '0', '1', '0', '0', '1'),
-       ('1', '1', '1', '0', '1', '0', '0', '1'),
-       ('1', '1', '1', '0', '1', '1', '0', '1'),
-       ('1', '0', '1', '0', '1', '1', '1', '1'));
-
-    constant p : ppa :=
-      (('0', '0', '0', '0', '0'),
-       ('0', '1', '0', '0', '1'),
-       ('0', '0', '1', '0', '1'),
-       ('1', '0', '0', '0', '1'),
-       ('0', '1', '0', '0', '1'),
-       ('1', '1', '0', '0', '1'),
-       ('1', '1', '0', '1', '1'),
-       ('1', '1', '1', '1', '1'));
-
-    constant cx : cxpa :=
-      (('0', '0', '0', '1'),
-       ('0', '0', '1', '1'),
-       ('0', '1', '0', '1'),
-       ('0', '1', '1', '1'),
-       ('1', '0', '1', '1'),
-       ('1', '0', '0', '0'),
-       ('1', '0', '1', '1'),
-       ('1', '1', '1', '0'));
-
-    constant cy : cypa :=
-      (('0', '1', '1', '1', '1', '1'),
-       ('0', '0', '1', '1', '1', '1'),
-       ('0', '1', '0', '1', '1', '1'),
-       ('0', '1', '0', '1', '0', '1'),
-       ('0', '1', '0', '1', '1', '1'),
-       ('0', '0', '0', '1', '1', '1'),
-       ('0', '1', '0', '0', '1', '1'),
-       ('1', '1', '0', '0', '0', '0'));
-
-    constant cz : czpa :=
-      (('0', '0', '0', '0', '0', '0', '0', '1'),
-       ('1', '0', '1', '0', '0', '0', '0', '1'),
-       ('1', '1', '0', '0', '0', '1', '0', '1'),
-       ('1', '1', '1', '0', '0', '0', '1', '1'),
-       ('1', '1', '1', '1', '0', '0', '1', '0'),
-       ('1', '1', '1', '1', '1', '0', '1', '0'),
-       ('1', '1', '1', '1', '1', '1', '1', '0'));
-
   begin
-    for i in g'range loop
-      y3 <= g(i).y3; y2 <= g(i).y2; y1 <= g(i).y1; y0 <= g(i).y0;
-      x3 <= g(i).x3; x2 <= g(i).x2; x1 <= g(i).x1;
-      wait for 3 ns;
-      assert yout = g(i).y report "failure in case: " & integer'image(i);
+    for i in tests'range loop
+      cin_n <= tests(i).cin_n;
+      x0 <= tests(i).x(0); y0 <= tests(i).y(0);
+      x1 <= tests(i).x(1); y1 <= tests(i).y(1);
+      x2 <= tests(i).x(2); y2 <= tests(i).y(2);
+      x3 <= tests(i).x(3); y3 <= tests(i).y(3);
+      wait for 2 ns;
+      if not (cout0_n = tests(i).exp_cout(0) and cout1_n = tests(i).exp_cout(1) and cout2_n = tests(i).exp_cout(2) and xout = tests(i).exp_xout and yout = tests(i).exp_yout) then
+        report "Test " & integer'image(i) & " failed: " &
+          "cin_n=" & std_logic'image(cin_n) &
+          ", x0=" & std_logic'image(x0) & ", y0=" & std_logic'image(y0) &
+          ", x1=" & std_logic'image(x1) & ", y1=" & std_logic'image(y1) &
+          ", x2=" & std_logic'image(x2) & ", y2=" & std_logic'image(y2) &
+          ", x3=" & std_logic'image(x3) & ", y3=" & std_logic'image(y3) &
+          ", cout0_n=" & std_logic'image(cout0_n) & " (exp " & std_logic'image(tests(i).exp_cout(0)) & ")" &
+          ", cout1_n=" & std_logic'image(cout1_n) & " (exp " & std_logic'image(tests(i).exp_cout(1)) & ")" &
+          ", cout2_n=" & std_logic'image(cout2_n) & " (exp " & std_logic'image(tests(i).exp_cout(2)) & ")" &
+          ", xout=" & std_logic'image(xout) & " (exp " & std_logic'image(tests(i).exp_xout) & ")" &
+          ", yout=" & std_logic'image(yout) & " (exp " & std_logic'image(tests(i).exp_yout) & ")"
+          severity error;
+      end if;
     end loop;
-
-    for i in p'range loop
-      x3 <= p(i).x3; x2 <= p(i).x2; x1 <= p(i).x1; x0 <= p(i).x0;
-      wait for 3 ns;
-      assert xout = p(i).x report "failure in case: " & integer'image(i);
-    end loop;
-
-    for i in cx'range loop
-      y0 <= cx(i).y0;
-      x0 <= cx(i).x0;
-      cin_n <= cx(i).cn;
-      wait for 3 ns;
-      assert cout0_n = cx(i).cx report "failure in case: " & integer'image(i);
-    end loop;
-
-    for i in cy'range loop
-      y1 <= cy(i).y1; y0 <= cy(i).y0;
-      x1 <= cy(i).x1; x0 <= cy(i).x0;
-      cin_n <= cy(i).cn;
-      wait for 3 ns;
-      assert cout1_n = cy(i).cy report "failure in case: " & integer'image(i);
-    end loop;
-
-    for i in cz'range loop
-      y2 <= cz(i).y2; y1 <= cz(i).y1; y0 <= cz(i).y0;
-      x2 <= cz(i).x2; x1 <= cz(i).x1; x0 <= cz(i).x0;
-      cin_n <= cz(i).cn;
-      wait for 3 ns;
-      assert cout2_n = cz(i).cz report "failure in case: " & integer'image(i);
-    end loop;
-
     wait;
   end process;
 
