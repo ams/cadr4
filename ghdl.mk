@@ -21,7 +21,7 @@ SRCS			?= $(error SRCS: variable not set)
 # ===
 
 TB_SRCS		= $(wildcard *_tb.vhd)
-TESTBENCHES	= $(basename $(TB_SRCS))
+TESTBENCHES	= $(patsubst %_tb.vhd,%,$(TB_SRCS))
 TESTBENCH	?= $(firstword $(TESTBENCHES))
 
 .DEFAULT_GOAL := all
@@ -61,12 +61,6 @@ all: $(PROJECT)-obj$(GHDLSTD).cf $(TESTBENCHES)
 check:
 	$(MAKE) $(addprefix tb-,$(TESTBENCHES))
 
-test: 
-	$(MAKE) $(addprefix tb-,$(TESTBENCHES))
-
-list:
-	@echo $(TESTBENCHES)
-
 # build tb TESTBENCH and run it
 tb: $(TESTBENCH)
 	$(GHDL) run $(GHDLOPTIONS) $(TESTBENCH)
@@ -79,10 +73,10 @@ else ifeq ($(VCDFORMAT),ghw)
 endif
 
 tb-%:
-	TESTBENCH=$* $(MAKE) tb
+	TESTBENCH=$*_tb $(MAKE) tb
 
 vcd-%:
-	TESTBENCH=$* $(MAKE) vcd
+	TESTBENCH=$*_tb $(MAKE) vcd
 
 clean:
 	rm -f *_tb
@@ -97,11 +91,10 @@ help:
 	@echo "	check       Same as above."
 	@echo "	clean       Cleans up any build artifacts."
 	@echo "	help        Shows available targets."
-	@echo "	list        List all test-benches."
 	@echo "	tb          Runs the default ($(TESTBENCH)) test-bench."
 	@echo "	vcd         Same as above, but starts a VCD viewer."
-	@echo "	tb-TB       Runs the test-bench TB."
-	@echo "	vcd-TB      Same as above, but starts a VCD viewer."
+	@echo "	tb-X        Runs the testbench for X, which is implemented in X_tb.vhd."
+	@echo "	vcd-X       Same as above, but starts a VCD viewer."
 
 deps.mk: $(wildcard *.vhd)
 	$(GHDL) --gen-makefile $(GHDLOPTIONS) *.vhd > deps.mk
