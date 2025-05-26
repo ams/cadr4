@@ -9,11 +9,11 @@ end;
 
 architecture testbench of td50_tb is
 
-  signal o_50ns : std_logic;
-  signal o_40ns : std_logic;
-  signal o_30ns : std_logic;
-  signal o_20ns : std_logic;
   signal o_10ns : std_logic;
+  signal o_20ns : std_logic;
+  signal o_30ns : std_logic;
+  signal o_40ns : std_logic;
+  signal o_50ns : std_logic;
   signal input  : std_logic;
 
 begin

@@ -1,4 +1,5 @@
 -- 25ns Time Delay, 5ns Increments
+-- Actual delays: 50ns, 60ns, 70ns, 80ns, 90ns
 
 library ieee;
 use ieee.std_logic_1164.all;
