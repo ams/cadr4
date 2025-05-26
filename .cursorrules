@@ -1,0 +1,71 @@
+# CADR4 Project
+
+## Overview
+
+- This project is a hardware simulation of the MIT CADR Lisp Machine.
+- This project will not be synthesized. It will be simulated using GHDL with LLVM backend.
+- This project should comply VHDL-2008.
+
+## Project Structure
+
+- The root directory contains CADR-specific components in cadr library. 
+- The ttl subdirectory contains the TTL components in ttl library.
+- cadr library depends on ttl library. ttl library should be built first.
+- work library is not used in this project.
+
+### File Naming
+
+- Entity X is implemented in `X.vhd`.
+- Testbench for entity X is implemented in `X_tb.vhd`.
+
+### File Extensions
+
+- `.vhd`: VHDL source files
+- `.o`: Compiled object files
+- `.cf`: GHDL configuration/dependency files
+- `_tb`: Executable testbench files
+- `.vcd/.ghw`: Waveform files
+
+## Build System
+
+The project uses a Make-based build system.
+
+The root directory and ttl directory have different Makefiles and must be built separately.
+
+### Universal Targets (both libraries)
+
+- `make all`: Compile all sources and testbenches
+- `make clean`: Remove all build artifacts (.o, .cf, executables, waveforms)
+- `make check`: Run all testbenches
+
+### Testbench Targets
+
+- `make tb`: Run default testbench
+- `make tb-X`: Run specific testbench for entity X
+- `make vcd`: Run default testbench and open VCD viewer
+- `make vcd-X`: Run testbench for X and open VCD viewer
+
+## Development Workflow
+
+- Prefer running single testbenches with `make tb-X` over `make check`
+- Always run testbench after changing an entity to verify compilation and functionality
+- Use testbenches to validate logic before proceeding
+
+### Code Modification Guidelines
+
+- NEVER modify port definitions, these are manually maintained.
+- NEVER assume meaning from port definition, ALWAYS consult the datasheets.
+- ALWAYS aim to have strict datasheet behavior.
+- Always run testbenches using make commands, not directly
+- Avoid inline comments.
+
+### Git Workflow
+
+- Do not auto-commit changes
+- When creating a commit message, summarize the changes in bullet-points and add "Co-Authored-By: Cursor <noreply@metebalci.com>" on its own line at the end.
+
+## Resources
+
+- CADR Schematics: https://tumbleweed.nu/lm-3/schematics.html
+- Component datasheets for TTL logic families
+- VHDL-2008 language reference
