@@ -20,9 +20,10 @@ SRCS			?= $(error SRCS: variable not set)
 
 # ===
 
-TB_SRCS		= $(wildcard *_tb.vhd)
-TESTBENCHES	= $(patsubst %_tb.vhd,%,$(TB_SRCS))
-TESTBENCH	?= $(firstword $(TESTBENCHES))
+# find *_tb.vhd
+# remove _tb.vhd from the name, e.g. X for X_tb.vhd
+# make tb-X will run X_tb.vhd
+TESTBENCHES	= $(patsubst %_tb.vhd,%,$(wildcard *_tb.vhd))
 
 .DEFAULT_GOAL := all
 
@@ -91,7 +92,7 @@ help:
 	@echo "	check       Same as above."
 	@echo "	clean       Cleans up any build artifacts."
 	@echo "	help        Shows available targets."
-	@echo "	tb          Runs the default ($(TESTBENCH)) test-bench."
+	@echo "	tb          Runs the testbench defined by TESTBENCH variable."
 	@echo "	vcd         Same as above, but starts a VCD viewer."
 	@echo "	tb-X        Runs the testbench for X, which is implemented in X_tb.vhd."
 	@echo "	vcd-X       Same as above, but starts a VCD viewer."

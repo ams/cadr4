@@ -4,14 +4,14 @@
 
 - This project is a hardware simulation of the MIT CADR Lisp Machine.
 - This project will not be synthesized. It will be simulated using GHDL with LLVM backend.
-- This project should comply VHDL-2008.
+- This project complies with VHDL-2008. You MUST write VHDL-2008 compliant code.
 
 ## Project Structure
 
-- The root directory contains CADR-specific components in cadr library. 
-- The ttl subdirectory contains the TTL components in ttl library.
+- The project root directory contains CADR-specific components built into cadr library. 
+- The ttl subdirectory contains the TTL components built into ttl library.
 - cadr library depends on ttl library. ttl library should be built first.
-- work library is not used in this project.
+- work library is not used in this project. You MUST NOT use work library.
 
 ### File Naming
 
@@ -22,7 +22,7 @@
 
 - `.vhd`: VHDL source files
 - `.o`: Compiled object files
-- `.cf`: GHDL configuration/dependency files
+- `.cf`: GHDL design library files
 - `_tb`: Executable testbench files
 - `.vcd/.ghw`: Waveform files
 
@@ -32,40 +32,41 @@ The project uses a Make-based build system.
 
 The root directory and ttl directory have different Makefiles and must be built separately.
 
-### Universal Targets (both libraries)
+Make targets are as follows. Keep in mind these run only for the current folder, thus for cadr or ttl.
 
 - `make all`: Compile all sources and testbenches
 - `make clean`: Remove all build artifacts (.o, .cf, executables, waveforms)
 - `make check`: Run all testbenches
-
-### Testbench Targets
-
-- `make tb`: Run default testbench
-- `make tb-X`: Run specific testbench for entity X
-- `make vcd`: Run default testbench and open VCD viewer
+- `make tb-X`: Run specific testbench for entity X (effectively runs X_tb.vhd)
 - `make vcd-X`: Run testbench for X and open VCD viewer
 
 ## Development Workflow
 
-- Prefer running single testbenches with `make tb-X` over `make check`
-- Always run testbench after changing an entity to verify compilation and functionality
-- Use testbenches to validate logic before proceeding
+- Prefer running single testbenches with `make tb-X` over running all testbenches with `make check`.
+- You MUST always run a testbench after changing an entity to verify and validate its logic before proceeding.
+- When asked to implement or fix an entity, make sure its testbench is up to date first. Then, implement the fix or change, run the testbench and iterate until there is no error. Do not wait for my confirmation to proceed unless there is an ambiguity.
+- If instructed to update TODO, use AGENT-TODO.md file in the project root folder.
 
 ### Code Modification Guidelines
 
 - NEVER modify port definitions, these are manually maintained.
 - NEVER assume meaning from port definition, ALWAYS consult the datasheets.
 - ALWAYS aim to have strict datasheet behavior.
-- Always run testbenches using make commands, not directly
+- Always run testbenches using make commands, not directly.
 - Avoid inline comments.
 
 ### Git Workflow
 
-- Do not auto-commit changes
+- NEVER automatically commit changes.
 - When creating a commit message, summarize the changes in bullet-points and add "Co-Authored-By: Cursor <noreply@metebalci.com>" on its own line at the end.
+
+## Differences from datasheets
+
+- SN74241 BENB is implemented as active high even though it is active low in the datasheet.
 
 ## Resources
 
-- CADR Schematics: https://tumbleweed.nu/lm-3/schematics.html
+- CADR Schematics are in the PNG files linked from this URL: https://tumbleweed.nu/lm-3/schematics.html
 - Component datasheets for TTL logic families
 - VHDL-2008 language reference
+- GHDL documentation at https://ghdl.github.io/ghdl/
