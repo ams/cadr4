@@ -20,3 +20,7 @@ Only errors/discrepancies are noted; successful matches are not detailed.
 ## Page ALU1
 - Components checked: alu1_2a03, alu1_2a04, alu1_2a08, alu1_2a13, alu1_2b08, alu1_2b13
 - No discrepancies found.
+
+## Page ALUC4
+- Components checked: aluc4_2a16, aluc4_2a17, aluc4_2a18, aluc4_2a19, aluc4_2a20, aluc4_2b16, aluc4_2b17, aluc4_2b18, aluc4_2b20, aluc4_2c10, aluc4_2c11, aluc4_2c15, aluc4_2c20, aluc4_2d15, aluc4_2d21
+- No discrepancies found.
