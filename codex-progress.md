@@ -24,3 +24,23 @@ Only errors/discrepancies are noted; successful matches are not detailed.
 ## Page ALUC4
 - Components checked: aluc4_2a16, aluc4_2a17, aluc4_2a18, aluc4_2a19, aluc4_2a20, aluc4_2b16, aluc4_2b17, aluc4_2b18, aluc4_2b20, aluc4_2c10, aluc4_2c11, aluc4_2c15, aluc4_2c20, aluc4_2d15, aluc4_2d21
 - No discrepancies found.
+
+## Page AMEM0
+- Components checked: amem0_3a07, amem0_3a08, amem0_3a09, amem0_3a10, amem0_3a11, amem0_3a13,
+  amem0_3a14, amem0_3a15, amem0_3b06, amem0_3b07, amem0_3b08, amem0_3b09, amem0_3b10,
+  amem0_3b11, amem0_3b12, amem0_3b13, amem0_3b14
+- No discrepancies found.
+
+## Page AMEM1
+- Components missing in VHDL: (netlist parts not found in cadr4_amem1.vhd)
+- Extra VHDL instances not in netlist: (none)
+
+## Page APAR
+- VHDL instances with no netlist entry: apar_3a28, apar_3a29, apar_3a30,
+  apar_4a12, apar_4a14, apar_4a17, apar_4b15
+
+## Page BCPINS
+- No components defined in netlist or VHDL for this page.
+
+## Page BCTERM
+- VHDL instances with no netlist entry: bcterm_1b15, bcterm_1b20, bcterm_1b25, bcterm_2c25
