@@ -9,6 +9,9 @@ entity sn74241 is
     ain0, ain1, ain2, ain3     : in  std_logic;
     aout0, aout1, aout2, aout3 : out std_logic;
 
+    -- in the TI datasheet of SN74241, BENB is also active low
+    -- however in CADR schematics it is active high
+    -- so this is implemented as active high
     benb                       : in  std_logic;
     bin0, bin1, bin2, bin3     : in  std_logic;
     bout0, bout1, bout2, bout3 : out std_logic
