@@ -1,4 +1,4 @@
--- Quad Register With Two Independantly Controlled Three-State Outputs
+-- AM252519 Quad Register with Two Independantly Controlled Three-State Outputs
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -6,15 +6,24 @@ use ieee.numeric_std.all;
 
 entity am252519 is
   port (
-    clk                : in  std_logic;
-    o_enb_n            : in  std_logic;
-    inv                : in  std_logic;
-    i0, i1, i2, i3     : in  std_logic;
-    out_enb_n          : in  std_logic;
-    clk_enb_n          : in  std_logic;
-    asyn_clr_n         : in  std_logic;
-    q0a, q1a, q2a, q3a : out std_logic;
-    q0b, q1b, q2b, q3b : out std_logic
+    clk        : in  std_logic; -- pin 9
+    o_enb_n    : in  std_logic; -- pin 7
+    inv        : in  std_logic; -- pin 18
+    i0         : in  std_logic; -- pin 1
+    i1         : in  std_logic; -- pin 4
+    i2         : in  std_logic; -- pin 13
+    i3         : in  std_logic; -- pin 16
+    out_enb_n  : in  std_logic; -- pin 8
+    clk_enb_n  : in  std_logic; -- pin 17
+    asyn_clr_n : in  std_logic; -- pin 19
+    q0a        : out std_logic; -- pin 2
+    q1a        : out std_logic; -- pin 5
+    q2a        : out std_logic; -- pin 12
+    q3a        : out std_logic; -- pin 15
+    q0b        : out std_logic; -- pin 3
+    q1b        : out std_logic; -- pin 6
+    q2b        : out std_logic; -- pin 11
+    q3b        : out std_logic  -- pin 14
     );
 end am252519;
 

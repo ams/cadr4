@@ -1,4 +1,4 @@
--- 1024 X 1 Bit TTL Bipolar IMOX(TM) RAM
+-- AM93425A 1024 X 1 Bit RAM
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -6,11 +6,20 @@ use ieee.numeric_std.all;
 
 entity am93425a is
   port (
-    a0, a1, a2, a3, a4, a5, a6, a7, a8, a9 : in  std_logic;
-    ce_n                                   : in  std_logic;
-    we_n                                   : in  std_logic;
-    di                                     : in  std_logic;
-    do                                     : out std_logic
+    a0   : in  std_logic; -- pin 2
+    a1   : in  std_logic; -- pin 3
+    a2   : in  std_logic; -- pin 4
+    a3   : in  std_logic; -- pin 5
+    a4   : in  std_logic; -- pin 6
+    a5   : in  std_logic; -- pin 9
+    a6   : in  std_logic; -- pin 10
+    a7   : in  std_logic; -- pin 11
+    a8   : in  std_logic; -- pin 12
+    a9   : in  std_logic; -- pin 13
+    ce_n : in  std_logic; -- pin 1
+    we_n : in  std_logic; -- pin 14
+    di   : in  std_logic; -- pin 15
+    do   : out std_logic  -- pin 7
     );
 end am93425a;
 

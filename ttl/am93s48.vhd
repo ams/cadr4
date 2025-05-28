@@ -6,9 +6,20 @@ use ieee.numeric_std.all;
 
 entity am93s48 is
   port (
-    i0, i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, i11 : in  std_logic;
-    pe                                               : out std_logic;
-    po                                               : out std_logic
+    i0  : in  std_logic; -- Pin 7
+    i1  : in  std_logic; -- Pin 6
+    i2  : in  std_logic; -- Pin 5
+    i3  : in  std_logic; -- Pin 4
+    i4  : in  std_logic; -- Pin 3
+    i5  : in  std_logic; -- Pin 2
+    i6  : in  std_logic; -- Pin 1
+    i7  : in  std_logic; -- Pin 15
+    i8  : in  std_logic; -- Pin 14
+    i9  : in  std_logic; -- Pin 13
+    i10 : in  std_logic; -- Pin 12
+    i11 : in  std_logic; -- Pin 11
+    pe  : out std_logic; -- Pin 10
+    po  : out std_logic  -- Pin 9
     );
 end;
 
