@@ -111,35 +111,214 @@ entity cadr4_dspctl is
 end;
 
 architecture ttl of cadr4_dspctl is
-  signal nc389 : std_logic;
-  signal nc390 : std_logic;
-  signal nc391 : std_logic;
-  signal nc392 : std_logic;
-  signal nc393 : std_logic;
-  signal nc394 : std_logic;
-  signal nc395 : std_logic;
-  signal nc396 : std_logic;
-  signal nc397 : std_logic;
-  signal nc398 : std_logic;
-  signal nc399 : std_logic;
-  signal nc400 : std_logic;
-  signal nc401 : std_logic;
-  signal nc402 : std_logic;
-  signal nc403 : std_logic;
-  signal nc404 : std_logic;
-  signal nc405 : std_logic;
-  signal nc406 : std_logic;
-  signal nc407 : std_logic;
+  signal nc100 : std_logic;
+  signal nc101 : std_logic;
+  signal nc102 : std_logic;
+  signal nc103 : std_logic;
+  signal nc104 : std_logic;
+  signal nc105 : std_logic;
+  signal nc106 : std_logic;
+  signal nc107 : std_logic;
+  signal nc108 : std_logic;
+  signal nc109 : std_logic;
+  signal nc110 : std_logic;
+  signal nc111 : std_logic;
+  signal nc112 : std_logic;
+  signal nc113 : std_logic;
+  signal nc114 : std_logic;
+  signal nc115 : std_logic;
+  signal nc116 : std_logic;
+  signal nc117 : std_logic;
+  signal nc118 : std_logic;
 begin
-  dspctl_2f22 : im5610 generic map (fn   => "rom/dspctl_2f22.hex") port map(o0 => dmask0, o1 => dmask1, o2 => dmask2, o3 => dmask3, o4 => dmask4, o5 => dmask5, o6 => dmask6, o7 => nc407, a0 => ir5, a1 => ir6, a2 => ir7, a3 => gnd, a4 => gnd, ce_n => gnd);
-  dspctl_3c14 : am25s07 port map(enb_n   => \-irdisp\, d0 => dc6, i0 => ir38, i1 => ir39, d1 => dc7, i2 => ir40, d2 => dc8, clk => clk3e, d3 => dc9, i3 => ir41, d4 => nc403, i4 => nc404, i5 => nc405, d5 => nc406);
-  dspctl_3c15 : am25s07 port map(enb_n   => \-irdisp\, d0 => dc0, i0 => ir32, i1 => ir33, d1 => dc1, i2 => ir34, d2 => dc2, clk => clk3e, d3 => dc3, i3 => ir35, d4 => dc4, i4 => ir36, i5 => ir37, d5 => dc5);
-  dspctl_3d02 : sn74s00 port map(g1b     => dpareven, g1a => dispenb, g1q_n => dparok, g2b => '0', g2a => '0', g3b => '0', g3a => '0', g4a => '0', g4b => '0');
-  dspctl_3e19 : sn74s86 port map(g3y     => dpareven, g3a => \-dparh\, g3b => dparl, g1a => '0', g1b => '0', g2a => '0', g2b => '0', g4a => '0', g4b => '0');
-  dspctl_3f11 : sn74s241 port map(aenb_n => hi4, ain0 => nc389, bout3 => aa16, ain1 => nc390, bout2 => aa17, ain2 => nc391, bout1 => nc392, ain3 => nc393, bout0 => nc394, bin0 => nc395, aout3 => nc396, bin1 => nc397, aout2 => nc398, bin2 => a17, aout1 => nc399, bin3 => a16, aout0 => nc400, benb => hi4);
-  dspctl_3f12 : sn74s241 port map(aenb_n => gnd, ain0 => a15, bout3 => aa8, ain1 => a14, bout2 => aa9, ain2 => a13, bout1 => aa10, ain3 => a12, bout0 => aa11, bin0 => a11, aout3 => aa12, bin1 => a10, aout2 => aa13, bin2 => a9, aout1 => aa14, bin3 => a8, aout0 => aa15, benb => hi4);
-  dspctl_3f13 : sn74s241 port map(aenb_n => gnd, ain0 => a7, bout3 => aa0, ain1 => a6, bout2 => aa1, ain2 => a5, bout1 => aa2, ain3 => a4, bout0 => aa3, bin0 => a3, aout3 => aa4, bin1 => a2, aout2 => aa5, bin2 => a1, aout1 => aa6, bin3 => a0, aout0 => aa7, benb => hi4);
-  dspctl_3f14 : sn74s02 port map(g1q_n   => \-dmapbenb\, g1a => ir8, g1b => ir9, g2q_n => dispwr, g2a => \-irdisp\, g2b => \-funct2\, g3b => '0', g3a => '0', g4b => '0', g4a => '0');
-  dspctl_4f09 : sn74s280 port map(i0     => dpc9, i1 => dpc10, i2 => dpc11, even => \-dparh\, odd => nc402, i3 => dpc12, i4 => dpc13, i5 => dn, i6 => dp, i7 => dr, i8 => dpar);
-  dspctl_4f10 : sn74s280 port map(i0     => dpc0, i1 => dpc1, i2 => dpc2, even => nc401, odd => dparl, i3 => dpc3, i4 => dpc4, i5 => dpc5, i6 => dpc6, i7 => dpc7, i8 => dpc8);
+  dspctl_2f22 : im5610 generic map (fn   => "rom/dspctl_2f22.hex") port map(
+    o0   => dmask0,
+    o1   => dmask1,
+    o2   => dmask2,
+    o3   => dmask3,
+    o4   => dmask4,
+    o5   => dmask5,
+    o6   => dmask6,
+    o7   => nc100,
+    a0   => ir5,
+    a1   => ir6,
+    a2   => ir7,
+    a3   => gnd,
+    a4   => gnd,
+    ce_n => gnd
+    );
+  dspctl_3c14 : am25s07 port map(
+    enb_n => \-irdisp\,
+    d0    => dc6,
+    i0    => ir38,
+    i1    => ir39,
+    d1    => dc7,
+    i2    => ir40,
+    d2    => dc8,
+    clk   => clk3e,
+    d3    => dc9,
+    i3    => ir41,
+    d4    => nc101,
+    i4    => nc102,
+    i5    => nc103,
+    d5    => nc104
+    );
+  dspctl_3c15 : am25s07 port map(
+    enb_n => \-irdisp\,
+    d0    => dc0,
+    i0    => ir32,
+    i1    => ir33,
+    d1    => dc1,
+    i2    => ir34,
+    d2    => dc2,
+    clk   => clk3e,
+    d3    => dc3,
+    i3    => ir35,
+    d4    => dc4,
+    i4    => ir36,
+    i5    => ir37,
+    d5    => dc5
+    );
+  dspctl_3d02 : sn74s00 port map(
+    g1b   => dpareven,
+    g1a   => dispenb,
+    g1q_n => dparok,
+    g2a   => '0',
+    g2b   => '0',
+    g2q_n => open,
+    g3a   => '0',
+    g3b   => '0',
+    g3q_n => open,
+    g4a   => '0',
+    g4b   => '0',
+    g4q_n => open
+    );
+  dspctl_3e19 : sn74s86 port map(
+    g3y => dpareven,
+    g3a => \-dparh\,
+    g3b => dparl,
+    g1a => '0',
+    g1b => '0',
+    g1y => open,
+    g2a => '0',
+    g2b => '0',
+    g2y => open,
+    g4a => '0',
+    g4b => '0',
+    g4y => open
+    );
+  dspctl_3f11 : sn74s241 port map(
+    aenb_n => hi4,
+    ain0   => nc107,
+    bout3  => aa16,
+    ain1   => nc108,
+    bout2  => aa17,
+    ain2   => nc109,
+    bout1  => nc110,
+    ain3   => nc111,
+    bout0  => nc112,
+    bin0   => nc113,
+    aout3  => nc114,
+    bin1   => nc115,
+    aout2  => nc116,
+    bin2   => a17,
+    aout1  => nc117,
+    bin3   => a16,
+    aout0  => nc118,
+    benb   => hi4
+    );
+  dspctl_3f12 : sn74s241 port map(
+    aenb_n => gnd,
+    ain0   => a15,
+    bout3  => aa8,
+    ain1   => a14,
+    bout2  => aa9,
+    ain2   => a13,
+    bout1  => aa10,
+    ain3   => a12,
+    bout0  => aa11,
+    bin0   => a11,
+    aout3  => aa12,
+    bin1   => a10,
+    aout2  => aa13,
+    bin2   => a9,
+    aout1  => aa14,
+    bin3   => a8,
+    aout0  => aa15,
+    benb   => hi4
+    );
+  dspctl_3f13 : sn74s241 port map(
+    aenb_n => gnd,
+    ain0   => a7,
+    bout3  => aa0,
+    ain1   => a6,
+    bout2  => aa1,
+    ain2   => a5,
+    bout1  => aa2,
+    ain3   => a4,
+    bout0  => aa3,
+    bin0   => a3,
+    aout3  => aa4,
+    bin1   => a2,
+    aout2  => aa5,
+    bin2   => a1,
+    aout1  => aa6,
+    bin3   => a0,
+    aout0  => aa7,
+    benb   => hi4
+    );
+  dspctl_3f14_gate1 : sn74s02 port map(
+    g1q_n => \-dmapbenb\,
+    g1a   => ir8,
+    g1b   => ir9,
+    g2a   => '0',
+    g2b   => '0',
+    g2q_n => open,
+    g3a   => '0',
+    g3b   => '0',
+    g3q_n => open,
+    g4a   => '0',
+    g4b   => '0',
+    g4q_n => open
+    );
+  dspctl_3f14_gate2 : sn74s02 port map(
+    g2q_n => dispwr,
+    g2a   => \-irdisp\,
+    g2b   => \-funct2\,
+    g1a   => '0',
+    g1b   => '0',
+    g1q_n => open,
+    g3a   => '0',
+    g3b   => '0',
+    g3q_n => open,
+    g4a   => '0',
+    g4b   => '0',
+    g4q_n => open
+    );
+  dspctl_4f09 : sn74s280 port map(
+    i0   => dpc9,
+    i1   => dpc10,
+    i2   => dpc11,
+    even => \-dparh\,
+    odd  => nc105,
+    i3   => dpc12,
+    i4   => dpc13,
+    i5   => dn,
+    i6   => dp,
+    i7   => dr,
+    i8   => dpar
+    );
+  dspctl_4f10 : sn74s280 port map(
+    i0   => dpc0,
+    i1   => dpc1,
+    i2   => dpc2,
+    even => nc106,
+    odd  => dparl,
+    i3   => dpc3,
+    i4   => dpc4,
+    i5   => dpc5,
+    i6   => dpc6,
+    i7   => dpc7,
+    i8   => dpc8
+    );
 end architecture;
