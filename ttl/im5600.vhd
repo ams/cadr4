@@ -1,4 +1,5 @@
 -- 256 Bit Bipolar Read Only Memory
+-- IM5600 256x8 Bipolar PROM
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -9,9 +10,20 @@ use ieee.std_logic_textio.all;
 entity im5600 is
   generic (fn : string := "");
   port (
-    ce_n                           : in  std_logic;
-    a0, a1, a2, a3, a4             : in  std_logic;
-    o0, o1, o2, o3, o4, o5, o6, o7 : out std_logic
+    ce_n                           : in  std_logic; -- Pin 14
+    a0                             : in  std_logic; -- Pin 10
+    a1                             : in  std_logic; -- Pin 9
+    a2                             : in  std_logic; -- Pin 8
+    a3                             : in  std_logic; -- Pin 7
+    a4                             : in  std_logic; -- Pin 6
+    o0                             : out std_logic; -- Pin 1
+    o1                             : out std_logic; -- Pin 2
+    o2                             : out std_logic; -- Pin 3
+    o3                             : out std_logic; -- Pin 4
+    o4                             : out std_logic; -- Pin 11
+    o5                             : out std_logic; -- Pin 12
+    o6                             : out std_logic; -- Pin 13
+    o7                             : out std_logic  -- Pin 15
     );
 end im5600;
 
