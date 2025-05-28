@@ -38,8 +38,36 @@ end;
 architecture ttl of cadr4_bcterm is
   signal nc431 : std_logic;
 begin
-  bcterm_1b15 : sip220_330_8 port map(r2 => mem0, r3 => mem1, r4 => mem2, r5 => mem3, r6 => mem4, r7 => mem5);
-  bcterm_1b20 : sip220_330_8 port map(r2 => mem12, r3 => mem13, r4 => mem14, r5 => mem15, r6 => mem16, r7 => mem17);
-  bcterm_1b25 : sip220_330_8 port map(r2 => mem24, r3 => mem25, r4 => mem26, r5 => mem27, r6 => mem28, r7 => mem29);
-  bcterm_2c25 : sip330_470_8 port map(r2 => \-memgrant\, r3 => int, r4 => \-loadmd\, r5 => \-ignpar\, r6 => \-memack\, r7 => nc431);
+  bcterm_1b15 : sip220_330_8 port map(
+    r2 => mem0,        -- p2 (MEM0)
+    r3 => mem1,        -- p3 (MEM1)
+    r4 => mem2,        -- p4 (MEM2)
+    r5 => mem3,        -- p5 (MEM3)
+    r6 => mem4,        -- p6 (MEM4)
+    r7 => mem5         -- p7 (MEM5)
+  );
+  bcterm_1b20 : sip220_330_8 port map(
+    r2 => mem12,       -- p2 (MEM12)
+    r3 => mem13,       -- p3 (MEM13)
+    r4 => mem14,       -- p4 (MEM14)
+    r5 => mem15,       -- p5 (MEM15)
+    r6 => mem16,       -- p6 (MEM16)
+    r7 => mem17        -- p7 (MEM17)
+  );
+  bcterm_1b25 : sip220_330_8 port map(
+    r2 => mem24,       -- p2 (MEM24)
+    r3 => mem25,       -- p3 (MEM25)
+    r4 => mem26,       -- p4 (MEM26)
+    r5 => mem27,       -- p5 (MEM27)
+    r6 => mem28,       -- p6 (MEM28)
+    r7 => mem29        -- p7 (MEM29)
+  );
+  bcterm_2c25 : sip330_470_8 port map(
+    r2 => \-memgrant\, -- p2 (-MEMGRANT)
+    r3 => int,         -- p3 (INT)
+    r4 => \-loadmd\,   -- p4 (-LOADMD)
+    r5 => \-ignpar\,   -- p5 (-IGNPAR)
+    r6 => \-memack\,   -- p6 (-MEMACK)
+    r7 => nc431        -- p7 (NC)
+  );
 end architecture;

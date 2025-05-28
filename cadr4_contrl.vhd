@@ -85,24 +85,338 @@ architecture ttl of cadr4_contrl is
   signal nc420      : std_logic;
   signal nc421      : std_logic;
   signal nc422      : std_logic;
+  signal nc100      : std_logic;
+  signal nc101      : std_logic;
+  signal nc102      : std_logic;
+  signal nc103      : std_logic;
+  signal nc104      : std_logic;
+  signal nc105      : std_logic;
+  signal nc106      : std_logic;
+  signal nc107      : std_logic;
+  signal nc108      : std_logic;
+  signal nc109      : std_logic;
+  signal nc110      : std_logic;
+  signal nc111      : std_logic;
+  signal nc112      : std_logic;
+  signal nc113      : std_logic;
+  signal nc114      : std_logic;
+  signal nc115      : std_logic;
+  signal nc116      : std_logic;
+  signal nc117      : std_logic;
+  signal nc118      : std_logic;
+  signal nc119      : std_logic;
+  signal nc120      : std_logic;
+  signal nc121      : std_logic;
+  signal nc122      : std_logic;
+  signal nc123      : std_logic;
+  signal nc124      : std_logic;
+  signal nc125      : std_logic;
+  signal nc126      : std_logic;
+  signal nc127      : std_logic;
+  signal nc128      : std_logic;
+  signal nc129      : std_logic;
+  signal nc130      : std_logic;
+  signal nc131      : std_logic;
+  signal nc132      : std_logic;
+  signal nc133      : std_logic;
+  signal nc134      : std_logic;
+  signal nc135      : std_logic;
+  signal nc136      : std_logic;
+  signal nc137      : std_logic;
+  signal nc138      : std_logic;
+  signal nc139      : std_logic;
+  signal nc140      : std_logic;
+  signal nc141      : std_logic;
+  signal nc142      : std_logic;
+  signal nc143      : std_logic;
+  signal nc144      : std_logic;
+  signal nc145      : std_logic;
 begin
-  contrl_3d21 : sn74s08 port map(g1b    => spushd, g1a => tse3a, g1q => spcwpass, g2b => \-ipopj\, g2a => \-iwrited\, g2q => \-popj\, g3q => spcdrive, g3a => spcenb, g3b => tse3a, g4a => '0', g4b => '0');
-  contrl_3d26 : sn74s175 port map(clr_n => \-reset\, q0 => inop, q0_n => \-inop\, d0 => n, d1 => nc420, q1_n => nc421, q1 => nc422, clk => clk3c, q2 => spushd, q2_n => \-spushd\, d2 => spush, d3 => iwrite, q3_n => \-iwrited\, q3 => iwrited);
-  contrl_3d28 : sn74s00 port map(g1b    => \-srcspc\, g1a => \-srcspcpop\, g1q_n => spcenb, g2b => spcenb, g2a => tse3a, g2q_n => \-spcdrive\, g3q_n => \-spcpass\, g3b => tse3a, g3a => \-spushd\, g4q_n => \-spcwpass\, g4a => tse3a, g4b => spushd);
-  contrl_3e07 : sn74s00 port map(g2b    => ir42, g2a => \-nop\, g2q_n => \-ipopj\, g1b => '0', g1a => '0', g3b => '0', g3a => '0', g4a => '0', g4b => '0');
-  contrl_3e09 : sn74s32 port map(g1a    => \-srcspcpop\, g1b => nop, g1y => \-srcspcpopreal\, g2a => '0', g2b => '0', g3a => '0', g3b => '0', g4a => '0', g4b => '0');
-  contrl_3e14 : sn74s08 port map(g4q    => \-nopa\, g4a => \-nop11\, g4b => \-inop\, g1b => '0', g1a => '0', g2b => '0', g2a => '0', g3a => '0', g3b => '0');
-  contrl_3e18 : sn74s32 port map(g1a    => \-irdisp\, g1b => dr, g1y => \-ignpopj\, g2a => '0', g2b => '0', g3a => '0', g3b => '0', g4a => '0', g4b => '0');
-  contrl_3e22 : sn74s04 port map(g1a    => \-destspc\, g1q_n => destspc, g2a => nop, g2q_n => \-nop\, g3a => '0', g4a => '0', g5a => '0', g6a => '0');
-  contrl_3e23 : sn74s00 port map(g1b    => dr, g1a => dp, g1q_n => \-dfall\, g2b => \-trap\, g2a => internal32, g2q_n => n, g3q_n => internal31, g3b => \-popj\, g3a => \-srcspcpopreal\, g4q_n => nop, g4a => \-trap\, g4b => \-nopa\);
-  contrl_3e24 : sn74s08 port map(g1b    => irdisp, g1a => \-funct2\, g1q => dispenb, g2b => irjump, g2a => ir6, g2q => jfalse, g3q => jcalf, g3a => ir8, g3b => jfalse, g4q => jretf, g4a => ir6, g4b => jret);
-  contrl_3e25 : sn74s64 port map(d4     => ir7, b2 => dn, a2 => dispenb, c3 => ir7, b3 => \-jcond\, a3 => jfalse, \out\ => internal32, a1 => hi4, b1 => iwrited, c4 => jcond, b4 => \-ir6\, a4 => irjump);
-  contrl_3e26 : sn74s64 port map(d4     => jcond, b2 => \-jcond\, a2 => jcalf, c3 => \-dr\, b3 => dp, a3 => dispenb, \out\ => \-spush\, a1 => hi4, b1 => destspc, c4 => ir8, b4 => \-ir6\, a4 => irjump);
-  contrl_3e27 : sn74s64 port map(d4     => hi4, b2 => \-jcond\, a2 => jfalse, c3 => jcond, b3 => \-ir6\, a3 => irjump, \out\ => pcs1, a1 => \-ignpopj\, b1 => popj, c4 => \-dp\, b4 => dr, a4 => dispenb);
-  contrl_3e28 : sn74s64 port map(d4     => hi4, b2 => \-jcond\, a2 => jretf, c3 => jcond, b3 => \-ir6\, a3 => jret, \out\ => \-spop\, a1 => \-ignpopj\, b1 => internal31, c4 => \-dp\, b4 => dr, a4 => dispenb);
-  contrl_3e29 : sn74s11 port map(g1a    => \-ir8\, g1b => irjump, g2a => irjump, g2b => ir8, g2c => ir9, g2y => iwrite, g1y => jret, g1c => ir9, g3a => '0', g3b => '0', g3c => '0');
-  contrl_3f20 : sn74s04 port map(g1a    => \-popj\, g1q_n => popj, g2a => ir8, g2q_n => \-ir8\, g3a => ir6, g3q_n => \-ir6\, g4q_n => spush, g4a => \-spush\, g5q_n => \-dp\, g5a => dp, g6q_n => \-dr\, g6a => dr);
-  contrl_3f30 : sn74s64 port map(d4     => hi4, b2 => \-dfall\, a2 => dispenb, c3 => hi4, b3 => \-jcond\, a3 => jretf, \out\ => pcs0, a1 => hi4, b1 => popj, c4 => jcond, b4 => \-ir6\, a4 => jret);
-  contrl_4d09 : sn74s08 port map(g1b    => \-spush\, g1a => \-spop\, g1q => \-spcnt\, g2b => '0', g2a => '0', g3a => '0', g3b => '0', g4a => '0', g4b => '0');
-  contrl_4e30 : sn74s37 port map(g1a    => \-destspcd\, g1b => \-destspcd\, g1y => destspcd, g2a => wp4c, g2b => spushd, g2y => \-swpb\, g3y => \-swpa\, g3a => spushd, g3b => wp4c, g4a => '0', g4b => '0');
+  contrl_3d21 : sn74s08
+    port map(
+      g1a    => tse3a,        -- p2 (TSE3A)
+      g1b    => spushd,       -- p1 (SPUSHD)
+      g1q    => spcwpass,     -- p3 (SPCWPASS)
+      g2a    => \-iwrited\,   -- p5 (-IWRITED)
+      g2b    => \-ipopj\,    -- p4 (-IPOPJ)
+      g2q    => \-popj\,     -- p6 (-POPJ)
+      g3a    => tse3a,        -- p10 (TSE3A)
+      g3b    => spcenb,       -- p9 (SPCENB)
+      g3q    => spcdrive,     -- p8 (SPCDRIVE)
+      g4a    => '0',          -- p12 (NC)
+      g4b    => '0',          -- p13 (NC)
+      g4q    => nc100         -- p11 (NC)
+      );
+  contrl_3d26 : sn74s175
+    port map(
+      clr_n  => \-reset\,     -- p1 (-RESET)
+      d0     => n,            -- p4 (N)
+      d1     => nc420,        -- p5 (NC)
+      d2     => spush,        -- p12 (SPUSH)
+      d3     => iwrite,       -- p13 (IWRITE)
+      clk    => clk3c,        -- p9 (CLK3C)
+      q0     => inop,         -- p2 (INOP)
+      q0_n   => \-inop\,      -- p3 (-INOP)
+      q1     => nc422,        -- p6 (NC)
+      q1_n   => nc421,        -- p7 (NC)
+      q2     => spushd,       -- p10 (SPUSHD)
+      q2_n   => \-spushd\,    -- p11 (-SPUSHD)
+      q3     => iwrited,      -- p15 (IWRITED)
+      q3_n   => \-iwrited\    -- p14 (-IWRITED)
+      );
+  contrl_3d28 : sn74s00
+    port map(
+      g1a    => \-srcspcpop\,  -- p2 (-SRCSPCPOP)
+      g1b    => \-srcspc\,    -- p1 (-SRCSPC)
+      g1q_n  => spcenb,       -- p3 (SPCENB)
+      g2a    => tse3a,        -- p5 (TSE3A)
+      g2b    => spcenb,       -- p4 (SPCENB)
+      g2q_n  => \-spcdrive\,  -- p6 (-SPCDRIVE)
+      g3a    => \-spushd\,    -- p10 (-SPUSHD)
+      g3b    => tse3a,        -- p9 (TSE3A)
+      g3q_n  => \-spcpass\,   -- p8 (-SPCPASS)
+      g4a    => spushd,       -- p13 (SPUSHD)
+      g4b    => tse3a,        -- p12 (TSE3A)
+      g4q_n  => \-spcwpass\   -- p11 (-SPCWPASS)
+      );
+  contrl_3e07 : sn74s00
+    port map(
+      g1a    => '0',          -- p1 (NC)
+      g1b    => '0',          -- p2 (NC)
+      g1q_n  => nc101,        -- p3 (NC)
+      g2a    => \-nop\,       -- p5 (-NOP)
+      g2b    => ir42,         -- p4 (IR42)
+      g2q_n  => \-ipopj\,    -- p6 (-IPOPJ)
+      g3a    => '0',          -- p9 (NC)
+      g3b    => '0',          -- p8 (NC)
+      g3q_n  => nc102,        -- p10 (NC)
+      g4a    => '0',          -- p12 (NC)
+      g4b    => '0',          -- p13 (NC)
+      g4q_n  => nc103         -- p11 (NC)
+      );
+  contrl_3e09 : sn74s32
+    port map(
+      g1a    => \-srcspcpop\,  -- p1 (-SRCSPCPOP)
+      g1b    => nop,          -- p2 (NOP)
+      g1y    => \-srcspcpopreal\, -- p3 (-SRCSPCPOPREAL)
+      g2a    => '0',          -- p4 (NC)
+      g2b    => '0',          -- p5 (NC)
+      g2y    => nc104,        -- p6 (NC)
+      g3a    => '0',          -- p9 (NC)
+      g3b    => '0',          -- p8 (NC)
+      g3y    => nc105,        -- p10 (NC)
+      g4a    => '0',          -- p12 (NC)
+      g4b    => '0',          -- p13 (NC)
+      g4y    => nc106         -- p11 (NC)
+      );
+  contrl_3e14 : sn74s08
+    port map(
+      g1a    => '0',          -- p1 (NC)
+      g1b    => '0',          -- p2 (NC)
+      g1q    => nc107,        -- p3 (NC)
+      g2a    => '0',          -- p4 (NC)
+      g2b    => '0',          -- p5 (NC)
+      g2q    => nc108,        -- p6 (NC)
+      g3a    => '0',          -- p9 (NC)
+      g3b    => '0',          -- p8 (NC)
+      g3q    => nc109,        -- p10 (NC)
+      g4a    => \-inop\,      -- p13 (-INOP)
+      g4b    => \-nop11\,     -- p12 (-NOP11)
+      g4q    => \-nopa\       -- p11 (-NOPA)
+      );
+  contrl_3e18 : sn74s32
+    port map(
+      g1a    => \-irdisp\,    -- p1 (-IRDISP)
+      g1b    => dr,           -- p2 (DR)
+      g1y    => \-ignpopj\,   -- p3 (-IGNPOPJ)
+      g2a    => '0',          -- p4 (NC)
+      g2b    => '0',          -- p5 (NC)
+      g2y    => nc110,        -- p6 (NC)
+      g3a    => '0',          -- p9 (NC)
+      g3b    => '0',          -- p8 (NC)
+      g3y    => nc111,        -- p10 (NC)
+      g4a    => '0',          -- p12 (NC)
+      g4b    => '0',          -- p13 (NC)
+      g4y    => nc112         -- p11 (NC)
+      );
+  contrl_3e22 : sn74s04
+    port map(
+      g1a    => \-destspc\,   -- p1 (-DESTSPC)
+      g1q_n  => destspc,      -- p2 (DESTSPC)
+      g2a    => nop,          -- p3 (NOP)
+      g2q_n  => \-nop\,       -- p4 (-NOP)
+      g3a    => '0',          -- p5 (NC)
+      g3q_n  => nc113,        -- p6 (NC)
+      g4a    => '0',          -- p7 (NC)
+      g4q_n  => nc114,        -- p8 (NC)
+      g5a    => '0',          -- p9 (NC)
+      g5q_n  => nc115,        -- p10 (NC)
+      g6a    => '0',          -- p11 (NC)
+      g6q_n  => nc116         -- p12 (NC)
+      );
+  contrl_3e23 : sn74s00
+    port map(
+      g1a    => dp,           -- p2 (DP)
+      g1b    => dr,           -- p1 (DR)
+      g1q_n  => \-dfall\,     -- p3 (-DFALL)
+      g2a    => internal32,   -- p5 (@3E25,p8)
+      g2b    => \-trap\,      -- p4 (-TRAP)
+      g2q_n  => n,            -- p6 (N)
+      g3a    => \-srcspcpopreal\, -- p10 (-SRCSPCPOPREAL)
+      g3b    => \-popj\,      -- p9 (-POPJ)
+      g3q_n  => internal31,   -- p8 (@3E28,p10)
+      g4a    => \-nopa\,      -- p13 (-NOPA)
+      g4b    => \-trap\,      -- p12 (-TRAP)
+      g4q_n  => nop           -- p11 (NOP)
+      );
+  contrl_3e24 : sn74s08
+    port map(
+      g1a    => \-funct2\,    -- p2 (-FUNCT2)
+      g1b    => irdisp,       -- p1 (IRDISP)
+      g1q    => dispenb,      -- p3 (DISPENB)
+      g2a    => ir6,          -- p5 (IR6)
+      g2b    => irjump,       -- p4 (IRJUMP)
+      g2q    => jfalse,       -- p6 (JFALSE)
+      g3a    => jfalse,       -- p9 (JFALSE)
+      g3b    => ir8,          -- p8 (IR8)
+      g3q    => jcalf,        -- p10 (JCALF)
+      g4a    => jret,         -- p13 (JRET)
+      g4b    => ir6,          -- p12 (IR6)
+      g4q    => jretf         -- p11 (JRETF)
+      );
+  contrl_3e25 : sn74s64
+    port map(
+      a1     => hi4,          -- p9 (HI4)
+      a2     => dispenb,      -- p3 (DISPENB)
+      a3     => jfalse,       -- p6 (JFALSE)
+      a4     => irjump,       -- p13 (IRJUMP)
+      b1     => iwrited,      -- p10 (IWRITED)
+      b2     => dn,           -- p2 (DN)
+      b3     => \-jcond\,     -- p5 (-JCOND)
+      b4     => \-ir6\,       -- p12 (-IR6)
+      c3     => ir7,          -- p4 (IR7)
+      c4     => jcond,        -- p11 (JCOND)
+      d4     => ir7,          -- p1 (IR7)
+      \out\  => internal32    -- p8 (@3E23,p5)
+      );
+  contrl_3e26 : sn74s64
+    port map(
+      a1     => hi4,          -- p9 (HI4)
+      a2     => jcalf,        -- p3 (JCALF)
+      a3     => dispenb,      -- p6 (DISPENB)
+      a4     => irjump,       -- p13 (IRJUMP)
+      b1     => destspc,      -- p10 (DESTSPC)
+      b2     => \-jcond\,     -- p2 (-JCOND)
+      b3     => dp,           -- p5 (DP)
+      b4     => \-ir6\,       -- p12 (-IR6)
+      c3     => \-dr\,        -- p4 (-DR)
+      c4     => ir8,          -- p11 (IR8)
+      d4     => jcond,        -- p1 (JCOND)
+      \out\  => \-spush\     -- p8 (-SPUSH)
+      );
+  contrl_3e27 : sn74s64
+    port map(
+      a1     => \-ignpopj\,   -- p9 (-IGNPOPJ)
+      a2     => jfalse,       -- p3 (JFALSE)
+      a3     => irjump,       -- p6 (IRJUMP)
+      a4     => dispenb,      -- p13 (DISPENB)
+      b1     => popj,         -- p10 (POPJ)
+      b2     => \-jcond\,     -- p2 (-JCOND)
+      b3     => \-ir6\,       -- p5 (-IR6)
+      b4     => dr,           -- p12 (DR)
+      c3     => jcond,        -- p4 (JCOND)
+      c4     => \-dp\,        -- p11 (-DP)
+      d4     => hi4,          -- p1 (HI4)
+      \out\  => pcs1          -- p8 (PCS1)
+      );
+  contrl_3e28 : sn74s64
+    port map(
+      a1     => \-ignpopj\,   -- p9 (-IGNPOPJ)
+      a2     => jretf,        -- p3 (JRETF)
+      a3     => jret,         -- p6 (JRET)
+      a4     => dispenb,      -- p13 (DISPENB)
+      b1     => internal31,   -- p10 (@3E23,p8)
+      b2     => \-jcond\,     -- p2 (-JCOND)
+      b3     => \-ir6\,       -- p5 (-IR6)
+      b4     => dr,           -- p12 (DR)
+      c3     => jcond,        -- p4 (JCOND)
+      c4     => \-dp\,        -- p11 (-DP)
+      d4     => hi4,          -- p1 (HI4)
+      \out\  => \-spop\      -- p8 (-SPOP)
+      );
+  contrl_3e29 : sn74s11
+    port map(
+      g1a    => irjump,       -- p2 (IRJUMP)
+      g1b    => \-ir8\,       -- p1 (-IR8)
+      g1c    => ir9,          -- p13 (IR9)
+      g1y    => jret,         -- p1 (JRET)
+      g2a    => irjump,       -- p4 (IRJUMP)
+      g2b    => ir8,          -- p5 (IR8)
+      g2c    => ir9,          -- p6 (IR9)
+      g2y    => iwrite,       -- p7 (IWRITE)
+      g3a    => '0',          -- p9 (NC)
+      g3b    => '0',          -- p10 (NC)
+      g3c    => '0',          -- p11 (NC)
+      g3y    => nc117         -- p12 (NC)
+      );
+  contrl_3f20 : sn74s04
+    port map(
+      g1a    => \-popj\,      -- p1 (-POPJ)
+      g1q_n  => popj,         -- p2 (POPJ)
+      g2a    => ir8,          -- p3 (IR8)
+      g2q_n  => \-ir8\,       -- p4 (-IR8)
+      g3a    => ir6,          -- p5 (IR6)
+      g3q_n  => \-ir6\,       -- p6 (-IR6)
+      g4a    => \-spush\,     -- p9 (-SPUSH)
+      g4q_n  => spush,        -- p8 (SPUSH)
+      g5a    => dp,           -- p11 (DP)
+      g5q_n  => \-dp\,        -- p10 (-DP)
+      g6a    => dr,           -- p13 (DR)
+      g6q_n  => \-dr\         -- p12 (-DR)
+      );
+  contrl_3f30 : sn74s64
+    port map(
+      a1     => hi4,          -- p9 (HI4)
+      a2     => \-dfall\,     -- p2 (-DFALL)
+      a3     => jretf,        -- p6 (JRETF)
+      a4     => jret,         -- p13 (JRET)
+      b1     => popj,         -- p10 (POPJ)
+      b2     => \-jcond\,     -- p5 (-JCOND)
+      b3     => hi4,          -- p4 (HI4)
+      b4     => \-ir6\,       -- p12 (-IR6)
+      c3     => hi4,          -- p3 (HI4)
+      c4     => jcond,        -- p11 (JCOND)
+      d4     => hi4,          -- p1 (HI4)
+      \out\  => pcs0          -- p8 (PCS0)
+      );
+  contrl_4d09 : sn74s08
+    port map(
+      g1a    => \-spop\,      -- p2 (-SPOP)
+      g1b    => \-spush\,     -- p1 (-SPUSH)
+      g1q    => \-spcnt\,     -- p3 (-SPCNT)
+      g2a    => '0',          -- p4 (NC)
+      g2b    => '0',          -- p5 (NC)
+      g2q    => nc118,        -- p6 (NC)
+      g3a    => '0',          -- p9 (NC)
+      g3b    => '0',          -- p8 (NC)
+      g3q    => nc119,        -- p10 (NC)
+      g4a    => '0',          -- p12 (NC)
+      g4b    => '0',          -- p13 (NC)
+      g4q    => nc120         -- p11 (NC)
+      );
+  contrl_4e30 : sn74s37
+    port map(
+      g1a    => \-destspcd\,  -- p1 (-DESTSPCD)
+      g1b    => \-destspcd\,  -- p2 (-DESTSPCD)
+      g1y    => destspcd,     -- p3 (DESTSPCD)
+      g2a    => spushd,       -- p5 (SPUSHD)
+      g2b    => wp4c,         -- p4 (WP4C)
+      g2y    => \-swpb\,      -- p6 (-SWPB)
+      g3a    => wp4c,         -- p10 (WP4C)
+      g3b    => spushd,       -- p9 (SPUSHD)
+      g3y    => \-swpa\,      -- p8 (-SWPA)
+      g4a    => '0',          -- p12 (NC)
+      g4b    => '0',          -- p13 (NC)
+      g4y    => nc121         -- p11 (NC)
+      );
 end architecture;
