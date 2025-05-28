@@ -59,20 +59,260 @@ end;
 
 architecture ttl of cadr4_amem1 is
 begin
-  amem1_3a17 : am93425a port map(ce_n => gnd, a0 => \-aadr0a\, a1 => \-aadr1a\, a2 => \-aadr2a\, a3 => \-aadr3a\, a4 => \-aadr4a\, do => amem6, a5 => \-aadr5a\, a6 => \-aadr6a\, a7 => \-aadr7a\, a8 => \-aadr8a\, a9 => \-aadr9a\, we_n => \-awpc\, di => l6);
-  amem1_3a18 : am93425a port map(ce_n => gnd, a0 => \-aadr0a\, a1 => \-aadr1a\, a2 => \-aadr2a\, a3 => \-aadr3a\, a4 => \-aadr4a\, do => amem4, a5 => \-aadr5a\, a6 => \-aadr6a\, a7 => \-aadr7a\, a8 => \-aadr8a\, a9 => \-aadr9a\, we_n => \-awpc\, di => l4);
-  amem1_3a19 : am93425a port map(ce_n => gnd, a0 => \-aadr0a\, a1 => \-aadr1a\, a2 => \-aadr2a\, a3 => \-aadr3a\, a4 => \-aadr4a\, do => amem2, a5 => \-aadr5a\, a6 => \-aadr6a\, a7 => \-aadr7a\, a8 => \-aadr8a\, a9 => \-aadr9a\, we_n => \-awpc\, di => l2);
-  amem1_3a20 : am93425a port map(ce_n => gnd, a0 => \-aadr0a\, a1 => \-aadr1a\, a2 => \-aadr2a\, a3 => \-aadr3a\, a4 => \-aadr4a\, do => amem0, a5 => \-aadr5a\, a6 => \-aadr6a\, a7 => \-aadr7a\, a8 => \-aadr8a\, a9 => \-aadr9a\, we_n => \-awpc\, di => l0);
-  amem1_3a22 : am93425a port map(ce_n => gnd, a0 => \-aadr0a\, a1 => \-aadr1a\, a2 => \-aadr2a\, a3 => \-aadr3a\, a4 => \-aadr4a\, do => amem7, a5 => \-aadr5a\, a6 => \-aadr6a\, a7 => \-aadr7a\, a8 => \-aadr8a\, a9 => \-aadr9a\, we_n => \-awpc\, di => l7);
-  amem1_3a23 : am93425a port map(ce_n => gnd, a0 => \-aadr0a\, a1 => \-aadr1a\, a2 => \-aadr2a\, a3 => \-aadr3a\, a4 => \-aadr4a\, do => amem5, a5 => \-aadr5a\, a6 => \-aadr6a\, a7 => \-aadr7a\, a8 => \-aadr8a\, a9 => \-aadr9a\, we_n => \-awpc\, di => l5);
-  amem1_3a24 : am93425a port map(ce_n => gnd, a0 => \-aadr0a\, a1 => \-aadr1a\, a2 => \-aadr2a\, a3 => \-aadr3a\, a4 => \-aadr4a\, do => amem3, a5 => \-aadr5a\, a6 => \-aadr6a\, a7 => \-aadr7a\, a8 => \-aadr8a\, a9 => \-aadr9a\, we_n => \-awpc\, di => l3);
-  amem1_3a25 : am93425a port map(ce_n => gnd, a0 => \-aadr0a\, a1 => \-aadr1a\, a2 => \-aadr2a\, a3 => \-aadr3a\, a4 => \-aadr4a\, do => amem1, a5 => \-aadr5a\, a6 => \-aadr6a\, a7 => \-aadr7a\, a8 => \-aadr8a\, a9 => \-aadr9a\, we_n => \-awpc\, di => l1);
-  amem1_3b17 : am93425a port map(ce_n => gnd, a0 => \-aadr0a\, a1 => \-aadr1a\, a2 => \-aadr2a\, a3 => \-aadr3a\, a4 => \-aadr4a\, do => amem14, a5 => \-aadr5a\, a6 => \-aadr6a\, a7 => \-aadr7a\, a8 => \-aadr8a\, a9 => \-aadr9a\, we_n => \-awpb\, di => l14);
-  amem1_3b18 : am93425a port map(ce_n => gnd, a0 => \-aadr0a\, a1 => \-aadr1a\, a2 => \-aadr2a\, a3 => \-aadr3a\, a4 => \-aadr4a\, do => amem12, a5 => \-aadr5a\, a6 => \-aadr6a\, a7 => \-aadr7a\, a8 => \-aadr8a\, a9 => \-aadr9a\, we_n => \-awpb\, di => l12);
-  amem1_3b19 : am93425a port map(ce_n => gnd, a0 => \-aadr0a\, a1 => \-aadr1a\, a2 => \-aadr2a\, a3 => \-aadr3a\, a4 => \-aadr4a\, do => amem10, a5 => \-aadr5a\, a6 => \-aadr6a\, a7 => \-aadr7a\, a8 => \-aadr8a\, a9 => \-aadr9a\, we_n => \-awpc\, di => l10);
-  amem1_3b20 : am93425a port map(ce_n => gnd, a0 => \-aadr0a\, a1 => \-aadr1a\, a2 => \-aadr2a\, a3 => \-aadr3a\, a4 => \-aadr4a\, do => amem8, a5 => \-aadr5a\, a6 => \-aadr6a\, a7 => \-aadr7a\, a8 => \-aadr8a\, a9 => \-aadr9a\, we_n => \-awpc\, di => l8);
-  amem1_3b22 : am93425a port map(ce_n => gnd, a0 => \-aadr0a\, a1 => \-aadr1a\, a2 => \-aadr2a\, a3 => \-aadr3a\, a4 => \-aadr4a\, do => amem15, a5 => \-aadr5a\, a6 => \-aadr6a\, a7 => \-aadr7a\, a8 => \-aadr8a\, a9 => \-aadr9a\, we_n => \-awpb\, di => l15);
-  amem1_3b23 : am93425a port map(ce_n => gnd, a0 => \-aadr0a\, a1 => \-aadr1a\, a2 => \-aadr2a\, a3 => \-aadr3a\, a4 => \-aadr4a\, do => amem13, a5 => \-aadr5a\, a6 => \-aadr6a\, a7 => \-aadr7a\, a8 => \-aadr8a\, a9 => \-aadr9a\, we_n => \-awpb\, di => l13);
-  amem1_3b24 : am93425a port map(ce_n => gnd, a0 => \-aadr0a\, a1 => \-aadr1a\, a2 => \-aadr2a\, a3 => \-aadr3a\, a4 => \-aadr4a\, do => amem11, a5 => \-aadr5a\, a6 => \-aadr6a\, a7 => \-aadr7a\, a8 => \-aadr8a\, a9 => \-aadr9a\, we_n => \-awpb\, di => l11);
-  amem1_3b25 : am93425a port map(ce_n => gnd, a0 => \-aadr0a\, a1 => \-aadr1a\, a2 => \-aadr2a\, a3 => \-aadr3a\, a4 => \-aadr4a\, do => amem9, a5 => \-aadr5a\, a6 => \-aadr6a\, a7 => \-aadr7a\, a8 => \-aadr8a\, a9 => \-aadr9a\, we_n => \-awpc\, di => l9);
+  amem1_3a17 : am93425a port map(
+    ce_n => gnd,       -- p1 (GND)
+    a0   => \-aadr0a\, -- p2 (-AADR0A)
+    a1   => \-aadr1a\, -- p3 (-AADR1A)
+    a2   => \-aadr2a\, -- p4 (-AADR2A)
+    a3   => \-aadr3a\, -- p5 (-AADR3A)
+    a4   => \-aadr4a\, -- p6 (-AADR4A)
+    do   => amem6,     -- p7 (AMEM6)
+    a5   => \-aadr5a\, -- p9 (-AADR5A)
+    a6   => \-aadr6a\, -- p10 (-AADR6A)
+    a7   => \-aadr7a\, -- p11 (-AADR7A)
+    a8   => \-aadr8a\, -- p12 (-AADR8A)
+    a9   => \-aadr9a\, -- p13 (-AADR9A)
+    we_n => \-awpc\,   -- p14 (-AWPC)
+    di   => l6         -- p15 (L6)
+  );
+  amem1_3a18 : am93425a port map(
+    ce_n => gnd,       -- p1 (GND)
+    a0   => \-aadr0a\, -- p2 (-AADR0A)
+    a1   => \-aadr1a\, -- p3 (-AADR1A)
+    a2   => \-aadr2a\, -- p4 (-AADR2A)
+    a3   => \-aadr3a\, -- p5 (-AADR3A)
+    a4   => \-aadr4a\, -- p6 (-AADR4A)
+    do   => amem4,     -- p7 (AMEM4)
+    a5   => \-aadr5a\, -- p9 (-AADR5A)
+    a6   => \-aadr6a\, -- p10 (-AADR6A)
+    a7   => \-aadr7a\, -- p11 (-AADR7A)
+    a8   => \-aadr8a\, -- p12 (-AADR8A)
+    a9   => \-aadr9a\, -- p13 (-AADR9A)
+    we_n => \-awpc\,   -- p14 (-AWPC)
+    di   => l4         -- p15 (L4)
+  );
+  amem1_3a19 : am93425a port map(
+    ce_n => gnd,       -- p1 (GND)
+    a0   => \-aadr0a\, -- p2 (-AADR0A)
+    a1   => \-aadr1a\, -- p3 (-AADR1A)
+    a2   => \-aadr2a\, -- p4 (-AADR2A)
+    a3   => \-aadr3a\, -- p5 (-AADR3A)
+    a4   => \-aadr4a\, -- p6 (-AADR4A)
+    do   => amem2,     -- p7 (AMEM2)
+    a5   => \-aadr5a\, -- p9 (-AADR5A)
+    a6   => \-aadr6a\, -- p10 (-AADR6A)
+    a7   => \-aadr7a\, -- p11 (-AADR7A)
+    a8   => \-aadr8a\, -- p12 (-AADR8A)
+    a9   => \-aadr9a\, -- p13 (-AADR9A)
+    we_n => \-awpc\,   -- p14 (-AWPC)
+    di   => l2         -- p15 (L2)
+  );
+  amem1_3a20 : am93425a port map(
+    ce_n => gnd,       -- p1 (GND)
+    a0   => \-aadr0a\, -- p2 (-AADR0A)
+    a1   => \-aadr1a\, -- p3 (-AADR1A)
+    a2   => \-aadr2a\, -- p4 (-AADR2A)
+    a3   => \-aadr3a\, -- p5 (-AADR3A)
+    a4   => \-aadr4a\, -- p6 (-AADR4A)
+    do   => amem0,     -- p7 (AMEM0)
+    a5   => \-aadr5a\, -- p9 (-AADR5A)
+    a6   => \-aadr6a\, -- p10 (-AADR6A)
+    a7   => \-aadr7a\, -- p11 (-AADR7A)
+    a8   => \-aadr8a\, -- p12 (-AADR8A)
+    a9   => \-aadr9a\, -- p13 (-AADR9A)
+    we_n => \-awpc\,   -- p14 (-AWPC)
+    di   => l0         -- p15 (L0)
+  );
+  amem1_3a22 : am93425a port map(
+    ce_n => gnd,       -- p1 (GND)
+    a0   => \-aadr0a\, -- p2 (-AADR0A)
+    a1   => \-aadr1a\, -- p3 (-AADR1A)
+    a2   => \-aadr2a\, -- p4 (-AADR2A)
+    a3   => \-aadr3a\, -- p5 (-AADR3A)
+    a4   => \-aadr4a\, -- p6 (-AADR4A)
+    do   => amem7,     -- p7 (AMEM7)
+    a5   => \-aadr5a\, -- p9 (-AADR5A)
+    a6   => \-aadr6a\, -- p10 (-AADR6A)
+    a7   => \-aadr7a\, -- p11 (-AADR7A)
+    a8   => \-aadr8a\, -- p12 (-AADR8A)
+    a9   => \-aadr9a\, -- p13 (-AADR9A)
+    we_n => \-awpc\,   -- p14 (-AWPC)
+    di   => l7         -- p15 (L7)
+  );
+  amem1_3a23 : am93425a port map(
+    ce_n => gnd,       -- p1 (GND)
+    a0   => \-aadr0a\, -- p2 (-AADR0A)
+    a1   => \-aadr1a\, -- p3 (-AADR1A)
+    a2   => \-aadr2a\, -- p4 (-AADR2A)
+    a3   => \-aadr3a\, -- p5 (-AADR3A)
+    a4   => \-aadr4a\, -- p6 (-AADR4A)
+    do   => amem5,     -- p7 (AMEM5)
+    a5   => \-aadr5a\, -- p9 (-AADR5A)
+    a6   => \-aadr6a\, -- p10 (-AADR6A)
+    a7   => \-aadr7a\, -- p11 (-AADR7A)
+    a8   => \-aadr8a\, -- p12 (-AADR8A)
+    a9   => \-aadr9a\, -- p13 (-AADR9A)
+    we_n => \-awpc\,   -- p14 (-AWPC)
+    di   => l5         -- p15 (L5)
+  );
+  amem1_3a24 : am93425a port map(
+    ce_n => gnd,       -- p1 (GND)
+    a0   => \-aadr0a\, -- p2 (-AADR0A)
+    a1   => \-aadr1a\, -- p3 (-AADR1A)
+    a2   => \-aadr2a\, -- p4 (-AADR2A)
+    a3   => \-aadr3a\, -- p5 (-AADR3A)
+    a4   => \-aadr4a\, -- p6 (-AADR4A)
+    do   => amem3,     -- p7 (AMEM3)
+    a5   => \-aadr5a\, -- p9 (-AADR5A)
+    a6   => \-aadr6a\, -- p10 (-AADR6A)
+    a7   => \-aadr7a\, -- p11 (-AADR7A)
+    a8   => \-aadr8a\, -- p12 (-AADR8A)
+    a9   => \-aadr9a\, -- p13 (-AADR9A)
+    we_n => \-awpc\,   -- p14 (-AWPC)
+    di   => l3         -- p15 (L3)
+  );
+  amem1_3a25 : am93425a port map(
+    ce_n => gnd,       -- p1 (GND)
+    a0   => \-aadr0a\, -- p2 (-AADR0A)
+    a1   => \-aadr1a\, -- p3 (-AADR1A)
+    a2   => \-aadr2a\, -- p4 (-AADR2A)
+    a3   => \-aadr3a\, -- p5 (-AADR3A)
+    a4   => \-aadr4a\, -- p6 (-AADR4A)
+    do   => amem1,     -- p7 (AMEM1)
+    a5   => \-aadr5a\, -- p9 (-AADR5A)
+    a6   => \-aadr6a\, -- p10 (-AADR6A)
+    a7   => \-aadr7a\, -- p11 (-AADR7A)
+    a8   => \-aadr8a\, -- p12 (-AADR8A)
+    a9   => \-aadr9a\, -- p13 (-AADR9A)
+    we_n => \-awpc\,   -- p14 (-AWPC)
+    di   => l1         -- p15 (L1)
+  );
+  amem1_3b17 : am93425a port map(
+    ce_n => gnd,       -- p1 (GND)
+    a0   => \-aadr0a\, -- p2 (-AADR0A)
+    a1   => \-aadr1a\, -- p3 (-AADR1A)
+    a2   => \-aadr2a\, -- p4 (-AADR2A)
+    a3   => \-aadr3a\, -- p5 (-AADR3A)
+    a4   => \-aadr4a\, -- p6 (-AADR4A)
+    do   => amem14,    -- p7 (AMEM14)
+    a5   => \-aadr5a\, -- p9 (-AADR5A)
+    a6   => \-aadr6a\, -- p10 (-AADR6A)
+    a7   => \-aadr7a\, -- p11 (-AADR7A)
+    a8   => \-aadr8a\, -- p12 (-AADR8A)
+    a9   => \-aadr9a\, -- p13 (-AADR9A)
+    we_n => \-awpb\,   -- p14 (-AWPB)
+    di   => l14        -- p15 (L14)
+  );
+  amem1_3b18 : am93425a port map(
+    ce_n => gnd,       -- p1 (GND)
+    a0   => \-aadr0a\, -- p2 (-AADR0A)
+    a1   => \-aadr1a\, -- p3 (-AADR1A)
+    a2   => \-aadr2a\, -- p4 (-AADR2A)
+    a3   => \-aadr3a\, -- p5 (-AADR3A)
+    a4   => \-aadr4a\, -- p6 (-AADR4A)
+    do   => amem12,    -- p7 (AMEM12)
+    a5   => \-aadr5a\, -- p9 (-AADR5A)
+    a6   => \-aadr6a\, -- p10 (-AADR6A)
+    a7   => \-aadr7a\, -- p11 (-AADR7A)
+    a8   => \-aadr8a\, -- p12 (-AADR8A)
+    a9   => \-aadr9a\, -- p13 (-AADR9A)
+    we_n => \-awpb\,   -- p14 (-AWPB)
+    di   => l12        -- p15 (L12)
+  );
+  amem1_3b19 : am93425a port map(
+    ce_n => gnd,       -- p1 (GND)
+    a0   => \-aadr0a\, -- p2 (-AADR0A)
+    a1   => \-aadr1a\, -- p3 (-AADR1A)
+    a2   => \-aadr2a\, -- p4 (-AADR2A)
+    a3   => \-aadr3a\, -- p5 (-AADR3A)
+    a4   => \-aadr4a\, -- p6 (-AADR4A)
+    do   => amem10,    -- p7 (AMEM10)
+    a5   => \-aadr5a\, -- p9 (-AADR5A)
+    a6   => \-aadr6a\, -- p10 (-AADR6A)
+    a7   => \-aadr7a\, -- p11 (-AADR7A)
+    a8   => \-aadr8a\, -- p12 (-AADR8A)
+    a9   => \-aadr9a\, -- p13 (-AADR9A)
+    we_n => \-awpc\,   -- p14 (-AWPC)
+    di   => l10        -- p15 (L10)
+  );
+  amem1_3b20 : am93425a port map(
+    ce_n => gnd,       -- p1 (GND)
+    a0   => \-aadr0a\, -- p2 (-AADR0A)
+    a1   => \-aadr1a\, -- p3 (-AADR1A)
+    a2   => \-aadr2a\, -- p4 (-AADR2A)
+    a3   => \-aadr3a\, -- p5 (-AADR3A)
+    a4   => \-aadr4a\, -- p6 (-AADR4A)
+    do   => amem8,     -- p7 (AMEM8)
+    a5   => \-aadr5a\, -- p9 (-AADR5A)
+    a6   => \-aadr6a\, -- p10 (-AADR6A)
+    a7   => \-aadr7a\, -- p11 (-AADR7A)
+    a8   => \-aadr8a\, -- p12 (-AADR8A)
+    a9   => \-aadr9a\, -- p13 (-AADR9A)
+    we_n => \-awpc\,   -- p14 (-AWPC)
+    di   => l8         -- p15 (L8)
+  );
+  amem1_3b22 : am93425a port map(
+    ce_n => gnd,       -- p1 (GND)
+    a0   => \-aadr0a\, -- p2 (-AADR0A)
+    a1   => \-aadr1a\, -- p3 (-AADR1A)
+    a2   => \-aadr2a\, -- p4 (-AADR2A)
+    a3   => \-aadr3a\, -- p5 (-AADR3a) -- Mismatch: netlist has -AADR3a, vhd has -aadr3a
+    a4   => \-aadr4a\, -- p6 (-AADR4a) -- Mismatch: netlist has -AADR4a, vhd has -aadr4a
+    do   => amem15,    -- p7 (AMEM15)
+    a5   => \-aadr5a\, -- p9 (-AADR5A)
+    a6   => \-aadr6a\, -- p10 (-AADR6A)
+    a7   => \-aadr7a\, -- p11 (-AADR7A)
+    a8   => \-aadr8a\, -- p12 (-AADR8A)
+    a9   => \-aadr9a\, -- p13 (-AADR9A)
+    we_n => \-awpb\,   -- p14 (-AWPB)
+    di   => l15        -- p15 (L15)
+  );
+  amem1_3b23 : am93425a port map(
+    ce_n => gnd,       -- p1 (GND)
+    a0   => \-aadr0a\, -- p2 (-AADR0A)
+    a1   => \-aadr1a\, -- p3 (-AADR1A)
+    a2   => \-aadr2a\, -- p4 (-AADR2A)
+    a3   => \-aadr3a\, -- p5 (-AADR3a) -- Mismatch: netlist has -AADR3a, vhd has -aadr3a
+    a4   => \-aadr4a\, -- p6 (-AADR4a) -- Mismatch: netlist has -AADR4a, vhd has -aadr4a
+    do   => amem13,    -- p7 (AMEM13)
+    a5   => \-aadr5a\, -- p9 (-AADR5A)
+    a6   => \-aadr6a\, -- p10 (-AADR6A)
+    a7   => \-aadr7a\, -- p11 (-AADR7A)
+    a8   => \-aadr8a\, -- p12 (-AADR8A)
+    a9   => \-aadr9a\, -- p13 (-AADR9A)
+    we_n => \-awpb\,   -- p14 (-AWPB)
+    di   => l13        -- p15 (L13)
+  );
+  amem1_3b24 : am93425a port map(
+    ce_n => gnd,       -- p1 (GND)
+    a0   => \-aadr0a\, -- p2 (-AADR0A)
+    a1   => \-aadr1a\, -- p3 (-AADR1A)
+    a2   => \-aadr2a\, -- p4 (-AADR2A)
+    a3   => \-aadr3a\, -- p5 (-AADR3a) -- Mismatch: netlist has -AADR3a, vhd has -aadr3a
+    a4   => \-aadr4a\, -- p6 (-AADR4a) -- Mismatch: netlist has -AADR4a, vhd has -aadr4a
+    do   => amem11,    -- p7 (AMEM11)
+    a5   => \-aadr5a\, -- p9 (-AADR5A)
+    a6   => \-aadr6a\, -- p10 (-AADR6A)
+    a7   => \-aadr7a\, -- p11 (-AADR7A)
+    a8   => \-aadr8a\, -- p12 (-AADR8A)
+    a9   => \-aadr9a\, -- p13 (-AADR9A)
+    we_n => \-awpb\,   -- p14 (-AWPB)
+    di   => l11        -- p15 (L11)
+  );
+  amem1_3b25 : am93425a port map(
+    ce_n => gnd,       -- p1 (GND)
+    a0   => \-aadr0a\, -- p2 (-AADR0A)
+    a1   => \-aadr1a\, -- p3 (-AADR1A)
+    a2   => \-aadr2a\, -- p4 (-AADR2A)
+    a3   => \-aadr3a\, -- p5 (-AADR3a) -- Mismatch: netlist has -AADR3a, vhd has -aadr3a
+    a4   => \-aadr4a\, -- p6 (-AADR4a) -- Mismatch: netlist has -AADR4a, vhd has -aadr4a
+    do   => amem9,     -- p7 (AMEM9)
+    a5   => \-aadr5a\, -- p9 (-AADR5A)
+    a6   => \-aadr6a\, -- p10 (-AADR6A)
+    a7   => \-aadr7a\, -- p11 (-AADR7A)
+    a8   => \-aadr8a\, -- p12 (-AADR8A)
+    a9   => \-aadr9a\, -- p13 (-AADR9A)
+    we_n => \-awpc\,   -- p14 (-AWPC)
+    di   => l9         -- p15 (L9)
+  );
 end architecture;
