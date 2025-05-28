@@ -1,4 +1,5 @@
 -- Dual J-K Positive-Edge-Triggered Flip-Flops With Preset And Clear
+-- This component implements two J-K flip-flops with preset and clear.
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -9,15 +10,21 @@ use ttl.misc.all;
 
 entity sn74109 is
   port (
-    clk1           : in  std_logic;
-    pre1_n, clr1_n : in  std_logic;
-    j1, k1_n       : in  std_logic;
-    q1, q1_n       : out std_logic;
+    clr1_n : in  std_logic; -- Pin 1
+    j1     : in  std_logic; -- Pin 2
+    k1_n   : in  std_logic; -- Pin 3
+    clk1   : in  std_logic; -- Pin 4
+    pre1_n : in  std_logic; -- Pin 5
+    q1     : out std_logic; -- Pin 6
+    q1_n   : out std_logic; -- Pin 7
 
-    clk2           : in  std_logic;
-    pre2_n, clr2_n : in  std_logic;
-    j2, k2_n       : in  std_logic;
-    q2, q2_n       : out std_logic
+    q2_n   : out std_logic; -- Pin 9
+    q2     : out std_logic; -- Pin 10
+    pre2_n : in  std_logic; -- Pin 11
+    clk2   : in  std_logic; -- Pin 12
+    k2_n   : in  std_logic; -- Pin 13
+    j2     : in  std_logic; -- Pin 14
+    clr2_n : in  std_logic  -- Pin 15
     );
 end;
 

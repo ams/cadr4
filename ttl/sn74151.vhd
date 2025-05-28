@@ -1,4 +1,5 @@
--- Data Selectors / Multiplexers
+-- 8-Line To 1-Line Data Selectors/Multiplexers
+-- This component selects one of eight data inputs based on three select lines.
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -6,20 +7,21 @@ use ieee.numeric_std.all;
 
 entity sn74151 is
   port (
-    i0   : in  std_logic;
-    i1   : in  std_logic;
-    i2   : in  std_logic;
-    i3   : in  std_logic;
-    i4   : in  std_logic;
-    i5   : in  std_logic;
-    i6   : in  std_logic;
-    i7   : in  std_logic;
-    q    : out std_logic;
-    q_n  : out std_logic;
-    sel2 : in  std_logic;
-    sel1 : in  std_logic;
-    sel0 : in  std_logic;
-    ce_n : in  std_logic
+    i3   : in  std_logic; -- Pin 1
+    i2   : in  std_logic; -- Pin 2
+    i1   : in  std_logic; -- Pin 3
+    i0   : in  std_logic; -- Pin 4
+    q    : out std_logic; -- Pin 5
+    q_n  : out std_logic; -- Pin 6
+    ce_n : in  std_logic; -- Pin 7
+
+    sel0 : in  std_logic; -- Pin 9
+    sel1 : in  std_logic; -- Pin 10
+    sel2 : in  std_logic; -- Pin 11
+    i4   : in  std_logic; -- Pin 12
+    i5   : in  std_logic; -- Pin 13
+    i6   : in  std_logic; -- Pin 14
+    i7   : in  std_logic  -- Pin 15
     );
 end;
 

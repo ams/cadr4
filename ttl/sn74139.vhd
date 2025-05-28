@@ -1,4 +1,5 @@
 -- Dual 2-Line To 4-Line Decoders/Demultiplexers
+-- This component decodes a 2-bit input to one of four active-low outputs.
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -6,13 +7,21 @@ use ieee.numeric_std.all;
 
 entity sn74139 is
   port (
-    g1                     : in  std_logic;
-    a1, b1                 : in  std_logic;
-    g1y0, g1y1, g1y2, g1y3 : out std_logic;
+    g1   : in  std_logic; -- Pin 1
+    b1   : in  std_logic; -- Pin 2
+    a1   : in  std_logic; -- Pin 3
+    g1y0 : out std_logic; -- Pin 4
+    g1y1 : out std_logic; -- Pin 5
+    g1y2 : out std_logic; -- Pin 6
+    g1y3 : out std_logic; -- Pin 7
 
-    g2                     : in  std_logic;
-    a2, b2                 : in  std_logic;
-    g2y3, g2y2, g2y1, g2y0 : out std_logic
+    g2y3 : out std_logic; -- Pin 9
+    g2y2 : out std_logic; -- Pin 10
+    g2y1 : out std_logic; -- Pin 11
+    g2y0 : out std_logic; -- Pin 12
+    g2   : in  std_logic; -- Pin 13
+    b2   : in  std_logic; -- Pin 14
+    a2   : in  std_logic  -- Pin 15
     );
 end;
 

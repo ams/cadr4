@@ -6,12 +6,20 @@ use ieee.numeric_std.all;
 
 entity sn74283 is
   port (
-    c0             : in std_logic;
-    a0, a1, a2, a3 : in std_logic;
-    b0, b1, b2, b3 : in std_logic;
-
-    s0, s1, s2, s3 : out std_logic;
-    c4             : out std_logic
+    c0 : in std_logic; -- Pin 7
+    a0 : in std_logic; -- Pin 1
+    a1 : in std_logic; -- Pin 4
+    a2 : in std_logic; -- Pin 15
+    a3 : in std_logic; -- Pin 12
+    b0 : in std_logic; -- Pin 2
+    b1 : in std_logic; -- Pin 5
+    b2 : in std_logic; -- Pin 14
+    b3 : in std_logic; -- Pin 11
+    s0 : out std_logic; -- Pin 3
+    s1 : out std_logic; -- Pin 6
+    s2 : out std_logic; -- Pin 13
+    s3 : out std_logic; -- Pin 10
+    c4 : out std_logic  -- Pin 9
     );
 end;
 

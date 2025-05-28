@@ -1,4 +1,4 @@
--- AND-OR-INVERT Gates
+-- SN7451: Dual 2-Wide 2-Input AND-OR-INVERT Gates
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -6,11 +6,17 @@ use ieee.numeric_std.all;
 
 entity sn7451 is
   port (
-    g1a, g1b, g1c, g1d : in  std_logic;
-    g1y                : out std_logic;
+    g1a : in  std_logic; -- pin 1
+    g1b : in  std_logic; -- pin 13
+    g1c : in  std_logic; -- pin 9
+    g1d : in  std_logic; -- pin 10
+    g1y : out std_logic; -- pin 8
 
-    g2a, g2b, g2c, g2d : in  std_logic;
-    g2y                : out std_logic
+    g2a : in  std_logic; -- pin 2
+    g2b : in  std_logic; -- pin 3
+    g2c : in  std_logic; -- pin 4
+    g2d : in  std_logic; -- pin 5
+    g2y : out std_logic  -- pin 6
     );
 end;
 

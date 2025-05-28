@@ -1,4 +1,4 @@
--- Hex/Quadruple D-Type Flip-Flops With Clear
+-- SN74174: Hex D-Type Flip-Flops with Clear
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -9,11 +9,21 @@ use ttl.misc.all;
 
 entity sn74174 is
   port (
-    clk   : in std_logic;
-    clr_n : in std_logic;
+    clk   : in std_logic; -- pin 9
+    clr_n : in std_logic; -- pin 1
 
-    d1, d2, d3, d4, d5, d6 : in  std_logic;
-    q1, q2, q3, q4, q5, q6 : out std_logic
+    d1 : in  std_logic; -- pin 3
+    d2 : in  std_logic; -- pin 4
+    d3 : in  std_logic; -- pin 6
+    d4 : in  std_logic; -- pin 11
+    d5 : in  std_logic; -- pin 13
+    d6 : in  std_logic; -- pin 14
+    q1 : out std_logic; -- pin 2
+    q2 : out std_logic; -- pin 5
+    q3 : out std_logic; -- pin 7
+    q4 : out std_logic; -- pin 10
+    q5 : out std_logic; -- pin 12
+    q6 : out std_logic  -- pin 15
     );
 end;
 

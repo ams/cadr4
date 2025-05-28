@@ -17,23 +17,36 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+-- This is a 4-bit Arithmetic Logic Unit/Function Generator
 entity sn74181 is
   port (
-    cout_n : out std_logic;
-    y      : out std_logic;
-    x      : out std_logic;
-    aeb    : out std_logic;
+    cout_n : out std_logic; -- Pin 16 (Cn+4 Active Low)
+    y      : out std_logic; -- Pin 17 (Y Output)
+    x      : out std_logic; -- Pin 15 (X Output)
+    aeb    : out std_logic; -- Pin 14 (A=B Output)
 
-    f0, f1, f2, f3 : out std_logic;
+    f0     : out std_logic; -- Pin 9 (F0 Output)
+    f1     : out std_logic; -- Pin 10 (F1 Output)
+    f2     : out std_logic; -- Pin 11 (F2 Output)
+    f3     : out std_logic; -- Pin 13 (F3 Output)
 
-    b0, b1, b2, b3 : in std_logic;
+    b0     : in std_logic; -- Pin 1 (B0 Input)
+    b1     : in std_logic; -- Pin 23 (B1 Input)
+    b2     : in std_logic; -- Pin 22 (B2 Input)
+    b3     : in std_logic; -- Pin 21 (B3 Input)
 
-    a0, a1, a2, a3 : in std_logic;
+    a0     : in std_logic; -- Pin 2 (A0 Input)
+    a1     : in std_logic; -- Pin 3 (A1 Input)
+    a2     : in std_logic; -- Pin 4 (A2 Input)
+    a3     : in std_logic; -- Pin 5 (A3 Input)
 
-    m              : in std_logic;
-    s0, s1, s2, s3 : in std_logic;
+    m      : in std_logic; -- Pin 6 (Mode Control)
+    s0     : in std_logic; -- Pin 11 (S0 Input)
+    s1     : in std_logic; -- Pin 10 (S1 Input)
+    s2     : in std_logic; -- Pin 9 (S2 Input)
+    s3     : in std_logic; -- Pin 8 (S3 Input)
 
-    cin_n : in std_logic
+    cin_n  : in std_logic -- Pin 7 (Cn Input Active Low)
     );
 end;
 

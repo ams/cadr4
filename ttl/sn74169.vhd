@@ -1,27 +1,28 @@
--- Synchronous 4-Bit Up/Down Binary Counters
+-- Synchronous 4-Bit Up/Down Binary Counter
 
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+-- This is a Synchronous 4-Bit Up/Down Binary Counter
 entity sn74169 is
   port (
-    co_n : out std_logic;
-    i3   : in  std_logic;
-    i2   : in  std_logic;
-    i1   : in  std_logic;
-    i0   : in  std_logic;
+    co_n    : out std_logic; -- Pin 15 (Terminal Count Output Active Low)
+    i3      : in  std_logic; -- Pin 6 (Parallel Input D)
+    i2      : in  std_logic; -- Pin 5 (Parallel Input C)
+    i1      : in  std_logic; -- Pin 4 (Parallel Input B)
+    i0      : in  std_logic; -- Pin 3 (Parallel Input A)
 
-    o3 : out std_logic;
-    o2 : out std_logic;
-    o1 : out std_logic;
-    o0 : out std_logic;
+    o3      : out std_logic; -- Pin 10 (Output D)
+    o2      : out std_logic; -- Pin 12 (Output C)
+    o1      : out std_logic; -- Pin 13 (Output B)
+    o0      : out std_logic; -- Pin 14 (Output A)
 
-    enb_t_n : in std_logic;
-    enb_p_n : in std_logic;
-    load_n  : in std_logic;
-    up_dn   : in std_logic;
-    clk     : in std_logic
+    enb_t_n : in std_logic; -- Pin 11 (Count Enable Trickle Input Active Low)
+    enb_p_n : in std_logic; -- Pin 7 (Count Enable Parallel Input Active Low)
+    load_n  : in std_logic; -- Pin 9 (Parallel Enable Input Active Low)
+    up_dn   : in std_logic; -- Pin 1 (Up/Down Control Input)
+    clk     : in std_logic -- Pin 2 (Clock Input)
     );
 end;
 

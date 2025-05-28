@@ -6,9 +6,18 @@ use ieee.numeric_std.all;
 
 entity sn74280 is
   port (
-    i0, i1, i2, i3, i4, i5, i6, i7, i8 : in std_logic;
+    i0   : in std_logic; -- Pin 1
+    i1   : in std_logic; -- Pin 2
+    i2   : in std_logic; -- Pin 4
+    i3   : in std_logic; -- Pin 8
+    i4   : in std_logic; -- Pin 9
+    i5   : in std_logic; -- Pin 10
+    i6   : in std_logic; -- Pin 11
+    i7   : in std_logic; -- Pin 12
+    i8   : in std_logic; -- Pin 13
 
-    even, odd : out std_logic
+    even : out std_logic; -- Pin 5
+    odd  : out std_logic  -- Pin 6
     );
 end;
 

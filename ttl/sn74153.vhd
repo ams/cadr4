@@ -1,4 +1,5 @@
 -- Dual 4-Line To 1-Line Data Selectors/Multiplexers
+-- This component selects one of four data inputs for two separate sections based on two select lines.
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -6,18 +7,21 @@ use ieee.numeric_std.all;
 
 entity sn74153 is
   port (
-    enb1_n                 : in  std_logic;
-    sel0                   : in  std_logic;
-    g1c0, g1c1, g1c2, g1c3 : in  std_logic;
-    g1q                    : out std_logic;
+    enb1_n : in  std_logic; -- Pin 1
+    sel1   : in  std_logic; -- Pin 2
+    g1c3   : in  std_logic; -- Pin 3
+    g1c2   : in  std_logic; -- Pin 4
+    g1c1   : in  std_logic; -- Pin 5
+    g1c0   : in  std_logic; -- Pin 6
+    g1q    : out std_logic; -- Pin 7
 
-    enb2_n : in  std_logic;
-    sel1   : in  std_logic;
-    g2c0,
-    g2c1,
-    g2c2,
-    g2c3   : in  std_logic;
-    g2q    : out std_logic
+    g2q    : out std_logic; -- Pin 9
+    g2c0   : in  std_logic; -- Pin 10
+    g2c1   : in  std_logic; -- Pin 11
+    g2c2   : in  std_logic; -- Pin 12
+    g2c3   : in  std_logic; -- Pin 13
+    sel0   : in  std_logic; -- Pin 14
+    enb2_n : in  std_logic  -- Pin 15
     );
 end;
 

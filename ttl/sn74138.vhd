@@ -1,4 +1,4 @@
--- 3-Line To 8-Line Decoders/Demultiplexers
+-- SN74138: 3-Line To 8-Line Decoder/Demultiplexer
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -6,9 +6,20 @@ use ieee.numeric_std.all;
 
 entity sn74138 is
   port (
-    a, b, c      : in std_logic;
-    g1, g2a, g2b : in std_logic;
-    y0, y1, y2, y3, y4, y5, y6, y7 : out std_logic
+    a   : in std_logic; -- pin 1
+    b   : in std_logic; -- pin 2
+    c   : in std_logic; -- pin 3
+    g1  : in std_logic; -- pin 6
+    g2a : in std_logic; -- pin 4
+    g2b : in std_logic; -- pin 5
+    y0  : out std_logic; -- pin 15
+    y1  : out std_logic; -- pin 14
+    y2  : out std_logic; -- pin 13
+    y3  : out std_logic; -- pin 12
+    y4  : out std_logic; -- pin 11
+    y5  : out std_logic; -- pin 10
+    y6  : out std_logic; -- pin 9
+    y7  : out std_logic  -- pin 7
     );
 end;
 

@@ -1,20 +1,30 @@
 -- 4-Bit Bidirectional Universal Shift Registers
+-- SN74194 4-Bit Bidirectional Universal Shift Register
 
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+-- This is a 4-Bit Bidirectional Universal Shift Register
 entity sn74194 is
   port (
-    clk : in std_logic;
+    clk     : in std_logic; -- Pin 11 (Clock Input)
 
-    sil, sir : in std_logic;
-    clr_n    : in std_logic;
+    sil     : in std_logic; -- Pin 7 (Shift Left Serial Input)
+    sir     : in std_logic; -- Pin 2 (Shift Right Serial Input)
+    clr_n   : in std_logic; -- Pin 1 (Master Clear Input Active Low)
 
-    i0, i1, i2, i3 : in std_logic;
-    s0, s1         : in std_logic;
+    i0      : in std_logic; -- Pin 3 (Parallel Input A)
+    i1      : in std_logic; -- Pin 4 (Parallel Input B)
+    i2      : in std_logic; -- Pin 5 (Parallel Input C)
+    i3      : in std_logic; -- Pin 6 (Parallel Input D)
+    s0      : in std_logic; -- Pin 9 (Mode Control S0)
+    s1      : in std_logic; -- Pin 10 (Mode Control S1)
 
-    q0, q1, q2, q3 : out std_logic
+    q0      : out std_logic; -- Pin 15 (Parallel Output QA)
+    q1      : out std_logic; -- Pin 14 (Parallel Output QB)
+    q2      : out std_logic; -- Pin 13 (Parallel Output QC)
+    q3      : out std_logic  -- Pin 12 (Parallel Output QD)
     );
 end;
 
