@@ -506,8 +506,8 @@ package sn74 is
     port (
       xout : out std_logic;
       yout : out std_logic;
-      x3   : out std_logic;
-      y3   : out std_logic;
+      x3   : in std_logic;
+      y3   : in std_logic;
 
       cout2_n : out std_logic;
       x2      : in  std_logic;
