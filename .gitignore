@@ -10,4 +10,5 @@
 *.vcd
 
 .DS_Store
-**/AGENT-TODO.md
+**/TASK.md
+netlist/*
