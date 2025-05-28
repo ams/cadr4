@@ -102,17 +102,191 @@ end;
 
 architecture ttl of cadr4_ictl is
 begin
-  ictl_1a15 : dm9s42_1 port map(out2 => ramdisable, g2d2 => hi1, g2c2 => hi1, g2b2 => \-iwriteda\, g2a2 => \-promdisabled\, g1b2 => hi1, g1a2 => idebug, g1a1 => '0', g1b1 => '0', g2a1 => '0', g2b1 => '0', g2c1 => '0', g2d1 => '0');
-  ictl_1c16 : sn74s04 port map(g1a   => iwriteda, g1q_n => \-iwriteda\, g2a => promdisabled, g2q_n => \-promdisabled\, g3a => \-wp5\, g3q_n => wp5d, g4q_n => wp5c, g4a => \-wp5\, g5q_n => wp5b, g5a => \-wp5\, g6q_n => wp5a, g6a => \-wp5\);
-  ictl_1c21 : sn74s04 port map(g1a   => pc0, g1q_n => \-pcb0\, g2a => pc1, g2q_n => \-pcb1\, g3a => pc2, g3q_n => \-pcb2\, g4q_n => \-pcb3\, g4a => pc3, g5q_n => \-pcb4\, g5a => pc4, g6q_n => \-pcb5\, g6a => pc5);
-  ictl_1c26 : sn74s37 port map(g1a   => wp5a, g1b => iwriteda, g1y => \-iwea\, g2a => wp5a, g2b => iwriteda, g2y => \-iweb\, g3y => \-iwei\, g3a => iwriteda, g3b => wp5a, g4y => \-iwej\, g4a => iwriteda, g4b => wp5a);
-  ictl_1d20 : sn74s04 port map(g1a   => pc13, g1q_n => \-pc13b\, g2a => pc12, g2q_n => \-pc12b\, g3a => \-iwrited\, g3q_n => iwritedd, g4q_n => iwritedc, g4a => \-iwrited\, g5q_n => iwritedb, g5a => \-iwrited\, g6q_n => iwriteda, g6a => \-iwrited\);
-  ictl_1d25 : sn74s04 port map(g1a   => pc6, g1q_n => \-pcb6\, g2a => pc7, g2q_n => \-pcb7\, g3a => pc8, g3q_n => \-pcb8\, g4q_n => \-pcb9\, g4a => pc9, g5q_n => \-pcb10\, g5a => pc10, g6q_n => \-pcb11\, g6a => pc11);
-  ictl_1d30 : sn74s139 port map(g1   => ramdisable, a1 => \-pc12b\, b1 => \-pc13b\, g1y0 => \-ice3a\, g1y1 => \-ice2a\, g1y2 => \-ice1a\, g1y3 => \-ice0a\, g2y3 => \-ice0b\, g2y2 => \-ice1b\, g2y1 => \-ice2b\, g2y0 => \-ice3b\, b2 => \-pc13b\, a2 => \-pc12b\, g2 => ramdisable);
-  ictl_2c01 : sn74s37 port map(g1a   => wp5b, g1b => iwritedb, g1y => \-iwec\, g2a => wp5b, g2b => iwritedb, g2y => \-iwed\, g3y => \-iwek\, g3a => iwritedb, g3b => wp5b, g4y => \-iwel\, g4a => iwritedb, g4b => wp5b);
-  ictl_2c06 : sn74s04 port map(g1a   => pc0, g1q_n => \-pcc0\, g2a => pc1, g2q_n => \-pcc1\, g3a => pc2, g3q_n => \-pcc2\, g4q_n => \-pcc3\, g4a => pc3, g5q_n => \-pcc4\, g5a => pc4, g6q_n => \-pcc5\, g6a => pc5);
-  ictl_2d10 : sn74s04 port map(g1a   => pc6, g1q_n => \-pcc6\, g2a => pc7, g2q_n => \-pcc7\, g3a => pc8, g3q_n => \-pcc8\, g4q_n => \-pcc9\, g4a => pc9, g5q_n => \-pcc10\, g5a => pc10, g6q_n => \-pcc11\, g6a => pc11);
-  ictl_2d15 : sn74s37 port map(g1a   => wp5c, g1b => iwritedc, g1y => \-iwee\, g2a => wp5c, g2b => iwritedc, g2y => \-iwef\, g3y => \-iwem\, g3a => iwritedc, g3b => wp5c, g4y => \-iwen\, g4a => iwritedc, g4b => wp5c);
-  ictl_2d25 : sn74s139 port map(g1   => ramdisable, a1 => \-pc12b\, b1 => \-pc13b\, g1y0 => \-ice3c\, g1y1 => \-ice2c\, g1y2 => \-ice1c\, g1y3 => \-ice0c\, g2y3 => \-ice0d\, g2y2 => \-ice1d\, g2y1 => \-ice2d\, g2y0 => \-ice3d\, b2 => \-pc13b\, a2 => \-pc12b\, g2 => ramdisable);
-  ictl_2d30 : sn74s37 port map(g1a   => wp5d, g1b => iwritedd, g1y => \-iweg\, g2a => wp5d, g2b => iwritedd, g2y => \-iweh\, g3y => \-iweo\, g3a => iwritedd, g3b => wp5d, g4y => \-iwep\, g4a => iwritedd, g4b => wp5d);
+  ictl_1a15 : dm9s42_1 port map(
+    g1a1   => '0',            -- p1 (NC)
+    g1b1   => '0',            -- p2 (NC)
+    g2a1   => '0',            -- p3 (NC)
+    g2b1   => '0',            -- p4 (NC)
+    g2c1   => '0',            -- p5 (NC)
+    g2d1   => '0',            -- p6 (NC)
+    g1a2   => idebug,         -- p15 (IDEBUG)
+    g1b2   => hi1,            -- p14 (HI1)
+    g2a2   => \-promdisabled\, -- p13 (-PROMDISABLED) -- Note: signal name mismatch with netlist PROMDISABLED
+    g2b2   => \-iwriteda\,   -- p12 (-IWRITEDA) -- Note: signal name mismatch with netlist IWRITEDA
+    g2c2   => hi1,            -- p11 (HI1)
+    g2d2   => hi1,            -- p10 (HI1)
+    out2   => ramdisable      -- p9 (RAMDISABLE)
+    );
+  ictl_1c16 : sn74s04 port map(
+    g1a   => iwriteda,         -- p1 (IWRITEDA)
+    g1q_n => \-iwriteda\,     -- p2 (-IWRITEDA) -- Note: signal name mismatch with netlist IWRITEDA
+    g2a   => promdisabled,     -- p3 (PROMDISABLED)
+    g2q_n => \-promdisabled\, -- p4 (-PROMDISABLED) -- Note: signal name mismatch with netlist PROMDISABLED
+    g3a   => \-wp5\,          -- p5 (-WP5)
+    g3q_n => wp5d,             -- p6 (WP5D)
+    g4a   => \-wp5\,          -- p9 (-WP5)
+    g4q_n => wp5c,             -- p8 (WP5C)
+    g5a   => \-wp5\,          -- p11 (-WP5)
+    g5q_n => wp5b,             -- p10 (WP5B)
+    g6a   => \-wp5\,          -- p13 (-WP5)
+    g6q_n => wp5a              -- p12 (WP5A)
+    );
+  ictl_1c21 : sn74s04 port map(
+    g1a   => pc0,     -- p1 (PC0)
+    g1q_n => \-pcb0\, -- p2 (-PCB0)
+    g2a   => pc1,     -- p3 (PC1)
+    g2q_n => \-pcb1\, -- p4 (-PCB1)
+    g3a   => pc2,     -- p5 (PC2)
+    g3q_n => \-pcb2\, -- p6 (-PCB2)
+    g4a   => pc3,     -- p9 (PC3)
+    g4q_n => \-pcb3\, -- p8 (-PCB3)
+    g5a   => pc4,     -- p11 (PC4)
+    g5q_n => \-pcb4\, -- p10 (-PCB4)
+    g6a   => pc5,     -- p13 (PC5)
+    g6q_n => \-pcb5\  -- p12 (-PCB5)
+    );
+  ictl_1c26 : sn74s37 port map(
+    g1a   => wp5a,         -- p1 (WP5A)
+    g1b   => iwriteda,     -- p2 (IWRITEDA)
+    g1y   => \-iwea\,     -- p3 (-IWEA)
+    g2a   => wp5a,         -- p4 (WP5A)
+    g2b   => iwriteda,     -- p5 (IWRITEDA)
+    g2y   => \-iweb\,     -- p6 (-IWEB)
+    g3a   => iwriteda,     -- p9 (IWRITEDA)
+    g3b   => wp5a,         -- p10 (WP5A)
+    g3y   => \-iwei\,     -- p8 (-IWEI)
+    g4a   => iwriteda,     -- p12 (IWRITEDA)
+    g4b   => wp5a,         -- p13 (WP5A)
+    g4y   => \-iwej\      -- p11 (-IWEJ)
+    );
+  ictl_1d20 : sn74s04 port map(
+    g1a   => pc13,         -- p1 (PC13)
+    g1q_n => \-pc13b\,     -- p2 (-PC13B)
+    g2a   => pc12,         -- p3 (PC12)
+    g2q_n => \-pc12b\,     -- p4 (-PC12B)
+    g3a   => \-iwrited\,  -- p5 (-IWRITED)
+    g3q_n => iwritedd,     -- p6 (IWRITEDD)
+    g4a   => \-iwrited\,  -- p9 (-IWRITED)
+    g4q_n => iwritedc,     -- p8 (IWRITEDC)
+    g5a   => \-iwrited\,  -- p11 (-IWRITED)
+    g5q_n => iwritedb,     -- p10 (IWRITEDB)
+    g6a   => \-iwrited\,  -- p13 (-IWRITED)
+    g6q_n => iwriteda      -- p12 (IWRITEDA)
+    );
+  ictl_1d25 : sn74s04 port map(
+    g1a   => pc6,      -- p1 (PC6)
+    g1q_n => \-pcb6\,  -- p2 (-PCB6)
+    g2a   => pc7,      -- p3 (PC7)
+    g2q_n => \-pcb7\,  -- p4 (-PCB7)
+    g3a   => pc8,      -- p5 (PC8)
+    g3q_n => \-pcb8\,  -- p6 (-PCB8)
+    g4a   => pc9,      -- p9 (PC9)
+    g4q_n => \-pcb9\,  -- p8 (-PCB9)
+    g5a   => pc10,     -- p11 (PC10)
+    g5q_n => \-pcb10\, -- p10 (-PCB10)
+    g6a   => pc11,     -- p13 (PC11)
+    g6q_n => \-pcb11\  -- p12 (-PCB11)
+    );
+  ictl_1d30 : sn74s139 port map(
+    g1    => ramdisable, -- p1 (RAMDISABLE)
+    a1    => \-pc12b\,   -- p2 (-PC12B)
+    b1    => \-pc13b\,   -- p3 (-PC13B)
+    g1y0  => \-ice3a\,   -- p4 (-ICE3A)
+    g1y1  => \-ice2a\,   -- p5 (-ICE2A)
+    g1y2  => \-ice1a\,   -- p6 (-ICE1A)
+    g1y3  => \-ice0a\,   -- p7 (-ICE0A)
+    g2y3  => \-ice0b\,   -- p9 (-ICE0B)
+    g2y2  => \-ice1b\,   -- p10 (-ICE1B)
+    g2y1  => \-ice2b\,   -- p11 (-ICE2B)
+    g2y0  => \-ice3b\,   -- p12 (-ICE3B)
+    b2    => \-pc13b\,   -- p13 (-PC13B)
+    a2    => \-pc12b\,   -- p14 (-PC12B)
+    g2    => ramdisable  -- p15 (RAMDISABLE)
+    );
+  ictl_2c01 : sn74s37 port map(
+    g1a   => wp5b,         -- p1 (WP5B)
+    g1b   => iwritedb,     -- p2 (IWRITEDB)
+    g1y   => \-iwec\,     -- p3 (-IWEC)
+    g2a   => wp5b,         -- p4 (WP5B)
+    g2b   => iwritedb,     -- p5 (IWRITEDB)
+    g2y   => \-iwed\,     -- p6 (-IWED)
+    g3a   => iwritedb,     -- p9 (IWRITEDB)
+    g3b   => wp5b,         -- p10 (WP5B)
+    g3y   => \-iwek\,     -- p8 (-IWEK)
+    g4a   => iwritedb,     -- p12 (IWRITEDB)
+    g4b   => wp5b,         -- p13 (WP5B)
+    g4y   => \-iwel\      -- p11 (-IWEL)
+    );
+  ictl_2c06 : sn74s04 port map(
+    g1a   => pc0,     -- p1 (PC0)
+    g1q_n => \-pcc0\, -- p2 (-PCC0)
+    g2a   => pc1,     -- p3 (PC1)
+    g2q_n => \-pcc1\, -- p4 (-PCC1)
+    g3a   => pc2,     -- p5 (PC2)
+    g3q_n => \-pcc2\, -- p6 (-PCC2)
+    g4a   => pc3,     -- p9 (PC3)
+    g4q_n => \-pcc3\, -- p8 (-PCC3)
+    g5a   => pc4,     -- p11 (PC4)
+    g5q_n => \-pcc4\, -- p10 (-PCC4)
+    g6a   => pc5,     -- p13 (PC5)
+    g6q_n => \-pcc5\  -- p12 (-PCC5)
+    );
+  ictl_2d10 : sn74s04 port map(
+    g1a   => pc6,      -- p1 (PC6)
+    g1q_n => \-pcc6\,  -- p2 (-PCC6)
+    g2a   => pc7,      -- p3 (PC7)
+    g2q_n => \-pcc7\,  -- p4 (-Pcc7)
+    g3a   => pc8,      -- p5 (PC8)
+    g3q_n => \-pcc8\,  -- p6 (-PCC8)
+    g4a   => pc9,      -- p9 (PC9)
+    g4q_n => \-pcc9\,  -- p8 (-PCC9)
+    g5a   => pc10,     -- p11 (PC10)
+    g5q_n => \-pcc10\, -- p10 (-PCC10)
+    g6a   => pc11,     -- p13 (PC11)
+    g6q_n => \-pcc11\  -- p12 (-PCC11)
+    );
+  ictl_2d15 : sn74s37 port map(
+    g1a   => wp5c,         -- p1 (WP5C)
+    g1b   => iwritedc,     -- p2 (IWRITEDC)
+    g1y   => \-iwee\,     -- p3 (-IWEE)
+    g2a   => wp5c,         -- p4 (WP5C)
+    g2b   => iwritedc,     -- p5 (IWRITEDC)
+    g2y   => \-iwef\,     -- p6 (-IWEF)
+    g3a   => iwritedc,     -- p9 (IWRITEDC)
+    g3b   => wp5c,         -- p10 (WP5C)
+    g3y   => \-iwem\,     -- p8 (-IWEM)
+    g4a   => iwritedc,     -- p12 (IWRITEDC)
+    g4b   => wp5c,         -- p13 (WP5C)
+    g4y   => \-iwen\      -- p11 (-IWEN)
+    );
+  ictl_2d25 : sn74s139 port map(
+    g1    => ramdisable, -- p1 (RAMDISABLE)
+    a1    => \-pc12b\,   -- p2 (-PC12B)
+    b1    => \-pc13b\,   -- p3 (-PC13B)
+    g1y0  => \-ice3c\,   -- p4 (-ICE3C)
+    g1y1  => \-ice2c\,   -- p5 (-ICE2C)
+    g1y2  => \-ice1c\,   -- p6 (-ICE1C)
+    g1y3  => \-ice0c\,   -- p7 (-ICE0C)
+    g2y3  => \-ice0d\,   -- p9 (-ICE0D)
+    g2y2  => \-ice1d\,   -- p10 (-ICE1D)
+    g2y1  => \-ice2d\,   -- p11 (-ICE2D)
+    g2y0  => \-ice3d\,   -- p12 (-ICE3D)
+    b2    => \-pc13b\,   -- p13 (-PC13B)
+    a2    => \-pc12b\,   -- p14 (-PC12B)
+    g2    => ramdisable  -- p15 (RAMDISABLE)
+    );
+  ictl_2d30 : sn74s37 port map(
+    g1a   => wp5d,         -- p1 (WP5D)
+    g1b   => iwritedd,     -- p2 (IWRITEDD)
+    g1y   => \-iweg\,     -- p3 (-IWEG)
+    g2a   => wp5d,         -- p4 (WP5D)
+    g2b   => iwritedd,     -- p5 (IWRITEDD)
+    g2y   => \-iweh\,     -- p6 (-IWEH)
+    g3a   => iwritedd,     -- p9 (IWRITEDD)
+    g3b   => wp5d,         -- p10 (WP5D)
+    g3y   => \-iweo\,     -- p8 (-IWEO)
+    g4a   => iwritedd,     -- p12 (IWRITEDD)
+    g4b   => wp5d,         -- p13 (WP5D)
+    g4y   => \-iwep\      -- p11 (-IWEP)
+    );
 end architecture;
