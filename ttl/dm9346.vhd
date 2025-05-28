@@ -6,10 +6,20 @@ use ieee.numeric_std.all;
 
 entity dm9346 is
   port (
-    enb                    : in  std_logic;
-    a0, a1, a2, a3, a4, a5 : in  std_logic;
-    b0, b1, b2, b3, b4, b5 : in  std_logic;
-    eq                     : out std_logic
+    a0  : in  std_logic; -- Pin 1
+    b0  : in  std_logic; -- Pin 2
+    a1  : in  std_logic; -- Pin 3
+    b1  : in  std_logic; -- Pin 4
+    a2  : in  std_logic; -- Pin 5
+    b2  : in  std_logic; -- Pin 6
+    enb : in  std_logic; -- Pin 7
+    eq  : out std_logic; -- Pin 9
+    a3  : in  std_logic; -- Pin 10
+    b3  : in  std_logic; -- Pin 11
+    a4  : in  std_logic; -- Pin 12
+    b4  : in  std_logic; -- Pin 13
+    a5  : in  std_logic; -- Pin 14
+    b5  : in  std_logic  -- Pin 15
     );
 end dm9346;
 

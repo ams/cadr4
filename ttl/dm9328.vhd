@@ -6,18 +6,20 @@ use ieee.numeric_std.all;
 
 entity dm9328 is
   port (
-    comclk : in std_logic;
-    clr_n  : in std_logic;
-
-    aclk     : in  std_logic;
-    ai0, ai1 : in  std_logic;
-    aq, aq_n : out std_logic;
-    asel     : in  std_logic;
-
-    bclk     : in  std_logic;
-    bi0, bi1 : in  std_logic;
-    bq, bq_n : out std_logic;
-    bsel     : in  std_logic
+    clr_n  : in  std_logic; -- Pin 1
+    aq_n   : out std_logic; -- Pin 2
+    aq     : out std_logic; -- Pin 3
+    asel   : in  std_logic; -- Pin 4
+    ai1    : in  std_logic; -- Pin 5
+    ai0    : in  std_logic; -- Pin 6
+    aclk   : in  std_logic; -- Pin 7
+    comclk : in  std_logic; -- Pin 9
+    bclk   : in  std_logic; -- Pin 10
+    bi0    : in  std_logic; -- Pin 11
+    bi1    : in  std_logic; -- Pin 12
+    bsel   : in  std_logic; -- Pin 13
+    bq     : out std_logic; -- Pin 14
+    bq_n   : out std_logic  -- Pin 15
     );
 end dm9328;
 
