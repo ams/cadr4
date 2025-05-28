@@ -82,55 +82,6 @@ end;
 architecture ttl of cadr4_contrl is
   signal internal31 : std_logic;
   signal internal32 : std_logic;
-  signal nc420      : std_logic;
-  signal nc421      : std_logic;
-  signal nc422      : std_logic;
-  signal nc100      : std_logic;
-  signal nc101      : std_logic;
-  signal nc102      : std_logic;
-  signal nc103      : std_logic;
-  signal nc104      : std_logic;
-  signal nc105      : std_logic;
-  signal nc106      : std_logic;
-  signal nc107      : std_logic;
-  signal nc108      : std_logic;
-  signal nc109      : std_logic;
-  signal nc110      : std_logic;
-  signal nc111      : std_logic;
-  signal nc112      : std_logic;
-  signal nc113      : std_logic;
-  signal nc114      : std_logic;
-  signal nc115      : std_logic;
-  signal nc116      : std_logic;
-  signal nc117      : std_logic;
-  signal nc118      : std_logic;
-  signal nc119      : std_logic;
-  signal nc120      : std_logic;
-  signal nc121      : std_logic;
-  signal nc122      : std_logic;
-  signal nc123      : std_logic;
-  signal nc124      : std_logic;
-  signal nc125      : std_logic;
-  signal nc126      : std_logic;
-  signal nc127      : std_logic;
-  signal nc128      : std_logic;
-  signal nc129      : std_logic;
-  signal nc130      : std_logic;
-  signal nc131      : std_logic;
-  signal nc132      : std_logic;
-  signal nc133      : std_logic;
-  signal nc134      : std_logic;
-  signal nc135      : std_logic;
-  signal nc136      : std_logic;
-  signal nc137      : std_logic;
-  signal nc138      : std_logic;
-  signal nc139      : std_logic;
-  signal nc140      : std_logic;
-  signal nc141      : std_logic;
-  signal nc142      : std_logic;
-  signal nc143      : std_logic;
-  signal nc144      : std_logic;
-  signal nc145      : std_logic;
 begin
   contrl_3d21 : sn74s08
     port map(
@@ -145,20 +96,20 @@ begin
       g3q    => spcdrive,     -- p8 (SPCDRIVE)
       g4a    => '0',          -- p12 (NC)
       g4b    => '0',          -- p13 (NC)
-      g4q    => nc100         -- p11 (NC)
+      g4q    => open          -- p11 (NC)
       );
   contrl_3d26 : sn74s175
     port map(
       clr_n  => \-reset\,     -- p1 (-RESET)
       d0     => n,            -- p4 (N)
-      d1     => nc420,        -- p5 (NC)
+      d1     => '0',          -- p5 (NC)
       d2     => spush,        -- p12 (SPUSH)
       d3     => iwrite,       -- p13 (IWRITE)
       clk    => clk3c,        -- p9 (CLK3C)
       q0     => inop,         -- p2 (INOP)
       q0_n   => \-inop\,      -- p3 (-INOP)
-      q1     => nc422,        -- p6 (NC)
-      q1_n   => nc421,        -- p7 (NC)
+      q1     => open,        -- p6 (NC)
+      q1_n   => open,        -- p7 (NC)
       q2     => spushd,       -- p10 (SPUSHD)
       q2_n   => \-spushd\,    -- p11 (-SPUSHD)
       q3     => iwrited,      -- p15 (IWRITED)
@@ -183,16 +134,16 @@ begin
     port map(
       g1a    => '0',          -- p1 (NC)
       g1b    => '0',          -- p2 (NC)
-      g1q_n  => nc101,        -- p3 (NC)
+      g1q_n  => open,        -- p3 (NC)
       g2a    => \-nop\,       -- p5 (-NOP)
       g2b    => ir42,         -- p4 (IR42)
       g2q_n  => \-ipopj\,    -- p6 (-IPOPJ)
       g3a    => '0',          -- p9 (NC)
       g3b    => '0',          -- p8 (NC)
-      g3q_n  => nc102,        -- p10 (NC)
+      g3q_n  => open,        -- p10 (NC)
       g4a    => '0',          -- p12 (NC)
       g4b    => '0',          -- p13 (NC)
-      g4q_n  => nc103         -- p11 (NC)
+      g4q_n  => open         -- p11 (NC)
       );
   contrl_3e09 : sn74s32
     port map(
@@ -201,25 +152,25 @@ begin
       g1y    => \-srcspcpopreal\, -- p3 (-SRCSPCPOPREAL)
       g2a    => '0',          -- p4 (NC)
       g2b    => '0',          -- p5 (NC)
-      g2y    => nc104,        -- p6 (NC)
+      g2y    => open,        -- p6 (NC)
       g3a    => '0',          -- p9 (NC)
       g3b    => '0',          -- p8 (NC)
-      g3y    => nc105,        -- p10 (NC)
+      g3y    => open,        -- p10 (NC)
       g4a    => '0',          -- p12 (NC)
       g4b    => '0',          -- p13 (NC)
-      g4y    => nc106         -- p11 (NC)
+      g4y    => open         -- p11 (NC)
       );
   contrl_3e14 : sn74s08
     port map(
       g1a    => '0',          -- p1 (NC)
       g1b    => '0',          -- p2 (NC)
-      g1q    => nc107,        -- p3 (NC)
+      g1q    => open,        -- p3 (NC)
       g2a    => '0',          -- p4 (NC)
       g2b    => '0',          -- p5 (NC)
-      g2q    => nc108,        -- p6 (NC)
+      g2q    => open,        -- p6 (NC)
       g3a    => '0',          -- p9 (NC)
       g3b    => '0',          -- p8 (NC)
-      g3q    => nc109,        -- p10 (NC)
+      g3q    => open,        -- p10 (NC)
       g4a    => \-inop\,      -- p13 (-INOP)
       g4b    => \-nop11\,     -- p12 (-NOP11)
       g4q    => \-nopa\       -- p11 (-NOPA)
@@ -231,13 +182,13 @@ begin
       g1y    => \-ignpopj\,   -- p3 (-IGNPOPJ)
       g2a    => '0',          -- p4 (NC)
       g2b    => '0',          -- p5 (NC)
-      g2y    => nc110,        -- p6 (NC)
+      g2y    => open,        -- p6 (NC)
       g3a    => '0',          -- p9 (NC)
       g3b    => '0',          -- p8 (NC)
-      g3y    => nc111,        -- p10 (NC)
+      g3y    => open,        -- p10 (NC)
       g4a    => '0',          -- p12 (NC)
       g4b    => '0',          -- p13 (NC)
-      g4y    => nc112         -- p11 (NC)
+      g4y    => open         -- p11 (NC)
       );
   contrl_3e22 : sn74s04
     port map(
@@ -246,13 +197,13 @@ begin
       g2a    => nop,          -- p3 (NOP)
       g2q_n  => \-nop\,       -- p4 (-NOP)
       g3a    => '0',          -- p5 (NC)
-      g3q_n  => nc113,        -- p6 (NC)
+      g3q_n  => open,        -- p6 (NC)
       g4a    => '0',          -- p7 (NC)
-      g4q_n  => nc114,        -- p8 (NC)
+      g4q_n  => open,        -- p8 (NC)
       g5a    => '0',          -- p9 (NC)
-      g5q_n  => nc115,        -- p10 (NC)
+      g5q_n  => open,        -- p10 (NC)
       g6a    => '0',          -- p11 (NC)
-      g6q_n  => nc116         -- p12 (NC)
+      g6q_n  => open         -- p12 (NC)
       );
   contrl_3e23 : sn74s00
     port map(
@@ -357,7 +308,7 @@ begin
       g3a    => '0',          -- p9 (NC)
       g3b    => '0',          -- p10 (NC)
       g3c    => '0',          -- p11 (NC)
-      g3y    => nc117         -- p12 (NC)
+      g3y    => open         -- p12 (NC)
       );
   contrl_3f20 : sn74s04
     port map(
@@ -396,13 +347,13 @@ begin
       g1q    => \-spcnt\,     -- p3 (-SPCNT)
       g2a    => '0',          -- p4 (NC)
       g2b    => '0',          -- p5 (NC)
-      g2q    => nc118,        -- p6 (NC)
+      g2q    => open,        -- p6 (NC)
       g3a    => '0',          -- p9 (NC)
       g3b    => '0',          -- p8 (NC)
-      g3q    => nc119,        -- p10 (NC)
+      g3q    => open,        -- p10 (NC)
       g4a    => '0',          -- p12 (NC)
       g4b    => '0',          -- p13 (NC)
-      g4q    => nc120         -- p11 (NC)
+      g4q    => open         -- p11 (NC)
       );
   contrl_4e30 : sn74s37
     port map(
@@ -417,6 +368,6 @@ begin
       g3y    => \-swpa\,      -- p8 (-SWPA)
       g4a    => '0',          -- p12 (NC)
       g4b    => '0',          -- p13 (NC)
-      g4y    => nc121         -- p11 (NC)
+      g4y    => open         -- p11 (NC)
       );
 end architecture;

@@ -118,30 +118,6 @@ entity cadr4_alatch is
 end;
 
 architecture ttl of cadr4_alatch is
-  signal nc465 : std_logic;
-  signal nc466 : std_logic;
-  signal nc467 : std_logic;
-  signal nc468 : std_logic;
-  signal nc469 : std_logic;
-  signal nc470 : std_logic;
-  signal nc471 : std_logic;
-  signal nc472 : std_logic;
-  signal nc473 : std_logic;
-  signal nc474 : std_logic;
-  signal nc475 : std_logic;
-  signal nc476 : std_logic;
-  signal nc477 : std_logic;
-  signal nc478 : std_logic;
-  signal nc479 : std_logic;
-  signal nc480 : std_logic;
-  signal nc481 : std_logic;
-  signal nc482 : std_logic;
-  signal nc483 : std_logic;
-  signal nc484 : std_logic;
-  signal nc485 : std_logic;
-  signal nc486 : std_logic;
-  signal nc487 : std_logic;
-  signal nc488 : std_logic;
 begin
   alatch_3a01 : sn74s373 port map(
     oenb_n => \-amemenb\, -- p1 (-AMEMENB)
@@ -245,39 +221,39 @@ begin
   );
   alatch_3b01 : sn74s241 port map(
     aenb_n => hi5,         -- p1 (HI5)
-    ain0   => nc465,       -- p2 (NC)
+    ain0   => '0',       -- p2 (NC)
     bout3  => a31b,        -- p3 (A31B)
-    ain1   => nc466,       -- p4 (NC)
+    ain1   => '0',       -- p4 (NC)
     bout2  => aparity,     -- p5 (APARITY)
-    ain2   => nc467,       -- p6 (NC)
-    bout1  => nc468,       -- p7 (NC)
-    ain3   => nc469,       -- p8 (NC)
-    bout0  => nc470,       -- p9 (NC)
-    bin0   => nc471,       -- p11 (NC)
-    aout3  => nc472,       -- p12 (NC)
-    bin1   => nc473,       -- p13 (NC)
-    aout2  => nc474,       -- p14 (NC)
+    ain2   => '0',       -- p6 (NC)
+    bout1  => open,       -- p7 (NC)
+    ain3   => '0',       -- p8 (NC)
+    bout0  => open,       -- p9 (NC)
+    bin0   => '0',       -- p11 (NC)
+    aout3  => open,       -- p12 (NC)
+    bin1   => '0',       -- p13 (NC)
+    aout2  => open,       -- p14 (NC)
     bin2   => lparity,     -- p15 (LPARITY)
-    aout1  => nc475,       -- p16 (NC)
+    aout1  => open,       -- p16 (NC)
     bin3   => l31,         -- p17 (L31)
-    aout0  => nc476,       -- p18 (NC)
+    aout0  => open,       -- p18 (NC)
     benb   => apassenb     -- p19 (APASSENB)
   );
   alatch_3b02 : sn74s373 port map(
     oenb_n => \-amemenb\, -- p1 (-AMEMENB)
-    o0     => nc477,     -- p2 (NC)
-    i0     => nc478,     -- p3 (NC)
-    i1     => nc479,     -- p4 (NC)
-    o1     => nc480,     -- p5 (NC)
-    o2     => nc481,     -- p6 (NC)
-    i2     => nc482,     -- p7 (NC)
-    i3     => nc483,     -- p8 (NC)
-    o3     => nc484,     -- p9 (NC)
+    o0     => open,     -- p2 (NC)
+    i0     => '0',     -- p3 (NC)
+    i1     => '0',     -- p4 (NC)
+    o1     => open,     -- p5 (NC)
+    o2     => open,     -- p6 (NC)
+    i2     => '0',     -- p7 (NC)
+    i3     => '0',     -- p8 (NC)
+    o3     => open,     -- p9 (NC)
     hold_n => clk3e,     -- p11 (CLK3E)
-    o4     => nc485,     -- p12 (NC)
-    i4     => nc486,     -- p13 (NC)
-    i5     => nc487,     -- p14 (NC)
-    o5     => nc488,     -- p15 (NC)
+    o4     => open,     -- p12 (NC)
+    i4     => '0',     -- p13 (NC)
+    i5     => '0',     -- p14 (NC)
+    o5     => open,     -- p15 (NC)
     o6     => aparity,   -- p16 (APARITY)
     i6     => amemparity, -- p17 (AMEMPARITY)
     i7     => amem31,    -- p18 (AMEM31)

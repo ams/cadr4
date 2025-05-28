@@ -81,70 +81,24 @@ entity cadr4_dram1 is
 end;
 
 architecture ttl of cadr4_dram1 is
-  signal nc410 : std_logic;
-  signal nc411 : std_logic;
-  signal nc412 : std_logic;
-  signal nc413 : std_logic;
-  signal nc414 : std_logic;
-  signal nc415 : std_logic;
-  signal nc416 : std_logic;
-  signal nc417 : std_logic;
-  signal nc100 : std_logic;
-  signal nc101 : std_logic;
-  signal nc102 : std_logic;
-  signal nc103 : std_logic;
-  signal nc104 : std_logic;
-  signal nc105 : std_logic;
-  signal nc106 : std_logic;
-  signal nc107 : std_logic;
-  signal nc108 : std_logic;
-  signal nc109 : std_logic;
-  signal nc110 : std_logic;
-  signal nc111 : std_logic;
-  signal nc112 : std_logic;
-  signal nc113 : std_logic;
-  signal nc114 : std_logic;
-  signal nc115 : std_logic;
-  signal nc116 : std_logic;
-  signal nc117 : std_logic;
-  signal nc118 : std_logic;
-  signal nc119 : std_logic;
-  signal nc120 : std_logic;
-  signal nc121 : std_logic;
-  signal nc122 : std_logic;
-  signal nc123 : std_logic;
-  signal nc124 : std_logic;
-  signal nc125 : std_logic;
-  signal nc126 : std_logic;
-  signal nc127 : std_logic;
-  signal nc128 : std_logic;
-  signal nc129 : std_logic;
-  signal nc130 : std_logic;
-  signal nc131 : std_logic;
-  signal nc132 : std_logic;
-  signal nc133 : std_logic;
-  signal nc134 : std_logic;
-  signal nc135 : std_logic;
-  signal nc136 : std_logic;
-  signal nc137 : std_logic;
 begin
   dram1_2f03 : sn74s37 port map(            -- 74S37 (Quad 2-Input NAND Buffer)
-    g1a => nc100,                           -- p1 (NC)
-    g1b => nc101,                           -- p2 (NC)
-    g1y => nc102,                           -- p3 (NC)
+    g1a => '0',                           -- p1 (NC)
+    g1b => '0',                           -- p2 (NC)
+    g1y => open,                           -- p3 (NC)
     g2a => wp2,                             -- p4 (WP2)
     g2b => dispwr,                          -- p5 (DISPWR)
     g2y => \-dweb\,                         -- p6 (-DWEB)
-    g3y => nc103,                           -- p9 (NC)
-    g3a => nc104,                           -- p10 (NC)
-    g3b => nc105,                           -- p11 (NC)
-    g4y => nc106,                           -- p8 (NC)
-    g4a => nc107,                           -- p13 (NC)
-    g4b => nc108                            -- p12 (NC)
+    g3y => open,                           -- p9 (NC)
+    g3a => '0',                           -- p10 (NC)
+    g3b => '0',                           -- p11 (NC)
+    g4y => open,                           -- p8 (NC)
+    g4a => '0',                           -- p13 (NC)
+    g4b => '0'                            -- p12 (NC)
     );
   dram1_2f04 : sn74s04 port map(            -- 74S04 (Hex Inverter)
-    g1a   => nc109,                         -- p1 (NC)
-    g1q_n => nc110,                         -- p2 (NC)
+    g1a   => '0',                         -- p1 (NC)
+    g1q_n => open,                         -- p2 (NC)
     g2a   => \-vmo19\,                      -- p3 (-VMO19)
     g2q_n => vmo19,                         -- p4 (VMO19)
     g3a   => \-vmo18\,                      -- p5 (-VMO18)
@@ -411,11 +365,11 @@ begin
     benb   => hi6,                          -- p19 (HI6)
     bin0   => ir9,                          -- p11 (IR9)
     bout0  => ir9b,                         -- p9 (IR9B)
-    bin1   => nc116,                        -- p13 (NC)
-    bout1  => nc117,                        -- p3 (NC)
-    bin2   => nc414,                        -- p15 (NC)
-    bout2  => nc411,                        -- p4 (NC) Note: p4 maps to bin1 and bout2 in 74S241 VHDL
-    bin3   => nc415,                        -- p17 (NC)
-    bout3  => nc410                         -- p6 (NC) Note: p6 maps to bin2 and bout3 in 74S241 VHDL
+    bin1   => '0',                        -- p13 (NC)
+    bout1  => open,                        -- p3 (NC)
+    bin2   => '0',                        -- p15 (NC)
+    bout2  => open,                        -- p4 (NC) Note: p4 maps to bin1 and bout2 in 74S241 VHDL
+    bin3   => '0',                        -- p17 (NC)
+    bout3  => open                         -- p6 (NC) Note: p6 maps to bin2 and bout3 in 74S241 VHDL
     );
 end architecture;

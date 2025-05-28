@@ -79,10 +79,6 @@ entity cadr4_alu0 is
 end;
 
 architecture ttl of cadr4_alu0 is
-  signal nc461 : std_logic;
-  signal nc462 : std_logic;
-  signal nc463 : std_logic;
-  signal nc464 : std_logic;
 begin
   alu0_2a23 : sn74s181 port map(
     b0     => a12,      -- p1 (A12)
@@ -99,7 +95,7 @@ begin
     f3     => alu15,    -- p13 (ALU15)
     aeb    => aeqm,     -- p14 (AEQM)
     x      => xout15,   -- p15 (XOUT15)
-    cout_n => nc461,    -- p16 (NC)
+    cout_n => open,   -- p16 (NC)
     y      => yout15,   -- p17 (YOUT15)
     b3     => a15,      -- p18 (A15)
     a3     => m15,      -- p19 (M15)
@@ -123,7 +119,7 @@ begin
     f3     => alu7,     -- p13 (ALU7)
     aeb    => aeqm,     -- p14 (AEQM)
     x      => xout7,    -- p15 (XOUT7)
-    cout_n => nc463,    -- p16 (NC)
+    cout_n => open,    -- p16 (NC)
     y      => yout7,    -- p17 (YOUT7)
     b3     => a7,       -- p18 (A7)
     a3     => m7,       -- p19 (M7)
@@ -147,7 +143,7 @@ begin
     f3     => alu11,    -- p13 (ALU11)
     aeb    => aeqm,     -- p14 (AEQM)
     x      => xout11,   -- p15 (XOUT11)
-    cout_n => nc462,    -- p16 (NC)
+    cout_n => open,    -- p16 (NC)
     y      => yout11,   -- p17 (YOUT11)
     b3     => a11,      -- p18 (A11)
     a3     => m11,      -- p19 (M11)
@@ -171,7 +167,7 @@ begin
     f3     => alu3,     -- p13 (ALU3)
     aeb    => aeqm,     -- p14 (AEQM)
     x      => xout3,    -- p15 (XOUT3)
-    cout_n => nc464,    -- p16 (NC)
+    cout_n => open,    -- p16 (NC)
     y      => yout3,    -- p17 (YOUT3)
     b3     => a3,       -- p18 (A3)
     a3     => m3,       -- p19 (M3)

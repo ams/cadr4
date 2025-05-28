@@ -66,28 +66,6 @@ end;
 architecture ttl of cadr4_clock1 is
   signal internal12 : std_logic;
   signal internal11 : std_logic;
-  signal nc100 : std_logic; -- 1c08 g3a
-  signal nc101 : std_logic; -- 1c08 g3b
-  signal nc102 : std_logic; -- 1c08 g3c
-  signal nc103 : std_logic; -- 1c08 g3y_n
-  signal nc104 : std_logic; -- 1c09 g2a
-  signal nc105 : std_logic; -- 1c09 g3a
-  signal nc106 : std_logic; -- 1c09 g4a
-  signal nc107 : std_logic; -- 1c09 g2b
-  signal nc108 : std_logic; -- 1c09 g3b
-  signal nc109 : std_logic; -- 1c09 g4b
-  signal nc110 : std_logic; -- 1c09 g4q_n
-  signal nc111 : std_logic; -- 1c09 g3q_n
-  signal nc112 : std_logic; -- 1c09 g2q_n
-  signal nc113 : std_logic; -- 1c10 g1a
-  signal nc114 : std_logic; -- 1c10 g2a
-  signal nc115 : std_logic; -- 1c10 g3q_n
-  signal nc116 : std_logic; -- 1c10 g2q_n
-  signal nc117 : std_logic; -- 1c10 g3a
-  signal nc118 : std_logic; -- 1c10 g1b
-  signal nc119 : std_logic; -- 1c10 g2b
-  signal nc120 : std_logic; -- 1c10 g3b
-  signal nc121 : std_logic; -- 1c10 g1q_n
 begin
   clock1_1c08 : sn74s10 port map(
     g1a   => \-clock_reset_b\, -- p1 ('-CLOCK RESET B')
@@ -96,10 +74,10 @@ begin
     g2b   => \-clock_reset_b\, -- p4 ('-CLOCK RESET B')
     g2c   => cyclecompleted,   -- p5 (CYCLECOMPLETED)
     g2y_n => \-tpr0\,          -- p6 (-TPR0)
-    g3y_n => nc103,            -- p8 (no connect)
-    g3a   => nc100,            -- p9 (no connect)
-    g3b   => nc101,            -- p10 (no connect)
-    g3c   => nc102,            -- p11 (no connect)
+    g3y_n => open,            -- p8 (no connect)
+    g3a   => '0',            -- p9 (no connect)
+    g3b   => '0',            -- p10 (no connect)
+    g3c   => '0',            -- p11 (no connect)
     g1y_n => internal12,       -- p12 (@1C09,p1)
     g1c   => internal11        -- p13 (@1C09,p3)
   );
@@ -107,29 +85,29 @@ begin
     g1a   => internal12, -- p1 (@1C08,p12)
     g1b   => \-tpr40\,   -- p2 (-TPR40)
     g1q_n => internal11, -- p3 (@1C08,p13)
-    g2a   => nc104,      -- p4 (no connect)
-    g3a   => nc105,      -- p5 (no connect)
-    g4a   => nc106,      -- p6 (no connect)
-    g2b   => nc107,      -- p8 (no connect)
-    g3b   => nc108,      -- p9 (no connect)
-    g4b   => nc109,      -- p10 (no connect)
-    g4q_n => nc110,      -- p11 (no connect)
-    g3q_n => nc111,      -- p12 (no connect)
-    g2q_n => nc112       -- p13 (no connect)
+    g2a   => '0',      -- p4 (no connect)
+    g3a   => '0',      -- p5 (no connect)
+    g4a   => '0',      -- p6 (no connect)
+    g2b   => '0',      -- p8 (no connect)
+    g3b   => '0',      -- p9 (no connect)
+    g4b   => '0',      -- p10 (no connect)
+    g4q_n => open,      -- p11 (no connect)
+    g3q_n => open,      -- p12 (no connect)
+    g2q_n => open       -- p13 (no connect)
   );
   clock1_1c10 : sn74s02 port map(
-    g1a   => nc113,          -- p1 (no connect)
-    g2a   => nc114,          -- p2 (no connect)
-    g3q_n => nc115,          -- p3 (no connect)
-    g2q_n => nc116,          -- p4 (no connect)
+    g1a   => '0',          -- p1 (no connect)
+    g2a   => '0',          -- p2 (no connect)
+    g3q_n => open,          -- p3 (no connect)
+    g2q_n => open,          -- p4 (no connect)
     g4q_n => cyclecompleted, -- p5 (CYCLECOMPLETED) -- Note: Netlist says p13, VHDL port is g4q_n which is p5.
-    g3a   => nc117,          -- p6 (no connect)
-    g1b   => nc118,          -- p8 (no connect)
-    g2b   => nc119,          -- p9 (no connect)
-    g3b   => nc120,          -- p10 (no connect)
+    g3a   => '0',          -- p6 (no connect)
+    g1b   => '0',          -- p8 (no connect)
+    g2b   => '0',          -- p9 (no connect)
+    g3b   => '0',          -- p10 (no connect)
     g4b   => internal11,     -- p11 (@1C08,p13)
     g4a   => gnd,            -- p12 (GND)
-    g1q_n => nc121           -- p13 (@1C08,p13) -- Note: Netlist says p13 connected to @1C08,p13. This p13 is g1q_n.
+    g1q_n => open           -- p13 (@1C08,p13) -- Note: Netlist says p13 connected to @1C08,p13. This p13 is g1q_n.
   );
   clock1_1c12 : td50 port map(
     input  => \-tprend\, -- p1 (-TPREND)

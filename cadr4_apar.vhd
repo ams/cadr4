@@ -91,11 +91,6 @@ entity cadr4_apar is
 end;
 
 architecture ttl of cadr4_apar is
-  signal nc432 : std_logic;
-  signal nc433 : std_logic;
-  signal nc434 : std_logic;
-  signal nc435 : std_logic;
-  signal nc436 : std_logic;
 begin
   apar_3a28 : am93s48 port map(
     i6  => a26,     -- p1 (A26)
@@ -106,7 +101,7 @@ begin
     i1 => a31b,    -- p6 (A31B)
     i0 => aparity, -- p7 (APARITY)
     po => aparok,  -- p9 (APAROK)
-    pe => nc432,   -- p10 (NC)
+    pe => open,   -- p10 (NC)
     i11 => aparl,  -- p11 (APARL)
     i10 => aparm,  -- p12 (APARM)
     i9 => gnd,     -- p13 (GND)
@@ -122,7 +117,7 @@ begin
     i1 => a22,     -- p6 (A22)
     i0 => a23,     -- p7 (A23)
     po => aparm,  -- p9 (APARM)
-    pe => nc433,   -- p10 (NC)
+    pe => open,   -- p10 (NC)
     i11 => a12,    -- p11 (A12)
     i10 => a13,    -- p12 (A13)
     i9 => a14,     -- p13 (A14)
@@ -138,7 +133,7 @@ begin
     i1 => a10,     -- p6 (A10)
     i0 => a11,     -- p7 (A11)
     po => aparl,  -- p9 (APARL)
-    pe => nc434,   -- p10 (NC)
+    pe => open,   -- p10 (NC)
     i11 => a0,     -- p11 (A0)
     i10 => a1,     -- p12 (A1)
     i9 => a2,      -- p13 (A2)
@@ -154,7 +149,7 @@ begin
     i1 => m22,     -- p6 (M22)
     i0 => m23,     -- p7 (M23)
     po => mparm,  -- p9 (MPARM)
-    pe => nc436,   -- p10 (NC)
+    pe => open,   -- p10 (NC)
     i11 => m12,    -- p11 (M12)
     i10 => m13,    -- p12 (M13)
     i9 => m14,     -- p13 (M14)
@@ -170,7 +165,7 @@ begin
     i1 => m10,     -- p6 (M10)
     i0 => m11,     -- p7 (M11)
     po => mparl,  -- p9 (MPARL)
-    pe => nc435,   -- p10 (NC)
+    pe => open,   -- p10 (NC)
     i11 => m0,     -- p11 (M0)
     i10 => m1,     -- p12 (M1)
     i9 => m2,      -- p13 (M2)

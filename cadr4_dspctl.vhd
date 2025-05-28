@@ -111,25 +111,6 @@ entity cadr4_dspctl is
 end;
 
 architecture ttl of cadr4_dspctl is
-  signal nc100 : std_logic;
-  signal nc101 : std_logic;
-  signal nc102 : std_logic;
-  signal nc103 : std_logic;
-  signal nc104 : std_logic;
-  signal nc105 : std_logic;
-  signal nc106 : std_logic;
-  signal nc107 : std_logic;
-  signal nc108 : std_logic;
-  signal nc109 : std_logic;
-  signal nc110 : std_logic;
-  signal nc111 : std_logic;
-  signal nc112 : std_logic;
-  signal nc113 : std_logic;
-  signal nc114 : std_logic;
-  signal nc115 : std_logic;
-  signal nc116 : std_logic;
-  signal nc117 : std_logic;
-  signal nc118 : std_logic;
 begin
   dspctl_2f22 : im5610 generic map (fn   => "rom/dspctl_2f22.hex") port map(
     o0   => dmask0,
@@ -139,7 +120,7 @@ begin
     o4   => dmask4,
     o5   => dmask5,
     o6   => dmask6,
-    o7   => nc100,
+    o7   => open,
     a0   => ir5,
     a1   => ir6,
     a2   => ir7,
@@ -158,10 +139,10 @@ begin
     clk   => clk3e,
     d3    => dc9,
     i3    => ir41,
-    d4    => nc101,
-    i4    => nc102,
-    i5    => nc103,
-    d5    => nc104
+    d4    => open,
+    i4    => '0',
+    i5    => '0',
+    d5    => open
     );
   dspctl_3c15 : am25s07 port map(
     enb_n => \-irdisp\,
@@ -209,22 +190,22 @@ begin
     );
   dspctl_3f11 : sn74s241 port map(
     aenb_n => hi4,
-    ain0   => nc107,
+    ain0   => '0',
     bout3  => aa16,
-    ain1   => nc108,
+    ain1   => '0',
     bout2  => aa17,
-    ain2   => nc109,
-    bout1  => nc110,
-    ain3   => nc111,
-    bout0  => nc112,
-    bin0   => nc113,
-    aout3  => nc114,
-    bin1   => nc115,
-    aout2  => nc116,
+    ain2   => '0',
+    bout1  => open,
+    ain3   => '0',
+    bout0  => open,
+    bin0   => '0',
+    aout3  => open,
+    bin1   => '0',
+    aout2  => open,
     bin2   => a17,
-    aout1  => nc117,
+    aout1  => open,
     bin3   => a16,
-    aout0  => nc118,
+    aout0  => open,
     benb   => hi4
     );
   dspctl_3f12 : sn74s241 port map(
@@ -300,7 +281,7 @@ begin
     i1   => dpc10,
     i2   => dpc11,
     even => \-dparh\,
-    odd  => nc105,
+    odd  => open,
     i3   => dpc12,
     i4   => dpc13,
     i5   => dn,
@@ -312,7 +293,7 @@ begin
     i0   => dpc0,
     i1   => dpc1,
     i2   => dpc2,
-    even => nc106,
+    even => open,
     odd  => dparl,
     i3   => dpc3,
     i4   => dpc4,

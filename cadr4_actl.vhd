@@ -85,12 +85,6 @@ entity cadr4_actl is
 end;
 
 architecture ttl of cadr4_actl is
-  signal nc489 : std_logic;
-  signal nc490 : std_logic;
-  signal nc491 : std_logic;
-  signal nc492 : std_logic;
-  signal nc493 : std_logic;
-  signal nc494 : std_logic;
 begin
   actl_3a06 : sn74s258 port map(
     sel => clk3e,          -- p1
@@ -181,10 +175,10 @@ begin
     g2q_n => \-amemenb\,     -- p6 (-AMEMENB)
     g3a   => '0',            -- p9 (Typically 3A)
     g3b   => '0',            -- p10 (Typically 3B)
-    g3q_n => nc490,          -- p8 (NC in netlist implies this gate output is unused, typical pin 8 is 3Y)
+    g3q_n => open,          -- p8 (NC in netlist implies this gate output is unused, typical pin 8 is 3Y)
     g4a   => '0',            -- p12 (Typically 4A)
     g4b   => '0',            -- p13 (Typically 4B)
-    g4q_n => nc494           -- p11 (NC in netlist implies this gate output is unused, typical pin 11 is 4Y)
+    g4q_n => open           -- p11 (NC in netlist implies this gate output is unused, typical pin 11 is 4Y)
   );
   actl_3b21 : dm93s46 port map(
     a0 => ir32,            -- p1
@@ -252,12 +246,12 @@ begin
   );
   actl_3b29 : am25s09 port map(
     sel => destm,          -- p1
-    aq => nc489,           -- p2 (NC in netlist)
-    a0 => nc490,           -- p3 (NC in netlist)
-    a1 => nc491,           -- p4 (NC in netlist)
-    b1 => nc492,           -- p5 (NC in netlist)
-    b0 => nc493,           -- p6 (NC in netlist)
-    bq => nc494,           -- p7 (NC in netlist)
+    aq => open,           -- p2 (NC in netlist)
+    a0 => '0',           -- p3 (NC in netlist)
+    a1 => '0',           -- p4 (NC in netlist)
+    b1 => '0',           -- p5 (NC in netlist)
+    b0 => '0',           -- p6 (NC in netlist)
+    bq => open,           -- p7 (NC in netlist)
     clk => clk3d,         -- p9
     cq => wadr9,           -- p10
     c0 => ir23,            -- p11

@@ -51,62 +51,6 @@ end;
 
 architecture ttl of cadr4_flag is
   signal internal30 : std_logic;
-  signal nc385      : std_logic;
-  signal nc386      : std_logic;
-  signal nc387      : std_logic;
-  signal nc388      : std_logic;
-  signal nc389      : std_logic;
-  signal nc390      : std_logic;
-  signal nc391      : std_logic;
-  signal nc392      : std_logic;
-  signal nc393      : std_logic;
-  signal nc394      : std_logic;
-  signal nc395      : std_logic;
-  signal nc396      : std_logic;
-  signal nc397      : std_logic;
-  signal nc398      : std_logic;
-  signal nc399      : std_logic;
-  signal nc400      : std_logic;
-  signal nc401      : std_logic;
-  signal nc402      : std_logic;
-  signal nc403      : std_logic;
-  signal nc404      : std_logic;
-  signal nc405      : std_logic;
-  signal nc406      : std_logic;
-  signal nc407      : std_logic;
-  signal nc408      : std_logic;
-  signal nc409      : std_logic;
-  signal nc410      : std_logic;
-  signal nc411      : std_logic;
-  signal nc412      : std_logic;
-  signal nc413      : std_logic;
-  signal nc414      : std_logic;
-  signal nc415      : std_logic;
-  signal nc416      : std_logic;
-  signal nc417      : std_logic;
-  signal nc418      : std_logic;
-  signal nc419      : std_logic;
-  signal nc420      : std_logic;
-  signal nc421      : std_logic;
-  signal nc422      : std_logic;
-  signal nc423      : std_logic;
-  signal nc424      : std_logic;
-  signal nc425      : std_logic;
-  signal nc426      : std_logic;
-  signal nc427      : std_logic;
-  signal nc428      : std_logic;
-  signal nc429      : std_logic;
-  signal nc430      : std_logic;
-  signal nc431      : std_logic;
-  signal nc432      : std_logic;
-  signal nc433      : std_logic;
-  signal nc434      : std_logic;
-  signal nc435      : std_logic;
-  signal nc436      : std_logic;
-  signal nc437      : std_logic;
-  signal nc438      : std_logic;
-  signal nc439      : std_logic;
-  signal nc440      : std_logic;
 begin
   flag_3e07 : sn74s00 port map(  -- Quadruple 2-input Positive-NAND Gates
     g1b   => ir45,       -- p2 (IR45)
@@ -121,19 +65,19 @@ begin
   );
   flag_3e08 : am25ls2519 port map(  -- 4X (2 input) universal MUX + latch
     i0         => ob29,                -- p1 (OB29)
-    q0a        => nc385,               -- p20 (Q0A)
+    q0a        => open,                -- p20 (Q0A)
     q0b        => \lc_byte_mode\,      -- p3 ('LC BYTE MODE')
     i1         => ob28,                -- p4 (OB28)
-    q1a        => nc386,               -- p21 (Q1A)
+    q1a        => open,                -- p21 (Q1A)
     q1b        => \prog.unibus.reset\, -- p6 (PROG.UNIBUS.RESET)
     o_enb_n    => hi4,                 -- p7 (HI4)
     out_enb_n  => gnd,                 -- p8 (GND)
     clk        => clk3c,               -- p9 (CLK3C)
     q2b        => \int.enable\,        -- p11 (INT.ENABLE)
-    q2a        => nc387,               -- p22 (Q2A)
+    q2a        => open,                -- p22 (Q2A)
     i2         => ob27,                -- p13 (OB27)
     q3b        => \sequence.break\,    -- p14 (SEQUENCE.BREAK)
-    q3a        => nc388,               -- p23 (Q3A)
+    q3a        => open,                -- p23 (Q3A)
     i3         => ob26,                -- p16 (OB26)
     clk_enb_n  => \-destintctl\,       -- p17 (-DESTINTCTL)
     inv        => hi4,                 -- p18 (HI4)

@@ -72,49 +72,6 @@ entity cadr4_dram2 is
 end;
 
 architecture ttl of cadr4_dram2 is
-  signal nc100 : std_logic;
-  signal nc101 : std_logic;
-  signal nc102 : std_logic;
-  signal nc103 : std_logic;
-  signal nc104 : std_logic;
-  signal nc105 : std_logic;
-  signal nc106 : std_logic;
-  signal nc107 : std_logic;
-  signal nc108 : std_logic;
-  signal nc109 : std_logic;
-  signal nc110 : std_logic;
-  signal nc111 : std_logic;
-  signal nc112 : std_logic;
-  signal nc113 : std_logic;
-  signal nc114 : std_logic;
-  signal nc115 : std_logic;
-  signal nc116 : std_logic;
-  signal nc117 : std_logic;
-  signal nc118 : std_logic;
-  signal nc119 : std_logic;
-  signal nc120 : std_logic;
-  signal nc121 : std_logic;
-  signal nc122 : std_logic;
-  signal nc123 : std_logic;
-  signal nc124 : std_logic;
-  signal nc125 : std_logic;
-  signal nc126 : std_logic;
-  signal nc127 : std_logic;
-  signal nc128 : std_logic;
-  signal nc129 : std_logic;
-  signal nc130 : std_logic;
-  signal nc131 : std_logic;
-  signal nc132 : std_logic;
-  signal nc133 : std_logic;
-  signal nc134 : std_logic;
-  signal nc135 : std_logic;
-  signal nc136 : std_logic;
-  signal nc137 : std_logic;
-  signal nc138 : std_logic;
-  signal nc139 : std_logic;
-  signal nc140 : std_logic;
-  signal nc141 : std_logic;
-  signal nc142 : std_logic;
 begin
   dram2_1f16 : am93425a port map(
     ce_n  => dadr10c,       -- p1 (DADR10C)
@@ -359,8 +316,8 @@ begin
     a4    => hi6            -- p13 (HI6)
   );
   dram2_2f02 : sn74s04 port map(
-    g1a   => nc110,         -- p1 (NC)
-    g1q_n => nc111,         -- p2 (NC)
+    g1a   => '0',         -- p1 (NC)
+    g1q_n => open,         -- p2 (NC)
     g2a   => \-dadr10c\,    -- p3 (-DADR10C)
     g2q_n => dadr10c,       -- p4 (DADR10C)
     g3a   => ir22b,         -- p5 (IR22B)
@@ -373,17 +330,17 @@ begin
     g6a   => ir19b          -- p13 (IR19B)
   );
   dram2_2f03 : sn74s37 port map(    
-    g1a   => nc134, -- p1
-    g1b   => nc135, -- p2
-    g1y   => nc136, -- p3
-    g2a   => nc137, -- p4
-    g2b   => nc138, -- p5
-    g2y   => nc139, -- p6    
+    g1a   => '0', -- p1
+    g1b   => '0', -- p2
+    g1y   => open, -- p3
+    g2a   => '0', -- p4
+    g2b   => '0', -- p5
+    g2y   => open, -- p6    
     g3y   => \-dwec\,       -- p8 (-DWEC)
     g3a   => dispwr,        -- p9 (DISPWR)
     g3b   => wp2,           -- p10 (WP2)
-    g4y   => nc140, --p11
-    g4a   => nc141, -- p12
-    g4b   => nc142 -- p13    
+    g4y   => open, --p11
+    g4a   => '0', -- p12
+    g4b   => '0' -- p13    
   );
 end architecture;

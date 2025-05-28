@@ -81,46 +81,24 @@ entity cadr4_dram0 is
 end;
 
 architecture ttl of cadr4_dram0 is
-  signal nc100 : std_logic;
-  signal nc101 : std_logic;
-  signal nc102 : std_logic;
-  signal nc103 : std_logic;
-  signal nc104 : std_logic;
-  signal nc105 : std_logic;
-  signal nc106 : std_logic;
-  signal nc107 : std_logic;
-  signal nc108 : std_logic;
-  signal nc109 : std_logic;
-  signal nc110 : std_logic;
-  signal nc111 : std_logic;
-  signal nc112 : std_logic;
-  signal nc113 : std_logic;
-  signal nc114 : std_logic;
-  signal nc115 : std_logic;
-  signal nc116 : std_logic;
-  signal nc117 : std_logic;
-  signal nc118 : std_logic;
-  signal nc119 : std_logic;
-  signal nc120 : std_logic;
-  signal nc121 : std_logic;
 begin
   dram0_2f03 : sn74s37 port map(
     g1a     => wp2,        -- p1 (WP2)
     g1b     => dispwr,     -- p2 (DISPWR)
     g1y     => \-dwea\,    -- p3 (-DWEA)
-    g2a     => nc100,      -- p4 (NC)
-    g2b     => nc101,      -- p5 (NC)
-    g2y     => nc102,      -- p6 (NC)
-    g3a     => nc103,      -- p9 (NC)
-    g3b     => nc104,      -- p10 (NC)
-    g3y     => nc105,      -- p8 (NC)
-    g4a     => nc106,      -- p12 (NC)
-    g4b     => nc107,      -- p13 (NC)
-    g4y     => nc108       -- p11 (NC)
+    g2a     => '0',      -- p4 (NC)
+    g2b     => '0',      -- p5 (NC)
+    g2y     => open,      -- p6 (NC)
+    g3a     => '0',      -- p9 (NC)
+    g3b     => '0',      -- p10 (NC)
+    g3y     => open,      -- p8 (NC)
+    g4a     => '0',      -- p12 (NC)
+    g4b     => '0',      -- p13 (NC)
+    g4y     => open       -- p11 (NC)
     );
   dram0_2f21 : sn74s04 port map(
-    g1a     => nc109,      -- p1 (NC)
-    g1q_n   => nc110,      -- p2 (NC)
+    g1a     => '0',      -- p1 (NC)
+    g1q_n   => open,      -- p2 (NC)
     g2a     => \-dadr10a\, -- p3 (-DADR10A)
     g2q_n   => dadr10a,    -- p4 (DADR10A)
     g3a     => ir22b,      -- p5 (IR22B)

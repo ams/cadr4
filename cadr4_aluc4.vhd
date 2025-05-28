@@ -98,13 +98,6 @@ architecture ttl of cadr4_aluc4 is
   signal internal35   : std_logic; -- From 2C15, p2
   signal internal36   : std_logic; -- From 2C15, p3
   signal internal37   : std_logic; -- From 2C15, p4
-  signal nc437      : std_logic; -- From 2A18, p5
-  signal nc438      : std_logic; -- From 2A18, p6
-  signal nc439      : std_logic; -- From 2A18, p7
-  signal nc440      : std_logic; -- From 2A18, p9
-  signal nc441      : std_logic; -- From 2A18, p10
-  signal nc442      : std_logic; -- From 2A18, p14
-  signal nc443      : std_logic; -- From 2A18, p15
 begin
   -- 74S182 (4-bit lookahead carry generator)
   aluc4_2a20 : sn74s182 port map(
@@ -146,16 +139,16 @@ begin
     x1      => xx1,      -- p2 (XX1)
     y0      => yy0,      -- p3 (YY0)
     x0      => xx0,      -- p4 (XX0)
-    y3      => nc437,    -- p5 (NC)
-    x3      => nc438,    -- p6 (NC)
-    xout    => nc439,    -- p7 (NC)
-    cout2_n => nc440,    -- p9 (NC)
-    yout    => nc441,    -- p10 (NC)
+    y3      => '0',    -- p5 (NC)
+    x3      => '0',    -- p6 (NC)
+    xout    => open,    -- p7 (NC)
+    cout2_n => open,    -- p9 (NC)
+    yout    => open,    -- p10 (NC)
     cout1_n => \-cin32\, -- p11 (-CIN32)
     cout0_n => \-cin16\, -- p12 (-CIN16)
     cin_n   => \-cin0\,  -- p13 (-CIN0)
-    y2      => nc442,    -- p14 (NC)
-    x2      => nc443     -- p15 (NC)
+    y2      => '0',    -- p14 (NC)
+    x2      => '0'     -- p15 (NC)
   );
 
   -- 74S153 (Dual 4-input multiplexer)

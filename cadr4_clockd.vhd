@@ -87,22 +87,6 @@ entity cadr4_clockd is
 end;
 
 architecture ttl of cadr4_clockd is
-  signal nc423 : std_logic;
-  signal nc424 : std_logic;
-  signal nc425 : std_logic;
-  signal nc426 : std_logic;
-  signal nc427 : std_logic;
-  signal nc428 : std_logic;
-  signal nc429 : std_logic;
-  signal nc430 : std_logic;
-  signal nc100 : std_logic; -- for netlist NC p3 2C02
-  signal nc101 : std_logic; -- for netlist NC p4 2C02
-  signal nc102 : std_logic; -- for netlist NC p1 3C12
-  signal nc103 : std_logic; -- for netlist NC p2 3C12
-  signal nc104 : std_logic; -- for netlist NC p1 4D03
-  signal nc105 : std_logic; -- for netlist NC p2 4D03
-  signal nc106 : std_logic; -- for netlist NC p3 4D03
-  signal nc107 : std_logic; -- for netlist NC p4 4D03
 begin
   clockd_1b19 : sn74s04 port map(
     g1a => mclk1,       -- p1 (MCLK1)
@@ -135,8 +119,8 @@ begin
   clockd_2c02 : sn74s04 port map(
     g1a => lcry3,       -- p1 (LCRY3)
     g1q_n => \-lcry3\,   -- p2 (-LCRY3)
-    g2a => nc100,       -- p3 (NC)
-    g2q_n => nc101,     -- p4 (NC)
+    g2a => '0',       -- p3 (NC)
+    g2q_n => open,     -- p4 (NC)
     g3a => clk2,        -- p5 (CLK2)
     g3q_n => \-clk2c\,   -- p6 (-CLK2C)
     g4q_n => \-clk2a\,   -- p8 (-CLK2A)
@@ -161,8 +145,8 @@ begin
     g4y => open         -- p13 (NC)
   );
   clockd_3c12 : sn74s04 port map(
-    g1a => nc102,       -- p1 (NC)
-    g1q_n => nc103,     -- p2 (NC)
+    g1a => '0',       -- p1 (NC)
+    g1q_n => open,     -- p2 (NC)
     g3a => clk3,        -- p3 (CLK3)
     g3q_n => \-clk3g\,   -- p4 (-CLK3G)
     g5a => clk3,        -- p5 (CLK3)
@@ -245,10 +229,10 @@ begin
     g4y => open         -- p13 (NC)
   );
   clockd_4d03 : sn74s04 port map(
-    g1a => nc104,       -- p1 (NC)
-    g1q_n => nc105,     -- p2 (NC)
-    g2a => nc106,       -- p3 (NC)
-    g2q_n => nc107,     -- p4 (NC)
+    g1a => '0',       -- p1 (NC)
+    g1q_n => open,     -- p2 (NC)
+    g2a => '0',       -- p3 (NC)
+    g2q_n => open,     -- p4 (NC)
     g3a => \-tse4\,     -- p5 (-TSE4)
     g3q_n => tse4b,     -- p6 (TSE4B)
     g4q_n => tse4a,     -- p8 (TSE4A)

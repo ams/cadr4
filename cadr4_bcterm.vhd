@@ -35,8 +35,7 @@ entity cadr4_bcterm is
     \-memack\   : out std_logic);
 end;
 
-architecture ttl of cadr4_bcterm is
-  signal nc431 : std_logic;
+architecture ttl of cadr4_bcterm is  
 begin
   bcterm_1b15 : sip220_330_8 port map(
     r2 => mem0,        -- p2 (MEM0)
@@ -68,6 +67,6 @@ begin
     r4 => \-loadmd\,   -- p4 (-LOADMD)
     r5 => \-ignpar\,   -- p5 (-IGNPAR)
     r6 => \-memack\,   -- p6 (-MEMACK)
-    r7 => nc431        -- p7 (NC)
+    r7 => open         -- p7 (NC)
   );
 end architecture;
