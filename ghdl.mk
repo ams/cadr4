@@ -87,15 +87,14 @@ clean:
 
 help:
 	@echo "Available targets:"
-	@echo "	all         Compiles all sources."
-	@echo "	test        Runs all test-benches."
-	@echo "	check       Same as above."
-	@echo "	clean       Cleans up any build artifacts."
-	@echo "	help        Shows available targets."
-	@echo "	tb          Runs the testbench defined by TESTBENCH variable."
-	@echo "	vcd         Same as above, but starts a VCD viewer."
-	@echo "	tb-X        Runs the testbench for X, which is implemented in X_tb.vhd."
-	@echo "	vcd-X       Same as above, but starts a VCD viewer."
+	@echo "	all         	Compiles all sources."
+	@echo "	check       	Runs all test-benches."
+	@echo "	clean       	Cleans up any build artifacts."
+	@echo "	help        	Shows available targets."
+	@echo "	tb          	Runs the testbench defined by TESTBENCH variable."
+	@echo "	vcd         	Same as above, but starts a VCD viewer."
+	@echo "	tb-X        	Runs the testbench for X, which is implemented in X_tb.vhd."
+	@echo "	vcd-X       	Same as above, but starts a VCD viewer."
 
 deps.mk: $(wildcard *.vhd)
 	$(GHDL) --gen-makefile $(GHDLOPTIONS) *.vhd > deps.mk
