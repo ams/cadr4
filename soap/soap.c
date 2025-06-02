@@ -25,6 +25,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <ctype.h>
 
 unsigned int *up;
 int up_size;
@@ -166,6 +167,7 @@ struct set_center_s set_centers[MAX_SET_CENTERS];
 
 
 extern char *strdup();
+extern void unpack(char *);
 
 /* ---------------------------------------------------------------- */
 
@@ -1938,7 +1940,7 @@ usage(void)
 extern char *optarg;
 extern int optind;
 
-main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 	int c, i;
 

@@ -208,6 +208,7 @@ NONE, NONE, NONE, NONE, NONE, NONE, NONE, 0007,	/* 170 */
 0150, 0151, 0152, 0153, 0154, 0155, NONE, NONE	/* 350 */
 };
 
+void
 unpack(char *file)
 {
 	register int c;
