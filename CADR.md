@@ -67,11 +67,11 @@ datapath diagram of the A and M source section of the processor.
 
 ## The ALU Datapath
 
-![Figure 4 Main Data Paths](https://github.com/ams/cadr4/assets/7945138/cf6ab70b-f2b1-4443-9f6b-aa41a1f3ef76)
+![Figure 4 Main Data Paths](https://github.com/ams/cadr/assets/7945138/cf6ab70b-f2b1-4443-9f6b-aa41a1f3ef76)
 
-![Figure 5 Micro Instruction Format](https://github.com/ams/cadr4/assets/7945138/0e87bcbc-e3f2-44bb-83b9-22ba6980af26)
+![Figure 5 Micro Instruction Format](https://github.com/ams/cadr/assets/7945138/0e87bcbc-e3f2-44bb-83b9-22ba6980af26)
 
-![Figure 6 Detailed M Bus Block Diagram](https://github.com/ams/cadr4/assets/7945138/50760e78-5fc4-45fe-a156-0205d8900f55)
+![Figure 6 Detailed M Bus Block Diagram](https://github.com/ams/cadr/assets/7945138/50760e78-5fc4-45fe-a156-0205d8900f55)
 
 The ALU instruction provides basic arithmetic and logical data
 manipulation in the machine.  The two operands supplied on the A and M
@@ -347,7 +347,7 @@ taken from the low order bits of the M bus operand.
 
 ## Main Memory Reference
 
-![Figure 7 Dispatch Datapath](https://github.com/ams/cadr4/assets/7945138/62642bbc-b2f0-403f-b8e1-3b2697fc0b61)
+![Figure 7 Dispatch Datapath](https://github.com/ams/cadr/assets/7945138/62642bbc-b2f0-403f-b8e1-3b2697fc0b61)
 
 References to main memory in the processor are implemented as special
 M bus sources and as special functional destinations.
@@ -408,7 +408,7 @@ interlocks, which, in a single processor system, are not required.
 
 ## The Map
 
-![Figure 8 Memory Map Data Flow](https://github.com/ams/cadr4/assets/7945138/c04458b6-6377-4b4d-a2a9-9978b87b121b)
+![Figure 8 Memory Map Data Flow](https://github.com/ams/cadr/assets/7945138/c04458b6-6377-4b4d-a2a9-9978b87b121b)
 
 The processor memory address register can address up to 24 bits of
 virtual memory.  A mapping is made prior to read and write requests to
@@ -987,8 +987,8 @@ operation.
   - [CADR; SMCTL](http://tumbleweed.nu/lm-3/schematics/cadr/smctl.png) // SMCTL --- SHIFT/MASK CONTROL 
   - [CADR; SHIFT0](http://tumbleweed.nu/lm-3/schematics/cadr/shift0.png) 
   - [CADR; SHIFT1](http://tumbleweed.nu/lm-3/schematics/cadr/shift1.png) 
-  - [CADR; MSKGEN](http://tumbleweed.nu/lm-3/schematics/cadr/mskgen.png) -- missing; MSKG4 in CADR4 
-  - [CADR; MASK](http://tumbleweed.nu/lm-3/schematics/cadr/mask.png)   -- missing; not used in CADR4? 
+  - [CADR; MSKGEN](http://tumbleweed.nu/lm-3/schematics/cadr/mskgen.png) -- missing; MSKG4 in CADR 
+  - [CADR; MASK](http://tumbleweed.nu/lm-3/schematics/cadr/mask.png)   -- missing; not used in CADR? 
 
 ## The ALU
 
@@ -1011,7 +1011,7 @@ condition code outputs of the ALU.  The third hardwired function
 simply passes A memory data through, and is used as the NOP cycle
 during an inactive multiply step (both ALUSUB and ALUADD asserted).
 
-  - [CADR; ALUCRY](http://tumbleweed.nu/lm-3/schematics/cadr/alucry.png) -- ALUC4 in CADR4 
+  - [CADR; ALUCRY](http://tumbleweed.nu/lm-3/schematics/cadr/alucry.png) -- ALUC4 in CADR 
   - [CADR; ALU0](http://tumbleweed.nu/lm-3/schematics/cadr/alu0.png) 
   - [CADR; ALU1](http://tumbleweed.nu/lm-3/schematics/cadr/alu1.png) 
 
@@ -1051,7 +1051,7 @@ ALU extension,
 The output bus bit shifting paths are again chosen to make the
 multiply step and divide step operations occur in a single cycle.
 
-  - [CADR; OB](http://tumbleweed.nu/lm-3/schematics/cadr/ob.png) -- missing; not used in CADR4? 
+  - [CADR; OB](http://tumbleweed.nu/lm-3/schematics/cadr/ob.png) -- missing; not used in CADR? 
 
 ## The L Register
 
@@ -1151,9 +1151,9 @@ write cycle.
 
   - [CADR; SPC](http://tumbleweed.nu/lm-3/schematics/cadr/spc.png) // SPC --- SPC MEMORY AND POINTER 
   - [CADR; SPCLCH](http://tumbleweed.nu/lm-3/schematics/cadr/spclch.png) // SPCLCH --- SPC MEMORY LATCH 
-  - [CADR; SPCM](http://tumbleweed.nu/lm-3/schematics/cadr/spcm.png) -- missing; SPCW in CADR4 
+  - [CADR; SPCM](http://tumbleweed.nu/lm-3/schematics/cadr/spcm.png) -- missing; SPCW in CADR 
   - CADR; LPC				   // LPC --- LAST PC
-  - [CADR; LPC0](http://tumbleweed.nu/lm-3/schematics/cadr/lpc0.png] // not used in CADR4? 
+  - [CADR; LPC0](http://tumbleweed.nu/lm-3/schematics/cadr/lpc0.png] // not used in CADR? 
 
 ## Next PC Selector
 

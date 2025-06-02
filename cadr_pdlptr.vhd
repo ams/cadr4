@@ -1,0 +1,91 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+library ttl;
+use ttl.sn74.all;
+use ttl.other.all;
+
+library cadr;
+use cadr.utilities.all;
+
+entity cadr_pdlptr is
+  port (
+    \-srcpdlpop\ : in  std_logic;
+    clk3f        : in  std_logic;
+    ob8          : in  std_logic;
+    ob9          : in  std_logic;
+    gnd          : in  std_logic;
+    \-destpdlp\  : in  std_logic;
+    \-pdlcry7\   : out std_logic;
+    pdlptr9      : out std_logic;
+    pdlptr8      : out std_logic;
+    \-destpdlx\  : in  std_logic;
+    pdlidx6      : out std_logic;
+    ob6          : in  std_logic;
+    ob7          : in  std_logic;
+    pdlidx7      : out std_logic;
+    pdlidx8      : out std_logic;
+    pdlidx9      : out std_logic;
+    ob4          : in  std_logic;
+    ob5          : in  std_logic;
+    \-pdlcry3\   : out std_logic;
+    pdlptr7      : out std_logic;
+    pdlptr6      : out std_logic;
+    pdlptr5      : out std_logic;
+    pdlptr4      : out std_logic;
+    pdlidx0      : out std_logic;
+    ob0          : in  std_logic;
+    ob1          : in  std_logic;
+    pdlidx1      : out std_logic;
+    ob2          : in  std_logic;
+    pdlidx2      : out std_logic;
+    pdlidx3      : out std_logic;
+    ob3          : in  std_logic;
+    pdlidx4      : out std_logic;
+    pdlidx5      : out std_logic;
+    \-pdlcnt\    : in  std_logic;
+    pdlptr3      : out std_logic;
+    pdlptr2      : out std_logic;
+    pdlptr1      : out std_logic;
+    pdlptr0      : out std_logic;
+    \-ppdrive\   : out std_logic;
+    mf0          : out std_logic;
+    mf1          : out std_logic;
+    mf2          : out std_logic;
+    mf3          : out std_logic;
+    pidrive      : out std_logic;
+    mf8          : out std_logic;
+    mf9          : out std_logic;
+    mf10         : out std_logic;
+    mf11         : out std_logic;
+    mf4          : out std_logic;
+    mf5          : out std_logic;
+    mf6          : out std_logic;
+    mf7          : out std_logic;
+    srcpdlidx    : in  std_logic;
+    tse4b        : in  std_logic;
+    srcpdlptr    : in  std_logic);
+end;
+
+architecture ttl of cadr_pdlptr is
+  signal nc233 : std_logic;
+  signal nc234 : std_logic;
+  signal nc235 : std_logic;
+  signal nc236 : std_logic;
+  signal nc237 : std_logic;
+  signal nc238 : std_logic;
+  signal nc239 : std_logic;
+  signal nc240 : std_logic;
+  signal nc241 : std_logic;
+begin
+  pdlptr_3c21 : sn74s169 port map(up_dn  => \-srcpdlpop\, clk => clk3f, i0 => ob8, i1 => ob9, i2 => nc237, i3 => nc238, enb_p_n => gnd, load_n => \-destpdlp\, enb_t_n => \-pdlcry7\, o3 => nc239, o2 => nc240, o1 => pdlptr9, o0 => pdlptr8, co_n => nc241);
+  pdlptr_3c22 : am25s07 port map(enb_n   => \-destpdlx\, d0 => pdlidx6, i0 => ob6, i1 => ob7, d1 => pdlidx7, i2 => ob8, d2 => pdlidx8, clk => clk3f, d3 => pdlidx9, i3 => ob9, d4 => nc233, i4 => nc234, i5 => nc235, d5 => nc236);
+  pdlptr_3d24 : sn74s169 port map(up_dn  => \-srcpdlpop\, clk => clk3f, i0 => ob4, i1 => ob5, i2 => ob6, i3 => ob7, enb_p_n => gnd, load_n => \-destpdlp\, enb_t_n => \-pdlcry3\, o3 => pdlptr7, o2 => pdlptr6, o1 => pdlptr5, o0 => pdlptr4, co_n => \-pdlcry7\);
+  pdlptr_3d25 : am25s07 port map(enb_n   => \-destpdlx\, d0 => pdlidx0, i0 => ob0, i1 => ob1, d1 => pdlidx1, i2 => ob2, d2 => pdlidx2, clk => clk3f, d3 => pdlidx3, i3 => ob3, d4 => pdlidx4, i4 => ob4, i5 => ob5, d5 => pdlidx5);
+  pdlptr_3d30 : sn74s169 port map(up_dn  => \-srcpdlpop\, clk => clk3f, i0 => ob0, i1 => ob1, i2 => ob2, i3 => ob3, enb_p_n => gnd, load_n => \-destpdlp\, enb_t_n => \-pdlcnt\, o3 => pdlptr3, o2 => pdlptr2, o1 => pdlptr1, o0 => pdlptr0, co_n => \-pdlcry3\);
+  pdlptr_4c01 : sn74s241 port map(aenb_n => \-ppdrive\, ain0 => pdlptr3, bout3 => mf0, ain1 => pdlptr2, bout2 => mf1, ain2 => pdlptr1, bout1 => mf2, ain3 => pdlptr0, bout0 => mf3, bin0 => pdlidx3, aout3 => mf0, bin1 => pdlidx2, aout2 => mf1, bin2 => pdlidx1, aout1 => mf2, bin3 => pdlidx0, aout0 => mf3, benb => pidrive);
+  pdlptr_4d04 : sn74s241 port map(aenb_n => \-ppdrive\, ain0 => gnd, bout3 => mf8, ain1 => gnd, bout2 => mf9, ain2 => pdlptr9, bout1 => mf10, ain3 => pdlptr8, bout0 => mf11, bin0 => gnd, aout3 => mf8, bin1 => gnd, aout2 => mf9, bin2 => pdlidx9, aout1 => mf10, bin3 => pdlidx8, aout0 => mf11, benb => pidrive);
+  pdlptr_4d05 : sn74s241 port map(aenb_n => \-ppdrive\, ain0 => pdlptr7, bout3 => mf4, ain1 => pdlptr6, bout2 => mf5, ain2 => pdlptr5, bout1 => mf6, ain3 => pdlptr4, bout0 => mf7, bin0 => pdlidx7, aout3 => mf4, bin1 => pdlidx6, aout2 => mf5, bin2 => pdlidx5, aout1 => mf6, bin3 => pdlidx4, aout0 => mf7, benb => pidrive);
+  pdlptr_4d06 : sn74s08 port map(g3q     => pidrive, g3a => srcpdlidx, g3b => tse4b, g1b => '0', g1a => '0', g2b => '0', g2a => '0', g4a => '0', g4b => '0');
+  pdlptr_4d08 : sn74s00 port map(g3q_n   => \-ppdrive\, g3b => srcpdlptr, g3a => tse4b, g1b => '0', g1a => '0', g2b => '0', g2a => '0', g4a => '0', g4b => '0');
+end architecture;

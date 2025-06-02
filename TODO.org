@@ -1,4 +1,4 @@
-TODO List for the CADR4 project
+TODO List for the CADR project
 
 * TODO TTLs [18/59]
 

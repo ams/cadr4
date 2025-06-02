@@ -1,4 +1,4 @@
-# cadr4
+# cadr
 
 Experiments of the third kind... This is an attempt at making a
 faithful and accurate HDL implementation of CADR.  There will be no
@@ -23,8 +23,8 @@ Prerequisites:
 
 ```
 cd ~/
-git clone https://github.com/ams/cadr4
-cd cadr4
+git clone https://github.com/ams/cadr
+cd cadr
 make help
 ```
 
@@ -41,12 +41,12 @@ If writing or testing CADR microcode, then it is useful to have [usim](https://t
 	* unsorted: contains skeletons directly translated from the
 	  schematics; these are to be deleted / merged at some point.
 
-  - cadr4 (package):
+  - cadr (package):
 
 	* cpu.vhd: contains a exact transliteration of the original CADR
 	  schematics
 
-	* cadr4_tb.vhd: with a testbench that is capable of exercising the
+	* cadr_tb.vhd: with a testbench that is capable of exercising the
 	  CADR.
 
 New documentation should be written in Markdown. At some point this

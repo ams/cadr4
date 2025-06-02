@@ -8,7 +8,7 @@ current microcode and world load band.
 
 ## Accurate simulation of CADR
 
-Implement an accurate version of the original CADR schematics (CADR4)
+Implement an accurate version of the original CADR schematics (CADR)
 that can run in simulation.  This would most probobly not have vull
 virtual memory, any bus for I/O, etc.  And only capable of running
 through the boot PROM and failing at either the first memory access,

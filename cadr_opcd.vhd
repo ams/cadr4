@@ -1,0 +1,98 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+library ttl;
+use ttl.sn74.all;
+use ttl.other.all;
+
+library cadr;
+use cadr.utilities.all;
+
+entity cadr_opcd is
+  port (
+    \-srcdc\        : in  std_logic;
+    \-srcopc\       : in  std_logic;
+    \-opcdrive\     : out std_logic;
+    opc7            : in  std_logic;
+    mf4             : out std_logic;
+    opc6            : in  std_logic;
+    mf5             : out std_logic;
+    opc5            : in  std_logic;
+    mf6             : out std_logic;
+    opc4            : in  std_logic;
+    mf7             : out std_logic;
+    dc7             : in  std_logic;
+    dc6             : in  std_logic;
+    dc5             : in  std_logic;
+    dc4             : in  std_logic;
+    dcdrive         : out std_logic;
+    opc3            : in  std_logic;
+    mf0             : out std_logic;
+    opc2            : in  std_logic;
+    mf1             : out std_logic;
+    opc1            : in  std_logic;
+    mf2             : out std_logic;
+    opc0            : in  std_logic;
+    mf3             : out std_logic;
+    dc3             : in  std_logic;
+    dc2             : in  std_logic;
+    dc1             : in  std_logic;
+    dc0             : in  std_logic;
+    tse1b           : in  std_logic;
+    \-zero16.drive\ : out std_logic;
+    zero16          : out std_logic;
+    \zero16.drive\  : out std_logic;
+    \zero12.drive\  : out std_logic;
+    gnd             : in  std_logic;
+    mf24            : out std_logic;
+    mf25            : out std_logic;
+    mf26            : out std_logic;
+    mf27            : out std_logic;
+    mf28            : out std_logic;
+    mf29            : out std_logic;
+    mf30            : out std_logic;
+    mf31            : out std_logic;
+    mf16            : out std_logic;
+    mf17            : out std_logic;
+    mf18            : out std_logic;
+    mf19            : out std_logic;
+    mf20            : out std_logic;
+    mf21            : out std_logic;
+    mf22            : out std_logic;
+    mf23            : out std_logic;
+    mf12            : out std_logic;
+    mf13            : out std_logic;
+    opc13           : in  std_logic;
+    mf14            : out std_logic;
+    opc12           : in  std_logic;
+    mf15            : out std_logic;
+    opc11           : in  std_logic;
+    mf8             : out std_logic;
+    opc10           : in  std_logic;
+    mf9             : out std_logic;
+    opc9            : in  std_logic;
+    mf10            : out std_logic;
+    opc8            : in  std_logic;
+    mf11            : out std_logic;
+    dc9             : in  std_logic;
+    dc8             : in  std_logic;
+    \-srcpdlidx\    : in  std_logic;
+    \-srcpdlptr\    : in  std_logic);
+end;
+
+architecture ttl of cadr_opcd is
+  signal internal20 : std_logic;
+  signal internal21 : std_logic;
+begin
+  opcd_1d18 : sn74s04 port map(g2a     => \-srcdc\, g2q_n => internal20, g3a => \-srcopc\, g3q_n => internal21, g1a => '0', g4a => '0', g5a => '0', g6a => '0');
+  opcd_1e01 : sn74s241 port map(aenb_n => \-opcdrive\, ain0 => opc7, bout3 => mf4, ain1 => opc6, bout2 => mf5, ain2 => opc5, bout1 => mf6, ain3 => opc4, bout0 => mf7, bin0 => dc7, aout3 => mf4, bin1 => dc6, aout2 => mf5, bin2 => dc5, aout1 => mf6, bin3 => dc4, aout0 => mf7, benb => dcdrive);
+  opcd_1e03 : sn74s241 port map(aenb_n => \-opcdrive\, ain0 => opc3, bout3 => mf0, ain1 => opc2, bout2 => mf1, ain2 => opc1, bout1 => mf2, ain3 => opc0, bout0 => mf3, bin0 => dc3, aout3 => mf0, bin1 => dc2, aout2 => mf1, bin2 => dc1, aout1 => mf2, bin3 => dc0, aout0 => mf3, benb => dcdrive);
+  opcd_1e06 : sn74s00 port map(g3q_n   => \-opcdrive\, g3b => internal21, g3a => tse1b, g4q_n => \-zero16.drive\, g4a => tse1b, g4b => zero16, g1b => '0', g1a => '0', g2b => '0', g2a => '0');
+  opcd_1e07 : sn74s08 port map(g1b     => tse1b, g1a => internal20, g1q => dcdrive, g2b => zero16, g2a => tse1b, g2q => \zero16.drive\, g3a => '0', g3b => '0', g4a => '0', g4b => '0');
+  opcd_1e16 : sn74s11 port map(g1a     => \-srcopc\, g1b => zero16, g1y => \zero12.drive\, g1c => tse1b, g2a => '0', g2b => '0', g2c => '0', g3a => '0', g3b => '0', g3c => '0');
+  opcd_1f01 : sn74s241 port map(aenb_n => \-zero16.drive\, ain0 => gnd, bout3 => mf24, ain1 => gnd, bout2 => mf25, ain2 => gnd, bout1 => mf26, ain3 => gnd, bout0 => mf27, bin0 => gnd, aout3 => mf28, bin1 => gnd, aout2 => mf29, bin2 => gnd, aout1 => mf30, bin3 => gnd, aout0 => mf31, benb => \zero16.drive\);
+  opcd_1f02 : sn74s241 port map(aenb_n => \-zero16.drive\, ain0 => gnd, bout3 => mf16, ain1 => gnd, bout2 => mf17, ain2 => gnd, bout1 => mf18, ain3 => gnd, bout0 => mf19, bin0 => gnd, aout3 => mf20, bin1 => gnd, aout2 => mf21, bin2 => gnd, aout1 => mf22, bin3 => gnd, aout0 => mf23, benb => \zero16.drive\);
+  opcd_1f03 : sn74s241 port map(aenb_n => \-opcdrive\, ain0 => gnd, bout3 => mf12, ain1 => gnd, bout2 => mf13, ain2 => opc13, bout1 => mf14, ain3 => opc12, bout0 => mf15, bin0 => gnd, aout3 => mf12, bin1 => gnd, aout2 => mf13, bin2 => gnd, aout1 => mf14, bin3 => gnd, aout0 => mf15, benb => \zero12.drive\);
+  opcd_1f04 : sn74s241 port map(aenb_n => \-opcdrive\, ain0 => opc11, bout3 => mf8, ain1 => opc10, bout2 => mf9, ain2 => opc9, bout1 => mf10, ain3 => opc8, bout0 => mf11, bin0 => gnd, aout3 => mf8, bin1 => gnd, aout2 => mf9, bin2 => dc9, aout1 => mf10, bin3 => dc8, aout0 => mf11, benb => dcdrive);
+  opcd_3e30 : sn74s20 port map(g2y_n   => zero16, g2a => \-srcopc\, g2b => \-srcpdlidx\, g2c => \-srcpdlptr\, g2d => \-srcdc\, g1a => '0', g1b => '0', g1c => '0', g1d => '0');
+end architecture;

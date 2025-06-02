@@ -1,4 +1,4 @@
-name: CADR4 CI
+name: CADR CI
 
 on:
   push:
