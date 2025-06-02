@@ -541,13 +541,13 @@ parse_header(int p, struct header_s *h)
 		printf("board type '%s'\n", h->h_board_type);
 	}
 
-	if (do_netlist) {
-		printf("# extracted from SUDS file %s\n", h->h_source_name);
-		printf("# bodies %d, points %d\n", body_count, point_count);
-		printf("# SUDS version %d\n", h->h_version);
-		printf("# nomemclature type %s\n", h->h_nomenclature_type);
-		printf("# board type %s\n", h->h_board_type);
-	}
+	/* if (do_netlist) { */
+	/* 	printf("# extracted from SUDS file %s\n", h->h_source_name); */
+	/* 	printf("# bodies %d, points %d\n", body_count, point_count); */
+	/* 	printf("# SUDS version %d\n", h->h_version); */
+	/* 	printf("# nomemclature type %s\n", h->h_nomenclature_type); */
+	/* 	printf("# board type %s\n", h->h_board_type); */
+	/* } */
 
 	while (1) {
 		if (up[p] == 0 && up[p+1] == 0) {
@@ -1042,13 +1042,13 @@ parse_trailer(int p, struct trailer_s *t)
 		printf("title 2: '%s'\n", t->t_title_line_2);
 	}
 
-	if (do_netlist) {
-		printf("# draw by: %s\n", t->t_draw_by);
-		if (t->t_title_line_1[0])
-			printf("# title 1: %s\n", t->t_title_line_1);
-		if (t->t_title_line_2[0])
-			printf("# title 2: %s\n", t->t_title_line_2);
-	}
+	/* if (do_netlist) { */
+	/* 	printf("# draw by: %s\n", t->t_draw_by); */
+	/* 	if (t->t_title_line_1[0]) */
+	/* 		printf("# title 1: %s\n", t->t_title_line_1); */
+	/* 	if (t->t_title_line_2[0]) */
+	/* 		printf("# title 2: %s\n", t->t_title_line_2); */
+	/* } */
 
 	return p;
 }
