@@ -169,6 +169,14 @@ struct set_center_s set_centers[MAX_SET_CENTERS];
 extern char *strdup();
 extern void unpack(char *);
 
+char *
+strlwr(char *s)
+{
+	for (char *p = s; *p; p++)
+		*p = tolower(*p);
+	return s;
+}
+
 /* ---------------------------------------------------------------- */
 
 int
@@ -1846,12 +1854,12 @@ format_name(char *s)
 {
 	static char b[256];
 
-	if (strchr(s, ' ')) {
-		sprintf(b, "\'%s\'", s);
-		return b;
+	if (strchr(s, ' ') || s[0] == '-') {
+		sprintf(b, "\\%s\\", s);
+		return strlwr(b);
 	}
 
-	return s;
+	return strlwr(s);
 }
 
 /*
@@ -1866,10 +1874,12 @@ format_bodies(void)
 {
 	int i;
 
+	printf("entity  %s is\n", strlwr(page_name));
+	printf("port ();\n");
+	printf("end;\n");
 	printf("\n");
-	printf("page %s\n", page_name);
-	printf("\n");
-
+	printf("architecture suds of %s is\n", page_name);
+	printf("begin\n");
 	for (i = 0; i < MAX_BODIES; i++) {
 		int j;
 
@@ -1887,23 +1897,19 @@ format_bodies(void)
 		if (strcmp(bodies[i].refdes, "0@00") == 0)
 			continue;
 
-		printf("part %s,%s\n",
-		       bodies[i].refdes, bodies[i].name_of_body);
-		printf("(\n");
-
+		printf("%s_%s : dip_%s port map (",
+		       strlwr(page_name), strlwr(bodies[i].refdes), strlwr(bodies[i].name_of_body));
 		for (j = 1; j < MAX_BODY_NAMED_PINS; j++) {
 			int pi = bodies[i].named_pin_index[j];
 			if (pi) {
-				printf("p%d=%s\n",
+				printf("p%d => %s, ",
 				       j,
 				       format_name(points[pi].name_of_pin));
 			}
 		}
-
-		printf(")\n");
-		printf("\n");
+		printf(");\n");
 	}
-	
+	printf("end architecture;\n");
 	return 0;
 }
 
