@@ -12,3 +12,6 @@
 .DS_Store
 **/TASK.md
 netlist/*
+
+soap/
+*.dSYM/
