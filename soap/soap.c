@@ -1878,7 +1878,7 @@ format_bodies(void)
 {
 	int i;
 
-	printf("entity  %s is\n", strlwr(page_name));
+	printf("entity %s is\n", strlwr(page_name));
 	printf("port ();\n");
 	printf("end;\n");
 	printf("\n");
