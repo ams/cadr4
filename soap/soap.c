@@ -1858,7 +1858,7 @@ format_name(char *s)
 {
 	static char b[256];
 
-	if (strchr(s, ' ') || s[0] == '-' || s[0] == '@') {
+	if (strchr(s, ' ') || s[0] == '-' || s[0] == '@' || strchr(s, '=')) {
 		sprintf(b, "\\%s\\", s);
 		return strlwr(b);
 	}
@@ -1879,7 +1879,38 @@ format_bodies(void)
 	int i;
 
 	printf("entity %s is\n", strlwr(page_name));
-	printf("port ();\n");
+	printf("port (\n");
+	for (i = 0; i < MAX_BODIES; i++) {
+		int j;
+
+		if (bodies[i].name_of_body[0] == 0)
+			continue;
+
+		/* hack */
+		if (strcmp(bodies[i].name_of_body, "TABLE") == 0)
+			continue;
+		if (strcmp(bodies[i].name_of_body, "COMMENT") == 0)
+			continue;
+		if (strcmp(bodies[i].name_of_body, "BYPASS") == 0)
+			continue;
+		if (strcmp(bodies[i].refdes, "0@00") == 0)
+			continue;
+
+		for (j = 1; j < MAX_BODY_NAMED_PINS; j++) {
+			int pi = bodies[i].named_pin_index[j];
+			if (pi) {
+			  if (strcmp(points[pi].name_of_pin, "NC") == 0) /* not connected */
+			    continue;
+			  if (points[pi].name_of_pin[0] == '@')  /* Internal wire. */
+			    continue;
+			  printf("%s : inout std_logic;\n",
+				 format_name(points[pi].name_of_pin));
+			  }
+		}
+
+	}
+	printf(");\n");
+	printf("\n");
 	printf("end;\n");
 	printf("\n");
 	printf("architecture suds of %s is\n", page_name);
