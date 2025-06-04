@@ -1050,13 +1050,19 @@ parse_trailer(int p, struct trailer_s *t)
 		printf("title 2: '%s'\n", t->t_title_line_2);
 	}
 
-	/* if (do_netlist) { */
-	/* 	printf("# draw by: %s\n", t->t_draw_by); */
-	/* 	if (t->t_title_line_1[0]) */
-	/* 		printf("# title 1: %s\n", t->t_title_line_1); */
-	/* 	if (t->t_title_line_2[0]) */
-	/* 		printf("# title 2: %s\n", t->t_title_line_2); */
-	/* } */
+	if (do_netlist) {
+	  /* if (t->t_title_line_1[0]) */
+	  /* 	printf("-- %s", t->t_title_line_1); */
+	  if (t->t_title_line_2[0])
+	    printf("-- %s -- %s\n", page_name, t->t_title_line_2);
+	  else printf("-- %s\n", page_name);
+	  
+	  printf("--\n");
+	  printf("-- History:\n");
+	  printf("-- \n");
+	  printf("--   (DATE %s) Initial SUDS.\n", t->t_draw_by);
+	  printf("\n");
+	}
 
 	return p;
 }
@@ -1082,13 +1088,11 @@ parse_suds()
 	p = parse_pins(p);
 	if (debug) printf("after pins, p %d\n", p);
 
-/*
 	p = parse_set_center(p);
 	if (debug) printf("after set_center, p %d\n", p);
 
 	p = parse_trailer(p, &trailer);
 	if (debug) printf("after trailer, p %d\n", p);
-*/
 
 	if (show_suds) {
 		printf("bodies %d\n", body_count);
