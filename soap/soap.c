@@ -1854,7 +1854,7 @@ format_name(char *s)
 {
 	static char b[256];
 
-	if (strchr(s, ' ') || s[0] == '-') {
+	if (strchr(s, ' ') || s[0] == '-' || s[0] == '@') {
 		sprintf(b, "\\%s\\", s);
 		return strlwr(b);
 	}
