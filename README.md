@@ -1,6 +1,6 @@
-# cadr
+# cadr4
 
-Experiments of the third kind... This is an attempt at making a
+Experiments of the third kind...  This is an attempt at making a
 faithful and accurate HDL implementation of CADR.  There will be no
 attempt at making this synthesizable!
 
@@ -18,17 +18,24 @@ Prerequisites:
   - GNU Make
   - [GHDL](http://ghdl.free.fr/)
 
-	Ideally using the GCC or LLVM code generator, since at some point there will be a simulatd UART to talk to the core.
-  - [GTKWave](https://gtkwave.sourceforge.net/), [vcd](https://github.com/yne/vcd) or some other VCD viewer.
+	Ideally using the GCC or LLVM code generator, since at some
+	point there will be a simulatd UART to talk to the core.
+
+  - Some sort of VCD viewer:
+  	* [GTKWave](https://gtkwave.sourceforge.net/)
+	* [vcd](https://github.com/yne/vcd) Terminal VCD viewer.
 
 ```
 cd ~/
-git clone https://github.com/ams/cadr
-cd cadr
+git clone https://github.com/ams/cadr4
+cd cadr4
 make help
 ```
 
-If writing or testing CADR microcode, then it is useful to have [usim](https://tumbleweed.nu/r/usim) configured to be able to run [CADRLP](https://tumbleweed.nu/r/lm-3/uv/cadr.html#The-CADRLP-Assembler) or the CADR Console debugger (CC).
+If writing or testing CADR microcode, then it is useful to have
+[usim](https://tumbleweed.nu/r/usim) configured to be able to run
+[CADRLP](https://tumbleweed.nu/r/lm-3/uv/cadr.html#The-CADRLP-Assembler)
+or the CADR Console debugger (CC).
 
 ## Organization
 
@@ -43,13 +50,9 @@ If writing or testing CADR microcode, then it is useful to have [usim](https://t
 
   - cadr (package):
 
-	* cpu.vhd: contains a exact transliteration of the original CADR
-	  schematics
+	TBD
 
-	* cadr_tb.vhd: with a testbench that is capable of exercising the
-	  CADR.
-
-New documentation should be written in Markdown. At some point this
+New documentation should be written in Markdown.  At some point this
 should be migrated back into the [Lisp Machine
 Manual](https://tumbleweed.nu/r/lm-3/uv/chinual.html) or other
 suitable places.
