@@ -1862,7 +1862,10 @@ format_name(char *s)
 		sprintf(b, "\\%s\\", s);
 		return strlwr(b);
 	}
-
+	if (strcmp(s, "gnd") == 0) {
+		sprintf(b, "open");
+		return strlwr(b);
+	}
 	return strlwr(s);
 }
 
