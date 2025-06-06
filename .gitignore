@@ -13,7 +13,8 @@
 **/TASK.md
 netlist/*
 
-soap/
+soap/soap
+soap/*.o
 *.dSYM/
 
 cadr/*_suds.vhd
