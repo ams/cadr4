@@ -49,24 +49,24 @@ entity dip_16dummy is port (            -- ic_16dummy
   );
 end;
 
-entity dip_2147 is port (               -- am2147
-  p1  : in  std_logic;                  -- ce_n 
-  p2  : in  std_logic;                  -- a0   
-  p3  : in  std_logic;                  -- a1   
-  p4  : in  std_logic;                  -- a2   
-  p5  : in  std_logic;                  -- a3   
-  p6  : in  std_logic;                  -- a4   
-  p7  : out std_logic;                  -- do   
+entity dip_2147 is port (        -- am2147
+  p1  : in  std_logic;           -- ce_n 
+  p2  : in  std_logic;           -- a0   
+  p3  : in  std_logic;           -- a1   
+  p4  : in  std_logic;           -- a2   
+  p5  : in  std_logic;           -- a3   
+  p6  : in  std_logic;           -- a4   
+  p7  : out std_logic;           -- do   
 --  p8  : <not-connected > std_logic;
-  p9  : in  std_logic;                  -- a5   
-  p10 : in  std_logic;                  -- we_n 
-  p11 : in  std_logic;                  -- di   
-  p12 : in  std_logic;                  -- a11  
-  p13 : in  std_logic;                  -- a10  
-  p14 : in  std_logic;                  -- a9   
-  p15 : in  std_logic;                  -- a8   
-  p16 : in  std_logic;                  -- a7   
-  p17 : in  std_logic;                  -- a6   
+  p9  : in  std_logic;           -- a5   
+  p10 : in  std_logic;           -- we_n 
+  p11 : in  std_logic;           -- di   
+  p12 : in  std_logic;           -- a11  
+  p13 : in  std_logic;           -- a10  
+  p14 : in  std_logic;           -- a9   
+  p15 : in  std_logic;           -- a8   
+  p16 : in  std_logic;           -- a7   
+  p17 : in  std_logic;           -- a6   
   );
 end;
 
@@ -111,102 +111,92 @@ entity dip_25s07 is port (              -- am2507
 end;
 
 entity dip_25s09 is port (              -- am2509
-  p1  :  in   std_logic; -- sel
-  p2  :  out  std_logic; -- aq
-  p3  :  in   std_logic; -- a0
-  p4  :  in   std_logic; -- a1
-  p5  :  in   std_logic; -- b1
-  p6  :  in   std_logic; -- b0
-  p7  :  out  std_logic; -- bq
-  p9  :  in   std_logic; -- clk
-  p10 :  out  std_logic; -- cq
-  p11 :  in   std_logic; -- c0
-  p12 :  in   std_logic; -- c1
-  p13 :  in   std_logic; -- d1
-  p14 :  in   std_logic; -- d0
-  p15 :  out  std_logic; -- dq
+  p1  :  in   std_logic;                -- sel
+  p2  :  out  std_logic;                -- aq
+  p3  :  in   std_logic;                -- a0
+  p4  :  in   std_logic;                -- a1
+  p5  :  in   std_logic;                -- b1
+  p6  :  in   std_logic;                -- b0
+  p7  :  out  std_logic;                -- bq
+  p9  :  in   std_logic;                -- clk
+  p10 :  out  std_logic;                -- cq
+  p11 :  in   std_logic;                -- c0
+  p12 :  in   std_logic;                -- c1
+  p13 :  in   std_logic;                -- d1
+  p14 :  in   std_logic;                -- d0
+  p15 :  out  std_logic;                -- dq
   );
 end;
 
 entity dip_25s10 is port (              -- am2510
-  p1  :  in   std_logic; -- i_3
-  p2  :  in   std_logic; -- i_2
-  p3  :  in   std_logic; -- i_1
-  p4  :  in   std_logic; -- i0
-  p5  :  in   std_logic; -- i1
-  p6  :  in   std_logic; -- i2
-  p7  :  in   std_logic; -- i3
-  p9  :  in   std_logic; -- sel1
-  p10 :  in   std_logic; -- sel0
-  p11 :  out  std_logic; -- o3
-  p12 :  out  std_logic; -- o2
-  p13 :  in   std_logic; -- ce_n
-  p14 :  out  std_logic; -- o1
-  p15 :  out  std_logic; -- o0
+  p1  :  in   std_logic;                -- i_3
+  p2  :  in   std_logic;                -- i_2
+  p3  :  in   std_logic;                -- i_1
+  p4  :  in   std_logic;                -- i0
+  p5  :  in   std_logic;                -- i1
+  p6  :  in   std_logic;                -- i2
+  p7  :  in   std_logic;                -- i3
+  p9  :  in   std_logic;                -- sel1
+  p10 :  in   std_logic;                -- sel0
+  p11 :  out  std_logic;                -- o3
+  p12 :  out  std_logic;                -- o2
+  p13 :  in   std_logic;                -- ce_n
+  p14 :  out  std_logic;                -- o1
+  p15 :  out  std_logic;                -- o0
   );
 end;
 
 entity dip_5600 is port (               -- im5600
-  p1  :  out  std_logic; -- o0
-  p2  :  out  std_logic; -- o1
-  p3  :  out  std_logic; -- o2
-  p4  :  out  std_logic; -- o3
+  p1  :  out  std_logic;                -- o0
+  p2  :  out  std_logic;                -- o1
+  p3  :  out  std_logic;                -- o2
+  p4  :  out  std_logic;                -- o3
   p5  : inout std_logic;
-  p6  :  in   std_logic; -- a4
-  p7  :  in   std_logic; -- a3
+  p6  :  in   std_logic;                -- a4
+  p7  :  in   std_logic;                -- a3
   -- p8
-  p9  :  in   std_logic; -- a1
-  p10 :  in   std_logic; -- a0
-  p11 :  out  std_logic; -- o4
-  p12 :  out  std_logic; -- o5
-  p13 :  out  std_logic; -- o6
-  p14 :  in   std_logic; -- ce_n
-  p15 :  out  std_logic; -- o7
+  p9  :  in   std_logic;                -- a1
+  p10 :  in   std_logic;                -- a0
+  p11 :  out  std_logic;                -- o4
+  p12 :  out  std_logic;                -- o5
+  p13 :  out  std_logic;                -- o6
+  p14 :  in   std_logic;                -- ce_n
+  p15 :  out  std_logic;                -- o7
   );
 end;
-
-entity dip_5610 is port (               -- im5600
-  p1  : inout std_logic;
-  p2  : inout std_logic;
-  p3  : inout std_logic;
-  p4  : inout std_logic;
-  p5  : inout std_logic;
-  p6  : inout std_logic;
-  p7  : inout std_logic;
-  p9  : inout std_logic;
-  p10 : inout std_logic;
-  p11 : inout std_logic;
-  p12 : inout std_logic;
-  p13 : inout std_logic;
-  p14 : inout std_logic;
-  p15 : inout std_logic;
-  );
-end;
+alias dip_5610 is dip_5600;
 
 entity dip_7428 is port (               -- sn7428
-  p1  : inout std_logic;
-  p2  : inout std_logic;
-  p3  : inout std_logic;
-  p4  : inout std_logic;
-  p5  : inout std_logic;
-  p6  : inout std_logic;
-  p8  : inout std_logic;
-  p9  : inout std_logic;
-  p10 : inout std_logic;
-  p11 : inout std_logic;
-  p12 : inout std_logic;
-  p13 : inout std_logic;
+  p1  :  out std_logic;                 -- g1q_n
+  p2  :  in std_logic;                  -- g1a
+  p3  :  in std_logic;                  -- g1b
+  p4  :  out std_logic;                 -- g2q_n
+  p5  :  in std_logic;                  -- g2a
+  p6  :  in std_logic;                  -- g2b
+  p8  :  in std_logic;                  -- g3b
+  p9  :  in std_logic;                  -- g3a
+  p10 :  out std_logic;                 -- g3q_n
+  p11 :  in std_logic;                  -- g4a
+  p12 :  in std_logic;                  -- g4b
+  p13 :  out std_logic;                 -- g4q_n
   );
 end;
 
 entity dip_74ls109 is port (            -- sn74109
-  p1 : inout std_logic;
-  p2 : inout std_logic;
-  p3 : inout std_logic;
-  p4 : inout std_logic;
-  p5 : inout std_logic;
-  p6 : inout std_logic;
-  p7 : inout std_logic;
+  p1 :  in std_logic; -- clr1_n
+  p2 :  in std_logic; -- j1
+  p3 :  in std_logic; -- k1_n
+  p4 :  in std_logic; -- clk1
+  p5 :  in std_logic; -- pre1_n
+  p6 :  out std_logic; -- q1
+  p7 :  out std_logic; -- q1_n
+-- p9 : out std_logic;                    -- q2_n   
+-- p10 : out std_logic;                   -- q2     
+-- p11 : in std_logic;                    -- pre2_n 
+-- p12 : in std_logic;                    -- clk2   
+-- p13 : in std_logic;                    -- k2_n   
+-- p14 : in std_logic;                    -- j2     
+-- p15 : in std_logic;                    -- clr2_n 
   );
 end;
 
