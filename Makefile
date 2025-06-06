@@ -18,23 +18,15 @@ ICMEM_BOOK_SRCS	=								\
 	cadr/icmem_book.vhd							\
 	$(foreach page,$(ICMEM_PAGES),cadr/$(page).vhd cadr/$(page)_suds.vhd)
 
-SRCS = $(CADR_BOOK_SRCS) $(ICMEM_BOOK_SRCS) dip.vhd
+#SRCS = $(CADR_BOOK_SRCS) $(ICMEM_BOOK_SRCS) dip.vhd
 
-TEST_SRCS = cadr/actl.vhd cadr/actl_suds.vhd
+SRCS = cadr/actl.vhd cadr/actl_suds.vhd dip.vhd
 
-.PHONY: test books
+.PHONY: books
 
-test:
-	ghdl import --std=08 $(TEST_SRCS)
-	ghdl -a --std=08 actl
-	ghdl -a --std=08 actl_suds
-	ghdl -e --std=08 dip
-	ghdl -e --std=08 actl
-	ghdl -e --std=08 actl_suds
+include ghdl.mk
 
 books: 
 	make -C soap clean
 	make -C soap all
 	sh ./make-books.sh
-
-include ghdl.mk

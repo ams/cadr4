@@ -62,7 +62,7 @@ all: $(PROJECT)-obj$(GHDLSTD).cf $(addsuffix, _tb, $(TESTBENCHES))
 check:
 	$(MAKE) $(addprefix tb-,$(TESTBENCHES))
 
-syntax:
+syntax: $(PROJECT)-obj$(GHDLSTD).cf
 	$(GHDL) syntax $(GHDLOPTIONS) --std=$(GHDLSTD) $(SRCS)
 
 # build tb TESTBENCH and run it
