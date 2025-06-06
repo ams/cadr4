@@ -19,7 +19,7 @@ use ieee.std_logic_1164.all;
 --	use ttl.other.all;
 --
 --      entity <dip-name> is port (
---        <dip-pin-name > : <direction> std_logic;
+--        <dip-pin-name> : <direction> std_logic;
 --        ...
 --        );
 --      end component;
