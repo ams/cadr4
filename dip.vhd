@@ -24,7 +24,7 @@ end package;
 -- This is then used to generate the architectures; that look as
 -- follows:
 --
--- 	architecture dip of <dip-name> is
+--      architecture dip of <dip-name> is
 --	begin
 --	  ttl : <ttl-name> port map (<dip-pin-name> => <ttl-pin-name>, ...);
 --	end;
@@ -50,23 +50,23 @@ entity dip_16dummy is port (            -- ic_16dummy
 end;
 
 entity dip_2147 is port (        -- am2147
-  p1  : in  std_logic;           -- ce_n 
-  p2  : in  std_logic;           -- a0   
-  p3  : in  std_logic;           -- a1   
-  p4  : in  std_logic;           -- a2   
-  p5  : in  std_logic;           -- a3   
-  p6  : in  std_logic;           -- a4   
-  p7  : out std_logic;           -- do   
+  p1  : in  std_logic;           -- ce_n
+  p2  : in  std_logic;           -- a0
+  p3  : in  std_logic;           -- a1
+  p4  : in  std_logic;           -- a2
+  p5  : in  std_logic;           -- a3
+  p6  : in  std_logic;           -- a4
+  p7  : out std_logic;           -- do
 --  p8  : <not-connected > std_logic;
-  p9  : in  std_logic;           -- a5   
-  p10 : in  std_logic;           -- we_n 
-  p11 : in  std_logic;           -- di   
-  p12 : in  std_logic;           -- a11  
-  p13 : in  std_logic;           -- a10  
-  p14 : in  std_logic;           -- a9   
-  p15 : in  std_logic;           -- a8   
-  p16 : in  std_logic;           -- a7   
-  p17 : in  std_logic;           -- a6   
+  p9  : in  std_logic;           -- a5
+  p10 : in  std_logic;           -- we_n
+  p11 : in  std_logic;           -- di
+  p12 : in  std_logic;           -- a11
+  p13 : in  std_logic;           -- a10
+  p14 : in  std_logic;           -- a9
+  p15 : in  std_logic;           -- a8
+  p16 : in  std_logic;           -- a7
+  p17 : in  std_logic;           -- a6
   );
 end;
 
@@ -93,20 +93,20 @@ entity dip_25ls2519 is port (           -- am252519
 end;
 
 entity dip_25s07 is port (              -- am2507
-  p1  : in std_logic;                   -- enb_n 
-  p2  : out std_logic;                  -- d0    
-  p3  : in std_logic;                   -- i0    
-  p4  : in std_logic;                   -- i1    
-  p5  : out std_logic;                  -- d1    
-  p6  : in std_logic;                   -- i2    
-  p7  : out std_logic;                  -- d2    
-  p9  : in std_logic;                   -- clk   
-  p10 : out std_logic;                  -- d3    
-  p11 : in std_logic;                   -- i3    
-  p12 : out std_logic;                  -- d4    
-  p13 : in std_logic;                   -- i4    
-  p14 : in std_logic;                   -- i5    
-  p15 : out std_logic;                  -- d5    
+  p1  : in std_logic;                   -- enb_n
+  p2  : out std_logic;                  -- d0
+  p3  : in std_logic;                   -- i0
+  p4  : in std_logic;                   -- i1
+  p5  : out std_logic;                  -- d1
+  p6  : in std_logic;                   -- i2
+  p7  : out std_logic;                  -- d2
+  p9  : in std_logic;                   -- clk
+  p10 : out std_logic;                  -- d3
+  p11 : in std_logic;                   -- i3
+  p12 : out std_logic;                  -- d4
+  p13 : in std_logic;                   -- i4
+  p14 : in std_logic;                   -- i5
+  p15 : out std_logic;                  -- d5
   );
 end;
 
@@ -190,13 +190,13 @@ entity dip_74ls109 is port (            -- sn74109
   p5 :  in std_logic; -- pre1_n
   p6 :  out std_logic; -- q1
   p7 :  out std_logic; -- q1_n
--- p9 : out std_logic;                    -- q2_n   
--- p10 : out std_logic;                   -- q2     
--- p11 : in std_logic;                    -- pre2_n 
--- p12 : in std_logic;                    -- clk2   
--- p13 : in std_logic;                    -- k2_n   
--- p14 : in std_logic;                    -- j2     
--- p15 : in std_logic;                    -- clr2_n 
+-- p9 : out std_logic;                    -- q2_n
+-- p10 : out std_logic;                   -- q2
+-- p11 : in std_logic;                    -- pre2_n
+-- p12 : in std_logic;                    -- clk2
+-- p13 : in std_logic;                    -- k2_n
+-- p14 : in std_logic;                    -- j2
+-- p15 : in std_logic;                    -- clr2_n
   );
 end;
 
