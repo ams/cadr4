@@ -50,44 +50,45 @@ entity dip_16dummy is port (            -- ic_16dummy
 end;
 
 entity dip_2147 is port (               -- am2147
-  p1  : inout std_logic;
-  p2  : inout std_logic;
-  p3  : inout std_logic;
-  p4  : inout std_logic;
-  p5  : inout std_logic;
-  p6  : inout std_logic;
-  p7  : inout std_logic;
-  p8  : inout std_logic;
-  p10 : inout std_logic;
-  p11 : inout std_logic;
-  p12 : inout std_logic;
-  p13 : inout std_logic;
-  p14 : inout std_logic;
-  p15 : inout std_logic;
-  p16 : inout std_logic;
-  p17 : inout std_logic;
+  p1  : in  std_logic;                  -- ce_n 
+  p2  : in  std_logic;                  -- a0   
+  p3  : in  std_logic;                  -- a1   
+  p4  : in  std_logic;                  -- a2   
+  p5  : in  std_logic;                  -- a3   
+  p6  : in  std_logic;                  -- a4   
+  p7  : out std_logic;                  -- do   
+--  p8  : <not-connected > std_logic;
+  p9  : in  std_logic;                  -- a5   
+  p10 : in  std_logic;                  -- we_n 
+  p11 : in  std_logic;                  -- di   
+  p12 : in  std_logic;                  -- a11  
+  p13 : in  std_logic;                  -- a10  
+  p14 : in  std_logic;                  -- a9   
+  p15 : in  std_logic;                  -- a8   
+  p16 : in  std_logic;                  -- a7   
+  p17 : in  std_logic;                  -- a6   
   );
 end;
 
 entity dip_25ls2519 is port (           -- am252519
-  p1  : inout std_logic;
-  p2  : inout std_logic;
-  p3  : inout std_logic;
-  p4  : inout std_logic;
-  p5  : inout std_logic;
-  p6  : inout std_logic;
-  p7  : inout std_logic;
-  p8  : inout std_logic;
-  p9  : inout std_logic;
-  p11 : inout std_logic;
-  p12 : inout std_logic;
-  p13 : inout std_logic;
-  p14 : inout std_logic;
-  p15 : inout std_logic;
-  p16 : inout std_logic;
-  p17 : inout std_logic;
-  p18 : inout std_logic;
-  p19 : inout std_logic;
+  p1  :  in std_logic;                  -- i0
+  p2  :  out std_logic;                 -- q0a
+  p3  :  out std_logic;                 -- q0b
+  p4  :  in std_logic;                  -- i1
+  p5  :  out std_logic;                 -- q1a
+  p6  :  out std_logic;                 -- q1b
+  p7  :  in std_logic;                  -- o_enb_n
+  p8  :  in std_logic;                  -- out_enb_n
+  p9  :  in std_logic;                  -- clk
+  p11 :  out std_logic;                 -- q2b
+  p12 :  out std_logic;                 -- q2a
+  p13 :  in std_logic;                  -- i2
+  p14 :  out std_logic;                 -- q3b
+  p15 :  out std_logic;                 -- q3a
+  p16 :  in std_logic;                  -- i3
+  p17 :  in std_logic;                  -- clk_enb_n
+  p18 :  in std_logic;                  -- inv
+  p19 :  in std_logic;                  -- asyn_clr_n
   );
 end;
 
