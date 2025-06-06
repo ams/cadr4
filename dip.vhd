@@ -14,9 +14,9 @@ use ieee.std_logic_1164.all;
 -- This is then used to generate the entities and architectures in seperate
 -- dip/dip_<dip-name>.vhd files.:
 --
---	library ttl;
---	use ttl.sn74.all;
---	use ttl.other.all;
+--      library ttl;
+--      use ttl.sn74.all;
+--      use ttl.other.all;
 --
 --      entity <dip-name> is port (
 --        <dip-pin-name> : <direction> std_logic;
