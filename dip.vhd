@@ -111,56 +111,57 @@ entity dip_25s07 is port (              -- am2507
 end;
 
 entity dip_25s09 is port (              -- am2509
-  p1  : inout std_logic;
-  p2  : inout std_logic;
-  p3  : inout std_logic;
-  p4  : inout std_logic;
-  p5  : inout std_logic;
-  p6  : inout std_logic;
-  p7  : inout std_logic;
-  p9  : inout std_logic;
-  p10 : inout std_logic;
-  p11 : inout std_logic;
-  p12 : inout std_logic;
-  p13 : inout std_logic;
-  p14 : inout std_logic;
-  p15 : inout std_logic;
+  p1  :  in   std_logic; -- sel
+  p2  :  out  std_logic; -- aq
+  p3  :  in   std_logic; -- a0
+  p4  :  in   std_logic; -- a1
+  p5  :  in   std_logic; -- b1
+  p6  :  in   std_logic; -- b0
+  p7  :  out  std_logic; -- bq
+  p9  :  in   std_logic; -- clk
+  p10 :  out  std_logic; -- cq
+  p11 :  in   std_logic; -- c0
+  p12 :  in   std_logic; -- c1
+  p13 :  in   std_logic; -- d1
+  p14 :  in   std_logic; -- d0
+  p15 :  out  std_logic; -- dq
   );
 end;
 
 entity dip_25s10 is port (              -- am2510
-  p1  : inout std_logic;
-  p2  : inout std_logic;
-  p3  : inout std_logic;
-  p4  : inout std_logic;
-  p5  : inout std_logic;
-  p6  : inout std_logic;
-  p7  : inout std_logic;
-  p9  : inout std_logic;
-  p10 : inout std_logic;
-  p11 : inout std_logic;
-  p12 : inout std_logic;
-  p13 : inout std_logic;
-  p14 : inout std_logic;
-  p15 : inout std_logic;
+  p1  :  in   std_logic; -- i_3
+  p2  :  in   std_logic; -- i_2
+  p3  :  in   std_logic; -- i_1
+  p4  :  in   std_logic; -- i0
+  p5  :  in   std_logic; -- i1
+  p6  :  in   std_logic; -- i2
+  p7  :  in   std_logic; -- i3
+  p9  :  in   std_logic; -- sel1
+  p10 :  in   std_logic; -- sel0
+  p11 :  out  std_logic; -- o3
+  p12 :  out  std_logic; -- o2
+  p13 :  in   std_logic; -- ce_n
+  p14 :  out  std_logic; -- o1
+  p15 :  out  std_logic; -- o0
   );
 end;
 
 entity dip_5600 is port (               -- im5600
-  p1  : inout std_logic;
-  p2  : inout std_logic;
-  p3  : inout std_logic;
-  p4  : inout std_logic;
+  p1  :  out  std_logic; -- o0
+  p2  :  out  std_logic; -- o1
+  p3  :  out  std_logic; -- o2
+  p4  :  out  std_logic; -- o3
   p5  : inout std_logic;
-  p6  : inout std_logic;
-  p7  : inout std_logic;
-  p9  : inout std_logic;
-  p10 : inout std_logic;
-  p11 : inout std_logic;
-  p12 : inout std_logic;
-  p13 : inout std_logic;
-  p14 : inout std_logic;
-  p15 : inout std_logic;
+  p6  :  in   std_logic; -- a4
+  p7  :  in   std_logic; -- a3
+  -- p8
+  p9  :  in   std_logic; -- a1
+  p10 :  in   std_logic; -- a0
+  p11 :  out  std_logic; -- o4
+  p12 :  out  std_logic; -- o5
+  p13 :  out  std_logic; -- o6
+  p14 :  in   std_logic; -- ce_n
+  p15 :  out  std_logic; -- o7
   );
 end;
 
