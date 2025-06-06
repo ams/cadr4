@@ -2,7 +2,7 @@ PROJECT		= work
 VCDFORMAT	= vcd
 
 GHDLSTD		= 08
-GHDLOPTIONS	= -Pttl -v -g
+GHDLOPTIONS	= -Pttl -Pdip -v -g
 GHDLSIMOPTIONS	= --backtrace-severity=warning
 #GHDLSIMOPTIONS	+= --assert-level=warning
 
@@ -18,9 +18,9 @@ ICMEM_BOOK_SRCS	=								\
 	cadr/icmem_book.vhd							\
 	$(foreach page,$(ICMEM_PAGES),cadr/$(page).vhd cadr/$(page)_suds.vhd)
 
-#SRCS = $(CADR_BOOK_SRCS) $(ICMEM_BOOK_SRCS) dip.vhd
+#SRCS = $(CADR_BOOK_SRCS) $(ICMEM_BOOK_SRCS)
 
-SRCS = cadr/actl.vhd cadr/actl_suds.vhd dip.vhd
+SRCS = cadr/actl.vhd cadr/actl_suds.vhd
 
 .PHONY: books
 
