@@ -1,4 +1,5 @@
 -- (512x8) 4096-Bit TTL PROM
+-- Datasheet for DM74472 not found. This VHDL model might be based on a non-standard or custom implementation.
 
 library ieee;
 use ieee.std_logic_1164.all;

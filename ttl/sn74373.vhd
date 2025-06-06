@@ -1,6 +1,8 @@
 -- SN74373: Octal D-Type Transparent Latches
 -- Datasheet: Texas Instruments SN74LS373 Octal D-Type Transparent Latches, PDIP (N) Package
--- URL: https://www.ti.com/lit/gpn/SN74LS373
+-- URL: https://www.ti.com/lit/ds/symlink/sn54s373.pdf
+-- Note: The 'hold_n' (Latch Enable) signal in this VHDL model is implemented as active low,
+-- while the standard SN74LS373 datasheet typically shows LE as active high.
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -8,24 +10,24 @@ use ieee.numeric_std.all;
 
 entity sn74373 is
   port (
-    hold_n : in  std_logic;
-    oenb_n : in  std_logic;
-    i0     : in  std_logic;
-    i1     : in  std_logic;
-    i2     : in  std_logic;
-    i3     : in  std_logic;
-    i4     : in  std_logic;
-    i5     : in  std_logic;
-    i6     : in  std_logic;
-    i7     : in  std_logic;
-    o0     : out std_logic;
-    o1     : out std_logic;
-    o2     : out std_logic;
-    o3     : out std_logic;
-    o4     : out std_logic;
-    o5     : out std_logic;
-    o6     : out std_logic;
-    o7     : out std_logic
+    hold_n : in  std_logic; -- Pin 11 (LE)
+    oenb_n : in  std_logic; -- Pin 1 (OE_n)
+    i0     : in  std_logic; -- Pin 3 (1D)
+    i1     : in  std_logic; -- Pin 4 (2D)
+    i2     : in  std_logic; -- Pin 7 (3D)
+    i3     : in  std_logic; -- Pin 8 (4D)
+    i4     : in  std_logic; -- Pin 13 (5D)
+    i5     : in  std_logic; -- Pin 14 (6D)
+    i6     : in  std_logic; -- Pin 17 (7D)
+    i7     : in  std_logic; -- Pin 18 (8D)
+    o0     : out std_logic; -- Pin 2 (1Q)
+    o1     : out std_logic; -- Pin 5 (2Q)
+    o2     : out std_logic; -- Pin 6 (3Q)
+    o3     : out std_logic; -- Pin 10 (4Q)
+    o4     : out std_logic; -- Pin 12 (5Q)
+    o5     : out std_logic; -- Pin 15 (6Q)
+    o6     : out std_logic; -- Pin 16 (7Q)
+    o7     : out std_logic  -- Pin 19 (8Q)
     );
 end;
 

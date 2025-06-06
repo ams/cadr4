@@ -1,4 +1,5 @@
 -- J-K Flip-Flop (with preset and clear)
+-- No external pins to verify against a datasheet as this is a custom VHDL component.
 
 -- 'pre' and 'clr' are active-low asynchronous inputs. When both are
 -- high, the flip-flop retains its previous state.

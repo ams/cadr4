@@ -6,22 +6,25 @@ use ieee.numeric_std.all;
 
 entity dm9328 is
   port (
-    clr_n  : in  std_logic;
-    aq_n   : out std_logic;
-    aq     : out std_logic;
-    asel   : in  std_logic;
-    ai1    : in  std_logic;
-    ai0    : in  std_logic;
-    aclk   : in  std_logic;
-    comclk : in  std_logic;
-    bclk   : in  std_logic;
-    bi0    : in  std_logic;
-    bi1    : in  std_logic;
-    bsel   : in  std_logic;
-    bq     : out std_logic;
-    bq_n   : out std_logic
+    clr_n  : in  std_logic; -- 7
+    aq_n   : out std_logic; -- 1
+    aq     : out std_logic; -- 2
+    asel   : in  std_logic; -- 3
+    ai1    : in  std_logic; -- 5
+    ai0    : in  std_logic; -- 4
+    aclk   : in  std_logic; -- 6
+    comclk : in  std_logic; -- 9
+    bclk   : in  std_logic; -- 10
+    bi0    : in  std_logic; -- 11
+    bi1    : in  std_logic; -- 12
+    bsel   : in  std_logic; -- 13
+    bq     : out std_logic; -- 14
+    bq_n   : out std_logic  -- 15
     );
 end dm9328;
+
+-- Datasheet: https://datasheet.sisoog.com/file/7a657573/datasheet/e2e7ec94a9d6aae7e5e57c76266892be30e12591.pdf (PDIP, N16E Package)
+-- VCC = Pin 16, GND = Pin 8
 
 -- ChatGPT Codex implementation
 architecture ttl of dm9328 is

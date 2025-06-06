@@ -8,28 +8,27 @@ use ieee.std_logic_1164.all;
 
 entity sn74241 is
   port (
-    aenb_n : in  std_logic;
-    ain0   : in  std_logic;
-    ain1   : in  std_logic;
-    ain2   : in  std_logic;
-    ain3   : in  std_logic;
-    aout0  : out std_logic;
-    aout1  : out std_logic;
-    aout2  : out std_logic;
-    aout3  : out std_logic;
+    aenb_n : in  std_logic; -- Pin 1 (1G) : Channel 1 Output Enable (Active Low)
+    ain0   : in  std_logic; -- Pin 2 (1A1)
+    ain1   : in  std_logic; -- Pin 4 (1A2)
+    ain2   : in  std_logic; -- Pin 6 (1A3)
+    ain3   : in  std_logic; -- Pin 8 (1A4)
+    aout0  : out std_logic; -- Pin 18 (1Y1)
+    aout1  : out std_logic; -- Pin 16 (1Y2)
+    aout2  : out std_logic; -- Pin 14 (1Y3)
+    aout3  : out std_logic; -- Pin 12 (1Y4)
 
-    -- in the TI datasheet of SN74241, BENB is also active low
-    -- however in CADR schematics it is active high
-    -- so this is implemented as active high
-    benb  : in  std_logic;
-    bin0  : in  std_logic;
-    bin1  : in  std_logic;
-    bin2  : in  std_logic;
-    bin3  : in  std_logic;
-    bout0 : out std_logic;
-    bout1 : out std_logic;
-    bout2 : out std_logic;
-    bout3 : out std_logic
+    -- In the TI datasheet of SN74LS241, BENB (2G) is active high.
+    -- The VHDL implementation matches this behavior.
+    benb  : in  std_logic; -- Pin 19 (2G) : Channel 2 Output Enable (Active High)
+    bin0  : in  std_logic; -- Pin 11 (2A1)
+    bin1  : in  std_logic; -- Pin 13 (2A2)
+    bin2  : in  std_logic; -- Pin 15 (2A3)
+    bin3  : in  std_logic; -- Pin 17 (2A4)
+    bout0 : out std_logic; -- Pin 9 (2Y1)
+    bout1 : out std_logic; -- Pin 7 (2Y2)
+    bout2 : out std_logic; -- Pin 5 (2Y3)
+    bout3 : out std_logic  -- Pin 3 (2Y4)
     );
 end;
 
