@@ -166,7 +166,6 @@ int set_center_count;
 struct set_center_s set_centers[MAX_SET_CENTERS];
 
 
-extern char *strdup();
 extern void unpack(char *);
 
 char *

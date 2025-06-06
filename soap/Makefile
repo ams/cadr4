@@ -2,7 +2,7 @@
 #
 #
 
-LIBS = -lSDL -lSDL_ttf -lpthread
+CFLAGS = -std=gnu99 -Wall -Wextra -O0 -ggdb3
 
 all: soap
 

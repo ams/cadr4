@@ -24,7 +24,7 @@
 FILE *in, *out;
 
 //FILE *zopen();
-static void flush();
+static void flush(unsigned long[5]);
 
 extern unsigned int *up;
 extern int up_size;
@@ -32,7 +32,7 @@ extern int up_size;
 /* write a word */
 void outword(register unsigned long l,register unsigned long r)
 {
-	if (0) printf("outword(%06o, %06o)\n", l, r);
+	if (0) printf("outword(%06lo, %06lo)\n", l, r);
 	up[up_size++] = l;
 	up[up_size++] = r;
 }
