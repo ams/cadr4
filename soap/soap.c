@@ -1938,12 +1938,15 @@ format_bodies(void)
 
 		printf("%s_%s : dip_%s port map (",
 		       strlwr(page_name), strlwr(bodies[i].refdes), strlwr(bodies[i].name_of_body));
+        int printed_once = 0;
 		for (j = 1; j < MAX_BODY_NAMED_PINS; j++) {
 			int pi = bodies[i].named_pin_index[j];
 			if (pi) {
-				printf("p%d => %s, ",
+                if (printed_once != 0) printf(", ");
+				printf("p%d => %s",
 				       j,
 				       format_name(points[pi].name_of_pin));
+                printed_once = 1;
 			}
 		}
 		printf(");\n");
