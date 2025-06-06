@@ -6,108 +6,17 @@ GHDLOPTIONS	= -Pttl -v -g
 GHDLSIMOPTIONS	= --backtrace-severity=warning
 #GHDLSIMOPTIONS	+= --assert-level=warning
 
-CADR_BOOK	=				\
-	cadr_book.vhd				\
-	cadr/actl.vhd				\
-	cadr/alatch.vhd				\
-	cadr/alu0.vhd				\
-	cadr/alu1.vhd				\
-	cadr/aluc4.vhd				\
-	cadr/amem0.vhd				\
-	cadr/amem1.vhd				\
-	cadr/apar.vhd				\
-	cadr/bcpins.vhd				\
-	cadr/bcterm.vhd				\
-	cadr/caps.vhd				\
-	cadr/clockd.vhd				\
-	cadr/contrl.vhd				\
-	cadr/cpins.vhd				\
-	cadr/dram0.vhd				\
-	cadr/dram1.vhd				\
-	cadr/dram2.vhd				\
-	cadr/dspctl.vhd				\
-	cadr/flag.vhd				\
-	cadr/ior.vhd				\
-	cadr/ipar.vhd				\
-	cadr/ireg.vhd				\
-	cadr/iwr.vhd				\
-	cadr/l.vhd				\
-	cadr/lc.vhd				\
-	cadr/lcc.vhd				\
-	cadr/lpc.vhd				\
-	cadr/mctl.vhd				\
-	cadr/md.vhd				\
-	cadr/mds.vhd				\
-	cadr/mf.vhd				\
-	cadr/mlatch.vhd				\
-	cadr/mmem.vhd				\
-	cadr/mo0.vhd				\
-	cadr/mo1.vhd				\
-	cadr/mskg4.vhd				\
-	cadr/npc.vhd				\
-	cadr/opcd.vhd				\
-	cadr/pdl0.vhd				\
-	cadr/pdl1.vhd				\
-	cadr/pdlctl.vhd				\
-	cadr/pdlptr.vhd				\
-	cadr/platch.vhd				\
-	cadr/q.vhd				\
-	cadr/qctl.vhd				\
-	cadr/shift0.vhd				\
-	cadr/shift1.vhd				\
-	cadr/smctl.vhd				\
-	cadr/source.vhd				\
-	cadr/spc.vhd				\
-	cadr/spclch.vhd				\
-	cadr/spcpar.vhd				\
-	cadr/spcw.vhd				\
-	cadr/spy1.vhd				\
-	cadr/spy2.vhd				\
-	cadr/trap.vhd				\
-	cadr/vctl1.vhd				\
-	cadr/vctl2.vhd				\
-	cadr/vma.vhd				\
-	cadr/vmas.vhd				\
-	cadr/vmem0.vhd				\
-	cadr/vmem1.vhd				\
-	cadr/vmem2.vhd				\
-	cadr/vmemdr.vhd
+CADR_PAGES	= actl alatch alu0 alu1 aluc4 amem0 amem1 apar bcpins bcterm caps clockd contrl cpins dram0 dram1 dram2 dspctl flag ior ipar ireg iwr l lc lcc lpc mctl md mds mf mlatch mmem mo0 mo1 mskg4 npc opcd pdl0 pdl1 pdlctl pdlptr platch q qctl shift0 shift1 smctl source spc spclch spcpar spcw spy1 spy2 trap vctl1 vctl2 vma vmas vmem0 vmem1 vmem2 vmemdr
 
-ICMEM_BOOK	=				\
-	icmem_book.vhd				\
-	cadr/clock1.vhd				\
-	cadr/clock2.vhd				\
-	cadr/debug.vhd				\
-	cadr/icaps.vhd				\
-	cadr/ictl.vhd				\
-	cadr/iwrpar.vhd				\
-	cadr/mbcpin.vhd				\
-	cadr/mcpins.vhd				\
-	cadr/olord1.vhd				\
-	cadr/olord2.vhd				\
-	cadr/opcs.vhd				\
-	cadr/pctl.vhd				\
-	cadr/prom0.vhd				\
-	cadr/prom1.vhd				\
-	cadr/iram00.vhd				\
-	cadr/iram01.vhd				\
-	cadr/iram02.vhd				\
-	cadr/iram03.vhd				\
-	cadr/iram10.vhd				\
-	cadr/iram11.vhd				\
-	cadr/iram12.vhd				\
-	cadr/iram13.vhd				\
-	cadr/iram20.vhd				\
-	cadr/iram21.vhd				\
-	cadr/iram22.vhd				\
-	cadr/iram23.vhd				\
-	cadr/iram30.vhd				\
-	cadr/iram31.vhd				\
-	cadr/iram32.vhd				\
-	cadr/iram33.vhd				\
-	cadr/spy0.vhd				\
-	cadr/spy4.vhd				\
-	cadr/stat.vhd
+CADR_BOOK	=								\
+	cadr/cadr_book.vhd							\
+	$(foreach page,$(CADR_PAGES),cadr/$(page).vhd cadr/$(page)_suds.vhd)
+
+ICMEM_PAGES	= clock1 clock2 debug icaps ictl iwrpar mbcpin mcpins olord1 olord2 opcs pctl prom0 prom1 iram00 iram01 iram02 iram03 iram10 iram11 iram12 iram13 iram20 iram21 iram22 iram23 iram30 iram31 iram32 iram33 spy0 spy4 stat
+
+ICMEM_BOOK	=								\
+	cadr/icmem_book.vhd							\
+	$(foreach page,$(ICMEM_PAGES),cadr/$(page).vhd cadr/$(page)_suds.vhd)
 
 SRCS	= $(CADR_BOOK) $(ICMEM_BOOK) dip.vhd utilities.vhd
 
