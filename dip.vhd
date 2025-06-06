@@ -15,7 +15,7 @@ end package;
 --
 -- Format of the following entities:
 --
---      entity < dip-name > is port (                -- <ttl-name>
+--      entity < dip-name > is port (                -- <ttl-name> <original-suds-name>
 --        <dip-pin-name > : < direction > std_logic; -- <ttl-pin-name>
 --        ...
 --        );
@@ -30,12 +30,12 @@ end package;
 --      end;
 --------------------------------------------------------------------------------
 
-entity dip_16dummy is port (            -- ic_16dummy
+entity dip_16dummy is port (            -- ic_16dummy [16dummy]
   p1 : std_logic                        -- dummy
   );
 end;
 
-entity dip_2147 is port (               -- am2147
+entity dip_2147 is port (               -- am2147 [2147]
   p1  : in  std_logic;                  -- a0
   p2  : in  std_logic;                  -- a1
   p3  : in  std_logic;                  -- a2
@@ -55,7 +55,7 @@ entity dip_2147 is port (               -- am2147
   );
 end;
 
-entity dip_25ls2519 is port (           -- am252519
+entity dip_25ls2519 is port (           -- am252519 [25ls2519]
   p1  : in  std_logic;                  -- i0
   p2  : out std_logic;                  -- q0a
   p3  : out std_logic;                  -- q0b
@@ -77,7 +77,7 @@ entity dip_25ls2519 is port (           -- am252519
   );
 end;
 
-entity dip_25s07 is port (              -- am2507
+entity dip_25s07 is port (              -- am2507 [25s07]
   p1  : in  std_logic;                  -- enb_n
   p2  : out std_logic;                  -- d0
   p3  : in  std_logic;                  -- i0
@@ -95,7 +95,7 @@ entity dip_25s07 is port (              -- am2507
   );
 end;
 
-entity dip_25s09 is port (              -- am2509
+entity dip_25s09 is port (              -- am2509 [25s09]
   p1  : in  std_logic;                  -- sel
   p2  : out std_logic;                  -- aq
   p3  : in  std_logic;                  -- a0
@@ -113,7 +113,7 @@ entity dip_25s09 is port (              -- am2509
   );
 end;
 
-entity dip_25s10 is port (              -- am2510
+entity dip_25s10 is port (              -- am2510 [25s10]
   p1  : in  std_logic;                  -- i_3
   p2  : in  std_logic;                  -- i_2
   p3  : in  std_logic;                  -- i_1
@@ -131,7 +131,7 @@ entity dip_25s10 is port (              -- am2510
   );
 end;
 
-entity dip_5600 is port (               -- im5600
+entity dip_5600 is port (               -- im5600 [5600]
   p1  : out std_logic;                  -- o0
   p2  : out std_logic;                  -- o1
   p3  : out std_logic;                  -- o2
@@ -149,7 +149,7 @@ entity dip_5600 is port (               -- im5600
   );
 end;
 
-entity dip_5610 is port (               -- im5600
+entity dip_5610 is port (               -- im5600 [5610]
   p1  : out std_logic;                  -- o0
   p2  : out std_logic;                  -- o1
   p3  : out std_logic;                  -- o2
@@ -167,7 +167,7 @@ entity dip_5610 is port (               -- im5600
   );
 end;
 
-entity dip_7428 is port (               -- sn7428
+entity dip_7428 is port (               -- sn7428 [7428]
   p1  : out std_logic;                  -- g1q_n
   p2  : in  std_logic;                  -- g1a
   p3  : in  std_logic;                  -- g1b
@@ -183,7 +183,7 @@ entity dip_7428 is port (               -- sn7428
   );
 end;
 
-entity dip_74ls109 is port (            -- sn74109
+entity dip_74ls109 is port (            -- sn74109 [74ls109]
   p1  : in  std_logic;                  -- clr1_n
   p2  : in  std_logic;                  -- j1
   p3  : in  std_logic;                  -- k1_n
@@ -201,7 +201,7 @@ entity dip_74ls109 is port (            -- sn74109
   );
 end;
 
-entity dip_74ls14 is port (             -- sn7414
+entity dip_74ls14 is port (             -- sn7414 [74ls14]
   p1  : in  std_logic;                  -- g1a
   p2  : out std_logic;                  -- g1q_n
   p3  : in  std_logic;                  -- g2a
@@ -217,11 +217,11 @@ entity dip_74ls14 is port (             -- sn7414
   );
 end;
 
--- entity dip_74ls240 is port (            -- sn74240
+-- entity dip_74ls240 is port (            -- sn74240 [74ls240]
 --  );
 -- end;
 
-entity dip_74ls244 is port (            -- sn74244
+entity dip_74ls244 is port (            -- sn74244 [74ls244]
   p1  : in  std_logic;                  -- aenb_n
   p2  : in  std_logic;                  -- ain0
   p3  : out std_logic;                  -- bout3
@@ -243,7 +243,7 @@ entity dip_74ls244 is port (            -- sn74244
   );
 end;
 
-entity dip_74s00 is port (              -- sn7400
+entity dip_74s00 is port (              -- sn7400 [74s00]
   p1  : in  std_logic;                  -- g1b
   p2  : in  std_logic;                  -- g1a
   p3  : out std_logic;                  -- g1q_n
@@ -259,11 +259,11 @@ entity dip_74s00 is port (              -- sn7400
   );
 end;
 
--- entity dip_74s00o is port (             -- sn7400
+-- entity dip_74s00o is port (             -- sn7400 [74s00o]
 --  );
 -- end;
 
-entity dip_74s02 is port (              -- sn7402
+entity dip_74s02 is port (              -- sn7402 [74s02]
   p1  : out std_logic;                  -- g1q_n
   p2  : in  std_logic;                  -- g1a
   p3  : in  std_logic;                  -- g1b
@@ -279,11 +279,11 @@ entity dip_74s02 is port (              -- sn7402
   );
 end;
 
--- entity dip_74s02o is port (             -- sn7402
+-- entity dip_74s02o is port (             -- sn7402 [74s02o]
 --  );
 -- end;
 
-entity dip_74s04 is port (              -- sn7404
+entity dip_74s04 is port (              -- sn7404 [74s04]
   p1  : in  std_logic;                  -- g1a
   p2  : out std_logic;                  -- g1q_n
   p3  : in  std_logic;                  -- g2a
@@ -299,11 +299,11 @@ entity dip_74s04 is port (              -- sn7404
   );
 end;
 
--- entity dip_74s04a is port (             -- sn7404
+-- entity dip_74s04a is port (             -- sn7404 [74s04a]
 --  );
 -- end;
 
-entity dip_74s08 is port (              -- sn7408
+entity dip_74s08 is port (              -- sn7408 [74s08]
   p1  : in  std_logic;                  -- g1b
   p2  : in  std_logic;                  -- g1a
   p3  : out std_logic;                  -- g1q
@@ -319,11 +319,11 @@ entity dip_74s08 is port (              -- sn7408
   );
 end;
 
--- entity dip_74s08o is port (             -- sn7408
+-- entity dip_74s08o is port (             -- sn7408 [74s08o]
 --  );
 -- end;
 
-entity dip_74s10 is port (              -- sn7410
+entity dip_74s10 is port (              -- sn7410 [74s10]
   p1  : in  std_logic;                  -- g1a
   p2  : in  std_logic;                  -- g1b
   p3  : in  std_logic;                  -- g2a
@@ -339,11 +339,11 @@ entity dip_74s10 is port (              -- sn7410
   );
 end;
 
--- entity dip_74s10o is port (             -- sn7410
+-- entity dip_74s10o is port (             -- sn7410 [74s10o]
 --  );
 -- end;
 
-entity dip_74s11 is port (              -- sn7411
+entity dip_74s11 is port (              -- sn7411 [74s11]
   p1  : in  std_logic;                  -- g1a
   p2  : in  std_logic;                  -- g1b
   p3  : in  std_logic;                  -- g2a
@@ -359,7 +359,7 @@ entity dip_74s11 is port (              -- sn7411
   );
 end;
 
-entity dip_74s11o is port (             -- sn7411
+entity dip_74s11o is port (             -- sn7411 [74s11o]
   p3 : inout std_logic;
   p4 : inout std_logic;
   p5 : inout std_logic;
@@ -367,7 +367,7 @@ entity dip_74s11o is port (             -- sn7411
   );
 end;
 
-entity dip_74s133 is port (             -- sn74133
+entity dip_74s133 is port (             -- sn74133 [74s133]
   p1  : in std_logic;                   -- g
   p2  : in std_logic;                   -- f
   p3  : in std_logic;                   -- e
@@ -385,11 +385,11 @@ entity dip_74s133 is port (             -- sn74133
   );
 end;
 
--- entity dip_74s133o is port (            -- sn74133
+-- entity dip_74s133o is port (            -- sn74133 [74s133o]
 --  );
 -- end;
 
-entity dip_74s138 is port (             -- sn74138
+entity dip_74s138 is port (             -- sn74138 [74s138]
   p1  : in  std_logic;                  -- a
   p2  : in  std_logic;                  -- b
   p3  : in  std_logic;                  -- c
@@ -407,7 +407,7 @@ entity dip_74s138 is port (             -- sn74138
   );
 end;
 
-entity dip_74s139 is port (             -- sn74139
+entity dip_74s139 is port (             -- sn74139 [74s139]
   p1  : in  std_logic;                  -- g1
   p2  : in  std_logic;                  -- a1
   p3  : in  std_logic;                  -- b1
@@ -425,7 +425,7 @@ entity dip_74s139 is port (             -- sn74139
   );
 end;
 
-entity dip_74s151 is port (             -- sn74151
+entity dip_74s151 is port (             -- sn74151 [74s151]
   p1  : in  std_logic;                  -- i3
   p2  : in  std_logic;                  -- i2
   p3  : in  std_logic;                  -- i1
@@ -443,7 +443,7 @@ entity dip_74s151 is port (             -- sn74151
   );
 end;
 
-entity dip_74s153 is port (             -- sn74153
+entity dip_74s153 is port (             -- sn74153 [74s153]
   p1  : in  std_logic;                  -- enb1_n
   p2  : in  std_logic;                  -- sel1
   p3  : in  std_logic;                  -- g1c3
@@ -461,7 +461,7 @@ entity dip_74s153 is port (             -- sn74153
   );
 end;
 
-entity dip_74s157 is port (             -- sn74157
+entity dip_74s157 is port (             -- sn74157 [74s157]
   p1  : in  std_logic;                  -- sel
   p2  : in  std_logic;                  -- a4
   p3  : in  std_logic;                  -- b4
@@ -479,7 +479,7 @@ entity dip_74s157 is port (             -- sn74157
   );
 end;
 
-entity dip_74s169 is port (             -- sn74169
+entity dip_74s169 is port (             -- sn74169 [74s169]
   p1  : in  std_logic;                  -- up_dn
   p2  : in  std_logic;                  -- clk
   p3  : in  std_logic;                  -- i0
@@ -497,7 +497,7 @@ entity dip_74s169 is port (             -- sn74169
   );
 end;
 
-entity dip_74s174 is port (             -- sn74174
+entity dip_74s174 is port (             -- sn74174 [74s174]
   p1  : in std_logic;                   -- clr_n
   p2  : in std_logic;                   -- q1
   p3  : in std_logic;                   -- d1
@@ -515,7 +515,7 @@ entity dip_74s174 is port (             -- sn74174
   );
 end;
 
-entity dip_74s175 is port (             -- sn74175
+entity dip_74s175 is port (             -- sn74175 [74s175]
   p1  : in  std_logic;                  -- clr_n
   p2  : out std_logic;                  -- q0
   p3  : out std_logic;                  -- q0_n
@@ -533,7 +533,7 @@ entity dip_74s175 is port (             -- sn74175
   );
 end;
 
-entity dip_74s181 is port (             -- sn74181
+entity dip_74s181 is port (             -- sn74181 [74s181]
   p1  : in  std_logic;                  -- b0
   p2  : in  std_logic;                  -- a0
   p3  : in  std_logic;                  -- s3
@@ -559,7 +559,7 @@ entity dip_74s181 is port (             -- sn74181
   );
 end;
 
-entity dip_74s182 is port (             -- sn74182
+entity dip_74s182 is port (             -- sn74182 [74s182]
   p1  : in  std_logic;                  -- y1
   p2  : in  std_logic;                  -- x1
   p3  : in  std_logic;                  -- y0
@@ -577,7 +577,7 @@ entity dip_74s182 is port (             -- sn74182
   );
 end;
 
-entity dip_74s194 is port (             -- sn74194
+entity dip_74s194 is port (             -- sn74194 [74s194]
   p1  : in  std_logic;                  -- clr_n
   p2  : in  std_logic;                  -- sir
   p3  : in  std_logic;                  -- i0
@@ -595,7 +595,7 @@ entity dip_74s194 is port (             -- sn74194
   );
 end;
 
-entity dip_74s20 is port (              -- sn7420
+entity dip_74s20 is port (              -- sn7420 [74s20]
   p1  : in  std_logic;                  -- g1a
   p2  : in  std_logic;                  -- g1b
   p4  : in  std_logic;                  -- g1c
@@ -609,7 +609,7 @@ entity dip_74s20 is port (              -- sn7420
   );
 end;
 
-entity dip_74s20o is port (             -- sn7420
+entity dip_74s20o is port (             -- sn7420 [74s20o]
   p1  : inout std_logic;
   p2  : inout std_logic;
   p4  : inout std_logic;
@@ -623,7 +623,7 @@ entity dip_74s20o is port (             -- sn7420
   );
 end;
 
-entity dip_74s240 is port (             -- sn74240
+entity dip_74s240 is port (             -- sn74240 [74s240]
   p1  : in  std_logic;                  -- aenb_n
   p2  : in  std_logic;                  -- ain0
   p3  : out std_logic;                  -- bout3
@@ -645,7 +645,7 @@ entity dip_74s240 is port (             -- sn74240
   );
 end;
 
-entity dip_74s241 is port (             -- sn74241
+entity dip_74s241 is port (             -- sn74241 [74s241]
   p1  : in  std_logic;                  -- aenb_n
   p2  : in  std_logic;                  -- ain0
   p3  : out std_logic;                  -- bout3
@@ -667,7 +667,7 @@ entity dip_74s241 is port (             -- sn74241
   );
 end;
 
-entity dip_74s258 is port (             -- sn74258
+entity dip_74s258 is port (             -- sn74258 [74s258]
   p1  : in  std_logic;                  -- sel
   p2  : in  std_logic;                  -- d0
   p3  : in  std_logic;                  -- d1
@@ -685,7 +685,7 @@ entity dip_74s258 is port (             -- sn74258
   );
 end;
 
-entity dip_74s260 is port (             -- sn74260
+entity dip_74s260 is port (             -- sn74260 [74s260]
   p1  : in std_logic;                   -- i1
   p2  : in std_logic;                   -- i2
   p3  : in std_logic;                   -- i3
@@ -695,7 +695,7 @@ entity dip_74s260 is port (             -- sn74260
   );
 end;
 
-entity dip_74s280 is port (             -- sn74280
+entity dip_74s280 is port (             -- sn74280 [74s280]
   p1  : in  std_logic;                  -- i0
   p2  : in  std_logic;                  -- i1
   p4  : in  std_logic;                  -- i2
@@ -710,7 +710,7 @@ entity dip_74s280 is port (             -- sn74280
   );
 end;
 
-entity dip_74s283 is port (             -- sn74283
+entity dip_74s283 is port (             -- sn74283 [74s283]
   p1  : out std_logic;                  -- s1
   p2  : in  std_logic;                  -- b1
   p3  : in  std_logic;                  -- a1
@@ -728,7 +728,7 @@ entity dip_74s283 is port (             -- sn74283
   );
 end;
 
-entity dip_74s32 is port (              -- sn7432
+entity dip_74s32 is port (              -- sn7432 [74s32]
   p1  : in  std_logic;                  -- g1a
   p2  : in  std_logic;                  -- g1b
   p3  : out std_logic;                  -- g1y
@@ -744,15 +744,15 @@ entity dip_74s32 is port (              -- sn7432
   );
 end;
 
--- entity dip_74s32o is port (             -- sn7432
+-- entity dip_74s32o is port (             -- sn7432 [74s32o]
 --  );
 -- end;
 
--- entity dip_74s32w is port (             -- sn7432
+-- entity dip_74s32w is port (             -- sn7432 [74s32w]
 --  );
 -- end;
 
-entity dip_74s37 is port (              -- sn7437
+entity dip_74s37 is port (              -- sn7437 [74s37]
   p1  : in  std_logic;                  -- g1a
   p2  : in  std_logic;                  -- g1b
   p3  : out std_logic;                  -- g1y
@@ -768,7 +768,7 @@ entity dip_74s37 is port (              -- sn7437
   );
 end;
 
-entity dip_74s373 is port (             -- sn74373
+entity dip_74s373 is port (             -- sn74373 [74s373]
   p1  : in  std_logic;                  -- oenb_n
   p2  : out std_logic;                  -- o0
   p3  : in  std_logic;                  -- i0
@@ -790,7 +790,7 @@ entity dip_74s373 is port (             -- sn74373
   );
 end;
 
-entity dip_74s374 is port (             -- sn74374
+entity dip_74s374 is port (             -- sn74374 [74s374]
   p1  : in  std_logic;                  -- oenb_n
   p2  : out std_logic;                  -- o0
   p3  : in  std_logic;                  -- i0
@@ -812,7 +812,7 @@ entity dip_74s374 is port (             -- sn74374
   );
 end;
 
-entity dip_74s472 is port (             -- dm74472
+entity dip_74s472 is port (             -- dm74472 [74s472]
   p1  : in std_logic;                   -- a0
   p2  : in std_logic;                   -- a1
   p3  : in std_logic;                   -- a2
@@ -834,7 +834,7 @@ entity dip_74s472 is port (             -- dm74472
   );
 end;
 
-entity dip_74s51 is port (              -- sn7451
+entity dip_74s51 is port (              -- sn7451 [74s51]
   p1  : in  std_logic;                  -- g1a
   p2  : in  std_logic;                  -- g2a
   p3  : in  std_logic;                  -- g2b
@@ -848,7 +848,7 @@ entity dip_74s51 is port (              -- sn7451
   );
 end;
 
-entity dip_74s64 is port (              -- sn7464
+entity dip_74s64 is port (              -- sn7464 [74s64]
   p1  : in  std_logic;                  -- d4
   p2  : in  std_logic;                  -- b2
   p3  : in  std_logic;                  -- a2
@@ -864,7 +864,7 @@ entity dip_74s64 is port (              -- sn7464
   );
 end;
 
-entity dip_74s74 is port (              -- sn7474
+entity dip_74s74 is port (              -- sn7474 [74s74]
   p1  : in  std_logic;                  -- g1r_n
   p2  : in  std_logic;                  -- g1d
   p3  : in  std_logic;                  -- g1clk
@@ -880,7 +880,7 @@ entity dip_74s74 is port (              -- sn7474
   );
 end;
 
-entity dip_74s86 is port (              -- sn7486
+entity dip_74s86 is port (              -- sn7486 [74s86]
   p1  : in  std_logic;                  -- g1a
   p2  : in  std_logic;                  -- g1b
   p3  : out std_logic;                  -- g1y
@@ -896,7 +896,7 @@ entity dip_74s86 is port (              -- sn7486
   );
 end;
 
-entity dip_82s21 is port (              -- dm8221
+entity dip_82s21 is port (              -- dm8221 [82s21]
   p1  : in  std_logic;                  -- wclk_n
   p2  : in  std_logic;                  -- we0_n
   p3  : in  std_logic;                  -- i0
@@ -914,7 +914,7 @@ entity dip_82s21 is port (              -- dm8221
   );
 end;
 
-entity dip_9328 is port (               -- dm9328
+entity dip_9328 is port (               -- dm9328 [9328]
   p1  : in std_logic;                   -- clr_n
   p2  : in std_logic;                   -- aq_n
   p3  : in std_logic;                   -- aq
@@ -932,7 +932,7 @@ entity dip_9328 is port (               -- dm9328
   );
 end;
 
-entity dip_93425a is port (             -- am93425a
+entity dip_93425a is port (             -- am93425a [93425a]
   p1  : in  std_logic;                  -- ce_n
   p2  : in  std_logic;                  -- a0
   p3  : in  std_logic;                  -- a1
@@ -950,7 +950,7 @@ entity dip_93425a is port (             -- am93425a
   );
 end;
 
-entity dip_93s46 is port (              -- dm9346
+entity dip_93s46 is port (              -- dm9346 [93s46]
   p1  : in  std_logic;                  -- a0
   p2  : in  std_logic;                  -- b0
   p3  : in  std_logic;                  -- a1
@@ -968,7 +968,7 @@ entity dip_93s46 is port (              -- dm9346
   );
 end;
 
-entity dip_93s48 is port (              -- am93s48
+entity dip_93s48 is port (              -- am93s48 [93s48]
   p1  : in  std_logic;                  -- i6
   p2  : in  std_logic;                  -- i5
   p3  : in  std_logic;                  -- i4
@@ -986,7 +986,7 @@ entity dip_93s48 is port (              -- am93s48
   );
 end;
 
-entity dip_9s42_1 is port (             -- dm942 [dip_9s42-1]
+entity dip_9s42_1 is port (             -- dm942 [9s42-1]
   p1  : in  std_logic;                  -- g1a1
   p2  : in  std_logic;                  -- g1b1
   p3  : in  std_logic;                  -- g2a1
@@ -1004,7 +1004,7 @@ entity dip_9s42_1 is port (             -- dm942 [dip_9s42-1]
   );
 end;
 
-entity dip_res20 is port (              -- res20
+entity dip_res20 is port (              -- res20 [res20]
   p2  : in std_logic;                   -- r2
   p3  : in std_logic;                   -- r3
   p4  : in std_logic;                   -- r4
@@ -1026,7 +1026,7 @@ entity dip_res20 is port (              -- res20
   );
 end;
 
-entity dip_sip220_330_8 is port (       -- sip220_330_8 [dip_sip220/330-8]
+entity dip_sip220_330_8 is port (       -- sip220_330_8 [sip220/330-8]
   p2 : in std_logic;                    -- r2
   p3 : in std_logic;                    -- r3
   p4 : in std_logic;                    -- r4
@@ -1036,7 +1036,7 @@ entity dip_sip220_330_8 is port (       -- sip220_330_8 [dip_sip220/330-8]
   );
 end;
 
-entity dip_sip330_470_8 is port (       -- sip330_470_8 [dip_sip330/470-8]
+entity dip_sip330_470_8 is port (       -- sip330_470_8 [sip330/470-8]
   p2 : in std_logic;                    -- r2
   p3 : in std_logic;                    -- r3
   p4 : in std_logic;                    -- r4
@@ -1046,7 +1046,7 @@ entity dip_sip330_470_8 is port (       -- sip330_470_8 [dip_sip330/470-8]
   );
 end;
 
-entity dip_td100 is port (              -- td100
+entity dip_td100 is port (              -- td100 [td100]
   p1  : in  std_logic;                  -- input
   p4  : out std_logic;                  -- o_40ns
   p6  : out std_logic;                  -- o_80ns
@@ -1056,7 +1056,7 @@ entity dip_td100 is port (              -- td100
   );
 end;
 
-entity dip_td25 is port (               -- td25
+entity dip_td25 is port (               -- td25 [td25]
   p1  : in  std_logic;                  -- input
   p4  : out std_logic;                  -- o_10ns
   p6  : out std_logic;                  -- o_20ns
@@ -1066,7 +1066,7 @@ entity dip_td25 is port (               -- td25
   );
 end;
 
-entity dip_td250 is port (              -- td250
+entity dip_td250 is port (              -- td250 [td250]
   p1  : in  std_logic;                  -- input
   p4  : out std_logic;                  -- o_100ns
   p6  : out std_logic;                  -- o_200ns
@@ -1076,7 +1076,7 @@ entity dip_td250 is port (              -- td250
   );
 end;
 
-entity dip_td50 is port (               -- td50
+entity dip_td50 is port (               -- td50 [td50]
   p1  : in  std_logic;                  -- input
   p4  : out std_logic;                  -- o_20ns
   p6  : out std_logic;                  -- o_40ns
@@ -1086,7 +1086,7 @@ entity dip_td50 is port (               -- td50
   );
 end;
 
-entity dip_til309 is port (             -- til309
+entity dip_til309 is port (             -- til309 [til309]
   p1  : in std_logic;                   -- l2
   p2  : in std_logic;                   -- l4
   p3  : in std_logic;                   -- l8
