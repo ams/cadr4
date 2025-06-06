@@ -13,27 +13,26 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
--- This is a Look-Ahead Carry Generator
 entity sn74182 is
   port (
-    xout    : out std_logic; -- Pin 7 (Carry Propagate Output P)
-    yout    : out std_logic; -- Pin 10 (Carry Generate Output G)
-    x3      : in  std_logic; -- Pin 6 (Carry Propagate Input P3)
-    y3      : in  std_logic; -- Pin 5 (Carry Generate Input G3)
+    xout : out std_logic;
+    yout : out std_logic;
+    x3   : in  std_logic;
+    y3   : in  std_logic;
 
-    cout2_n : out std_logic; -- Pin 9 (Carry Output Cn+2 Active Low)
-    x2      : in  std_logic; -- Pin 15 (Carry Propagate Input P2)
-    y2      : in  std_logic; -- Pin 14 (Carry Generate Input G2)
+    cout2_n : out std_logic;
+    x2      : in  std_logic;
+    y2      : in  std_logic;
 
-    cout1_n : out std_logic; -- Pin 11 (Carry Output Cn+y Active Low)
-    x1      : in  std_logic; -- Pin 2 (Carry Propagate Input P1)
-    y1      : in  std_logic; -- Pin 1 (Carry Generate Input G1)
+    cout1_n : out std_logic;
+    x1      : in  std_logic;
+    y1      : in  std_logic;
 
-    cout0_n : out std_logic; -- Pin 12 (Carry Output Cn+x Active Low)
-    x0      : in  std_logic; -- Pin 4 (Carry Propagate Input P0)
-    y0      : in  std_logic; -- Pin 3 (Carry Generate Input G0)
+    cout0_n : out std_logic;
+    x0      : in  std_logic;
+    y0      : in  std_logic;
 
-    cin_n   : in std_logic -- Pin 13 (Carry Input Cn Active Low)
+    cin_n : in std_logic
     );
 end;
 

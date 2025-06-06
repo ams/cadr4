@@ -6,20 +6,20 @@ use ieee.numeric_std.all;
 
 entity dm8221 is
   port (
-    a0     : in  std_logic; -- Pin 7
-    a1     : in  std_logic; -- Pin 8
-    a2     : in  std_logic; -- Pin 9
-    a3     : in  std_logic; -- Pin 10
-    a4     : in  std_logic; -- Pin 11
-    ce     : in  std_logic; -- Pin 14
-    d0     : out std_logic; -- Pin 5
-    d1     : out std_logic; -- Pin 4
-    i0     : in  std_logic; -- Pin 3
-    i1     : in  std_logic; -- Pin 1
-    strobe : in  std_logic; -- Pin 12
-    wclk_n : in  std_logic; -- Pin 15
-    we0_n  : in  std_logic; -- Pin 6
-    we1_n  : in  std_logic  -- Pin 2
+    a0     : in  std_logic;
+    a1     : in  std_logic;
+    a2     : in  std_logic;
+    a3     : in  std_logic;
+    a4     : in  std_logic;
+    ce     : in  std_logic;
+    d0     : out std_logic;
+    d1     : out std_logic;
+    i0     : in  std_logic;
+    i1     : in  std_logic;
+    strobe : in  std_logic;
+    wclk_n : in  std_logic;
+    we0_n  : in  std_logic;
+    we1_n  : in  std_logic
     );
 end dm8221;
 
@@ -56,7 +56,7 @@ begin
   begin
     if ce = '1' then
       word := ram(to_integer(addr));
-      d0 <= word(0); d1 <= word(1);
+      d0   <= word(0); d1 <= word(1);
     else
       d0 <= 'Z'; d1 <= 'Z';
     end if;

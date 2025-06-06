@@ -6,22 +6,22 @@ use ieee.numeric_std.all;
 
 entity am2147 is
   port (
-    a0   : in  std_logic; -- Pin 2
-    a1   : in  std_logic; -- Pin 3
-    a2   : in  std_logic; -- Pin 4
-    a3   : in  std_logic; -- Pin 5
-    a4   : in  std_logic; -- Pin 6
-    a5   : in  std_logic; -- Pin 9
-    a6   : in  std_logic; -- Pin 17
-    a7   : in  std_logic; -- Pin 16
-    a8   : in  std_logic; -- Pin 15
-    a9   : in  std_logic; -- Pin 14
-    a10  : in  std_logic; -- Pin 13
-    a11  : in  std_logic; -- Pin 12
-    ce_n : in  std_logic; -- Pin 1 (active low Chip Enable)
-    di   : in  std_logic; -- Pin 11
-    we_n : in  std_logic; -- Pin 10
-    do   : out std_logic  -- Pin 7
+    a0   : in  std_logic;
+    a1   : in  std_logic;
+    a2   : in  std_logic;
+    a3   : in  std_logic;
+    a4   : in  std_logic;
+    a5   : in  std_logic;
+    a6   : in  std_logic;
+    a7   : in  std_logic;
+    a8   : in  std_logic;
+    a9   : in  std_logic;
+    a10  : in  std_logic;
+    a11  : in  std_logic;
+    ce_n : in  std_logic;
+    di   : in  std_logic;
+    we_n : in  std_logic;
+    do   : out std_logic
     );
 end am2147;
 

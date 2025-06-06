@@ -10,21 +10,21 @@ use ttl.misc.all;
 
 entity sn74109 is
   port (
-    clr1_n : in  std_logic; -- Pin 1
-    j1     : in  std_logic; -- Pin 2
-    k1_n   : in  std_logic; -- Pin 3
-    clk1   : in  std_logic; -- Pin 4
-    pre1_n : in  std_logic; -- Pin 5
-    q1     : out std_logic; -- Pin 6
-    q1_n   : out std_logic; -- Pin 7
+    clr1_n : in  std_logic;
+    j1     : in  std_logic;
+    k1_n   : in  std_logic;
+    clk1   : in  std_logic;
+    pre1_n : in  std_logic;
+    q1     : out std_logic;
+    q1_n   : out std_logic;
 
-    q2_n   : out std_logic; -- Pin 9
-    q2     : out std_logic; -- Pin 10
-    pre2_n : in  std_logic; -- Pin 11
-    clk2   : in  std_logic; -- Pin 12
-    k2_n   : in  std_logic; -- Pin 13
-    j2     : in  std_logic; -- Pin 14
-    clr2_n : in  std_logic  -- Pin 15
+    q2_n   : out std_logic;
+    q2     : out std_logic;
+    pre2_n : in  std_logic;
+    clk2   : in  std_logic;
+    k2_n   : in  std_logic;
+    j2     : in  std_logic;
+    clr2_n : in  std_logic
     );
 end;
 

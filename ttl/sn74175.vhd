@@ -9,22 +9,22 @@ use ttl.misc.all;
 
 entity sn74175 is
   port (
-    clk   : in std_logic; -- pin 9
-    clr_n : in std_logic; -- pin 1
+    clk   : in std_logic;
+    clr_n : in std_logic;
 
-    d0 : in std_logic; -- pin 4
-    d1 : in std_logic; -- pin 5
-    d2 : in std_logic; -- pin 12
-    d3 : in std_logic; -- pin 13
+    d0 : in std_logic;
+    d1 : in std_logic;
+    d2 : in std_logic;
+    d3 : in std_logic;
 
-    q0   : out std_logic; -- pin 2
-    q0_n : out std_logic; -- pin 3
-    q1   : out std_logic; -- pin 7
-    q1_n : out std_logic; -- pin 6
-    q2   : out std_logic; -- pin 10
-    q2_n : out std_logic; -- pin 11
-    q3   : out std_logic; -- pin 15
-    q3_n : out std_logic  -- pin 14
+    q0   : out std_logic;
+    q0_n : out std_logic;
+    q1   : out std_logic;
+    q1_n : out std_logic;
+    q2   : out std_logic;
+    q2_n : out std_logic;
+    q3   : out std_logic;
+    q3_n : out std_logic
     );
 end;
 
@@ -43,12 +43,12 @@ architecture behavioral of sn74175 is
 begin
   process (clk, clr_n)
   begin
-    if clr_n = '0' then                      -- asynchronous, active‑low clear
+    if clr_n = '0' then                 -- asynchronous, active‑low clear
       q0 <= '0'; q0_n <= '1';
       q1 <= '0'; q1_n <= '1';
       q2 <= '0'; q2_n <= '1';
       q3 <= '0'; q3_n <= '1';
-    elsif rising_edge(clk) then              -- load inputs on clock edge
+    elsif rising_edge(clk) then         -- load inputs on clock edge
       q0 <= d0; q0_n <= not d0;
       q1 <= d1; q1_n <= not d1;
       q2 <= d2; q2_n <= not d2;
