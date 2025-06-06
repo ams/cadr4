@@ -15,11 +15,11 @@ end package;
 --
 -- Format of the following entities:
 --
--- 	entity <dip-name> is port ( -- <ttl-name>
--- 	<dip-pin-name> : <direction> std_logic; -- <ttl-pin-name>
--- 	...
--- 	);
--- 	end;
+--	entity < dip-name > is port (                -- <ttl-name>
+--	  <dip-pin-name > : < direction > std_logic; -- <ttl-pin-name>
+--	  ...
+--	  );
+--	end;
 --
 -- This is then used to generate the architectures; that look as
 -- follows:
@@ -93,20 +93,20 @@ entity dip_25ls2519 is port (           -- am252519
 end;
 
 entity dip_25s07 is port (              -- am2507
-  p1  : inout std_logic;
-  p2  : inout std_logic;
-  p3  : inout std_logic;
-  p4  : inout std_logic;
-  p5  : inout std_logic;
-  p6  : inout std_logic;
-  p7  : inout std_logic;
-  p9  : inout std_logic;
-  p10 : inout std_logic;
-  p11 : inout std_logic;
-  p12 : inout std_logic;
-  p13 : inout std_logic;
-  p14 : inout std_logic;
-  p15 : inout std_logic;
+  p1  : in std_logic;                   -- enb_n 
+  p2  : out std_logic;                  -- d0    
+  p3  : in std_logic;                   -- i0    
+  p4  : in std_logic;                   -- i1    
+  p5  : out std_logic;                  -- d1    
+  p6  : in std_logic;                   -- i2    
+  p7  : out std_logic;                  -- d2    
+  p9  : in std_logic;                   -- clk   
+  p10 : out std_logic;                  -- d3    
+  p11 : in std_logic;                   -- i3    
+  p12 : out std_logic;                  -- d4    
+  p13 : in std_logic;                   -- i4    
+  p14 : in std_logic;                   -- i5    
+  p15 : out std_logic;                  -- d5    
   );
 end;
 
