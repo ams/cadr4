@@ -1881,6 +1881,7 @@ format_bodies(void)
 {
 	int i;
 
+#if 0
 	printf("entity %s is\n", strlwr(page_name));
 	printf("port (\n");
 	for (i = 0; i < MAX_BODIES; i++) {
@@ -1915,8 +1916,8 @@ format_bodies(void)
 	printf(");\n");
 	printf("\n");
 	printf("end;\n");
-	printf("\n");
-	printf("architecture suds of %s is\n", page_name);
+#endif
+	printf("architecture suds of %s is\n", strlwr(page_name));
 	printf("begin\n");
 	for (i = 0; i < MAX_BODIES; i++) {
 		int j;
