@@ -7,7 +7,1042 @@ use ttl.other.all;
 
 package dip is
 
-  -- Generate when done.
+  component dip_16dummy is port (
+    p1 : std_logic
+    );
+  end component;
+
+  component dip_2147 is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : in  std_logic;
+    p4  : in  std_logic;
+    p5  : in  std_logic;
+    p6  : in  std_logic;
+    p7  : out std_logic;
+    p8  : in  std_logic;
+    p10 : in  std_logic;
+    p11 : in  std_logic;
+    p12 : in  std_logic;
+    p13 : in  std_logic;
+    p14 : in  std_logic;
+    p15 : in  std_logic;
+    p16 : in  std_logic;
+    p17 : in  std_logic
+    );
+  end component;
+
+  component dip_25ls2519 is port (
+    p1  : in  std_logic;
+    p2  : out std_logic;
+    p3  : out std_logic;
+    p4  : in  std_logic;
+    p5  : out std_logic;
+    p6  : out std_logic;
+    p7  : in  std_logic;
+    p8  : in  std_logic;
+    p9  : in  std_logic;
+    p11 : out std_logic;
+    p12 : out std_logic;
+    p13 : in  std_logic;
+    p14 : out std_logic;
+    p15 : out std_logic;
+    p16 : in  std_logic;
+    p17 : in  std_logic;
+    p18 : in  std_logic;
+    p19 : in  std_logic
+    );
+  end component;
+
+  component dip_25s07 is port (
+    p1  : in  std_logic;
+    p2  : out std_logic;
+    p3  : in  std_logic;
+    p4  : in  std_logic;
+    p5  : out std_logic;
+    p6  : in  std_logic;
+    p7  : out std_logic;
+    p9  : in  std_logic;
+    p10 : out std_logic;
+    p11 : in  std_logic;
+    p12 : out std_logic;
+    p13 : in  std_logic;
+    p14 : in  std_logic;
+    p15 : out std_logic
+    );
+  end component;
+
+  component dip_25s09 is port (
+    p1  : in  std_logic;
+    p2  : out std_logic;
+    p3  : in  std_logic;
+    p4  : in  std_logic;
+    p5  : in  std_logic;
+    p6  : in  std_logic;
+    p7  : out std_logic;
+    p9  : in  std_logic;
+    p10 : out std_logic;
+    p11 : in  std_logic;
+    p12 : in  std_logic;
+    p13 : in  std_logic;
+    p14 : in  std_logic;
+    p15 : out std_logic
+    );
+  end component;
+
+  component dip_25s10 is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : in  std_logic;
+    p4  : in  std_logic;
+    p5  : in  std_logic;
+    p6  : in  std_logic;
+    p7  : in  std_logic;
+    p9  : in  std_logic;
+    p10 : in  std_logic;
+    p11 : out std_logic;
+    p12 : out std_logic;
+    p13 : in  std_logic;
+    p14 : out std_logic;
+    p15 : out std_logic
+    );
+  end component;
+
+  component dip_5600 is port (
+    p1  : out std_logic;
+    p2  : out std_logic;
+    p3  : out std_logic;
+    p4  : out std_logic;
+    p5  : out std_logic;
+    p6  : out std_logic;
+    p7  : out std_logic;
+    p9  : out std_logic;
+    p10 : in  std_logic;
+    p11 : in  std_logic;
+    p12 : in  std_logic;
+    p13 : in  std_logic;
+    p14 : in  std_logic;
+    p15 : in  std_logic
+    );
+  end component;
+
+  component dip_5610 is port (
+    p1  : out std_logic;
+    p2  : out std_logic;
+    p3  : out std_logic;
+    p4  : out std_logic;
+    p5  : out std_logic;
+    p6  : out std_logic;
+    p7  : out std_logic;
+    p9  : out std_logic;
+    p10 : in  std_logic;
+    p11 : in  std_logic;
+    p12 : in  std_logic;
+    p13 : in  std_logic;
+    p14 : in  std_logic;
+    p15 : in  std_logic
+    );
+  end component;
+
+  component dip_7428 is port (
+    p1  : out std_logic;
+    p2  : in  std_logic;
+    p3  : in  std_logic;
+    p4  : out std_logic;
+    p5  : in  std_logic;
+    p6  : in  std_logic;
+    p8  : in  std_logic;
+    p9  : in  std_logic;
+    p10 : out std_logic;
+    p11 : in  std_logic;
+    p12 : in  std_logic;
+    p13 : out std_logic
+    );
+  end component;
+
+  component dip_74ls109 is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : in  std_logic;
+    p4  : in  std_logic;
+    p5  : in  std_logic;
+    p6  : out std_logic;
+    p7  : out std_logic;
+    p9  : out std_logic;
+    p10 : out std_logic;
+    p11 : in  std_logic;
+    p12 : in  std_logic;
+    p13 : in  std_logic;
+    p14 : in  std_logic;
+    p15 : in  std_logic
+    );
+  end component;
+
+  component dip_74ls14 is port (
+    p1  : in  std_logic;
+    p2  : out std_logic;
+    p3  : in  std_logic;
+    p4  : out std_logic;
+    p5  : in  std_logic;
+    p6  : out std_logic;
+    p8  : out std_logic;
+    p9  : in  std_logic;
+    p10 : out std_logic;
+    p11 : in  std_logic;
+    p12 : out std_logic;
+    p13 : in  std_logic
+    );
+  end component;
+
+  component dip_74ls244 is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : out std_logic;
+    p4  : in  std_logic;
+    p5  : out std_logic;
+    p6  : in  std_logic;
+    p7  : out std_logic;
+    p8  : in  std_logic;
+    p9  : out std_logic;
+    p11 : in  std_logic;
+    p12 : out std_logic;
+    p13 : in  std_logic;
+    p14 : out std_logic;
+    p15 : in  std_logic;
+    p16 : out std_logic;
+    p17 : in  std_logic;
+    p18 : out std_logic;
+    p19 : in  std_logic
+    );
+  end component;
+
+  component dip_74s00 is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : out std_logic;
+    p4  : in  std_logic;
+    p5  : in  std_logic;
+    p6  : out std_logic;
+    p8  : out std_logic;
+    p9  : in  std_logic;
+    p10 : in  std_logic;
+    p11 : out std_logic;
+    p12 : in  std_logic;
+    p13 : in  std_logic
+    );
+  end component;
+
+  component dip_74s02 is port (
+    p1  : out std_logic;
+    p2  : in  std_logic;
+    p3  : in  std_logic;
+    p4  : out std_logic;
+    p5  : in  std_logic;
+    p6  : in  std_logic;
+    p8  : in  std_logic;
+    p9  : in  std_logic;
+    p10 : out std_logic;
+    p11 : in  std_logic;
+    p12 : in  std_logic;
+    p13 : out std_logic
+    );
+  end component;
+
+  component dip_74s04 is port (
+    p1  : in  std_logic;
+    p2  : out std_logic;
+    p3  : in  std_logic;
+    p4  : out std_logic;
+    p5  : in  std_logic;
+    p6  : out std_logic;
+    p8  : out std_logic;
+    p9  : in  std_logic;
+    p10 : out std_logic;
+    p11 : in  std_logic;
+    p12 : out std_logic;
+    p13 : in  std_logic
+    );
+  end component;
+
+  component dip_74s08 is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : out std_logic;
+    p4  : in  std_logic;
+    p5  : in  std_logic;
+    p6  : out std_logic;
+    p8  : out std_logic;
+    p9  : in  std_logic;
+    p10 : in  std_logic;
+    p11 : out std_logic;
+    p12 : in  std_logic;
+    p13 : in  std_logic
+    );
+  end component;
+
+  component dip_74s10 is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : in  std_logic;
+    p4  : in  std_logic;
+    p5  : in  std_logic;
+    p6  : out std_logic;
+    p8  : out std_logic;
+    p9  : in  std_logic;
+    p10 : in  std_logic;
+    p11 : in  std_logic;
+    p12 : out std_logic;
+    p13 : in  std_logic
+    );
+  end component;
+
+  component dip_74s11 is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : in  std_logic;
+    p4  : in  std_logic;
+    p5  : in  std_logic;
+    p6  : out std_logic;
+    p8  : out std_logic;
+    p9  : in  std_logic;
+    p10 : in  std_logic;
+    p11 : in  std_logic;
+    p12 : out std_logic;
+    p13 : in  std_logic
+    );
+  end component;
+
+  component dip_74s11o is port (
+    p3 : inout std_logic;
+    p4 : inout std_logic;
+    p5 : inout std_logic;
+    p6 : inout std_logic
+    );
+  end component;
+
+  component dip_74s133 is port (
+    p1  : in std_logic;
+    p2  : in std_logic;
+    p3  : in std_logic;
+    p4  : in std_logic;
+    p5  : in std_logic;
+    p6  : in std_logic;
+    p7  : in std_logic;
+    p9  : in std_logic;
+    p10 : in std_logic;
+    p11 : in std_logic;
+    p12 : in std_logic;
+    p13 : in std_logic;
+    p14 : in std_logic;
+    p15 : in std_logic
+    );
+  end component;
+
+  component dip_74s138 is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : in  std_logic;
+    p4  : in  std_logic;
+    p5  : in  std_logic;
+    p6  : in  std_logic;
+    p7  : out std_logic;
+    p9  : out std_logic;
+    p10 : out std_logic;
+    p11 : out std_logic;
+    p12 : out std_logic;
+    p13 : out std_logic;
+    p14 : out std_logic;
+    p15 : out std_logic
+    );
+  end component;
+
+  component dip_74s139 is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : in  std_logic;
+    p4  : out std_logic;
+    p5  : out std_logic;
+    p6  : out std_logic;
+    p7  : out std_logic;
+    p9  : out std_logic;
+    p10 : out std_logic;
+    p11 : out std_logic;
+    p12 : out std_logic;
+    p13 : in  std_logic;
+    p14 : in  std_logic;
+    p15 : in  std_logic
+    );
+  end component;
+
+  component dip_74s151 is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : in  std_logic;
+    p4  : in  std_logic;
+    p5  : out std_logic;
+    p6  : out std_logic;
+    p7  : in  std_logic;
+    p9  : in  std_logic;
+    p10 : in  std_logic;
+    p11 : in  std_logic;
+    p12 : in  std_logic;
+    p13 : in  std_logic;
+    p14 : in  std_logic;
+    p15 : in  std_logic
+    );
+  end component;
+
+  component dip_74s153 is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : in  std_logic;
+    p4  : in  std_logic;
+    p5  : in  std_logic;
+    p6  : in  std_logic;
+    p7  : out std_logic;
+    p9  : out std_logic;
+    p10 : in  std_logic;
+    p11 : in  std_logic;
+    p12 : in  std_logic;
+    p13 : in  std_logic;
+    p14 : in  std_logic;
+    p15 : in  std_logic
+    );
+  end component;
+
+  component dip_74s157 is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : in  std_logic;
+    p4  : out std_logic;
+    p5  : in  std_logic;
+    p6  : in  std_logic;
+    p7  : out std_logic;
+    p9  : out std_logic;
+    p10 : in  std_logic;
+    p11 : in  std_logic;
+    p12 : out std_logic;
+    p13 : in  std_logic;
+    p14 : in  std_logic;
+    p15 : in  std_logic
+    );
+  end component;
+
+  component dip_74s169 is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : in  std_logic;
+    p4  : in  std_logic;
+    p5  : in  std_logic;
+    p6  : in  std_logic;
+    p7  : in  std_logic;
+    p9  : in  std_logic;
+    p10 : in  std_logic;
+    p11 : out std_logic;
+    p12 : out std_logic;
+    p13 : out std_logic;
+    p14 : out std_logic;
+    p15 : out std_logic
+    );
+  end component;
+
+  component dip_74s174 is port (
+    p1  : in std_logic;
+    p2  : in std_logic;
+    p3  : in std_logic;
+    p4  : in std_logic;
+    p5  : in std_logic;
+    p6  : in std_logic;
+    p7  : in std_logic;
+    p9  : in std_logic;
+    p10 : in std_logic;
+    p11 : in std_logic;
+    p12 : in std_logic;
+    p13 : in std_logic;
+    p14 : in std_logic;
+    p15 : in std_logic
+    );
+  end component;
+
+  component dip_74s175 is port (
+    p1  : in  std_logic;
+    p2  : out std_logic;
+    p3  : out std_logic;
+    p4  : in  std_logic;
+    p5  : in  std_logic;
+    p6  : out std_logic;
+    p7  : out std_logic;
+    p9  : in  std_logic;
+    p10 : out std_logic;
+    p11 : out std_logic;
+    p12 : in  std_logic;
+    p13 : in  std_logic;
+    p14 : out std_logic;
+    p15 : out std_logic
+    );
+  end component;
+
+  component dip_74s181 is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : in  std_logic;
+    p4  : in  std_logic;
+    p5  : in  std_logic;
+    p6  : in  std_logic;
+    p7  : in  std_logic;
+    p8  : in  std_logic;
+    p9  : out std_logic;
+    p10 : out std_logic;
+    p11 : out std_logic;
+    p13 : out std_logic;
+    p14 : out std_logic;
+    p15 : out std_logic;
+    p16 : out std_logic;
+    p17 : out std_logic;
+    p18 : in  std_logic;
+    p19 : in  std_logic;
+    p20 : in  std_logic;
+    p21 : in  std_logic;
+    p22 : in  std_logic;
+    p23 : in  std_logic
+    );
+  end component;
+
+  component dip_74s182 is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : in  std_logic;
+    p4  : in  std_logic;
+    p5  : out std_logic;
+    p6  : out std_logic;
+    p7  : out std_logic;
+    p9  : out std_logic;
+    p10 : out std_logic;
+    p11 : out std_logic;
+    p12 : out std_logic;
+    p13 : in  std_logic;
+    p14 : in  std_logic;
+    p15 : in  std_logic
+    );
+  end component;
+
+  component dip_74s194 is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : in  std_logic;
+    p4  : in  std_logic;
+    p5  : in  std_logic;
+    p6  : in  std_logic;
+    p7  : in  std_logic;
+    p9  : in  std_logic;
+    p10 : in  std_logic;
+    p11 : in  std_logic;
+    p12 : out std_logic;
+    p13 : out std_logic;
+    p14 : out std_logic;
+    p15 : out std_logic
+    );
+  end component;
+
+  component dip_74s20 is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p4  : in  std_logic;
+    p5  : in  std_logic;
+    p6  : out std_logic;
+    p8  : out std_logic;
+    p9  : in  std_logic;
+    p10 : in  std_logic;
+    p12 : in  std_logic;
+    p13 : in  std_logic
+    );
+  end component;
+
+  component dip_74s20o is port (
+    p1  : inout std_logic;
+    p2  : inout std_logic;
+    p4  : inout std_logic;
+    p5  : inout std_logic;
+    p6  : inout std_logic;
+    p8  : inout std_logic;
+    p9  : inout std_logic;
+    p10 : inout std_logic;
+    p12 : inout std_logic;
+    p13 : inout std_logic
+    );
+  end component;
+
+  component dip_74s240 is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : out std_logic;
+    p4  : in  std_logic;
+    p5  : out std_logic;
+    p6  : in  std_logic;
+    p7  : out std_logic;
+    p8  : in  std_logic;
+    p9  : out std_logic;
+    p11 : in  std_logic;
+    p12 : out std_logic;
+    p13 : in  std_logic;
+    p14 : out std_logic;
+    p15 : in  std_logic;
+    p16 : out std_logic;
+    p17 : in  std_logic;
+    p18 : out std_logic;
+    p19 : in  std_logic
+    );
+  end component;
+
+  component dip_74s241 is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : out std_logic;
+    p4  : in  std_logic;
+    p5  : out std_logic;
+    p6  : in  std_logic;
+    p7  : out std_logic;
+    p8  : in  std_logic;
+    p9  : out std_logic;
+    p11 : in  std_logic;
+    p12 : out std_logic;
+    p13 : in  std_logic;
+    p14 : out std_logic;
+    p15 : in  std_logic;
+    p16 : out std_logic;
+    p17 : in  std_logic;
+    p18 : out std_logic;
+    p19 : in  std_logic
+    );
+  end component;
+
+  component dip_74s258 is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : in  std_logic;
+    p4  : out std_logic;
+    p5  : in  std_logic;
+    p6  : in  std_logic;
+    p7  : out std_logic;
+    p9  : out std_logic;
+    p10 : in  std_logic;
+    p11 : in  std_logic;
+    p12 : out std_logic;
+    p13 : in  std_logic;
+    p14 : in  std_logic;
+    p15 : in  std_logic
+    );
+  end component;
+
+  component dip_74s260 is port (
+    p1  : in std_logic;
+    p2  : in std_logic;
+    p3  : in std_logic;
+    p5  : in std_logic;
+    p12 : in std_logic;
+    p13 : in std_logic
+    );
+  end component;
+
+  component dip_74s280 is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p4  : in  std_logic;
+    p5  : out std_logic;
+    p6  : out std_logic;
+    p8  : in  std_logic;
+    p9  : in  std_logic;
+    p10 : in  std_logic;
+    p11 : in  std_logic;
+    p12 : in  std_logic;
+    p13 : in  std_logic
+    );
+  end component;
+
+  component dip_74s283 is port (
+    p1  : out std_logic;
+    p2  : in  std_logic;
+    p3  : in  std_logic;
+    p4  : out std_logic;
+    p5  : in  std_logic;
+    p6  : in  std_logic;
+    p7  : in  std_logic;
+    p9  : out std_logic;
+    p10 : out std_logic;
+    p11 : in  std_logic;
+    p12 : in  std_logic;
+    p13 : out std_logic;
+    p14 : in  std_logic;
+    p15 : in  std_logic
+    );
+  end component;
+
+  component dip_74s32 is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : out std_logic;
+    p4  : in  std_logic;
+    p5  : in  std_logic;
+    p6  : out std_logic;
+    p8  : out std_logic;
+    p9  : in  std_logic;
+    p10 : in  std_logic;
+    p11 : out std_logic;
+    p12 : in  std_logic;
+    p13 : in  std_logic
+    );
+  end component;
+
+  component dip_74s37 is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : out std_logic;
+    p4  : in  std_logic;
+    p5  : in  std_logic;
+    p6  : out std_logic;
+    p8  : out std_logic;
+    p9  : in  std_logic;
+    p10 : in  std_logic;
+    p11 : out std_logic;
+    p12 : in  std_logic;
+    p13 : in  std_logic
+    );
+  end component;
+
+  component dip_74s373 is port (
+    p1  : in  std_logic;
+    p2  : out std_logic;
+    p3  : in  std_logic;
+    p4  : in  std_logic;
+    p5  : out std_logic;
+    p6  : out std_logic;
+    p7  : in  std_logic;
+    p8  : in  std_logic;
+    p9  : out std_logic;
+    p11 : in  std_logic;
+    p12 : out std_logic;
+    p13 : in  std_logic;
+    p14 : in  std_logic;
+    p15 : out std_logic;
+    p16 : out std_logic;
+    p17 : in  std_logic;
+    p18 : in  std_logic;
+    p19 : out std_logic
+    );
+  end component;
+
+  component dip_74s374 is port (
+    p1  : in  std_logic;
+    p2  : out std_logic;
+    p3  : in  std_logic;
+    p4  : in  std_logic;
+    p5  : out std_logic;
+    p6  : out std_logic;
+    p7  : in  std_logic;
+    p8  : in  std_logic;
+    p9  : out std_logic;
+    p11 : in  std_logic;
+    p12 : out std_logic;
+    p13 : in  std_logic;
+    p14 : in  std_logic;
+    p15 : out std_logic;
+    p16 : out std_logic;
+    p17 : in  std_logic;
+    p18 : in  std_logic;
+    p19 : out std_logic
+    );
+  end component;
+
+  component dip_74s472 is port (
+    p1  : in std_logic;
+    p2  : in std_logic;
+    p3  : in std_logic;
+    p4  : in std_logic;
+    p5  : in std_logic;
+    p6  : in std_logic;
+    p7  : in std_logic;
+    p8  : in std_logic;
+    p9  : in std_logic;
+    p11 : in std_logic;
+    p12 : in std_logic;
+    p13 : in std_logic;
+    p14 : in std_logic;
+    p15 : in std_logic;
+    p16 : in std_logic;
+    p17 : in std_logic;
+    p18 : in std_logic;
+    p19 : in std_logic
+    );
+  end component;
+
+  component dip_74s51 is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : in  std_logic;
+    p4  : in  std_logic;
+    p5  : in  std_logic;
+    p6  : out std_logic;
+    p8  : out std_logic;
+    p9  : in  std_logic;
+    p10 : in  std_logic;
+    p13 : in  std_logic
+    );
+  end component;
+
+  component dip_74s64 is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : in  std_logic;
+    p4  : in  std_logic;
+    p5  : in  std_logic;
+    p6  : in  std_logic;
+    p8  : out std_logic;
+    p9  : in  std_logic;
+    p10 : in  std_logic;
+    p11 : in  std_logic;
+    p12 : in  std_logic;
+    p13 : in  std_logic
+    );
+  end component;
+
+  component dip_74s74 is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : in  std_logic;
+    p4  : in  std_logic;
+    p5  : out std_logic;
+    p6  : out std_logic;
+    p8  : out std_logic;
+    p9  : out std_logic;
+    p10 : in  std_logic;
+    p11 : in  std_logic;
+    p12 : in  std_logic;
+    p13 : in  std_logic
+    );
+  end component;
+
+  component dip_74s86 is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : out std_logic;
+    p4  : in  std_logic;
+    p5  : in  std_logic;
+    p6  : out std_logic;
+    p8  : out std_logic;
+    p9  : in  std_logic;
+    p10 : in  std_logic;
+    p11 : out std_logic;
+    p12 : in  std_logic;
+    p13 : in  std_logic
+    );
+  end component;
+
+  component dip_82s21 is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : in  std_logic;
+    p4  : in  std_logic;
+    p5  : in  std_logic;
+    p6  : in  std_logic;
+    p7  : out std_logic;
+    p9  : out std_logic;
+    p10 : in  std_logic;
+    p11 : in  std_logic;
+    p12 : in  std_logic;
+    p13 : in  std_logic;
+    p14 : in  std_logic;
+    p15 : in  std_logic
+    );
+  end component;
+
+  component dip_9328 is port (
+    p1  : in std_logic;
+    p2  : in std_logic;
+    p3  : in std_logic;
+    p4  : in std_logic;
+    p5  : in std_logic;
+    p6  : in std_logic;
+    p7  : in std_logic;
+    p9  : in std_logic;
+    p10 : in std_logic;
+    p11 : in std_logic;
+    p12 : in std_logic;
+    p13 : in std_logic;
+    p14 : in std_logic;
+    p15 : in std_logic
+    );
+  end component;
+
+  component dip_93425a is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : in  std_logic;
+    p4  : in  std_logic;
+    p5  : in  std_logic;
+    p6  : in  std_logic;
+    p7  : out std_logic;
+    p9  : in  std_logic;
+    p10 : in  std_logic;
+    p11 : in  std_logic;
+    p12 : in  std_logic;
+    p13 : in  std_logic;
+    p14 : in  std_logic;
+    p15 : in  std_logic
+    );
+  end component;
+
+  component dip_93s46 is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : in  std_logic;
+    p4  : in  std_logic;
+    p5  : in  std_logic;
+    p6  : in  std_logic;
+    p7  : in  std_logic;
+    p9  : out std_logic;
+    p10 : in  std_logic;
+    p11 : in  std_logic;
+    p12 : in  std_logic;
+    p13 : in  std_logic;
+    p14 : in  std_logic;
+    p15 : in  std_logic
+    );
+  end component;
+
+  component dip_93s48 is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : in  std_logic;
+    p4  : in  std_logic;
+    p5  : in  std_logic;
+    p6  : in  std_logic;
+    p7  : in  std_logic;
+    p9  : out std_logic;
+    p10 : out std_logic;
+    p11 : in  std_logic;
+    p12 : in  std_logic;
+    p13 : in  std_logic;
+    p14 : in  std_logic;
+    p15 : in  std_logic
+    );
+  end component;
+
+  component dip_9s42_1 is port (
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : in  std_logic;
+    p4  : in  std_logic;
+    p5  : in  std_logic;
+    p6  : in  std_logic;
+    p7  : out std_logic;
+    p9  : out std_logic;
+    p10 : in  std_logic;
+    p11 : in  std_logic;
+    p12 : in  std_logic;
+    p13 : in  std_logic;
+    p14 : in  std_logic;
+    p15 : in  std_logic
+    );
+  end component;
+
+  component dip_res20 is port (
+    p2  : in std_logic;
+    p3  : in std_logic;
+    p4  : in std_logic;
+    p5  : in std_logic;
+    p6  : in std_logic;
+    p7  : in std_logic;
+    p8  : in std_logic;
+    p9  : in std_logic;
+    p10 : in std_logic;
+    p11 : in std_logic;
+    p12 : in std_logic;
+    p13 : in std_logic;
+    p14 : in std_logic;
+    p15 : in std_logic;
+    p16 : in std_logic;
+    p17 : in std_logic;
+    p18 : in std_logic;
+    p19 : in std_logic
+    );
+  end component;
+
+  component dip_sip220_330_8 is port (
+    p2 : in std_logic;
+    p3 : in std_logic;
+    p4 : in std_logic;
+    p5 : in std_logic;
+    p6 : in std_logic;
+    p7 : in std_logic
+    );
+  end component;
+
+  component dip_sip330_470_8 is port (
+    p2 : in std_logic;
+    p3 : in std_logic;
+    p4 : in std_logic;
+    p5 : in std_logic;
+    p6 : in std_logic;
+    p7 : in std_logic
+    );
+  end component;
+
+  component dip_td100 is port (
+    p1  : in  std_logic;
+    p4  : out std_logic;
+    p6  : out std_logic;
+    p8  : out std_logic;
+    p10 : out std_logic;
+    p12 : out std_logic
+    );
+  end component;
+
+  component dip_td25 is port (
+    p1  : in  std_logic;
+    p4  : out std_logic;
+    p6  : out std_logic;
+    p8  : out std_logic;
+    p10 : out std_logic;
+    p12 : out std_logic
+    );
+  end component;
+
+  component dip_td250 is port (
+    p1  : in  std_logic;
+    p4  : out std_logic;
+    p6  : out std_logic;
+    p8  : out std_logic;
+    p10 : out std_logic;
+    p12 : out std_logic
+    );
+  end component;
+
+  component dip_td50 is port (
+    p1  : in  std_logic;
+    p4  : out std_logic;
+    p6  : out std_logic;
+    p8  : out std_logic;
+    p10 : out std_logic;
+    p12 : out std_logic
+    );
+  end component;
+
+  component dip_til309 is port (
+    p1  : in std_logic;
+    p2  : in std_logic;
+    p3  : in std_logic;
+    p4  : in std_logic;
+    p5  : in std_logic;
+    p6  : in std_logic;
+    p7  : in std_logic;
+    p12 : in std_logic;
+    p13 : in std_logic;
+    p14 : in std_logic;
+    p15 : in std_logic;
+    p16 : in std_logic;
+    p17 : in std_logic
+    );
+  end component;
 
 end package;
 
