@@ -1916,6 +1916,9 @@ format_bodies(void)
 	printf("\n");
 	printf("end;\n");
 #endif
+    printf("library work;\n");
+    printf("use work.dip.all;\n");
+    printf("\n");
 	printf("architecture suds of %s is\n", strlwr(page_name));
 	printf("begin\n");
 	for (i = 0; i < MAX_BODIES; i++) {
