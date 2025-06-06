@@ -17,6 +17,13 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+library ttl;
+use ttl.misc.all;
+
+-- Datasheet: Texas Instruments SN74LS181 Arithmetic Logic Units/Function Generators, PDIP (N) Package
+-- URL: https://www.ti.com/lit/ds/sdls136/sdls136.pdf
+
+-- This is a 4-bit Arithmetic Logic Unit/Function Generator
 entity sn74181 is
   port (
     cout_n : out std_logic;
@@ -24,26 +31,26 @@ entity sn74181 is
     x      : out std_logic;
     aeb    : out std_logic;
 
-    f0 : out std_logic;
-    f1 : out std_logic;
-    f2 : out std_logic;
-    f3 : out std_logic;
+    f0     : out std_logic; -- Pin 24 (F0 Output)
+    f1     : out std_logic; -- Pin 23 (F1 Output)
+    f2     : out std_logic; -- Pin 22 (F2 Output)
+    f3     : out std_logic; -- Pin 13 (F3 Output)
 
-    b0 : in std_logic;
-    b1 : in std_logic;
-    b2 : in std_logic;
-    b3 : in std_logic;
+    b0     : in std_logic; -- Pin 1 (B0 Input)
+    b1     : in std_logic; -- Pin 20 (B1 Input)
+    b2     : in std_logic; -- Pin 19 (B2 Input)
+    b3     : in std_logic; -- Pin 18 (B3 Input)
 
     a0 : in std_logic;
     a1 : in std_logic;
     a2 : in std_logic;
     a3 : in std_logic;
 
-    m  : in std_logic;
-    s0 : in std_logic;
-    s1 : in std_logic;
-    s2 : in std_logic;
-    s3 : in std_logic;
+    m      : in std_logic; -- Pin 6 (Mode Control)
+    s0     : in std_logic; -- Pin 8 (S0 Input)
+    s1     : in std_logic; -- Pin 9 (S1 Input)
+    s2     : in std_logic; -- Pin 10 (S2 Input)
+    s3     : in std_logic; -- Pin 11 (S3 Input)
 
     cin_n : in std_logic
     );

@@ -1,5 +1,7 @@
 -- Look-Ahead Carry Generators
 -- SN74182 Look-Ahead Carry Generator
+-- Datasheet: Texas Instruments SN54S182, SN74S182 Look-Ahead Carry Generators, PDIP (N) Package
+-- URL: https://www.ti.com/lit/gpn/SN54S182
 --
 -- Timing specifications (typical at VCC=5V, TA=25°C):
 -- - Propagation delay (X,Y to COUT): 12ns

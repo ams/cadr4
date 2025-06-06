@@ -4,6 +4,9 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+-- Datasheet: Texas Instruments SN74LS169B Synchronous 4-Bit Up/Down Binary Counters, PDIP (N) Package
+-- URL: https://www.ti.com/lit/gpn/SN74LS169B
+
 entity sn74169 is
   port (
     co_n : out std_logic;
@@ -12,16 +15,16 @@ entity sn74169 is
     i1   : in  std_logic;
     i0   : in  std_logic;
 
-    o3 : out std_logic;
-    o2 : out std_logic;
-    o1 : out std_logic;
-    o0 : out std_logic;
+    o3      : out std_logic; -- Pin 11 (Output D)
+    o2      : out std_logic; -- Pin 12 (Output C)
+    o1      : out std_logic; -- Pin 13 (Output B)
+    o0      : out std_logic; -- Pin 14 (Output A)
 
-    enb_t_n : in std_logic;
-    enb_p_n : in std_logic;
-    load_n  : in std_logic;
-    up_dn   : in std_logic;
-    clk     : in std_logic
+    enb_t_n : in std_logic; -- Pin 10 (Count Enable Trickle Input Active Low)
+    enb_p_n : in std_logic; -- Pin 7 (Count Enable Parallel Input Active Low)
+    load_n  : in std_logic; -- Pin 9 (Parallel Enable Input Active Low)
+    up_dn   : in std_logic; -- Pin 1 (Up/Down Control Input)
+    clk     : in std_logic -- Pin 2 (Clock Input)
     );
 end;
 

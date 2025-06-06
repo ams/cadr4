@@ -7,6 +7,9 @@ use ieee.numeric_std.all;
 library ttl;
 use ttl.misc.all;
 
+-- Datasheet: Texas Instruments SN74LV175A Quadruple D-Type Flip-Flops With Clear, PDIP (N) Package
+-- URL: https://www.ti.com/lit/ds/symlink/sn74lv175a.pdf
+
 entity sn74175 is
   port (
     clk   : in std_logic;

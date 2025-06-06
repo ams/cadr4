@@ -1,5 +1,7 @@
 -- Octal Buffers And Line Drivers With 3-State Outputs
 -- SN74241 Octal Buffer and Line Driver with 3-State Outputs
+-- Datasheet: Texas Instruments SNx4LS24x, SNx4S24x Octal Buffers and Line Drivers With 3-State Outputs, PDIP (N) Package
+-- URL: https://www.ti.com/lit/gpn/sn74ls241
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -36,10 +38,10 @@ begin
 
   process (aenb_n)
   begin
-    if aenb_n = '1' then
-      aout0 <= 'Z'; aout1 <= 'Z'; aout2 <= 'Z'; aout3 <= 'Z';
-    else
+    if aenb_n = '0' then
       aout0 <= ain0; aout1 <= ain1; aout2 <= ain2; aout3 <= ain3;
+    else
+      aout0 <= 'Z'; aout1 <= 'Z'; aout2 <= 'Z'; aout3 <= 'Z';
     end if;
   end process;
 

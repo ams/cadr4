@@ -4,6 +4,9 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+-- Datasheet: Texas Instruments SN74LS280 9-Bit Odd/Even Parity Generators/Checkers, PDIP (N) Package
+-- URL: https://www.ti.com/lit/gpn/SN74LS280
+
 entity sn74280 is
   port (
     i0 : in std_logic;

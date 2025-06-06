@@ -1,4 +1,6 @@
 -- SN74373: Octal D-Type Transparent Latches
+-- Datasheet: Texas Instruments SN74LS373 Octal D-Type Transparent Latches, PDIP (N) Package
+-- URL: https://www.ti.com/lit/gpn/SN74LS373
 
 library ieee;
 use ieee.std_logic_1164.all;

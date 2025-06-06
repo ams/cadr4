@@ -1,4 +1,5 @@
 -- Dual J-K Positive-Edge-Triggered Flip-Flops With Preset And Clear
+-- Datasheet: https://www.ti.com/lit/gpn/SN74LS109A (PDIP (N) Package)
 -- This component implements two J-K flip-flops with preset and clear.
 
 library ieee;

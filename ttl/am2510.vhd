@@ -1,3 +1,5 @@
+-- Datasheet for AM2510 Four-Bit Shifter not found. This VHDL model might be based on a non-standard or custom implementation.
+
 -- AM2510 Four-Bit Shifter
 
 library ieee;

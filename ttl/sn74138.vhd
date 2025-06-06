@@ -4,6 +4,9 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+-- Datasheet: Texas Instruments SN74LS138 3-Line to 8-Line Decoder/Demultiplexer, PDIP (N) Package
+-- URL: https://www.ti.com/lit/gpn/SN74LS138
+
 entity sn74138 is
   port (
     a   : in  std_logic;

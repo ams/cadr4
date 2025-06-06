@@ -1,3 +1,5 @@
+-- Datasheet: https://www.ti.com/lit/gpn/sn7400 (PDIP (N) Package)
+
 -- Quadruple 2-Input Positive-NAND Gates
 
 library ieee;

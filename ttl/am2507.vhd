@@ -1,3 +1,5 @@
+-- Datasheet for 6-bit AM2507 not found. This VHDL model might be based on a non-standard or custom implementation.
+
 -- AM2507 Six-Bit Register with Common Clock Enable
 
 library ieee;

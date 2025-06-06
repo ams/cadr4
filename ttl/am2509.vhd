@@ -1,3 +1,5 @@
+-- Datasheet for AM2509 Quad Two-Input High-Speed Register not found. This VHDL model might be based on a non-standard or custom implementation.
+
 -- AM2509 Quad Two-Input High-Speed Register
 
 library ieee;

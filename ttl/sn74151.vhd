@@ -5,6 +5,9 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+-- Datasheet: Texas Instruments SN74LS151 8-Line To 1-Line Data Selectors/Multiplexers, PDIP (N) Package
+-- URL: https://www.ti.com/lit/gpn/SN74LS151
+
 entity sn74151 is
   port (
     i3   : in  std_logic;

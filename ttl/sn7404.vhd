@@ -1,3 +1,4 @@
+-- Datasheet: https://www.ti.com/lit/gpn/sn7404 (PDIP (N) Package)
 -- SN7404: Hex Inverters
 
 library ieee;

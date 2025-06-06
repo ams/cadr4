@@ -1,3 +1,5 @@
+-- Datasheet: https://www.ti.com/lit/gpn/sn7402 (PDIP (N) Package)
+
 -- Quadruple 2-Input Positive-NOR Gates
 
 library ieee;
@@ -14,13 +16,13 @@ entity sn7402 is
     g2a   : in  std_logic;
     g2b   : in  std_logic;
 
-    g3b   : in  std_logic;
-    g3a   : in  std_logic;
-    g3q_n : out std_logic;
+    g3a   : in  std_logic; -- Pin 8
+    g3b   : in  std_logic; -- Pin 9
+    g3q_n : out std_logic; -- Pin 10
 
-    g4b   : in  std_logic;
-    g4a   : in  std_logic;
-    g4q_n : out std_logic
+    g4a   : in  std_logic; -- Pin 11
+    g4b   : in  std_logic; -- Pin 12
+    g4q_n : out std_logic  -- Pin 13
     );
 end;
 

@@ -1,3 +1,12 @@
+-- Copyright (c) 2023 by Mykola Grymalyuk
+--
+-- All rights reserved.
+--
+-- This file is licensed under the MIT License.
+-- See the LICENSE file in the project root for full license information.
+--
+-- Datasheet: Am93415/Am93425 - 1024 x 1 Bit TTL Bipolar IMOX™ RAM, AMD, October 1977, Document No. 04077B
+
 -- AM93425A 1024 X 1 Bit RAM
 
 library ieee;

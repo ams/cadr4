@@ -1,4 +1,6 @@
 -- SN7420: Dual 4-Input Positive-NAND Gates
+-- Datasheet: Texas Instruments SN74LS20 Dual 4-Input Positive-NAND Gates, PDIP (N) Package
+-- URL: https://www.ti.com/lit/gpn/SN74LS20
 
 library ieee;
 use ieee.std_logic_1164.all;

@@ -1,4 +1,6 @@
 -- SN7432: Quadruple 2-Input Positive-OR Gates
+-- Datasheet: Texas Instruments SN7432 Quadruple 2-Input Positive-OR Gates, PDIP (N) Package
+-- URL: https://www.ti.com/lit/gpn/sn7432
 
 library ieee;
 use ieee.std_logic_1164.all;
