@@ -25,9 +25,9 @@ SRCS			?= $(error SRCS: variable not set)
 # make tb-X will run X_tb.vhd
 TESTBENCHES	= $(patsubst %_tb.vhd,%,$(wildcard *_tb.vhd))
 
-.DEFAULT_GOAL := all
+.DEFAULT_GOAL ?= all
 
-.PHONY: all check clean help list tb vcd tb-% vcd-%
+.PHONY: all check syntax clean help list tb vcd tb-% vcd-%
 
 # cf is used to figure out the dependencies
 # import does not analyze files, so it does not find all errors
@@ -62,6 +62,9 @@ all: $(PROJECT)-obj$(GHDLSTD).cf $(addsuffix, _tb, $(TESTBENCHES))
 check:
 	$(MAKE) $(addprefix tb-,$(TESTBENCHES))
 
+syntax:
+	$(GHDL) syntax $(GHDLOPTIONS) --std=$(GHDLSTD) $(SRCS)
+
 # build tb TESTBENCH and run it
 tb: $(TESTBENCH)
 	$(GHDL) run $(GHDLOPTIONS) $(TESTBENCH)
@@ -89,6 +92,7 @@ help:
 	@echo "Available targets:"
 	@echo "	all         	Compiles all sources."
 	@echo "	check       	Runs all test-benches."
+	@echo " syntax          Check the syntax of all sources (but not testbenches)."
 	@echo "	clean       	Cleans up any build artifacts."
 	@echo "	help        	Shows available targets."
 	@echo "	tb          	Runs the testbench defined by TESTBENCH variable."
