@@ -6,34 +6,34 @@ use ieee.numeric_std.all;
 
 entity sn74373 is
   port (
-    hold_n : in  std_logic; -- pin 11
-    oenb_n : in  std_logic; -- pin 1
-    i0 : in  std_logic; -- pin 3
-    i1 : in  std_logic; -- pin 4
-    i2 : in  std_logic; -- pin 7
-    i3 : in  std_logic; -- pin 8
-    i4 : in  std_logic; -- pin 13
-    i5 : in  std_logic; -- pin 14
-    i6 : in  std_logic; -- pin 17
-    i7 : in  std_logic; -- pin 18
-    o0 : out std_logic; -- pin 2
-    o1 : out std_logic; -- pin 5
-    o2 : out std_logic; -- pin 6
-    o3 : out std_logic; -- pin 9
-    o4 : out std_logic; -- pin 12
-    o5 : out std_logic; -- pin 15
-    o6 : out std_logic; -- pin 16
-    o7 : out std_logic  -- pin 19
+    hold_n : in  std_logic;
+    oenb_n : in  std_logic;
+    i0     : in  std_logic;
+    i1     : in  std_logic;
+    i2     : in  std_logic;
+    i3     : in  std_logic;
+    i4     : in  std_logic;
+    i5     : in  std_logic;
+    i6     : in  std_logic;
+    i7     : in  std_logic;
+    o0     : out std_logic;
+    o1     : out std_logic;
+    o2     : out std_logic;
+    o3     : out std_logic;
+    o4     : out std_logic;
+    o5     : out std_logic;
+    o6     : out std_logic;
+    o7     : out std_logic
     );
 end;
 
 architecture ttl of sn74373 is
-  signal data : std_logic_vector(7 downto 0);
+  signal data      : std_logic_vector(7 downto 0);
   signal next_data : std_logic_vector(7 downto 0);
 begin
   -- transparent latch when hold_n = 1, hold when hold_n = 0
   next_data <= i7 & i6 & i5 & i4 & i3 & i2 & i1 & i0;
-  
+
   process(hold_n, next_data)
   begin
     if hold_n = '1' then

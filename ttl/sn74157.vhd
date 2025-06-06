@@ -7,23 +7,23 @@ use ieee.numeric_std.all;
 
 entity sn74157 is
   port (
-    enb_n : in std_logic; -- Pin 15
-    sel   : in std_logic; -- Pin 1
+    enb_n : in std_logic;
+    sel   : in std_logic;
 
-    a1 : in  std_logic; -- Pin 2
-    a2 : in  std_logic; -- Pin 6
-    a3 : in  std_logic; -- Pin 10
-    a4 : in  std_logic; -- Pin 14
+    a1 : in std_logic;
+    a2 : in std_logic;
+    a3 : in std_logic;
+    a4 : in std_logic;
 
-    b1 : in  std_logic; -- Pin 3
-    b2 : in  std_logic; -- Pin 7
-    b3 : in  std_logic; -- Pin 11
-    b4 : in  std_logic; -- Pin 13
+    b1 : in std_logic;
+    b2 : in std_logic;
+    b3 : in std_logic;
+    b4 : in std_logic;
 
-    y1 : out std_logic; -- Pin 4
-    y2 : out std_logic; -- Pin 5
-    y3 : out std_logic; -- Pin 9
-    y4 : out std_logic -- Pin 12
+    y1 : out std_logic;
+    y2 : out std_logic;
+    y3 : out std_logic;
+    y4 : out std_logic
     );
 end;
 

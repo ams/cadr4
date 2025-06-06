@@ -6,24 +6,24 @@ use ieee.numeric_std.all;
 
 entity sn74258 is
   port (
-    enb_n : in std_logic; -- pin 15
-    sel   : in std_logic; -- pin 1
+    enb_n : in std_logic;
+    sel   : in std_logic;
 
-    a0 : in  std_logic; -- pin 14
-    a1 : in  std_logic; -- pin 13
-    ay : out std_logic; -- pin 12
+    a0 : in  std_logic;
+    a1 : in  std_logic;
+    ay : out std_logic;
 
-    b0 : in  std_logic; -- pin 11
-    b1 : in  std_logic; -- pin 10
-    by : out std_logic; -- pin 9
+    b0 : in  std_logic;
+    b1 : in  std_logic;
+    by : out std_logic;
 
-    c0 : in  std_logic; -- pin 5
-    c1 : in  std_logic; -- pin 6
-    cy : out std_logic; -- pin 7
+    c0 : in  std_logic;
+    c1 : in  std_logic;
+    cy : out std_logic;
 
-    d0 : in  std_logic; -- pin 2
-    d1 : in  std_logic; -- pin 3
-    dy : out std_logic  -- pin 4
+    d0 : in  std_logic;
+    d1 : in  std_logic;
+    dy : out std_logic
     );
 end;
 

@@ -1857,7 +1857,7 @@ format_name(char *s)
 {
 	static char b[256];
 
-	if (strchr(s, ' ') || s[0] == '-' || s[0] == '@' || strchr(s, '=')) {
+	if (strchr(s, ' ') || s[0] == '-' || s[0] == '@' || strchr(s, '=') || strchr(s, '.') || strchr(s, '\/') || strchr(s, '-')) {
 		sprintf(b, "\\%s\\", s);
 		return strlwr(b);
 	}
@@ -1935,8 +1935,11 @@ format_bodies(void)
 		if (strcmp(bodies[i].refdes, "0@00") == 0)
 			continue;
 
-		printf("%s_%s : dip_%s port map (",
-		       strlwr(page_name), strlwr(bodies[i].refdes), strlwr(bodies[i].name_of_body));
+		static char b[256];
+		sprintf(b, "dip_%s", bodies[i].name_of_body);
+
+		printf("%s_%s : %s port map (",
+		       strlwr(page_name), strlwr(bodies[i].refdes), format_name(b));
         int printed_once = 0;
 		for (j = 1; j < MAX_BODY_NAMED_PINS; j++) {
 			int pi = bodies[i].named_pin_index[j];

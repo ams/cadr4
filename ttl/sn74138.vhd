@@ -6,20 +6,20 @@ use ieee.numeric_std.all;
 
 entity sn74138 is
   port (
-    a   : in std_logic; -- pin 1
-    b   : in std_logic; -- pin 2
-    c   : in std_logic; -- pin 3
-    g1  : in std_logic; -- pin 6
-    g2a : in std_logic; -- pin 4
-    g2b : in std_logic; -- pin 5
-    y0  : out std_logic; -- pin 15
-    y1  : out std_logic; -- pin 14
-    y2  : out std_logic; -- pin 13
-    y3  : out std_logic; -- pin 12
-    y4  : out std_logic; -- pin 11
-    y5  : out std_logic; -- pin 10
-    y6  : out std_logic; -- pin 9
-    y7  : out std_logic  -- pin 7
+    a   : in  std_logic;
+    b   : in  std_logic;
+    c   : in  std_logic;
+    g1  : in  std_logic;
+    g2a : in  std_logic;
+    g2b : in  std_logic;
+    y0  : out std_logic;
+    y1  : out std_logic;
+    y2  : out std_logic;
+    y3  : out std_logic;
+    y4  : out std_logic;
+    y5  : out std_logic;
+    y6  : out std_logic;
+    y7  : out std_logic
     );
 end;
 
@@ -31,8 +31,8 @@ begin
     variable sel : integer range 0 to 7;
   begin
     if g1 = '1' and g2a = '0' and g2b = '0' then
-      sel := to_integer(unsigned(std_logic_vector'(a & b & c)));
-      y <= (others => '1');
+      sel    := to_integer(unsigned(std_logic_vector'(a & b & c)));
+      y      <= (others => '1');
       y(sel) <= '0';
     else
       y <= (others => '1');

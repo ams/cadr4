@@ -5,25 +5,25 @@ use ieee.std_logic_1164.all;
 
 entity sn74240 is
   port (
-    aenb_n : in  std_logic; -- Pin 1
-    ain0   : in  std_logic; -- Pin 2
-    ain1   : in  std_logic; -- Pin 4
-    ain2   : in  std_logic; -- Pin 6
-    ain3   : in  std_logic; -- Pin 8
-    aout0  : out std_logic; -- Pin 18
-    aout1  : out std_logic; -- Pin 16
-    aout2  : out std_logic; -- Pin 14
-    aout3  : out std_logic; -- Pin 12
+    aenb_n : in  std_logic;
+    ain0   : in  std_logic;
+    ain1   : in  std_logic;
+    ain2   : in  std_logic;
+    ain3   : in  std_logic;
+    aout0  : out std_logic;
+    aout1  : out std_logic;
+    aout2  : out std_logic;
+    aout3  : out std_logic;
 
-    benb_n : in  std_logic; -- Pin 19
-    bin0   : in  std_logic; -- Pin 11
-    bin1   : in  std_logic; -- Pin 13
-    bin2   : in  std_logic; -- Pin 15
-    bin3   : in  std_logic; -- Pin 17
-    bout0  : out std_logic; -- Pin 9
-    bout1  : out std_logic; -- Pin 7
-    bout2  : out std_logic; -- Pin 5
-    bout3  : out std_logic  -- Pin 3
+    benb_n : in  std_logic;
+    bin0   : in  std_logic;
+    bin1   : in  std_logic;
+    bin2   : in  std_logic;
+    bin3   : in  std_logic;
+    bout0  : out std_logic;
+    bout1  : out std_logic;
+    bout2  : out std_logic;
+    bout3  : out std_logic
     );
 end;
 

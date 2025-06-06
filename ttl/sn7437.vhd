@@ -5,21 +5,21 @@ use ieee.std_logic_1164.all;
 
 entity sn7437 is
   port (
-    g1a : in  std_logic; -- pin 1
-    g1b : in  std_logic; -- pin 2
-    g1y : out std_logic; -- pin 3
+    g1a : in  std_logic;
+    g1b : in  std_logic;
+    g1y : out std_logic;
 
-    g2a : in  std_logic; -- pin 4
-    g2b : in  std_logic; -- pin 5
-    g2y : out std_logic; -- pin 6
+    g2a : in  std_logic;
+    g2b : in  std_logic;
+    g2y : out std_logic;
 
-    g3a : in  std_logic; -- pin 9
-    g3b : in  std_logic; -- pin 10
-    g3y : out std_logic; -- pin 8
+    g3a : in  std_logic;
+    g3b : in  std_logic;
+    g3y : out std_logic;
 
-    g4a : in  std_logic; -- pin 12
-    g4b : in  std_logic; -- pin 13
-    g4y : out std_logic  -- pin 11
+    g4a : in  std_logic;
+    g4b : in  std_logic;
+    g4y : out std_logic
     );
 end;
 

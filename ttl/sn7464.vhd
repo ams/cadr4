@@ -7,22 +7,22 @@ use ieee.numeric_std.all;
 
 entity sn7464 is
   port (
-    a1 : in std_logic; -- Pin 9
-    b1 : in std_logic; -- Pin 10
+    a1 : in std_logic;
+    b1 : in std_logic;
 
-    a2 : in std_logic; -- Pin 2
-    b2 : in std_logic; -- Pin 3
+    a2 : in std_logic;
+    b2 : in std_logic;
 
-    a3 : in std_logic; -- Pin 4
-    b3 : in std_logic; -- Pin 5
-    c3 : in std_logic; -- Pin 6
+    a3 : in std_logic;
+    b3 : in std_logic;
+    c3 : in std_logic;
 
-    a4 : in std_logic; -- Pin 1
-    b4 : in std_logic; -- Pin 11
-    c4 : in std_logic; -- Pin 12
-    d4 : in std_logic; -- Pin 13
+    a4 : in std_logic;
+    b4 : in std_logic;
+    c4 : in std_logic;
+    d4 : in std_logic;
 
-    \out\ : out std_logic -- Pin 8
+    \out\ : out std_logic
     );
 end;
 
