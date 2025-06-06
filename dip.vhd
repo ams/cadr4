@@ -15,12 +15,20 @@ end package;
 --
 -- Format of the following entities:
 --
--- entity <dip-name> is port ( -- <ttl-name>
--- <dip-pin-name> : <direction> std_logic; -- <ttl-pin-name>
--- ...
--- );
--- end;
+-- 	entity <dip-name> is port ( -- <ttl-name>
+-- 	<dip-pin-name> : <direction> std_logic; -- <ttl-pin-name>
+-- 	...
+-- 	);
+-- 	end;
 --
+-- This is then used to generate the architectures; that look as
+-- follows:
+--
+-- 	architecture dip of <dip-name> is
+--	begin
+--	  ttl : <ttl-name> port map (<dip-pin-name> => <ttl-pin-name>, ...);
+--	end;
+--------------------------------------------------------------------------------
 
 entity dip_16dummy is port (            -- ic_16dummy
   p1  : inout std_logic;
