@@ -2,7 +2,7 @@
 
 Experiments of the third kind...  This is an attempt at making a
 faithful and accurate HDL implementation of CADR.  There will be no
-attempt at making this synthesizable!
+attempt at making this synthesizable (at this time)!
 
 ## Random chit-chat
 
@@ -17,10 +17,8 @@ Prerequisites:
   - Git
   - GNU Make
   - [GHDL](http://ghdl.free.fr/)
-
-	Ideally using the GCC or LLVM code generator, since at some
-	point there will be a simulatd UART to talk to the core.
-
+	Ideally using the GCC or LLVM code generator, since at some point
+	there will be a simulatd UART to talk to the core.
   - Some sort of VCD viewer:
   	* [GTKWave](https://gtkwave.sourceforge.net/)
 	* [vcd](https://github.com/yne/vcd) Terminal VCD viewer.
@@ -32,12 +30,24 @@ cd cadr4
 make help
 ```
 
-If writing or testing CADR microcode, then it is useful to have
+If writing or testing CADR microcode, then it will be useful to have
 [usim](https://tumbleweed.nu/r/usim) configured to be able to run
 [CADRLP](https://tumbleweed.nu/r/lm-3/uv/cadr.html#The-CADRLP-Assembler)
 or the CADR Console debugger (CC).
 
 ## Organization
+
+  - cadr_book.vhd: Main file for the CADR processor.
+  - icmmem_book.vhd: Master clock, and memory.
+
+  - cadr/<page>.vhd: Contains the component definition for each
+    schematic page.  Human curated.
+
+  - cadr/<page>_suds.vhd: (Semi-)Generated files from the original
+    SUDS drawings.
+
+  - dip.vhd: Model definitions that map SUDS DIP packages over the TTL
+    library.  Each wrapper has its own file under dip/.
 
   - ttl (package): contains all the ICs that are used by the CADR.
 
@@ -47,12 +57,13 @@ or the CADR Console debugger (CC).
 
 	* unsorted: contains skeletons directly translated from the
 	  schematics; these are to be deleted / merged at some point.
+  
+## Documentation
 
-  - cadr (package):
+New documentation should be written in Markdown.  At some point it
+will be moved to a more suitable place at the [LM-3
+project](https://tumbleweed.nu/r/lm-3).
 
-	TBD
-
-New documentation should be written in Markdown.  At some point this
-should be migrated back into the [Lisp Machine
-Manual](https://tumbleweed.nu/r/lm-3/uv/chinual.html) or other
-suitable places.
+  - [The CADR Microprocessor](https://tumbleweed.nu/r/lm-3/uv/cadr.html)
+  - [Implementation of a List Processing Machine](https://tumbleweed.nu/r/lm-3/uv/knight-thesis.html)
+  - [CADR Schematics](https://tumbleweed.nu/lm-3/schematics.html)
