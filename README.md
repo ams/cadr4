@@ -14,14 +14,23 @@ chit-chat.  Feel free to send bugs directly to ams@gnu.org.
 Prerequisites:
 
   - [Fossil](https://fossil-scm.org)
+
   - Git
+
   - GNU Make
+
   - [GHDL](http://ghdl.free.fr/)
+
 	Ideally using the GCC or LLVM code generator, since at some point
 	there will be a simulatd UART to talk to the core.
+
   - Some sort of VCD viewer:
+
   	* [GTKWave](https://gtkwave.sourceforge.net/)
-	* [vcd](https://github.com/yne/vcd) Terminal VCD viewer.
+
+	* [vcd](https://github.com/yne/vcd)
+	
+	  Terminal VCD viewer.
 
 ```
 cd ~/
@@ -37,8 +46,9 @@ or the CADR Console debugger (CC).
 
 ## Organization
 
-  - cadr_book.vhd: Main file for the CADR processor.
-  - icmmem_book.vhd: Master clock, and memory.
+  - cadr/cadr_book.vhd: Main file for the CADR processor.
+
+  - cadr/icmmem_book.vhd: Master clock, and memory.
 
   - cadr/<page>.vhd: Contains the component definition for each
     schematic page.  Human curated.
@@ -72,232 +82,344 @@ project](https://tumbleweed.nu/r/lm-3).
 ## Glossary 
 
   - DR
-  Dispatch R-bit is set. Ignore new PC, pop PC off the SPC stack.
+
+    Dispatch R-bit is set.  Ignore new PC, pop PC off the SPC stack.
 
   - DN
-  Dispatch N-bit is set. Inhibit execution of next instruction.
+
+    Dispatch N-bit is set.  Inhibit execution of next instruction.
 
   - DP
-  Dispatch P-bit is set. Save return address to SPC, jump to new PC address.
+
+    Dispatch P-bit is set.  Save return address to SPC, jump to new PC
+    address.
 
   - DFALL
-  Both P and R bit in dispatch instruction are set, fallthrough (do not dispatch)
+
+    Both P and R bit in dispatch instruction are set, fallthrough (do
+    not dispatch)
 
   - IRALU
-  Instruction Register contains an ALU instruction (IR44-IR43).
+
+    Instruction Register contains an ALU instruction (IR44-IR43).
 
   - IRBYTE
-  Instruction Register contains a BYTE instruction (IR44-IR43).
+
+    Instruction Register contains a BYTE instruction (IR44-IR43).
 
   - IRJUMP
-  Instruction Register contains a JUMP instruction (IR44-IR43).
+
+    Instruction Register contains a JUMP instruction (IR44-IR43).
 
   - IRDISP
-  Instruction Register contains a DISPATCH instruction (IR44-IR43).
+
+    Instruction Register contains a DISPATCH instruction (IR44-IR43).
 
   - DEST
-  There is a Destination. True for ALU and BYTE instructions.
+
+    There is a Destination.  True for ALU and BYTE instructions.
 
   - DESTM
-  Destination M Memory. True for ALU or BYTE instructions that have IR25 set.
+
+    Destination M Memory.  True for ALU or BYTE instructions that have
+    IR25 set.
 
   - DESTMEM
-  Destination (Main) Memory. The highest bit of the functional destination is set, destination is OA register, VMA or MD.
+
+    Destination (Main) Memory.  The highest bit of the functional
+    destination is set, destination is OA register, VMA or MD.
 
   - SRCDC
-  Source Dispatch Constant
+
+    Source Dispatch Constant
 
   - ZERO16
-  Zero bits starting with 16 on MF bus. Set when source is DC, PDLPTR, PDLIDX or OPC.
+
+    Zero bits starting with 16 on MF bus.  Set when source is DC,
+    PDLPTR, PDLIDX or OPC.
 
   - OPCINH
-  OPC Inhibit. Set by the spy interface, inhibits shifting the OPC values.
+
+    OPC Inhibit.  Set by the spy interface, inhibits shifting the OPC
+    values.
 
   - IR5
-  Instruction Register bit 5: JUMP: If low, rotation count for M source. If high, condition number.
+
+    Instruction Register bit 5: JUMP: If low, rotation count for M
+    source.  If high, condition number.
 
   - IR6
-  Instruction Register bit 6: JUMP: Invert Condition
+
+    Instruction Register bit 6: JUMP: Invert Condition
 
   - IR7
-  Instruction Register bit 7: JUMP: N-Bit, NOP
+
+    Instruction Register bit 7: JUMP: N-Bit, NOP
 
   - IR8
-  Instruction Register bit 8: JUMP: P-bit, Call
+
+    Instruction Register bit 8: JUMP: P-bit, Call
 
   - IR9
-  Instruction Register bit 9: JUMP: R-bit, Return
+
+    Instruction Register bit 9: JUMP: R-bit, Return
 
   - IR25
-  Instruction Register bit 25: DISPATCH: L-PC flag. Alter return address pushed on SPC by the CALL transfer type, if the N bit is set, to be the address of this instruction rather than the next instruction.
+
+    Instruction Register bit 25: DISPATCH: L-PC flag.  Alter return
+    address pushed on SPC by the CALL transfer type, if the N bit is
+    set, to be the address of this instruction rather than the next
+    instruction.
 
   - IR42
-  Instruction Register bit 42: POPJ-bit, Return after next instruction.
+
+    Instruction Register bit 42: POPJ-bit, Return after next
+    instruction.
 
   - JRET
-  Jump Return. Set in a jump instruction with P set and R cleared.
+
+    Jump Return.  Set in a jump instruction with P set and R cleared.
 
   - IWRITE
-  Instruction Write. Set in a jump instruction with P and R set.
+
+    Instruction Write.  Set in a jump instruction with P and R set.
 
   - IWRITED
-  Instruction Write Delayed. Set in the clock cycle after a jump instruction with P and R set.
+
+    Instruction Write Delayed.  Set in the clock cycle after a jump
+    instruction with P and R set.
 
   - IPOPJ
-  Instruction POPJ. POPJ bit is set and current instruction is not NOPed.
+
+    Instruction POPJ.  POPJ bit is set and current instruction is not
+    NOPed.
 
   - IGNPOPJ
-  Ignore POPJ. Instruction is a DISPATCH instruction and R-bit is cleared.
+
+    Ignore POPJ.  Instruction is a DISPATCH instruction and R-bit is
+    cleared.
 
   - POPJ
-  POPJ. High if the POPJ bit in the current instruction is high and the current instruction is not NOPed or if a delayed instruction write (IWRITED) is active.
+
+    POPJ.  High if the POPJ bit in the current instruction is high and
+    the current instruction is not NOPed or if a delayed instruction
+    write (IWRITED) is active.
 
   - JFALSE
-  Jump if False. Instruction is JUMP and condition is inverted.
+
+    Jump if False.  Instruction is JUMP and condition is inverted.
 
   - JCALF
-  Jump Call if False. Instruction is JUMP with P-bit set and condition inverted.
+
+    Jump Call if False.  Instruction is JUMP with P-bit set and
+    condition inverted.
 
   - JRETF
-  Jump Return if False. Instruction is JUMP with R-bit set and condition inverted.
+
+    Jump Return if False.  Instruction is JUMP with R-bit set and
+    condition inverted.
 
   - JCOND
-  Jump Condition. Selected based on IR0-IR2, IR5 must be high.
+
+    Jump Condition.  Selected based on IR0-IR2, IR5 must be high.
 
   - FUNCT0
-  Miscellaneous Function bit 0. Decoded from IR10-IR11.
+
+    Miscellaneous Function bit 0.  Decoded from IR10-IR11.
 
   - FUNCT1
-  Miscellaneous Function bit 1. Decoded from IR10-IR11.
+
+    Miscellaneous Function bit 1.  Decoded from IR10-IR11.
 
   - FUNCT2
-  Miscellaneous Function bit 2. Decoded from IR10-IR11. DISPATCH: Write dispatch memory.
+
+    Miscellaneous Function bit 2.  Decoded from IR10-IR11.  DISPATCH:
+    Write dispatch memory.
 
   - FUNCT3
-  Miscellaneous Function bit 3. Decoded from IR10-IR11.
+
+    Miscellaneous Function bit 3.  Decoded from IR10-IR11.
 
   - DISPENB
-  Dispatch Enabled. Instruction is DISPATCH but not dispatch write.
+
+    Dispatch Enabled.  Instruction is DISPATCH but not dispatch write.
 
   - N
-  Next instruction will be NOPed.
+
+    Next instruction will be NOPed.
 
   - INOP
-  Instruction NOP. Previous instruction NOPed the current instruction.
+
+    Instruction NOP.  Previous instruction NOPed the current
+    instruction.
 
   - NOPA
-  NOP A. Previous instruction or Spy interface NOPed the current instruction.
+
+    NOP A.  Previous instruction or Spy interface NOPed the current
+    instruction.
 
   - NOP
-  Previous instruction, Spy interface or a Trap NOPed the current instruction.
+
+    Previous instruction, Spy interface or a Trap NOPed the current
+    instruction.
 
   - PCS0
-  PC Source bit 0. False if popj, or dispatch and not fallthrough, or jump return if false and jump-condition is false, or jump return and jump condition and not jump invert condition. Used together with PCS1 to select the NPC bus source, 0=SPC, 1=IR, 2=DPC, 3=IPC.
+
+    PC Source bit 0.  False if popj, or dispatch and not fallthrough,
+    or jump return if false and jump-condition is false, or jump
+    return and jump condition and not jump invert condition.  Used
+    together with PCS1 to select the NPC bus source, 0=SPC, 1=IR,
+    2=DPC, 3=IPC.
 
   - PCS1
-  PC Source bit 1. False if popj and not ignore popj, or jump if false and not jump condition, or instruction is jump and not invert condition and jump condition, or dispatch enabled and R-bit but not P-bit. Used together with PCS0 to select the NPC bus source, 0=SPC, 1=IR, 2=DPC, 3=IPC.
+
+    PC Source bit 1.  False if popj and not ignore popj, or jump if
+    false and not jump condition, or instruction is jump and not
+    invert condition and jump condition, or dispatch enabled and R-bit
+    but not P-bit.  Used together with PCS0 to select the NPC bus
+    source, 0=SPC, 1=IR, 2=DPC, 3=IPC.
 
   - IPC*
-  Incremented PC
+
+    Incremented PC
 
   - NPC*
-  Next PC
+
+    Next PC
 
   - SPC*
-  Stack PC
+
+    Stack PC
 
   - DPC*
-  Dispatch PC
+
+    Dispatch PC
 
   - LPC*
-  Last PC
+
+    Last PC
 
   - WPC*
-  Write PC. The PC that could be written to the SPC stack.
+
+    Write PC.  The PC that could be written to the SPC stack.
 
   - SPCW*
-  SPC Write. The PC value that is written to the SPC stack.
+
+    SPC Write.  The PC value that is written to the SPC stack.
 
   - RETA*
-  Return Address. The PC value of either the next or the current instruction that could be written to the SPC stack.
+
+    Return Address.  The PC value of either the next or the current
+    instruction that could be written to the SPC stack.
 
   - SPCPTR*
-  SPC Pointer
+
+    SPC Pointer
 
   - DESTSPCD
-  Destination SPC delayed. Set in the clock cycle after DESTSPC was set.
+
+    Destination SPC delayed.  Set in the clock cycle after DESTSPC was
+    set.
 
   - PCC*
-  Alias of PC
+
+    Alias of PC
 
   - PCB*
-  Alias of PC
+
+    Alias of PC
 
   - ICE*
-  Instruction (Memory) Chip Enable.
+
+    Instruction (Memory) Chip Enable.
 
   - IOB*
-  Instruction (Modify) OR Bus. OR of instruction from I-MEM and Output Bus.
+
+    Instruction (Modify) OR Bus.  OR of instruction from I-MEM and
+    Output Bus.
 
   - DESTIMOD0
-  Destination Instruction Modified 0. Modify the low part of the next instruction.
+
+    Destination Instruction Modified 0.  Modify the low part of the
+    next instruction.
 
   - DESTIMOD1
-  Destination Instruction Modified 1. Modify the high part of the next instruction.
+
+    Destination Instruction Modified 1.  Modify the high part of the
+    next instruction.
 
   - IMOD
-  Instruction Modified.
+
+    Instruction Modified.
 
   - TRAPA
-  Alias of TRAP
+
+    Alias of TRAP
 
   - TRAPB
-  Alias of TRAP
+
+    Alias of TRAP
 
   - TRAP
-  Set on Parity Error if Traps are enabled via Spy or on Boot Trap.
+
+    Set on Parity Error if Traps are enabled via Spy or on Boot Trap.
 
   - CLK0
-  Main clock signal.
+
+    Main clock signal.
 
   - CLK1
-  Alias of CLK0
+
+    Alias of CLK0
 
   - CLK2
-  Alias of CLK0
+
+    Alias of CLK0
 
   - CLK3
-  Alias of CLK0
+
+    Alias of CLK0
 
   - CLK4
-  Alias of CLK0
+
+    Alias of CLK0
 
   - CLK5
-  Alias of CLK0
+
+    Alias of CLK0
 
   - TPWP
-  TP? Write Pulse
+
+    TP? Write Pulse
 
   - TPWPIRAM
-  TP? Write Pulse Instruction RAM
+
+    TP? Write Pulse Instruction RAM
 
   - TPTSE
-  TP? Tristate Enable
+
+    TP? Tristate Enable
 
   - TSE*
-  Tristate Enable. Alias of TPTSE.
+
+    Tristate Enable.  Alias of TPTSE.
 
   - WP1
-  Write Pulse. Alias of TPWP.
+
+    Write Pulse.  Alias of TPWP.
 
   - WP2
-  Write Pulse. Alias of TPWP.
+
+    Write Pulse.  Alias of TPWP.
 
   - WP3
-  Write Pulse. Alias of TPWP.
+
+    Write Pulse.  Alias of TPWP.
 
   - WP4
-  Write Pulse. Alias of TPWP.
+
+    Write Pulse.  Alias of TPWP.
 
   - WP5
-  Write Pulse. Alias of TPWPIRAM.
+
+    Write Pulse.  Alias of TPWPIRAM.
