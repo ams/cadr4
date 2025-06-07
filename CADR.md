@@ -6,6 +6,11 @@ description of the CADR processor see [The CADR
 processor](https://tumbleweed.nu/r/lm-3/uv/cadr.html), by Knight,
 Moon, et al.
 
+N.B. Please update
+[lm-3/knight-thesis.texi](https://tumbleweed.nu/r/lm-3/file?name=knight-thesis.texi&ci=tip)
+if you make any any changes here!  It is the canonical copy version of
+what is in here.
+
 # The Microprogrammable Processor
 
 This chapter concerns the features of the microprocessor which
@@ -67,11 +72,11 @@ datapath diagram of the A and M source section of the processor.
 
 ## The ALU Datapath
 
-![Figure 4 Main Data Paths](https://github.com/ams/cadr/assets/7945138/cf6ab70b-f2b1-4443-9f6b-aa41a1f3ef76)
+![Figure 4 Main Data Paths](https://tumbleweed.nu/r/lm-3/raw/d65eb66a710ef060b9f1e816b6c8a3d76a4230643ce4cece88d74aa5911cc7b8?m=image/png)
 
-![Figure 5 Micro Instruction Format](https://github.com/ams/cadr/assets/7945138/0e87bcbc-e3f2-44bb-83b9-22ba6980af26)
+![Figure 5 Micro Instruction Format](https://tumbleweed.nu/r/lm-3/raw/3ea12982633489816b69c3356ad65b059f5653c47a96c40962a520a26dacb118?m=image/png)
 
-![Figure 6 Detailed M Bus Block Diagram](https://github.com/ams/cadr/assets/7945138/50760e78-5fc4-45fe-a156-0205d8900f55)
+![Figure 6 Detailed M Bus Block Diagram](https://tumbleweed.nu/r/lm-3/raw/97cb3c5927eb296da21b8705b248f95b7d43ba672487a9d1c7e75996c2c7fb4e?m=image/png)
 
 The ALU instruction provides basic arithmetic and logical data
 manipulation in the machine.  The two operands supplied on the A and M
@@ -347,7 +352,7 @@ taken from the low order bits of the M bus operand.
 
 ## Main Memory Reference
 
-![Figure 7 Dispatch Datapath](https://github.com/ams/cadr/assets/7945138/62642bbc-b2f0-403f-b8e1-3b2697fc0b61)
+![Figure 7 Dispatch Datapath](https://tumbleweed.nu/r/lm-3/raw/6c4fe35ad808c691a5a68dcabd912bc295ad81f1534821d8a9ee70b5fccfe0a0?m=image/png)
 
 References to main memory in the processor are implemented as special
 M bus sources and as special functional destinations.
@@ -408,7 +413,7 @@ interlocks, which, in a single processor system, are not required.
 
 ## The Map
 
-![Figure 8 Memory Map Data Flow](https://github.com/ams/cadr/assets/7945138/c04458b6-6377-4b4d-a2a9-9978b87b121b)
+![Figure 8 Memory Map Data Flow](https://tumbleweed.nu/r/lm-3/raw/0014ac2828ea5650b7be79a8ea054844f6f1492adba8578ec7d0d5f4ce98170c?m=image/png)
 
 The processor memory address register can address up to 24 bits of
 virtual memory.  A mapping is made prior to read and write requests to
