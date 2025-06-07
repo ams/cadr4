@@ -175,7 +175,7 @@ package dip is
     p3  : in  std_logic;                -- g1b
     p4  : out std_logic;                -- g2q_n
     p5  : in  std_logic;                -- g2a
-    p6  : in  std_logic;                -- g3b
+    p6  : in  std_logic;                -- g2b
     p8  : in  std_logic;                -- g3a
     p9  : in  std_logic;                -- g3b
     p10 : out std_logic;                -- g3q_n
@@ -210,7 +210,7 @@ package dip is
     p4  : out std_logic;                -- g2q_n
     p5  : in  std_logic;                -- g3a
     p6  : out std_logic;                -- g3q_n
-    p8  : out std_logic;                -- g4q
+    p8  : out std_logic;                -- g4q_n
     p9  : in  std_logic;                -- g4a
     p10 : out std_logic;                -- g5q_n
     p11 : in  std_logic;                -- g5a
@@ -280,7 +280,7 @@ package dip is
     p4  : out std_logic;                -- g2q_n
     p5  : in  std_logic;                -- g3a
     p6  : out std_logic;                -- g3q_n
-    p8  : out std_logic;                -- g4q
+    p8  : out std_logic;                -- g4q_n
     p9  : in  std_logic;                -- g4a
     p10 : out std_logic;                -- g5q_n
     p11 : in  std_logic;                -- g5a
@@ -327,21 +327,29 @@ package dip is
     p3  : in  std_logic;                -- g2a
     p4  : in  std_logic;                -- g2b
     p5  : in  std_logic;                -- g2c
-    p6  : out std_logic;                -- g2y_n
-    p8  : out std_logic;                -- g3y_n
+    p6  : out std_logic;                -- g2y
+    p8  : out std_logic;                -- g3y
     p9  : in  std_logic;                -- g3a
     p10 : in  std_logic;                -- g3b
     p11 : in  std_logic;                -- g3c
-    p12 : out std_logic;                -- g1y_n
+    p12 : out std_logic;                -- g1y
     p13 : in  std_logic                 -- g1c
     );
   end component;
 
   component dip_74s11o is port (        -- sn7411 [74s11o]
-    p3 : inout std_logic;
-    p4 : inout std_logic;
-    p5 : inout std_logic;
-    p6 : inout std_logic
+    p1  : in  std_logic;                -- g1a
+    p2  : in  std_logic;                -- g1b
+    p3  : in  std_logic;                -- g2a
+    p4  : in  std_logic;                -- g2b
+    p5  : in  std_logic;                -- g2c
+    p6  : out std_logic;                -- g2y
+    p8  : out std_logic;                -- g3y
+    p9  : in  std_logic;                -- g3a
+    p10 : in  std_logic;                -- g3b
+    p11 : in  std_logic;                -- g3c
+    p12 : out std_logic;                -- g1y
+    p13 : in  std_logic                 -- g1c
     );
   end component;
 
@@ -353,7 +361,7 @@ package dip is
     p5  : in std_logic;                 -- c
     p6  : in std_logic;                 -- b
     p7  : in std_logic;                 -- a
-    p9  : in std_logic;                 -- q_n
+    p9  : out std_logic;                 -- q_n
     p10 : in std_logic;                 -- h
     p11 : in std_logic;                 -- i
     p12 : in std_logic;                 -- j
@@ -419,18 +427,18 @@ package dip is
 
   component dip_74s153 is port (        -- sn74153 [74s153]
     p1  : in  std_logic;                -- enb1_n
-    p2  : in  std_logic;                -- sel1
+    p2  : in  std_logic;                -- selb
     p3  : in  std_logic;                -- g1c3
     p4  : in  std_logic;                -- g1c2
     p5  : in  std_logic;                -- g1c1
     p6  : in  std_logic;                -- g1c0
-    p7  : out std_logic;                -- g1q
-    p9  : out std_logic;                -- g2q
+    p7  : out std_logic;                -- g1y
+    p9  : out std_logic;                -- g2y
     p10 : in  std_logic;                -- g2c0
     p11 : in  std_logic;                -- g2c1
     p12 : in  std_logic;                -- g2c2
     p13 : in  std_logic;                -- g2c3
-    p14 : in  std_logic;                -- sel0
+    p14 : in  std_logic;                -- sela
     p15 : in  std_logic                 -- enb2_n
     );
   end component;
@@ -473,19 +481,19 @@ package dip is
 
   component dip_74s174 is port (        -- sn74174 [74s174]
     p1  : in std_logic;                 -- clr_n
-    p2  : in std_logic;                 -- q1
+    p2  : out std_logic;                 -- q1
     p3  : in std_logic;                 -- d1
     p4  : in std_logic;                 -- d2
-    p5  : in std_logic;                 -- q2
+    p5  : out std_logic;                 -- q2
     p6  : in std_logic;                 -- d3
-    p7  : in std_logic;                 -- q3
+    p7  : out std_logic;                 -- q3
     p9  : in std_logic;                 -- clk
-    p10 : in std_logic;                 -- q4
+    p10 : out std_logic;                 -- q4
     p11 : in std_logic;                 -- d4
-    p12 : in std_logic;                 -- q5
+    p12 : out std_logic;                 -- q5
     p13 : in std_logic;                 -- d5
     p14 : in std_logic;                 -- d6
-    p15 : in std_logic                  -- q6
+    p15 : out std_logic                  -- q6
     );
   end component;
 
@@ -538,8 +546,8 @@ package dip is
     p2  : in  std_logic;                -- x1
     p3  : in  std_logic;                -- y0
     p4  : in  std_logic;                -- x0
-    p5  : out std_logic;                -- y3
-    p6  : out std_logic;                -- x3
+    p5  : in  std_logic;                -- y3
+    p6  : in  std_logic;                -- x3
     p7  : out std_logic;                -- xout
     p9  : out std_logic;                -- cout2_n
     p10 : out std_logic;                -- yout
@@ -584,16 +592,16 @@ package dip is
   end component;
 
   component dip_74s20o is port (        -- sn7420 [74s20o]
-    p1  : inout std_logic;
-    p2  : inout std_logic;
-    p4  : inout std_logic;
-    p5  : inout std_logic;
-    p6  : inout std_logic;
-    p8  : inout std_logic;
-    p9  : inout std_logic;
-    p10 : inout std_logic;
-    p12 : inout std_logic;
-    p13 : inout std_logic
+    p1  : in  std_logic;                -- g1a
+    p2  : in  std_logic;                -- g1b
+    p4  : in  std_logic;                -- g1c
+    p5  : in  std_logic;                -- g1d
+    p6  : out std_logic;                -- g1y_n
+    p8  : out std_logic;                -- g2y_n
+    p9  : in  std_logic;                -- g2a
+    p10 : in  std_logic;                -- g2b
+    p12 : in  std_logic;                -- g2c
+    p13 : in  std_logic                 -- g2d
     );
   end component;
 
@@ -660,12 +668,18 @@ package dip is
   end component;
 
   component dip_74s260 is port (        -- sn74260 [74s260]
-    p1  : in std_logic;                 -- i1
-    p2  : in std_logic;                 -- i2
-    p3  : in std_logic;                 -- i3
-    p5  : in std_logic;                 -- o1
-    p12 : in std_logic;                 -- i4
-    p13 : in std_logic                  -- i5
+    p1  : in  std_logic;                 -- g1a
+    p2  : in  std_logic;                 -- g1b
+    p3  : in  std_logic;                 -- g1c
+    p4  : in  std_logic;                 -- g2a    
+    p5  : out std_logic;                 -- g1y_n
+    p6  : out std_logic;                 -- g2y_n
+    p8  : in  std_logic;                 -- g2b
+    p9  : in  std_logic;                 -- g2c
+    p10 : in  std_logic;                 -- g2d
+    p11 : in  std_logic;                 -- g2e
+    p12 : in  std_logic;                 -- g1d
+    p13 : in  std_logic                  -- g1e
     );
   end component;
 
@@ -779,24 +793,24 @@ package dip is
   end component;
 
   component dip_74s472 is port (        -- dm74472 [74s472]
-    p1  : in std_logic;                 -- a0
-    p2  : in std_logic;                 -- a1
-    p3  : in std_logic;                 -- a2
-    p4  : in std_logic;                 -- a3
-    p5  : in std_logic;                 -- a4
-    p6  : in std_logic;                 -- d0
-    p7  : in std_logic;                 -- d1
-    p8  : in std_logic;                 -- d2
-    p9  : in std_logic;                 -- d3
-    p11 : in std_logic;                 -- d4
-    p12 : in std_logic;                 -- d5
-    p13 : in std_logic;                 -- d6
-    p14 : in std_logic;                 -- d7
-    p15 : in std_logic;                 -- ce_n
-    p16 : in std_logic;                 -- a5
-    p17 : in std_logic;                 -- a6
-    p18 : in std_logic;                 -- a7
-    p19 : in std_logic                  -- a8
+    p1  : in  std_logic;                 -- a0
+    p2  : in  std_logic;                 -- a1
+    p3  : in  std_logic;                 -- a2
+    p4  : in  std_logic;                 -- a3
+    p5  : in  std_logic;                 -- a4
+    p6  : out std_logic;                 -- d0
+    p7  : out std_logic;                 -- d1
+    p8  : out std_logic;                 -- d2
+    p9  : out std_logic;                 -- d3
+    p11 : out std_logic;                 -- d4
+    p12 : out std_logic;                 -- d5
+    p13 : out std_logic;                 -- d6
+    p14 : out std_logic;                 -- d7
+    p15 : in  std_logic;                 -- ce_n
+    p16 : in  std_logic;                 -- a5
+    p17 : in  std_logic;                 -- a6
+    p18 : in  std_logic;                 -- a7
+    p19 : in  std_logic                  -- a8
     );
   end component;
 
@@ -882,8 +896,8 @@ package dip is
 
   component dip_9328 is port (          -- dm9328 [9328]
     p1  : in std_logic;                 -- clr_n
-    p2  : in std_logic;                 -- aq_n
-    p3  : in std_logic;                 -- aq
+    p2  : out std_logic;                 -- aq_n
+    p3  : out std_logic;                 -- aq
     p4  : in std_logic;                 -- asel
     p5  : in std_logic;                 -- ai1
     p6  : in std_logic;                 -- ai0
@@ -893,8 +907,8 @@ package dip is
     p11 : in std_logic;                 -- bi0
     p12 : in std_logic;                 -- bi1
     p13 : in std_logic;                 -- bsel
-    p14 : in std_logic;                 -- bq
-    p15 : in std_logic                  -- bq_n
+    p14 : out std_logic;                 -- bq
+    p15 : out std_logic                  -- bq_n
     );
   end component;
 
