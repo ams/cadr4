@@ -1,8 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-library ttl;
-use ttl.unsorted.all;
+use work.unsorted.all;
 
 entity ic_16dummy_tb is
 end;

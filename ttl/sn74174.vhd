@@ -4,8 +4,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-library ttl;
-use ttl.misc.all;
+use work.misc.all;
 
 -- Datasheet: Texas Instruments SN74LS174 Hex D-Type Flip-Flops With Clear, PDIP (N) Package
 -- URL: https://www.ti.com/lit/gpn/SN74LS174

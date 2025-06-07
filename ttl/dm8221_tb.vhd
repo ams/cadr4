@@ -2,8 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-library ttl;
-use ttl.other.all;
+use work.other.all;
 
 entity dm8221_tb is
 end;

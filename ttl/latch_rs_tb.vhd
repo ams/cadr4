@@ -3,8 +3,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-library ttl;
-use ttl.misc.all;
+use work.misc.all;
 
 entity latch_rs_tb is
 end;

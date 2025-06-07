@@ -2,12 +2,7 @@
 .\#*
 \#*\#
 
-*.o
-*.cf
-
-*_tb
-*.ghw
-*.vcd
+build/
 
 .DS_Store
 **/TASK.md

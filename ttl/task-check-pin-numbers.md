@@ -1,0 +1,153 @@
+# Task description
+
+Check all ttl/*.vhd files if the pin number comments next to port list is correct. Only use the datasheets as reference and prefer to use DIP packages. If they are incorrect, you can correct them.
+
+Add a comment to vhd file linking the datasheet you used as a reference, including the package information you used from the datasheet. If there is a conflicting information, ask to me so I can clarify which package to use.
+
+Do not modify the port list, port names and the implementation. If there is something wrong, let me know first and ask me to how to proceed.
+
+Put all ttl/*.vhd file names in the All section below. Update Done section with the ones you have processed. Write a short comment next to the ones done, if changed or not or if datasheet cannot be found, no pin information found etc. Skip the ones in Done section if the task is resumed.
+
+# All
+
+- ttl/sn7486.vhd
+- ttl/am93s48.vhd
+- ttl/sn7451.vhd
+- ttl/sn7474.vhd
+- ttl/sn7464.vhd
+- ttl/sn74374.vhd
+- ttl/td50.vhd
+- ttl/til309.vhd
+- ttl/timedelay.vhd
+- ttl/unsorted.vhd
+- ttl/sn7432.vhd
+- ttl/sn7437.vhd
+- ttl/sn74373.vhd
+- ttl/td100.vhd
+- ttl/td25.vhd
+- ttl/td250.vhd
+- ttl/sn74182.vhd
+- ttl/sn74194.vhd
+- ttl/sn7420.vhd
+- ttl/sn74240.vhd
+- ttl/sn74241.vhd
+- ttl/sn74244.vhd
+- ttl/sn74258.vhd
+- ttl/sn74260.vhd
+- ttl/sn7428.vhd
+- ttl/sn74280.vhd
+- ttl/sn74283.vhd
+- ttl/sn74138.vhd
+- ttl/sn74139.vhd
+- ttl/sn7414.vhd
+- ttl/sn74151.vhd
+- ttl/sn74153.vhd
+- ttl/sn74157.vhd
+- ttl/sn74169.vhd
+- ttl/sn74174.vhd
+- ttl/sn74175.vhd
+- ttl/sn74181.vhd
+- ttl/res20.vhd
+- ttl/sip220_330_8.vhd
+- ttl/sip330_470_8.vhd
+- ttl/sn74.vhd
+- ttl/sn7400.vhd
+- ttl/sn7402.vhd
+- ttl/sn7404.vhd
+- ttl/sn7408.vhd
+- ttl/sn7410.vhd
+- ttl/sn74109.vhd
+- ttl/sn7411.vhd
+- ttl/sn74133.vhd
+- ttl/ff_d.vhd
+- ttl/ff_dc.vhd
+- ttl/ff_jk.vhd
+- ttl/am2147.vhd
+- ttl/am2507.vhd
+- ttl/am2509.vhd
+- ttl/am2510.vhd
+- ttl/am252519.vhd
+- ttl/am93425a.vhd
+- ttl/dm74472.vhd
+- ttl/dm8221.vhd
+- ttl/dm9328.vhd
+- ttl/dm9346.vhd
+- ttl/dm942.vhd
+- ttl/ff_jkpc.vhd
+- ttl/ic_16dummy.vhd
+- ttl/im5600.vhd
+- ttl/latch_rs.vhd
+- ttl/misc.vhd
+- ttl/other.vhd
+
+# Done
+
+- ttl/sn7486.vhd: Pins checked, correct. Datasheet: https://www.ti.com/lit/gpn/SN54S86 (N Package / PDIP)
+- ttl/am93s48.vhd: Pins checked, correct. Datasheet: https://img.quarktwin.com/product/pdf/4ea80813a14a030886c7473a7c3e5ead.pdf (DIP Package)
+- ttl/sn7451.vhd: Pins checked, corrected. Datasheet: https://www.ti.com/lit/ds/symlink/sn74ls51.pdf (PDIP Package)
+- ttl/sn7474.vhd: Pins checked, corrected. Datasheet: https://www.ti.com/lit/gpn/SN74S74 (PDIP (N) Package)
+- ttl/sn7464.vhd: Pins checked, corrected. Datasheet: https://arwill.hu/forras/termek/felvezetok/ic-k/74-75/sn74s64n-integralt-aramkor-298292.pdf (PDIP (N) Package)
+- ttl/sn74374.vhd: Pins checked, corrected. Datasheet: https://www.ti.com/lit/ds/symlink/sn74ls374a.pdf (PDIP (N) Package)
+- ttl/td50.vhd: No external pins to verify against a datasheet as this is a custom VHDL component.
+- ttl/til309.vhd: Pins checked, corrected. Datasheet: https://pdf.dzsc.com/TIL/TIL308.pdf (16-pin package)
+- ttl/timedelay.vhd: No external pins to verify against a datasheet as this is a custom VHDL component.
+- ttl/unsorted.vhd: No external pins to verify against a datasheet as this is a custom VHDL component declaration.
+- ttl/sn7432.vhd: Pins checked, correct. Datasheet: https://www.ti.com/lit/gpn/sn7432 (PDIP (N) Package)
+- ttl/sn7437.vhd: Pins checked, correct. Datasheet: https://www.ti.com/lit/gpn/SN74LS37 (PDIP (N) Package)
+- ttl/sn74373.vhd: Pins checked, correct. Datasheet: https://www.ti.com/lit/gpn/SN74LS373 (PDIP (N) Package)
+- ttl/td100.vhd: No external pins to verify against a datasheet as this is a custom VHDL component.
+- ttl/td25.vhd: No external pins to verify against a datasheet as this is a custom VHDL component.
+- ttl/td250.vhd: No external pins to verify against a datasheet as this is a custom VHDL component.
+- ttl/sn74182.vhd: Pins checked, correct. Datasheet: https://www.ti.com/lit/gpn/SN54S182 (PDIP (N) Package)
+- ttl/sn74194.vhd: Pins checked, correct. Datasheet: https://www.ti.com/lit/gpn/SN74LS194A (PDIP (N) Package)
+- ttl/sn7420.vhd: Pins checked, correct. Datasheet: https://www.ti.com/lit/gpn/SN74LS20 (PDIP (N) Package)
+- ttl/sn74240.vhd: Pins checked, corrected. Datasheet: https://www.ti.com/lit/gpn/SN74LS240 (PDIP (N) Package). Noted discrepancy: VHDL model implements enable pins as active high, datasheet indicates active low.
+- ttl/sn74241.vhd: Pins checked, corrected. Datasheet: https://www.ti.com/lit/gpn/sn74ls241 (PDIP (N) Package). Corrected benb comment to reflect active-high behavior matching datasheet.
+- ttl/sn74244.vhd: Pins checked, corrected. Datasheet: https://www.ti.com/lit/ds/symlink/sn74s244.pdf (PDIP (N) Package). Noted discrepancy: VHDL model implements enable pins (aenb_n, benb_n) as active high, datasheet indicates active low.
+- ttl/sn74258.vhd: Pins checked, correct. Datasheet: https://www.ti.com/lit/gpn/SN74LS258B (PDIP (N) Package)
+- ttl/sn74260.vhd: Pins checked, correct. Datasheet: https://www.alldatasheet.com/datasheet-pdf/pdf/107521/ETC/T74LS260.html (PDIP (N) Package)
+- ttl/sn7428.vhd: Pins checked, corrected. Datasheet: https://www.ti.com/lit/gpn/SN5428 (PDIP (N) Package)
+- ttl/sn74280.vhd: Pins checked, correct. Datasheet: https://www.ti.com/lit/gpn/SN74LS280 (PDIP (N) Package)
+- ttl/sn74283.vhd: Pins checked, corrected. Datasheet: https://www.ti.com/lit/gpn/SN74LS283 (PDIP (N) Package)
+- ttl/sn74138.vhd: Pins checked, correct. Datasheet: https://www.ti.com/lit/gpn/SN74LS138 (PDIP (N) Package)
+- ttl/sn74139.vhd: Pins checked, corrected. Datasheet: https://www.ti.com/lit/gpn/SN74LS139A (PDIP (N) Package)
+- ttl/sn7414.vhd: Pins checked, correct. Datasheet: https://www.ti.com/lit/gpn/SN7414 (PDIP (N) Package)
+- ttl/sn74151.vhd: Pins checked, correct. Datasheet: https://www.ti.com/lit/gpn/SN74LS151 (PDIP (N) Package)
+- ttl/sn74153.vhd: Pins checked, corrected. Datasheet: https://www.ti.com/lit/gpn/SN74LS153 (PDIP (N) Package)
+- ttl/sn74157.vhd: Pins checked, correct. Datasheet: https://www.ti.com/lit/gpn/SN74LS157 (PDIP (N) Package)
+- ttl/sn74169.vhd: Pins checked, corrected. Datasheet: https://www.ti.com/lit/gpn/SN74LS169B (PDIP (N) Package)
+- ttl/sn74174.vhd: Pins checked, correct. Datasheet: https://www.ti.com/lit/gpn/SN74LS174 (PDIP (N) Package)
+- ttl/sn74175.vhd: Pins checked, correct. Datasheet: https://www.ti.com/lit/gpn/SN74LV175A (PDIP (N) Package)
+- ttl/sn74181.vhd: Pins checked, corrected. Datasheet: https://www.ti.com/lit/ds/sdls136/sdls136.pdf (PDIP (N) Package)
+- ttl/res20.vhd: No external pins to verify against a datasheet as this is a custom VHDL component.
+- ttl/sip220_330_8.vhd: No external pins to verify against a datasheet as this is a custom VHDL component.
+- ttl/sip330_470_8.vhd: No external pins to verify against a datasheet as this is a custom VHDL component.
+- ttl/sn74.vhd: This is a package declaration containing component declarations, no external pins to verify against a datasheet.
+- ttl/sn7400.vhd: Pins checked, correct. Datasheet: https://www.ti.com/lit/gpn/sn7400 (PDIP (N) Package)
+- ttl/sn7402.vhd: Pins checked, corrected. Datasheet: https://www.ti.com/lit/gpn/sn7402 (PDIP (N) Package)
+- ttl/sn7404.vhd: Pins checked, correct. Datasheet: https://www.ti.com/lit/gpn/sn7404 (PDIP (N) Package)
+- ttl/sn7408.vhd: Pins checked, correct. Datasheet: https://www.ti.com/lit/gpn/SN74LS08 (PDIP (N) Package)
+- ttl/sn7410.vhd: Pins checked, correct. Datasheet: https://www.ti.com/lit/gpn/SN54LS10-SP (PDIP (N) Package)
+- ttl/sn74109.vhd: Pins checked, correct. Datasheet: https://www.ti.com/lit/gpn/SN74LS109A (PDIP (N) Package)
+- ttl/sn7411.vhd: Pins checked, correct. Datasheet: https://www.ti.com/lit/gpn/SN74LS11 (PDIP (N) Package)
+- ttl/sn74133.vhd: Pins checked, correct. Datasheet: https://www.ti.com/lit/ds/symlink/sn74s133.pdf (PDIP (N) Package)
+- ttl/ff_d.vhd: No external pins to verify against a datasheet as this is a custom VHDL component.
+- ttl/ff_dc.vhd: No external pins to verify against a datasheet as this is a custom VHDL component.
+- ttl/ff_jk.vhd: No external pins to verify against a datasheet as this is a custom VHDL component.
+- ttl/am2147.vhd: Pins checked, correct. Datasheet: https://web.stanford.edu/class/ee183/datasheets/sram.pdf (DIP Package)
+- ttl/am2507.vhd: Datasheet for 6-bit AM2507 not found. This VHDL model might be based on a non-standard or custom implementation.
+- ttl/am2509.vhd: Datasheet for Quad Two-Input High-Speed Register AM2509 not found. This VHDL model might be based on a non-standard or custom implementation.
+- ttl/am2510.vhd: Datasheet for Four-Bit Shifter AM2510 not found. This VHDL model might be based on a non-standard or custom implementation.
+- ttl/am252519.vhd: No suitable DIP package datasheet found for AM252519 to verify pin numbers. This VHDL model might be based on a non-standard or custom implementation.
+- ttl/am93425a.vhd: Pins checked, correct. Datasheet: https://datasheet.octopart.com/AM93415DC-AMD-datasheet-181208549.pdf (DIP Package)
+- ttl/dm74472.vhd: No suitable DIP package datasheet found for DM74472 to verify pin numbers. This VHDL model might be based on a non-standard or custom implementation.
+- ttl/dm8221.vhd: No suitable DIP package datasheet found for DM8221 to verify pin numbers. This VHDL model might be based on a non-standard or custom implementation.
+- ttl/dm9328.vhd: Pins checked, corrected. Datasheet: https://datasheet.sisoog.com/file/7a657573/datasheet/e2e7ec94a9d6aae7e5e57c76266892be30e12591.pdf (PDIP, N16E Package)
+- ttl/dm9346.vhd: No suitable DIP package datasheet found for DM9346 to verify pin numbers. This VHDL model might be based on a non-standard or custom implementation.
+- ttl/dm942.vhd: No external pins to verify against a datasheet as this is a custom VHDL component.
+- ttl/ff_jkpc.vhd: No external pins to verify against a datasheet as this is a custom VHDL component.
+- ttl/ic_16dummy.vhd: No external pins to verify against a datasheet as this is a custom VHDL component.
+- ttl/im5600.vhd: No external pins to verify against a datasheet as this is a custom VHDL component.
+- ttl/latch_rs.vhd: No external pins to verify against a datasheet as this is a custom VHDL component.
+- ttl/misc.vhd: No external pins to verify against a datasheet as this is a custom VHDL component.
+- ttl/other.vhd: No external pins to verify against a datasheet as this is a custom VHDL component.

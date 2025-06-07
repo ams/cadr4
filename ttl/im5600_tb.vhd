@@ -4,8 +4,7 @@ use ieee.numeric_std.all;
 use std.textio.all;
 use ieee.std_logic_textio.all;
 
-library ttl;
-use ttl.other.all;
+use work.other.all;
 
 entity im5600_tb is
 end;

@@ -6,8 +6,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-library ttl;
-use ttl.misc.all;
+use work.misc.all;
 
 entity am2509 is
   port (

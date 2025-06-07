@@ -17,8 +17,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-library ttl;
-use ttl.misc.all;
+use work.misc.all;
 
 -- Datasheet: Texas Instruments SN74LS181 Arithmetic Logic Units/Function Generators, PDIP (N) Package
 -- URL: https://www.ti.com/lit/ds/sdls136/sdls136.pdf
