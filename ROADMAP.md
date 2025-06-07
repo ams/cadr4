@@ -9,10 +9,10 @@ current microcode and world load band.
 ## Accurate simulation of CADR
 
 Implement an accurate version of the original CADR schematics (CADR)
-that can run in simulation.  This would most probobly not have vull
+that can run in simulation.  This would most probably not have full
 virtual memory, any bus for I/O, etc.  And only capable of running
 through the boot PROM and failing at either the first memory access,
-or looping in DISK-WAIT.  It would also most probobly not be
+or looping in DISK-WAIT.  It would also most probably not be
 syntheziable.
 
 ## Two-Machine Lashup
@@ -67,7 +67,6 @@ Error code:
 #o10	DEBUGGER GOT PARITY ERROR, RESETTING DEBUGGER; when getting this we type out #o33
 #o15	Nothing.
 ```
-
 
 ## Open Questions
 
