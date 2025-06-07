@@ -2,7 +2,7 @@
 
 ## Overview
 
-- This project is a hardware simulation of the MIT CADR Lisp Machine.
+- This project is a digitally accurate simulation of the MIT CADR Lisp Machine.
 - This project will not be synthesized. It will be simulated using GHDL with LLVM backend.
 - This project complies with VHDL-2008. You MUST write VHDL-2008 compliant code.
 
@@ -61,6 +61,10 @@ Make targets are as follows.
 ## Differences from datasheets
 
 - SN74241 BENB is implemented as active high even though it is active low in the datasheet.
+
+## Notes
+
+- dip_5600 and dip_5610 both uses im5600. im5600 and im5610 are digitally equivalent.
 
 ## Resources
 
