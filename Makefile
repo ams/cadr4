@@ -157,7 +157,7 @@ work-obj$(GHDLSTD).cf: $(SRCS) $(TB_SRCS) $(PKG_SRCS)
 	mkdir -p $(BUILDDIR)
 	$(GHDL) make --std=$(GHDLSTD) --workdir=$(BUILDDIR) -o $(BUILDDIR)/$(notdir $@) $(notdir $@)
 
-.PHONY: all syntax check clean
+.PHONY: all syntax check clean books
 
 all: $(OBJS) $(TB_EXES)
 
@@ -169,3 +169,8 @@ check: $(TB_EXES)
 
 clean:
 	rm -rf $(BUILDDIR)
+
+books:
+	make -C soap clean
+	make -C soap all
+	sh ./make-books.sh
