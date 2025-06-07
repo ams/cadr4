@@ -8,10 +8,11 @@
 
 ## Project Structure
 
-- The project root directory contains CADR-specific components built into cadr library. 
-- The ttl subdirectory contains the TTL components built into ttl library.
-- cadr library depends on ttl library. ttl library should be built first.
-- work library is not used in this project. You MUST NOT use work library.
+- The project has three major subdirectories; ttl, dip and cadr.
+- The ttl subdirectory contains the TTL components. These are put into sn74, other, misc and unsorted packages.
+- The dip subdirectory contains the wrappers of TTL components, so called DIP components. These are put into dip package.
+- The cadr subdirectory contains the MIT CADR schematic entities. These are put into cadr package.
+- The project uses no special library, everything is put into the work library.
 
 ### File Naming
 
@@ -30,30 +31,26 @@
 
 The project uses a Make-based build system.
 
-The root directory and ttl directory have different Makefiles and must be built separately.
+There is only one Makefile, in the project root.
 
-Make targets are as follows. Keep in mind these run only for the current folder, thus for cadr or ttl.
+The build artifacts (work library, objects, executables) are put into the build directory.
+
+Make targets are as follows.
 
 - `make all`: Compile all sources and testbenches
-- `make clean`: Remove all build artifacts (.o, .cf, executables, waveforms)
+- `make clean`: Remove all build artifacts (build directory)
 - `make check`: Run all testbenches
-- `make tb-X`: Run specific testbench for entity X (effectively runs X_tb.vhd)
-- `make vcd-X`: Run testbench for X and open VCD viewer
+- `make syntax`: Check syntax of all sources and testbenches
 
 ## Development Workflow
 
-- Prefer running single testbenches with `make tb-X` over running all testbenches with `make check`.
-- You MUST always run a testbench after changing an entity to verify and validate its logic before proceeding.
-- When asked to implement or fix an entity, make sure its testbench is up to date first. Then, implement the fix or change, run the testbench and iterate until there is no error. Do not wait for my confirmation to proceed unless there is an ambiguity.
-- If instructed to update TODO, use AGENT-TODO.md file in the project root folder.
-
 ### Code Modification Guidelines
 
-- NEVER modify port definitions, these are manually maintained.
+- NEVER modify port definitions under ttl subdirectory, these are manually maintained.
+- NEVER modify port definitions under cadr subdirectory, these are manually maintained.
+- NEVER modify the package and component definitions.
 - NEVER assume meaning from port definition, ALWAYS consult the datasheets.
 - ALWAYS aim to have strict datasheet behavior.
-- Always run testbenches using make commands, not directly.
-- Avoid inline comments.
 
 ### Git Workflow
 
