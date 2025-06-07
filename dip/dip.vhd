@@ -1083,7 +1083,7 @@ package dip is
     p12 : in std_logic;                 -- dp
     p13 : in std_logic;                 -- test_n
     p14 : in std_logic;                 -- ldp
-    p15 : in std_logic;                 -- i1        
+    p15 : in std_logic                  -- i1
     );
   end component;
 
