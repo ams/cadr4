@@ -8,12 +8,12 @@ use ttl.misc.all;
 
 entity td250 is
   port (
-    input   : in  std_logic;
-    o_50ns  : out std_logic;
-    o_100ns : out std_logic;
-    o_150ns : out std_logic;
-    o_200ns : out std_logic;
-    o_250ns : out std_logic
+    input   : in  std_logic; -- 1
+    o_50ns  : out std_logic; -- 12
+    o_100ns : out std_logic; -- 4
+    o_150ns : out std_logic; -- 10
+    o_200ns : out std_logic; -- 6
+    o_250ns : out std_logic  -- 8
     );
 end;
 
