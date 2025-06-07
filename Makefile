@@ -162,7 +162,7 @@ work-obj$(GHDLSTD).cf: $(SRCS) $(TB_SRCS) $(PKG_SRCS)
 all: $(OBJS) $(TB_EXES)
 
 syntax:
-	$(GHDL) syntax $(GHDLOPTIONS) --std=$(GHDLSTD) $(SRCS) $(TB_SRCS)
+	$(GHDL) syntax $(GHDLOPTIONS) --std=$(GHDLSTD) $(PKG_SRCS) $(SRCS) $(TB_SRCS)
 
 check: $(TB_EXES)
 	$(foreach TB_EXE, $(TB_EXES), $(GHDL) run $(GHDLOPTIONS) $(TB_EXE) ;)

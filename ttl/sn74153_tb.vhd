@@ -30,7 +30,7 @@ architecture behavior of sn74153_tb is
 
 begin
 
-  uut : entity ttl.sn74153(rtl)
+  uut : entity work.sn74153(rtl)
     port map (
       sela   => sela,
       selb   => selb,

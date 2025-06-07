@@ -2,10 +2,8 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-library dip;
-use dip.dip.all;
+use work.dip.all;
 
-library ttl;
 
 entity dip_74ls109_tb is
 end dip_74ls109_tb;
@@ -21,9 +19,20 @@ architecture behavior of dip_74ls109_tb is
   signal q2_uut, q2_n_uut               : std_logic;
   signal q2_golden, q2_n_golden         : std_logic;
 
+  signal q_dip, qn_dip : std_logic;
+
+  component sn74109 is
+    port (
+      j, k_n, clk, pre_n, clr_n : in    std_logic;
+      q, q_n                    : out   std_logic
+      );
+  end component;
+
+  signal golden_q, golden_qn : std_logic;
+
 begin
 
-  uut : entity dip.dip_74ls109
+  uut : entity work.dip_74ls109
     port map (
       p1  => clr1_n,
       p2  => j1,
@@ -41,22 +50,15 @@ begin
       p15 => clr2_n
       );
 
-  golden : entity ttl.sn74109
+  golden : entity work.sn74109
     port map (
-      clr1_n => clr1_n,
-      j1     => j1,
-      k1_n   => k1_n,
-      clk1   => clk1,
-      pre1_n => pre1_n,
-      q1     => q1_golden,
-      q1_n   => q1_n_golden,
-      q2_n   => q2_n_golden,
-      q2     => q2_golden,
-      pre2_n => pre2_n,
-      clk2   => clk2,
-      k2_n   => k2_n,
-      j2     => j2,
-      clr2_n => clr2_n
+      j     => j1,
+      k_n   => k1_n,
+      clk   => clk1,
+      pre_n => pre1_n,
+      clr_n => clr1_n,
+      q     => q1_golden,
+      q_n   => q1_n_golden
       );
 
   stimulus : process

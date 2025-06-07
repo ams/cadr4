@@ -1,10 +1,8 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-library dip;
-use dip.dip.all;
+use work.dip.all;
 
-library ttl;
 
 entity dip_5610 is
   generic (fn : string := "");
@@ -33,7 +31,7 @@ begin
   -- im5600 doesn't have gnd and vcc
   -- so they are not mapped.
 
-  ttl_inst : entity ttl.im5600
+  ttl_inst : entity work.im5600
     generic map (fn => fn)
     port map (
       o0   => p1,

@@ -5,8 +5,7 @@ use ieee.numeric_std.all;
 library std;
 use std.textio.all;
 
-library dip;
-use dip.dip.all;
+use work.dip.all;
 
 entity dip_74ls244_tb is
 end entity;
@@ -42,7 +41,7 @@ architecture behavior of dip_74ls244_tb is
   alias benb_n is p19;
 
 begin
-  uut : entity dip.dip_74ls244
+  uut : entity work.dip_74ls244
     port map (
       p1  => p1,
       p2  => p2,

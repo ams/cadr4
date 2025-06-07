@@ -1,8 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-library ttl;
-use ttl.other.all;
+use work.other.all;
 
 entity dip_25ls2519 is
   port (
@@ -24,13 +23,12 @@ entity dip_25ls2519 is
     p17 : in  std_logic;
     p18 : in  std_logic;
     p19 : in  std_logic
-    );
+  );
 end entity;
 
 architecture dip of dip_25ls2519 is
 begin
-
-  U_am252519 : am252519
+  U1 : entity work.am252519
     port map (
       i0         => p1,
       q0a        => p2,
@@ -51,5 +49,4 @@ begin
       inv        => p18,
       asyn_clr_n => p19
     );
-
-end architecture; 
+end architecture;

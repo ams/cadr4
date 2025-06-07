@@ -3,10 +3,8 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use std.textio.all;
 
-library dip;
-use dip.dip.all;
+use work.dip.all;
 
-library ttl;
 
 entity dip_5610_tb is
 end entity;
@@ -30,7 +28,7 @@ architecture test of dip_5610_tb is
 begin
 
   -- Instantiate the wrapper
-  dut_dip : entity dip.dip_5610
+  dut_dip : entity work.dip_5610
     generic map(
       fn => rom_file)
     port map(
@@ -53,7 +51,7 @@ begin
   o_dip <= p9 & p7 & p6 & p5 & p4 & p3 & p2 & p1;
 
   -- Instantiate the actual TTL component for verification
-  dut_ttl : entity ttl.im5600
+  dut_ttl : entity work.im5600
     generic map(
       fn => rom_file)
     port map(

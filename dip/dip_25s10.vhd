@@ -1,10 +1,8 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-library dip;
-use dip.dip.all;
+use work.dip.all;
 
-library ttl;
 
 entity dip_25s10 is
   port (
@@ -32,7 +30,7 @@ begin
   -- am2510 doesn't have gnd and vcc
   -- so they are not mapped.
 
-  ttl_inst : entity ttl.am2510
+  ttl_inst : entity work.am2510
     port map (
       i_3  => p1,
       i_2  => p2,

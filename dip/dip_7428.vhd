@@ -1,10 +1,8 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-library dip;
-use dip.dip.all;
+use work.dip.all;
 
-library ttl;
 
 entity dip_7428 is
   port (
@@ -30,7 +28,7 @@ begin
   -- sn7428 doesn't have gnd and vcc
   -- so they are not mapped.
 
-  ttl_inst : entity ttl.sn7428
+  ttl_inst : entity work.sn7428
     port map (
       g1q_n => p1,
       g1a   => p2,

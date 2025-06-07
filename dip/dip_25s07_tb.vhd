@@ -1,11 +1,9 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-library dip;
-use dip.dip.all;
+use work.dip.all;
 
-library ttl;
-use ttl.other.all;
+use work.other.all;
 
 entity dip_25s07_tb is
 end entity;

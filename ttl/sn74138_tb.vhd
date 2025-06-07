@@ -11,7 +11,7 @@ architecture testbench of sn74138_tb is
   signal a, b, c, g1, g2a, g2b : std_logic;
   signal y : std_logic_vector(7 downto 0);
 begin
-  uut: entity ttl.sn74138 port map (
+  uut: entity work.sn74138 port map (
     a => a,
     b => b,
     c => c,

@@ -51,6 +51,7 @@ Make targets are as follows.
 - NEVER modify the package and component definitions.
 - NEVER assume meaning from port definition, ALWAYS consult the datasheets.
 - ALWAYS aim to have strict datasheet behavior.
+- Ignore the power pins, VCC and GND, in the datasheets. We only implement the digital circuits.
 
 ### Git Workflow
 

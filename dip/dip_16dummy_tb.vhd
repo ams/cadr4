@@ -1,66 +1,46 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-library dip;
-use dip.dip.all;
+use work.dip.all;
 
-library ttl;
-use ttl.unsorted.all;
+use work.other.all;
 
 entity dip_16dummy_tb is
 end entity;
 
-architecture test of dip_16dummy_tb is
+architecture tb of dip_16dummy_tb is
+  signal p12, p13, p14, p15, p16 : std_logic;
 
-  -- dip_16dummy signals
-  signal p12_dip : std_logic;
-  signal p13_dip : std_logic;
-  signal p14_dip : std_logic;
-  signal p15_dip : std_logic;
-  signal p16_dip : std_logic;
-
-  -- ic_16dummy signals
-  signal power_reset_ttl : std_logic;
-  signal boot2_ttl       : std_logic;
-  signal boot1_ttl       : std_logic;
-  signal hi2_ttl         : std_logic;
-  signal hi1_ttl         : std_logic;
-
+  signal power_reset, boot1, boot2, hi1, hi2 : std_logic;
 begin
 
-  -- Instantiate wrapper
-  U_dip_16dummy : dip_16dummy
+  UUT_DIP : component dip_16dummy
     port map (
-      p12 => p12_dip,
-      p13 => p13_dip,
-      p14 => p14_dip,
-      p15 => p15_dip,
-      p16 => p16_dip
+      p12 => p12,
+      p13 => p13,
+      p14 => p14,
+      p15 => p15,
+      p16 => p16
     );
 
-  -- Instantiate original component
-  U_ic_16dummy : ic_16dummy
+  UUT_TTL : entity work.ic_16dummy
     port map (
-      \-power_reset\ => power_reset_ttl,
-      \-boot2\       => boot2_ttl,
-      \-boot1\       => boot1_ttl,
-      hi2            => hi2_ttl,
-      hi1            => hi1_ttl
+      \-power_reset\ => power_reset,
+      \-boot1\       => boot1,
+      \-boot2\       => boot2,
+      hi1            => hi1,
+      hi2            => hi2
     );
 
-  -- Verification process
   process is
   begin
     wait for 1 ns;
-
-    assert p12_dip = power_reset_ttl report "p12 mismatch" severity failure;
-    assert p13_dip = boot2_ttl report "p13 mismatch" severity failure;
-    assert p14_dip = boot1_ttl report "p14 mismatch" severity failure;
-    assert p15_dip = hi2_ttl report "p15 mismatch" severity failure;
-    assert p16_dip = hi1_ttl report "p16 mismatch" severity failure;
-
-    report "dip_16dummy test passed.";
+    assert p12 = power_reset report "p12 mismatch" severity failure;
+    assert p13 = boot2 report "p13 mismatch" severity failure;
+    assert p14 = boot1 report "p14 mismatch" severity failure;
+    assert p15 = hi2 report "p15 mismatch" severity failure;
+    assert p16 = hi1 report "p16 mismatch" severity failure;
     wait;
   end process;
 
-end architecture; 
+end architecture;

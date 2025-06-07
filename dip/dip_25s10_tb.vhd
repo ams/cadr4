@@ -2,10 +2,8 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-library dip;
-use dip.dip.all;
+use work.dip.all;
 
-library ttl;
 
 entity dip_25s10_tb is
 end dip_25s10_tb;
@@ -19,7 +17,7 @@ architecture behavior of dip_25s10_tb is
 
 begin
 
-  uut : entity dip.dip_25s10
+  uut : entity work.dip_25s10
     port map (
       p1  => i_3,
       p2  => i_2,
@@ -37,7 +35,7 @@ begin
       p15 => o0_uut
       );
 
-  golden : entity ttl.am2510
+  golden : entity work.am2510
     port map (
       i_3     => i_3,
       i_2     => i_2,

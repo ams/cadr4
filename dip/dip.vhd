@@ -14,9 +14,8 @@ use ieee.std_logic_1164.all;
 -- This is then used to generate the entities and architectures in seperate
 -- dip/dip_<dip-name>.vhd files.:
 --
---      library ttl;
---      use ttl.sn74.all;
---      use ttl.other.all;
+--      use work.sn74.all;
+--      use work.other.all;
 --
 --      entity <dip-name> is port (
 --        <dip-pin-name> : <direction> std_logic;
@@ -796,25 +795,25 @@ package dip is
     );
   end component;
 
-  component dip_74s472 is port (        -- dm74472 [74s472]
-    p1  : in  std_logic;                 -- a0
-    p2  : in  std_logic;                 -- a1
-    p3  : in  std_logic;                 -- a2
-    p4  : in  std_logic;                 -- a3
+  component dip_74s472 is port (        -- dm74s472 [74s472]
+    p1  : in  std_logic;                 -- a8
+    p2  : in  std_logic;                 -- a7
+    p3  : in  std_logic;                 -- a6
+    p4  : in  std_logic;                 -- a5
     p5  : in  std_logic;                 -- a4
-    p6  : out std_logic;                 -- d0
-    p7  : out std_logic;                 -- d1
-    p8  : out std_logic;                 -- d2
-    p9  : out std_logic;                 -- d3
-    p11 : out std_logic;                 -- d4
-    p12 : out std_logic;                 -- d5
-    p13 : out std_logic;                 -- d6
-    p14 : out std_logic;                 -- d7
-    p15 : in  std_logic;                 -- ce_n
-    p16 : in  std_logic;                 -- a5
-    p17 : in  std_logic;                 -- a6
-    p18 : in  std_logic;                 -- a7
-    p19 : in  std_logic                  -- a8
+    p6  : in  std_logic;                 -- a3
+    p7  : in  std_logic;                 -- a2
+    p8  : in  std_logic;                 -- a1
+    p9  : in  std_logic;                 -- a0
+    p11 : out std_logic;                 -- d0
+    p12 : out std_logic;                 -- d1
+    p13 : out std_logic;                 -- d2
+    p14 : out std_logic;                 -- d3
+    p15 : out std_logic;                 -- d4
+    p16 : out std_logic;                 -- d5
+    p17 : out std_logic;                 -- d6
+    p18 : out std_logic;                 -- d7
+    p19 : in  std_logic                  -- ce_n
     );
   end component;
 

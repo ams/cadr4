@@ -1,4 +1,3 @@
-
 I would like to create wrappers for ttl entities so the ttl entities can be instantiated and port mapped using pin numbers instead of port names.
 
 The component declaration of the wrappers are given in dip/dip.vhd file. Do not modify the dip/dip.vhd file. Do not modify anything under ttl directory.
@@ -13,4 +12,4 @@ Run testbench to see if your changes are correct.
 
 For dip_5600_tb, use roms/mskg4_*.hex files as data to load to the ROM.
 
-For dip_74s472, use roms/prom1_*.hex files as data to load to the ROM.
+For dip_74s472, use roms/prom1_*.hex files as data to load to the ROM. 

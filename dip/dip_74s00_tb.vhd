@@ -5,8 +5,7 @@ use ieee.numeric_std.all;
 library std;
 use std.textio.all;
 
-library dip;
-use dip.dip.all;
+use work.dip.all;
 
 entity dip_74s00_tb is
 end entity;
@@ -15,7 +14,7 @@ architecture behavior of dip_74s00_tb is
   signal p1, p2, p4, p5, p9, p10, p12, p13 : std_logic;
   signal p3, p6, p8, p11 : std_logic;
 begin
-  uut : entity dip.dip_74s00
+  uut : entity work.dip_74s00
     port map (
       p1  => p1,
       p2  => p2,
