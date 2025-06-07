@@ -67,3 +67,4 @@ project](https://tumbleweed.nu/r/lm-3).
   - [The CADR Microprocessor](https://tumbleweed.nu/r/lm-3/uv/cadr.html)
   - [Implementation of a List Processing Machine](https://tumbleweed.nu/r/lm-3/uv/knight-thesis.html)
   - [CADR Schematics](https://tumbleweed.nu/lm-3/schematics.html)
+  - [Interactive CADR Schematics](https://www.nexoid.at/cadr/clock1.html)
