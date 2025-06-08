@@ -9,9 +9,13 @@ GHDL		= ghdl
 GHDLSTD		= 08
 GHDLIMPORTOPTIONS	= -v -g
 GHDLMAKEOPTIONS		= -v -g -Wc,-Werror
-GHDLRUNOPTIONS		=
+GHDLRUNOPTIONS		= -v -g
 GHDLSIMOPTIONS		= --backtrace-severity=warning
-#GHDLSIMOPTIONS		+= --assert-level=warning
+GHDLSIMOPTIONS		+= --assert-level=warning
+
+# list source files below without ttl, dip or cadr path
+# paths are added later
+# testbenches (_tb.vhd) is found by wildcard
 
 UNSORTED_SRCS = ic_16dummy.vhd
 
@@ -83,6 +87,7 @@ MISC_SRCS = latch_rs.vhd \
 			timedelay.vhd
 
 TTL_SRCS = $(MISC_SRCS) $(OTHER_SRCS) $(SN74_SRCS) $(UNSORTED_SRCS)
+TTL_TB_SRCS = $(notdir $(wildcard ttl/*_tb.vhd))
 
 DIP_SRCS = dip_16dummy.vhd \
 		   dip_2147.vhd \
@@ -130,52 +135,57 @@ DIP_SRCS = dip_16dummy.vhd \
 		   dip_74s373.vhd \
 		   dip_74s472.vhd
 
+DIP_TB_SRCS = $(notdir $(wildcard dip/*_tb.vhd))
+
 PKG_SRCS = ttl/misc.vhd ttl/other.vhd ttl/sn74.vhd ttl/unsorted.vhd dip/dip.vhd
 
+# DO NOT MODIFY ANYTHING BELOW
+
 TTL_SRCS := $(addprefix ttl/, $(TTL_SRCS)) 
-TTL_TB_SRCS := $(wildcard ttl/*_tb.vhd)
-TTL_TB_EXES := $(patsubst %.vhd,%,$(TTL_TB_SRCS))
+TTL_TB_EXES := $(patsubst %.vhd,$(BUILDDIR)/%,$(TTL_TB_SRCS))
+TTL_TB_SRCS := $(addprefix ttl/,$(TTL_TB_SRCS))
 
 DIP_SRCS := $(addprefix dip/, $(DIP_SRCS)) 
-DIP_TB_SRCS := $(wildcard dip/*_tb.vhd)
-DIP_TB_EXES := $(patsubst %.vhd,%,$(DIP_TB_SRCS))
+DIP_TB_EXES := $(patsubst %.vhd,$(BUILDDIR)/%,$(DIP_TB_SRCS))
+DIP_TB_SRCS := $(addprefix dip/,$(DIP_TB_SRCS))
 
 SRCS := $(TTL_SRCS) $(DIP_SRCS)
 TB_SRCS := $(TTL_TB_SRCS) $(DIP_TB_SRCS)
 
-OBJS := $(patsubst %.vhd,%.o,$(SRCS))
-TB_EXES := $(TTL_TB_EXES) $(DIP_TB_EXES)
-
 .DEFAULT_GOAL := all
 
-work-obj$(GHDLSTD).cf: $(SRCS) $(TB_SRCS) $(PKG_SRCS)
+# ghdl import and make works weird, all the build process is weird
+# there is no sane way to build object files manually in this way
+# building (and linking) a tb will build object files, less worries like this
+# all objects and _tb executables are build into $(BUILDDIR)
+
+$(BUILDDIR)/work-obj$(GHDLSTD).cf: $(SRCS) $(TB_SRCS) $(PKG_SRCS)
 	mkdir -p $(BUILDDIR)
 	$(GHDL) import $(GHDLIMPORTOPTIONS) --std=$(GHDLSTD) --workdir=$(BUILDDIR) $^
 
-# -b means bind only, in other words don't link, so create only object file
-%.o: %.vhd work-obj$(GHDLSTD).cf
+%_tb: $(BUILDDIR)/work-obj$(GHDLSTD).cf
 	mkdir -p $(BUILDDIR)
-	$(GHDL) make $(GHDLMAKEOPTIONS) --std=$(GHDLSTD) --workdir=$(BUILDDIR) -o $(BUILDDIR)/$(notdir $@) -b $(basename $(notdir $@))
+	$(GHDL) make $(GHDLMAKEOPTIONS) --std=$(GHDLSTD) --workdir=$(BUILDDIR) -o $@ $(notdir $@)
 
-%: %.vhd work-obj$(GHDLSTD).cf
-	mkdir -p $(BUILDDIR)
-	$(GHDL) make $(GHDLMAKEOPTIONS) --std=$(GHDLSTD) --workdir=$(BUILDDIR) -o $(BUILDDIR)/$(notdir $@) $(notdir $@)
+.PHONY: all ttl dip check ttl-check dip-check run-tb clean books
 
-.PHONY: all check ttl-check dip-check clean books
+all: ttl dip
 
-all: $(OBJS) $(TB_EXES)
+ttl: $(TTL_TB_EXES)
+
+dip: $(DIP_TB_EXES)
 
 check: ttl-check dip-check
 
-define NEWLINE
-
-endef
-
 ttl-check: $(TTL_TB_EXES)
-	(cd $(BUILDDIR); $(foreach TB_EXE, $(TTL_TB_EXES), $(GHDL) run $(GHDLRUNOPTIONS) $(notdir $(TB_EXE)) $(GHDLSIMOPTIONS) || exit; ))
+	for TB_EXE in $^; do TB=$$TB_EXE make run-tb; done
 
 dip-check: $(DIP_TB_EXES)
-	(cd $(BUILDDIR); $(foreach TB_EXE, $(DIP_TB_EXES), $(GHDL) run $(GHDLRUNOPTIONS) $(notdir $(TB_EXE)) || exit; ))
+	for TB_EXE in $^; do TB=$$TB_EXE make run-tb; done
+
+# --workdir does not work below with ghdl run, we should cd and dont use --workdir
+run-tb:
+	cd $(BUILDDIR); $(GHDL) run $(GHDLRUNOPTIONS) --std=$(GHDLSTD) $(notdir $(TB)) $(GHDLSIMOPTIONS)
 
 clean:
 	rm -rf $(BUILDDIR)
