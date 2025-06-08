@@ -321,23 +321,23 @@ package other is
 
   component sip220_330_8 is
     port (
-      r2 : out std_logic;
-      r3 : out std_logic;
-      r4 : out std_logic;
-      r5 : out std_logic;
-      r6 : out std_logic;
-      r7 : out std_logic
+      r2 : in std_logic;
+      r3 : in std_logic;
+      r4 : in std_logic;
+      r5 : in std_logic;
+      r6 : in std_logic;
+      r7 : in std_logic
       );
   end component;
 
   component sip330_470_8 is
     port (
-      r2 : out std_logic;
-      r3 : out std_logic;
-      r4 : out std_logic;
-      r5 : out std_logic;
-      r6 : out std_logic;
-      r7 : out std_logic
+      r2 : in std_logic;
+      r3 : in std_logic;
+      r4 : in std_logic;
+      r5 : in std_logic;
+      r6 : in std_logic;
+      r7 : in std_logic
       );
   end component;
 

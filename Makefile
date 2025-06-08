@@ -3,13 +3,15 @@
 # ghdl cannot work with parallel runs
 .NOTPARALLEL:
 
-BUILDDIR		= build
-VCDFORMAT		= vcd
-GHDL			= ghdl
-GHDLSTD			= 08
-GHDLOPTIONS		= -v -g
-GHDLSIMOPTIONS	= --backtrace-severity=warning
-#GHDLSIMOPTIONS	+= --assert-level=warning
+BUILDDIR	= build
+VCDFORMAT	= vcd
+GHDL		= ghdl
+GHDLSTD		= 08
+GHDLIMPORTOPTIONS	= -v -g
+GHDLMAKEOPTIONS		= -v -g -Wc,-Werror
+GHDLRUNOPTIONS		=
+GHDLSIMOPTIONS		= --backtrace-severity=warning
+#GHDLSIMOPTIONS		+= --assert-level=warning
 
 UNSORTED_SRCS = ic_16dummy.vhd
 
@@ -132,40 +134,44 @@ PKG_SRCS = ttl/misc.vhd ttl/other.vhd ttl/sn74.vhd ttl/unsorted.vhd dip/dip.vhd
 
 TTL_SRCS := $(addprefix ttl/, $(TTL_SRCS)) 
 TTL_TB_SRCS := $(wildcard ttl/*_tb.vhd)
+TTL_TB_EXES := $(patsubst %.vhd,%,$(TTL_TB_SRCS))
 
 DIP_SRCS := $(addprefix dip/, $(DIP_SRCS)) 
 DIP_TB_SRCS := $(wildcard dip/*_tb.vhd)
+DIP_TB_EXES := $(patsubst %.vhd,%,$(DIP_TB_SRCS))
 
 SRCS := $(TTL_SRCS) $(DIP_SRCS)
 TB_SRCS := $(TTL_TB_SRCS) $(DIP_TB_SRCS)
 
 OBJS := $(patsubst %.vhd,%.o,$(SRCS))
-TB_EXES := $(patsubst %.vhd,%,$(TB_SRCS))
+TB_EXES := $(TTL_TB_EXES) $(DIP_TB_EXES)
 
 .DEFAULT_GOAL := all
 
 work-obj$(GHDLSTD).cf: $(SRCS) $(TB_SRCS) $(PKG_SRCS)
 	mkdir -p $(BUILDDIR)
-	$(GHDL) import $(GHDLOPTIONS) --std=$(GHDLSTD) --workdir=$(BUILDDIR) $^
+	$(GHDL) import $(GHDLIMPORTOPTIONS) --std=$(GHDLSTD) --workdir=$(BUILDDIR) $^
 
 # -b means bind only, in other words don't link, so create only object file
 %.o: %.vhd work-obj$(GHDLSTD).cf
 	mkdir -p $(BUILDDIR)
-	$(GHDL) make --std=$(GHDLSTD) --workdir=$(BUILDDIR) -o $(BUILDDIR)/$(notdir $@) -b $(basename $(notdir $@))
+	$(GHDL) make $(GHDLMAKEOPTIONS) --std=$(GHDLSTD) --workdir=$(BUILDDIR) -o $(BUILDDIR)/$(notdir $@) -b $(basename $(notdir $@))
 
 %: %.vhd work-obj$(GHDLSTD).cf
 	mkdir -p $(BUILDDIR)
-	$(GHDL) make --std=$(GHDLSTD) --workdir=$(BUILDDIR) -o $(BUILDDIR)/$(notdir $@) $(notdir $@)
+	$(GHDL) make $(GHDLMAKEOPTIONS) --std=$(GHDLSTD) --workdir=$(BUILDDIR) -o $(BUILDDIR)/$(notdir $@) $(notdir $@)
 
-.PHONY: all syntax check clean books
+.PHONY: all check ttl-check dip-check clean books
 
 all: $(OBJS) $(TB_EXES)
 
-syntax:
-	$(GHDL) syntax $(GHDLOPTIONS) --std=$(GHDLSTD) $(PKG_SRCS) $(SRCS) $(TB_SRCS)
+check: ttl-check dip-check
 
-check: $(TB_EXES)
-	(cd $(BUILDDIR); $(foreach TB_EXE, $(TB_EXES), $(GHDL) run $(GHDLOPTIONS) $(notdir $(TB_EXE)) ;))
+ttl-check: $(TTL_TB_EXES)
+	(cd $(BUILDDIR); $(foreach TB_EXE, $(TTL_TB_EXES), $(GHDL) run $(GHDLRUNOPTIONS) $(notdir $(TB_EXE)) $(GHDLSIMOPTIONS) || exit;))
+
+dip-check: $(DIP_TB_EXES)
+	(cd $(BUILDDIR); $(foreach TB_EXE, $(DIP_TB_EXES), $(GHDL) run $(GHDLRUNOPTIONS) $(notdir $(TB_EXE)) $(GHDLSIMOPTIONS) || exit;))
 
 clean:
 	rm -rf $(BUILDDIR)

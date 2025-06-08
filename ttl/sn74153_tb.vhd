@@ -99,7 +99,6 @@ begin
     assert (g1y = '0') report "MUX1 enable high failed" severity error;
     assert (g2y = '0') report "MUX2 enable high failed" severity error;
 
-    report "Testbench finished.";
     wait;
   end process;
 

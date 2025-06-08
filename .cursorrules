@@ -14,6 +14,7 @@
 - The cadr subdirectory contains the MIT CADR schematic entities. These are put into cadr package.
 - `cadr` entities depend on `dip`, `dip` entities depend on ttl packages (sn74, other, misc and unsorted).
 - The project uses no other library, everything is put into the work library.
+- `rom` directory contains the ROM/PROM data. rom/X_Y.hex is the data for ROM chip with designator Y on schematic page X.
 
 ### File Naming
 
@@ -41,7 +42,8 @@ Make targets are as follows.
 - `make all`: Compile all sources and testbenches
 - `make clean`: Remove all build artifacts (build directory)
 - `make check`: Run all testbenches
-- `make syntax`: Check syntax of all sources and testbenches
+- `make ttl-check`: Run ttl testbenches
+- `make dip-check`: Run dip testbenches
 
 Any entity can be built into object or executable form by directly executing it with make, such as `make ttl/td25.vhd` or `make ttl/td25_tb.vhd`.
 
@@ -55,6 +57,7 @@ Any entity can be built into object or executable form by directly executing it 
 - ALWAYS aim to have strict datasheet behavior.
 - Ignore the power pins, VCC and GND, in the datasheets. Only the digital behavior is implemented in this project.
 - After changing a source file, run a specific target to build it rather than calling generic targets like make all or make check. For example, run `make ttl/td25.vhd` to check `ttl/td25.vhd` rather than `make all` or `make check`.
+- If a testbench finishes succesfully, it should not report/print anything. Only warnings and errors should be reported/printed.
 
 ### Git Workflow
 
@@ -68,6 +71,9 @@ Any entity can be built into object or executable form by directly executing it 
 ## Notes
 
 - dip_5600 and dip_5610 both uses im5600. im5600 and im5610 are digitally equivalent.
+- Use `rom/dspctl_2f22.hex` for the testbenches related to im5600.
+- Use `rom/prom0_1b17.hex` for the testbenches related to sn74472 and dm74472.
+
 
 ## Resources
 

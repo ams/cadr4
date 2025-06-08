@@ -106,7 +106,6 @@ begin
     wait for 5 ns;
     check_outputs('1', '0', '1', '0', '1', '0', '1', '0', "should change on rising edge");
 
-    report "Test completed successfully" severity note;
     wait;
   end process;
 end;

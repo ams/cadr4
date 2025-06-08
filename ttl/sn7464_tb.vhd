@@ -94,7 +94,6 @@ begin
     wait for 5 ns;
     check_output('1', "should be 1 when no AND gate is fully active");
 
-    report "Test completed successfully" severity note;
     wait;
   end process;
 
