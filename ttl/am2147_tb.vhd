@@ -1,101 +1,135 @@
 library ieee;
 use ieee.std_logic_1164.all;
-
-use work.other.all;
+use ieee.numeric_std.all;
 
 entity am2147_tb is
-end;
+end am2147_tb;
 
-architecture testbench of am2147_tb is
+architecture beh of am2147_tb is
+  component am2147
+    port (
+      a0   : in  std_logic;
+      a1   : in  std_logic;
+      a2   : in  std_logic;
+      a3   : in  std_logic;
+      a4   : in  std_logic;
+      a5   : in  std_logic;
+      a6   : in  std_logic;
+      a7   : in  std_logic;
+      a8   : in  std_logic;
+      a9   : in  std_logic;
+      a10  : in  std_logic;
+      a11  : in  std_logic;
+      ce_n : in  std_logic;
+      di   : in  std_logic;
+      we_n : in  std_logic;
+      do   : out std_logic
+      );
+  end component;
 
-  signal a6   : std_logic;
-  signal a7   : std_logic;
-  signal a8   : std_logic;
-  signal a9   : std_logic;
-  signal a10  : std_logic;
-  signal a11  : std_logic;
-  signal di   : std_logic;
+  signal addr : std_logic_vector(11 downto 0);
   signal ce_n : std_logic;
   signal we_n : std_logic;
+  signal di   : std_logic;
   signal do   : std_logic;
-  signal a5   : std_logic;
-  signal a4   : std_logic;
-  signal a3   : std_logic;
-  signal a2   : std_logic;
-  signal a1   : std_logic;
-  signal a0   : std_logic;
 
 begin
 
-  uut : am2147 port map(
-    a0   => a0,
-    a1   => a1,
-    a2   => a2,
-    a3   => a3,
-    a4   => a4,
-    a5   => a5,
-    do   => do,
-    we_n => we_n,
-    ce_n => ce_n,
-    di   => di,
-    a11  => a11,
-    a10  => a10,
-    a9   => a9,
-    a8   => a8,
-    a7   => a7,
-    a6   => a6
-    );
+  uut : am2147
+    port map (
+      a0   => addr(0),
+      a1   => addr(1),
+      a2   => addr(2),
+      a3   => addr(3),
+      a4   => addr(4),
+      a5   => addr(5),
+      a6   => addr(6),
+      a7   => addr(7),
+      a8   => addr(8),
+      a9   => addr(9),
+      a10  => addr(10),
+      a11  => addr(11),
+      ce_n => ce_n,
+      di   => di,
+      we_n => we_n,
+      do   => do
+      );
 
-  process
+  stimulus : process
+    procedure write(address : integer; data : std_logic) is
+    begin
+      addr <= std_logic_vector(to_unsigned(address, 12));
+      di   <= data;
+      wait for 1 ns;
+      ce_n <= '0';
+      we_n <= '0';
+      wait for 10 ns;
+      ce_n <= '1';
+      we_n <= '1';
+      wait for 10 ns;
+    end procedure;
+
+    procedure read(address : integer; expected_data : std_logic) is
+    begin
+      addr <= std_logic_vector(to_unsigned(address, 12));
+      wait for 1 ns;
+      ce_n <= '0';
+      we_n <= '1';
+      wait for 10 ns;
+      assert do = expected_data
+        report "Read failed at address " & integer'image(address) &
+               ". Expected " & std_logic'image(expected_data) &
+               ", got " & std_logic'image(do)
+        severity error;
+      ce_n <= '1';
+      wait for 10 ns;
+    end procedure;
   begin
-    -- Test 1: Initialize with chip disabled
-    ce_n <= '1'; we_n <= '1'; di <= '0';
-    a11 <= '0'; a10 <= '0'; a9 <= '0'; a8 <= '0';
-    a7 <= '0'; a6 <= '0'; a5 <= '0'; a4 <= '0';
-    a3 <= '0'; a2 <= '0'; a1 <= '0'; a0 <= '0';
-    wait for 1 ns;
-    assert do = 'Z' report "Output should be high-Z when chip disabled";
-
-    -- Test 2: Write '1' to address 0
-    ce_n <= '0'; we_n <= '0'; di <= '1';
-    wait for 1 ns;
-    
-    -- Test 3: Read from address 0
+    -- Initialize inputs
+    ce_n <= '1';
     we_n <= '1';
-    wait for 1 ns;
-    assert do = '1' report "Failed to read '1' from address 0";
+    addr <= (others => '0');
+    di   <= '0';
+    wait for 10 ns;
 
-    -- Test 4: Write '0' to address 1
-    we_n <= '1'; -- Disable write first
-    a0 <= '1';   -- Change address
-    wait for 1 ns;
-    we_n <= '0'; di <= '0'; -- Enable write
-    wait for 1 ns;
-    
-    -- Test 5: Read from address 1
+    -- Test 1: Write '1' to address 0 and read back
+    write(0, '1');
+    read(0, '1');
+
+    -- Test 2: Write '0' to address 1 and read back
+    write(1, '0');
+    read(1, '0');
+
+    -- Test 3: Write '1' to max address and read back
+    write(4095, '1');
+    read(4095, '1');
+
+    -- Test 4: Check if writing to one address doesn't affect another
+    read(0, '1');
+
+    -- Test 5: Check chip deselect
+    ce_n <= '1';
     we_n <= '1';
-    wait for 1 ns;
-    assert do = '0' report "Failed to read '0' from address 1";
+    addr <= std_logic_vector(to_unsigned(0, 12));
+    wait for 10 ns;
+    assert do = 'Z'
+      report "Deselect test failed. Expected 'Z', got " & std_logic'image(do)
+      severity error;
 
-    -- Test 6: Verify address 0 still contains '1'
-    a0 <= '0';
-    wait for 1 ns;
-    assert do = '1' report "Address 0 lost its data";
-
-    -- Test 7: Test higher address (address 4095)
-    we_n <= '1'; -- Disable write first
-    a11 <= '1'; a10 <= '1'; a9 <= '1'; a8 <= '1';
-    a7 <= '1'; a6 <= '1'; a5 <= '1'; a4 <= '1';
-    a3 <= '1'; a2 <= '1'; a1 <= '1'; a0 <= '1';
-    wait for 1 ns;
-    we_n <= '0'; di <= '1'; -- Enable write
-    wait for 1 ns;
-    
+    -- Test 6: Check DO is 'Z' during write
+    ce_n <= '0';
+    we_n <= '0';
+    addr <= std_logic_vector(to_unsigned(5, 12));
+    di   <= '1';
+    wait for 1 ns; -- let signals propagate
+    assert do = 'Z'
+      report "DO not 'Z' during write. Got " & std_logic'image(do)
+      severity error;
+    wait for 10 ns;
+    ce_n <= '1';
     we_n <= '1';
-    wait for 1 ns;
-    assert do = '1' report "Failed to write/read from max address";
-
+    
     wait;
   end process;
 
-end;
+end beh;
