@@ -39,24 +39,27 @@ The build artifacts (work library, objects, executables) are put into the `build
 
 Make targets are as follows.
 
-- `make all`: Compile all sources and testbenches
-- `make clean`: Remove all build artifacts (build directory)
+- `make all`: Compile all
+- `make ttl`: Compile all in ttl
+- `make dip`: Compile all in dip
 - `make check`: Run all testbenches
 - `make ttl-check`: Run ttl testbenches
 - `make dip-check`: Run dip testbenches
+- `make clean`: Remove all build artifacts (build directory)
 
-Any entity can be built into object or executable form by directly executing it with make, such as `make ttl/td25.vhd` or `make ttl/td25_tb.vhd`.
+A single testbench (for example X_tb) can be run with `TB=build/X_tb make run-tb`.
 
 ## Development Workflow
 
 ### Code Modification Guidelines
 
+- NEVER modify the Makefile.
 - NEVER modify port interface lists. They are manually maintained.
 - NEVER modify the package and component definitions. They ar emanually maintained.
 - NEVER assume meaning from port definition, ALWAYS consult the datasheets.
 - ALWAYS aim to have strict datasheet behavior.
 - Ignore the power pins, VCC and GND, in the datasheets. Only the digital behavior is implemented in this project.
-- After changing a source file, run a specific target to build it rather than calling generic targets like make all or make check. For example, run `make ttl/td25.vhd` to check `ttl/td25.vhd` rather than `make all` or `make check`.
+- After changing a source file, run its testbench rather than calling generic targets like make all or make check. For example, run `TB=build/td25_tb make run-tb` to check `ttl/td25.vhd` rather than running `make all` or `make check`.
 - Only warnings or errors SHOULD be reported/printed in testbenches. Thus, USE only assert statements in testbenches. DO NOT USE report statements to unconditionally print messages. Successful testbenches should report nothing.
 
 ### Git Workflow

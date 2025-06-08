@@ -163,6 +163,9 @@ $(BUILDDIR)/work-obj$(GHDLSTD).cf: $(SRCS) $(TB_SRCS) $(PKG_SRCS)
 	mkdir -p $(BUILDDIR)
 	$(GHDL) import $(GHDLIMPORTOPTIONS) --std=$(GHDLSTD) --workdir=$(BUILDDIR) $^
 
+# %_tb has no %.vhd etc. dependency because these are resolved in cf
+# ghdl make is like an extra layer over make build system
+
 %_tb: $(BUILDDIR)/work-obj$(GHDLSTD).cf
 	mkdir -p $(BUILDDIR)
 	$(GHDL) make $(GHDLMAKEOPTIONS) --std=$(GHDLSTD) --workdir=$(BUILDDIR) -o $@ $(notdir $@)
@@ -178,13 +181,13 @@ dip: $(DIP_TB_EXES)
 check: ttl-check dip-check
 
 ttl-check: $(TTL_TB_EXES)
-	for TB_EXE in $^; do TB=$$TB_EXE make run-tb; done
+	for TB_EXE in $^; do TB=$$TB_EXE make run-tb || exit; done
 
 dip-check: $(DIP_TB_EXES)
-	for TB_EXE in $^; do TB=$$TB_EXE make run-tb; done
+	for TB_EXE in $^; do TB=$$TB_EXE make run-tb || exit; done
 
 # --workdir does not work below with ghdl run, we should cd and dont use --workdir
-run-tb:
+run-tb: $(TB)
 	cd $(BUILDDIR); $(GHDL) run $(GHDLRUNOPTIONS) --std=$(GHDLSTD) $(notdir $(TB)) $(GHDLSIMOPTIONS)
 
 clean:
