@@ -116,7 +116,6 @@ begin
     check;
 
     assert error_cnt = 0 report "Test failed with " & integer'image(error_cnt) & " errors." severity failure;
-    report "Test passed";
     wait;
   end process;
 

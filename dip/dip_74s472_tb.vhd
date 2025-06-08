@@ -59,7 +59,7 @@ begin
   -- Instantiate wrapper
   U_dip_74s472 : entity work.dip_74s472
     generic map (
-      fn => ""
+      fn => "roms/prom0_1b17.hex"
       )
     port map (
       p1  => p1_dip,
@@ -85,7 +85,7 @@ begin
   -- Instantiate original component
   U_dm74s472 : entity work.dm74472
     generic map (
-      fn => "proms/74s472.rom"
+      fn => "roms/prom0_1b17.hex"
       )
     port map (
       a0   => a0_ttl,
@@ -157,7 +157,7 @@ begin
     ce_n_ttl <= '1';
     wait for DELAY;
 
-    report "dip_74s472_tb finished.";
+    -- report "dip_74s472_tb finished.";
     test_finished <= true;
     wait;
   end process;

@@ -149,7 +149,7 @@ begin
       wait for CLK_PERIOD;
     end loop;
 
-    report "dip_74s174_tb finished.";
+    -- report "dip_74s174_tb finished.";
     test_finished <= true;
     wait;
   end process;

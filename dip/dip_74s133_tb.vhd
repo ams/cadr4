@@ -54,7 +54,7 @@ begin
 
   stim_proc : process
   begin
-    report "Starting test for dip_74s133";
+    -- report "Starting test for dip_74s133";
 
     -- Test case 1: All inputs are '1'
     p1  <= '1';
@@ -79,7 +79,7 @@ begin
     assert p9 = q_n report "One '0' mismatch" severity error;
     p1 <= '1';
 
-    report "Test finished for dip_74s133";
+    -- report "Test finished for dip_74s133";
     wait;
   end process;
 

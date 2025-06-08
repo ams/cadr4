@@ -65,7 +65,7 @@ begin
 
   stim_proc : process
   begin
-    report "Starting test";
+    -- report "Starting test";
 
     -- Test case 1: both enables low (active)
     aenb_n <= '0';
@@ -97,7 +97,7 @@ begin
     assert aout0 = 'Z' and aout1 = 'Z' and aout2 = 'Z' and aout3 = 'Z' report "TC4.A failed" severity error;
     assert bout0 = 'Z' and bout1 = 'Z' and bout2 = 'Z' and bout3 = 'Z' report "TC4.B failed" severity error;
 
-    report "Test finished";
+    -- report "Test finished";
     wait;
   end process;
 

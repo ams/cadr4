@@ -109,7 +109,7 @@ begin
     clk_ttl <= '1'; wait for 1 ns; clk_ttl <= '0'; wait for 1 ns;
     assert p2_dip = d0_ttl and p5_dip = d1_ttl and p7_dip = d2_ttl and p10_dip = d3_ttl and p12_dip = d4_ttl and p15_dip = d5_ttl report "Load failed" severity failure;
 
-    report "dip_25s07 test passed.";
+    -- report "dip_25s07 test passed.";
     wait;
   end process;
 

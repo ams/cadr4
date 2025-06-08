@@ -43,7 +43,7 @@ begin
       ('1', '1', '0')
     );
   begin
-    report "Starting test";
+    -- report "Starting test";
 
     for i in patterns'range loop
       -- Gate 1
@@ -67,7 +67,7 @@ begin
       assert p11 = patterns(i).q_n report "Gate 4 failed" severity error;
     end loop;
 
-    report "Test finished";
+    -- report "Test finished";
     wait;
   end process;
 

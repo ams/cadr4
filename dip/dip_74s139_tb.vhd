@@ -75,10 +75,10 @@ begin
       end loop;
     end procedure pulse;
   begin
-    report "Starting test for dip_74s139";
+    -- report "Starting test for dip_74s139";
     pulse(p1, p2, p3);
     pulse(p15, p14, p13);
-    report "Test finished for dip_74s139";
+    -- report "Test finished for dip_74s139";
     wait;
   end process;
 

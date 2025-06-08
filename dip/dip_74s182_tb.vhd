@@ -151,7 +151,7 @@ begin
       end loop;
     end loop;
 
-    report "dip_74s182_tb finished.";
+    -- report "dip_74s182_tb finished.";
     test_finished <= true;
     wait;
   end process;

@@ -59,7 +59,7 @@ begin
       ('1', '1')
       );
   begin
-    report "Starting test for dip_74s02";
+    -- report "Starting test for dip_74s02";
 
     for i in patterns'range loop
       p2 <= patterns(i).a;
@@ -79,7 +79,7 @@ begin
       assert p13 = g4q_n report "Gate 4 output mismatch" severity error;
     end loop;
 
-    report "Test finished for dip_74s02";
+    -- report "Test finished for dip_74s02";
     wait;
   end process;
 

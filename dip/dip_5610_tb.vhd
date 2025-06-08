@@ -85,7 +85,7 @@ begin
       wait for 10 ns;
     end loop;
 
-    report "Test finished.";
+    -- report "Test finished.";
     wait;
   end process;
 

@@ -59,7 +59,7 @@ begin
       end if;
     end function;
   begin
-    report "Starting test for dip_74s138";
+    -- report "Starting test for dip_74s138";
 
     -- Iterate through all possible addresses
     for a_int in 0 to 1 loop
@@ -92,7 +92,7 @@ begin
       end loop;
     end loop;
 
-    report "Test finished for dip_74s138";
+    -- report "Test finished for dip_74s138";
     wait;
   end process;
 

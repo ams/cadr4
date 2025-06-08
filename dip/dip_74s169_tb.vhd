@@ -176,7 +176,7 @@ begin
     wait for clk_period * 2;
     enb_t_n <= '0';
 
-    report "dip_74s169_tb finished.";
+    -- report "dip_74s169_tb finished.";
     test_finished <= true;
     wait;
   end process;

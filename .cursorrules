@@ -57,7 +57,7 @@ Any entity can be built into object or executable form by directly executing it 
 - ALWAYS aim to have strict datasheet behavior.
 - Ignore the power pins, VCC and GND, in the datasheets. Only the digital behavior is implemented in this project.
 - After changing a source file, run a specific target to build it rather than calling generic targets like make all or make check. For example, run `make ttl/td25.vhd` to check `ttl/td25.vhd` rather than `make all` or `make check`.
-- If a testbench finishes succesfully, it should not report/print anything. Only warnings and errors should be reported/printed.
+- Only warnings or errors SHOULD be reported/printed in testbenches. Thus, USE only assert statements in testbenches. DO NOT USE report statements to unconditionally print messages. Successful testbenches should report nothing.
 
 ### Git Workflow
 

@@ -167,11 +167,15 @@ all: $(OBJS) $(TB_EXES)
 
 check: ttl-check dip-check
 
+define NEWLINE
+
+endef
+
 ttl-check: $(TTL_TB_EXES)
-	(cd $(BUILDDIR); $(foreach TB_EXE, $(TTL_TB_EXES), $(GHDL) run $(GHDLRUNOPTIONS) $(notdir $(TB_EXE)) $(GHDLSIMOPTIONS) || exit;))
+	(cd $(BUILDDIR); $(foreach TB_EXE, $(TTL_TB_EXES), $(GHDL) run $(GHDLRUNOPTIONS) $(notdir $(TB_EXE)) $(GHDLSIMOPTIONS) || exit; ))
 
 dip-check: $(DIP_TB_EXES)
-	(cd $(BUILDDIR); $(foreach TB_EXE, $(DIP_TB_EXES), $(GHDL) run $(GHDLRUNOPTIONS) $(notdir $(TB_EXE)) $(GHDLSIMOPTIONS) || exit;))
+	(cd $(BUILDDIR); $(foreach TB_EXE, $(DIP_TB_EXES), $(GHDL) run $(GHDLRUNOPTIONS) $(notdir $(TB_EXE)) || exit; ))
 
 clean:
 	rm -rf $(BUILDDIR)

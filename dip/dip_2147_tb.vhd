@@ -138,7 +138,7 @@ begin
     end loop;
 
     assert error_cnt = 0 report "Test failed with " & integer'image(error_cnt) & " errors." severity failure;
-    report "Test finished";
+    -- report "Test finished";
     wait;
   end process;
 

@@ -33,7 +33,7 @@ begin
 
   stim_proc : process
   begin
-    report "Starting test";
+    -- report "Starting test";
 
     -- Test case 1: all inputs low
     p1  <= '0';
@@ -80,7 +80,7 @@ begin
     assert p10 = '1' report "Test Case 3.5 failed" severity error;
     assert p12 = '0' report "Test Case 3.6 failed" severity error;
 
-    report "Test finished";
+    -- report "Test finished";
     wait;
   end process;
 

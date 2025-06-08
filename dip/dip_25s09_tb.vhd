@@ -129,7 +129,7 @@ begin
     assert p2 = '0' and p7 = '0' and p10 = '0' and p15 = '0'
       report "Test 5 failed: outputs should be 0 when sel=0" severity error;
 
-    report "all tests passed for dip_25s09" severity note;
+    -- report "all tests passed for dip_25s09" severity note;
     wait;
   end process stimulus;
 

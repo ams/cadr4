@@ -60,7 +60,7 @@ begin
 
   stim_proc : process
   begin
-    report "Starting test for dip_74s153";
+    -- report "Starting test for dip_74s153";
 
     -- Iterate through all control signals
     for sel_b in 0 to 1 loop
@@ -89,7 +89,7 @@ begin
       end loop;
     end loop;
 
-    report "Test finished for dip_74s153";
+    -- report "Test finished for dip_74s153";
     wait;
   end process;
 

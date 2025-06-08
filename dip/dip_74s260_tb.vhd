@@ -118,7 +118,7 @@ begin
       wait for DELAY;
     end loop;
 
-    report "dip_74s260_tb finished.";
+    -- report "dip_74s260_tb finished.";
     test_finished <= true;
     wait;
   end process;

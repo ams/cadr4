@@ -85,7 +85,7 @@ begin
   stim_proc : process
     variable i_vec : std_logic_vector(7 downto 0);
   begin
-    report "Starting test for dip_74s151";
+    -- report "Starting test for dip_74s151";
 
     -- Test with strobe high (outputs should be low/high)
     s_p7 <= '1';
@@ -112,7 +112,7 @@ begin
         check_outputs(s_p5, s_p6, s_q, s_q_n);
     end loop;
 
-    report "Test finished for dip_74s151";
+    -- report "Test finished for dip_74s151";
     wait;
   end process;
 

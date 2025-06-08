@@ -121,7 +121,6 @@ begin
       end loop;
     end loop;
 
-    report "Testbench finished";
     wait;
   end process;
 
