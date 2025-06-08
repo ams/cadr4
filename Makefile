@@ -165,7 +165,7 @@ syntax:
 	$(GHDL) syntax $(GHDLOPTIONS) --std=$(GHDLSTD) $(PKG_SRCS) $(SRCS) $(TB_SRCS)
 
 check: $(TB_EXES)
-	$(foreach TB_EXE, $(TB_EXES), $(GHDL) run $(GHDLOPTIONS) $(TB_EXE) ;)
+	(cd $(BUILDDIR); $(foreach TB_EXE, $(TB_EXES), $(GHDL) run $(GHDLOPTIONS) $(notdir $(TB_EXE)) ;))
 
 clean:
 	rm -rf $(BUILDDIR)
