@@ -12,7 +12,8 @@
 - The ttl subdirectory contains the TTL components. These are put into sn74, other, misc and unsorted packages.
 - The dip subdirectory contains the wrappers of TTL components, so called DIP components. These are put into dip package.
 - The cadr subdirectory contains the MIT CADR schematic entities. These are put into cadr package.
-- The project uses no special library, everything is put into the work library.
+- `cadr` entities depend on `dip`, `dip` entities depend on ttl packages (sn74, other, misc and unsorted).
+- The project uses no other library, everything is put into the work library.
 
 ### File Naming
 
@@ -29,11 +30,11 @@
 
 ## Build System
 
-The project uses a Make-based build system.
+The project uses a Makefile based build system.
 
 There is only one Makefile, in the project root.
 
-The build artifacts (work library, objects, executables) are put into the build directory.
+The build artifacts (work library, objects, executables) are put into the `build` directory.
 
 Make targets are as follows.
 
@@ -42,16 +43,18 @@ Make targets are as follows.
 - `make check`: Run all testbenches
 - `make syntax`: Check syntax of all sources and testbenches
 
+Any entity can be built into object or executable form by directly executing it with make, such as `make ttl/td25.vhd` or `make ttl/td25_tb.vhd`.
+
 ## Development Workflow
 
 ### Code Modification Guidelines
 
-- NEVER modify port definitions under ttl subdirectory, these are manually maintained.
-- NEVER modify port definitions under cadr subdirectory, these are manually maintained.
-- NEVER modify the package and component definitions.
+- NEVER modify port interface lists. They are manually maintained.
+- NEVER modify the package and component definitions. They ar emanually maintained.
 - NEVER assume meaning from port definition, ALWAYS consult the datasheets.
 - ALWAYS aim to have strict datasheet behavior.
-- Ignore the power pins, VCC and GND, in the datasheets. We only implement the digital circuits.
+- Ignore the power pins, VCC and GND, in the datasheets. Only the digital behavior is implemented in this project.
+- After changing a source file, run a specific target to build it rather than calling generic targets like make all or make check. For example, run `make ttl/td25.vhd` to check `ttl/td25.vhd` rather than `make all` or `make check`.
 
 ### Git Workflow
 
