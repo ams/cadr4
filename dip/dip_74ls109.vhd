@@ -3,7 +3,6 @@ use ieee.std_logic_1164.all;
 
 use work.dip.all;
 
-
 entity dip_74ls109 is
   port (
     p1  : in  std_logic;                -- clr1_n
@@ -26,7 +25,6 @@ end dip_74ls109;
 architecture dip of dip_74ls109 is
 begin
 
-  -- p8 and p16 are gnd and vcc for dip_74ls109
   -- sn74109 doesn't have gnd and vcc
   -- so they are not mapped.
 

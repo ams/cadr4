@@ -21,13 +21,6 @@ architecture behavior of dip_74ls109_tb is
 
   signal q_dip, qn_dip : std_logic;
 
-  component sn74109 is
-    port (
-      j, k_n, clk, pre_n, clr_n : in    std_logic;
-      q, q_n                    : out   std_logic
-      );
-  end component;
-
   signal golden_q, golden_qn : std_logic;
 
 begin
@@ -52,13 +45,22 @@ begin
 
   golden : entity work.sn74109
     port map (
-      j     => j1,
-      k_n   => k1_n,
-      clk   => clk1,
-      pre_n => pre1_n,
-      clr_n => clr1_n,
-      q     => q1_golden,
-      q_n   => q1_n_golden
+
+      clr1_n => clr1_n,
+      j1     => j1,
+      k1_n   => k1_n,
+      clk1   => clk1,
+      pre1_n => pre1_n,
+      q1     => q1_golden,
+      q1_n   => q1_n_golden,
+
+      q2_n   => q2_n_golden,
+      q2     => q2_golden,
+      pre2_n => pre2_n,
+      clk2   => clk2,
+      k2_n   => k2_n,
+      j2     => j2,
+      clr2_n => clr2_n      
       );
 
   stimulus : process
@@ -81,7 +83,7 @@ begin
     wait;
   end process;
 
-  checker : process(all)
+  checker : process(q1_uut, q1_golden, q1_n_uut, q1_n_golden, q2_uut, q2_golden, q2_n_uut, q2_n_golden)
   begin
     assert q1_uut = q1_golden and
            q1_n_uut = q1_n_golden and

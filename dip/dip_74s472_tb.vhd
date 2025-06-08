@@ -21,7 +21,6 @@ architecture test of dip_74s472_tb is
   signal p7_dip  : std_logic;
   signal p8_dip  : std_logic;
   signal p9_dip  : std_logic;
-  signal p10_dip : std_logic;
   signal p11_dip : std_logic;
   signal p12_dip : std_logic;
   signal p13_dip : std_logic;
@@ -31,7 +30,6 @@ architecture test of dip_74s472_tb is
   signal p17_dip : std_logic;
   signal p18_dip : std_logic;
   signal p19_dip : std_logic;
-  signal p20_dip : std_logic;
 
   -- dm74s472 signals
   signal a0_ttl   : std_logic;
@@ -73,7 +71,6 @@ begin
       p7  => p7_dip,
       p8  => p8_dip,
       p9  => p9_dip,
-      p10 => p10_dip,
       p11 => p11_dip,
       p12 => p12_dip,
       p13 => p13_dip,
@@ -82,12 +79,11 @@ begin
       p16 => p16_dip,
       p17 => p17_dip,
       p18 => p18_dip,
-      p19 => p19_dip,
-      p20 => p20_dip
+      p19 => p19_dip
       );
 
   -- Instantiate original component
-  U_dm74s472 : entity work.dm74s472
+  U_dm74s472 : entity work.dm74472
     generic map (
       fn => "proms/74s472.rom"
       )
@@ -122,9 +118,7 @@ begin
   p7_dip  <= a2_ttl;
   p8_dip  <= a1_ttl;
   p9_dip  <= a0_ttl;
-  p10_dip <= '0';
   p19_dip <= ce_n_ttl;
-  p20_dip <= '1';
 
 
   -- Verification process

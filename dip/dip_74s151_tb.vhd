@@ -6,11 +6,11 @@ end entity;
 
 architecture behavior of dip_74s151_tb is
   -- UUT signals
-  signal p5, p6 : std_logic;
-  signal p1, p2, p3, p4, p7, p9, p10, p11, p12, p13, p14, p15 : std_logic;
+  signal s_p5, s_p6 : std_logic;
+  signal s_p1, s_p2, s_p3, s_p4, s_p7, s_p9, s_p10, s_p11, s_p12, s_p13, s_p14, s_p15 : std_logic;
 
   -- REF signals
-  signal q, q_n : std_logic;
+  signal s_q, s_q_n : std_logic;
 
   function to_std_logic(i : integer) return std_logic is
   begin
@@ -56,39 +56,30 @@ begin
   -- Instantiate the Wrapper (UUT)
   uut : entity work.dip_74s151
     port map (
-      p1  => p1,
-      p2  => p2,
-      p3  => p3,
-      p4  => p4,
-      p5  => p5,
-      p6  => p6,
-      p7  => p7,
-      p9  => p9,
-      p10 => p10,
-      p11 => p11,
-      p12 => p12,
-      p13 => p13,
-      p14 => p14,
-      p15 => p15
+      p1  => s_p1,
+      p2  => s_p2,
+      p3  => s_p3,
+      p4  => s_p4,
+      p5  => s_p5,
+      p6  => s_p6,
+      p7  => s_p7,
+      p9  => s_p9,
+      p10 => s_p10,
+      p11 => s_p11,
+      p12 => s_p12,
+      p13 => s_p13,
+      p14 => s_p14,
+      p15 => s_p15
       );
 
   -- Instantiate the actual TTL component (REF)
   ref : entity work.sn74151
     port map (
-      i0   => p4,
-      i1   => p3,
-      i2   => p2,
-      i3   => p1,
-      i4   => p15,
-      i5   => p14,
-      i6   => p13,
-      i7   => p12,
-      sel0 => p11,
-      sel1 => p10,
-      sel2 => p9,
-      ce_n => p7,
-      q    => q,
-      q_n  => q_n
+      s_p4, s_p3, s_p2, s_p1, s_p15, s_p14, s_p13, s_p12,
+      s_p11, s_p10, s_p9,
+      s_p7,
+      s_q,
+      s_q_n
       );
 
   stim_proc : process
@@ -96,29 +87,29 @@ begin
   begin
     report "Starting test for dip_74s151";
 
-    -- Test with chip enable high (outputs should be low/high)
-    p7 <= '1';
-    set_inputs(p1, p2, p3, p4, p12, p13, p14, p15, "00000000");
-    check_outputs(p5, p6, q, q_n);
+    -- Test with strobe high (outputs should be low/high)
+    s_p7 <= '1';
+    set_inputs(s_p1, s_p2, s_p3, s_p4, s_p12, s_p13, s_p14, s_p15, "00000000");
+    check_outputs(s_p5, s_p6, s_q, s_q_n);
 
-    -- Test with chip enable low
-    p7 <= '0';
+    -- Test with strobe low
+    s_p7 <= '0';
     for sel_int in 0 to 7 loop
-        p11 <= to_std_logic(sel_int mod 2);
-        p10 <= to_std_logic((sel_int / 2) mod 2);
-        p9 <= to_std_logic((sel_int / 4) mod 2);
+        s_p11 <= to_std_logic(sel_int mod 2);
+        s_p10 <= to_std_logic((sel_int / 2) mod 2);
+        s_p9 <= to_std_logic((sel_int / 4) mod 2);
         
         -- test with selected input high
         i_vec := (others => '0');
         i_vec(sel_int) := '1';
-        set_inputs(p1, p2, p3, p4, p12, p13, p14, p15, i_vec);
-        check_outputs(p5, p6, q, q_n);
+        set_inputs(s_p1, s_p2, s_p3, s_p4, s_p12, s_p13, s_p14, s_p15, i_vec);
+        check_outputs(s_p5, s_p6, s_q, s_q_n);
 
         -- test with selected input low
         i_vec := (others => '1');
         i_vec(sel_int) := '0';
-        set_inputs(p1, p2, p3, p4, p12, p13, p14, p15, i_vec);
-        check_outputs(p5, p6, q, q_n);
+        set_inputs(s_p1, s_p2, s_p3, s_p4, s_p12, s_p13, s_p14, s_p15, i_vec);
+        check_outputs(s_p5, s_p6, s_q, s_q_n);
     end loop;
 
     report "Test finished for dip_74s151";
