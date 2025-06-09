@@ -23,10 +23,13 @@ BUILDDIR	  := build
 TTL_SRCS := $(wildcard ttl/*.vhd)
 DIP_SRCS := $(wildcard dip/*.vhd)
 CADR_SRCS := $(wildcard cadr/*.vhd)
-TTL_EXES := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard ttl/*_tb.vhd)))
+MAIN_SRCS := cadr_clock1_tb.vhd cadr_tb.vhd
 
-SRCS := $(TTL_SRCS) $(DIP_SRCS) $(CADR_SRCS) #cadr_clock1_tb.vhd
-EXES := $(TTL_EXES) #cadr_clock1_tb
+TTL_EXES := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard ttl/*_tb.vhd)))
+MAIN_EXES := build/cadr_clock1_tb build/cadr_tb
+
+SRCS := $(TTL_SRCS) $(DIP_SRCS) $(CADR_SRCS) $(MAIN_SRCS)
+EXES := $(TTL_EXES) $(MAIN_EXES)
 
 # ghdl import and make works weird, all the build process is weird
 # there is no sane way to build object files manually in this way
@@ -65,8 +68,6 @@ help:
 	@echo "make run-tb: run a testbench"
 	@echo "make clean: clean build directory"
 	@echo "make help: show this help"
-
-# generate %_suds.vhd source file from drw
 
 CADR_BOOK := actl alatch alu0 alu1 aluc4 amem0 amem1 apar bcpins bcterm caps clockd contrl cpins \
 dram0 dram1 dram2 dspctl flag ior ipar ireg iwr l lc lcc lpc mctl md mds mf mlatch mmem mo0 mo1 \
