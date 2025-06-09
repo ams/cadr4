@@ -25,8 +25,8 @@ DIP_SRCS := $(wildcard dip/*.vhd)
 CADR_SRCS := $(wildcard cadr/*.vhd)
 TTL_EXES := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard ttl/*_tb.vhd)))
 
-SRCS := $(TTL_SRCS) $(DIP_SRCS) #$(CADR_SRCS)
-EXES := $(TTL_EXES)
+SRCS := $(TTL_SRCS) $(DIP_SRCS) $(CADR_SRCS) #cadr_clock1_tb.vhd
+EXES := $(TTL_EXES) #cadr_clock1_tb
 
 # ghdl import and make works weird, all the build process is weird
 # there is no sane way to build object files manually in this way
@@ -60,7 +60,7 @@ clean:
 
 help: 
 	@echo "make all: build all testbenches"
-	@echo "make suds: build suds sources from drw files"
+	@echo "make suds: re-creates suds sources from drw files (warning: overwrites existing cadr/*_suds.vhd files)"
 	@echo "make check: run all testbenches"
 	@echo "make run-tb: run a testbench"
 	@echo "make clean: clean build directory"
@@ -85,10 +85,20 @@ suds: $(BUILDDIR)/soap
 # generate _suds.vhd files
 	for NAME in $(CADR_BOOK); do $(BUILDDIR)/soap -n doc/ai/cadr/$${NAME}.drw > cadr/$${NAME}_suds.vhd || exit; done
 	for NAME in $(ICMEM_BOOK); do $(BUILDDIR)/soap -n doc/ai/cadr/$${NAME}.drw > cadr/$${NAME}_suds.vhd || exit; done
-# fix some because designators uses different (but actually same) entities
+# fix aliases, simply replace
 	for FILE in cadr/*_suds.vhd; do sed -i .bak 's/dip_74s00o/dip_74s00/g' $${FILE} || exit; done
 	for FILE in cadr/*_suds.vhd; do sed -i .bak 's/dip_74s02o/dip_74s02/g' $${FILE} || exit; done
+	for FILE in cadr/*_suds.vhd; do sed -i .bak 's/dip_74s04a/dip_74s04/g' $${FILE} || exit; done
 	for FILE in cadr/*_suds.vhd; do sed -i .bak 's/dip_74s08o/dip_74s08/g' $${FILE} || exit; done
+	for FILE in cadr/*_suds.vhd; do sed -i .bak 's/dip_74s10o/dip_74s10/g' $${FILE} || exit; done
+	for FILE in cadr/*_suds.vhd; do sed -i .bak 's/dip_74s32o/dip_74s32/g' $${FILE} || exit; done
+	for FILE in cadr/*_suds.vhd; do sed -i .bak 's/dip_74s32w/dip_74s32/g' $${FILE} || exit; done
+	for FILE in cadr/*_suds.vhd; do sed -i .bak 's/dip_74s133o/dip_74s133/g' $${FILE} || exit; done
+	for FILE in cadr/*_suds.vhd; do sed -i .bak 's/dip_74ls240/dip_74s240/g' $${FILE} || exit; done
 	$(RM) cadr/*.vhd.bak
 # merge designators in _suds.vhd files	
-	for FILE in cadr/*_suds.vhd; do cadr/merge-designators.py $${FILE} || exit; done
+	for FILE in cadr/*_suds.vhd; do python3 cadr/merge-designators.py $${FILE} || exit; done
+# fix at signals in _suds.vhd files
+	for FILE in cadr/*_suds.vhd; do python3 cadr/fix-at-signals.py $${FILE} || exit; done	
+# fix port terminations in _suds.vhd files
+	for FILE in cadr/*_suds.vhd; do python3 cadr/fix-port-terminations.py $${FILE} || exit; done	

@@ -18,6 +18,6 @@ Do not modify any file other than cadr/*_suds.vhd.
 
 Pay attention to the entity name and the pins. The entity names should be same and the pins should not be the same in repeated labels.
 
-If I run, task-merge-designators.py X_suds.vhd, X_suds.vhd should be modified accordingly.
+If I run, cadr/merge-designators.py X_suds.vhd, X_suds.vhd should be modified accordingly.
 
 If the change succeeds, exit with 0, if not exit with non-zero error code and print the error message.

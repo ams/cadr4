@@ -1864,10 +1864,7 @@ format_name(char *s)
 		sprintf(b, "\\%s\\", s);
 		return strlwr(b);
 	}
-	if (strcmp(s, "gnd") == 0) {
-		sprintf(b, "open");
-		return strlwr(b);
-	}
+
 	return strlwr(s);
 }
 
@@ -1947,11 +1944,15 @@ format_bodies(void)
 		for (int j = 1; j < MAX_BODY_NAMED_PINS; j++) {
 			int pi = bodies[i].named_pin_index[j];
 			if (pi) {
-                if (printed_once != 0) printf(", ");
-				printf("p%d => %s",
-				       j,
-				       format_name(points[pi].name_of_pin));
-                printed_once = 1;
+				char *name_of_pin = format_name(points[pi].name_of_pin);
+				// ignore nc pins, because they are connected to both inputs and outputs and not helping anything
+			    if (strcmp(name_of_pin, "nc") != 0) {
+					if (printed_once != 0) printf(", ");
+					printf("p%d => %s",
+						j,
+						name_of_pin);
+					printed_once = 1;
+				}
 			}
 		}
 		printf(");\n");
