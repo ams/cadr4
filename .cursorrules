@@ -39,9 +39,7 @@ The build artifacts (work library, objects, executables) are put into the `build
 
 Make targets are as follows.
 
-- `make all`: Compile all
-- `make ttl`: Compile all in ttl
-- `make dip`: Compile all in dip
+- `make all`: Compile all testbenches
 - `make check`: Run all testbenches
 - `make clean`: Remove all build artifacts (build directory)
 

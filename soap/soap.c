@@ -197,7 +197,7 @@ add_body(struct body_s *bdy)
 }
 
 void
-show_point_dir(struct point_s *pnt, char *dir, int id0, int id1)
+show_point_dir(__attribute__ ((unused)) struct point_s *pnt, char *dir, int id0, int id1)
 {
 	if (id0 || id1) {
 		printf("%s %d %d ", dir, id0, id1);
@@ -372,7 +372,7 @@ new_prop(int p)
 int
 grab_6bit_ascii(int off, char *s)
 {
-	int c, a, state = 0;
+	int c, state = 0;
 
 	*s = 0;
 	while (1) {
@@ -453,7 +453,7 @@ grab_7bit_ascii(int off, char *s)
 int
 grab_9bit(int off, int *s)
 {
-	int c, a, state = 0;
+	int c, state = 0;
 
 	/*
 	 * 11111111
@@ -866,7 +866,8 @@ parse_pins(int p)
 	if (debug) printf("parse_pins(%d)\n", p);
 
 	while (1) {
-		int id0, id1;
+		__attribute__ ((unused)) int id0;
+		int id1;
 
 		if (debug) printf("top p %d\n", p);
 
@@ -1528,7 +1529,7 @@ follow_annotate_body(struct point_s *orig,
 	if (last != 0) {
 		if (p->id[0] && p->id[1]) {
 			struct body_s *b;
-			int pn, bi, orig_pi;
+			int pn, orig_pi;
 
 			orig_pi = orig->id[1];
 
@@ -1676,7 +1677,7 @@ follow_apply_name(int pi, struct point_s *p)
 void
 find_all_net_names(void)
 {
-	int i, j, id;
+	int i;
 	int loops, missed, fixed;
 
 	if (show_follow) printf("find_all_net_names\n");
@@ -1751,7 +1752,7 @@ find_all_net_names(void)
 //return;
 
 	for (i = 1; i < MAX_POINTS; i++) {
-		int bi, pi, pinnum;
+		int bi, pinnum;
 		int other_bi, other_pinnum;
 		struct point_s *pp, *ppdn;
 		int ppi;
@@ -1995,7 +1996,7 @@ extern int optind;
 
 int main(int argc, char *argv[])
 {
-	int c, i;
+	int c;
 
 	while ((c = getopt(argc, argv, "dfnrs")) != -1) {
 		switch (c) {
