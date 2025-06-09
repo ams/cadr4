@@ -1879,8 +1879,6 @@ format_name(char *s)
 int
 format_bodies(void)
 {
-	int i;
-
 #if 0
 	printf("entity %s is\n", strlwr(page_name));
 	printf("port (\n");
@@ -1921,9 +1919,19 @@ format_bodies(void)
     printf("use work.dip.all;\n");
     printf("\n");
 	printf("architecture suds of %s is\n", strlwr(page_name));
+	for (int i = 0; i < MAX_BODIES; i++) {
+		for (int j = 1; j < MAX_BODY_NAMED_PINS; j++) {
+			int pi = bodies[i].named_pin_index[j];
+			if (pi) {
+				char* name_of_pin = points[pi].name_of_pin;
+				if ((name_of_pin != NULL) && (name_of_pin[0] == '@')) {
+					fprintf(stderr, ">>> %s\n", name_of_pin);
+				}
+			}
+		}
+	}
 	printf("begin\n");
-	for (i = 0; i < MAX_BODIES; i++) {
-		int j;
+	for (int i = 0; i < MAX_BODIES; i++) {
 
 		if (bodies[i].name_of_body[0] == 0)
 			continue;
@@ -1945,7 +1953,7 @@ format_bodies(void)
 		printf("%s_%s : %s port map (",
 		       strlwr(page_name), strlwr(bodies[i].refdes), format_name(b));
         int printed_once = 0;
-		for (j = 1; j < MAX_BODY_NAMED_PINS; j++) {
+		for (int j = 1; j < MAX_BODY_NAMED_PINS; j++) {
 			int pi = bodies[i].named_pin_index[j];
 			if (pi) {
                 if (printed_once != 0) printf(", ");
