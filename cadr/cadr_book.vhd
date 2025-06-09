@@ -1101,7 +1101,7 @@ package cadr_book is
       \-nopa\             : in  std_logic;
       \-ilong\            : out std_logic;
       ob29                : in  std_logic;
-      \lc_byte_mode\      : out std_logic;
+      \lc byte mode\      : out std_logic;
       ob28                : in  std_logic;
       \prog.unibus.reset\ : out std_logic;
       hi4                 : in  std_logic;
@@ -1662,7 +1662,7 @@ package cadr_book is
       mf24                : out std_logic;
       gnd                 : in  std_logic;
       mf25                : out std_logic;
-      \lc_byte_mode\      : in  std_logic;
+      \lc byte mode\      : in  std_logic;
       mf26                : out std_logic;
       \prog.unibus.reset\ : in  std_logic;
       mf27                : out std_logic;
@@ -1763,7 +1763,7 @@ package cadr_book is
 
   component lcc is
     port (
-      \lc_byte_mode\               : in  std_logic;
+      \lc byte mode\               : in  std_logic;
       \-lcinc\                     : out std_logic;
       lca1                         : out std_logic;
       gnd                          : in  std_logic;
@@ -1783,19 +1783,19 @@ package cadr_book is
       ob1                          : in  std_logic;
       ob0                          : in  std_logic;
       lc0b                         : out std_logic;
-      \inst_in_left_half\          : out std_logic;
+      \inst in left half\          : out std_logic;
       \-ir4\                       : in  std_logic;
       \-sh4\                       : out std_logic;
       \-sh3\                       : out std_logic;
       \-ir3\                       : in  std_logic;
-      \inst_in_2nd_or_4th_quarter\ : out std_logic;
-      \-lc_modifies_mrot\          : out std_logic;
+      \inst in 2nd or 4th quarter\ : out std_logic;
+      \-lc modifies mrot\          : out std_logic;
       spc14                        : in  std_logic;
       \-srcspcpopreal\             : in  std_logic;
       \-ifetch\                    : out std_logic;
       needfetch                    : out std_logic;
-      \have_wrong_word\            : out std_logic;
-      \last_byte_in_word\          : out std_logic;
+      \have wrong word\            : out std_logic;
+      \last byte in word\          : out std_logic;
       ir10                         : in  std_logic;
       ir11                         : in  std_logic;
       \-newlc\                     : out std_logic;
@@ -2065,7 +2065,7 @@ package cadr_book is
       mdgetspar   : out std_logic;
       \-ignpar\   : in  std_logic;
       mdhaspar    : out std_logic;
-      \mempar_in\ : in  std_logic;
+      \mempar in\ : in  std_logic;
       mdpar       : out std_logic;
       \-srcmd\    : in  std_logic);
   end component;
@@ -2157,7 +2157,7 @@ package cadr_book is
       \-mds31\      : out std_logic;
       ob31          : in  std_logic;
       mdparodd      : in  std_logic;
-      \mempar_out\  : out std_logic;
+      \mempar out\  : out std_logic;
       hi11          : in  std_logic;
       mdselb        : in  std_logic;
       ob12          : in  std_logic;
@@ -3632,8 +3632,8 @@ package cadr_book is
       \-srcmd\      : out std_logic;
       \-srcmap\     : out std_logic;
       \-srcvma\     : out std_logic;
-      \destimod0_l\ : in  std_logic;
-      \iwrited_l\   : in  std_logic;
+      \destimod0 l\ : in  std_logic;
+      \iwrited l\   : in  std_logic;
       \-destmdr\    : out std_logic;
       \-destvma\    : out std_logic;
       \-idebug\     : in  std_logic;
@@ -4296,7 +4296,7 @@ package cadr_book is
       vmasela        : out std_logic;
       vmaselb        : out std_logic;
       wrcyc          : in  std_logic;
-      \lm_drive_enb\ : in  std_logic;
+      \lm drive enb\ : in  std_logic;
       \-memdrive.a\  : out std_logic;
       \-memdrive.b\  : out std_logic;
       \-memwr\       : out std_logic;

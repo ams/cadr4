@@ -7,7 +7,7 @@ package icmem_book is
 
   component clock1 is
     port (
-      \-clock_reset_b\ : in  std_logic;
+      \-clock reset b\ : in  std_logic;
       \-tpdone\        : in  std_logic;
       \-hang\          : in  std_logic;
       cyclecompleted   : out std_logic;
@@ -76,14 +76,14 @@ package icmem_book is
       tpclk            : out std_logic;
       \-tptse\         : out std_logic;
       \-tpr25\         : in  std_logic;
-      \-clock_reset_b\ : in  std_logic;
+      \-clock reset b\ : in  std_logic;
       tptse            : out std_logic;
       \-tpw70\         : in  std_logic;
       \-tpclk\         : out std_logic;
       \-tpr0\          : in  std_logic;
       \-tpr5\          : in  std_logic;
       \-tpw30\         : in  std_logic;
-      \machruna_l\     : in  std_logic;
+      \machruna l\     : in  std_logic;
       tpwpiram         : out std_logic;
       \-wp5\           : out std_logic;
       clk5             : out std_logic;
@@ -337,7 +337,7 @@ package icmem_book is
 
   component olord1 is
     port (
-      \-clock_reset_a\ : in  std_logic;
+      \-clock reset a\ : in  std_logic;
       speed1a          : out std_logic;
       sspeed1          : out std_logic;
       speedclk         : out std_logic;
@@ -430,16 +430,16 @@ package icmem_book is
       \-clk5\             : out std_logic;
       \-reset\            : out std_logic;
       reset               : out std_logic;
-      \bus.power.reset_l\ : out std_logic;
-      \power_reset_a\     : out std_logic;
+      \bus.power.reset l\ : out std_logic;
+      \power reset a\     : out std_logic;
       \-upperhighok\      : in  std_logic;
       \-lowerhighok\      : out std_logic;
       \-boot\             : out std_logic;
       \prog.bus.reset\    : out std_logic;
       \-bus.reset\        : out std_logic;
-      \-clock_reset_b\    : out std_logic;
-      \-clock_reset_a\    : out std_logic;
-      \-power_reset\      : out std_logic;
+      \-clock reset b\    : out std_logic;
+      \-clock reset a\    : out std_logic;
+      \-power reset\      : out std_logic;
       srun                : in  std_logic;
       \boot.trap\         : out std_logic;
       hi2                 : out std_logic;
