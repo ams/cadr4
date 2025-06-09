@@ -7,10 +7,10 @@ use std.env.finish;
 
 use work.icmem_book.all;
 
-entity cadr_clock1_tb is
+entity icmem_clock1_tb is
 end;
 
-architecture structural of cadr_clock1_tb is
+architecture structural of icmem_clock1_tb is
   signal \-clock_reset_b\ : std_logic;
   signal \-hang\          : std_logic;
   signal \-ilong\         : std_logic;
