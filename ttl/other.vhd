@@ -137,24 +137,24 @@ package other is
 
   component am252519 is
     port (
-      o_enb_n    : in  std_logic;
-      inv        : in  std_logic;
-      i0         : in  std_logic;
-      i1         : in  std_logic;
-      i2         : in  std_logic;
-      i3         : in  std_logic;
-      out_enb_n  : in  std_logic;
-      clk        : in  std_logic;
-      clk_enb_n  : in  std_logic;
-      asyn_clr_n : in  std_logic;
-      q0a        : out std_logic;
-      q1a        : out std_logic;
-      q2a        : out std_logic;
-      q3a        : out std_logic;
-      q0b        : out std_logic;
-      q1b        : out std_logic;
-      q2b        : out std_logic;
-      q3b        : out std_logic
+      d0         : in  std_logic; -- 1
+      d1         : in  std_logic; -- 4
+      d2         : in  std_logic; -- 13
+      d3         : in  std_logic; -- 16
+      e_n        : in  std_logic; -- 17
+      cp         : in  std_logic; -- 9
+      oe_y_n     : in  std_logic; -- 8
+      oe_w_n     : in  std_logic; -- 7
+      y0         : out std_logic; -- 3
+      y1         : out std_logic; -- 6
+      y2         : out std_logic; -- 11
+      y3         : out std_logic; -- 14
+      w0         : out std_logic; -- 2
+      w1         : out std_logic; -- 5
+      w2         : out std_logic; -- 12
+      w3         : out std_logic; -- 15
+      pol        : in  std_logic; -- 18
+      clr_n      : in  std_logic -- 19
       );
   end component;
   alias am25ls2519 is am252519;

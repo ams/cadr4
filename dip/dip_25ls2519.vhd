@@ -30,23 +30,23 @@ architecture dip of dip_25ls2519 is
 begin
   U1 : entity work.am252519
     port map (
-      i0         => p1,
-      q0a        => p2,
-      q0b        => p3,
-      i1         => p4,
-      q1a        => p5,
-      q1b        => p6,
-      o_enb_n    => p7,
-      out_enb_n  => p8,
-      clk        => p9,
-      q2b        => p11,
-      q2a        => p12,
-      i2         => p13,
-      q3b        => p14,
-      q3a        => p15,
-      i3         => p16,
-      clk_enb_n  => p17,
-      inv        => p18,
-      asyn_clr_n => p19
+      d0         => p1,
+      w0         => p2,
+      y0         => p3,
+      d1         => p4,
+      w1         => p5,
+      y1         => p6,
+      oe_w_n     => p7,
+      oe_y_n     => p8,
+      cp         => p9,
+      w2         => p11,
+      y2         => p12,
+      d2         => p13,
+      w3         => p14,
+      y3         => p15,
+      d3         => p16,
+      e_n        => p17,
+      pol        => p18,
+      clr_n      => p19
     );
 end architecture;

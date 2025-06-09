@@ -43,8 +43,6 @@ Make targets are as follows.
 - `make ttl`: Compile all in ttl
 - `make dip`: Compile all in dip
 - `make check`: Run all testbenches
-- `make ttl-check`: Run ttl testbenches
-- `make dip-check`: Run dip testbenches
 - `make clean`: Remove all build artifacts (build directory)
 
 A single testbench (for example X_tb) can be run with `TB=build/X_tb make run-tb`.
@@ -61,6 +59,8 @@ A single testbench (for example X_tb) can be run with `TB=build/X_tb make run-tb
 - Ignore the power pins, VCC and GND, in the datasheets. Only the digital behavior is implemented in this project.
 - After changing a source file, run its testbench rather than calling generic targets like make all or make check. For example, run `TB=build/td25_tb make run-tb` to check `ttl/td25.vhd` rather than running `make all` or `make check`.
 - Only warnings or errors SHOULD be reported/printed in testbenches. Thus, USE only assert statements in testbenches. DO NOT USE report statements to unconditionally print messages. Successful testbenches should report nothing.
+- DO NOT try to delete the testbenches you have created. The testbenches are kept in the project.
+- DO NOT write testbenches for dip components.
 
 ### Git Workflow
 

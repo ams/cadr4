@@ -29,5 +29,5 @@ jobs:
     - name: Build
       run: make all
 
-    - name: Check ttl
-      run: make ttl-check
+    - name: Check
+      run: make check

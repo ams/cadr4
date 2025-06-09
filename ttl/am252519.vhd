@@ -1,46 +1,56 @@
 -- AM252519 Quad Register with Two Independantly Controlled Three-State Outputs
+-- Mete: port names and implementation matches to datasheet (ttl/doc/am25ls2519.pdf)
+-- Mete: pin numbers are for CERDIP package
 
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+-- di inputs
+-- e_n clock enable
+-- cp clock pulse (clk)
+-- oe_y_n and oe_w_n outout enable y and w, when H, output is high-Z
+-- yi non-inverting three-state outputs
+-- wi three-state outputs with polarity control
+-- pol polarity control, when H, Wi is inverted
+-- clr_n asynch clear, when L, internal flip-flips are reset to L
+
 entity am252519 is
-  port (
-    clk        : in  std_logic;
-    o_enb_n    : in  std_logic;
-    inv        : in  std_logic;
-    i0         : in  std_logic;
-    i1         : in  std_logic;
-    i2         : in  std_logic;
-    i3         : in  std_logic;
-    out_enb_n  : in  std_logic;
-    clk_enb_n  : in  std_logic;
-    asyn_clr_n : in  std_logic;
-    q0a        : out std_logic;
-    q1a        : out std_logic;
-    q2a        : out std_logic;
-    q3a        : out std_logic;
-    q0b        : out std_logic;
-    q1b        : out std_logic;
-    q2b        : out std_logic;
-    q3b        : out std_logic
+  port (    
+    d0         : in  std_logic; -- 1
+    d1         : in  std_logic; -- 4
+    d2         : in  std_logic; -- 13
+    d3         : in  std_logic; -- 16
+    e_n        : in  std_logic; -- 17
+    cp         : in  std_logic; -- 9
+    oe_y_n     : in  std_logic; -- 8
+    oe_w_n     : in  std_logic; -- 7
+    y0         : out std_logic; -- 3
+    y1         : out std_logic; -- 6
+    y2         : out std_logic; -- 11
+    y3         : out std_logic; -- 14
+    w0         : out std_logic; -- 2
+    w1         : out std_logic; -- 5
+    w2         : out std_logic; -- 12
+    w3         : out std_logic; -- 15
+    pol        : in  std_logic; -- 18
+    clr_n      : in  std_logic -- 19
     );
 end am252519;
 
--- ChatGPT Codex implementation
 architecture ttl of am252519 is
   signal reg4 : std_logic_vector(3 downto 0);
 begin
   ------------------------------------------------------------------
   -- register operation
   ------------------------------------------------------------------
-  process(clk, asyn_clr_n)
+  process(cp, clr_n)
   begin
-    if asyn_clr_n = '0' then
-      reg4 <= (others => '0');
-    elsif rising_edge(clk) then
-      if clk_enb_n = '0' then
-        reg4 <= i3 & i2 & i1 & i0;
+    if clr_n = '0' then
+      reg4 <= "0000";
+    elsif rising_edge(cp) then
+      if e_n = '0' then
+        reg4 <= d3 & d2 & d1 & d0;
       end if;
     end if;
   end process;
@@ -48,24 +58,37 @@ begin
   ------------------------------------------------------------------
   -- output section
   ------------------------------------------------------------------
-  process(all)
-    variable val : std_logic_vector(3 downto 0);
+  process(reg4, oe_y_n, oe_w_n, pol)
   begin
-    val := reg4;
-    if inv = '1' then
-      val := not val;
+    if oe_y_n = '0' then
+      y3 <= reg4(3);
+      y2 <= reg4(2);
+      y1 <= reg4(1);
+      y0 <= reg4(0);
+    else
+      y3 <= 'Z';
+      y2 <= 'Z';
+      y1 <= 'Z';
+      y0 <= 'Z';
     end if;
 
-    if o_enb_n = '0' then
-      q3a <= val(3); q2a <= val(2); q1a <= val(1); q0a <= val(0);
+    if oe_w_n = '0' then
+      if pol = '1' then
+        w3 <= not reg4(3);
+        w2 <= not reg4(2);
+        w1 <= not reg4(1);
+        w0 <= not reg4(0);
+      else
+        w3 <= reg4(3);
+        w2 <= reg4(2);
+        w1 <= reg4(1);
+        w0 <= reg4(0);
+      end if;
     else
-      q3a <= 'Z'; q2a <= 'Z'; q1a <= 'Z'; q0a <= 'Z';
-    end if;
-
-    if out_enb_n = '0' then
-      q3b <= reg4(3); q2b <= reg4(2); q1b <= reg4(1); q0b <= reg4(0);
-    else
-      q3b <= 'Z'; q2b <= 'Z'; q1b <= 'Z'; q0b <= 'Z';
+      w3 <= 'Z';
+      w2 <= 'Z';
+      w1 <= 'Z';
+      w0 <= 'Z';
     end if;
   end process;
 end;

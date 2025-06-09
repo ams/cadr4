@@ -135,8 +135,6 @@ DIP_SRCS = dip_16dummy.vhd \
 		   dip_74s373.vhd \
 		   dip_74s472.vhd
 
-DIP_TB_SRCS = $(notdir $(wildcard dip/*_tb.vhd))
-
 PKG_SRCS = ttl/misc.vhd ttl/other.vhd ttl/sn74.vhd ttl/unsorted.vhd dip/dip.vhd
 
 # DO NOT MODIFY ANYTHING BELOW
@@ -146,11 +144,10 @@ TTL_TB_EXES := $(patsubst %.vhd,$(BUILDDIR)/%,$(TTL_TB_SRCS))
 TTL_TB_SRCS := $(addprefix ttl/,$(TTL_TB_SRCS))
 
 DIP_SRCS := $(addprefix dip/, $(DIP_SRCS)) 
-DIP_TB_EXES := $(patsubst %.vhd,$(BUILDDIR)/%,$(DIP_TB_SRCS))
-DIP_TB_SRCS := $(addprefix dip/,$(DIP_TB_SRCS))
 
 SRCS := $(TTL_SRCS) $(DIP_SRCS)
-TB_SRCS := $(TTL_TB_SRCS) $(DIP_TB_SRCS)
+TB_EXES := $(TTL_TB_EXES)
+TB_SRCS := $(TTL_TB_SRCS)
 
 .DEFAULT_GOAL := all
 
@@ -170,7 +167,7 @@ $(BUILDDIR)/work-obj$(GHDLSTD).cf: $(SRCS) $(TB_SRCS) $(PKG_SRCS)
 	mkdir -p $(BUILDDIR)
 	$(GHDL) make $(GHDLMAKEOPTIONS) --std=$(GHDLSTD) --workdir=$(BUILDDIR) -o $@ $(notdir $@)
 
-.PHONY: all ttl dip check ttl-check dip-check run-tb clean books
+.PHONY: all ttl dip check run-tb clean books
 
 all: ttl dip
 
@@ -178,12 +175,7 @@ ttl: $(TTL_TB_EXES)
 
 dip: $(DIP_TB_EXES)
 
-check: ttl-check dip-check
-
-ttl-check: $(TTL_TB_EXES)
-	for TB_EXE in $^; do TB=$$TB_EXE make run-tb || exit; done
-
-dip-check: $(DIP_TB_EXES)
+check: $(TB_EXES)
 	for TB_EXE in $^; do TB=$$TB_EXE make run-tb || exit; done
 
 # --workdir does not work below with ghdl run, we should cd and dont use --workdir
