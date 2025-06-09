@@ -25,8 +25,8 @@ DIP_SRCS := $(wildcard dip/*.vhd)
 CADR_SRCS := $(wildcard cadr/*.vhd)
 TTL_EXES := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard ttl/*_tb.vhd)))
 
-SRCS := $(TTL_SRCS) $(DIP_SRCS) $(CADR_SRCS) #cadr_clock1_tb.vhd
-EXES := $(TTL_EXES) #cadr_clock1_tb
+SRCS := $(TTL_SRCS) $(DIP_SRCS) $(CADR_SRCS) #icmem_clock1_tb.vhd
+EXES := $(TTL_EXES) #icmem_clock1_tb
 
 # ghdl import and make works weird, all the build process is weird
 # there is no sane way to build object files manually in this way
