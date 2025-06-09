@@ -96,9 +96,5 @@ suds: $(BUILDDIR)/soap
 	for FILE in cadr/*_suds.vhd; do sed -i .bak 's/dip_74s133o/dip_74s133/g' $${FILE} || exit; done
 	for FILE in cadr/*_suds.vhd; do sed -i .bak 's/dip_74ls240/dip_74s240/g' $${FILE} || exit; done
 	$(RM) cadr/*.vhd.bak
-# merge designators in _suds.vhd files	
-	for FILE in cadr/*_suds.vhd; do python3 cadr/merge-designators.py $${FILE} || exit; done
-# fix at signals in _suds.vhd files
-	for FILE in cadr/*_suds.vhd; do python3 cadr/fix-at-signals.py $${FILE} || exit; done	
-# fix port terminations in _suds.vhd files
-	for FILE in cadr/*_suds.vhd; do python3 cadr/fix-port-terminations.py $${FILE} || exit; done	
+# fix _suds.vhd files	
+	for FILE in cadr/*_suds.vhd; do python3 cadr/fix-suds.py -v $${FILE} || exit; done
