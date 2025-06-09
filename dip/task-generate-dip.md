@@ -1,14 +1,6 @@
-I would like to create wrappers for ttl entities so the ttl entities can be instantiated and port mapped using pin numbers instead of port names.
+Create a dip_X entity in dip/dip_X.vhd file for each component given in dip/dip.vhd. The corresponding entity name is given in the comment next to the component declaration. These are defined under ttl folder. Pay attention to comments in dip/dip.vhd and in files ttl/*.vhd to figure out the pin numbers and port names. The dip_X entity's port definition MUST match to its component decleration in dip/dip.vhd.
 
-The component declaration of the wrappers are given in dip/dip.vhd file. Do not modify the dip/dip.vhd file. Do not modify anything under ttl directory.
-
-Create a dip_X entity in dip/dip_X.vhd file for each component given in dip/dip.vhd. The corresponding ttl entity name is given in the comment next to the component declaration. Pay attention to comments in dip/dip.vhd and in ttl entities to figure out the pin numbers and port names. The dip_X entity's port definition MUST match to its component decleration in dip/dip.vhd.
-
-Also create a dip/dip_X_tb.vhd to verify if wrapper is connected properly. Instantiate a wrapper and actual component and see if their outputs match.
-
-Do not overwrite existing dip/dip_X.vhd, if the task is resumed, only work on the components that has no dip/dip_X.vhd file.
-
-Run testbench to see if your changes are correct.
+Do not overwrite any existing dip/dip_X.vhd. If the task is resumed, only work on the components that has no dip/dip_X.vhd file.
 
 For dip_5600_tb, use roms/mskg4_*.hex files as data to load to the ROM.
 
