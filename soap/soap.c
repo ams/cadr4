@@ -1921,17 +1921,6 @@ format_bodies(void)
     printf("use work.dip.all;\n");
     printf("\n");
 	printf("architecture suds of %s is\n", strlwr(page_name));
-	for (int i = 0; i < MAX_BODIES; i++) {
-		for (int j = 1; j < MAX_BODY_NAMED_PINS; j++) {
-			int pi = bodies[i].named_pin_index[j];
-			if (pi) {
-				char* name_of_pin = points[pi].name_of_pin;
-				if ((name_of_pin != NULL) && (name_of_pin[0] == '@')) {
-					fprintf(stderr, ">>> %s\n", name_of_pin);
-				}
-			}
-		}
-	}
 	printf("begin\n");
 	for (int i = 0; i < MAX_BODIES; i++) {
 

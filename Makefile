@@ -77,13 +77,18 @@ ICMEM_BOOK := clock1 clock2 debug icaps ictl iwrpar mbcpin mcpins olord1 olord2 
 iram00 iram01 iram02 iram03 iram10 iram11 iram12 iram13 iram20 iram21 iram22 iram23 iram30 \
 iram31 iram32 iram33 spy0 spy4 stat
 
-SUDS_SRCS := $(addprefix cadr/, $(addsuffix _suds.vhd, $(CADR_BOOK) $(ICMEM_BOOK)))
-
-cadr/%_suds.vhd: doc/ai/cadr/%.drw $(BUILDDIR)/soap
-	$(BUILDDIR)/soap -n $< > $@
-
 $(BUILDDIR)/soap: soap/soap.c soap/unpack.c
 	mkdir -p $(BUILDDIR)
 	$(CC) -std=gnu99 -Wall -Wextra -O0 -ggdb3 -o $@ -g $^
 
-suds: $(BUILDDIR)/soap $(SUDS_SRCS)
+suds: $(BUILDDIR)/soap
+# generate _suds.vhd files
+	for NAME in $(CADR_BOOK); do $(BUILDDIR)/soap -n doc/ai/cadr/$${NAME}.drw > cadr/$${NAME}_suds.vhd || exit; done
+	for NAME in $(ICMEM_BOOK); do $(BUILDDIR)/soap -n doc/ai/cadr/$${NAME}.drw > cadr/$${NAME}_suds.vhd || exit; done
+# fix some because designators uses different (but actually same) entities
+	for FILE in cadr/*_suds.vhd; do sed -i .bak 's/dip_74s00o/dip_74s00/g' $${FILE} || exit; done
+	for FILE in cadr/*_suds.vhd; do sed -i .bak 's/dip_74s02o/dip_74s02/g' $${FILE} || exit; done
+	for FILE in cadr/*_suds.vhd; do sed -i .bak 's/dip_74s08o/dip_74s08/g' $${FILE} || exit; done
+	$(RM) cadr/*.vhd.bak
+# merge designators in _suds.vhd files	
+	for FILE in cadr/*_suds.vhd; do cadr/merge-designators.py $${FILE} || exit; done
