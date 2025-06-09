@@ -1583,11 +1583,13 @@ follow_find_net_name(int *ppi, struct point_s *orig, struct point_s *last, struc
 	bi = p->id[1];
 	b = &bodies[bi];
 
+	if (p->pinname != '\0') {
 	if (b->named_pin_index[ p->pinname ]) {
 		*ppi = b->named_pin_index[ p->pinname ];
 		if (show_follow)
 			printf("hit %s\n",
 			       points[ *ppi ].name_of_pin);
+	}
 	}
 
 	next = find_point(p->d[0], p->d[1]);
