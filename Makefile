@@ -51,12 +51,15 @@ $(BUILDDIR)/%_tb: $(BUILDDIR)/work-obj$(GHDLSTD).cf
 	mkdir -p $(BUILDDIR)
 	$(GHDL) make $(GHDLMAKEOPTIONS) --std=$(GHDLSTD) --workdir=$(BUILDDIR) -o $@ $(notdir $@)
 
-.PHONY: all check run-tb clean help suds
+.PHONY: all ttl-check run-cadr run-tb clean help suds
 
 all: $(EXES)
 
-check: $(EXES)
+ttl-check: $(TTL_EXES)
 	for TB_EXE in $^; do TB=$$TB_EXE make run-tb || exit; done
+
+run-cadr: build/cadr_tb
+	TB=build/cadr_tb make run-tb
 
 # --workdir does not work below with ghdl run, we should cd and dont use --workdir
 run-tb: $(TB)
@@ -100,6 +103,11 @@ suds: $(BUILDDIR)/soap
 	for FILE in cadr/*_suds.vhd; do sed -i .bak 's/dip_74s32w/dip_74s32/g' $${FILE} || exit; done
 	for FILE in cadr/*_suds.vhd; do sed -i .bak 's/dip_74s133o/dip_74s133/g' $${FILE} || exit; done
 	for FILE in cadr/*_suds.vhd; do sed -i .bak 's/dip_74ls240/dip_74s240/g' $${FILE} || exit; done
+# modify olord2_1a19 port map
+	sed -i .bak 's/olord2_1a19.*/olord2_1a19: dip_16dummy port map (p1 => vcc, p12 => \\@1a20,p1\\, p13 => \\-boot2\\, p14 => \\-boot1\\, p15 => hi2, p16 => hi1);/g' cadr/cadr_olord2_suds.vhd || exit
+# modify one instance of olord2_1a20 port map to connect its p1 to olord2_1a19 p12
+	sed -i .bak 's/olord2_1a20 : dip_74ls14 port map (p2 => \\@1a20,p9\\);/olord2_1a20 : dip_74ls14 port map (p1 => \\@1a19,p12\\, p2 => \\@1a20,p9\\);/g' cadr/cadr_olord2_suds.vhd || exit
+# remove bak files
 	$(RM) cadr/*.vhd.bak
 # fix _suds.vhd files	
 	for FILE in cadr/*_suds.vhd; do python3 cadr/fix-suds.py -v $${FILE} || exit; done

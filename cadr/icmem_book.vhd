@@ -410,6 +410,7 @@ package icmem_book is
       \-v1pe\             : out std_logic;
       \-halted\           : out std_logic;
       hi1                 : out std_logic;
+      vcc                 : in  std_logic;
       gnd                 : in  std_logic;
       aparok              : in  std_logic;
       mmemparok           : in  std_logic;

@@ -14,8 +14,9 @@ entity cadr_olord2 is
     \-mempe\            : out std_logic;
     \-v0pe\             : out std_logic;
     \-v1pe\             : out std_logic;
-    \-halted\           : out std_logic;
+    \-halted\           : out std_logic;    
     hi1                 : out std_logic;
+    vcc                 : in  std_logic;
     gnd                 : in  std_logic;
     aparok              : in  std_logic;
     mmemparok           : in  std_logic;
