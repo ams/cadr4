@@ -3,7 +3,6 @@
 # ghdl cannot work with parallel runs
 .NOTPARALLEL:
 
-VCDFORMAT	= vcd
 GHDL		= ghdl
 GHDLSTD		= 08
 GHDLIMPORTOPTIONS	= -v -g
@@ -59,19 +58,27 @@ $(BUILDDIR)/%_tb: $(BUILDDIR)/work-obj$(GHDLSTD).cf
 	mkdir -p $(BUILDDIR)
 	$(GHDL) make $(GHDLMAKEOPTIONS) --std=$(GHDLSTD) --workdir=$(BUILDDIR) -o $@ $(notdir $@)
 
-.PHONY: all ttl-check run-cadr run-tb clean help suds
+.PHONY: all ttl-check run-tb vcd-% vcd-tb clean help suds
 
 all: $(EXES)
 
 ttl-check: $(TTL_EXES)
 	for TB_EXE in $^; do TB=$$TB_EXE make run-tb || exit; done
 
-run-cadr: build/cadr_tb
-	TB=build/cadr_tb make run-tb
-
 # --workdir does not work below with ghdl run, we should cd and dont use --workdir
 run-tb: $(TB)
-	cd $(BUILDDIR); $(GHDL) run $(GHDLRUNOPTIONS) --std=$(GHDLSTD) $(notdir $(TB)) $(GHDLSIMOPTIONS)
+	$< $(GHDLSIMOPTIONS)
+
+vcd-%: build/%_tb
+	TB=$< make vcd-tb
+
+vcd-tb: $(TB)
+ifneq ("$(wildcard $(notdir $(TB)).opt)","")
+	$< $(GHDLSIMOPTIONS) --vcd=$(BUILDDIR)/$(notdir $(TB)).vcd
+else
+	$< $(GHDLSIMOPTIONS) --vcd=$(BUILDDIR)/$(notdir $(TB)).vcd --read-wave-opt=$(BUILDDIR)/$(notdir $(TB)).opt
+endif	
+	surfer $(BUILDDIR)/$(notdir $(TB)).vcd
 
 clean:
 	rm -rf $(BUILDDIR)
@@ -79,8 +86,8 @@ clean:
 help: 
 	@echo "make all: build all testbenches"
 	@echo "make suds: re-creates suds sources from drw files (warning: overwrites existing cadr/*_suds.vhd files)"
-	@echo "make check: run all testbenches"
-	@echo "make run-tb: run a testbench"
+	@echo "make ttl-check: run all ttl testbenches"
+	@echo "make vcd-X: run testbench X (build/X_tb) and view the vcd file with surfer"
 	@echo "make clean: clean build directory"
 	@echo "make help: show this help"
 
