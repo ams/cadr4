@@ -8,12 +8,12 @@ use ieee.numeric_std.all;
 
 entity til309 is
   port (
-    i1, i2, i4, i8 : in  std_logic; -- i1: Pin 15 (A), i2: Pin 10 (B), i4: Pin 6 (C), i8: Pin 7 (D)
-    dp             : in  std_logic; -- Pin 12 (DP)
-    latch          : in  std_logic; -- Pin 5 (LS)
-    blank_n        : in  std_logic; -- Pin 11 (BI)
-    ldp            : in  std_logic; -- Pin 14 (QDP)
-    test_n         : in  std_logic; -- Pin 13 (LT)
+    i1, i2, i4, i8 : in  std_logic; -- i1: Pin 17 (A), i2: Pin 12 (B), i4: Pin 6 (C), i8: Pin 7 (D)
+    dp             : in  std_logic; -- Pin 14
+    latch          : in  std_logic; -- Pin 5 
+    blank_n        : in  std_logic; -- Pin 13
+    ldp            : in  std_logic; -- Pin 16
+    test_n         : in  std_logic; -- Pin 15 (LT)
     l1, l2, l4, l8 : out std_logic  -- l1: Pin 4 (QA), l2: Pin 1 (QB), l4: Pin 2 (QC), l8: Pin 3 (QD)
     );
 end;
