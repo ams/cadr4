@@ -112,7 +112,7 @@ entity cadr_md is
     mdgetspar   : out std_logic;
     \-ignpar\   : in  std_logic;
     mdhaspar    : out std_logic;
-    \mempar_in\ : in  std_logic;
+    \mempar in\ : in  std_logic;
     mdpar       : out std_logic;
     \-srcmd\    : in  std_logic);
 end;

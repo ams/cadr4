@@ -88,7 +88,7 @@ entity cadr_mds is
     \-mds31\      : out std_logic;
     ob31          : in  std_logic;
     mdparodd      : in  std_logic;
-    \mempar_out\  : out std_logic;
+    \mempar out\  : out std_logic;
     hi11          : in  std_logic;
     mdselb        : in  std_logic;
     ob12          : in  std_logic;

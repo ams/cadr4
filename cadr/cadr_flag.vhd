@@ -7,7 +7,7 @@ entity cadr_flag is
     \-nopa\             : in  std_logic;
     \-ilong\            : out std_logic;
     ob29                : in  std_logic;
-    \lc_byte_mode\      : out std_logic;
+    \lc byte mode\      : out std_logic;
     ob28                : in  std_logic;
     \prog.unibus.reset\ : out std_logic;
     hi4                 : in  std_logic;

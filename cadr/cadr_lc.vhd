@@ -8,7 +8,7 @@ entity cadr_lc is
     mf24                : out std_logic;
     gnd                 : in  std_logic;
     mf25                : out std_logic;
-    \lc_byte_mode\      : in  std_logic;
+    \lc byte mode\      : in  std_logic;
     mf26                : out std_logic;
     \prog.unibus.reset\ : in  std_logic;
     mf27                : out std_logic;

@@ -3,7 +3,7 @@ use ieee.std_logic_1164.all;
 
 entity cadr_olord1 is
   port (
-    \-clock_reset_a\ : in  std_logic;
+    \-clock reset a\ : in  std_logic;
     speed1a          : out std_logic;
     sspeed1          : out std_logic;
     speedclk         : out std_logic;

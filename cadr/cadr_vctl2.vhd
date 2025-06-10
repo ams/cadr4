@@ -35,7 +35,7 @@ entity cadr_vctl2 is
     vmasela        : out std_logic;
     vmaselb        : out std_logic;
     wrcyc          : in  std_logic;
-    \lm_drive_enb\ : in  std_logic;
+    \lm drive enb\ : in  std_logic;
     \-memdrive.a\  : out std_logic;
     \-memdrive.b\  : out std_logic;
     \-memwr\       : out std_logic;

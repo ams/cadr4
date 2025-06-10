@@ -17,14 +17,14 @@ entity cadr_clock2 is
     tpclk            : out std_logic;
     \-tptse\         : out std_logic;
     \-tpr25\         : in  std_logic;
-    \-clock_reset_b\ : in  std_logic;
+    \-clock reset b\ : in  std_logic;
     tptse            : out std_logic;
     \-tpw70\         : in  std_logic;
     \-tpclk\         : out std_logic;
     \-tpr0\          : in  std_logic;
     \-tpr5\          : in  std_logic;
     \-tpw30\         : in  std_logic;
-    \machruna_l\     : in  std_logic;
+    \machruna l\     : in  std_logic;
     tpwpiram         : out std_logic;
     \-wp5\           : out std_logic;
     clk5             : out std_logic;

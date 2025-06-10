@@ -3,7 +3,7 @@ use ieee.std_logic_1164.all;
 
 entity cadr_lcc is
   port (
-    \lc_byte_mode\               : in  std_logic;
+    \lc byte mode\               : in  std_logic;
     \-lcinc\                     : out std_logic;
     lca1                         : out std_logic;
     gnd                          : in  std_logic;
@@ -23,19 +23,19 @@ entity cadr_lcc is
     ob1                          : in  std_logic;
     ob0                          : in  std_logic;
     lc0b                         : out std_logic;
-    \inst_in_left_half\          : out std_logic;
+    \inst in left half\          : out std_logic;
     \-ir4\                       : in  std_logic;
     \-sh4\                       : out std_logic;
     \-sh3\                       : out std_logic;
     \-ir3\                       : in  std_logic;
-    \inst_in_2nd_or_4th_quarter\ : out std_logic;
-    \-lc_modifies_mrot\          : out std_logic;
+    \inst in 2nd or 4th quarter\ : out std_logic;
+    \-lc modifies mrot\          : out std_logic;
     spc14                        : in  std_logic;
     \-srcspcpopreal\             : in  std_logic;
     \-ifetch\                    : out std_logic;
     needfetch                    : out std_logic;
-    \have_wrong_word\            : out std_logic;
-    \last_byte_in_word\          : out std_logic;
+    \have wrong word\            : out std_logic;
+    \last byte in word\          : out std_logic;
     ir10                         : in  std_logic;
     ir11                         : in  std_logic;
     \-newlc\                     : out std_logic;
