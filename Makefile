@@ -124,6 +124,6 @@ ifeq ($(OS),Darwin)
 	sed $(SEDOPTIONS) 's/^architecture.*/&\'$$'\nsignal \\\\-tpdone\\\\ : std_logic;\\n/' cadr/cadr_clock1_suds.vhd || exit
 	sed $(SEDOPTIONS) 's/^begin.*/&\'$$'\n\\\\-tpdone\\\\ <= \\\\-tpw60\\\\;\\n/' cadr/cadr_clock1_suds.vhd || exit
 else
-	sed $(SEDOPTIONS) 's/^architecture.*/&\nsignal \\\\-tpdone\\\\ : std_logic;/' cadr/cadr_clock1_suds.vhd || exit
-	sed $(SEDOPTIONS) 's/^begin.*/&\n\\\\-tpdone\\\\ <= \\\\-tpw60\\\\;/' cadr/cadr_clock1_suds.vhd || exit
+	sed $(SEDOPTIONS) 's/^architecture.*/&\nsignal \\-tpdone\\ : std_logic;/' cadr/cadr_clock1_suds.vhd || exit
+	sed $(SEDOPTIONS) 's/^begin.*/&\n\\-tpdone\\ <= \\-tpw60\\;/' cadr/cadr_clock1_suds.vhd || exit
 endif
