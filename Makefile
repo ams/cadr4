@@ -24,7 +24,7 @@ OS := $(shell uname -s)
 ifeq ($(OS),Darwin)
     SEDOPTIONS := -i ''
 else
-    SEDOPTIONS :=
+    SEDOPTIONS := -i
 endif
 
 # sources are found by wildcard
