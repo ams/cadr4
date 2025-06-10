@@ -74,9 +74,10 @@ vcd-%: build/%_tb
 
 vcd-tb: $(TB)
 ifneq ("$(wildcard $(notdir $(TB)).opt)","")
-	$< $(GHDLSIMOPTIONS) --vcd=$(BUILDDIR)/$(notdir $(TB)).vcd
+	$< $(GHDLSIMOPTIONS) --vcd=$(BUILDDIR)/$(notdir $(TB)).vcd --read-wave-opt=$(notdir $(TB)).opt --vcd-nodate
 else
-	$< $(GHDLSIMOPTIONS) --vcd=$(BUILDDIR)/$(notdir $(TB)).vcd --read-wave-opt=$(BUILDDIR)/$(notdir $(TB)).opt
+	$< $(GHDLSIMOPTIONS) --vcd=$(BUILDDIR)/$(notdir $(TB)).vcd --vcd-nodate
+#--write-wave-opt=$(notdir $(TB)).opt
 endif	
 	surfer $(BUILDDIR)/$(notdir $(TB)).vcd
 
