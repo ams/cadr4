@@ -120,5 +120,10 @@ suds: $(BUILDDIR)/soap
 # fix _suds.vhd files	
 	for FILE in cadr/*_suds.vhd; do python3 cadr/fix-suds.py -v $${FILE} || exit; done
 # modify clock1 to wire -tpw60 to -tpdone, this is done after fix-suds.py because it may modify or get confused with these additions
-	sed $(SEDOPTIONS) 's/^architecture.*/&\'$$'\nsignal \\\\-tpdone\\\\ : std_logic;/' cadr/cadr_clock1_suds.vhd || exit
-	sed $(SEDOPTIONS) 's/^begin.*/&\'$$'\n\\\\-tpdone\\\\ <= \\\\-tpw60\\\\;/' cadr/cadr_clock1_suds.vhd || exit
+ifeq ($(OS),Darwin)
+	sed $(SEDOPTIONS) 's/^architecture.*/&\'$$'\nsignal \\\\-tpdone\\\\ : std_logic;\\n/' cadr/cadr_clock1_suds.vhd || exit
+	sed $(SEDOPTIONS) 's/^begin.*/&\'$$'\n\\\\-tpdone\\\\ <= \\\\-tpw60\\\\;\\n/' cadr/cadr_clock1_suds.vhd || exit
+else
+	sed $(SEDOPTIONS) 's/^architecture.*/&\nsignal \\\\-tpdone\\\\ : std_logic;/' cadr/cadr_clock1_suds.vhd || exit
+	sed $(SEDOPTIONS) 's/^begin.*/&\n\\\\-tpdone\\\\ <= \\\\-tpw60\\\\;/' cadr/cadr_clock1_suds.vhd || exit
+endif
