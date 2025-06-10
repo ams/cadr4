@@ -97,6 +97,8 @@ $(BUILDDIR)/soap: soap/soap.c soap/unpack.c
 	mkdir -p $(BUILDDIR)
 	$(CC) -std=gnu99 -Wall -Wextra -O0 -ggdb3 -o $@ -g $^
 
+NL := $(shell printf '\n')
+
 suds: $(BUILDDIR)/soap
 # generate _suds.vhd files
 	for NAME in $(CADR_BOOK); do $(BUILDDIR)/soap -n doc/ai/cadr/$${NAME}.drw > cadr/cadr_$${NAME}_suds.vhd || exit; done
@@ -117,3 +119,6 @@ suds: $(BUILDDIR)/soap
 	sed $(SEDOPTIONS) 's/olord2_1a20 : dip_74ls14 port map (p2 => \\@1a20,p9\\);/olord2_1a20 : dip_74ls14 port map (p1 => \\@1a19,p12\\, p2 => \\@1a20,p9\\);/g' cadr/cadr_olord2_suds.vhd || exit
 # fix _suds.vhd files	
 	for FILE in cadr/*_suds.vhd; do python3 cadr/fix-suds.py -v $${FILE} || exit; done
+# modify clock1 to wire -tpw60 to -tpdone, this is done after fix-suds.py because it may modify or get confused with these additions
+	sed $(SEDOPTIONS) 's/^architecture.*/&\'$$'\nsignal \\\\-tpdone\\\\ : std_logic;/' cadr/cadr_clock1_suds.vhd || exit
+	sed $(SEDOPTIONS) 's/^begin.*/&\'$$'\n\\\\-tpdone\\\\ <= \\\\-tpw60\\\\;/' cadr/cadr_clock1_suds.vhd || exit

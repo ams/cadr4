@@ -8,7 +8,6 @@ package icmem_book is
   component cadr_clock1 is
     port (
       \-clock reset b\ : in  std_logic;
-      \-tpdone\        : in  std_logic;
       \-hang\          : in  std_logic;
       cyclecompleted   : out std_logic;
       \-tpr0\          : out std_logic;

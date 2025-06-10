@@ -4,7 +4,6 @@ use ieee.std_logic_1164.all;
 entity cadr_clock1 is
   port (
     \-clock reset b\ : in  std_logic;
-    \-tpdone\        : in  std_logic;
     \-hang\          : in  std_logic;
     cyclecompleted   : out std_logic;
     \-tpr0\          : out std_logic;
@@ -15,8 +14,8 @@ entity cadr_clock1 is
     \-tpw40\         : out std_logic;
     \-tpw50\         : out std_logic;
     \-tpw30\         : out std_logic;
-    \-tpw10\         : out std_logic;
-    \-tpw60\         : out std_logic;
+    \-tpw10\         : out std_logic;   
+    \-tpw60\         : buffer std_logic; -- buffer because it is internally assigned to -tpdone
     \-tpw70\         : out std_logic;
     \-tpw75\         : out std_logic;
     \-tpw65\         : out std_logic;
