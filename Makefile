@@ -7,7 +7,11 @@ VCDFORMAT	= vcd
 GHDL		= ghdl
 GHDLSTD		= 08
 GHDLIMPORTOPTIONS	= -v -g
-GHDLMAKEOPTIONS		= -v -g -Wc,-Werror
+GHDLMAKEOPTIONS		= -v -g 
+GHDLVERSION			= $(ghdl --version | head -1 | cut -f2 -d' ')
+ifeq ($(GHDLVERSION),"6.0.0-dev")
+   	GHDLMAKEOPTIONS += -Wc,-Werror
+endif
 GHDLRUNOPTIONS		= -v -g
 GHDLSIMOPTIONS		= --backtrace-severity=warning --assert-level=warning
 
@@ -84,8 +88,8 @@ $(BUILDDIR)/soap: soap/soap.c soap/unpack.c
 
 suds: $(BUILDDIR)/soap
 # generate _suds.vhd files
-	for NAME in $(CADR_BOOK); do $(BUILDDIR)/soap -n doc/ai/cadr/$${NAME}.drw > cadr/$${NAME}_suds.vhd || exit; done
-	for NAME in $(ICMEM_BOOK); do $(BUILDDIR)/soap -n doc/ai/cadr/$${NAME}.drw > cadr/$${NAME}_suds.vhd || exit; done
+	for NAME in $(CADR_BOOK); do $(BUILDDIR)/soap -n doc/ai/cadr/$${NAME}.drw > cadr/cadr_$${NAME}_suds.vhd || exit; done
+	for NAME in $(ICMEM_BOOK); do $(BUILDDIR)/soap -n doc/ai/cadr/$${NAME}.drw > cadr/cadr_$${NAME}_suds.vhd || exit; done
 # fix aliases, simply replace
 	for FILE in cadr/*_suds.vhd; do sed -i .bak 's/dip_74s00o/dip_74s00/g' $${FILE} || exit; done
 	for FILE in cadr/*_suds.vhd; do sed -i .bak 's/dip_74s02o/dip_74s02/g' $${FILE} || exit; done

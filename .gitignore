@@ -9,4 +9,6 @@ soap/soap
 soap/*.o
 *.dSYM/
 
+**/__pycache__
+
 cadr/*_suds.vhd

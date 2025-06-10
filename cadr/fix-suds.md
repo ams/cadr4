@@ -1,8 +1,8 @@
-cadr/*_suds.vhd files are auto-generated. There are three problems in these files and they should be fixed. 
+cadr/cadr_*_suds.vhd files are auto-generated. There are three problems in these files and they should be fixed. I will call these suds files.
 
 Create a cadr/fix-suds.py python script that fixes the issues below.
 
-If I run cadr/fix-suds.py X_suds.vhd, X_suds.vhd should be modified in-place. There is no need to create a backup file.
+If I run cadr/fix-suds.py cadr_X_suds.vhd, cadr_X_suds.vhd should be modified in-place. There is no need to create a backup file. The argument, the vhd file name can be in the different format, do not assume it is in cadr_X_suds.vhd format.
 
 cadr/fix-suds.py will be run from the project root folder.
 
@@ -16,9 +16,17 @@ After running the pyhton script, `make` can be used to see if the project compil
 
 The best approach is to read the vhd file and create a representation (using dictionary, list etc.) of the component instantiations in this vhd file. Then issue 1 can be easily fixed. To fix issue 2, find such signals @designator,pin, and keep them in a list and add them to the ports of the component label page_designator (such as actl_3b30). Finally, to fix issue 3, read the component definition in dip/dip.vhd and add the missing ports with correct termination ('0' or open).
 
+# Page Name
+
+Do not use the argument, filename, to derive the page name. Instead, use the architecture line. For example, if the architecture line is:
+
+'architecture suds of cadr_actl is'
+
+then the entity is `cadr_actl` and the page name is `actl`. The entity name is always in the cadr_<PAGE> format.
+
 # Issue 1 - Repeated Designators
 
-In *_suds.vhd files, some labels of component instantiations might be repeated because they port map different pins of the same component. However, the labels has to be unique.
+In suds files, some labels of component instantiations might be repeated because they port map different pins of the same component. However, the labels has to be unique.
 
 For example, cadr/actl_suds.vhd has these lines:
 ```
@@ -40,15 +48,15 @@ Pay attention to the entity name and the pins. The entity names should be same a
 
 # Issue 2 - @designator,pin signals
 
-In *_suds.vhd files, some ports are mapped to signals of the form \@<DESIGNATOR>,p<NUM>\.
+In suds files, some ports are mapped to signals of the form \@<DESIGNATOR>,p<NUM>\.
 
-For example, for cadr/<PAGE>_suds.vhd, this means that port is connected to p<NUM> of the component instantiation with label <PAGE>_<DESIGNATOR>. Here <PAGE> represents the page name, which is the first part (before underscore) of the file name.
+This means that port is connected to p<NUM> of the component instantiation with label <PAGE>_<DESIGNATOR>. Here <PAGE> represents the page name.
 
 Two components are connected to each other like this. However, this is wrong, because they have to be the same signal. The script should create both of these signals, and connect one to other (x <= y in vhdl) so the component pins are connected to each.
 
 # Issue 3 - port terminations
 
-In *_suds.vhd files, some ports of dip components are not mapped. However, all unused input ports should be set to '0' and all unused output ports should be set to open.
+In suds files, some ports of dip components are not mapped. However, all unused input ports should be set to '0' and all unused output ports should be set to open.
 
 For each component instantiation, check the dip component definition in dip/dip.vhd. If the dip port is an input port, set it to '0' in the port map. If the dip port is an output port, set it to open. There is only input and output ports, no bidirectional or buffer ports. There are also no power/ground pins.
 

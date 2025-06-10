@@ -158,14 +158,6 @@ def find_at_signals(instantiations):
 def fix_suds_file(file_path, verbose=False):
     """Fix the SUDS VHDL file according to the three issues."""
     
-    # Get page name from filename
-    basename = os.path.basename(file_path)
-    if not basename.endswith('_suds.vhd'):
-        print(f"Error: File {file_path} is not a SUDS file")
-        sys.exit(1)
-    
-    page_name = basename[:-9]  # Remove '_suds.vhd'
-    
     # Parse component definitions
     dip_file_path = 'dip/dip.vhd'
     components = parse_component_definitions(dip_file_path)
@@ -176,6 +168,24 @@ def fix_suds_file(file_path, verbose=False):
         # Empty file - skip processing
         return
     lines, begin_line, end_line = result
+    
+    # Get page name from architecture line
+    page_name = None
+    for line in lines:
+        # Look for architecture line: architecture suds of <PAGE> is
+        match = re.match(r'\s*architecture\s+suds\s+of\s+(\w+)\s+is', line, re.IGNORECASE)
+        if match:
+            entity_name = match.group(1)
+            # Check if entity name is in cadr_<PAGE> format or just <PAGE> format
+            if entity_name.startswith('cadr_'):
+                page_name = entity_name[5:]  # Remove 'cadr_' prefix
+            else:
+                page_name = entity_name
+            break
+    
+    if page_name is None:
+        print(f"Error: Could not find architecture line with suds pattern in {file_path}")
+        sys.exit(1)
     
     # Extract existing signal declarations
     existing_signals = set()
