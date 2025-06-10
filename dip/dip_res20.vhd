@@ -4,24 +4,24 @@ use ieee.std_logic_1164.all;
 
 entity dip_res20 is
   port (
-    p2  : in std_logic;  -- r2
-    p3  : in std_logic;  -- r3
-    p4  : in std_logic;  -- r4
-    p5  : in std_logic;  -- r5
-    p6  : in std_logic;  -- r6
-    p7  : in std_logic;  -- r7
-    p8  : in std_logic;  -- r8
-    p9  : in std_logic;  -- r9
-    p10 : in std_logic;  -- r10
-    p11 : in std_logic;  -- r11
-    p12 : in std_logic;  -- r12
-    p13 : in std_logic;  -- r13
-    p14 : in std_logic;  -- r14
-    p15 : in std_logic;  -- r15
-    p16 : in std_logic;  -- r16
-    p17 : in std_logic;  -- r17
-    p18 : in std_logic;  -- r18
-    p19 : in std_logic   -- r19
+    p2  : out std_logic;  -- r2
+    p3  : out std_logic;  -- r3
+    p4  : out std_logic;  -- r4
+    p5  : out std_logic;  -- r5
+    p6  : out std_logic;  -- r6
+    p7  : out std_logic;  -- r7
+    p8  : out std_logic;  -- r8
+    p9  : out std_logic;  -- r9
+    p10 : out std_logic;  -- r10
+    p11 : out std_logic;  -- r11
+    p12 : out std_logic;  -- r12
+    p13 : out std_logic;  -- r13
+    p14 : out std_logic;  -- r14
+    p15 : out std_logic;  -- r15
+    p16 : out std_logic;  -- r16
+    p17 : out std_logic;  -- r17
+    p18 : out std_logic;  -- r18
+    p19 : out std_logic   -- r19
     );
 end entity;
 

@@ -995,24 +995,24 @@ package dip is
   end component;
 
   component dip_res20 is port (         -- res20 [res20]
-    p2  : in std_logic;                 -- r2
-    p3  : in std_logic;                 -- r3
-    p4  : in std_logic;                 -- r4
-    p5  : in std_logic;                 -- r5
-    p6  : in std_logic;                 -- r6
-    p7  : in std_logic;                 -- r7
-    p8  : in std_logic;                 -- r8
-    p9  : in std_logic;                 -- r9
-    p10 : in std_logic;                 -- r10
-    p11 : in std_logic;                 -- r11
-    p12 : in std_logic;                 -- r12
-    p13 : in std_logic;                 -- r13
-    p14 : in std_logic;                 -- r14
-    p15 : in std_logic;                 -- r15
-    p16 : in std_logic;                 -- r16
-    p17 : in std_logic;                 -- r17
-    p18 : in std_logic;                 -- r18
-    p19 : in std_logic                  -- r19
+    p2  : out std_logic;                 -- r2
+    p3  : out std_logic;                 -- r3
+    p4  : out std_logic;                 -- r4
+    p5  : out std_logic;                 -- r5
+    p6  : out std_logic;                 -- r6
+    p7  : out std_logic;                 -- r7
+    p8  : out std_logic;                 -- r8
+    p9  : out std_logic;                 -- r9
+    p10 : out std_logic;                 -- r10
+    p11 : out std_logic;                 -- r11
+    p12 : out std_logic;                 -- r12
+    p13 : out std_logic;                 -- r13
+    p14 : out std_logic;                 -- r14
+    p15 : out std_logic;                 -- r15
+    p16 : out std_logic;                 -- r16
+    p17 : out std_logic;                 -- r17
+    p18 : out std_logic;                 -- r18
+    p19 : out std_logic                  -- r19
     );
   end component;
 
@@ -1077,10 +1077,10 @@ package dip is
   end component;
 
   component dip_til309 is port (        -- til309 [til309]
-    p1  : in std_logic;                 -- l2
-    p2  : in std_logic;                 -- l4
-    p3  : in std_logic;                 -- l8
-    p4  : in std_logic;                 -- l1
+    p1  : out std_logic;                 -- l2
+    p2  : out std_logic;                 -- l4
+    p3  : out std_logic;                 -- l8
+    p4  : out std_logic;                 -- l1
     p5  : in std_logic;                 -- latch
     p6  : in std_logic;                 -- i4
     p7  : in std_logic;                 -- i8

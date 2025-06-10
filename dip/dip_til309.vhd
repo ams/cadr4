@@ -4,10 +4,10 @@ use ieee.std_logic_1164.all;
 
 entity dip_til309 is
   port (
-    p1  : in std_logic;  -- l2
-    p2  : in std_logic;  -- l4
-    p3  : in std_logic;  -- l8
-    p4  : in std_logic;  -- l1
+    p1  : out std_logic;  -- l2
+    p2  : out std_logic;  -- l4
+    p3  : out std_logic;  -- l8
+    p4  : out std_logic;  -- l1
     p5  : in std_logic;  -- latch
     p6  : in std_logic;  -- i4
     p7  : in std_logic;  -- i8
