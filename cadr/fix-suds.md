@@ -52,7 +52,7 @@ In suds files, some ports are mapped to signals of the form \@<DESIGNATOR>,p<NUM
 
 This means that port is connected to p<NUM> of the component instantiation with label <PAGE>_<DESIGNATOR>. Here <PAGE> represents the page name.
 
-Two components are connected to each other like this. However, this is wrong, because they have to be the same signal. The script should create both of these signals, and connect one to other (x <= y in vhdl) so the component pins are connected to each.
+However, when two or more components are connected to each other like this, this is wrong, because they have to be the same signal. The script should find such signals, define a new signal with a random name and assign all related ports this signal.
 
 # Issue 3 - port terminations
 

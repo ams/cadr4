@@ -5,6 +5,7 @@
 
 GHDL		= ghdl
 GHDLSTD		= 08
+GHDLWAVEFORMAT		= ghw
 GHDLIMPORTOPTIONS	= -v -g
 GHDLMAKEOPTIONS		= -v -g 
 GHDLVERSION			= $(ghdl --version | head -1 | cut -f2 -d' ')
@@ -72,14 +73,19 @@ run-tb: $(TB)
 vcd-%: build/%_tb
 	TB=$< make vcd-tb
 
-vcd-tb: $(TB)
+ifeq ($(GHDLWAVEFORMAT),ghw)
 ifneq ("$(wildcard $(notdir $(TB)).opt)","")
-	$< $(GHDLSIMOPTIONS) --vcd=$(BUILDDIR)/$(notdir $(TB)).vcd --read-wave-opt=$(notdir $(TB)).opt --vcd-nodate
+GHDLWAVEOPTIONS := --vcd=$(BUILDDIR)/$(notdir $(TB)).ghw --read-wave-opt=$(notdir $(TB)).opt
 else
-	$< $(GHDLSIMOPTIONS) --vcd=$(BUILDDIR)/$(notdir $(TB)).vcd --vcd-nodate
-#--write-wave-opt=$(notdir $(TB)).opt
-endif	
-	surfer $(BUILDDIR)/$(notdir $(TB)).vcd
+GHDLWAVEOPTIONS := --vcd=$(BUILDDIR)/$(notdir $(TB)).ghw #--write-wave-opt=$(notdir $(TB)).opt
+endif
+else
+GHDLWAVEOPTIONS := --vcd=$(BUILDDIR)/$(notdir $(TB)).vcd
+endif
+
+vcd-tb: $(TB)
+	$< $(GHDLSIMOPTIONS) $(GHDLWAVEOPTIONS) --disp-time
+	surfer $(BUILDDIR)/$(notdir $(TB)).$(GHDLWAVEFORMAT)
 
 clean:
 	rm -rf $(BUILDDIR)

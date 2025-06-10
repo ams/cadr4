@@ -233,33 +233,110 @@ def fix_suds_file(file_path, verbose=False):
                 'ports': inst['ports'].copy()
             }
     
-    # Issue 2: Find @designator,pin signals
+    # Issue 2: Find @designator,pin signals and create nets
     at_signals = find_at_signals(instantiations)
     
-    # Find signal pairs that need to be connected
-    signal_connections = []
-    for designator, pin_num in at_signals:
-        target_label = f"{page_name}_{designator}"
-        signal_name = f"\\@{designator},p{pin_num}\\"
+    # Collect all @signals used in instantiations
+    all_at_signals = set()
+    at_pattern = r'\\@(\w+),p(\d+)\\'
+    for inst in instantiations:
+        for port_signal in inst['ports'].values():
+            match = re.search(at_pattern, port_signal)
+            if match:
+                designator = match.group(1)
+                pin_num = int(match.group(2))
+                at_signal = f"\\@{designator},p{pin_num}\\"
+                all_at_signals.add(at_signal)
+    
+    # Group interconnected @signals into nets using Union-Find
+    signal_to_net = {}
+    nets = []
+    
+    def find_root(signal):
+        if signal not in signal_to_net:
+            return None
+        root = signal_to_net[signal]
+        # Path compression
+        if isinstance(root, str) and root != signal:
+            signal_to_net[signal] = find_root(root)
+            return signal_to_net[signal]
+        return root
+    
+    def union_signals(sig1, sig2):
+        root1 = find_root(sig1)
+        root2 = find_root(sig2)
         
-        # Look for the reverse signal (if A connects to B, B should connect to A)
-        for inst in instantiations:
-            if inst['label'] == target_label:
-                for port_pin, port_signal in inst['ports'].items():
-                    if port_pin == pin_num:
-                        # Found the matching component pin
-                        # Check if it's connected to a @signal that points back
-                        reverse_pattern = r'\\@(\w+),p(\d+)\\'
-                        match = re.search(reverse_pattern, port_signal)
-                        if match:
-                            reverse_designator = match.group(1)
-                            reverse_pin = int(match.group(2))
-                            reverse_signal = f"\\@{reverse_designator},p{reverse_pin}\\"
+        if root1 is None and root2 is None:
+            # Both signals are new, create a new net
+            net_idx = len(nets)
+            nets.append(set())
+            signal_to_net[sig1] = net_idx
+            signal_to_net[sig2] = net_idx
+            nets[net_idx].add(sig1)
+            nets[net_idx].add(sig2)
+        elif root1 is None:
+            # sig1 is new, add to sig2's net
+            signal_to_net[sig1] = root2
+            nets[root2].add(sig1)
+        elif root2 is None:
+            # sig2 is new, add to sig1's net
+            signal_to_net[sig2] = root1
+            nets[root1].add(sig2)
+        elif root1 != root2:
+            # Merge two different nets
+            # Move all signals from net root2 to net root1
+            for sig in nets[root2]:
+                signal_to_net[sig] = root1
+                nets[root1].add(sig)
+            nets[root2] = set()  # Clear the merged net
+    
+    # Find connections between @signals
+    for inst in instantiations:
+        label = inst['label']
+        for port_pin, port_signal in inst['ports'].items():
+            match = re.search(at_pattern, port_signal)
+            if match:
+                designator = match.group(1)
+                pin_num = int(match.group(2))
+                current_signal = f"\\@{designator},p{pin_num}\\"
+                
+                # This @signal should connect to pin {pin_num} of component {page}_{designator}
+                target_label = f"{page_name}_{designator}"
+                
+                # Find what's connected to pin {pin_num} of target component
+                for target_inst in instantiations:
+                    if target_inst['label'] == target_label and pin_num in target_inst['ports']:
+                        target_port_signal = target_inst['ports'][pin_num]
+                        target_match = re.search(at_pattern, target_port_signal)
+                        if target_match:
+                            target_designator = target_match.group(1)
+                            target_pin = int(target_match.group(2))
+                            target_signal = f"\\@{target_designator},p{target_pin}\\"
                             
-                            # Create connection: reverse_signal <= signal_name
-                            connection = (reverse_signal, signal_name)
-                            if connection not in signal_connections:
-                                signal_connections.append(connection)
+                            # Union these two signals
+                            union_signals(current_signal, target_signal)
+                        break
+    
+    # Add any isolated @signals to their own nets
+    for at_signal in all_at_signals:
+        if find_root(at_signal) is None:
+            net_idx = len(nets)
+            nets.append({at_signal})
+            signal_to_net[at_signal] = net_idx
+    
+    # Create new signal names for each net and replace @signals
+    net_signal_names = {}
+    for net_idx, net in enumerate(nets):
+        if net:  # Skip empty nets
+            # Generate a unique signal name
+            net_signal_name = f"net_{len(net_signal_names)}"
+            net_signal_names[net_idx] = net_signal_name
+            
+            # Replace all @signals in this net with the new signal name
+            for inst in merged_instantiations.values():
+                for port_pin in inst['ports']:
+                    if inst['ports'][port_pin] in net:
+                        inst['ports'][port_pin] = net_signal_name
     
     # Issue 3: Add missing port terminations
     for label, inst in merged_instantiations.items():
@@ -281,31 +358,13 @@ def fix_suds_file(file_path, verbose=False):
     # Generate new instantiation lines
     new_lines = []
     
-    # Add signal declarations for @designator,pin signals
+    # Add signal declarations for net signals
     signal_declarations = []
-    for designator, pin_num in sorted(at_signals):
-        signal_name = f"@{designator},p{pin_num}"
-        if signal_name not in existing_signals:
-            signal_declarations.append(f"signal \\{signal_name}\\ : std_logic;\n")
+    for net_idx, signal_name in sorted(net_signal_names.items()):
+        signal_declarations.append(f"signal {signal_name} : std_logic;\n")
     
-    # Add signal assignment statements for connections
+    # No signal assignments needed anymore since we replaced @signals directly with net signals
     signal_assignments = []
-    processed_pairs = set()
-    
-    for target_signal, source_signal in signal_connections:
-        # Skip self-assignments (signal <= signal)
-        if target_signal == source_signal:
-            continue
-            
-        # Create a canonical pair to avoid duplicate assignments in both directions
-        pair = tuple(sorted([target_signal, source_signal]))
-        if pair not in processed_pairs:
-            processed_pairs.add(pair)
-            # Always assign in a consistent direction (alphabetically first <= second)
-            if target_signal < source_signal:
-                signal_assignments.append(f"{target_signal} <= {source_signal};\n")
-            else:
-                signal_assignments.append(f"{source_signal} <= {target_signal};\n")
     
     # Build new file content
     result_lines = lines[:begin_line]
