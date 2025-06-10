@@ -5,7 +5,7 @@ use ieee.std_logic_1164.all;
 
 package cadr_book is
 
-  component actl is
+  component cadr_actl is
     port (
       clk3e       : in  std_logic;
       wadr0       : out std_logic;
@@ -80,7 +80,7 @@ package cadr_book is
       \-apassenb\ : out std_logic);
   end component;
 
-  component alatch is
+  component cadr_alatch is
     port (
       \-amemenb\  : in  std_logic;
       a23         : out std_logic;
@@ -189,7 +189,7 @@ package cadr_book is
       l16         : in  std_logic);
   end component;
 
-  component alu0 is
+  component cadr_alu0 is
     port (
       a12      : out std_logic;
       m12      : in  std_logic;
@@ -259,7 +259,7 @@ package cadr_book is
       m1       : in  std_logic);
   end component;
 
-  component alu1 is
+  component cadr_alu1 is
     port (
       a31a     : in  std_logic;
       m31b     : out std_logic;
@@ -334,7 +334,7 @@ package cadr_book is
       m17      : in  std_logic);
   end component;
 
-  component aluc4 is
+  component cadr_aluc4 is
     port (
       \-aluf0\          : out std_logic;
       aluf0b            : out std_logic;
@@ -417,7 +417,7 @@ package cadr_book is
       osel0b            : out std_logic);
   end component;
 
-  component amem0 is
+  component cadr_amem0 is
     port (
       gnd        : in  std_logic;
       \-aadr0b\  : in  std_logic;
@@ -467,7 +467,7 @@ package cadr_book is
       l25        : in  std_logic);
   end component;
 
-  component amem1 is
+  component cadr_amem1 is
     port (
       gnd       : out std_logic;
       \-aadr0a\ : in  std_logic;
@@ -516,7 +516,7 @@ package cadr_book is
       l9        : in  std_logic);
   end component;
 
-  component apar is
+  component cadr_apar is
     port (
       a26       : in  std_logic;
       a27       : in  std_logic;
@@ -598,11 +598,11 @@ package cadr_book is
       m25       : in  std_logic);
   end component;
 
-  -- component bcpins is
+  -- component cadr_bcpins is
   --   port ();
   -- end component;
 
-  component bcterm is
+  component cadr_bcterm is
     port (
       mem0        : out std_logic;
       mem1        : out std_logic;
@@ -629,11 +629,11 @@ package cadr_book is
       \-memack\   : out std_logic);
   end component;
 
-  -- component caps is
+  -- component cadr_caps is
   --   port ();
   -- end component;
 
-  component clockd is
+  component cadr_clockd is
     port (
       \-clk1\        : out std_logic;
       hi12           : in  std_logic;
@@ -711,7 +711,7 @@ package cadr_book is
       \-srcpdlidx\   : in  std_logic);
   end component;
 
-  component contrl is
+  component cadr_contrl is
     port (
       spushd           : out std_logic;
       tse3a            : in  std_logic;
@@ -782,11 +782,11 @@ package cadr_book is
       \-swpa\          : out std_logic);
   end component;
 
-  -- component cpins is
+  -- component cadr_cpins is
   --   port ();
   -- end component;
 
-  component dram0 is
+  component cadr_dram0 is
     port (
       wp2         : in  std_logic;
       dispwr      : in  std_logic;
@@ -858,7 +858,7 @@ package cadr_book is
       dmask1      : in  std_logic);
   end component;
 
-  component dram1 is
+  component cadr_dram1 is
     port (
       wp2         : in  std_logic;
       dispwr      : in  std_logic;
@@ -930,7 +930,7 @@ package cadr_book is
       ir22b       : out std_logic);
   end component;
 
-  component dram2 is
+  component cadr_dram2 is
     port (
       dadr10c     : out std_logic;
       \-dadr0c\   : out std_logic;
@@ -993,7 +993,7 @@ package cadr_book is
       wp2         : in  std_logic);
   end component;
 
-  component dspctl is
+  component cadr_dspctl is
     port (
       dmask0      : out std_logic;
       dmask1      : out std_logic;
@@ -1095,7 +1095,7 @@ package cadr_book is
       dpc8        : in  std_logic);
   end component;
 
-  component flag is
+  component cadr_flag is
     port (
       ir45                : in  std_logic;
       \-nopa\             : in  std_logic;
@@ -1136,7 +1136,7 @@ package cadr_book is
       sintr               : in  std_logic);
   end component;
 
-  component ior is
+  component cadr_ior is
     port (
       i12   : in  std_logic;
       ob12  : in  std_logic;
@@ -1262,7 +1262,7 @@ package cadr_book is
       i27   : in  std_logic);
   end component;
 
-  component ipar is
+  component cadr_ipar is
     port (
       ir41    : in  std_logic;
       ir42    : in  std_logic;
@@ -1323,7 +1323,7 @@ package cadr_book is
       iparok  : out std_logic);
   end component;
 
-  component ireg is
+  component cadr_ireg is
     port (
       \-destimod0\ : in  std_logic;
       ir15         : out std_logic;
@@ -1478,7 +1478,7 @@ package cadr_book is
       ir24         : out std_logic);
   end component;
 
-  component iwr is
+  component cadr_iwr is
     port (
       gnd   : in  std_logic;
       iwr47 : out std_logic;
@@ -1581,7 +1581,7 @@ package cadr_book is
       iwr16 : out std_logic);
   end component;
 
-  component l is
+  component cadr_l is
     port (
       gnd        : in  std_logic;
       l7         : out std_logic;
@@ -1655,7 +1655,7 @@ package cadr_book is
       \-lparity\ : out std_logic);
   end component;
 
-  component lc is
+  component cadr_lc is
     port (
       \-lcdrive\          : out std_logic;
       needfetch           : in  std_logic;
@@ -1761,7 +1761,7 @@ package cadr_book is
       \-lcry3\            : in  std_logic);
   end component;
 
-  component lcc is
+  component cadr_lcc is
     port (
       \lc byte mode\               : in  std_logic;
       \-lcinc\                     : out std_logic;
@@ -1816,7 +1816,7 @@ package cadr_book is
       spc1a                        : out std_logic);
   end component;
 
-  component lpc is
+  component cadr_lpc is
     port (
       gnd        : in  std_logic;
       pc8        : in  std_logic;
@@ -1882,7 +1882,7 @@ package cadr_book is
       clk4b      : in  std_logic);
   end component;
 
-  component mctl is
+  component cadr_mctl is
     port (
       clk4e      : in  std_logic;
       wadr4      : in  std_logic;
@@ -1954,7 +1954,7 @@ package cadr_book is
       \-mwpb\    : out std_logic);
   end component;
 
-  component md is
+  component cadr_md is
     port (
       \-mddrive\  : out std_logic;
       \-md31\     : out std_logic;
@@ -2070,7 +2070,7 @@ package cadr_book is
       \-srcmd\    : in  std_logic);
   end component;
 
-  component mds is
+  component cadr_mds is
     port (
       \-memdrive.a\ : in  std_logic;
       \-md31\       : in  std_logic;
@@ -2210,7 +2210,7 @@ package cadr_book is
       ob27          : in  std_logic);
   end component;
 
-  component mf is
+  component cadr_mf is
     port (
       tse1a      : in  std_logic;
       mfenb      : out std_logic;
@@ -2287,7 +2287,7 @@ package cadr_book is
       \-mpass\   : in  std_logic);
   end component;
 
-  component mlatch is
+  component cadr_mlatch is
     port (
       \-mpassm\  : in  std_logic;
       m23        : out std_logic;
@@ -2425,7 +2425,7 @@ package cadr_book is
       mf23       : out std_logic);
   end component;
 
-  component mmem is
+  component cadr_mmem is
     port (
       \-mwpa\    : in  std_logic;
       gnd        : in  std_logic;
@@ -2510,7 +2510,7 @@ package cadr_book is
       l23        : in  std_logic);
   end component;
 
-  component mo0 is
+  component cadr_mo0 is
     port (
       alu15  : in  std_logic;
       r15    : in  std_logic;
@@ -2599,7 +2599,7 @@ package cadr_book is
       q31    : in  std_logic);
   end component;
 
-  component mo1 is
+  component cadr_mo1 is
     port (
       alu31  : in  std_logic;
       r31    : in  std_logic;
@@ -2688,7 +2688,7 @@ package cadr_book is
       alu15  : in  std_logic);
   end component;
 
-  component mskg4 is
+  component cadr_mskg4 is
     port (
       msk24   : out std_logic;
       msk25   : out std_logic;
@@ -2742,7 +2742,7 @@ package cadr_book is
       msk7    : out std_logic);
   end component;
 
-  component npc is
+  component cadr_npc is
     port (
       ipc13   : out std_logic;
       gnd     : in  std_logic;
@@ -2840,7 +2840,7 @@ package cadr_book is
       dpc4    : in  std_logic);
   end component;
 
-  component opcd is
+  component cadr_opcd is
     port (
       \-srcdc\        : in  std_logic;
       \-srcopc\       : in  std_logic;
@@ -2912,7 +2912,7 @@ package cadr_book is
       \-srcpdlptr\    : in  std_logic);
   end component;
 
-  component pdl0 is
+  component cadr_pdl0 is
     port (
       gnd       : in  std_logic;
       \-pdla0b\ : in  std_logic;
@@ -2963,7 +2963,7 @@ package cadr_book is
       l16       : in  std_logic);
   end component;
 
-  component pdl1 is
+  component cadr_pdl1 is
     port (
       gnd       : out std_logic;
       \-pdla0a\ : in  std_logic;
@@ -3012,7 +3012,7 @@ package cadr_book is
       l5        : in  std_logic);
   end component;
 
-  component pdlctl is
+  component cadr_pdlctl is
     port (
       \-reset\      : in  std_logic;
       pdlwrited     : out std_logic;
@@ -3088,7 +3088,7 @@ package cadr_book is
       nop           : in  std_logic);
   end component;
 
-  component pdlptr is
+  component cadr_pdlptr is
     port (
       \-srcpdlpop\ : in  std_logic;
       clk3f        : in  std_logic;
@@ -3147,7 +3147,7 @@ package cadr_book is
       srcpdlptr    : in  std_logic);
   end component;
 
-  component platch is
+  component cadr_platch is
     port (
       \-pdldrive\ : in  std_logic;
       m15         : out std_logic;
@@ -3219,7 +3219,7 @@ package cadr_book is
       mparity     : out std_logic);
   end component;
 
-  component q is
+  component cadr_q is
     port (
       hi7      : in  std_logic;
       q23      : out std_logic;
@@ -3292,7 +3292,7 @@ package cadr_book is
       q5       : out std_logic);
   end component;
 
-  component qctl is
+  component cadr_qctl is
     port (
       \-qdrive\ : out std_logic;
       tse2      : in  std_logic;
@@ -3372,7 +3372,7 @@ package cadr_book is
       qs0       : out std_logic);
   end component;
 
-  component shift0 is
+  component cadr_shift0 is
     port (
       m5    : out std_logic;
       m6    : in  std_logic;
@@ -3450,7 +3450,7 @@ package cadr_book is
       r1    : out std_logic);
   end component;
 
-  component shift1 is
+  component cadr_shift1 is
     port (
       m21   : in  std_logic;
       m22   : in  std_logic;
@@ -3528,7 +3528,7 @@ package cadr_book is
       r17   : out std_logic);
   end component;
 
-  component smctl is
+  component cadr_smctl is
     port (
       \-sh4\    : in  std_logic;
       \-sr\     : out std_logic;
@@ -3567,7 +3567,7 @@ package cadr_book is
       ir7       : in  std_logic);
   end component;
 
-  component source is
+  component cadr_source is
     port (
       \-iralu\      : out std_logic;
       \-irbyte\     : out std_logic;
@@ -3640,7 +3640,7 @@ package cadr_book is
       imod          : out std_logic);
   end component;
 
-  component spc is
+  component cadr_spc is
     port (
       \-swpa\   : in  std_logic;
       gnd       : in  std_logic;
@@ -3708,7 +3708,7 @@ package cadr_book is
       spcw7     : in  std_logic);
   end component;
 
-  component spclch is
+  component cadr_spclch is
     port (
       \-spcdrive\ : in  std_logic;
       m23         : out std_logic;
@@ -3818,7 +3818,7 @@ package cadr_book is
       spcopar     : in  std_logic);
   end component;
 
-  component spcpar is
+  component cadr_spcpar is
     port (
       spcwparh    : out std_logic;
       \-spcwparl\ : out std_logic;
@@ -3867,7 +3867,7 @@ package cadr_book is
       spc4        : in  std_logic);
   end component;
 
-  component spcw is
+  component cadr_spcw is
     port (
       destspcd : in  std_logic;
       reta12   : out std_logic;
@@ -3955,7 +3955,7 @@ package cadr_book is
       l18      : in  std_logic);
   end component;
 
-  component spy1 is
+  component cadr_spy1 is
     port (
       \-spy.obl\ : out std_logic;
       ob7        : in  std_logic;
@@ -4060,7 +4060,7 @@ package cadr_book is
       ir16       : in  std_logic);
   end component;
 
-  component spy2 is
+  component cadr_spy2 is
     port (
       \-spy.al\    : out std_logic;
       aa15         : in  std_logic;
@@ -4161,7 +4161,7 @@ package cadr_book is
       m24          : in  std_logic);
   end component;
 
-  component trap is
+  component cadr_trap is
     port (
       mdparerr    : out std_logic;
       mdpareven   : out std_logic;
@@ -4216,7 +4216,7 @@ package cadr_book is
       memparok    : out std_logic);
   end component;
 
-  component vctl1 is
+  component cadr_vctl1 is
     port (
       \-reset\             : in  std_logic;
       rdcyc                : out std_logic;
@@ -4262,7 +4262,7 @@ package cadr_book is
       \-clk3g\             : in  std_logic);
   end component;
 
-  component vctl2 is
+  component cadr_vctl2 is
     port (
       mapwr0d        : out std_logic;
       \-wmapd\       : out std_logic;
@@ -4309,7 +4309,7 @@ package cadr_book is
       \-nopa\        : in  std_logic);
   end component;
 
-  component vma is
+  component cadr_vma is
     port (
       \-vmadrive\ : out std_logic;
       \-vma31\    : out std_logic;
@@ -4417,7 +4417,7 @@ package cadr_book is
       \-srcvma\   : in  std_logic);
   end component;
 
-  component vmas is
+  component cadr_vmas is
     port (
       vmasela     : in  std_logic;
       lc22        : in  std_logic;
@@ -4561,7 +4561,7 @@ package cadr_book is
       ob27        : in  std_logic);
   end component;
 
-  component vmem0 is
+  component cadr_vmem0 is
     port (
       \-vmap0\   : out std_logic;
       \-vmap1\   : out std_logic;
@@ -4598,7 +4598,7 @@ package cadr_book is
       vmoparok   : out std_logic);
   end component;
 
-  component vmem1 is
+  component cadr_vmem1 is
     port (
       \-vma17\   : in  std_logic;
       \-vma18\   : in  std_logic;
@@ -4668,7 +4668,7 @@ package cadr_book is
       \-vmo6\    : out std_logic);
   end component;
 
-  component vmem2 is
+  component cadr_vmem2 is
     port (
       gnd        : in  std_logic;
       vmap4b     : out std_logic;
@@ -4732,7 +4732,7 @@ package cadr_book is
       );
   end component;
 
-  component vmemdr is
+  component cadr_vmemdr is
     port (
       \-mapdrive\ : out std_logic;
       \-pfw\      : in  std_logic;

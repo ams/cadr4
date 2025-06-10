@@ -5,7 +5,7 @@ use ieee.std_logic_1164.all;
 
 package icmem_book is
 
-  component clock1 is
+  component cadr_clock1 is
     port (
       \-clock reset b\ : in  std_logic;
       \-tpdone\        : in  std_logic;
@@ -60,7 +60,7 @@ package icmem_book is
       \-tpr65\         : out std_logic);
   end component;
 
-  component clock2 is
+  component cadr_clock2 is
     port (
       clk4             : out std_logic;
       \-clk0\          : out std_logic;
@@ -101,7 +101,7 @@ package icmem_book is
       hi1              : in  std_logic);
   end component;
 
-  component debug is
+  component cadr_debug is
     port (
       \-idebug\  : in  std_logic;
       i39        : out std_logic;
@@ -173,11 +173,11 @@ package icmem_book is
       i40        : out std_logic);
   end component;
 
---  component icaps is
+--  component cadr_icaps is
 --    port ();
 --  end component;
 
-  component ictl is
+  component cadr_ictl is
     port (
       ramdisable      : out std_logic;
       hi1             : in  std_logic;
@@ -269,7 +269,7 @@ package icmem_book is
       \-iwep\         : out std_logic);
   end component;
 
-  component iwrpar is
+  component cadr_iwrpar is
     port (
       iwr41 : in  std_logic;
       iwr42 : in  std_logic;
@@ -327,15 +327,15 @@ package icmem_book is
       iwr48 : out std_logic);
   end component;
 
---  component mbcpin is
+--  component cadr_mbcpin is
 --    port ();
 --  end component;
 
---  component mcpins is
+--  component cadr_mcpins is
 --    port ();
 --  end component;
 
-  component olord1 is
+  component cadr_olord1 is
     port (
       \-clock reset a\ : in  std_logic;
       speed1a          : out std_logic;
@@ -395,7 +395,7 @@ package icmem_book is
       \-machrun\       : out std_logic);
   end component;
 
-  component olord2 is
+  component cadr_olord2 is
     port (
       \-ape\              : out std_logic;
       \-mpe\              : out std_logic;
@@ -458,7 +458,7 @@ package icmem_book is
       spy7                : in  std_logic);
   end component;
 
-  component opcs is
+  component cadr_opcs is
     port (
       hi2       : in  std_logic;
       opc13     : out std_logic;
@@ -500,7 +500,7 @@ package icmem_book is
       opcclk    : in  std_logic);
   end component;
 
-  component pctl is
+  component cadr_pctl is
     port (
       \-promenable\   : out std_logic;
       gnd             : in  std_logic;
@@ -552,7 +552,7 @@ package icmem_book is
       \-ipe\          : in  std_logic);
   end component;
 
-  component prom0 is
+  component cadr_prom0 is
     port (
       \-prompc0\ : in  std_logic;
       \-prompc1\ : in  std_logic;
@@ -614,7 +614,7 @@ package icmem_book is
       i15        : out std_logic);
   end component;
 
-  component prom1 is
+  component cadr_prom1 is
     port (
       \-prompc0\ : in  std_logic;
       \-prompc1\ : in  std_logic;
@@ -676,7 +676,7 @@ package icmem_book is
       i15        : out std_logic);
   end component;
 
-  component iram00 is
+  component cadr_iram00 is
     port (
       pc0a     : out std_logic;
       pc1a     : out std_logic;
@@ -730,7 +730,7 @@ package icmem_book is
       iwr4     : in  std_logic);
   end component;
 
-  component iram01 is
+  component cadr_iram01 is
     port (
       pc0b     : out std_logic;
       pc1b     : out std_logic;
@@ -784,7 +784,7 @@ package icmem_book is
       iwr4     : in  std_logic);
   end component;
 
-  component iram02 is
+  component cadr_iram02 is
     port (
       pc0c     : out std_logic;
       pc1c     : out std_logic;
@@ -838,7 +838,7 @@ package icmem_book is
       iwr4     : in  std_logic);
   end component;
 
-  component iram03 is
+  component cadr_iram03 is
     port (
       pc0d     : out std_logic;
       pc1d     : out std_logic;
@@ -892,7 +892,7 @@ package icmem_book is
       iwr4     : in  std_logic);
   end component;
 
-  component iram10 is
+  component cadr_iram10 is
     port (
       pc0e     : out std_logic;
       pc1e     : out std_logic;
@@ -946,7 +946,7 @@ package icmem_book is
       iwr16    : in  std_logic);
   end component;
 
-  component iram11 is
+  component cadr_iram11 is
     port (
       pc0f     : out std_logic;
       pc1f     : out std_logic;
@@ -1000,7 +1000,7 @@ package icmem_book is
       iwr16    : in  std_logic);
   end component;
 
-  component iram12 is
+  component cadr_iram12 is
     port (
       pc0g     : out std_logic;
       pc1g     : out std_logic;
@@ -1054,7 +1054,7 @@ package icmem_book is
       iwr16    : in  std_logic);
   end component;
 
-  component iram13 is
+  component cadr_iram13 is
     port (
       pc0h     : out std_logic;
       pc1h     : out std_logic;
@@ -1108,7 +1108,7 @@ package icmem_book is
       iwr16    : in  std_logic);
   end component;
 
-  component iram20 is
+  component cadr_iram20 is
     port (
       pc0i     : out std_logic;
       pc1i     : out std_logic;
@@ -1162,7 +1162,7 @@ package icmem_book is
       iwr25    : in  std_logic);
   end component;
 
-  component iram21 is
+  component cadr_iram21 is
     port (
       pc0j     : out std_logic;
       pc1j     : out std_logic;
@@ -1216,7 +1216,7 @@ package icmem_book is
       iwr25    : in  std_logic);
   end component;
 
-  component iram22 is
+  component cadr_iram22 is
     port (
       pc0k     : out std_logic;
       pc1k     : out std_logic;
@@ -1270,7 +1270,7 @@ package icmem_book is
       iwr25    : in  std_logic);
   end component;
 
-  component iram23 is
+  component cadr_iram23 is
     port (
       pc0l     : out std_logic;
       pc1l     : out std_logic;
@@ -1324,7 +1324,7 @@ package icmem_book is
       iwr25    : in  std_logic);
   end component;
 
-  component iram30 is
+  component cadr_iram30 is
     port (
       pc0m     : out std_logic;
       pc1m     : out std_logic;
@@ -1380,7 +1380,7 @@ package icmem_book is
       iwr38    : in  std_logic);
   end component;
 
-  component iram31 is
+  component cadr_iram31 is
     port (
       pc0n     : out std_logic;
       pc1n     : out std_logic;
@@ -1436,7 +1436,7 @@ package icmem_book is
       iwr38    : in  std_logic);
   end component;
 
-  component iram32 is
+  component cadr_iram32 is
     port (
       pc0o     : out std_logic;
       pc1o     : out std_logic;
@@ -1492,7 +1492,7 @@ package icmem_book is
       iwr38    : in  std_logic);
   end component;
 
-  component iram33 is
+  component cadr_iram33 is
     port (
       pc0p     : out std_logic;
       pc1p     : out std_logic;
@@ -1548,7 +1548,7 @@ package icmem_book is
       iwr38    : in  std_logic);
   end component;
 
-  component spy0 is
+  component cadr_spy0 is
     port (
       eadr0        : in  std_logic;
       eadr1        : in  std_logic;
@@ -1581,7 +1581,7 @@ package icmem_book is
       \-lddbirl\   : out std_logic);
   end component;
 
-  component spy4 is
+  component cadr_spy4 is
     port (
       \-spy.flag1\ : out std_logic;
       \-wait\      : in  std_logic;
@@ -1649,7 +1649,7 @@ package icmem_book is
       opc0         : in  std_logic);
   end component;
 
-  component stat is
+  component cadr_stat is
     port (
       hi1        : in  std_logic;
       clk5a      : in  std_logic;
