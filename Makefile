@@ -19,6 +19,14 @@ GHDLSIMOPTIONS		= --backtrace-severity=warning --assert-level=warning
 BUILDDIR	  := build
 .DEFAULT_GOAL := all
 
+OS := $(shell uname -s)
+
+ifeq ($(OS),Darwin)
+    SEDOPTIONS := -i ''
+else
+    SEDOPTIONS :=
+endif
+
 # sources are found by wildcard
 # source files are *.vhd
 # test bench source files are *_tb.vhd
@@ -94,20 +102,18 @@ suds: $(BUILDDIR)/soap
 	for NAME in $(CADR_BOOK); do $(BUILDDIR)/soap -n doc/ai/cadr/$${NAME}.drw > cadr/cadr_$${NAME}_suds.vhd || exit; done
 	for NAME in $(ICMEM_BOOK); do $(BUILDDIR)/soap -n doc/ai/cadr/$${NAME}.drw > cadr/cadr_$${NAME}_suds.vhd || exit; done
 # fix aliases, simply replace
-	for FILE in cadr/*_suds.vhd; do sed -i .bak 's/dip_74s00o/dip_74s00/g' $${FILE} || exit; done
-	for FILE in cadr/*_suds.vhd; do sed -i .bak 's/dip_74s02o/dip_74s02/g' $${FILE} || exit; done
-	for FILE in cadr/*_suds.vhd; do sed -i .bak 's/dip_74s04a/dip_74s04/g' $${FILE} || exit; done
-	for FILE in cadr/*_suds.vhd; do sed -i .bak 's/dip_74s08o/dip_74s08/g' $${FILE} || exit; done
-	for FILE in cadr/*_suds.vhd; do sed -i .bak 's/dip_74s10o/dip_74s10/g' $${FILE} || exit; done
-	for FILE in cadr/*_suds.vhd; do sed -i .bak 's/dip_74s32o/dip_74s32/g' $${FILE} || exit; done
-	for FILE in cadr/*_suds.vhd; do sed -i .bak 's/dip_74s32w/dip_74s32/g' $${FILE} || exit; done
-	for FILE in cadr/*_suds.vhd; do sed -i .bak 's/dip_74s133o/dip_74s133/g' $${FILE} || exit; done
-	for FILE in cadr/*_suds.vhd; do sed -i .bak 's/dip_74ls240/dip_74s240/g' $${FILE} || exit; done
+	for FILE in cadr/*_suds.vhd; do sed $(SEDOPTIONS) 's/dip_74s00o/dip_74s00/g' $${FILE} || exit; done
+	for FILE in cadr/*_suds.vhd; do sed $(SEDOPTIONS) 's/dip_74s02o/dip_74s02/g' $${FILE} || exit; done
+	for FILE in cadr/*_suds.vhd; do sed $(SEDOPTIONS) 's/dip_74s04a/dip_74s04/g' $${FILE} || exit; done
+	for FILE in cadr/*_suds.vhd; do sed $(SEDOPTIONS) 's/dip_74s08o/dip_74s08/g' $${FILE} || exit; done
+	for FILE in cadr/*_suds.vhd; do sed $(SEDOPTIONS) 's/dip_74s10o/dip_74s10/g' $${FILE} || exit; done
+	for FILE in cadr/*_suds.vhd; do sed $(SEDOPTIONS) 's/dip_74s32o/dip_74s32/g' $${FILE} || exit; done
+	for FILE in cadr/*_suds.vhd; do sed $(SEDOPTIONS) 's/dip_74s32w/dip_74s32/g' $${FILE} || exit; done
+	for FILE in cadr/*_suds.vhd; do sed $(SEDOPTIONS) 's/dip_74s133o/dip_74s133/g' $${FILE} || exit; done
+	for FILE in cadr/*_suds.vhd; do sed $(SEDOPTIONS) 's/dip_74ls240/dip_74s240/g' $${FILE} || exit; done
 # modify olord2_1a19 port map
-	sed -i .bak 's/olord2_1a19.*/olord2_1a19: dip_16dummy port map (p1 => vcc, p12 => \\@1a20,p1\\, p13 => \\-boot2\\, p14 => \\-boot1\\, p15 => hi2, p16 => hi1);/g' cadr/cadr_olord2_suds.vhd || exit
+	sed $(SEDOPTIONS) 's/olord2_1a19.*/olord2_1a19: dip_16dummy port map (p1 => vcc, p12 => \\@1a20,p1\\, p13 => \\-boot2\\, p14 => \\-boot1\\, p15 => hi2, p16 => hi1);/g' cadr/cadr_olord2_suds.vhd || exit
 # modify one instance of olord2_1a20 port map to connect its p1 to olord2_1a19 p12
-	sed -i .bak 's/olord2_1a20 : dip_74ls14 port map (p2 => \\@1a20,p9\\);/olord2_1a20 : dip_74ls14 port map (p1 => \\@1a19,p12\\, p2 => \\@1a20,p9\\);/g' cadr/cadr_olord2_suds.vhd || exit
-# remove bak files
-	$(RM) cadr/*.vhd.bak
+	sed $(SEDOPTIONS) 's/olord2_1a20 : dip_74ls14 port map (p2 => \\@1a20,p9\\);/olord2_1a20 : dip_74ls14 port map (p1 => \\@1a19,p12\\, p2 => \\@1a20,p9\\);/g' cadr/cadr_olord2_suds.vhd || exit
 # fix _suds.vhd files	
 	for FILE in cadr/*_suds.vhd; do python3 cadr/fix-suds.py -v $${FILE} || exit; done

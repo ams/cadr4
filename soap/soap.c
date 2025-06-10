@@ -1935,7 +1935,7 @@ format_bodies(void)
 		if (strcmp(bodies[i].refdes, "0@00") == 0)
 			continue;
 
-		static char b[256];
+		static char b[512];
 		sprintf(b, "dip_%s", bodies[i].name_of_body);
 
 		printf("%s_%s : %s port map (",
