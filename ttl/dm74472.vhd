@@ -15,6 +15,10 @@ entity dm74472 is
     a2   : in  std_logic;
     a3   : in  std_logic;
     a4   : in  std_logic;
+    a5   : in  std_logic;
+    a6   : in  std_logic;
+    a7   : in  std_logic;
+    a8   : in  std_logic;
     d0   : out std_logic;
     d1   : out std_logic;
     d2   : out std_logic;
@@ -23,11 +27,7 @@ entity dm74472 is
     d5   : out std_logic;
     d6   : out std_logic;
     d7   : out std_logic;
-    ce_n : in  std_logic;
-    a5   : in  std_logic;
-    a6   : in  std_logic;
-    a7   : in  std_logic;
-    a8   : in  std_logic
+    ce_n : in  std_logic
     );
 end;
 
