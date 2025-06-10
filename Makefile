@@ -97,8 +97,6 @@ $(BUILDDIR)/soap: soap/soap.c soap/unpack.c
 	mkdir -p $(BUILDDIR)
 	$(CC) -std=gnu99 -Wall -Wextra -O0 -ggdb3 -o $@ -g $^
 
-NL := $(shell printf '\n')
-
 suds: $(BUILDDIR)/soap
 # generate _suds.vhd files
 	for NAME in $(CADR_BOOK); do $(BUILDDIR)/soap -n doc/ai/cadr/$${NAME}.drw > cadr/cadr_$${NAME}_suds.vhd || exit; done
@@ -114,16 +112,16 @@ suds: $(BUILDDIR)/soap
 	for FILE in cadr/*_suds.vhd; do sed $(SEDOPTIONS) 's/dip_74s133o/dip_74s133/g' $${FILE} || exit; done
 	for FILE in cadr/*_suds.vhd; do sed $(SEDOPTIONS) 's/dip_74ls240/dip_74s240/g' $${FILE} || exit; done
 # modify olord2_1a19 port map
-	sed $(SEDOPTIONS) 's/olord2_1a19.*/olord2_1a19: dip_16dummy port map (p1 => vcc, p12 => \\@1a20,p1\\, p13 => \\-boot2\\, p14 => \\-boot1\\, p15 => hi2, p16 => hi1);/g' cadr/cadr_olord2_suds.vhd || exit
+	sed $(SEDOPTIONS) 's/olord2_1a19.*/olord2_1a19: dip_16dummy port map (p1 => vcc, p12 => \\@1a20,p1\\, p13 => \\-boot2\\, p14 => \\-boot1\\, p15 => hi2, p16 => hi1);/g' cadr/cadr_olord2_suds.vhd
 # modify one instance of olord2_1a20 port map to connect its p1 to olord2_1a19 p12
-	sed $(SEDOPTIONS) 's/olord2_1a20 : dip_74ls14 port map (p2 => \\@1a20,p9\\);/olord2_1a20 : dip_74ls14 port map (p1 => \\@1a19,p12\\, p2 => \\@1a20,p9\\);/g' cadr/cadr_olord2_suds.vhd || exit
+	sed $(SEDOPTIONS) 's/olord2_1a20 : dip_74ls14 port map (p2 => \\@1a20,p9\\);/olord2_1a20 : dip_74ls14 port map (p1 => \\@1a19,p12\\, p2 => \\@1a20,p9\\);/g' cadr/cadr_olord2_suds.vhd
 # fix _suds.vhd files	
 	for FILE in cadr/*_suds.vhd; do python3 cadr/fix-suds.py -v $${FILE} || exit; done
 # modify clock1 to wire -tpw60 to -tpdone, this is done after fix-suds.py because it may modify or get confused with these additions
 ifeq ($(OS),Darwin)
-	sed $(SEDOPTIONS) 's/^architecture.*/&\'$$'\nsignal \\\\-tpdone\\\\ : std_logic;\\n/' cadr/cadr_clock1_suds.vhd || exit
-	sed $(SEDOPTIONS) 's/^begin.*/&\'$$'\n\\\\-tpdone\\\\ <= \\\\-tpw60\\\\;\\n/' cadr/cadr_clock1_suds.vhd || exit
+	sed $(SEDOPTIONS) 's/^architecture.*/&\'$$'\nsignal \\\\-tpdone\\\\ : std_logic;\\n/' cadr/cadr_clock1_suds.vhd
+	sed $(SEDOPTIONS) 's/^begin.*/&\'$$'\n\\\\-tpdone\\\\ <= \\\\-tpw60\\\\;\\n/' cadr/cadr_clock1_suds.vhd
 else
-	sed $(SEDOPTIONS) 's/^architecture.*/&\nsignal \\-tpdone\\ : std_logic;/' cadr/cadr_clock1_suds.vhd || exit
-	sed $(SEDOPTIONS) 's/^begin.*/&\n\\-tpdone\\ <= \\-tpw60\\;/' cadr/cadr_clock1_suds.vhd || exit
+	sed $(SEDOPTIONS) 's/^architecture.*/&\nsignal \\-tpdone\\ : std_logic;\n/' cadr/cadr_clock1_suds.vhd
+	sed $(SEDOPTIONS) 's/^begin.*/&\n\\-tpdone\\ <= \\-tpw60\\;\n/' cadr/cadr_clock1_suds.vhd
 endif
