@@ -3,6 +3,7 @@ use ieee.std_logic_1164.all;
 
 entity cadr_flag is
   port (
+    \a=m\               : in  std_logic;
     ir45                : in  std_logic;
     \-nopa\             : in  std_logic;
     \-ilong\            : out std_logic;

@@ -3,6 +3,7 @@ use ieee.std_logic_1164.all;
 
 entity cadr_mskg4 is
   port (
+    \a=m\   : out std_logic;
     msk24   : out std_logic;
     msk25   : out std_logic;
     msk26   : out std_logic;

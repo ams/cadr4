@@ -191,6 +191,7 @@ package cadr_book is
 
   component cadr_alu0 is
     port (
+      \a=m\    : out std_logic;
       a12      : out std_logic;
       m12      : in  std_logic;
       aluf3b   : in  std_logic;
@@ -261,6 +262,7 @@ package cadr_book is
 
   component cadr_alu1 is
     port (
+      \a=m\    : out std_logic;
       a31a     : in  std_logic;
       m31b     : out std_logic;
       aluf3a   : in  std_logic;
@@ -432,6 +434,7 @@ package cadr_book is
       \-aadr8b\  : in  std_logic;
       \-aadr9b\  : in  std_logic;
       \-awpa\    : in  std_logic;
+      \-awpb\    : in  std_logic;
       l22        : in  std_logic;
       amem20     : out std_logic;
       l20        : in  std_logic;
@@ -1097,6 +1100,7 @@ package cadr_book is
 
   component cadr_flag is
     port (
+      \a=m\               : in  std_logic;
       ir45                : in  std_logic;
       \-nopa\             : in  std_logic;
       \-ilong\            : out std_logic;
@@ -2690,6 +2694,7 @@ package cadr_book is
 
   component cadr_mskg4 is
     port (
+      \a=m\   : out std_logic;
       msk24   : out std_logic;
       msk25   : out std_logic;
       msk26   : out std_logic;
