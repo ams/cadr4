@@ -12,15 +12,13 @@ entity dip_74s169 is
     p5  : in  std_logic;                -- i2
     p6  : in  std_logic;                -- i3
     p7  : in  std_logic;                -- enb_p_n
-    p8  : in  std_logic := '1';         -- gnd
     p9  : in  std_logic;                -- load_n
     p10 : in  std_logic;                -- enb_t_n
     p11 : out std_logic;                -- o3
     p12 : out std_logic;                -- o2
     p13 : out std_logic;                -- o1
     p14 : out std_logic;                -- o0
-    p15 : out std_logic;                -- co_n
-    p16 : in  std_logic := '1'          -- vcc
+    p15 : out std_logic                 -- co_n
     );
 end entity;
 
