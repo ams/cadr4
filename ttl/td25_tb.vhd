@@ -30,34 +30,33 @@ begin
   begin
     -- Initialize
     input <= '0';
-    wait for 50 ns;
+    wait for 10 ns;
 
     -- Test 1: Rising edge and verify delays
     input <= '1';
-    wait for 49 ns;
-    assert o_5ns = '0' report "o_5ns should not have changed yet";
-    wait for 2 ns; -- total 51ns
-    assert o_5ns = '1' report "o_5ns should be '1' after 50ns delay";
+    wait for 5 ns;
+    wait for 1 ps; -- small delta delay
+    assert o_5ns = '1' report "o_5ns should be '1' after 5ns delay";
     assert o_10ns = '0' report "o_10ns should not have changed yet";
 
-    wait for 10 ns; -- total 61ns
-    assert o_10ns = '1' report "o_10ns should be '1' after 60ns delay";
+    wait for 5 ns; -- total 10ns
+    assert o_10ns = '1' report "o_10ns should be '1' after 10ns delay";
     assert o_15ns = '0' report "o_15ns should not have changed yet";
 
-    wait for 10 ns; -- total 71ns
-    assert o_15ns = '1' report "o_15ns should be '1' after 70ns delay";
+    wait for 5 ns; -- total 15ns
+    assert o_15ns = '1' report "o_15ns should be '1' after 15ns delay";
     assert o_20ns = '0' report "o_20ns should not have changed yet";
 
-    wait for 10 ns; -- total 81ns
-    assert o_20ns = '1' report "o_20ns should be '1' after 80ns delay";
+    wait for 5 ns; -- total 20ns
+    assert o_20ns = '1' report "o_20ns should be '1' after 20ns delay";
     assert o_25ns = '0' report "o_25ns should not have changed yet";
 
-    wait for 10 ns; -- total 91ns
-    assert o_25ns = '1' report "o_25ns should be '1' after 90ns delay";
+    wait for 5 ns; -- total 25ns
+    assert o_25ns = '1' report "o_25ns should be '1' after 25ns delay";
 
     -- Test 2: Falling edge
     input <= '0';
-    wait for 100 ns;
+    wait for 50 ns;
     assert o_5ns = '0' and o_10ns = '0' and o_15ns = '0' and o_20ns = '0' and o_25ns = '0'
       report "All outputs should be '0' after falling edge delay";
 

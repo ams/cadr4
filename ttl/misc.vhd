@@ -7,13 +7,15 @@ package misc is
 
   component timedelay is
     generic (
-      initial   : time     := 50 ns;
-      increment : time     := 10 ns;
-      taps      : positive := 5
+      single_tap_delay : time := 5 ns
       );
     port (
-      input   : in  std_logic;
-      delayed : out std_logic_vector(taps-1 downto 0)
+      input  : in  std_logic;
+      tap1   : out std_logic;
+      tap2   : out std_logic;
+      tap3   : out std_logic;
+      tap4   : out std_logic;
+      output : out std_logic
       );
   end component;
 

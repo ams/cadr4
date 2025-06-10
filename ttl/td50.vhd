@@ -18,26 +18,15 @@ entity td50 is
 end;
 
 architecture ttl of td50 is
-
-  signal delayed : std_logic_vector(4 downto 0);
-
 begin
-
   td : timedelay
-    generic map (
-      initial   => 250 ns,
-      increment => 50 ns,
-      taps      => 5
-      )
+    generic map (single_tap_delay => 10 ns)
     port map (
-      input   => input,
-      delayed => delayed
+      input  => input,
+      tap1   => o_10ns,
+      tap2   => o_20ns,
+      tap3   => o_30ns,
+      tap4   => o_40ns,
+      output => o_50ns
       );
-
-  o_10ns <= delayed(0);
-  o_20ns <= delayed(1);
-  o_30ns <= delayed(2);
-  o_40ns <= delayed(3);
-  o_50ns <= delayed(4);
-
 end;
