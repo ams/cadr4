@@ -196,11 +196,19 @@ package sn74 is
 
   component sn74260 is                  -- Dual 5-Input Positive-NOR Gates
     port (
-      g1a, g2a, g3a, g4a, g5a : in  std_logic;
-      g1y_n                   : out std_logic;
+      g1a   : in  std_logic;
+      g1b   : in  std_logic;
+      g1c   : in  std_logic;
+      g1d   : in  std_logic;
+      g1e   : in  std_logic;
+      g1y_n : out std_logic;
 
-      g1b, g2b, g3b, g4b, g5b : in  std_logic;
-      g2y_n                   : out std_logic
+      g2a   : in  std_logic;
+      g2b   : in  std_logic;
+      g2c   : in  std_logic;
+      g2d   : in  std_logic;
+      g2e   : in  std_logic;
+      g2y_n : out std_logic
       );
   end component;
   alias sn74s260 is sn74260;

@@ -4,20 +4,23 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+-- Datasheet: Texas Instruments SN74LS280 9-Bit Odd/Even Parity Generators/Checkers, PDIP (N) Package
+-- URL: https://www.ti.com/lit/gpn/SN74LS280
+
 entity sn74280 is
   port (
-    i0   : in std_logic; -- Pin 1
-    i1   : in std_logic; -- Pin 2
-    i2   : in std_logic; -- Pin 4
-    i3   : in std_logic; -- Pin 8
-    i4   : in std_logic; -- Pin 9
-    i5   : in std_logic; -- Pin 10
-    i6   : in std_logic; -- Pin 11
-    i7   : in std_logic; -- Pin 12
-    i8   : in std_logic; -- Pin 13
+    i0 : in std_logic;
+    i1 : in std_logic;
+    i2 : in std_logic;
+    i3 : in std_logic;
+    i4 : in std_logic;
+    i5 : in std_logic;
+    i6 : in std_logic;
+    i7 : in std_logic;
+    i8 : in std_logic;
 
-    even : out std_logic; -- Pin 5
-    odd  : out std_logic  -- Pin 6
+    even : out std_logic;
+    odd  : out std_logic
     );
 end;
 
@@ -27,7 +30,7 @@ begin
     variable parity : std_logic;
   begin
     parity := i0 xor i1 xor i2 xor i3 xor i4 xor i5 xor i6 xor i7 xor i8;
-    even <= not parity;
-    odd <= parity;
+    even   <= not parity;
+    odd    <= parity;
   end process;
 end;

@@ -4,8 +4,7 @@ use ieee.numeric_std.all;
 use std.textio.all;
 use ieee.std_logic_textio.all;
 
-library ttl;
-use ttl.other.all;
+use work.other.all;
 
 entity im5600_tb is
 end;
@@ -37,7 +36,7 @@ architecture testbench of im5600_tb is
     variable d   : std_logic_vector(7 downto 0);
     variable i   : integer := 0;
   begin
-    file_open(f, "im5600_tb.hex", read_mode);
+    file_open(f, "rom/dspctl_2f22.hex", read_mode);
     while not endfile(f) and i < mem'length loop
       readline(f, l);
       hread(l, d);
@@ -53,7 +52,7 @@ architecture testbench of im5600_tb is
 begin
 
   uut : im5600
-    generic map(fn => "im5600_tb.hex")
+    generic map(fn => "rom/dspctl_2f22.hex")
     port map(
       o7   => o7,
       o6   => o6,

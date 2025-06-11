@@ -1,4 +1,6 @@
-TODO List for the CADR4 project
+TODO List for the CADR project
+
+This is currently very much outdated while we refactor things.
 
 * TODO TTLs [18/59]
 

@@ -1,8 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-library ttl;
-use ttl.sn74.all;
+use work.sn74.all;
 
 entity sn74194_tb is
 end;
@@ -129,7 +128,6 @@ begin
     wait for 5 ns;
     check_outputs('1', '1', '1', '1', "should change on rising edge");
 
-    report "Test completed successfully" severity note;
     wait;
   end process;
 

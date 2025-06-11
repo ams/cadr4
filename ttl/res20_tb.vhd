@@ -1,8 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-library ttl;
-use ttl.other.all;
+use work.other.all;
 
 entity res20_tb is
 end;

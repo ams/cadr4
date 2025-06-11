@@ -1,3 +1,5 @@
+-- Datasheet for AM2510 Four-Bit Shifter not found. This VHDL model might be based on a non-standard or custom implementation.
+
 -- AM2510 Four-Bit Shifter
 
 library ieee;
@@ -6,20 +8,20 @@ use ieee.numeric_std.all;
 
 entity am2510 is
   port (
-    sel1 : in  std_logic; -- pin 9
-    sel0 : in  std_logic; -- pin 10
-    ce_n : in  std_logic; -- pin 13
-    i3   : in  std_logic; -- pin 7
-    i2   : in  std_logic; -- pin 6
-    i1   : in  std_logic; -- pin 5
-    i0   : in  std_logic; -- pin 4
-    i_1  : in  std_logic; -- pin 3
-    i_2  : in  std_logic; -- pin 2
-    i_3  : in  std_logic; -- pin 1
-    o0   : out std_logic; -- pin 15
-    o1   : out std_logic; -- pin 14
-    o2   : out std_logic; -- pin 12
-    o3   : out std_logic -- pin 11
+    sel1 : in  std_logic;
+    sel0 : in  std_logic;
+    ce_n : in  std_logic;
+    i3   : in  std_logic;
+    i2   : in  std_logic;
+    i1   : in  std_logic;
+    i0   : in  std_logic;
+    i_1  : in  std_logic;
+    i_2  : in  std_logic;
+    i_3  : in  std_logic;
+    o0   : out std_logic;
+    o1   : out std_logic;
+    o2   : out std_logic;
+    o3   : out std_logic
     );
 end am2510;
 

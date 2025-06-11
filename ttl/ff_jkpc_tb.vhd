@@ -3,8 +3,7 @@ use ieee.std_logic_1164.all;
 
 -- Testbench created by OpenAI Codex
 
-library ttl;
-use ttl.misc.all;
+use work.misc.all;
 
 entity ff_jkpc_tb is
 end;

@@ -1,10 +1,10 @@
-name: CADR4 CI
+name: CADR CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "ams/stuff" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "ams/stuff" ]
 
 jobs:
   build:
@@ -26,16 +26,8 @@ jobs:
     - name: Fix libLLVM-18.so.18.1 path (symlink)
       run: sudo ln -s /lib/x86_64-linux-gnu/libLLVM.so.18.1 /lib/x86_64-linux-gnu/libLLVM-18.so.18.1
 
-    - name: Build ttl
+    - name: Create SUDS
+      run: make suds
+
+    - name: Build
       run: make all
-      working-directory: ./ttl
-
-    - name: Check ttl
-      run: make check
-      working-directory: ./ttl
-
-    - name: Build cadr
-      run: make all
-
-    - name: Check cadr
-      run: make check

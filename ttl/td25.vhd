@@ -4,41 +4,29 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-library ttl;
-use ttl.misc.all;
+use work.misc.all;
 
 entity td25 is
   port (
-    input  : in  std_logic;
-    o_5ns  : out std_logic;
-    o_10ns : out std_logic;
-    o_15ns : out std_logic;
-    o_20ns : out std_logic;
-    o_25ns : out std_logic
+    input  : in  std_logic; -- 1
+    o_5ns  : out std_logic; -- 12
+    o_10ns : out std_logic; -- 4
+    o_15ns : out std_logic; -- 10
+    o_20ns : out std_logic; -- 6
+    o_25ns : out std_logic  -- 8
     );
 end;
 
 architecture ttl of td25 is
-
-  signal delayed : std_logic_vector(4 downto 0);
-
 begin
-
   td : timedelay
-    generic map (
-      initial   => 50 ns,
-      increment => 10 ns,
-      taps      => 5
-      )
+    generic map (single_tap_delay => 5 ns)
     port map (
-      input   => input,
-      delayed => delayed
+      input  => input,
+      tap1   => o_5ns,
+      tap2   => o_10ns,
+      tap3   => o_15ns,
+      tap4   => o_20ns,
+      output => o_25ns
       );
-
-  o_5ns  <= delayed(0);
-  o_10ns <= delayed(1);
-  o_15ns <= delayed(2);
-  o_20ns <= delayed(3);
-  o_25ns <= delayed(4);
-
 end;

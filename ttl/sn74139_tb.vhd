@@ -2,8 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-library ttl;
-use ttl.sn74.all;
+use work.sn74.all;
 
 entity sn74139_tb is
 end;

@@ -6,6 +6,11 @@ description of the CADR processor see [The CADR
 processor](https://tumbleweed.nu/r/lm-3/uv/cadr.html), by Knight,
 Moon, et al.
 
+N.B. Please update
+[lm-3/knight-thesis.texi](https://tumbleweed.nu/r/lm-3/file?name=knight-thesis.texi&ci=tip)
+if you make any any changes here!  It is the canonical copy version of
+what is in here.
+
 # The Microprogrammable Processor
 
 This chapter concerns the features of the microprocessor which
@@ -67,11 +72,11 @@ datapath diagram of the A and M source section of the processor.
 
 ## The ALU Datapath
 
-![Figure 4 Main Data Paths](https://github.com/ams/cadr4/assets/7945138/cf6ab70b-f2b1-4443-9f6b-aa41a1f3ef76)
+![Figure 4 Main Data Paths](https://tumbleweed.nu/r/lm-3/raw/d65eb66a710ef060b9f1e816b6c8a3d76a4230643ce4cece88d74aa5911cc7b8?m=image/png)
 
-![Figure 5 Micro Instruction Format](https://github.com/ams/cadr4/assets/7945138/0e87bcbc-e3f2-44bb-83b9-22ba6980af26)
+![Figure 5 Micro Instruction Format](https://tumbleweed.nu/r/lm-3/raw/3ea12982633489816b69c3356ad65b059f5653c47a96c40962a520a26dacb118?m=image/png)
 
-![Figure 6 Detailed M Bus Block Diagram](https://github.com/ams/cadr4/assets/7945138/50760e78-5fc4-45fe-a156-0205d8900f55)
+![Figure 6 Detailed M Bus Block Diagram](https://tumbleweed.nu/r/lm-3/raw/97cb3c5927eb296da21b8705b248f95b7d43ba672487a9d1c7e75996c2c7fb4e?m=image/png)
 
 The ALU instruction provides basic arithmetic and logical data
 manipulation in the machine.  The two operands supplied on the A and M
@@ -347,7 +352,7 @@ taken from the low order bits of the M bus operand.
 
 ## Main Memory Reference
 
-![Figure 7 Dispatch Datapath](https://github.com/ams/cadr4/assets/7945138/62642bbc-b2f0-403f-b8e1-3b2697fc0b61)
+![Figure 7 Dispatch Datapath](https://tumbleweed.nu/r/lm-3/raw/6c4fe35ad808c691a5a68dcabd912bc295ad81f1534821d8a9ee70b5fccfe0a0?m=image/png)
 
 References to main memory in the processor are implemented as special
 M bus sources and as special functional destinations.
@@ -381,12 +386,12 @@ look like this:
 
 ```
 ((VMA) M-ADDRESS)                     ;LOAD THE MEMORY ADDRESS REGISTER
-                                      ;WITH THE VIRTUAL MEMORY LOCATION
-                                      :TO BE WRITTEN
+                      ;WITH THE VIRTUAL MEMORY LOCATION
+                      :TO BE WRITTEN
 ((MD-START-WRITE) M-DATA)             ;LOAD THE WRITE DRTA REGISTER WITH
-                                      ;DATA TO BE WRITTEN, START THE WRITE
+                      ;DATA TO BE WRITTEN, START THE WRITE
 (CALL-CONDITIONAL PAGE-FAULT
-           PAGE-FAULT-HANDLER)        ;TEST FOR MAP MISS OR PAGE FAULT
+       PAGE-FAULT-HANDLER)        ;TEST FOR MAP MISS OR PAGE FAULT
 ```
 
 Often this case can be simplified when the VMA register already
@@ -397,7 +402,7 @@ the same location.
 ((MD) M-DATA)                         ;LOAD WRITE DATA
 ((VMA-START-WRITE M-ADDRESS)          ;LOAD VMA, INITIATE WRITE
 (CALL-CONDITIONAL PAGE-FAULT
-           PAGE-FAULT-HANDLER)        ;TEST FOR MAP MISS OR PAGE FAULT
+       PAGE-FAULT-HANDLER)        ;TEST FOR MAP MISS OR PAGE FAULT
 ```
 
 No features of the processor are provided to allow read-pause-write
@@ -408,7 +413,7 @@ interlocks, which, in a single processor system, are not required.
 
 ## The Map
 
-![Figure 8 Memory Map Data Flow](https://github.com/ams/cadr4/assets/7945138/c04458b6-6377-4b4d-a2a9-9978b87b121b)
+![Figure 8 Memory Map Data Flow](https://tumbleweed.nu/r/lm-3/raw/0014ac2828ea5650b7be79a8ea054844f6f1492adba8578ec7d0d5f4ce98170c?m=image/png)
 
 The processor memory address register can address up to 24 bits of
 virtual memory.  A mapping is made prior to read and write requests to
@@ -758,9 +763,9 @@ synchronous design, the delay before the available data could be used
 might be quite high due to synchronizer problems and quantization of
 time in units of the fastest oscillator interval.
 
-  - [CADR; CLOCK1](http://tumbleweed.nu/lm-3/schematics/cadr/clock1.png) // CLOCK1 --- MASTER CLOCK 
-  - [CADR; CLOCK2](http://tumbleweed.nu/lm-3/schematics/cadr/clock2.png) // CLOCK2 --- MASTER CLOCK 
-  - [CADR; CLOCKD](http://tumbleweed.nu/lm-3/schematics/cadr/clockd.png) // CLOCKD --- CLOCK DISTRIBUTION 
+  - [CADR; CLOCK1](http://tumbleweed.nu/lm-3/schematics/cadr/clock1.png)
+  - [CADR; CLOCK2](http://tumbleweed.nu/lm-3/schematics/cadr/clock2.png)
+  - [CADR; CLOCKD](http://tumbleweed.nu/lm-3/schematics/cadr/clockd.png)
 
 ## Microinstruction Fetch
 
@@ -792,16 +797,16 @@ paths.  The execution of microinstructions through this path is the
 main mechanism by which the console computer exerts control over the
 processor.
 
-  - [CADR; ICTL](http://tumbleweed.nu/lm-3/schematics/cadr/ictl.png) // ICTL --- I RAM CONTROL 
-  - [CADR; IRAM00](http://tumbleweed.nu/lm-3/schematics/cadr/iram00.png) 
-  - [CADR; IRAM01](http://tumbleweed.nu/lm-3/schematics/cadr/iram01.png) 
-  - [CADR; IRAM02](http://tumbleweed.nu/lm-3/schematics/cadr/iram02.png) 
-  - [CADR; IRAM03](http://tumbleweed.nu/lm-3/schematics/cadr/iram03.png) 
-  - [CADR; IWR](http://tumbleweed.nu/lm-3/schematics/cadr/iwr.png) // IWR --- INSTRUCTION WRITE REGISTER 
-  - [CADR; PCTL](http://tumbleweed.nu/lm-3/schematics/cadr/pctl.png) // PCTL --- PROM CONTROL 
-  - [CADR; PROM0](http://tumbleweed.nu/lm-3/schematics/cadr/prom0.png) 
-  - [CADR; PROM1](http://tumbleweed.nu/lm-3/schematics/cadr/prom1.png) 
-  - [CADR; DEBUG](http://tumbleweed.nu/lm-3/schematics/cadr/debug.png) // DEBUG --- PDP11 DEBUG INSTRUCTION 
+  - [CADR; ICTL](http://tumbleweed.nu/lm-3/schematics/cadr/ictl.png)
+  - [CADR; IRAM00](http://tumbleweed.nu/lm-3/schematics/cadr/iram00.png)
+  - [CADR; IRAM01](http://tumbleweed.nu/lm-3/schematics/cadr/iram01.png)
+  - [CADR; IRAM02](http://tumbleweed.nu/lm-3/schematics/cadr/iram02.png)
+  - [CADR; IRAM03](http://tumbleweed.nu/lm-3/schematics/cadr/iram03.png)
+  - [CADR; IWR](http://tumbleweed.nu/lm-3/schematics/cadr/iwr.png)
+  - [CADR; PCTL](http://tumbleweed.nu/lm-3/schematics/cadr/pctl.png)
+  - [CADR; PROM0](http://tumbleweed.nu/lm-3/schematics/cadr/prom0.png)
+  - [CADR; PROM1](http://tumbleweed.nu/lm-3/schematics/cadr/prom1.png)
+  - [CADR; DEBUG](http://tumbleweed.nu/lm-3/schematics/cadr/debug.png)
 
 ## Microinstrction Modification and Main Instruction Register
 
@@ -815,8 +820,8 @@ depending upon whether the instruction modification feature has been
 activated.  The clocking of a new instruction into the IR register
 marks the initiation of execution for the new microinstruction.
 
-  - [CADR; IOR](http://tumbleweed.nu/lm-3/schematics/cadr/ior.png) // IOR --- INST. MODIFY OR 
-  - [CADR; IREG](http://tumbleweed.nu/lm-3/schematics/cadr/ireg.png) // IREG --- INSTRUCTION REGISTER 
+  - [CADR; IOR](http://tumbleweed.nu/lm-3/schematics/cadr/ior.png)
+  - [CADR; IREG](http://tumbleweed.nu/lm-3/schematics/cadr/ireg.png)
 
 ## IR Decoding
 
@@ -842,7 +847,7 @@ specify a functional destination, which is decoded from IR19 to IR22.
 If IR23 is on, the functional destination is to either the VMA or MD
 register, and the memory subroutine further decodes this field.
 
-  - [CADR; SOURCE](http://tumbleweed.nu/lm-3/schematics/cadr/source.png) // SOURCE --- SOURCE, DEST, OP DECODE 
+  - [CADR; SOURCE](http://tumbleweed.nu/lm-3/schematics/cadr/source.png)
 
 ## A Memory
 
@@ -876,10 +881,10 @@ previous cycle specified an A memory destination (DEST) then an A
 memory write pulse is generated (AWPx) writing the data from the
 previous cycle.
 
-  - [CADR; ACTL](http://tumbleweed.nu/lm-3/schematics/cadr/actl.png) // ACTL --- A CONTROL 
-  - [CADR; AMEM0](http://tumbleweed.nu/lm-3/schematics/cadr/amem0.png) -- missing 
-  - [CADR; AMEM1](http://tumbleweed.nu/lm-3/schematics/cadr/amem1.png) 
-  - [CADR; ALATCH](http://tumbleweed.nu/lm-3/schematics/cadr/alatch.png) // ALATCH --- A MEMORY LATCH 
+  - [CADR; ACTL](http://tumbleweed.nu/lm-3/schematics/cadr/actl.png)
+  - [CADR; AMEM0](http://tumbleweed.nu/lm-3/schematics/cadr/amem0.png)
+  - [CADR; AMEM1](http://tumbleweed.nu/lm-3/schematics/cadr/amem1.png)
+  - [CADR; ALATCH](http://tumbleweed.nu/lm-3/schematics/cadr/alatch.png)
 
 ## M Memory
 
@@ -896,10 +901,10 @@ driven from all of the remaining M bus sources, including the L
 register output, which is used for the pass around path.  The MFxx to
 Mxx buffers are shown on the MF print.
 
-  - [CADR; MCTL](http://tumbleweed.nu/lm-3/schematics/cadr/mctl.png) // MCTL --- M CONTROL 
-  - [CADR; MMEM](http://tumbleweed.nu/lm-3/schematics/cadr/mmem.png) // MMEM --- M MEMORY 
-  - [CADR; MLATCH](http://tumbleweed.nu/lm-3/schematics/cadr/mlatch.png) // MLATCH --- M MEMORY LATCH 
-  - [CADR; MF](http://tumbleweed.nu/lm-3/schematics/cadr/mf.png) // MF --- DRIVE MF ONTO M 
+  - [CADR; MCTL](http://tumbleweed.nu/lm-3/schematics/cadr/mctl.png)
+  - [CADR; MMEM](http://tumbleweed.nu/lm-3/schematics/cadr/mmem.png)
+  - [CADR; MLATCH](http://tumbleweed.nu/lm-3/schematics/cadr/mlatch.png)
+  - [CADR; MF](http://tumbleweed.nu/lm-3/schematics/cadr/mf.png)
 
 ## Stack Buffer
 
@@ -934,11 +939,11 @@ incorrectly.
 Either the PDLPTR or PDLIDX may be read onto the M bus as fast sources
 buffered through the MF buffers.
 
-  - [CADR; PDLPTR](http://tumbleweed.nu/lm-3/schematics/cadr/pdlptr.png) // PDLPTR --- PDL INDEX AND POINTER 
-  - [CADR; PDLCTL](http://tumbleweed.nu/lm-3/schematics/cadr/pdlctl.png) // PDLCTL --- PDL BUFFER CONTROL 
-  - [CADR; PDL0](http://tumbleweed.nu/lm-3/schematics/cadr/pdl0.png) 
-  - [CADR; PDL1](http://tumbleweed.nu/lm-3/schematics/cadr/pdl1.png) 
-  - [CADR; PLATCH](http://tumbleweed.nu/lm-3/schematics/cadr/platch.png) // PLATCH --- PDL BUFFER LATCH 
+  - [CADR; PDLPTR](http://tumbleweed.nu/lm-3/schematics/cadr/pdlptr.png)
+  - [CADR; PDLCTL](http://tumbleweed.nu/lm-3/schematics/cadr/pdlctl.png)
+  - [CADR; PDL0](http://tumbleweed.nu/lm-3/schematics/cadr/pdl0.png)
+  - [CADR; PDL1](http://tumbleweed.nu/lm-3/schematics/cadr/pdl1.png)
+  - [CADR; PLATCH](http://tumbleweed.nu/lm-3/schematics/cadr/platch.png)
 
 ## The Shifter/Masker
 
@@ -984,11 +989,11 @@ from a package count standpoint, primarily because there is no package
 efficient and fast device for implementing the bitwise select
 operation.
 
-  - [CADR; SMCTL](http://tumbleweed.nu/lm-3/schematics/cadr/smctl.png) // SMCTL --- SHIFT/MASK CONTROL 
-  - [CADR; SHIFT0](http://tumbleweed.nu/lm-3/schematics/cadr/shift0.png) 
-  - [CADR; SHIFT1](http://tumbleweed.nu/lm-3/schematics/cadr/shift1.png) 
-  - [CADR; MSKGEN](http://tumbleweed.nu/lm-3/schematics/cadr/mskgen.png) -- missing; MSKG4 in CADR4 
-  - [CADR; MASK](http://tumbleweed.nu/lm-3/schematics/cadr/mask.png)   -- missing; not used in CADR4? 
+  - [CADR; SMCTL](http://tumbleweed.nu/lm-3/schematics/cadr/smctl.png)
+  - [CADR; SHIFT0](http://tumbleweed.nu/lm-3/schematics/cadr/shift0.png)
+  - [CADR; SHIFT1](http://tumbleweed.nu/lm-3/schematics/cadr/shift1.png)
+  - [CADR; MSKGEN](http://tumbleweed.nu/lm-3/schematics/cadr/mskgen.png)
+  - [CADR; MASK](http://tumbleweed.nu/lm-3/schematics/cadr/mask.png)
 
 ## The ALU
 
@@ -1011,9 +1016,9 @@ condition code outputs of the ALU.  The third hardwired function
 simply passes A memory data through, and is used as the NOP cycle
 during an inactive multiply step (both ALUSUB and ALUADD asserted).
 
-  - [CADR; ALUCRY](http://tumbleweed.nu/lm-3/schematics/cadr/alucry.png) -- ALUC4 in CADR4 
-  - [CADR; ALU0](http://tumbleweed.nu/lm-3/schematics/cadr/alu0.png) 
-  - [CADR; ALU1](http://tumbleweed.nu/lm-3/schematics/cadr/alu1.png) 
+  - [CADR; ALUCRY](http://tumbleweed.nu/lm-3/schematics/cadr/alucry.png)
+  - [CADR; ALU0](http://tumbleweed.nu/lm-3/schematics/cadr/alu0.png)
+  - [CADR; ALU1](http://tumbleweed.nu/lm-3/schematics/cadr/alu1.png)
 
 ## The Q Register
 
@@ -1031,8 +1036,8 @@ for the multiply step), while shifts in from the right are from the
 complement of the sign of the ALU output, which is the correct data
 for the partial quotient in a divide step.
 
-  - [CADR; QCTL](http://tumbleweed.nu/lm-3/schematics/cadr/qctl.png) // QCTL --- Q REGISTER CONTROL 
-  - [CADR; Q](http://tumbleweed.nu/lm-3/schematics/cadr/q.png)	   // Q --- Q REGISTER 
+  - [CADR; QCTL](http://tumbleweed.nu/lm-3/schematics/cadr/qctl.png)
+  - [CADR; Q](http://tumbleweed.nu/lm-3/schematics/cadr/q.png)
 
 ## The Output Bus
 
@@ -1051,7 +1056,7 @@ ALU extension,
 The output bus bit shifting paths are again chosen to make the
 multiply step and divide step operations occur in a single cycle.
 
-  - [CADR; OB](http://tumbleweed.nu/lm-3/schematics/cadr/ob.png) -- missing; not used in CADR4? 
+  - [CADR; OB](http://tumbleweed.nu/lm-3/schematics/cadr/ob.png)
 
 ## The L Register
 
@@ -1062,7 +1067,7 @@ the succeeding cycle, and as a source of operand data on the A or M
 bus when the passaround logic is activated by sequential write-read
 instructions to the same memory location.
 
-  - [CADR; L](http://tumbleweed.nu/lm-3/schematics/cadr/l.png) // L --- A CONTROL 
+  - [CADR; L](http://tumbleweed.nu/lm-3/schematics/cadr/l.png)
 
 ## The Dispatch Memory
 
@@ -1083,10 +1088,10 @@ Output of the dispatch memory is a new 14 bit program counter value
 and three additional bits, DN, DP, and DR, which control the type of
 transfer performed (see control discussion below).
 
-  - [CADR; DSPCTL](http://tumbleweed.nu/lm-3/schematics/cadr/dspctl.png) // DSPCTL --- DISPATCH CONTROL 
-  - [CADR; DRAM0](http://tumbleweed.nu/lm-3/schematics/cadr/dram0.png) 
-  - [CADR; DRAM1](http://tumbleweed.nu/lm-3/schematics/cadr/dram1.png) 
-  - [CADR; DRAM2](http://tumbleweed.nu/lm-3/schematics/cadr/dram2.png) 
+  - [CADR; DSPCTL](http://tumbleweed.nu/lm-3/schematics/cadr/dspctl.png)
+  - [CADR; DRAM0](http://tumbleweed.nu/lm-3/schematics/cadr/dram0.png)
+  - [CADR; DRAM1](http://tumbleweed.nu/lm-3/schematics/cadr/dram1.png)
+  - [CADR; DRAM2](http://tumbleweed.nu/lm-3/schematics/cadr/dram2.png)
 
 ## Jump Conditions
 
@@ -1100,7 +1105,7 @@ selector also has access to the page fault condition (-VMAOK) and
 combinations of it with interrupt and sequence break conditions, so
 that these combinations may be easily tested in a single cycle.
 
-  - [CADR; FLAG](http://tumbleweed.nu/lm-3/schematics/cadr/flag.png) // FLAG --- FLAGS, CONDITIONALS 
+  - [CADR; FLAG](http://tumbleweed.nu/lm-3/schematics/cadr/flag.png)
 
 ## Flow of Control
 
@@ -1120,7 +1125,7 @@ source and N outputs, selecting the new PC from DPCxx (output of the
 dispatch memory), IPC (fall through) or SPC (return).  The N bit is
 driven directly from the DN output of the dispatch memory,
 
-  - [CADR; CONTRL](http://tumbleweed.nu/lm-3/schematics/cadr/contrl.png) // CONTRL --- PC, SPC CONTROL 
+  - [CADR; CONTRL](http://tumbleweed.nu/lm-3/schematics/cadr/contrl.png)
 
 ## Microcode Subroutine Return Stack
 
@@ -1149,11 +1154,10 @@ to the NPC selector, but are missing on the M memory path, since the
 data is available from other registers in the machine after an SPC
 write cycle.
 
-  - [CADR; SPC](http://tumbleweed.nu/lm-3/schematics/cadr/spc.png) // SPC --- SPC MEMORY AND POINTER 
-  - [CADR; SPCLCH](http://tumbleweed.nu/lm-3/schematics/cadr/spclch.png) // SPCLCH --- SPC MEMORY LATCH 
-  - [CADR; SPCM](http://tumbleweed.nu/lm-3/schematics/cadr/spcm.png) -- missing; SPCW in CADR4 
-  - CADR; LPC				   // LPC --- LAST PC
-  - [CADR; LPC0](http://tumbleweed.nu/lm-3/schematics/cadr/lpc0.png] // not used in CADR4? 
+  - [CADR; SPC](http://tumbleweed.nu/lm-3/schematics/cadr/spc.png)
+  - [CADR; SPCLCH](http://tumbleweed.nu/lm-3/schematics/cadr/spclch.png)
+  - [CADR; SPCW](http://tumbleweed.nu/lm-3/schematics/cadr/spcw.png)
+  - [CADR; LPC](http://tumbleweed.nu/lm-3/schematics/cadr/lpc.png]
 
 ## Next PC Selector
 
@@ -1168,7 +1172,7 @@ main memory parity errors.  The output of the NPC selector is loaded
 on each clock into the PC register, and the incremented PC is
 developed with an adder chain from the PC register.
 
-  - [CADR; NPC](http://tumbleweed.nu/lm-3/schematics/cadr/npc.png) // NPC --- NPC,IPC,PC 
+  - [CADR; NPC](http://tumbleweed.nu/lm-3/schematics/cadr/npc.png)
 
 ## The LC register and Instruction Prefetch
 
@@ -1191,8 +1195,8 @@ according to the low order bits of the LC, resulting in the selection
 of the proper half or quarter of the macro instruction word as data in
 the modified microinstruction.
 
-  - [CADR; LC](http://tumbleweed.nu/lm-3/schematics/cadr/lc.png)	 // LC --- LOCATION COUNTER 
-  - [CADR; LCC](http://tumbleweed.nu/lm-3/schematics/cadr/lcc.png) // LCC --- LC CONTROL 
+  - [CADR; LC](http://tumbleweed.nu/lm-3/schematics/cadr/lc.png)
+  - [CADR; LCC](http://tumbleweed.nu/lm-3/schematics/cadr/lcc.png)
 
 ## The VMA and VMA Selector
 
@@ -1208,8 +1212,8 @@ selector.  This takes bits 23 though 8 (the virtual page number) and
 maps them into a physical page number.  Bits 7 through 0 are passed
 directly to the memory system as an offset within the page.
 
-  - [CADR; VMA](http://tumbleweed.nu/lm-3/schematics/cadr/vma.png) // VMA --- VMA REGISTER 
-  - [CADR; VMAS](http://tumbleweed.nu/lm-3/schematics/cadr/vmas.png) // VMAS --- VMA INPUT SELECTOR 
+  - [CADR; VMA](http://tumbleweed.nu/lm-3/schematics/cadr/vma.png)
+  - [CADR; VMAS](http://tumbleweed.nu/lm-3/schematics/cadr/vmas.png)
 
 ## The MD and the MD Selector
 
@@ -1227,8 +1231,8 @@ driven from the MD register, allowing newly fetched data coming into
 the MD to be looked up in the map and drive the main data paths for
 the dispatch instruction on the data type simultaneously.
 
-  - [CADR; MD](http://tumbleweed.nu/lm-3/schematics/cadr/md.png) // MD --- MEMORY DATA REGISTER 
-  - [CADR; MDS](http://tumbleweed.nu/lm-3/schematics/cadr/mds.png) // MDS --- MEMORY DATA SELECTOR 
+  - [CADR; MD](http://tumbleweed.nu/lm-3/schematics/cadr/md.png)
+  - [CADR; MDS](http://tumbleweed.nu/lm-3/schematics/cadr/mds.png)
 
 ## First and Second Level Maps
 
@@ -1259,10 +1263,10 @@ Writing of the map is done by addressing the map in the normal manner,
 by loading a particular page entry into the MD register, and then
 writing into the memories the data held in the VMA register.
 
-  - [CADR; VMEM0](http://tumbleweed.nu/lm-3/schematics/cadr/vmem0.png) // VMEM0 --- VIRTUAL MEMORY MAP STAGE 0 
-  - [CADR; VMEM1](http://tumbleweed.nu/lm-3/schematics/cadr/vmem1.png) // VMEM1 --- VIRTUAL MEMORY MAP STAGE 1 
-  - [CADR; VMEM2](http://tumbleweed.nu/lm-3/schematics/cadr/vmem2.png) 
-  - [CADR; VMEMDR](http://tumbleweed.nu/lm-3/schematics/cadr/vmemdr.png) // VMEMDR --- MAP OUTPUT DRIVE 
+  - [CADR; VMEM0](http://tumbleweed.nu/lm-3/schematics/cadr/vmem0.png)
+  - [CADR; VMEM1](http://tumbleweed.nu/lm-3/schematics/cadr/vmem1.png)
+  - [CADR; VMEM2](http://tumbleweed.nu/lm-3/schematics/cadr/vmem2.png)
+  - [CADR; VMEMDR](http://tumbleweed.nu/lm-3/schematics/cadr/vmemdr.png)
 
 ## Memory Control Logic
 
@@ -1286,7 +1290,23 @@ causes the processor clock generator to momentarily halt, after
 detecting the potential interference between the program executing and
 the state of the memory system.
 
-  - [CADR; VCTL1](http://tumbleweed.nu/lm-3/schematics/cadr/vctl1.png) // VCTL1 --- VMEMORY CONTROL 
-  - [CADR; VCTL2](http://tumbleweed.nu/lm-3/schematics/cadr/vctl2.png) // VCTL2 --- VMA/MD CONTROL 
-  - [CADR; OLORD1](http://tumbleweed.nu/lm-3/schematics/cadr/olord1.png) // OLORD1 --- OVERLORD 
-  - [CADR; OLORD2](http://tumbleweed.nu/lm-3/schematics/cadr/olord2.png) // OLORD2 --- OVERLORD 
+  - [CADR; VCTL1](http://tumbleweed.nu/lm-3/schematics/cadr/vctl1.png)
+  - [CADR; VCTL2](http://tumbleweed.nu/lm-3/schematics/cadr/vctl2.png)
+  - [CADR; OLORD1](http://tumbleweed.nu/lm-3/schematics/cadr/olord1.png)
+  - [CADR; OLORD2](http://tumbleweed.nu/lm-3/schematics/cadr/olord2.png)
+
+# Errata
+
+Merge the following to the Knight thesis at some point.
+
+The following schematics are specific to the CADR3:
+
+  - [CADR; ALUCRY](http://tumbleweed.nu/lm-3/schematics/cadr/alucry.png)
+  - [CADR; MSKGEN](http://tumbleweed.nu/lm-3/schematics/cadr/mskgen.png)
+  - [CADR; MASK](http://tumbleweed.nu/lm-3/schematics/cadr/mask.png)
+  - [CADR; OB](http://tumbleweed.nu/lm-3/schematics/cadr/ob.png)
+
+As far as I can tell,
+
+  - ALUCRY become ALUC4.
+  - MSKGEN, MASK and OB became MSKG4

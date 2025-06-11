@@ -3,8 +3,7 @@ use ieee.std_logic_1164.all;
 
 use std.env.all;
 
-library ttl;
-use ttl.sn74.all;
+use work.sn74.all;
 
 entity sn74169_tb is
 end;

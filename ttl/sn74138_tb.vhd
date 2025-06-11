@@ -2,8 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use std.textio.all;
-library ttl;
-use ttl.sn74.all;
+use work.sn74.all;
 
 entity sn74138_tb is
 end sn74138_tb;
@@ -12,7 +11,7 @@ architecture testbench of sn74138_tb is
   signal a, b, c, g1, g2a, g2b : std_logic;
   signal y : std_logic_vector(7 downto 0);
 begin
-  uut: entity ttl.sn74138 port map (
+  uut: entity work.sn74138 port map (
     a => a,
     b => b,
     c => c,

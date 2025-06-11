@@ -1,26 +1,26 @@
 -- Triple 3-Input Positive-AND Gates
+-- Datasheet: https://www.ti.com/lit/gpn/SN74LS11 (PDIP (N) Package)
 
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
--- This is a Triple 3-Input Positive-AND Gate
 entity sn7411 is
   port (
-    g1a : in  std_logic; -- Pin 1
-    g1b : in  std_logic; -- Pin 2
-    g1c : in  std_logic; -- Pin 13
-    g1y : out std_logic; -- Pin 12
+    g1a : in  std_logic;
+    g1b : in  std_logic;
+    g1c : in  std_logic;
+    g1y : out std_logic;
 
-    g2a : in  std_logic; -- Pin 3
-    g2b : in  std_logic; -- Pin 4
-    g2c : in  std_logic; -- Pin 5
-    g2y : out std_logic; -- Pin 6
+    g2a : in  std_logic;
+    g2b : in  std_logic;
+    g2c : in  std_logic;
+    g2y : out std_logic;
 
-    g3a : in  std_logic; -- Pin 9
-    g3b : in  std_logic; -- Pin 10
-    g3c : in  std_logic; -- Pin 11
-    g3y : out std_logic -- Pin 8
+    g3a : in  std_logic;
+    g3b : in  std_logic;
+    g3c : in  std_logic;
+    g3y : out std_logic
     );
 end;
 

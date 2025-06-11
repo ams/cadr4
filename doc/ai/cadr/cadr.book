@@ -1,0 +1,85 @@
+;;; -*- Mode:LISP; -*-
+
+;;; Prints and Documentation for the CADR section of the CADR processor.
+
+(LOAD "ai:lmio1;dplt pkg")
+(PKG-LOAD 'DPLT)
+
+(SETQ CADR-PLT-FILES-LIST '("AI:CADR;ACTL"
+			    "ALATCH"
+			    "ALU0"
+			    "ALU1"
+			    "ALUC4"
+			    "AMEM0"
+			    "AMEM1"
+			    "APAR"
+			    "BCPINS"
+			    "BCTERM"
+			    "CAPS"
+			    "CLOCKD"
+			    "CONTRL"
+			    "CPINS"
+			    "DRAM0"
+			    "DRAM1"
+			    "DRAM2"
+			    "DSPCTL"
+			    "FLAG"
+			    "IOR"
+			    "IPAR"
+			    "IREG"
+			    "IWR"
+			    "L"
+			    "LC"
+			    "LCC"
+			    "LPC"
+			    "MCTL"
+			    "MD"
+			    "MDS"
+			    "MF"
+			    "MLATCH"
+			    "MMEM"
+			    "MO0"
+			    "MO1"
+			    "MSKG4"
+			    "NPC"
+			    "OPCD"
+			    "PDL0"
+			    "PDL1"
+			    "PDLCTL"
+			    "PDLPTR"
+			    "PLATCH"
+			    "Q"
+			    "QCTL"
+			    "SHIFT0"
+			    "SHIFT1"
+			    "SMCTL"
+			    "SOURCE"
+			    "SPC"
+			    "SPCLCH"
+			    "SPCPAR"
+			    "SPCW"
+			    "SPY1"
+			    "SPY2"
+			    "TRAP"
+			    "VCTL1"
+			    "VCTL2"
+			    "VMA"
+			    "VMAS"
+			    "VMEM0"
+			    "VMEM1"
+			    "VMEM2"
+			    "VMEMDR"))
+
+(SETQ CADR-TXT-FILES-LIST '(
+			  "AI:CADRWD;CADR4 STF"
+			  "AI:CADRWD;CADR4 UML"
+			  "AI:CADRWD;CADR4 WLR"
+			  "AI:CADRWD;CADR4 WLS"
+			  ))
+
+;;; Number of copies
+(SETQ DPLT:COPIES 4)
+
+(APPLY #'DPLT-PRINT-FILE CADR-PLT-FILES-LIST)
+
+(APPLY #'PRINT-TXT-FILE CADR-TXT-FILES-LIST)

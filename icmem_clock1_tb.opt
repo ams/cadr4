@@ -1,0 +1,10 @@
+
+/**
+/icmem_clock1_tb/\-clock reset b\
+/icmem_clock1_tb/\-tpr0\
+/icmem_clock1_tb/\-tpr40\
+/icmem_clock1_tb/\-tpr160\
+/icmem_clock1_tb/\-tpw60\
+/icmem_clock1_tb/cyclecompleted
+/icmem_clock1_tb/tprend
+/icmem_clock1_tb/i_clock1/*

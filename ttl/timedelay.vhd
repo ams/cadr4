@@ -3,32 +3,24 @@ use ieee.std_logic_1164.all;
 
 entity timedelay is
   generic (
-    initial   : time     := 50 ns;
-    increment : time     := 10 ns;
-    taps      : positive := 5
+    single_tap_delay : time := 5 ns
     );
   port (
-    input   : in  std_logic;
-    delayed : out std_logic_vector(taps-1 downto 0)
+    input  : in  std_logic;
+    tap1   : out std_logic;
+    tap2   : out std_logic;
+    tap3   : out std_logic;
+    tap4   : out std_logic;
+    output : out std_logic
     );
 end timedelay;
 
+-- transport delay has to be used !!!
 architecture behavioral of timedelay is
 begin
-
-  process (input)
-    variable delay : time;
-  begin
-    if input'event then
-      delay := initial;
-      for i in 0 to taps-1 loop
-        delayed(i) <= input after delay;
-        delay      := delay + increment;
-      end loop;
-    else
-      -- Initialize on first delta cycle
-      delayed <= (others => '0');
-    end if;
-  end process;
-
+  tap1 <= transport input after single_tap_delay;
+  tap2 <= transport input after single_tap_delay * 2;
+  tap3 <= transport input after single_tap_delay * 3;
+  tap4 <= transport input after single_tap_delay * 4;
+  output <= transport input after single_tap_delay * 5;
 end;

@@ -4,18 +4,15 @@ use ieee.numeric_std.all;
 
 entity sip220_330_8 is
   port (
-    r2 : out std_logic;
-    r3 : out std_logic;
-    r4 : out std_logic;
-    r5 : out std_logic;
-    r6 : out std_logic;
-    r7 : out std_logic
+    r2 : in std_logic; -- 2
+    r3 : in std_logic; -- 3
+    r4 : in std_logic; -- 4
+    r5 : in std_logic; -- 5
+    r6 : in std_logic; -- 6
+    r7 : in std_logic  -- 7
     );
 end;
 
--- ChatGPT Codex implementation
 architecture ttl of sip220_330_8 is
 begin
-  r2 <= '1'; r3 <= '1'; r4 <= '1';
-  r5 <= '1'; r6 <= '1'; r7 <= '1';
 end;

@@ -1,8 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-library ttl;
-use ttl.sn74.all;
+use work.sn74.all;
 
 entity sn7432_tb is
 end;

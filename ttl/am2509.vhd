@@ -1,28 +1,29 @@
+-- Datasheet for AM2509 Quad Two-Input High-Speed Register not found. This VHDL model might be based on a non-standard or custom implementation.
+
 -- AM2509 Quad Two-Input High-Speed Register
 
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-library ttl;
-use ttl.misc.all;
+use work.misc.all;
 
 entity am2509 is
   port (
-    clk  : in  std_logic; -- pin 9
-    sel  : in  std_logic; -- pin 1
-    a0   : in  std_logic; -- pin 3
-    a1   : in  std_logic; -- pin 4
-    aq   : out std_logic; -- pin 2
-    b0   : in  std_logic; -- pin 6
-    b1   : in  std_logic; -- pin 5
-    bq   : out std_logic; -- pin 7
-    c0   : in  std_logic; -- pin 11
-    c1   : in  std_logic; -- pin 12
-    cq   : out std_logic; -- pin 10
-    d0   : in  std_logic; -- pin 14
-    d1   : in  std_logic; -- pin 13
-    dq   : out std_logic  -- pin 15
+    clk : in  std_logic;
+    sel : in  std_logic;
+    a0  : in  std_logic;
+    a1  : in  std_logic;
+    aq  : out std_logic;
+    b0  : in  std_logic;
+    b1  : in  std_logic;
+    bq  : out std_logic;
+    c0  : in  std_logic;
+    c1  : in  std_logic;
+    cq  : out std_logic;
+    d0  : in  std_logic;
+    d1  : in  std_logic;
+    dq  : out std_logic
     );
 end am2509;
 

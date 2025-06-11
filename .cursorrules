@@ -1,17 +1,20 @@
-# CADR4 Project
+# CADR Project
 
 ## Overview
 
-- This project is a hardware simulation of the MIT CADR Lisp Machine.
+- This project is a digitally accurate simulation of the MIT CADR Lisp Machine.
 - This project will not be synthesized. It will be simulated using GHDL with LLVM backend.
 - This project complies with VHDL-2008. You MUST write VHDL-2008 compliant code.
 
 ## Project Structure
 
-- The project root directory contains CADR-specific components built into cadr library. 
-- The ttl subdirectory contains the TTL components built into ttl library.
-- cadr library depends on ttl library. ttl library should be built first.
-- work library is not used in this project. You MUST NOT use work library.
+- The project has three major subdirectories; ttl, dip and cadr.
+- The ttl subdirectory contains the TTL components. These are put into sn74, other, misc and unsorted packages.
+- The dip subdirectory contains the wrappers of TTL components, so called DIP components. These are put into dip package.
+- The cadr subdirectory contains the MIT CADR schematic entities. These are put into cadr package.
+- `cadr` entities depend on `dip`, `dip` entities depend on ttl packages (sn74, other, misc and unsorted).
+- The project uses no other library, everything is put into the work library.
+- `rom` directory contains the ROM/PROM data. rom/X_Y.hex is the data for ROM chip with designator Y on schematic page X.
 
 ### File Naming
 
@@ -28,32 +31,34 @@
 
 ## Build System
 
-The project uses a Make-based build system.
+The project uses a Makefile based build system.
 
-The root directory and ttl directory have different Makefiles and must be built separately.
+There is only one Makefile, in the project root.
 
-Make targets are as follows. Keep in mind these run only for the current folder, thus for cadr or ttl.
+The build artifacts (work library, objects, executables) are put into the `build` directory.
 
-- `make all`: Compile all sources and testbenches
-- `make clean`: Remove all build artifacts (.o, .cf, executables, waveforms)
+Make targets are as follows.
+
+- `make all`: Compile all testbenches
 - `make check`: Run all testbenches
-- `make tb-X`: Run specific testbench for entity X (effectively runs X_tb.vhd)
-- `make vcd-X`: Run testbench for X and open VCD viewer
+- `make clean`: Remove all build artifacts (build directory)
+
+A single testbench (for example X_tb) can be run with `TB=build/X_tb make run-tb`.
 
 ## Development Workflow
 
-- Prefer running single testbenches with `make tb-X` over running all testbenches with `make check`.
-- You MUST always run a testbench after changing an entity to verify and validate its logic before proceeding.
-- When asked to implement or fix an entity, make sure its testbench is up to date first. Then, implement the fix or change, run the testbench and iterate until there is no error. Do not wait for my confirmation to proceed unless there is an ambiguity.
-- If instructed to update TODO, use AGENT-TODO.md file in the project root folder.
-
 ### Code Modification Guidelines
 
-- NEVER modify port definitions, these are manually maintained.
+- NEVER modify the Makefile.
+- NEVER modify port interface lists. They are manually maintained.
+- NEVER modify the package and component definitions. They ar emanually maintained.
 - NEVER assume meaning from port definition, ALWAYS consult the datasheets.
 - ALWAYS aim to have strict datasheet behavior.
-- Always run testbenches using make commands, not directly.
-- Avoid inline comments.
+- Ignore the power pins, VCC and GND, in the datasheets. Only the digital behavior is implemented in this project.
+- After changing a source file, run its testbench rather than calling generic targets like make all or make check. For example, run `TB=build/td25_tb make run-tb` to check `ttl/td25.vhd` rather than running `make all` or `make check`.
+- Only warnings or errors SHOULD be reported/printed in testbenches. Thus, USE only assert statements in testbenches. DO NOT USE report statements to unconditionally print messages. Successful testbenches should report nothing.
+- DO NOT try to delete the testbenches you have created. The testbenches are kept in the project.
+- DO NOT write testbenches for dip components.
 
 ### Git Workflow
 
@@ -63,6 +68,13 @@ Make targets are as follows. Keep in mind these run only for the current folder,
 ## Differences from datasheets
 
 - SN74241 BENB is implemented as active high even though it is active low in the datasheet.
+
+## Notes
+
+- dip_5600 and dip_5610 both uses im5600. im5600 and im5610 are digitally equivalent.
+- Use `rom/dspctl_2f22.hex` for the testbenches related to im5600.
+- Use `rom/prom0_1b17.hex` for the testbenches related to sn74472 and dm74472.
+
 
 ## Resources
 

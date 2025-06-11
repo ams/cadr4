@@ -1,4 +1,5 @@
 -- J-K Flip-Flop (with preset and clear)
+-- No external pins to verify against a datasheet as this is a custom VHDL component.
 
 -- 'pre' and 'clr' are active-low asynchronous inputs. When both are
 -- high, the flip-flop retains its previous state.
@@ -7,8 +8,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-library ttl;
-use ttl.misc.all;
+use work.misc.all;
 
 entity ff_jkpc is
   port (

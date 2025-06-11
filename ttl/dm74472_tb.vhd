@@ -4,8 +4,7 @@ use ieee.numeric_std.all;
 use std.textio.all;
 use ieee.std_logic_textio.all;
 
-library ttl;
-use ttl.other.all;
+use work.other.all;
 
 entity dm74472_tb is
 end;
@@ -41,7 +40,7 @@ architecture testbench of dm74472_tb is
     variable d   : std_logic_vector(7 downto 0);
     variable i   : integer := 0;
   begin
-    file_open(f, "dm74472_tb.hex", read_mode);
+    file_open(f, "rom/prom0_1b17.hex", read_mode);
     while not endfile(f) and i < mem'length loop
       readline(f, l);
       hread(l, d);
@@ -57,7 +56,7 @@ architecture testbench of dm74472_tb is
 begin
 
   uut : dm74472
-    generic map(fn => "dm74472_tb.hex")
+    generic map(fn => "rom/prom0_1b17.hex")
     port map(
     a0   => a0,
     a1   => a1,

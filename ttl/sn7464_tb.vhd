@@ -1,8 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-library ttl;
-use ttl.sn74.all;
+use work.sn74.all;
 
 entity sn7464_tb is
 end;
@@ -95,7 +94,6 @@ begin
     wait for 5 ns;
     check_output('1', "should be 1 when no AND gate is fully active");
 
-    report "Test completed successfully" severity note;
     wait;
   end process;
 

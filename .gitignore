@@ -2,13 +2,13 @@
 .\#*
 \#*\#
 
-*.o
-*.cf
-
-*_tb
-*.ghw
-*.vcd
-
 .DS_Store
-**/TASK.md
-netlist/*
+build/
+
+soap/soap
+soap/*.o
+*.dSYM/
+
+**/__pycache__
+
+cadr/*_suds.vhd

@@ -5,20 +5,23 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+-- Datasheet: Texas Instruments SN74LS139A Dual 2-Line to 4-Line Decoders/Demultiplexers, PDIP (N) Package
+-- URL: https://www.ti.com/lit/gpn/SN74LS139A
+
 entity sn74139 is
   port (
-    g1   : in  std_logic; -- Pin 1
+    g1   : in  std_logic; -- Pin 3
     b1   : in  std_logic; -- Pin 2
-    a1   : in  std_logic; -- Pin 3
+    a1   : in  std_logic; -- Pin 1
     g1y0 : out std_logic; -- Pin 4
     g1y1 : out std_logic; -- Pin 5
     g1y2 : out std_logic; -- Pin 6
     g1y3 : out std_logic; -- Pin 7
 
-    g2y3 : out std_logic; -- Pin 9
-    g2y2 : out std_logic; -- Pin 10
-    g2y1 : out std_logic; -- Pin 11
-    g2y0 : out std_logic; -- Pin 12
+    g2y3 : out std_logic; -- Pin 12
+    g2y2 : out std_logic; -- Pin 11
+    g2y1 : out std_logic; -- Pin 10
+    g2y0 : out std_logic; -- Pin 9
     g2   : in  std_logic; -- Pin 13
     b2   : in  std_logic; -- Pin 14
     a2   : in  std_logic  -- Pin 15
