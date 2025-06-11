@@ -8,8 +8,10 @@ cadr/amem1.drw 255156167
 cadr/apar.drw 254396410
 cadr/bcpins.drw 272088153
 cadr/bcterm.drw 267240659
+cadr/bodies.drw 318579159
 cadr/cadr.book 345662384
 cadr/caps.drw 256448194
+cadr/chip.list 268435470
 cadr/clock1.drw 273354932
 cadr/clock2.drw 276964487
 cadr/clockd.drw 263455493
@@ -45,9 +47,9 @@ cadr/iram33.drw 272207907
 cadr/ireg.drw 254493250
 cadr/iwr.drw 255294135
 cadr/iwrpar.drw 254699681
-cadr/lcc.drw 272088935
-cadr/lc.drw 263455778
 cadr/l.drw 254493364
+cadr/lc.drw 263455778
+cadr/lcc.drw 272088935
 cadr/lpc.drw 255324974
 cadr/mbcpin.drw 272102485
 cadr/mcpins.drw 272629798
@@ -73,8 +75,8 @@ cadr/pdlptr.drw 255320785
 cadr/platch.drw 254403069
 cadr/prom0.drw 255604590
 cadr/prom1.drw 258312812
-cadr/qctl.drw 272090445
 cadr/q.drw 256357059
+cadr/qctl.drw 272090445
 cadr/shift0.drw 254378772
 cadr/shift1.drw 254378904
 cadr/smctl.drw 263456121
@@ -102,10 +104,8 @@ cadrwd/cadr4.txt 318672985
 cadrwd/cadr4.uml 320717603
 cadrwd/cadr4.wlr 320719500
 cadrwd/cadr4.wls 320714355
+cadrwd/icmem.txt 318664353
 cadrwd/icmem3.stf 320782304
 cadrwd/icmem3.uml 320782316
 cadrwd/icmem3.wlr 320783127
 cadrwd/icmem3.wls 320782743
-cadrwd/icmem.txt 318664353
-cadr/bodies.drw 318579159
-cadr/chip.list 268435470
