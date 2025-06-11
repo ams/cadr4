@@ -7,19 +7,20 @@ entity timedelay is
     );
   port (
     input  : in  std_logic;
-    tap1   : out std_logic := '0';
-    tap2   : out std_logic := '0';
-    tap3   : out std_logic := '0';
-    tap4   : out std_logic := '0';
-    output : out std_logic := '0'
+    tap1   : out std_logic;
+    tap2   : out std_logic;
+    tap3   : out std_logic;
+    tap4   : out std_logic;
+    output : out std_logic
     );
 end timedelay;
 
+-- transport delay has to be used !!!
 architecture behavioral of timedelay is
 begin
-  tap1 <= input after single_tap_delay;
-  tap2 <= tap1 after single_tap_delay;
-  tap3 <= tap2 after single_tap_delay;
-  tap4 <= tap3 after single_tap_delay;
-  output <= tap4 after single_tap_delay;
+  tap1 <= transport input after single_tap_delay;
+  tap2 <= transport input after single_tap_delay * 2;
+  tap3 <= transport input after single_tap_delay * 3;
+  tap4 <= transport input after single_tap_delay * 4;
+  output <= transport input after single_tap_delay * 5;
 end;
