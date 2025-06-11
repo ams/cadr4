@@ -15,7 +15,7 @@ entity cadr_clock1 is
     \-tpw50\         : out std_logic;
     \-tpw30\         : out std_logic;
     \-tpw10\         : out std_logic;   
-    \-tpw60\         : buffer std_logic; -- buffer because it is internally assigned to -tpdone
+    \-tpw60\         : out std_logic;
     \-tpw70\         : out std_logic;
     \-tpw75\         : out std_logic;
     \-tpw65\         : out std_logic;
