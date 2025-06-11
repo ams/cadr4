@@ -210,9 +210,7 @@ begin
   \-srcpdlidx\   <= '0';
 
   process
-  begin    
-    \-clock reset b\ <= '1';
-    wait for 10 ns;
+  begin
     \-clock reset b\ <= '0';
     wait for 10 ns;
     \-clock reset b\ <= not '0';
