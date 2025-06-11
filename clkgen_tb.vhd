@@ -17,7 +17,7 @@ architecture structural of clkgen_tb is
 
   -- clock 1 inputs
 
-  signal \-clock reset b\ : std_logic := '1';
+  signal \-clock reset b\ : std_logic;
   signal \-hang\          : std_logic;
   signal \-ilong\         : std_logic;
   signal gnd              : std_logic;
@@ -43,7 +43,7 @@ architecture structural of clkgen_tb is
   signal \-tpr20\         : std_logic;
   signal \-tpr20a\        : std_logic;
   signal \-tpr25\         : std_logic;
-  signal \-tpr40\         : std_logic := '1';
+  signal \-tpr40\         : std_logic;
   signal \-tpr5\          : std_logic;
   signal \-tpr60\         : std_logic;
   signal \-tpr65\         : std_logic;
@@ -64,7 +64,7 @@ architecture structural of clkgen_tb is
   signal \-tpw45\         : std_logic;
   signal \-tpw50\         : std_logic;
   signal \-tpw55\         : std_logic;
-  signal \-tpw60\         : std_logic := '1';
+  signal \-tpw60\         : std_logic;
   signal \-tpw65\         : std_logic;
   signal \-tpw70\         : std_logic;
   signal \-tpw75\         : std_logic;
@@ -211,6 +211,8 @@ begin
 
   process
   begin    
+    \-clock reset b\ <= '1';
+    wait for 10 ns;
     \-clock reset b\ <= '0';
     wait for 10 ns;
     \-clock reset b\ <= not '0';
