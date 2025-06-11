@@ -75,9 +75,9 @@ vcd-%: build/%_tb
 
 ifeq ($(GHDLWAVEFORMAT),ghw)
 ifneq ("$(wildcard $(notdir $(TB)).opt)","")
-GHDLWAVEOPTIONS := --vcd=$(BUILDDIR)/$(notdir $(TB)).ghw --read-wave-opt=$(notdir $(TB)).opt
+GHDLWAVEOPTIONS := --wave=$(BUILDDIR)/$(notdir $(TB)).ghw --read-wave-opt=$(notdir $(TB)).opt
 else
-GHDLWAVEOPTIONS := --vcd=$(BUILDDIR)/$(notdir $(TB)).ghw #--write-wave-opt=$(notdir $(TB)).opt
+GHDLWAVEOPTIONS := --wave=$(BUILDDIR)/$(notdir $(TB)).ghw #--write-wave-opt=$(notdir $(TB)).opt
 endif
 else
 GHDLWAVEOPTIONS := --vcd=$(BUILDDIR)/$(notdir $(TB)).vcd
