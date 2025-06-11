@@ -35,10 +35,10 @@ endif
 TTL_SRCS := $(wildcard ttl/*.vhd)
 DIP_SRCS := $(wildcard dip/*.vhd)
 CADR_SRCS := $(wildcard cadr/*.vhd)
-MAIN_SRCS := icmem_clock1_tb.vhd cadr_tb.vhd
+MAIN_SRCS := $(wildcard *.vhd)
 
 TTL_EXES := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard ttl/*_tb.vhd)))
-MAIN_EXES := build/icmem_clock1_tb build/cadr_tb
+MAIN_EXES := $(patsubst %.vhd,$(BUILDDIR)/%,$(wildcard *_tb.vhd))
 
 SRCS := $(TTL_SRCS) $(DIP_SRCS) $(CADR_SRCS) $(MAIN_SRCS)
 EXES := $(TTL_EXES) $(MAIN_EXES)
