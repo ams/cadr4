@@ -2,9 +2,9 @@ name: CADR CI
 
 on:
   push:
-    branches: [ "ams/stuff" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "ams/stuff" ]
+    branches: [ "master" ]
 
 jobs:
   build:
