@@ -31,9 +31,7 @@ end entity;
 architecture dip of dip_74s472 is
 begin
   U1 : entity work.dm74472
-    generic map (
-      fn => "proms/74s472.rom"
-      )
+    generic map (fn => fn)
     port map (
       a0   => p1,
       a1   => p2,

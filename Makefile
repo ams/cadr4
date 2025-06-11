@@ -137,3 +137,8 @@ ifeq ($(OS),Darwin)
 else
 	sed $(SEDOPTIONS) 's/^architecture.*/&\nalias \\-tpdone\\ : std_logic is \\-tpw60\\;/' cadr/cadr_clock1_suds.vhd
 endif
+# add rom generic map entries to dspctl, mskg4, prom0 and prom1
+	sed $(SEDOPTIONS) -E 's/^([[:space:]]*([^[:space:]]+)[[:space:]]*:[[:space:]]*dip_5610)[[:space:]]+port map/\1 generic map (fn => "rom\/\2.hex") port map/' cadr/cadr_dspctl_suds.vhd
+	sed $(SEDOPTIONS) -E 's/^([[:space:]]*([^[:space:]]+)[[:space:]]*:[[:space:]]*dip_5600)[[:space:]]+port map/\1 generic map (fn => "rom\/\2.hex") port map/' cadr/cadr_mskg4_suds.vhd
+	sed $(SEDOPTIONS) -E 's/^([[:space:]]*([^[:space:]]+)[[:space:]]*:[[:space:]]*dip_74s472)[[:space:]]+port map/\1 generic map (fn => "rom\/\2.hex") port map/' cadr/cadr_prom0_suds.vhd
+	sed $(SEDOPTIONS) -E 's/^([[:space:]]*([^[:space:]]+)[[:space:]]*:[[:space:]]*dip_74s472)[[:space:]]+port map/\1 generic map (fn => "rom\/\2.hex") port map/' cadr/cadr_prom1_suds.vhd
