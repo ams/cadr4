@@ -6,7 +6,7 @@ import os
 from collections import defaultdict
 
 def parse_component_definitions(dip_file_path):
-    """Parse component definitions from dip/dip.vhd to get port directions."""
+    """Parse component definitions from dip/dip.vhd to get port directions and generics."""
     components = {}
     
     try:
@@ -16,8 +16,8 @@ def parse_component_definitions(dip_file_path):
         print(f"Error: Could not find {dip_file_path}")
         sys.exit(1)
     
-    # Find component definitions
-    component_pattern = r'component\s+(\w+)\s+is\s+port\s*\((.*?)\s*\);\s*end\s+component;'
+    # Find component definitions - updated to handle generics
+    component_pattern = r'component\s+(\w+)\s+is\s*(?:generic\s*\(.*?\);\s*)?port\s*\((.*?)\s*\);\s*end\s+component;'
     port_pattern = r'p(\d+)\s*:\s*(in|out)\s+std_logic'
     
     for match in re.finditer(component_pattern, content, re.DOTALL | re.IGNORECASE):
@@ -35,7 +35,13 @@ def parse_component_definitions(dip_file_path):
             direction = port_match.group(2).lower()
             ports[pin_num] = direction
         
-        components[component_name] = ports
+        # Check if component has generics by looking for generic keyword before port
+        has_generics = bool(re.search(r'component\s+' + re.escape(component_name) + r'\s+is\s*generic\s*\(', content, re.IGNORECASE))
+        
+        components[component_name] = {
+            'ports': ports,
+            'has_generics': has_generics
+        }
     
     return components
 
@@ -109,17 +115,40 @@ def split_port_assignments(ports_str):
     return assignments
 
 def parse_component_instantiation(line):
-    """Parse a component instantiation line."""
-    # Pattern: label : component port map (ports);
-    pattern = r'(\w+)\s*:\s*(\w+)\s+port\s+map\s*\((.*?)\)\s*;'
-    match = re.match(pattern, line.strip(), re.IGNORECASE)
+    """Parse a component instantiation line that may include generic map."""
+    # Pattern: label : component [generic map (...)] port map (ports);
+    # First try with generic map
+    pattern_with_generic = r'(\w+)\s*:\s*(\w+)\s+generic\s+map\s*\((.*?)\)\s+port\s+map\s*\((.*?)\)\s*;'
+    match = re.match(pattern_with_generic, line.strip(), re.IGNORECASE)
     
-    if not match:
-        return None
-    
-    label = match.group(1)
-    component = match.group(2)
-    ports_str = match.group(3)
+    if match:
+        label = match.group(1)
+        component = match.group(2)
+        generics_str = match.group(3)
+        ports_str = match.group(4)
+        
+        # Parse generic mappings
+        generics = {}
+        generic_assignments = split_port_assignments(generics_str)
+        for assignment in generic_assignments:
+            # Handle generic assignments like fn => "rom/file.hex"
+            gen_match = re.match(r'(\w+)\s*=>\s*(.*)', assignment.strip())
+            if gen_match:
+                gen_name = gen_match.group(1)
+                gen_value = gen_match.group(2).strip()
+                generics[gen_name] = gen_value
+    else:
+        # Try without generic map (original pattern)
+        pattern = r'(\w+)\s*:\s*(\w+)\s+port\s+map\s*\((.*?)\)\s*;'
+        match = re.match(pattern, line.strip(), re.IGNORECASE)
+        
+        if not match:
+            return None
+        
+        label = match.group(1)
+        component = match.group(2)
+        ports_str = match.group(3)
+        generics = {}
     
     # Parse port mappings
     ports = {}
@@ -137,6 +166,7 @@ def parse_component_instantiation(line):
         'label': label,
         'component': component,
         'ports': ports,
+        'generics': generics,
         'original_line': line
     }
 
@@ -227,10 +257,20 @@ def fix_suds_file(file_path, verbose=False):
                     print(f"Error: Duplicate pin p{pin} for label {label}")
                     sys.exit(1)
                 merged_instantiations[label]['ports'][pin] = signal
+            
+            # Merge generics (should be the same for same component)
+            for gen_name, gen_value in inst['generics'].items():
+                if gen_name in merged_instantiations[label]['generics']:
+                    if merged_instantiations[label]['generics'][gen_name] != gen_value:
+                        print(f"Error: Generic mismatch for {label}.{gen_name}: {merged_instantiations[label]['generics'][gen_name]} vs {gen_value}")
+                        sys.exit(1)
+                else:
+                    merged_instantiations[label]['generics'][gen_name] = gen_value
         else:
             merged_instantiations[label] = {
                 'component': component,
-                'ports': inst['ports'].copy()
+                'ports': inst['ports'].copy(),
+                'generics': inst['generics'].copy()
             }
     
     # Issue 2: Find @designator,pin signals and create nets
@@ -346,7 +386,7 @@ def fix_suds_file(file_path, verbose=False):
             print(f"Error: Component definition for {component} not found")
             sys.exit(1)
         
-        component_ports = components[component]
+        component_ports = components[component]['ports']
         
         for pin_num, direction in component_ports.items():
             if pin_num not in inst['ports']:
@@ -385,6 +425,7 @@ def fix_suds_file(file_path, verbose=False):
         inst = merged_instantiations[label]
         component = inst['component']
         ports = inst['ports']
+        generics = inst['generics']
         
         # Sort ports by pin number
         sorted_ports = sorted(ports.items())
@@ -396,7 +437,18 @@ def fix_suds_file(file_path, verbose=False):
         
         port_map_str = ", ".join(port_map_parts)
         
-        new_line = f"{label} : {component} port map ({port_map_str});\n"
+        # Build instantiation line with or without generic map
+        if generics and components[component]['has_generics']:
+            # Sort generics for consistent output
+            sorted_generics = sorted(generics.items())
+            generic_map_parts = []
+            for gen_name, gen_value in sorted_generics:
+                generic_map_parts.append(f"{gen_name} => {gen_value}")
+            generic_map_str = ", ".join(generic_map_parts)
+            new_line = f"{label} : {component} generic map ({generic_map_str}) port map ({port_map_str});\n"
+        else:
+            new_line = f"{label} : {component} port map ({port_map_str});\n"
+        
         result_lines.append(new_line)
     
     result_lines.extend(lines[end_line:])

@@ -143,7 +143,9 @@ package dip is
     );
   end component;
 
-  component dip_5600 is port (          -- im5600 [5600]
+  component dip_5600 is
+    generic (fn : string := "");
+    port (
     p1  : out std_logic;                -- o0
     p2  : out std_logic;                -- o1
     p3  : out std_logic;                -- o2
@@ -159,10 +161,11 @@ package dip is
     p14 : in  std_logic;                -- a4
     p15 : in  std_logic                 -- ce_n
     );
-    generic (fn : string := "");
   end component;
 
-  component dip_5610 is port (          -- im5600 [5610]
+  component dip_5610 is
+    generic (fn : string := "");
+    port (
     p1  : out std_logic;                -- o0
     p2  : out std_logic;                -- o1
     p3  : out std_logic;                -- o2
@@ -178,7 +181,6 @@ package dip is
     p14 : in  std_logic;                -- a4
     p15 : in  std_logic                 -- ce_n
     );
-    generic (fn : string := "");
   end component;
 
   component dip_7428 is port (          -- sn7428 [7428]
@@ -804,7 +806,9 @@ package dip is
     );
   end component;
 
-  component dip_74s472 is port (         -- dm74472 [74s472]
+  component dip_74s472 is
+    generic (fn : string := "");
+    port (
     p1  : in  std_logic;                 -- a0
     p2  : in  std_logic;                 -- a1
     p3  : in  std_logic;                 -- a2
@@ -824,7 +828,6 @@ package dip is
     p18 : in  std_logic;                 -- a7
     p19 : in  std_logic                  -- a8
     );
-    generic (fn : string := "");
   end component;
 
   component dip_74s51 is port (         -- sn7451 [74s51]

@@ -14,7 +14,7 @@ After running the pyhton script, `make` can be used to see if the project compil
 
 # Approach
 
-The best approach is to read the vhd file and create a representation (using dictionary, list etc.) of the component instantiations in this vhd file. Then issue 1 can be easily fixed. To fix issue 2, find such signals @designator,pin, and keep them in a list and add them to the ports of the component label page_designator (such as actl_3b30). Finally, to fix issue 3, read the component definition in dip/dip.vhd and add the missing ports with correct termination ('0' or open).
+The best approach is to read the vhd file and create a representation (using dictionary, list etc.) of the component instantiations in this vhd file. Then issue 1 can be easily fixed. To fix issue 2, find such signals @designator,pin, and keep them in a list and add them to the ports of the component label page_designator (such as actl_3b30). Finally, to fix issue 3, read the component definition in dip/dip.vhd and add the missing ports with correct termination ('0' or open). It is important to correctly parse dip/dip.vhd, some components also have generic maps in addition to port maps.
 
 # Page Name
 
