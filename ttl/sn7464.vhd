@@ -29,8 +29,29 @@ entity sn7464 is
 end;
 
 architecture ttl of sn7464 is
+  signal and1_out : std_logic; -- (a1 AND b1)
+  signal and2_out : std_logic; -- (a2 AND b2)
+  signal and3_out : std_logic; -- (a3 AND b3 AND c3)
+  signal and4_out : std_logic; -- (a4 AND b4 AND c4 AND d4)
+  signal or_out   : std_logic; -- OR of all AND outputs
 begin
 
-  \out\ <= not ((a1 and b1) or (a2 and b2) or (a3 and b3 and c3) or (a4 and b4 and c4 and d4));
+  -- 2-input AND: (a1 AND b1)
+  and1: entity work.gate_and2(behavioral) port map (a => a1, b => b1, q => and1_out);
+  
+  -- 2-input AND: (a2 AND b2)
+  and2: entity work.gate_and2(behavioral) port map (a => a2, b => b2, q => and2_out);
+  
+  -- 3-input AND: (a3 AND b3 AND c3)
+  and3: entity work.gate_and3(behavioral) port map (a => a3, b => b3, c => c3, q => and3_out);
+  
+  -- 4-input AND: (a4 AND b4 AND c4 AND d4)
+  and4: entity work.gate_and4(behavioral) port map (a => a4, b => b4, c => c4, d => d4, q => and4_out);
+  
+  -- 4-input OR: OR all AND outputs
+  or_gate: entity work.gate_or4(behavioral) port map (a => and1_out, b => and2_out, c => and3_out, d => and4_out, q => or_out);
+  
+  -- Final inversion
+  \out\ <= not or_out;
 
 end;

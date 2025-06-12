@@ -5,20 +5,6 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
--- Simple 2-input NAND gate
-entity nand_gate is
-  port (
-    a : in  std_logic;
-    b : in  std_logic;
-    q : out std_logic
-  );
-end;
-
-architecture behavioral of nand_gate is
-begin
-  q <= '0' when (a = '1' and b = '1') else '1';
-end;
-
 entity sn7400 is
   port (
     g1a   : in  std_logic;
@@ -42,9 +28,9 @@ end;
 architecture ttl of sn7400 is
 begin
 
-  gate1: entity work.nand_gate(behavioral) port map (a => g1a, b => g1b, q => g1q_n);
-  gate2: entity work.nand_gate(behavioral) port map (a => g2a, b => g2b, q => g2q_n);
-  gate3: entity work.nand_gate(behavioral) port map (a => g3a, b => g3b, q => g3q_n);
-  gate4: entity work.nand_gate(behavioral) port map (a => g4a, b => g4b, q => g4q_n);
+  gate1: entity work.gate_nand2(behavioral) port map (a => g1a, b => g1b, q => g1q_n);
+  gate2: entity work.gate_nand2(behavioral) port map (a => g2a, b => g2b, q => g2q_n);
+  gate3: entity work.gate_nand2(behavioral) port map (a => g3a, b => g3b, q => g3q_n);
+  gate4: entity work.gate_nand2(behavioral) port map (a => g4a, b => g4b, q => g4q_n);
 
 end;

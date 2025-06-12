@@ -8,27 +8,30 @@ use ieee.numeric_std.all;
 
 entity sn74133 is
   port (
-    a : in std_logic;
-    b : in std_logic;
-    c : in std_logic;
-    d : in std_logic;
-    e : in std_logic;
-    f : in std_logic;
-    g : in std_logic;
-    h : in std_logic;
-    i : in std_logic;
-    j : in std_logic;
-    k : in std_logic;
-    l : in std_logic;
-    m : in std_logic;
+    a : in std_logic; -- Pin 1
+    b : in std_logic; -- Pin 2
+    c : in std_logic; -- Pin 3
+    d : in std_logic; -- Pin 4
+    e : in std_logic; -- Pin 5
+    f : in std_logic; -- Pin 6
+    g : in std_logic; -- Pin 9
+    h : in std_logic; -- Pin 10
+    i : in std_logic; -- Pin 11
+    j : in std_logic; -- Pin 12
+    k : in std_logic; -- Pin 13
+    l : in std_logic; -- Pin 14
+    m : in std_logic; -- Pin 15
 
-    q_n : out std_logic
+    q_n : out std_logic -- Pin 8
     );
 end;
 
 architecture ttl of sn74133 is
 begin
 
-  q_n <= not (a and b and c and d and e and f and g and h and i and j and k and l and m);
+  gate1: entity work.gate_nand13(behavioral) port map (
+    a => a, b => b, c => c, d => d, e => e, f => f, g => g, h => h, 
+    i => i, j => j, k => k, l => l, m => m, q => q_n
+  );
 
 end;
