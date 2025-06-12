@@ -42,7 +42,7 @@ begin
     if rising_edge(clk) then
       -- synchronous parallel load has top priority
       if load_n = '0' then
-        load_val := unsigned'(i3 & i2 & i1 & i0);
+        load_val := unsigned(std_logic_vector'(i3 & i2 & i1 & i0));
         cnt      <= load_val;
 
       -- otherwise count when both enables are asserted (low)
@@ -74,20 +74,28 @@ begin
   process(all)
     variable at_terminal_count : boolean;
     variable loading_terminal_count : boolean;
+    variable cnt_is_valid : boolean;
   begin
-    -- Check if counter is at terminal count
-    if up_dn = '1' then
-      at_terminal_count := (cnt = to_unsigned(MAX_COUNT, COUNT_WIDTH));  -- up-count terminal
+    -- Check if counter has valid (non-metavalue) content
+    cnt_is_valid := not (is_x(std_logic_vector(cnt)));
+    
+    -- Check if counter is at terminal count (only if counter is valid)
+    if cnt_is_valid then
+      if up_dn = '1' then
+        at_terminal_count := (cnt = to_unsigned(MAX_COUNT, COUNT_WIDTH));  -- up-count terminal
+      else
+        at_terminal_count := (cnt = to_unsigned(MIN_COUNT, COUNT_WIDTH));   -- down-count terminal
+      end if;
     else
-      at_terminal_count := (cnt = to_unsigned(MIN_COUNT, COUNT_WIDTH));   -- down-count terminal
+      at_terminal_count := false;  -- Undefined counter cannot be at terminal count
     end if;
     
     -- Check if loading a terminal count value
     if load_n = '0' then
       if up_dn = '1' then
-        loading_terminal_count := (unsigned(i3 & i2 & i1 & i0) = to_unsigned(MAX_COUNT, COUNT_WIDTH));
+        loading_terminal_count := (unsigned(std_logic_vector'(i3 & i2 & i1 & i0)) = to_unsigned(MAX_COUNT, COUNT_WIDTH));
       else
-        loading_terminal_count := (unsigned(i3 & i2 & i1 & i0) = to_unsigned(MIN_COUNT, COUNT_WIDTH));
+        loading_terminal_count := (unsigned(std_logic_vector'(i3 & i2 & i1 & i0)) = to_unsigned(MIN_COUNT, COUNT_WIDTH));
       end if;
     else
       loading_terminal_count := false;

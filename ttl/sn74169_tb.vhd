@@ -70,6 +70,12 @@ begin
     
     wait for 20 ns;
     
+    -- Initialize counter to known state (load 0) since hardware starts undefined
+    load_n <= '0';
+    wait for 10 ns;
+    load_n <= '1';
+    wait for 10 ns;
+    
     -- Test 1: Parallel load with value 5 (0101)
     i3 <= '0';
     i2 <= '1';
