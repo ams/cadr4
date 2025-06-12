@@ -31,7 +31,6 @@ entity dm74472 is
     );
 end;
 
--- ChatGPT Codex implementation
 architecture ttl of dm74472 is
   type rom_t is array (0 to 511) of std_logic_vector(7 downto 0);
 
@@ -57,6 +56,20 @@ architecture ttl of dm74472 is
 
   signal rom  : rom_t                := load_rom;
   signal addr : unsigned(8 downto 0) := (others => '0');
+  
+  -- Function to check if address contains unknown values
+  function has_unknown_addr(addr : unsigned) return boolean is
+    variable addr_slv : std_logic_vector(addr'length-1 downto 0);
+  begin
+    addr_slv := std_logic_vector(addr);
+    for i in addr_slv'range loop
+      if addr_slv(i) /= '0' and addr_slv(i) /= '1' then
+        return true;
+      end if;
+    end loop;
+    return false;
+  end function;
+  
 begin
   addr <= a8 & a7 & a6 & a5 & a4 & a3 & a2 & a1 & a0;
 
@@ -64,9 +77,16 @@ begin
     variable data : std_logic_vector(7 downto 0);
   begin
     if ce_n = '0' then
-      data := rom(to_integer(addr));
-      d7   <= data(7); d6 <= data(6); d5 <= data(5); d4 <= data(4);
-      d3   <= data(3); d2 <= data(2); d1 <= data(1); d0 <= data(0);
+      -- Check for unknown address or control signals
+      if has_unknown_addr(addr) or (ce_n /= '0' and ce_n /= '1') then
+        -- Unknown address or control produces unknown output
+        d7 <= 'X'; d6 <= 'X'; d5 <= 'X'; d4 <= 'X';
+        d3 <= 'X'; d2 <= 'X'; d1 <= 'X'; d0 <= 'X';
+      else
+        data := rom(to_integer(addr));
+        d7   <= data(7); d6 <= data(6); d5 <= data(5); d4 <= data(4);
+        d3   <= data(3); d2 <= data(2); d1 <= data(1); d0 <= data(0);
+      end if;
     else
       d7 <= 'Z'; d6 <= 'Z'; d5 <= 'Z'; d4 <= 'Z';
       d3 <= 'Z'; d2 <= 'Z'; d1 <= 'Z'; d0 <= 'Z';

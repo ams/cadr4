@@ -30,22 +30,43 @@ architecture ttl of am2147 is
   type ram_t is array (0 to 4095) of std_logic;
   signal ram : ram_t := (others => '0');
   signal addr_slv : std_logic_vector(11 downto 0);
+  
+  -- Function to check if address contains unknown values
+  function has_unknown_addr(addr : std_logic_vector) return boolean is
+  begin
+    for i in addr'range loop
+      if addr(i) /= '0' and addr(i) /= '1' then
+        return true;
+      end if;
+    end loop;
+    return false;
+  end function;
+  
 begin
   addr_slv <= (a11, a10, a9, a8, a7, a6, a5, a4, a3, a2, a1, a0);
 
   process (all)
   begin
     if ce_n = '0' and we_n = '0' then
-      -- Write
-      ram(to_integer(unsigned(addr_slv))) <= di;
+      -- Write: check for unknown address before conversion
+      if has_unknown_addr(addr_slv) then
+        -- Cannot write to unknown address - do nothing
+        null;
+      else
+        ram(to_integer(unsigned(addr_slv))) <= di;
+      end if;
     end if;
   end process;
 
   process (all)
   begin
     if ce_n = '0' and we_n = '1' then
-      -- Read
-      do <= ram(to_integer(unsigned(addr_slv)));
+      -- Read: check for unknown address or control signals
+      if has_unknown_addr(addr_slv) or (ce_n /= '0' and ce_n /= '1') then
+        do <= 'X';  -- Unknown address or control produces unknown output
+      else
+        do <= ram(to_integer(unsigned(addr_slv)));
+      end if;
     else
       -- Disabled or writing
       do <= 'Z';

@@ -32,21 +32,41 @@ entity am93425a is
     );
 end am93425a;
 
--- ChatGPT Codex implementation
 architecture ttl of am93425a is
   type ram_t is array (0 to 1023) of std_logic;
   signal ram  : ram_t                := (others => '0');
   signal addr : unsigned(9 downto 0) := (others => '0');
+  
+  -- Function to check if address contains unknown values
+  function has_unknown_addr(addr : unsigned) return boolean is
+    variable addr_slv : std_logic_vector(addr'length-1 downto 0);
+  begin
+    addr_slv := std_logic_vector(addr);
+    for i in addr_slv'range loop
+      if addr_slv(i) /= '0' and addr_slv(i) /= '1' then
+        return true;
+      end if;
+    end loop;
+    return false;
+  end function;
+  
 begin
   addr <= a9 & a8 & a7 & a6 & a5 & a4 & a3 & a2 & a1 & a0;
 
   process(all)
   begin
     if ce_n = '0' then
-      if we_n = '0' then
-        ram(to_integer(addr)) <= di;
+      -- Check for unknown address or control signals
+      if has_unknown_addr(addr) or (ce_n /= '0' and ce_n /= '1') or (we_n /= '0' and we_n /= '1') then
+        do <= 'X';  -- Unknown address or control produces unknown output
+      else
+        if we_n = '0' then
+          -- Write
+          ram(to_integer(addr)) <= di;
+        end if;
+        -- Read (always happens when enabled)
+        do <= ram(to_integer(addr));
       end if;
-      do <= ram(to_integer(addr));
     else
       do <= 'Z';
     end if;
