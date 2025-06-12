@@ -9,27 +9,29 @@ use ieee.numeric_std.all;
 
 entity sn74169 is
   port (
-    co_n : out std_logic;
-    i3   : in  std_logic;
-    i2   : in  std_logic;
-    i1   : in  std_logic;
-    i0   : in  std_logic;
-
-    o3      : out std_logic; -- Pin 11 (Output D)
-    o2      : out std_logic; -- Pin 12 (Output C)
-    o1      : out std_logic; -- Pin 13 (Output B)
-    o0      : out std_logic; -- Pin 14 (Output A)
-
-    enb_t_n : in std_logic; -- Pin 10 (Count Enable Trickle Input Active Low)
-    enb_p_n : in std_logic; -- Pin 7 (Count Enable Parallel Input Active Low)
-    load_n  : in std_logic; -- Pin 9 (Parallel Enable Input Active Low)
-    up_dn   : in std_logic; -- Pin 1 (Up/Down Control Input)
-    clk     : in std_logic -- Pin 2 (Clock Input)
+    -- Control and status
+    co_n    : out std_logic;  -- Carry out (active low)
+    clk     : in  std_logic;  -- Clock
+    up_dn   : in  std_logic;  -- Up/Down control
+    load_n  : in  std_logic;  -- Parallel load enable (active low)
+    enb_p_n : in  std_logic;  -- Count enable parallel (active low)
+    enb_t_n : in  std_logic;  -- Count enable trickle (active low)
+    
+    -- Data inputs (parallel load)
+    i3, i2, i1, i0 : in  std_logic;
+    
+    -- Data outputs
+    o3, o2, o1, o0 : out std_logic
     );
 end;
 
 architecture ttl of sn74169 is
   signal cnt : unsigned(3 downto 0) := (others => 'U');    -- internal 4-bit register
+  
+  -- Named constants for better readability
+  constant COUNT_WIDTH    : natural := 4;
+  constant MAX_COUNT      : natural := 15;  -- 2^COUNT_WIDTH - 1
+  constant MIN_COUNT      : natural := 0;
 begin
   ------------------------------------------------------------------
   -- synchronous logic
@@ -75,17 +77,17 @@ begin
   begin
     -- Check if counter is at terminal count
     if up_dn = '1' then
-      at_terminal_count := (cnt = to_unsigned(15, 4));  -- up-count terminal
+      at_terminal_count := (cnt = to_unsigned(MAX_COUNT, COUNT_WIDTH));  -- up-count terminal
     else
-      at_terminal_count := (cnt = to_unsigned(0, 4));   -- down-count terminal
+      at_terminal_count := (cnt = to_unsigned(MIN_COUNT, COUNT_WIDTH));   -- down-count terminal
     end if;
     
     -- Check if loading a terminal count value
     if load_n = '0' then
       if up_dn = '1' then
-        loading_terminal_count := (unsigned(i3 & i2 & i1 & i0) = to_unsigned(15, 4));
+        loading_terminal_count := (unsigned(i3 & i2 & i1 & i0) = to_unsigned(MAX_COUNT, COUNT_WIDTH));
       else
-        loading_terminal_count := (unsigned(i3 & i2 & i1 & i0) = to_unsigned(0, 4));
+        loading_terminal_count := (unsigned(i3 & i2 & i1 & i0) = to_unsigned(MIN_COUNT, COUNT_WIDTH));
       end if;
     else
       loading_terminal_count := false;

@@ -23,33 +23,23 @@ use ieee.numeric_std.all;
 -- This is a 4-bit Arithmetic Logic Unit/Function Generator
 entity sn74181 is
   port (
-    cout_n : out std_logic;
-    y      : out std_logic;
-    x      : out std_logic;
-    aeb    : out std_logic;
-
-    f0     : out std_logic; -- Pin 24 (F0 Output)
-    f1     : out std_logic; -- Pin 23 (F1 Output)
-    f2     : out std_logic; -- Pin 22 (F2 Output)
-    f3     : out std_logic; -- Pin 13 (F3 Output)
-
-    b0     : in std_logic; -- Pin 1 (B0 Input)
-    b1     : in std_logic; -- Pin 20 (B1 Input)
-    b2     : in std_logic; -- Pin 19 (B2 Input)
-    b3     : in std_logic; -- Pin 18 (B3 Input)
-
-    a0 : in std_logic;
-    a1 : in std_logic;
-    a2 : in std_logic;
-    a3 : in std_logic;
-
-    m      : in std_logic; -- Pin 6 (Mode Control)
-    s0     : in std_logic; -- Pin 8 (S0 Input)
-    s1     : in std_logic; -- Pin 9 (S1 Input)
-    s2     : in std_logic; -- Pin 10 (S2 Input)
-    s3     : in std_logic; -- Pin 11 (S3 Input)
-
-    cin_n : in std_logic
+    -- Control and status
+    m      : in  std_logic;  -- Mode: 1=Logic, 0=Arithmetic
+    cin_n  : in  std_logic;  -- Carry in (active low)
+    cout_n : out std_logic;  -- Carry out (active low)
+    aeb    : out std_logic;  -- A equals B
+    x      : out std_logic;  -- Carry propagate
+    y      : out std_logic;  -- Carry generate
+    
+    -- Function select
+    s3, s2, s1, s0 : in std_logic;
+    
+    -- Data inputs
+    a3, a2, a1, a0 : in std_logic;
+    b3, b2, b1, b0 : in std_logic;
+    
+    -- Function outputs
+    f3, f2, f1, f0 : out std_logic
     );
 end;
 
@@ -57,6 +47,11 @@ architecture ttl of sn74181 is
   signal a   : std_logic_vector(3 downto 0);
   signal b   : std_logic_vector(3 downto 0);
   signal sel : std_logic_vector(3 downto 0);
+
+  -- Named constants for better readability
+  constant ALU_WIDTH : natural := 4;
+  constant LOGIC_MODE : std_logic := '1';
+  constant ARITH_MODE : std_logic := '0';
 
   -- Function to check if a vector contains any unknown values
   function has_unknown(vec : std_logic_vector) return boolean is
@@ -109,7 +104,7 @@ begin
       av  := unsigned(a);
       bv  := unsigned(b);
 
-      if m = '1' then
+      if m = LOGIC_MODE then
         -- Logic mode (from datasheet function table)
         case s is
           when "0000" => logic_f := not std_logic_vector(av);           -- NOT A
