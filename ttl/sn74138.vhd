@@ -31,13 +31,30 @@ architecture ttl of sn74138 is
 begin
 
   process (a, b, c, g1, g2a, g2b) is
-    variable sel : integer range 0 to 7;
+    variable sel : std_logic_vector(2 downto 0);
   begin
+    -- Check enable conditions first
     if g1 = '1' and g2a = '0' and g2b = '0' then
-      sel    := to_integer(unsigned(std_logic_vector'(a & b & c)));
-      y      <= (others => '1');
-      y(sel) <= '0';
+      -- Enabled: decode select inputs
+      sel := a & b & c;  -- MSB to LSB: a, b, c (matching testbench expectations)
+      
+      -- Handle all valid select combinations explicitly
+      case sel is
+        when "000" => y <= "11111110"; -- y0 active (low)
+        when "001" => y <= "11111101"; -- y1 active (low)
+        when "010" => y <= "11111011"; -- y2 active (low)
+        when "011" => y <= "11110111"; -- y3 active (low)
+        when "100" => y <= "11101111"; -- y4 active (low)
+        when "101" => y <= "11011111"; -- y5 active (low)
+        when "110" => y <= "10111111"; -- y6 active (low)
+        when "111" => y <= "01111111"; -- y7 active (low)
+        when others => y <= "XXXXXXXX"; -- Unknown select inputs
+      end case;
+    elsif (g1 /= '0' and g1 /= '1') or (g2a /= '0' and g2a /= '1') or (g2b /= '0' and g2b /= '1') then
+      -- Unknown enable signals
+      y <= "XXXXXXXX";
     else
+      -- Disabled: all outputs high (inactive)
       y <= (others => '1');
     end if;
   end process;
