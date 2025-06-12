@@ -36,8 +36,19 @@ begin
   process(all)
     variable sum : unsigned(4 downto 0);
   begin
-    sum := ('0' & a) + ('0' & b) + ("0000" & c0);
-    s3  <= sum(3); s2 <= sum(2); s1 <= sum(1); s0 <= sum(0);
-    c4  <= sum(4);
+    -- Check for unknown inputs
+    if (a0 /= '0' and a0 /= '1') or (a1 /= '0' and a1 /= '1') or 
+       (a2 /= '0' and a2 /= '1') or (a3 /= '0' and a3 /= '1') or
+       (b0 /= '0' and b0 /= '1') or (b1 /= '0' and b1 /= '1') or
+       (b2 /= '0' and b2 /= '1') or (b3 /= '0' and b3 /= '1') or
+       (c0 /= '0' and c0 /= '1') then
+      -- Any unknown input causes unknown outputs
+      s0 <= 'X'; s1 <= 'X'; s2 <= 'X'; s3 <= 'X'; c4 <= 'X';
+    else
+      -- All inputs are valid, perform addition
+      sum := ('0' & a) + ('0' & b) + ("0000" & c0);
+      s3  <= sum(3); s2 <= sum(2); s1 <= sum(1); s0 <= sum(0);
+      c4  <= sum(4);
+    end if;
   end process;
 end;

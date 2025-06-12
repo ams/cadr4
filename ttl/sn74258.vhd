@@ -31,13 +31,27 @@ architecture ttl of sn74258 is
 begin
   process(all)
   begin
-    if enb_n = '1' then
+    -- Check for unknown enable or select signals
+    if (enb_n /= '0' and enb_n /= '1') or (sel /= '0' and sel /= '1') then
+      -- Unknown control signals cause unknown outputs
+      ay <= 'X'; by <= 'X'; cy <= 'X'; dy <= 'X';
+    elsif enb_n = '1' then
+      -- Disabled: high impedance
       ay <= 'Z'; by <= 'Z'; cy <= 'Z'; dy <= 'Z';
     else
+      -- Enabled: select inputs
       if sel = '0' then
-        ay <= a0; by <= b0; cy <= c0; dy <= d0;
+        -- Select 0 inputs, but check for unknown data inputs
+        ay <= 'X' when (a0 /= '0' and a0 /= '1') else a0;
+        by <= 'X' when (b0 /= '0' and b0 /= '1') else b0;
+        cy <= 'X' when (c0 /= '0' and c0 /= '1') else c0;
+        dy <= 'X' when (d0 /= '0' and d0 /= '1') else d0;
       else
-        ay <= a1; by <= b1; cy <= c1; dy <= d1;
+        -- Select 1 inputs, but check for unknown data inputs
+        ay <= 'X' when (a1 /= '0' and a1 /= '1') else a1;
+        by <= 'X' when (b1 /= '0' and b1 /= '1') else b1;
+        cy <= 'X' when (c1 /= '0' and c1 /= '1') else c1;
+        dy <= 'X' when (d1 /= '0' and d1 /= '1') else d1;
       end if;
     end if;
   end process;
