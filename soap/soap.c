@@ -1057,10 +1057,7 @@ parse_trailer(int p, struct trailer_s *t)
 	    printf("-- %s -- %s\n", page_name, t->t_title_line_2);
 	  else printf("-- %s\n", page_name);
 	  
-	  printf("--\n");
-	  printf("-- History:\n");
-	  printf("-- \n");
-	  printf("--   (DATE %s) Initial SUDS.\n", t->t_draw_by);
+	  //printf("-- by %s\n", t->t_draw_by);
 	  printf("\n");
 	}
 
