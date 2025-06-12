@@ -25,7 +25,6 @@ entity am2507 is
     );
 end am2507;
 
--- ChatGPT Codex implementation
 architecture ttl of am2507 is
 begin
   process(clk)

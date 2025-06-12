@@ -1,10 +1,6 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
--- Testbench created by OpenAI Codex
-
-
-
 entity ff_jkpc_tb is
 end;
 
@@ -29,7 +25,6 @@ begin
     q_n => q_n
     );
 
-  -- Stimulus created by OpenAI Codex
   process
   begin
     clk <= '0';

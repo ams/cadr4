@@ -28,7 +28,6 @@ entity sn74169 is
     );
 end;
 
--- ChatGPT o3 implementation
 architecture ttl of sn74169 is
   signal cnt : unsigned(3 downto 0);    -- internal 4-bit register
 begin

@@ -27,7 +27,6 @@ entity sn74157 is
     );
 end;
 
--- OpenAI Codex implementation
 architecture ttl of sn74157 is
 begin
   process(all)

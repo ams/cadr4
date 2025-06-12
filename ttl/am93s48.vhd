@@ -24,7 +24,6 @@ entity am93s48 is
     );
 end;
 
--- ChatGPT Codex implementation
 architecture ttl of am93s48 is
 begin
   process(all)

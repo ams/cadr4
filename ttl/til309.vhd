@@ -18,7 +18,6 @@ entity til309 is
     );
 end;
 
--- ChatGPT Codex implementation
 architecture ttl of til309 is
   signal reg : std_logic_vector(3 downto 0) := (others => '0');
 begin
