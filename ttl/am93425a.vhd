@@ -37,18 +37,7 @@ architecture ttl of am93425a is
   signal ram  : ram_t                := (others => '0');
   signal addr : unsigned(9 downto 0) := (others => '0');
   
-  -- Function to check if address contains unknown values
-  function has_unknown_addr(address : unsigned) return boolean is
-    variable addr_slv : std_logic_vector(address'length-1 downto 0);
-  begin
-    addr_slv := std_logic_vector(address);
-    for i in addr_slv'range loop
-      if addr_slv(i) /= '0' and addr_slv(i) /= '1' then
-        return true;
-      end if;
-    end loop;
-    return false;
-  end function;
+
   
 begin
   addr <= a9 & a8 & a7 & a6 & a5 & a4 & a3 & a2 & a1 & a0;
@@ -57,7 +46,7 @@ begin
   begin
     if ce_n = '0' then
       -- Check for unknown address or control signals
-      if has_unknown_addr(addr) or (ce_n /= '0' and ce_n /= '1') or (we_n /= '0' and we_n /= '1') then
+      if is_x(std_logic_vector(addr)) or (ce_n /= '0' and ce_n /= '1') or (we_n /= '0' and we_n /= '1') then
         do <= 'X';  -- Unknown address or control produces unknown output
       else
         if we_n = '0' then

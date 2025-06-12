@@ -29,18 +29,7 @@ architecture ttl of dm8221 is
   signal ram  : ram_t := (others => (others => '0'));
   signal addr : unsigned(4 downto 0);
   
-  -- Function to check if address contains unknown values
-  function has_unknown_addr(address : unsigned) return boolean is
-    variable addr_slv : std_logic_vector(address'length-1 downto 0);
-  begin
-    addr_slv := std_logic_vector(address);
-    for i in addr_slv'range loop
-      if addr_slv(i) /= '0' and addr_slv(i) /= '1' then
-        return true;
-      end if;
-    end loop;
-    return false;
-  end function;
+
   
 begin
   addr <= a4 & a3 & a2 & a1 & a0;
@@ -53,7 +42,7 @@ begin
     if falling_edge(wclk_n) then
       if ce = '1' and strobe = '1' then
         -- Check for unknown address before writing
-        if not has_unknown_addr(addr) then
+        if not is_x(std_logic_vector(addr)) then
           if we0_n = '0' then
             ram(to_integer(addr))(0) <= i0;
           end if;
@@ -74,7 +63,7 @@ begin
   begin
     if ce = '1' then
       -- Check for unknown address or control signals
-      if has_unknown_addr(addr) or (ce /= '0' and ce /= '1') then
+      if is_x(std_logic_vector(addr)) or (ce /= '0' and ce /= '1') then
         d0 <= 'X'; d1 <= 'X';  -- Unknown address or control produces unknown output
       else
         word := ram(to_integer(addr));

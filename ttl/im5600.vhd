@@ -53,18 +53,7 @@ architecture ttl of im5600 is
   signal rom  : rom_t                := load_rom;
   signal addr : unsigned(4 downto 0) := (others => '0');
   
-  -- Function to check if address contains unknown values
-  function has_unknown_addr(address : unsigned) return boolean is
-    variable addr_slv : std_logic_vector(address'length-1 downto 0);
-  begin
-    addr_slv := std_logic_vector(address);
-    for i in addr_slv'range loop
-      if addr_slv(i) /= '0' and addr_slv(i) /= '1' then
-        return true;
-      end if;
-    end loop;
-    return false;
-  end function;
+
   
 begin
   addr <= a4 & a3 & a2 & a1 & a0;
@@ -74,7 +63,7 @@ begin
   begin
     if ce_n = '0' then
       -- Check for unknown address or control signals
-      if has_unknown_addr(addr) or (ce_n /= '0' and ce_n /= '1') then
+      if is_x(std_logic_vector(addr)) or (ce_n /= '0' and ce_n /= '1') then
         -- Unknown address or control produces unknown output
         o7 <= 'X'; o6 <= 'X'; o5 <= 'X'; o4 <= 'X';
         o3 <= 'X'; o2 <= 'X'; o1 <= 'X'; o0 <= 'X';
