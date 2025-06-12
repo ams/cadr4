@@ -5,7 +5,6 @@
 
 GHDL		= ghdl
 GHDLSTD		= 08
-GHDLWAVEFORMAT		= ghw
 GHDLIMPORTOPTIONS	= -v -g
 GHDLMAKEOPTIONS		= -v -g 
 GHDLVERSION			= $(ghdl --version | head -1 | cut -f2 -d' ')
@@ -59,42 +58,65 @@ $(BUILDDIR)/%_tb: $(BUILDDIR)/work-obj$(GHDLSTD).cf
 	mkdir -p $(BUILDDIR)
 	$(GHDL) make $(GHDLMAKEOPTIONS) --std=$(GHDLSTD) --workdir=$(BUILDDIR) -o $@ $(notdir $@)
 
-.PHONY: all ttl-check run-tb vcd-% vcd-tb clean help suds
+.PHONY: all ttl-check run-% run-tb wf-% wf-tb clean help suds
 
 all: $(EXES)
 
 ttl-check: $(TTL_EXES)
 	for TB_EXE in $^; do TB=$$TB_EXE make run-tb || exit; done
 
-# --workdir does not work below with ghdl run, we should cd and dont use --workdir
+run-%: build/%_tb
+	TB=$< make run-tb
+
+# --workdir does not work for this purpose with ghdl run
 run-tb: $(TB)
 	$< $(GHDLSIMOPTIONS)
 
-vcd-%: build/%_tb
-	TB=$< make vcd-tb
+wf-%: build/%_tb
+	TB=$< make wf-tb
 
-ifeq ($(GHDLWAVEFORMAT),ghw)
-ifneq ("$(wildcard $(notdir $(TB)).opt)","")
-GHDLWAVEOPTIONS := --wave=$(BUILDDIR)/$(notdir $(TB)).ghw --read-wave-opt=$(notdir $(TB)).opt
+# smart handling of wave opt file
+# if file does not exist, it is not used
+# if file exists
+## if first line is "recreate", then it is deleted and recreated
+## else if first line is "ignore", then it is ignored
+## else it is used
+
+WAVEOPTFILE := $(notdir $(TB)).opt
+WAVEFILE := $(BUILDDIR)/$(notdir $(TB)).ghw
+ifneq ("$(wildcard $(WAVEOPTFILE))","")
+WAVEOPTCONTENTS := $(shell head -1 $(WAVEOPTFILE))
+ifeq ("$(WAVEOPTCONTENTS)","recreate")
+$(info recreating wave opt file: $(WAVEOPTFILE))
+WAVEOPTFILERECREATE := 1
+GHDLWAVEOPTIONS := --wave=$(WAVEFILE) --write-wave-opt=$(WAVEOPTFILE)
+else ifeq ("$(WAVEOPTCONTENTS)","ignore")
+$(info ignoring wave opt file: $(WAVEOPTFILE))
+GHDLWAVEOPTIONS := --wave=$(WAVEFILE)
 else
-GHDLWAVEOPTIONS := --wave=$(BUILDDIR)/$(notdir $(TB)).ghw #--write-wave-opt=$(notdir $(TB)).opt
+$(info using wave opt file: $(WAVEOPTFILE))
+GHDLWAVEOPTIONS := --wave=$(WAVEFILE) --read-wave-opt=$(WAVEOPTFILE)
 endif
 else
-GHDLWAVEOPTIONS := --vcd=$(BUILDDIR)/$(notdir $(TB)).vcd
+GHDLWAVEOPTIONS := --wave=$(WAVEFILE)
 endif
 
-vcd-tb: $(TB)
+wf-tb: $(TB)
+ifeq ($(WAVEOPTFILERECREATE),1)	
+	$(RM) $(WAVEOPTFILE)
+endif
 	$< $(GHDLSIMOPTIONS) $(GHDLWAVEOPTIONS) --disp-time
-	surfer $(BUILDDIR)/$(notdir $(TB)).$(GHDLWAVEFORMAT)
+	surfer $(WAVEFILE)
 
 clean:
-	rm -rf $(BUILDDIR)
+	$(RM) -rf $(BUILDDIR)
 
 help: 
 	@echo "make all: build all testbenches"
 	@echo "make suds: re-creates suds sources from drw files (warning: overwrites existing cadr/*_suds.vhd files)"
 	@echo "make ttl-check: run all ttl testbenches"
-	@echo "make vcd-X: run testbench X (build/X_tb) and view the vcd file with surfer"
+	@echo "make run-X: run testbench X (build/X_tb)"
+	@echo "make wf-X: run testbench X (build/X_tb) to create waveforms and view them with surfer"
 	@echo "make clean: clean build directory"
 	@echo "make help: show this help"
 

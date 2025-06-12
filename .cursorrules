@@ -39,11 +39,16 @@ The build artifacts (work library, objects, executables) are put into the `build
 
 Make targets are as follows.
 
-- `make all`: Compile all testbenches
-- `make check`: Run all testbenches
+- `make all`: Compile all
+- `make ttl-check`: Run ttl testbenches
 - `make clean`: Remove all build artifacts (build directory)
+- `make suds`: Create SUDS vhd files
 
-A single testbench (for example X_tb) can be run with `TB=build/X_tb make run-tb`.
+A single testbench (for example build/X_tb) can be run with `make run-X`. 
+
+A single testbench (for example build/X_tb) can be run to create waveforms with `make wf-X`.
+
+`make suds` has to be run after repo is cloned. Otherwise, `make` will not succeed.
 
 ## Development Workflow
 
@@ -74,7 +79,7 @@ A single testbench (for example X_tb) can be run with `TB=build/X_tb make run-tb
 - dip_5600 and dip_5610 both uses im5600. im5600 and im5610 are digitally equivalent.
 - Use `rom/dspctl_2f22.hex` for the testbenches related to im5600.
 - Use `rom/prom0_1b17.hex` for the testbenches related to sn74472 and dm74472.
-
+- The signal \machruna l\ is named correct, do not try to fix it.
 
 ## Resources
 
