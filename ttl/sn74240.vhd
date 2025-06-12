@@ -32,21 +32,37 @@ end;
 architecture ttl of sn74240 is
 begin
 
-  process (aenb_n)
+  process (aenb_n, ain0, ain1, ain2, ain3)
   begin
-    if aenb_n = '1' then
+    if aenb_n = '0' then
+      -- Enabled: pass inverted data, but handle unknown inputs
+      aout0 <= 'X' when (ain0 /= '0' and ain0 /= '1') else not ain0;
+      aout1 <= 'X' when (ain1 /= '0' and ain1 /= '1') else not ain1;
+      aout2 <= 'X' when (ain2 /= '0' and ain2 /= '1') else not ain2;
+      aout3 <= 'X' when (ain3 /= '0' and ain3 /= '1') else not ain3;
+    elsif aenb_n = '1' then
+      -- Disabled: high impedance
       aout0 <= 'Z'; aout1 <= 'Z'; aout2 <= 'Z'; aout3 <= 'Z';
     else
-      aout0 <= not ain0; aout1 <= not ain1; aout2 <= not ain2; aout3 <= not ain3;
+      -- Unknown enable signal: outputs unknown
+      aout0 <= 'X'; aout1 <= 'X'; aout2 <= 'X'; aout3 <= 'X';
     end if;
   end process;
 
-  process (benb_n)
+  process (benb_n, bin0, bin1, bin2, bin3)
   begin
-    if benb_n = '1' then
+    if benb_n = '0' then
+      -- Enabled: pass inverted data, but handle unknown inputs
+      bout0 <= 'X' when (bin0 /= '0' and bin0 /= '1') else not bin0;
+      bout1 <= 'X' when (bin1 /= '0' and bin1 /= '1') else not bin1;
+      bout2 <= 'X' when (bin2 /= '0' and bin2 /= '1') else not bin2;
+      bout3 <= 'X' when (bin3 /= '0' and bin3 /= '1') else not bin3;
+    elsif benb_n = '1' then
+      -- Disabled: high impedance
       bout0 <= 'Z'; bout1 <= 'Z'; bout2 <= 'Z'; bout3 <= 'Z';
     else
-      bout0 <= not bin0; bout1 <= not bin1; bout2 <= not bin2; bout3 <= not bin3;
+      -- Unknown enable signal: outputs unknown
+      bout0 <= 'X'; bout1 <= 'X'; bout2 <= 'X'; bout3 <= 'X';
     end if;
   end process;
 

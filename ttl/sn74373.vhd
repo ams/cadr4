@@ -32,27 +32,43 @@ entity sn74373 is
 end;
 
 architecture ttl of sn74373 is
-  signal data      : std_logic_vector(7 downto 0);
-  signal next_data : std_logic_vector(7 downto 0);
+  signal data : std_logic_vector(7 downto 0) := (others => 'U');
 begin
-  -- transparent latch when hold_n = 1, hold when hold_n = 0
-  next_data <= i7 & i6 & i5 & i4 & i3 & i2 & i1 & i0;
 
-  process(hold_n, next_data)
+  -- Latch process with proper X/U handling
+  process(hold_n, i0, i1, i2, i3, i4, i5, i6, i7)
+    variable input_data : std_logic_vector(7 downto 0);
   begin
+    input_data := i7 & i6 & i5 & i4 & i3 & i2 & i1 & i0;
+    
     if hold_n = '1' then
-      data <= next_data;
+      -- Transparent mode: pass input data (including X/U)
+      data <= input_data;
+    elsif hold_n = '0' then
+      -- Hold mode: maintain current data
+      null;  -- data unchanged
+    else
+      -- Unknown hold signal: outputs become unknown
+      data <= (others => 'X');
     end if;
   end process;
 
+  -- Tri-state output process with proper X/U handling
   process(oenb_n, data)
   begin
-    if oenb_n = '1' then
-      o7 <= 'Z'; o6 <= 'Z'; o5 <= 'Z'; o4 <= 'Z';
-      o3 <= 'Z'; o2 <= 'Z'; o1 <= 'Z'; o0 <= 'Z';
+    if oenb_n = '0' then
+      -- Enabled: pass latched data
+      o0 <= data(0); o1 <= data(1); o2 <= data(2); o3 <= data(3);
+      o4 <= data(4); o5 <= data(5); o6 <= data(6); o7 <= data(7);
+    elsif oenb_n = '1' then
+      -- Disabled: high impedance
+      o0 <= 'Z'; o1 <= 'Z'; o2 <= 'Z'; o3 <= 'Z';
+      o4 <= 'Z'; o5 <= 'Z'; o6 <= 'Z'; o7 <= 'Z';
     else
-      o7 <= data(7); o6 <= data(6); o5 <= data(5); o4 <= data(4);
-      o3 <= data(3); o2 <= data(2); o1 <= data(1); o0 <= data(0);
+      -- Unknown enable signal: outputs unknown
+      o0 <= 'X'; o1 <= 'X'; o2 <= 'X'; o3 <= 'X';
+      o4 <= 'X'; o5 <= 'X'; o6 <= 'X'; o7 <= 'X';
     end if;
   end process;
+
 end;

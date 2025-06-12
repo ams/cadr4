@@ -29,25 +29,40 @@ entity sn74374 is
     );
 end;
 
--- ChatGPT Codex implementation
 architecture ttl of sn74374 is
-  signal data : std_logic_vector(7 downto 0) := (others => '0');
+  signal data : std_logic_vector(7 downto 0) := (others => 'U');
 begin
+
+  -- Register process with proper X/U handling
   process(clk)
+    variable input_data : std_logic_vector(7 downto 0);
   begin
     if rising_edge(clk) then
-      data <= i7 & i6 & i5 & i4 & i3 & i2 & i1 & i0;
+      input_data := i7 & i6 & i5 & i4 & i3 & i2 & i1 & i0;
+      -- Store input data (including X/U values)
+      data <= input_data;
+    elsif clk'event and is_x(clk) then
+      -- Clock went to unknown state
+      data <= (others => 'X');
     end if;
   end process;
 
-  process(all)
+  -- Tri-state output process with proper X/U handling
+  process(oenb_n, data)
   begin
-    if oenb_n = '1' then
-      o7 <= 'Z'; o6 <= 'Z'; o5 <= 'Z'; o4 <= 'Z';
-      o3 <= 'Z'; o2 <= 'Z'; o1 <= 'Z'; o0 <= 'Z';
+    if oenb_n = '0' then
+      -- Enabled: pass registered data
+      o0 <= data(0); o1 <= data(1); o2 <= data(2); o3 <= data(3);
+      o4 <= data(4); o5 <= data(5); o6 <= data(6); o7 <= data(7);
+    elsif oenb_n = '1' then
+      -- Disabled: high impedance
+      o0 <= 'Z'; o1 <= 'Z'; o2 <= 'Z'; o3 <= 'Z';
+      o4 <= 'Z'; o5 <= 'Z'; o6 <= 'Z'; o7 <= 'Z';
     else
-      o7 <= data(7); o6 <= data(6); o5 <= data(5); o4 <= data(4);
-      o3 <= data(3); o2 <= data(2); o1 <= data(1); o0 <= data(0);
+      -- Unknown enable signal: outputs unknown
+      o0 <= 'X'; o1 <= 'X'; o2 <= 'X'; o3 <= 'X';
+      o4 <= 'X'; o5 <= 'X'; o6 <= 'X'; o7 <= 'X';
     end if;
   end process;
+
 end;
