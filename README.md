@@ -11,38 +11,37 @@ chit-chat.  Feel free to send bugs directly to ams@gnu.org.
 
 ## Setup
 
-Prerequisites:
-
-  - [Fossil](https://fossil-scm.org)
+### Prerequisites
 
   - Git
-
   - GNU Make
-
   - [GHDL](http://ghdl.free.fr/)
 
 	Ideally using the GCC or LLVM code generator, since at some point
 	there will be a simulatd UART to talk to the core.
 
   - Some sort of VCD viewer:
+ 	  - [GTKWave](https://gtkwave.sourceforge.net/)
+    - [Surfer](https://surfer-project.org)
 
-  	* [GTKWave](https://gtkwave.sourceforge.net/)
-
-	* [vcd](https://github.com/yne/vcd)
-	
-	  Terminal VCD viewer.
+### Build
 
 ```
-cd ~/
 git clone https://github.com/ams/cadr4
 cd cadr4
-make help
+make suds
+make
 ```
 
-If writing or testing CADR microcode, then it will be useful to have
-[usim](https://tumbleweed.nu/r/usim) configured to be able to run
-[CADRLP](https://tumbleweed.nu/r/lm-3/uv/cadr.html#The-CADRLP-Assembler)
-or the CADR Console debugger (CC).
+All build artifacts are created under `build` directory.
+
+### Run
+
+To run a testbench (build/X_tb): `make run-X`
+
+To run a testbench (build/X_tb) and create the waveforms: `make wf-X`
+
+If Surfer is installed, after the waveforms are created, surfer will be automatically run with the created waveforms file.
 
 ## Organization
 

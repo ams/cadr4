@@ -106,7 +106,9 @@ ifeq ($(WAVEOPTFILERECREATE),1)
 	$(RM) $(WAVEOPTFILE)
 endif
 	$< $(GHDLSIMOPTIONS) $(GHDLWAVEOPTIONS) --disp-time
+ifneq (,$(shell which surfer))
 	surfer $(WAVEFILE)
+endif
 
 clean:
 	$(RM) -rf $(BUILDDIR)
