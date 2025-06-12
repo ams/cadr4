@@ -1,8 +1,6 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-use work.misc.all;
-
 entity dip_25s09 is
   port(
     p1  : in    std_logic;
