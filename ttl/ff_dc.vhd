@@ -13,17 +13,27 @@ entity ff_dc is
     );
 end;
 
--- ChatGPT Codex implementation
+-- Updated implementation with proper X/U handling
 architecture ttl of ff_dc is
+  signal q_int : std_logic := 'U';  -- Start uninitialized to model real hardware
 begin
+
+  q   <= q_int;
+  -- Proper complement handling for unknown states
+  q_n <= '0' when q_int = '1' else
+         '1' when q_int = '0' else
+         'X';  -- Unknown complement for X, U, Z, W states
+
   process(clk, clr)
   begin
     if clr = '0' then
-      q <= '0';
-      q_n <= '1';
+      q_int <= '0';  -- Clear to 0
+    elsif clr /= '1' then
+      q_int <= 'X';  -- Unknown clear signal
     elsif rising_edge(clk) then
-      q <= d;
-      q_n <= not d;
+      q_int <= d;    -- Store data, including X/U values
+    elsif clk'event and is_x(clk) then
+      q_int <= 'X';  -- Clock went to unknown state
     end if;
   end process;
 end;

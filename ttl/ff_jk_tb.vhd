@@ -27,30 +27,43 @@ begin
   process
   begin
     clk <= '0';
+    wait for 1 ns;
 
+    -- Initialize flip-flop to known state first (since it starts in 'U')
     -- clear to 0 using JK=01
     j <= '0'; k <= '1';
-    clk <= '1'; wait for 1 ns; clk <= '0';
     wait for 1 ns;
-    assert q = '0' and q_n = '1';
+    clk <= '1'; wait for 1 ns; clk <= '0';
+    wait for 2 ns;  -- Extra time for output to stabilize
+    assert q = '0' and q_n = '1' report "Initial clear failed";
 
     -- set to 1 using JK=10
     j <= '1'; k <= '0';
-    clk <= '1'; wait for 1 ns; clk <= '0';
     wait for 1 ns;
-    assert q = '1' and q_n = '0';
+    clk <= '1'; wait for 1 ns; clk <= '0';
+    wait for 2 ns;
+    assert q = '1' and q_n = '0' report "Set operation failed";
 
     -- reset to 0 using JK=01
     j <= '0'; k <= '1';
-    clk <= '1'; wait for 1 ns; clk <= '0';
     wait for 1 ns;
-    assert q = '0' and q_n = '1';
+    clk <= '1'; wait for 1 ns; clk <= '0';
+    wait for 2 ns;
+    assert q = '0' and q_n = '1' report "Reset operation failed";
 
     -- toggle using JK=11
     j <= '1'; k <= '1';
-    clk <= '1'; wait for 1 ns; clk <= '0';
     wait for 1 ns;
-    assert q = '1' and q_n = '0';
+    clk <= '1'; wait for 1 ns; clk <= '0';
+    wait for 2 ns;
+    assert q = '1' and q_n = '0' report "Toggle operation failed";
+
+    -- toggle again using JK=11
+    j <= '1'; k <= '1';
+    wait for 1 ns;
+    clk <= '1'; wait for 1 ns; clk <= '0';
+    wait for 2 ns;
+    assert q = '0' and q_n = '1' report "Second toggle operation failed";
 
     wait;
   end process;

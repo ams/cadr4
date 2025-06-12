@@ -32,7 +32,7 @@ begin
 
   process
   begin
-    -- Test 1: Reset (clear active)
+    -- Test 1: Reset (clear active) - this initializes the flip-flop from 'U' state
     clr <= '0';
     wait for CLK_PERIOD;
     assert q = '0' and q_n = '1' report "Clear test failed" severity error;

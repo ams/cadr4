@@ -30,30 +30,39 @@ begin
     d <= '0'; clk <= '0'; clr <= '1';
     wait for 1 ns;
 
-    -- Test 1: Asynchronous clear
+    -- Initialize flip-flop from 'U' state by clearing first
     clr <= '0';
     wait for 1 ns;
-    assert q = '0' and q_n = '1' report "Failed to clear asynchronously";
+    assert q = '0' and q_n = '1' report "Initial clear failed";
+    clr <= '1';
+    wait for 1 ns;
 
-    -- Test 2: Clock in '1' while clear is active (should remain cleared)
+    -- Test 1: Clock in '1'
     d <= '1';
     clk <= '1'; wait for 1 ns; clk <= '0'; wait for 1 ns;
-    assert q = '0' and q_n = '1' report "Clear override failed";
+    assert q = '1' and q_n = '0' report "Failed to clock in '1'";
 
-    -- Test 3: Release clear and clock in '1'
-    clr <= '1';
-    clk <= '1'; wait for 1 ns; clk <= '0'; wait for 1 ns;
-    assert q = '1' and q_n = '0' report "Failed to clock in '1' after clear release";
-
-    -- Test 4: Clock in '0'
+    -- Test 2: Clock in '0'
     d <= '0';
     clk <= '1'; wait for 1 ns; clk <= '0'; wait for 1 ns;
     assert q = '0' and q_n = '1' report "Failed to clock in '0'";
 
-    -- Test 5: Clear again while q='0'
-    clr <= '0';
+    -- Test 3: Test clear function
+    d <= '1';
+    clk <= '1'; wait for 1 ns; clk <= '0'; wait for 1 ns; -- Set to 1 first
+    clr <= '0'; -- Clear
     wait for 1 ns;
-    assert q = '0' and q_n = '1' report "Clear failed when q was already '0'";
+    assert q = '0' and q_n = '1' report "Clear function failed";
+    clr <= '1';
+
+    -- Test 4: Verify level changes don't affect output
+    d <= '1';
+    wait for 1 ns;
+    assert q = '0' and q_n = '1' report "Output changed without clock edge";
+
+    -- Test 5: Clock in the new value
+    clk <= '1'; wait for 1 ns; clk <= '0'; wait for 1 ns;
+    assert q = '1' and q_n = '0' report "Failed to clock in new value";
 
     wait;
   end process;

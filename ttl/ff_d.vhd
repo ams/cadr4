@@ -13,13 +13,21 @@ entity ff_d is
 end;
 
 architecture ttl of ff_d is
+  signal q_int : std_logic := 'U';  -- Start uninitialized to model real hardware
 begin
+
+  q   <= q_int;
+  -- Proper complement handling for unknown states
+  q_n <= '0' when q_int = '1' else
+         '1' when q_int = '0' else
+         'X';  -- Unknown complement for X, U, Z, W states
 
   process (clk)
   begin
     if rising_edge(clk) then
-      q   <= d;
-      q_n <= not d;
+      q_int <= d;  -- Store data, including X/U values
+    elsif clk'event and is_x(clk) then
+      q_int <= 'X';  -- Clock went to unknown state
     end if;
   end process;
 
