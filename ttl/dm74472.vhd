@@ -58,10 +58,10 @@ architecture ttl of dm74472 is
   signal addr : unsigned(8 downto 0) := (others => '0');
   
   -- Function to check if address contains unknown values
-  function has_unknown_addr(addr : unsigned) return boolean is
-    variable addr_slv : std_logic_vector(addr'length-1 downto 0);
+  function has_unknown_addr(address : unsigned) return boolean is
+    variable addr_slv : std_logic_vector(address'length-1 downto 0);
   begin
-    addr_slv := std_logic_vector(addr);
+    addr_slv := std_logic_vector(address);
     for i in addr_slv'range loop
       if addr_slv(i) /= '0' and addr_slv(i) /= '1' then
         return true;
