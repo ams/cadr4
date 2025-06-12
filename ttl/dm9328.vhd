@@ -27,8 +27,8 @@ end dm9328;
 -- VCC = Pin 16, GND = Pin 8
 
 architecture ttl of dm9328 is
-  signal rega : std_logic_vector(7 downto 0) := (others => '0');
-  signal regb : std_logic_vector(7 downto 0) := (others => '0');
+  signal rega : std_logic_vector(7 downto 0) := (others => 'U');
+  signal regb : std_logic_vector(7 downto 0) := (others => 'U');
 begin
   -- Shift register A
   process(aclk, clr_n)
