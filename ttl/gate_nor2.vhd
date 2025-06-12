@@ -13,5 +13,8 @@ end;
 
 architecture behavioral of gate_nor2 is
 begin
-  q <= '0' when (a = '1' or b = '1') else '1';
+  -- Proper 4-state logic for NOR gate
+  q <= '0' when (a = '1' or b = '1') else
+       '1' when (a = '0' and b = '0') else
+       'X';  -- Unknown when inputs are X, U, Z, W, or other non-binary values
 end; 
