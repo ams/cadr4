@@ -57,6 +57,24 @@ architecture ttl of sn74181 is
   signal a   : std_logic_vector(3 downto 0);
   signal b   : std_logic_vector(3 downto 0);
   signal sel : std_logic_vector(3 downto 0);
+
+  -- Function to check if a vector contains any unknown values
+  function has_unknown(vec : std_logic_vector) return boolean is
+  begin
+    for i in vec'range loop
+      if vec(i) /= '0' and vec(i) /= '1' then
+        return true;
+      end if;
+    end loop;
+    return false;
+  end function;
+
+  -- Function to check if a signal is unknown
+  function is_unknown(sig : std_logic) return boolean is
+  begin
+    return (sig /= '0' and sig /= '1');
+  end function;
+
 begin
   a   <= a3 & a2 & a1 & a0;
   b   <= b3 & b2 & b1 & b0;
@@ -71,83 +89,105 @@ begin
     variable logic_f  : std_logic_vector(3 downto 0);
     variable sum      : unsigned(4 downto 0);
   begin
-    av  := unsigned(a);
-    bv  := unsigned(b);
     s   := sel;
     cin := not cin_n;                   -- active low
 
-    if m = '1' then
-      -- Logic mode (from datasheet function table)
-      case s is
-        when "0000" => logic_f := not std_logic_vector(av);           -- NOT A
-        when "0001" => logic_f := not (std_logic_vector(av) or std_logic_vector(bv));  -- NOR
-        when "0010" => logic_f := (not std_logic_vector(av)) and std_logic_vector(bv);
-        when "0011" => logic_f := (others => '0');
-        when "0100" => logic_f := not (std_logic_vector(av) and std_logic_vector(bv));  -- NAND
-        when "0101" => logic_f := not std_logic_vector(bv);           -- NOT B
-        when "0110" => logic_f := std_logic_vector(av xor bv);        -- XOR
-        when "0111" => logic_f := std_logic_vector(av) and (not std_logic_vector(bv));
-        when "1000" => logic_f := (not std_logic_vector(av)) or std_logic_vector(bv);
-        when "1001" => logic_f := not (std_logic_vector(av xor bv));  -- XNOR
-        when "1010" => logic_f := std_logic_vector(bv);
-        when "1011" => logic_f := std_logic_vector(av and bv);
-        when "1100" => logic_f := (others => '1');
-        when "1101" => logic_f := std_logic_vector(av) or (not std_logic_vector(bv));
-        when "1110" => logic_f := std_logic_vector(av or bv);
-        when "1111" => logic_f := std_logic_vector(av);
-        when others => logic_f := (others => '0');
-      end case;
-      f_var    := logic_f;
-      cout_var := '0';
+    -- Check for unknown inputs first
+    if has_unknown(a) or has_unknown(b) or has_unknown(sel) or is_unknown(m) or is_unknown(cin_n) then
+      -- Any unknown input causes unknown outputs
+      f0 <= 'X';
+      f1 <= 'X';
+      f2 <= 'X';
+      f3 <= 'X';
+      cout_n <= 'X';
+      aeb <= 'X';
+      x <= 'X';
+      y <= 'X';
     else
-      -- Arithmetic mode: use datasheet function table and testbench expectations
-      case s is
-        when "0000" =>                  -- F = A + 1
-          sum := ('0' & av) + 1;
-        when "0001" =>                  -- F = A + B
-          sum := ('0' & av) + ('0' & bv);
-        when "0010" =>                  -- F = A - B - 1
-          sum := ('0' & av) - ('0' & bv) - 1;
-        when "0011" =>                  -- F = A + B + 1
-          sum := ('0' & av) + ('0' & bv) + 1;
-        when "0100" =>                  -- F = A - 1
-          sum := ('0' & av) - 1;
-        when "0101" =>                  -- F = A + A
-          sum := ('0' & av) + ('0' & av);
-        when "0110" =>                  -- F = A + A + 1
-          sum := ('0' & av) + ('0' & av) + 1;
-        when "0111" =>                  -- F = A - B
-          sum := ('0' & av) - ('0' & bv);
-        when "1000" =>                  -- F = A + B + cin
-          sum := ('0' & av) + ('0' & bv) + ("0000" & cin);
-        when "1001" =>                  -- F = A + B + cin + 1
-          sum := ('0' & av) + ('0' & bv) + ("0000" & cin) + 1;
-        when "1010" =>                  -- F = A - B - cin
-          sum := ('0' & av) - ('0' & bv) - ("0000" & cin);
-        when "1011" =>                  -- F = A - B - cin - 1
-          sum := ('0' & av) - ('0' & bv) - ("0000" & cin) - 1;
-        when "1100" =>                  -- F = A + cin
-          sum := ('0' & av) + ("0000" & cin);
-        when "1101" =>                  -- F = A + cin + 1
-          sum := ('0' & av) + ("0000" & cin) + 1;
-        when "1110" =>                  -- F = A - cin
-          sum := ('0' & av) - ("0000" & cin);
-        when "1111" =>                  -- F = A - cin - 1
-          sum := ('0' & av) - ("0000" & cin) - 1;
-        when others =>
-          sum := (others => '0');
-      end case;
-      f_var    := std_logic_vector(sum(3 downto 0));
-      cout_var := sum(4);
-    end if;
+      -- Safe to convert to unsigned only after checking for unknowns
+      av  := unsigned(a);
+      bv  := unsigned(b);
 
-    f0     <= f_var(0);
-    f1     <= f_var(1);
-    f2     <= f_var(2);
-    f3     <= f_var(3);
-    cout_n <= not cout_var;
-    aeb    <= '1' when a = b else '0';
-    x      <= cout_var;
-    y      <= cout_var;
+      if m = '1' then
+        -- Logic mode (from datasheet function table)
+        case s is
+          when "0000" => logic_f := not std_logic_vector(av);           -- NOT A
+          when "0001" => logic_f := not (std_logic_vector(av) or std_logic_vector(bv));  -- NOR
+          when "0010" => logic_f := (not std_logic_vector(av)) and std_logic_vector(bv);
+          when "0011" => logic_f := (others => '0');
+          when "0100" => logic_f := not (std_logic_vector(av) and std_logic_vector(bv));  -- NAND
+          when "0101" => logic_f := not std_logic_vector(bv);           -- NOT B
+          when "0110" => logic_f := std_logic_vector(av xor bv);        -- XOR
+          when "0111" => logic_f := std_logic_vector(av) and (not std_logic_vector(bv));
+          when "1000" => logic_f := (not std_logic_vector(av)) or std_logic_vector(bv);
+          when "1001" => logic_f := not (std_logic_vector(av xor bv));  -- XNOR
+          when "1010" => logic_f := std_logic_vector(bv);
+          when "1011" => logic_f := std_logic_vector(av and bv);
+          when "1100" => logic_f := (others => '1');
+          when "1101" => logic_f := std_logic_vector(av) or (not std_logic_vector(bv));
+          when "1110" => logic_f := std_logic_vector(av or bv);
+          when "1111" => logic_f := std_logic_vector(av);
+          when others => logic_f := (others => 'X');  -- Unknown select
+        end case;
+        f_var    := logic_f;
+        cout_var := '0';
+      else
+        -- Arithmetic mode: use datasheet function table and testbench expectations
+        case s is
+          when "0000" =>                  -- F = A + 1
+            sum := ('0' & av) + 1;
+          when "0001" =>                  -- F = A + B
+            sum := ('0' & av) + ('0' & bv);
+          when "0010" =>                  -- F = A - B - 1
+            sum := ('0' & av) - ('0' & bv) - 1;
+          when "0011" =>                  -- F = A + B + 1
+            sum := ('0' & av) + ('0' & bv) + 1;
+          when "0100" =>                  -- F = A - 1
+            sum := ('0' & av) - 1;
+          when "0101" =>                  -- F = A + A
+            sum := ('0' & av) + ('0' & av);
+          when "0110" =>                  -- F = A + A + 1
+            sum := ('0' & av) + ('0' & av) + 1;
+          when "0111" =>                  -- F = A - B
+            sum := ('0' & av) - ('0' & bv);
+          when "1000" =>                  -- F = A + B + cin
+            sum := ('0' & av) + ('0' & bv) + ("0000" & cin);
+          when "1001" =>                  -- F = A + B + cin + 1
+            sum := ('0' & av) + ('0' & bv) + ("0000" & cin) + 1;
+          when "1010" =>                  -- F = A - B - cin
+            sum := ('0' & av) - ('0' & bv) - ("0000" & cin);
+          when "1011" =>                  -- F = A - B - cin - 1
+            sum := ('0' & av) - ('0' & bv) - ("0000" & cin) - 1;
+          when "1100" =>                  -- F = A + cin
+            sum := ('0' & av) + ("0000" & cin);
+          when "1101" =>                  -- F = A + cin + 1
+            sum := ('0' & av) + ("0000" & cin) + 1;
+          when "1110" =>                  -- F = A - cin
+            sum := ('0' & av) - ("0000" & cin);
+          when "1111" =>                  -- F = A - cin - 1
+            sum := ('0' & av) - ("0000" & cin) - 1;
+          when others =>
+            sum := (others => '0');
+        end case;
+        f_var    := std_logic_vector(sum(3 downto 0));
+        cout_var := sum(4);
+      end if;
+
+      f0     <= f_var(0);
+      f1     <= f_var(1);
+      f2     <= f_var(2);
+      f3     <= f_var(3);
+      cout_n <= not cout_var;
+      
+      -- Improved equality check with proper X/U handling
+      if has_unknown(a) or has_unknown(b) then
+        aeb <= 'X';
+      else
+        aeb <= '1' when a = b else '0';
+      end if;
+      
+      x      <= cout_var;
+      y      <= cout_var;
+    end if;
   end process;
 end;
