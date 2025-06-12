@@ -34,7 +34,7 @@ begin
   ------------------------------------------------------------------
   -- synchronous logic
   ------------------------------------------------------------------
-  process(all)
+  process(clk)
     variable load_val : unsigned(3 downto 0);
   begin
     if rising_edge(clk) then
