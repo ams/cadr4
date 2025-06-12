@@ -33,10 +33,10 @@ end;
 architecture ttl of sn74244 is
 begin
 
-  process (aenb_n, ain0, ain1, ain2, ain3)
+  process (all)
   begin
     if aenb_n = '0' then
-      -- Enabled: pass data, but handle unknown inputs
+      -- Enabled: pass data through, but handle unknown inputs
       aout0 <= 'X' when (ain0 /= '0' and ain0 /= '1') else ain0;
       aout1 <= 'X' when (ain1 /= '0' and ain1 /= '1') else ain1;
       aout2 <= 'X' when (ain2 /= '0' and ain2 /= '1') else ain2;
@@ -50,10 +50,10 @@ begin
     end if;
   end process;
 
-  process (benb_n, bin0, bin1, bin2, bin3)
+  process (all)
   begin
     if benb_n = '0' then
-      -- Enabled: pass data, but handle unknown inputs
+      -- Enabled: pass data through, but handle unknown inputs  
       bout0 <= 'X' when (bin0 /= '0' and bin0 /= '1') else bin0;
       bout1 <= 'X' when (bin1 /= '0' and bin1 /= '1') else bin1;
       bout2 <= 'X' when (bin2 /= '0' and bin2 /= '1') else bin2;

@@ -32,7 +32,7 @@ end;
 architecture ttl of sn74240 is
 begin
 
-  process (aenb_n, ain0, ain1, ain2, ain3)
+  process (all)
   begin
     if aenb_n = '0' then
       -- Enabled: pass inverted data, but handle unknown inputs
@@ -49,7 +49,7 @@ begin
     end if;
   end process;
 
-  process (benb_n, bin0, bin1, bin2, bin3)
+  process (all)
   begin
     if benb_n = '0' then
       -- Enabled: pass inverted data, but handle unknown inputs

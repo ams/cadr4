@@ -37,7 +37,7 @@ begin
 
   select_lines <= selb & sela;
   
-  process(enb1_n, select_lines, g1c0, g1c1, g1c2, g1c3)
+  process(all)
   begin
     if enb1_n = '1' then
       g1y <= '0';
@@ -52,7 +52,7 @@ begin
     end if;
   end process;
 
-  process(enb2_n, select_lines, g2c0, g2c1, g2c2, g2c3)
+  process(all)
   begin
     if enb2_n = '1' then
       g2y <= '0';

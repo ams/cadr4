@@ -33,7 +33,7 @@ architecture ttl of am2147 is
 begin
   addr_slv <= (a11, a10, a9, a8, a7, a6, a5, a4, a3, a2, a1, a0);
 
-  process (ce_n, we_n, addr_slv, di)
+  process (all)
   begin
     if ce_n = '0' and we_n = '0' then
       -- Write
@@ -41,7 +41,7 @@ begin
     end if;
   end process;
 
-  process (ce_n, we_n, addr_slv, ram)
+  process (all)
   begin
     if ce_n = '0' and we_n = '1' then
       -- Read
