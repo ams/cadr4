@@ -12,3 +12,5 @@ soap/*.o
 **/__pycache__
 
 cadr/*_suds.vhd
+
+*.opt
