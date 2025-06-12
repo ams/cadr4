@@ -1,8 +1,9 @@
 -- SN74373: Octal D-Type Transparent Latches
 -- Datasheet: Texas Instruments SN74LS373 Octal D-Type Transparent Latches, PDIP (N) Package
 -- URL: https://www.ti.com/lit/ds/symlink/sn54s373.pdf
--- Note: The 'hold_n' (Latch Enable) signal in this VHDL model is implemented as active low,
--- while the standard SN74LS373 datasheet typically shows LE as active high.
+-- Note: The 'hold_n' (Latch Enable) signal is implemented as active low to match
+-- the CADR schematics, where both HOLD and OENB are active low signals.
+-- This differs from some standard datasheets but is correct for CADR simulation.
 
 library ieee;
 use ieee.std_logic_1164.all;
