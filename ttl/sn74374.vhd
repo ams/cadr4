@@ -34,7 +34,7 @@ architecture ttl of sn74374 is
 begin
 
   -- Register process with proper X/U handling
-  process(clk)
+  process(all)
     variable input_data : std_logic_vector(7 downto 0);
   begin
     if rising_edge(clk) then
@@ -48,7 +48,7 @@ begin
   end process;
 
   -- Tri-state output process with proper X/U handling
-  process(oenb_n, data)
+  process(all)
   begin
     if oenb_n = '0' then
       -- Enabled: pass registered data

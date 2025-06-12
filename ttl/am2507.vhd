@@ -27,7 +27,7 @@ end am2507;
 
 architecture ttl of am2507 is
 begin
-  process(clk)
+  process(all)
   begin
     if rising_edge(clk) then
       if enb_n = '0' then
