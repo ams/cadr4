@@ -64,9 +64,38 @@ begin
   o0 <= cnt(0);
 
   -- terminal count / ripple-carry (active-low)
-  co_n <= '0' when (enb_t_n = '0' and enb_p_n = '0' and (
-    (load_n = '0' and ((up_dn = '1' and unsigned(std_logic_vector'(i3 & i2 & i1 & i0)) = to_unsigned(15, 4)) or (up_dn = '0' and unsigned(std_logic_vector'(i3 & i2 & i1 & i0)) = to_unsigned(0, 4)))) or
-    (load_n = '1' and ((up_dn = '1' and cnt = to_unsigned(15, 4)) or (up_dn = '0' and cnt = to_unsigned(0, 4))))
-    ))
-          else '1';
+  -- Terminal count occurs when:
+  -- 1. Both enables are active (low)
+  -- 2. Either:
+  --    a. Loading terminal count value (15 for up-count, 0 for down-count)
+  --    b. Counter is at terminal count (15 for up-count, 0 for down-count)
+  process(all)
+    variable at_terminal_count : boolean;
+    variable loading_terminal_count : boolean;
+  begin
+    -- Check if counter is at terminal count
+    if up_dn = '1' then
+      at_terminal_count := (cnt = to_unsigned(15, 4));  -- up-count terminal
+    else
+      at_terminal_count := (cnt = to_unsigned(0, 4));   -- down-count terminal
+    end if;
+    
+    -- Check if loading a terminal count value
+    if load_n = '0' then
+      if up_dn = '1' then
+        loading_terminal_count := (unsigned(i3 & i2 & i1 & i0) = to_unsigned(15, 4));
+      else
+        loading_terminal_count := (unsigned(i3 & i2 & i1 & i0) = to_unsigned(0, 4));
+      end if;
+    else
+      loading_terminal_count := false;
+    end if;
+    
+    -- Generate carry-out (active low)
+    if (enb_t_n = '0' and enb_p_n = '0') and (at_terminal_count or loading_terminal_count) then
+      co_n <= '0';  -- Active low terminal count
+    else
+      co_n <= '1';  -- Not at terminal count
+    end if;
+  end process;
 end architecture;
