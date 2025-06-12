@@ -69,11 +69,7 @@ If the file contains "ignore" in its first line, the file is ignored, `--read-wa
   - ttl (package): contains all the ICs that are used by the CADR.
 
 	* sn74: 74xx logic.
-
-	* other: other ICs that do not fall into above categories.
-
-	* unsorted: contains skeletons directly translated from the
-	  schematics; these are to be deleted / merged at some point.
+	* other: other non-74xx ICs
   
 ## Documentation
 
