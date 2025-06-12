@@ -88,6 +88,7 @@ begin
     variable cout_var : std_logic;
     variable logic_f  : std_logic_vector(3 downto 0);
     variable sum      : unsigned(4 downto 0);
+    variable x_var, y_var : std_logic;
   begin
     s   := sel;
     cin := not cin_n;                   -- active low
@@ -131,6 +132,9 @@ begin
         end case;
         f_var    := logic_f;
         cout_var := '0';
+        -- In logic mode, X and Y have different meanings per datasheet
+        x_var := f_var(3);  -- Most significant bit of result for cascading
+        y_var := '0';       -- Always 0 in logic mode
       else
         -- Arithmetic mode: use datasheet function table and testbench expectations
         case s is
@@ -171,6 +175,12 @@ begin
         end case;
         f_var    := std_logic_vector(sum(3 downto 0));
         cout_var := sum(4);
+        
+        -- In arithmetic mode: X = carry propagate, Y = carry generate
+        -- X (carry propagate): true when all bit positions can propagate a carry
+        x_var := (a0 xor b0) and (a1 xor b1) and (a2 xor b2) and (a3 xor b3);
+        -- Y (carry generate): true when this ALU generates a carry out (same as cout_var)
+        y_var := cout_var;
       end if;
 
       f0     <= f_var(0);
@@ -186,8 +196,8 @@ begin
         aeb <= '1' when a = b else '0';
       end if;
       
-      x      <= cout_var;
-      y      <= cout_var;
+      x      <= x_var;
+      y      <= y_var;
     end if;
   end process;
 end;
