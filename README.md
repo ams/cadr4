@@ -37,11 +37,19 @@ All build artifacts are created under `build` directory.
 
 ### Run
 
-To run a testbench (build/X_tb): `make run-X`
+To run a testbench (`build/X_tb`): `make run-X`
 
-To run a testbench (build/X_tb) and create the waveforms: `make wf-X`
+To run a testbench (`build/X_tb`) and create the waveforms: `make wf-X`
 
 If Surfer is installed, after the waveforms are created, surfer will be automatically run with the created waveforms file.
+
+#### waveform.opt file
+
+If there is a `X_tb.opt`, it is used as waveform options file in GHDL (`--read-wave-opt`).
+
+If the file contains "recreate" in its first line, the file is deleted and recreated. This will show all signal paths.
+
+If the file contains "ignore" in its first line, the file is ignored, `--read-wave-opt` is not used.
 
 ## Organization
 
