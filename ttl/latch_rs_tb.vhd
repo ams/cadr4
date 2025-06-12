@@ -3,8 +3,6 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-use work.misc.all;
-
 entity latch_rs_tb is
 end;
 
@@ -15,7 +13,7 @@ architecture testbench of latch_rs_tb is
 
 begin
 
-  uut : latch_rs port map(
+  uut : entity work.latch_rs port map(
     r => r, s => s,
     q => q, q_n => q_n
     );

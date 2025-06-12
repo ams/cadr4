@@ -6,8 +6,6 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-use work.misc.all;
-
 entity am2509 is
   port (
     clk : in  std_logic;
@@ -34,15 +32,15 @@ architecture ttl of am2509 is
 begin
 
   i0 <= sel and (a0 or a1);
-  u0 : ff_d port map (clk => clk, d => i0, q => aq);
+  u0 : entity work.ff_d port map (clk => clk, d => i0, q => aq);
 
   i1 <= sel and (b0 or b1);
-  u1 : ff_d port map (clk => clk, d => i1, q => bq);
+  u1 : entity work.ff_d port map (clk => clk, d => i1, q => bq);
 
   i2 <= sel and (c0 or c1);
-  u2 : ff_d port map (clk => clk, d => i2, q => cq);
+  u2 : entity work.ff_d port map (clk => clk, d => i2, q => cq);
 
   i3 <= sel and (d0 or d1);
-  u3 : ff_d port map (clk => clk, d => i3, q => dq);
+  u3 : entity work.ff_d port map (clk => clk, d => i3, q => dq);
 
 end ttl;

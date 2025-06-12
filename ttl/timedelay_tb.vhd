@@ -1,7 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-use work.misc.all;
+
 
 entity timedelay_tb is
 end;
@@ -17,7 +17,7 @@ architecture testbench of timedelay_tb is
 
 begin
 
-  uut : timedelay port map(
+  uut : entity work.timedelay port map(
     input  => input,
     tap1   => tap1,
     tap2   => tap2,

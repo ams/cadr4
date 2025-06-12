@@ -3,8 +3,6 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-use work.misc.all;
-
 entity td100 is
   port (
     input   : in  std_logic; -- 1
@@ -18,7 +16,7 @@ end;
 
 architecture ttl of td100 is
 begin
-  td : timedelay
+  td : entity work.timedelay
     generic map (single_tap_delay => 20 ns)
     port map (
       input  => input,

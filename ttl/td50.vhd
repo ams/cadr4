@@ -1,10 +1,7 @@
 -- 50ns Time Delay, 10ns Increments
--- Actual delays: 250ns, 300ns, 350ns, 400ns, 450ns
 
 library ieee;
 use ieee.std_logic_1164.all;
-
-use work.misc.all;
 
 entity td50 is
   port (
@@ -19,7 +16,7 @@ end;
 
 architecture ttl of td50 is
 begin
-  td : timedelay
+  td : entity work.timedelay
     generic map (single_tap_delay => 10 ns)
     port map (
       input  => input,

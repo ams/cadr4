@@ -4,8 +4,6 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-use work.misc.all;
-
 -- Datasheet: Texas Instruments SN74LS174 Hex D-Type Flip-Flops With Clear, PDIP (N) Package
 -- URL: https://www.ti.com/lit/gpn/SN74LS174
 
@@ -32,12 +30,12 @@ end;
 architecture ttl of sn74174 is
 begin
 
-  u1 : ff_dc port map (clk => clk, clr => clr_n, d => d1, q => q1);
-  u2 : ff_dc port map (clk => clk, clr => clr_n, d => d2, q => q2);
-  u3 : ff_dc port map (clk => clk, clr => clr_n, d => d3, q => q3);
-  u4 : ff_dc port map (clk => clk, clr => clr_n, d => d4, q => q4);
-  u5 : ff_dc port map (clk => clk, clr => clr_n, d => d5, q => q5);
-  u6 : ff_dc port map (clk => clk, clr => clr_n, d => d6, q => q6);
+  u1 : entity work.ff_dc port map (clk => clk, clr => clr_n, d => d1, q => q1);
+  u2 : entity work.ff_dc port map (clk => clk, clr => clr_n, d => d2, q => q2);
+  u3 : entity work.ff_dc port map (clk => clk, clr => clr_n, d => d3, q => q3);
+  u4 : entity work.ff_dc port map (clk => clk, clr => clr_n, d => d4, q => q4);
+  u5 : entity work.ff_dc port map (clk => clk, clr => clr_n, d => d5, q => q5);
+  u6 : entity work.ff_dc port map (clk => clk, clr => clr_n, d => d6, q => q6);
 
 end;
 

@@ -1,7 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-use work.misc.all;
+
 
 entity ff_jk_tb is
 end;
@@ -16,7 +16,7 @@ architecture testbench of ff_jk_tb is
 
 begin
 
-  uut : ff_jk port map(
+  uut : entity work.ff_jk port map(
     clk => clk,
     j   => j,
     k   => k,

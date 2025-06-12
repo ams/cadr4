@@ -4,8 +4,6 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-use work.misc.all;
-
 -- Datasheet: Texas Instruments SN74LV175A Quadruple D-Type Flip-Flops With Clear, PDIP (N) Package
 -- URL: https://www.ti.com/lit/ds/symlink/sn74lv175a.pdf
 
@@ -33,10 +31,10 @@ end;
 architecture ttl of sn74175 is
 begin
 
-  u0 : ff_dc port map (clk => clk, clr => clr_n, d => d0, q => q0, q_n => q0_n);
-  u1 : ff_dc port map (clk => clk, clr => clr_n, d => d1, q => q1, q_n => q1_n);
-  u2 : ff_dc port map (clk => clk, clr => clr_n, d => d2, q => q2, q_n => q2_n);
-  u3 : ff_dc port map (clk => clk, clr => clr_n, d => d3, q => q3, q_n => q3_n);
+  u0 : entity work.ff_dc port map (clk => clk, clr => clr_n, d => d0, q => q0, q_n => q0_n);
+  u1 : entity work.ff_dc port map (clk => clk, clr => clr_n, d => d1, q => q1, q_n => q1_n);
+  u2 : entity work.ff_dc port map (clk => clk, clr => clr_n, d => d2, q => q2, q_n => q2_n);
+  u3 : entity work.ff_dc port map (clk => clk, clr => clr_n, d => d3, q => q3, q_n => q3_n);
 
 end;
 

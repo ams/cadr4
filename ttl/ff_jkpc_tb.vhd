@@ -3,7 +3,7 @@ use ieee.std_logic_1164.all;
 
 -- Testbench created by OpenAI Codex
 
-use work.misc.all;
+
 
 entity ff_jkpc_tb is
 end;
@@ -19,7 +19,7 @@ architecture testbench of ff_jkpc_tb is
   signal clr : std_logic;
 begin
 
-  uut : ff_jkpc port map(
+  uut : entity work.ff_jkpc port map(
     clk => clk,
     pre => pre,
     clr => clr,
