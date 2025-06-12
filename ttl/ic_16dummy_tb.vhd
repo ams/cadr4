@@ -1,8 +1,6 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-use work.unsorted.all;
-
 entity ic_16dummy_tb is
 end;
 
@@ -17,7 +15,7 @@ architecture testbench of ic_16dummy_tb is
 
 begin
 
-  uut : ic_16dummy port map(
+  uut : entity work.ic_16dummy port map(
     vcc => vcc,
     hi1 => hi1,
     hi2 => hi2,
