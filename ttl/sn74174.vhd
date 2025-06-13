@@ -9,15 +9,15 @@ use ieee.numeric_std.all;
 
 entity sn74174 is
   port (
-    clk   : in std_logic;
-    clr_n : in std_logic;
+    clk   : in std_logic := 'H';
+    clr_n : in std_logic := 'H';
 
-    d1 : in  std_logic;
-    d2 : in  std_logic;
-    d3 : in  std_logic;
-    d4 : in  std_logic;
-    d5 : in  std_logic;
-    d6 : in  std_logic;
+    d1 : in  std_logic := 'H';
+    d2 : in  std_logic := 'H';
+    d3 : in  std_logic := 'H';
+    d4 : in  std_logic := 'H';
+    d5 : in  std_logic := 'H';
+    d6 : in  std_logic := 'H';
     q1 : out std_logic;
     q2 : out std_logic;
     q3 : out std_logic;

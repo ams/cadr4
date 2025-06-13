@@ -10,9 +10,9 @@ use ieee.numeric_std.all;
 
 entity sn74139 is
   port (
-    g1   : in  std_logic; -- Pin 3
-    b1   : in  std_logic; -- Pin 2
-    a1   : in  std_logic; -- Pin 1
+    g1   : in  std_logic := 'H'; -- Pin 3
+    b1   : in  std_logic := 'H'; -- Pin 2
+    a1   : in  std_logic := 'H'; -- Pin 1
     g1y0 : out std_logic; -- Pin 4
     g1y1 : out std_logic; -- Pin 5
     g1y2 : out std_logic; -- Pin 6
@@ -22,9 +22,9 @@ entity sn74139 is
     g2y2 : out std_logic; -- Pin 11
     g2y1 : out std_logic; -- Pin 10
     g2y0 : out std_logic; -- Pin 9
-    g2   : in  std_logic; -- Pin 13
-    b2   : in  std_logic; -- Pin 14
-    a2   : in  std_logic  -- Pin 15
+    g2   : in  std_logic := 'H'; -- Pin 13
+    b2   : in  std_logic := 'H'; -- Pin 14
+    a2   : in  std_logic := 'H'  -- Pin 15
     );
 end;
 

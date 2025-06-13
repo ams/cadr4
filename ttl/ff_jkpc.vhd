@@ -19,7 +19,7 @@ entity ff_jkpc is
 end;
 
 architecture ttl of ff_jkpc is
-  signal q_int : std_logic := 'U';  -- Start uninitialized to model real hardware
+  signal q_int : std_logic;
 begin
 
   q   <= q_int;

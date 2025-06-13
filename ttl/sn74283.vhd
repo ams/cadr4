@@ -9,15 +9,15 @@ use ieee.numeric_std.all;
 
 entity sn74283 is
   port (
-    c0 : in std_logic; -- Pin 7
-    a0 : in std_logic; -- Pin 5
-    a1 : in std_logic; -- Pin 3
-    a2 : in std_logic; -- Pin 14
-    a3 : in std_logic; -- Pin 13
-    b0 : in std_logic; -- Pin 6
-    b1 : in std_logic; -- Pin 2
-    b2 : in std_logic; -- Pin 15
-    b3 : in std_logic; -- Pin 11
+    c0 : in std_logic := 'H'; -- Pin 7
+    a0 : in std_logic := 'H'; -- Pin 5
+    a1 : in std_logic := 'H'; -- Pin 3
+    a2 : in std_logic := 'H'; -- Pin 14
+    a3 : in std_logic := 'H'; -- Pin 13
+    b0 : in std_logic := 'H'; -- Pin 6
+    b1 : in std_logic := 'H'; -- Pin 2
+    b2 : in std_logic := 'H'; -- Pin 15
+    b3 : in std_logic := 'H'; -- Pin 11
     s0 : out std_logic; -- Pin 4
     s1 : out std_logic; -- Pin 1
     s2 : out std_logic; -- Pin 13

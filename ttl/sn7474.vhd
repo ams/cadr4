@@ -8,18 +8,18 @@ use ieee.numeric_std.all;
 
 entity sn7474 is
   port (
-    g1r_n : in  std_logic; -- pin 1
-    g1d   : in  std_logic; -- pin 2
-    g1clk : in  std_logic; -- pin 3
-    g1s_n : in  std_logic; -- pin 4
+    g1r_n : in  std_logic := 'H'; -- pin 1
+    g1d   : in  std_logic := 'H'; -- pin 2
+    g1clk : in  std_logic := 'H'; -- pin 3
+    g1s_n : in  std_logic := 'H'; -- pin 4
     g1q   : out std_logic; -- pin 5
     g1q_n : out std_logic; -- pin 6
     g2q_n : out std_logic; -- pin 9
     g2q   : out std_logic; -- pin 8
-    g2s_n : in  std_logic; -- pin 10
-    g2clk : in  std_logic; -- pin 11
-    g2d   : in  std_logic; -- pin 12
-    g2r_n : in  std_logic  -- pin 13
+    g2s_n : in  std_logic := 'H'; -- pin 10
+    g2clk : in  std_logic := 'H'; -- pin 11
+    g2d   : in  std_logic := 'H'; -- pin 12
+    g2r_n : in  std_logic := 'H'  -- pin 13
     );
 end;
 

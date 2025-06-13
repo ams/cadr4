@@ -30,18 +30,18 @@ begin
 
   ttl_inst : entity work.sn7428
     port map (
-      g1y_n => p1,
+      g1q_n => p1,
       g1a   => p2,
       g1b   => p3,
-      g2y_n => p4,
+      g2q_n => p4,
       g2a   => p5,
       g2b   => p6,
       g3a   => p8,
       g3b   => p9,
-      g3y_n => p10,
+      g3q_n => p10,
       g4a   => p11,
       g4b   => p12,
-      g4y_n => p13
+      g4q_n => p13
       );
 
 end architecture; 

@@ -14,7 +14,7 @@ entity ff_d is
 end;
 
 architecture ttl of ff_d is
-  signal q_int : std_logic := 'U';  -- Start uninitialized to model real hardware
+  signal q_int : std_logic;
 begin
 
   q   <= q_int;

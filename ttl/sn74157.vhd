@@ -7,18 +7,18 @@ use ieee.numeric_std.all;
 
 entity sn74157 is
   port (
-    enb_n : in std_logic;
-    sel   : in std_logic;
+    enb_n : in std_logic := 'H';
+    sel   : in std_logic := 'H';
 
-    a1 : in std_logic;
-    a2 : in std_logic;
-    a3 : in std_logic;
-    a4 : in std_logic;
+    a1 : in std_logic := 'H';
+    a2 : in std_logic := 'H';
+    a3 : in std_logic := 'H';
+    a4 : in std_logic := 'H';
 
-    b1 : in std_logic;
-    b2 : in std_logic;
-    b3 : in std_logic;
-    b4 : in std_logic;
+    b1 : in std_logic := 'H';
+    b2 : in std_logic := 'H';
+    b3 : in std_logic := 'H';
+    b4 : in std_logic := 'H';
 
     y1 : out std_logic;
     y2 : out std_logic;

@@ -19,22 +19,22 @@ entity sn74182 is
   port (
     xout : out std_logic;
     yout : out std_logic;
-    x3   : in  std_logic;
-    y3   : in  std_logic;
+    x3   : in  std_logic := 'H';
+    y3   : in  std_logic := 'H';
 
     cout2_n : out std_logic;
-    x2      : in  std_logic;
-    y2      : in  std_logic;
+    x2      : in  std_logic := 'H';
+    y2      : in  std_logic := 'H';
 
     cout1_n : out std_logic;
-    x1      : in  std_logic;
-    y1      : in  std_logic;
+    x1      : in  std_logic := 'H';
+    y1      : in  std_logic := 'H';
 
     cout0_n : out std_logic;
-    x0      : in  std_logic;
-    y0      : in  std_logic;
+    x0      : in  std_logic := 'H';
+    y0      : in  std_logic := 'H';
 
-    cin_n : in std_logic
+    cin_n : in std_logic := 'H'
     );
 end;
 

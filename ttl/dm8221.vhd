@@ -7,20 +7,20 @@ use ieee.numeric_std.all;
 
 entity dm8221 is
   port (
-    a0     : in  std_logic;
-    a1     : in  std_logic;
-    a2     : in  std_logic;
-    a3     : in  std_logic;
-    a4     : in  std_logic;
-    ce     : in  std_logic;
+    a0     : in  std_logic := 'H';
+    a1     : in  std_logic := 'H';
+    a2     : in  std_logic := 'H';
+    a3     : in  std_logic := 'H';
+    a4     : in  std_logic := 'H';
+    ce     : in  std_logic := 'H';
     d0     : out std_logic;
     d1     : out std_logic;
-    i0     : in  std_logic;
-    i1     : in  std_logic;
-    strobe : in  std_logic;
-    wclk_n : in  std_logic;
-    we0_n  : in  std_logic;
-    we1_n  : in  std_logic
+    i0     : in  std_logic := 'H';
+    i1     : in  std_logic := 'H';
+    strobe : in  std_logic := 'H';
+    wclk_n : in  std_logic := 'H';
+    we0_n  : in  std_logic := 'H';
+    we1_n  : in  std_logic := 'H'
     );
 end dm8221;
 

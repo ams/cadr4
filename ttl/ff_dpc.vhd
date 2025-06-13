@@ -20,7 +20,7 @@ entity ff_dpc is
 end;
 
 architecture ttl of ff_dpc is
-  signal q_int : std_logic := 'U';  -- Start uninitialized to model real hardware
+  signal q_int : std_logic;
 begin
 
   q   <= q_int;

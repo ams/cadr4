@@ -9,12 +9,12 @@ use ieee.numeric_std.all;
 
 entity sn74138 is
   port (
-    a   : in  std_logic;
-    b   : in  std_logic;
-    c   : in  std_logic;
-    g1  : in  std_logic;
-    g2a : in  std_logic;
-    g2b : in  std_logic;
+    a   : in  std_logic := 'H';
+    b   : in  std_logic := 'H';
+    c   : in  std_logic := 'H';
+    g1  : in  std_logic := 'H';
+    g2a : in  std_logic := 'H';
+    g2b : in  std_logic := 'H';
     y0  : out std_logic;
     y1  : out std_logic;
     y2  : out std_logic;

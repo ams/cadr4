@@ -15,19 +15,19 @@ use ieee.numeric_std.all;
 
 entity am93425a is
   port (
-    a0   : in  std_logic;
-    a1   : in  std_logic;
-    a2   : in  std_logic;
-    a3   : in  std_logic;
-    a4   : in  std_logic;
-    a5   : in  std_logic;
-    a6   : in  std_logic;
-    a7   : in  std_logic;
-    a8   : in  std_logic;
-    a9   : in  std_logic;
-    ce_n : in  std_logic;
-    we_n : in  std_logic;
-    di   : in  std_logic;
+    a0   : in  std_logic := 'H';
+    a1   : in  std_logic := 'H';
+    a2   : in  std_logic := 'H';
+    a3   : in  std_logic := 'H';
+    a4   : in  std_logic := 'H';
+    a5   : in  std_logic := 'H';
+    a6   : in  std_logic := 'H';
+    a7   : in  std_logic := 'H';
+    a8   : in  std_logic := 'H';
+    a9   : in  std_logic := 'H';
+    ce_n : in  std_logic := 'H';
+    we_n : in  std_logic := 'H';
+    di   : in  std_logic := 'H';
     do   : out std_logic
     );
 end am93425a;

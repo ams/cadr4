@@ -19,7 +19,7 @@ entity til309 is
 end;
 
 architecture ttl of til309 is
-  signal reg : std_logic_vector(3 downto 0) := (others => 'U');
+  signal reg : std_logic_vector(3 downto 0);
 begin
   process(latch)
   begin

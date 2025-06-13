@@ -24,19 +24,19 @@ use ieee.numeric_std.all;
 entity sn74181 is
   port (
     -- Control and status
-    m      : in  std_logic;  -- Mode: 1=Logic, 0=Arithmetic
-    cin_n  : in  std_logic;  -- Carry in (active low)
+    m      : in  std_logic := 'H';  -- Mode: 1=Logic, 0=Arithmetic
+    cin_n  : in  std_logic := 'H';  -- Carry in (active low)
     cout_n : out std_logic;  -- Carry out (active low)
     aeb    : out std_logic;  -- A equals B
     x      : out std_logic;  -- Carry propagate
     y      : out std_logic;  -- Carry generate
     
     -- Function select
-    s3, s2, s1, s0 : in std_logic;
+    s3, s2, s1, s0 : in std_logic := 'H';
     
     -- Data inputs
-    a3, a2, a1, a0 : in std_logic;
-    b3, b2, b1, b0 : in std_logic;
+    a3, a2, a1, a0 : in std_logic := 'H';
+    b3, b2, b1, b0 : in std_logic := 'H';
     
     -- Function outputs
     f3, f2, f1, f0 : out std_logic

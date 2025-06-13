@@ -9,21 +9,21 @@ use ieee.std_logic_1164.all;
 
 entity sn74151 is
   port (
-    i3   : in  std_logic;
-    i2   : in  std_logic;
-    i1   : in  std_logic;
-    i0   : in  std_logic;
+    i3   : in  std_logic := 'H';
+    i2   : in  std_logic := 'H';
+    i1   : in  std_logic := 'H';
+    i0   : in  std_logic := 'H';
     q    : out std_logic;
     q_n  : out std_logic;
-    ce_n : in  std_logic;
+    ce_n : in  std_logic := 'H';
 
-    sel0 : in std_logic;
-    sel1 : in std_logic;
-    sel2 : in std_logic;
-    i4   : in std_logic;
-    i5   : in std_logic;
-    i6   : in std_logic;
-    i7   : in std_logic
+    sel0 : in std_logic := 'H';
+    sel1 : in std_logic := 'H';
+    sel2 : in std_logic := 'H';
+    i4   : in std_logic := 'H';
+    i5   : in std_logic := 'H';
+    i6   : in std_logic := 'H';
+    i7   : in std_logic := 'H'
     );
 end;
 

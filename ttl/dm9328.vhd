@@ -6,18 +6,18 @@ use ieee.numeric_std.all;
 
 entity dm9328 is
   port (
-    clr_n  : in  std_logic; -- 7
+    clr_n  : in  std_logic := 'H'; -- 7
     aq_n   : out std_logic; -- 1
     aq     : out std_logic; -- 2
-    asel   : in  std_logic; -- 3
-    ai1    : in  std_logic; -- 5
-    ai0    : in  std_logic; -- 4
-    aclk   : in  std_logic; -- 6
-    comclk : in  std_logic; -- 9
-    bclk   : in  std_logic; -- 10
-    bi0    : in  std_logic; -- 11
-    bi1    : in  std_logic; -- 12
-    bsel   : in  std_logic; -- 13
+    asel   : in  std_logic := 'H'; -- 3
+    ai1    : in  std_logic := 'H'; -- 5
+    ai0    : in  std_logic := 'H'; -- 4
+    aclk   : in  std_logic := 'H'; -- 6
+    comclk : in  std_logic := 'H'; -- 9
+    bclk   : in  std_logic := 'H'; -- 10
+    bi0    : in  std_logic := 'H'; -- 11
+    bi1    : in  std_logic := 'H'; -- 12
+    bsel   : in  std_logic := 'H'; -- 13
     bq     : out std_logic; -- 14
     bq_n   : out std_logic  -- 15
     );
@@ -27,8 +27,8 @@ end dm9328;
 -- VCC = Pin 16, GND = Pin 8
 
 architecture ttl of dm9328 is
-  signal rega : std_logic_vector(7 downto 0) := (others => 'U');
-  signal regb : std_logic_vector(7 downto 0) := (others => 'U');
+  signal rega : std_logic_vector(7 downto 0);
+  signal regb : std_logic_vector(7 downto 0);
 begin
   -- Shift register A
   process(aclk, clr_n)

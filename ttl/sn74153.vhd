@@ -11,21 +11,21 @@ use ieee.numeric_std.all;
 entity sn74153 is
   port (
     
-    sela   : in  std_logic; -- Pin 14
-    selb   : in  std_logic; -- Pin 2       
+    sela   : in  std_logic := 'H'; -- Pin 14
+    selb   : in  std_logic := 'H'; -- Pin 2       
    
-    enb1_n : in  std_logic; -- Pin 1
-    g1c0   : in  std_logic; -- Pin 6
-    g1c1   : in  std_logic; -- Pin 5
-    g1c2   : in  std_logic; -- Pin 4
-    g1c3   : in  std_logic; -- Pin 3
+    enb1_n : in  std_logic := 'H'; -- Pin 1
+    g1c0   : in  std_logic := 'H'; -- Pin 6
+    g1c1   : in  std_logic := 'H'; -- Pin 5
+    g1c2   : in  std_logic := 'H'; -- Pin 4
+    g1c3   : in  std_logic := 'H'; -- Pin 3
     g1y    : out std_logic; -- Pin 7
 
-    enb2_n : in  std_logic; -- Pin 15
-    g2c0   : in  std_logic; -- Pin 10
-    g2c1   : in  std_logic; -- Pin 11
-    g2c2   : in  std_logic; -- Pin 12
-    g2c3   : in  std_logic; -- Pin 13
+    enb2_n : in  std_logic := 'H'; -- Pin 15
+    g2c0   : in  std_logic := 'H'; -- Pin 10
+    g2c1   : in  std_logic := 'H'; -- Pin 11
+    g2c2   : in  std_logic := 'H'; -- Pin 12
+    g2c3   : in  std_logic := 'H'; -- Pin 13
     g2y    : out std_logic -- Pin 9
     
     );

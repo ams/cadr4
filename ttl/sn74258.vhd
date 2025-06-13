@@ -6,23 +6,23 @@ use ieee.numeric_std.all;
 
 entity sn74258 is
   port (
-    enb_n : in std_logic;
-    sel   : in std_logic;
+    enb_n : in std_logic := 'H';
+    sel   : in std_logic := 'H';
 
-    a0 : in  std_logic;
-    a1 : in  std_logic;
+    a0 : in  std_logic := 'H';
+    a1 : in  std_logic := 'H';
     ay : out std_logic;
 
-    b0 : in  std_logic;
-    b1 : in  std_logic;
+    b0 : in  std_logic := 'H';
+    b1 : in  std_logic := 'H';
     by : out std_logic;
 
-    c0 : in  std_logic;
-    c1 : in  std_logic;
+    c0 : in  std_logic := 'H';
+    c1 : in  std_logic := 'H';
     cy : out std_logic;
 
-    d0 : in  std_logic;
-    d1 : in  std_logic;
+    d0 : in  std_logic := 'H';
+    d1 : in  std_logic := 'H';
     dy : out std_logic
     );
 end;

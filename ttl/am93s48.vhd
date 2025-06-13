@@ -7,18 +7,18 @@ use ieee.numeric_std.all;
 
 entity am93s48 is
   port (
-    i0  : in  std_logic; -- Pin 11
-    i1  : in  std_logic; -- Pin 12
-    i2  : in  std_logic; -- Pin 13
-    i3  : in  std_logic; -- Pin 14
-    i4  : in  std_logic; -- Pin 15
-    i5  : in  std_logic; -- Pin 1
-    i6  : in  std_logic; -- Pin 2
-    i7  : in  std_logic; -- Pin 3
-    i8  : in  std_logic; -- Pin 4
-    i9  : in  std_logic; -- Pin 5
-    i10 : in  std_logic; -- Pin 6
-    i11 : in  std_logic; -- Pin 7
+    i0  : in  std_logic := 'H'; -- Pin 11
+    i1  : in  std_logic := 'H'; -- Pin 12
+    i2  : in  std_logic := 'H'; -- Pin 13
+    i3  : in  std_logic := 'H'; -- Pin 14
+    i4  : in  std_logic := 'H'; -- Pin 15
+    i5  : in  std_logic := 'H'; -- Pin 1
+    i6  : in  std_logic := 'H'; -- Pin 2
+    i7  : in  std_logic := 'H'; -- Pin 3
+    i8  : in  std_logic := 'H'; -- Pin 4
+    i9  : in  std_logic := 'H'; -- Pin 5
+    i10 : in  std_logic := 'H'; -- Pin 6
+    i11 : in  std_logic := 'H'; -- Pin 7
     pe  : out std_logic; -- Pin 10
     po  : out std_logic  -- Pin 9
     );

@@ -17,14 +17,14 @@ use ieee.numeric_std.all;
 
 entity am252519 is
   port (    
-    d0         : in  std_logic; -- 1
-    d1         : in  std_logic; -- 4
-    d2         : in  std_logic; -- 13
-    d3         : in  std_logic; -- 16
-    e_n        : in  std_logic; -- 17
-    cp         : in  std_logic; -- 9
-    oe_y_n     : in  std_logic; -- 8
-    oe_w_n     : in  std_logic; -- 7
+    d0         : in  std_logic := 'H'; -- 1
+    d1         : in  std_logic := 'H'; -- 4
+    d2         : in  std_logic := 'H'; -- 13
+    d3         : in  std_logic := 'H'; -- 16
+    e_n        : in  std_logic := 'H'; -- 17
+    cp         : in  std_logic := 'H'; -- 9
+    oe_y_n     : in  std_logic := 'H'; -- 8
+    oe_w_n     : in  std_logic := 'H'; -- 7
     y0         : out std_logic; -- 3
     y1         : out std_logic; -- 6
     y2         : out std_logic; -- 11
@@ -33,8 +33,8 @@ entity am252519 is
     w1         : out std_logic; -- 5
     w2         : out std_logic; -- 12
     w3         : out std_logic; -- 15
-    pol        : in  std_logic; -- 18
-    clr_n      : in  std_logic -- 19
+    pol        : in  std_logic := 'H'; -- 18
+    clr_n      : in  std_logic := 'H' -- 19
     );
 end am252519;
 

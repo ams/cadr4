@@ -21,15 +21,7 @@ entity sn7437 is
 
     g4a   : in  std_logic := 'H'; -- Pin 12
     g4b   : in  std_logic := 'H'; -- Pin 13
-    g4y   : out std_logic; -- Pin 11
-
-    g5a   : in  std_logic := 'H'; -- Pin 11
-    g5b   : in  std_logic := 'H'; -- Pin 10
-    g5y   : out std_logic; -- Pin 10
-
-    g6a   : in  std_logic := 'H'; -- Pin 13
-    g6b   : in  std_logic := 'H'; -- Pin 12
-    g6y   : out std_logic  -- Pin 12
+    g4y   : out std_logic  -- Pin 11
     );
 end;
 
@@ -40,7 +32,5 @@ begin
   g2y <= g2a nand g2b;
   g3y <= g3a nand g3b;
   g4y <= g4a nand g4b;
-  g5y <= g5a nand g5b;
-  g6y <= g6a nand g6b;
 
 end;

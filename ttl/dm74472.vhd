@@ -10,15 +10,15 @@ use ieee.std_logic_textio.all;
 entity dm74472 is
   generic (fn : string := "");
   port (
-    a0   : in  std_logic;
-    a1   : in  std_logic;
-    a2   : in  std_logic;
-    a3   : in  std_logic;
-    a4   : in  std_logic;
-    a5   : in  std_logic;
-    a6   : in  std_logic;
-    a7   : in  std_logic;
-    a8   : in  std_logic;
+    a0   : in  std_logic := 'H';
+    a1   : in  std_logic := 'H';
+    a2   : in  std_logic := 'H';
+    a3   : in  std_logic := 'H';
+    a4   : in  std_logic := 'H';
+    a5   : in  std_logic := 'H';
+    a6   : in  std_logic := 'H';
+    a7   : in  std_logic := 'H';
+    a8   : in  std_logic := 'H';
     d0   : out std_logic;
     d1   : out std_logic;
     d2   : out std_logic;
@@ -27,7 +27,7 @@ entity dm74472 is
     d5   : out std_logic;
     d6   : out std_logic;
     d7   : out std_logic;
-    ce_n : in  std_logic
+    ce_n : in  std_logic := 'H'
     );
 end;
 

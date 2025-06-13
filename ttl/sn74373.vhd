@@ -12,16 +12,16 @@ use ieee.numeric_std.all;
 
 entity sn74373 is
   port (
-    hold_n : in  std_logic; -- Pin 11 (LE) - Latch Enable
-    oenb_n : in  std_logic; -- Pin 1 (OE_n)
-    i0     : in  std_logic; -- Pin 3 (1D)
-    i1     : in  std_logic; -- Pin 4 (2D)
-    i2     : in  std_logic; -- Pin 7 (3D)
-    i3     : in  std_logic; -- Pin 8 (4D)
-    i4     : in  std_logic; -- Pin 13 (5D)
-    i5     : in  std_logic; -- Pin 14 (6D)
-    i6     : in  std_logic; -- Pin 17 (7D)
-    i7     : in  std_logic; -- Pin 18 (8D)
+    hold_n : in  std_logic := 'H'; -- Pin 11 (LE) - Latch Enable
+    oenb_n : in  std_logic := 'H'; -- Pin 1 (OE_n)
+    i0     : in  std_logic := 'H'; -- Pin 3 (1D)
+    i1     : in  std_logic := 'H'; -- Pin 4 (2D)
+    i2     : in  std_logic := 'H'; -- Pin 7 (3D)
+    i3     : in  std_logic := 'H'; -- Pin 8 (4D)
+    i4     : in  std_logic := 'H'; -- Pin 13 (5D)
+    i5     : in  std_logic := 'H'; -- Pin 14 (6D)
+    i6     : in  std_logic := 'H'; -- Pin 17 (7D)
+    i7     : in  std_logic := 'H'; -- Pin 18 (8D)
     o0     : out std_logic; -- Pin 2 (1Q)
     o1     : out std_logic; -- Pin 5 (2Q)
     o2     : out std_logic; -- Pin 6 (3Q)
@@ -34,7 +34,7 @@ entity sn74373 is
 end;
 
 architecture ttl of sn74373 is
-  signal data : std_logic_vector(7 downto 0) := (others => 'U');
+  signal data : std_logic_vector(7 downto 0);
 begin
 
   -- Latch process with proper X/U handling

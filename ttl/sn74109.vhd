@@ -8,21 +8,21 @@ use ieee.numeric_std.all;
 
 entity sn74109 is
   port (
-    clr1_n : in  std_logic;
-    j1     : in  std_logic;
-    k1_n   : in  std_logic;
-    clk1   : in  std_logic;
-    pre1_n : in  std_logic;
+    clr1_n : in  std_logic := 'H';
+    j1     : in  std_logic := 'H';
+    k1_n   : in  std_logic := 'H';
+    clk1   : in  std_logic := 'H';
+    pre1_n : in  std_logic := 'H';
     q1     : out std_logic;
     q1_n   : out std_logic;
 
     q2_n   : out std_logic;
     q2     : out std_logic;
-    pre2_n : in  std_logic;
-    clk2   : in  std_logic;
-    k2_n   : in  std_logic;
-    j2     : in  std_logic;
-    clr2_n : in  std_logic
+    pre2_n : in  std_logic := 'H';
+    clk2   : in  std_logic := 'H';
+    k2_n   : in  std_logic := 'H';
+    j2     : in  std_logic := 'H';
+    clr2_n : in  std_logic := 'H'
     );
 end;
 

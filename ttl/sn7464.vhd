@@ -9,17 +9,18 @@ use ieee.numeric_std.all;
 
 entity sn7464 is
   port (
-    g1a   : in  std_logic := 'H'; -- Pin 1
-    g1b   : in  std_logic := 'H'; -- Pin 2
-    g1c   : in  std_logic := 'H'; -- Pin 3
-    g1d   : in  std_logic := 'H'; -- Pin 4
-    g1e   : in  std_logic := 'H'; -- Pin 5
-    g1f   : in  std_logic := 'H'; -- Pin 9
-    g1g   : in  std_logic := 'H'; -- Pin 10
-    g1h   : in  std_logic := 'H'; -- Pin 11
-    g1i   : in  std_logic := 'H'; -- Pin 12
-    g1j   : in  std_logic := 'H'; -- Pin 13
-    g1y_n : out std_logic  -- Pin 8
+    d4    : in  std_logic := 'H'; -- Pin 1
+    b2    : in  std_logic := 'H'; -- Pin 2
+    a2    : in  std_logic := 'H'; -- Pin 3
+    c3    : in  std_logic := 'H'; -- Pin 4
+    b3    : in  std_logic := 'H'; -- Pin 5
+    a3    : in  std_logic := 'H'; -- Pin 9
+    \out\ : out std_logic; -- Pin 8
+    a1    : in  std_logic := 'H'; -- Pin 10
+    b1    : in  std_logic := 'H'; -- Pin 11
+    c4    : in  std_logic := 'H'; -- Pin 12
+    b4    : in  std_logic := 'H'; -- Pin 13
+    a4    : in  std_logic := 'H'  -- Pin 14
     );
 end;
 
@@ -27,6 +28,6 @@ architecture ttl of sn7464 is
 begin
 
   -- 4-2-3-2 Input AND-OR-INVERT: ((a1 AND b1) OR (a2 AND b2) OR (a3 AND b3 AND c3) OR (a4 AND b4 AND c4 AND d4)) then invert
-  g1y_n <= not ((g1a and g1b) or (g1f and g1g) or (g1c and g1g and g1h) or (g1j and g1g and g1i and g1j));
+  \out\ <= not ((a1 and b1) or (a2 and b2) or (a3 and b3 and c3) or (a4 and b4 and c4 and d4));
 
 end;

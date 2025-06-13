@@ -8,16 +8,16 @@ use ieee.numeric_std.all;
 
 entity am2510 is
   port (
-    sel1 : in  std_logic;
-    sel0 : in  std_logic;
-    ce_n : in  std_logic;
-    i3   : in  std_logic;
-    i2   : in  std_logic;
-    i1   : in  std_logic;
-    i0   : in  std_logic;
-    i_1  : in  std_logic;
-    i_2  : in  std_logic;
-    i_3  : in  std_logic;
+    sel1 : in  std_logic := 'H';
+    sel0 : in  std_logic := 'H';
+    ce_n : in  std_logic := 'H';
+    i3   : in  std_logic := 'H';
+    i2   : in  std_logic := 'H';
+    i1   : in  std_logic := 'H';
+    i0   : in  std_logic := 'H';
+    i_1  : in  std_logic := 'H';
+    i_2  : in  std_logic := 'H';
+    i_3  : in  std_logic := 'H';
     o0   : out std_logic;
     o1   : out std_logic;
     o2   : out std_logic;

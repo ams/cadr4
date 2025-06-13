@@ -11,14 +11,14 @@ entity sn74169 is
   port (
     -- Control and status
     co_n    : out std_logic;  -- Carry out (active low)
-    clk     : in  std_logic;  -- Clock
-    up_dn   : in  std_logic;  -- Up/Down control
-    load_n  : in  std_logic;  -- Parallel load enable (active low)
-    enb_p_n : in  std_logic;  -- Count enable parallel (active low)
-    enb_t_n : in  std_logic;  -- Count enable trickle (active low)
+    clk     : in  std_logic := 'H';  -- Clock
+    up_dn   : in  std_logic := 'H';  -- Up/Down control
+    load_n  : in  std_logic := 'H';  -- Parallel load enable (active low)
+    enb_p_n : in  std_logic := 'H';  -- Count enable parallel (active low)
+    enb_t_n : in  std_logic := 'H';  -- Count enable trickle (active low)
     
     -- Data inputs (parallel load)
-    i3, i2, i1, i0 : in  std_logic;
+    i3, i2, i1, i0 : in  std_logic := 'H';
     
     -- Data outputs
     o3, o2, o1, o0 : out std_logic
@@ -26,7 +26,7 @@ entity sn74169 is
 end;
 
 architecture ttl of sn74169 is
-  signal cnt : unsigned(3 downto 0) := (others => 'U');    -- internal 4-bit register
+  signal cnt : unsigned(3 downto 0);    -- internal 4-bit register
   
   -- Named constants for better readability
   constant COUNT_WIDTH    : natural := 4;

@@ -7,20 +7,20 @@ use ieee.numeric_std.all;
 
 entity dm9346 is
   port (
-    a0  : in  std_logic;
-    b0  : in  std_logic;
-    a1  : in  std_logic;
-    b1  : in  std_logic;
-    a2  : in  std_logic;
-    b2  : in  std_logic;
-    enb : in  std_logic;
+    a0  : in  std_logic := 'H';
+    b0  : in  std_logic := 'H';
+    a1  : in  std_logic := 'H';
+    b1  : in  std_logic := 'H';
+    a2  : in  std_logic := 'H';
+    b2  : in  std_logic := 'H';
+    enb : in  std_logic := 'H';
     eq  : out std_logic;
-    a3  : in  std_logic;
-    b3  : in  std_logic;
-    a4  : in  std_logic;
-    b4  : in  std_logic;
-    a5  : in  std_logic;
-    b5  : in  std_logic
+    a3  : in  std_logic := 'H';
+    b3  : in  std_logic := 'H';
+    a4  : in  std_logic := 'H';
+    b4  : in  std_logic := 'H';
+    a5  : in  std_logic := 'H';
+    b5  : in  std_logic := 'H'
     );
 end dm9346;
 

@@ -9,16 +9,16 @@ use ieee.std_logic_misc.all;
 
 entity sn74374 is
   port (
-    clk   : in  std_logic; -- pin 10
-    oenb_n : in  std_logic; -- pin 1
-    i0 : in  std_logic; -- pin 3
-    i1 : in  std_logic; -- pin 4
-    i2 : in  std_logic; -- pin 9
-    i3 : in  std_logic; -- pin 11
-    i4 : in  std_logic; -- pin 13
-    i5 : in  std_logic; -- pin 14
-    i6 : in  std_logic; -- pin 17
-    i7 : in  std_logic; -- pin 18
+    clk   : in  std_logic := 'H'; -- pin 10
+    oenb_n : in  std_logic := 'H'; -- pin 1
+    i0 : in  std_logic := 'H'; -- pin 3
+    i1 : in  std_logic := 'H'; -- pin 4
+    i2 : in  std_logic := 'H'; -- pin 9
+    i3 : in  std_logic := 'H'; -- pin 11
+    i4 : in  std_logic := 'H'; -- pin 13
+    i5 : in  std_logic := 'H'; -- pin 14
+    i6 : in  std_logic := 'H'; -- pin 17
+    i7 : in  std_logic := 'H'; -- pin 18
     o0 : out std_logic; -- pin 2
     o1 : out std_logic; -- pin 5
     o2 : out std_logic; -- pin 6
@@ -31,30 +31,42 @@ entity sn74374 is
 end;
 
 architecture ttl of sn74374 is
-  signal data : std_logic_vector(7 downto 0) := (others => 'U');
+  signal q_int : std_logic_vector(7 downto 0);
 begin
 
-  process(all)
-    variable input_data : std_logic_vector(7 downto 0);
+  -- 8 D flip-flops
+  u0 : entity work.ff_d port map (clk => clk, d => i0, q => q_int(0), q_n => open);
+  u1 : entity work.ff_d port map (clk => clk, d => i1, q => q_int(1), q_n => open);
+  u2 : entity work.ff_d port map (clk => clk, d => i2, q => q_int(2), q_n => open);
+  u3 : entity work.ff_d port map (clk => clk, d => i3, q => q_int(3), q_n => open);
+  u4 : entity work.ff_d port map (clk => clk, d => i4, q => q_int(4), q_n => open);
+  u5 : entity work.ff_d port map (clk => clk, d => i5, q => q_int(5), q_n => open);
+  u6 : entity work.ff_d port map (clk => clk, d => i6, q => q_int(6), q_n => open);
+  u7 : entity work.ff_d port map (clk => clk, d => i7, q => q_int(7), q_n => open);
+
+  -- Output enable process: controls 3-state outputs
+  process(oenb_n, q_int)
   begin
     if oenb_n = '0' then
-      if rising_edge(clk) then
-        input_data := i7 & i6 & i5 & i4 & i3 & i2 & i1 & i0;
-        o0 <= input_data(0); o1 <= input_data(1); o2 <= input_data(2); o3 <= input_data(3);
-        o4 <= input_data(4); o5 <= input_data(5); o6 <= input_data(6); o7 <= input_data(7);
-      elsif clk = '0' then
-        o0 <= input_data(0); o1 <= input_data(1); o2 <= input_data(2); o3 <= input_data(3);
-        o4 <= input_data(4); o5 <= input_data(5); o6 <= input_data(6); o7 <= input_data(7);
-      else
-        o0 <= 'X'; o1 <= 'X'; o2 <= 'X'; o3 <= 'X';
-        o4 <= 'X'; o5 <= 'X'; o6 <= 'X'; o7 <= 'X';
-      end if;
-    elsif oenb_n = '1' then
-      o0 <= 'Z'; o1 <= 'Z'; o2 <= 'Z'; o3 <= 'Z';
-      o4 <= 'Z'; o5 <= 'Z'; o6 <= 'Z'; o7 <= 'Z';
+      -- Output enable active (low), drive stored data to outputs
+      o0 <= q_int(0);
+      o1 <= q_int(1);
+      o2 <= q_int(2);
+      o3 <= q_int(3);
+      o4 <= q_int(4);
+      o5 <= q_int(5);
+      o6 <= q_int(6);
+      o7 <= q_int(7);
     else
-      o0 <= 'X'; o1 <= 'X'; o2 <= 'X'; o3 <= 'X';
-      o4 <= 'X'; o5 <= 'X'; o6 <= 'X'; o7 <= 'X';
+      -- Output enable inactive (high), outputs in high-impedance
+      o0 <= 'Z';
+      o1 <= 'Z';
+      o2 <= 'Z';
+      o3 <= 'Z';
+      o4 <= 'Z';
+      o5 <= 'Z';
+      o6 <= 'Z';
+      o7 <= 'Z';
     end if;
   end process;
 

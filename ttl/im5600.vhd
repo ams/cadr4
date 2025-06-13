@@ -10,12 +10,12 @@ use ieee.std_logic_textio.all;
 entity im5600 is
   generic (fn : string := "");
   port (
-    ce_n : in  std_logic;
-    a0   : in  std_logic;
-    a1   : in  std_logic;
-    a2   : in  std_logic;
-    a3   : in  std_logic;
-    a4   : in  std_logic;
+    ce_n : in  std_logic := 'H';
+    a0   : in  std_logic := 'H';
+    a1   : in  std_logic := 'H';
+    a2   : in  std_logic := 'H';
+    a3   : in  std_logic := 'H';
+    a4   : in  std_logic := 'H';
     o0   : out std_logic;
     o1   : out std_logic;
     o2   : out std_logic;

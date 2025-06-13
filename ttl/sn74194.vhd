@@ -9,18 +9,18 @@ use ieee.numeric_std.all;
 
 entity sn74194 is
   port (
-    clk : in std_logic; -- Pin 11
+    clk : in std_logic := 'H'; -- Pin 11
 
-    sil   : in std_logic; -- Pin 7 (SL SER)
-    sir   : in std_logic; -- Pin 2 (SR SER)
-    clr_n : in std_logic; -- Pin 1 (CLR)
+    sil   : in std_logic := 'H'; -- Pin 7 (SL SER)
+    sir   : in std_logic := 'H'; -- Pin 2 (SR SER)
+    clr_n : in std_logic := 'H'; -- Pin 1 (CLR)
 
-    i0 : in std_logic; -- Pin 3 (A)
-    i1 : in std_logic; -- Pin 4 (B)
-    i2 : in std_logic; -- Pin 5 (C)
-    i3 : in std_logic; -- Pin 6 (D)
-    s0 : in std_logic; -- Pin 9 (S0)
-    s1 : in std_logic; -- Pin 10 (S1)
+    i0 : in std_logic := 'H'; -- Pin 3 (A)
+    i1 : in std_logic := 'H'; -- Pin 4 (B)
+    i2 : in std_logic := 'H'; -- Pin 5 (C)
+    i3 : in std_logic := 'H'; -- Pin 6 (D)
+    s0 : in std_logic := 'H'; -- Pin 9 (S0)
+    s1 : in std_logic := 'H'; -- Pin 10 (S1)
 
     q0 : out std_logic; -- Pin 15 (QA)
     q1 : out std_logic; -- Pin 14 (QB)
@@ -30,7 +30,7 @@ entity sn74194 is
 end;
 
 architecture ttl of sn74194 is
-  signal reg : std_logic_vector(3 downto 0) := (others => 'U');
+  signal reg : std_logic_vector(3 downto 0);
 begin
   process(clk, clr_n)
     variable sel : std_logic_vector(1 downto 0);

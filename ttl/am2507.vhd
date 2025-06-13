@@ -8,20 +8,20 @@ use ieee.numeric_std.all;
 
 entity am2507 is
   port (
-    i0    : in  std_logic;
-    i1    : in  std_logic;
-    i2    : in  std_logic;
-    i3    : in  std_logic;
-    i4    : in  std_logic;
-    i5    : in  std_logic;
+    i0    : in  std_logic := 'H';
+    i1    : in  std_logic := 'H';
+    i2    : in  std_logic := 'H';
+    i3    : in  std_logic := 'H';
+    i4    : in  std_logic := 'H';
+    i5    : in  std_logic := 'H';
     d0    : out std_logic;
     d1    : out std_logic;
     d2    : out std_logic;
     d3    : out std_logic;
     d4    : out std_logic;
     d5    : out std_logic;
-    clk   : in  std_logic;
-    enb_n : in  std_logic
+    clk   : in  std_logic := 'H';
+    enb_n : in  std_logic := 'H'
     );
 end am2507;
 

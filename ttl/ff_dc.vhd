@@ -16,7 +16,7 @@ end;
 
 -- Updated implementation with proper X/U handling
 architecture ttl of ff_dc is
-  signal q_int : std_logic := 'U';  -- Start uninitialized to model real hardware
+  signal q_int : std_logic;
 begin
 
   q   <= q_int;
