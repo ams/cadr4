@@ -6,20 +6,20 @@ use ieee.std_logic_1164.all;
 
 entity sn7486 is
   port (
-    g1a : in  std_logic; -- Pin 1
-    g1b : in  std_logic; -- Pin 2
+    g1a : in  std_logic := 'H'; -- Pin 1
+    g1b : in  std_logic := 'H'; -- Pin 2
     g1y : out std_logic; -- Pin 3
 
-    g2a : in  std_logic; -- Pin 4
-    g2b : in  std_logic; -- Pin 5
+    g2a : in  std_logic := 'H'; -- Pin 4
+    g2b : in  std_logic := 'H'; -- Pin 5
     g2y : out std_logic; -- Pin 6
 
-    g3a : in  std_logic; -- Pin 9
-    g3b : in  std_logic; -- Pin 10
+    g3a : in  std_logic := 'H'; -- Pin 9
+    g3b : in  std_logic := 'H'; -- Pin 10
     g3y : out std_logic; -- Pin 8
 
-    g4a : in  std_logic; -- Pin 12
-    g4b : in  std_logic; -- Pin 13
+    g4a : in  std_logic := 'H'; -- Pin 12
+    g4b : in  std_logic := 'H'; -- Pin 13
     g4y : out std_logic  -- Pin 11
     );
 end;

@@ -7,20 +7,20 @@ use ieee.std_logic_1164.all;
 
 entity sn7400 is
   port (
-    g1a   : in  std_logic;
-    g1b   : in  std_logic;
+    g1a   : in  std_logic := 'H';
+    g1b   : in  std_logic := 'H';
     g1q_n : out std_logic;
 
-    g2a   : in  std_logic;
-    g2b   : in  std_logic;
+    g2a   : in  std_logic := 'H';
+    g2b   : in  std_logic := 'H';
     g2q_n : out std_logic;
 
-    g3a   : in  std_logic;
-    g3b   : in  std_logic;
+    g3a   : in  std_logic := 'H';
+    g3b   : in  std_logic := 'H';
     g3q_n : out std_logic;
 
-    g4a   : in  std_logic;
-    g4b   : in  std_logic;
+    g4a   : in  std_logic := 'H';
+    g4b   : in  std_logic := 'H';
     g4q_n : out std_logic
     );
 end;

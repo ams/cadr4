@@ -8,21 +8,20 @@ use ieee.numeric_std.all;
 
 entity sn74133 is
   port (
-    a : in std_logic; -- Pin 1
-    b : in std_logic; -- Pin 2
-    c : in std_logic; -- Pin 3
-    d : in std_logic; -- Pin 4
-    e : in std_logic; -- Pin 5
-    f : in std_logic; -- Pin 6
-    g : in std_logic; -- Pin 9
-    h : in std_logic; -- Pin 10
-    i : in std_logic; -- Pin 11
-    j : in std_logic; -- Pin 12
-    k : in std_logic; -- Pin 13
-    l : in std_logic; -- Pin 14
-    m : in std_logic; -- Pin 15
-
-    q_n : out std_logic -- Pin 8
+    a   : in  std_logic := 'H'; -- Pin 1
+    b   : in  std_logic := 'H'; -- Pin 2
+    c   : in  std_logic := 'H'; -- Pin 3
+    d   : in  std_logic := 'H'; -- Pin 4
+    e   : in  std_logic := 'H'; -- Pin 5
+    f   : in  std_logic := 'H'; -- Pin 6
+    h   : in  std_logic := 'H'; -- Pin 10
+    i   : in  std_logic := 'H'; -- Pin 11
+    j   : in  std_logic := 'H'; -- Pin 12
+    k   : in  std_logic := 'H'; -- Pin 13
+    l   : in  std_logic := 'H'; -- Pin 14
+    m   : in  std_logic := 'H'; -- Pin 15
+    g   : in  std_logic := 'H'; -- Pin 9
+    q_n : out std_logic  -- Pin 8
     );
 end;
 

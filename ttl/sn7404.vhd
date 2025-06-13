@@ -6,22 +6,22 @@ use ieee.std_logic_1164.all;
 
 entity sn7404 is
   port (
-    g1a   : in  std_logic;
+    g1a   : in  std_logic := 'H';
     g1q_n : out std_logic;
 
-    g2a   : in  std_logic;
+    g2a   : in  std_logic := 'H';
     g2q_n : out std_logic;
 
-    g3a   : in  std_logic;
+    g3a   : in  std_logic := 'H';
     g3q_n : out std_logic;
 
-    g4a   : in  std_logic;
+    g4a   : in  std_logic := 'H';
     g4q_n : out std_logic;
 
-    g5a   : in  std_logic;
+    g5a   : in  std_logic := 'H';
     g5q_n : out std_logic;
 
-    g6a   : in  std_logic;
+    g6a   : in  std_logic := 'H';
     g6q_n : out std_logic
     );
 end;

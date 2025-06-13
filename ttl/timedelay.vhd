@@ -7,11 +7,11 @@ entity timedelay is
     );
   port (
     input  : in  std_logic;
-    tap1   : out std_logic;
-    tap2   : out std_logic;
-    tap3   : out std_logic;
-    tap4   : out std_logic;
-    output : out std_logic
+    tap1   : out std_logic := 'H';
+    tap2   : out std_logic := 'H';
+    tap3   : out std_logic := 'H';
+    tap4   : out std_logic := 'H';
+    output : out std_logic := 'H'
     );
 end timedelay;
 
