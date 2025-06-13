@@ -29,9 +29,6 @@ end;
 architecture ttl of sn74133 is
 begin
 
-  gate1: entity work.gate_nand13(behavioral) port map (
-    a => a, b => b, c => c, d => d, e => e, f => f, g => g, h => h, 
-    i => i, j => j, k => k, l => l, m => m, q => q_n
-  );
+  q_n <= not (a and b and c and d and e and f and g and h and i and j and k and l and m);
 
 end;

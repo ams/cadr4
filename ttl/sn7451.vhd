@@ -23,25 +23,12 @@ entity sn7451 is
 end;
 
 architecture ttl of sn7451 is
-  signal g1_and1_out : std_logic;
-  signal g1_and2_out : std_logic;
-  signal g1_or_out   : std_logic;
-  
-  signal g2_and1_out : std_logic;
-  signal g2_and2_out : std_logic;
-  signal g2_or_out   : std_logic;
 begin
 
   -- Gate 1: (g1a AND g1b) OR (g1c AND g1d) then invert
-  g1_and1: entity work.gate_and2(behavioral) port map (a => g1a, b => g1b, q => g1_and1_out);
-  g1_and2: entity work.gate_and2(behavioral) port map (a => g1c, b => g1d, q => g1_and2_out);
-  g1_or:   entity work.gate_or2(behavioral) port map (a => g1_and1_out, b => g1_and2_out, q => g1_or_out);
-  g1y <= not g1_or_out;
+  g1y <= not ((g1a and g1b) or (g1c and g1d));
 
   -- Gate 2: (g2a AND g2b) OR (g2c AND g2d) then invert
-  g2_and1: entity work.gate_and2(behavioral) port map (a => g2a, b => g2b, q => g2_and1_out);
-  g2_and2: entity work.gate_and2(behavioral) port map (a => g2c, b => g2d, q => g2_and2_out);
-  g2_or:   entity work.gate_or2(behavioral) port map (a => g2_and1_out, b => g2_and2_out, q => g2_or_out);
-  g2y <= not g2_or_out;
+  g2y <= not ((g2a and g2b) or (g2c and g2d));
 
 end;

@@ -32,12 +32,12 @@ begin
     wait for 5 ns;
 
     -- Test that all outputs are '1'
-    assert r2 = '1' report "r2 should be '1'" severity error;
-    assert r3 = '1' report "r3 should be '1'" severity error;
-    assert r4 = '1' report "r4 should be '1'" severity error;
-    assert r5 = '1' report "r5 should be '1'" severity error;
-    assert r6 = '1' report "r6 should be '1'" severity error;
-    assert r7 = '1' report "r7 should be '1'" severity error;
+    assert r2 = 'H' report "r2 should be 'H'" severity error;
+    assert r3 = 'H' report "r3 should be 'H'" severity error;
+    assert r4 = 'H' report "r4 should be 'H'" severity error;
+    assert r5 = 'H' report "r5 should be 'H'" severity error;
+    assert r6 = 'H' report "r6 should be 'H'" severity error;
+    assert r7 = 'H' report "r7 should be 'H'" severity error;
 
     wait;
   end process;

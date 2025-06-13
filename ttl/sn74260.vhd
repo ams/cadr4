@@ -24,7 +24,7 @@ end;
 architecture ttl of sn74260 is
 begin
 
-  gate1: entity work.gate_nor5(behavioral) port map (a => g1a, b => g1b, c => g1c, d => g1d, e => g1e, q => g1y_n);
-  gate2: entity work.gate_nor5(behavioral) port map (a => g2a, b => g2b, c => g2c, d => g2d, e => g2e, q => g2y_n);
+  g1y_n <= not (g1a or g1b or g1c or g1d or g1e);
+  g2y_n <= not (g2a or g2b or g2c or g2d or g2e);
 
 end architecture;

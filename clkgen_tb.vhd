@@ -18,25 +18,30 @@ architecture structural of clkgen_tb is
   constant vcc : std_logic := '1';
 
   -- olord2 inputs
-  signal aparok              : std_logic;
-  signal clk5                : std_logic;
-  signal dparok              : std_logic;
-  signal errstop             : std_logic;  
-  signal iparok              : std_logic;
-  signal mclk5               : std_logic;
-  signal memparok            : std_logic;
-  signal mmemparok           : std_logic;
-  signal pdlparok            : std_logic;
-  signal srun                : std_logic;
-  signal spcparok            : std_logic;
-  signal spy6                : std_logic;
-  signal spy7                : std_logic;
-  signal \stat.ovf\          : std_logic;
-  signal \-busint.lm.reset\  : std_logic;
-  signal \-halt\             : std_logic;
-  signal \-upperhighok\      : std_logic;
-  signal v0parok             : std_logic;
-  signal vmoparok            : std_logic;
+  signal \-busint.lm.reset\  : std_logic := '1';
+
+  -- from parity generators
+  signal aparok              : std_logic := '1';
+  signal mmemparok           : std_logic := '1';
+  signal pdlparok            : std_logic := '1';
+  signal dparok              : std_logic := '1';
+  signal iparok              : std_logic := '1';
+  signal spcparok            : std_logic := '1';
+  signal memparok            : std_logic := '1';
+  signal v0parok             : std_logic := '1';
+  signal vmoparok            : std_logic := '1';
+  
+  -- from mcpins
+  signal \-halt\             : std_logic := '1';
+
+  -- from spyX
+  signal spy6                : std_logic := '0';
+  signal spy7                : std_logic := '0'; 
+
+  -- from olord1
+  signal \stat.ovf\          : std_logic := '0';
+  signal errstop             : std_logic := '0';
+  signal srun                : std_logic := '0';  
 
   -- olord2 outputs
   signal \-ape\              : std_logic;
@@ -70,8 +75,8 @@ architecture structural of clkgen_tb is
   signal \prog.boot\         : std_logic;
   signal clk5a               : std_logic;
   signal err                 : std_logic;
-  signal hi1                 : std_logic;
-  signal hi2                 : std_logic;
+  signal hi1                 : std_logic := 'H';
+  signal hi2                 : std_logic := 'H';
   signal highok              : std_logic;
   signal \-halted\           : std_logic;
   signal ldmode              : std_logic;
@@ -80,10 +85,13 @@ architecture structural of clkgen_tb is
   signal statstop            : std_logic;
 
   -- clock 1 inputs
-  signal \-hang\          : std_logic;
-  signal \-ilong\         : std_logic;
-  signal sspeed0          : std_logic;
-  signal sspeed1          : std_logic;
+  -- from vctl1
+  signal \-hang\          : std_logic := '1';
+  -- from flags
+  signal \-ilong\         : std_logic := '1';
+  -- from olord1
+  signal sspeed0          : std_logic := '0';
+  signal sspeed1          : std_logic := '0';
 
   -- clock 1 outputs
   signal \-tpr0\          : std_logic;
@@ -132,10 +140,13 @@ architecture structural of clkgen_tb is
   signal tprend           : std_logic;
   
   -- clock 2 inputs
-  signal machrun          : std_logic;
-  signal \-machruna\      : std_logic;
+  -- from olord1
+  signal machrun          : std_logic := '0';  
+  signal \-machruna\      : std_logic := '1';
 
   -- clock 2 outputs
+  signal clk5             : std_logic;
+  signal mclk5            : std_logic;
   signal clk4             : std_logic;
   signal \-clk0\          : std_logic;
   signal mclk7            : std_logic;
@@ -161,19 +172,22 @@ architecture structural of clkgen_tb is
   signal mclk1            : std_logic;
   
   -- clockd inputs
-  signal hi3            : std_logic;
-  signal hi4            : std_logic;
-  signal hi5            : std_logic;
-  signal hi6            : std_logic;
-  signal hi7            : std_logic;
-  signal hi8            : std_logic;
-  signal hi9            : std_logic;
-  signal hi10           : std_logic;
-  signal hi11           : std_logic;
-  signal hi12           : std_logic;
-  signal lcry3          : std_logic;
-  signal \-srcpdlptr\   : std_logic;
-  signal \-srcpdlidx\   : std_logic;
+  -- pulled up in spc
+  signal hi3            : std_logic := 'H';
+  signal hi4            : std_logic := 'H';
+  signal hi5            : std_logic := 'H';
+  signal hi6            : std_logic := 'H';
+  signal hi7            : std_logic := 'H';
+  signal hi8            : std_logic := 'H';
+  signal hi9            : std_logic := 'H';
+  signal hi10           : std_logic := 'H';
+  signal hi11           : std_logic := 'H';
+  signal hi12           : std_logic := 'H';
+  -- from lcc
+  signal lcry3          : std_logic := '0';
+  -- from source
+  signal \-srcpdlptr\   : std_logic := '1';
+  signal \-srcpdlidx\   : std_logic := '1';
 
   -- clockd outputs
   signal \-clk1\        : std_logic;
@@ -219,6 +233,7 @@ architecture structural of clkgen_tb is
   signal tse4a          : std_logic;
   signal srcpdlptr      : std_logic;
   signal srcpdlidx      : std_logic;
+  signal \-upperhighok\ : std_logic;    
 
 begin
 
@@ -229,14 +244,7 @@ begin
 
   process
   begin
-    -- these come from mbcpin
-    \prog.bus.reset\ <= '0';
-    \-busint.lm.reset\ <= '1';
-    -- ldmode + spy7 sets prog.reset to 1 in mode register
-    \-ldmode\ <= '1';
-    spy7 <= '0';
     wait for 1000 ns;
-    wait;
     std.env.finish;
   end process;
 

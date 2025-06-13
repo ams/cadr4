@@ -27,9 +27,9 @@ end;
 architecture ttl of sn7486 is
 begin
 
-  gate1: entity work.gate_xor2(behavioral) port map (a => g1a, b => g1b, q => g1y);
-  gate2: entity work.gate_xor2(behavioral) port map (a => g2a, b => g2b, q => g2y);
-  gate3: entity work.gate_xor2(behavioral) port map (a => g3a, b => g3b, q => g3y);
-  gate4: entity work.gate_xor2(behavioral) port map (a => g4a, b => g4b, q => g4y);
+  g1y <= g1a xor g1b;
+  g2y <= g2a xor g2b;
+  g3y <= g3a xor g3b;
+  g4y <= g4a xor g4b;
 
 end;

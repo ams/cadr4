@@ -29,9 +29,9 @@ end;
 architecture ttl of sn7402 is
 begin
 
-  gate1: entity work.gate_nor2(behavioral) port map (a => g1a, b => g1b, q => g1q_n);
-  gate2: entity work.gate_nor2(behavioral) port map (a => g2a, b => g2b, q => g2q_n);
-  gate3: entity work.gate_nor2(behavioral) port map (a => g3a, b => g3b, q => g3q_n);
-  gate4: entity work.gate_nor2(behavioral) port map (a => g4a, b => g4b, q => g4q_n);
+  g1q_n <= g1a nor g1b;
+  g2q_n <= g2a nor g2b;
+  g3q_n <= g3a nor g3b;
+  g4q_n <= g4a nor g4b;
 
 end;

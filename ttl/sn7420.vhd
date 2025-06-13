@@ -25,7 +25,7 @@ end;
 architecture ttl of sn7420 is
 begin
 
-  gate1: entity work.gate_nand4(behavioral) port map (a => g1a, b => g1b, c => g1c, d => g1d, q => g1y_n);
-  gate2: entity work.gate_nand4(behavioral) port map (a => g2a, b => g2b, c => g2c, d => g2d, q => g2y_n);
+  g1y_n <= not (g1a and g1b and g1c and g1d);
+  g2y_n <= not (g2a and g2b and g2c and g2d);
 
 end;

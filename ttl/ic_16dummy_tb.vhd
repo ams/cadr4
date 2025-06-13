@@ -34,6 +34,7 @@ begin
     assert hi2 = '1' report "hi2 should be '1'";
     assert \-boot1\ = '1' report "-boot1 should be '0'";
     assert \-boot2\ = '1' report "-boot2 should be '0'";
+    wait for 20 ns;
     assert p12 = '1' report "-power_reset should be '0'";
 
     wait;

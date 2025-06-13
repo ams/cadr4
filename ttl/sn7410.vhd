@@ -27,8 +27,8 @@ end;
 architecture ttl of sn7410 is
 begin
 
-  gate1: entity work.gate_nand3(behavioral) port map (a => g1a, b => g1b, c => g1c, q => g1y_n);
-  gate2: entity work.gate_nand3(behavioral) port map (a => g2a, b => g2b, c => g2c, q => g2y_n);
-  gate3: entity work.gate_nand3(behavioral) port map (a => g3a, b => g3b, c => g3c, q => g3y_n);
+  g1y_n <= not (g1a and g1b and g1c);
+  g2y_n <= not (g2a and g2b and g2c);
+  g3y_n <= not (g3a and g3b and g3c);
 
 end;

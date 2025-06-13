@@ -28,9 +28,9 @@ end;
 architecture ttl of sn7408 is
 begin
 
-  gate1: entity work.gate_and2(behavioral) port map (a => g1a, b => g1b, q => g1q);
-  gate2: entity work.gate_and2(behavioral) port map (a => g2a, b => g2b, q => g2q);
-  gate3: entity work.gate_and2(behavioral) port map (a => g3a, b => g3b, q => g3q);
-  gate4: entity work.gate_and2(behavioral) port map (a => g4a, b => g4b, q => g4q);
+  g1q <= g1a and g1b;
+  g2q <= g2a and g2b;
+  g3q <= g3a and g3b;
+  g4q <= g4a and g4b;
 
 end;

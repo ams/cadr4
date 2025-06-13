@@ -28,9 +28,9 @@ end;
 architecture ttl of sn7437 is
 begin
 
-  gate1: entity work.gate_nand2(behavioral) port map (a => g1a, b => g1b, q => g1y);
-  gate2: entity work.gate_nand2(behavioral) port map (a => g2a, b => g2b, q => g2y);
-  gate3: entity work.gate_nand2(behavioral) port map (a => g3a, b => g3b, q => g3y);
-  gate4: entity work.gate_nand2(behavioral) port map (a => g4a, b => g4b, q => g4y);
+  g1y <= g1a nand g1b;
+  g2y <= g2a nand g2b;
+  g3y <= g3a nand g3b;
+  g4y <= g4a nand g4b;
 
 end;
