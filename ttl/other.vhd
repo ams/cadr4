@@ -298,24 +298,24 @@ package other is
 
   component res20 is
     port (
-      r2  : out std_logic;
-      r3  : out std_logic;
-      r4  : out std_logic;
-      r5  : out std_logic;
-      r6  : out std_logic;
-      r7  : out std_logic;
-      r8  : out std_logic;
-      r9  : out std_logic;
-      r10 : out std_logic;
-      r11 : out std_logic;
-      r12 : out std_logic;
-      r13 : out std_logic;
-      r14 : out std_logic;
-      r15 : out std_logic;
-      r16 : out std_logic;
-      r17 : out std_logic;
-      r18 : out std_logic;
-      r19 : out std_logic
+      r2  : inout std_logic;
+      r3  : inout std_logic;
+      r4  : inout std_logic;
+      r5  : inout std_logic;
+      r6  : inout std_logic;
+      r7  : inout std_logic;
+      r8  : inout std_logic;
+      r9  : inout std_logic;
+      r10 : inout std_logic;
+      r11 : inout std_logic;
+      r12 : inout std_logic;
+      r13 : inout std_logic;
+      r14 : inout std_logic;
+      r15 : inout std_logic;
+      r16 : inout std_logic;
+      r17 : inout std_logic;
+      r18 : inout std_logic;
+      r19 : inout std_logic
       );
   end component;
 
