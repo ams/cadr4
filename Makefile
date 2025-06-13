@@ -65,14 +65,14 @@ all: $(EXES)
 ttl-check: $(TTL_EXES)
 	for TB_EXE in $^; do TB=$$TB_EXE make run-tb || exit; done
 
-run-%: build/%_tb
+run-%: $(BUILDDIR)/%_tb
 	TB=$< make run-tb
 
 # --workdir does not work for this purpose with ghdl run
 run-tb: $(TB)
 	$< $(GHDLSIMOPTIONS)
 
-wf-%: build/%_tb
+wf-%: $(BUILDDIR)/%_tb
 	TB=$< make wf-tb
 
 # smart handling of wave opt file
@@ -106,9 +106,13 @@ ifeq ($(WAVEOPTFILERECREATE),1)
 	$(RM) $(WAVEOPTFILE)
 endif
 	$< $(GHDLSIMOPTIONS) $(GHDLWAVEOPTIONS) --disp-time
-ifneq (,$(shell which surfer))
+
+surfer-%: $(BUILDDIR)/%_tb
+	TB=$< make surfer-tb
+
+surfer-tb: $(TB)
+	TB=$(TB) make wf-tb
 	surfer $(WAVEFILE)
-endif
 
 clean:
 	$(RM) -rf $(BUILDDIR)

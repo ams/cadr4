@@ -41,7 +41,7 @@ To run a testbench (`build/X_tb`): `make run-X`
 
 To run a testbench (`build/X_tb`) and create the waveforms: `make wf-X`
 
-If Surfer is installed, after the waveforms are created, surfer will be automatically run with the created waveforms file.
+To run a testbench (`build/X_tb`), create the waveforms and run surfer with the waveform file: `make surfer-X`
 
 #### waveform.opt file
 
