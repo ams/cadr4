@@ -15,12 +15,14 @@ end;
 
 architecture structural of clkgen_tb is
 
+  constant gnd : std_logic := '0';
+  constant vcc : std_logic := '1';
+
   -- clock 1 inputs
 
   signal \-clock reset b\ : std_logic;
   signal \-hang\          : std_logic;
   signal \-ilong\         : std_logic;
-  signal gnd              : std_logic;
   signal sspeed0          : std_logic;
   signal sspeed1          : std_logic;
 
@@ -181,7 +183,6 @@ begin
   -- fixed inputs, minimum speed=00, no long instruction, no hang
 
   -- clock1
-  gnd       <= '0';
   sspeed1   <= '0';
   sspeed0   <= '1';
   \-ilong\  <= not '0';

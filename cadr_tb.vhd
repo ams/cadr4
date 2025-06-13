@@ -13,6 +13,10 @@ entity cadr_tb is
 end;
 
 architecture structural of cadr_tb is
+
+  constant gnd : std_logic := '0';
+  constant vcc : std_logic := '1';
+
   signal \a=m\ : std_logic;
   signal \-a31\ : std_logic;
   signal \-aadr0a\ : std_logic;
@@ -929,7 +933,6 @@ architecture structural of cadr_tb is
   signal eadr3 : std_logic;
   signal err : std_logic;
   signal errstop : std_logic;
-  signal gnd : std_logic;  
   signal hi1 : std_logic;
   signal hi10 : std_logic;
   signal hi11 : std_logic;
@@ -2143,7 +2146,6 @@ architecture structural of cadr_tb is
   signal tse4a : std_logic;
   signal tse4b : std_logic;
   signal v0parok : std_logic;
-  signal vcc : std_logic;
   signal vm0pari : std_logic;
   signal vm1mpar : std_logic;
   signal vm1pari : std_logic;
@@ -2387,9 +2389,6 @@ begin
 
   process
   begin
-    -- these are basically powering on the CADR system
-    gnd <= '0';
-    vcc <= '1';
     -- this comes from clockd (checks hi1-hi12)
     \-upperhighok\ <= '0';
     -- these come from mbcpin

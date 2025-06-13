@@ -13,12 +13,15 @@ end;
 
 architecture structural of por_tb is
 
+  constant gnd : std_logic := '0';
+  constant vcc : std_logic := '1';
+
   -- Input signals
   signal aparok              : std_logic;
   signal clk5                : std_logic;
   signal dparok              : std_logic;
   signal errstop             : std_logic;
-  signal gnd                 : std_logic;
+  
   signal iparok              : std_logic;
   signal mclk5               : std_logic;
   signal memparok            : std_logic;
@@ -33,7 +36,6 @@ architecture structural of por_tb is
   signal \-halt\             : std_logic;
   signal \-upperhighok\      : std_logic;
   signal v0parok             : std_logic;
-  signal vcc                 : std_logic;
   signal vmoparok            : std_logic;
 
   -- Output signals
@@ -83,9 +85,6 @@ begin
 
   process
   begin
-    -- these are basically powering on the CADR system
-    gnd <= '0';
-    vcc <= '1';
     -- this comes from clockd (checks hi1-hi12)
     \-upperhighok\ <= '0';
     -- these come from mbcpin

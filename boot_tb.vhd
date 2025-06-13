@@ -17,11 +17,13 @@ end;
 
 architecture structural of boot_tb is
 
+  constant gnd : std_logic := '0';
+  constant vcc : std_logic := '1';
+
   -- clock 1 inputs
 
   signal \-hang\          : std_logic := '1';
   signal \-ilong\         : std_logic := '1';
-  signal gnd              : std_logic := '0';
   signal sspeed0          : std_logic := '0';
   signal sspeed1          : std_logic := '0';
 
@@ -242,7 +244,6 @@ architecture structural of boot_tb is
   signal spy6                : std_logic := '0';
   signal spy7                : std_logic := '0';
   signal v0parok             : std_logic := '0';
-  signal vcc                 : std_logic := '0';
   signal vmoparok            : std_logic := '0';
 
   -- cadr_olord2 outputs / reset and error signals (clock reset, err, highok etc.)
@@ -290,7 +291,6 @@ begin
   -- other inputs to the 5 components above are outputs also from the 5 components above
 
   -- clock1
-  gnd       <= '0';
   \-ilong\  <= not '0';
   \-hang\   <= not '0';
 
@@ -338,7 +338,6 @@ begin
   spy6                <= '0';
   spy7                <= '0';
   v0parok             <= '1';
-  vcc                 <= '1';
   vmoparok            <= '1';
 
   process
