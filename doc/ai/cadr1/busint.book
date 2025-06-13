@@ -1,0 +1,58 @@
+;;; -*- Mode:LISP; -*-
+
+;;; Prints and Documentation for the Lisp Machine Bus Interface board
+
+(SETQ BUSINT-PLT-FILES-LIST '("AI:CADR1;DPDATA"
+			      "DPADR"
+			      "BUSPAR"
+			      "BUSSEL"
+			      "CAPS"
+			      "CLM"
+			      "CTP"
+			      "CUBUS"
+			      "CXBUS"
+			      "DATCTL"
+			      "DBGIN"
+			      "DBGOUT"
+			      "DIAG"
+			      "LMADR"
+			      "LMDATA"
+			      "RBUF"
+			      "REQERR"
+			      "REQLM"
+			      "REQTIM"
+			      "REQU"
+			      "REQUB"
+			      "RQSYNC"
+			      "UBA"
+			      "UBCYC"
+			      "UBD"
+			      "UBINTC"
+			      "UBMAP"
+			      "UBMAST"
+			      "UBXA"
+			      "UPRIOR"
+			      "WBUF"
+			      "XA"
+			      "XAPAR"
+			      "XBD"
+			      "XD"))
+
+(SETQ BUSINT-TXT-FILES-LIST '("AI:CADR1;BUSINT PRT"
+			      "AI:CADR1;BUSINT STF"
+			      "AI:CADR1;BUSINT UML"
+			      "AI:CADR1;BUSINT WLR"
+			      "AI:CADR1;BUSINT WLS"
+			      "AI:CADR1;UPRIOR PROM"
+			      "AI:CADR1;REQTIM PROM"
+			      "AI:CADR1;XBUS TERM"
+			      "AI:CADR1;XSPEC >"))
+
+;;; Number of copies
+(SETQ DPLT:COPIES 2)
+
+(APPLY #'DPLT-PRINT-FILE BUSINT-PLT-FILES-LIST)
+
+(APPLY #'PRINT-TXT-FILE BUSINT-TXT-FILES-LIST)
+
+
