@@ -1933,10 +1933,18 @@ format_bodies(void)
 			continue;
 
 		static char b[512];
-		sprintf(b, "dip_%s", bodies[i].name_of_body);
+		sprintf(b, "dip_%s", strlwr(bodies[i].name_of_body));
+		// this replaces a few chars
+		// for example dip_sip220/330-8 becomes dip_sip220_330_8
+		char* _b = b;
+		while (*_b != '\0') {
+			if (*_b == '/') *_b = '_';
+			if (*_b == '-') *_b = '_';
+			_b++;
+		}
 
 		printf("%s_%s : %s port map (",
-		       strlwr(page_name), strlwr(bodies[i].refdes), format_name(b));
+		       strlwr(page_name), strlwr(bodies[i].refdes), b);
         int printed_once = 0;
 		for (int j = 1; j < MAX_BODY_NAMED_PINS; j++) {
 			int pi = bodies[i].named_pin_index[j];
