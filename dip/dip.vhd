@@ -1023,22 +1023,22 @@ package dip is
   end component;
 
   component dip_sip220_330_8 is port (  -- sip220_330_8 [sip220/330-8]
-    p2 : in std_logic;                  -- r2
-    p3 : in std_logic;                  -- r3
-    p4 : in std_logic;                  -- r4
-    p5 : in std_logic;                  -- r5
-    p6 : in std_logic;                  -- r6
-    p7 : in std_logic                   -- r7
+    p2 : inout std_logic;                  -- r2
+    p3 : inout std_logic;                  -- r3
+    p4 : inout std_logic;                  -- r4
+    p5 : inout std_logic;                  -- r5
+    p6 : inout std_logic;                  -- r6
+    p7 : inout std_logic                   -- r7
     );
   end component;
 
   component dip_sip330_470_8 is port (  -- sip330_470_8 [sip330/470-8]
-    p2 : in std_logic;                  -- r2
-    p3 : in std_logic;                  -- r3
-    p4 : in std_logic;                  -- r4
-    p5 : in std_logic;                  -- r5
-    p6 : in std_logic;                  -- r6
-    p7 : in std_logic                   -- r7
+    p2 : inout std_logic;                  -- r2
+    p3 : inout std_logic;                  -- r3
+    p4 : inout std_logic;                  -- r4
+    p5 : inout std_logic;                  -- r5
+    p6 : inout std_logic;                  -- r6
+    p7 : inout std_logic                   -- r7
     );
   end component;
 

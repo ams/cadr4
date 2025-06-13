@@ -149,13 +149,21 @@ suds: $(BUILDDIR)/soap
 	for FILE in cadr/*_suds.vhd; do sed $(SEDOPTIONS) 's/dip_74s32w/dip_74s32/g' $${FILE} || exit; done
 	for FILE in cadr/*_suds.vhd; do sed $(SEDOPTIONS) 's/dip_74s133o/dip_74s133/g' $${FILE} || exit; done
 	for FILE in cadr/*_suds.vhd; do sed $(SEDOPTIONS) 's/dip_74ls240/dip_74s240/g' $${FILE} || exit; done
+# bcterm components are strange, different pins are connected to same designator, multiplying components
+	sed $(SEDOPTIONS) 's/bcterm_1b15 : dip_sip220_330_8 port map (p2 => mem0/bcterm_1b15_1 : dip_sip220_330_8 port map (p2 => mem0/' cadr/cadr_bcterm_suds.vhd
+	sed $(SEDOPTIONS) 's/bcterm_1b15 : dip_sip220_330_8 port map (p2 => mem6/bcterm_1b15_2 : dip_sip220_330_8 port map (p2 => mem6/' cadr/cadr_bcterm_suds.vhd
+	sed $(SEDOPTIONS) 's/bcterm_1b20 : dip_sip220_330_8 port map (p2 => mem12/bcterm_1b20_1 : dip_sip220_330_8 port map (p2 => mem12/' cadr/cadr_bcterm_suds.vhd
+	sed $(SEDOPTIONS) 's/bcterm_1b20 : dip_sip220_330_8 port map (p2 => mem18/bcterm_1b20_2 : dip_sip220_330_8 port map (p2 => mem18/' cadr/cadr_bcterm_suds.vhd
+	sed $(SEDOPTIONS) 's/bcterm_1b25 : dip_sip220_330_8 port map (p2 => mem24/bcterm_1b25_1 : dip_sip220_330_8 port map (p2 => mem24/' cadr/cadr_bcterm_suds.vhd
+	sed $(SEDOPTIONS) 's/bcterm_1b25 : dip_sip220_330_8 port map (p2 => mem30/bcterm_1b25_2 : dip_sip220_330_8 port map (p2 => mem30/' cadr/cadr_bcterm_suds.vhd
 # modify olord2_1a19 port map
 	sed $(SEDOPTIONS) 's/olord2_1a19.*/olord2_1a19: dip_16dummy port map (p1 => vcc, p12 => \\@1a20,p1\\, p13 => \\-boot2\\, p14 => \\-boot1\\, p15 => hi2, p16 => hi1);/g' cadr/cadr_olord2_suds.vhd
 # modify one instance of olord2_1a20 port map to connect its p1 to olord2_1a19 p12
 	sed $(SEDOPTIONS) 's/olord2_1a20 : dip_74ls14 port map (p2 => \\@1a20,p9\\);/olord2_1a20 : dip_74ls14 port map (p1 => \\@1a19,p12\\, p2 => \\@1a20,p9\\);/g' cadr/cadr_olord2_suds.vhd
 # fix _suds.vhd files	
 	for FILE in cadr/*_suds.vhd; do python3 cadr/fix-suds.py -v $${FILE} || exit; done
-# modify clock1 to wire -tpw60 to -tpdone, this is done after fix-suds.py because it may modify or get confused with these additions
+# modify clock1 to alias -tpdone to -tpw60, this is a simple wire in the schematics
+# this is done after fix-suds.py because it may modify it or get confused with these additions
 ifeq ($(OS),Darwin)
 	sed $(SEDOPTIONS) 's/^architecture.*/&\'$$'\nalias \\\\-tpdone\\\\ : std_logic is \\\\-tpw60\\\\;/' cadr/cadr_clock1_suds.vhd
 else

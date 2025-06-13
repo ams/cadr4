@@ -4,12 +4,12 @@ use ieee.std_logic_1164.all;
 
 entity dip_sip220_330_8 is
   port (
-    p2 : in std_logic;  -- r2
-    p3 : in std_logic;  -- r3
-    p4 : in std_logic;  -- r4
-    p5 : in std_logic;  -- r5
-    p6 : in std_logic;  -- r6
-    p7 : in std_logic   -- r7
+    p2 : inout std_logic;  -- r2
+    p3 : inout std_logic;  -- r3
+    p4 : inout std_logic;  -- r4
+    p5 : inout std_logic;  -- r5
+    p6 : inout std_logic;  -- r6
+    p7 : inout std_logic   -- r7
     );
 end entity;
 
