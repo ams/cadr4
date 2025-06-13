@@ -149,7 +149,7 @@ suds: $(BUILDDIR)/soap
 	for FILE in cadr/*_suds.vhd; do sed $(SEDOPTIONS) 's/dip_74s32w/dip_74s32/g' $${FILE} || exit; done
 	for FILE in cadr/*_suds.vhd; do sed $(SEDOPTIONS) 's/dip_74s133o/dip_74s133/g' $${FILE} || exit; done
 	for FILE in cadr/*_suds.vhd; do sed $(SEDOPTIONS) 's/dip_74ls240/dip_74s240/g' $${FILE} || exit; done
-# bcterm components are strange, different pins are connected to same designator, multiplying components
+# modify bcterm components, soap emits dip names without @, so there are mistakes, 1b15 is used twice etc.
 	sed $(SEDOPTIONS) 's/bcterm_1b15 : dip_sip220_330_8 port map (p2 => mem0/bcterm_1b15_1 : dip_sip220_330_8 port map (p2 => mem0/' cadr/cadr_bcterm_suds.vhd
 	sed $(SEDOPTIONS) 's/bcterm_1b15 : dip_sip220_330_8 port map (p2 => mem6/bcterm_1b15_2 : dip_sip220_330_8 port map (p2 => mem6/' cadr/cadr_bcterm_suds.vhd
 	sed $(SEDOPTIONS) 's/bcterm_1b20 : dip_sip220_330_8 port map (p2 => mem12/bcterm_1b20_1 : dip_sip220_330_8 port map (p2 => mem12/' cadr/cadr_bcterm_suds.vhd
