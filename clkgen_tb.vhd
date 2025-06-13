@@ -37,6 +37,7 @@ architecture structural of clkgen_tb is
   -- from spyX
   signal spy6                : std_logic := '0';
   signal spy7                : std_logic := '0'; 
+  signal \-ldmode\           : std_logic := '1';
 
   -- from olord1
   signal \stat.ovf\          : std_logic := '0';
@@ -56,7 +57,6 @@ architecture structural of clkgen_tb is
   signal \-errhalt\          : std_logic;
   signal \-higherr\          : std_logic;
   signal \-ipe\              : std_logic;
-  signal \-ldmode\           : std_logic;
   signal \-lowerhighok\      : std_logic;
   signal \-mclk5\            : std_logic;
   signal \-mempe\            : std_logic;
@@ -75,6 +75,7 @@ architecture structural of clkgen_tb is
   signal \prog.boot\         : std_logic;
   signal clk5a               : std_logic;
   signal err                 : std_logic;
+  -- these are H because they are pulled up in spc
   signal hi1                 : std_logic := 'H';
   signal hi2                 : std_logic := 'H';
   signal highok              : std_logic;
@@ -141,8 +142,8 @@ architecture structural of clkgen_tb is
   
   -- clock 2 inputs
   -- from olord1
-  signal machrun          : std_logic := '0';  
-  signal \-machruna\      : std_logic := '1';
+  signal machrun          : std_logic := '1';  
+  signal \-machruna\      : std_logic := '0';
 
   -- clock 2 outputs
   signal clk5             : std_logic;
@@ -244,7 +245,7 @@ begin
 
   process
   begin
-    wait for 1000 ns;
+    wait for 2000 ns;
     std.env.finish;
   end process;
 
