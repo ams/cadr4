@@ -156,6 +156,9 @@ suds: $(BUILDDIR)/soap
 	sed $(SEDOPTIONS) 's/bcterm_1b20 : dip_sip220_330_8 port map (p2 => mem18/bcterm_1b20_2 : dip_sip220_330_8 port map (p2 => mem18/' cadr/cadr_bcterm_suds.vhd
 	sed $(SEDOPTIONS) 's/bcterm_1b25 : dip_sip220_330_8 port map (p2 => mem24/bcterm_1b25_1 : dip_sip220_330_8 port map (p2 => mem24/' cadr/cadr_bcterm_suds.vhd
 	sed $(SEDOPTIONS) 's/bcterm_1b25 : dip_sip220_330_8 port map (p2 => mem30/bcterm_1b25_2 : dip_sip220_330_8 port map (p2 => mem30/' cadr/cadr_bcterm_suds.vhd
+# modify clock2_1c10, change \machruna l\ to \-machruna\
+# this seems to be a mistake in drw, in wlr the 1c10 is connected to -machruna
+	sed $(SEDOPTIONS) 's/\\machruna l\\/\\-machruna\\/g' cadr/cadr_clock2_suds.vhd	
 # modify olord2_1a19 port map
 	sed $(SEDOPTIONS) 's/olord2_1a19.*/olord2_1a19: dip_16dummy port map (p1 => vcc, p12 => \\@1a20,p1\\, p13 => \\-boot2\\, p14 => \\-boot1\\, p15 => hi2, p16 => hi1);/g' cadr/cadr_olord2_suds.vhd
 # modify one instance of olord2_1a20 port map to connect its p1 to olord2_1a19 p12

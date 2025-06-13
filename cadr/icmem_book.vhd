@@ -82,7 +82,6 @@ package icmem_book is
       \-tpr0\          : in  std_logic;
       \-tpr5\          : in  std_logic;
       \-tpw30\         : in  std_logic;
-      \machruna l\     : in  std_logic;
       tpwpiram         : out std_logic;
       \-wp5\           : out std_logic;
       clk5             : out std_logic;
@@ -97,6 +96,7 @@ package icmem_book is
       clk3             : out std_logic;
       mclk1            : out std_logic;
       machrun          : in  std_logic;
+      \-machruna\      : in  std_logic;
       hi1              : in  std_logic);
   end component;
 

@@ -3,8 +3,6 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-use std.env.finish;
-
 library work;
 use work.icmem_book.cadr_olord2;
 
@@ -95,7 +93,7 @@ begin
     spy7 <= '0';
     wait for 100 ns;
     wait;
-    finish;
+    std.env.finish;
   end process;
 
 end architecture;
