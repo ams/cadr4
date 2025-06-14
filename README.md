@@ -67,9 +67,9 @@ Each folder has a README.md containing more information.
 
 - work.cadr: cadr components
 - work.dip: dip components
-- work.ttl.sn74: ttl sn74 components
-- work.ttl.other: other ttl components (am..., dm..., td... etc.)
-- work.ttl.misc: misc functions and procedures
+- work.sn74: ttl sn74 components
+- work.other: other ttl components (am..., dm..., td... etc.)
+- work.misc: misc functions and procedures
 
 ## Documentation
 
