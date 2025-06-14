@@ -32,7 +32,7 @@ architecture testbench of dm74472_tb is
   signal a1   : std_logic := '0';
   signal a0   : std_logic := '0';
 
-  constant expected : std_logic_vector(512 * 8 - 1 downto 0) := load_rom_file("rom/prom0_1b17.hex", 512);
+  constant expected : std_logic_vector := load_rom_file("rom/prom0_1b17.hex");
 
 begin
 

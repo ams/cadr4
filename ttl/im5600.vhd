@@ -28,7 +28,7 @@ entity im5600 is
 end im5600;
 
 architecture ttl of im5600 is
-  constant rom  : std_logic_vector(32 * 8 - 1 downto 0) := load_rom_file(fn, 32);
+  constant rom  : std_logic_vector := load_rom_file(fn);
   signal addr : unsigned(4 downto 0) := (others => '0');
   
 

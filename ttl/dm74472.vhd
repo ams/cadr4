@@ -32,7 +32,7 @@ entity dm74472 is
 end;
 
 architecture ttl of dm74472 is
-  constant rom  : std_logic_vector(512 * 8 - 1 downto 0) := load_rom_file(fn, 512);
+  constant rom  : std_logic_vector := load_rom_file(fn);
   signal addr : unsigned(8 downto 0) := (others => '0');
   
 

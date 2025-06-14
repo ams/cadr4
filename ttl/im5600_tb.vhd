@@ -28,7 +28,7 @@ architecture testbench of im5600_tb is
   signal a0   : std_logic := '0';
   signal ce_n : std_logic := '0';
 
-  constant expected : std_logic_vector(32 * 8 - 1 downto 0) := load_rom_file("rom/dspctl_2f22.hex", 32);
+  constant expected : std_logic_vector := load_rom_file("rom/dspctl_2f22.hex");
 
 begin
 

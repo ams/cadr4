@@ -11,7 +11,7 @@ package misc is
   function pulldown(s : std_logic) return std_logic;
   
   -- Generic ROM loading function
-  impure function load_rom_file(filename : string; rom_size : natural) return std_logic_vector;
+  impure function load_rom_file(filename : string) return std_logic_vector;
 
 end;
 
@@ -53,26 +53,29 @@ package body misc is
     return pull;
   end;
 
-  -- Generic ROM loading function that returns a flat std_logic_vector
-  -- The caller can reshape this into their specific array type
-  impure function load_rom_file(filename : string; rom_size : natural) return std_logic_vector is
+  -- Generic ROM loading function that automatically determines file size
+  impure function load_rom_file(filename : string) return std_logic_vector is
     file f : text;
     variable l : line;
-    variable result : std_logic_vector(rom_size * 8 - 1 downto 0) := (others => '0');
     variable d : std_logic_vector(7 downto 0);
     variable i : integer := 0;
+    variable temp_data : std_logic_vector(16384 * 8 - 1 downto 0) := (others => '0'); -- 16KB max
   begin
     if filename /= "" then
       file_open(f, filename, read_mode);
-      while not endfile(f) and i < rom_size loop
+      -- First pass: count the number of entries
+      while not endfile(f) loop
         readline(f, l);
-        hread(l, d);
-        result(i * 8 + 7 downto i * 8) := d;
-        i := i + 1;
+        if l'length > 0 then  -- Skip empty lines
+          hread(l, d);
+          temp_data(i * 8 + 7 downto i * 8) := d;
+          i := i + 1;
+        end if;
       end loop;
       file_close(f);
     end if;
-    return result;
+    -- Return only the used portion
+    return temp_data(i * 8 - 1 downto 0);
   end function;
 
 end;
