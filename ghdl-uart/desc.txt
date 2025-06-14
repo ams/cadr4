@@ -1,0 +1,74 @@
+When working with simulated soft CPUs to be implemented in FPGA,
+I often needed a possibility to connect terminal emulator
+(e.g. Minicom) or my own program to serial port of the simulated
+IP core.
+
+Finally I've found a solution, which seems to be good enough
+to share it with others.
+
+I use the pseudoterminal (ptmx) found in Linux to establish
+communication between GHDL simulator and my terminal program.
+However GHDL does not offer functions needed to control
+pseudoterminals, therefore I've prepared a small C library
+(ghdl_pty.c) providing necessary functions via VPI.
+Additionally I needed to provide nonblocking reading from
+the pseudoterminal, to avoid stopping of simulation when no
+data is available this functionality is also implemented
+in ghdl_pty.c, in function ghdl_pty_read.
+
+From the VHDL side, my pseudo UART is visible as:
+
+ component ghdl_uart
+ port (
+ data_out : out std_logic_vector(7 downto 0);
+ data_in : in std_logic_vector(7 downto 0);
+ dav : out std_logic; -- received data available
+ ready : out std_logic; -- there is free space in transmit buffer
+ empty : out std_logic; -- the transmit buffer is empty
+ rd : in std_logic; -- asynchronous read strobe
+ wr : in std_logic -- asynchronous write strobe
+ );
+ end component;
+
+When new data arrives, "dav" goes high. To read the data, you should
+set "rd" to '1' and the data will be visible on "data_out".
+If no more data are in the input queue, "dav" goes low.
+
+If you want to write data, you put them on "data_in", and rise "wr".
+The data are transmitted to the output queue, and later transmitted
+to the pseudoterminal.
+
+The design with input and output queues may seem to be too complex,
+but allows you to easily modify ghdl_uart.vhd adding clock and
+providing synchronous operation.
+However even the current implementation may work with synchronous
+block, as shown in the provided testbench (ghdl_uart_tb.vhd).
+
+To check how does it work, you should unpack the archive,
+and simply issue the "make" command.
+After successful compilation, you will see information about
+assigned pseudoterminal (/dev/pts/11 in the case shown below):
+
+$ make
+gcc -c ghdl_pty.c
+ghdl -a --std=02 --ieee=standard ghdl_uart_pkg.vhd ghdl_uart.vhd ghdl_uart_tb.vhd
+ghdl -e -Wl,ghdl_pty.o --std=02 --ieee=standard ghdl_uart_tb
+./ghdl_uart_tb
+Psudoterminal: /dev/pts/11
+
+So you should start minicom in another console:
+$ minicom -p /dev/pts/11
+
+and you'll be able to communicate with the simulated IP core.
+The core simulated in testbench simple echoes received characters with
+toggled 5th bit.
+
+When you disconnect your program from pseudoterminal, the simulation will stop.
+However you may change this behaviour modifying ghdl_pty.c
+
+I hope, that the emulated UART will be useful for you, therefore I've
+published it as PUBLIC DOMAIN.
+
+Wojciech M. Zabolotny
+wzab<at>ise.pw.edu.pl
+
