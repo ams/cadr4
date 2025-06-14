@@ -112,13 +112,6 @@ begin
          -- Report loaded data info
      report "Loaded " & integer'image(rom_bytes) & " bytes (" & integer'image(rom_words) & " words) from rom/promh.mcr.9.hex";
     
-    -- Test PROM system against reference data
-    report "Testing CADR PROM system against reference data...";
-    
-    -- Test full 1024-address space (addresses 0-1023)
-    -- Bit 9 (10th bit) naturally selects PROM: 0-511 -> PROM0, 512-1023 -> PROM1
-    report "Testing full PROM address space (0-1023)...";
-    
     for pc_val in 0 to 1023 loop  -- Iterate through pc values (reference data addresses)
       -- Set full 10-bit pc value (pc9 is bit 9, pc0-pc8 are bits 0-8)
       addr_vec := std_logic_vector(to_unsigned(pc_val, 10));

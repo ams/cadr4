@@ -179,5 +179,8 @@ endif
 # add rom generic map entries to dspctl, mskg4, prom0 and prom1
 	sed $(SEDOPTIONS) -E 's/^([[:space:]]*([^[:space:]]+)[[:space:]]*:[[:space:]]*dip_5610)[[:space:]]+port map/\1 generic map (fn => "rom\/\2.hex") port map/' cadr/cadr_dspctl_suds.vhd
 	sed $(SEDOPTIONS) -E 's/^([[:space:]]*([^[:space:]]+)[[:space:]]*:[[:space:]]*dip_5600)[[:space:]]+port map/\1 generic map (fn => "rom\/\2.hex") port map/' cadr/cadr_mskg4_suds.vhd
-	sed $(SEDOPTIONS) -E 's/^([[:space:]]*([^[:space:]]+)[[:space:]]*:[[:space:]]*dip_74s472)[[:space:]]+port map/\1 generic map (fn => "rom\/\2.hex") port map/' cadr/cadr_prom0_suds.vhd
-	sed $(SEDOPTIONS) -E 's/^([[:space:]]*([^[:space:]]+)[[:space:]]*:[[:space:]]*dip_74s472)[[:space:]]+port map/\1 generic map (fn => "rom\/\2.hex") port map/' cadr/cadr_prom1_suds.vhd
+	sed $(SEDOPTIONS) -E 's/^([[:space:]]*prom0_([^[:space:]]+)[[:space:]]*:[[:space:]]*dip_74s472)[[:space:]]+port map/\1 generic map (fn => "rom\/promh9.\2.hex") port map/' cadr/cadr_prom0_suds.vhd
+# all prom1 points to prom.00.hex	
+	sed $(SEDOPTIONS) -E 's/^([[:space:]]*[^[:space:]]+[[:space:]]*:[[:space:]]*dip_74s472)[[:space:]]+port map/\1 generic map (fn => "rom\/prom.00.hex") port map/' cadr/cadr_prom1_suds.vhd
+# but prom1_1b20 (providing the last byte) points to prom.80.hex (because it contains the parity bit)
+	sed $(SEDOPTIONS) -E 's/^([[:space:]]*prom1_1b20[[:space:]]*:[[:space:]]*dip_74s472)[[:space:]]+generic map \(fn => "rom\/prom\.00\.hex"\)/\1 generic map (fn => "rom\/prom.80.hex")/' cadr/cadr_prom1_suds.vhd

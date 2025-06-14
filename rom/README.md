@@ -1,18 +1,8 @@
-PROM0_1B19	// prom 40-48, ce0
-PROM0_1B17	// prom 32-39, ce0
-PROM0_1C20	// prom 24-31, ce0
-PROM0_1D16	// prom 16-23, ce0
-PROM0_1E19	// prom 8-15, ce0
-PROM0_1E17	// prom 0-7, ce0
 
-MSKG4_2D12	// r, 24-31
-MSKG4_2E12	// r, 16-23
-MSKG4_2D17	// r, 8-15
-MSKG4_2E17	// r, 0-7
+# DSPCTL (dispatch)
 
-MSKG4_2D11	// l, 24-31
-MSKG4_2E11	// l, 16-23
-MSKG4_2D16	// l, 8-15
-MSKG4_2E16	// l, 0-7
+# MSKG4 (mask generation)
 
-DSPCTL_2F22	// dispatch prom
+# PROM
+
+promh9.* files (see doc/ai/lispm1) come from the 24 Feb 1981 tape. These are converted to their hex format with `convert_prom_to_hex.py`. These match to promh.mcr.9 i-mem contents. These are for PROM0 only. PROM1 does not contain any data and loaded with prom.zeroes.hex file containing only zeroes with correct parity.
