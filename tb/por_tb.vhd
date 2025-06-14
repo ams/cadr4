@@ -92,6 +92,8 @@ begin
     \-ldmode\ <= '1';
     spy7 <= '0';
     wait for 100 ns;
+    assert \-clock reset a\ = '1' report "clock reset a is not 1" severity error;
+    assert \-clock reset b\ = '1' report "clock reset a is not 1" severity error;
     wait;
     std.env.finish;
   end process;

@@ -65,16 +65,6 @@ all: $(EXES)
 ttl-check: $(TTL_EXES)
 	for TB_EXE in $^; do TB=$$TB_EXE make run-tb || exit; done
 
-run-%: $(BUILDDIR)/%_tb
-	TB=$< make run-tb
-
-# --workdir does not work for this purpose with ghdl run
-run-tb: $(TB)
-	$< $(GHDLSIMOPTIONS)
-
-wf-%: $(BUILDDIR)/%_tb
-	TB=$< make wf-tb
-
 # smart handling of wave opt file
 # if file does not exist, it is not used
 # if file exists
@@ -82,7 +72,8 @@ wf-%: $(BUILDDIR)/%_tb
 ## else if first line is "ignore", then it is ignored
 ## else it is used
 
-WAVEOPTFILE := $(notdir $(TB)).opt
+WAVEOPTFILE := $(patsubst %.vhd,%.opt,$(shell find . -name "$(notdir $(TB)).vhd"))
+$(info wave opt file: $(WAVEOPTFILE))
 WAVEFILE := $(BUILDDIR)/$(notdir $(TB)).ghw
 ifneq ("$(wildcard $(WAVEOPTFILE))","")
 WAVEOPTCONTENTS := $(shell head -1 $(WAVEOPTFILE))
@@ -100,6 +91,16 @@ endif
 else
 GHDLWAVEOPTIONS := --wave=$(WAVEFILE)
 endif
+
+run-%: $(BUILDDIR)/%_tb
+	TB=$< make run-tb
+
+# --workdir does not work for this purpose with ghdl run
+run-tb: $(TB)
+	$< $(GHDLSIMOPTIONS)
+
+wf-%: $(BUILDDIR)/%_tb
+	TB=$< make wf-tb
 
 wf-tb: $(TB)
 ifeq ($(WAVEOPTFILERECREATE),1)	

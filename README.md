@@ -45,7 +45,7 @@ To run a testbench (`build/X_tb`), create the waveforms and run surfer with the 
 
 #### waveform.opt file
 
-If there is a `X_tb.opt`, it is used as waveform options file in GHDL (`--read-wave-opt`).
+If there is a `X_tb.opt` file next to `X_tb.vhd`, it is used as waveform options file in GHDL (`--read-wave-opt`).
 
 If the file contains "recreate" in its first line, the file is deleted and recreated. This will show all signal paths.
 
