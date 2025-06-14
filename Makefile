@@ -34,7 +34,7 @@ endif
 TTL_SRCS  := $(wildcard ttl/*.vhd)
 DIP_SRCS  := $(wildcard dip/*.vhd)
 CADR_SRCS := $(wildcard cadr/*.vhd)
-TB_SRCS   := $(wildcard tb/*.vhd)
+TB_SRCS   := $(wildcard tb/*_tb.vhd)
 
 TTL_EXES := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard ttl/*_tb.vhd)))
 TB_EXES  := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard tb/*_tb.vhd)))

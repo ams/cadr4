@@ -8,10 +8,10 @@ library work;
 use work.icmem_book.all;
 use work.misc.all;
 
-entity cadr_prom_tb is
+entity prom_tb is
 end entity;
 
-architecture testbench of cadr_prom_tb is
+architecture testbench of prom_tb is
   -- Address signals
   signal pc0, pc1, pc2, pc3, pc4 : std_logic;
   signal pc5, pc6, pc7, pc8, pc9 : std_logic;
