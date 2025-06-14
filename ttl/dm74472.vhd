@@ -44,10 +44,15 @@ begin
     variable data : std_logic_vector(7 downto 0);
     variable addr_int : integer;
   begin
-    if ce_n = '0' then
-      -- Check for unknown address or control signals
-      if is_x(std_logic_vector(addr)) or (ce_n /= '0' and ce_n /= '1') then
-        -- Unknown address or control produces unknown output
+    -- Check for unknown chip enable signal
+    if is_x(ce_n) then
+      -- Unknown chip enable produces unknown output
+      d7 <= 'X'; d6 <= 'X'; d5 <= 'X'; d4 <= 'X';
+      d3 <= 'X'; d2 <= 'X'; d1 <= 'X'; d0 <= 'X';
+    elsif ce_n = '0' then
+      -- Check for unknown address signals
+      if is_x(std_logic_vector(addr)) then
+        -- Unknown address produces unknown output
         d7 <= 'X'; d6 <= 'X'; d5 <= 'X'; d4 <= 'X';
         d3 <= 'X'; d2 <= 'X'; d1 <= 'X'; d0 <= 'X';
       else
@@ -57,6 +62,7 @@ begin
         d3   <= data(3); d2 <= data(2); d1 <= data(1); d0 <= data(0);
       end if;
     else
+      -- Chip disabled (ce_n = '1') - outputs are tri-state
       d7 <= 'Z'; d6 <= 'Z'; d5 <= 'Z'; d4 <= 'Z';
       d3 <= 'Z'; d2 <= 'Z'; d1 <= 'Z'; d0 <= 'Z';
     end if;
