@@ -5,6 +5,7 @@ use std.textio.all;
 use ieee.std_logic_textio.all;
 
 use work.other.all;
+use work.misc.all;
 
 entity dm74472_tb is
 end;
@@ -31,27 +32,7 @@ architecture testbench of dm74472_tb is
   signal a1   : std_logic := '0';
   signal a0   : std_logic := '0';
 
-  type rom_t is array (0 to 511) of std_logic_vector(7 downto 0);
-
-  impure function load_rom return rom_t is
-    file f    : text;
-    variable l : line;
-    variable mem : rom_t := (others => (others => '0'));
-    variable d   : std_logic_vector(7 downto 0);
-    variable i   : integer := 0;
-  begin
-    file_open(f, "rom/prom0_1b17.hex", read_mode);
-    while not endfile(f) and i < mem'length loop
-      readline(f, l);
-      hread(l, d);
-      mem(i) := d;
-      i := i + 1;
-    end loop;
-    file_close(f);
-    return mem;
-  end function;
-
-  constant expected : rom_t := load_rom;
+  constant expected : std_logic_vector(512 * 8 - 1 downto 0) := load_rom_file("rom/prom0_1b17.hex", 512);
 
 begin
 
@@ -80,9 +61,10 @@ begin
 
   process
     variable addr : unsigned(8 downto 0);
+    variable expected_data : std_logic_vector(7 downto 0);
   begin
     ce_n <= '0';
-    for i in 0 to expected'length - 1 loop
+    for i in 0 to 511 loop
       addr := to_unsigned(i, 9);
       a8 <= addr(8);
       a7 <= addr(7);
@@ -94,7 +76,8 @@ begin
       a1 <= addr(1);
       a0 <= addr(0);
       wait for 1 ns;
-      assert (d7 & d6 & d5 & d4 & d3 & d2 & d1 & d0) = expected(i)
+      expected_data := expected(i * 8 + 7 downto i * 8);
+      assert (d7 & d6 & d5 & d4 & d3 & d2 & d1 & d0) = expected_data
         report "Mismatch at address " & integer'image(i)
         severity error;
     end loop;

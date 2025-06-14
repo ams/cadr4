@@ -4,8 +4,8 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-use std.textio.all;
-use ieee.std_logic_textio.all;
+
+use work.misc.all;
 
 entity im5600 is
   generic (fn : string := "");
@@ -28,29 +28,7 @@ entity im5600 is
 end im5600;
 
 architecture ttl of im5600 is
-  type rom_t is array (0 to 31) of std_logic_vector(7 downto 0);
-
-  impure function load_rom return rom_t is
-    file f       : text;
-    variable l   : line;
-    variable mem : rom_t   := (others => (others => '0'));
-    variable d   : std_logic_vector(7 downto 0);
-    variable i   : integer := 0;
-  begin
-    if fn /= "" then
-      file_open(f, fn, read_mode);
-      while not endfile(f) and i < mem'length loop
-        readline(f, l);
-        hread(l, d);
-        mem(i) := d;
-        i      := i + 1;
-      end loop;
-      file_close(f);
-    end if;
-    return mem;
-  end function;
-
-  signal rom  : rom_t                := load_rom;
+  constant rom  : std_logic_vector(32 * 8 - 1 downto 0) := load_rom_file(fn, 32);
   signal addr : unsigned(4 downto 0) := (others => '0');
   
 
@@ -60,6 +38,7 @@ begin
 
   process(all)
     variable data : std_logic_vector(7 downto 0);
+    variable addr_int : integer;
   begin
     if ce_n = '0' then
       -- Check for unknown address or control signals
@@ -68,7 +47,8 @@ begin
         o7 <= 'X'; o6 <= 'X'; o5 <= 'X'; o4 <= 'X';
         o3 <= 'X'; o2 <= 'X'; o1 <= 'X'; o0 <= 'X';
       else
-        data := rom(to_integer(addr));
+        addr_int := to_integer(addr);
+        data := rom(addr_int * 8 + 7 downto addr_int * 8);
         o7   <= data(7); o6 <= data(6); o5 <= data(5); o4 <= data(4);
         o3   <= data(3); o2 <= data(2); o1 <= data(1); o0 <= data(0);
       end if;

@@ -4,8 +4,8 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-use std.textio.all;
-use ieee.std_logic_textio.all;
+
+use work.misc.all;
 
 entity dm74472 is
   generic (fn : string := "");
@@ -32,29 +32,7 @@ entity dm74472 is
 end;
 
 architecture ttl of dm74472 is
-  type rom_t is array (0 to 511) of std_logic_vector(7 downto 0);
-
-  impure function load_rom return rom_t is
-    file f       : text;
-    variable l   : line;
-    variable mem : rom_t   := (others => (others => '0'));
-    variable d   : std_logic_vector(7 downto 0);
-    variable i   : integer := 0;
-  begin
-    if fn /= "" then
-      file_open(f, fn, read_mode);
-      while not endfile(f) and i < mem'length loop
-        readline(f, l);
-        hread(l, d);
-        mem(i) := d;
-        i      := i + 1;
-      end loop;
-      file_close(f);
-    end if;
-    return mem;
-  end function;
-
-  signal rom  : rom_t                := load_rom;
+  constant rom  : std_logic_vector(512 * 8 - 1 downto 0) := load_rom_file(fn, 512);
   signal addr : unsigned(8 downto 0) := (others => '0');
   
 
@@ -64,6 +42,7 @@ begin
 
   process(all)
     variable data : std_logic_vector(7 downto 0);
+    variable addr_int : integer;
   begin
     if ce_n = '0' then
       -- Check for unknown address or control signals
@@ -72,7 +51,8 @@ begin
         d7 <= 'X'; d6 <= 'X'; d5 <= 'X'; d4 <= 'X';
         d3 <= 'X'; d2 <= 'X'; d1 <= 'X'; d0 <= 'X';
       else
-        data := rom(to_integer(addr));
+        addr_int := to_integer(addr);
+        data := rom(addr_int * 8 + 7 downto addr_int * 8);
         d7   <= data(7); d6 <= data(6); d5 <= data(5); d4 <= data(4);
         d3   <= data(3); d2 <= data(2); d1 <= data(1); d0 <= data(0);
       end if;
