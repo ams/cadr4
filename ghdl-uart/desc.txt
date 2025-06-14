@@ -1,3 +1,11 @@
+CHANGES:
+This version of ghdl_uart has been improved by Alejandro Armagnac,
+who added support for setupTerminal function allowing to set the speed.
+
+Additionally I have added the "#define _XOPEN_SOURCE" directive
+which is now needed to correctly support the pseudoterminal
+
+DESCRIPTION:
 When working with simulated soft CPUs to be implemented in FPGA,
 I often needed a possibility to connect terminal emulator
 (e.g. Minicom) or my own program to serial port of the simulated

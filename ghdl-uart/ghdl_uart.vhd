@@ -100,6 +100,7 @@ begin  -- simul
     variable res     : integer;
   begin  -- process reading from socket
     res := ghdl_pty_open;
+    --res := ghdl_pty_setupTerminal(115200);
     while true loop
       char_in := ghdl_pty_read;
       if char_in = -2 then

@@ -6,12 +6,13 @@
   and is published as PUBLIC DOMAIN
 
 */
-
+#define _XOPEN_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdarg.h>
 #include <unistd.h>
+#include <termios.h>
 #include <sys/types.h>
 #include <sys/ioctl.h>
 #include <linux/ioctl.h>
@@ -69,4 +70,29 @@ int ghdl_pty_write(int byte)
   return 0;
 }
 
+/* Function below added by Alejandro Armagnac */
+int ghdl_pty_setupTerminal(int speed_int)
+{
+  speed_t speed = speed_int;
+  struct termios options;
+
+  if (tcgetattr(ptyf, &options) == -1)
+    {
+      printf("Error getting tty attributes");
+      return -1;
+    }
+
+  cfmakeraw(&options);
+  cfsetspeed(&options, speed);
+
+  options.c_cflag |= (CS8);
+
+  if (tcsetattr(ptyf, TCSANOW, &options) == -1)
+    {
+      printf("Error setting tty attributes");
+      return -1;
+    }
+
+  return 0;
+}
 

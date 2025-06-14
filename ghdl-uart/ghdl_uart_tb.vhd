@@ -34,8 +34,8 @@ end ghdl_uart_tb;
 -------------------------------------------------------------------------------
 
 architecture symul2 of ghdl_uart_tb is
-  constant rdp_name : string := "/tmp/wrpipe";
-  constant wrp_name : string := "/tmp/rdpipe";
+  --constant rdp_name : string := "/tmp/wrpipe";
+  --ODconstant wrp_name : string := "/tmp/rdpipe";
 
   component ghdl_uart
     port (
