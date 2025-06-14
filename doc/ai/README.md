@@ -10,6 +10,11 @@ Schematics:
   - cadr/icmem.book : Memory section of the CADR processor.
   - cadr1/busint.book : Bus interface.
   - cadrio/iob.book : I/O board.
+  
+To be added:
+  - chaos/ubchni.book / qbchni.book 
+  - lmunet/lmunet.book
+  - lmtv?
 
 Octal dump of CADR boot PROM (version 9):
 
