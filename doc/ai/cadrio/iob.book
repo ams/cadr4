@@ -1,0 +1,52 @@
+;;; -*- Mode:LISP; -*-
+
+;;; Prints and Documentation for the Lisp Machine IO board
+
+(SETQ IOB-PLT-FILES-LIST ' ("AI:CADRIO;CLK60H PLT"
+			    "CLKTIM"
+			    "CLKTOD"
+			    "IOBADR"
+			    "IOBCLK"
+			    "IOBCSR"
+			    "IOBINT"
+			    "IOBJPS"
+			    "IOBKBD"
+			    "IOBMSE"
+			    "IOBMS2"
+			    "IOBSER"
+			    "IOBXCV"
+			    "HEXSPC"
+			    "CHAOS;LMDATP"
+			    "LMDETC"
+			    "LMLNDR"
+			    "LMMODU"
+			    "LMMYNM"
+			    "LMRBUF"
+			    "LMRCLK"
+			    "LMRCTL"
+			    "LMTBFC"
+			    "LMTBUF"
+			    "LMTCLK"
+			    "LMTURN"
+			    "LMUCON"
+			    ))
+
+(SETQ IOB-TXT-FILES-LIST '("AI:CADRIO;IOB PRT"
+			   "AI:CADRIO;IOB STF"
+			   "AI:CADRIO;IOB UML"
+			   "AI:CADRIO;IOB WLR"
+			   "AI:CADRIO;IOB WLS"
+			   "AI:CADRIO;IOB VIDEO"
+			   "AI:CADRIO;SERIAL I//O"
+			   "AI:CHAOS;CHS DEFS"
+			   "AI:CHAOS;LMMODU PROM"
+			   "AI:CHAOS;LMMYNM PROMT"
+			   ))
+
+;;; Number of copies
+(SETQ DPLT:COPIES 2)
+
+(APPLY #'DPLT-PRINT-FILE IOB-PLT-FILES-LIST)
+
+(APPLY #'PRINT-TXT-FILE IOB-TXT-FILES-LIST)
+
