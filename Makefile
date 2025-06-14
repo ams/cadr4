@@ -31,16 +31,16 @@ endif
 # test bench source files are *_tb.vhd
 # test bench executables are *_tb under build directory
 
-TTL_SRCS := $(wildcard ttl/*.vhd)
-DIP_SRCS := $(wildcard dip/*.vhd)
+TTL_SRCS  := $(wildcard ttl/*.vhd)
+DIP_SRCS  := $(wildcard dip/*.vhd)
 CADR_SRCS := $(wildcard cadr/*.vhd)
-MAIN_SRCS := $(wildcard *.vhd)
+TB_SRCS   := $(wildcard tb/*.vhd)
 
 TTL_EXES := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard ttl/*_tb.vhd)))
-MAIN_EXES := $(patsubst %.vhd,$(BUILDDIR)/%,$(wildcard *_tb.vhd))
+TB_EXES  := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard tb/*_tb.vhd)))
 
-SRCS := $(TTL_SRCS) $(DIP_SRCS) $(CADR_SRCS) $(MAIN_SRCS)
-EXES := $(TTL_EXES) $(MAIN_EXES)
+SRCS := $(TTL_SRCS) $(DIP_SRCS) $(CADR_SRCS) $(TB_SRCS)
+EXES := $(TTL_EXES) $(TB_EXES)
 
 # ghdl import and make works weird, all the build process is weird
 # there is no sane way to build object files manually in this way
