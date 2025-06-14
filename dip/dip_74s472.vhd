@@ -1,36 +1,33 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-use work.dip.all;
-
-
 entity dip_74s472 is
   generic (fn : string := "");
   port (
-    p1  : in  std_logic;                 -- a0
-    p2  : in  std_logic;                 -- a1
-    p3  : in  std_logic;                 -- a2
-    p4  : in  std_logic;                 -- a3
-    p5  : in  std_logic;                 -- a4
-    p6  : out  std_logic;                -- d0
-    p7  : out  std_logic;                -- d1
-    p8  : out  std_logic;                -- d2
-    p9  : out  std_logic;                -- d3
-    p11 : out std_logic;                 -- d4
-    p12 : out std_logic;                 -- d5
-    p13 : out std_logic;                 -- d6
-    p14 : out std_logic;                 -- d7
-    p15 : in  std_logic;                 -- ce_n
-    p16 : in  std_logic;                 -- a5
-    p17 : in  std_logic;                 -- a6
-    p18 : in  std_logic;                 -- a7
-    p19 : in  std_logic                  -- a8
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : in  std_logic;
+    p4  : in  std_logic;
+    p5  : in  std_logic;
+    p6  : out std_logic;
+    p7  : out std_logic;
+    p8  : out std_logic;
+    p9  : out std_logic;
+    p11 : out std_logic;
+    p12 : out std_logic;
+    p13 : out std_logic;
+    p14 : out std_logic;
+    p15 : in  std_logic;
+    p16 : in  std_logic;
+    p17 : in  std_logic;
+    p18 : in  std_logic;
+    p19 : in  std_logic
     );
 end entity;
 
 architecture dip of dip_74s472 is
 begin
-  U1 : entity work.dm74472
+  U1 : dm74472
     generic map (fn => fn)
     port map (
       a0   => p1,
@@ -52,4 +49,4 @@ begin
       d6   => p13,
       d7   => p14
       );
-end architecture; 
+end architecture;

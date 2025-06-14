@@ -1,8 +1,6 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-use work.other.all;
-
 entity dip_25s07 is
   port (
     p1  : in  std_logic;
@@ -24,8 +22,7 @@ end entity;
 
 architecture dip of dip_25s07 is
 begin
-
-  U_am2507 : am2507
+  U1 : am2507
     port map (
       enb_n => p1,
       d0    => p2,
@@ -41,6 +38,5 @@ begin
       i4    => p13,
       i5    => p14,
       d5    => p15
-    );
-
+      );
 end architecture;

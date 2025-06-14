@@ -1,28 +1,27 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-
 entity dip_til309 is
   port (
-    p1  : out std_logic;  -- l2
-    p2  : out std_logic;  -- l4
-    p3  : out std_logic;  -- l8
-    p4  : out std_logic;  -- l1
-    p5  : in std_logic;   -- latch
-    p6  : in std_logic;   -- i4
-    p7  : in std_logic;   -- i8
-    p12 : in std_logic;   -- i2
-    p13 : in std_logic;   -- blank_n
-    p14 : in std_logic;   -- dp
-    p15 : in std_logic;   -- test_n
-    p16 : in std_logic;   -- ldp
-    p17 : in std_logic    -- i1
+    p1  : out std_logic;
+    p2  : out std_logic;
+    p3  : out std_logic;
+    p4  : out std_logic;
+    p5  : in  std_logic;
+    p6  : in  std_logic;
+    p7  : in  std_logic;
+    p12 : in  std_logic;
+    p13 : in  std_logic;
+    p14 : in  std_logic;
+    p15 : in  std_logic;
+    p16 : in  std_logic;
+    p17 : in  std_logic
     );
 end entity;
 
 architecture dip of dip_til309 is
 begin
-  U_til309 : entity work.til309
+  U1 : til309
     port map (
       i1      => p17,
       i2      => p12,
@@ -38,4 +37,4 @@ begin
       l4      => p2,
       l8      => p3
       );
-end architecture; 
+end architecture;

@@ -1,37 +1,31 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-use work.dip.all;
-
-
 entity dip_5600 is
   generic (fn : string := "");
+  -- p8 and p16 are gnd and vcc, im5600(ttl) doesn't have gnd and vcc
+  -- so they are not mapped.
   port (
-    p1  : out std_logic;                -- o0
-    p2  : out std_logic;                -- o1
-    p3  : out std_logic;                -- o2
-    p4  : out std_logic;                -- o3
-    p5  : out std_logic;                -- o4
-    p6  : out std_logic;                -- o5
-    p7  : out std_logic;                -- o6
-    p9  : out std_logic;                -- o7
-    p10 : in  std_logic;                -- a0
-    p11 : in  std_logic;                -- a1
-    p12 : in  std_logic;                -- a2
-    p13 : in  std_logic;                -- a3
-    p14 : in  std_logic;                -- a4
-    p15 : in  std_logic                 -- ce_n
+    p1  : out std_logic;
+    p2  : out std_logic;
+    p3  : out std_logic;
+    p4  : out std_logic;
+    p5  : out std_logic;
+    p6  : out std_logic;
+    p7  : out std_logic;
+    p9  : out std_logic;
+    p10 : in  std_logic;
+    p11 : in  std_logic;
+    p12 : in  std_logic;
+    p13 : in  std_logic;
+    p14 : in  std_logic;
+    p15 : in  std_logic
     );
 end dip_5600;
 
 architecture dip of dip_5600 is
 begin
-
-  -- p8 and p16 are gnd and vcc for dip_5600
-  -- im5600 doesn't have gnd and vcc
-  -- so they are not mapped.
-
-  ttl_inst : entity work.im5600
+  U1 : im5600
     generic map (fn => fn)
     port map (
       o0   => p1,
@@ -49,5 +43,4 @@ begin
       a4   => p14,
       ce_n => p15
       );
-
-end architecture; 
+end architecture;

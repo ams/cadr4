@@ -1,33 +1,32 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-
 entity dip_res20 is
   port (
-    p2  : inout std_logic;  -- r2
-    p3  : inout std_logic;  -- r3
-    p4  : inout std_logic;  -- r4
-    p5  : inout std_logic;  -- r5
-    p6  : inout std_logic;  -- r6
-    p7  : inout std_logic;  -- r7
-    p8  : inout std_logic;  -- r8
-    p9  : inout std_logic;  -- r9
-    p10 : inout std_logic;  -- r10
-    p11 : inout std_logic;  -- r11
-    p12 : inout std_logic;  -- r12
-    p13 : inout std_logic;  -- r13
-    p14 : inout std_logic;  -- r14
-    p15 : inout std_logic;  -- r15
-    p16 : inout std_logic;  -- r16
-    p17 : inout std_logic;  -- r17
-    p18 : inout std_logic;  -- r18
-    p19 : inout std_logic   -- r19
+    p2  : inout std_logic;
+    p3  : inout std_logic;
+    p4  : inout std_logic;
+    p5  : inout std_logic;
+    p6  : inout std_logic;
+    p7  : inout std_logic;
+    p8  : inout std_logic;
+    p9  : inout std_logic;
+    p10 : inout std_logic;
+    p11 : inout std_logic;
+    p12 : inout std_logic;
+    p13 : inout std_logic;
+    p14 : inout std_logic;
+    p15 : inout std_logic;
+    p16 : inout std_logic;
+    p17 : inout std_logic;
+    p18 : inout std_logic;
+    p19 : inout std_logic
     );
 end entity;
 
 architecture dip of dip_res20 is
 begin
-  U_res20 : entity work.res20
+  U1 : res20
     port map (
       r2  => p2,
       r3  => p3,
@@ -48,4 +47,4 @@ begin
       r18 => p18,
       r19 => p19
       );
-end architecture; 
+end architecture;

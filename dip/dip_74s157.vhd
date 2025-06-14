@@ -1,29 +1,28 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-
 entity dip_74s157 is
   port (
-    p1  : in  std_logic;                -- sel
-    p2  : in  std_logic;                -- a4
-    p3  : in  std_logic;                -- b4
-    p4  : out std_logic;                -- y4
-    p5  : in  std_logic;                -- a3
-    p6  : in  std_logic;                -- b3
-    p7  : out std_logic;                -- y3
-    p9  : out std_logic;                -- y2
-    p10 : in  std_logic;                -- b2
-    p11 : in  std_logic;                -- a2
-    p12 : out std_logic;                -- y1
-    p13 : in  std_logic;                -- b1
-    p14 : in  std_logic;                -- a1
-    p15 : in  std_logic                 -- enb_n
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : in  std_logic;
+    p4  : out std_logic;
+    p5  : in  std_logic;
+    p6  : in  std_logic;
+    p7  : out std_logic;
+    p9  : out std_logic;
+    p10 : in  std_logic;
+    p11 : in  std_logic;
+    p12 : out std_logic;
+    p13 : in  std_logic;
+    p14 : in  std_logic;
+    p15 : in  std_logic
     );
 end entity;
 
 architecture dip of dip_74s157 is
 begin
-  U_74s157 : entity work.sn74157
+  U1 : sn74157
     port map (
       sel   => p1,
       a1    => p14,
@@ -40,4 +39,4 @@ begin
       y4    => p4,
       enb_n => p15
       );
-end architecture; 
+end architecture;

@@ -1,35 +1,32 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-use work.sn74.all;
-
 entity dip_74s373 is
   port (
-    p1  : in  std_logic;  -- oenb_n
-    p2  : out std_logic;  -- o0
-    p3  : in  std_logic;  -- i0
-    p4  : in  std_logic;  -- i1
-    p5  : out std_logic;  -- o1
-    p6  : out std_logic;  -- o2
-    p7  : in  std_logic;  -- i2
-    p8  : in  std_logic;  -- i3
-    p9  : out std_logic;  -- o3
-    p11 : in  std_logic;  -- hold
-    p12 : out std_logic;  -- o4
-    p13 : in  std_logic;  -- i4
-    p14 : in  std_logic;  -- i5
-    p15 : out std_logic;  -- o5
-    p16 : out std_logic;  -- o6
-    p17 : in  std_logic;  -- i6
-    p18 : in  std_logic;  -- i7
-    p19 : out std_logic   -- o7
+    p1  : in  std_logic;
+    p2  : out std_logic;
+    p3  : in  std_logic;
+    p4  : in  std_logic;
+    p5  : out std_logic;
+    p6  : out std_logic;
+    p7  : in  std_logic;
+    p8  : in  std_logic;
+    p9  : out std_logic;
+    p11 : in  std_logic;
+    p12 : out std_logic;
+    p13 : in  std_logic;
+    p14 : in  std_logic;
+    p15 : out std_logic;
+    p16 : out std_logic;
+    p17 : in  std_logic;
+    p18 : in  std_logic;
+    p19 : out std_logic
     );
 end entity;
 
 architecture dip of dip_74s373 is
 begin
-
-  U_sn74373 : sn74373
+  U1 : sn74373
     port map (
       oenb_n => p1,
       o0     => p2,
@@ -50,5 +47,4 @@ begin
       i7     => p18,
       o7     => p19
       );
-
-end architecture; 
+end architecture;

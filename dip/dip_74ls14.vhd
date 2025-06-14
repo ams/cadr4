@@ -1,8 +1,6 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-use work.sn74.all;
-
 entity dip_74ls14 is
   port (
     p1  : in  std_logic;
@@ -37,4 +35,4 @@ begin
       g6a   => p13,
       g6q_n => p12
       );
-end architecture; 
+end architecture;

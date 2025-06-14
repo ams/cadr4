@@ -1,34 +1,28 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-use work.dip.all;
-
-
 entity dip_7428 is
+  -- p7 and p14 are gnd and vcc, sn7428(ttl) doesn't have gnd and vcc
+  -- so they are not mapped.
   port (
-    p1  : out std_logic;                -- g1q_n
-    p2  : in  std_logic;                -- g1a
-    p3  : in  std_logic;                -- g1b
-    p4  : out std_logic;                -- g2q_n
-    p5  : in  std_logic;                -- g2a
-    p6  : in  std_logic;                -- g2b
-    p8  : in  std_logic;                -- g3a
-    p9  : in  std_logic;                -- g3b
-    p10 : out std_logic;                -- g3q_n
-    p11 : in  std_logic;                -- g4a
-    p12 : in  std_logic;                -- g4b
-    p13 : out std_logic                 -- g4q_n
+    p1  : out std_logic;
+    p2  : in  std_logic;
+    p3  : in  std_logic;
+    p4  : out std_logic;
+    p5  : in  std_logic;
+    p6  : in  std_logic;
+    p8  : in  std_logic;
+    p9  : in  std_logic;
+    p10 : out std_logic;
+    p11 : in  std_logic;
+    p12 : in  std_logic;
+    p13 : out std_logic
     );
 end dip_7428;
 
 architecture dip of dip_7428 is
 begin
-
-  -- p7 and p14 are gnd and vcc for dip_7428
-  -- sn7428 doesn't have gnd and vcc
-  -- so they are not mapped.
-
-  ttl_inst : entity work.sn7428
+  U1 : sn7428
     port map (
       g1q_n => p1,
       g1a   => p2,
@@ -43,5 +37,4 @@ begin
       g4b   => p12,
       g4q_n => p13
       );
-
-end architecture; 
+end architecture;

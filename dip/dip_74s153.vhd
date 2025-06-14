@@ -3,26 +3,26 @@ use ieee.std_logic_1164.all;
 
 entity dip_74s153 is
   port (
-    p1  : in  std_logic;                -- sel
-    p2  : in  std_logic;                -- i0a
-    p3  : in  std_logic;                -- i1a
-    p4  : in  std_logic;                -- i2a
-    p5  : in  std_logic;                -- i3a
-    p6  : in  std_logic;                -- ce_a_n
-    p7  : out std_logic;                -- qa
-    p9  : out std_logic;                -- qb
-    p10 : in  std_logic;                -- ce_b_n
-    p11 : in  std_logic;                -- i3b
-    p12 : in  std_logic;                -- i2b
-    p13 : in  std_logic;                -- i1b
-    p14 : in  std_logic;                -- i0b
-    p15 : in  std_logic                 -- sel_b
+    p1  : in  std_logic;
+    p2  : in  std_logic;
+    p3  : in  std_logic;
+    p4  : in  std_logic;
+    p5  : in  std_logic;
+    p6  : in  std_logic;
+    p7  : out std_logic;
+    p9  : out std_logic;
+    p10 : in  std_logic;
+    p11 : in  std_logic;
+    p12 : in  std_logic;
+    p13 : in  std_logic;
+    p14 : in  std_logic;
+    p15 : in  std_logic
     );
 end entity;
 
 architecture dip of dip_74s153 is
 begin
-  u : entity work.sn74153
+  U1 : sn74153
     port map (
       sela   => p1,
       selb   => p15,
@@ -39,4 +39,4 @@ begin
       g2c3   => p11,
       g2y    => p9
       );
-end architecture; 
+end architecture;
