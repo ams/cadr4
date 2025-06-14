@@ -145,27 +145,15 @@ begin
                    " (ref[" & to_ostring(to_unsigned(ref_entry, 16)) & "]): expected " & to_ostring(expected_data) & 
                    " (0x" & to_hstring(expected_data) & "), got " & to_ostring(actual_data) & 
                    " (0x" & to_hstring(actual_data) & ")"
-              severity note;
+              severity error;
           else
             report "PROM1 pc=" & to_ostring(to_unsigned(pc_val, 16)) & 
                    " (ref[" & to_ostring(to_unsigned(ref_entry, 16)) & "]): expected " & 
                    to_ostring(expected_data) & " (0x" & to_hstring(expected_data) & "), got " & 
                    to_ostring(actual_data) & " (0x" & to_hstring(actual_data) & ")"
-              severity note;
+              severity error;
           end if;
           error_count := error_count + 1;
-        else
-          if pc9 = '0' then
-            report "PROM0 pc=" & to_ostring(to_unsigned(pc_val, 16)) & 
-                   " (ref[" & to_ostring(to_unsigned(ref_entry, 16)) & "]): MATCH " & to_ostring(actual_data) & 
-                   " (0x" & to_hstring(actual_data) & ")"
-              severity note;
-          else
-            report "PROM1 pc=" & to_ostring(to_unsigned(pc_val, 16)) & 
-                   " (ref[" & to_ostring(to_unsigned(ref_entry, 16)) & "]): MATCH " & to_ostring(actual_data) & 
-                   " (0x" & to_hstring(actual_data) & ")"
-              severity note;
-          end if;
         end if;
       else
         -- Address beyond reference data should be zero
@@ -174,7 +162,8 @@ begin
         expected_data(47) := '1';
         if actual_data /= expected_data then
           report "PC " & to_ostring(to_unsigned(pc_val, 16)) & 
-                 " should output zero (beyond reference data), got " & to_ostring(actual_data) & 
+                 " should output zero (beyond reference data), expected " & to_ostring(expected_data) & 
+                 " (0x" & to_hstring(expected_data) & "), got " & to_ostring(actual_data) & 
                  " (0x" & to_hstring(actual_data) & ")"
             severity error;
           error_count := error_count + 1;
