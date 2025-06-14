@@ -33,21 +33,21 @@ architecture testbench of cadr_prom_tb is
   -- Load reference data as constant
   constant reference_rom : std_logic_vector := load_rom_file("rom/promh.mcr.9.hex");
   constant rom_bytes : integer := reference_rom'length / 8;  -- Number of bytes in file
-  constant rom_words : integer := rom_bytes / 4;  -- Number of 48-bit words (4 bytes each, since 2724/4=681)
+  constant rom_words : integer := rom_bytes / 6;  -- Number of 48-bit words (6 bytes each, since 2724/6=454)
   
 begin
   -- Instantiate PROM0 (first 512 entries)
   prom0_inst : cadr_prom0
     port map (
-      \-prompc0\ => pc0,
-      \-prompc1\ => pc1,
-      \-prompc2\ => pc2,
-      \-prompc3\ => pc3,
-      \-prompc4\ => pc4,
-      \-prompc5\ => pc5,
-      \-prompc6\ => pc6,
-      \-prompc7\ => pc7,
-      \-prompc8\ => pc8,
+      \-prompc0\ => not pc0,
+      \-prompc1\ => not pc1,
+      \-prompc2\ => not pc2,
+      \-prompc3\ => not pc3,
+      \-prompc4\ => not pc4,
+      \-prompc5\ => not pc5,
+      \-prompc6\ => not pc6,
+      \-prompc7\ => not pc7,
+      \-prompc8\ => not pc8,
       \-promce0\ => pc9,
       i0 => i0, i1 => i1, i2 => i2, i3 => i3,
       i4 => i4, i5 => i5, i6 => i6, i7 => i7,
@@ -66,15 +66,15 @@ begin
   -- Instantiate PROM1 (second 512 entries)
   prom1_inst : cadr_prom1
     port map (
-      \-prompc0\ => pc0,
-      \-prompc1\ => pc1,
-      \-prompc2\ => pc2,
-      \-prompc3\ => pc3,
-      \-prompc4\ => pc4,
-      \-prompc5\ => pc5,
-      \-prompc6\ => pc6,
-      \-prompc7\ => pc7,
-      \-prompc8\ => pc8,
+      \-prompc0\ => not pc0,
+      \-prompc1\ => not pc1,
+      \-prompc2\ => not pc2,
+      \-prompc3\ => not pc3,
+      \-prompc4\ => not pc4,
+      \-prompc5\ => not pc5,
+      \-prompc6\ => not pc6,
+      \-prompc7\ => not pc7,
+      \-prompc8\ => not pc8,
       \-promce1\ => not pc9,
       i0 => i0, i1 => i1, i2 => i2, i3 => i3,
       i4 => i4, i5 => i5, i6 => i6, i7 => i7,
@@ -119,9 +119,9 @@ begin
     -- Bit 9 (10th bit) naturally selects PROM: 0-511 -> PROM0, 512-1023 -> PROM1
     report "Testing full PROM address space (0-1023)...";
     
-    for addr_int in 0 to 1023 loop  -- Test complete address space
-      -- Set full 10-bit address (pc9 is bit 9, pc0-pc8 are bits 0-8)
-      addr_vec := std_logic_vector(to_unsigned(addr_int, 10));
+    for pc_val in 0 to 1023 loop  -- Iterate through pc values (reference data addresses)
+      -- Set full 10-bit pc value (pc9 is bit 9, pc0-pc8 are bits 0-8)
+      addr_vec := std_logic_vector(to_unsigned(pc_val, 10));
       pc0 <= addr_vec(0); pc1 <= addr_vec(1); pc2 <= addr_vec(2);
       pc3 <= addr_vec(3); pc4 <= addr_vec(4); pc5 <= addr_vec(5);
       pc6 <= addr_vec(6); pc7 <= addr_vec(7); pc8 <= addr_vec(8);
@@ -130,34 +130,36 @@ begin
       
       actual_data := prom_data;
       
-      -- Reference entry is the same as address for this test
-      ref_entry := addr_int;
+      -- pc_val is directly the reference data index
+      ref_entry := pc_val;
       
       -- Get expected data from reference (if available)
       if ref_entry < rom_words then
-        -- Extract 32-bit entry from flat vector (4 bytes per entry, MSB first)
-        expected_data := reference_rom((rom_words-1-ref_entry)*32+31 downto (rom_words-1-ref_entry)*32) & x"0000";
+        -- Extract 48-bit entry from flat vector (6 bytes per entry, MSB first)
+        expected_data := reference_rom(ref_entry*48+47 downto ref_entry*48);
         
         -- Compare actual vs expected
         if actual_data /= expected_data then
           if pc9 = '0' then
-            report "PROM0 address " & integer'image(addr_int) & 
-                   ": expected " & to_hstring(expected_data) & 
-                   ", got " & to_hstring(actual_data)
+            report "PROM0 pc=" & to_ostring(to_unsigned(pc_val, 16)) & 
+                   " (ref[" & to_ostring(to_unsigned(ref_entry, 16)) & "]): expected " & to_ostring(expected_data) & 
+                   ", got " & to_ostring(actual_data)
               severity note;
           else
-            report "PROM1 address " & integer'image(addr_int - 512) & 
-                   " (full addr " & integer'image(addr_int) & "): expected " & 
-                   to_hstring(expected_data) & ", got " & to_hstring(actual_data)
+            report "PROM1 pc=" & to_ostring(to_unsigned(pc_val, 16)) & 
+                   " (ref[" & to_ostring(to_unsigned(ref_entry, 16)) & "]): expected " & 
+                   to_ostring(expected_data) & ", got " & to_ostring(actual_data)
               severity note;
           end if;
           error_count := error_count + 1;
         else
           if pc9 = '0' then
-            report "PROM0 address " & integer'image(addr_int) & ": MATCH " & to_hstring(actual_data)
+            report "PROM0 pc=" & to_ostring(to_unsigned(pc_val, 16)) & 
+                   " (ref[" & to_ostring(to_unsigned(ref_entry, 16)) & "]): MATCH " & to_ostring(actual_data)
               severity note;
           else
-            report "PROM1 address " & integer'image(addr_int - 512) & ": MATCH " & to_hstring(actual_data)
+            report "PROM1 pc=" & to_ostring(to_unsigned(pc_val, 16)) & 
+                   " (ref[" & to_ostring(to_unsigned(ref_entry, 16)) & "]): MATCH " & to_ostring(actual_data)
               severity note;
           end if;
         end if;
@@ -165,8 +167,8 @@ begin
         -- Address beyond reference data should be zero
         expected_data := (others => '0');
         if actual_data /= expected_data then
-          report "Address " & integer'image(addr_int) & 
-                 " should output zero (beyond reference data), got " & to_hstring(actual_data)
+          report "PC " & to_ostring(to_unsigned(pc_val, 16)) & 
+                 " should output zero (beyond reference data), got " & to_ostring(actual_data)
             severity error;
           error_count := error_count + 1;
         end if;
