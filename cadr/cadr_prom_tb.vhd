@@ -166,6 +166,8 @@ begin
       else
         -- Address beyond reference data should be zero
         expected_data := (others => '0');
+        -- because all zeroes have parity 1
+        expected_data(47) := '1';
         if actual_data /= expected_data then
           report "PC " & to_ostring(to_unsigned(pc_val, 16)) & 
                  " should output zero (beyond reference data), got " & to_ostring(actual_data)
