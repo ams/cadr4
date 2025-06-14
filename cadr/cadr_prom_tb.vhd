@@ -102,7 +102,6 @@ begin
   
   -- Test process
   test_proc : process
-    variable addr_int : integer;
     variable addr_vec : std_logic_vector(9 downto 0);  -- 10-bit address for full space
     variable expected_data : std_logic_vector(47 downto 0);
     variable actual_data : std_logic_vector(47 downto 0);
