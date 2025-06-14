@@ -1,6 +1,9 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
+library work;
+use work.other.all;
+
 entity dip_25s10 is
   -- p8 and p16 are gnd and vcc, am2510(ttl) doesn't have gnd and vcc
   -- so they are not mapped.

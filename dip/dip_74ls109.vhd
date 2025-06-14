@@ -1,6 +1,9 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
+library work;
+use work.sn74.all;
+
 entity dip_74ls109 is
   -- sn74109(ttl) doesn't have gnd and vcc so they are not mapped.
   port (

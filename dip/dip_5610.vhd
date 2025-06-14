@@ -1,6 +1,9 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
+library work;
+use work.other.all;
+
 entity dip_5610 is
   generic (fn : string := "");
   -- p8 and p16 are gnd and vcc, im5600(ttl) doesn't have

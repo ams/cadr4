@@ -1,6 +1,9 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
+library work;
+use work.other.all;
+
 entity dip_sip330_470_8 is
   port (
     p2 : inout std_logic;
