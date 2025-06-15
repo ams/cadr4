@@ -11,15 +11,20 @@ end;
 
 architecture structural of por_tb is
 
-  constant gnd : std_logic := '0';
-  constant vcc : std_logic := '1';
-
   -- Input signals
+  -- external
+  signal \-boot1\            : std_logic := '1';
+  signal \-busint.lm.reset\  : std_logic := '1';
+
+  -- from spyX
+  signal spy6                : std_logic := '0';
+  signal spy7                : std_logic := '0'; 
+  signal \-ldmode\           : std_logic := '1';
+
   signal aparok              : std_logic;
   signal clk5                : std_logic;
   signal dparok              : std_logic;
-  signal errstop             : std_logic;
-  
+  signal errstop             : std_logic;  
   signal iparok              : std_logic;
   signal mclk5               : std_logic;
   signal memparok            : std_logic;
@@ -27,10 +32,7 @@ architecture structural of por_tb is
   signal pdlparok            : std_logic;
   signal srun                : std_logic;
   signal spcparok            : std_logic;
-  signal spy6                : std_logic;
-  signal spy7                : std_logic;
-  signal \stat.ovf\          : std_logic;
-  signal \-busint.lm.reset\  : std_logic;
+  signal \stat.ovf\          : std_logic;  
   signal \-halt\             : std_logic;
   signal \-upperhighok\      : std_logic;
   signal v0parok             : std_logic;
@@ -38,8 +40,7 @@ architecture structural of por_tb is
 
   -- Output signals
   signal \-ape\              : std_logic;
-  signal \-boot\             : std_logic;
-  signal \-boot1\            : std_logic;
+  signal \-boot\             : std_logic;  
   signal \-boot2\            : std_logic;
   signal \-bus.reset\        : std_logic;
   signal \-clock reset a\    : std_logic;
@@ -49,7 +50,6 @@ architecture structural of por_tb is
   signal \-errhalt\          : std_logic;
   signal \-higherr\          : std_logic;
   signal \-ipe\              : std_logic;
-  signal \-ldmode\           : std_logic;
   signal \-lowerhighok\      : std_logic;
   signal \-mclk5\            : std_logic;
   signal \-mempe\            : std_logic;
@@ -83,18 +83,19 @@ begin
 
   process
   begin
-    -- this comes from clockd (checks hi1-hi12)
-    \-upperhighok\ <= '0';
-    -- these come from mbcpin
-    \prog.bus.reset\ <= '0';
-    \-busint.lm.reset\ <= '1';
-    -- ldmode + spy7 sets prog.reset to 1 in mode register
-    \-ldmode\ <= '1';
-    spy7 <= '0';
-    wait for 100 ns;
+    wait for 1 ns;
+    assert \-boot2\ = '1' report "-boot2 is not 1" severity error;
+    assert \-boot\ = '1' report "-boot is not 1" severity error;
+    assert \-power reset\ = '0' report "-power reset is not 0" severity error;
+    assert \-clock reset a\ = '0' report "-clock reset a is not 0" severity error;
+    assert \-clock reset b\ = '0' report "-clock reset a is not 0" severity error;
+    assert reset = '1' report "reset is not 1" severity error;
+    wait for 20 ns;
+    assert \-power reset\ = '1' report "-power reset is not 1" severity error;
     assert \-clock reset a\ = '1' report "clock reset a is not 1" severity error;
     assert \-clock reset b\ = '1' report "clock reset a is not 1" severity error;
-    wait;
+    assert reset = '0' report "reset is not 0" severity error;
+    wait;    
     std.env.finish;
   end process;
 

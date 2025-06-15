@@ -15,10 +15,8 @@ end;
 
 architecture structural of clkgen_tb is
 
-  constant gnd : std_logic := '0';
-  constant vcc : std_logic := '1';
-
   -- olord2 inputs
+  signal \-boot1\            : std_logic := '1';
   signal \-busint.lm.reset\  : std_logic := '1';
 
   -- from olord1
@@ -48,7 +46,6 @@ architecture structural of clkgen_tb is
   -- olord2 outputs
   signal \-ape\              : std_logic;
   signal \-boot\             : std_logic;
-  signal \-boot1\            : std_logic;
   signal \-boot2\            : std_logic;
   signal \-bus.reset\        : std_logic;
   signal \-clock reset a\    : std_logic;

@@ -8,7 +8,7 @@ GHDLSTD		= 08
 GHDLIMPORTOPTIONS	= -v -g
 GHDLMAKEOPTIONS		= -v -g -Wno-delayed-checks
 GHDLRUNOPTIONS		= -v -g
-GHDLSIMOPTIONS		= --backtrace-severity=warning --assert-level=warning
+GHDLSIMOPTIONS		= --backtrace-severity=warning #--assert-level=warning
 
 # fix params
 BUILDDIR	  := build
@@ -81,12 +81,12 @@ $(BUILDDIR)/soap: soap/soap.c soap/unpack.c
 
 # this is the basic method of generating a _suds.vhd file
 # however, a few particular _suds.vhd require special handling and they are handled with specific targets below
-cadr/cadr_%_suds.vhd: $(DRWDIR)/%.drw $(BUILDDIR)/soap cadr/fix-suds.py Makefile
+cadr/cadr_%_suds.vhd: $(DRWDIR)/%.drw $(BUILDDIR)/soap cadr/fix-suds.py Makefile dip/dip.vhd
 	$(BUILDDIR)/soap -n $< > $@
 	python3 cadr/fix-suds.py -v $@
 
 # modify bcterm components, soap emits dip names without @, so there are mistakes, 1b15 is used twice etc.
-cadr/cadr_bcterm_suds.vhd: $(DRWDIR)/bcterm.drw $(BUILDDIR)/soap cadr/fix-suds.py Makefile
+cadr/cadr_bcterm_suds.vhd: $(DRWDIR)/bcterm.drw $(BUILDDIR)/soap cadr/fix-suds.py Makefile dip/dip.vhd
 	$(BUILDDIR)/soap -n $< > $@
 	sed $(SEDOPTIONS) 's/bcterm_1b15 : dip_sip220_330_8 port map (p2 => mem0/bcterm_1b15_1 : dip_sip220_330_8 port map (p2 => mem0/' cadr/cadr_bcterm_suds.vhd
 	sed $(SEDOPTIONS) 's/bcterm_1b15 : dip_sip220_330_8 port map (p2 => mem6/bcterm_1b15_2 : dip_sip220_330_8 port map (p2 => mem6/' cadr/cadr_bcterm_suds.vhd
@@ -98,7 +98,7 @@ cadr/cadr_bcterm_suds.vhd: $(DRWDIR)/bcterm.drw $(BUILDDIR)/soap cadr/fix-suds.p
 
 # modify clock1 to alias -tpdone to -tpw60, this is a simple wire in the schematics
 # this is done after fix-suds.py because it may modify it or get confused with these additions
-cadr/cadr_clock1_suds.vhd: $(DRWDIR)/clock1.drw $(BUILDDIR)/soap cadr/fix-suds.py Makefile
+cadr/cadr_clock1_suds.vhd: $(DRWDIR)/clock1.drw $(BUILDDIR)/soap cadr/fix-suds.py Makefile dip/dip.vhd
 	$(BUILDDIR)/soap -n $< > $@
 ifeq ($(OS),Darwin)
 	sed $(SEDOPTIONS) 's/^architecture.*/&\'$$'\nalias \\\\-tpdone\\\\ : std_logic is \\\\-tpw60\\\\;/' cadr/cadr_clock1_suds.vhd
@@ -109,33 +109,34 @@ endif
 
 # modify clock2_1c10, change \machruna l\ to \-machruna\
 # this seems to be a mistake in drw, in wlr the 1c10 is connected to -machruna
-cadr/cadr_clock2_suds.vhd: $(DRWDIR)/clock2.drw $(BUILDDIR)/soap cadr/fix-suds.py Makefile
+cadr/cadr_clock2_suds.vhd: $(DRWDIR)/clock2.drw $(BUILDDIR)/soap cadr/fix-suds.py Makefile dip/dip.vhd
 	$(BUILDDIR)/soap -n $< > $@
 	sed $(SEDOPTIONS) 's/\\machruna l\\/\\-machruna\\/g' cadr/cadr_clock2_suds.vhd	
 	python3 cadr/fix-suds.py -v $@
 
 # add rom file
-cadr/cadr_dspctl_suds.vhd: $(DRWDIR)/dspctl.drw $(BUILDDIR)/soap cadr/fix-suds.py Makefile
+cadr/cadr_dspctl_suds.vhd: $(DRWDIR)/dspctl.drw $(BUILDDIR)/soap cadr/fix-suds.py Makefile dip/dip.vhd
 	$(BUILDDIR)/soap -n $< > $@
 	sed $(SEDOPTIONS) -E 's/^([[:space:]]*([^[:space:]]+)[[:space:]]*:[[:space:]]*dip_5610)[[:space:]]+port map/\1 generic map (fn => "rom\/\2.hex") port map/' cadr/cadr_dspctl_suds.vhd
 	python3 cadr/fix-suds.py -v $@
 
 # add rom files
-cadr/cadr_mskg4_suds.vhd: $(DRWDIR)/mskg4.drw $(BUILDDIR)/soap cadr/fix-suds.py Makefile
+cadr/cadr_mskg4_suds.vhd: $(DRWDIR)/mskg4.drw $(BUILDDIR)/soap cadr/fix-suds.py Makefile dip/dip.vhd
 	$(BUILDDIR)/soap -n $< > $@
 	sed $(SEDOPTIONS) -E 's/^([[:space:]]*([^[:space:]]+)[[:space:]]*:[[:space:]]*dip_5600)[[:space:]]+port map/\1 generic map (fn => "rom\/\2.hex") port map/' cadr/cadr_mskg4_suds.vhd
 	python3 cadr/fix-suds.py -v $@
 \
 # modify olord2_1a19 port map
-# modify one instance of olord2_1a20 port map to connect its p1 to olord2_1a19 p12
-cadr/cadr_olord2_suds.vhd: $(DRWDIR)/olord2.drw $(BUILDDIR)/soap cadr/fix-suds.py Makefile
+# remove two inverters from @1a19,p12 to -power reset, -power reset is directly driven by @1a19,p12
+cadr/cadr_olord2_suds.vhd: $(DRWDIR)/olord2.drw $(BUILDDIR)/soap cadr/fix-suds.py Makefile dip/dip.vhd
 	$(BUILDDIR)/soap -n $< > $@
-	sed $(SEDOPTIONS) 's/olord2_1a19.*/olord2_1a19: dip_16dummy port map (p1 => vcc, p12 => \\@1a20,p1\\, p13 => \\-boot2\\, p14 => \\-boot1\\, p15 => hi2, p16 => hi1);/g' cadr/cadr_olord2_suds.vhd
-	sed $(SEDOPTIONS) 's/olord2_1a20 : dip_74ls14 port map (p2 => \\@1a20,p9\\);/olord2_1a20 : dip_74ls14 port map (p1 => \\@1a19,p12\\, p2 => \\@1a20,p9\\);/g' cadr/cadr_olord2_suds.vhd
+	sed $(SEDOPTIONS) 's/olord2_1a19.*/olord2_1a19 : dip_16dummy port map (p12 => \\-power reset\\, p13 => \\-boot2\\, p15 => hi2, p16 => hi1);/g' cadr/cadr_olord2_suds.vhd
+	sed $(SEDOPTIONS) '/olord2_1a20 : dip_74ls14 port map (p2 => \\@1a20,p9\\);/d' cadr/cadr_olord2_suds.vhd
+	sed $(SEDOPTIONS) '/olord2_1a20 : dip_74ls14 port map (p8 => \\-power reset\\, p9 => \\@1a20,p2\\);/d' cadr/cadr_olord2_suds.vhd
 	python3 cadr/fix-suds.py -v $@
 
 # add rom files	
-cadr/cadr_prom0_suds.vhd: $(DRWDIR)/prom0.drw $(BUILDDIR)/soap cadr/fix-suds.py Makefile
+cadr/cadr_prom0_suds.vhd: $(DRWDIR)/prom0.drw $(BUILDDIR)/soap cadr/fix-suds.py Makefile dip/dip.vhd
 	$(BUILDDIR)/soap -n $< > $@
 	sed $(SEDOPTIONS) -E 's/^([[:space:]]*prom0_([^[:space:]]+)[[:space:]]*:[[:space:]]*dip_74s472)[[:space:]]+port map/\1 generic map (fn => "rom\/promh9.\2.hex") port map/' cadr/cadr_prom0_suds.vhd
 	python3 cadr/fix-suds.py -v $@
@@ -143,7 +144,7 @@ cadr/cadr_prom0_suds.vhd: $(DRWDIR)/prom0.drw $(BUILDDIR)/soap cadr/fix-suds.py 
 # add rom files
 # all prom1 chips point to prom.00.hex but prom1_1b20
 # prom1_1b20 (providing the last byte) points to prom.80.hex (because it contains the parity bit)
-cadr/cadr_prom1_suds.vhd: $(DRWDIR)/prom1.drw $(BUILDDIR)/soap cadr/fix-suds.py Makefile
+cadr/cadr_prom1_suds.vhd: $(DRWDIR)/prom1.drw $(BUILDDIR)/soap cadr/fix-suds.py Makefile dip/dip.vhd
 	$(BUILDDIR)/soap -n $< > $@	
 	sed $(SEDOPTIONS) -E 's/^([[:space:]]*[^[:space:]]+[[:space:]]*:[[:space:]]*dip_74s472)[[:space:]]+port map/\1 generic map (fn => "rom\/prom.00.hex") port map/' cadr/cadr_prom1_suds.vhd
 	sed $(SEDOPTIONS) -E 's/^([[:space:]]*prom1_1b20[[:space:]]*:[[:space:]]*dip_74s472)[[:space:]]+generic map \(fn => "rom\/prom\.00\.hex"\)/\1 generic map (fn => "rom\/prom.80.hex")/' cadr/cadr_prom1_suds.vhd

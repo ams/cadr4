@@ -42,11 +42,8 @@ use ieee.std_logic_1164.all;
 package dip is
 
   component dip_16dummy is port (       -- ic_16dummy [16dummy]
-    p1 :  in  std_logic;                -- vcc
-    -- p2 - p11 unused.
-    p12 : out std_logic;                -- p12
+    p12 : out std_logic;                -- \-power reset\
     p13 : out std_logic;                -- \-boot2\
-    p14 : out std_logic;                -- \-boot1\
     p15 : out std_logic;                -- hi2
     p16 : out std_logic                 -- h1
     );

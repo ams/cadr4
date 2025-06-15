@@ -440,7 +440,7 @@ package icmem_book is
       srun                : in  std_logic;
       \boot.trap\         : out std_logic;
       \-boot2\            : out std_logic;
-      \-boot1\            : out std_logic;
+      \-boot1\            : in std_logic;
       hi2                 : out std_logic;
       \-ldmode\           : out std_logic;
       ldmode              : out std_logic;
