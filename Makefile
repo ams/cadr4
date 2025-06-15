@@ -9,7 +9,7 @@ GHDLIMPORTOPTIONS	= -v -g
 GHDLMAKEOPTIONS		= -v -g 
 GHDLVERSION			= $(ghdl --version | head -1 | cut -f2 -d' ')
 ifeq ($(GHDLVERSION),"6.0.0-dev")
-   	GHDLMAKEOPTIONS += -Wc,-Werror
+GHDLMAKEOPTIONS += -Wc,-Werror
 endif
 GHDLRUNOPTIONS		= -v -g
 GHDLSIMOPTIONS		= --backtrace-severity=warning --assert-level=warning
