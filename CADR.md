@@ -1072,7 +1072,7 @@ instructions to the same memory location.
 ## The Dispatch Memory
 
 The dispatch memory is used to produce new program counter values as a
-result of data flowing through the processor.  Qutputs of the shifter
+result of data flowing through the processor.  Outputs of the shifter
 (Rxx) are AND'd with a dispatch byte length mask, and OR'd with an
 eleven bit field from the IR to form the dispatch memory address,
 DADRxx (left hand side of DRAM0,1,2).  Bit zero of ihe dispatch
