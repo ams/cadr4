@@ -11,7 +11,6 @@ entity cadr_stat is
     iwr15      : in  std_logic;
     gnd        : in  std_logic;
     \-ldstat\  : in  std_logic;
-    \-stc12\   : out std_logic;
     st15       : out std_logic;
     st14       : out std_logic;
     st13       : out std_logic;
@@ -97,5 +96,7 @@ entity cadr_stat is
     iwr8       : in  std_logic;
     iwr9       : in  std_logic;
     iwr10      : in  std_logic;
-    iwr11      : in  std_logic);
+    iwr11      : in  std_logic;
+    \-stc12\   : out std_logic
+    );
 end;

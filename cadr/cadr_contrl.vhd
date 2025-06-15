@@ -67,7 +67,8 @@ entity cadr_contrl is
     \-spcnt\         : out std_logic;
     \-destspcd\      : out std_logic;
     destspcd         : out std_logic;
-    wp4c             : in  std_logic;
     \-swpb\          : out std_logic;
-    \-swpa\          : out std_logic);
+    \-swpa\          : out std_logic;
+    wp4c             : in  std_logic
+    );
 end;

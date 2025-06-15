@@ -103,5 +103,6 @@ entity cadr_spy1 is
     ir19       : in  std_logic;
     ir18       : in  std_logic;
     ir17       : in  std_logic;
-    ir16       : in  std_logic);
+    ir16       : in  std_logic
+    );
 end;

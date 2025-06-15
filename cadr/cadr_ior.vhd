@@ -43,7 +43,6 @@ entity cadr_ior is
     ob0   : in  std_logic;
     iob0  : out std_logic;
     i1    : in  std_logic;
-    ob1   : in  std_logic;
     iob1  : out std_logic;
     iob2  : out std_logic;
     i2    : in  std_logic;
@@ -124,5 +123,7 @@ entity cadr_ior is
     iob26 : out std_logic;
     i26   : in  std_logic;
     iob27 : out std_logic;
-    i27   : in  std_logic);
+    i27   : in  std_logic;
+    ob1   : in  std_logic
+    );
 end;

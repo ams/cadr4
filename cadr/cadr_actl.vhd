@@ -46,7 +46,6 @@ entity cadr_actl is
     \-aadr9a\   : out std_logic;
     \-aadr8b\   : out std_logic;
     \-aadr9b\   : out std_logic;
-    apass1      : out std_logic;
     apass2      : out std_logic;
     \-apass\    : out std_logic;
     tse3a       : in  std_logic;
@@ -73,6 +72,7 @@ entity cadr_actl is
     \-awpc\     : out std_logic;
     tse4a       : in  std_logic;
     apassenb    : out std_logic;
-    \-apassenb\ : out std_logic
+    \-apassenb\ : out std_logic;
+    apass1      : out std_logic
     );
 end;

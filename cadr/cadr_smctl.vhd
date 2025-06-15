@@ -3,7 +3,6 @@ use ieee.std_logic_1164.all;
 
 entity cadr_smctl is
   port (
-    \-sh4\    : in  std_logic;
     \-sr\     : out std_logic;
     \-s4\     : out std_logic;
     \-mr\     : out std_logic;
@@ -37,5 +36,7 @@ entity cadr_smctl is
     mskr3     : out std_logic;
     ir8       : in  std_logic;
     mskl2     : out std_logic;
-    ir7       : in  std_logic);
+    ir7       : in  std_logic;
+    \-sh4\    : in  std_logic
+    );
 end;

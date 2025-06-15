@@ -17,7 +17,6 @@ entity cadr_vmem1 is
     \-vma15\   : in  std_logic;
     \-vma16\   : in  std_logic;
     \-vma5\    : in  std_logic;
-    \-vma6\    : in  std_logic;
     \-vma7\    : in  std_logic;
     \-vma8\    : in  std_logic;
     \-vma9\    : in  std_logic;
@@ -68,5 +67,7 @@ entity cadr_vmem1 is
     \-vmo8\    : out std_logic;
     \-vmo7\    : out std_logic;
     \-vmo1\    : out std_logic;
-    \-vmo6\    : out std_logic);
+    \-vmo6\    : out std_logic;
+    \-vma6\    : in  std_logic
+    );
 end;

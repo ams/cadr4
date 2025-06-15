@@ -142,5 +142,6 @@ entity cadr_vmas is
     \-vmas26\   : out std_logic;
     ob26        : in  std_logic;
     \-vmas27\   : out std_logic;
-    ob27        : in  std_logic);
+    ob27        : in  std_logic
+    );
 end;

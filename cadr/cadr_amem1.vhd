@@ -47,5 +47,6 @@ entity cadr_amem1 is
     amem11    : out std_logic;
     l11       : in  std_logic;
     amem9     : out std_logic;
-    l9        : in  std_logic);
+    l9        : in  std_logic
+    );
 end;

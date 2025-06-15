@@ -70,5 +70,6 @@ entity cadr_dram0 is
     r1          : in  std_logic;
     dmask4      : in  std_logic;
     r4          : in  std_logic;
-    dmask1      : in  std_logic);
+    dmask1      : in  std_logic
+    );
 end;

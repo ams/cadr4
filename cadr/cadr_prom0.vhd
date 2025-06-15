@@ -60,5 +60,6 @@ entity cadr_prom0 is
     i12        : out std_logic;
     i13        : out std_logic;
     i14        : out std_logic;
-    i15        : out std_logic);
+    i15        : out std_logic
+    );
 end;

@@ -49,9 +49,10 @@ entity cadr_trap is
     \-trap\     : out std_logic;
     \boot.trap\ : in  std_logic;
     \-trapenb\  : out std_logic;
-    trapenb     : in  std_logic;
     \-memparok\ : out std_logic;
     trapb       : out std_logic;
     trapa       : out std_logic;
-    memparok    : out std_logic);
+    memparok    : out std_logic;
+    trapenb     : in  std_logic
+    );
 end;

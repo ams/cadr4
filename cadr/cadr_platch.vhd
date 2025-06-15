@@ -70,5 +70,6 @@ entity cadr_platch is
     pdl16       : in  std_logic;
     m16         : out std_logic;
     pdlparity   : in  std_logic;
-    mparity     : out std_logic);
+    mparity     : out std_logic
+    );
 end;

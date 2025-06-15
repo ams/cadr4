@@ -45,5 +45,6 @@ entity cadr_vctl2 is
     \use.md\       : out std_logic;
     \-srcmd\       : in  std_logic;
     nopa           : out std_logic;
-    \-nopa\        : in  std_logic);
+    \-nopa\        : in  std_logic
+    );
 end;

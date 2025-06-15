@@ -49,5 +49,6 @@ entity cadr_pdl0 is
     pdl17     : out std_logic;
     l17       : in  std_logic;
     pdl16     : out std_logic;
-    l16       : in  std_logic);
+    l16       : in  std_logic
+    );
 end;

@@ -16,9 +16,9 @@ entity cadr_amem0 is
     \-aadr8b\  : in  std_logic;
     \-aadr9b\  : in  std_logic;
     \-awpa\    : in  std_logic;
-    \-awpb\    : in  std_logic;
     l22        : in  std_logic;
     amem20     : out std_logic;
+    \-awpb\    : in  std_logic;
     l20        : in  std_logic;
     amem18     : out std_logic;
     l18        : in  std_logic;
@@ -49,5 +49,6 @@ entity cadr_amem0 is
     amem27     : out std_logic;
     l27        : in  std_logic;
     amem25     : out std_logic;
-    l25        : in  std_logic);
+    l25        : in  std_logic
+    );
 end;

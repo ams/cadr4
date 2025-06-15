@@ -20,7 +20,6 @@ entity cadr_npc is
     pc10    : out std_logic;
     ipc5    : out std_logic;
     pc5     : out std_logic;
-    ipc4    : out std_logic;
     pc4     : out std_logic;
     pccry3  : out std_logic;
     ipc7    : out std_logic;
@@ -96,5 +95,7 @@ entity cadr_npc is
     spc5    : out std_logic;
     spc4    : out std_logic;
     ir16    : in  std_logic;
-    dpc4    : in  std_logic);
+    dpc4    : in  std_logic;
+    ipc4    : out std_logic
+    );
 end;

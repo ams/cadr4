@@ -70,5 +70,6 @@ entity cadr_debug is
     i43        : out std_logic;
     i42        : out std_logic;
     i41        : out std_logic;
-    i40        : out std_logic);
+    i40        : out std_logic
+    );
 end;

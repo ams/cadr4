@@ -68,9 +68,10 @@ entity cadr_l is
     l25        : out std_logic;
     ob25       : in  std_logic;
     ob24       : in  std_logic;
-    l24        : out std_logic;
     lparl      : out std_logic;
     \-lparm\   : out std_logic;
     lparity    : out std_logic;
-    \-lparity\ : out std_logic);
+    \-lparity\ : out std_logic;
+    l24        : out std_logic
+    );
 end;

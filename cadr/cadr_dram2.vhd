@@ -61,5 +61,6 @@ entity cadr_dram2 is
     ir20b       : in  std_logic;
     ir19b       : in  std_logic;
     dispwr      : in  std_logic;
-    wp2         : in  std_logic);
+    wp2         : in  std_logic
+    );
 end;

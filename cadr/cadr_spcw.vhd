@@ -86,5 +86,6 @@ entity cadr_spcw is
     l17      : in  std_logic;
     spcw17   : out std_logic;
     spcw18   : out std_logic;
-    l18      : in  std_logic);
+    l18      : in  std_logic
+    );
 end;

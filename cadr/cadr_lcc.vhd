@@ -53,5 +53,6 @@ entity cadr_lcc is
     ir24                         : in  std_logic;
     irdisp                       : in  std_logic;
     spc1                         : in  std_logic;
-    spc1a                        : out std_logic);
+    spc1a                        : out std_logic
+    );
 end;

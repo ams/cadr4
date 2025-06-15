@@ -75,5 +75,6 @@ entity cadr_mf is
     spcenb     : in  std_logic;
     \-srcm\    : out std_logic;
     \-ir31\    : in  std_logic;
-    \-mpass\   : in  std_logic);
+    \-mpass\   : in  std_logic
+    );
 end;

@@ -52,5 +52,6 @@ entity cadr_iram20 is
     i24      : out std_logic;
     iwr24    : in  std_logic;
     i25      : out std_logic;
-    iwr25    : in  std_logic);
+    iwr25    : in  std_logic
+    );
 end;

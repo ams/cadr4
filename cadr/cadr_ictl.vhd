@@ -11,7 +11,6 @@ entity cadr_ictl is
     iwriteda        : out std_logic;
     promdisabled    : in  std_logic;
     \-wp5\          : in  std_logic;
-    wp5d            : out std_logic;
     wp5c            : out std_logic;
     wp5b            : out std_logic;
     wp5a            : out std_logic;
@@ -90,5 +89,7 @@ entity cadr_ictl is
     \-iweg\         : out std_logic;
     \-iweh\         : out std_logic;
     \-iweo\         : out std_logic;
-    \-iwep\         : out std_logic);
+    \-iwep\         : out std_logic;
+    wp5d            : out std_logic
+    );
 end;

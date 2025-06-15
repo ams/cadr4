@@ -57,5 +57,6 @@ entity cadr_pdlptr is
     mf7          : out std_logic;
     srcpdlidx    : in  std_logic;
     tse4b        : in  std_logic;
-    srcpdlptr    : in  std_logic);
+    srcpdlptr    : in  std_logic
+    );
 end;

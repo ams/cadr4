@@ -97,5 +97,6 @@ entity cadr_vmemdr is
     \-vma0\     : in  std_logic;
     \-vma7\     : in  std_logic;
     \-adrpar\   : out std_logic;
-    \-srcmap\   : in  std_logic);
+    \-srcmap\   : in  std_logic
+    );
 end;

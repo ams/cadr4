@@ -3,7 +3,6 @@ use ieee.std_logic_1164.all;
 
 entity cadr_opcd is
   port (
-    \-srcdc\        : in  std_logic;
     \-srcopc\       : in  std_logic;
     \-opcdrive\     : out std_logic;
     opc7            : in  std_logic;
@@ -70,5 +69,7 @@ entity cadr_opcd is
     dc9             : in  std_logic;
     dc8             : in  std_logic;
     \-srcpdlidx\    : in  std_logic;
-    \-srcpdlptr\    : in  std_logic);
+    \-srcpdlptr\    : in  std_logic;
+    \-srcdc\        : in  std_logic
+    );
 end;

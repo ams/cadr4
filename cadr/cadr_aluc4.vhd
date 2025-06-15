@@ -81,5 +81,6 @@ entity cadr_aluc4 is
     osel0a            : out std_logic;
     \-ir12\           : in  std_logic;
     osel1b            : out std_logic;
-    osel0b            : out std_logic);
+    osel0b            : out std_logic
+    );
 end;

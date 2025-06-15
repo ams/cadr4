@@ -35,5 +35,6 @@ entity cadr_vmem0 is
     \-use.map\ : out std_logic;
     v0parok    : out std_logic;
     vmoparodd  : in  std_logic;
-    vmoparok   : out std_logic);
+    vmoparok   : out std_logic
+    );
 end;

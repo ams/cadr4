@@ -26,7 +26,6 @@ entity cadr_pctl is
     \-promdisabled\ : in  std_logic;
     \-iwriteda\     : in  std_logic;
     pc13            : in  std_logic;
-    pc12            : in  std_logic;
     pc11            : in  std_logic;
     pc10            : in  std_logic;
     pc5             : in  std_logic;
@@ -50,5 +49,7 @@ entity cadr_pctl is
     dpe             : out std_logic;
     \-dpe\          : in  std_logic;
     ipe             : out std_logic;
-    \-ipe\          : in  std_logic);
+    \-ipe\          : in  std_logic;
+    pc12            : in  std_logic
+    );
 end;

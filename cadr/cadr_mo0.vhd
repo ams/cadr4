@@ -69,7 +69,6 @@ entity cadr_mo0 is
     a2     : in  std_logic;
     ob2    : out std_logic;
     msk2   : in  std_logic;
-    alu1   : in  std_logic;
     r9     : in  std_logic;
     a9     : in  std_logic;
     ob9    : out std_logic;
@@ -87,5 +86,7 @@ entity cadr_mo0 is
     a0     : in  std_logic;
     ob0    : out std_logic;
     msk0   : in  std_logic;
-    q31    : in  std_logic);
+    q31    : in  std_logic;
+    alu1   : in  std_logic
+    );
 end;

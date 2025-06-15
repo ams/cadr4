@@ -99,5 +99,6 @@ entity cadr_spy2 is
     m27          : in  std_logic;
     m26          : in  std_logic;
     m25          : in  std_logic;
-    m24          : in  std_logic);
+    m24          : in  std_logic
+    );
 end;

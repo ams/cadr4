@@ -96,7 +96,6 @@ entity cadr_lc is
     ob9                 : in  std_logic;
     ob10                : in  std_logic;
     ob11                : in  std_logic;
-    \-lcry7\            : out std_logic;
     \-srclc\            : in  std_logic;
     ob24                : in  std_logic;
     ob25                : in  std_logic;
@@ -104,5 +103,7 @@ entity cadr_lc is
     ob5                 : in  std_logic;
     ob6                 : in  std_logic;
     ob7                 : in  std_logic;
-    \-lcry3\            : in  std_logic);
+    \-lcry3\            : in  std_logic;
+    \-lcry7\            : out std_logic
+    );
 end;

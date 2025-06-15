@@ -66,5 +66,6 @@ entity cadr_spy4 is
     opc3         : in  std_logic;
     opc2         : in  std_logic;
     opc1         : in  std_logic;
-    opc0         : in  std_logic);
+    opc0         : in  std_logic
+    );
 end;

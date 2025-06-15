@@ -101,5 +101,6 @@ entity cadr_iwr is
     iwr17 : out std_logic;
     m17   : in  std_logic;
     m16   : in  std_logic;
-    iwr16 : out std_logic);
+    iwr16 : out std_logic
+    );
 end;

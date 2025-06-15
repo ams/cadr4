@@ -114,5 +114,6 @@ entity cadr_md is
     mdhaspar    : out std_logic;
     \mempar in\ : in  std_logic;
     mdpar       : out std_logic;
-    \-srcmd\    : in  std_logic);
+    \-srcmd\    : in  std_logic
+    );
 end;

@@ -17,7 +17,6 @@ entity cadr_opcs is
     opc10     : out std_logic;
     opc9      : out std_logic;
     pc9       : in  std_logic;
-    opcclkc   : out std_logic;
     pc8       : in  std_logic;
     opc8      : out std_logic;
     opc7      : out std_logic;
@@ -40,5 +39,7 @@ entity cadr_opcs is
     pc0       : in  std_logic;
     opc0      : out std_logic;
     \-clk5\   : in  std_logic;
-    opcclk    : in  std_logic);
+    opcclk    : in  std_logic;
+    opcclkc   : out std_logic
+    );
 end;

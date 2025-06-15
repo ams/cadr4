@@ -47,5 +47,6 @@ entity cadr_spcpar is
     spc1        : in  std_logic;
     spc2        : in  std_logic;
     spc3        : in  std_logic;
-    spc4        : in  std_logic);
+    spc4        : in  std_logic
+    );
 end;

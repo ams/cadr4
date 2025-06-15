@@ -80,5 +80,6 @@ entity cadr_apar is
     mparity   : in  std_logic;
     mparodd   : out std_logic;
     m24       : in  std_logic;
-    m25       : in  std_logic);
+    m25       : in  std_logic
+    );
 end;

@@ -20,10 +20,10 @@ entity cadr_clock2 is
     \-clock reset b\ : in  std_logic;
     tptse            : out std_logic;
     \-tpw70\         : in  std_logic;
-    \-tpclk\         : out std_logic;
     \-tpr0\          : in  std_logic;
     \-tpr5\          : in  std_logic;
     \-tpw30\         : in  std_logic;
+    \-machruna\      : in  std_logic;
     tpwpiram         : out std_logic;
     \-wp5\           : out std_logic;
     clk5             : out std_logic;
@@ -38,6 +38,7 @@ entity cadr_clock2 is
     clk3             : out std_logic;
     mclk1            : out std_logic;
     machrun          : in  std_logic;
-    \-machruna\      : in  std_logic;
-    hi1              : in  std_logic);
+    hi1              : in  std_logic;
+    \-tpclk\         : out std_logic
+    );
 end;

@@ -23,7 +23,6 @@ entity cadr_dram1 is
     \-dmapbenb\ : in  std_logic;
     \-dadr0b\   : out std_logic;
     ir8b        : out std_logic;
-    hi6         : in  std_logic;
     dadr10a     : in  std_logic;
     \-dadr1b\   : out std_logic;
     \-dadr2b\   : out std_logic;
@@ -70,5 +69,7 @@ entity cadr_dram1 is
     ir22        : in  std_logic;
     ir8         : in  std_logic;
     ir9         : in  std_logic;
-    ir22b       : out std_logic);
+    ir22b       : out std_logic;
+    hi6         : in  std_logic
+    );
 end;

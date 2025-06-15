@@ -78,5 +78,6 @@ entity cadr_qctl is
     \-ir1\    : in  std_logic;
     qs1       : out std_logic;
     \-ir0\    : in  std_logic;
-    qs0       : out std_logic);
+    qs0       : out std_logic
+    );
 end;

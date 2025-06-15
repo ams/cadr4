@@ -14,9 +14,8 @@ entity cadr_olord2 is
     \-mempe\            : out std_logic;
     \-v0pe\             : out std_logic;
     \-v1pe\             : out std_logic;
-    \-halted\           : out std_logic;    
+    \-halted\           : out std_logic;
     hi1                 : out std_logic;
-    vcc                 : in  std_logic;
     gnd                 : in  std_logic;
     aparok              : in  std_logic;
     mmemparok           : in  std_logic;
@@ -49,9 +48,10 @@ entity cadr_olord2 is
     \-power reset\      : out std_logic;
     srun                : in  std_logic;
     \boot.trap\         : out std_logic;
-    hi2                 : out std_logic;
-    \-boot1\            : out std_logic;
+    vcc                 : in  std_logic;
     \-boot2\            : out std_logic;
+    \-boot1\            : out std_logic;
+    hi2                 : out std_logic;
     \-ldmode\           : out std_logic;
     ldmode              : out std_logic;
     mclk5               : in  std_logic;
@@ -61,6 +61,7 @@ entity cadr_olord2 is
     spy6                : in  std_logic;
     \-errhalt\          : out std_logic;
     errstop             : in  std_logic;
-    \prog.boot\         : out std_logic;
-    spy7                : in  std_logic);
+    spy7                : in  std_logic;
+    \prog.boot\         : out std_logic
+    );
 end;

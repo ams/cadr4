@@ -83,5 +83,6 @@ entity cadr_mmem is
     l22        : in  std_logic;
     mmem22     : out std_logic;
     mmem23     : out std_logic;
-    l23        : in  std_logic);
+    l23        : in  std_logic
+    );
 end;

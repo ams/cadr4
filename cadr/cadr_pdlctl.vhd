@@ -74,5 +74,6 @@ entity cadr_pdlctl is
     \-pdla7a\     : out std_logic;
     \-pdla8a\     : out std_logic;
     \-pdla9a\     : out std_logic;
-    nop           : in  std_logic);
+    nop           : in  std_logic
+    );
 end;

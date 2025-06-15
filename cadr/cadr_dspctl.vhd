@@ -100,5 +100,6 @@ entity cadr_dspctl is
     dpc5        : in  std_logic;
     dpc6        : in  std_logic;
     dpc7        : in  std_logic;
-    dpc8        : in  std_logic);
+    dpc8        : in  std_logic
+    );
 end;

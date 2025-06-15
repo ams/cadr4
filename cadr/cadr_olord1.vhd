@@ -51,12 +51,13 @@ entity cadr_olord1 is
     \-errhalt\       : in  std_logic;
     \-wait\          : in  std_logic;
     \-stathalt\      : out std_logic;
-    machrun          : out std_logic;
     \stat.ovf\       : out std_logic;
     \-stc32\         : in  std_logic;
     \-tpr60\         : in  std_logic;
     gnd              : in  std_logic;
     statstop         : in  std_logic;
     \-machruna\      : out std_logic;
-    \-machrun\       : out std_logic);
+    \-machrun\       : out std_logic;
+    machrun          : out std_logic
+    );
 end;

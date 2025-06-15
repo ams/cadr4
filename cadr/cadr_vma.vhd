@@ -69,7 +69,6 @@ entity cadr_vma is
     \-vma8\     : out std_logic;
     mf15        : out std_logic;
     tse2        : in  std_logic;
-    srcvma      : out std_logic;
     \-vmaenb\   : in  std_logic;
     \-vmas24\   : in  std_logic;
     \-vmas25\   : in  std_logic;
@@ -106,5 +105,7 @@ entity cadr_vma is
     \-vmas9\    : in  std_logic;
     \-vmas10\   : in  std_logic;
     \-vmas11\   : in  std_logic;
-    \-srcvma\   : in  std_logic);
+    \-srcvma\   : in  std_logic;
+    srcvma      : out std_logic
+    );
 end;

@@ -44,5 +44,6 @@ entity cadr_vctl1 is
     needfetch            : in  std_logic;
     lcinc                : in  std_logic;
     \-hang\              : out std_logic;
-    \-clk3g\             : in  std_logic);
+    \-clk3g\             : in  std_logic
+    );
 end;

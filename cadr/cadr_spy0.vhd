@@ -31,5 +31,6 @@ entity cadr_spy0 is
     \-ldclk\     : out std_logic;
     \-lddbirh\   : out std_logic;
     \-lddbirm\   : out std_logic;
-    \-lddbirl\   : out std_logic);
+    \-lddbirl\   : out std_logic
+    );
 end;

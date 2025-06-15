@@ -71,5 +71,6 @@ entity cadr_source is
     \-destmdr\    : out std_logic;
     \-destvma\    : out std_logic;
     \-idebug\     : in  std_logic;
-    imod          : out std_logic);
+    imod          : out std_logic
+    );
 end;

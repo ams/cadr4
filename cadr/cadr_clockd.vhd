@@ -76,5 +76,6 @@ entity cadr_clockd is
     srcpdlptr      : out std_logic;
     \-srcpdlptr\   : in  std_logic;
     srcpdlidx      : out std_logic;
-    \-srcpdlidx\   : in  std_logic);
+    \-srcpdlidx\   : in  std_logic
+    );
 end;

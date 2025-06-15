@@ -35,7 +35,6 @@ entity cadr_lpc is
     pc0b       : out std_logic;
     irdisp     : in  std_logic;
     ir25       : in  std_logic;
-    lpc12      : out std_logic;
     wpc12      : out std_logic;
     lpc13      : out std_logic;
     wpc13      : out std_logic;
@@ -64,5 +63,7 @@ entity cadr_lpc is
     wpc3       : out std_logic;
     lpc3       : out std_logic;
     \lpc.hold\ : in  std_logic;
-    clk4b      : in  std_logic);
+    clk4b      : in  std_logic;
+    lpc12      : out std_logic
+    );
 end;

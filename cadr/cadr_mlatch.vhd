@@ -136,5 +136,6 @@ entity cadr_mlatch is
     l17        : in  std_logic;
     mf22       : out std_logic;
     l16        : in  std_logic;
-    mf23       : out std_logic);
+    mf23       : out std_logic
+    );
 end;

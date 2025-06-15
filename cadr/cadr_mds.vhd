@@ -11,7 +11,6 @@ entity cadr_mds is
     \-md29\       : in  std_logic;
     mem26         : out std_logic;
     \-md28\       : in  std_logic;
-    mem27         : out std_logic;
     \-md27\       : in  std_logic;
     mem28         : out std_logic;
     \-md26\       : in  std_logic;
@@ -138,5 +137,7 @@ entity cadr_mds is
     \-mds26\      : out std_logic;
     ob26          : in  std_logic;
     \-mds27\      : out std_logic;
-    ob27          : in  std_logic);
+    ob27          : in  std_logic;
+    mem27         : out std_logic
+    );
 end;

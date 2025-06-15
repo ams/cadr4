@@ -19,7 +19,7 @@ package icmem_book is
       \-tpw50\         : out std_logic;
       \-tpw30\         : out std_logic;
       \-tpw10\         : out std_logic;
-      \-tpw60\         : out std_logic;
+      \-tpw60\ : out std_logic;         -- \-tpdone\
       \-tpw70\         : out std_logic;
       \-tpw75\         : out std_logic;
       \-tpw65\         : out std_logic;
@@ -56,7 +56,8 @@ package icmem_book is
       \-tpr105\        : out std_logic;
       \-tpr70\         : out std_logic;
       \-tpr80a\        : out std_logic;
-      \-tpr65\         : out std_logic);
+      \-tpr65\         : out std_logic
+      );
   end component;
 
   component cadr_clock2 is
@@ -78,10 +79,10 @@ package icmem_book is
       \-clock reset b\ : in  std_logic;
       tptse            : out std_logic;
       \-tpw70\         : in  std_logic;
-      \-tpclk\         : out std_logic;
       \-tpr0\          : in  std_logic;
       \-tpr5\          : in  std_logic;
       \-tpw30\         : in  std_logic;
+      \-machruna\      : in  std_logic;
       tpwpiram         : out std_logic;
       \-wp5\           : out std_logic;
       clk5             : out std_logic;
@@ -96,8 +97,9 @@ package icmem_book is
       clk3             : out std_logic;
       mclk1            : out std_logic;
       machrun          : in  std_logic;
-      \-machruna\      : in  std_logic;
-      hi1              : in  std_logic);
+      hi1              : in  std_logic;
+      \-tpclk\         : out std_logic
+      );
   end component;
 
   component cadr_debug is
@@ -169,11 +171,11 @@ package icmem_book is
       i43        : out std_logic;
       i42        : out std_logic;
       i41        : out std_logic;
-      i40        : out std_logic);
+      i40        : out std_logic
+      );
   end component;
 
 --  component cadr_icaps is
---    port ();
 --  end component;
 
   component cadr_ictl is
@@ -186,7 +188,6 @@ package icmem_book is
       iwriteda        : out std_logic;
       promdisabled    : in  std_logic;
       \-wp5\          : in  std_logic;
-      wp5d            : out std_logic;
       wp5c            : out std_logic;
       wp5b            : out std_logic;
       wp5a            : out std_logic;
@@ -265,7 +266,9 @@ package icmem_book is
       \-iweg\         : out std_logic;
       \-iweh\         : out std_logic;
       \-iweo\         : out std_logic;
-      \-iwep\         : out std_logic);
+      \-iwep\         : out std_logic;
+      wp5d            : out std_logic
+      );
   end component;
 
   component cadr_iwrpar is
@@ -322,17 +325,16 @@ package icmem_book is
       iwr2  : in  std_logic;
       iwr3  : in  std_logic;
       iwr4  : in  std_logic;
-      gnd   : in  std_logic;
-      iwr48 : out std_logic);
+      iwr48 : out std_logic;
+      gnd   : in  std_logic
+      );
   end component;
 
---  component cadr_mbcpin is
---    port ();
---  end component;
+-- component cadr_mbcpin is
+-- end component;
 
---  component cadr_mcpins is
---    port ();
---  end component;
+-- component cadr_mcpins is
+-- end component;
 
   component cadr_olord1 is
     port (
@@ -384,14 +386,15 @@ package icmem_book is
       \-errhalt\       : in  std_logic;
       \-wait\          : in  std_logic;
       \-stathalt\      : out std_logic;
-      machrun          : out std_logic;
       \stat.ovf\       : out std_logic;
       \-stc32\         : in  std_logic;
       \-tpr60\         : in  std_logic;
       gnd              : in  std_logic;
       statstop         : in  std_logic;
       \-machruna\      : out std_logic;
-      \-machrun\       : out std_logic);
+      \-machrun\       : out std_logic;
+      machrun          : out std_logic
+      );
   end component;
 
   component cadr_olord2 is
@@ -409,7 +412,6 @@ package icmem_book is
       \-v1pe\             : out std_logic;
       \-halted\           : out std_logic;
       hi1                 : out std_logic;
-      vcc                 : in  std_logic;
       gnd                 : in  std_logic;
       aparok              : in  std_logic;
       mmemparok           : in  std_logic;
@@ -442,9 +444,10 @@ package icmem_book is
       \-power reset\      : out std_logic;
       srun                : in  std_logic;
       \boot.trap\         : out std_logic;
-      hi2                 : out std_logic;
-      \-boot1\            : out std_logic;
+      vcc                 : in  std_logic;
       \-boot2\            : out std_logic;
+      \-boot1\            : out std_logic;
+      hi2                 : out std_logic;
       \-ldmode\           : out std_logic;
       ldmode              : out std_logic;
       mclk5               : in  std_logic;
@@ -454,8 +457,9 @@ package icmem_book is
       spy6                : in  std_logic;
       \-errhalt\          : out std_logic;
       errstop             : in  std_logic;
-      \prog.boot\         : out std_logic;
-      spy7                : in  std_logic);
+      spy7                : in  std_logic;
+      \prog.boot\         : out std_logic
+      );
   end component;
 
   component cadr_opcs is
@@ -474,7 +478,6 @@ package icmem_book is
       opc10     : out std_logic;
       opc9      : out std_logic;
       pc9       : in  std_logic;
-      opcclkc   : out std_logic;
       pc8       : in  std_logic;
       opc8      : out std_logic;
       opc7      : out std_logic;
@@ -497,7 +500,9 @@ package icmem_book is
       pc0       : in  std_logic;
       opc0      : out std_logic;
       \-clk5\   : in  std_logic;
-      opcclk    : in  std_logic);
+      opcclk    : in  std_logic;
+      opcclkc   : out std_logic
+      );
   end component;
 
   component cadr_pctl is
@@ -525,7 +530,6 @@ package icmem_book is
       \-promdisabled\ : in  std_logic;
       \-iwriteda\     : in  std_logic;
       pc13            : in  std_logic;
-      pc12            : in  std_logic;
       pc11            : in  std_logic;
       pc10            : in  std_logic;
       pc5             : in  std_logic;
@@ -549,7 +553,9 @@ package icmem_book is
       dpe             : out std_logic;
       \-dpe\          : in  std_logic;
       ipe             : out std_logic;
-      \-ipe\          : in  std_logic);
+      \-ipe\          : in  std_logic;
+      pc12            : in  std_logic
+      );
   end component;
 
   component cadr_prom0 is
@@ -611,7 +617,8 @@ package icmem_book is
       i12        : out std_logic;
       i13        : out std_logic;
       i14        : out std_logic;
-      i15        : out std_logic);
+      i15        : out std_logic
+      );
   end component;
 
   component cadr_prom1 is
@@ -673,7 +680,8 @@ package icmem_book is
       i12        : out std_logic;
       i13        : out std_logic;
       i14        : out std_logic;
-      i15        : out std_logic);
+      i15        : out std_logic
+      );
   end component;
 
   component cadr_iram00 is
@@ -727,7 +735,8 @@ package icmem_book is
       i3       : out std_logic;
       iwr3     : in  std_logic;
       i4       : out std_logic;
-      iwr4     : in  std_logic);
+      iwr4     : in  std_logic
+      );
   end component;
 
   component cadr_iram01 is
@@ -781,7 +790,8 @@ package icmem_book is
       i3       : out std_logic;
       iwr3     : in  std_logic;
       i4       : out std_logic;
-      iwr4     : in  std_logic);
+      iwr4     : in  std_logic
+      );
   end component;
 
   component cadr_iram02 is
@@ -835,7 +845,8 @@ package icmem_book is
       i3       : out std_logic;
       iwr3     : in  std_logic;
       i4       : out std_logic;
-      iwr4     : in  std_logic);
+      iwr4     : in  std_logic
+      );
   end component;
 
   component cadr_iram03 is
@@ -889,7 +900,8 @@ package icmem_book is
       i3       : out std_logic;
       iwr3     : in  std_logic;
       i4       : out std_logic;
-      iwr4     : in  std_logic);
+      iwr4     : in  std_logic
+      );
   end component;
 
   component cadr_iram10 is
@@ -943,7 +955,8 @@ package icmem_book is
       i15      : out std_logic;
       iwr15    : in  std_logic;
       i16      : out std_logic;
-      iwr16    : in  std_logic);
+      iwr16    : in  std_logic
+      );
   end component;
 
   component cadr_iram11 is
@@ -997,7 +1010,8 @@ package icmem_book is
       i15      : out std_logic;
       iwr15    : in  std_logic;
       i16      : out std_logic;
-      iwr16    : in  std_logic);
+      iwr16    : in  std_logic
+      );
   end component;
 
   component cadr_iram12 is
@@ -1051,7 +1065,8 @@ package icmem_book is
       i15      : out std_logic;
       iwr15    : in  std_logic;
       i16      : out std_logic;
-      iwr16    : in  std_logic);
+      iwr16    : in  std_logic
+      );
   end component;
 
   component cadr_iram13 is
@@ -1105,7 +1120,8 @@ package icmem_book is
       i15      : out std_logic;
       iwr15    : in  std_logic;
       i16      : out std_logic;
-      iwr16    : in  std_logic);
+      iwr16    : in  std_logic
+      );
   end component;
 
   component cadr_iram20 is
@@ -1159,7 +1175,8 @@ package icmem_book is
       i24      : out std_logic;
       iwr24    : in  std_logic;
       i25      : out std_logic;
-      iwr25    : in  std_logic);
+      iwr25    : in  std_logic
+      );
   end component;
 
   component cadr_iram21 is
@@ -1213,7 +1230,8 @@ package icmem_book is
       i24      : out std_logic;
       iwr24    : in  std_logic;
       i25      : out std_logic;
-      iwr25    : in  std_logic);
+      iwr25    : in  std_logic
+      );
   end component;
 
   component cadr_iram22 is
@@ -1267,7 +1285,8 @@ package icmem_book is
       i24      : out std_logic;
       iwr24    : in  std_logic;
       i25      : out std_logic;
-      iwr25    : in  std_logic);
+      iwr25    : in  std_logic
+      );
   end component;
 
   component cadr_iram23 is
@@ -1321,7 +1340,8 @@ package icmem_book is
       i24      : out std_logic;
       iwr24    : in  std_logic;
       i25      : out std_logic;
-      iwr25    : in  std_logic);
+      iwr25    : in  std_logic
+      );
   end component;
 
   component cadr_iram30 is
@@ -1377,7 +1397,8 @@ package icmem_book is
       i37      : out std_logic;
       iwr37    : in  std_logic;
       i38      : out std_logic;
-      iwr38    : in  std_logic);
+      iwr38    : in  std_logic
+      );
   end component;
 
   component cadr_iram31 is
@@ -1433,7 +1454,8 @@ package icmem_book is
       i37      : out std_logic;
       iwr37    : in  std_logic;
       i38      : out std_logic;
-      iwr38    : in  std_logic);
+      iwr38    : in  std_logic
+      );
   end component;
 
   component cadr_iram32 is
@@ -1489,7 +1511,8 @@ package icmem_book is
       i37      : out std_logic;
       iwr37    : in  std_logic;
       i38      : out std_logic;
-      iwr38    : in  std_logic);
+      iwr38    : in  std_logic
+      );
   end component;
 
   component cadr_iram33 is
@@ -1545,7 +1568,8 @@ package icmem_book is
       i37      : out std_logic;
       iwr37    : in  std_logic;
       i38      : out std_logic;
-      iwr38    : in  std_logic);
+      iwr38    : in  std_logic
+      );
   end component;
 
   component cadr_spy0 is
@@ -1578,7 +1602,8 @@ package icmem_book is
       \-ldclk\     : out std_logic;
       \-lddbirh\   : out std_logic;
       \-lddbirm\   : out std_logic;
-      \-lddbirl\   : out std_logic);
+      \-lddbirl\   : out std_logic
+      );
   end component;
 
   component cadr_spy4 is
@@ -1646,7 +1671,8 @@ package icmem_book is
       opc3         : in  std_logic;
       opc2         : in  std_logic;
       opc1         : in  std_logic;
-      opc0         : in  std_logic);
+      opc0         : in  std_logic
+      );
   end component;
 
   component cadr_stat is
@@ -1659,7 +1685,6 @@ package icmem_book is
       iwr15      : in  std_logic;
       gnd        : in  std_logic;
       \-ldstat\  : in  std_logic;
-      \-stc12\   : out std_logic;
       st15       : out std_logic;
       st14       : out std_logic;
       st13       : out std_logic;
@@ -1745,8 +1770,9 @@ package icmem_book is
       iwr8       : in  std_logic;
       iwr9       : in  std_logic;
       iwr10      : in  std_logic;
-      iwr11      : in  std_logic);
+      iwr11      : in  std_logic;
+      \-stc12\   : out std_logic
+      );
   end component;
 
 end package;
-

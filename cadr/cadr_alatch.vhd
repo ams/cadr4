@@ -4,7 +4,6 @@ use ieee.std_logic_1164.all;
 entity cadr_alatch is
   port (
     \-amemenb\  : in  std_logic;
-    a23         : out std_logic;
     amem23      : in  std_logic;
     amem22      : in  std_logic;
     a22         : out std_logic;
@@ -107,5 +106,7 @@ entity cadr_alatch is
     l19         : in  std_logic;
     l18         : in  std_logic;
     l17         : in  std_logic;
-    l16         : in  std_logic);
+    l16         : in  std_logic;
+    a23         : out std_logic
+    );
 end;

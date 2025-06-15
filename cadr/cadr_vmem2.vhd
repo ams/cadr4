@@ -60,7 +60,7 @@ entity cadr_vmem2 is
     \-vmo2\    : in  std_logic;
     \-vmo3\    : in  std_logic;
     \-vmo4\    : in  std_logic;
-    vmoparck   : out std_logic;
-    vmoparodd  : out std_logic
+    vmoparodd  : out std_logic;
+    vmoparck   : out std_logic
     );
 end;

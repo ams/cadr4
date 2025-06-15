@@ -54,5 +54,6 @@ entity cadr_iram30 is
     i37      : out std_logic;
     iwr37    : in  std_logic;
     i38      : out std_logic;
-    iwr38    : in  std_logic);
+    iwr38    : in  std_logic
+    );
 end;

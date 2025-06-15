@@ -153,5 +153,6 @@ entity cadr_ireg is
     i25          : in  std_logic;
     i24          : in  std_logic;
     iob24        : in  std_logic;
-    ir24         : out std_logic);
+    ir24         : out std_logic
+    );
 end;

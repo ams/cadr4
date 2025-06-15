@@ -91,7 +91,6 @@ entity cadr_spclch is
     spcw8       : in  std_logic;
     spc15       : out std_logic;
     spcw7       : in  std_logic;
-    spc0        : out std_logic;
     spcw6       : in  std_logic;
     spc1        : out std_logic;
     spcw5       : in  std_logic;
@@ -108,5 +107,7 @@ entity cadr_spclch is
     spc7        : out std_logic;
     \-spcpass\  : in  std_logic;
     clk4d       : in  std_logic;
-    spcopar     : in  std_logic);
+    spcopar     : in  std_logic;
+    spc0        : out std_logic
+    );
 end;
