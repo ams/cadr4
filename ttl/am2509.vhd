@@ -32,15 +32,15 @@ architecture ttl of am2509 is
 begin
 
   i0 <= sel and (a0 or a1);
-  u0 : entity work.ff_d port map (clk => clk, d => i0, q => aq);
+  u0 : entity work.ff_d port map (clk => clk, d => i0, q => aq, q_n => open);
 
   i1 <= sel and (b0 or b1);
-  u1 : entity work.ff_d port map (clk => clk, d => i1, q => bq);
+  u1 : entity work.ff_d port map (clk => clk, d => i1, q => bq, q_n => open);
 
   i2 <= sel and (c0 or c1);
-  u2 : entity work.ff_d port map (clk => clk, d => i2, q => cq);
+  u2 : entity work.ff_d port map (clk => clk, d => i2, q => cq, q_n => open);
 
   i3 <= sel and (d0 or d1);
-  u3 : entity work.ff_d port map (clk => clk, d => i3, q => dq);
+  u3 : entity work.ff_d port map (clk => clk, d => i3, q => dq, q_n => open);
 
 end ttl;

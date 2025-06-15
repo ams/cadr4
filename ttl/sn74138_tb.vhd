@@ -31,7 +31,6 @@ begin
   process
     variable exp : std_logic_vector(7 downto 0);
     variable act : std_logic_vector(7 downto 0);
-    variable l : line;
   begin
     -- Test all input combinations
     for i in 0 to 7 loop

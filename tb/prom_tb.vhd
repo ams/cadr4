@@ -27,9 +27,6 @@ architecture testbench of prom_tb is
   -- Combined 48-bit output (i46 is missing)
   signal prom_data : std_logic_vector(47 downto 0);
   
-  -- Address vector (9-bit for each PROM)
-  signal address : std_logic_vector(8 downto 0);
-  
   -- Load reference data as constant
   constant reference_rom : std_logic_vector := load_rom_file("rom/promh.mcr.9.hex");
   constant rom_bytes : integer := reference_rom'length / 8;  -- Number of bytes in file

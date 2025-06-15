@@ -73,7 +73,7 @@ ttl-check: $(TTL_EXES)
 ## else it is used
 
 WAVEOPTFILE := $(patsubst %.vhd,%.opt,$(shell find . -name "$(notdir $(TB)).vhd"))
-$(info wave opt file: $(WAVEOPTFILE))
+#$(info wave opt file: $(WAVEOPTFILE))
 WAVEFILE := $(BUILDDIR)/$(notdir $(TB)).ghw
 ifneq ("$(wildcard $(WAVEOPTFILE))","")
 WAVEOPTCONTENTS := $(shell head -1 $(WAVEOPTFILE))

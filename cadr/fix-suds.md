@@ -56,9 +56,9 @@ However, when two or more components are connected to each other like this, this
 
 # Issue 3 - port terminations
 
-In suds files, some ports of dip components are not mapped. However, all unused input ports should be set to '0' and all unused output ports should be set to open.
+In suds files, some ports of dip components are not mapped. However, all unused input ports should be set to '0' and all unused output or inout ports should be set to open.
 
-For each component instantiation, check the dip component definition in dip/dip.vhd. If the dip port is an input port, set it to '0' in the port map. If the dip port is an output port, set it to open. There is only input and output ports, no bidirectional or buffer ports. There are also no power/ground pins.
+For each component instantiation, check the dip component definition in dip/dip.vhd. If the dip port is an input port, set it to '0' in the port map. If the dip port is an output port, set it to open. If the dip port is an inout port, set it to open. There is only input and output ports, no bidirectional or buffer ports. There are also no power/ground pins.
 
 If the component definition cannot be found or if there are multiple definitions in dip/dip.vhd, give an error. 
 

@@ -18,7 +18,7 @@ def parse_component_definitions(dip_file_path):
     
     # Find component definitions - updated to handle generics
     component_pattern = r'component\s+(\w+)\s+is\s*(?:generic\s*\(.*?\);\s*)?port\s*\((.*?)\s*\);\s*end\s+component;'
-    port_pattern = r'p(\d+)\s*:\s*(in|out)\s+std_logic'
+    port_pattern = r'p(\d+)\s*:\s*(in|out|inout)\s+std_logic'
     
     for match in re.finditer(component_pattern, content, re.DOTALL | re.IGNORECASE):
         component_name = match.group(1)
@@ -393,6 +393,8 @@ def fix_suds_file(file_path, verbose=False):
                 if direction == 'in':
                     inst['ports'][pin_num] = "'0'"
                 elif direction == 'out':
+                    inst['ports'][pin_num] = "open"
+                elif direction == 'inout':
                     inst['ports'][pin_num] = "open"
     
     # Generate new instantiation lines
