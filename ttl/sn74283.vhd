@@ -9,7 +9,7 @@ use ieee.numeric_std.all;
 
 entity sn74283 is
   port (
-    c0 : in std_logic := 'H'; -- Pin 7
+    ci : in std_logic := 'H'; -- Pin 7
     a0 : in std_logic := 'H'; -- Pin 5
     a1 : in std_logic := 'H'; -- Pin 3
     a2 : in std_logic := 'H'; -- Pin 14
@@ -22,7 +22,7 @@ entity sn74283 is
     s1 : out std_logic; -- Pin 1
     s2 : out std_logic; -- Pin 13
     s3 : out std_logic; -- Pin 10
-    c4 : out std_logic  -- Pin 9
+    co : out std_logic  -- Pin 9
     );
 end;
 
@@ -41,14 +41,14 @@ begin
        (a2 /= '0' and a2 /= '1') or (a3 /= '0' and a3 /= '1') or
        (b0 /= '0' and b0 /= '1') or (b1 /= '0' and b1 /= '1') or
        (b2 /= '0' and b2 /= '1') or (b3 /= '0' and b3 /= '1') or
-       (c0 /= '0' and c0 /= '1') then
+       (ci /= '0' and ci /= '1') then
       -- Any unknown input causes unknown outputs
-      s0 <= 'X'; s1 <= 'X'; s2 <= 'X'; s3 <= 'X'; c4 <= 'X';
+      s0 <= 'X'; s1 <= 'X'; s2 <= 'X'; s3 <= 'X'; co <= 'X';
     else
       -- All inputs are valid, perform addition
-      sum := ('0' & a) + ('0' & b) + ("0000" & c0);
+      sum := ('0' & a) + ('0' & b) + ("0000" & ci);
       s3  <= sum(3); s2 <= sum(2); s1 <= sum(1); s0 <= sum(0);
-      c4  <= sum(4);
+      co  <= sum(4);
     end if;
   end process;
 end;

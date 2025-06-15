@@ -721,8 +721,8 @@ package dip is
     p4  : out std_logic;                -- s0
     p5  : in  std_logic;                -- a0
     p6  : in  std_logic;                -- b0
-    p7  : in  std_logic;                -- c0
-    p9  : out std_logic;                -- c4
+    p7  : in  std_logic;                -- ci
+    p9  : out std_logic;                -- co
     p10 : out std_logic;                -- s3
     p11 : in  std_logic;                -- b3
     p12 : in  std_logic;                -- a3

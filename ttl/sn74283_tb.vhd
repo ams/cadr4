@@ -8,7 +8,7 @@ end;
 
 architecture testbench of sn74283_tb is
 
-  signal c0 : std_logic;
+  signal ci : std_logic;
   signal b0 : std_logic;
   signal b1 : std_logic;
   signal b2 : std_logic;
@@ -21,12 +21,12 @@ architecture testbench of sn74283_tb is
   signal a1 : std_logic;
   signal a2 : std_logic;
   signal a3 : std_logic;
-  signal c4 : std_logic;
+  signal co : std_logic;
 
 begin
 
   uut : sn74283 port map(
-    c4 => c4,
+    ci => ci,
 
     a3 => a3,
     a2 => a2,
@@ -43,34 +43,34 @@ begin
     b1 => b1,
     b0 => b0,
 
-    c0 => c0
+    co => co
     );
 
   process
     variable f : std_logic_vector(3 downto 0);
   begin
     -- 3 + 5 = 8
-    c0 <= '0';
+    ci <= '0';
     a3 <= '0'; a2 <= '0'; a1 <= '1'; a0 <= '1';
     b3 <= '0'; b2 <= '1'; b1 <= '0'; b0 <= '1';
     wait for 1 ns;
     f := s3 & s2 & s1 & s0;
-    assert f = "1000" and c4 = '0';
+    assert f = "1000" and co = '0';
 
     -- 15 + 1 = 16
     a3 <= '1'; a2 <= '1'; a1 <= '1'; a0 <= '1';
     b3 <= '0'; b2 <= '0'; b1 <= '0'; b0 <= '1';
     wait for 1 ns;
     f := s3 & s2 & s1 & s0;
-    assert f = "0000" and c4 = '1';
+    assert f = "0000" and co = '1';
 
     -- 6 + 7 + carry
-    c0 <= '1';
+    ci <= '1';
     a3 <= '0'; a2 <= '1'; a1 <= '1'; a0 <= '0';
     b3 <= '0'; b2 <= '1'; b1 <= '1'; b0 <= '1';
     wait for 1 ns;
     f := s3 & s2 & s1 & s0;
-    assert f = "1110" and c4 = '0';
+    assert f = "1110" and co = '0';
 
     wait;
   end process;

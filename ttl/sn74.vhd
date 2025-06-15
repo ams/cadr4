@@ -593,7 +593,7 @@ package sn74 is
 
   component sn74283 is
     port (
-      c4 : out std_logic;
+      ci : in std_logic;
 
       a3 : in std_logic;
       a2 : in std_logic;
@@ -610,7 +610,7 @@ package sn74 is
       b1 : in std_logic;
       b0 : in std_logic;
 
-      c0 : in std_logic
+      co : out std_logic
       );
   end component;
   alias sn74s283 is sn74283;

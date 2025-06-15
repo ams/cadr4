@@ -9,11 +9,13 @@ use work.icmem_book.cadr_clock1;
 use work.icmem_book.cadr_clock2;
 use work.cadr_book.cadr_clockd;
 use work.icmem_book.cadr_olord1;
+use work.cadr_book.cadr_trap;
+use work.cadr_book.cadr_npc;
 
-entity boot_tb is
+entity pc0_tb is
 end;
 
-architecture structural of boot_tb is  
+architecture structural of pc0_tb is  
 
   -- olord2 inputs
   signal \-boot1\            : std_logic := '1';  
@@ -69,8 +71,8 @@ architecture structural of boot_tb is
   signal clk5a               : std_logic;
   signal err                 : std_logic;
   -- these are H because they are pulled up in spc
-  signal hi1                 : std_logic := 'H';
-  signal hi2                 : std_logic := 'H';
+  signal hi1                 : std_logic;
+  signal hi2                 : std_logic;
   signal highok              : std_logic;
   signal \-halted\           : std_logic;
   signal ldmode              : std_logic;
@@ -82,8 +84,8 @@ architecture structural of boot_tb is
   -- from vctl1
   signal \-hang\    : std_logic := '1';
   -- from olord1
-  signal sspeed1    : std_logic := '0';
-  signal sspeed0    : std_logic := '0';
+  signal sspeed1    : std_logic;
+  signal sspeed0    : std_logic;
   -- from flags
   signal \-ilong\   : std_logic := '1';
 
@@ -164,16 +166,16 @@ architecture structural of boot_tb is
   
   -- clockd inputs
   -- pulled up in spc
-  signal hi3            : std_logic := 'H';
-  signal hi4            : std_logic := 'H';
-  signal hi5            : std_logic := 'H';
-  signal hi6            : std_logic := 'H';
-  signal hi7            : std_logic := 'H';
-  signal hi8            : std_logic := 'H';
-  signal hi9            : std_logic := 'H';
-  signal hi10           : std_logic := 'H';
-  signal hi11           : std_logic := 'H';
-  signal hi12           : std_logic := 'H';
+  signal hi3            : std_logic := '1';
+  signal hi4            : std_logic := '1';
+  signal hi5            : std_logic := '1';
+  signal hi6            : std_logic := '1';
+  signal hi7            : std_logic := '1';
+  signal hi8            : std_logic := '1';
+  signal hi9            : std_logic := '1';
+  signal hi10           : std_logic := '1';
+  signal hi11           : std_logic := '1';
+  signal hi12           : std_logic := '1';
   -- from lcc
   signal lcry3          : std_logic := '0';
   -- from source
@@ -278,6 +280,150 @@ architecture structural of boot_tb is
   signal srun           : std_logic;
   signal errstop        : std_logic;
 
+  -- trap inputs
+  signal mdpar          : std_logic;
+  signal \-md0\         : std_logic;
+  signal \-md1\         : std_logic;
+  signal \-md2\         : std_logic;
+  signal \-md3\         : std_logic;
+  signal \-md4\         : std_logic;
+  signal \-md5\         : std_logic;
+  signal \-md6\         : std_logic;
+  signal \-md7\         : std_logic;
+  signal \-md8\         : std_logic;
+  signal \-md9\         : std_logic;
+  signal \-md10\        : std_logic;
+  signal \-md11\        : std_logic;
+  signal \-md12\        : std_logic;
+  signal \-md13\        : std_logic;
+  signal \-md14\        : std_logic;
+  signal \-md15\        : std_logic;
+  signal \-md16\        : std_logic;
+  signal \-md17\        : std_logic;
+  signal \-md18\        : std_logic;
+  signal \-md19\        : std_logic;
+  signal \-md20\        : std_logic;
+  signal \-md21\        : std_logic;
+  signal \-md22\        : std_logic;
+  signal \-md23\        : std_logic;
+  signal \-md24\        : std_logic;
+  signal \-md25\        : std_logic;
+  signal \-md26\        : std_logic;
+  signal \-md27\        : std_logic;
+  signal \-md28\        : std_logic;
+  signal \-md29\        : std_logic;
+  signal \-md30\        : std_logic;
+  signal \-md31\        : std_logic;
+  signal mdhaspar       : std_logic;
+  signal \use.md\       : std_logic;
+
+  -- trap outputs
+  signal mdparerr       : std_logic;
+  signal mdpareven      : std_logic;
+  signal mdparl         : std_logic;
+  signal mdparm         : std_logic;
+  signal mdparodd       : std_logic;
+  signal \-parerr\      : std_logic;
+  signal \-trap\        : std_logic;
+  signal \-trapenb\     : std_logic;
+  signal \-memparok\    : std_logic;
+  signal trapb          : std_logic;
+  signal trapa          : std_logic;
+
+  -- npc inputs
+  signal ir12           : std_logic := '0';
+  signal ir13           : std_logic := '0';
+  signal ir14           : std_logic := '0';
+  signal ir15           : std_logic := '0';
+  signal ir16           : std_logic := '0';
+  signal ir17           : std_logic := '0';
+  signal ir18           : std_logic := '0';
+  signal ir19           : std_logic := '0';
+  signal ir20           : std_logic := '0';
+  signal ir21           : std_logic := '0';
+  signal ir22           : std_logic := '0';
+  signal ir23           : std_logic := '0';
+  signal ir24           : std_logic := '0';
+  signal ir25           : std_logic := '0';
+  signal pcs0           : std_logic := '0';
+  signal pcs1           : std_logic := '0';
+  signal spc1a          : std_logic := '0';
+  signal dpc4           : std_logic := '0';
+
+  -- npc outputs
+  signal ipc0           : std_logic;
+  signal ipc1           : std_logic;
+  signal ipc2           : std_logic;
+  signal ipc3           : std_logic;
+  signal ipc4           : std_logic;
+  signal ipc5           : std_logic;
+  signal ipc6           : std_logic;
+  signal ipc7           : std_logic;
+  signal ipc8           : std_logic;
+  signal ipc9           : std_logic;
+  signal ipc10          : std_logic;
+  signal ipc11          : std_logic;
+  signal ipc12          : std_logic;
+  signal ipc13          : std_logic;
+  signal pc0            : std_logic;
+  signal pc1            : std_logic;
+  signal pc2            : std_logic;
+  signal pc3            : std_logic;
+  signal pc4            : std_logic;
+  signal pc5            : std_logic;
+  signal pc6            : std_logic;
+  signal pc7            : std_logic;
+  signal pc8            : std_logic;
+  signal pc9            : std_logic;
+  signal pc10           : std_logic;
+  signal pc11           : std_logic;
+  signal pc12           : std_logic;
+  signal pc13           : std_logic;
+  signal pccry3         : std_logic;
+  signal pccry7         : std_logic;
+  signal pccry11        : std_logic;
+  signal dpc0           : std_logic;
+  signal dpc1           : std_logic;
+  signal dpc2           : std_logic;
+  signal dpc3           : std_logic;
+  signal dpc5           : std_logic;
+  signal dpc6           : std_logic;
+  signal dpc7           : std_logic;
+  signal dpc8           : std_logic;
+  signal dpc9           : std_logic;
+  signal dpc10          : std_logic;
+  signal dpc11          : std_logic;
+  signal dpc12          : std_logic;
+  signal dpc13          : std_logic;
+  signal spc0           : std_logic;
+  signal spc1           : std_logic;
+  signal spc2           : std_logic;
+  signal spc3           : std_logic;
+  signal spc4           : std_logic;
+  signal spc5           : std_logic;
+  signal spc6           : std_logic;
+  signal spc7           : std_logic;
+  signal spc8           : std_logic;
+  signal spc9           : std_logic;
+  signal spc10          : std_logic;
+  signal spc11          : std_logic;
+  signal spc12          : std_logic;
+  signal spc13          : std_logic;
+  signal npc0           : std_logic;
+  signal npc1           : std_logic;
+  signal npc2           : std_logic;
+  signal npc3           : std_logic;
+  signal npc4           : std_logic;
+  signal npc5           : std_logic;
+  signal npc6           : std_logic;
+  signal npc7           : std_logic;
+  signal npc8           : std_logic;
+  signal npc9           : std_logic;
+  signal npc10          : std_logic;
+  signal npc11          : std_logic;
+  signal npc12          : std_logic;
+  signal npc13          : std_logic;
+
 begin
 
   i_olord2 : cadr_olord2 port map(\-ape\ => \-ape\, \-mpe\ => \-mpe\, \-pdlpe\ => \-pdlpe\, \-dpe\ => \-dpe\, \-ipe\ => \-ipe\, \-spe\ => \-spe\, \-higherr\ => \-higherr\, err => err, \-mempe\ => \-mempe\, \-v0pe\ => \-v0pe\, \-v1pe\ => \-v1pe\, \-halted\ => \-halted\, hi1 => hi1, aparok => aparok, mmemparok => mmemparok, pdlparok => pdlparok, dparok => dparok, clk5a => clk5a, iparok => iparok, spcparok => spcparok, highok => highok, memparok => memparok, v0parok => v0parok, vmoparok => vmoparok, statstop => statstop, \stat.ovf\ => \stat.ovf\, \-halt\ => \-halt\, \-mclk5\ => \-mclk5\, mclk5a => mclk5a, \-clk5\ => \-clk5\, \-reset\ => \-reset\, reset => reset, \bus.power.reset l\ => \bus.power.reset l\, \power reset a\ => \power reset a\, \-upperhighok\ => \-upperhighok\, \-lowerhighok\ => \-lowerhighok\, \-boot\ => \-boot\, \prog.bus.reset\ => \prog.bus.reset\, \-bus.reset\ => \-bus.reset\, \-clock reset b\ => \-clock reset b\, \-clock reset a\ => \-clock reset a\, \-power reset\ => \-power reset\, srun => srun, \boot.trap\ => \boot.trap\, hi2 => hi2, \-boot1\ => \-boot1\, \-boot2\ => \-boot2\, \-ldmode\ => \-ldmode\, ldmode => ldmode, mclk5 => mclk5, clk5 => clk5, \-busint.lm.reset\ => \-busint.lm.reset\, \-prog.reset\ => \-prog.reset\, spy6 => spy6, \-errhalt\ => \-errhalt\, errstop => errstop, \prog.boot\ => \prog.boot\, spy7 => spy7);
@@ -285,31 +431,24 @@ begin
   i_clock2 : entity work.cadr_clock2 port map(clk4 => clk4, \-clk0\ => \-clk0\, mclk7 => mclk7, \-mclk0\ => \-mclk0\, \-wp1\ => \-wp1\, tpwp => tpwp, \-wp2\ => \-wp2\, \-wp3\ => \-wp3\, \-wp4\ => \-wp4\, \-tprend\ => \-tprend\, tpclk => tpclk, \-tptse\ => \-tptse\, \-tpr25\ => \-tpr25\, \-clock reset b\ => \-clock reset b\, tptse => tptse, \-tpw70\ => \-tpw70\, \-tpclk\ => \-tpclk\, \-tpr0\ => \-tpr0\, \-tpr5\ => \-tpr5\, \-tpw30\ => \-tpw30\, tpwpiram => tpwpiram, \-wp5\ => \-wp5\, clk5 => clk5, mclk5 => mclk5, \-tpw45\ => \-tpw45\, \-tse1\ => \-tse1\, \-tse2\ => \-tse2\, \-tse3\ => \-tse3\, \-tse4\ => \-tse4\, clk1 => clk1, clk2 => clk2, clk3 => clk3, mclk1 => mclk1, machrun => machrun, \-machruna\ => \-machruna\, hi1 => hi1);
   i_clockd : cadr_clockd port map(\-clk1\ => \-clk1\, hi12 => hi12, clk1a => clk1a, reset => reset, \-reset\ => \-reset\, mclk1a => mclk1a, \-mclk1\ => \-mclk1\, mclk1 => mclk1, clk1 => clk1, \-wp1\ => \-wp1\, wp1b => wp1b, wp1a => wp1a, tse1b => tse1b, \-tse1\ => \-tse1\, tse1a => tse1a, hi1 => hi1, hi2 => hi2, hi3 => hi3, hi4 => hi4, hi5 => hi5, hi6 => hi6, hi7 => hi7, \-upperhighok\ => \-upperhighok\, hi8 => hi8, hi9 => hi9, hi10 => hi10, hi11 => hi11, lcry3 => lcry3, \-lcry3\ => \-lcry3\, clk2 => clk2, \-clk2c\ => \-clk2c\, \-clk2a\ => \-clk2a\, wp2 => wp2, \-wp2\ => \-wp2\, tse2 => tse2, \-tse2\ => \-tse2\, clk2a => clk2a, clk2b => clk2b, clk2c => clk2c, \-clk3a\ => \-clk3a\, clk3a => clk3a, clk3b => clk3b, clk3c => clk3c, clk3 => clk3, \-clk3g\ => \-clk3g\, \-clk3d\ => \-clk3d\, wp3a => wp3a, \-wp3\ => \-wp3\, tse3a => tse3a, \-tse3\ => \-tse3\, clk3d => clk3d, clk3e => clk3e, clk3f => clk3f, \-clk4a\ => \-clk4a\, clk4a => clk4a, clk4b => clk4b, clk4c => clk4c, clk4 => clk4, \-clk4e\ => \-clk4e\, \-clk4d\ => \-clk4d\, wp4c => wp4c, \-wp4\ => \-wp4\, wp4b => wp4b, wp4a => wp4a, clk4d => clk4d, clk4e => clk4e, clk4f => clk4f, \-tse4\ => \-tse4\, tse4b => tse4b, tse4a => tse4a, srcpdlptr => srcpdlptr, \-srcpdlptr\ => \-srcpdlptr\, srcpdlidx => srcpdlidx, \-srcpdlidx\ => \-srcpdlidx\);
   i_olord1 : cadr_olord1 port map(\-clock reset a\ => \-clock reset a\, speed1a => speed1a, sspeed1 => sspeed1, speedclk => speedclk, sspeed0 => sspeed0, speed0a => speed0a, speed1 => speed1, speed0 => speed0, \-reset\ => \-reset\, spy0 => spy0, spy1 => spy1, spy2 => spy2, errstop => errstop, \-ldmode\ => \-ldmode\, stathenb => stathenb, spy3 => spy3, trapenb => trapenb, spy4 => spy4, spy5 => spy5, promdisable => promdisable, \-opcinh\ => \-opcinh\, opcinh => opcinh, \-ldopc\ => \-ldopc\, opcclk => opcclk, \-opcclk\ => \-opcclk\, \-lpc.hold\ => \-lpc.hold\, \lpc.hold\ => \lpc.hold\, ldstat => ldstat, \-ldstat\ => \-ldstat\, \-idebug\ => \-idebug\, idebug => idebug, \-ldclk\ => \-ldclk\, nop11 => nop11, \-nop11\ => \-nop11\, \-step\ => \-step\, step => step, promdisabled => promdisabled, sstep => sstep, ssdone => ssdone, mclk5a => mclk5a, srun => srun, run => run, \-boot\ => \-boot\, \-run\ => \-run\, \-ssdone\ => \-ssdone\, \-errhalt\ => \-errhalt\, \-wait\ => \-wait\, \-stathalt\ => \-stathalt\, machrun => machrun, \stat.ovf\ => \stat.ovf\, \-stc32\ => \-stc32\, \-tpr60\ => \-tpr60\, statstop => statstop, \-machruna\ => \-machruna\, \-machrun\ => \-machrun\);
+  i_trap : cadr_trap port map(mdparerr => mdparerr, mdpareven => mdpareven, mdpar => mdpar, \-md5\ => \-md5\, \-md6\ => \-md6\, \-md7\ => \-md7\, \-md8\ => \-md8\, \-md9\ => \-md9\, \-md10\ => \-md10\, \-md11\ => \-md11\, mdparl => mdparl, \-md0\ => \-md0\, \-md1\ => \-md1\, \-md2\ => \-md2\, \-md3\ => \-md3\, \-md4\ => \-md4\, \-md17\ => \-md17\, \-md18\ => \-md18\, \-md19\ => \-md19\, \-md20\ => \-md20\, \-md21\ => \-md21\, \-md22\ => \-md22\, \-md23\ => \-md23\, mdparm => mdparm, \-md12\ => \-md12\, \-md13\ => \-md13\, \-md14\ => \-md14\, \-md15\ => \-md15\, \-md16\ => \-md16\, \-md29\ => \-md29\, \-md30\ => \-md30\, \-md31\ => \-md31\, mdparodd => mdparodd, \-md24\ => \-md24\, \-md25\ => \-md25\, \-md26\ => \-md26\, \-md27\ => \-md27\, \-md28\ => \-md28\, mdhaspar => mdhaspar, \use.md\ => \use.md\, \-wait\ => \-wait\, \-parerr\ => \-parerr\, \-trap\ => \-trap\, \boot.trap\ => \boot.trap\, \-trapenb\ => \-trapenb\, trapenb => trapenb, \-memparok\ => \-memparok\, trapb => trapb, trapa => trapa, memparok => memparok);
+  i_npc : cadr_npc port map(ipc13 => ipc13, pc13 => pc13, ipc12 => ipc12, pc12 => pc12, pccry11 => pccry11, ipc9 => ipc9, pc9 => pc9, ipc8 => ipc8, pc8 => pc8, pccry7 => pccry7, ipc11 => ipc11, pc11 => pc11, ipc10 => ipc10, pc10 => pc10, ipc5 => ipc5, pc5 => pc5, ipc4 => ipc4, pc4 => pc4, pccry3 => pccry3, ipc7 => ipc7, pc7 => pc7, ipc6 => ipc6, pc6 => pc6, ipc1 => ipc1, pc1 => pc1, ipc0 => ipc0, pc0 => pc0, hi4 => hi4, ipc3 => ipc3, pc3 => pc3, ipc2 => ipc2, pc2 => pc2, trapb => trapb, pcs1 => pcs1, dpc3 => dpc3, ir15 => ir15, spc3 => spc3, npc3 => npc3, npc2 => npc2, spc2 => spc2, ir14 => ir14, dpc2 => dpc2, pcs0 => pcs0, dpc1 => dpc1, ir13 => ir13, spc1a => spc1a, npc1 => npc1, npc0 => npc0, spc0 => spc0, ir12 => ir12, dpc0 => dpc0, npc13 => npc13, npc12 => npc12, clk4b => clk4b, npc11 => npc11, npc10 => npc10, npc9 => npc9, npc8 => npc8, npc7 => npc7, npc6 => npc6, npc5 => npc5, npc4 => npc4, trapa => trapa, dpc13 => dpc13, ir25 => ir25, spc13 => spc13, spc12 => spc12, ir24 => ir24, dpc12 => dpc12, dpc11 => dpc11, ir23 => ir23, spc11 => spc11, spc10 => spc10, ir22 => ir22, dpc10 => dpc10, dpc9 => dpc9, ir21 => ir21, spc9 => spc9, spc8 => spc8, ir20 => ir20, dpc8 => dpc8, dpc7 => dpc7, ir19 => ir19, spc7 => spc7, spc6 => spc6, ir18 => ir18, dpc6 => dpc6, dpc5 => dpc5, ir17 => ir17, spc5 => spc5, spc4 => spc4, ir16 => ir16, dpc4 => dpc4);
 
   process
   begin
 
-    -- check 3 tpclk periods
-    wait until rising_edge(\-tpclk\);
-    wait until falling_edge(\-tpclk\);
-    wait until rising_edge(\-tpclk\);
-    wait until falling_edge(\-tpclk\);
+    wait for 500 ns;
 
     \-boot1\ <= '0';
     wait for 5 ns;
-    assert \boot.trap\ = '1' report "boot.trap is not 1" severity error;
+    assert \-trap\ = '0' report "trap is not 0" severity error;
+    assert trapa = '1' report "trapa is not 1" severity error;
+    assert trapb = '1' report "trapb is not 1" severity error;
     wait for 5 ns;
-    \-boot1\ <= '1';    
+    \-boot1\ <= '1';
 
-    -- check 3 tpclk periods
-    wait until rising_edge(\-tpclk\);
-    wait until falling_edge(\-tpclk\);
-    wait until rising_edge(\-tpclk\);
-    wait until falling_edge(\-tpclk\);
-    wait until rising_edge(\-tpclk\);
-    wait until falling_edge(\-tpclk\);
-    wait until rising_edge(\-tpclk\);
-    wait until falling_edge(\-tpclk\);
+    -- continue for 2 tpclk
+    wait for 2000 ns;
 
     std.env.finish;
   end process;
