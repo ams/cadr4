@@ -701,6 +701,6 @@ package sn74 is
 
 end;
 
-package body sn74 is
-
-end;
+-- package body sn74 is
+--
+-- end;
