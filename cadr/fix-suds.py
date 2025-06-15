@@ -8,6 +8,7 @@ from collections import defaultdict
 def parse_component_definitions(dip_file_path):
     """Parse component definitions from dip/dip.vhd to get port directions and generics."""
     components = {}
+    aliases = {}
     
     try:
         with open(dip_file_path, 'r') as f:
@@ -43,7 +44,27 @@ def parse_component_definitions(dip_file_path):
             'has_generics': has_generics
         }
     
-    return components
+    # Find alias definitions
+    alias_pattern = r'alias\s+(\w+)\s+is\s+(\w+)\s*;'
+    for match in re.finditer(alias_pattern, content, re.IGNORECASE):
+        alias_name = match.group(1)
+        actual_name = match.group(2)
+        aliases[alias_name] = actual_name
+    
+    return components, aliases
+
+def resolve_component_name(component_name, components, aliases):
+    """Resolve component name through aliases if necessary."""
+    if component_name in components:
+        return component_name, components[component_name]
+    elif component_name in aliases:
+        actual_name = aliases[component_name]
+        if actual_name in components:
+            return actual_name, components[actual_name]
+        else:
+            return None, None
+    else:
+        return None, None
 
 def parse_vhd_file(file_path, verbose=False):
     """Parse VHDL file and extract component instantiations."""
@@ -190,7 +211,7 @@ def fix_suds_file(file_path, verbose=False):
     
     # Parse component definitions
     dip_file_path = 'dip/dip.vhd'
-    components = parse_component_definitions(dip_file_path)
+    components, aliases = parse_component_definitions(dip_file_path)
     
     # Parse VHDL file
     result = parse_vhd_file(file_path, verbose)
@@ -246,9 +267,13 @@ def fix_suds_file(file_path, verbose=False):
         component = inst['component']
         
         if label in merged_instantiations:
-            # Check if component names match
-            if merged_instantiations[label]['component'] != component:
-                print(f"Error: Component mismatch for label {label}: {merged_instantiations[label]['component']} vs {component}")
+            # Check if component names match (resolve through aliases)
+            existing_component = merged_instantiations[label]['component']
+            existing_resolved, existing_def = resolve_component_name(existing_component, components, aliases)
+            current_resolved, current_def = resolve_component_name(component, components, aliases)
+            
+            if existing_resolved != current_resolved:
+                print(f"Error: Component mismatch for label {label}: {existing_component} (resolves to {existing_resolved}) vs {component} (resolves to {current_resolved})")
                 sys.exit(1)
             
             # Check for duplicate pins
@@ -382,11 +407,14 @@ def fix_suds_file(file_path, verbose=False):
     for label, inst in merged_instantiations.items():
         component = inst['component']
         
-        if component not in components:
+        # Resolve component name through aliases if necessary for port lookup
+        resolved_name, component_def = resolve_component_name(component, components, aliases)
+        
+        if component_def is None:
             print(f"Error: Component definition for {component} not found")
             sys.exit(1)
         
-        component_ports = components[component]['ports']
+        component_ports = component_def['ports']
         
         for pin_num, direction in component_ports.items():
             if pin_num not in inst['ports']:
@@ -440,7 +468,11 @@ def fix_suds_file(file_path, verbose=False):
         port_map_str = ", ".join(port_map_parts)
         
         # Build instantiation line with or without generic map
-        if generics and components[component]['has_generics']:
+        # Resolve component name to check for generics (but keep original component name in output)
+        resolved_name, component_def = resolve_component_name(component, components, aliases)
+        has_generics = component_def['has_generics'] if component_def else False
+        
+        if generics and has_generics:
             # Sort generics for consistent output
             sorted_generics = sorted(generics.items())
             generic_map_parts = []

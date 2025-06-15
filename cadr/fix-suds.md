@@ -8,13 +8,13 @@ cadr/fix-suds.py will be run from the project root folder.
 
 If all the modifications succeed, it should exit with 0 without printing anything. If there is a problem, it should exit with non-zero error code and print the error message.
 
-The python script can be tested by running `make suds`. This will create a fresh set of cadr/*_suds.vhd files and execute the python script.
+The python script can be tested by running `make cadr/cadr_X_suds.vhd` for the particular page X. This will create cadr/cadr_X_suds.vhd file.
 
 After running the pyhton script, `make` can be used to see if the project compiles successfully.
 
 # Approach
 
-The best approach is to read the vhd file and create a representation (using dictionary, list etc.) of the component instantiations in this vhd file. Then issue 1 can be easily fixed. To fix issue 2, find such signals @designator,pin, and keep them in a list and add them to the ports of the component label page_designator (such as actl_3b30). Finally, to fix issue 3, read the component definition in dip/dip.vhd and add the missing ports with correct termination ('0' or open). It is important to correctly parse dip/dip.vhd, some components also have generic maps in addition to port maps.
+The best approach is to read the vhd file and create a representation (using dictionary, list etc.) of the component instantiations in this vhd file. Then issue 1 can be easily fixed. To fix issue 2, find such signals @designator,pin, and keep them in a list and add them to the ports of the component label page_designator (such as actl_3b30). Finally, to fix issue 3, read the component definition in dip/dip.vhd and add the missing ports with correct termination ('0' or open). It is important to correctly parse dip/dip.vhd, some components also have generic maps in addition to port maps. There are also aliases in dip/dip.vhd file, so you also have to check aliases (check page aluc4 in order to test this).
 
 # Page Name
 

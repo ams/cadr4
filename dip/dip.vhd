@@ -1104,4 +1104,14 @@ package dip is
     );
   end component;
 
+  alias dip_74s00o is dip_74s00;
+  alias dip_74s02o is dip_74s02;
+  alias dip_74s04a is dip_74s04;
+  alias dip_74s08o is dip_74s08;
+  alias dip_74s10o is dip_74s10;
+  alias dip_74s32o is dip_74s32;
+  alias dip_74s32w is dip_74s32;
+  alias dip_74s133o is dip_74s133;
+  alias dip_74ls240 is dip_74s240;
+
 end package;

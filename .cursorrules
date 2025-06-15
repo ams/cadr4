@@ -42,14 +42,13 @@ Make targets are as follows.
 
 - `make all`: Compile all
 - `make ttl-check`: Run ttl testbenches
-- `make clean`: Remove all build artifacts (build directory)
-- `make suds`: Create SUDS vhd files
+- `make check`: Run all testbenches
+- `make clean`: Remove build artifacts (build directory)
+- `make dist-clean`: In addition to `make clean`, remove also generated suds files
 
 A single testbench (for example build/X_tb) can be run with `make run-X`. 
 
 A single testbench (for example build/X_tb) can be run to create waveforms with `make wf-X`.
-
-`make suds` has to be run after repo is cloned. Otherwise, `make` will not succeed.
 
 ## Development Workflow
 
