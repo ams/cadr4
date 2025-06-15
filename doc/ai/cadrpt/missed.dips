@@ -1,0 +1,58 @@
+ 
+the following are dips and locations on boards they are missing from:
+
+MC1488		IOB12		 1
+		IOB13		 1
+		IOB14		 1
+		IOB15		 1
+		IOB16		 1	
+		IOB17		 1	6
+
+MC1489		IOB12		 1
+		IOB13		 1
+		IOB14		 1
+		IOB15		 1
+		IOB16		 1	
+		IOB17		 1	6
+
+2651		IOB12		 1
+		IOB13		 1
+		IOB14		 1
+		IOB15		 1
+		IOB16		 1	
+		IOB17		 1	6
+
+74S299		in LMTVs and disk controls, used 74LS299s instead		
+	
+898-3-R47	XBUSMEM13	 2
+		XBUSMEM14	 2
+		XBUSMEM15	 2
+		XBUSMEM16	 2
+		XBUSMEM17	 2
+		XBUSMEM18	 2
+		XBUSMEM19	 2
+		XBUSMEM20	 2
+		XBUSMEM21	 2
+		XBUSMEM22	 2	20
+
+SIP121/195-8	LMTV7		 6
+(764-5-R121/195)LMTV8		 6
+		LMTV9		 6
+		LMTV10		 6
+		LMTV11		 6
+		LMTV12		 6	36
+
+SIP162/260-8	XBUSTERM5	 1
+(764-5-R162-260)XBUSTERM6	 4
+		XBUSTERM7	 4
+		XBUSTERM8	 4
+		XBUSTERM9	 4
+		XBUSTERM10	 4
+		XBUSTERM11	 4	27
+
+SIP300-10	CADR12		12	12
+(785-1-R330)
+
+5.06MHz DIPOSC	IOB15		 1
+		IOB16		 1	
+		IOB17		 1	3
