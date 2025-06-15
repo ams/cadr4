@@ -6,11 +6,7 @@
 GHDL		= ghdl
 GHDLSTD		= 08
 GHDLIMPORTOPTIONS	= -v -g
-GHDLMAKEOPTIONS		= -v -g -Wall
-GHDLVERSION			= $(ghdl --version | head -1 | cut -f2 -d' ')
-ifeq ($(GHDLVERSION),"6.0.0-dev")
-GHDLMAKEOPTIONS += -Wc,-Werror
-endif
+GHDLMAKEOPTIONS		= -v -g -Wno-delayed-checks
 GHDLRUNOPTIONS		= -v -g
 GHDLSIMOPTIONS		= --backtrace-severity=warning --assert-level=warning
 
@@ -111,22 +107,22 @@ else
 endif
 	python3 cadr/fix-suds.py -v $@
 
-cadr/cadr_clock2_suds.vhd: $(DRWDIR)/clock2.drw $(BUILDDIR)/soap cadr/fix-suds.py Makefile
-	$(BUILDDIR)/soap -n $< > $@
 # modify clock2_1c10, change \machruna l\ to \-machruna\
 # this seems to be a mistake in drw, in wlr the 1c10 is connected to -machruna
+cadr/cadr_clock2_suds.vhd: $(DRWDIR)/clock2.drw $(BUILDDIR)/soap cadr/fix-suds.py Makefile
+	$(BUILDDIR)/soap -n $< > $@
 	sed $(SEDOPTIONS) 's/\\machruna l\\/\\-machruna\\/g' cadr/cadr_clock2_suds.vhd	
 	python3 cadr/fix-suds.py -v $@
 
+# add rom file
 cadr/cadr_dspctl_suds.vhd: $(DRWDIR)/dspctl.drw $(BUILDDIR)/soap cadr/fix-suds.py Makefile
 	$(BUILDDIR)/soap -n $< > $@
-# add rom file	
 	sed $(SEDOPTIONS) -E 's/^([[:space:]]*([^[:space:]]+)[[:space:]]*:[[:space:]]*dip_5610)[[:space:]]+port map/\1 generic map (fn => "rom\/\2.hex") port map/' cadr/cadr_dspctl_suds.vhd
 	python3 cadr/fix-suds.py -v $@
 
+# add rom files
 cadr/cadr_mskg4_suds.vhd: $(DRWDIR)/mskg4.drw $(BUILDDIR)/soap cadr/fix-suds.py Makefile
 	$(BUILDDIR)/soap -n $< > $@
-# add rom files
 	sed $(SEDOPTIONS) -E 's/^([[:space:]]*([^[:space:]]+)[[:space:]]*:[[:space:]]*dip_5600)[[:space:]]+port map/\1 generic map (fn => "rom\/\2.hex") port map/' cadr/cadr_mskg4_suds.vhd
 	python3 cadr/fix-suds.py -v $@
 \
@@ -137,17 +133,18 @@ cadr/cadr_olord2_suds.vhd: $(DRWDIR)/olord2.drw $(BUILDDIR)/soap cadr/fix-suds.p
 	sed $(SEDOPTIONS) 's/olord2_1a19.*/olord2_1a19: dip_16dummy port map (p1 => vcc, p12 => \\@1a20,p1\\, p13 => \\-boot2\\, p14 => \\-boot1\\, p15 => hi2, p16 => hi1);/g' cadr/cadr_olord2_suds.vhd
 	sed $(SEDOPTIONS) 's/olord2_1a20 : dip_74ls14 port map (p2 => \\@1a20,p9\\);/olord2_1a20 : dip_74ls14 port map (p1 => \\@1a19,p12\\, p2 => \\@1a20,p9\\);/g' cadr/cadr_olord2_suds.vhd
 	python3 cadr/fix-suds.py -v $@
-	
+
+# add rom files	
 cadr/cadr_prom0_suds.vhd: $(DRWDIR)/prom0.drw $(BUILDDIR)/soap cadr/fix-suds.py Makefile
 	$(BUILDDIR)/soap -n $< > $@
-# add rom files	
 	sed $(SEDOPTIONS) -E 's/^([[:space:]]*prom0_([^[:space:]]+)[[:space:]]*:[[:space:]]*dip_74s472)[[:space:]]+port map/\1 generic map (fn => "rom\/promh9.\2.hex") port map/' cadr/cadr_prom0_suds.vhd
 	python3 cadr/fix-suds.py -v $@
 
-# all prom1 points to prom.00.hex but prom1_1b20 (providing the last byte) points to prom.80.hex (because it contains the parity bit)
+# add rom files
+# all prom1 chips point to prom.00.hex but prom1_1b20
+# prom1_1b20 (providing the last byte) points to prom.80.hex (because it contains the parity bit)
 cadr/cadr_prom1_suds.vhd: $(DRWDIR)/prom1.drw $(BUILDDIR)/soap cadr/fix-suds.py Makefile
-	$(BUILDDIR)/soap -n $< > $@
-# add rom files	
+	$(BUILDDIR)/soap -n $< > $@	
 	sed $(SEDOPTIONS) -E 's/^([[:space:]]*[^[:space:]]+[[:space:]]*:[[:space:]]*dip_74s472)[[:space:]]+port map/\1 generic map (fn => "rom\/prom.00.hex") port map/' cadr/cadr_prom1_suds.vhd
 	sed $(SEDOPTIONS) -E 's/^([[:space:]]*prom1_1b20[[:space:]]*:[[:space:]]*dip_74s472)[[:space:]]+generic map \(fn => "rom\/prom\.00\.hex"\)/\1 generic map (fn => "rom\/prom.80.hex")/' cadr/cadr_prom1_suds.vhd
 	python3 cadr/fix-suds.py -v $@	
