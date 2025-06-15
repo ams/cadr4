@@ -6,7 +6,7 @@
 GHDL		= ghdl
 GHDLSTD		= 08
 GHDLIMPORTOPTIONS	= -v -g
-GHDLMAKEOPTIONS		= -v -g 
+GHDLMAKEOPTIONS		= -v -g -Wall
 GHDLVERSION			= $(ghdl --version | head -1 | cut -f2 -d' ')
 ifeq ($(GHDLVERSION),"6.0.0-dev")
 GHDLMAKEOPTIONS += -Wc,-Werror
