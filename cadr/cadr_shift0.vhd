@@ -14,7 +14,6 @@ entity cadr_shift0 is
     s0    : in  std_logic;
     sa11  : out std_logic;
     sa10  : out std_logic;
-    gnd   : in  std_logic;
     sa9   : out std_logic;
     sa8   : out std_logic;
     m29   : in  std_logic;

@@ -3,7 +3,6 @@ use ieee.std_logic_1164.all;
 
 entity cadr_lpc is
   port (
-    gnd        : in  std_logic;
     pc8        : in  std_logic;
     pc9        : in  std_logic;
     pc10       : in  std_logic;

@@ -8,7 +8,6 @@ entity cadr_clock1 is
     cyclecompleted   : out std_logic;
     \-tpr0\          : out std_logic;
     \-tpr40\         : out std_logic;
-    gnd              : in  std_logic;
     \-tprend\        : out std_logic;
     \-tpw20\         : out std_logic;
     \-tpw40\         : out std_logic;

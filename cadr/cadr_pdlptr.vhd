@@ -7,7 +7,6 @@ entity cadr_pdlptr is
     clk3f        : in  std_logic;
     ob8          : in  std_logic;
     ob9          : in  std_logic;
-    gnd          : in  std_logic;
     \-destpdlp\  : in  std_logic;
     \-pdlcry7\   : out std_logic;
     pdlptr9      : out std_logic;

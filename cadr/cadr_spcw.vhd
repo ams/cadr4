@@ -12,7 +12,6 @@ entity cadr_spcw is
     spcw13   : out std_logic;
     spcw14   : out std_logic;
     l14      : in  std_logic;
-    gnd      : in  std_logic;
     spcw15   : out std_logic;
     l15      : in  std_logic;
     reta8    : out std_logic;

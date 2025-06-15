@@ -42,7 +42,6 @@ entity cadr_ipar is
     ir26    : in  std_logic;
     ir27    : in  std_logic;
     ir28    : in  std_logic;
-    gnd     : in  std_logic;
     iparity : out std_logic;
     ipar1   : out std_logic;
     ir48    : in  std_logic;

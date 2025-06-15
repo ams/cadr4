@@ -16,7 +16,6 @@ entity cadr_spy0 is
     \-spy.irh\   : out std_logic;
     \-spy.irm\   : out std_logic;
     \-spy.irl\   : out std_logic;
-    gnd          : in  std_logic;
     \-spy.sth\   : out std_logic;
     \-spy.stl\   : out std_logic;
     \-spy.ah\    : out std_logic;

@@ -20,7 +20,6 @@ package cadr_book is
       \-aadr3b\   : out std_logic;
       ir35        : in  std_logic;
       wadr3       : out std_logic;
-      gnd         : in  std_logic;
       clk3d       : in  std_logic;
       wadr4       : out std_logic;
       ir36        : in  std_logic;
@@ -381,7 +380,6 @@ package cadr_book is
       \-cin4\           : out std_logic;
       yout11            : in  std_logic;
       xout11            : in  std_logic;
-      gnd               : in  std_logic;
       alusub            : out std_logic;
       hi12              : in  std_logic;
       \-ir3\            : out std_logic;
@@ -424,7 +422,6 @@ package cadr_book is
 
   component cadr_amem0 is
     port (
-      gnd        : in  std_logic;
       \-aadr0b\  : in  std_logic;
       \-aadr1b\  : in  std_logic;
       \-aadr2b\  : in  std_logic;
@@ -476,7 +473,6 @@ package cadr_book is
 
   component cadr_amem1 is
     port (
-      gnd       : in  std_logic;
       \-aadr0a\ : in  std_logic;
       \-aadr1a\ : in  std_logic;
       \-aadr2a\ : in  std_logic;
@@ -536,7 +532,6 @@ package cadr_book is
       aparok    : out std_logic;
       aparl     : out std_logic;
       aparm     : out std_logic;
-      gnd       : in  std_logic;
       a24       : in  std_logic;
       a25       : in  std_logic;
       a17       : in  std_logic;
@@ -834,7 +829,6 @@ package cadr_book is
       vmo18       : in  std_logic;
       ir8b        : in  std_logic;
       hi6         : in  std_logic;
-      gnd         : in  std_logic;
       ir12        : in  std_logic;
       ir13        : in  std_logic;
       ir18b       : out std_logic;
@@ -945,7 +939,6 @@ package cadr_book is
       r4          : in  std_logic;
       ir13b       : in  std_logic;
       dmask1      : in  std_logic;
-      gnd         : in  std_logic;
       ir20        : in  std_logic;
       ir21        : in  std_logic;
       ir22        : in  std_logic;
@@ -1032,7 +1025,6 @@ package cadr_book is
       ir5         : in  std_logic;
       ir6         : in  std_logic;
       ir7         : in  std_logic;
-      gnd         : in  std_logic;
       \-irdisp\   : in  std_logic;
       dc6         : out std_logic;
       ir38        : in  std_logic;
@@ -1133,7 +1125,6 @@ package cadr_book is
       ob28                : in  std_logic;
       \prog.unibus.reset\ : out std_logic;
       hi4                 : in  std_logic;
-      gnd                 : in  std_logic;
       clk3c               : in  std_logic;
       \int.enable\        : out std_logic;
       ob27                : in  std_logic;
@@ -1333,7 +1324,6 @@ package cadr_book is
       ir26    : in  std_logic;
       ir27    : in  std_logic;
       ir28    : in  std_logic;
-      gnd     : in  std_logic;
       iparity : out std_logic;
       ipar1   : out std_logic;
       ir48    : in  std_logic;
@@ -1433,7 +1423,6 @@ package cadr_book is
       ir16         : out std_logic;
       \-destimod1\ : in  std_logic;
       i48          : in  std_logic;
-      gnd          : in  std_logic;
       ir48         : out std_logic;
       ir47         : out std_logic;
       iob47        : in  std_logic;
@@ -1512,7 +1501,6 @@ package cadr_book is
 
   component cadr_iwr is
     port (
-      gnd   : in  std_logic;
       iwr47 : out std_logic;
       aa15  : in  std_logic;
       aa14  : in  std_logic;
@@ -1616,7 +1604,6 @@ package cadr_book is
 
   component cadr_l is
     port (
-      gnd        : in  std_logic;
       l7         : out std_logic;
       ob7        : in  std_logic;
       ob6        : in  std_logic;
@@ -1694,7 +1681,6 @@ package cadr_book is
       \-lcdrive\          : out std_logic;
       needfetch           : in  std_logic;
       mf24                : out std_logic;
-      gnd                 : in  std_logic;
       mf25                : out std_logic;
       \lc byte mode\      : in  std_logic;
       mf26                : out std_logic;
@@ -1801,7 +1787,6 @@ package cadr_book is
       \lc byte mode\               : in  std_logic;
       \-lcinc\                     : out std_logic;
       lca1                         : out std_logic;
-      gnd                          : in  std_logic;
       lc1                          : out std_logic;
       lca0                         : out std_logic;
       lc0                          : out std_logic;
@@ -1854,7 +1839,6 @@ package cadr_book is
 
   component cadr_lpc is
     port (
-      gnd        : in  std_logic;
       pc8        : in  std_logic;
       pc9        : in  std_logic;
       pc10       : in  std_logic;
@@ -1926,7 +1910,6 @@ package cadr_book is
       ir30       : in  std_logic;
       \-madr4a\  : out std_logic;
       \-madr4b\  : out std_logic;
-      gnd        : in  std_logic;
       wadr0      : in  std_logic;
       ir26       : in  std_logic;
       \-madr0b\  : out std_logic;
@@ -2061,7 +2044,6 @@ package cadr_book is
       mf14        : out std_logic;
       \-md8\      : out std_logic;
       mf15        : out std_logic;
-      gnd         : in  std_logic;
       \-mds31\    : in  std_logic;
       \-mds30\    : in  std_logic;
       \-mds29\    : in  std_logic;
@@ -2185,7 +2167,6 @@ package cadr_book is
       ob22          : in  std_logic;
       \-mds23\      : out std_logic;
       ob23          : in  std_logic;
-      gnd           : in  std_logic;
       ob28          : in  std_logic;
       \-mds28\      : out std_logic;
       ob29          : in  std_logic;
@@ -2470,7 +2451,6 @@ package cadr_book is
   component cadr_mmem is
     port (
       \-mwpa\    : in  std_logic;
-      gnd        : in  std_logic;
       l16        : in  std_logic;
       \-madr4a\  : in  std_logic;
       hi3        : in  std_logic;
@@ -2559,7 +2539,6 @@ package cadr_book is
       r15    : in  std_logic;
       a15    : in  std_logic;
       ob15   : out std_logic;
-      gnd    : in  std_logic;
       osel1b : in  std_logic;
       osel0b : in  std_logic;
       msk15  : in  std_logic;
@@ -2649,7 +2628,6 @@ package cadr_book is
       r31    : in  std_logic;
       a31b   : in  std_logic;
       ob31   : out std_logic;
-      gnd    : in  std_logic;
       osel1a : in  std_logic;
       osel0a : in  std_logic;
       msk31  : in  std_logic;
@@ -2748,7 +2726,6 @@ package cadr_book is
       mskl2   : in  std_logic;
       mskl3   : in  std_logic;
       mskl4   : in  std_logic;
-      gnd     : in  std_logic;
       mskr0   : in  std_logic;
       mskr1   : in  std_logic;
       mskr2   : in  std_logic;
@@ -2791,7 +2768,6 @@ package cadr_book is
   component cadr_npc is
     port (
       ipc13   : out std_logic;
-      gnd     : in  std_logic;
       pc13    : out std_logic;
       ipc12   : out std_logic;
       pc12    : out std_logic;
@@ -2921,7 +2897,6 @@ package cadr_book is
       zero16          : out std_logic;
       \zero16.drive\  : out std_logic;
       \zero12.drive\  : out std_logic;
-      gnd             : in  std_logic;
       mf24            : out std_logic;
       mf25            : out std_logic;
       mf26            : out std_logic;
@@ -2962,7 +2937,6 @@ package cadr_book is
 
   component cadr_pdl0 is
     port (
-      gnd       : in  std_logic;
       \-pdla0b\ : in  std_logic;
       \-pdla1b\ : in  std_logic;
       \-pdla2b\ : in  std_logic;
@@ -3014,7 +2988,6 @@ package cadr_book is
 
   component cadr_pdl1 is
     port (
-      gnd       : in  std_logic;
       \-pdla0a\ : in  std_logic;
       \-pdla1a\ : in  std_logic;
       \-pdla2a\ : in  std_logic;
@@ -3090,7 +3063,6 @@ package cadr_book is
       \-pdla3b\     : out std_logic;
       pdlidx3       : in  std_logic;
       pdlptr3       : in  std_logic;
-      gnd           : in  std_logic;
       \-pdlpa\      : out std_logic;
       pdlptr8       : in  std_logic;
       pdlidx8       : in  std_logic;
@@ -3145,7 +3117,6 @@ package cadr_book is
       clk3f        : in  std_logic;
       ob8          : in  std_logic;
       ob9          : in  std_logic;
-      gnd          : in  std_logic;
       \-destpdlp\  : in  std_logic;
       \-pdlcry7\   : out std_logic;
       pdlptr9      : out std_logic;
@@ -3440,7 +3411,6 @@ package cadr_book is
       s0    : in  std_logic;
       sa11  : out std_logic;
       sa10  : out std_logic;
-      gnd   : in  std_logic;
       sa9   : out std_logic;
       sa8   : out std_logic;
       m29   : in  std_logic;
@@ -3519,7 +3489,6 @@ package cadr_book is
       s0    : in  std_logic;
       sa27  : out std_logic;
       sa26  : out std_logic;
-      gnd   : in  std_logic;
       sa25  : out std_logic;
       sa24  : out std_logic;
       m13   : in  std_logic;
@@ -3615,7 +3584,6 @@ package cadr_book is
       ir6       : in  std_logic;
       mskl0     : out std_logic;
       ir5       : in  std_logic;
-      gnd       : in  std_logic;
       mskl3     : out std_logic;
       mskr3     : out std_logic;
       ir8       : in  std_logic;
@@ -3684,7 +3652,6 @@ package cadr_book is
       \-srcpdlptr\  : out std_logic;
       \-srcspc\     : out std_logic;
       \-srcdc\      : out std_logic;
-      gnd           : in  std_logic;
       \-srcspcpop\  : out std_logic;
       \-srclc\      : out std_logic;
       \-srcmd\      : out std_logic;
@@ -3702,7 +3669,6 @@ package cadr_book is
   component cadr_spc is
     port (
       \-swpa\   : in  std_logic;
-      gnd       : in  std_logic;
       spcw14    : in  std_logic;
       spcptr4   : out std_logic;
       hi1       : out std_logic;
@@ -3772,7 +3738,6 @@ package cadr_book is
     port (
       \-spcdrive\ : in  std_logic;
       m23         : out std_logic;
-      gnd         : in  std_logic;
       m22         : out std_logic;
       m21         : out std_logic;
       m20         : out std_logic;
@@ -3886,7 +3851,6 @@ package cadr_book is
       spcwpar     : out std_logic;
       spcw17      : in  std_logic;
       spcw18      : in  std_logic;
-      gnd         : in  std_logic;
       spcw12      : in  std_logic;
       spcw13      : in  std_logic;
       spcw14      : in  std_logic;
@@ -3940,7 +3904,6 @@ package cadr_book is
       spcw13   : out std_logic;
       spcw14   : out std_logic;
       l14      : in  std_logic;
-      gnd      : in  std_logic;
       spcw15   : out std_logic;
       l15      : in  std_logic;
       reta8    : out std_logic;
@@ -4260,7 +4223,6 @@ package cadr_book is
       \-md29\     : in  std_logic;
       \-md30\     : in  std_logic;
       \-md31\     : in  std_logic;
-      gnd         : in  std_logic;
       mdparodd    : out std_logic;
       \-md24\     : in  std_logic;
       \-md25\     : in  std_logic;
@@ -4321,7 +4283,6 @@ package cadr_book is
       \-memgrant\          : in  std_logic;
       \use.md\             : in  std_logic;
       \-wait\              : out std_logic;
-      gnd                  : in  std_logic;
       needfetch            : in  std_logic;
       lcinc                : in  std_logic;
       \-hang\              : out std_logic;
@@ -4501,7 +4462,6 @@ package cadr_book is
       \-vmas23\   : out std_logic;
       ob23        : in  std_logic;
       lc25        : in  std_logic;
-      gnd         : in  std_logic;
       ob28        : in  std_logic;
       \-vmas28\   : out std_logic;
       ob29        : in  std_logic;
@@ -4639,7 +4599,6 @@ package cadr_book is
       \-vmap3\   : out std_logic;
       \-vmap4\   : out std_logic;
       vpari      : out std_logic;
-      gnd        : in  std_logic;
       \-vma27\   : in  std_logic;
       \-vma28\   : in  std_logic;
       \-vma29\   : in  std_logic;
@@ -4696,7 +4655,6 @@ package cadr_book is
       \-vma2\    : in  std_logic;
       \-vma3\    : in  std_logic;
       \-vma4\    : in  std_logic;
-      gnd        : in  std_logic;
       vmap4a     : out std_logic;
       vmap3a     : out std_logic;
       vmap2a     : out std_logic;
@@ -4742,7 +4700,6 @@ package cadr_book is
 
   component cadr_vmem2 is
     port (
-      gnd        : in  std_logic;
       vmap4b     : out std_logic;
       vmap3b     : out std_logic;
       vmap2b     : out std_logic;
@@ -4873,7 +4830,6 @@ package cadr_book is
       mf6         : out std_logic;
       \-vmo0\     : in  std_logic;
       mf7         : out std_logic;
-      gnd         : in  std_logic;
       \-lvmo23\   : out std_logic;
       \-lvmo22\   : out std_logic;
       \-pma21\    : out std_logic;

@@ -13,6 +13,9 @@ package misc is
   -- Generic ROM loading function
   impure function load_rom_file(filename : string) return std_logic_vector;
 
+  constant gnd : std_logic := '0';
+  constant vcc : std_logic := '1';
+
 end;
 
 package body misc is

@@ -8,7 +8,6 @@ entity cadr_mctl is
     ir30       : in  std_logic;
     \-madr4a\  : out std_logic;
     \-madr4b\  : out std_logic;
-    gnd        : in  std_logic;
     wadr0      : in  std_logic;
     ir26       : in  std_logic;
     \-madr0b\  : out std_logic;

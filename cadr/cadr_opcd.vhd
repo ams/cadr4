@@ -35,7 +35,6 @@ entity cadr_opcd is
     zero16          : out std_logic;
     \zero16.drive\  : out std_logic;
     \zero12.drive\  : out std_logic;
-    gnd             : in  std_logic;
     mf24            : out std_logic;
     mf25            : out std_logic;
     mf26            : out std_logic;

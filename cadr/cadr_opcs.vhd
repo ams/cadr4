@@ -5,7 +5,6 @@ entity cadr_opcs is
   port (
     hi2       : in  std_logic;
     opc13     : out std_logic;
-    gnd       : in  std_logic;
     pc13      : in  std_logic;
     opcinha   : out std_logic;
     opcclka   : out std_logic;

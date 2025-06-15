@@ -4,7 +4,6 @@ use ieee.std_logic_1164.all;
 entity cadr_npc is
   port (
     ipc13   : out std_logic;
-    gnd     : in  std_logic;
     pc13    : out std_logic;
     ipc12   : out std_logic;
     pc12    : out std_logic;

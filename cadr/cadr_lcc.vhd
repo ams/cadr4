@@ -6,7 +6,6 @@ entity cadr_lcc is
     \lc byte mode\               : in  std_logic;
     \-lcinc\                     : out std_logic;
     lca1                         : out std_logic;
-    gnd                          : in  std_logic;
     lc1                          : out std_logic;
     lca0                         : out std_logic;
     lc0                          : out std_logic;

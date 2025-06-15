@@ -55,7 +55,6 @@ entity cadr_iwrpar is
     iwr2  : in  std_logic;
     iwr3  : in  std_logic;
     iwr4  : in  std_logic;
-    iwr48 : out std_logic;
-    gnd   : in  std_logic
+    iwr48 : out std_logic
     );
 end;

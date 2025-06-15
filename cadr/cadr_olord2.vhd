@@ -16,7 +16,6 @@ entity cadr_olord2 is
     \-v1pe\             : out std_logic;
     \-halted\           : out std_logic;
     hi1                 : out std_logic;
-    gnd                 : in  std_logic;
     aparok              : in  std_logic;
     mmemparok           : in  std_logic;
     pdlparok            : in  std_logic;
@@ -48,7 +47,6 @@ entity cadr_olord2 is
     \-power reset\      : out std_logic;
     srun                : in  std_logic;
     \boot.trap\         : out std_logic;
-    vcc                 : in  std_logic;
     \-boot2\            : out std_logic;
     \-boot1\            : out std_logic;
     hi2                 : out std_logic;

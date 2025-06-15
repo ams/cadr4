@@ -7,7 +7,6 @@ entity cadr_mo0 is
     r15    : in  std_logic;
     a15    : in  std_logic;
     ob15   : out std_logic;
-    gnd    : in  std_logic;
     osel1b : in  std_logic;
     osel0b : in  std_logic;
     msk15  : in  std_logic;

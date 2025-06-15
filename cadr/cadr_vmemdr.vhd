@@ -70,7 +70,6 @@ entity cadr_vmemdr is
     mf6         : out std_logic;
     \-vmo0\     : in  std_logic;
     mf7         : out std_logic;
-    gnd         : in  std_logic;
     \-lvmo23\   : out std_logic;
     \-lvmo22\   : out std_logic;
     \-pma21\    : out std_logic;

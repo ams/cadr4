@@ -6,7 +6,6 @@ entity cadr_lc is
     \-lcdrive\          : out std_logic;
     needfetch           : in  std_logic;
     mf24                : out std_logic;
-    gnd                 : in  std_logic;
     mf25                : out std_logic;
     \lc byte mode\      : in  std_logic;
     mf26                : out std_logic;

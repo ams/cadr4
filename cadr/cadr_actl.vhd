@@ -16,7 +16,6 @@ entity cadr_actl is
     \-aadr3b\   : out std_logic;
     ir35        : in  std_logic;
     wadr3       : out std_logic;
-    gnd         : in  std_logic;
     clk3d       : in  std_logic;
     wadr4       : out std_logic;
     ir36        : in  std_logic;

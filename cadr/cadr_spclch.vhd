@@ -5,7 +5,6 @@ entity cadr_spclch is
   port (
     \-spcdrive\ : in  std_logic;
     m23         : out std_logic;
-    gnd         : in  std_logic;
     m22         : out std_logic;
     m21         : out std_logic;
     m20         : out std_logic;

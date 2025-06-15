@@ -5,7 +5,6 @@ entity cadr_clock2 is
   port (
     clk4             : out std_logic;
     \-clk0\          : out std_logic;
-    gnd              : in  std_logic;
     mclk7            : out std_logic;
     \-mclk0\         : out std_logic;
     \-wp1\           : out std_logic;

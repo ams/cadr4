@@ -60,7 +60,6 @@ entity cadr_source is
     \-srcpdlptr\  : out std_logic;
     \-srcspc\     : out std_logic;
     \-srcdc\      : out std_logic;
-    gnd           : in  std_logic;
     \-srcspcpop\  : out std_logic;
     \-srclc\      : out std_logic;
     \-srcmd\      : out std_logic;

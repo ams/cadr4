@@ -3,7 +3,6 @@ use ieee.std_logic_1164.all;
 
 entity cadr_vmem2 is
   port (
-    gnd        : in  std_logic;
     vmap4b     : out std_logic;
     vmap3b     : out std_logic;
     vmap2b     : out std_logic;

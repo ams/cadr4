@@ -7,7 +7,6 @@ entity cadr_mo1 is
     r31    : in  std_logic;
     a31b   : in  std_logic;
     ob31   : out std_logic;
-    gnd    : in  std_logic;
     osel1a : in  std_logic;
     osel0a : in  std_logic;
     msk31  : in  std_logic;

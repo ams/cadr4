@@ -8,7 +8,6 @@ entity cadr_spcpar is
     spcwpar     : out std_logic;
     spcw17      : in  std_logic;
     spcw18      : in  std_logic;
-    gnd         : in  std_logic;
     spcw12      : in  std_logic;
     spcw13      : in  std_logic;
     spcw14      : in  std_logic;

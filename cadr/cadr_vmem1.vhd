@@ -28,7 +28,6 @@ entity cadr_vmem1 is
     \-vma2\    : in  std_logic;
     \-vma3\    : in  std_logic;
     \-vma4\    : in  std_logic;
-    gnd        : in  std_logic;
     vmap4a     : out std_logic;
     vmap3a     : out std_logic;
     vmap2a     : out std_logic;

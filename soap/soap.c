@@ -1913,6 +1913,7 @@ format_bodies(void)
 #endif
     printf("library work;\n");
     printf("use work.dip.all;\n");
+    printf("use work.misc.all;\n");
     printf("\n");
 	printf("architecture suds of cadr_%s is\n", strlwr(page_name));
 	printf("begin\n");

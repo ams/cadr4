@@ -13,7 +13,6 @@ entity cadr_apar is
     aparok    : out std_logic;
     aparl     : out std_logic;
     aparm     : out std_logic;
-    gnd       : in  std_logic;
     a24       : in  std_logic;
     a25       : in  std_logic;
     a17       : in  std_logic;

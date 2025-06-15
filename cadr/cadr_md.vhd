@@ -70,7 +70,6 @@ entity cadr_md is
     mf14        : out std_logic;
     \-md8\      : out std_logic;
     mf15        : out std_logic;
-    gnd         : in  std_logic;
     \-mds31\    : in  std_logic;
     \-mds30\    : in  std_logic;
     \-mds29\    : in  std_logic;

@@ -35,7 +35,6 @@ entity cadr_trap is
     \-md29\     : in  std_logic;
     \-md30\     : in  std_logic;
     \-md31\     : in  std_logic;
-    gnd         : in  std_logic;
     mdparodd    : out std_logic;
     \-md24\     : in  std_logic;
     \-md25\     : in  std_logic;

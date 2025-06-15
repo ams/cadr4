@@ -16,7 +16,6 @@ entity cadr_mskg4 is
     mskl2   : in  std_logic;
     mskl3   : in  std_logic;
     mskl4   : in  std_logic;
-    gnd     : in  std_logic;
     mskr0   : in  std_logic;
     mskr1   : in  std_logic;
     mskr2   : in  std_logic;

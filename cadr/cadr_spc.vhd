@@ -4,7 +4,6 @@ use ieee.std_logic_1164.all;
 entity cadr_spc is
   port (
     \-swpa\   : in  std_logic;
-    gnd       : in  std_logic;
     spcw14    : in  std_logic;
     spcptr4   : out std_logic;
     hi1       : out std_logic;

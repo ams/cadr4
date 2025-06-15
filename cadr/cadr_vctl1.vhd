@@ -40,7 +40,6 @@ entity cadr_vctl1 is
     \-memgrant\          : in  std_logic;
     \use.md\             : in  std_logic;
     \-wait\              : out std_logic;
-    gnd                  : in  std_logic;
     needfetch            : in  std_logic;
     lcinc                : in  std_logic;
     \-hang\              : out std_logic;

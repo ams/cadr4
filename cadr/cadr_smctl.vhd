@@ -31,7 +31,6 @@ entity cadr_smctl is
     ir6       : in  std_logic;
     mskl0     : out std_logic;
     ir5       : in  std_logic;
-    gnd       : in  std_logic;
     mskl3     : out std_logic;
     mskr3     : out std_logic;
     ir8       : in  std_logic;

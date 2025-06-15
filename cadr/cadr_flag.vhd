@@ -11,7 +11,6 @@ entity cadr_flag is
     ob28                : in  std_logic;
     \prog.unibus.reset\ : out std_logic;
     hi4                 : in  std_logic;
-    gnd                 : in  std_logic;
     clk3c               : in  std_logic;
     \int.enable\        : out std_logic;
     ob27                : in  std_logic;

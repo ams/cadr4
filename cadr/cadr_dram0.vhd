@@ -25,7 +25,6 @@ entity cadr_dram0 is
     vmo18       : in  std_logic;
     ir8b        : in  std_logic;
     hi6         : in  std_logic;
-    gnd         : in  std_logic;
     ir12        : in  std_logic;
     ir13        : in  std_logic;
     ir18b       : out std_logic;

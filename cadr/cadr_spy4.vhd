@@ -37,7 +37,6 @@ entity cadr_spy4 is
     \-ape\       : in  std_logic;
     spy7         : out std_logic;
     \-spy.pc\    : in  std_logic;
-    gnd          : in  std_logic;
     pc13         : in  std_logic;
     pc12         : in  std_logic;
     pc11         : in  std_logic;

@@ -4,7 +4,6 @@ use ieee.std_logic_1164.all;
 entity cadr_pctl is
   port (
     \-promenable\   : out std_logic;
-    gnd             : in  std_logic;
     i46             : out std_logic;
     hi2             : in  std_logic;
     pc0             : in  std_logic;

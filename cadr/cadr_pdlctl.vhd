@@ -29,7 +29,6 @@ entity cadr_pdlctl is
     \-pdla3b\     : out std_logic;
     pdlidx3       : in  std_logic;
     pdlptr3       : in  std_logic;
-    gnd           : in  std_logic;
     \-pdlpa\      : out std_logic;
     pdlptr8       : in  std_logic;
     pdlidx8       : in  std_logic;

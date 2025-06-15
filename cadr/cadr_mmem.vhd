@@ -4,7 +4,6 @@ use ieee.std_logic_1164.all;
 entity cadr_mmem is
   port (
     \-mwpa\    : in  std_logic;
-    gnd        : in  std_logic;
     l16        : in  std_logic;
     \-madr4a\  : in  std_logic;
     hi3        : in  std_logic;

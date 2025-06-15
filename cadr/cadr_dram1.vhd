@@ -63,7 +63,6 @@ entity cadr_dram1 is
     r4          : in  std_logic;
     ir13b       : in  std_logic;
     dmask1      : in  std_logic;
-    gnd         : in  std_logic;
     ir20        : in  std_logic;
     ir21        : in  std_logic;
     ir22        : in  std_logic;

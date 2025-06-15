@@ -3,7 +3,6 @@ use ieee.std_logic_1164.all;
 
 entity cadr_l is
   port (
-    gnd        : in  std_logic;
     l7         : out std_logic;
     ob7        : in  std_logic;
     ob6        : in  std_logic;

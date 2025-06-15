@@ -80,7 +80,6 @@ entity cadr_ireg is
     ir16         : out std_logic;
     \-destimod1\ : in  std_logic;
     i48          : in  std_logic;
-    gnd          : in  std_logic;
     ir48         : out std_logic;
     ir47         : out std_logic;
     iob47        : in  std_logic;

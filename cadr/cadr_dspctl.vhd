@@ -13,7 +13,6 @@ entity cadr_dspctl is
     ir5         : in  std_logic;
     ir6         : in  std_logic;
     ir7         : in  std_logic;
-    gnd         : in  std_logic;
     \-irdisp\   : in  std_logic;
     dc6         : out std_logic;
     ir38        : in  std_logic;

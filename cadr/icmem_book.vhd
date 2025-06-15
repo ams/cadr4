@@ -12,7 +12,6 @@ package icmem_book is
       cyclecompleted   : out std_logic;
       \-tpr0\          : out std_logic;
       \-tpr40\         : out std_logic;
-      gnd              : in  std_logic;
       \-tprend\        : out std_logic;
       \-tpw20\         : out std_logic;
       \-tpw40\         : out std_logic;
@@ -64,7 +63,6 @@ package icmem_book is
     port (
       clk4             : out std_logic;
       \-clk0\          : out std_logic;
-      gnd              : in  std_logic;
       mclk7            : out std_logic;
       \-mclk0\         : out std_logic;
       \-wp1\           : out std_logic;
@@ -325,8 +323,7 @@ package icmem_book is
       iwr2  : in  std_logic;
       iwr3  : in  std_logic;
       iwr4  : in  std_logic;
-      iwr48 : out std_logic;
-      gnd   : in  std_logic
+      iwr48 : out std_logic
       );
   end component;
 
@@ -389,7 +386,6 @@ package icmem_book is
       \stat.ovf\       : out std_logic;
       \-stc32\         : in  std_logic;
       \-tpr60\         : in  std_logic;
-      gnd              : in  std_logic;
       statstop         : in  std_logic;
       \-machruna\      : out std_logic;
       \-machrun\       : out std_logic;
@@ -412,7 +408,6 @@ package icmem_book is
       \-v1pe\             : out std_logic;
       \-halted\           : out std_logic;
       hi1                 : out std_logic;
-      gnd                 : in  std_logic;
       aparok              : in  std_logic;
       mmemparok           : in  std_logic;
       pdlparok            : in  std_logic;
@@ -444,7 +439,6 @@ package icmem_book is
       \-power reset\      : out std_logic;
       srun                : in  std_logic;
       \boot.trap\         : out std_logic;
-      vcc                 : in  std_logic;
       \-boot2\            : out std_logic;
       \-boot1\            : out std_logic;
       hi2                 : out std_logic;
@@ -466,7 +460,6 @@ package icmem_book is
     port (
       hi2       : in  std_logic;
       opc13     : out std_logic;
-      gnd       : in  std_logic;
       pc13      : in  std_logic;
       opcinha   : out std_logic;
       opcclka   : out std_logic;
@@ -508,7 +501,6 @@ package icmem_book is
   component cadr_pctl is
     port (
       \-promenable\   : out std_logic;
-      gnd             : in  std_logic;
       i46             : out std_logic;
       hi2             : in  std_logic;
       pc0             : in  std_logic;
@@ -1587,7 +1579,6 @@ package icmem_book is
       \-spy.irh\   : out std_logic;
       \-spy.irm\   : out std_logic;
       \-spy.irl\   : out std_logic;
-      gnd          : in  std_logic;
       \-spy.sth\   : out std_logic;
       \-spy.stl\   : out std_logic;
       \-spy.ah\    : out std_logic;
@@ -1642,7 +1633,6 @@ package icmem_book is
       \-ape\       : in  std_logic;
       spy7         : out std_logic;
       \-spy.pc\    : in  std_logic;
-      gnd          : in  std_logic;
       pc13         : in  std_logic;
       pc12         : in  std_logic;
       pc11         : in  std_logic;
@@ -1683,7 +1673,6 @@ package icmem_book is
       iwr13      : in  std_logic;
       iwr14      : in  std_logic;
       iwr15      : in  std_logic;
-      gnd        : in  std_logic;
       \-ldstat\  : in  std_logic;
       st15       : out std_logic;
       st14       : out std_logic;
