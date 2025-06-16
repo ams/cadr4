@@ -1,0 +1,17 @@
+---
+description: 
+globs: set/*
+alwaysApply: false
+---
+
+Set components are packaged into set package as defined in set/set.vhd file. Always update the set/set.vhd file when changing the port list of a set component.
+
+The port list of set components use bus signals when possible. Bus signals are in large case (IR rather than ir). The bus signals are listed below, other signals names should be same as the port name of the component where that signal is used.
+
+The following signals always have to be defined as bus in the port list of a set component unless only one line of the bus is used. For example, IR is a bus. If only IR(46) is used, this can be defined as ir46, otherwise it should always use the full IR bus in the port list. Here are the bus signals: IR, M, MF, A, AA, AMEM, AADR, L, LC, WPC, LPC, ALU, XOUT, YOUT, I, SPY, DADR, DPC, MDS, MD, OB, IOB, IWR, MEM, MMEM, MSK, NPC, PC, IPC, SPC, SPCO, SPCW, SPCPTR, DC, OPC, PDL, PDLIDX, PDLPTR, Q, SA, R, RETA, ST, VMA, VMAS, MAPI, VMAP, VMO, PMA.
+
+The internal signals should not be bus signals. Internal signal names should be same as the port name of the component where that signal is used.
+
+Write the component instantiation line in single line, compact form.
+
+Set components use set and/or cadr components, never dip or ttl components.

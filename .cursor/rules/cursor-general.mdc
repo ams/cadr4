@@ -1,36 +1,36 @@
-# CADR Project
-
-## Overview
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Overview
 
 - This project is a digitally accurate functional simulation of the MIT CADR Lisp Machine.
 - This project is not a timing verification, hence no delays if it is not required for the function.
 - This project will not be synthesized. It will be simulated using GHDL with LLVM backend.
 - This project complies with VHDL-2008. You MUST write VHDL-2008 compliant code.
 
-## Project Structure
+# Project Structure
 
-- The project has three major subdirectories; ttl, dip and cadr.
-- The ttl subdirectory contains the TTL components. These are put into sn74, other, misc and unsorted packages.
+- The project has four subdirectories containing vhd source files; ttl, dip, cadr and set.
+- The ttl subdirectory contains the TTL components. These are put into sn74 and other packages.
+- Ttl subdirectory also contains the misc package.
 - The dip subdirectory contains the wrappers of TTL components, so called DIP components. These are put into dip package.
 - The cadr subdirectory contains the MIT CADR schematic entities. These are put into cadr package.
+- The set subdirectory contains the set components which are a combination of one or more cadr components.
 - `cadr` entities depend on `dip`, `dip` entities depend on ttl packages (sn74, other, misc and unsorted).
 - The project uses no other library, everything is put into the work library.
 - `rom` directory contains the ROM/PROM data. rom/X_Y.hex is the data for ROM chip with designator Y on schematic page X.
 
-### File Naming
-
-- Entity X is implemented in `X.vhd`.
-- Testbench for entity X is implemented in `X_tb.vhd`.
-
-### File Extensions
+## File Extensions
 
 - `.vhd`: VHDL source files
 - `.o`: Compiled object files
 - `.cf`: GHDL design library files
 - `_tb`: Executable testbench files
-- `.vcd/.ghw`: Waveform files
+- `.ghw`: Waveform files
 
-## Build System
+# Build System
 
 The project uses a Makefile based build system.
 
@@ -50,38 +50,32 @@ A single testbench (for example build/X_tb) can be run with `make run-X`.
 
 A single testbench (for example build/X_tb) can be run to create waveforms with `make wf-X`.
 
-## Development Workflow
+# Development Workflow
 
-### Code Modification Guidelines
+## Code Modification Guidelines
 
 - NEVER modify the Makefile.
-- NEVER modify port interface lists. They are manually maintained.
-- NEVER modify the package and component definitions. They ar emanually maintained.
-- NEVER assume meaning from port definition, ALWAYS consult the datasheets.
-- ALWAYS aim to have strict datasheet behavior.
-- Ignore the power pins, VCC and GND, in the datasheets. Only the digital behavior is implemented in this project.
-- After changing a source file, run its testbench rather than calling generic targets like make all or make check. For example, run `TB=build/td25_tb make run-tb` to check `ttl/td25.vhd` rather than running `make all` or `make check`.
-- Only warnings or errors SHOULD be reported/printed in testbenches. Thus, USE only assert statements in testbenches. DO NOT USE report statements to unconditionally print messages. Successful testbenches should report nothing.
-- DO NOT try to delete the testbenches you have created. The testbenches are kept in the project.
-- DO NOT write testbenches for dip components.
+- NEVER modify port list, package and component definitions unless specifically instructed to do so.
+- After changing a source file, run `make` to see everything compiles fine.
+- DO NOT write testbenches on your own without asking.
 
-### Git Workflow
+## Git Workflow
 
 - NEVER automatically commit changes.
 - When creating a commit message, summarize the changes in bullet-points and add "Co-Authored-By: Cursor <noreply@metebalci.com>" on its own line at the end.
 
-## Differences from datasheets
+# Differences from datasheets
 
 - SN74241 BENB is implemented as active high even though it is active low in the datasheet.
 
-## Notes
+# Notes
 
 - dip_5600 and dip_5610 both uses im5600. im5600 and im5610 are digitally equivalent.
 - Use `rom/dspctl_2f22.hex` for the testbenches related to im5600.
 - Use `rom/prom0_1b17.hex` for the testbenches related to sn74472 and dm74472.
 - The signal \machruna l\ is named correct, do not try to fix it.
 
-## Resources
+# Resources
 
 - CADR Schematics are in the PNG files linked from this URL: https://tumbleweed.nu/lm-3/schematics.html
 - Component datasheets for TTL logic families
