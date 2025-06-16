@@ -19,7 +19,7 @@ syntheziable.
 
 Implement a SPY bus that can access the core via GHDL co-simulation
 over a TCP/IP or PTY link that can exercise the design.  This would be
-something suitable at some pint in the future that can be used by the
+something suitable at some point in the future that can be used by the
 native CADR Console debugger (CC).
 
 ### [Serial SPY protocol notes](https://tumbleweed.nu/r/lm-3/uv/lmnotes.html#Serial-SPY-protocol-notes)
