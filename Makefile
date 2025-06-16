@@ -47,13 +47,13 @@ iram31 iram32 iram33 spy0 spy4 stat
 SUDS_SRCS := $(patsubst %,cadr/cadr_%_suds.vhd, $(CADR_BOOK) $(ICMEM_BOOK))
 CADR_SRCS := $(patsubst %,cadr/cadr_%.vhd, $(CADR_BOOK) $(ICMEM_BOOK)) cadr/cadr_book.vhd cadr/icmem_book.vhd 
 SET_SRCS  := $(wildcard set/*.vhd) set/set.vhd
-TB_SRCS   := tb/pc0_tb.vhd # $(wildcard tb/*_tb.vhd)
+TB_SRCS   := tb/cadr_tb.vhd # $(wildcard tb/*_tb.vhd)
 
 # exes mean these are testbenches so these will be compiled into executables also
 TTL_EXES  := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard ttl/*_tb.vhd)))
 DIP_EXES  := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard dip/*_tb.vhd)))
 CADR_EXES := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard cadr/*_tb.vhd)))
-TB_EXES   := build/pc0_tb # $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard tb/*_tb.vhd)))
+TB_EXES   := build/cadr_tb # $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard tb/*_tb.vhd)))
 
 # all sources and executables
 SRCS := $(TTL_SRCS) $(DIP_SRCS) $(CADR_SRCS) $(SUDS_SRCS) $(SET_SRCS) $(TB_SRCS)
