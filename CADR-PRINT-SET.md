@@ -122,7 +122,7 @@ processor.
   - [CADR; PROM1](http://tumbleweed.nu/lm-3/schematics/cadr/prom1.png)
   - [CADR; DEBUG](http://tumbleweed.nu/lm-3/schematics/cadr/debug.png)
 
-## Microinstrction Modification and Main Instruction Register
+## Microinstruction Modification and Main Instruction Register
 
 The fetched microinstruction word can potentially be modified by the
 result of the previously executed microinstruction.  This is
@@ -212,7 +212,7 @@ introduced for loading reasons.  The M bus is split into two parts: a
 short bus, unbuffered for “slow” sources, and a long bus, buffered,
 for “fast” sources.  The short bus, labeled Mxx, is driven from the M
 memory latches, the PDL buffer latches, the SPC latches, and from the
-buffered outputs of the long bus.  The long bus, labelled MFxx is
+buffered outputs of the long bus.  The long bus, labeled MFxx is
 driven from all of the remaining M bus sources, including the L
 register output, which is used for the pass around path.  The MFxx to
 Mxx buffers are shown on the MF print.
@@ -392,7 +392,7 @@ The dispatch memory is used to produce new program counter values as a
 result of data flowing through the processor.  Outputs of the shifter
 (Rxx) are AND'd with a dispatch byte length mask, and OR'd with an
 eleven bit field from the IR to form the dispatch memory address,
-DADRxx (left hand side of DRAM0,1,2).  Bit zero of ihe dispatch
+DADRxx (left hand side of DRAM0,1,2).  Bit zero of the dispatch
 address additionally may be taken from the output of the memory map
 (see below).  The mask used for selecting the dispatch byte length is
 located on the DSPCTL print, as are the buffers for A bus data which
