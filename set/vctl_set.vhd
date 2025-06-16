@@ -2,19 +2,14 @@ library ieee;
 use ieee.std_logic_1164.all;
 use work.cadr.all;
 
-entity set_vctl is
+entity vctl_set is
   port (
-    -- Clock signals
     clk2a : in std_logic;
     clk2c : in std_logic;
     mclk1a : in std_logic;
     \-clk3g\ : in std_logic;
-    
-    -- Bus inputs
     IR : in std_logic_vector(25 downto 19);
     VMA : in std_logic_vector(26 downto 25);
-    
-    -- Other inputs
     \-reset\ : in std_logic;
     wmap : in std_logic;
     \-memwr\ : in std_logic;
@@ -40,62 +35,33 @@ entity set_vctl is
     wrcyc : in std_logic;
     \-srcmd\ : in std_logic;
     \-nopa\ : in std_logic;
-    
-    -- Other outputs
-    rdcyc : out std_logic;
-    wrcyc_out : out std_logic;
-    \-wmapd\ : out std_logic;
     wmapd : out std_logic;
-    memprepare : out std_logic;
     \-pfw\ : out std_logic;
     \-vmaok\ : out std_logic;
-    \-mfinishd\ : out std_logic;
-    memrq_out : out std_logic;
-    mbusy : out std_logic;
-    \rd.in.progress\ : out std_logic;
-    \set.rd.in.progress\ : out std_logic;
-    \-rdfinish\ : out std_logic;
-    \-mfinish\ : out std_logic;
-    \-memop\ : out std_logic;
-    memstart : out std_logic;
     \-memstart\ : out std_logic;
-    \-mbusy.sync\ : out std_logic;
-    \mbusy.sync\ : out std_logic;
     \-wait\ : out std_logic;
     \-hang\ : out std_logic;
-    mapwr0d : out std_logic;
-    mapwr1d : out std_logic;
     mdsela : out std_logic;
     mdselb : out std_logic;
     \-memdrive.a\ : out std_logic;
     \-memdrive.b\ : out std_logic;
-    \-memprepare_out\ : out std_logic;
-    \-memrd_out\ : out std_logic;
-    \-memrq_out\ : out std_logic;
-    \-memwr_out\ : out std_logic;
-    nopa : out std_logic;
-    \-pfr_out\ : out std_logic;
-    \use.md_out\ : out std_logic;
     \-vm0wpa\ : out std_logic;
     \-vm0wpb\ : out std_logic;
     \-vm1wpa\ : out std_logic;
     \-vm1wpb\ : out std_logic;
     \-vmaenb\ : out std_logic;
     vmasela : out std_logic;
-    vmaselb : out std_logic;
-    \-wmap\ : out std_logic;
-    wmap_out : out std_logic;
-    \-wmapd_out\ : out std_logic
+    vmaselb : out std_logic
   );
-end set_vctl;
+end vctl_set;
 
-architecture rtl of set_vctl is
+architecture rtl of vctl_set is
   -- Internal signals
-  signal int_destmem : std_logic;
-  signal int_memprepare : std_logic;
-  signal int_memrq : std_logic;
-  signal int_wmap : std_logic;
-  signal int_wmapd : std_logic;
+  signal destmem : std_logic;
+  signal memprepare : std_logic;
+  signal memrq : std_logic;
+  signal wmap : std_logic;
+  signal wmapd : std_logic;
 
 begin
 

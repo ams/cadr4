@@ -2,9 +2,8 @@ library ieee;
 use ieee.std_logic_1164.all;
 use work.cadr.all;
 
-entity mmem is
+entity mmem_set is
   port (
-    -- Clock and control signals
     clk4a           : in  std_logic;
     clk4e           : in  std_logic;
     destmd          : in  std_logic;
@@ -15,35 +14,18 @@ entity mmem is
     pdlenb          : in  std_logic;
     spcenb          : in  std_logic;
     tse1a           : in  std_logic;
-    
-    -- Bus signals
     IR              : in  std_logic_vector(30 downto 26);
     L               : in  std_logic_vector(31 downto 0);
     MF              : in  std_logic_vector(31 downto 0);
     WADR            : in  std_logic_vector(4 downto 0);
-    
-    -- Individual input signals  
     lparity         : in  std_logic;
-    
-    -- Output bus signals
     M               : out std_logic_vector(31 downto 0);
-    MMEM            : out std_logic_vector(31 downto 0);
-    
-    -- Individual output signals
-    mmemparity      : out std_logic;
     mparity         : out std_logic;
-    mpass           : out std_logic;
-    \-mpass_out\    : out std_logic;
-    mpassl          : out std_logic;
-    \-mpassl\       : out std_logic;
-    \-mpassm\       : out std_logic;
-    \-mwpa\         : out std_logic;
-    \-mwpb\         : out std_logic;
     srcm            : out std_logic
   );
 end entity;
 
-architecture rtl of mmem is
+architecture rtl of mmem_set is
 
   -- Internal signals
   signal madr0a, madr0b : std_logic;
@@ -57,20 +39,16 @@ architecture rtl of mmem is
   signal mmem_par : std_logic;
   signal m_all : std_logic_vector(31 downto 0);
   signal mf_all : std_logic_vector(31 downto 0);
-  signal mpass_int, mpassl_int, mpassm_int : std_logic;
+  signal mpass, mpassl, mpassm : std_logic;
 
 begin
 
   -- Map bus outputs
   M <= m_all;
-  MMEM <= mmem_all;
-  mmemparity <= mmem_par;
-  mparity <= mparity;
-  mpass <= mpass_int;
-  \-mpass_out\ <= not mpass_int;
-  mpassl <= mpassl_int;
-  \-mpassl\ <= not mpassl_int;
-  \-mpassm\ <= mpassm_int;
+  -- Internal signals - negative outputs only
+  \-mpass_out\ <= not mpass;
+  \-mpassl\ <= not mpassl;
+  \-mpassm\ <= mpassm;
   \-mwpa\ <= mwpa;
   \-mwpb\ <= mwpb;
 
@@ -133,11 +111,11 @@ begin
     mmem30          => mmem_all(30),
     mmem31          => mmem_all(31),
     mmemparity      => mmem_par,
-    mpass           => mpass_int,
+    mpass           => mpass,
     \-mpass\        => \-mpass_out\,
-    mpassl          => mpassl_int,
+    mpassl          => mpassl,
     \-mpassl\       => \-mpassl\,
-    \-mpassm\       => mpassm_int,
+    \-mpassm\       => mpassm,
     \-mwpa\         => mwpa,
     \-mwpb\         => mwpb,
     srcm            => srcm
@@ -358,8 +336,8 @@ begin
     mmem29          => mmem_all(29),
     mmem31          => mmem_all(31),
     \-mpassl\       => \-mpassl\,
-    mpassl          => mpassl_int,
-    \-mpassm\       => mpassm_int,
+    mpassl          => mpassl,
+    \-mpassm\       => mpassm,
     m0              => m_all(0),
     m1              => m_all(1),
     m2              => m_all(2),

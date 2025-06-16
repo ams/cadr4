@@ -2,34 +2,21 @@ library ieee;
 use ieee.std_logic_1164.all;
 use work.cadr.all;
 
-entity imem is
+entity imem_set is
   port (
-    -- Bus signals
     PC : in std_logic_vector(13 downto 0);
-    IWR : in std_logic_vector(48 downto 0);
-    I : out std_logic_vector(48 downto 0);
-    
-    -- Control signals
     idebug : in std_logic;
+    \-iwrited\ : in std_logic;
     promdisabled : in std_logic;
     \-wp5\ : in std_logic;
-    \-iwrited\ : in std_logic;
-    
-    -- Output control signals  
-    ramdisable : out std_logic;
+    IWR : in std_logic_vector(48 downto 0);
+    I : out std_logic_vector(48 downto 0);
     \-iwriteda\ : out std_logic;
-    \-promdisabled\ : out std_logic;
-    iwriteda : out std_logic;
-    wp5c : out std_logic;
-    wp5b : out std_logic;
-    wp5a : out std_logic;
-    iwritedd : out std_logic;
-    iwritedc : out std_logic;
-    iwritedb : out std_logic
+    \-promdisabled\ : out std_logic
   );
 end;
 
-architecture structural of imem is
+architecture structural of imem_set is
   
   -- Internal signals for address decoding and control
   signal pcb : std_logic_vector(13 downto 0);

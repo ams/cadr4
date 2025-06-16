@@ -2,12 +2,9 @@ library ieee;
 use ieee.std_logic_1164.all;
 use work.icmem_book.all;
 
-entity prom is
+entity prom_set is
   port (
-    -- PC bus input
     PC : in std_logic_vector(13 downto 0);
-    
-    -- Control inputs for PCTL
     \-ape\ : in std_logic;
     \-dpe\ : in std_logic;
     \-idebug\ : in std_logic;
@@ -20,23 +17,11 @@ entity prom is
     \-spe\ : in std_logic;
     \-v0pe\ : in std_logic;
     \-v1pe\ : in std_logic;
-    
-    -- Instruction bus output
-    I : out std_logic_vector(48 downto 0);
-    
-    -- PCTL outputs
-    \bottom.1k\ : out std_logic;
-    dpe : out std_logic;
-    i46 : out std_logic;
-    ipe : out std_logic;
-    \-promenable\ : out std_logic;
-    promenable : out std_logic;
-    tilt0 : out std_logic;
-    tilt1 : out std_logic
+    I : out std_logic_vector(48 downto 0)
   );
 end entity;
 
-architecture rtl of prom is
+architecture rtl of prom_set is
   signal \-prompc0\, \-prompc1\, \-prompc2\, \-prompc3\, \-prompc4\ : std_logic;
   signal \-prompc5\, \-prompc6\, \-prompc7\, \-prompc8\, \-prompc9\ : std_logic;
   signal \-promce0\, \-promce1\ : std_logic;

@@ -117,11 +117,11 @@ end entity;
 
 architecture rtl of olord is
   
-  -- Internal signals for connections between olord1 and olord2
-  signal stat_ovf_int    : std_logic;
-  signal srun_int        : std_logic;
-  signal errstop_int     : std_logic;
-  signal ldmode_int      : std_logic;
+  -- Internal signals
+  signal stat_ovf : std_logic;
+  signal srun : std_logic;
+  signal errstop : std_logic;
+  signal ldmode : std_logic;
 
 begin
 
@@ -140,8 +140,8 @@ begin
       spy0             => SPY(0),
       spy1             => SPY(1),
       spy2             => SPY(2),
-      errstop          => errstop_int,
-      \-ldmode\        => ldmode_int,
+      errstop          => errstop,
+      \-ldmode\        => ldmode,
       stathenb         => stathenb,
       spy3             => SPY(3),
       trapenb          => trapenb,
@@ -168,7 +168,7 @@ begin
       sstep            => sstep,
       ssdone           => ssdone,
       mclk5a           => mclk5a,
-      srun             => srun_int,
+      srun             => srun,
       run              => run,
       \-boot\          => \-boot\,
       \-run\           => \-run\,
@@ -176,7 +176,7 @@ begin
       \-errhalt\       => \-errhalt\,
       \-wait\          => \-wait\,
       \-stathalt\      => \-stathalt\,
-      \stat.ovf\       => stat_ovf_int,
+      \stat.ovf\       => stat_ovf,
       \-stc32\         => \-stc32\,
       \-tpr60\         => \-tpr60\,
       statstop         => statstop,
@@ -212,7 +212,7 @@ begin
       v0parok             => v0parok,
       vmoparok            => vmoparok,
       statstop            => statstop_out,
-      \stat.ovf\          => stat_ovf_int,
+      \stat.ovf\          => stat_ovf,
       \-halt\             => \-halt\,
       \-mclk5\            => \-mclk5\,
       mclk5a              => mclk5a,
@@ -229,11 +229,11 @@ begin
       \-clock reset b\    => \-clock reset b\,
       \-clock reset a\    => \-clock reset a out\,
       \-power reset\      => \-power reset\,
-      srun                => srun_int,
+      srun                => srun,
       \boot.trap\         => \boot.trap\,
       \-boot2\            => \-boot2\,
       \-boot1\            => \-boot1\,
-      \-ldmode\           => ldmode_int,
+      \-ldmode\           => ldmode,
       ldmode              => ldmode,
       mclk5               => mclk5,
       clk5                => clk5,
@@ -241,15 +241,11 @@ begin
       \-prog.reset\       => \-prog.reset\,
       spy6                => SPY(6),
       \-errhalt\          => \-errhalt_out\,
-      errstop             => errstop_int,
+      errstop             => errstop,
       spy7                => SPY(7),
       \prog.boot\         => \prog.boot\
     );
 
-  -- Output assignments
-  errstop <= errstop_int;
-  srun <= srun_int;
-  \stat.ovf\ <= stat_ovf_int;
-  \-ldmode_out\ <= ldmode_int;
+      -- Output assignments handled by direct component connections
 
 end architecture; 

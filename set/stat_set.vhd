@@ -17,22 +17,21 @@ entity stat is
     IWR : in  std_logic_vector(31 downto 0);
     
     -- Output bus signals
-    SPY : out std_logic_vector(15 downto 0);
-    ST  : out std_logic_vector(31 downto 0);
-    
-    -- Carry outputs
-    \-stc4\  : out std_logic;
-    \-stc8\  : out std_logic;
-    \-stc12\ : out std_logic;
-    \-stc16\ : out std_logic;
-    \-stc20\ : out std_logic;
-    \-stc24\ : out std_logic;
-    \-stc28\ : out std_logic;
-    \-stc32\ : out std_logic
+    SPY : out std_logic_vector(15 downto 0)
   );
 end entity;
 
 architecture structure of stat is
+  -- Internal signals for ST bus and carry outputs
+  signal ST : std_logic_vector(31 downto 0);
+  signal \-stc4\  : std_logic;
+  signal \-stc8\  : std_logic;
+  signal \-stc12\ : std_logic;
+  signal \-stc16\ : std_logic;
+  signal \-stc20\ : std_logic;
+  signal \-stc24\ : std_logic;
+  signal \-stc28\ : std_logic;
+  signal \-stc32\ : std_logic;
 begin
 
   u_cadr_stat : cadr_stat

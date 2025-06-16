@@ -2,22 +2,17 @@ library ieee;
 use ieee.std_logic_1164.all;
 use work.cadr_book.all;
 
-entity spy is
+entity spy_set is
   port (
-    -- SPY0 inputs
     \-dbread\ : in std_logic;
     \-dbwrite\ : in std_logic;
     EADR : in std_logic_vector(3 downto 0);
-    
-    -- SPY1 inputs  
     IR : in std_logic_vector(47 downto 0);
     OB : in std_logic_vector(31 downto 0);
     \-spy.irh\ : in std_logic;
     \-spy.irl\ : in std_logic;
     \-spy.irm\ : in std_logic;
     \-spy.obh\ : in std_logic;
-    
-    -- SPY2 inputs
     A : in std_logic_vector(31 downto 16);
     AA : in std_logic_vector(15 downto 0);
     M : in std_logic_vector(31 downto 0);
@@ -37,8 +32,6 @@ entity spy is
     \-spy.ml\ : in std_logic;
     \-vmaok\ : in std_logic;
     wmapd : in std_logic;
-    
-    -- SPY4 inputs
     \-ape\ : in std_logic;
     \-dpe\ : in std_logic;
     err : in std_logic;
@@ -59,45 +52,19 @@ entity spy is
     \-v0pe\ : in std_logic;
     \-v1pe\ : in std_logic;
     \-wait\ : in std_logic;
-    
-    -- SPY bus output
     SPY : out std_logic_vector(15 downto 0);
-    
-    -- SPY0 outputs
     \-ldclk\ : out std_logic;
     \-lddbirh\ : out std_logic;
     \-lddbirl\ : out std_logic;
     \-lddbirm\ : out std_logic;
     \-ldmode\ : out std_logic;
     \-ldopc\ : out std_logic;
-    \-spy.ah\ : out std_logic;
-    \-spy.al\ : out std_logic;
-    \-spy.flag1\ : out std_logic;
-    \-spy.flag2\ : out std_logic;
-    \-spy.irh\ : out std_logic;
-    \-spy.irl\ : out std_logic;
-    \-spy.irm\ : out std_logic;
-    \-spy.mh\ : out std_logic;
-    \-spy.ml\ : out std_logic;
-    \-spy.obh\ : out std_logic;
-    \-spy.obl\ : out std_logic;
-    \-spy.opc\ : out std_logic;
-    \-spy.pc\ : out std_logic;
     \-spy.sth\ : out std_logic;
-    \-spy.stl\ : out std_logic;
-    
-    -- SPY1 outputs
-    \-spy.obl\ : out std_logic;
-    
-    -- SPY2 outputs
-    \-spy.al\ : out std_logic;
-    
-    -- SPY4 outputs
-    \-spy.flag1\ : out std_logic
+    \-spy.stl\ : out std_logic
   );
 end entity;
 
-architecture rtl of spy is
+architecture rtl of spy_set is
   signal spy0_out, spy1_out, spy2_out, spy4_out : std_logic_vector(15 downto 0);
 
 begin

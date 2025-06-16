@@ -2,9 +2,8 @@ library ieee;
 use ieee.std_logic_1164.all;
 use work.cadr.all;
 
-entity clock is
+entity clock_set is
   port (
-    -- Input signals
     \-clock_reset_b\ : in  std_logic;
     \-hang\          : in  std_logic;
     \-ilong\         : in  std_logic;
@@ -16,108 +15,22 @@ entity clock is
     reset            : in  std_logic;
     \-srcpdlidx\     : in  std_logic;
     \-srcpdlptr\     : in  std_logic;
-    
-    -- Output signals from cadr_clock1
-    cyclecompleted   : out std_logic;
-    \-tpr0\          : out std_logic;
-    \-tpr10\         : out std_logic;
-    \-tpr100\        : out std_logic;
-    \-tpr105\        : out std_logic;
-    \-tpr110\        : out std_logic;
-    \-tpr115\        : out std_logic;
-    \-tpr120\        : out std_logic;
-    \-tpr120a\       : out std_logic;
-    \-tpr125\        : out std_logic;
-    \-tpr140\        : out std_logic;
-    \-tpr15\         : out std_logic;
-    \-tpr160\        : out std_logic;
-    \-tpr180\        : out std_logic;
-    \-tpr20\         : out std_logic;
-    \-tpr200\        : out std_logic;
-    \-tpr20a\        : out std_logic;
-    \-tpr25\         : out std_logic;
-    \-tpr40\         : out std_logic;
-    \-tpr5\          : out std_logic;
     \-tpr60\         : out std_logic;
-    \-tpr65\         : out std_logic;
-    \-tpr70\         : out std_logic;
-    \-tpr75\         : out std_logic;
-    \-tpr80\         : out std_logic;
-    \-tpr80a\        : out std_logic;
-    \-tpr85\         : out std_logic;
-    \-tprend\        : out std_logic;
-    tprend           : out std_logic;
-    \-tpw10\         : out std_logic;
-    \-tpw20\         : out std_logic;
-    \-tpw25\         : out std_logic;
-    \-tpw30\         : out std_logic;
-    \-tpw30a\        : out std_logic;
-    \-tpw35\         : out std_logic;
-    \-tpw40\         : out std_logic;
-    \-tpw40a\        : out std_logic;
-    \-tpw45\         : out std_logic;
-    \-tpw50\         : out std_logic;
-    \-tpw55\         : out std_logic;
-    \-tpw60\         : out std_logic;
-    \-tpw65\         : out std_logic;
-    \-tpw70\         : out std_logic;
-    \-tpw75\         : out std_logic;
-    
-    -- Output signals from cadr_clock2
-    \-clk0\          : out std_logic;
-    clk1             : out std_logic;
-    clk2             : out std_logic;
-    clk3             : out std_logic;
-    clk4             : out std_logic;
     clk5             : out std_logic;
-    \-mclk0\         : out std_logic;
-    mclk1            : out std_logic;
     mclk5            : out std_logic;
-    mclk7            : out std_logic;
-    tpclk            : out std_logic;
-    \-tpclk\         : out std_logic;
-    \-tptse\         : out std_logic;
-    tptse            : out std_logic;
-    tpwp             : out std_logic;
-    tpwpiram         : out std_logic;
-    \-tse1\          : out std_logic;
-    \-tse2\          : out std_logic;
-    \-tse3\          : out std_logic;
-    \-tse4\          : out std_logic;
-    \-wp1\           : out std_logic;
-    \-wp2\           : out std_logic;
-    \-wp3\           : out std_logic;
-    \-wp4\           : out std_logic;
     \-wp5\           : out std_logic;
-    
-    -- Output signals from cadr_clockd
-    \-clk1\          : out std_logic;
-    clk1a            : out std_logic;
-    \-clk2a\         : out std_logic;
     clk2a            : out std_logic;
-    clk2b            : out std_logic;
-    \-clk2c\         : out std_logic;
     clk2c            : out std_logic;
-    \-clk3a\         : out std_logic;
-    clk3a            : out std_logic;
     clk3b            : out std_logic;
     clk3c            : out std_logic;
-    \-clk3d\         : out std_logic;
-    clk3d            : out std_logic;
     clk3e            : out std_logic;
-    clk3f            : out std_logic;
     \-clk3g\         : out std_logic;
-    \-clk4a\         : out std_logic;
     clk4a            : out std_logic;
     clk4b            : out std_logic;
     clk4c            : out std_logic;
-    \-clk4d\         : out std_logic;
-    clk4d            : out std_logic;
     \-clk4e\         : out std_logic;
     clk4e            : out std_logic;
     clk4f            : out std_logic;
-    \-lcry3\         : out std_logic;
-    \-mclk1\         : out std_logic;
     mclk1a           : out std_logic;
     \-reset\         : out std_logic;
     srcpdlidx        : out std_logic;
@@ -131,15 +44,13 @@ entity clock is
     \-upperhighok\   : out std_logic;
     wp1a             : out std_logic;
     wp1b             : out std_logic;
-    wp2              : out std_logic;
     wp3a             : out std_logic;
     wp4a             : out std_logic;
-    wp4b             : out std_logic;
-    wp4c             : out std_logic
+    wp4b             : out std_logic
   );
 end entity;
 
-architecture rtl of clock is
+architecture rtl of clock_set is
 
 begin
 

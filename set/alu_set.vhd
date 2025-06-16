@@ -2,69 +2,20 @@ library ieee;
 use ieee.std_logic_1164.all;
 use work.cadr.all;
 
-entity alu is
+entity alu_set is
   port (
-    -- Bus signals
     A               : in  std_logic_vector(31 downto 0);
     M               : in  std_logic_vector(31 downto 0);
-    IR              : in  std_logic_vector(47 downto 0);
-    
-    -- Control signals
     aluc0           : in  std_logic;
     aluc1           : in  std_logic;
     aluc2           : in  std_logic;
     aluc3           : in  std_logic;
-    q0              : in  std_logic;
-    irjump          : in  std_logic;
-    irjumpb         : in  std_logic;
-    div             : in  std_logic;
-    divb            : in  std_logic;
-    mul             : in  std_logic;
-    mulb            : in  std_logic;
-    iralu           : in  std_logic;
-    iralab          : in  std_logic;
-    
-    -- Output bus signals
     ALU             : out std_logic_vector(31 downto 0);
-    
-    -- Output control signals
-    lcry3           : out std_logic;
-    lcry11          : out std_logic;
-    lcry19          : out std_logic;
-    lcry27          : out std_logic;
-    aequalmout      : out std_logic;
-    a12out          : out std_logic;
-    a31out          : out std_logic;
-    m31bout         : out std_logic;
-    alu32           : out std_logic;
-    alumode         : out std_logic;
-    alumodeb        : out std_logic;
-    alusub          : out std_logic;
-    aluadd          : out std_logic;
-    ir0out          : out std_logic;
-    ir1out          : out std_logic;
-    ir2out          : out std_logic;
-    ir3out          : out std_logic;
-    ir4out          : out std_logic;
-    ir0outb         : out std_logic;
-    ir1outb         : out std_logic;
-    ir2outb         : out std_logic;
-    ir3outb         : out std_logic;
-    ir4outb         : out std_logic;
-    divsubcond      : out std_logic;
-    divaddcond      : out std_logic;
-    divposlasttime  : out std_logic;
-    divposlasttimeb : out std_logic;
-    mulnop          : out std_logic;
-    mulnopb         : out std_logic;
-    osel0a          : out std_logic;
-    osel0b          : out std_logic;
-    osel1a          : out std_logic;
-    osel1b          : out std_logic
+    lcry3           : out std_logic
   );
 end entity;
 
-architecture rtl of alu is
+architecture rtl of alu_set is
 
   -- Internal control signals
   signal aluf0a, aluf1a, aluf2a, aluf3a : std_logic;
@@ -72,7 +23,7 @@ architecture rtl of alu is
   signal aluf0ab, aluf1ab, aluf2ab, aluf3ab : std_logic;
   signal cin0b, cin4b, cin8b, cin12b : std_logic;
   signal cin16b, cin20b, cin24b, cin28b, cin32b : std_logic;
-  signal alumode_int, alumodeb_int : std_logic;
+  signal alumode, alumodeb : std_logic;
   signal aequalm0, aequalm1 : std_logic;
   signal a31ab : std_logic;
   
@@ -85,10 +36,7 @@ architecture rtl of alu is
 begin
 
   -- Map outputs
-  alumode <= alumode_int;
-  alumodeb <= alumodeb_int;
-  aequalmout <= aequalm0 and aequalm1;
-  a12out <= A(12);
+  -- Internal signals only, no external outputs for these
 
   alu0_inst: cadr_alu0 port map (
     a0              => A(0),
@@ -131,7 +79,7 @@ begin
     \-cin4\         => cin4b,
     \-cin8\         => cin8b,
     \-cin12\        => cin12b,
-    alumode         => alumode_int,
+    alumode         => alumode,
     alu0            => ALU(0),
     alu1            => ALU(1),
     alu2            => ALU(2),
@@ -202,7 +150,7 @@ begin
     \-cin24\        => cin24b,
     \-cin28\        => cin28b,
     \-cin32\        => cin32b,
-    alumode         => alumode_int,
+    alumode         => alumode,
     alu16           => ALU(16),
     alu17           => ALU(17),
     alu18           => ALU(18),
@@ -275,8 +223,8 @@ begin
     \-aluf3\        => aluf3ab,
     aluf3a          => aluf3a,
     aluf3b          => aluf3b,
-    \-alumode\      => alumodeb_int,
-    alumode         => alumode_int,
+    \-alumode\      => alumodeb,
+    alumode         => alumode,
     \-cin0\         => cin0b,
     \-cin4\         => cin4b,
     \-cin8\         => cin8b,

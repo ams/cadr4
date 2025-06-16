@@ -2,98 +2,58 @@ library ieee;
 use ieee.std_logic_1164.all;
 use work.cadr.all;
 
-entity dmem is
+entity dmem_set is
   port (
-    -- Clock
     clk3e       : in  std_logic;
-    
-    -- Instruction register bus
     IR          : in  std_logic_vector(41 downto 5);
-    
-    -- Address bus from A register
     A           : in  std_logic_vector(17 downto 0);
-    
-    -- Address bus to memory
     AA          : out std_logic_vector(17 downto 0);
-    
-    -- Display control signals
     dispenb     : in  std_logic;
     \-irdisp\   : in  std_logic;
     \-funct2\   : in  std_logic;
-    
-    -- Write control
     wp2         : in  std_logic;
-    
-    -- R register bus (for DRAM data)
     R           : in  std_logic_vector(6 downto 0);
-    
-    -- Display memory control outputs
-    dispwr      : out std_logic;
-    \-dmapbenb\ : out std_logic;
-    
-    -- DRAM control outputs
-    \-dwea\     : out std_logic;
-    \-dweb\     : out std_logic;
-    \-dwec\     : out std_logic;
-    
-    -- Display address outputs
-    DADR        : out std_logic_vector(10 downto 0);
-    \-DADR\     : out std_logic_vector(10 downto 0);
-    
-    -- Display data control
-    dpar        : out std_logic;
-    dn          : out std_logic;
-    dp          : out std_logic;
-    dr          : out std_logic;
-    
-    -- Display parity control
-    dpareven    : out std_logic;
-    dparok      : out std_logic;
-    \-dparh\    : out std_logic;
-    dparl       : out std_logic;
-    
-    -- Display PC outputs
-    DPC         : out std_logic_vector(13 downto 0);
-    
-    -- Video memory outputs
-    vmo18       : out std_logic;
-    vmo19       : out std_logic;
-    \-vmo18\    : out std_logic;
-    \-vmo19\    : out std_logic;
-    
-    -- Display mask outputs
-    DMASK       : out std_logic_vector(6 downto 0)
+    dparok      : out std_logic
   );
 end;
 
-architecture rtl of dmem is
+architecture rtl of dmem_set is
   -- Internal signals for interconnections
-  signal dmask_int     : std_logic_vector(6 downto 0);
-  signal dc_int        : std_logic_vector(9 downto 0);
-  signal aa_int        : std_logic_vector(17 downto 0);
-  signal dpc_int       : std_logic_vector(13 downto 0);
-  signal dispwr_int    : std_logic;
-  signal dmapbenb_int  : std_logic;
+  signal dmask     : std_logic_vector(6 downto 0);
+  signal dc        : std_logic_vector(9 downto 0);
+  signal aa        : std_logic_vector(17 downto 0);
+  signal dpc       : std_logic_vector(13 downto 0);
+  signal dispwr    : std_logic;
+  signal dmapbenb  : std_logic;
   
   -- IR bit signals for component connections (inverted versions)
   signal ir8b, ir9b, ir12b, ir13b, ir14b, ir15b, ir16b, ir17b, ir18b, ir19b, ir20b, ir21b, ir22b : std_logic;
   
   -- DRAM address signals
-  signal dadr10a_int   : std_logic;
-  signal dadr10a_n_int : std_logic;
-  signal dadr10c_int   : std_logic;
-  signal dadr10c_n_int : std_logic;
+  signal dadr10a   : std_logic;
+  signal dadr10a_n : std_logic;
+  signal dadr10c   : std_logic;
+  signal dadr10c_n : std_logic;
   
-  signal vmo18_int     : std_logic;
-  signal vmo19_int     : std_logic;
+  signal vmo18     : std_logic;
+  signal vmo19     : std_logic;
+
+  -- Internal signals  
+  signal dadr : std_logic_vector(31 downto 0);
+  signal ddrive : std_logic;
+  signal ddriven : std_logic;
+  signal destm : std_logic;
+  signal dpar : std_logic;
+  signal dparok : std_logic;
+  signal dparity : std_logic;
 
 begin
   -- Output assignments
-  AA <= aa_int;
-  DPC <= dpc_int;
-  DMASK <= dmask_int;
-  dispwr <= dispwr_int;
-  \-dmapbenb\ <= dmapbenb_int;
+  AA <= aa;
+  DPC <= dpc;
+  DMASK <= dmask;
+  dispwr <= dispwr;
+  \-dmapbenb\ <= dmapbenb;
   
   -- Generate inverted IR bit signals for DRAM components
   ir8b <= not IR(8);
@@ -112,8 +72,8 @@ begin
   
   -- Display control component
   u_dspctl: cadr_dspctl port map (
-    dmask0 => dmask_int(0), dmask1 => dmask_int(1), dmask2 => dmask_int(2), dmask3 => dmask_int(3),
-    dmask4 => dmask_int(4), dmask5 => dmask_int(5), dmask6 => dmask_int(6),
+    dmask0 => dmask(0), dmask1 => dmask(1), dmask2 => dmask(2), dmask3 => dmask(3),
+    dmask4 => dmask(4), dmask5 => dmask(5), dmask6 => dmask(6),
     ir5 => IR(5), ir6 => IR(6), ir7 => IR(7), ir8 => IR(8), ir9 => IR(9),
     ir32 => IR(32), ir33 => IR(33), ir34 => IR(34), ir35 => IR(35), ir36 => IR(36), ir37 => IR(37),
     ir38 => IR(38), ir39 => IR(39), ir40 => IR(40), ir41 => IR(41),

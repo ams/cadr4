@@ -2,9 +2,8 @@ library ieee;
 use ieee.std_logic_1164.all;
 use work.cadr.all;
 
-entity amem is
+entity amem_set is
   port (
-    -- Clock and control signals
     clk3d           : in  std_logic;
     clk3e           : in  std_logic;
     dest            : in  std_logic;
@@ -16,35 +15,17 @@ entity amem is
     \-amemenb\      : in  std_logic;
     apassenb        : in  std_logic;
     \-apassenb\     : in  std_logic;
-    
-    -- Bus signals
     IR              : in  std_logic_vector(41 downto 14);
     L               : in  std_logic_vector(31 downto 0);
-    
-    -- Output bus signals
     A               : out std_logic_vector(31 downto 0);
-    AADR            : out std_logic_vector(9 downto 0);
-    AMEM            : out std_logic_vector(31 downto 0);
     WADR            : out std_logic_vector(9 downto 0);
-    
-    -- Individual output signals
     lparity         : in  std_logic;
-    amemparity      : out std_logic;
     aparity         : out std_logic;
-    a31a            : out std_logic;
-    a31b            : out std_logic;
-    \-apass\        : out std_logic;
-    apass1          : out std_logic;
-    apass2          : out std_logic;
-    \-awpa\         : out std_logic;
-    \-awpb\         : out std_logic;
-    \-awpc\         : out std_logic;
-    destd           : out std_logic;
     destmd          : out std_logic
   );
 end entity;
 
-architecture rtl of amem is
+architecture rtl of amem_set is
 
   -- Internal signals
   signal aadr0a, aadr0b : std_logic;
@@ -65,13 +46,7 @@ architecture rtl of amem is
 begin
 
   -- Map bus outputs
-  AADR <= aadr9a & aadr8a & aadr7a & aadr6a & aadr5a & aadr4a & aadr3a & aadr2a & aadr1a & aadr0a;
-  AMEM <= amem_high & amem_low;
   WADR <= wadr9 & wadr8 & wadr7 & wadr6 & wadr5 & wadr4 & wadr3 & wadr2 & wadr1 & wadr0;
-  amemparity <= amem_par;
-  \-awpa\ <= awpa;
-  \-awpb\ <= awpb;
-  \-awpc\ <= awpc;
 
   actl_inst: cadr_actl port map (
     clk3d           => clk3d,

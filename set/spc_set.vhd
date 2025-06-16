@@ -2,9 +2,8 @@ library ieee;
 use ieee.std_logic_1164.all;
 use work.cadr.all;
 
-entity spc is
+entity spc_set is
   port (
-    -- Clock and control signals
     clk4a           : in  std_logic;
     clk4b           : in  std_logic;
     clk4c           : in  std_logic;
@@ -31,28 +30,16 @@ entity spc is
     tse3a           : in  std_logic;
     wp4a            : in  std_logic;
     wp4b            : in  std_logic;
-    
-    -- Bus signals
     L               : in  std_logic_vector(31 downto 0);
     LPC             : in  std_logic_vector(13 downto 0);
-    
-    -- Output bus signals
     SPC             : out std_logic_vector(31 downto 0);
-    SPCO            : out std_logic_vector(31 downto 0);
-    SPCW            : out std_logic_vector(31 downto 0);
-    SPCPTR          : out std_logic_vector(4 downto 0);
-    
-    -- Individual signals
     lparity         : in  std_logic;
     lpc13           : in  std_logic;
-    spcparity       : out std_logic;
-    spcwparity      : out std_logic;
-    spcparok        : out std_logic;
-    spcwparok       : out std_logic
+    spcparok        : out std_logic
   );
 end entity;
 
-architecture rtl of spc is
+architecture rtl of spc_set is
 
   signal spc_all : std_logic_vector(31 downto 0);
   signal spco_all : std_logic_vector(31 downto 0);
