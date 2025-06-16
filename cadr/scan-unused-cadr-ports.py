@@ -41,8 +41,8 @@ def extract_component_ports(book_file: str) -> Dict[str, List[str]]:
     
     return components
 
-def extract_suds_port_usage(suds_file: str) -> Set[str]:
-    """Extract all port names used in a SUDS architecture file."""
+def check_port_usage_in_suds(suds_file: str, declared_ports: List[str]) -> Set[str]:
+    """Check which declared ports are actually used in a SUDS architecture file."""
     used_ports = set()
     
     if not os.path.exists(suds_file):
@@ -51,27 +51,15 @@ def extract_suds_port_usage(suds_file: str) -> Set[str]:
     with open(suds_file, 'r') as f:
         content = f.read()
     
-    # Find all port map statements
-    port_map_pattern = r'port\s+map\s*\((.*?)\)'
-    matches = re.findall(port_map_pattern, content, re.DOTALL | re.IGNORECASE)
-    
-    for port_map in matches:
-        # Extract port assignments like "p1 => signal_name"
-        # Handle both regular and escaped signal names
-        assignments = re.findall(r'p\d+\s*=>\s*([^,\)]+)', port_map)
-        for signal in assignments:
-            signal = signal.strip()
-            # Skip constants and open connections
-            if signal not in ['open', "'0'", "'1'", 'gnd']:
-                # Handle escaped signal names - remove outer backslashes but keep inner content
-                if signal.startswith('\\') and signal.endswith('\\'):
-                    signal = signal[1:-1]  # Remove outer backslashes
-                elif signal.startswith('\\'):
-                    signal = signal[1:]    # Remove leading backslash
-                elif signal.endswith('\\'):
-                    signal = signal[:-1]   # Remove trailing backslash
-                
-                used_ports.add(signal)
+    # For each declared port, check if it appears in the SUDS file
+    for port in declared_ports:
+        # Normalize the port name for searching
+        normalized_port = normalize_port_name(port)
+        
+        # Search for the port in the content
+        # Look for the port name in => assignments
+        if f'=> {port}' in content or f'=> {normalized_port}' in content:
+            used_ports.add(normalized_port)
     
     return used_ports
 
@@ -103,11 +91,10 @@ def find_unused_ports():
         
         if suds_file.exists():
             print(f"Analyzing {comp_name}...")
-            used_ports = extract_suds_port_usage(suds_file)
+            used_normalized = check_port_usage_in_suds(suds_file, declared_ports)
             
             # Normalize port names for comparison
             declared_normalized = {normalize_port_name(p) for p in declared_ports}
-            used_normalized = {normalize_port_name(p) for p in used_ports}
             
             # Find unused ports
             unused_ports = declared_normalized - used_normalized
@@ -178,13 +165,6 @@ def find_unused_ports():
     # Print to console
     for line in report_lines:
         print(line)
-    
-    # Save to file
-    output_file = script_dir / 'unused_ports_report.txt'
-    with open(output_file, 'w') as f:
-        f.write('\n'.join(report_lines))
-    
-    print(f"\nReport saved to: {output_file}")
 
 if __name__ == "__main__":
     find_unused_ports() 
