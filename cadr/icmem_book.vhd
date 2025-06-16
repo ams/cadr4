@@ -95,7 +95,6 @@ package icmem_book is
       clk3             : out std_logic;
       mclk1            : out std_logic;
       machrun          : in  std_logic;
-      hi1              : in  std_logic;
       \-tpclk\         : out std_logic
       );
   end component;
@@ -179,7 +178,6 @@ package icmem_book is
   component cadr_ictl is
     port (
       ramdisable      : out std_logic;
-      hi1             : in  std_logic;
       \-iwriteda\     : out std_logic;
       \-promdisabled\ : out std_logic;
       idebug          : in  std_logic;
@@ -407,7 +405,6 @@ package icmem_book is
       \-v0pe\             : out std_logic;
       \-v1pe\             : out std_logic;
       \-halted\           : out std_logic;
-      hi1                 : out std_logic;
       aparok              : in  std_logic;
       mmemparok           : in  std_logic;
       pdlparok            : in  std_logic;
@@ -441,7 +438,6 @@ package icmem_book is
       \boot.trap\         : out std_logic;
       \-boot2\            : out std_logic;
       \-boot1\            : in std_logic;
-      hi2                 : out std_logic;
       \-ldmode\           : out std_logic;
       ldmode              : out std_logic;
       mclk5               : in  std_logic;
@@ -458,7 +454,6 @@ package icmem_book is
 
   component cadr_opcs is
     port (
-      hi2       : in  std_logic;
       opc13     : out std_logic;
       pc13      : in  std_logic;
       opcinha   : out std_logic;
@@ -502,7 +497,6 @@ package icmem_book is
     port (
       \-promenable\   : out std_logic;
       i46             : out std_logic;
-      hi2             : in  std_logic;
       pc0             : in  std_logic;
       \-prompc0\      : out std_logic;
       pc1             : in  std_logic;
@@ -1571,7 +1565,6 @@ package icmem_book is
       eadr2        : in  std_logic;
       \-dbread\    : in  std_logic;
       eadr3        : in  std_logic;
-      hi1          : in  std_logic;
       \-spy.obh\   : out std_logic;
       \-spy.obl\   : out std_logic;
       \-spy.pc\    : out std_logic;
@@ -1667,7 +1660,6 @@ package icmem_book is
 
   component cadr_stat is
     port (
-      hi1        : in  std_logic;
       clk5a      : in  std_logic;
       iwr12      : in  std_logic;
       iwr13      : in  std_logic;

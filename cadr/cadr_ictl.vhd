@@ -4,7 +4,6 @@ use ieee.std_logic_1164.all;
 entity cadr_ictl is
   port (
     ramdisable      : out std_logic;
-    hi1             : in  std_logic;
     \-iwriteda\     : out std_logic;
     \-promdisabled\ : out std_logic;
     idebug          : in  std_logic;

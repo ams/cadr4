@@ -29,7 +29,6 @@ entity cadr_npc is
     pc1     : out std_logic;
     ipc0    : out std_logic;
     pc0     : out std_logic;
-    hi4     : in  std_logic;
     ipc3    : out std_logic;
     pc3     : out std_logic;
     ipc2    : out std_logic;

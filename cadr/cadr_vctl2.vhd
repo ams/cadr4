@@ -31,7 +31,6 @@ entity cadr_vctl2 is
     \-destvma\     : in  std_logic;
     \-ifetch\      : in  std_logic;
     \-vmaenb\      : out std_logic;
-    hi11           : in  std_logic;
     vmasela        : out std_logic;
     vmaselb        : out std_logic;
     wrcyc          : in  std_logic;

@@ -5,7 +5,6 @@ entity cadr_pctl is
   port (
     \-promenable\   : out std_logic;
     i46             : out std_logic;
-    hi2             : in  std_logic;
     pc0             : in  std_logic;
     \-prompc0\      : out std_logic;
     pc1             : in  std_logic;

@@ -40,7 +40,6 @@ entity cadr_dspctl is
     dparok      : out std_logic;
     \-dparh\    : out std_logic;
     dparl       : out std_logic;
-    hi4         : in  std_logic;
     aa16        : out std_logic;
     aa17        : out std_logic;
     a17         : in  std_logic;

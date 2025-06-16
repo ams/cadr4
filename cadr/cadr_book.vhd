@@ -53,7 +53,6 @@ package cadr_book is
       \-apass\    : out std_logic;
       tse3a       : in  std_logic;
       \-amemenb\  : out std_logic;
-      hi3         : in  std_logic;
       \-reset\    : in  std_logic;
       ir14        : in  std_logic;
       ir15        : in  std_logic;
@@ -149,7 +148,6 @@ package cadr_book is
       amem2       : in  std_logic;
       amem1       : in  std_logic;
       amem0       : in  std_logic;
-      hi5         : in  std_logic;
       a31b        : out std_logic;
       aparity     : out std_logic;
       lparity     : in  std_logic;
@@ -273,7 +271,6 @@ package cadr_book is
       alumode  : in  std_logic;
       alu32    : out std_logic;
       m31      : in  std_logic;
-      hi12     : in  std_logic;
       a28      : in  std_logic;
       m28      : in  std_logic;
       \-cin28\ : in  std_logic;
@@ -381,7 +378,6 @@ package cadr_book is
       yout11            : in  std_logic;
       xout11            : in  std_logic;
       alusub            : out std_logic;
-      hi12              : in  std_logic;
       \-ir3\            : out std_logic;
       \-ir4\            : out std_logic;
       aluadd            : out std_logic;
@@ -654,7 +650,6 @@ package cadr_book is
   component cadr_clockd is
     port (
       \-clk1\        : out std_logic;
-      hi12           : in  std_logic;
       clk1a          : out std_logic;
       reset          : in  std_logic;
       \-reset\       : out std_logic;
@@ -668,18 +663,7 @@ package cadr_book is
       tse1b          : out std_logic;
       \-tse1\        : in  std_logic;
       tse1a          : out std_logic;
-      hi1            : in  std_logic;
-      hi2            : in  std_logic;
-      hi3            : in  std_logic;
-      hi4            : in  std_logic;
-      hi5            : in  std_logic;
-      hi6            : in  std_logic;
-      hi7            : in  std_logic;
       \-upperhighok\ : out std_logic;
-      hi8            : in  std_logic;
-      hi9            : in  std_logic;
-      hi10           : in  std_logic;
-      hi11           : in  std_logic;
       lcry3          : in  std_logic;
       \-lcry3\       : out std_logic;
       clk2           : in  std_logic;
@@ -781,7 +765,6 @@ package cadr_book is
       ir7              : in  std_logic;
       dn               : out std_logic;
       \-jcond\         : in  std_logic;
-      hi4              : in  std_logic;
       jcond            : in  std_logic;
       \-ir6\           : out std_logic;
       \-dr\            : out std_logic;
@@ -828,7 +811,6 @@ package cadr_book is
       \-dadr0a\   : out std_logic;
       vmo18       : in  std_logic;
       ir8b        : in  std_logic;
-      hi6         : in  std_logic;
       ir12        : in  std_logic;
       ir13        : in  std_logic;
       ir18b       : out std_logic;
@@ -862,7 +844,6 @@ package cadr_book is
       dpc2        : out std_logic;
       aa2         : in  std_logic;
       r2          : in  std_logic;
-      hi4         : in  std_logic;
       dmask5      : in  std_logic;
       r5          : in  std_logic;
       dmask2      : in  std_logic;
@@ -944,8 +925,7 @@ package cadr_book is
       ir22        : in  std_logic;
       ir8         : in  std_logic;
       ir9         : in  std_logic;
-      ir22b       : out std_logic;
-      hi6         : in  std_logic
+      ir22b       : out std_logic
       );
   end component;
 
@@ -970,7 +950,6 @@ package cadr_book is
       aa16        : in  std_logic;
       r3          : in  std_logic;
       ir18b       : in  std_logic;
-      hi11        : in  std_logic;
       dmask6      : in  std_logic;
       r6          : in  std_logic;
       ir15b       : in  std_logic;
@@ -1003,7 +982,6 @@ package cadr_book is
       \-dmapbenb\ : in  std_logic;
       vmo18       : in  std_logic;
       ir8b        : in  std_logic;
-      hi6         : in  std_logic;
       ir22b       : in  std_logic;
       ir21b       : in  std_logic;
       ir20b       : in  std_logic;
@@ -1052,7 +1030,6 @@ package cadr_book is
       dparok      : out std_logic;
       \-dparh\    : out std_logic;
       dparl       : out std_logic;
-      hi4         : in  std_logic;
       aa16        : out std_logic;
       aa17        : out std_logic;
       a17         : in  std_logic;
@@ -1124,7 +1101,6 @@ package cadr_book is
       \lc byte mode\      : out std_logic;
       ob28                : in  std_logic;
       \prog.unibus.reset\ : out std_logic;
-      hi4                 : in  std_logic;
       clk3c               : in  std_logic;
       \int.enable\        : out std_logic;
       ob27                : in  std_logic;
@@ -1745,7 +1721,6 @@ package cadr_book is
       mf14                : out std_logic;
       lc8                 : out std_logic;
       mf15                : out std_logic;
-      hi11                : in  std_logic;
       clk1a               : in  std_logic;
       ob20                : in  std_logic;
       ob21                : in  std_logic;
@@ -1851,7 +1826,6 @@ package cadr_book is
       pc10b      : out std_logic;
       pc9b       : out std_logic;
       pc8b       : out std_logic;
-      hi5        : in  std_logic;
       pc0        : in  std_logic;
       pc7b       : out std_logic;
       pc1        : in  std_logic;
@@ -1941,7 +1915,6 @@ package cadr_book is
       mpass      : out std_logic;
       tse4a      : in  std_logic;
       srcm       : out std_logic;
-      hi2        : in  std_logic;
       \-ir31\    : in  std_logic;
       \-mpass\   : out std_logic;
       mpassl     : out std_logic;
@@ -2177,7 +2150,6 @@ package cadr_book is
       ob31          : in  std_logic;
       mdparodd      : in  std_logic;
       \mempar out\  : out std_logic;
-      hi11          : in  std_logic;
       mdselb        : in  std_logic;
       ob12          : in  std_logic;
       \-mds12\      : out std_logic;
@@ -2453,7 +2425,6 @@ package cadr_book is
       \-mwpa\    : in  std_logic;
       l16        : in  std_logic;
       \-madr4a\  : in  std_logic;
-      hi3        : in  std_logic;
       mmem16     : out std_logic;
       mmem17     : out std_logic;
       \-madr3a\  : in  std_logic;
@@ -2464,7 +2435,6 @@ package cadr_book is
       \-mwpb\    : in  std_logic;
       l12        : in  std_logic;
       \-madr4b\  : in  std_logic;
-      hi2        : in  std_logic;
       mmem12     : out std_logic;
       mmem13     : out std_logic;
       \-madr3b\  : in  std_logic;
@@ -2793,7 +2763,6 @@ package cadr_book is
       pc1     : out std_logic;
       ipc0    : out std_logic;
       pc0     : out std_logic;
-      hi4     : in  std_logic;
       ipc3    : out std_logic;
       pc3     : out std_logic;
       ipc2    : out std_logic;
@@ -3245,7 +3214,6 @@ package cadr_book is
 
   component cadr_q is
     port (
-      hi7      : in  std_logic;
       q23      : out std_logic;
       alu24    : in  std_logic;
       alu25    : in  std_logic;
@@ -3643,7 +3611,6 @@ package cadr_book is
       ir28          : in  std_logic;
       \-ir31\       : in  std_logic;
       ir29          : in  std_logic;
-      hi5           : in  std_logic;
       \-srcq\       : out std_logic;
       \-srcopc\     : out std_logic;
       \-srcpdltop\  : out std_logic;
@@ -3671,7 +3638,6 @@ package cadr_book is
       \-swpa\   : in  std_logic;
       spcw14    : in  std_logic;
       spcptr4   : out std_logic;
-      hi1       : out std_logic;
       spco14    : out std_logic;
       spco15    : out std_logic;
       spcptr3   : out std_logic;
@@ -3691,12 +3657,6 @@ package cadr_book is
       spco18    : out std_logic;
       spco17    : out std_logic;
       spco16    : out std_logic;
-      hi2       : out std_logic;
-      hi3       : out std_logic;
-      hi4       : out std_logic;
-      hi5       : out std_logic;
-      hi6       : out std_logic;
-      hi7       : out std_logic;
       \-swpb\   : in  std_logic;
       spcw4     : in  std_logic;
       spco4     : out std_logic;
@@ -3714,11 +3674,6 @@ package cadr_book is
       spco8     : out std_logic;
       spco7     : out std_logic;
       spco6     : out std_logic;
-      hi8       : out std_logic;
-      hi9       : out std_logic;
-      hi10      : out std_logic;
-      hi11      : out std_logic;
-      hi12      : out std_logic;
       spush     : in  std_logic;
       clk4f     : in  std_logic;
       \-spcnt\  : in  std_logic;
@@ -3795,7 +3750,6 @@ package cadr_book is
       spcptr0     : in  std_logic;
       m31         : out std_logic;
       spcdrive    : in  std_logic;
-      hi1         : in  std_logic;
       spc16       : out std_logic;
       spc17       : out std_logic;
       spc18       : out std_logic;
@@ -4263,7 +4217,6 @@ package cadr_book is
       \-mfinishd\          : out std_logic;
       memrq                : out std_logic;
       mclk1a               : in  std_logic;
-      hi11                 : in  std_logic;
       mbusy                : out std_logic;
       \rd.in.progress\     : out std_logic;
       \set.rd.in.progress\ : out std_logic;
@@ -4278,7 +4231,6 @@ package cadr_book is
       \-memstart\          : out std_logic;
       \-mbusy.sync\        : out std_logic;
       \mbusy.sync\         : out std_logic;
-      hi4                  : in  std_logic;
       destmem              : in  std_logic;
       \-memgrant\          : in  std_logic;
       \use.md\             : in  std_logic;
@@ -4320,7 +4272,6 @@ package cadr_book is
       \-destvma\     : in  std_logic;
       \-ifetch\      : in  std_logic;
       \-vmaenb\      : out std_logic;
-      hi11           : in  std_logic;
       vmasela        : out std_logic;
       vmaselb        : out std_logic;
       wrcyc          : in  std_logic;
@@ -4768,7 +4719,6 @@ package cadr_book is
       mf24        : out std_logic;
       \-pfr\      : in  std_logic;
       mf25        : out std_logic;
-      hi12        : in  std_logic;
       mf26        : out std_logic;
       \-vmap4\    : in  std_logic;
       mf27        : out std_logic;

@@ -52,7 +52,6 @@ entity cadr_contrl is
     ir7              : in  std_logic;
     dn               : out std_logic;
     \-jcond\         : in  std_logic;
-    hi4              : in  std_logic;
     jcond            : in  std_logic;
     \-ir6\           : out std_logic;
     \-dr\            : out std_logic;

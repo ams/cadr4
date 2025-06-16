@@ -68,7 +68,6 @@ entity cadr_dram1 is
     ir22        : in  std_logic;
     ir8         : in  std_logic;
     ir9         : in  std_logic;
-    ir22b       : out std_logic;
-    hi6         : in  std_logic
-    );
+          ir22b       : out std_logic
+      );
 end;

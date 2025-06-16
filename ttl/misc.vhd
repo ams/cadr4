@@ -15,6 +15,18 @@ package misc is
 
   constant gnd : std_logic := '0';
   constant vcc : std_logic := '1';
+  constant hi1 : std_logic := '1';
+  constant hi2 : std_logic := '1';
+  constant hi3 : std_logic := '1';
+  constant hi4 : std_logic := '1';
+  constant hi5 : std_logic := '1';
+  constant hi6 : std_logic := '1';
+  constant hi7 : std_logic := '1';
+  constant hi8 : std_logic := '1';
+  constant hi9 : std_logic := '1';
+  constant hi10 : std_logic := '1';
+  constant hi11 : std_logic := '1';
+  constant hi12 : std_logic := '1';
 
 end;
 

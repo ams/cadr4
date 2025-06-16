@@ -43,9 +43,7 @@ package dip is
 
   component dip_16dummy is port (       -- ic_16dummy [16dummy]
     p12 : out std_logic;                -- \-power reset\
-    p13 : out std_logic;                -- \-boot2\
-    p15 : out std_logic;                -- hi2
-    p16 : out std_logic                 -- h1
+    p13 : out std_logic                 -- \-boot2\
     );
   end component;
 

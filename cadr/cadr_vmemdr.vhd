@@ -8,7 +8,6 @@ entity cadr_vmemdr is
     mf24        : out std_logic;
     \-pfr\      : in  std_logic;
     mf25        : out std_logic;
-    hi12        : in  std_logic;
     mf26        : out std_logic;
     \-vmap4\    : in  std_logic;
     mf27        : out std_logic;

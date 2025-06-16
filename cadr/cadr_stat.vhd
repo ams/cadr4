@@ -3,7 +3,6 @@ use ieee.std_logic_1164.all;
 
 entity cadr_stat is
   port (
-    hi1        : in  std_logic;
     clk5a      : in  std_logic;
     iwr12      : in  std_logic;
     iwr13      : in  std_logic;

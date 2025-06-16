@@ -6,7 +6,6 @@ entity cadr_spc is
     \-swpa\   : in  std_logic;
     spcw14    : in  std_logic;
     spcptr4   : out std_logic;
-    hi1       : out std_logic;
     spco14    : out std_logic;
     spco15    : out std_logic;
     spcptr3   : out std_logic;
@@ -26,12 +25,6 @@ entity cadr_spc is
     spco18    : out std_logic;
     spco17    : out std_logic;
     spco16    : out std_logic;
-    hi2       : out std_logic;
-    hi3       : out std_logic;
-    hi4       : out std_logic;
-    hi5       : out std_logic;
-    hi6       : out std_logic;
-    hi7       : out std_logic;
     \-swpb\   : in  std_logic;
     spcw4     : in  std_logic;
     spco4     : out std_logic;
@@ -49,11 +42,6 @@ entity cadr_spc is
     spco8     : out std_logic;
     spco7     : out std_logic;
     spco6     : out std_logic;
-    hi8       : out std_logic;
-    hi9       : out std_logic;
-    hi10      : out std_logic;
-    hi11      : out std_logic;
-    hi12      : out std_logic;
     spush     : in  std_logic;
     clk4f     : in  std_logic;
     \-spcnt\  : in  std_logic;

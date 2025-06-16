@@ -342,9 +342,7 @@ package other is
   end component;
 
   component ic_16dummy port(
-    hi1            : inout std_logic; -- 16
-    hi2            : inout std_logic; -- 15
-    \-boot2\       : inout std_logic; -- 13
+    \-boot2\       : out std_logic; -- 13
     \-power reset\ : out std_logic  -- 12
     ); end component;
 

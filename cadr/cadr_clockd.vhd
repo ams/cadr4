@@ -4,7 +4,6 @@ use ieee.std_logic_1164.all;
 entity cadr_clockd is
   port (
     \-clk1\        : out std_logic;
-    hi12           : in  std_logic;
     clk1a          : out std_logic;
     reset          : in  std_logic;
     \-reset\       : out std_logic;
@@ -18,18 +17,7 @@ entity cadr_clockd is
     tse1b          : out std_logic;
     \-tse1\        : in  std_logic;
     tse1a          : out std_logic;
-    hi1            : in  std_logic;
-    hi2            : in  std_logic;
-    hi3            : in  std_logic;
-    hi4            : in  std_logic;
-    hi5            : in  std_logic;
-    hi6            : in  std_logic;
-    hi7            : in  std_logic;
     \-upperhighok\ : out std_logic;
-    hi8            : in  std_logic;
-    hi9            : in  std_logic;
-    hi10           : in  std_logic;
-    hi11           : in  std_logic;
     lcry3          : in  std_logic;
     \-lcry3\       : out std_logic;
     clk2           : in  std_logic;

@@ -62,7 +62,6 @@ entity cadr_spclch is
     spcptr0     : in  std_logic;
     m31         : out std_logic;
     spcdrive    : in  std_logic;
-    hi1         : in  std_logic;
     spc16       : out std_logic;
     spc17       : out std_logic;
     spc18       : out std_logic;

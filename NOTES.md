@@ -1,4 +1,8 @@
 
+# General
+
+- gnd, vcc and all hiX signals are defined as constants with values 0 and 1. These are removed from port lists of cadr components. cadr_*_suds.vhd's are using them but effectively using the constants defined in work.misc package.
+
 # Power On Reset
 
 - when VCC applied, -BOOT1 and -BOOT2 are not asserted and -POWER RESET is initially asserted. (olord2)

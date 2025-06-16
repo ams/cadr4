@@ -15,7 +15,6 @@ entity cadr_lpc is
     pc10b      : out std_logic;
     pc9b       : out std_logic;
     pc8b       : out std_logic;
-    hi5        : in  std_logic;
     pc0        : in  std_logic;
     pc7b       : out std_logic;
     pc1        : in  std_logic;

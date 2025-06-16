@@ -20,7 +20,6 @@ entity cadr_vctl1 is
     \-mfinishd\          : out std_logic;
     memrq                : out std_logic;
     mclk1a               : in  std_logic;
-    hi11                 : in  std_logic;
     mbusy                : out std_logic;
     \rd.in.progress\     : out std_logic;
     \set.rd.in.progress\ : out std_logic;
@@ -35,7 +34,6 @@ entity cadr_vctl1 is
     \-memstart\          : out std_logic;
     \-mbusy.sync\        : out std_logic;
     \mbusy.sync\         : out std_logic;
-    hi4                  : in  std_logic;
     destmem              : in  std_logic;
     \-memgrant\          : in  std_logic;
     \use.md\             : in  std_logic;

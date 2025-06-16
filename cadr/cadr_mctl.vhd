@@ -39,7 +39,6 @@ entity cadr_mctl is
     mpass      : out std_logic;
     tse4a      : in  std_logic;
     srcm       : out std_logic;
-    hi2        : in  std_logic;
     \-ir31\    : in  std_logic;
     \-mpass\   : out std_logic;
     mpassl     : out std_logic;

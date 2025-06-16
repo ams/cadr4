@@ -45,7 +45,6 @@ entity cadr_aluc4 is
     yout11            : in  std_logic;
     xout11            : in  std_logic;
     alusub            : out std_logic;
-    hi12              : in  std_logic;
     \-ir3\            : out std_logic;
     \-ir4\            : out std_logic;
     aluadd            : out std_logic;
