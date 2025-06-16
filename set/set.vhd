@@ -20,105 +20,28 @@ package set is
       
       -- Output signals from cadr_clock1
       cyclecompleted   : out std_logic;
-      \-tpr0\          : out std_logic;
-      \-tpr10\         : out std_logic;
-      \-tpr100\        : out std_logic;
-      \-tpr105\        : out std_logic;
-      \-tpr110\        : out std_logic;
-      \-tpr115\        : out std_logic;
-      \-tpr120\        : out std_logic;
-      \-tpr120a\       : out std_logic;
-      \-tpr125\        : out std_logic;
-      \-tpr140\        : out std_logic;
-      \-tpr15\         : out std_logic;
-      \-tpr160\        : out std_logic;
-      \-tpr180\        : out std_logic;
-      \-tpr20\         : out std_logic;
-      \-tpr200\        : out std_logic;
-      \-tpr20a\        : out std_logic;
-      \-tpr25\         : out std_logic;
-      \-tpr40\         : out std_logic;
-      \-tpr5\          : out std_logic;
       \-tpr60\         : out std_logic;
-      \-tpr65\         : out std_logic;
-      \-tpr70\         : out std_logic;
-      \-tpr75\         : out std_logic;
-      \-tpr80\         : out std_logic;
-      \-tpr80a\        : out std_logic;
-      \-tpr85\         : out std_logic;
-      \-tprend\        : out std_logic;
-      tprend           : out std_logic;
-      \-tpw10\         : out std_logic;
-      \-tpw20\         : out std_logic;
-      \-tpw25\         : out std_logic;
-      \-tpw30\         : out std_logic;
-      \-tpw30a\        : out std_logic;
-      \-tpw35\         : out std_logic;
-      \-tpw40\         : out std_logic;
-      \-tpw40a\        : out std_logic;
-      \-tpw45\         : out std_logic;
-      \-tpw50\         : out std_logic;
-      \-tpw55\         : out std_logic;
-      \-tpw60\         : out std_logic;
-      \-tpw65\         : out std_logic;
-      \-tpw70\         : out std_logic;
-      \-tpw75\         : out std_logic;
       
       -- Output signals from cadr_clock2
       \-clk0\          : out std_logic;
-      clk1             : out std_logic;
-      clk2             : out std_logic;
-      clk3             : out std_logic;
-      clk4             : out std_logic;
       clk5             : out std_logic;
-      \-mclk0\         : out std_logic;
-      mclk1            : out std_logic;
       mclk5            : out std_logic;
-      mclk7            : out std_logic;
-      tpclk            : out std_logic;
-      \-tpclk\         : out std_logic;
-      \-tptse\         : out std_logic;
-      tptse            : out std_logic;
-      tpwp             : out std_logic;
-      tpwpiram         : out std_logic;
-      \-tse1\          : out std_logic;
-      \-tse2\          : out std_logic;
-      \-tse3\          : out std_logic;
-      \-tse4\          : out std_logic;
-      \-wp1\           : out std_logic;
-      \-wp2\           : out std_logic;
-      \-wp3\           : out std_logic;
-      \-wp4\           : out std_logic;
       \-wp5\           : out std_logic;
       
       -- Output signals from cadr_clockd
       \-clk1\          : out std_logic;
-      clk1a            : out std_logic;
-      \-clk2a\         : out std_logic;
       clk2a            : out std_logic;
-      clk2b            : out std_logic;
-      \-clk2c\         : out std_logic;
       clk2c            : out std_logic;
-      \-clk3a\         : out std_logic;
-      clk3a            : out std_logic;
       clk3b            : out std_logic;
       clk3c            : out std_logic;
-      \-clk3d\         : out std_logic;
-      clk3d            : out std_logic;
       clk3e            : out std_logic;
-      clk3f            : out std_logic;
       \-clk3g\         : out std_logic;
-      \-clk4a\         : out std_logic;
       clk4a            : out std_logic;
       clk4b            : out std_logic;
       clk4c            : out std_logic;
-      \-clk4d\         : out std_logic;
-      clk4d            : out std_logic;
       \-clk4e\         : out std_logic;
       clk4e            : out std_logic;
       clk4f            : out std_logic;
-      \-lcry3\         : out std_logic;
-      \-mclk1\         : out std_logic;
       mclk1a           : out std_logic;
       \-reset\         : out std_logic;
       srcpdlidx        : out std_logic;
@@ -132,11 +55,9 @@ package set is
       \-upperhighok\   : out std_logic;
       wp1a             : out std_logic;
       wp1b             : out std_logic;
-      wp2              : out std_logic;
       wp3a             : out std_logic;
       wp4a             : out std_logic;
-      wp4b             : out std_logic;
-      wp4c             : out std_logic
+      wp4b             : out std_logic
     );
   end component;
 
@@ -161,23 +82,11 @@ package set is
       
       -- Output bus signals
       A               : out std_logic_vector(31 downto 0);
-      AADR            : out std_logic_vector(9 downto 0);
-      AMEM            : out std_logic_vector(31 downto 0);
       WADR            : out std_logic_vector(9 downto 0);
       
       -- Individual output signals
       lparity         : in  std_logic;
-      amemparity      : out std_logic;
       aparity         : out std_logic;
-      a31a            : out std_logic;
-      a31b            : out std_logic;
-      \-apass\        : out std_logic;
-      apass1          : out std_logic;
-      apass2          : out std_logic;
-      \-awpa\         : out std_logic;
-      \-awpb\         : out std_logic;
-      \-awpc\         : out std_logic;
-      destd           : out std_logic;
       destmd          : out std_logic
     );
   end component;
@@ -207,18 +116,10 @@ package set is
       
       -- Output bus signals
       M               : out std_logic_vector(31 downto 0);
-      MMEM            : out std_logic_vector(31 downto 0);
       
       -- Individual output signals
       mmemparity      : out std_logic;
       mparity         : out std_logic;
-      mpass           : out std_logic;
-      \-mpass_out\    : out std_logic;
-      mpassl          : out std_logic;
-      \-mpassl\       : out std_logic;
-      \-mpassm\       : out std_logic;
-      \-mwpa\         : out std_logic;
-      \-mwpb\         : out std_logic;
       srcm            : out std_logic
     );
   end component;
@@ -239,10 +140,7 @@ package set is
       ALU             : out std_logic_vector(31 downto 0);
       
       -- Output control signals
-      lcry3           : out std_logic;
-      lcry11          : out std_logic;
-      lcry19          : out std_logic;
-      lcry27          : out std_logic
+      lcry3           : out std_logic
     );
   end component;
 
@@ -282,17 +180,11 @@ package set is
       
       -- Output bus signals
       SPC             : out std_logic_vector(31 downto 0);
-      SPCO            : out std_logic_vector(31 downto 0);
-      SPCW            : out std_logic_vector(31 downto 0);
-      SPCPTR          : out std_logic_vector(4 downto 0);
       
       -- Individual signals
       lparity         : in  std_logic;
       lpc13           : in  std_logic;
-      spcparity       : out std_logic;
-      spcwparity      : out std_logic;
-      spcparok        : out std_logic;
-      spcwparok       : out std_logic
+      spcparok        : out std_logic
     );
   end component;
 
@@ -323,37 +215,25 @@ package set is
       
       -- Display memory control outputs
       dispwr      : out std_logic;
-      \-dmapbenb\ : out std_logic;
       
       -- DRAM control outputs
       \-dwea\     : out std_logic;
-      \-dweb\     : out std_logic;
-      \-dwec\     : out std_logic;
       
       -- Display address outputs
       DADR        : out std_logic_vector(10 downto 0);
-      \-DADR\     : out std_logic_vector(10 downto 0);
       
       -- Display data control
       dpar        : out std_logic;
-      dn          : out std_logic;
-      dp          : out std_logic;
-      dr          : out std_logic;
       
       -- Display parity control
       dpareven    : out std_logic;
       dparok      : out std_logic;
-      \-dparh\    : out std_logic;
-      dparl       : out std_logic;
       
       -- Display PC outputs
       DPC         : out std_logic_vector(13 downto 0);
       
       -- Video memory outputs
       vmo18       : out std_logic;
-      vmo19       : out std_logic;
-      \-vmo18\    : out std_logic;
-      \-vmo19\    : out std_logic;
       
       -- Display mask outputs
       DMASK       : out std_logic_vector(6 downto 0)
@@ -376,9 +256,7 @@ package set is
       ir31 : in std_logic;
       
       -- Output signals
-      \a=m\ : out std_logic;
-      \-mr\ : out std_logic;
-      \-sr\ : out std_logic
+      \a=m\ : out std_logic
     );
   end component;
 
@@ -388,9 +266,6 @@ package set is
       L : in std_logic_vector(31 downto 0);
       M : out std_logic_vector(31 downto 0);
       OB : in std_logic_vector(9 downto 0);
-      PDL : out std_logic_vector(31 downto 0);
-      PDLIDX : out std_logic_vector(9 downto 0);
-      PDLPTR : out std_logic_vector(9 downto 0);
       MF : out std_logic_vector(11 downto 0);
       
       -- Individual signals
@@ -421,19 +296,8 @@ package set is
       -- Output signals
       \-destspcd\ : out std_logic;
       imodd : out std_logic;
-      \-imodd\ : out std_logic;
-      \-pdlcry3\ : out std_logic;
-      \-pdlcry7\ : out std_logic;
-      \-pdldrive\ : out std_logic;
       pdlenb : out std_logic;
-      pdlparity : out std_logic;
-      pidrive : out std_logic;
-      \-ppdrive\ : out std_logic;
-      pdlwrite : out std_logic;
-      \-pdlwrited\ : out std_logic;
-      pdlwrited : out std_logic;
-      pwidx : out std_logic;
-      \-pwidx\ : out std_logic
+      pdlwrited : out std_logic
     );
   end component;
 
@@ -456,12 +320,7 @@ package set is
       
       -- ICTL outputs
       \-iwriteda\ : out std_logic;
-      iwriteda : out std_logic;
-      \-promdisabled\ : out std_logic;
-      ramdisable : out std_logic;
-      wp5a : out std_logic;
-      wp5b : out std_logic;
-      wp5c : out std_logic
+      \-promdisabled\ : out std_logic
     );
   end component;
 
@@ -488,14 +347,7 @@ package set is
       I : out std_logic_vector(48 downto 0);
       
       -- PCTL outputs
-      \bottom.1k\ : out std_logic;
-      dpe : out std_logic;
-      i46 : out std_logic;
-      ipe : out std_logic;
-      \-promenable\ : out std_logic;
-      promenable : out std_logic;
-      tilt0 : out std_logic;
-      tilt1 : out std_logic
+      \bottom.1k\ : out std_logic
     );
   end component;
 
@@ -521,12 +373,7 @@ package set is
       MF : out std_logic_vector(31 downto 0);
       
       -- Control outputs from QCTL
-      \-alu31\ : out std_logic;
-      \-qdrive\ : out std_logic;
-      qdrive : out std_logic;
-      qs0 : out std_logic;
-      qs1 : out std_logic;
-      srcq : out std_logic
+      \-alu31\ : out std_logic
     );
   end component;
 
@@ -598,8 +445,6 @@ package set is
       \-lddbirm\ : out std_logic;
       \-ldmode\ : out std_logic;
       \-ldopc\ : out std_logic;
-      \-spy.al\ : out std_logic;
-      \-spy.flag1\ : out std_logic;
       \-spy.sth\ : out std_logic;
       \-spy.stl\ : out std_logic
     );
@@ -638,29 +483,11 @@ package set is
       
       -- Other outputs
       \lc byte mode\ : out std_logic;
-      \-lcinc\ : out std_logic;
       lcinc : out std_logic;
       lcry3 : out std_logic;
-      \-lcry3\ : out std_logic;
-      \-lcry7\ : out std_logic;
-      \-lcry11\ : out std_logic;
-      \-lcry15\ : out std_logic;
-      \-lcry19\ : out std_logic;
-      \-lcry23\ : out std_logic;
-      \-lcdrive\ : out std_logic;
-      lcdrive : out std_logic;
-      srclc : out std_logic;
       \-sh4\ : out std_logic;
       \-sh3\ : out std_logic;
-      \inst in left half\ : out std_logic;
-      \inst in 2nd or 4th quarter\ : out std_logic;
-      \-lc modifies mrot\ : out std_logic;
-      \-ifetch\ : out std_logic;
-      \have wrong word\ : out std_logic;
-      \last byte in word\ : out std_logic;
-      \-newlc\ : out std_logic;
-      \-newlc.in\ : out std_logic;
-      newlc : out std_logic
+      \-ifetch\ : out std_logic
     );
   end component;
 
@@ -691,8 +518,7 @@ package set is
       MAPI : out std_logic_vector(23 downto 12);
       
       -- Other outputs
-      \-vmadrive\ : out std_logic;
-      srcvma : out std_logic
+      \-vmadrive\ : out std_logic
     );
   end component;
 
@@ -721,15 +547,9 @@ package set is
       -- Bus outputs
       MD : out std_logic_vector(31 downto 0);
       MF : out std_logic_vector(31 downto 0);
-      MEM : out std_logic_vector(31 downto 0);
       
       -- Other outputs
       \-mddrive\ : out std_logic;
-      srcmd : out std_logic;
-      destmdr : out std_logic;
-      loadmd : out std_logic;
-      mdclk : out std_logic;
-      mdgetspar : out std_logic;
       mdhaspar : out std_logic;
       mdpar : out std_logic
     );
@@ -760,27 +580,13 @@ package set is
       
       -- Bus outputs
       MF : out std_logic_vector(31 downto 0);
-      VMAP_OUT : out std_logic_vector(4 downto 0);
-      VMO_OUT : out std_logic_vector(23 downto 0);
       
       -- Other outputs
       \-mapdrive\ : out std_logic;
-      \-mapi23\ : out std_logic;
-      \-use.map\ : out std_logic;
       v0parok : out std_logic;
-      vm0pari : out std_logic;
       vmoparok : out std_logic;
-      vpari : out std_logic;
-      vm1mpar : out std_logic;
-      vm1pari : out std_logic;
-      \-vm1lpar\ : out std_logic;
-      vmoparm : out std_logic;
-      vmopar : out std_logic;
-      vmoparl : out std_logic;
-      vmoparck : out std_logic;
       \-lvmo22\ : out std_logic;
-      \-lvmo23\ : out std_logic;
-      \-adrpar\ : out std_logic
+      \-lvmo23\ : out std_logic
     );
   end component;
 
@@ -825,49 +631,23 @@ package set is
       
       -- Other outputs
       rdcyc : out std_logic;
-      wrcyc_out : out std_logic;
-      \-wmapd\ : out std_logic;
       wmapd : out std_logic;
-      memprepare : out std_logic;
       \-pfw\ : out std_logic;
       \-vmaok\ : out std_logic;
-      \-mfinishd\ : out std_logic;
-      memrq_out : out std_logic;
-      mbusy : out std_logic;
-      \rd.in.progress\ : out std_logic;
-      \set.rd.in.progress\ : out std_logic;
-      \-rdfinish\ : out std_logic;
-      \-mfinish\ : out std_logic;
-      \-memop\ : out std_logic;
-      memstart : out std_logic;
       \-memstart\ : out std_logic;
-      \-mbusy.sync\ : out std_logic;
-      \mbusy.sync\ : out std_logic;
       \-wait\ : out std_logic;
       \-hang\ : out std_logic;
-      mapwr0d : out std_logic;
-      mapwr1d : out std_logic;
       mdsela : out std_logic;
       mdselb : out std_logic;
       \-memdrive.a\ : out std_logic;
       \-memdrive.b\ : out std_logic;
-      \-memprepare_out\ : out std_logic;
-      \-memrd_out\ : out std_logic;
-      \-memrq_out\ : out std_logic;
-      \-memwr_out\ : out std_logic;
-      nopa : out std_logic;
-      \-pfr_out\ : out std_logic;
-      \use.md_out\ : out std_logic;
       \-vm0wpa\ : out std_logic;
       \-vm0wpb\ : out std_logic;
       \-vm1wpa\ : out std_logic;
       \-vm1wpb\ : out std_logic;
       \-vmaenb\ : out std_logic;
       vmasela : out std_logic;
-      vmaselb : out std_logic;
-      \-wmap\ : out std_logic;
-      wmap_out : out std_logic;
-      \-wmapd_out\ : out std_logic
+      vmaselb : out std_logic
     );
   end component;
 
@@ -880,77 +660,41 @@ package set is
       mclk5a           : in  std_logic;
       mclk5            : in  std_logic;
       clk5             : in  std_logic;
-      \-mclk5\         : out std_logic;
-      clk5a            : out std_logic;
-      \-clk5\          : out std_logic;
       reset            : out std_logic;
       \bus.power.reset l\ : out std_logic;
-      \power reset a\  : out std_logic;
       \-upperhighok\   : in  std_logic;
-      \-lowerhighok\   : out std_logic;
       \-boot\          : in  std_logic;
       \-boot1\         : in  std_logic;
-      \prog.bus.reset\ : out std_logic;
-      \-bus.reset\     : out std_logic;
-      \-clock reset b\ : out std_logic;
-      \-clock reset a out\ : out std_logic;
-      \-power reset\   : out std_logic;
-      \boot.trap\      : out std_logic;
-      \-boot2\         : out std_logic;
       \-ldmode\        : in  std_logic;
-      ldmode           : out std_logic;
       \-busint.lm.reset\ : in  std_logic;
-      \-prog.reset\    : out std_logic;
-      \prog.boot\      : out std_logic;
       
       -- Speed control signals
       speed1a          : out std_logic;
       sspeed1          : out std_logic;
-      speedclk         : out std_logic;
       sspeed0          : out std_logic;
-      speed0a          : out std_logic;
-      speed1           : out std_logic;
-      speed0           : out std_logic;
       
       -- Spy signals
       SPY : in std_logic_vector(7 downto 0);
       
       -- Control signals
       errstop          : out std_logic;
-      stathenb         : out std_logic;
       trapenb          : out std_logic;
       promdisable      : out std_logic;
       \-opcinh\        : out std_logic;
-      opcinh           : out std_logic;
       \-ldopc\         : in  std_logic;
       opcclk           : out std_logic;
-      \-opcclk\        : out std_logic;
-      \-lpc.hold\      : out std_logic;
-      \lpc.hold\       : out std_logic;
-      ldstat           : out std_logic;
-      \-ldstat\        : out std_logic;
       \-idebug\        : out std_logic;
-      idebug           : out std_logic;
-      nop11            : out std_logic;
       \-nop11\         : out std_logic;
-      \-step\          : out std_logic;
-      step             : out std_logic;
       promdisabled     : out std_logic;
-      sstep            : out std_logic;
       ssdone           : out std_logic;
       srun             : out std_logic;
-      run              : out std_logic;
-      \-run\           : out std_logic;
-      \-ssdone\        : out std_logic;
       \-errhalt\       : in  std_logic;
       \-wait\          : in  std_logic;
       \-stathalt\      : out std_logic;
-      \stat.ovf\       : out std_logic;
       \-stc32\         : in  std_logic;
       \-tpr60\         : in  std_logic;
       statstop         : in  std_logic;
       \-machruna\      : out std_logic;
-      \-machrun\       : out std_logic;
       machrun          : out std_logic;
       
       -- Error/parity signals
@@ -965,22 +709,17 @@ package set is
       \-mempe\         : out std_logic;
       \-v0pe\          : out std_logic;
       \-v1pe\          : out std_logic;
-      \-halted\        : out std_logic;
       aparok           : in  std_logic;
       mmemparok        : in  std_logic;
       pdlparok         : in  std_logic;
       dparok           : in  std_logic;
       iparok           : in  std_logic;
       spcparok         : in  std_logic;
-      highok           : out std_logic;
       memparok         : in  std_logic;
       v0parok          : in  std_logic;
       vmoparok         : in  std_logic;
-      statstop_out     : out std_logic;
       \-halt\          : in  std_logic;
-      \-ldmode_out\    : out std_logic;
-      errstop_in       : in  std_logic;
-      \-errhalt_out\   : out std_logic
+      errstop_in       : in  std_logic
     );
   end component;
 
@@ -1011,10 +750,6 @@ package set is
       
       -- Parity outputs
       ipar0 : out std_logic;
-      ipar1 : out std_logic;
-      ipar2 : out std_logic;
-      ipar3 : out std_logic;
-      iparity : out std_logic;
       iparok : out std_logic
     );
   end component;
@@ -1037,16 +772,11 @@ package set is
       
       -- Output bus signals
       DPC    : out std_logic_vector(13 downto 0);
-      IPC    : out std_logic_vector(13 downto 0);
-      NPC    : out std_logic_vector(13 downto 0);
       PC     : out std_logic_vector(13 downto 0);
       SPC    : out std_logic_vector(13 downto 0);
-      SPCO   : out std_logic_vector(13 downto 0);
       
       -- Individual outputs
-      pccry3  : out std_logic;
-      pccry7  : out std_logic;
-      pccry11 : out std_logic
+      pccry3  : out std_logic
     );
   end component;
 
@@ -1069,14 +799,9 @@ package set is
       
       -- Output bus signals
       I   : out std_logic_vector(48 downto 0);
-      IWR : out std_logic_vector(47 downto 0);
       
       -- Parity outputs
-      iwrp1 : out std_logic;
-      iwrp2 : out std_logic;
-      iwrp3 : out std_logic;
-      iwrp4 : out std_logic;
-      iwr48 : out std_logic
+      iwrp1 : out std_logic
     );
   end component;
 
@@ -1096,21 +821,17 @@ package set is
       dest          : out std_logic;
       destm         : out std_logic;
       imod          : out std_logic;
-      iralu         : out std_logic;
       irdisp        : out std_logic;
       irjump        : out std_logic;
       
       -- Function outputs  
       \-funct0\     : out std_logic;
-      \-funct1\     : out std_logic;
       \-funct2\     : out std_logic;
-      \-funct3\     : out std_logic;
       
       -- Destination outputs
       \-destimod0\  : out std_logic;
       \-destimod1\  : out std_logic;
       \-destintctl\ : out std_logic;
-      \-destlc\     : out std_logic;
       \-destmdr\    : out std_logic;
       \-destmem\    : out std_logic;
       \-destpdl(p)\ : out std_logic;
@@ -1126,7 +847,6 @@ package set is
       \-srclc\      : out std_logic;
       \-srcmap\     : out std_logic;
       \-srcmd\      : out std_logic;
-      \-srcopc\     : out std_logic;
       \-srcpdlidx\  : out std_logic;
       \-srcpdlpop\  : out std_logic;
       \-srcpdlptr\  : out std_logic;
@@ -1134,18 +854,11 @@ package set is
       \-srcq\       : out std_logic;
       \-srcspc\     : out std_logic;
       \-srcspcpop\  : out std_logic;
-      \-srcvma\     : out std_logic;
       
       -- ALU function outputs
       \-div\        : out std_logic;
       \-iralu\      : out std_logic;
-      \-irbyte\     : out std_logic;
-      \-irdisp\     : out std_logic;
-      \-irjump\     : out std_logic;
-      \-ir22\       : out std_logic;
-      \-ir25\       : out std_logic;
-      \-mul\        : out std_logic;
-      \-specalu\    : out std_logic
+      \-irdisp\     : out std_logic
     );
   end component;
 
@@ -1162,9 +875,7 @@ package set is
       
       -- Parity outputs
       lparl      : out std_logic;
-      \-lparm\   : out std_logic;
-      lparity    : out std_logic;
-      \-lparity\ : out std_logic
+      lparity    : out std_logic
     );
   end component;
 
@@ -1189,20 +900,12 @@ package set is
       
       -- Output control signals
       \-alu32\            : out std_logic;
-      aluneg              : out std_logic;
-      conds0              : out std_logic;
-      conds1              : out std_logic;
-      conds2              : out std_logic;
       \-ilong\            : out std_logic;
       \int.enable\        : out std_logic;
       jcond               : out std_logic;
       \-jcond\            : out std_logic;
-      \lc byte mode\      : out std_logic;
-      \pgf.or.int\        : out std_logic;
-      \pgf.or.int.or.sb\  : out std_logic;
       \prog.unibus.reset\ : out std_logic;
       \sequence.break\    : out std_logic;
-      sint                : out std_logic;
       \-statbit\          : out std_logic
     );
   end component;
@@ -1233,26 +936,14 @@ package set is
       \-dfall\         : out std_logic;
       \-destspc\       : out std_logic;
       destspc          : out std_logic;
-      dispenb          : out std_logic;
-      dn               : out std_logic;
-      dp               : out std_logic;
-      dr               : out std_logic;
       \-ignpopj\       : out std_logic;
-      \-inop\          : out std_logic;
-      inop             : out std_logic;
-      \-ipopj\         : out std_logic;
       \-iwrited\       : out std_logic;
-      iwrite           : out std_logic;
       iwrited          : out std_logic;
       jcalf            : out std_logic;
-      jfalse           : out std_logic;
       jret             : out std_logic;
       jretf            : out std_logic;
-      n                : out std_logic;
-      \-nop\           : out std_logic;
       nop              : out std_logic;
       \-nopa\          : out std_logic;
-      \-popj\          : out std_logic;
       \-spcdrive\      : out std_logic;
       spcdrive         : out std_logic;
       spcenb           : out std_logic;
@@ -1282,16 +973,9 @@ package set is
       
       -- Output bus signals
       SPY : out std_logic_vector(15 downto 0);
-      ST  : out std_logic_vector(31 downto 0);
       
       -- Carry outputs
       \-stc4\  : out std_logic;
-      \-stc8\  : out std_logic;
-      \-stc12\ : out std_logic;
-      \-stc16\ : out std_logic;
-      \-stc20\ : out std_logic;
-      \-stc24\ : out std_logic;
-      \-stc28\ : out std_logic;
       \-stc32\ : out std_logic
     );
   end component;
@@ -1311,17 +995,11 @@ package set is
       
       -- Output control signals
       mdparerr   : out std_logic;
-      mdpareven  : out std_logic;
-      mdparl     : out std_logic;
-      mdparm     : out std_logic;
       mdparodd   : out std_logic;
-      \-memparok\ : out std_logic;
       memparok   : out std_logic;
-      \-parerr\  : out std_logic;
       \-trap\    : out std_logic;
       trapa      : out std_logic;
-      trapb      : out std_logic;
-      \-trapenb\ : out std_logic
+      trapb      : out std_logic
     );
   end component;
 
@@ -1348,17 +1026,7 @@ package set is
       MF              : out std_logic_vector(31 downto 0);
       
       -- Individual control output signals
-      opcclka         : out std_logic;
-      opcclkb         : out std_logic;
-      opcclkc         : out std_logic;
-      opcinha         : out std_logic;
-      opcinhb         : out std_logic;
-      \-opcdrive\     : out std_logic;
-      dcdrive         : out std_logic;
-      \-zero16.drive\ : out std_logic;
-      zero16          : out std_logic;
-      \zero16.drive\  : out std_logic;
-      \zero12.drive\  : out std_logic
+      opcclka         : out std_logic
     );
   end component;
 
@@ -1379,13 +1047,8 @@ package set is
       
       -- Parity check outputs
       aparl     : out std_logic;
-      aparm     : out std_logic;
       aparok    : out std_logic;
       mmemparok : out std_logic;
-      mpareven  : out std_logic;
-      mparl     : out std_logic;
-      mparm     : out std_logic;
-      mparodd   : out std_logic;
       pdlparok  : out std_logic
     );
   end component;
