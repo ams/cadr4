@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-VHDL Port Name Ordering Script
+VHDL Set Component Port Ordering Script
 
-This script alphabetically orders port names in VHDL component port lists.
-It handles special cases:
-- Ignores inversion prefix (-) and escape symbols (\\) when sorting
-- Groups input ports first, then output ports
-- Preserves original formatting and special characters
+This script orders port names in VHDL set component declarations according to specific rules:
+1. Bus signals (IR, M, MF, A, AA, etc.) are grouped together
+2. Within each group (individual signals, bus signals), ports are ordered alphabetically
+3. Input ports come before output ports
+4. Proper semicolon handling
 """
 
 import re
@@ -15,39 +15,39 @@ import argparse
 from pathlib import Path
 
 
+# Bus signals that should be grouped together
+BUS_SIGNALS = {
+    'IR', 'M', 'MF', 'A', 'AA', 'AMEM', 'AADR', 'L', 'LC', 'WPC', 'LPC', 'ALU', 'I', 'SPY', 
+    'DADR', 'DPC', 'MDS', 'MD', 'OB', 'IOB', 'IWR', 'MEM', 'MMEM', 'MSK', 'NPC', 'PC', 'IPC', 
+    'SPC', 'SPCO', 'SPCW', 'SPCPTR', 'DC', 'OPC', 'PDL', 'PDLIDX', 'PDLPTR', 'Q', 'SA', 'R', 
+    'RETA', 'ST', 'VMA', 'VMAS', 'MAPI', 'VMAP', 'VMO', 'PMA', 'WADR', 'EADR'
+}
+
+
 def extract_sort_key(port_name):
-    """
-    Extract the sorting key from a port name by removing special characters.
-    
-    Examples:
-    - \\-ir2\\ -> ir2
-    - -reset -> reset  
-    - clk3e -> clk3e
-    - \\macrun l\\ -> macrun l
-    """
-    # Remove leading/trailing whitespace
+    """Extract the sorting key from a port name by removing special characters."""
     name = port_name.strip()
     
     # Handle escaped names: remove outer backslashes but keep internal content
     if name.startswith('\\') and name.endswith('\\'):
-        name = name[1:-1]  # Remove outer backslashes
+        name = name[1:-1]
     
     # Remove leading minus sign (inversion prefix)
     if name.startswith('-'):
         name = name[1:]
     
-    # Return lowercase for case-insensitive sorting
     return name.lower()
 
 
+def is_bus_signal(port_name):
+    """Check if a port name is a bus signal."""
+    clean_name = extract_sort_key(port_name).upper()
+    return clean_name in BUS_SIGNALS
+
+
 def parse_port_line(line):
-    """
-    Parse a port line to extract port name, direction, and type.
-    Returns (port_name, direction, type, full_line) or None if not a port line.
-    """
-    # Match port declarations like: port_name : in/out std_logic;
-    # Handle escaped names with backslashes and spaces
-    # More flexible pattern to handle complex VHDL port names
+    """Parse a port line to extract port name, direction, and type."""
+    # Match port declarations like: port_name : in/out type;
     port_pattern = r'^\s*([^:]+?)\s*:\s*(in|out)\s+([^;]+?)(?:;.*)?$'
     match = re.match(port_pattern, line.strip())
     
@@ -65,27 +65,8 @@ def parse_port_line(line):
     return None
 
 
-def format_port_line(port_name, direction, port_type, original_line):
-    """
-    Format a port line maintaining the original indentation and style.
-    """
-    # Extract original indentation
-    indent_match = re.match(r'^(\s*)', original_line)
-    indent = indent_match.group(1) if indent_match else '      '
-    
-    # Calculate appropriate spacing for alignment
-    # Find the longest port name to determine spacing
-    max_name_len = max(15, len(port_name))
-    
-    # Format the line with proper spacing
-    return f"{indent}{port_name:<{max_name_len}} : {direction:<3} {port_type}"
-
-
-def process_component(lines, start_idx):
-    """
-    Process a single component, ordering its ports.
-    Returns (new_lines, end_idx).
-    """
+def process_set_component(lines, start_idx):
+    """Process a single set component, ordering its ports according to set rules."""
     result_lines = []
     i = start_idx
     
@@ -103,7 +84,6 @@ def process_component(lines, start_idx):
     
     # Collect all port lines
     ports = []
-    non_port_lines = []
     
     while i < len(lines):
         line = lines[i]
@@ -114,45 +94,51 @@ def process_component(lines, start_idx):
             
         # Skip empty lines and comments
         if line.strip() == '' or line.strip().startswith('--'):
-            non_port_lines.append((i, line))
             i += 1
             continue
             
         port_info = parse_port_line(line)
         if port_info:
             ports.append(port_info)
-        else:
-            # Keep non-port lines (comments, etc.)
-            non_port_lines.append((i, line))
         
         i += 1
     
-    # Sort ports: input ports first, then output ports, both alphabetically
+    # Separate bus signals from individual signals
+    individual_signals = []
+    bus_signals = []
+    
+    for port_info in ports:
+        port_name, direction, port_type, original_line = port_info
+        if is_bus_signal(port_name):
+            bus_signals.append(port_info)
+        else:
+            individual_signals.append(port_info)
+    
+    # Sort function for ports
     def sort_key(port_info):
         port_name, direction, port_type, _ = port_info
         sort_name = extract_sort_key(port_name)
         
-        # Group by direction: inputs (in) first, outputs (out) second
-        if direction.lower() == 'in':
-            dir_priority = 0
-        elif direction.lower() == 'out':
-            dir_priority = 1
-        else:
-            dir_priority = 2  # fallback for any other direction
+        # Group by direction: inputs first, outputs second
+        dir_priority = 0 if direction.lower() == 'in' else 1
         
-        # Within each direction group, sort alphabetically by cleaned name
         return (dir_priority, sort_name)
     
-    ports.sort(key=sort_key)
+    # Sort both groups
+    individual_signals.sort(key=sort_key)
+    bus_signals.sort(key=sort_key)
     
-    # Calculate the maximum port name length for consistent formatting
-    max_port_name_len = max(len(port[0]) for port in ports) if ports else 15
+    # Combine: individual signals first, then bus signals
+    all_ports = individual_signals + bus_signals
+    
+    # Calculate maximum port name length for formatting
+    max_port_name_len = max(len(port[0]) for port in all_ports) if all_ports else 15
     max_port_name_len = max(max_port_name_len, 15)
     
-    # Add sorted ports to result
-    for j, (port_name, direction, port_type, original_line) in enumerate(ports):
+    # Add formatted ports to result
+    for j, (port_name, direction, port_type, original_line) in enumerate(all_ports):
         # Determine if this is the last port
-        is_last = (j == len(ports) - 1)
+        is_last = (j == len(all_ports) - 1)
         
         # Extract original indentation
         indent_match = re.match(r'^(\s*)', original_line)
@@ -161,7 +147,7 @@ def process_component(lines, start_idx):
         # Format the line with consistent spacing
         formatted_line = f"{indent}{port_name:<{max_port_name_len}} : {direction:<3} {port_type}"
         
-        # Add semicolon after every port line except the last one
+        # Add semicolon for all but the last port
         if not is_last:
             formatted_line += ";"
         
@@ -176,9 +162,7 @@ def process_component(lines, start_idx):
 
 
 def process_vhdl_file(file_path):
-    """
-    Process a VHDL file and order all component port lists.
-    """
+    """Process a VHDL file and order all set component port lists."""
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
             lines = f.readlines()
@@ -196,9 +180,9 @@ def process_vhdl_file(file_path):
         line = lines[i]
         
         # Check if this line starts a component declaration
-        if re.match(r'^\s*component\s+\w+\s+is\s*$', line.strip()):
-            # Process this component
-            component_lines, next_i = process_component(lines, i)
+        if re.match(r'^\s*component\s+\w+_set\s+is\s*$', line.strip()):
+            # Process this set component
+            component_lines, next_i = process_set_component(lines, i)
             result_lines.extend(component_lines)
             i = next_i
         else:
@@ -220,7 +204,7 @@ def process_vhdl_file(file_path):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Order port names in VHDL component declarations alphabetically"
+        description="Order port names in VHDL set component declarations according to set component rules"
     )
     parser.add_argument(
         'files', 
