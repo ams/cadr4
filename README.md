@@ -22,7 +22,7 @@ chit-chat.  Feel free to send bugs directly to ams@gnu.org.
 
   - Some sort of VCD viewer:
  	  - [GTKWave](https://gtkwave.sourceforge.net/)
-    - [Surfer](https://surfer-project.org)
+      - [Surfer](https://surfer-project.org)
 
 ### Build
 
@@ -53,26 +53,26 @@ If the file contains "ignore" in its first line, the file is ignored, `--read-wa
 
 ## File Organization
 
-- cadr: cadr components
-- dip: dip components
-- doc: various documents
-- rom: ROM files loaded to CADR (P)ROMs
-- scripts: helper/utility scripts
-- set: set components
-- soap: utility to generate cadr_*_suds.vhd files
-- tb: system tests
-- ttl: ttl components
+  - cadr: CADR schematics in VHDL
+  - dip: dip components
+  - doc: various documents
+  - rom: ROM files loaded to CADR (P)ROMs
+  - scripts: helper/utility scripts
+  - set: set (a set being a set of pages from the CADR schematics) components
+  - soap: utility to generate cadr_*_suds.vhd files
+  - tb: system tests
+  - ttl: ttl components
 
-Each folder has a README.md containing more information.
+Each folder should have a README.md containing more information.
 
 ## Packages
 
-- work.set: set components
-- work.cadr: cadr components
-- work.dip: dip components
-- work.sn74: ttl sn74 components
-- work.other: other ttl components (am..., dm..., td... etc.)
-- work.misc: misc functions and procedures (no components)
+  - work.set: set components
+  - work.cadr: cadr components
+  - work.dip: dip components
+  - work.sn74: ttl sn74 components
+  - work.other: other ttl components (am..., dm..., td... etc.)
+  - work.misc: misc functions and procedures (no components)
 
 ## Documentation
 
