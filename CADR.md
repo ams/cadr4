@@ -802,7 +802,20 @@ processor.
   - [CADR; IRAM01](http://tumbleweed.nu/lm-3/schematics/cadr/iram01.png)
   - [CADR; IRAM02](http://tumbleweed.nu/lm-3/schematics/cadr/iram02.png)
   - [CADR; IRAM03](http://tumbleweed.nu/lm-3/schematics/cadr/iram03.png)
+  - [CADR; IRAM10]()
+  - [CADR; IRAM11]()
+  - [CADR; IRAM12]()
+  - [CADR; IRAM13]()
+  - [CADR; IRAM20]()
+  - [CADR; IRAM21]()
+  - [CADR; IRAM22]()
+  - [CADR; IRAM23]()
+  - [CADR; IRAM30]()
+  - [CADR; IRAM31]()
+  - [CADR; IRAM32]()
+  - [CADR; IRAM33]()
   - [CADR; IWR](http://tumbleweed.nu/lm-3/schematics/cadr/iwr.png)
+  - [CADR; IWRPAR]()
   - [CADR; PCTL](http://tumbleweed.nu/lm-3/schematics/cadr/pctl.png)
   - [CADR; PROM0](http://tumbleweed.nu/lm-3/schematics/cadr/prom0.png)
   - [CADR; PROM1](http://tumbleweed.nu/lm-3/schematics/cadr/prom1.png)
@@ -822,6 +835,7 @@ marks the initiation of execution for the new microinstruction.
 
   - [CADR; IOR](http://tumbleweed.nu/lm-3/schematics/cadr/ior.png)
   - [CADR; IREG](http://tumbleweed.nu/lm-3/schematics/cadr/ireg.png)
+  - [CADR; IPAR]()
 
 ## IR Decoding
 
@@ -885,6 +899,7 @@ previous cycle.
   - [CADR; AMEM0](http://tumbleweed.nu/lm-3/schematics/cadr/amem0.png)
   - [CADR; AMEM1](http://tumbleweed.nu/lm-3/schematics/cadr/amem1.png)
   - [CADR; ALATCH](http://tumbleweed.nu/lm-3/schematics/cadr/alatch.png)
+  - [CADR; APAR]()
 
 ## M Memory
 
@@ -904,6 +919,7 @@ Mxx buffers are shown on the MF print.
   - [CADR; MCTL](http://tumbleweed.nu/lm-3/schematics/cadr/mctl.png)
   - [CADR; MMEM](http://tumbleweed.nu/lm-3/schematics/cadr/mmem.png)
   - [CADR; MLATCH](http://tumbleweed.nu/lm-3/schematics/cadr/mlatch.png)
+  - [CADR; APAR]() (Shared with A Memory)
   - [CADR; MF](http://tumbleweed.nu/lm-3/schematics/cadr/mf.png)
 
 ## Stack Buffer
@@ -1156,8 +1172,9 @@ write cycle.
 
   - [CADR; SPC](http://tumbleweed.nu/lm-3/schematics/cadr/spc.png)
   - [CADR; SPCLCH](http://tumbleweed.nu/lm-3/schematics/cadr/spclch.png)
+  - [CADR; SPCPAR]()
   - [CADR; SPCW](http://tumbleweed.nu/lm-3/schematics/cadr/spcw.png)
-  - [CADR; LPC](http://tumbleweed.nu/lm-3/schematics/cadr/lpc.png]
+  - [CADR; LPC](http://tumbleweed.nu/lm-3/schematics/cadr/lpc.png)
 
 ## Next PC Selector
 
@@ -1295,6 +1312,34 @@ the state of the memory system.
   - [CADR; OLORD1](http://tumbleweed.nu/lm-3/schematics/cadr/olord1.png)
   - [CADR; OLORD2](http://tumbleweed.nu/lm-3/schematics/cadr/olord2.png)
 
+# Other
+
+## CADR
+
+  - [CADR; MO0]()
+  - [CADR; MO1]()
+  - [CADR; OPCD]()
+
+  - [CADR; SPY1]()
+  - [CADR; SPY2]()
+  - [CADR; TRAP]()
+
+  - [CADR; BCPINS]()
+  - [CADR; BCTERM]()
+  - [CADR; CAPS]()
+  - [CADR; CPINS]()
+
+## ICMEM
+
+  - [CADR; OPCS]()
+  - [CADR; SPY0]()
+  - [CADR; SPY4]()
+  - [CADR; STAT]()
+
+  - [CADR; ICAPS]()
+  - [CADR; MBCPIN]()
+  - [CADR; MCPINS]()
+
 # Errata
 
 Merge the following to the Knight thesis at some point.
@@ -1306,7 +1351,14 @@ The following schematics are specific to the CADR3:
   - [CADR; MASK](http://tumbleweed.nu/lm-3/schematics/cadr/mask.png)
   - [CADR; OB](http://tumbleweed.nu/lm-3/schematics/cadr/ob.png)
 
+The following schematics are specific to the CADR4:
+
+  - [CADR; ALUC4]()
+  - [CADR; MSKG4]()
+  - [CADR; MO0]()
+  - [CADR; MO1]()
+
 As far as I can tell,
 
-  - ALUCRY become ALUC4.
-  - MSKGEN, MASK and OB became MSKG4
+  - [CADR; ALUCRY]() become [CADR; ALUC4]().
+  - [CADR; MSKGEN](), [CADR; MASK]() and [CADR; OB]() became [CADR; MSKG4]().
