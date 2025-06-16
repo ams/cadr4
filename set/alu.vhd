@@ -88,6 +88,7 @@ begin
   alumode <= alumode_int;
   alumodeb <= alumodeb_int;
   aequalmout <= aequalm0 and aequalm1;
+  a12out <= A(12);
 
   alu0_inst: cadr_alu0 port map (
     a0              => A(0),
@@ -102,7 +103,7 @@ begin
     a9              => A(9),
     a10             => A(10),
     a11             => A(11),
-    a12             => a12out,
+    a12             => A(12),
     a13             => A(13),
     a14             => A(14),
     a15             => A(15),

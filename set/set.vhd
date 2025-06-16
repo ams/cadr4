@@ -994,6 +994,9 @@ package set is
       \-destimod0\ : in std_logic;
       \-destimod1\ : in std_logic;
       
+      -- Input signal for parity calculation
+      imodd : in std_logic;
+      
       -- Input bus (48-bit)
       I : in std_logic_vector(48 downto 0);
       
@@ -1004,7 +1007,15 @@ package set is
       IOB : out std_logic_vector(47 downto 0);
       
       -- Instruction register output (48-bit)
-      IR : out std_logic_vector(48 downto 0)
+      IR : out std_logic_vector(48 downto 0);
+      
+      -- Parity outputs
+      ipar0 : out std_logic;
+      ipar1 : out std_logic;
+      ipar2 : out std_logic;
+      ipar3 : out std_logic;
+      iparity : out std_logic;
+      iparok : out std_logic
     );
   end component;
 

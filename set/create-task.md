@@ -22,7 +22,7 @@ Track your progress in the `Completed Set Components` section below.
 - vmaps: cadr_vmem0, cadr_vmem1, cadr_vmem2, cadr_vmemdr
 - vctl: cadr_vctl1, cadr_vctl2
 - olord: cadr_olord1, cadr_olord2
-- ireg: cadr_ior, cadr_ireg
+- ireg: cadr_ior, cadr_ireg, cadr_ipar
 - fetch: cadr_iwr cadr_idebug
 - decode: cadr_source
 - lreg: cadr_l
