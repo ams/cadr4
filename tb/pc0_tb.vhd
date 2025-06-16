@@ -316,13 +316,6 @@ architecture structural of pc0_tb is
   signal NPC            : std_logic_vector(13 downto 0);
 
   -- prom outputs (now combined in cadr_prom)
-  signal \-promenable\   : std_logic;
-  signal i46             : std_logic;
-  signal \-prompc9\      : std_logic;
-  signal \bottom.1k\     : std_logic;
-  signal tilt1           : std_logic;
-  signal tilt0           : std_logic;
-  signal promenable      : std_logic;
   signal dpe             : std_logic;
   signal ipe             : std_logic;
 
@@ -365,12 +358,9 @@ begin
     dpe => dpe, ipe => ipe, I => I
   );
   
-  i_ireg : cadr_ireg port map(\-destimod0\ => \-destimod0\, ir15 => IR(15), iob15 => IOB(15), i15 => I(15), i14 => I(14), iob14 => IOB(14), ir14 => IR(14), clk3a => clk3a, ir13 => IR(13), iob13 => IOB(13), i13 => I(13), i12 => I(12), iob12 => IOB(12), ir12 => IR(12), ir11 => IR(11), iob11 => IOB(11), i11 => I(11), i10 => I(10), iob10 => IOB(10), ir10 => IR(10), ir9 => IR(9), iob9 => IOB(9), i9 => I(9), i8 => I(8), iob8 => IOB(8), ir8 => IR(8), ir7 => IR(7), iob7 => IOB(7), i7 => I(7), i6 => I(6), iob6 => IOB(6), ir6 => IR(6), ir5 => IR(5), iob5 => IOB(5), i5 => I(5), i4 => I(4), iob4 => IOB(4), ir4 => IR(4), ir3 => IR(3), iob3 => IOB(3), i3 => I(3), i2 => I(2), iob2 => IOB(2), ir2 => IR(2), ir1 => IR(1), iob1 => IOB(1), i1 => I(1), i0 => I(0), iob0 => IOB(0), ir0 => IR(0), ir23 => IR(23), iob23 => IOB(23), i23 => I(23), i22 => I(22), iob22 => IOB(22), ir22 => IR(22), clk3b => clk3b, ir21 => IR(21), iob21 => IOB(21), i21 => I(21), i20 => I(20), iob20 => IOB(20), ir20 => IR(20), ir19 => IR(19), iob19 => IOB(19), i19 => I(19), i18 => I(18), iob18 => IOB(18), ir18 => IR(18), ir17 => IR(17), iob17 => IOB(17), i17 => I(17), i16 => I(16), iob16 => IOB(16), ir16 => IR(16), \-destimod1\ => \-destimod1\, i48 => I(48), ir48 => IR(48), ir47 => IR(47), iob47 => IOB(47), i47 => I(47), i46 => i46, iob46 => IOB(46), ir46 => IR(46), ir45 => IR(45), iob45 => IOB(45), i45 => I(45), i44 => I(44), iob44 => IOB(44), ir44 => IR(44), ir43 => IR(43), iob43 => IOB(43), i43 => I(43), i42 => I(42), iob42 => IOB(42), ir42 => IR(42), ir41 => IR(41), iob41 => IOB(41), i41 => I(41), i40 => I(40), iob40 => IOB(40), ir40 => IR(40), ir39 => IR(39), iob39 => IOB(39), i39 => I(39), i38 => I(38), iob38 => IOB(38), ir38 => IR(38), ir37 => IR(37), iob37 => IOB(37), i37 => I(37), i36 => I(36), iob36 => IOB(36), ir36 => IR(36), ir35 => IR(35), iob35 => IOB(35), i35 => I(35), i34 => I(34), iob34 => IOB(34), ir34 => IR(34), ir33 => IR(33), iob33 => IOB(33), i33 => I(33), i32 => I(32), iob32 => IOB(32), ir32 => IR(32), ir31 => IR(31), iob31 => IOB(31), i31 => I(31), i30 => I(30), iob30 => IOB(30), ir30 => IR(30), ir29 => IR(29), iob29 => IOB(29), i29 => I(29), i28 => I(28), iob28 => IOB(28), ir28 => IR(28), ir27 => IR(27), iob27 => IOB(27), i27 => I(27), i26 => I(26), iob26 => IOB(26), ir26 => IR(26), ir25 => IR(25), iob25 => IOB(25), i25 => I(25), i24 => I(24), iob24 => IOB(24), ir24 => IR(24));
+  i_ireg : cadr_ireg port map(\-destimod0\ => \-destimod0\, ir15 => IR(15), iob15 => IOB(15), i15 => I(15), i14 => I(14), iob14 => IOB(14), ir14 => IR(14), clk3a => clk3a, ir13 => IR(13), iob13 => IOB(13), i13 => I(13), i12 => I(12), iob12 => IOB(12), ir12 => IR(12), ir11 => IR(11), iob11 => IOB(11), i11 => I(11), i10 => I(10), iob10 => IOB(10), ir10 => IR(10), ir9 => IR(9), iob9 => IOB(9), i9 => I(9), i8 => I(8), iob8 => IOB(8), ir8 => IR(8), ir7 => IR(7), iob7 => IOB(7), i7 => I(7), i6 => I(6), iob6 => IOB(6), ir6 => IR(6), ir5 => IR(5), iob5 => IOB(5), i5 => I(5), i4 => I(4), iob4 => IOB(4), ir4 => IR(4), ir3 => IR(3), iob3 => IOB(3), i3 => I(3), i2 => I(2), iob2 => IOB(2), ir2 => IR(2), ir1 => IR(1), iob1 => IOB(1), i1 => I(1), i0 => I(0), iob0 => IOB(0), ir0 => IR(0), ir23 => IR(23), iob23 => IOB(23), i23 => I(23), i22 => I(22), iob22 => IOB(22), ir22 => IR(22), clk3b => clk3b, ir21 => IR(21), iob21 => IOB(21), i21 => I(21), i20 => I(20), iob20 => IOB(20), ir20 => IR(20), ir19 => IR(19), iob19 => IOB(19), i19 => I(19), i18 => I(18), iob18 => IOB(18), ir18 => IR(18), ir17 => IR(17), iob17 => IOB(17), i17 => I(17), i16 => I(16), iob16 => IOB(16), ir16 => IR(16), \-destimod1\ => \-destimod1\, i48 => I(48), ir48 => IR(48), ir47 => IR(47), iob47 => IOB(47), i47 => I(47), i46 => I(46), iob46 => IOB(46), ir46 => IR(46), ir45 => IR(45), iob45 => IOB(45), i45 => I(45), i44 => I(44), iob44 => IOB(44), ir44 => IR(44), ir43 => IR(43), iob43 => IOB(43), i43 => I(43), i42 => I(42), iob42 => IOB(42), ir42 => IR(42), ir41 => IR(41), iob41 => IOB(41), i41 => I(41), i40 => I(40), iob40 => IOB(40), ir40 => IR(40), ir39 => IR(39), iob39 => IOB(39), i39 => I(39), i38 => I(38), iob38 => IOB(38), ir38 => IR(38), ir37 => IR(37), iob37 => IOB(37), i37 => I(37), i36 => I(36), iob36 => IOB(36), ir36 => IR(36), ir35 => IR(35), iob35 => IOB(35), i35 => I(35), i34 => I(34), iob34 => IOB(34), ir34 => IR(34), ir33 => IR(33), iob33 => IOB(33), i33 => I(33), i32 => I(32), iob32 => IOB(32), ir32 => IR(32), ir31 => IR(31), iob31 => IOB(31), i31 => I(31), i30 => I(30), iob30 => IOB(30), ir30 => IR(30), ir29 => IR(29), iob29 => IOB(29), i29 => I(29), i28 => I(28), iob28 => IOB(28), ir28 => IR(28), ir27 => IR(27), iob27 => IOB(27), i27 => I(27), i26 => I(26), iob26 => IOB(26), ir26 => IR(26), ir25 => IR(25), iob25 => IOB(25), i25 => I(25), i24 => I(24), iob24 => IOB(24), ir24 => IR(24));
 
   \-promdisabled\ <= not promdisabled;
-
-  -- Connect i46 to I bus
-  I(46) <= i46;
 
   process
   begin 
