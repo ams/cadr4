@@ -1,0 +1,447 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use work.cadr.all;
+
+entity mmem is
+  port (
+    -- Clock and control signals
+    clk4a           : in  std_logic;
+    clk4e           : in  std_logic;
+    destmd          : in  std_logic;
+    \-ir31\         : in  std_logic;
+    tse4a           : in  std_logic;
+    wp4b            : in  std_logic;
+    \-mpass\        : in  std_logic;
+    pdlenb          : in  std_logic;
+    spcenb          : in  std_logic;
+    tse1a           : in  std_logic;
+    
+    -- Bus signals
+    IR              : in  std_logic_vector(30 downto 26);
+    L               : in  std_logic_vector(31 downto 0);
+    MF              : in  std_logic_vector(31 downto 0);
+    WADR            : in  std_logic_vector(4 downto 0);
+    
+    -- Individual input signals  
+    lparity         : in  std_logic;
+    
+    -- Output bus signals
+    M               : out std_logic_vector(31 downto 0);
+    MMEM            : out std_logic_vector(31 downto 0);
+    
+    -- Individual output signals
+    mmemparity      : out std_logic;
+    mparity         : out std_logic;
+    mpass           : out std_logic;
+    \-mpass_out\    : out std_logic;
+    mpassl          : out std_logic;
+    \-mpassl\       : out std_logic;
+    \-mpassm\       : out std_logic;
+    \-mwpa\         : out std_logic;
+    \-mwpb\         : out std_logic;
+    srcm            : out std_logic
+  );
+end entity;
+
+architecture rtl of mmem is
+
+  -- Internal signals
+  signal madr0a, madr0b : std_logic;
+  signal madr1a, madr1b : std_logic;
+  signal madr2a, madr2b : std_logic;
+  signal madr3a, madr3b : std_logic;
+  signal madr4a, madr4b : std_logic;
+  signal mwpa, mwpb : std_logic;
+  signal mmem_all : std_logic_vector(31 downto 0);
+  signal mmem_even, mmem_odd : std_logic_vector(15 downto 0);
+  signal mmem_par : std_logic;
+  signal m_all : std_logic_vector(31 downto 0);
+  signal mf_all : std_logic_vector(31 downto 0);
+  signal mpass_int, mpassl_int, mpassm_int : std_logic;
+
+begin
+
+  -- Map bus outputs
+  M <= m_all;
+  MMEM <= mmem_all;
+  mmemparity <= mmem_par;
+  mparity <= mparity;
+  mpass <= mpass_int;
+  \-mpass_out\ <= not mpass_int;
+  mpassl <= mpassl_int;
+  \-mpassl\ <= not mpassl_int;
+  \-mpassm\ <= mpassm_int;
+  \-mwpa\ <= mwpa;
+  \-mwpb\ <= mwpb;
+
+  mctl_inst: cadr_mctl port map (
+    clk4e           => clk4e,
+    destmd          => destmd,
+    ir26            => IR(26),
+    ir27            => IR(27),
+    ir28            => IR(28),
+    ir29            => IR(29),
+    ir30            => IR(30),
+    \-ir31\         => \-ir31\,
+    tse4a           => tse4a,
+    wadr0           => WADR(0),
+    wadr1           => WADR(1),
+    wadr2           => WADR(2),
+    wadr3           => WADR(3),
+    wadr4           => WADR(4),
+    wp4b            => wp4b,
+    \-madr0a\       => madr0a,
+    \-madr0b\       => madr0b,
+    \-madr1a\       => madr1a,
+    \-madr1b\       => madr1b,
+    \-madr2a\       => madr2a,
+    \-madr2b\       => madr2b,
+    \-madr3a\       => madr3a,
+    \-madr3b\       => madr3b,
+    \-madr4a\       => madr4a,
+    \-madr4b\       => madr4b,
+    mmem0           => mmem_all(0),
+    mmem1           => mmem_all(1),
+    mmem2           => mmem_all(2),
+    mmem3           => mmem_all(3),
+    mmem4           => mmem_all(4),
+    mmem5           => mmem_all(5),
+    mmem6           => mmem_all(6),
+    mmem7           => mmem_all(7),
+    mmem8           => mmem_all(8),
+    mmem9           => mmem_all(9),
+    mmem10          => mmem_all(10),
+    mmem11          => mmem_all(11),
+    mmem12          => mmem_all(12),
+    mmem13          => mmem_all(13),
+    mmem14          => mmem_all(14),
+    mmem15          => mmem_all(15),
+    mmem16          => mmem_all(16),
+    mmem17          => mmem_all(17),
+    mmem18          => mmem_all(18),
+    mmem19          => mmem_all(19),
+    mmem20          => mmem_all(20),
+    mmem21          => mmem_all(21),
+    mmem22          => mmem_all(22),
+    mmem23          => mmem_all(23),
+    mmem24          => mmem_all(24),
+    mmem25          => mmem_all(25),
+    mmem26          => mmem_all(26),
+    mmem27          => mmem_all(27),
+    mmem28          => mmem_all(28),
+    mmem29          => mmem_all(29),
+    mmem30          => mmem_all(30),
+    mmem31          => mmem_all(31),
+    mmemparity      => mmem_par,
+    mpass           => mpass_int,
+    \-mpass\        => \-mpass_out\,
+    mpassl          => mpassl_int,
+    \-mpassl\       => \-mpassl\,
+    \-mpassm\       => mpassm_int,
+    \-mwpa\         => mwpa,
+    \-mwpb\         => mwpb,
+    srcm            => srcm
+  );
+
+  mmem_inst: cadr_mmem port map (
+    l0              => L(0),
+    l1              => L(1),
+    l2              => L(2),
+    l3              => L(3),
+    l4              => L(4),
+    l5              => L(5),
+    l6              => L(6),
+    l7              => L(7),
+    l8              => L(8),
+    l9              => L(9),
+    l10             => L(10),
+    l11             => L(11),
+    l12             => L(12),
+    l13             => L(13),
+    l14             => L(14),
+    l15             => L(15),
+    l16             => L(16),
+    l17             => L(17),
+    l18             => L(18),
+    l19             => L(19),
+    l20             => L(20),
+    l21             => L(21),
+    l22             => L(22),
+    l23             => L(23),
+    l24             => L(24),
+    l25             => L(25),
+    l26             => L(26),
+    l27             => L(27),
+    l28             => L(28),
+    l29             => L(29),
+    l30             => L(30),
+    l31             => L(31),
+    lparity         => lparity,
+    \-madr0a\       => madr0a,
+    \-madr0b\       => madr0b,
+    \-madr1a\       => madr1a,
+    \-madr1b\       => madr1b,
+    \-madr2a\       => madr2a,
+    \-madr2b\       => madr2b,
+    \-madr3a\       => madr3a,
+    \-madr3b\       => madr3b,
+    \-madr4a\       => madr4a,
+    \-madr4b\       => madr4b,
+    \-mwpa\         => mwpa,
+    \-mwpb\         => mwpb,
+    mmem0           => mmem_all(0),
+    mmem1           => mmem_all(1),
+    mmem2           => mmem_all(2),
+    mmem3           => mmem_all(3),
+    mmem4           => mmem_all(4),
+    mmem5           => mmem_all(5),
+    mmem6           => mmem_all(6),
+    mmem7           => mmem_all(7),
+    mmem8           => mmem_all(8),
+    mmem9           => mmem_all(9),
+    mmem10          => mmem_all(10),
+    mmem11          => mmem_all(11),
+    mmem12          => mmem_all(12),
+    mmem13          => mmem_all(13),
+    mmem14          => mmem_all(14),
+    mmem15          => mmem_all(15),
+    mmem16          => mmem_all(16),
+    mmem17          => mmem_all(17),
+    mmem18          => mmem_all(18),
+    mmem19          => mmem_all(19),
+    mmem20          => mmem_all(20),
+    mmem21          => mmem_all(21),
+    mmem22          => mmem_all(22),
+    mmem23          => mmem_all(23),
+    mmem24          => mmem_all(24),
+    mmem25          => mmem_all(25),
+    mmem26          => mmem_all(26),
+    mmem27          => mmem_all(27),
+    mmem28          => mmem_all(28),
+    mmem29          => mmem_all(29),
+    mmem30          => mmem_all(30),
+    mmem31          => mmem_all(31),
+    mmemparity      => mmem_par
+  );
+
+  mf_inst: cadr_mf port map (
+    \-ir31\         => \-ir31\,
+    mf0             => MF(0),
+    mf1             => MF(1),
+    mf2             => MF(2),
+    mf3             => MF(3),
+    mf4             => MF(4),
+    mf5             => MF(5),
+    mf6             => MF(6),
+    mf7             => MF(7),
+    mf8             => MF(8),
+    mf9             => MF(9),
+    mf10            => MF(10),
+    mf11            => MF(11),
+    mf12            => MF(12),
+    mf13            => MF(13),
+    mf14            => MF(14),
+    mf15            => MF(15),
+    mf16            => MF(16),
+    mf17            => MF(17),
+    mf18            => MF(18),
+    mf19            => MF(19),
+    mf20            => MF(20),
+    mf21            => MF(21),
+    mf22            => MF(22),
+    mf23            => MF(23),
+    mf24            => MF(24),
+    mf25            => MF(25),
+    mf26            => MF(26),
+    mf27            => MF(27),
+    mf28            => MF(28),
+    mf29            => MF(29),
+    mf30            => MF(30),
+    mf31            => MF(31),
+    \-mpass\        => \-mpass\,
+    pdlenb          => pdlenb,
+    spcenb          => spcenb,
+    tse1a           => tse1a,
+    m0              => m_all(0),
+    m1              => m_all(1),
+    m2              => m_all(2),
+    m3              => m_all(3),
+    m4              => m_all(4),
+    m5              => m_all(5),
+    m6              => m_all(6),
+    m7              => m_all(7),
+    m8              => m_all(8),
+    m9              => m_all(9),
+    m10             => m_all(10),
+    m11             => m_all(11),
+    m12             => m_all(12),
+    m13             => m_all(13),
+    m14             => m_all(14),
+    m15             => m_all(15),
+    m16             => m_all(16),
+    m17             => m_all(17),
+    m18             => m_all(18),
+    m19             => m_all(19),
+    m20             => m_all(20),
+    m21             => m_all(21),
+    m22             => m_all(22),
+    m23             => m_all(23),
+    m24             => m_all(24),
+    m25             => m_all(25),
+    m26             => m_all(26),
+    m27             => m_all(27),
+    m28             => m_all(28),
+    m29             => m_all(29),
+    m30             => m_all(30),
+    m31             => m_all(31)
+  );
+
+  -- Split mmem into even/odd for mlatch
+  mmem_even <= mmem_all(30) & mmem_all(28) & mmem_all(26) & mmem_all(24) & 
+               mmem_all(22) & mmem_all(20) & mmem_all(18) & mmem_all(16) &
+               mmem_all(14) & mmem_all(12) & mmem_all(10) & mmem_all(8) &
+               mmem_all(6) & mmem_all(4) & mmem_all(2) & mmem_all(0);
+               
+  mmem_odd <= mmem_all(31) & mmem_all(29) & mmem_all(27) & mmem_all(25) & 
+              mmem_all(23) & mmem_all(21) & mmem_all(19) & mmem_all(17) &
+              mmem_all(15) & mmem_all(13) & mmem_all(11) & mmem_all(9) &
+              mmem_all(7) & mmem_all(5) & mmem_all(3) & mmem_all(1);
+
+  mlatch_inst: cadr_mlatch port map (
+    clk4a           => clk4a,
+    l0              => L(0),
+    l1              => L(1),
+    l2              => L(2),
+    l3              => L(3),
+    l4              => L(4),
+    l5              => L(5),
+    l6              => L(6),
+    l7              => L(7),
+    l8              => L(8),
+    l9              => L(9),
+    l10             => L(10),
+    l11             => L(11),
+    l12             => L(12),
+    l13             => L(13),
+    l14             => L(14),
+    l15             => L(15),
+    l16             => L(16),
+    l17             => L(17),
+    l18             => L(18),
+    l19             => L(19),
+    l20             => L(20),
+    l21             => L(21),
+    l22             => L(22),
+    l23             => L(23),
+    l24             => L(24),
+    l25             => L(25),
+    l26             => L(26),
+    l27             => L(27),
+    l28             => L(28),
+    l29             => L(29),
+    l30             => L(30),
+    l31             => L(31),
+    mmem2           => mmem_all(2),
+    mmem3           => mmem_all(3),
+    mmem5           => mmem_all(5),
+    mmem7           => mmem_all(7),
+    mmem9           => mmem_all(9),
+    mmem11          => mmem_all(11),
+    mmem13          => mmem_all(13),
+    mmem15          => mmem_all(15),
+    mmem17          => mmem_all(17),
+    mmem19          => mmem_all(19),
+    mmem21          => mmem_all(21),
+    mmem23          => mmem_all(23),
+    mmem25          => mmem_all(25),
+    mmem27          => mmem_all(27),
+    mmem29          => mmem_all(29),
+    mmem31          => mmem_all(31),
+    \-mpassl\       => \-mpassl\,
+    mpassl          => mpassl_int,
+    \-mpassm\       => mpassm_int,
+    m0              => m_all(0),
+    m1              => m_all(1),
+    m2              => m_all(2),
+    m3              => m_all(3),
+    m4              => m_all(4),
+    m5              => m_all(5),
+    m6              => m_all(6),
+    m7              => m_all(7),
+    m8              => m_all(8),
+    m9              => m_all(9),
+    m10             => m_all(10),
+    m11             => m_all(11),
+    m12             => m_all(12),
+    m13             => m_all(13),
+    m14             => m_all(14),
+    m15             => m_all(15),
+    m16             => m_all(16),
+    m17             => m_all(17),
+    m18             => m_all(18),
+    m19             => m_all(19),
+    m20             => m_all(20),
+    m21             => m_all(21),
+    m22             => m_all(22),
+    m23             => m_all(23),
+    m24             => m_all(24),
+    m25             => m_all(25),
+    m26             => m_all(26),
+    m27             => m_all(27),
+    m28             => m_all(28),
+    m29             => m_all(29),
+    m30             => m_all(30),
+    m31             => m_all(31),
+    mf0             => mf_all(0),
+    mf1             => mf_all(1),
+    mf2             => mf_all(2),
+    mf3             => mf_all(3),
+    mf4             => mf_all(4),
+    mf5             => mf_all(5),
+    mf6             => mf_all(6),
+    mf7             => mf_all(7),
+    mf8             => mf_all(8),
+    mf9             => mf_all(9),
+    mf10            => mf_all(10),
+    mf11            => mf_all(11),
+    mf12            => mf_all(12),
+    mf13            => mf_all(13),
+    mf14            => mf_all(14),
+    mf15            => mf_all(15),
+    mf16            => mf_all(16),
+    mf17            => mf_all(17),
+    mf18            => mf_all(18),
+    mf19            => mf_all(19),
+    mf20            => mf_all(20),
+    mf21            => mf_all(21),
+    mf22            => mf_all(22),
+    mf23            => mf_all(23),
+    mf24            => mf_all(24),
+    mf25            => mf_all(25),
+    mf26            => mf_all(26),
+    mf27            => mf_all(27),
+    mf28            => mf_all(28),
+    mf29            => mf_all(29),
+    mf30            => mf_all(30),
+    mf31            => mf_all(31),
+    mmem0           => mmem_all(0),
+    mmem1           => mmem_all(1),
+    mmem4           => mmem_all(4),
+    mmem6           => mmem_all(6),
+    mmem8           => mmem_all(8),
+    mmem10          => mmem_all(10),
+    mmem12          => mmem_all(12),
+    mmem14          => mmem_all(14),
+    mmem16          => mmem_all(16),
+    mmem18          => mmem_all(18),
+    mmem20          => mmem_all(20),
+    mmem22          => mmem_all(22),
+    mmem24          => mmem_all(24),
+    mmem26          => mmem_all(26),
+    mmem28          => mmem_all(28),
+    mmem30          => mmem_all(30),
+    mmemparity      => mmem_par,
+    mparity         => mparity
+  );
+
+end architecture; 

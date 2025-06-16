@@ -14,2387 +14,1188 @@ end;
 
 architecture structural of cadr_tb is
 
-  signal \a=m\ : std_logic;
-  signal \-a31\ : std_logic;
-  signal \-aadr0a\ : std_logic;
-  signal \-aadr0b\ : std_logic;
-  signal \-aadr1a\ : std_logic;
-  signal \-aadr1b\ : std_logic;
-  signal \-aadr2a\ : std_logic;
-  signal \-aadr2b\ : std_logic;
-  signal \-aadr3a\ : std_logic;
-  signal \-aadr3b\ : std_logic;
-  signal \-aadr4a\ : std_logic;
-  signal \-aadr4b\ : std_logic;
-  signal \-aadr5a\ : std_logic;
-  signal \-aadr5b\ : std_logic;
-  signal \-aadr6a\ : std_logic;
-  signal \-aadr6b\ : std_logic;
-  signal \-aadr7a\ : std_logic;
-  signal \-aadr7b\ : std_logic;
-  signal \-aadr8a\ : std_logic;
-  signal \-aadr8b\ : std_logic;
-  signal \-aadr9a\ : std_logic;
-  signal \-aadr9b\ : std_logic;
-  signal \-adrpar\ : std_logic;
-  signal \-alu31\ : std_logic;
-  signal \-alu32\ : std_logic;
-  signal \-aluf0\ : std_logic;
-  signal \-aluf1\ : std_logic;
-  signal \-aluf2\ : std_logic;
-  signal \-aluf3\ : std_logic;
-  signal \-alumode\ : std_logic;
-  signal \-amemenb\ : std_logic;
-  signal \-apass\ : std_logic;
-  signal \-apassenb\ : std_logic;
-  signal \-ape\ : std_logic;
-  signal \-awpa\ : std_logic;
-  signal \-awpb\ : std_logic;
-  signal \-awpc\ : std_logic;
-  signal \-boot1\ : std_logic;
-  signal \-boot2\ : std_logic;
-  signal \-boot\ : std_logic;
-  signal \-bus.reset\ : std_logic;
-  signal \-busint.lm.reset\ : std_logic;
-  signal \-cin0\ : std_logic;
-  signal \-cin12\ : std_logic;
-  signal \-cin16\ : std_logic;
-  signal \-cin20\ : std_logic;
-  signal \-cin24\ : std_logic;
-  signal \-cin28\ : std_logic;
-  signal \-cin32\ : std_logic;
-  signal \-cin4\ : std_logic;
-  signal \-cin8\ : std_logic;
-  signal \-clk0\ : std_logic;
-  signal \-clk1\ : std_logic;
-  signal \-clk2a\ : std_logic;
-  signal \-clk2c\ : std_logic;
-  signal \-clk3a\ : std_logic;
-  signal \-clk3d\ : std_logic;
-  signal \-clk3g\ : std_logic;
-  signal \-clk4a\ : std_logic;
-  signal \-clk4d\ : std_logic;
-  signal \-clk4e\ : std_logic;
-  signal \-clk5\ : std_logic;
-  signal \-clock reset a\ : std_logic;
-  signal \-clock reset b\ : std_logic;
-  signal \-dadr0a\ : std_logic;
-  signal \-dadr0b\ : std_logic;
-  signal \-dadr0c\ : std_logic;
-  signal \-dadr10a\ : std_logic;
-  signal \-dadr10c\ : std_logic;
-  signal \-dadr1a\ : std_logic;
-  signal \-dadr1b\ : std_logic;
-  signal \-dadr1c\ : std_logic;
-  signal \-dadr2a\ : std_logic;
-  signal \-dadr2b\ : std_logic;
-  signal \-dadr2c\ : std_logic;
-  signal \-dadr3a\ : std_logic;
-  signal \-dadr3b\ : std_logic;
-  signal \-dadr3c\ : std_logic;
-  signal \-dadr4a\ : std_logic;
-  signal \-dadr4b\ : std_logic;
-  signal \-dadr4c\ : std_logic;
-  signal \-dadr5a\ : std_logic;
-  signal \-dadr5b\ : std_logic;
-  signal \-dadr5c\ : std_logic;
-  signal \-dadr6a\ : std_logic;
-  signal \-dadr6b\ : std_logic;
-  signal \-dadr6c\ : std_logic;
-  signal \-dadr7a\ : std_logic;
-  signal \-dadr7b\ : std_logic;
-  signal \-dadr7c\ : std_logic;
-  signal \-dadr8a\ : std_logic;
-  signal \-dadr8b\ : std_logic;
-  signal \-dadr8c\ : std_logic;
-  signal \-dadr9a\ : std_logic;
-  signal \-dadr9b\ : std_logic;
-  signal \-dadr9c\ : std_logic;
-  signal \-dbread\ : std_logic;
-  signal \-dbwrite\ : std_logic;
-  signal \-destimod0\ : std_logic;
-  signal \-destimod1\ : std_logic;
-  signal \-destintctl\ : std_logic;
-  signal \-destlc\ : std_logic;
-  signal \-destmdr\ : std_logic;
-  signal \-destmem\ : std_logic;
-  signal \-destpdl(p)\ : std_logic;
-  signal \-destpdl(x)\ : std_logic;
-  signal \-destpdlp\ : std_logic;
-  signal \-destpdltop\ : std_logic;
-  signal \-destpdlx\ : std_logic;
-  signal \-destspc\ : std_logic;
-  signal \-destspcd\ : std_logic;
-  signal \-destvma\ : std_logic;
-  signal \-dfall\ : std_logic;
-  signal \-div\ : std_logic;
-  signal \-divposlasttime\ : std_logic;
-  signal \-dmapbenb\ : std_logic;
-  signal \-dp\ : std_logic;
-  signal \-dparh\ : std_logic;
-  signal \-dpe\ : std_logic;
-  signal \-dr\ : std_logic;
-  signal \-dwea\ : std_logic;
-  signal \-dweb\ : std_logic;
-  signal \-dwec\ : std_logic;
-  signal \-errhalt\ : std_logic;
-  signal \-funct0\ : std_logic;
-  signal \-funct1\ : std_logic;
-  signal \-funct2\ : std_logic;
-  signal \-funct3\ : std_logic;
-  signal \-halt\ : std_logic;
-  signal \-halted\ : std_logic;
-  signal \-hang\ : std_logic;
-  signal \-higherr\ : std_logic;
-  signal \-ice0a\ : std_logic;
-  signal \-ice0b\ : std_logic;
-  signal \-ice0c\ : std_logic;
-  signal \-ice0d\ : std_logic;
-  signal \-ice1a\ : std_logic;
-  signal \-ice1b\ : std_logic;
-  signal \-ice1c\ : std_logic;
-  signal \-ice1d\ : std_logic;
-  signal \-ice2a\ : std_logic;
-  signal \-ice2b\ : std_logic;
-  signal \-ice2c\ : std_logic;
-  signal \-ice2d\ : std_logic;
-  signal \-ice3a\ : std_logic;
-  signal \-ice3b\ : std_logic;
-  signal \-ice3c\ : std_logic;
-  signal \-ice3d\ : std_logic;
-  signal \-idebug\ : std_logic;
-  signal \-ifetch\ : std_logic;
-  signal \-ignpar\ : std_logic;
-  signal \-ignpopj\ : std_logic;
-  signal \-ilong\ : std_logic;
-  signal \-imodd\ : std_logic;
-  signal \-inop\ : std_logic;
-  signal \-ipe\ : std_logic;
-  signal \-ipopj\ : std_logic;
-  signal \-ir0\ : std_logic;
-  signal \-ir12\ : std_logic;
-  signal \-ir13\ : std_logic;
-  signal \-ir1\ : std_logic;
-  signal \-ir22\ : std_logic;
-  signal \-ir25\ : std_logic;
-  signal \-ir2\ : std_logic;
-  signal \-ir31\ : std_logic;
-  signal \-ir3\ : std_logic;
-  signal \-ir4\ : std_logic;
-  signal \-ir6\ : std_logic;
-  signal \-ir8\ : std_logic;
-  signal \-iralu\ : std_logic;
-  signal \-irbyte\ : std_logic;
-  signal \-irdisp\ : std_logic;
-  signal \-irjump\ : std_logic;
-  signal \-iwea\ : std_logic;
-  signal \-iweb\ : std_logic;
-  signal \-iwec\ : std_logic;
-  signal \-iwed\ : std_logic;
-  signal \-iwee\ : std_logic;
-  signal \-iwef\ : std_logic;
-  signal \-iweg\ : std_logic;
-  signal \-iweh\ : std_logic;
-  signal \-iwei\ : std_logic;
-  signal \-iwej\ : std_logic;
-  signal \-iwek\ : std_logic;
-  signal \-iwel\ : std_logic;
-  signal \-iwem\ : std_logic;
-  signal \-iwen\ : std_logic;
-  signal \-iweo\ : std_logic;
-  signal \-iwep\ : std_logic;
-  signal \-iwrited\ : std_logic;
-  signal \-iwriteda\ : std_logic;
-  signal \-jcond\ : std_logic;
-  signal \-lc modifies mrot\ : std_logic;
-  signal \-lcdrive\ : std_logic;
-  signal \-lcinc\ : std_logic;
-  signal \-lcry11\ : std_logic;
-  signal \-lcry15\ : std_logic;
-  signal \-lcry19\ : std_logic;
-  signal \-lcry23\ : std_logic;
-  signal \-lcry3\ : std_logic;
-  signal \-lcry7\ : std_logic;
-  signal \-ldclk\ : std_logic;
-  signal \-lddbirh\ : std_logic;
-  signal \-lddbirl\ : std_logic;
-  signal \-lddbirm\ : std_logic;
-  signal \-ldmode\ : std_logic;
-  signal \-ldopc\ : std_logic;
-  signal \-ldstat\ : std_logic;
-  signal \-loadmd\ : std_logic;
-  signal \-lowerhighok\ : std_logic;
-  signal \-lparity\ : std_logic;
-  signal \-lparm\ : std_logic;
-  signal \-lpc.hold\ : std_logic;
-  signal \-lvmo22\ : std_logic;
-  signal \-lvmo23\ : std_logic;
-  signal \-machrun\ : std_logic;
-  signal \-machruna\ : std_logic;
-  signal \-madr0a\ : std_logic;
-  signal \-madr0b\ : std_logic;
-  signal \-madr1a\ : std_logic;
-  signal \-madr1b\ : std_logic;
-  signal \-madr2a\ : std_logic;
-  signal \-madr2b\ : std_logic;
-  signal \-madr3a\ : std_logic;
-  signal \-madr3b\ : std_logic;
-  signal \-madr4a\ : std_logic;
-  signal \-madr4b\ : std_logic;
-  signal \-mapdrive\ : std_logic;
-  signal \-mapi10a\ : std_logic;
-  signal \-mapi10b\ : std_logic;
-  signal \-mapi11a\ : std_logic;
-  signal \-mapi11b\ : std_logic;
-  signal \-mapi12a\ : std_logic;
-  signal \-mapi12b\ : std_logic;
-  signal \-mapi23\ : std_logic;
-  signal \-mapi8a\ : std_logic;
-  signal \-mapi8b\ : std_logic;
-  signal \-mapi9a\ : std_logic;
-  signal \-mapi9b\ : std_logic;
-  signal \-mbusy.sync\ : std_logic;
-  signal \-mclk0\ : std_logic;
-  signal \-mclk1\ : std_logic;
-  signal \-mclk5\ : std_logic;
-  signal \-md0\ : std_logic;
-  signal \-md10\ : std_logic;
-  signal \-md11\ : std_logic;
-  signal \-md12\ : std_logic;
-  signal \-md13\ : std_logic;
-  signal \-md14\ : std_logic;
-  signal \-md15\ : std_logic;
-  signal \-md16\ : std_logic;
-  signal \-md17\ : std_logic;
-  signal \-md18\ : std_logic;
-  signal \-md19\ : std_logic;
-  signal \-md1\ : std_logic;
-  signal \-md20\ : std_logic;
-  signal \-md21\ : std_logic;
-  signal \-md22\ : std_logic;
-  signal \-md23\ : std_logic;
-  signal \-md24\ : std_logic;
-  signal \-md25\ : std_logic;
-  signal \-md26\ : std_logic;
-  signal \-md27\ : std_logic;
-  signal \-md28\ : std_logic;
-  signal \-md29\ : std_logic;
-  signal \-md2\ : std_logic;
-  signal \-md30\ : std_logic;
-  signal \-md31\ : std_logic;
-  signal \-md3\ : std_logic;
-  signal \-md4\ : std_logic;
-  signal \-md5\ : std_logic;
-  signal \-md6\ : std_logic;
-  signal \-md7\ : std_logic;
-  signal \-md8\ : std_logic;
-  signal \-md9\ : std_logic;
-  signal \-mddrive\ : std_logic;
-  signal \-mds0\ : std_logic;
-  signal \-mds10\ : std_logic;
-  signal \-mds11\ : std_logic;
-  signal \-mds12\ : std_logic;
-  signal \-mds13\ : std_logic;
-  signal \-mds14\ : std_logic;
-  signal \-mds15\ : std_logic;
-  signal \-mds16\ : std_logic;
-  signal \-mds17\ : std_logic;
-  signal \-mds18\ : std_logic;
-  signal \-mds19\ : std_logic;
-  signal \-mds1\ : std_logic;
-  signal \-mds20\ : std_logic;
-  signal \-mds21\ : std_logic;
-  signal \-mds22\ : std_logic;
-  signal \-mds23\ : std_logic;
-  signal \-mds24\ : std_logic;
-  signal \-mds25\ : std_logic;
-  signal \-mds26\ : std_logic;
-  signal \-mds27\ : std_logic;
-  signal \-mds28\ : std_logic;
-  signal \-mds29\ : std_logic;
-  signal \-mds2\ : std_logic;
-  signal \-mds30\ : std_logic;
-  signal \-mds31\ : std_logic;
-  signal \-mds3\ : std_logic;
-  signal \-mds4\ : std_logic;
-  signal \-mds5\ : std_logic;
-  signal \-mds6\ : std_logic;
-  signal \-mds7\ : std_logic;
-  signal \-mds8\ : std_logic;
-  signal \-mds9\ : std_logic;
-  signal \-memack\ : std_logic;
-  signal \-memdrive.a\ : std_logic;
-  signal \-memdrive.b\ : std_logic;
-  signal \-memgrant\ : std_logic;
-  signal \-memop\ : std_logic;
-  signal \-memparok\ : std_logic;
-  signal \-mempe\ : std_logic;
-  signal \-memprepare\ : std_logic;
-  signal \-memrd\ : std_logic;
-  signal \-memrq\ : std_logic;
-  signal \-memstart\ : std_logic;
-  signal \-memwr\ : std_logic;
-  signal \-mfdrive\ : std_logic;
-  signal \-mfinish\ : std_logic;
-  signal \-mfinishd\ : std_logic;
-  signal \-mpass\ : std_logic;
-  signal \-mpassl\ : std_logic;
-  signal \-mpassm\ : std_logic;
-  signal \-mpe\ : std_logic;
-  signal \-mr\ : std_logic;
-  signal \-mul\ : std_logic;
-  signal \-mulnop\ : std_logic;
-  signal \-mwpa\ : std_logic;
-  signal \-mwpb\ : std_logic;
-  signal \-needfetch\ : std_logic;
-  signal \-newlc.in\ : std_logic;
-  signal \-newlc\ : std_logic;
-  signal \-nop11\ : std_logic;
-  signal \-nop\ : std_logic;
-  signal \-nopa\ : std_logic;
-  signal \-opcclk\ : std_logic;
-  signal \-opcdrive\ : std_logic;
-  signal \-opcinh\ : std_logic;
-  signal \-parerr\ : std_logic;
-  signal \-pc12b\ : std_logic;
-  signal \-pc13b\ : std_logic;
-  signal \-pcb0\ : std_logic;
-  signal \-pcb10\ : std_logic;
-  signal \-pcb11\ : std_logic;
-  signal \-pcb1\ : std_logic;
-  signal \-pcb2\ : std_logic;
-  signal \-pcb3\ : std_logic;
-  signal \-pcb4\ : std_logic;
-  signal \-pcb5\ : std_logic;
-  signal \-pcb6\ : std_logic;
-  signal \-pcb7\ : std_logic;
-  signal \-pcb8\ : std_logic;
-  signal \-pcb9\ : std_logic;
-  signal \-pcc0\ : std_logic;
-  signal \-pcc10\ : std_logic;
-  signal \-pcc11\ : std_logic;
-  signal \-pcc1\ : std_logic;
-  signal \-pcc2\ : std_logic;
-  signal \-pcc3\ : std_logic;
-  signal \-pcc4\ : std_logic;
-  signal \-pcc5\ : std_logic;
-  signal \-pcc6\ : std_logic;
-  signal \-pcc7\ : std_logic;
-  signal \-pcc8\ : std_logic;
-  signal \-pcc9\ : std_logic;
-  signal \-pdla0a\ : std_logic;
-  signal \-pdla0b\ : std_logic;
-  signal \-pdla1a\ : std_logic;
-  signal \-pdla1b\ : std_logic;
-  signal \-pdla2a\ : std_logic;
-  signal \-pdla2b\ : std_logic;
-  signal \-pdla3a\ : std_logic;
-  signal \-pdla3b\ : std_logic;
-  signal \-pdla4a\ : std_logic;
-  signal \-pdla4b\ : std_logic;
-  signal \-pdla5a\ : std_logic;
-  signal \-pdla5b\ : std_logic;
-  signal \-pdla6a\ : std_logic;
-  signal \-pdla6b\ : std_logic;
-  signal \-pdla7a\ : std_logic;
-  signal \-pdla7b\ : std_logic;
-  signal \-pdla8a\ : std_logic;
-  signal \-pdla8b\ : std_logic;
-  signal \-pdla9a\ : std_logic;
-  signal \-pdla9b\ : std_logic;
-  signal \-pdlcnt\ : std_logic;
-  signal \-pdlcry3\ : std_logic;
-  signal \-pdlcry7\ : std_logic;
-  signal \-pdldrive\ : std_logic;
-  signal \-pdlpa\ : std_logic;
-  signal \-pdlpb\ : std_logic;
-  signal \-pdlpe\ : std_logic;
-  signal \-pdlwrited\ : std_logic;
-  signal \-pfr\ : std_logic;
-  signal \-pfw\ : std_logic;
-  signal \-pma10\ : std_logic;
-  signal \-pma11\ : std_logic;
-  signal \-pma12\ : std_logic;
-  signal \-pma13\ : std_logic;
-  signal \-pma14\ : std_logic;
-  signal \-pma15\ : std_logic;
-  signal \-pma16\ : std_logic;
-  signal \-pma17\ : std_logic;
-  signal \-pma18\ : std_logic;
-  signal \-pma19\ : std_logic;
-  signal \-pma20\ : std_logic;
-  signal \-pma21\ : std_logic;
-  signal \-pma8\ : std_logic;
-  signal \-pma9\ : std_logic;
-  signal \-popj\ : std_logic;
-  signal \-power reset\ : std_logic;
-  signal \-ppdrive\ : std_logic;
-  signal \-prog.reset\ : std_logic;
-  signal \-promce0\ : std_logic;
-  signal \-promce1\ : std_logic;
-  signal \-promdisabled\ : std_logic;
-  signal \-promenable\ : std_logic;
-  signal \-prompc0\ : std_logic;
-  signal \-prompc1\ : std_logic;
-  signal \-prompc2\ : std_logic;
-  signal \-prompc3\ : std_logic;
-  signal \-prompc4\ : std_logic;
-  signal \-prompc5\ : std_logic;
-  signal \-prompc6\ : std_logic;
-  signal \-prompc7\ : std_logic;
-  signal \-prompc8\ : std_logic;
-  signal \-prompc9\ : std_logic;
-  signal \-pwidx\ : std_logic;
-  signal \-pwpa\ : std_logic;
-  signal \-pwpb\ : std_logic;
-  signal \-pwpc\ : std_logic;
-  signal \-qdrive\ : std_logic;
-  signal \-rdfinish\ : std_logic;
-  signal \-reset\ : std_logic;
-  signal \-run\ : std_logic;
-  signal \-s4\ : std_logic;
-  signal \-sh3\ : std_logic;
-  signal \-sh4\ : std_logic;
-  signal \-spccry\ : std_logic;
-  signal \-spcdrive\ : std_logic;
-  signal \-spcnt\ : std_logic;
-  signal \-spcpass\ : std_logic;
-  signal \-spcwparl\ : std_logic;
-  signal \-spcwpass\ : std_logic;
-  signal \-spe\ : std_logic;
-  signal \-specalu\ : std_logic;
-  signal \-spop\ : std_logic;
-  signal \-spush\ : std_logic;
-  signal \-spushd\ : std_logic;
-  signal \-spy.ah\ : std_logic;
-  signal \-spy.al\ : std_logic;
-  signal \-spy.flag1\ : std_logic;
-  signal \-spy.flag2\ : std_logic;
-  signal \-spy.irh\ : std_logic;
-  signal \-spy.irl\ : std_logic;
-  signal \-spy.irm\ : std_logic;
-  signal \-spy.mh\ : std_logic;
-  signal \-spy.ml\ : std_logic;
-  signal \-spy.obh\ : std_logic;
-  signal \-spy.obl\ : std_logic;
-  signal \-spy.opc\ : std_logic;
-  signal \-spy.pc\ : std_logic;
-  signal \-spy.sth\ : std_logic;
-  signal \-spy.stl\ : std_logic;
-  signal \-sr\ : std_logic;
-  signal \-srcdc\ : std_logic;
-  signal \-srclc\ : std_logic;
-  signal \-srcm\ : std_logic;
-  signal \-srcmap\ : std_logic;
-  signal \-srcmd\ : std_logic;
-  signal \-srcopc\ : std_logic;
-  signal \-srcpdlidx\ : std_logic;
-  signal \-srcpdlpop\ : std_logic;
-  signal \-srcpdlptr\ : std_logic;
-  signal \-srcpdltop\ : std_logic;
-  signal \-srcq\ : std_logic;
-  signal \-srcspc\ : std_logic;
-  signal \-srcspcpop\ : std_logic;
-  signal \-srcspcpopreal\ : std_logic;
-  signal \-srcvma\ : std_logic;
-  signal \-ssdone\ : std_logic;
-  signal \-statbit\ : std_logic;
-  signal \-stathalt\ : std_logic;
-  signal \-stc12\ : std_logic;
-  signal \-stc16\ : std_logic;
-  signal \-stc20\ : std_logic;
-  signal \-stc24\ : std_logic;
-  signal \-stc28\ : std_logic;
-  signal \-stc32\ : std_logic;
-  signal \-stc4\ : std_logic;
-  signal \-stc8\ : std_logic;
-  signal \-step\ : std_logic;
-  signal \-swpa\ : std_logic;
-  signal \-swpb\ : std_logic;
-  signal \-tpclk\ : std_logic;
-  signal \-tpr0\ : std_logic;
-  signal \-tpr100\ : std_logic;
-  signal \-tpr105\ : std_logic;
-  signal \-tpr10\ : std_logic;
-  signal \-tpr110\ : std_logic;
-  signal \-tpr115\ : std_logic;
-  signal \-tpr120\ : std_logic;
-  signal \-tpr120a\ : std_logic;
-  signal \-tpr125\ : std_logic;
-  signal \-tpr140\ : std_logic;
-  signal \-tpr15\ : std_logic;
-  signal \-tpr160\ : std_logic;
-  signal \-tpr180\ : std_logic;
-  signal \-tpr200\ : std_logic;
-  signal \-tpr20\ : std_logic;
-  signal \-tpr20a\ : std_logic;
-  signal \-tpr25\ : std_logic;
-  signal \-tpr40\ : std_logic;
-  signal \-tpr5\ : std_logic;
-  signal \-tpr60\ : std_logic;
-  signal \-tpr65\ : std_logic;
-  signal \-tpr70\ : std_logic;
-  signal \-tpr75\ : std_logic;
-  signal \-tpr80\ : std_logic;
-  signal \-tpr80a\ : std_logic;
-  signal \-tpr85\ : std_logic;
-  signal \-tprend\ : std_logic;
-  signal \-tptse\ : std_logic;
-  signal \-tpw10\ : std_logic;
-  signal \-tpw20\ : std_logic;
-  signal \-tpw25\ : std_logic;
-  signal \-tpw30\ : std_logic;
-  signal \-tpw30a\ : std_logic;
-  signal \-tpw35\ : std_logic;
-  signal \-tpw40\ : std_logic;
-  signal \-tpw40a\ : std_logic;
-  signal \-tpw45\ : std_logic;
-  signal \-tpw50\ : std_logic;
-  signal \-tpw55\ : std_logic;
-  signal \-tpw60\ : std_logic;
-  signal \-tpw65\ : std_logic;
-  signal \-tpw70\ : std_logic;
-  signal \-tpw75\ : std_logic;
-  signal \-trap\ : std_logic;
-  signal \-trapenb\ : std_logic;
-  signal \-tse1\ : std_logic;
-  signal \-tse2\ : std_logic;
-  signal \-tse3\ : std_logic;
-  signal \-tse4\ : std_logic;
-  signal \-upperhighok\ : std_logic;
-  signal \-use.map\ : std_logic;
-  signal \-v0pe\ : std_logic;
-  signal \-v1pe\ : std_logic;
-  signal \-vm0wpa\ : std_logic;
-  signal \-vm0wpb\ : std_logic;
-  signal \-vm1lpar\ : std_logic;
-  signal \-vm1wpa\ : std_logic;
-  signal \-vm1wpb\ : std_logic;
-  signal \-vma0\ : std_logic;
-  signal \-vma10\ : std_logic;
-  signal \-vma11\ : std_logic;
-  signal \-vma12\ : std_logic;
-  signal \-vma13\ : std_logic;
-  signal \-vma14\ : std_logic;
-  signal \-vma15\ : std_logic;
-  signal \-vma16\ : std_logic;
-  signal \-vma17\ : std_logic;
-  signal \-vma18\ : std_logic;
-  signal \-vma19\ : std_logic;
-  signal \-vma1\ : std_logic;
-  signal \-vma20\ : std_logic;
-  signal \-vma21\ : std_logic;
-  signal \-vma22\ : std_logic;
-  signal \-vma23\ : std_logic;
-  signal \-vma24\ : std_logic;
-  signal \-vma25\ : std_logic;
-  signal \-vma26\ : std_logic;
-  signal \-vma27\ : std_logic;
-  signal \-vma28\ : std_logic;
-  signal \-vma29\ : std_logic;
-  signal \-vma2\ : std_logic;
-  signal \-vma30\ : std_logic;
-  signal \-vma31\ : std_logic;
-  signal \-vma3\ : std_logic;
-  signal \-vma4\ : std_logic;
-  signal \-vma5\ : std_logic;
-  signal \-vma6\ : std_logic;
-  signal \-vma7\ : std_logic;
-  signal \-vma8\ : std_logic;
-  signal \-vma9\ : std_logic;
-  signal \-vmadrive\ : std_logic;
-  signal \-vmaenb\ : std_logic;
-  signal \-vmaok\ : std_logic;
-  signal \-vmap0\ : std_logic;
-  signal \-vmap1\ : std_logic;
-  signal \-vmap2\ : std_logic;
-  signal \-vmap3\ : std_logic;
-  signal \-vmap4\ : std_logic;
-  signal \-vmas0\ : std_logic;
-  signal \-vmas10\ : std_logic;
-  signal \-vmas11\ : std_logic;
-  signal \-vmas12\ : std_logic;
-  signal \-vmas13\ : std_logic;
-  signal \-vmas14\ : std_logic;
-  signal \-vmas15\ : std_logic;
-  signal \-vmas16\ : std_logic;
-  signal \-vmas17\ : std_logic;
-  signal \-vmas18\ : std_logic;
-  signal \-vmas19\ : std_logic;
-  signal \-vmas1\ : std_logic;
-  signal \-vmas20\ : std_logic;
-  signal \-vmas21\ : std_logic;
-  signal \-vmas22\ : std_logic;
-  signal \-vmas23\ : std_logic;
-  signal \-vmas24\ : std_logic;
-  signal \-vmas25\ : std_logic;
-  signal \-vmas26\ : std_logic;
-  signal \-vmas27\ : std_logic;
-  signal \-vmas28\ : std_logic;
-  signal \-vmas29\ : std_logic;
-  signal \-vmas2\ : std_logic;
-  signal \-vmas30\ : std_logic;
-  signal \-vmas31\ : std_logic;
-  signal \-vmas3\ : std_logic;
-  signal \-vmas4\ : std_logic;
-  signal \-vmas5\ : std_logic;
-  signal \-vmas6\ : std_logic;
-  signal \-vmas7\ : std_logic;
-  signal \-vmas8\ : std_logic;
-  signal \-vmas9\ : std_logic;
-  signal \-vmo0\ : std_logic;
-  signal \-vmo10\ : std_logic;
-  signal \-vmo11\ : std_logic;
-  signal \-vmo12\ : std_logic;
-  signal \-vmo13\ : std_logic;
-  signal \-vmo14\ : std_logic;
-  signal \-vmo15\ : std_logic;
-  signal \-vmo16\ : std_logic;
-  signal \-vmo17\ : std_logic;
-  signal \-vmo18\ : std_logic;
-  signal \-vmo19\ : std_logic;
-  signal \-vmo1\ : std_logic;
-  signal \-vmo20\ : std_logic;
-  signal \-vmo21\ : std_logic;
-  signal \-vmo22\ : std_logic;
-  signal \-vmo23\ : std_logic;
-  signal \-vmo2\ : std_logic;
-  signal \-vmo3\ : std_logic;
-  signal \-vmo4\ : std_logic;
-  signal \-vmo5\ : std_logic;
-  signal \-vmo6\ : std_logic;
-  signal \-vmo7\ : std_logic;
-  signal \-vmo8\ : std_logic;
-  signal \-vmo9\ : std_logic;
-  signal \-wait\ : std_logic;
-  signal \-wmap\ : std_logic;
-  signal \-wmapd\ : std_logic;
-  signal \-wp1\ : std_logic;
-  signal \-wp2\ : std_logic;
-  signal \-wp3\ : std_logic;
-  signal \-wp4\ : std_logic;
-  signal \-wp5\ : std_logic;
-  signal \-zero16.drive\ : std_logic;
-  signal \boot.trap\ : std_logic;
-  signal \bottom.1k\ : std_logic;
-  signal \bus.power.reset l\ : std_logic;
-  signal \destimod0 l\ : std_logic;
-  signal \have wrong word\ : std_logic;
-  signal \inst in 2nd or 4th quarter\ : std_logic;
+  -- Clock and reset signals
+  signal \-boot1\          : std_logic := '1';
+  signal \-clock_reset_b\  : std_logic := '0';
+  signal \-hang\           : std_logic := '1';
+  signal \-ilong\          : std_logic := '1';
+  signal sspeed0           : std_logic := '0';
+  signal sspeed1           : std_logic := '0';
+  signal machrun           : std_logic := '0';
+  signal \-machruna\       : std_logic := '1';
+  signal lcry3             : std_logic := '0';
+  signal reset             : std_logic := '0';
+  signal \-srcpdlidx\      : std_logic := '1';
+  signal \-srcpdlptr\      : std_logic := '1';
+
+  -- Bus signals (defined as vectors as per cursor rules)
+  signal IR    : std_logic_vector(48 downto 0);
+  signal M     : std_logic_vector(31 downto 0);
+  signal MF    : std_logic_vector(31 downto 0);
+  signal A     : std_logic_vector(31 downto 0);
+  signal AA    : std_logic_vector(31 downto 0);
+  signal AMEM  : std_logic_vector(31 downto 0);
+  signal AADR  : std_logic_vector(9 downto 0);
+  signal L     : std_logic_vector(31 downto 0);
+  signal LC    : std_logic_vector(31 downto 0);
+  signal WPC   : std_logic_vector(13 downto 0);
+  signal LPC   : std_logic_vector(13 downto 0);
+  signal ALU   : std_logic_vector(31 downto 0);
+  signal XOUT  : std_logic_vector(31 downto 0);
+  signal YOUT  : std_logic_vector(31 downto 0);
+  signal I     : std_logic_vector(48 downto 0);
+  signal SPY   : std_logic_vector(15 downto 0);
+  signal DADR  : std_logic_vector(10 downto 0);
+  signal DPC   : std_logic_vector(13 downto 0);
+  signal MDS   : std_logic_vector(31 downto 0);
+  signal MD    : std_logic_vector(31 downto 0);
+  signal OB    : std_logic_vector(31 downto 0);
+  signal IOB   : std_logic_vector(47 downto 0);
+  signal IWR   : std_logic_vector(48 downto 0);
+  signal MEM   : std_logic_vector(31 downto 0);
+  signal MMEM  : std_logic_vector(31 downto 0);
+  signal MSK   : std_logic_vector(31 downto 0);
+  signal NPC   : std_logic_vector(13 downto 0);
+  signal PC    : std_logic_vector(13 downto 0);
+  signal IPC   : std_logic_vector(13 downto 0);
+  signal SPC   : std_logic_vector(31 downto 0);
+  signal SPCO  : std_logic_vector(31 downto 0);
+  signal SPCW  : std_logic_vector(31 downto 0);
+  signal SPCPTR: std_logic_vector(4 downto 0);
+  signal DC    : std_logic_vector(31 downto 0);
+  signal OPC   : std_logic_vector(13 downto 0);
+  signal PDL   : std_logic_vector(31 downto 0);
+  signal PDLIDX: std_logic_vector(9 downto 0);
+  signal PDLPTR: std_logic_vector(9 downto 0);
+  signal Q     : std_logic_vector(31 downto 0);
+  signal SA    : std_logic_vector(31 downto 0);
+  signal R     : std_logic_vector(31 downto 0);
+  signal RETA  : std_logic_vector(31 downto 0);
+  signal ST    : std_logic_vector(31 downto 0);
+  signal VMA   : std_logic_vector(31 downto 0);
+  signal VMAS  : std_logic_vector(31 downto 0);
+  signal MAPI  : std_logic_vector(23 downto 0);
+  signal VMAP  : std_logic_vector(4 downto 0);
+  signal VMO   : std_logic_vector(23 downto 0);
+  signal PMA   : std_logic_vector(31 downto 0);
+
+  -- Clock signals from clock component
+  signal cyclecompleted    : std_logic;
+  signal \-tpr0\          : std_logic;
+  signal \-tpr10\         : std_logic;
+  signal \-tpr100\        : std_logic;
+  signal \-tpr105\        : std_logic;
+  signal \-tpr110\        : std_logic;
+  signal \-tpr115\        : std_logic;
+  signal \-tpr120\        : std_logic;
+  signal \-tpr120a\       : std_logic;
+  signal \-tpr125\        : std_logic;
+  signal \-tpr140\        : std_logic;
+  signal \-tpr15\         : std_logic;
+  signal \-tpr160\        : std_logic;
+  signal \-tpr180\        : std_logic;
+  signal \-tpr20\         : std_logic;
+  signal \-tpr200\        : std_logic;
+  signal \-tpr20a\        : std_logic;
+  signal \-tpr25\         : std_logic;
+  signal \-tpr40\         : std_logic;
+  signal \-tpr5\          : std_logic;
+  signal \-tpr60\         : std_logic;
+  signal \-tpr65\         : std_logic;
+  signal \-tpr70\         : std_logic;
+  signal \-tpr75\         : std_logic;
+  signal \-tpr80\         : std_logic;
+  signal \-tpr80a\        : std_logic;
+  signal \-tpr85\         : std_logic;
+  signal \-tprend\        : std_logic;
+  signal tprend           : std_logic;
+  signal \-tpw10\         : std_logic;
+  signal \-tpw20\         : std_logic;
+  signal \-tpw25\         : std_logic;
+  signal \-tpw30\         : std_logic;
+  signal \-tpw30a\        : std_logic;
+  signal \-tpw35\         : std_logic;
+  signal \-tpw40\         : std_logic;
+  signal \-tpw40a\        : std_logic;
+  signal \-tpw45\         : std_logic;
+  signal \-tpw50\         : std_logic;
+  signal \-tpw55\         : std_logic;
+  signal \-tpw60\         : std_logic;
+  signal \-tpw65\         : std_logic;
+  signal \-tpw70\         : std_logic;
+  signal \-tpw75\         : std_logic;
+  signal \-clk0\          : std_logic;
+  signal clk1             : std_logic;
+  signal clk2             : std_logic;
+  signal clk3             : std_logic;
+  signal clk4             : std_logic;
+  signal clk5             : std_logic;
+  signal \-mclk0\         : std_logic;
+  signal mclk1            : std_logic;
+  signal mclk5            : std_logic;
+  signal mclk7            : std_logic;
+  signal tpclk            : std_logic;
+  signal \-tpclk\         : std_logic;
+  signal \-tptse\         : std_logic;
+  signal tptse            : std_logic;
+  signal tpwp             : std_logic;
+  signal tpwpiram         : std_logic;
+  signal \-tse1\          : std_logic;
+  signal \-tse2\          : std_logic;
+  signal \-tse3\          : std_logic;
+  signal \-tse4\          : std_logic;
+  signal \-wp1\           : std_logic;
+  signal \-wp2\           : std_logic;
+  signal \-wp3\           : std_logic;
+  signal \-wp4\           : std_logic;
+  signal \-wp5\           : std_logic;
+  signal \-clk1\          : std_logic;
+  signal clk1a            : std_logic;
+  signal \-clk2a\         : std_logic;
+  signal clk2a            : std_logic;
+  signal clk2b            : std_logic;
+  signal \-clk2c\         : std_logic;
+  signal clk2c            : std_logic;
+  signal \-clk3a\         : std_logic;
+  signal clk3a            : std_logic;
+  signal clk3b            : std_logic;
+  signal clk3c            : std_logic;
+  signal \-clk3d\         : std_logic;
+  signal clk3d            : std_logic;
+  signal clk3e            : std_logic;
+  signal clk3f            : std_logic;
+  signal \-clk3g\         : std_logic;
+  signal \-clk4a\         : std_logic;
+  signal clk4a            : std_logic;
+  signal clk4b            : std_logic;
+  signal clk4c            : std_logic;
+  signal \-clk4d\         : std_logic;
+  signal clk4d            : std_logic;
+  signal \-clk4e\         : std_logic;
+  signal clk4e            : std_logic;
+  signal clk4f            : std_logic;
+  signal \-lcry3\         : std_logic;
+  signal \-mclk1\         : std_logic;
+  signal mclk1a           : std_logic;
+  signal \-reset\         : std_logic;
+  signal srcpdlidx        : std_logic;
+  signal srcpdlptr        : std_logic;
+  signal tse1a            : std_logic;
+  signal tse1b            : std_logic;
+  signal tse2             : std_logic;
+  signal tse3a            : std_logic;
+  signal tse4a            : std_logic;
+  signal tse4b            : std_logic;
+  signal \-upperhighok\   : std_logic;
+  signal wp1a             : std_logic;
+  signal wp1b             : std_logic;
+  signal wp2              : std_logic;
+  signal wp3a             : std_logic;
+  signal wp4a             : std_logic;
+  signal wp4b             : std_logic;
+  signal wp4c             : std_logic;
+
+  -- Additional control signals
+  signal idebug           : std_logic;
+  signal \-iwrited\       : std_logic;
+  signal promdisabled     : std_logic;
+  signal \-wp5\           : std_logic;
+  signal \-ape\           : std_logic;
+  signal \-dpe\           : std_logic;
+  signal \-idebug\        : std_logic;
+  signal \-ipe\           : std_logic;
+  signal \-iwriteda\      : std_logic;
+  signal \-mempe\         : std_logic;
+  signal \-mpe\           : std_logic;
+  signal \-pdlpe\         : std_logic;
+  signal \-promdisabled\  : std_logic;
+  signal \-spe\           : std_logic;
+  signal \-v0pe\          : std_logic;
+  signal \-v1pe\          : std_logic;
+  signal \bottom.1k\      : std_logic;
+  signal dpe              : std_logic;
+  signal i46              : std_logic;
+  signal ipe              : std_logic;
+  signal \-promenable\    : std_logic;
+  signal promenable       : std_logic;
+  signal tilt0            : std_logic;
+  signal tilt1            : std_logic;
+
+  -- Additional missing signals for component interconnection
+  -- Source decode outputs
+  signal dest             : std_logic;
+  signal destm            : std_logic;
+  signal destmd           : std_logic;
+  signal \-ir31\          : std_logic;
+  signal \-srcdc\         : std_logic;
+  signal \-srcimod\       : std_logic;
+  signal \-srclc\         : std_logic;
+  signal \-srcmd\         : std_logic;
+  signal \-srcpdlpop\     : std_logic;
+  signal \-srcpdltop\     : std_logic;
+  signal \-srcq\          : std_logic;
+  signal \-srcspc\        : std_logic;
+  signal \-srcvma\        : std_logic;
+  signal srcq             : std_logic;
+  signal srclc            : std_logic;
+  signal srcmd            : std_logic;
+  signal srcvma           : std_logic;
+  signal srcspc           : std_logic;
+  signal srcmap           : std_logic;
+  signal \-srcmap\        : std_logic;
+
+  -- Destination decode outputs
+  signal \-destimod0\     : std_logic;
+  signal \-destimod1\     : std_logic;
+  signal \-destintctl\    : std_logic;
+  signal \-destlc\        : std_logic;
+  signal \-destmdr\       : std_logic;
+  signal \-destmem\       : std_logic;
+  signal \-destpdl(p)\    : std_logic;
+  signal \-destpdl(x)\    : std_logic;
+  signal \-destpdlp\      : std_logic;
+  signal \-destpdltop\    : std_logic;
+  signal \-destpdlx\      : std_logic;
+  signal \-destspc\       : std_logic;
+  signal \-destvma\       : std_logic;
+  signal destmem          : std_logic;
+  signal destvma          : std_logic;
+  signal destlc           : std_logic;
+  signal destmdr          : std_logic;
+  signal destspc          : std_logic;
+  signal destspcd         : std_logic;
+  signal \-destspcd\      : std_logic;
+
+  -- Function decode outputs
+  signal \-div\           : std_logic;
+  signal \-mult\          : std_logic;
+  signal \-funct0\        : std_logic;
+  signal \-funct1\        : std_logic;
+  signal \-funct2\        : std_logic;
+  signal \-funct3\        : std_logic;
+  signal imod             : std_logic;
+  signal imodd            : std_logic;
+  signal \-imodd\         : std_logic;
+
+  -- IR decode outputs  
+  signal \-ir0\           : std_logic;
+  signal \-ir1\           : std_logic;
+  signal \-ir2\           : std_logic;
+  signal \-ir22\          : std_logic;
+  signal \-ir25\          : std_logic;
+  signal \-iralu\         : std_logic;
+  signal iralu            : std_logic;
+  signal \-irbyte\        : std_logic;
+  signal irdisp           : std_logic;
+  signal \-irdisp\        : std_logic;
+  signal \-irjump\        : std_logic;
+  signal irjump           : std_logic;
+  signal \-irlp\          : std_logic;
+  signal \-irshc\         : std_logic;
+  signal \-iwritec\       : std_logic;
+  signal iwrited          : std_logic;
+
+  -- Jump condition outputs
+  signal jcalf            : std_logic;
+  signal jcond            : std_logic;
+  signal jret             : std_logic;
+  signal jretf            : std_logic;
+  signal popj             : std_logic;
+
+  -- NOP and misc control
+  signal nop              : std_logic;
+  signal nop11            : std_logic;
+  signal \-nop11\         : std_logic;
+
+  -- Status bits
+  signal \-stat0\         : std_logic;
+  signal \-stat1\         : std_logic;
+  signal \-stat2\         : std_logic;
+  signal \-stat3\         : std_logic;
+  signal \-stat4\         : std_logic;
+  signal \-stat5\         : std_logic;
+  signal \-stat6\         : std_logic;
+  signal \-stat7\         : std_logic;
+
+  -- LC control signals
+  signal \lc byte mode\   : std_logic;
+  signal \-loadmd\        : std_logic;
+  signal loadmd           : std_logic;
+  signal \lpc.hold\       : std_logic;
+  signal \-lcinc\         : std_logic;
+  signal lcinc            : std_logic;
+  signal \-lcry7\         : std_logic;
+  signal \-lcry11\        : std_logic;
+  signal \-lcry15\        : std_logic;
+  signal \-lcry19\        : std_logic;
+  signal \-lcry23\        : std_logic;
+  signal \-lcry27\        : std_logic;
+  signal \-lcdrive\       : std_logic;
+  signal lcdrive          : std_logic;
+  signal \-sh3\           : std_logic;
+  signal \-sh4\           : std_logic;
   signal \inst in left half\ : std_logic;
-  signal \int.enable\ : std_logic;
-  signal \iwrited l\ : std_logic;
+  signal \inst in 2nd or 4th quarter\ : std_logic;
+  signal \-lc modifies mrot\ : std_logic;
+  signal \-ifetch\        : std_logic;
+  signal \have wrong word\ : std_logic;
   signal \last byte in word\ : std_logic;
-  signal \lc byte mode\ : std_logic;
-  signal \lm drive enb\ : std_logic;
-  signal \lpc.hold\ : std_logic;
-  signal \mbusy.sync\ : std_logic;
-  signal \mempar in\ : std_logic;
-  signal \mempar out\ : std_logic;
-  signal \next.instr\ : std_logic;
-  signal \next.instrd\ : std_logic;
-  signal \pgf.or.int.or.sb\ : std_logic;
-  signal \pgf.or.int\ : std_logic;
-  signal \power reset a\ : std_logic;
-  signal \prog.boot\ : std_logic;
-  signal \prog.bus.reset\ : std_logic;
+  signal \-newlc\         : std_logic;
+  signal \-newlc.in\      : std_logic;
+  signal newlc            : std_logic;
+  signal needfetch        : std_logic;
+
+  -- Parity signals
+  signal lparity          : std_logic;
+  signal amemparity       : std_logic;
+  signal aparity          : std_logic;
+  signal mmemparity       : std_logic;
+  signal mparity          : std_logic;
+  signal pdlparity        : std_logic;
+  signal spcparity        : std_logic;
+  signal spcwparity       : std_logic;
+  signal spcparok         : std_logic;
+  signal spcwparok        : std_logic;
+  signal aparok           : std_logic;
+  signal mmemparok        : std_logic;
+  signal pdlparok         : std_logic;
+  signal dparok           : std_logic;
+  signal iparok           : std_logic;
+  signal memparok         : std_logic;
+  signal v0parok          : std_logic;
+  signal vmoparok         : std_logic;
+  signal iparity          : std_logic;
+  signal iwrparity        : std_logic;
+  signal iwrparok         : std_logic;
+
+  -- Memory and enable signals
+  signal \-amemenb\       : std_logic;
+  signal apassenb         : std_logic;
+  signal \-apassenb\      : std_logic;
+  signal \-mpass\         : std_logic;
+  signal mpass            : std_logic;
+  signal \-mpass_out\     : std_logic;
+  signal mpassl           : std_logic;
+  signal \-mpassl\        : std_logic;
+  signal \-mpassm\        : std_logic;
+  signal pdlenb           : std_logic;
+  signal spcenb           : std_logic;
+  signal \-vmaenb\        : std_logic;
+  signal vmasela          : std_logic;
+  signal vmaselb          : std_logic;
+  signal mdsela           : std_logic;
+  signal mdselb           : std_logic;
+
+  -- A/M memory address connections
+  signal wadr0, wadr1, wadr2, wadr3, wadr4 : std_logic;
+  signal wadr5, wadr6, wadr7, wadr8, wadr9 : std_logic;
+  signal a31a, a31b       : std_logic;
+  signal \-apass\         : std_logic;
+  signal apass1, apass2   : std_logic;
+  signal \-awpa\, \-awpb\, \-awpc\ : std_logic;
+  signal destd            : std_logic;
+  signal \-mwpa\, \-mwpb\ : std_logic;
+  signal srcm             : std_logic;
+
+  -- PDL control signals
+  signal \-pdlcnt\        : std_logic;
+  signal \-pdlcry3\       : std_logic;
+  signal \-pdlcry7\       : std_logic;
+  signal \-pdldrive\      : std_logic;
+  signal pidrive          : std_logic;
+  signal \-ppdrive\       : std_logic;
+  signal pdlwrite         : std_logic;
+  signal \-pdlwrited\     : std_logic;
+  signal pdlwrited        : std_logic;
+  signal pwidx            : std_logic;
+  signal \-pwidx\         : std_logic;
+
+  -- SPC control signals
+  signal spcdrive         : std_logic;
+  signal \-spcdrive\      : std_logic;
+  signal \-spcpass\       : std_logic;
+  signal spcwpass         : std_logic;
+  signal \-spcwpass\      : std_logic;
+  signal spush            : std_logic;
+  signal \-spush\         : std_logic;
+  signal spushd           : std_logic;
+  signal \-spushd\        : std_logic;
+  signal lpc13            : std_logic;
+  signal \-ignpopj\       : std_logic;
+
+  -- Q register control
+  signal \-qdrive\        : std_logic;
+  signal qdrive           : std_logic;
+  signal qs0, qs1         : std_logic;
+  signal \-alu31\         : std_logic;
+
+  -- ALU control
+  signal aluc0, aluc1, aluc2, aluc3 : std_logic;
+  signal lcry11, lcry19, lcry27 : std_logic;
+
+  -- Shifter/Masker outputs
+  signal \a=m\            : std_logic;
+  signal \-mr\            : std_logic;
+  signal \-sr\            : std_logic;
+
+  -- Flag condition outputs
+  signal dca0, dca1       : std_logic;
+  signal \-ldb\           : std_logic;
+  signal ldb              : std_logic;
+  signal \-n\             : std_logic;
+  signal n                : std_logic;
+  signal \-ope\           : std_logic;
+  signal ope              : std_logic;
+  signal \-pi\            : std_logic;
+  signal pi               : std_logic;
+  signal \-prog.unibus.reset\ : std_logic;
   signal \prog.unibus.reset\ : std_logic;
+  signal \-pxct\          : std_logic;
+  signal pxct             : std_logic;
+  signal tpxct            : std_logic;
+  signal \-tpxct\         : std_logic;
+  signal \-sa0\           : std_logic;
+  signal sa0              : std_logic;
+  signal \sa<0>\          : std_logic;
+  signal \-sa<0>\         : std_logic;
+  signal \-vmo22\         : std_logic;
+  signal \-vmo23\         : std_logic;
+  signal vmo22            : std_logic;
+  signal vmo23            : std_logic;
+  signal \-wait\          : std_logic;
+  signal \-spop\          : std_logic;
+
+  -- Display memory outputs  
+  signal dispenb          : std_logic;
+  signal dispwr           : std_logic;
+  signal \-dmapbenb\      : std_logic;
+  signal \-dwea\          : std_logic;
+  signal \-dweb\          : std_logic;
+  signal \-dwec\          : std_logic;
+  signal \-DADR\          : std_logic_vector(10 downto 0);
+  signal dpar             : std_logic;
+  signal dn               : std_logic;
+  signal dp               : std_logic;
+  signal dr               : std_logic;
+  signal dpareven         : std_logic;
+  signal \-dparh\         : std_logic;
+  signal dparl            : std_logic;
+  signal vmo18            : std_logic;
+  signal vmo19            : std_logic;
+  signal \-vmo18\         : std_logic;
+  signal \-vmo19\         : std_logic;
+  signal DMASK            : std_logic_vector(6 downto 0);
+
+  -- NPC selector outputs
+  signal dispatch         : std_logic;
+  signal pcs0, pcs1       : std_logic;
+
+  -- Virtual memory control
+  signal \-pfr\           : std_logic;
+  signal \-pfw\           : std_logic;
+  signal \use.map\        : std_logic;
+  signal \-use.map\       : std_logic;
+  signal \-vm0wpa\        : std_logic;
+  signal \-vm0wpb\        : std_logic;
+  signal \-vm1wpa\        : std_logic;
+  signal \-vm1wpb\        : std_logic;
+  signal vmoparodd        : std_logic;
+  signal \-mapdrive\      : std_logic;
+  signal \-mapi23\        : std_logic;
+  signal vm0pari          : std_logic;
+  signal vm1mpar          : std_logic;
+  signal vm1pari          : std_logic;
+  signal \-vm1lpar\       : std_logic;
+  signal vmoparm          : std_logic;
+  signal vmopar           : std_logic;
+  signal vmoparl          : std_logic;
+  signal vmoparck         : std_logic;
+  signal \-lvmo22\        : std_logic;
+  signal \-lvmo23\        : std_logic;
+  signal \-adrpar\        : std_logic;
+
+  -- Memory control signals  
+  signal wmap             : std_logic;
+  signal \-wmap\          : std_logic;
+  signal \-memwr\         : std_logic;
+  signal \-memprepare\    : std_logic;
+  signal memprepare       : std_logic;
+  signal memrq            : std_logic;
+  signal \-memack\        : std_logic;
+  signal \-memrd\         : std_logic;
+  signal \-memgrant\      : std_logic;
+  signal \use.md\         : std_logic;
+  signal wrcyc            : std_logic;
+  signal \-nopa\          : std_logic;
+  signal nopa             : std_logic;
+  signal rdcyc            : std_logic;
+  signal wrcyc_out        : std_logic;
+  signal \-wmapd\         : std_logic;
+  signal wmapd            : std_logic;
+  signal \-vmaok\         : std_logic;
+  signal \-mfinishd\      : std_logic;
+  signal memrq_out        : std_logic;
+  signal mbusy            : std_logic;
   signal \rd.in.progress\ : std_logic;
-  signal \sequence.break\ : std_logic;
   signal \set.rd.in.progress\ : std_logic;
-  signal \stat.ovf\ : std_logic;
-  signal \use.md\ : std_logic;
-  signal \zero12.drive\ : std_logic;
-  signal \zero16.drive\ : std_logic;
-  signal a0 : std_logic;
-  signal a1 : std_logic;
-  signal a10 : std_logic;
-  signal a11 : std_logic;
-  signal a12 : std_logic;
-  signal a13 : std_logic;
-  signal a14 : std_logic;
-  signal a15 : std_logic;
-  signal a16 : std_logic;
-  signal a17 : std_logic;
-  signal a18 : std_logic;
-  signal a19 : std_logic;
-  signal a2 : std_logic;
-  signal a20 : std_logic;
-  signal a21 : std_logic;
-  signal a22 : std_logic;
-  signal a23 : std_logic;
-  signal a24 : std_logic;
-  signal a25 : std_logic;
-  signal a26 : std_logic;
-  signal a27 : std_logic;
-  signal a28 : std_logic;
-  signal a29 : std_logic;
-  signal a3 : std_logic;
-  signal a30 : std_logic;
-  signal a31a : std_logic;
-  signal a31b : std_logic;
-  signal a4 : std_logic;
-  signal a5 : std_logic;
-  signal a6 : std_logic;
-  signal a7 : std_logic;
-  signal a8 : std_logic;
-  signal a9 : std_logic;
-  signal aa0 : std_logic;
-  signal aa1 : std_logic;
-  signal aa10 : std_logic;
-  signal aa11 : std_logic;
-  signal aa12 : std_logic;
-  signal aa13 : std_logic;
-  signal aa14 : std_logic;
-  signal aa15 : std_logic;
-  signal aa16 : std_logic;
-  signal aa17 : std_logic;
-  signal aa2 : std_logic;
-  signal aa3 : std_logic;
-  signal aa4 : std_logic;
-  signal aa5 : std_logic;
-  signal aa6 : std_logic;
-  signal aa7 : std_logic;
-  signal aa8 : std_logic;
-  signal aa9 : std_logic;
-  signal alu0 : std_logic;
-  signal alu1 : std_logic;
-  signal alu10 : std_logic;
-  signal alu11 : std_logic;
-  signal alu12 : std_logic;
-  signal alu13 : std_logic;
-  signal alu14 : std_logic;
-  signal alu15 : std_logic;
-  signal alu16 : std_logic;
-  signal alu17 : std_logic;
-  signal alu18 : std_logic;
-  signal alu19 : std_logic;
-  signal alu2 : std_logic;
-  signal alu20 : std_logic;
-  signal alu21 : std_logic;
-  signal alu22 : std_logic;
-  signal alu23 : std_logic;
-  signal alu24 : std_logic;
-  signal alu25 : std_logic;
-  signal alu26 : std_logic;
-  signal alu27 : std_logic;
-  signal alu28 : std_logic;
-  signal alu29 : std_logic;
-  signal alu3 : std_logic;
-  signal alu30 : std_logic;
-  signal alu31 : std_logic;
-  signal alu32 : std_logic;
-  signal alu4 : std_logic;
-  signal alu5 : std_logic;
-  signal alu6 : std_logic;
-  signal alu7 : std_logic;
-  signal alu8 : std_logic;
-  signal alu9 : std_logic;
-  signal aluadd : std_logic;
-  signal aluf0a : std_logic;
-  signal aluf0b : std_logic;
-  signal aluf1a : std_logic;
-  signal aluf1b : std_logic;
-  signal aluf2a : std_logic;
-  signal aluf2b : std_logic;
-  signal aluf3a : std_logic;
-  signal aluf3b : std_logic;
-  signal alumode : std_logic;
-  signal aluneg : std_logic;
-  signal alusub : std_logic;
-  signal amem0 : std_logic;
-  signal amem1 : std_logic;
-  signal amem10 : std_logic;
-  signal amem11 : std_logic;
-  signal amem12 : std_logic;
-  signal amem13 : std_logic;
-  signal amem14 : std_logic;
-  signal amem15 : std_logic;
-  signal amem16 : std_logic;
-  signal amem17 : std_logic;
-  signal amem18 : std_logic;
-  signal amem19 : std_logic;
-  signal amem2 : std_logic;
-  signal amem20 : std_logic;
-  signal amem21 : std_logic;
-  signal amem22 : std_logic;
-  signal amem23 : std_logic;
-  signal amem24 : std_logic;
-  signal amem25 : std_logic;
-  signal amem26 : std_logic;
-  signal amem27 : std_logic;
-  signal amem28 : std_logic;
-  signal amem29 : std_logic;
-  signal amem3 : std_logic;
-  signal amem30 : std_logic;
-  signal amem31 : std_logic;
-  signal amem4 : std_logic;
-  signal amem5 : std_logic;
-  signal amem6 : std_logic;
-  signal amem7 : std_logic;
-  signal amem8 : std_logic;
-  signal amem9 : std_logic;
-  signal amemparity : std_logic;
-  signal aparity : std_logic;
-  signal aparl : std_logic;
-  signal aparm : std_logic;
-  signal aparok : std_logic;
-  signal apass1 : std_logic;
-  signal apass2 : std_logic;
-  signal apassenb : std_logic;
-  signal clk1 : std_logic;
-  signal clk1a : std_logic;
-  signal clk2 : std_logic;
-  signal clk2a : std_logic;
-  signal clk2b : std_logic;
-  signal clk2c : std_logic;
-  signal clk3 : std_logic;
-  signal clk3a : std_logic;
-  signal clk3b : std_logic;
-  signal clk3c : std_logic;
-  signal clk3d : std_logic;
-  signal clk3e : std_logic;
-  signal clk3f : std_logic;
-  signal clk4 : std_logic;
-  signal clk4a : std_logic;
-  signal clk4b : std_logic;
-  signal clk4c : std_logic;
-  signal clk4d : std_logic;
-  signal clk4e : std_logic;
-  signal clk4f : std_logic;
-  signal clk5 : std_logic;
-  signal clk5a : std_logic;
-  signal conds0 : std_logic;
-  signal conds1 : std_logic;
-  signal conds2 : std_logic;
-  signal cyclecompleted : std_logic;
-  signal dadr10a : std_logic;
-  signal dadr10c : std_logic;
-  signal dc0 : std_logic;
-  signal dc1 : std_logic;
-  signal dc2 : std_logic;
-  signal dc3 : std_logic;
-  signal dc4 : std_logic;
-  signal dc5 : std_logic;
-  signal dc6 : std_logic;
-  signal dc7 : std_logic;
-  signal dc8 : std_logic;
-  signal dc9 : std_logic;
-  signal dcdrive : std_logic;
-  signal dest : std_logic;
-  signal destd : std_logic;
-  signal destm : std_logic;
-  signal destmd : std_logic;
-  signal destmdr : std_logic;
-  signal destmem : std_logic;
-  signal destspc : std_logic;
-  signal destspcd : std_logic;
-  signal dispenb : std_logic;
-  signal dispwr : std_logic;
-  signal divaddcond : std_logic;
-  signal divsubcond : std_logic;
-  signal dmask0 : std_logic;
-  signal dmask1 : std_logic;
-  signal dmask2 : std_logic;
-  signal dmask3 : std_logic;
-  signal dmask4 : std_logic;
-  signal dmask5 : std_logic;
-  signal dmask6 : std_logic;
-  signal dn : std_logic;
-  signal dp : std_logic;
-  signal dpar : std_logic;
-  signal dpareven : std_logic;
-  signal dparl : std_logic;
-  signal dparok : std_logic;
-  signal dpc0 : std_logic;
-  signal dpc1 : std_logic;
-  signal dpc10 : std_logic;
-  signal dpc11 : std_logic;
-  signal dpc12 : std_logic;
-  signal dpc13 : std_logic;
-  signal dpc2 : std_logic;
-  signal dpc3 : std_logic;
-  signal dpc4 : std_logic;
-  signal dpc5 : std_logic;
-  signal dpc6 : std_logic;
-  signal dpc7 : std_logic;
-  signal dpc8 : std_logic;
-  signal dpc9 : std_logic;
-  signal dpe : std_logic;
-  signal dr : std_logic;
-  signal eadr0 : std_logic;
-  signal eadr1 : std_logic;
-  signal eadr2 : std_logic;
-  signal eadr3 : std_logic;
-  signal err : std_logic;
-  signal errstop : std_logic;
-  signal hi1 : std_logic;
-  signal hi10 : std_logic;
-  signal hi11 : std_logic;
-  signal hi12 : std_logic;
-  signal hi2 : std_logic;
-  signal hi3 : std_logic;
-  signal hi4 : std_logic;
-  signal hi5 : std_logic;
-  signal hi6 : std_logic;
-  signal hi7 : std_logic;
-  signal hi8 : std_logic;
-  signal hi9 : std_logic;
-  signal highok : std_logic;
-  signal i0 : std_logic;
-  signal i1 : std_logic;
-  signal i10 : std_logic;
-  signal i11 : std_logic;
-  signal i12 : std_logic;
-  signal i13 : std_logic;
-  signal i14 : std_logic;
-  signal i15 : std_logic;
-  signal i16 : std_logic;
-  signal i17 : std_logic;
-  signal i18 : std_logic;
-  signal i19 : std_logic;
-  signal i2 : std_logic;
-  signal i20 : std_logic;
-  signal i21 : std_logic;
-  signal i22 : std_logic;
-  signal i23 : std_logic;
-  signal i24 : std_logic;
-  signal i25 : std_logic;
-  signal i26 : std_logic;
-  signal i27 : std_logic;
-  signal i28 : std_logic;
-  signal i29 : std_logic;
-  signal i3 : std_logic;
-  signal i30 : std_logic;
-  signal i31 : std_logic;
-  signal i32 : std_logic;
-  signal i33 : std_logic;
-  signal i34 : std_logic;
-  signal i35 : std_logic;
-  signal i36 : std_logic;
-  signal i37 : std_logic;
-  signal i38 : std_logic;
-  signal i39 : std_logic;
-  signal i4 : std_logic;
-  signal i40 : std_logic;
-  signal i41 : std_logic;
-  signal i42 : std_logic;
-  signal i43 : std_logic;
-  signal i44 : std_logic;
-  signal i45 : std_logic;
-  signal i46 : std_logic;
-  signal i47 : std_logic;
-  signal i48 : std_logic;
-  signal i5 : std_logic;
-  signal i6 : std_logic;
-  signal i7 : std_logic;
-  signal i8 : std_logic;
-  signal i9 : std_logic;
-  signal idebug : std_logic;
-  signal imod : std_logic;
-  signal imodd : std_logic;
-  signal inop : std_logic;
-  signal int : std_logic;
-  signal iob0 : std_logic;
-  signal iob1 : std_logic;
-  signal iob10 : std_logic;
-  signal iob11 : std_logic;
-  signal iob12 : std_logic;
-  signal iob13 : std_logic;
-  signal iob14 : std_logic;
-  signal iob15 : std_logic;
-  signal iob16 : std_logic;
-  signal iob17 : std_logic;
-  signal iob18 : std_logic;
-  signal iob19 : std_logic;
-  signal iob2 : std_logic;
-  signal iob20 : std_logic;
-  signal iob21 : std_logic;
-  signal iob22 : std_logic;
-  signal iob23 : std_logic;
-  signal iob24 : std_logic;
-  signal iob25 : std_logic;
-  signal iob26 : std_logic;
-  signal iob27 : std_logic;
-  signal iob28 : std_logic;
-  signal iob29 : std_logic;
-  signal iob3 : std_logic;
-  signal iob30 : std_logic;
-  signal iob31 : std_logic;
-  signal iob32 : std_logic;
-  signal iob33 : std_logic;
-  signal iob34 : std_logic;
-  signal iob35 : std_logic;
-  signal iob36 : std_logic;
-  signal iob37 : std_logic;
-  signal iob38 : std_logic;
-  signal iob39 : std_logic;
-  signal iob4 : std_logic;
-  signal iob40 : std_logic;
-  signal iob41 : std_logic;
-  signal iob42 : std_logic;
-  signal iob43 : std_logic;
-  signal iob44 : std_logic;
-  signal iob45 : std_logic;
-  signal iob46 : std_logic;
-  signal iob47 : std_logic;
-  signal iob5 : std_logic;
-  signal iob6 : std_logic;
-  signal iob7 : std_logic;
-  signal iob8 : std_logic;
-  signal iob9 : std_logic;
-  signal ipar0 : std_logic;
-  signal ipar1 : std_logic;
-  signal ipar2 : std_logic;
-  signal ipar3 : std_logic;
-  signal iparity : std_logic;
-  signal iparok : std_logic;
-  signal ipc0 : std_logic;
-  signal ipc1 : std_logic;
-  signal ipc10 : std_logic;
-  signal ipc11 : std_logic;
-  signal ipc12 : std_logic;
-  signal ipc13 : std_logic;
-  signal ipc2 : std_logic;
-  signal ipc3 : std_logic;
-  signal ipc4 : std_logic;
-  signal ipc5 : std_logic;
-  signal ipc6 : std_logic;
-  signal ipc7 : std_logic;
-  signal ipc8 : std_logic;
-  signal ipc9 : std_logic;
-  signal ipe : std_logic;
-  signal ir0 : std_logic;
-  signal ir1 : std_logic;
-  signal ir10 : std_logic;
-  signal ir11 : std_logic;
-  signal ir12 : std_logic;
-  signal ir12b : std_logic;
-  signal ir13 : std_logic;
-  signal ir13b : std_logic;
-  signal ir14 : std_logic;
-  signal ir14b : std_logic;
-  signal ir15 : std_logic;
-  signal ir15b : std_logic;
-  signal ir16 : std_logic;
-  signal ir16b : std_logic;
-  signal ir17 : std_logic;
-  signal ir17b : std_logic;
-  signal ir18 : std_logic;
-  signal ir18b : std_logic;
-  signal ir19 : std_logic;
-  signal ir19b : std_logic;
-  signal ir2 : std_logic;
-  signal ir20 : std_logic;
-  signal ir20b : std_logic;
-  signal ir21 : std_logic;
-  signal ir21b : std_logic;
-  signal ir22 : std_logic;
-  signal ir22b : std_logic;
-  signal ir23 : std_logic;
-  signal ir24 : std_logic;
-  signal ir25 : std_logic;
-  signal ir26 : std_logic;
-  signal ir27 : std_logic;
-  signal ir28 : std_logic;
-  signal ir29 : std_logic;
-  signal ir3 : std_logic;
-  signal ir30 : std_logic;
-  signal ir31 : std_logic;
-  signal ir32 : std_logic;
-  signal ir33 : std_logic;
-  signal ir34 : std_logic;
-  signal ir35 : std_logic;
-  signal ir36 : std_logic;
-  signal ir37 : std_logic;
-  signal ir38 : std_logic;
-  signal ir39 : std_logic;
-  signal ir4 : std_logic;
-  signal ir40 : std_logic;
-  signal ir41 : std_logic;
-  signal ir42 : std_logic;
-  signal ir43 : std_logic;
-  signal ir44 : std_logic;
-  signal ir45 : std_logic;
-  signal ir46 : std_logic;
-  signal ir47 : std_logic;
-  signal ir48 : std_logic;
-  signal ir5 : std_logic;
-  signal ir6 : std_logic;
-  signal ir7 : std_logic;
-  signal ir8 : std_logic;
-  signal ir8b : std_logic;
-  signal ir9 : std_logic;
-  signal ir9b : std_logic;
-  signal iralu : std_logic;
-  signal irdisp : std_logic;
-  signal irjump : std_logic;
-  signal iwr0 : std_logic;
-  signal iwr1 : std_logic;
-  signal iwr10 : std_logic;
-  signal iwr11 : std_logic;
-  signal iwr12 : std_logic;
-  signal iwr13 : std_logic;
-  signal iwr14 : std_logic;
-  signal iwr15 : std_logic;
-  signal iwr16 : std_logic;
-  signal iwr17 : std_logic;
-  signal iwr18 : std_logic;
-  signal iwr19 : std_logic;
-  signal iwr2 : std_logic;
-  signal iwr20 : std_logic;
-  signal iwr21 : std_logic;
-  signal iwr22 : std_logic;
-  signal iwr23 : std_logic;
-  signal iwr24 : std_logic;
-  signal iwr25 : std_logic;
-  signal iwr26 : std_logic;
-  signal iwr27 : std_logic;
-  signal iwr28 : std_logic;
-  signal iwr29 : std_logic;
-  signal iwr3 : std_logic;
-  signal iwr30 : std_logic;
-  signal iwr31 : std_logic;
-  signal iwr32 : std_logic;
-  signal iwr33 : std_logic;
-  signal iwr34 : std_logic;
-  signal iwr35 : std_logic;
-  signal iwr36 : std_logic;
-  signal iwr37 : std_logic;
-  signal iwr38 : std_logic;
-  signal iwr39 : std_logic;
-  signal iwr4 : std_logic;
-  signal iwr40 : std_logic;
-  signal iwr41 : std_logic;
-  signal iwr42 : std_logic;
-  signal iwr43 : std_logic;
-  signal iwr44 : std_logic;
-  signal iwr45 : std_logic;
-  signal iwr46 : std_logic;
-  signal iwr47 : std_logic;
-  signal iwr48 : std_logic;
-  signal iwr5 : std_logic;
-  signal iwr6 : std_logic;
-  signal iwr7 : std_logic;
-  signal iwr8 : std_logic;
-  signal iwr9 : std_logic;
-  signal iwrite : std_logic;
-  signal iwrited : std_logic;
-  signal iwriteda : std_logic;
-  signal iwritedb : std_logic;
-  signal iwritedc : std_logic;
-  signal iwritedd : std_logic;
-  signal iwrp1 : std_logic;
-  signal iwrp2 : std_logic;
-  signal iwrp3 : std_logic;
-  signal iwrp4 : std_logic;
-  signal jcalf : std_logic;
-  signal jcond : std_logic;
-  signal jfalse : std_logic;
-  signal jret : std_logic;
-  signal jretf : std_logic;
-  signal l0 : std_logic;
-  signal l1 : std_logic;
-  signal l10 : std_logic;
-  signal l11 : std_logic;
-  signal l12 : std_logic;
-  signal l13 : std_logic;
-  signal l14 : std_logic;
-  signal l15 : std_logic;
-  signal l16 : std_logic;
-  signal l17 : std_logic;
-  signal l18 : std_logic;
-  signal l19 : std_logic;
-  signal l2 : std_logic;
-  signal l20 : std_logic;
-  signal l21 : std_logic;
-  signal l22 : std_logic;
-  signal l23 : std_logic;
-  signal l24 : std_logic;
-  signal l25 : std_logic;
-  signal l26 : std_logic;
-  signal l27 : std_logic;
-  signal l28 : std_logic;
-  signal l29 : std_logic;
-  signal l3 : std_logic;
-  signal l30 : std_logic;
-  signal l31 : std_logic;
-  signal l4 : std_logic;
-  signal l5 : std_logic;
-  signal l6 : std_logic;
-  signal l7 : std_logic;
-  signal l8 : std_logic;
-  signal l9 : std_logic;
-  signal lc0 : std_logic;
-  signal lc0b : std_logic;
-  signal lc1 : std_logic;
-  signal lc10 : std_logic;
-  signal lc11 : std_logic;
-  signal lc12 : std_logic;
-  signal lc13 : std_logic;
-  signal lc14 : std_logic;
-  signal lc15 : std_logic;
-  signal lc16 : std_logic;
-  signal lc17 : std_logic;
-  signal lc18 : std_logic;
-  signal lc19 : std_logic;
-  signal lc2 : std_logic;
-  signal lc20 : std_logic;
-  signal lc21 : std_logic;
-  signal lc22 : std_logic;
-  signal lc23 : std_logic;
-  signal lc24 : std_logic;
-  signal lc25 : std_logic;
-  signal lc3 : std_logic;
-  signal lc4 : std_logic;
-  signal lc5 : std_logic;
-  signal lc6 : std_logic;
-  signal lc7 : std_logic;
-  signal lc8 : std_logic;
-  signal lc9 : std_logic;
-  signal lca0 : std_logic;
-  signal lca1 : std_logic;
-  signal lca2 : std_logic;
-  signal lca3 : std_logic;
-  signal lcdrive : std_logic;
-  signal lcinc : std_logic;
-  signal lcry3 : std_logic;
-  signal ldmode : std_logic;
-  signal ldstat : std_logic;
-  signal loadmd : std_logic;
-  signal lparity : std_logic;
-  signal lparl : std_logic;
-  signal lpc0 : std_logic;
-  signal lpc1 : std_logic;
-  signal lpc10 : std_logic;
-  signal lpc11 : std_logic;
-  signal lpc12 : std_logic;
-  signal lpc13 : std_logic;
-  signal lpc2 : std_logic;
-  signal lpc3 : std_logic;
-  signal lpc4 : std_logic;
-  signal lpc5 : std_logic;
-  signal lpc6 : std_logic;
-  signal lpc7 : std_logic;
-  signal lpc8 : std_logic;
-  signal lpc9 : std_logic;
-  signal m0 : std_logic;
-  signal m1 : std_logic;
-  signal m10 : std_logic;
-  signal m11 : std_logic;
-  signal m12 : std_logic;
-  signal m13 : std_logic;
-  signal m14 : std_logic;
-  signal m15 : std_logic;
-  signal m16 : std_logic;
-  signal m17 : std_logic;
-  signal m18 : std_logic;
-  signal m19 : std_logic;
-  signal m2 : std_logic;
-  signal m20 : std_logic;
-  signal m21 : std_logic;
-  signal m22 : std_logic;
-  signal m23 : std_logic;
-  signal m24 : std_logic;
-  signal m25 : std_logic;
-  signal m26 : std_logic;
-  signal m27 : std_logic;
-  signal m28 : std_logic;
-  signal m29 : std_logic;
-  signal m3 : std_logic;
-  signal m30 : std_logic;
-  signal m31 : std_logic;
-  signal m31b : std_logic;
-  signal m4 : std_logic;
-  signal m5 : std_logic;
-  signal m6 : std_logic;
-  signal m7 : std_logic;
-  signal m8 : std_logic;
-  signal m9 : std_logic;
-  signal machrun : std_logic;
-  signal mapi10 : std_logic;
-  signal mapi11 : std_logic;
-  signal mapi12 : std_logic;
-  signal mapi13 : std_logic;
-  signal mapi14 : std_logic;
-  signal mapi15 : std_logic;
-  signal mapi16 : std_logic;
-  signal mapi17 : std_logic;
-  signal mapi18 : std_logic;
-  signal mapi19 : std_logic;
-  signal mapi20 : std_logic;
-  signal mapi21 : std_logic;
-  signal mapi22 : std_logic;
-  signal mapi23 : std_logic;
-  signal mapi8 : std_logic;
-  signal mapi9 : std_logic;
-  signal mapwr0d : std_logic;
-  signal mapwr1d : std_logic;
-  signal mbusy : std_logic;
-  signal mclk1 : std_logic;
-  signal mclk1a : std_logic;
-  signal mclk5 : std_logic;
-  signal mclk5a : std_logic;
-  signal mclk7 : std_logic;
-  signal mdclk : std_logic;
-  signal mdgetspar : std_logic;
-  signal mdhaspar : std_logic;
-  signal mdpar : std_logic;
-  signal mdparerr : std_logic;
-  signal mdpareven : std_logic;
-  signal mdparl : std_logic;
-  signal mdparm : std_logic;
-  signal mdparodd : std_logic;
-  signal mdsela : std_logic;
-  signal mdselb : std_logic;
-  signal mem0 : std_logic;
-  signal mem1 : std_logic;
-  signal mem10 : std_logic;
-  signal mem11 : std_logic;
-  signal mem12 : std_logic;
-  signal mem13 : std_logic;
-  signal mem14 : std_logic;
-  signal mem15 : std_logic;
-  signal mem16 : std_logic;
-  signal mem17 : std_logic;
-  signal mem18 : std_logic;
-  signal mem19 : std_logic;
-  signal mem2 : std_logic;
-  signal mem20 : std_logic;
-  signal mem21 : std_logic;
-  signal mem22 : std_logic;
-  signal mem23 : std_logic;
-  signal mem24 : std_logic;
-  signal mem25 : std_logic;
-  signal mem26 : std_logic;
-  signal mem27 : std_logic;
-  signal mem28 : std_logic;
-  signal mem29 : std_logic;
-  signal mem3 : std_logic;
-  signal mem30 : std_logic;
-  signal mem31 : std_logic;
-  signal mem4 : std_logic;
-  signal mem5 : std_logic;
-  signal mem6 : std_logic;
-  signal mem7 : std_logic;
-  signal mem8 : std_logic;
-  signal mem9 : std_logic;
-  signal memparok : std_logic;
-  signal memprepare : std_logic;
-  signal memrq : std_logic;
-  signal memstart : std_logic;
-  signal mf0 : std_logic;
-  signal mf1 : std_logic;
-  signal mf10 : std_logic;
-  signal mf11 : std_logic;
-  signal mf12 : std_logic;
-  signal mf13 : std_logic;
-  signal mf14 : std_logic;
-  signal mf15 : std_logic;
-  signal mf16 : std_logic;
-  signal mf17 : std_logic;
-  signal mf18 : std_logic;
-  signal mf19 : std_logic;
-  signal mf2 : std_logic;
-  signal mf20 : std_logic;
-  signal mf21 : std_logic;
-  signal mf22 : std_logic;
-  signal mf23 : std_logic;
-  signal mf24 : std_logic;
-  signal mf25 : std_logic;
-  signal mf26 : std_logic;
-  signal mf27 : std_logic;
-  signal mf28 : std_logic;
-  signal mf29 : std_logic;
-  signal mf3 : std_logic;
-  signal mf30 : std_logic;
-  signal mf31 : std_logic;
-  signal mf4 : std_logic;
-  signal mf5 : std_logic;
-  signal mf6 : std_logic;
-  signal mf7 : std_logic;
-  signal mf8 : std_logic;
-  signal mf9 : std_logic;
-  signal mfdrive : std_logic;
-  signal mfenb : std_logic;
-  signal mmem0 : std_logic;
-  signal mmem1 : std_logic;
-  signal mmem10 : std_logic;
-  signal mmem11 : std_logic;
-  signal mmem12 : std_logic;
-  signal mmem13 : std_logic;
-  signal mmem14 : std_logic;
-  signal mmem15 : std_logic;
-  signal mmem16 : std_logic;
-  signal mmem17 : std_logic;
-  signal mmem18 : std_logic;
-  signal mmem19 : std_logic;
-  signal mmem2 : std_logic;
-  signal mmem20 : std_logic;
-  signal mmem21 : std_logic;
-  signal mmem22 : std_logic;
-  signal mmem23 : std_logic;
-  signal mmem24 : std_logic;
-  signal mmem25 : std_logic;
-  signal mmem26 : std_logic;
-  signal mmem27 : std_logic;
-  signal mmem28 : std_logic;
-  signal mmem29 : std_logic;
-  signal mmem3 : std_logic;
-  signal mmem30 : std_logic;
-  signal mmem31 : std_logic;
-  signal mmem4 : std_logic;
-  signal mmem5 : std_logic;
-  signal mmem6 : std_logic;
-  signal mmem7 : std_logic;
-  signal mmem8 : std_logic;
-  signal mmem9 : std_logic;
-  signal mmemparity : std_logic;
-  signal mmemparok : std_logic;
-  signal mpareven : std_logic;
-  signal mparity : std_logic;
-  signal mparl : std_logic;
-  signal mparm : std_logic;
-  signal mparodd : std_logic;
-  signal mpass : std_logic;
-  signal mpassl : std_logic;
-  signal msk0 : std_logic;
-  signal msk1 : std_logic;
-  signal msk10 : std_logic;
-  signal msk11 : std_logic;
-  signal msk12 : std_logic;
-  signal msk13 : std_logic;
-  signal msk14 : std_logic;
-  signal msk15 : std_logic;
-  signal msk16 : std_logic;
-  signal msk17 : std_logic;
-  signal msk18 : std_logic;
-  signal msk19 : std_logic;
-  signal msk2 : std_logic;
-  signal msk20 : std_logic;
-  signal msk21 : std_logic;
-  signal msk22 : std_logic;
-  signal msk23 : std_logic;
-  signal msk24 : std_logic;
-  signal msk25 : std_logic;
-  signal msk26 : std_logic;
-  signal msk27 : std_logic;
-  signal msk28 : std_logic;
-  signal msk29 : std_logic;
-  signal msk3 : std_logic;
-  signal msk30 : std_logic;
-  signal msk31 : std_logic;
-  signal msk4 : std_logic;
-  signal msk5 : std_logic;
-  signal msk6 : std_logic;
-  signal msk7 : std_logic;
-  signal msk8 : std_logic;
-  signal msk9 : std_logic;
-  signal mskl0 : std_logic;
-  signal mskl1 : std_logic;
-  signal mskl2 : std_logic;
-  signal mskl3 : std_logic;
-  signal mskl3cry : std_logic;
-  signal mskl4 : std_logic;
-  signal mskr0 : std_logic;
-  signal mskr1 : std_logic;
-  signal mskr2 : std_logic;
-  signal mskr3 : std_logic;
-  signal mskr4 : std_logic;
-  signal n : std_logic;
-  signal needfetch : std_logic;
-  signal newlc : std_logic;
-  signal nop : std_logic;
-  signal nop11 : std_logic;
-  signal nopa : std_logic;
-  signal npc0 : std_logic;
-  signal npc1 : std_logic;
-  signal npc10 : std_logic;
-  signal npc11 : std_logic;
-  signal npc12 : std_logic;
-  signal npc13 : std_logic;
-  signal npc2 : std_logic;
-  signal npc3 : std_logic;
-  signal npc4 : std_logic;
-  signal npc5 : std_logic;
-  signal npc6 : std_logic;
-  signal npc7 : std_logic;
-  signal npc8 : std_logic;
-  signal npc9 : std_logic;
-  signal ob0 : std_logic;
-  signal ob1 : std_logic;
-  signal ob10 : std_logic;
-  signal ob11 : std_logic;
-  signal ob12 : std_logic;
-  signal ob13 : std_logic;
-  signal ob14 : std_logic;
-  signal ob15 : std_logic;
-  signal ob16 : std_logic;
-  signal ob17 : std_logic;
-  signal ob18 : std_logic;
-  signal ob19 : std_logic;
-  signal ob2 : std_logic;
-  signal ob20 : std_logic;
-  signal ob21 : std_logic;
-  signal ob22 : std_logic;
-  signal ob23 : std_logic;
-  signal ob24 : std_logic;
-  signal ob25 : std_logic;
-  signal ob26 : std_logic;
-  signal ob27 : std_logic;
-  signal ob28 : std_logic;
-  signal ob29 : std_logic;
-  signal ob3 : std_logic;
-  signal ob30 : std_logic;
-  signal ob31 : std_logic;
-  signal ob4 : std_logic;
-  signal ob5 : std_logic;
-  signal ob6 : std_logic;
-  signal ob7 : std_logic;
-  signal ob8 : std_logic;
-  signal ob9 : std_logic;
-  signal opc0 : std_logic;
-  signal opc1 : std_logic;
-  signal opc10 : std_logic;
-  signal opc11 : std_logic;
-  signal opc12 : std_logic;
-  signal opc13 : std_logic;
-  signal opc2 : std_logic;
-  signal opc3 : std_logic;
-  signal opc4 : std_logic;
-  signal opc5 : std_logic;
-  signal opc6 : std_logic;
-  signal opc7 : std_logic;
-  signal opc8 : std_logic;
-  signal opc9 : std_logic;
-  signal opcclk : std_logic;
-  signal opcclka : std_logic;
-  signal opcclkb : std_logic;
-  signal opcclkc : std_logic;
-  signal opcinh : std_logic;
-  signal opcinha : std_logic;
-  signal opcinhb : std_logic;
-  signal osel0a : std_logic;
-  signal osel0b : std_logic;
-  signal osel1a : std_logic;
-  signal osel1b : std_logic;
-  signal pc0 : std_logic;
-  signal pc0a : std_logic;
-  signal pc0b : std_logic;
-  signal pc0c : std_logic;
-  signal pc0d : std_logic;
-  signal pc0e : std_logic;
-  signal pc0f : std_logic;
-  signal pc0g : std_logic;
-  signal pc0h : std_logic;
-  signal pc0i : std_logic;
-  signal pc0j : std_logic;
-  signal pc0k : std_logic;
-  signal pc0l : std_logic;
-  signal pc0m : std_logic;
-  signal pc0n : std_logic;
-  signal pc0o : std_logic;
-  signal pc0p : std_logic;
-  signal pc1 : std_logic;
-  signal pc10 : std_logic;
-  signal pc10a : std_logic;
-  signal pc10b : std_logic;
-  signal pc10c : std_logic;
-  signal pc10d : std_logic;
-  signal pc10e : std_logic;
-  signal pc10f : std_logic;
-  signal pc10g : std_logic;
-  signal pc10h : std_logic;
-  signal pc10i : std_logic;
-  signal pc10j : std_logic;
-  signal pc10k : std_logic;
-  signal pc10l : std_logic;
-  signal pc10m : std_logic;
-  signal pc10n : std_logic;
-  signal pc10o : std_logic;
-  signal pc10p : std_logic;
-  signal pc11 : std_logic;
-  signal pc11a : std_logic;
-  signal pc11b : std_logic;
-  signal pc11c : std_logic;
-  signal pc11d : std_logic;
-  signal pc11e : std_logic;
-  signal pc11f : std_logic;
-  signal pc11g : std_logic;
-  signal pc11h : std_logic;
-  signal pc11i : std_logic;
-  signal pc11j : std_logic;
-  signal pc11k : std_logic;
-  signal pc11l : std_logic;
-  signal pc11m : std_logic;
-  signal pc11n : std_logic;
-  signal pc11o : std_logic;
-  signal pc11p : std_logic;
-  signal pc12 : std_logic;
-  signal pc12b : std_logic;
-  signal pc13 : std_logic;
-  signal pc13b : std_logic;
-  signal pc1a : std_logic;
-  signal pc1b : std_logic;
-  signal pc1c : std_logic;
-  signal pc1d : std_logic;
-  signal pc1e : std_logic;
-  signal pc1f : std_logic;
-  signal pc1g : std_logic;
-  signal pc1h : std_logic;
-  signal pc1i : std_logic;
-  signal pc1j : std_logic;
-  signal pc1k : std_logic;
-  signal pc1l : std_logic;
-  signal pc1m : std_logic;
-  signal pc1n : std_logic;
-  signal pc1o : std_logic;
-  signal pc1p : std_logic;
-  signal pc2 : std_logic;
-  signal pc2a : std_logic;
-  signal pc2b : std_logic;
-  signal pc2c : std_logic;
-  signal pc2d : std_logic;
-  signal pc2e : std_logic;
-  signal pc2f : std_logic;
-  signal pc2g : std_logic;
-  signal pc2h : std_logic;
-  signal pc2i : std_logic;
-  signal pc2j : std_logic;
-  signal pc2k : std_logic;
-  signal pc2l : std_logic;
-  signal pc2m : std_logic;
-  signal pc2n : std_logic;
-  signal pc2o : std_logic;
-  signal pc2p : std_logic;
-  signal pc3 : std_logic;
-  signal pc3a : std_logic;
-  signal pc3b : std_logic;
-  signal pc3c : std_logic;
-  signal pc3d : std_logic;
-  signal pc3e : std_logic;
-  signal pc3f : std_logic;
-  signal pc3g : std_logic;
-  signal pc3h : std_logic;
-  signal pc3i : std_logic;
-  signal pc3j : std_logic;
-  signal pc3k : std_logic;
-  signal pc3l : std_logic;
-  signal pc3m : std_logic;
-  signal pc3n : std_logic;
-  signal pc3o : std_logic;
-  signal pc3p : std_logic;
-  signal pc4 : std_logic;
-  signal pc4a : std_logic;
-  signal pc4b : std_logic;
-  signal pc4c : std_logic;
-  signal pc4d : std_logic;
-  signal pc4e : std_logic;
-  signal pc4f : std_logic;
-  signal pc4g : std_logic;
-  signal pc4h : std_logic;
-  signal pc4i : std_logic;
-  signal pc4j : std_logic;
-  signal pc4k : std_logic;
-  signal pc4l : std_logic;
-  signal pc4m : std_logic;
-  signal pc4n : std_logic;
-  signal pc4o : std_logic;
-  signal pc4p : std_logic;
-  signal pc5 : std_logic;
-  signal pc5a : std_logic;
-  signal pc5b : std_logic;
-  signal pc5c : std_logic;
-  signal pc5d : std_logic;
-  signal pc5e : std_logic;
-  signal pc5f : std_logic;
-  signal pc5g : std_logic;
-  signal pc5h : std_logic;
-  signal pc5i : std_logic;
-  signal pc5j : std_logic;
-  signal pc5k : std_logic;
-  signal pc5l : std_logic;
-  signal pc5m : std_logic;
-  signal pc5n : std_logic;
-  signal pc5o : std_logic;
-  signal pc5p : std_logic;
-  signal pc6 : std_logic;
-  signal pc6a : std_logic;
-  signal pc6b : std_logic;
-  signal pc6c : std_logic;
-  signal pc6d : std_logic;
-  signal pc6e : std_logic;
-  signal pc6f : std_logic;
-  signal pc6g : std_logic;
-  signal pc6h : std_logic;
-  signal pc6i : std_logic;
-  signal pc6j : std_logic;
-  signal pc6k : std_logic;
-  signal pc6l : std_logic;
-  signal pc6m : std_logic;
-  signal pc6n : std_logic;
-  signal pc6o : std_logic;
-  signal pc6p : std_logic;
-  signal pc7 : std_logic;
-  signal pc7a : std_logic;
-  signal pc7b : std_logic;
-  signal pc7c : std_logic;
-  signal pc7d : std_logic;
-  signal pc7e : std_logic;
-  signal pc7f : std_logic;
-  signal pc7g : std_logic;
-  signal pc7h : std_logic;
-  signal pc7i : std_logic;
-  signal pc7j : std_logic;
-  signal pc7k : std_logic;
-  signal pc7l : std_logic;
-  signal pc7m : std_logic;
-  signal pc7n : std_logic;
-  signal pc7o : std_logic;
-  signal pc7p : std_logic;
-  signal pc8 : std_logic;
-  signal pc8a : std_logic;
-  signal pc8b : std_logic;
-  signal pc8c : std_logic;
-  signal pc8d : std_logic;
-  signal pc8e : std_logic;
-  signal pc8f : std_logic;
-  signal pc8g : std_logic;
-  signal pc8h : std_logic;
-  signal pc8i : std_logic;
-  signal pc8j : std_logic;
-  signal pc8k : std_logic;
-  signal pc8l : std_logic;
-  signal pc8m : std_logic;
-  signal pc8n : std_logic;
-  signal pc8o : std_logic;
-  signal pc8p : std_logic;
-  signal pc9 : std_logic;
-  signal pc9a : std_logic;
-  signal pc9b : std_logic;
-  signal pc9c : std_logic;
-  signal pc9d : std_logic;
-  signal pc9e : std_logic;
-  signal pc9f : std_logic;
-  signal pc9g : std_logic;
-  signal pc9h : std_logic;
-  signal pc9i : std_logic;
-  signal pc9j : std_logic;
-  signal pc9k : std_logic;
-  signal pc9l : std_logic;
-  signal pc9m : std_logic;
-  signal pc9n : std_logic;
-  signal pc9o : std_logic;
-  signal pc9p : std_logic;
-  signal pccry11 : std_logic;
-  signal pccry3 : std_logic;
-  signal pccry7 : std_logic;
-  signal pcs0 : std_logic;
-  signal pcs1 : std_logic;
-  signal pdl0 : std_logic;
-  signal pdl1 : std_logic;
-  signal pdl10 : std_logic;
-  signal pdl11 : std_logic;
-  signal pdl12 : std_logic;
-  signal pdl13 : std_logic;
-  signal pdl14 : std_logic;
-  signal pdl15 : std_logic;
-  signal pdl16 : std_logic;
-  signal pdl17 : std_logic;
-  signal pdl18 : std_logic;
-  signal pdl19 : std_logic;
-  signal pdl2 : std_logic;
-  signal pdl20 : std_logic;
-  signal pdl21 : std_logic;
-  signal pdl22 : std_logic;
-  signal pdl23 : std_logic;
-  signal pdl24 : std_logic;
-  signal pdl25 : std_logic;
-  signal pdl26 : std_logic;
-  signal pdl27 : std_logic;
-  signal pdl28 : std_logic;
-  signal pdl29 : std_logic;
-  signal pdl3 : std_logic;
-  signal pdl30 : std_logic;
-  signal pdl31 : std_logic;
-  signal pdl4 : std_logic;
-  signal pdl5 : std_logic;
-  signal pdl6 : std_logic;
-  signal pdl7 : std_logic;
-  signal pdl8 : std_logic;
-  signal pdl9 : std_logic;
-  signal pdlenb : std_logic;
-  signal pdlidx0 : std_logic;
-  signal pdlidx1 : std_logic;
-  signal pdlidx2 : std_logic;
-  signal pdlidx3 : std_logic;
-  signal pdlidx4 : std_logic;
-  signal pdlidx5 : std_logic;
-  signal pdlidx6 : std_logic;
-  signal pdlidx7 : std_logic;
-  signal pdlidx8 : std_logic;
-  signal pdlidx9 : std_logic;
-  signal pdlparity : std_logic;
-  signal pdlparok : std_logic;
-  signal pdlptr0 : std_logic;
-  signal pdlptr1 : std_logic;
-  signal pdlptr2 : std_logic;
-  signal pdlptr3 : std_logic;
-  signal pdlptr4 : std_logic;
-  signal pdlptr5 : std_logic;
-  signal pdlptr6 : std_logic;
-  signal pdlptr7 : std_logic;
-  signal pdlptr8 : std_logic;
-  signal pdlptr9 : std_logic;
-  signal pdlwrite : std_logic;
-  signal pdlwrited : std_logic;
-  signal pidrive : std_logic;
-  signal popj : std_logic;
-  signal promdisable : std_logic;
-  signal promdisabled : std_logic;
-  signal promenable : std_logic;
-  signal pwidx : std_logic;
-  signal q0 : std_logic;
-  signal q1 : std_logic;
-  signal q10 : std_logic;
-  signal q11 : std_logic;
-  signal q12 : std_logic;
-  signal q13 : std_logic;
-  signal q14 : std_logic;
-  signal q15 : std_logic;
-  signal q16 : std_logic;
-  signal q17 : std_logic;
-  signal q18 : std_logic;
-  signal q19 : std_logic;
-  signal q2 : std_logic;
-  signal q20 : std_logic;
-  signal q21 : std_logic;
-  signal q22 : std_logic;
-  signal q23 : std_logic;
-  signal q24 : std_logic;
-  signal q25 : std_logic;
-  signal q26 : std_logic;
-  signal q27 : std_logic;
-  signal q28 : std_logic;
-  signal q29 : std_logic;
-  signal q3 : std_logic;
-  signal q30 : std_logic;
-  signal q31 : std_logic;
-  signal q4 : std_logic;
-  signal q5 : std_logic;
-  signal q6 : std_logic;
-  signal q7 : std_logic;
-  signal q8 : std_logic;
-  signal q9 : std_logic;
-  signal qdrive : std_logic;
-  signal qs0 : std_logic;
-  signal qs1 : std_logic;
-  signal r0 : std_logic;
-  signal r1 : std_logic;
-  signal r10 : std_logic;
-  signal r11 : std_logic;
-  signal r12 : std_logic;
-  signal r13 : std_logic;
-  signal r14 : std_logic;
-  signal r15 : std_logic;
-  signal r16 : std_logic;
-  signal r17 : std_logic;
-  signal r18 : std_logic;
-  signal r19 : std_logic;
-  signal r2 : std_logic;
-  signal r20 : std_logic;
-  signal r21 : std_logic;
-  signal r22 : std_logic;
-  signal r23 : std_logic;
-  signal r24 : std_logic;
-  signal r25 : std_logic;
-  signal r26 : std_logic;
-  signal r27 : std_logic;
-  signal r28 : std_logic;
-  signal r29 : std_logic;
-  signal r3 : std_logic;
-  signal r30 : std_logic;
-  signal r31 : std_logic;
-  signal r4 : std_logic;
-  signal r5 : std_logic;
-  signal r6 : std_logic;
-  signal r7 : std_logic;
-  signal r8 : std_logic;
-  signal r9 : std_logic;
-  signal ramdisable : std_logic;
-  signal rdcyc : std_logic;
-  signal reset : std_logic;
-  signal reta0 : std_logic;
-  signal reta1 : std_logic;
-  signal reta10 : std_logic;
-  signal reta11 : std_logic;
-  signal reta12 : std_logic;
-  signal reta13 : std_logic;
-  signal reta2 : std_logic;
-  signal reta3 : std_logic;
-  signal reta4 : std_logic;
-  signal reta5 : std_logic;
-  signal reta6 : std_logic;
-  signal reta7 : std_logic;
-  signal reta8 : std_logic;
-  signal reta9 : std_logic;
-  signal run : std_logic;
-  signal s0 : std_logic;
-  signal s1 : std_logic;
-  signal s2a : std_logic;
-  signal s2b : std_logic;
-  signal s3a : std_logic;
-  signal s3b : std_logic;
-  signal s4 : std_logic;
-  signal sa0 : std_logic;
-  signal sa1 : std_logic;
-  signal sa10 : std_logic;
-  signal sa11 : std_logic;
-  signal sa12 : std_logic;
-  signal sa13 : std_logic;
-  signal sa14 : std_logic;
-  signal sa15 : std_logic;
-  signal sa16 : std_logic;
-  signal sa17 : std_logic;
-  signal sa18 : std_logic;
-  signal sa19 : std_logic;
-  signal sa2 : std_logic;
-  signal sa20 : std_logic;
-  signal sa21 : std_logic;
-  signal sa22 : std_logic;
-  signal sa23 : std_logic;
-  signal sa24 : std_logic;
-  signal sa25 : std_logic;
-  signal sa26 : std_logic;
-  signal sa27 : std_logic;
-  signal sa28 : std_logic;
-  signal sa29 : std_logic;
-  signal sa3 : std_logic;
-  signal sa30 : std_logic;
-  signal sa31 : std_logic;
-  signal sa4 : std_logic;
-  signal sa5 : std_logic;
-  signal sa6 : std_logic;
-  signal sa7 : std_logic;
-  signal sa8 : std_logic;
-  signal sa9 : std_logic;
-  signal sint : std_logic;
-  signal sintr : std_logic;
-  signal spc0 : std_logic;
-  signal spc1 : std_logic;
-  signal spc10 : std_logic;
-  signal spc11 : std_logic;
-  signal spc12 : std_logic;
-  signal spc13 : std_logic;
-  signal spc14 : std_logic;
-  signal spc15 : std_logic;
-  signal spc16 : std_logic;
-  signal spc17 : std_logic;
-  signal spc18 : std_logic;
-  signal spc1a : std_logic;
-  signal spc2 : std_logic;
-  signal spc3 : std_logic;
-  signal spc4 : std_logic;
-  signal spc5 : std_logic;
-  signal spc6 : std_logic;
-  signal spc7 : std_logic;
-  signal spc8 : std_logic;
-  signal spc9 : std_logic;
-  signal spcdrive : std_logic;
-  signal spcenb : std_logic;
-  signal spcmung : std_logic;
-  signal spco0 : std_logic;
-  signal spco1 : std_logic;
-  signal spco10 : std_logic;
-  signal spco11 : std_logic;
-  signal spco12 : std_logic;
-  signal spco13 : std_logic;
-  signal spco14 : std_logic;
-  signal spco15 : std_logic;
-  signal spco16 : std_logic;
-  signal spco17 : std_logic;
-  signal spco18 : std_logic;
-  signal spco2 : std_logic;
-  signal spco3 : std_logic;
-  signal spco4 : std_logic;
-  signal spco5 : std_logic;
-  signal spco6 : std_logic;
-  signal spco7 : std_logic;
-  signal spco8 : std_logic;
-  signal spco9 : std_logic;
-  signal spcopar : std_logic;
-  signal spcpar : std_logic;
-  signal spcparh : std_logic;
-  signal spcparok : std_logic;
-  signal spcptr0 : std_logic;
-  signal spcptr1 : std_logic;
-  signal spcptr2 : std_logic;
-  signal spcptr3 : std_logic;
-  signal spcptr4 : std_logic;
-  signal spcw0 : std_logic;
-  signal spcw1 : std_logic;
-  signal spcw10 : std_logic;
-  signal spcw11 : std_logic;
-  signal spcw12 : std_logic;
-  signal spcw13 : std_logic;
-  signal spcw14 : std_logic;
-  signal spcw15 : std_logic;
-  signal spcw16 : std_logic;
-  signal spcw17 : std_logic;
-  signal spcw18 : std_logic;
-  signal spcw2 : std_logic;
-  signal spcw3 : std_logic;
-  signal spcw4 : std_logic;
-  signal spcw5 : std_logic;
-  signal spcw6 : std_logic;
-  signal spcw7 : std_logic;
-  signal spcw8 : std_logic;
-  signal spcw9 : std_logic;
-  signal spcwpar : std_logic;
-  signal spcwparh : std_logic;
-  signal spcwpass : std_logic;
-  signal speed0 : std_logic;
-  signal speed0a : std_logic;
-  signal speed1 : std_logic;
-  signal speed1a : std_logic;
-  signal speedclk : std_logic;
-  signal spush : std_logic;
-  signal spushd : std_logic;
-  signal spy0 : std_logic;
-  signal spy1 : std_logic;
-  signal spy10 : std_logic;
-  signal spy11 : std_logic;
-  signal spy12 : std_logic;
-  signal spy13 : std_logic;
-  signal spy14 : std_logic;
-  signal spy15 : std_logic;
-  signal spy2 : std_logic;
-  signal spy3 : std_logic;
-  signal spy4 : std_logic;
-  signal spy5 : std_logic;
-  signal spy6 : std_logic;
-  signal spy7 : std_logic;
-  signal spy8 : std_logic;
-  signal spy9 : std_logic;
-  signal srclc : std_logic;
-  signal srcm : std_logic;
-  signal srcmap : std_logic;
-  signal srcmd : std_logic;
-  signal srcpdlidx : std_logic;
-  signal srcpdlptr : std_logic;
-  signal srcq : std_logic;
-  signal srcvma : std_logic;
-  signal srun : std_logic;
-  signal ssdone : std_logic;
-  signal sspeed0 : std_logic;
-  signal sspeed1 : std_logic;
-  signal sstep : std_logic;
-  signal st0 : std_logic;
-  signal st1 : std_logic;
-  signal st10 : std_logic;
-  signal st11 : std_logic;
-  signal st12 : std_logic;
-  signal st13 : std_logic;
-  signal st14 : std_logic;
-  signal st15 : std_logic;
-  signal st16 : std_logic;
-  signal st17 : std_logic;
-  signal st18 : std_logic;
-  signal st19 : std_logic;
-  signal st2 : std_logic;
-  signal st20 : std_logic;
-  signal st21 : std_logic;
-  signal st22 : std_logic;
-  signal st23 : std_logic;
-  signal st24 : std_logic;
-  signal st25 : std_logic;
-  signal st26 : std_logic;
-  signal st27 : std_logic;
-  signal st28 : std_logic;
-  signal st29 : std_logic;
-  signal st3 : std_logic;
-  signal st30 : std_logic;
-  signal st31 : std_logic;
-  signal st4 : std_logic;
-  signal st5 : std_logic;
-  signal st6 : std_logic;
-  signal st7 : std_logic;
-  signal st8 : std_logic;
-  signal st9 : std_logic;
-  signal stathenb : std_logic;
-  signal statstop : std_logic;
-  signal step : std_logic;
-  signal tilt0 : std_logic;
-  signal tilt1 : std_logic;
-  signal tpclk : std_logic;
-  signal tprend : std_logic;
-  signal tptse : std_logic;
-  signal tpwp : std_logic;
-  signal tpwpiram : std_logic;
-  signal trapa : std_logic;
-  signal trapb : std_logic;
-  signal trapenb : std_logic;
-  signal tse1a : std_logic;
-  signal tse1b : std_logic;
-  signal tse2 : std_logic;
-  signal tse3a : std_logic;
-  signal tse4a : std_logic;
-  signal tse4b : std_logic;
-  signal v0parok : std_logic;
-  signal vm0pari : std_logic;
-  signal vm1mpar : std_logic;
-  signal vm1pari : std_logic;
-  signal vmap0a : std_logic;
-  signal vmap0b : std_logic;
-  signal vmap1a : std_logic;
-  signal vmap1b : std_logic;
-  signal vmap2a : std_logic;
-  signal vmap2b : std_logic;
-  signal vmap3a : std_logic;
-  signal vmap3b : std_logic;
-  signal vmap4a : std_logic;
-  signal vmap4b : std_logic;
-  signal vmasela : std_logic;
-  signal vmaselb : std_logic;
-  signal vmo18 : std_logic;
-  signal vmo19 : std_logic;
-  signal vmopar : std_logic;
-  signal vmoparck : std_logic;
-  signal vmoparl : std_logic;
-  signal vmoparm : std_logic;
-  signal vmoparodd : std_logic;
-  signal vmoparok : std_logic;
-  signal vpari : std_logic;
-  signal wadr0 : std_logic;
-  signal wadr1 : std_logic;
-  signal wadr2 : std_logic;
-  signal wadr3 : std_logic;
-  signal wadr4 : std_logic;
-  signal wadr5 : std_logic;
-  signal wadr6 : std_logic;
-  signal wadr7 : std_logic;
-  signal wadr8 : std_logic;
-  signal wadr9 : std_logic;
-  signal wmap : std_logic;
-  signal wmapd : std_logic;
-  signal wp1a : std_logic;
-  signal wp1b : std_logic;
-  signal wp2 : std_logic;
-  signal wp3a : std_logic;
-  signal wp4a : std_logic;
-  signal wp4b : std_logic;
-  signal wp4c : std_logic;
-  signal wp5a : std_logic;
-  signal wp5b : std_logic;
-  signal wp5c : std_logic;
-  signal wp5d : std_logic;
-  signal wpc0 : std_logic;
-  signal wpc1 : std_logic;
-  signal wpc10 : std_logic;
-  signal wpc11 : std_logic;
-  signal wpc12 : std_logic;
-  signal wpc13 : std_logic;
-  signal wpc2 : std_logic;
-  signal wpc3 : std_logic;
-  signal wpc4 : std_logic;
-  signal wpc5 : std_logic;
-  signal wpc6 : std_logic;
-  signal wpc7 : std_logic;
-  signal wpc8 : std_logic;
-  signal wpc9 : std_logic;
-  signal wrcyc : std_logic;
-  signal xout11 : std_logic;
-  signal xout15 : std_logic;
-  signal xout19 : std_logic;
-  signal xout23 : std_logic;
-  signal xout27 : std_logic;
-  signal xout3 : std_logic;
-  signal xout31 : std_logic;
-  signal xout7 : std_logic;
-  signal xx0 : std_logic;
-  signal xx1 : std_logic;
-  signal yout11 : std_logic;
-  signal yout15 : std_logic;
-  signal yout19 : std_logic;
-  signal yout23 : std_logic;
-  signal yout27 : std_logic;
-  signal yout3 : std_logic;
-  signal yout31 : std_logic;
-  signal yout7 : std_logic;
-  signal yy0 : std_logic;
-  signal yy1 : std_logic;
-  signal zero16 : std_logic;
+  signal \-rdfinish\      : std_logic;
+  signal \-mfinish\       : std_logic;
+  signal \-memop\         : std_logic;
+  signal memstart         : std_logic;
+  signal \-memstart\      : std_logic;
+  signal \-mbusy.sync\    : std_logic;
+  signal \mbusy.sync\     : std_logic;
+  signal \-hang\          : std_logic;
+  signal mapwr0d          : std_logic;
+  signal mapwr1d          : std_logic;
+  signal \-memdrive.a\    : std_logic;
+  signal \-memdrive.b\    : std_logic;
+  signal \-memprepare_out\ : std_logic;
+  signal \-memrd_out\     : std_logic;
+  signal \-memrq_out\     : std_logic;
+  signal \-memwr_out\     : std_logic;
+  signal \-pfr_out\       : std_logic;
+  signal \use.md_out\     : std_logic;
+  signal wmap_out         : std_logic;
+  signal \-wmapd_out\     : std_logic;
+
+  -- MD control signals
+  signal \-ignpar\        : std_logic;
+  signal mdparodd         : std_logic;
+  signal \mempar in\      : std_logic;
+  signal \-mddrive\       : std_logic;
+  signal mdclk            : std_logic;
+  signal mdgetspar        : std_logic;
+  signal mdhaspar         : std_logic;
+  signal mdpar            : std_logic;
+
+  -- Overlord control signals
+  signal \-clock reset a\ : std_logic;
+  signal \-ldclk\         : std_logic;
+  signal mclk5a           : std_logic;
+  signal \-mclk5\         : std_logic;
+  signal clk5a            : std_logic;
+  signal \-clk5\          : std_logic;
+  signal \bus.power.reset l\ : std_logic;
+  signal \power reset a\  : std_logic;
+  signal \-lowerhighok\   : std_logic;
+  signal \-boot\          : std_logic;
+  signal \prog.bus.reset\ : std_logic;
+  signal \-bus.reset\     : std_logic;
+  signal \-clock reset b\ : std_logic;
+  signal \-clock reset a out\ : std_logic;
+  signal \-power reset\   : std_logic;
+  signal \boot.trap\      : std_logic;
+  signal \-boot2\         : std_logic;
+  signal \-ldmode\        : std_logic;
+  signal ldmode           : std_logic;
+  signal \-busint.lm.reset\ : std_logic;
+  signal \-prog.reset\    : std_logic;
+  signal \prog.boot\      : std_logic;
+  signal speed1a          : std_logic;
+  signal speedclk         : std_logic;
+  signal speed1           : std_logic;
+  signal speed0           : std_logic;
+  signal errstop          : std_logic;
+  signal stathenb         : std_logic;
+  signal trapenb          : std_logic;
+  signal promdisable      : std_logic;
+  signal \-opcinh\        : std_logic;
+  signal opcinh           : std_logic;
+  signal \-ldopc\         : std_logic;
+  signal opcclk           : std_logic;
+  signal \-opcclk\        : std_logic;
+  signal \-lpc.hold\      : std_logic;
+  signal ldstat           : std_logic;
+  signal \-ldstat\        : std_logic;
+  signal \-step\          : std_logic;
+  signal step             : std_logic;
+  signal sstep            : std_logic;
+  signal ssdone           : std_logic;
+  signal srun             : std_logic;
+  signal run              : std_logic;
+  signal \-run\           : std_logic;
+  signal \-ssdone\        : std_logic;
+  signal \-errhalt\       : std_logic;
+  signal \-stathalt\      : std_logic;
+  signal \stat.ovf\       : std_logic;
+  signal \-stc32\         : std_logic;
+  signal statstop         : std_logic;
+  signal \-machrun\       : std_logic;
+  signal \-higherr\       : std_logic;
+  signal err              : std_logic;
+  signal \-halted\        : std_logic;
+  signal highok           : std_logic;
+  signal statstop_out     : std_logic;
+  signal \-halt\          : std_logic;
+  signal \-ldmode_out\    : std_logic;
+  signal errstop_in       : std_logic;
+  signal \-errhalt_out\   : std_logic;
+
+  -- Spy interface signals
+  signal \-dbread\        : std_logic;
+  signal \-dbwrite\       : std_logic;
+  signal EADR             : std_logic_vector(4 downto 0);
+  signal \-spy.irh\       : std_logic;
+  signal \-spy.irl\       : std_logic;
+  signal \-spy.irm\       : std_logic;
+  signal \-spy.obh\       : std_logic;
+  signal \-spy.ah\        : std_logic;
+  signal \-spy.flag2\     : std_logic;
+  signal \-spy.mh\        : std_logic;
+  signal \-spy.ml\        : std_logic;
+  signal \-spy.opc\       : std_logic;
+  signal \-spy.pc\        : std_logic;
+  signal \-lddbirh\       : std_logic;
+  signal \-lddbirl\       : std_logic;
+  signal \-lddbirm\       : std_logic;
+  signal \-spy.al\        : std_logic;
+  signal \-spy.flag1\     : std_logic;
+  signal \-spy.sth\       : std_logic;
+  signal \-spy.stl\       : std_logic;
+
+  -- Statistics counter outputs
+  signal st0, st1, st2, st3, st4, st5, st6, st7 : std_logic;
+  signal st8, st9, st10, st11, st12, st13, st14, st15 : std_logic;
+  signal st16, st17, st18, st19, st20, st21, st22, st23 : std_logic;
+  signal st24, st25, st26, st27, st28, st29, st30, st31 : std_logic;
+
+  -- OPC counter signals
+  signal opcclka, opcclkb, opcclkc : std_logic;
+  signal opcinha, opcinhb : std_logic;
+
+  -- Trap control signals
+  signal \-errhalt\       : std_logic;
+  signal \-higherr\       : std_logic;
+  signal \-int\           : std_logic;
+  signal \-progboot\      : std_logic;
+  signal \-trap\          : std_logic;
+  signal \-vma0\          : std_logic;
+  signal \-vma1\          : std_logic;
+  signal \-trapenb\       : std_logic;
+  signal \-vm0lpar\       : std_logic;
+  signal \-vm1lpar\       : std_logic;
+  signal errhalt          : std_logic;
+  signal highprerr        : std_logic;
+  signal int              : std_logic;
+  signal p0, p1, p2, p3   : std_logic;
+  signal trap             : std_logic;
+  signal trapd            : std_logic;
+  signal \trap enable\    : std_logic;
+
+  -- OPC data counter outputs
+  signal dc0, dc1, dc2, dc3, dc4, dc5, dc6, dc7 : std_logic;
+  signal dc8, dc9, dc10, dc11, dc12, dc13 : std_logic;
+
+  -- Memory output selector signals
+  signal osel0a, osel1a, osel0b, osel1b : std_logic;
+
+  -- Bus termination signals
+  signal \-loadmd\        : std_logic;
+  signal \-memack\        : std_logic;
+  signal \-memgrant\      : std_logic;
+  signal \mempar in\      : std_logic;
+
 begin
-
---- Clock Generation (clkgen)
-  i_clock1 : cadr_clock1 port map(\-clock reset b\ => \-clock reset b\, \-hang\ => \-hang\, cyclecompleted => cyclecompleted, \-tpr0\ => \-tpr0\, \-tpr40\ => \-tpr40\, \-tprend\ => \-tprend\, \-tpw20\ => \-tpw20\, \-tpw40\ => \-tpw40\, \-tpw50\ => \-tpw50\, \-tpw30\ => \-tpw30\, \-tpw10\ => \-tpw10\, \-tpw60\ => \-tpw60\, \-tpw70\ => \-tpw70\, \-tpw75\ => \-tpw75\, \-tpw65\ => \-tpw65\, \-tpw55\ => \-tpw55\, \-tpw30a\ => \-tpw30a\, \-tpw40a\ => \-tpw40a\, \-tpw45\ => \-tpw45\, \-tpw35\ => \-tpw35\, \-tpw25\ => \-tpw25\, \-tpr100\ => \-tpr100\, \-tpr140\ => \-tpr140\, \-tpr160\ => \-tpr160\, tprend => tprend, sspeed1 => sspeed1, sspeed0 => sspeed0, \-ilong\ => \-ilong\, \-tpr75\ => \-tpr75\, \-tpr115\ => \-tpr115\, \-tpr85\ => \-tpr85\, \-tpr125\ => \-tpr125\, \-tpr10\ => \-tpr10\, \-tpr20a\ => \-tpr20a\, \-tpr25\ => \-tpr25\, \-tpr15\ => \-tpr15\, \-tpr5\ => \-tpr5\, \-tpr80\ => \-tpr80\, \-tpr60\ => \-tpr60\, \-tpr20\ => \-tpr20\, \-tpr180\ => \-tpr180\, \-tpr200\ => \-tpr200\, \-tpr120\ => \-tpr120\, \-tpr110\ => \-tpr110\, \-tpr120a\ => \-tpr120a\, \-tpr105\ => \-tpr105\, \-tpr70\ => \-tpr70\, \-tpr80a\ => \-tpr80a\, \-tpr65\ => \-tpr65\);
-  i_clock2 : cadr_clock2 port map(clk4 => clk4, \-clk0\ => \-clk0\, mclk7 => mclk7, \-mclk0\ => \-mclk0\, \-wp1\ => \-wp1\, tpwp => tpwp, \-wp2\ => \-wp2\, \-wp3\ => \-wp3\, \-wp4\ => \-wp4\, \-tprend\ => \-tprend\, tpclk => tpclk, \-tptse\ => \-tptse\, \-tpr25\ => \-tpr25\, \-clock reset b\ => \-clock reset b\, tptse => tptse, \-tpw70\ => \-tpw70\, \-tpclk\ => \-tpclk\, \-tpr0\ => \-tpr0\, \-tpr5\ => \-tpr5\, \-tpw30\ => \-tpw30\, tpwpiram => tpwpiram, \-wp5\ => \-wp5\, clk5 => clk5, mclk5 => mclk5, \-tpw45\ => \-tpw45\, \-tse1\ => \-tse1\, \-tse2\ => \-tse2\, \-tse3\ => \-tse3\, \-tse4\ => \-tse4\, clk1 => clk1, clk2 => clk2, clk3 => clk3, mclk1 => mclk1, machrun => machrun, \-machruna\ => \-machruna\, hi1 => hi1);
-  i_clockd : cadr_clockd port map(\-clk1\ => \-clk1\, hi12 => hi12, clk1a => clk1a, reset => reset, \-reset\ => \-reset\, mclk1a => mclk1a, \-mclk1\ => \-mclk1\, mclk1 => mclk1, clk1 => clk1, \-wp1\ => \-wp1\, wp1b => wp1b, wp1a => wp1a, tse1b => tse1b, \-tse1\ => \-tse1\, tse1a => tse1a, hi1 => hi1, hi2 => hi2, hi3 => hi3, hi4 => hi4, hi5 => hi5, hi6 => hi6, hi7 => hi7, \-upperhighok\ => \-upperhighok\, hi8 => hi8, hi9 => hi9, hi10 => hi10, hi11 => hi11, lcry3 => lcry3, \-lcry3\ => \-lcry3\, clk2 => clk2, \-clk2c\ => \-clk2c\, \-clk2a\ => \-clk2a\, wp2 => wp2, \-wp2\ => \-wp2\, tse2 => tse2, \-tse2\ => \-tse2\, clk2a => clk2a, clk2b => clk2b, clk2c => clk2c, \-clk3a\ => \-clk3a\, clk3a => clk3a, clk3b => clk3b, clk3c => clk3c, clk3 => clk3, \-clk3g\ => \-clk3g\, \-clk3d\ => \-clk3d\, wp3a => wp3a, \-wp3\ => \-wp3\, tse3a => tse3a, \-tse3\ => \-tse3\, clk3d => clk3d, clk3e => clk3e, clk3f => clk3f, \-clk4a\ => \-clk4a\, clk4a => clk4a, clk4b => clk4b, clk4c => clk4c, clk4 => clk4, \-clk4e\ => \-clk4e\, \-clk4d\ => \-clk4d\, wp4c => wp4c, \-wp4\ => \-wp4\, wp4b => wp4b, wp4a => wp4a, clk4d => clk4d, clk4e => clk4e, clk4f => clk4f, \-tse4\ => \-tse4\, tse4b => tse4b, tse4a => tse4a, srcpdlptr => srcpdlptr, \-srcpdlptr\ => \-srcpdlptr\, srcpdlidx => srcpdlidx, \-srcpdlidx\ => \-srcpdlidx\);
-
-
---- Microinstruction Fetch (imem?)
-  i_ictl : cadr_ictl port map(ramdisable => ramdisable, hi1 => hi1, \-iwriteda\ => \-iwriteda\, \-promdisabled\ => \-promdisabled\, idebug => idebug, iwriteda => iwriteda, promdisabled => promdisabled, \-wp5\ => \-wp5\, wp5d => wp5d, wp5c => wp5c, wp5b => wp5b, wp5a => wp5a, pc0 => pc0, \-pcb0\ => \-pcb0\, pc1 => pc1, \-pcb1\ => \-pcb1\, pc2 => pc2, \-pcb2\ => \-pcb2\, \-pcb3\ => \-pcb3\, pc3 => pc3, \-pcb4\ => \-pcb4\, pc4 => pc4, \-pcb5\ => \-pcb5\, pc5 => pc5, \-iwea\ => \-iwea\, \-iweb\ => \-iweb\, \-iwei\ => \-iwei\, \-iwej\ => \-iwej\, pc13 => pc13, \-pc13b\ => \-pc13b\, pc12 => pc12, \-pc12b\ => \-pc12b\, \-iwrited\ => \-iwrited\, iwritedd => iwritedd, iwritedc => iwritedc, iwritedb => iwritedb, pc6 => pc6, \-pcb6\ => \-pcb6\, pc7 => pc7, \-pcb7\ => \-pcb7\, pc8 => pc8, \-pcb8\ => \-pcb8\, \-pcb9\ => \-pcb9\, pc9 => pc9, \-pcb10\ => \-pcb10\, pc10 => pc10, \-pcb11\ => \-pcb11\, pc11 => pc11, \-ice3a\ => \-ice3a\, \-ice2a\ => \-ice2a\, \-ice1a\ => \-ice1a\, \-ice0a\ => \-ice0a\, \-ice0b\ => \-ice0b\, \-ice1b\ => \-ice1b\, \-ice2b\ => \-ice2b\, \-ice3b\ => \-ice3b\, \-iwec\ => \-iwec\, \-iwed\ => \-iwed\, \-iwek\ => \-iwek\, \-iwel\ => \-iwel\, \-pcc0\ => \-pcc0\, \-pcc1\ => \-pcc1\, \-pcc2\ => \-pcc2\, \-pcc3\ => \-pcc3\, \-pcc4\ => \-pcc4\, \-pcc5\ => \-pcc5\, \-pcc6\ => \-pcc6\, \-pcc7\ => \-pcc7\, \-pcc8\ => \-pcc8\, \-pcc9\ => \-pcc9\, \-pcc10\ => \-pcc10\, \-pcc11\ => \-pcc11\, \-iwee\ => \-iwee\, \-iwef\ => \-iwef\, \-iwem\ => \-iwem\, \-iwen\ => \-iwen\, \-ice3c\ => \-ice3c\, \-ice2c\ => \-ice2c\, \-ice1c\ => \-ice1c\, \-ice0c\ => \-ice0c\, \-ice0d\ => \-ice0d\, \-ice1d\ => \-ice1d\, \-ice2d\ => \-ice2d\, \-ice3d\ => \-ice3d\, \-iweg\ => \-iweg\, \-iweh\ => \-iweh\, \-iweo\ => \-iweo\, \-iwep\ => \-iwep\);
-  i_iram00 : cadr_iram00 port map(pc0a => pc0a, pc1a => pc1a, pc2a => pc2a, pc3a => pc3a, pc4a => pc4a, pc5a => pc5a, i10 => i10, \-iwea\ => \-iwea\, \-ice0a\ => \-ice0a\, iwr10 => iwr10, pc11a => pc11a, pc10a => pc10a, pc9a => pc9a, pc8a => pc8a, pc7a => pc7a, pc6a => pc6a, i11 => i11, iwr11 => iwr11, \-pcb6\ => \-pcb6\, \-pcb7\ => \-pcb7\, \-pcb8\ => \-pcb8\, \-pcb9\ => \-pcb9\, \-pcb10\ => \-pcb10\, \-pcb11\ => \-pcb11\, \-pcb0\ => \-pcb0\, \-pcb1\ => \-pcb1\, \-pcb2\ => \-pcb2\, \-pcb3\ => \-pcb3\, \-pcb4\ => \-pcb4\, \-pcb5\ => \-pcb5\, i5 => i5, iwr5 => iwr5, i6 => i6, iwr6 => iwr6, i7 => i7, iwr7 => iwr7, i8 => i8, iwr8 => iwr8, i9 => i9, iwr9 => iwr9, i0 => i0, iwr0 => iwr0, i1 => i1, iwr1 => iwr1, i2 => i2, iwr2 => iwr2, i3 => i3, iwr3 => iwr3, i4 => i4, iwr4 => iwr4);
-  i_iram01 : cadr_iram01 port map(pc0b => pc0b, pc1b => pc1b, pc2b => pc2b, pc3b => pc3b, pc4b => pc4b, pc5b => pc5b, i10 => i10, \-iweb\ => \-iweb\, \-ice1a\ => \-ice1a\, iwr10 => iwr10, pc11b => pc11b, pc10b => pc10b, pc9b => pc9b, pc8b => pc8b, pc7b => pc7b, pc6b => pc6b, i11 => i11, iwr11 => iwr11, \-pcb6\ => \-pcb6\, \-pcb7\ => \-pcb7\, \-pcb8\ => \-pcb8\, \-pcb9\ => \-pcb9\, \-pcb10\ => \-pcb10\, \-pcb11\ => \-pcb11\, \-pcb0\ => \-pcb0\, \-pcb1\ => \-pcb1\, \-pcb2\ => \-pcb2\, \-pcb3\ => \-pcb3\, \-pcb4\ => \-pcb4\, \-pcb5\ => \-pcb5\, i5 => i5, iwr5 => iwr5, i6 => i6, iwr6 => iwr6, i7 => i7, iwr7 => iwr7, i8 => i8, iwr8 => iwr8, i9 => i9, iwr9 => iwr9, i0 => i0, iwr0 => iwr0, i1 => i1, iwr1 => iwr1, i2 => i2, iwr2 => iwr2, i3 => i3, iwr3 => iwr3, i4 => i4, iwr4 => iwr4);
-  i_iram02 : cadr_iram02 port map(pc0c => pc0c, pc1c => pc1c, pc2c => pc2c, pc3c => pc3c, pc4c => pc4c, pc5c => pc5c, i10 => i10, \-iwec\ => \-iwec\, \-ice2a\ => \-ice2a\, iwr10 => iwr10, pc11c => pc11c, pc10c => pc10c, pc9c => pc9c, pc8c => pc8c, pc7c => pc7c, pc6c => pc6c, i11 => i11, iwr11 => iwr11, \-pcb6\ => \-pcb6\, \-pcb7\ => \-pcb7\, \-pcb8\ => \-pcb8\, \-pcb9\ => \-pcb9\, \-pcb10\ => \-pcb10\, \-pcb11\ => \-pcb11\, \-pcb0\ => \-pcb0\, \-pcb1\ => \-pcb1\, \-pcb2\ => \-pcb2\, \-pcb3\ => \-pcb3\, \-pcb4\ => \-pcb4\, \-pcb5\ => \-pcb5\, i5 => i5, iwr5 => iwr5, i6 => i6, iwr6 => iwr6, i7 => i7, iwr7 => iwr7, i8 => i8, iwr8 => iwr8, i9 => i9, iwr9 => iwr9, i0 => i0, iwr0 => iwr0, i1 => i1, iwr1 => iwr1, i2 => i2, iwr2 => iwr2, i3 => i3, iwr3 => iwr3, i4 => i4, iwr4 => iwr4);
-  i_iram03 : cadr_iram03 port map(pc0d => pc0d, pc1d => pc1d, pc2d => pc2d, pc3d => pc3d, pc4d => pc4d, pc5d => pc5d, i10 => i10, \-iwed\ => \-iwed\, \-ice3a\ => \-ice3a\, iwr10 => iwr10, pc11d => pc11d, pc10d => pc10d, pc9d => pc9d, pc8d => pc8d, pc7d => pc7d, pc6d => pc6d, i11 => i11, iwr11 => iwr11, \-pcb6\ => \-pcb6\, \-pcb7\ => \-pcb7\, \-pcb8\ => \-pcb8\, \-pcb9\ => \-pcb9\, \-pcb10\ => \-pcb10\, \-pcb11\ => \-pcb11\, \-pcb0\ => \-pcb0\, \-pcb1\ => \-pcb1\, \-pcb2\ => \-pcb2\, \-pcb3\ => \-pcb3\, \-pcb4\ => \-pcb4\, \-pcb5\ => \-pcb5\, i5 => i5, iwr5 => iwr5, i6 => i6, iwr6 => iwr6, i7 => i7, iwr7 => iwr7, i8 => i8, iwr8 => iwr8, i9 => i9, iwr9 => iwr9, i0 => i0, iwr0 => iwr0, i1 => i1, iwr1 => iwr1, i2 => i2, iwr2 => iwr2, i3 => i3, iwr3 => iwr3, i4 => i4, iwr4 => iwr4);
-  i_iram10 : cadr_iram10 port map(pc0e => pc0e, pc1e => pc1e, pc2e => pc2e, pc3e => pc3e, pc4e => pc4e, pc5e => pc5e, i22 => i22, \-iwee\ => \-iwee\, \-ice0b\ => \-ice0b\, iwr22 => iwr22, pc11e => pc11e, pc10e => pc10e, pc9e => pc9e, pc8e => pc8e, pc7e => pc7e, pc6e => pc6e, i23 => i23, iwr23 => iwr23, \-pcb6\ => \-pcb6\, \-pcb7\ => \-pcb7\, \-pcb8\ => \-pcb8\, \-pcb9\ => \-pcb9\, \-pcb10\ => \-pcb10\, \-pcb11\ => \-pcb11\, \-pcb0\ => \-pcb0\, \-pcb1\ => \-pcb1\, \-pcb2\ => \-pcb2\, \-pcb3\ => \-pcb3\, \-pcb4\ => \-pcb4\, \-pcb5\ => \-pcb5\, i17 => i17, iwr17 => iwr17, i18 => i18, iwr18 => iwr18, i19 => i19, iwr19 => iwr19, i20 => i20, iwr20 => iwr20, i21 => i21, iwr21 => iwr21, i12 => i12, iwr12 => iwr12, i13 => i13, iwr13 => iwr13, i14 => i14, iwr14 => iwr14, i15 => i15, iwr15 => iwr15, i16 => i16, iwr16 => iwr16);
-  i_iram11 : cadr_iram11 port map(pc0f => pc0f, pc1f => pc1f, pc2f => pc2f, pc3f => pc3f, pc4f => pc4f, pc5f => pc5f, i22 => i22, \-iwef\ => \-iwef\, \-ice1b\ => \-ice1b\, iwr22 => iwr22, pc11f => pc11f, pc10f => pc10f, pc9f => pc9f, pc8f => pc8f, pc7f => pc7f, pc6f => pc6f, i23 => i23, iwr23 => iwr23, \-pcb6\ => \-pcb6\, \-pcb7\ => \-pcb7\, \-pcb8\ => \-pcb8\, \-pcb9\ => \-pcb9\, \-pcb10\ => \-pcb10\, \-pcb11\ => \-pcb11\, \-pcb0\ => \-pcb0\, \-pcb1\ => \-pcb1\, \-pcb2\ => \-pcb2\, \-pcb3\ => \-pcb3\, \-pcb4\ => \-pcb4\, \-pcb5\ => \-pcb5\, i17 => i17, iwr17 => iwr17, i18 => i18, iwr18 => iwr18, i19 => i19, iwr19 => iwr19, i20 => i20, iwr20 => iwr20, i21 => i21, iwr21 => iwr21, i12 => i12, iwr12 => iwr12, i13 => i13, iwr13 => iwr13, i14 => i14, iwr14 => iwr14, i15 => i15, iwr15 => iwr15, i16 => i16, iwr16 => iwr16);
-  i_iram12 : cadr_iram12 port map(pc0g => pc0g, pc1g => pc1g, pc2g => pc2g, pc3g => pc3g, pc4g => pc4g, pc5g => pc5g, i22 => i22, \-iweg\ => \-iweg\, \-ice2b\ => \-ice2b\, iwr22 => iwr22, pc11g => pc11g, pc10g => pc10g, pc9g => pc9g, pc8g => pc8g, pc7g => pc7g, pc6g => pc6g, i23 => i23, iwr23 => iwr23, \-pcb6\ => \-pcb6\, \-pcb7\ => \-pcb7\, \-pcb8\ => \-pcb8\, \-pcb9\ => \-pcb9\, \-pcb10\ => \-pcb10\, \-pcb11\ => \-pcb11\, \-pcb0\ => \-pcb0\, \-pcb1\ => \-pcb1\, \-pcb2\ => \-pcb2\, \-pcb3\ => \-pcb3\, \-pcb4\ => \-pcb4\, \-pcb5\ => \-pcb5\, i17 => i17, iwr17 => iwr17, i18 => i18, iwr18 => iwr18, i19 => i19, iwr19 => iwr19, i20 => i20, iwr20 => iwr20, i21 => i21, iwr21 => iwr21, i12 => i12, iwr12 => iwr12, i13 => i13, iwr13 => iwr13, i14 => i14, iwr14 => iwr14, i15 => i15, iwr15 => iwr15, i16 => i16, iwr16 => iwr16);
-  i_iram13 : cadr_iram13 port map(pc0h => pc0h, pc1h => pc1h, pc2h => pc2h, pc3h => pc3h, pc4h => pc4h, pc5h => pc5h, i22 => i22, \-iweh\ => \-iweh\, \-ice3b\ => \-ice3b\, iwr22 => iwr22, pc11h => pc11h, pc10h => pc10h, pc9h => pc9h, pc8h => pc8h, pc7h => pc7h, pc6h => pc6h, i23 => i23, iwr23 => iwr23, \-pcb6\ => \-pcb6\, \-pcb7\ => \-pcb7\, \-pcb8\ => \-pcb8\, \-pcb9\ => \-pcb9\, \-pcb10\ => \-pcb10\, \-pcb11\ => \-pcb11\, \-pcb0\ => \-pcb0\, \-pcb1\ => \-pcb1\, \-pcb2\ => \-pcb2\, \-pcb3\ => \-pcb3\, \-pcb4\ => \-pcb4\, \-pcb5\ => \-pcb5\, i17 => i17, iwr17 => iwr17, i18 => i18, iwr18 => iwr18, i19 => i19, iwr19 => iwr19, i20 => i20, iwr20 => iwr20, i21 => i21, iwr21 => iwr21, i12 => i12, iwr12 => iwr12, i13 => i13, iwr13 => iwr13, i14 => i14, iwr14 => iwr14, i15 => i15, iwr15 => iwr15, i16 => i16, iwr16 => iwr16);
-  i_iram20 : cadr_iram20 port map(pc0i => pc0i, pc1i => pc1i, pc2i => pc2i, pc3i => pc3i, pc4i => pc4i, pc5i => pc5i, i31 => i31, \-iwei\ => \-iwei\, \-ice0c\ => \-ice0c\, iwr31 => iwr31, pc11i => pc11i, pc10i => pc10i, pc9i => pc9i, pc8i => pc8i, pc7i => pc7i, pc6i => pc6i, i32 => i32, iwr32 => iwr32, i33 => i33, iwr33 => iwr33, i34 => i34, iwr34 => iwr34, i35 => i35, iwr35 => iwr35, i26 => i26, iwr26 => iwr26, i27 => i27, iwr27 => iwr27, i28 => i28, iwr28 => iwr28, i29 => i29, iwr29 => iwr29, i30 => i30, iwr30 => iwr30, \-pcc6\ => \-pcc6\, \-pcc7\ => \-pcc7\, \-pcc8\ => \-pcc8\, \-pcc9\ => \-pcc9\, \-pcc10\ => \-pcc10\, \-pcc11\ => \-pcc11\, \-pcc0\ => \-pcc0\, \-pcc1\ => \-pcc1\, \-pcc2\ => \-pcc2\, \-pcc3\ => \-pcc3\, \-pcc4\ => \-pcc4\, \-pcc5\ => \-pcc5\, i24 => i24, iwr24 => iwr24, i25 => i25, iwr25 => iwr25);
-  i_iram21 : cadr_iram21 port map(pc0j => pc0j, pc1j => pc1j, pc2j => pc2j, pc3j => pc3j, pc4j => pc4j, pc5j => pc5j, i31 => i31, \-iwej\ => \-iwej\, \-ice1c\ => \-ice1c\, iwr31 => iwr31, pc11j => pc11j, pc10j => pc10j, pc9j => pc9j, pc8j => pc8j, pc7j => pc7j, pc6j => pc6j, i32 => i32, iwr32 => iwr32, i33 => i33, iwr33 => iwr33, i34 => i34, iwr34 => iwr34, i35 => i35, iwr35 => iwr35, i26 => i26, iwr26 => iwr26, i27 => i27, iwr27 => iwr27, i28 => i28, iwr28 => iwr28, i29 => i29, iwr29 => iwr29, i30 => i30, iwr30 => iwr30, \-pcc6\ => \-pcc6\, \-pcc7\ => \-pcc7\, \-pcc8\ => \-pcc8\, \-pcc9\ => \-pcc9\, \-pcc10\ => \-pcc10\, \-pcc11\ => \-pcc11\, \-pcc0\ => \-pcc0\, \-pcc1\ => \-pcc1\, \-pcc2\ => \-pcc2\, \-pcc3\ => \-pcc3\, \-pcc4\ => \-pcc4\, \-pcc5\ => \-pcc5\, i24 => i24, iwr24 => iwr24, i25 => i25, iwr25 => iwr25);
-  i_iram22 : cadr_iram22 port map(pc0k => pc0k, pc1k => pc1k, pc2k => pc2k, pc3k => pc3k, pc4k => pc4k, pc5k => pc5k, i31 => i31, \-iwek\ => \-iwek\, \-ice2c\ => \-ice2c\, iwr31 => iwr31, pc11k => pc11k, pc10k => pc10k, pc9k => pc9k, pc8k => pc8k, pc7k => pc7k, pc6k => pc6k, i32 => i32, iwr32 => iwr32, i33 => i33, iwr33 => iwr33, i34 => i34, iwr34 => iwr34, i35 => i35, iwr35 => iwr35, i26 => i26, iwr26 => iwr26, i27 => i27, iwr27 => iwr27, i28 => i28, iwr28 => iwr28, i29 => i29, iwr29 => iwr29, i30 => i30, iwr30 => iwr30, \-pcc6\ => \-pcc6\, \-pcc7\ => \-pcc7\, \-pcc8\ => \-pcc8\, \-pcc9\ => \-pcc9\, \-pcc10\ => \-pcc10\, \-pcc11\ => \-pcc11\, \-pcc0\ => \-pcc0\, \-pcc1\ => \-pcc1\, \-pcc2\ => \-pcc2\, \-pcc3\ => \-pcc3\, \-pcc4\ => \-pcc4\, \-pcc5\ => \-pcc5\, i24 => i24, iwr24 => iwr24, i25 => i25, iwr25 => iwr25);
-  i_iram23 : cadr_iram23 port map(pc0l => pc0l, pc1l => pc1l, pc2l => pc2l, pc3l => pc3l, pc4l => pc4l, pc5l => pc5l, i31 => i31, \-iwel\ => \-iwel\, \-ice3c\ => \-ice3c\, iwr31 => iwr31, pc11l => pc11l, pc10l => pc10l, pc9l => pc9l, pc8l => pc8l, pc7l => pc7l, pc6l => pc6l, i32 => i32, iwr32 => iwr32, i33 => i33, iwr33 => iwr33, i34 => i34, iwr34 => iwr34, i35 => i35, iwr35 => iwr35, i26 => i26, iwr26 => iwr26, i27 => i27, iwr27 => iwr27, i28 => i28, iwr28 => iwr28, i29 => i29, iwr29 => iwr29, i30 => i30, iwr30 => iwr30, \-pcc6\ => \-pcc6\, \-pcc7\ => \-pcc7\, \-pcc8\ => \-pcc8\, \-pcc9\ => \-pcc9\, \-pcc10\ => \-pcc10\, \-pcc11\ => \-pcc11\, \-pcc0\ => \-pcc0\, \-pcc1\ => \-pcc1\, \-pcc2\ => \-pcc2\, \-pcc3\ => \-pcc3\, \-pcc4\ => \-pcc4\, \-pcc5\ => \-pcc5\, i24 => i24, iwr24 => iwr24, i25 => i25, iwr25 => iwr25);
-  i_iram30 : cadr_iram30 port map(pc0m => pc0m, pc1m => pc1m, pc2m => pc2m, pc3m => pc3m, pc4m => pc4m, pc5m => pc5m, i44 => i44, \-iwem\ => \-iwem\, \-ice0d\ => \-ice0d\, iwr44 => iwr44, pc11m => pc11m, pc10m => pc10m, pc9m => pc9m, pc8m => pc8m, pc7m => pc7m, pc6m => pc6m, i45 => i45, iwr45 => iwr45, i46 => i46, iwr46 => iwr46, i47 => i47, iwr47 => iwr47, i48 => i48, iwr48 => iwr48, i39 => i39, iwr39 => iwr39, i40 => i40, iwr40 => iwr40, i41 => i41, iwr41 => iwr41, i42 => i42, iwr42 => iwr42, i43 => i43, iwr43 => iwr43, \-pcc6\ => \-pcc6\, \-pcc7\ => \-pcc7\, \-pcc8\ => \-pcc8\, \-pcc9\ => \-pcc9\, \-pcc10\ => \-pcc10\, \-pcc11\ => \-pcc11\, \-pcc0\ => \-pcc0\, \-pcc1\ => \-pcc1\, \-pcc2\ => \-pcc2\, \-pcc3\ => \-pcc3\, \-pcc4\ => \-pcc4\, \-pcc5\ => \-pcc5\, i36 => i36, iwr36 => iwr36, i37 => i37, iwr37 => iwr37, i38 => i38, iwr38 => iwr38);
-  i_iram31 : cadr_iram31 port map(pc0n => pc0n, pc1n => pc1n, pc2n => pc2n, pc3n => pc3n, pc4n => pc4n, pc5n => pc5n, i44 => i44, \-iwen\ => \-iwen\, \-ice1d\ => \-ice1d\, iwr44 => iwr44, pc11n => pc11n, pc10n => pc10n, pc9n => pc9n, pc8n => pc8n, pc7n => pc7n, pc6n => pc6n, i45 => i45, iwr45 => iwr45, i46 => i46, iwr46 => iwr46, i47 => i47, iwr47 => iwr47, i48 => i48, iwr48 => iwr48, i39 => i39, iwr39 => iwr39, i40 => i40, iwr40 => iwr40, i41 => i41, iwr41 => iwr41, i42 => i42, iwr42 => iwr42, i43 => i43, iwr43 => iwr43, \-pcc6\ => \-pcc6\, \-pcc7\ => \-pcc7\, \-pcc8\ => \-pcc8\, \-pcc9\ => \-pcc9\, \-pcc10\ => \-pcc10\, \-pcc11\ => \-pcc11\, \-pcc0\ => \-pcc0\, \-pcc1\ => \-pcc1\, \-pcc2\ => \-pcc2\, \-pcc3\ => \-pcc3\, \-pcc4\ => \-pcc4\, \-pcc5\ => \-pcc5\, i36 => i36, iwr36 => iwr36, i37 => i37, iwr37 => iwr37, i38 => i38, iwr38 => iwr38);
-  i_iram32 : cadr_iram32 port map(pc0o => pc0o, pc1o => pc1o, pc2o => pc2o, pc3o => pc3o, pc4o => pc4o, pc5o => pc5o, i44 => i44, \-iweo\ => \-iweo\, \-ice2d\ => \-ice2d\, iwr44 => iwr44, pc11o => pc11o, pc10o => pc10o, pc9o => pc9o, pc8o => pc8o, pc7o => pc7o, pc6o => pc6o, i45 => i45, iwr45 => iwr45, i46 => i46, iwr46 => iwr46, i47 => i47, iwr47 => iwr47, i48 => i48, iwr48 => iwr48, i39 => i39, iwr39 => iwr39, i40 => i40, iwr40 => iwr40, i41 => i41, iwr41 => iwr41, i42 => i42, iwr42 => iwr42, i43 => i43, iwr43 => iwr43, \-pcc6\ => \-pcc6\, \-pcc7\ => \-pcc7\, \-pcc8\ => \-pcc8\, \-pcc9\ => \-pcc9\, \-pcc10\ => \-pcc10\, \-pcc11\ => \-pcc11\, \-pcc0\ => \-pcc0\, \-pcc1\ => \-pcc1\, \-pcc2\ => \-pcc2\, \-pcc3\ => \-pcc3\, \-pcc4\ => \-pcc4\, \-pcc5\ => \-pcc5\, i36 => i36, iwr36 => iwr36, i37 => i37, iwr37 => iwr37, i38 => i38, iwr38 => iwr38);
-  i_iram33 : cadr_iram33 port map(pc0p => pc0p, pc1p => pc1p, pc2p => pc2p, pc3p => pc3p, pc4p => pc4p, pc5p => pc5p, i44 => i44, \-iwep\ => \-iwep\, \-ice3d\ => \-ice3d\, iwr44 => iwr44, pc11p => pc11p, pc10p => pc10p, pc9p => pc9p, pc8p => pc8p, pc7p => pc7p, pc6p => pc6p, i45 => i45, iwr45 => iwr45, i46 => i46, iwr46 => iwr46, i47 => i47, iwr47 => iwr47, i48 => i48, iwr48 => iwr48, i39 => i39, iwr39 => iwr39, i40 => i40, iwr40 => iwr40, i41 => i41, iwr41 => iwr41, i42 => i42, iwr42 => iwr42, i43 => i43, iwr43 => iwr43, \-pcc6\ => \-pcc6\, \-pcc7\ => \-pcc7\, \-pcc8\ => \-pcc8\, \-pcc9\ => \-pcc9\, \-pcc10\ => \-pcc10\, \-pcc11\ => \-pcc11\, \-pcc0\ => \-pcc0\, \-pcc1\ => \-pcc1\, \-pcc2\ => \-pcc2\, \-pcc3\ => \-pcc3\, \-pcc4\ => \-pcc4\, \-pcc5\ => \-pcc5\, i36 => i36, iwr36 => iwr36, i37 => i37, iwr37 => iwr37, i38 => i38, iwr38 => iwr38);
-  i_iwr : cadr_iwr port map(iwr47 => iwr47, aa15 => aa15, aa14 => aa14, iwr46 => iwr46, iwr45 => iwr45, aa13 => aa13, aa12 => aa12, iwr44 => iwr44, clk2c => clk2c, iwr43 => iwr43, aa11 => aa11, aa10 => aa10, iwr42 => iwr42, iwr41 => iwr41, aa9 => aa9, aa8 => aa8, iwr40 => iwr40, iwr39 => iwr39, aa7 => aa7, aa6 => aa6, iwr38 => iwr38, iwr37 => iwr37, aa5 => aa5, aa4 => aa4, iwr36 => iwr36, iwr35 => iwr35, aa3 => aa3, aa2 => aa2, iwr34 => iwr34, iwr33 => iwr33, aa1 => aa1, aa0 => aa0, iwr32 => iwr32, iwr15 => iwr15, m15 => m15, m14 => m14, iwr14 => iwr14, iwr13 => iwr13, m13 => m13, m12 => m12, iwr12 => iwr12, clk4c => clk4c, iwr11 => iwr11, m11 => m11, m10 => m10, iwr10 => iwr10, iwr9 => iwr9, m9 => m9, m8 => m8, iwr8 => iwr8, iwr7 => iwr7, m7 => m7, m6 => m6, iwr6 => iwr6, iwr5 => iwr5, m5 => m5, m4 => m4, iwr4 => iwr4, iwr3 => iwr3, m3 => m3, m2 => m2, iwr2 => iwr2, iwr1 => iwr1, m1 => m1, m0 => m0, iwr0 => iwr0, iwr31 => iwr31, m31 => m31, m30 => m30, iwr30 => iwr30, iwr29 => iwr29, m29 => m29, m28 => m28, iwr28 => iwr28, iwr27 => iwr27, m27 => m27, m26 => m26, iwr26 => iwr26, iwr25 => iwr25, m25 => m25, m24 => m24, iwr24 => iwr24, iwr23 => iwr23, m23 => m23, m22 => m22, iwr22 => iwr22, iwr21 => iwr21, m21 => m21, m20 => m20, iwr20 => iwr20, iwr19 => iwr19, m19 => m19, m18 => m18, iwr18 => iwr18, iwr17 => iwr17, m17 => m17, m16 => m16, iwr16 => iwr16);
-  i_pctl : cadr_pctl port map(\-promenable\ => \-promenable\, i46 => i46, hi2 => hi2, pc0 => pc0, \-prompc0\ => \-prompc0\, pc1 => pc1, \-prompc1\ => \-prompc1\, pc2 => pc2, \-prompc2\ => \-prompc2\, \-prompc3\ => \-prompc3\, pc3 => pc3, \-prompc4\ => \-prompc4\, pc4 => pc4, pc9 => pc9, \-promce0\ => \-promce0\, \-prompc9\ => \-prompc9\, \-promce1\ => \-promce1\, \bottom.1k\ => \bottom.1k\, \-idebug\ => \-idebug\, \-promdisabled\ => \-promdisabled\, \-iwriteda\ => \-iwriteda\, pc13 => pc13, pc12 => pc12, pc11 => pc11, pc10 => pc10, pc5 => pc5, \-prompc5\ => \-prompc5\, pc6 => pc6, \-prompc6\ => \-prompc6\, pc7 => pc7, \-prompc7\ => \-prompc7\, \-prompc8\ => \-prompc8\, pc8 => pc8, \-ape\ => \-ape\, \-pdlpe\ => \-pdlpe\, \-spe\ => \-spe\, \-mpe\ => \-mpe\, tilt1 => tilt1, tilt0 => tilt0, \-mempe\ => \-mempe\, \-v1pe\ => \-v1pe\, \-v0pe\ => \-v0pe\, promenable => promenable, dpe => dpe, \-dpe\ => \-dpe\, ipe => ipe, \-ipe\ => \-ipe\);
-  i_prom0 : cadr_prom0 port map(\-prompc0\ => \-prompc0\, \-prompc1\ => \-prompc1\, \-prompc2\ => \-prompc2\, \-prompc3\ => \-prompc3\, \-prompc4\ => \-prompc4\, i32 => i32, i33 => i33, i34 => i34, i35 => i35, i36 => i36, i37 => i37, i38 => i38, i39 => i39, \-promce0\ => \-promce0\, \-prompc5\ => \-prompc5\, \-prompc6\ => \-prompc6\, \-prompc7\ => \-prompc7\, \-prompc8\ => \-prompc8\, i40 => i40, i41 => i41, i42 => i42, i43 => i43, i44 => i44, i45 => i45, i47 => i47, i48 => i48, i24 => i24, i25 => i25, i26 => i26, i27 => i27, i28 => i28, i29 => i29, i30 => i30, i31 => i31, i16 => i16, i17 => i17, i18 => i18, i19 => i19, i20 => i20, i21 => i21, i22 => i22, i23 => i23, i0 => i0, i1 => i1, i2 => i2, i3 => i3, i4 => i4, i5 => i5, i6 => i6, i7 => i7, i8 => i8, i9 => i9, i10 => i10, i11 => i11, i12 => i12, i13 => i13, i14 => i14, i15 => i15);
-  i_prom1 : cadr_prom1 port map(\-prompc0\ => \-prompc0\, \-prompc1\ => \-prompc1\, \-prompc2\ => \-prompc2\, \-prompc3\ => \-prompc3\, \-prompc4\ => \-prompc4\, i24 => i24, i25 => i25, i26 => i26, i27 => i27, i28 => i28, i29 => i29, i30 => i30, i31 => i31, \-promce1\ => \-promce1\, \-prompc5\ => \-prompc5\, \-prompc6\ => \-prompc6\, \-prompc7\ => \-prompc7\, \-prompc8\ => \-prompc8\, i32 => i32, i33 => i33, i34 => i34, i35 => i35, i36 => i36, i37 => i37, i38 => i38, i39 => i39, i40 => i40, i41 => i41, i42 => i42, i43 => i43, i44 => i44, i45 => i45, i47 => i47, i48 => i48, i16 => i16, i17 => i17, i18 => i18, i19 => i19, i20 => i20, i21 => i21, i22 => i22, i23 => i23, i0 => i0, i1 => i1, i2 => i2, i3 => i3, i4 => i4, i5 => i5, i6 => i6, i7 => i7, i8 => i8, i9 => i9, i10 => i10, i11 => i11, i12 => i12, i13 => i13, i14 => i14, i15 => i15);
-  i_debug : cadr_debug port map(\-idebug\ => \-idebug\, i39 => i39, spy7 => spy7, spy6 => spy6, i38 => i38, i37 => i37, spy5 => spy5, spy4 => spy4, i36 => i36, \-lddbirh\ => \-lddbirh\, i35 => i35, spy3 => spy3, spy2 => spy2, i34 => i34, i33 => i33, spy1 => spy1, spy0 => spy0, i32 => i32, i31 => i31, spy15 => spy15, spy14 => spy14, i30 => i30, i29 => i29, spy13 => spy13, spy12 => spy12, i28 => i28, \-lddbirm\ => \-lddbirm\, i27 => i27, spy11 => spy11, spy10 => spy10, i26 => i26, i25 => i25, spy9 => spy9, spy8 => spy8, i24 => i24, i23 => i23, i22 => i22, i21 => i21, i20 => i20, i19 => i19, i18 => i18, i17 => i17, i16 => i16, i15 => i15, i14 => i14, i13 => i13, i12 => i12, \-lddbirl\ => \-lddbirl\, i11 => i11, i10 => i10, i9 => i9, i8 => i8, i7 => i7, i6 => i6, i5 => i5, i4 => i4, i3 => i3, i2 => i2, i1 => i1, i0 => i0, i47 => i47, i46 => i46, i45 => i45, i44 => i44, i43 => i43, i42 => i42, i41 => i41, i40 => i40);
-
-
---- Microinstrction Modification and Main Instruction Register (ior)
-  i_ior : cadr_ior port map(i12 => i12, ob12 => ob12, iob12 => iob12, i13 => i13, ob13 => ob13, iob13 => iob13, iob14 => iob14, i14 => i14, ob14 => ob14, iob15 => iob15, i15 => i15, ob15 => ob15, i8 => i8, ob8 => ob8, iob8 => iob8, i9 => i9, ob9 => ob9, iob9 => iob9, iob10 => iob10, i10 => i10, ob10 => ob10, iob11 => iob11, i11 => i11, ob11 => ob11, i4 => i4, ob4 => ob4, iob4 => iob4, i5 => i5, ob5 => ob5, iob5 => iob5, iob6 => iob6, i6 => i6, ob6 => ob6, iob7 => iob7, i7 => i7, ob7 => ob7, i0 => i0, ob0 => ob0, iob0 => iob0, i1 => i1, ob1 => ob1, iob1 => iob1, iob2 => iob2, i2 => i2, ob2 => ob2, iob3 => iob3, i3 => i3, ob3 => ob3, i20 => i20, ob20 => ob20, iob20 => iob20, i21 => i21, ob21 => ob21, iob21 => iob21, iob22 => iob22, i22 => i22, ob22 => ob22, iob23 => iob23, i23 => i23, ob23 => ob23, i16 => i16, ob16 => ob16, iob16 => iob16, i17 => i17, ob17 => ob17, iob17 => iob17, iob18 => iob18, i18 => i18, ob18 => ob18, iob19 => iob19, i19 => i19, ob19 => ob19, i44 => i44, iob44 => iob44, i45 => i45, iob45 => iob45, iob46 => iob46, i46 => i46, iob47 => iob47, i47 => i47, i40 => i40, iob40 => iob40, i41 => i41, iob41 => iob41, iob42 => iob42, i42 => i42, iob43 => iob43, i43 => i43, i36 => i36, iob36 => iob36, i37 => i37, iob37 => iob37, iob38 => iob38, i38 => i38, iob39 => iob39, i39 => i39, i32 => i32, iob32 => iob32, i33 => i33, iob33 => iob33, iob34 => iob34, i34 => i34, iob35 => iob35, i35 => i35, i28 => i28, iob28 => iob28, i29 => i29, iob29 => iob29, iob30 => iob30, i30 => i30, iob31 => iob31, i31 => i31, i24 => i24, ob24 => ob24, iob24 => iob24, i25 => i25, ob25 => ob25, iob25 => iob25, iob26 => iob26, i26 => i26, iob27 => iob27, i27 => i27);
-  i_ireg : cadr_ireg port map(\-destimod0\ => \-destimod0\, ir15 => ir15, iob15 => iob15, i15 => i15, i14 => i14, iob14 => iob14, ir14 => ir14, clk3a => clk3a, ir13 => ir13, iob13 => iob13, i13 => i13, i12 => i12, iob12 => iob12, ir12 => ir12, ir11 => ir11, iob11 => iob11, i11 => i11, i10 => i10, iob10 => iob10, ir10 => ir10, ir9 => ir9, iob9 => iob9, i9 => i9, i8 => i8, iob8 => iob8, ir8 => ir8, ir7 => ir7, iob7 => iob7, i7 => i7, i6 => i6, iob6 => iob6, ir6 => ir6, ir5 => ir5, iob5 => iob5, i5 => i5, i4 => i4, iob4 => iob4, ir4 => ir4, ir3 => ir3, iob3 => iob3, i3 => i3, i2 => i2, iob2 => iob2, ir2 => ir2, ir1 => ir1, iob1 => iob1, i1 => i1, i0 => i0, iob0 => iob0, ir0 => ir0, ir23 => ir23, iob23 => iob23, i23 => i23, i22 => i22, iob22 => iob22, ir22 => ir22, clk3b => clk3b, ir21 => ir21, iob21 => iob21, i21 => i21, i20 => i20, iob20 => iob20, ir20 => ir20, ir19 => ir19, iob19 => iob19, i19 => i19, i18 => i18, iob18 => iob18, ir18 => ir18, ir17 => ir17, iob17 => iob17, i17 => i17, i16 => i16, iob16 => iob16, ir16 => ir16, \-destimod1\ => \-destimod1\, i48 => i48, ir48 => ir48, ir47 => ir47, iob47 => iob47, i47 => i47, i46 => i46, iob46 => iob46, ir46 => ir46, ir45 => ir45, iob45 => iob45, i45 => i45, i44 => i44, iob44 => iob44, ir44 => ir44, ir43 => ir43, iob43 => iob43, i43 => i43, i42 => i42, iob42 => iob42, ir42 => ir42, ir41 => ir41, iob41 => iob41, i41 => i41, i40 => i40, iob40 => iob40, ir40 => ir40, ir39 => ir39, iob39 => iob39, i39 => i39, i38 => i38, iob38 => iob38, ir38 => ir38, ir37 => ir37, iob37 => iob37, i37 => i37, i36 => i36, iob36 => iob36, ir36 => ir36, ir35 => ir35, iob35 => iob35, i35 => i35, i34 => i34, iob34 => iob34, ir34 => ir34, ir33 => ir33, iob33 => iob33, i33 => i33, i32 => i32, iob32 => iob32, ir32 => ir32, ir31 => ir31, iob31 => iob31, i31 => i31, i30 => i30, iob30 => iob30, ir30 => ir30, ir29 => ir29, iob29 => iob29, i29 => i29, i28 => i28, iob28 => iob28, ir28 => ir28, ir27 => ir27, iob27 => iob27, i27 => i27, i26 => i26, iob26 => iob26, ir26 => ir26, ir25 => ir25, iob25 => iob25, i25 => i25, i24 => i24, iob24 => iob24, ir24 => ir24);
-
-
---- IR Decoding (source?)
-  i_source : cadr_source port map(\-iralu\ => \-iralu\, \-irbyte\ => \-irbyte\, dest => dest, \-destmem\ => \-destmem\, ir23 => ir23, destm => destm, \-specalu\ => \-specalu\, ir8 => ir8, iralu => iralu, ir22 => ir22, \-ir22\ => \-ir22\, ir25 => ir25, \-ir25\ => \-ir25\, irdisp => irdisp, \-irdisp\ => \-irdisp\, irjump => irjump, \-irjump\ => \-irjump\, ir3 => ir3, ir4 => ir4, \-mul\ => \-mul\, \-div\ => \-div\, nop => nop, ir43 => ir43, ir44 => ir44, \-funct3\ => \-funct3\, \-funct2\ => \-funct2\, \-funct1\ => \-funct1\, \-funct0\ => \-funct0\, ir11 => ir11, ir10 => ir10, ir19 => ir19, ir20 => ir20, ir21 => ir21, \-destintctl\ => \-destintctl\, \-destlc\ => \-destlc\, \-destimod1\ => \-destimod1\, \-destimod0\ => \-destimod0\, \-destspc\ => \-destspc\, \-destpdlp\ => \-destpdlp\, \-destpdlx\ => \-destpdlx\, \-destpdl(x)\ => \-destpdl(x)\, \-destpdl(p)\ => \-destpdl(p)\, \-destpdltop\ => \-destpdltop\, ir26 => ir26, ir27 => ir27, ir28 => ir28, \-ir31\ => \-ir31\, ir29 => ir29, hi5 => hi5, \-srcq\ => \-srcq\, \-srcopc\ => \-srcopc\, \-srcpdltop\ => \-srcpdltop\, \-srcpdlpop\ => \-srcpdlpop\, \-srcpdlidx\ => \-srcpdlidx\, \-srcpdlptr\ => \-srcpdlptr\, \-srcspc\ => \-srcspc\, \-srcdc\ => \-srcdc\, \-srcspcpop\ => \-srcspcpop\, \-srclc\ => \-srclc\, \-srcmd\ => \-srcmd\, \-srcmap\ => \-srcmap\, \-srcvma\ => \-srcvma\, \destimod0 l\ => \destimod0 l\, \iwrited l\ => \iwrited l\, \-destmdr\ => \-destmdr\, \-destvma\ => \-destvma\, \-idebug\ => \-idebug\, imod => imod);
-
-
---- A Memory (amem)
-  i_actl : cadr_actl port map(clk3e => clk3e, wadr0 => wadr0, ir32 => ir32, \-aadr0b\ => \-aadr0b\, wadr1 => wadr1, ir33 => ir33, \-aadr1b\ => \-aadr1b\, \-aadr2b\ => \-aadr2b\, ir34 => ir34, wadr2 => wadr2, \-aadr3b\ => \-aadr3b\, ir35 => ir35, wadr3 => wadr3, clk3d => clk3d, wadr4 => wadr4, ir36 => ir36, \-aadr4b\ => \-aadr4b\, wadr5 => wadr5, ir37 => ir37, \-aadr5b\ => \-aadr5b\, \-aadr6b\ => \-aadr6b\, ir38 => ir38, wadr6 => wadr6, \-aadr7b\ => \-aadr7b\, ir39 => ir39, wadr7 => wadr7, \-aadr0a\ => \-aadr0a\, \-aadr1a\ => \-aadr1a\, \-aadr2a\ => \-aadr2a\, \-aadr3a\ => \-aadr3a\, \-aadr4a\ => \-aadr4a\, \-aadr5a\ => \-aadr5a\, \-aadr6a\ => \-aadr6a\, \-aadr7a\ => \-aadr7a\, wadr8 => wadr8, ir40 => ir40, \-aadr8a\ => \-aadr8a\, wadr9 => wadr9, ir41 => ir41, \-aadr9a\ => \-aadr9a\, \-aadr8b\ => \-aadr8b\, \-aadr9b\ => \-aadr9b\, apass1 => apass1, apass2 => apass2, \-apass\ => \-apass\, tse3a => tse3a, \-amemenb\ => \-amemenb\, hi3 => hi3, \-reset\ => \-reset\, ir14 => ir14, ir15 => ir15, ir16 => ir16, ir17 => ir17, destmd => destmd, destm => destm, dest => dest, destd => destd, ir21 => ir21, ir20 => ir20, ir19 => ir19, ir18 => ir18, ir23 => ir23, ir22 => ir22, wp3a => wp3a, \-awpa\ => \-awpa\, \-awpb\ => \-awpb\, \-awpc\ => \-awpc\, tse4a => tse4a, apassenb => apassenb, \-apassenb\ => \-apassenb\);
-  i_amem0 : cadr_amem0 port map(\-aadr0b\ => \-aadr0b\, \-aadr1b\ => \-aadr1b\, \-aadr2b\ => \-aadr2b\, \-aadr3b\ => \-aadr3b\, \-aadr4b\ => \-aadr4b\, amem22 => amem22, \-aadr5b\ => \-aadr5b\, \-aadr6b\ => \-aadr6b\, \-aadr7b\ => \-aadr7b\, \-aadr8b\ => \-aadr8b\, \-aadr9b\ => \-aadr9b\, \-awpa\ => \-awpa\, \-awpb\ => \-awpb\, l22 => l22, amem20 => amem20, l20 => l20, amem18 => amem18, l18 => l18, amem16 => amem16, l16 => l16, amem23 => amem23, l23 => l23, amem21 => amem21, l21 => l21, amem19 => amem19, l19 => l19, amem17 => amem17, l17 => l17, amemparity => amemparity, lparity => lparity, amem30 => amem30, l30 => l30, amem28 => amem28, l28 => l28, amem26 => amem26, l26 => l26, amem24 => amem24, l24 => l24, amem31 => amem31, l31 => l31, amem29 => amem29, l29 => l29, amem27 => amem27, l27 => l27, amem25 => amem25, l25 => l25);
-  i_amem1 : cadr_amem1 port map(\-aadr0a\ => \-aadr0a\, \-aadr1a\ => \-aadr1a\, \-aadr2a\ => \-aadr2a\, \-aadr3a\ => \-aadr3a\, \-aadr4a\ => \-aadr4a\, amem6 => amem6, \-aadr5a\ => \-aadr5a\, \-aadr6a\ => \-aadr6a\, \-aadr7a\ => \-aadr7a\, \-aadr8a\ => \-aadr8a\, \-aadr9a\ => \-aadr9a\, \-awpc\ => \-awpc\, l6 => l6, amem4 => amem4, l4 => l4, amem2 => amem2, l2 => l2, amem0 => amem0, l0 => l0, amem7 => amem7, l7 => l7, amem5 => amem5, l5 => l5, amem3 => amem3, l3 => l3, amem1 => amem1, l1 => l1, amem14 => amem14, \-awpb\ => \-awpb\, l14 => l14, amem12 => amem12, l12 => l12, amem10 => amem10, l10 => l10, amem8 => amem8, l8 => l8, amem15 => amem15, l15 => l15, amem13 => amem13, l13 => l13, amem11 => amem11, l11 => l11, amem9 => amem9, l9 => l9);
-  i_alatch : cadr_alatch port map(\-amemenb\ => \-amemenb\, a23 => a23, amem23 => amem23, amem22 => amem22, a22 => a22, a21 => a21, amem21 => amem21, amem20 => amem20, a20 => a20, clk3e => clk3e, a19 => a19, amem19 => amem19, amem18 => amem18, a18 => a18, a17 => a17, amem17 => amem17, amem16 => amem16, a16 => a16, \-apassenb\ => \-apassenb\, l15 => l15, a8 => a8, l14 => l14, a9 => a9, l13 => l13, a10 => a10, l12 => l12, a11 => a11, l11 => l11, a12 => a12, l10 => l10, a13 => a13, l9 => l9, a14 => a14, l8 => l8, a15 => a15, apassenb => apassenb, amem15 => amem15, amem14 => amem14, amem13 => amem13, amem12 => amem12, amem11 => amem11, amem10 => amem10, amem9 => amem9, amem8 => amem8, l7 => l7, a0 => a0, l6 => l6, a1 => a1, l5 => l5, a2 => a2, l4 => l4, a3 => a3, l3 => l3, a4 => a4, l2 => l2, a5 => a5, l1 => l1, a6 => a6, l0 => l0, a7 => a7, amem7 => amem7, amem6 => amem6, amem5 => amem5, amem4 => amem4, amem3 => amem3, amem2 => amem2, amem1 => amem1, amem0 => amem0, hi5 => hi5, a31b => a31b, aparity => aparity, lparity => lparity, l31 => l31, amemparity => amemparity, amem31 => amem31, a24 => a24, l30 => l30, a25 => a25, l29 => l29, a26 => a26, l28 => l28, a27 => a27, l27 => l27, a28 => a28, l26 => l26, a29 => a29, l25 => l25, a30 => a30, l24 => l24, a31a => a31a, amem30 => amem30, amem29 => amem29, amem28 => amem28, amem27 => amem27, amem26 => amem26, amem25 => amem25, amem24 => amem24, l23 => l23, l22 => l22, l21 => l21, l20 => l20, l19 => l19, l18 => l18, l17 => l17, l16 => l16);
-  i_apar : cadr_apar port map(a26 => a26, a27 => a27, a28 => a28, a29 => a29, a30 => a30, a31b => a31b, aparity => aparity, aparok => aparok, aparl => aparl, aparm => aparm, a24 => a24, a25 => a25, a17 => a17, a18 => a18, a19 => a19, a20 => a20, a21 => a21, a22 => a22, a23 => a23, a12 => a12, a13 => a13, a14 => a14, a15 => a15, a16 => a16, a5 => a5, a6 => a6, a7 => a7, a8 => a8, a9 => a9, a10 => a10, a11 => a11, a0 => a0, a1 => a1, a2 => a2, a3 => a3, a4 => a4, m17 => m17, m18 => m18, m19 => m19, m20 => m20, m21 => m21, m22 => m22, m23 => m23, mparm => mparm, m12 => m12, m13 => m13, m14 => m14, m15 => m15, m16 => m16, m5 => m5, m6 => m6, m7 => m7, m8 => m8, m9 => m9, m10 => m10, m11 => m11, mparl => mparl, m0 => m0, m1 => m1, m2 => m2, m3 => m3, m4 => m4, mpareven => mpareven, srcm => srcm, mmemparok => mmemparok, pdlenb => pdlenb, pdlparok => pdlparok, m26 => m26, m27 => m27, m28 => m28, m29 => m29, m30 => m30, m31 => m31, mparity => mparity, mparodd => mparodd, m24 => m24, m25 => m25);
-
-
---- M Memory (mmem)
-  i_mctl : cadr_mctl port map(clk4e => clk4e, wadr4 => wadr4, ir30 => ir30, \-madr4a\ => \-madr4a\, \-madr4b\ => \-madr4b\, wadr0 => wadr0, ir26 => ir26, \-madr0b\ => \-madr0b\, wadr1 => wadr1, ir27 => ir27, \-madr1b\ => \-madr1b\, \-madr2b\ => \-madr2b\, ir28 => ir28, wadr2 => wadr2, \-madr3b\ => \-madr3b\, ir29 => ir29, wadr3 => wadr3, mmem15 => mmem15, mmem14 => mmem14, mmem13 => mmem13, mmem12 => mmem12, mmem11 => mmem11, mmem10 => mmem10, mmem9 => mmem9, mmem8 => mmem8, mmem7 => mmem7, mmem6 => mmem6, mmem5 => mmem5, mmem4 => mmem4, mmem3 => mmem3, mmem2 => mmem2, mmem1 => mmem1, mmem0 => mmem0, mpass => mpass, tse4a => tse4a, srcm => srcm, hi2 => hi2, \-ir31\ => \-ir31\, \-mpass\ => \-mpass\, mpassl => mpassl, \-mpassm\ => \-mpassm\, \-mpassl\ => \-mpassl\, destmd => destmd, \-madr0a\ => \-madr0a\, \-madr1a\ => \-madr1a\, \-madr2a\ => \-madr2a\, \-madr3a\ => \-madr3a\, mmemparity => mmemparity, mmem31 => mmem31, mmem30 => mmem30, mmem29 => mmem29, mmem28 => mmem28, mmem27 => mmem27, mmem26 => mmem26, mmem25 => mmem25, mmem24 => mmem24, mmem23 => mmem23, mmem22 => mmem22, mmem21 => mmem21, mmem20 => mmem20, mmem19 => mmem19, mmem18 => mmem18, mmem17 => mmem17, mmem16 => mmem16, wp4b => wp4b, \-mwpa\ => \-mwpa\, \-mwpb\ => \-mwpb\);
-  i_mmem : cadr_mmem port map(\-mwpa\ => \-mwpa\, l16 => l16, \-madr4a\ => \-madr4a\, hi3 => hi3, mmem16 => mmem16, mmem17 => mmem17, \-madr3a\ => \-madr3a\, \-madr2a\ => \-madr2a\, \-madr1a\ => \-madr1a\, \-madr0a\ => \-madr0a\, l17 => l17, \-mwpb\ => \-mwpb\, l12 => l12, \-madr4b\ => \-madr4b\, hi2 => hi2, mmem12 => mmem12, mmem13 => mmem13, \-madr3b\ => \-madr3b\, \-madr2b\ => \-madr2b\, \-madr1b\ => \-madr1b\, \-madr0b\ => \-madr0b\, l13 => l13, l8 => l8, mmem8 => mmem8, mmem9 => mmem9, l9 => l9, l4 => l4, mmem4 => mmem4, mmem5 => mmem5, l5 => l5, l0 => l0, mmem0 => mmem0, mmem1 => mmem1, l1 => l1, l18 => l18, mmem18 => mmem18, mmem19 => mmem19, l19 => l19, l14 => l14, mmem14 => mmem14, mmem15 => mmem15, l15 => l15, l10 => l10, mmem10 => mmem10, mmem11 => mmem11, l11 => l11, l6 => l6, mmem6 => mmem6, mmem7 => mmem7, l7 => l7, l2 => l2, mmem2 => mmem2, mmem3 => mmem3, l3 => l3, l28 => l28, mmem28 => mmem28, mmem29 => mmem29, l29 => l29, l24 => l24, mmem24 => mmem24, mmem25 => mmem25, l25 => l25, l20 => l20, mmem20 => mmem20, mmem21 => mmem21, l21 => l21, lparity => lparity, mmemparity => mmemparity, l30 => l30, mmem30 => mmem30, mmem31 => mmem31, l31 => l31, l26 => l26, mmem26 => mmem26, mmem27 => mmem27, l27 => l27, l22 => l22, mmem22 => mmem22, mmem23 => mmem23, l23 => l23);
-  i_mlatch : cadr_mlatch port map(\-mpassm\ => \-mpassm\, m23 => m23, mmem23 => mmem23, mmem22 => mmem22, m22 => m22, m21 => m21, mmem21 => mmem21, mmem20 => mmem20, m20 => m20, clk4a => clk4a, m19 => m19, mmem19 => mmem19, mmem18 => mmem18, m18 => m18, m17 => m17, mmem17 => mmem17, mmem16 => mmem16, m16 => m16, m15 => m15, mmem15 => mmem15, mmem14 => mmem14, m14 => m14, m13 => m13, mmem13 => mmem13, mmem12 => mmem12, m12 => m12, m11 => m11, mmem11 => mmem11, mmem10 => mmem10, m10 => m10, m9 => m9, mmem9 => mmem9, mmem8 => mmem8, m8 => m8, m7 => m7, mmem7 => mmem7, mmem6 => mmem6, m6 => m6, m5 => m5, mmem5 => mmem5, mmem4 => mmem4, m4 => m4, m3 => m3, mmem3 => mmem3, mmem2 => mmem2, m2 => m2, m1 => m1, mmem1 => mmem1, mmem0 => mmem0, m0 => m0, \-mpassl\ => \-mpassl\, l15 => l15, mf8 => mf8, l14 => l14, mf9 => mf9, l13 => l13, mf10 => mf10, l12 => l12, mf11 => mf11, l11 => l11, mf12 => mf12, l10 => l10, mf13 => mf13, l9 => l9, mf14 => mf14, l8 => l8, mf15 => mf15, mpassl => mpassl, l7 => l7, mf0 => mf0, l6 => l6, mf1 => mf1, l5 => l5, mf2 => mf2, l4 => l4, mf3 => mf3, l3 => l3, mf4 => mf4, l2 => l2, mf5 => mf5, l1 => l1, mf6 => mf6, l0 => l0, mf7 => mf7, mmemparity => mmemparity, mparity => mparity, m31 => m31, mmem31 => mmem31, mmem30 => mmem30, m30 => m30, m29 => m29, mmem29 => mmem29, mmem28 => mmem28, m28 => m28, m27 => m27, mmem27 => mmem27, mmem26 => mmem26, m26 => m26, m25 => m25, mmem25 => mmem25, mmem24 => mmem24, m24 => m24, l31 => l31, mf24 => mf24, l30 => l30, mf25 => mf25, l29 => l29, mf26 => mf26, l28 => l28, mf27 => mf27, l27 => l27, mf28 => mf28, l26 => l26, mf29 => mf29, l25 => l25, mf30 => mf30, l24 => l24, mf31 => mf31, l23 => l23, mf16 => mf16, l22 => l22, mf17 => mf17, l21 => l21, mf18 => mf18, l20 => l20, mf19 => mf19, l19 => l19, mf20 => mf20, l18 => l18, mf21 => mf21, l17 => l17, mf22 => mf22, l16 => l16, mf23 => mf23);
-  i_mf : cadr_mf port map(tse1a => tse1a, mfenb => mfenb, \-mfdrive\ => \-mfdrive\, mf23 => mf23, m16 => m16, mf22 => mf22, m17 => m17, mf21 => mf21, m18 => m18, mf20 => mf20, m19 => m19, mf19 => mf19, m20 => m20, mf18 => mf18, m21 => m21, mf17 => mf17, m22 => m22, mf16 => mf16, m23 => m23, mfdrive => mfdrive, mf15 => mf15, m8 => m8, mf14 => mf14, m9 => m9, mf13 => mf13, m10 => m10, mf12 => mf12, m11 => m11, mf11 => mf11, m12 => m12, mf10 => mf10, m13 => m13, mf9 => mf9, m14 => m14, mf8 => mf8, m15 => m15, mf7 => mf7, m0 => m0, mf6 => mf6, m1 => m1, mf5 => mf5, m2 => m2, mf4 => mf4, m3 => m3, mf3 => mf3, m4 => m4, mf2 => mf2, m5 => m5, mf1 => mf1, m6 => m6, mf0 => mf0, m7 => m7, mf31 => mf31, m24 => m24, mf30 => mf30, m25 => m25, mf29 => mf29, m26 => m26, mf28 => mf28, m27 => m27, mf27 => mf27, m28 => m28, mf26 => mf26, m29 => m29, mf25 => mf25, m30 => m30, mf24 => mf24, m31 => m31, pdlenb => pdlenb, spcenb => spcenb, \-srcm\ => \-srcm\, \-ir31\ => \-ir31\, \-mpass\ => \-mpass\);
-
-
---- Stack Buffer (pdl)
-  i_pdlptr : cadr_pdlptr port map(\-srcpdlpop\ => \-srcpdlpop\, clk3f => clk3f, ob8 => ob8, ob9 => ob9, \-destpdlp\ => \-destpdlp\, \-pdlcry7\ => \-pdlcry7\, pdlptr9 => pdlptr9, pdlptr8 => pdlptr8, \-destpdlx\ => \-destpdlx\, pdlidx6 => pdlidx6, ob6 => ob6, ob7 => ob7, pdlidx7 => pdlidx7, pdlidx8 => pdlidx8, pdlidx9 => pdlidx9, ob4 => ob4, ob5 => ob5, \-pdlcry3\ => \-pdlcry3\, pdlptr7 => pdlptr7, pdlptr6 => pdlptr6, pdlptr5 => pdlptr5, pdlptr4 => pdlptr4, pdlidx0 => pdlidx0, ob0 => ob0, ob1 => ob1, pdlidx1 => pdlidx1, ob2 => ob2, pdlidx2 => pdlidx2, pdlidx3 => pdlidx3, ob3 => ob3, pdlidx4 => pdlidx4, pdlidx5 => pdlidx5, \-pdlcnt\ => \-pdlcnt\, pdlptr3 => pdlptr3, pdlptr2 => pdlptr2, pdlptr1 => pdlptr1, pdlptr0 => pdlptr0, \-ppdrive\ => \-ppdrive\, mf0 => mf0, mf1 => mf1, mf2 => mf2, mf3 => mf3, pidrive => pidrive, mf8 => mf8, mf9 => mf9, mf10 => mf10, mf11 => mf11, mf4 => mf4, mf5 => mf5, mf6 => mf6, mf7 => mf7, srcpdlidx => srcpdlidx, tse4b => tse4b, srcpdlptr => srcpdlptr);
-  i_pdlctl : cadr_pdlctl port map(\-reset\ => \-reset\, pdlwrited => pdlwrited, \-pdlwrited\ => \-pdlwrited\, pdlwrite => pdlwrite, \-destpdl(x)\ => \-destpdl(x)\, pwidx => pwidx, \-pwidx\ => \-pwidx\, clk4f => clk4f, imodd => imodd, \-imodd\ => \-imodd\, imod => imod, \-destspc\ => \-destspc\, \-destspcd\ => \-destspcd\, \-pdlpb\ => \-pdlpb\, pdlptr0 => pdlptr0, pdlidx0 => pdlidx0, \-pdla0b\ => \-pdla0b\, pdlptr1 => pdlptr1, pdlidx1 => pdlidx1, \-pdla1b\ => \-pdla1b\, \-pdla2b\ => \-pdla2b\, pdlidx2 => pdlidx2, pdlptr2 => pdlptr2, \-pdla3b\ => \-pdla3b\, pdlidx3 => pdlidx3, pdlptr3 => pdlptr3, \-pdlpa\ => \-pdlpa\, pdlptr8 => pdlptr8, pdlidx8 => pdlidx8, \-pdla8b\ => \-pdla8b\, pdlptr9 => pdlptr9, pdlidx9 => pdlidx9, \-pdla9b\ => \-pdla9b\, \-pdla0a\ => \-pdla0a\, \-pdla1a\ => \-pdla1a\, \-pdla2a\ => \-pdla2a\, \-pdla3a\ => \-pdla3a\, \-pdla4a\ => \-pdla4a\, pdlidx4 => pdlidx4, pdlptr4 => pdlptr4, \-pdla5a\ => \-pdla5a\, pdlidx5 => pdlidx5, pdlptr5 => pdlptr5, \-destpdl(p)\ => \-destpdl(p)\, \-pdlcnt\ => \-pdlcnt\, clk4b => clk4b, ir30 => ir30, \-clk4e\ => \-clk4e\, \-srcpdlpop\ => \-srcpdlpop\, \-srcpdltop\ => \-srcpdltop\, pdlenb => pdlenb, tse4b => tse4b, \-pdldrive\ => \-pdldrive\, \-destpdltop\ => \-destpdltop\, \-pdla4b\ => \-pdla4b\, \-pdla5b\ => \-pdla5b\, \-pdla6b\ => \-pdla6b\, pdlidx6 => pdlidx6, pdlptr6 => pdlptr6, \-pdla7b\ => \-pdla7b\, pdlidx7 => pdlidx7, pdlptr7 => pdlptr7, wp4a => wp4a, \-pwpa\ => \-pwpa\, \-pwpb\ => \-pwpb\, \-pwpc\ => \-pwpc\, \-pdla6a\ => \-pdla6a\, \-pdla7a\ => \-pdla7a\, \-pdla8a\ => \-pdla8a\, \-pdla9a\ => \-pdla9a\, nop => nop);
-  i_pdl0 : cadr_pdl0 port map(\-pdla0b\ => \-pdla0b\, \-pdla1b\ => \-pdla1b\, \-pdla2b\ => \-pdla2b\, \-pdla3b\ => \-pdla3b\, \-pdla4b\ => \-pdla4b\, pdlparity => pdlparity, \-pdla5b\ => \-pdla5b\, \-pdla6b\ => \-pdla6b\, \-pdla7b\ => \-pdla7b\, \-pdla8b\ => \-pdla8b\, \-pdla9b\ => \-pdla9b\, \-pwpa\ => \-pwpa\, lparity => lparity, pdl28 => pdl28, l28 => l28, pdl27 => pdl27, l27 => l27, pdl26 => pdl26, l26 => l26, pdl21 => pdl21, \-pwpb\ => \-pwpb\, l21 => l21, pdl20 => pdl20, l20 => l20, pdl19 => pdl19, l19 => l19, pdl18 => pdl18, l18 => l18, pdl31 => pdl31, l31 => l31, pdl30 => pdl30, l30 => l30, pdl29 => pdl29, l29 => l29, pdl25 => pdl25, l25 => l25, pdl24 => pdl24, l24 => l24, pdl23 => pdl23, l23 => l23, pdl22 => pdl22, l22 => l22, pdl17 => pdl17, l17 => l17, pdl16 => pdl16, l16 => l16);
-  i_pdl1 : cadr_pdl1 port map(\-pdla0a\ => \-pdla0a\, \-pdla1a\ => \-pdla1a\, \-pdla2a\ => \-pdla2a\, \-pdla3a\ => \-pdla3a\, \-pdla4a\ => \-pdla4a\, pdl13 => pdl13, \-pdla5a\ => \-pdla5a\, \-pdla6a\ => \-pdla6a\, \-pdla7a\ => \-pdla7a\, \-pdla8a\ => \-pdla8a\, \-pdla9a\ => \-pdla9a\, \-pwpb\ => \-pwpb\, l13 => l13, pdl12 => pdl12, l12 => l12, pdl11 => pdl11, l11 => l11, pdl10 => pdl10, \-pwpc\ => \-pwpc\, l10 => l10, pdl4 => pdl4, l4 => l4, pdl3 => pdl3, l3 => l3, pdl2 => pdl2, l2 => l2, pdl1 => pdl1, l1 => l1, pdl0 => pdl0, l0 => l0, pdl15 => pdl15, l15 => l15, pdl14 => pdl14, l14 => l14, pdl9 => pdl9, l9 => l9, pdl8 => pdl8, l8 => l8, pdl7 => pdl7, l7 => l7, pdl6 => pdl6, l6 => l6, pdl5 => pdl5, l5 => l5);
-  i_platch : cadr_platch port map(\-pdldrive\ => \-pdldrive\, m15 => m15, pdl15 => pdl15, pdl14 => pdl14, m14 => m14, m13 => m13, pdl13 => pdl13, pdl12 => pdl12, m12 => m12, clk4a => clk4a, m11 => m11, pdl11 => pdl11, pdl10 => pdl10, m10 => m10, m9 => m9, pdl9 => pdl9, pdl8 => pdl8, m8 => m8, m7 => m7, pdl7 => pdl7, pdl6 => pdl6, m6 => m6, m5 => m5, pdl5 => pdl5, pdl4 => pdl4, m4 => m4, m3 => m3, pdl3 => pdl3, pdl2 => pdl2, m2 => m2, m1 => m1, pdl1 => pdl1, pdl0 => pdl0, m0 => m0, m31 => m31, pdl31 => pdl31, pdl30 => pdl30, m30 => m30, m29 => m29, pdl29 => pdl29, pdl28 => pdl28, m28 => m28, m27 => m27, pdl27 => pdl27, pdl26 => pdl26, m26 => m26, m25 => m25, pdl25 => pdl25, pdl24 => pdl24, m24 => m24, m23 => m23, pdl23 => pdl23, pdl22 => pdl22, m22 => m22, m21 => m21, pdl21 => pdl21, pdl20 => pdl20, m20 => m20, m19 => m19, pdl19 => pdl19, pdl18 => pdl18, m18 => m18, m17 => m17, pdl17 => pdl17, pdl16 => pdl16, m16 => m16, pdlparity => pdlparity, mparity => mparity);
-
-
---- The Shifter\Masker (sm)
-  i_smctl : cadr_smctl port map(\-sh4\ => \-sh4\, \-sr\ => \-sr\, \-s4\ => \-s4\, \-mr\ => \-mr\, \-irbyte\ => \-irbyte\, ir13 => ir13, ir12 => ir12, \-ir0\ => \-ir0\, s0 => s0, \-ir1\ => \-ir1\, s1 => s1, mskl4 => mskl4, ir9 => ir9, mskr4 => mskr4, mskl3cry => mskl3cry, s3a => s3a, \-sh3\ => \-sh3\, s3b => s3b, \-ir2\ => \-ir2\, s2a => s2a, s2b => s2b, s4 => s4, mskr0 => mskr0, mskr1 => mskr1, mskr2 => mskr2, mskl1 => mskl1, ir6 => ir6, mskl0 => mskl0, ir5 => ir5, mskl3 => mskl3, mskr3 => mskr3, ir8 => ir8, mskl2 => mskl2, ir7 => ir7);
-  i_shift0 : cadr_shift0 port map(m5 => m5, m6 => m6, m7 => m7, m8 => m8, m9 => m9, m10 => m10, m11 => m11, s1 => s1, s0 => s0, sa11 => sa11, sa10 => sa10, sa9 => sa9, sa8 => sa8, m29 => m29, m30 => m30, m31 => m31, m0 => m0, m1 => m1, m2 => m2, m3 => m3, sa3 => sa3, sa2 => sa2, sa1 => sa1, sa0 => sa0, m12 => m12, m13 => m13, m14 => m14, m15 => m15, sa15 => sa15, sa14 => sa14, sa13 => sa13, sa12 => sa12, m4 => m4, sa7 => sa7, sa6 => sa6, sa5 => sa5, sa4 => sa4, sa18 => sa18, sa22 => sa22, sa26 => sa26, sa30 => sa30, s3a => s3a, s2a => s2a, r14 => r14, r10 => r10, \-s4\ => \-s4\, r6 => r6, r2 => r2, s4 => s4, sa19 => sa19, sa23 => sa23, sa27 => sa27, sa31 => sa31, r15 => r15, r11 => r11, r7 => r7, r3 => r3, sa16 => sa16, sa20 => sa20, sa24 => sa24, sa28 => sa28, r12 => r12, r8 => r8, r4 => r4, r0 => r0, sa17 => sa17, sa21 => sa21, sa25 => sa25, sa29 => sa29, r13 => r13, r9 => r9, r5 => r5, r1 => r1);
-  i_shift1 : cadr_shift1 port map(m21 => m21, m22 => m22, m23 => m23, m24 => m24, m25 => m25, m26 => m26, m27 => m27, s1 => s1, s0 => s0, sa27 => sa27, sa26 => sa26, sa25 => sa25, sa24 => sa24, m13 => m13, m14 => m14, m15 => m15, m16 => m16, m17 => m17, m18 => m18, m19 => m19, sa19 => sa19, sa18 => sa18, sa17 => sa17, sa16 => sa16, m28 => m28, m29 => m29, m30 => m30, m31 => m31, sa31 => sa31, sa30 => sa30, sa29 => sa29, sa28 => sa28, m20 => m20, sa23 => sa23, sa22 => sa22, sa21 => sa21, sa20 => sa20, sa2 => sa2, sa6 => sa6, sa10 => sa10, sa14 => sa14, s3b => s3b, s2b => s2b, r30 => r30, r26 => r26, \-s4\ => \-s4\, r22 => r22, r18 => r18, s4 => s4, sa3 => sa3, sa7 => sa7, sa11 => sa11, sa15 => sa15, r31 => r31, r27 => r27, r23 => r23, r19 => r19, sa0 => sa0, sa4 => sa4, sa8 => sa8, sa12 => sa12, r28 => r28, r24 => r24, r20 => r20, r16 => r16, sa1 => sa1, sa5 => sa5, sa9 => sa9, sa13 => sa13, r29 => r29, r25 => r25, r21 => r21, r17 => r17);
-  i_mskg4 : cadr_mskg4 port map(\a=m\ => \a=m\, msk24 => msk24, msk25 => msk25, msk26 => msk26, msk27 => msk27, msk28 => msk28, msk29 => msk29, msk30 => msk30, msk31 => msk31, mskl0 => mskl0, mskl1 => mskl1, mskl2 => mskl2, mskl3 => mskl3, mskl4 => mskl4, mskr0 => mskr0, mskr1 => mskr1, mskr2 => mskr2, mskr3 => mskr3, mskr4 => mskr4, msk8 => msk8, msk9 => msk9, msk10 => msk10, msk11 => msk11, msk12 => msk12, msk13 => msk13, msk14 => msk14, msk15 => msk15, ir31 => ir31, \-ir31\ => \-ir31\, ir13 => ir13, \-ir13\ => \-ir13\, \-ir12\ => \-ir12\, ir12 => ir12, msk16 => msk16, msk17 => msk17, msk18 => msk18, msk19 => msk19, msk20 => msk20, msk21 => msk21, msk22 => msk22, msk23 => msk23, msk0 => msk0, msk1 => msk1, msk2 => msk2, msk3 => msk3, msk4 => msk4, msk5 => msk5, msk6 => msk6, msk7 => msk7);
-
-
---- The ALU (alu)
-  i_aluc4 : cadr_aluc4 port map(\-aluf0\ => \-aluf0\, aluf0b => aluf0b, \-aluf1\ => \-aluf1\, aluf1b => aluf1b, aluf2b => aluf2b, \-aluf2\ => \-aluf2\, aluf3b => aluf3b, \-aluf3\ => \-aluf3\, aluf0a => aluf0a, aluf1a => aluf1a, aluf2a => aluf2a, aluf3a => aluf3a, yy1 => yy1, xx1 => xx1, yy0 => yy0, xx0 => xx0, \-cin32\ => \-cin32\, \-cin16\ => \-cin16\, \-cin0\ => \-cin0\, yout23 => yout23, xout23 => xout23, yout19 => yout19, xout19 => xout19, yout31 => yout31, xout31 => xout31, \-cin28\ => \-cin28\, \-cin24\ => \-cin24\, \-cin20\ => \-cin20\, yout27 => yout27, xout27 => xout27, yout7 => yout7, xout7 => xout7, yout3 => yout3, xout3 => xout3, yout15 => yout15, xout15 => xout15, \-cin12\ => \-cin12\, \-cin8\ => \-cin8\, \-cin4\ => \-cin4\, yout11 => yout11, xout11 => xout11, alusub => alusub, hi12 => hi12, \-ir3\ => \-ir3\, \-ir4\ => \-ir4\, aluadd => aluadd, ir6 => ir6, ir5 => ir5, ir7 => ir7, \-alumode\ => \-alumode\, \-ir2\ => \-ir2\, irjump => irjump, alumode => alumode, \-divposlasttime\ => \-divposlasttime\, q0 => q0, \-div\ => \-div\, divsubcond => divsubcond, divaddcond => divaddcond, a31b => a31b, \-a31\ => \-a31\, ir4 => ir4, ir3 => ir3, ir2 => ir2, \-ir1\ => \-ir1\, ir1 => ir1, \-ir0\ => \-ir0\, ir0 => ir0, a31a => a31a, \-mulnop\ => \-mulnop\, \-irjump\ => \-irjump\, \-mul\ => \-mul\, osel1a => osel1a, \-ir13\ => \-ir13\, \-iralu\ => \-iralu\, osel0a => osel0a, \-ir12\ => \-ir12\, osel1b => osel1b, osel0b => osel0b);
-  i_alu0 : cadr_alu0 port map(\a=m\ => \a=m\, a12 => a12, m12 => m12, aluf3b => aluf3b, aluf2b => aluf2b, aluf1b => aluf1b, aluf0b => aluf0b, \-cin12\ => \-cin12\, alumode => alumode, alu12 => alu12, alu13 => alu13, alu14 => alu14, alu15 => alu15, xout15 => xout15, yout15 => yout15, a15 => a15, m15 => m15, a14 => a14, m14 => m14, a13 => a13, m13 => m13, a4 => a4, m4 => m4, \-cin4\ => \-cin4\, alu4 => alu4, alu5 => alu5, alu6 => alu6, alu7 => alu7, xout7 => xout7, yout7 => yout7, a7 => a7, m7 => m7, a6 => a6, m6 => m6, a5 => a5, m5 => m5, a8 => a8, m8 => m8, \-cin8\ => \-cin8\, alu8 => alu8, alu9 => alu9, alu10 => alu10, alu11 => alu11, xout11 => xout11, yout11 => yout11, a11 => a11, m11 => m11, a10 => a10, m10 => m10, a9 => a9, m9 => m9, a0 => a0, m0 => m0, \-cin0\ => \-cin0\, alu0 => alu0, alu1 => alu1, alu2 => alu2, alu3 => alu3, xout3 => xout3, yout3 => yout3, a3 => a3, m3 => m3, a2 => a2, m2 => m2, a1 => a1, m1 => m1);
-  i_alu1 : cadr_alu1 port map(\a=m\ => \a=m\, a31a => a31a, m31b => m31b, aluf3a => aluf3a, aluf2a => aluf2a, aluf1a => aluf1a, aluf0a => aluf0a, \-cin32\ => \-cin32\, alumode => alumode, alu32 => alu32, m31 => m31, hi12 => hi12, a28 => a28, m28 => m28, \-cin28\ => \-cin28\, alu28 => alu28, alu29 => alu29, alu30 => alu30, alu31 => alu31, xout31 => xout31, yout31 => yout31, a31b => a31b, a30 => a30, m30 => m30, a29 => a29, m29 => m29, a20 => a20, m20 => m20, \-cin20\ => \-cin20\, alu20 => alu20, alu21 => alu21, alu22 => alu22, alu23 => alu23, xout23 => xout23, yout23 => yout23, a23 => a23, m23 => m23, a22 => a22, m22 => m22, a21 => a21, m21 => m21, a24 => a24, m24 => m24, \-cin24\ => \-cin24\, alu24 => alu24, alu25 => alu25, alu26 => alu26, alu27 => alu27, xout27 => xout27, yout27 => yout27, a27 => a27, m27 => m27, a26 => a26, m26 => m26, a25 => a25, m25 => m25, a16 => a16, m16 => m16, \-cin16\ => \-cin16\, alu16 => alu16, alu17 => alu17, alu18 => alu18, alu19 => alu19, xout19 => xout19, yout19 => yout19, a19 => a19, m19 => m19, a18 => a18, m18 => m18, a17 => a17, m17 => m17);
-
-
---- The Q Register (q)
-  i_qctl : cadr_qctl port map(\-qdrive\ => \-qdrive\, tse2 => tse2, srcq => srcq, q7 => q7, mf0 => mf0, q6 => q6, mf1 => mf1, q5 => q5, mf2 => mf2, q4 => q4, mf3 => mf3, q3 => q3, mf4 => mf4, q2 => q2, mf5 => mf5, q1 => q1, mf6 => mf6, q0 => q0, mf7 => mf7, qdrive => qdrive, q31 => q31, mf24 => mf24, q30 => q30, mf25 => mf25, q29 => q29, mf26 => mf26, q28 => q28, mf27 => mf27, q27 => q27, mf28 => mf28, q26 => q26, mf29 => mf29, q25 => q25, mf30 => mf30, q24 => q24, mf31 => mf31, q23 => q23, mf16 => mf16, q22 => q22, mf17 => mf17, q21 => q21, mf18 => mf18, q20 => q20, mf19 => mf19, q19 => q19, mf20 => mf20, q18 => q18, mf21 => mf21, q17 => q17, mf22 => mf22, q16 => q16, mf23 => mf23, q15 => q15, mf8 => mf8, q14 => q14, mf9 => mf9, q13 => q13, mf10 => mf10, q12 => q12, mf11 => mf11, q11 => q11, mf12 => mf12, q10 => q10, mf13 => mf13, q9 => q9, mf14 => mf14, q8 => q8, mf15 => mf15, \-srcq\ => \-srcq\, \-alu31\ => \-alu31\, alu31 => alu31, \-iralu\ => \-iralu\, \-ir1\ => \-ir1\, qs1 => qs1, \-ir0\ => \-ir0\, qs0 => qs0);
-  i_q : cadr_q port map(hi7 => hi7, q23 => q23, alu24 => alu24, alu25 => alu25, alu26 => alu26, alu27 => alu27, q28 => q28, qs0 => qs0, qs1 => qs1, clk2b => clk2b, q27 => q27, q26 => q26, q25 => q25, q24 => q24, alu28 => alu28, alu29 => alu29, alu30 => alu30, alu31 => alu31, alu0 => alu0, q31 => q31, q30 => q30, q29 => q29, q15 => q15, alu16 => alu16, alu17 => alu17, alu18 => alu18, alu19 => alu19, q20 => q20, q19 => q19, q18 => q18, q17 => q17, q16 => q16, alu20 => alu20, alu21 => alu21, alu22 => alu22, alu23 => alu23, q22 => q22, q21 => q21, q7 => q7, alu8 => alu8, alu9 => alu9, alu10 => alu10, alu11 => alu11, q12 => q12, q11 => q11, q10 => q10, q9 => q9, q8 => q8, alu12 => alu12, alu13 => alu13, alu14 => alu14, alu15 => alu15, q14 => q14, q13 => q13, \-alu31\ => \-alu31\, alu1 => alu1, alu2 => alu2, alu3 => alu3, q4 => q4, q3 => q3, q2 => q2, q1 => q1, q0 => q0, alu4 => alu4, alu5 => alu5, alu6 => alu6, alu7 => alu7, q6 => q6, q5 => q5);
-
-
---- The L Register (l)
-  i_l : cadr_l port map(l7 => l7, ob7 => ob7, ob6 => ob6, l6 => l6, l5 => l5, ob5 => ob5, ob4 => ob4, l4 => l4, clk3f => clk3f, l3 => l3, ob3 => ob3, ob2 => ob2, l2 => l2, l1 => l1, ob1 => ob1, ob0 => ob0, l0 => l0, l15 => l15, ob15 => ob15, ob14 => ob14, l14 => l14, l13 => l13, ob13 => ob13, ob12 => ob12, l12 => l12, l11 => l11, ob11 => ob11, ob10 => ob10, l10 => l10, l9 => l9, ob9 => ob9, ob8 => ob8, l8 => l8, l23 => l23, ob23 => ob23, ob22 => ob22, l22 => l22, l21 => l21, ob21 => ob21, ob20 => ob20, l20 => l20, l19 => l19, ob19 => ob19, ob18 => ob18, l18 => l18, l17 => l17, ob17 => ob17, ob16 => ob16, l16 => l16, l31 => l31, ob31 => ob31, ob30 => ob30, l30 => l30, l29 => l29, ob29 => ob29, ob28 => ob28, l28 => l28, l27 => l27, ob27 => ob27, ob26 => ob26, l26 => l26, l25 => l25, ob25 => ob25, ob24 => ob24, l24 => l24, lparl => lparl, \-lparm\ => \-lparm\, lparity => lparity, \-lparity\ => \-lparity\);
-
-
---- The Dispatch Memory (dsp)
-  i_dspctl : cadr_dspctl port map(dmask0 => dmask0, dmask1 => dmask1, dmask2 => dmask2, dmask3 => dmask3, dmask4 => dmask4, dmask5 => dmask5, dmask6 => dmask6, ir5 => ir5, ir6 => ir6, ir7 => ir7, \-irdisp\ => \-irdisp\, dc6 => dc6, ir38 => ir38, ir39 => ir39, dc7 => dc7, ir40 => ir40, dc8 => dc8, clk3e => clk3e, dc9 => dc9, ir41 => ir41, dc0 => dc0, ir32 => ir32, ir33 => ir33, dc1 => dc1, ir34 => ir34, dc2 => dc2, dc3 => dc3, ir35 => ir35, dc4 => dc4, ir36 => ir36, ir37 => ir37, dc5 => dc5, dpareven => dpareven, dispenb => dispenb, dparok => dparok, \-dparh\ => \-dparh\, dparl => dparl, hi4 => hi4, aa16 => aa16, aa17 => aa17, a17 => a17, a16 => a16, a15 => a15, aa8 => aa8, a14 => a14, aa9 => aa9, a13 => a13, aa10 => aa10, a12 => a12, aa11 => aa11, a11 => a11, aa12 => aa12, a10 => a10, aa13 => aa13, a9 => a9, aa14 => aa14, a8 => a8, aa15 => aa15, a7 => a7, aa0 => aa0, a6 => a6, aa1 => aa1, a5 => a5, aa2 => aa2, a4 => a4, aa3 => aa3, a3 => a3, aa4 => aa4, a2 => a2, aa5 => aa5, a1 => a1, aa6 => aa6, a0 => a0, aa7 => aa7, \-dmapbenb\ => \-dmapbenb\, ir8 => ir8, ir9 => ir9, dispwr => dispwr, \-funct2\ => \-funct2\, dpc9 => dpc9, dpc10 => dpc10, dpc11 => dpc11, dpc12 => dpc12, dpc13 => dpc13, dn => dn, dp => dp, dr => dr, dpar => dpar, dpc0 => dpc0, dpc1 => dpc1, dpc2 => dpc2, dpc3 => dpc3, dpc4 => dpc4, dpc5 => dpc5, dpc6 => dpc6, dpc7 => dpc7, dpc8 => dpc8);
-  i_dram0 : cadr_dram0 port map(wp2 => wp2, dispwr => dispwr, \-dwea\ => \-dwea\, \-dadr10a\ => \-dadr10a\, dadr10a => dadr10a, ir22b => ir22b, \-dadr9a\ => \-dadr9a\, ir21b => ir21b, \-dadr8a\ => \-dadr8a\, ir20b => ir20b, \-dadr7a\ => \-dadr7a\, ir19b => ir19b, ir12b => ir12b, vmo19 => vmo19, ir9b => ir9b, r0 => r0, dmask0 => dmask0, \-dmapbenb\ => \-dmapbenb\, \-dadr0a\ => \-dadr0a\, vmo18 => vmo18, ir8b => ir8b, hi6 => hi6, ir12 => ir12, ir13 => ir13, ir18b => ir18b, ir14 => ir14, ir17b => ir17b, ir15 => ir15, ir16b => ir16b, ir16 => ir16, ir15b => ir15b, ir17 => ir17, ir14b => ir14b, ir18 => ir18, ir13b => ir13b, ir19 => ir19, \-dadr1a\ => \-dadr1a\, \-dadr2a\ => \-dadr2a\, \-dadr3a\ => \-dadr3a\, \-dadr4a\ => \-dadr4a\, dpc5 => dpc5, \-dadr5a\ => \-dadr5a\, \-dadr6a\ => \-dadr6a\, aa5 => aa5, dpc4 => dpc4, aa4 => aa4, r3 => r3, dmask6 => dmask6, r6 => r6, dmask3 => dmask3, dpc3 => dpc3, aa3 => aa3, dpc2 => dpc2, aa2 => aa2, r2 => r2, hi4 => hi4, dmask5 => dmask5, r5 => r5, dmask2 => dmask2, dpc1 => dpc1, aa1 => aa1, dpc0 => dpc0, aa0 => aa0, r1 => r1, dmask4 => dmask4, r4 => r4, dmask1 => dmask1);
-  i_dram1 : cadr_dram1 port map(wp2 => wp2, dispwr => dispwr, \-dweb\ => \-dweb\, \-vmo19\ => \-vmo19\, vmo19 => vmo19, \-vmo18\ => \-vmo18\, vmo18 => vmo18, \-dadr9b\ => \-dadr9b\, ir21b => ir21b, \-dadr8b\ => \-dadr8b\, ir20b => ir20b, \-dadr7b\ => \-dadr7b\, ir19b => ir19b, ir12b => ir12b, ir9b => ir9b, r0 => r0, dmask0 => dmask0, \-dmapbenb\ => \-dmapbenb\, \-dadr0b\ => \-dadr0b\, ir8b => ir8b, hi6 => hi6, dadr10a => dadr10a, \-dadr1b\ => \-dadr1b\, \-dadr2b\ => \-dadr2b\, \-dadr3b\ => \-dadr3b\, \-dadr4b\ => \-dadr4b\, dpc11 => dpc11, \-dadr5b\ => \-dadr5b\, \-dadr6b\ => \-dadr6b\, aa11 => aa11, \-dadr10a\ => \-dadr10a\, dpc10 => dpc10, aa10 => aa10, r3 => r3, ir18b => ir18b, dmask6 => dmask6, r6 => r6, ir15b => ir15b, dmask3 => dmask3, dpc9 => dpc9, aa9 => aa9, dadr10c => dadr10c, dpc8 => dpc8, aa8 => aa8, \-dadr10c\ => \-dadr10c\, r2 => r2, ir17b => ir17b, dmask5 => dmask5, r5 => r5, ir14b => ir14b, dmask2 => dmask2, dpc7 => dpc7, aa7 => aa7, dpc6 => dpc6, aa6 => aa6, r1 => r1, ir16b => ir16b, dmask4 => dmask4, r4 => r4, ir13b => ir13b, dmask1 => dmask1, ir20 => ir20, ir21 => ir21, ir22 => ir22, ir8 => ir8, ir9 => ir9, ir22b => ir22b);
-  i_dram2 : cadr_dram2 port map(dadr10c => dadr10c, \-dadr0c\ => \-dadr0c\, \-dadr1c\ => \-dadr1c\, \-dadr2c\ => \-dadr2c\, \-dadr3c\ => \-dadr3c\, \-dadr4c\ => \-dadr4c\, dpar => dpar, \-dadr5c\ => \-dadr5c\, \-dadr6c\ => \-dadr6c\, \-dadr7c\ => \-dadr7c\, \-dadr8c\ => \-dadr8c\, \-dadr9c\ => \-dadr9c\, \-dwec\ => \-dwec\, aa17 => aa17, \-dadr10c\ => \-dadr10c\, dr => dr, aa16 => aa16, r3 => r3, ir18b => ir18b, hi11 => hi11, dmask6 => dmask6, r6 => r6, ir15b => ir15b, dmask3 => dmask3, dp => dp, aa15 => aa15, dn => dn, aa14 => aa14, r2 => r2, ir17b => ir17b, dmask5 => dmask5, r5 => r5, ir14b => ir14b, dmask2 => dmask2, dpc13 => dpc13, aa13 => aa13, dpc12 => dpc12, aa12 => aa12, r1 => r1, ir16b => ir16b, dmask4 => dmask4, r4 => r4, ir13b => ir13b, dmask1 => dmask1, ir12b => ir12b, vmo19 => vmo19, ir9b => ir9b, r0 => r0, dmask0 => dmask0, \-dmapbenb\ => \-dmapbenb\, vmo18 => vmo18, ir8b => ir8b, hi6 => hi6, ir22b => ir22b, ir21b => ir21b, ir20b => ir20b, ir19b => ir19b, dispwr => dispwr, wp2 => wp2);
-
-
---- Jump Conditions (flag)
-  i_flag : cadr_flag port map(\a=m\ => \a=m\, ir45 => ir45, \-nopa\ => \-nopa\, \-ilong\ => \-ilong\, ob29 => ob29, \lc byte mode\ => \lc byte mode\, ob28 => ob28, \prog.unibus.reset\ => \prog.unibus.reset\, hi4 => hi4, clk3c => clk3c, \int.enable\ => \int.enable\, ob27 => ob27, \sequence.break\ => \sequence.break\, ob26 => ob26, \-destintctl\ => \-destintctl\, \-reset\ => \-reset\, \-statbit\ => \-statbit\, ir46 => ir46, alu32 => alu32, aluneg => aluneg, r0 => r0, jcond => jcond, \-jcond\ => \-jcond\, conds2 => conds2, conds1 => conds1, conds0 => conds0, \pgf.or.int.or.sb\ => \pgf.or.int.or.sb\, \pgf.or.int\ => \pgf.or.int\, \-vmaok\ => \-vmaok\, ir2 => ir2, ir5 => ir5, ir1 => ir1, ir0 => ir0, \-alu32\ => \-alu32\, sint => sint, sintr => sintr);
-
-
---- Flow of Control (contrl)
-  i_contrl : cadr_contrl port map(spushd => spushd, tse3a => tse3a, spcwpass => spcwpass, \-ipopj\ => \-ipopj\, \-iwrited\ => \-iwrited\, \-popj\ => \-popj\, spcdrive => spcdrive, spcenb => spcenb, \-reset\ => \-reset\, inop => inop, \-inop\ => \-inop\, n => n, clk3c => clk3c, \-spushd\ => \-spushd\, spush => spush, iwrite => iwrite, iwrited => iwrited, \-srcspc\ => \-srcspc\, \-srcspcpop\ => \-srcspcpop\, \-spcdrive\ => \-spcdrive\, \-spcpass\ => \-spcpass\, \-spcwpass\ => \-spcwpass\, ir42 => ir42, \-nop\ => \-nop\, nop => nop, \-srcspcpopreal\ => \-srcspcpopreal\, \-nopa\ => \-nopa\, \-nop11\ => \-nop11\, \-irdisp\ => \-irdisp\, dr => dr, \-ignpopj\ => \-ignpopj\, \-destspc\ => \-destspc\, destspc => destspc, dp => dp, \-dfall\ => \-dfall\, \-trap\ => \-trap\, irdisp => irdisp, \-funct2\ => \-funct2\, dispenb => dispenb, irjump => irjump, ir6 => ir6, jfalse => jfalse, jcalf => jcalf, ir8 => ir8, jretf => jretf, jret => jret, ir7 => ir7, dn => dn, \-jcond\ => \-jcond\, hi4 => hi4, jcond => jcond, \-ir6\ => \-ir6\, \-dr\ => \-dr\, \-spush\ => \-spush\, pcs1 => pcs1, popj => popj, \-dp\ => \-dp\, \-spop\ => \-spop\, \-ir8\ => \-ir8\, ir9 => ir9, pcs0 => pcs0, \-spcnt\ => \-spcnt\, \-destspcd\ => \-destspcd\, destspcd => destspcd, wp4c => wp4c, \-swpb\ => \-swpb\, \-swpa\ => \-swpa\);
-
-
---- Microcode Subroutine Return Stack (spc)
-  i_spc : cadr_spc port map(\-swpa\ => \-swpa\, spcw14 => spcw14, spcptr4 => spcptr4, hi1 => hi1, spco14 => spco14, spco15 => spco15, spcptr3 => spcptr3, spcptr2 => spcptr2, spcptr1 => spcptr1, spcptr0 => spcptr0, spcw15 => spcw15, spcw12 => spcw12, spco12 => spco12, spco13 => spco13, spcw13 => spcw13, spcw10 => spcw10, spco10 => spco10, spco11 => spco11, spcw11 => spcw11, spcopar => spcopar, spco18 => spco18, spco17 => spco17, spco16 => spco16, hi2 => hi2, hi3 => hi3, hi4 => hi4, hi5 => hi5, hi6 => hi6, hi7 => hi7, \-swpb\ => \-swpb\, spcw4 => spcw4, spco4 => spco4, spco5 => spco5, spcw5 => spcw5, spcw2 => spcw2, spco2 => spco2, spco3 => spco3, spcw3 => spcw3, spcw0 => spcw0, spco0 => spco0, spco1 => spco1, spcw1 => spcw1, spco9 => spco9, spco8 => spco8, spco7 => spco7, spco6 => spco6, hi8 => hi8, hi9 => hi9, hi10 => hi10, hi11 => hi11, hi12 => hi12, spush => spush, clk4f => clk4f, \-spcnt\ => \-spcnt\, \-spccry\ => \-spccry\, spcw18 => spcw18, spcwpar => spcwpar, spcw16 => spcw16, spcw17 => spcw17, spcw8 => spcw8, spcw9 => spcw9, spcw6 => spcw6, spcw7 => spcw7);
-  i_spclch : cadr_spclch port map(\-spcdrive\ => \-spcdrive\, m23 => m23, m22 => m22, m21 => m21, m20 => m20, clk4c => clk4c, m19 => m19, spco18 => spco18, m18 => m18, m17 => m17, spco17 => spco17, spco16 => spco16, m16 => m16, m15 => m15, spco15 => spco15, spco14 => spco14, m14 => m14, m13 => m13, spco13 => spco13, spco12 => spco12, m12 => m12, m11 => m11, spco11 => spco11, spco10 => spco10, m10 => m10, m9 => m9, spco9 => spco9, spco8 => spco8, m8 => m8, m7 => m7, spco7 => spco7, spco6 => spco6, m6 => m6, m5 => m5, spco5 => spco5, spco4 => spco4, m4 => m4, m3 => m3, spco3 => spco3, spco2 => spco2, m2 => m2, m1 => m1, spco1 => spco1, spco0 => spco0, m0 => m0, m24 => m24, m25 => m25, m26 => m26, spcptr4 => spcptr4, m27 => m27, spcptr3 => spcptr3, m28 => m28, spcptr2 => spcptr2, m29 => m29, spcptr1 => spcptr1, m30 => m30, spcptr0 => spcptr0, m31 => m31, spcdrive => spcdrive, hi1 => hi1, spc16 => spc16, spc17 => spc17, spc18 => spc18, spcpar => spcpar, spcwpar => spcwpar, spcw18 => spcw18, spcw17 => spcw17, spcw16 => spcw16, spcwpass => spcwpass, \-spcwpass\ => \-spcwpass\, spcw15 => spcw15, spc8 => spc8, spcw14 => spcw14, spc9 => spc9, spcw13 => spcw13, spc10 => spc10, spcw12 => spcw12, spc11 => spc11, spcw11 => spcw11, spc12 => spc12, spcw10 => spcw10, spc13 => spc13, spcw9 => spcw9, spc14 => spc14, spcw8 => spcw8, spc15 => spc15, spcw7 => spcw7, spc0 => spc0, spcw6 => spcw6, spc1 => spc1, spcw5 => spcw5, spc2 => spc2, spcw4 => spcw4, spc3 => spc3, spcw3 => spcw3, spc4 => spc4, spcw2 => spcw2, spc5 => spc5, spcw1 => spcw1, spc6 => spc6, spcw0 => spcw0, spc7 => spc7, \-spcpass\ => \-spcpass\, clk4d => clk4d, spcopar => spcopar);
-  i_spcw : cadr_spcw port map(destspcd => destspcd, reta12 => reta12, l12 => l12, spcw12 => spcw12, reta13 => reta13, l13 => l13, spcw13 => spcw13, spcw14 => spcw14, l14 => l14, spcw15 => spcw15, l15 => l15, reta8 => reta8, l8 => l8, spcw8 => spcw8, reta9 => reta9, l9 => l9, spcw9 => spcw9, spcw10 => spcw10, l10 => l10, reta10 => reta10, spcw11 => spcw11, l11 => l11, reta11 => reta11, reta4 => reta4, l4 => l4, spcw4 => spcw4, reta5 => reta5, l5 => l5, spcw5 => spcw5, spcw6 => spcw6, l6 => l6, reta6 => reta6, spcw7 => spcw7, l7 => l7, reta7 => reta7, reta0 => reta0, l0 => l0, spcw0 => spcw0, reta1 => reta1, l1 => l1, spcw1 => spcw1, spcw2 => spcw2, l2 => l2, reta2 => reta2, spcw3 => spcw3, l3 => l3, reta3 => reta3, n => n, ipc12 => ipc12, wpc12 => wpc12, wpc13 => wpc13, ipc13 => ipc13, clk4d => clk4d, ipc8 => ipc8, wpc8 => wpc8, wpc9 => wpc9, ipc9 => ipc9, ipc10 => ipc10, wpc10 => wpc10, wpc11 => wpc11, ipc11 => ipc11, ipc4 => ipc4, wpc4 => wpc4, wpc5 => wpc5, ipc5 => ipc5, ipc6 => ipc6, wpc6 => wpc6, wpc7 => wpc7, ipc7 => ipc7, ipc0 => ipc0, wpc0 => wpc0, wpc1 => wpc1, ipc1 => ipc1, ipc2 => ipc2, wpc2 => wpc2, wpc3 => wpc3, ipc3 => ipc3, l16 => l16, spcw16 => spcw16, l17 => l17, spcw17 => spcw17, spcw18 => spcw18, l18 => l18);
-  i_spcpar : cadr_spcpar port map(spcwparh => spcwparh, \-spcwparl\ => \-spcwparl\, spcwpar => spcwpar, spcw17 => spcw17, spcw18 => spcw18, spcw12 => spcw12, spcw13 => spcw13, spcw14 => spcw14, spcw15 => spcw15, spcw16 => spcw16, spcw5 => spcw5, spcw6 => spcw6, spcw7 => spcw7, spcw8 => spcw8, spcw9 => spcw9, spcw10 => spcw10, spcw11 => spcw11, spcw0 => spcw0, spcw1 => spcw1, spcw2 => spcw2, spcw3 => spcw3, spcw4 => spcw4, spc16 => spc16, spc17 => spc17, spc18 => spc18, spcpar => spcpar, spcparh => spcparh, spc11 => spc11, spc12 => spc12, spc13 => spc13, spc14 => spc14, spc15 => spc15, spc5 => spc5, spc6 => spc6, spc7 => spc7, spc8 => spc8, spc9 => spc9, spc10 => spc10, spcparok => spcparok, spc0 => spc0, spc1 => spc1, spc2 => spc2, spc3 => spc3, spc4 => spc4);
-  i_lpc : cadr_lpc port map(pc8 => pc8, pc9 => pc9, pc10 => pc10, pc13b => pc13b, pc11 => pc11, pc12b => pc12b, pc12 => pc12, pc11b => pc11b, pc13 => pc13, pc10b => pc10b, pc9b => pc9b, pc8b => pc8b, hi5 => hi5, pc0 => pc0, pc7b => pc7b, pc1 => pc1, pc6b => pc6b, pc2 => pc2, pc5b => pc5b, pc3 => pc3, pc4b => pc4b, pc4 => pc4, pc3b => pc3b, pc5 => pc5, pc2b => pc2b, pc6 => pc6, pc1b => pc1b, pc7 => pc7, pc0b => pc0b, irdisp => irdisp, ir25 => ir25, lpc12 => lpc12, wpc12 => wpc12, lpc13 => lpc13, wpc13 => wpc13, lpc8 => lpc8, wpc8 => wpc8, lpc9 => lpc9, wpc9 => wpc9, wpc10 => wpc10, lpc10 => lpc10, wpc11 => wpc11, lpc11 => lpc11, lpc4 => lpc4, wpc4 => wpc4, lpc5 => lpc5, wpc5 => wpc5, wpc6 => wpc6, lpc6 => lpc6, wpc7 => wpc7, lpc7 => lpc7, lpc0 => lpc0, wpc0 => wpc0, lpc1 => lpc1, wpc1 => wpc1, wpc2 => wpc2, lpc2 => lpc2, wpc3 => wpc3, lpc3 => lpc3, \lpc.hold\ => \lpc.hold\, clk4b => clk4b);
-
-
---- Next PC Selector (npc)
-  i_npc : cadr_npc port map(ipc13 => ipc13, pc13 => pc13, ipc12 => ipc12, pc12 => pc12, pccry11 => pccry11, ipc9 => ipc9, pc9 => pc9, ipc8 => ipc8, pc8 => pc8, pccry7 => pccry7, ipc11 => ipc11, pc11 => pc11, ipc10 => ipc10, pc10 => pc10, ipc5 => ipc5, pc5 => pc5, ipc4 => ipc4, pc4 => pc4, pccry3 => pccry3, ipc7 => ipc7, pc7 => pc7, ipc6 => ipc6, pc6 => pc6, ipc1 => ipc1, pc1 => pc1, ipc0 => ipc0, pc0 => pc0, hi4 => hi4, ipc3 => ipc3, pc3 => pc3, ipc2 => ipc2, pc2 => pc2, trapb => trapb, pcs1 => pcs1, dpc3 => dpc3, ir15 => ir15, spc3 => spc3, npc3 => npc3, npc2 => npc2, spc2 => spc2, ir14 => ir14, dpc2 => dpc2, pcs0 => pcs0, dpc1 => dpc1, ir13 => ir13, spc1a => spc1a, npc1 => npc1, npc0 => npc0, spc0 => spc0, ir12 => ir12, dpc0 => dpc0, npc13 => npc13, npc12 => npc12, clk4b => clk4b, npc11 => npc11, npc10 => npc10, npc9 => npc9, npc8 => npc8, npc7 => npc7, npc6 => npc6, npc5 => npc5, npc4 => npc4, trapa => trapa, dpc13 => dpc13, ir25 => ir25, spc13 => spc13, spc12 => spc12, ir24 => ir24, dpc12 => dpc12, dpc11 => dpc11, ir23 => ir23, spc11 => spc11, spc10 => spc10, ir22 => ir22, dpc10 => dpc10, dpc9 => dpc9, ir21 => ir21, spc9 => spc9, spc8 => spc8, ir20 => ir20, dpc8 => dpc8, dpc7 => dpc7, ir19 => ir19, spc7 => spc7, spc6 => spc6, ir18 => ir18, dpc6 => dpc6, dpc5 => dpc5, ir17 => ir17, spc5 => spc5, spc4 => spc4, ir16 => ir16, dpc4 => dpc4);
-
-
---- The LC register and Instruction Prefetch (lc)
-  i_lc : cadr_lc port map(\-lcdrive\ => \-lcdrive\, needfetch => needfetch, mf24 => mf24, mf25 => mf25, \lc byte mode\ => \lc byte mode\, mf26 => mf26, \prog.unibus.reset\ => \prog.unibus.reset\, mf27 => mf27, \int.enable\ => \int.enable\, mf28 => mf28, \sequence.break\ => \sequence.break\, mf29 => mf29, lc25 => lc25, mf30 => mf30, lc24 => lc24, mf31 => mf31, lcdrive => lcdrive, srclc => srclc, tse1a => tse1a, lc7 => lc7, mf0 => mf0, lc6 => lc6, mf1 => mf1, lc5 => lc5, mf2 => mf2, lc4 => lc4, mf3 => mf3, lc3 => lc3, mf4 => mf4, lc2 => lc2, mf5 => mf5, lc1 => lc1, mf6 => mf6, lc0b => lc0b, mf7 => mf7, lc23 => lc23, mf16 => mf16, lc22 => lc22, mf17 => mf17, lc21 => lc21, mf18 => mf18, lc20 => lc20, mf19 => mf19, lc19 => lc19, mf20 => mf20, lc18 => lc18, mf21 => mf21, lc17 => lc17, mf22 => mf22, lc16 => lc16, mf23 => mf23, lc15 => lc15, mf8 => mf8, lc14 => lc14, mf9 => mf9, lc13 => lc13, mf10 => mf10, lc12 => lc12, mf11 => mf11, lc11 => lc11, mf12 => mf12, lc10 => lc10, mf13 => mf13, lc9 => lc9, mf14 => mf14, lc8 => lc8, mf15 => mf15, hi11 => hi11, clk1a => clk1a, ob20 => ob20, ob21 => ob21, ob22 => ob22, ob23 => ob23, \-destlc\ => \-destlc\, \-lcry19\ => \-lcry19\, \-lcry23\ => \-lcry23\, ob16 => ob16, ob17 => ob17, ob18 => ob18, ob19 => ob19, \-lcry15\ => \-lcry15\, clk2a => clk2a, ob12 => ob12, ob13 => ob13, ob14 => ob14, ob15 => ob15, \-lcry11\ => \-lcry11\, clk2c => clk2c, ob8 => ob8, ob9 => ob9, ob10 => ob10, ob11 => ob11, \-lcry7\ => \-lcry7\, \-srclc\ => \-srclc\, ob24 => ob24, ob25 => ob25, ob4 => ob4, ob5 => ob5, ob6 => ob6, ob7 => ob7, \-lcry3\ => \-lcry3\);
-  i_lcc : cadr_lcc port map(\lc byte mode\ => \lc byte mode\, \-lcinc\ => \-lcinc\, lca1 => lca1, lc1 => lc1, lca0 => lca0, lc0 => lc0, lcinc => lcinc, lcry3 => lcry3, lca3 => lca3, lc3 => lc3, lca2 => lca2, lc2 => lc2, \-destlc\ => \-destlc\, ob3 => ob3, ob2 => ob2, clk2a => clk2a, ob1 => ob1, ob0 => ob0, lc0b => lc0b, \inst in left half\ => \inst in left half\, \-ir4\ => \-ir4\, \-sh4\ => \-sh4\, \-sh3\ => \-sh3\, \-ir3\ => \-ir3\, \inst in 2nd or 4th quarter\ => \inst in 2nd or 4th quarter\, \-lc modifies mrot\ => \-lc modifies mrot\, spc14 => spc14, \-srcspcpopreal\ => \-srcspcpopreal\, \-ifetch\ => \-ifetch\, needfetch => needfetch, \have wrong word\ => \have wrong word\, \last byte in word\ => \last byte in word\, ir10 => ir10, ir11 => ir11, \-newlc\ => \-newlc\, \-newlc.in\ => \-newlc.in\, \-reset\ => \-reset\, newlc => newlc, int => int, sintr => sintr, clk3c => clk3c, \next.instrd\ => \next.instrd\, \next.instr\ => \next.instr\, \-spop\ => \-spop\, \-needfetch\ => \-needfetch\, spcmung => spcmung, ir24 => ir24, irdisp => irdisp, spc1 => spc1, spc1a => spc1a);
-
-
---- The VMA and VMA Selector (vma)
-  i_vma : cadr_vma port map(\-vmadrive\ => \-vmadrive\, \-vma31\ => \-vma31\, mf24 => mf24, \-vma30\ => \-vma30\, mf25 => mf25, \-vma29\ => \-vma29\, mf26 => mf26, \-vma28\ => \-vma28\, mf27 => mf27, \-vma27\ => \-vma27\, mf28 => mf28, \-vma26\ => \-vma26\, mf29 => mf29, \-vma25\ => \-vma25\, mf30 => mf30, \-vma24\ => \-vma24\, mf31 => mf31, \-vma7\ => \-vma7\, mf0 => mf0, \-vma6\ => \-vma6\, mf1 => mf1, \-vma5\ => \-vma5\, mf2 => mf2, \-vma4\ => \-vma4\, mf3 => mf3, \-vma3\ => \-vma3\, mf4 => mf4, \-vma2\ => \-vma2\, mf5 => mf5, \-vma1\ => \-vma1\, mf6 => mf6, \-vma0\ => \-vma0\, mf7 => mf7, \-vma23\ => \-vma23\, mf16 => mf16, \-vma22\ => \-vma22\, mf17 => mf17, \-vma21\ => \-vma21\, mf18 => mf18, \-vma20\ => \-vma20\, mf19 => mf19, \-vma19\ => \-vma19\, mf20 => mf20, \-vma18\ => \-vma18\, mf21 => mf21, \-vma17\ => \-vma17\, mf22 => mf22, \-vma16\ => \-vma16\, mf23 => mf23, \-vma15\ => \-vma15\, mf8 => mf8, \-vma14\ => \-vma14\, mf9 => mf9, \-vma13\ => \-vma13\, mf10 => mf10, \-vma12\ => \-vma12\, mf11 => mf11, \-vma11\ => \-vma11\, mf12 => mf12, \-vma10\ => \-vma10\, mf13 => mf13, \-vma9\ => \-vma9\, mf14 => mf14, \-vma8\ => \-vma8\, mf15 => mf15, tse2 => tse2, srcvma => srcvma, \-vmaenb\ => \-vmaenb\, \-vmas24\ => \-vmas24\, \-vmas25\ => \-vmas25\, \-vmas26\ => \-vmas26\, clk1a => clk1a, \-vmas27\ => \-vmas27\, \-vmas28\ => \-vmas28\, \-vmas29\ => \-vmas29\, \-vmas30\ => \-vmas30\, \-vmas31\ => \-vmas31\, \-vmas0\ => \-vmas0\, \-vmas1\ => \-vmas1\, \-vmas2\ => \-vmas2\, clk2a => clk2a, \-vmas3\ => \-vmas3\, \-vmas4\ => \-vmas4\, \-vmas5\ => \-vmas5\, \-vmas12\ => \-vmas12\, \-vmas13\ => \-vmas13\, \-vmas14\ => \-vmas14\, \-vmas15\ => \-vmas15\, \-vmas16\ => \-vmas16\, \-vmas17\ => \-vmas17\, \-vmas18\ => \-vmas18\, \-vmas19\ => \-vmas19\, \-vmas20\ => \-vmas20\, \-vmas21\ => \-vmas21\, \-vmas22\ => \-vmas22\, \-vmas23\ => \-vmas23\, \-vmas6\ => \-vmas6\, \-vmas7\ => \-vmas7\, \-vmas8\ => \-vmas8\, clk2c => clk2c, \-vmas9\ => \-vmas9\, \-vmas10\ => \-vmas10\, \-vmas11\ => \-vmas11\, \-srcvma\ => \-srcvma\);
-  i_vmas : cadr_vmas port map(vmasela => vmasela, lc22 => lc22, ob20 => ob20, \-vmas20\ => \-vmas20\, lc23 => lc23, ob21 => ob21, \-vmas21\ => \-vmas21\, \-vmas22\ => \-vmas22\, ob22 => ob22, lc24 => lc24, \-vmas23\ => \-vmas23\, ob23 => ob23, lc25 => lc25, ob28 => ob28, \-vmas28\ => \-vmas28\, ob29 => ob29, \-vmas29\ => \-vmas29\, \-vmas30\ => \-vmas30\, ob30 => ob30, \-vmas31\ => \-vmas31\, ob31 => ob31, vmaselb => vmaselb, lc14 => lc14, ob12 => ob12, \-vmas12\ => \-vmas12\, lc15 => lc15, ob13 => ob13, \-vmas13\ => \-vmas13\, \-vmas14\ => \-vmas14\, ob14 => ob14, lc16 => lc16, \-vmas15\ => \-vmas15\, ob15 => ob15, lc17 => lc17, lc18 => lc18, ob16 => ob16, \-vmas16\ => \-vmas16\, lc19 => lc19, ob17 => ob17, \-vmas17\ => \-vmas17\, \-vmas18\ => \-vmas18\, ob18 => ob18, lc20 => lc20, \-vmas19\ => \-vmas19\, ob19 => ob19, lc21 => lc21, \-memstart\ => \-memstart\, \-vma12\ => \-vma12\, \-md12\ => \-md12\, mapi12 => mapi12, \-vma13\ => \-vma13\, \-md13\ => \-md13\, mapi13 => mapi13, mapi14 => mapi14, \-md14\ => \-md14\, \-vma14\ => \-vma14\, mapi15 => mapi15, \-md15\ => \-md15\, \-vma15\ => \-vma15\, \-vma16\ => \-vma16\, \-md16\ => \-md16\, mapi16 => mapi16, \-vma17\ => \-vma17\, \-md17\ => \-md17\, mapi17 => mapi17, mapi18 => mapi18, \-md18\ => \-md18\, \-vma18\ => \-vma18\, mapi19 => mapi19, \-md19\ => \-md19\, \-vma19\ => \-vma19\, \-vma20\ => \-vma20\, \-md20\ => \-md20\, mapi20 => mapi20, \-vma21\ => \-vma21\, \-md21\ => \-md21\, mapi21 => mapi21, mapi22 => mapi22, \-md22\ => \-md22\, \-vma22\ => \-vma22\, mapi23 => mapi23, \-md23\ => \-md23\, \-vma23\ => \-vma23\, lc2 => lc2, ob0 => ob0, \-vmas0\ => \-vmas0\, lc3 => lc3, ob1 => ob1, \-vmas1\ => \-vmas1\, \-vmas2\ => \-vmas2\, ob2 => ob2, lc4 => lc4, \-vmas3\ => \-vmas3\, ob3 => ob3, lc5 => lc5, \-vma8\ => \-vma8\, \-md8\ => \-md8\, mapi8 => mapi8, \-vma9\ => \-vma9\, \-md9\ => \-md9\, mapi9 => mapi9, mapi10 => mapi10, \-md10\ => \-md10\, \-vma10\ => \-vma10\, mapi11 => mapi11, \-md11\ => \-md11\, \-vma11\ => \-vma11\, lc10 => lc10, ob8 => ob8, \-vmas8\ => \-vmas8\, lc11 => lc11, ob9 => ob9, \-vmas9\ => \-vmas9\, \-vmas10\ => \-vmas10\, ob10 => ob10, lc12 => lc12, \-vmas11\ => \-vmas11\, ob11 => ob11, lc13 => lc13, lc6 => lc6, ob4 => ob4, \-vmas4\ => \-vmas4\, lc7 => lc7, ob5 => ob5, \-vmas5\ => \-vmas5\, \-vmas6\ => \-vmas6\, ob6 => ob6, lc8 => lc8, \-vmas7\ => \-vmas7\, ob7 => ob7, lc9 => lc9, ob24 => ob24, \-vmas24\ => \-vmas24\, ob25 => ob25, \-vmas25\ => \-vmas25\, \-vmas26\ => \-vmas26\, ob26 => ob26, \-vmas27\ => \-vmas27\, ob27 => ob27);
-
-
---- The MD and the MD Selector (md)
-  i_md : cadr_md port map(\-mddrive\ => \-mddrive\, \-md31\ => \-md31\, mf24 => mf24, \-md30\ => \-md30\, mf25 => mf25, \-md29\ => \-md29\, mf26 => mf26, \-md28\ => \-md28\, mf27 => mf27, \-md27\ => \-md27\, mf28 => mf28, \-md26\ => \-md26\, mf29 => mf29, \-md25\ => \-md25\, mf30 => mf30, \-md24\ => \-md24\, mf31 => mf31, \-md23\ => \-md23\, mf16 => mf16, \-md22\ => \-md22\, mf17 => mf17, \-md21\ => \-md21\, mf18 => mf18, \-md20\ => \-md20\, mf19 => mf19, \-md19\ => \-md19\, mf20 => mf20, \-md18\ => \-md18\, mf21 => mf21, \-md17\ => \-md17\, mf22 => mf22, \-md16\ => \-md16\, mf23 => mf23, \-md7\ => \-md7\, mf0 => mf0, \-md6\ => \-md6\, mf1 => mf1, \-md5\ => \-md5\, mf2 => mf2, \-md4\ => \-md4\, mf3 => mf3, \-md3\ => \-md3\, mf4 => mf4, \-md2\ => \-md2\, mf5 => mf5, \-md1\ => \-md1\, mf6 => mf6, \-md0\ => \-md0\, mf7 => mf7, srcmd => srcmd, tse2 => tse2, \-md15\ => \-md15\, mf8 => mf8, \-md14\ => \-md14\, mf9 => mf9, \-md13\ => \-md13\, mf10 => mf10, \-md12\ => \-md12\, mf11 => mf11, \-md11\ => \-md11\, mf12 => mf12, \-md10\ => \-md10\, mf13 => mf13, \-md9\ => \-md9\, mf14 => mf14, \-md8\ => \-md8\, mf15 => mf15, \-mds31\ => \-mds31\, \-mds30\ => \-mds30\, \-mds29\ => \-mds29\, \-mds28\ => \-mds28\, mdclk => mdclk, \-mds27\ => \-mds27\, \-mds26\ => \-mds26\, \-mds25\ => \-mds25\, \-mds24\ => \-mds24\, \-mds7\ => \-mds7\, \-mds6\ => \-mds6\, \-mds5\ => \-mds5\, \-mds4\ => \-mds4\, \-mds3\ => \-mds3\, \-mds2\ => \-mds2\, \-mds1\ => \-mds1\, \-mds0\ => \-mds0\, \-mds23\ => \-mds23\, \-mds22\ => \-mds22\, \-mds21\ => \-mds21\, \-mds20\ => \-mds20\, \-mds19\ => \-mds19\, \-mds18\ => \-mds18\, \-mds17\ => \-mds17\, \-mds16\ => \-mds16\, destmdr => destmdr, \-clk2c\ => \-clk2c\, loadmd => loadmd, \-loadmd\ => \-loadmd\, \-destmdr\ => \-destmdr\, \-mds15\ => \-mds15\, \-mds14\ => \-mds14\, \-mds13\ => \-mds13\, \-mds12\ => \-mds12\, \-mds11\ => \-mds11\, \-mds10\ => \-mds10\, \-mds9\ => \-mds9\, \-mds8\ => \-mds8\, mdgetspar => mdgetspar, \-ignpar\ => \-ignpar\, mdhaspar => mdhaspar, \mempar in\ => \mempar in\, mdpar => mdpar, \-srcmd\ => \-srcmd\);
-  i_mds : cadr_mds port map(\-memdrive.a\ => \-memdrive.a\, \-md31\ => \-md31\, mem24 => mem24, \-md30\ => \-md30\, mem25 => mem25, \-md29\ => \-md29\, mem26 => mem26, \-md28\ => \-md28\, mem27 => mem27, \-md27\ => \-md27\, mem28 => mem28, \-md26\ => \-md26\, mem29 => mem29, \-md25\ => \-md25\, mem30 => mem30, \-md24\ => \-md24\, mem31 => mem31, \-memdrive.b\ => \-memdrive.b\, \-md7\ => \-md7\, mem0 => mem0, \-md6\ => \-md6\, mem1 => mem1, \-md5\ => \-md5\, mem2 => mem2, \-md4\ => \-md4\, mem3 => mem3, \-md3\ => \-md3\, mem4 => mem4, \-md2\ => \-md2\, mem5 => mem5, \-md1\ => \-md1\, mem6 => mem6, \-md0\ => \-md0\, mem7 => mem7, \-md23\ => \-md23\, mem16 => mem16, \-md22\ => \-md22\, mem17 => mem17, \-md21\ => \-md21\, mem18 => mem18, \-md20\ => \-md20\, mem19 => mem19, \-md19\ => \-md19\, mem20 => mem20, \-md18\ => \-md18\, mem21 => mem21, \-md17\ => \-md17\, mem22 => mem22, \-md16\ => \-md16\, mem23 => mem23, \-md15\ => \-md15\, mem8 => mem8, \-md14\ => \-md14\, mem9 => mem9, \-md13\ => \-md13\, mem10 => mem10, \-md12\ => \-md12\, mem11 => mem11, \-md11\ => \-md11\, mem12 => mem12, \-md10\ => \-md10\, mem13 => mem13, \-md9\ => \-md9\, mem14 => mem14, \-md8\ => \-md8\, mem15 => mem15, mdsela => mdsela, ob20 => ob20, \-mds20\ => \-mds20\, ob21 => ob21, \-mds21\ => \-mds21\, \-mds22\ => \-mds22\, ob22 => ob22, \-mds23\ => \-mds23\, ob23 => ob23, ob28 => ob28, \-mds28\ => \-mds28\, ob29 => ob29, \-mds29\ => \-mds29\, \-mds30\ => \-mds30\, ob30 => ob30, \-mds31\ => \-mds31\, ob31 => ob31, mdparodd => mdparodd, \mempar out\ => \mempar out\, hi11 => hi11, mdselb => mdselb, ob12 => ob12, \-mds12\ => \-mds12\, ob13 => ob13, \-mds13\ => \-mds13\, \-mds14\ => \-mds14\, ob14 => ob14, \-mds15\ => \-mds15\, ob15 => ob15, ob16 => ob16, \-mds16\ => \-mds16\, ob17 => ob17, \-mds17\ => \-mds17\, \-mds18\ => \-mds18\, ob18 => ob18, \-mds19\ => \-mds19\, ob19 => ob19, ob8 => ob8, \-mds8\ => \-mds8\, ob9 => ob9, \-mds9\ => \-mds9\, \-mds10\ => \-mds10\, ob10 => ob10, \-mds11\ => \-mds11\, ob11 => ob11, ob0 => ob0, \-mds0\ => \-mds0\, ob1 => ob1, \-mds1\ => \-mds1\, \-mds2\ => \-mds2\, ob2 => ob2, \-mds3\ => \-mds3\, ob3 => ob3, ob4 => ob4, \-mds4\ => \-mds4\, ob5 => ob5, \-mds5\ => \-mds5\, \-mds6\ => \-mds6\, ob6 => ob6, \-mds7\ => \-mds7\, ob7 => ob7, ob24 => ob24, \-mds24\ => \-mds24\, ob25 => ob25, \-mds25\ => \-mds25\, \-mds26\ => \-mds26\, ob26 => ob26, \-mds27\ => \-mds27\, ob27 => ob27);
-
-
---- First and Second Level Maps (vmem)
-  i_vmem0 : cadr_vmem0 port map(\-vmap0\ => \-vmap0\, \-vmap1\ => \-vmap1\, \-vmap2\ => \-vmap2\, \-vmap3\ => \-vmap3\, \-vmap4\ => \-vmap4\, vpari => vpari, \-vma27\ => \-vma27\, \-vma28\ => \-vma28\, \-vma29\ => \-vma29\, vm0pari => vm0pari, \-vma30\ => \-vma30\, \-vma31\ => \-vma31\, \-mapi23\ => \-mapi23\, mapi22 => mapi22, mapi21 => mapi21, mapi20 => mapi20, mapi19 => mapi19, mapi18 => mapi18, mapi17 => mapi17, mapi16 => mapi16, mapi15 => mapi15, mapi14 => mapi14, mapi13 => mapi13, \-vm0wpb\ => \-vm0wpb\, mapi23 => mapi23, \-vm0wpa\ => \-vm0wpa\, memstart => memstart, srcmap => srcmap, \-use.map\ => \-use.map\, v0parok => v0parok, vmoparodd => vmoparodd, vmoparok => vmoparok);
-  i_vmem1 : cadr_vmem1 port map(\-vma17\ => \-vma17\, \-vma18\ => \-vma18\, \-vma19\ => \-vma19\, \-vma20\ => \-vma20\, \-vma21\ => \-vma21\, \-vma22\ => \-vma22\, \-vma23\ => \-vma23\, vm1mpar => vm1mpar, \-vma12\ => \-vma12\, \-vma13\ => \-vma13\, \-vma14\ => \-vma14\, \-vma15\ => \-vma15\, \-vma16\ => \-vma16\, \-vma5\ => \-vma5\, \-vma6\ => \-vma6\, \-vma7\ => \-vma7\, \-vma8\ => \-vma8\, \-vma9\ => \-vma9\, \-vma10\ => \-vma10\, \-vma11\ => \-vma11\, \-vm1lpar\ => \-vm1lpar\, \-vma0\ => \-vma0\, \-vma1\ => \-vma1\, \-vma2\ => \-vma2\, \-vma3\ => \-vma3\, \-vma4\ => \-vma4\, vmap4a => vmap4a, vmap3a => vmap3a, vmap2a => vmap2a, vmap1a => vmap1a, vmap0a => vmap0a, \-vmo10\ => \-vmo10\, \-mapi12a\ => \-mapi12a\, \-mapi11a\ => \-mapi11a\, \-mapi10a\ => \-mapi10a\, \-mapi9a\ => \-mapi9a\, \-mapi8a\ => \-mapi8a\, \-vm1wpa\ => \-vm1wpa\, \-vmo4\ => \-vmo4\, \-vmo2\ => \-vmo2\, mapi10 => mapi10, mapi9 => mapi9, mapi8 => mapi8, \-vmap4\ => \-vmap4\, \-vmap3\ => \-vmap3\, \-vmap2\ => \-vmap2\, \-vmap1\ => \-vmap1\, \-vmap0\ => \-vmap0\, \-vmo0\ => \-vmo0\, vm1pari => vm1pari, mapi12 => mapi12, mapi11 => mapi11, \-mapi8b\ => \-mapi8b\, \-mapi9b\ => \-mapi9b\, \-mapi10b\ => \-mapi10b\, \-mapi11b\ => \-mapi11b\, \-mapi12b\ => \-mapi12b\, \-vmo11\ => \-vmo11\, \-vmo5\ => \-vmo5\, \-vmo9\ => \-vmo9\, \-vmo3\ => \-vmo3\, \-vmo8\ => \-vmo8\, \-vmo7\ => \-vmo7\, \-vmo1\ => \-vmo1\, \-vmo6\ => \-vmo6\);
-  i_vmem2 : cadr_vmem2 port map(vmap4b => vmap4b, vmap3b => vmap3b, vmap2b => vmap2b, vmap1b => vmap1b, vmap0b => vmap0b, \-vmo20\ => \-vmo20\, \-mapi12b\ => \-mapi12b\, \-mapi11b\ => \-mapi11b\, \-mapi10b\ => \-mapi10b\, \-mapi9b\ => \-mapi9b\, \-mapi8b\ => \-mapi8b\, \-vm1wpb\ => \-vm1wpb\, \-vma20\ => \-vma20\, \-vmo21\ => \-vmo21\, \-vma21\ => \-vma21\, \-vmo22\ => \-vmo22\, \-vma22\ => \-vma22\, \-vmo23\ => \-vmo23\, \-vma23\ => \-vma23\, \-vmo16\ => \-vmo16\, \-vma16\ => \-vma16\, \-vmo17\ => \-vmo17\, \-vma17\ => \-vma17\, \-vmo18\ => \-vmo18\, \-vma18\ => \-vma18\, \-vmo19\ => \-vmo19\, \-vma19\ => \-vma19\, \-vmo12\ => \-vmo12\, \-vma12\ => \-vma12\, \-vmo13\ => \-vmo13\, \-vma13\ => \-vma13\, \-vmo14\ => \-vmo14\, \-vma14\ => \-vma14\, \-vmo15\ => \-vmo15\, \-vma15\ => \-vma15\, vmoparm => vmoparm, vmopar => vmopar, vm1pari => vm1pari, \-vmap4\ => \-vmap4\, \-vmap3\ => \-vmap3\, \-vmap2\ => \-vmap2\, \-vmap1\ => \-vmap1\, \-vmap0\ => \-vmap0\, \-vmo5\ => \-vmo5\, \-vmo6\ => \-vmo6\, \-vmo7\ => \-vmo7\, \-vmo8\ => \-vmo8\, \-vmo9\ => \-vmo9\, \-vmo10\ => \-vmo10\, \-vmo11\ => \-vmo11\, vmoparl => vmoparl, \-vmo0\ => \-vmo0\, \-vmo1\ => \-vmo1\, \-vmo2\ => \-vmo2\, \-vmo3\ => \-vmo3\, \-vmo4\ => \-vmo4\, vmoparck => vmoparck, vmoparodd => vmoparodd);
-  i_vmemdr : cadr_vmemdr port map(\-mapdrive\ => \-mapdrive\, \-pfw\ => \-pfw\, mf24 => mf24, \-pfr\ => \-pfr\, mf25 => mf25, hi12 => hi12, mf26 => mf26, \-vmap4\ => \-vmap4\, mf27 => mf27, \-vmap3\ => \-vmap3\, mf28 => mf28, \-vmap2\ => \-vmap2\, mf29 => mf29, \-vmap1\ => \-vmap1\, mf30 => mf30, \-vmap0\ => \-vmap0\, mf31 => mf31, \-vmo15\ => \-vmo15\, mf8 => mf8, \-vmo14\ => \-vmo14\, mf9 => mf9, \-vmo13\ => \-vmo13\, mf10 => mf10, \-vmo12\ => \-vmo12\, mf11 => mf11, \-vmo11\ => \-vmo11\, mf12 => mf12, \-vmo10\ => \-vmo10\, mf13 => mf13, \-vmo9\ => \-vmo9\, mf14 => mf14, \-vmo8\ => \-vmo8\, mf15 => mf15, \-vmo23\ => \-vmo23\, mf16 => mf16, \-vmo22\ => \-vmo22\, mf17 => mf17, \-vmo21\ => \-vmo21\, mf18 => mf18, \-vmo20\ => \-vmo20\, mf19 => mf19, \-vmo19\ => \-vmo19\, mf20 => mf20, \-vmo18\ => \-vmo18\, mf21 => mf21, \-vmo17\ => \-vmo17\, mf22 => mf22, \-vmo16\ => \-vmo16\, mf23 => mf23, tse1a => tse1a, srcmap => srcmap, \-vmo7\ => \-vmo7\, mf0 => mf0, \-vmo6\ => \-vmo6\, mf1 => mf1, \-vmo5\ => \-vmo5\, mf2 => mf2, \-vmo4\ => \-vmo4\, mf3 => mf3, \-vmo3\ => \-vmo3\, mf4 => mf4, \-vmo2\ => \-vmo2\, mf5 => mf5, \-vmo1\ => \-vmo1\, mf6 => mf6, \-vmo0\ => \-vmo0\, mf7 => mf7, \-lvmo23\ => \-lvmo23\, \-lvmo22\ => \-lvmo22\, \-pma21\ => \-pma21\, \-pma20\ => \-pma20\, memstart => memstart, \-pma19\ => \-pma19\, \-pma18\ => \-pma18\, \-pma17\ => \-pma17\, \-pma16\ => \-pma16\, \-pma15\ => \-pma15\, \-pma14\ => \-pma14\, \-pma13\ => \-pma13\, \-pma12\ => \-pma12\, \-pma11\ => \-pma11\, \-pma10\ => \-pma10\, \-pma9\ => \-pma9\, \-pma8\ => \-pma8\, \-vma6\ => \-vma6\, \-vma5\ => \-vma5\, \-vma4\ => \-vma4\, \-vma3\ => \-vma3\, \-vma2\ => \-vma2\, \-vma1\ => \-vma1\, \-vma0\ => \-vma0\, \-vma7\ => \-vma7\, \-adrpar\ => \-adrpar\, \-srcmap\ => \-srcmap\);
-
-
---- Memory Control Logic (vctl)
-  i_vctl1 : cadr_vctl1 port map(\-reset\ => \-reset\, rdcyc => rdcyc, wrcyc => wrcyc, clk2a => clk2a, wmap => wmap, \-wmapd\ => \-wmapd\, wmapd => wmapd, memprepare => memprepare, \-memwr\ => \-memwr\, \-memprepare\ => \-memprepare\, \-lvmo22\ => \-lvmo22\, \-pfw\ => \-pfw\, \-pfr\ => \-pfr\, \-vmaok\ => \-vmaok\, \-mfinishd\ => \-mfinishd\, memrq => memrq, mclk1a => mclk1a, hi11 => hi11, mbusy => mbusy, \rd.in.progress\ => \rd.in.progress\, \set.rd.in.progress\ => \set.rd.in.progress\, \-rdfinish\ => \-rdfinish\, \-mfinish\ => \-mfinish\, clk2c => clk2c, \-memop\ => \-memop\, \-memack\ => \-memack\, \-memrd\ => \-memrd\, \-ifetch\ => \-ifetch\, memstart => memstart, \-memstart\ => \-memstart\, \-mbusy.sync\ => \-mbusy.sync\, \mbusy.sync\ => \mbusy.sync\, hi4 => hi4, destmem => destmem, \-memgrant\ => \-memgrant\, \use.md\ => \use.md\, \-wait\ => \-wait\, needfetch => needfetch, lcinc => lcinc, \-hang\ => \-hang\, \-clk3g\ => \-clk3g\);
-  i_vctl2 : cadr_vctl2 port map(mapwr0d => mapwr0d, \-wmapd\ => \-wmapd\, \-vma26\ => \-vma26\, mapwr1d => mapwr1d, \-vma25\ => \-vma25\, wp1a => wp1a, \-vm0wpa\ => \-vm0wpa\, \-vm0wpb\ => \-vm0wpb\, \-vm1wpa\ => \-vm1wpa\, wp1b => wp1b, \-vm1wpb\ => \-vm1wpb\, \-lvmo23\ => \-lvmo23\, \-pfr\ => \-pfr\, \-wmap\ => \-wmap\, wmap => wmap, \-memrq\ => \-memrq\, memrq => memrq, \-memprepare\ => \-memprepare\, memprepare => memprepare, destmem => destmem, \-destmem\ => \-destmem\, mdsela => mdsela, \-destmdr\ => \-destmdr\, clk2c => clk2c, mdselb => mdselb, \-destvma\ => \-destvma\, \-ifetch\ => \-ifetch\, \-vmaenb\ => \-vmaenb\, hi11 => hi11, vmasela => vmasela, vmaselb => vmaselb, wrcyc => wrcyc, \lm drive enb\ => \lm drive enb\, \-memdrive.a\ => \-memdrive.a\, \-memdrive.b\ => \-memdrive.b\, \-memwr\ => \-memwr\, \-memrd\ => \-memrd\, ir20 => ir20, ir19 => ir19, \use.md\ => \use.md\, \-srcmd\ => \-srcmd\, nopa => nopa, \-nopa\ => \-nopa\);
-  i_olord1 : cadr_olord1 port map(\-clock reset a\ => \-clock reset a\, speed1a => speed1a, sspeed1 => sspeed1, speedclk => speedclk, sspeed0 => sspeed0, speed0a => speed0a, speed1 => speed1, speed0 => speed0, \-reset\ => \-reset\, spy0 => spy0, spy1 => spy1, spy2 => spy2, errstop => errstop, \-ldmode\ => \-ldmode\, stathenb => stathenb, spy3 => spy3, trapenb => trapenb, spy4 => spy4, spy5 => spy5, promdisable => promdisable, \-opcinh\ => \-opcinh\, opcinh => opcinh, \-ldopc\ => \-ldopc\, opcclk => opcclk, \-opcclk\ => \-opcclk\, \-lpc.hold\ => \-lpc.hold\, \lpc.hold\ => \lpc.hold\, ldstat => ldstat, \-ldstat\ => \-ldstat\, \-idebug\ => \-idebug\, idebug => idebug, \-ldclk\ => \-ldclk\, nop11 => nop11, \-nop11\ => \-nop11\, \-step\ => \-step\, step => step, promdisabled => promdisabled, sstep => sstep, ssdone => ssdone, mclk5a => mclk5a, srun => srun, run => run, \-boot\ => \-boot\, \-run\ => \-run\, \-ssdone\ => \-ssdone\, \-errhalt\ => \-errhalt\, \-wait\ => \-wait\, \-stathalt\ => \-stathalt\, machrun => machrun, \stat.ovf\ => \stat.ovf\, \-stc32\ => \-stc32\, \-tpr60\ => \-tpr60\, statstop => statstop, \-machruna\ => \-machruna\, \-machrun\ => \-machrun\);
-  i_olord2 : cadr_olord2 port map(\-ape\ => \-ape\, \-mpe\ => \-mpe\, \-pdlpe\ => \-pdlpe\, \-dpe\ => \-dpe\, \-ipe\ => \-ipe\, \-spe\ => \-spe\, \-higherr\ => \-higherr\, err => err, \-mempe\ => \-mempe\, \-v0pe\ => \-v0pe\, \-v1pe\ => \-v1pe\, \-halted\ => \-halted\, hi1 => hi1, aparok => aparok, mmemparok => mmemparok, pdlparok => pdlparok, dparok => dparok, clk5a => clk5a, iparok => iparok, spcparok => spcparok, highok => highok, memparok => memparok, v0parok => v0parok, vmoparok => vmoparok, statstop => statstop, \stat.ovf\ => \stat.ovf\, \-halt\ => \-halt\, \-mclk5\ => \-mclk5\, mclk5a => mclk5a, \-clk5\ => \-clk5\, \-reset\ => \-reset\, reset => reset, \bus.power.reset l\ => \bus.power.reset l\, \power reset a\ => \power reset a\, \-upperhighok\ => \-upperhighok\, \-lowerhighok\ => \-lowerhighok\, \-boot\ => \-boot\, \prog.bus.reset\ => \prog.bus.reset\, \-bus.reset\ => \-bus.reset\, \-clock reset b\ => \-clock reset b\, \-clock reset a\ => \-clock reset a\, \-power reset\ => \-power reset\, srun => srun, \boot.trap\ => \boot.trap\, hi2 => hi2, \-boot1\ => \-boot1\, \-boot2\ => \-boot2\, \-ldmode\ => \-ldmode\, ldmode => ldmode, mclk5 => mclk5, clk5 => clk5, \-busint.lm.reset\ => \-busint.lm.reset\, \-prog.reset\ => \-prog.reset\, spy6 => spy6, \-errhalt\ => \-errhalt\, errstop => errstop, \prog.boot\ => \prog.boot\, spy7 => spy7);
-
-
---- Other (...)
-  i_stat : cadr_stat port map(hi1 => hi1, clk5a => clk5a, iwr12 => iwr12, iwr13 => iwr13, iwr14 => iwr14, iwr15 => iwr15, \-ldstat\ => \-ldstat\, \-stc12\ => \-stc12\, st15 => st15, st14 => st14, st13 => st13, st12 => st12, \-stc16\ => \-stc16\, iwr16 => iwr16, iwr17 => iwr17, iwr18 => iwr18, iwr19 => iwr19, st19 => st19, st18 => st18, st17 => st17, st16 => st16, \-stc20\ => \-stc20\, iwr20 => iwr20, iwr21 => iwr21, iwr22 => iwr22, iwr23 => iwr23, st23 => st23, st22 => st22, st21 => st21, st20 => st20, \-stc24\ => \-stc24\, iwr24 => iwr24, iwr25 => iwr25, iwr26 => iwr26, iwr27 => iwr27, st27 => st27, st26 => st26, st25 => st25, st24 => st24, \-stc28\ => \-stc28\, iwr28 => iwr28, iwr29 => iwr29, iwr30 => iwr30, iwr31 => iwr31, st31 => st31, st30 => st30, st29 => st29, st28 => st28, \-stc32\ => \-stc32\, \-spy.sth\ => \-spy.sth\, spy8 => spy8, spy9 => spy9, spy10 => spy10, spy11 => spy11, spy12 => spy12, spy13 => spy13, spy14 => spy14, spy15 => spy15, spy0 => spy0, spy1 => spy1, spy2 => spy2, spy3 => spy3, spy4 => spy4, spy5 => spy5, spy6 => spy6, spy7 => spy7, \-spy.stl\ => \-spy.stl\, st11 => st11, st10 => st10, st9 => st9, st8 => st8, st7 => st7, st6 => st6, st5 => st5, st4 => st4, st3 => st3, st2 => st2, st1 => st1, st0 => st0, iwr0 => iwr0, iwr1 => iwr1, iwr2 => iwr2, iwr3 => iwr3, \-statbit\ => \-statbit\, \-stc4\ => \-stc4\, iwr4 => iwr4, iwr5 => iwr5, iwr6 => iwr6, iwr7 => iwr7, \-stc8\ => \-stc8\, iwr8 => iwr8, iwr9 => iwr9, iwr10 => iwr10, iwr11 => iwr11);
-  i_opcs : cadr_opcs port map(hi2 => hi2, opc13 => opc13, pc13 => pc13, opcinha => opcinha, opcclka => opcclka, pc12 => pc12, opc12 => opc12, opc11 => opc11, pc11 => pc11, pc10 => pc10, opc10 => opc10, opc9 => opc9, pc9 => pc9, opcclkc => opcclkc, pc8 => pc8, opc8 => opc8, opc7 => opc7, pc7 => pc7, pc6 => pc6, opc6 => opc6, \-opcinh\ => \-opcinh\, opcinhb => opcinhb, opc5 => opc5, pc5 => pc5, opcclkb => opcclkb, pc4 => pc4, opc4 => opc4, opc3 => opc3, pc3 => pc3, pc2 => pc2, opc2 => opc2, opc1 => opc1, pc1 => pc1, pc0 => pc0, opc0 => opc0, \-clk5\ => \-clk5\, opcclk => opcclk);
-  i_iwrpar : cadr_iwrpar port map(iwr41 => iwr41, iwr42 => iwr42, iwr43 => iwr43, iwr44 => iwr44, iwr45 => iwr45, iwr46 => iwr46, iwr47 => iwr47, iwrp4 => iwrp4, iwr36 => iwr36, iwr37 => iwr37, iwr38 => iwr38, iwr39 => iwr39, iwr40 => iwr40, iwr29 => iwr29, iwr30 => iwr30, iwr31 => iwr31, iwr32 => iwr32, iwr33 => iwr33, iwr34 => iwr34, iwr35 => iwr35, iwrp3 => iwrp3, iwr24 => iwr24, iwr25 => iwr25, iwr26 => iwr26, iwr27 => iwr27, iwr28 => iwr28, iwr17 => iwr17, iwr18 => iwr18, iwr19 => iwr19, iwr20 => iwr20, iwr21 => iwr21, iwr22 => iwr22, iwr23 => iwr23, iwrp2 => iwrp2, iwr12 => iwr12, iwr13 => iwr13, iwr14 => iwr14, iwr15 => iwr15, iwr16 => iwr16, iwr5 => iwr5, iwr6 => iwr6, iwr7 => iwr7, iwr8 => iwr8, iwr9 => iwr9, iwr10 => iwr10, iwr11 => iwr11, iwrp1 => iwrp1, iwr0 => iwr0, iwr1 => iwr1, iwr2 => iwr2, iwr3 => iwr3, iwr4 => iwr4, iwr48 => iwr48);
-  i_trap : cadr_trap port map(mdparerr => mdparerr, mdpareven => mdpareven, mdpar => mdpar, \-md5\ => \-md5\, \-md6\ => \-md6\, \-md7\ => \-md7\, \-md8\ => \-md8\, \-md9\ => \-md9\, \-md10\ => \-md10\, \-md11\ => \-md11\, mdparl => mdparl, \-md0\ => \-md0\, \-md1\ => \-md1\, \-md2\ => \-md2\, \-md3\ => \-md3\, \-md4\ => \-md4\, \-md17\ => \-md17\, \-md18\ => \-md18\, \-md19\ => \-md19\, \-md20\ => \-md20\, \-md21\ => \-md21\, \-md22\ => \-md22\, \-md23\ => \-md23\, mdparm => mdparm, \-md12\ => \-md12\, \-md13\ => \-md13\, \-md14\ => \-md14\, \-md15\ => \-md15\, \-md16\ => \-md16\, \-md29\ => \-md29\, \-md30\ => \-md30\, \-md31\ => \-md31\, mdparodd => mdparodd, \-md24\ => \-md24\, \-md25\ => \-md25\, \-md26\ => \-md26\, \-md27\ => \-md27\, \-md28\ => \-md28\, mdhaspar => mdhaspar, \use.md\ => \use.md\, \-wait\ => \-wait\, \-parerr\ => \-parerr\, \-trap\ => \-trap\, \boot.trap\ => \boot.trap\, \-trapenb\ => \-trapenb\, trapenb => trapenb, \-memparok\ => \-memparok\, trapb => trapb, trapa => trapa, memparok => memparok);
-  i_spy0 : cadr_spy0 port map(eadr0 => eadr0, eadr1 => eadr1, eadr2 => eadr2, \-dbread\ => \-dbread\, eadr3 => eadr3, hi1 => hi1, \-spy.obh\ => \-spy.obh\, \-spy.obl\ => \-spy.obl\, \-spy.pc\ => \-spy.pc\, \-spy.opc\ => \-spy.opc\, \-spy.irh\ => \-spy.irh\, \-spy.irm\ => \-spy.irm\, \-spy.irl\ => \-spy.irl\, \-spy.sth\ => \-spy.sth\, \-spy.stl\ => \-spy.stl\, \-spy.ah\ => \-spy.ah\, \-spy.al\ => \-spy.al\, \-spy.mh\ => \-spy.mh\, \-spy.ml\ => \-spy.ml\, \-spy.flag2\ => \-spy.flag2\, \-spy.flag1\ => \-spy.flag1\, \-dbwrite\ => \-dbwrite\, \-ldmode\ => \-ldmode\, \-ldopc\ => \-ldopc\, \-ldclk\ => \-ldclk\, \-lddbirh\ => \-lddbirh\, \-lddbirm\ => \-lddbirm\, \-lddbirl\ => \-lddbirl\);
-  i_spy1 : cadr_spy1 port map(\-spy.obl\ => \-spy.obl\, ob7 => ob7, spy0 => spy0, ob6 => ob6, spy1 => spy1, ob5 => ob5, spy2 => spy2, ob4 => ob4, spy3 => spy3, ob3 => ob3, spy4 => spy4, ob2 => ob2, spy5 => spy5, ob1 => ob1, spy6 => spy6, ob0 => ob0, spy7 => spy7, ob15 => ob15, spy8 => spy8, ob14 => ob14, spy9 => spy9, ob13 => ob13, spy10 => spy10, ob12 => ob12, spy11 => spy11, ob11 => ob11, spy12 => spy12, ob10 => ob10, spy13 => spy13, ob9 => ob9, spy14 => spy14, ob8 => ob8, spy15 => spy15, \-spy.obh\ => \-spy.obh\, ob23 => ob23, ob22 => ob22, ob21 => ob21, ob20 => ob20, ob19 => ob19, ob18 => ob18, ob17 => ob17, ob16 => ob16, ob31 => ob31, ob30 => ob30, ob29 => ob29, ob28 => ob28, ob27 => ob27, ob26 => ob26, ob25 => ob25, ob24 => ob24, \-spy.irl\ => \-spy.irl\, ir7 => ir7, ir6 => ir6, ir5 => ir5, ir4 => ir4, ir3 => ir3, ir2 => ir2, ir1 => ir1, ir0 => ir0, ir15 => ir15, ir14 => ir14, ir13 => ir13, ir12 => ir12, ir11 => ir11, ir10 => ir10, ir9 => ir9, ir8 => ir8, \-spy.irh\ => \-spy.irh\, ir47 => ir47, ir46 => ir46, ir45 => ir45, ir44 => ir44, ir43 => ir43, ir42 => ir42, ir41 => ir41, ir40 => ir40, ir39 => ir39, ir38 => ir38, ir37 => ir37, ir36 => ir36, ir35 => ir35, ir34 => ir34, ir33 => ir33, ir32 => ir32, \-spy.irm\ => \-spy.irm\, ir31 => ir31, ir30 => ir30, ir29 => ir29, ir28 => ir28, ir27 => ir27, ir26 => ir26, ir25 => ir25, ir24 => ir24, ir23 => ir23, ir22 => ir22, ir21 => ir21, ir20 => ir20, ir19 => ir19, ir18 => ir18, ir17 => ir17, ir16 => ir16);
-  i_spy2 : cadr_spy2 port map(\-spy.al\ => \-spy.al\, aa15 => aa15, spy8 => spy8, aa14 => aa14, spy9 => spy9, aa13 => aa13, spy10 => spy10, aa12 => aa12, spy11 => spy11, aa11 => aa11, spy12 => spy12, aa10 => aa10, spy13 => spy13, aa9 => aa9, spy14 => spy14, aa8 => aa8, spy15 => spy15, aa7 => aa7, spy0 => spy0, aa6 => aa6, spy1 => spy1, aa5 => aa5, spy2 => spy2, aa4 => aa4, spy3 => spy3, aa3 => aa3, spy4 => spy4, aa2 => aa2, spy5 => spy5, aa1 => aa1, spy6 => spy6, aa0 => aa0, spy7 => spy7, \-spy.ah\ => \-spy.ah\, a31a => a31a, a30 => a30, a29 => a29, a28 => a28, a27 => a27, a26 => a26, a25 => a25, a24 => a24, a23 => a23, a22 => a22, a21 => a21, a20 => a20, a19 => a19, a18 => a18, a17 => a17, a16 => a16, \-spy.flag2\ => \-spy.flag2\, ir48 => ir48, nop => nop, \-vmaok\ => \-vmaok\, jcond => jcond, pcs1 => pcs1, pcs0 => pcs0, wmapd => wmapd, destspcd => destspcd, iwrited => iwrited, imodd => imodd, pdlwrited => pdlwrited, spushd => spushd, \-spy.ml\ => \-spy.ml\, m15 => m15, m14 => m14, m13 => m13, m12 => m12, m11 => m11, m10 => m10, m9 => m9, m8 => m8, m7 => m7, m6 => m6, m5 => m5, m4 => m4, m3 => m3, m2 => m2, m1 => m1, m0 => m0, \-spy.mh\ => \-spy.mh\, m23 => m23, m22 => m22, m21 => m21, m20 => m20, m19 => m19, m18 => m18, m17 => m17, m16 => m16, m31 => m31, m30 => m30, m29 => m29, m28 => m28, m27 => m27, m26 => m26, m25 => m25, m24 => m24);
-  i_spy4 : cadr_spy4 port map(\-spy.flag1\ => \-spy.flag1\, \-wait\ => \-wait\, spy8 => spy8, \-v1pe\ => \-v1pe\, spy9 => spy9, \-v0pe\ => \-v0pe\, spy10 => spy10, promdisable => promdisable, spy11 => spy11, \-stathalt\ => \-stathalt\, spy12 => spy12, err => err, spy13 => spy13, ssdone => ssdone, spy14 => spy14, srun => srun, spy15 => spy15, \-higherr\ => \-higherr\, spy0 => spy0, \-mempe\ => \-mempe\, spy1 => spy1, \-ipe\ => \-ipe\, spy2 => spy2, \-dpe\ => \-dpe\, spy3 => spy3, \-spe\ => \-spe\, spy4 => spy4, \-pdlpe\ => \-pdlpe\, spy5 => spy5, \-mpe\ => \-mpe\, spy6 => spy6, \-ape\ => \-ape\, spy7 => spy7, \-spy.pc\ => \-spy.pc\, pc13 => pc13, pc12 => pc12, pc11 => pc11, pc10 => pc10, pc9 => pc9, pc8 => pc8, pc7 => pc7, pc6 => pc6, pc5 => pc5, pc4 => pc4, pc3 => pc3, pc2 => pc2, pc1 => pc1, pc0 => pc0, \-spy.opc\ => \-spy.opc\, opc13 => opc13, opc12 => opc12, opc11 => opc11, opc10 => opc10, opc9 => opc9, opc8 => opc8, opc7 => opc7, opc6 => opc6, opc5 => opc5, opc4 => opc4, opc3 => opc3, opc2 => opc2, opc1 => opc1, opc0 => opc0);
-  i_opcd : cadr_opcd port map(\-srcdc\ => \-srcdc\, \-srcopc\ => \-srcopc\, \-opcdrive\ => \-opcdrive\, opc7 => opc7, mf4 => mf4, opc6 => opc6, mf5 => mf5, opc5 => opc5, mf6 => mf6, opc4 => opc4, mf7 => mf7, dc7 => dc7, dc6 => dc6, dc5 => dc5, dc4 => dc4, dcdrive => dcdrive, opc3 => opc3, mf0 => mf0, opc2 => opc2, mf1 => mf1, opc1 => opc1, mf2 => mf2, opc0 => opc0, mf3 => mf3, dc3 => dc3, dc2 => dc2, dc1 => dc1, dc0 => dc0, tse1b => tse1b, \-zero16.drive\ => \-zero16.drive\, zero16 => zero16, \zero16.drive\ => \zero16.drive\, \zero12.drive\ => \zero12.drive\, mf24 => mf24, mf25 => mf25, mf26 => mf26, mf27 => mf27, mf28 => mf28, mf29 => mf29, mf30 => mf30, mf31 => mf31, mf16 => mf16, mf17 => mf17, mf18 => mf18, mf19 => mf19, mf20 => mf20, mf21 => mf21, mf22 => mf22, mf23 => mf23, mf12 => mf12, mf13 => mf13, opc13 => opc13, mf14 => mf14, opc12 => opc12, mf15 => mf15, opc11 => opc11, mf8 => mf8, opc10 => opc10, mf9 => mf9, opc9 => opc9, mf10 => mf10, opc8 => opc8, mf11 => mf11, dc9 => dc9, dc8 => dc8, \-srcpdlidx\ => \-srcpdlidx\, \-srcpdlptr\ => \-srcpdlptr\);
-  i_mo0 : cadr_mo0 port map(alu15 => alu15, r15 => r15, a15 => a15, ob15 => ob15, osel1b => osel1b, osel0b => osel0b, msk15 => msk15, alu14 => alu14, alu16 => alu16, r14 => r14, a14 => a14, ob14 => ob14, msk14 => msk14, alu13 => alu13, r13 => r13, a13 => a13, ob13 => ob13, msk13 => msk13, alu12 => alu12, r12 => r12, a12 => a12, ob12 => ob12, msk12 => msk12, alu11 => alu11, alu7 => alu7, r7 => r7, a7 => a7, ob7 => ob7, msk7 => msk7, alu6 => alu6, alu8 => alu8, r6 => r6, a6 => a6, ob6 => ob6, msk6 => msk6, alu5 => alu5, r5 => r5, a5 => a5, ob5 => ob5, msk5 => msk5, alu4 => alu4, r4 => r4, a4 => a4, ob4 => ob4, msk4 => msk4, alu3 => alu3, r11 => r11, a11 => a11, ob11 => ob11, msk11 => msk11, alu10 => alu10, r10 => r10, a10 => a10, ob10 => ob10, msk10 => msk10, alu9 => alu9, r3 => r3, a3 => a3, ob3 => ob3, msk3 => msk3, alu2 => alu2, r2 => r2, a2 => a2, ob2 => ob2, msk2 => msk2, alu1 => alu1, r9 => r9, a9 => a9, ob9 => ob9, msk9 => msk9, r8 => r8, a8 => a8, ob8 => ob8, msk8 => msk8, r1 => r1, a1 => a1, ob1 => ob1, msk1 => msk1, alu0 => alu0, r0 => r0, a0 => a0, ob0 => ob0, msk0 => msk0, q31 => q31);
-  i_mo1 : cadr_mo1 port map(alu31 => alu31, r31 => r31, a31b => a31b, ob31 => ob31, osel1a => osel1a, osel0a => osel0a, msk31 => msk31, alu30 => alu30, alu32 => alu32, r30 => r30, a30 => a30, ob30 => ob30, msk30 => msk30, alu29 => alu29, r29 => r29, a29 => a29, ob29 => ob29, msk29 => msk29, alu28 => alu28, r28 => r28, a28 => a28, ob28 => ob28, msk28 => msk28, alu27 => alu27, alu23 => alu23, r23 => r23, a23 => a23, ob23 => ob23, msk23 => msk23, alu22 => alu22, alu24 => alu24, r22 => r22, a22 => a22, ob22 => ob22, msk22 => msk22, alu21 => alu21, r21 => r21, a21 => a21, ob21 => ob21, msk21 => msk21, alu20 => alu20, r20 => r20, a20 => a20, ob20 => ob20, msk20 => msk20, alu19 => alu19, r27 => r27, a27 => a27, ob27 => ob27, msk27 => msk27, alu26 => alu26, r24 => r24, a24 => a24, ob24 => ob24, msk24 => msk24, alu25 => alu25, r26 => r26, a26 => a26, ob26 => ob26, msk26 => msk26, r25 => r25, a25 => a25, ob25 => ob25, msk25 => msk25, r19 => r19, a19 => a19, ob19 => ob19, msk19 => msk19, alu18 => alu18, r18 => r18, a18 => a18, ob18 => ob18, msk18 => msk18, alu17 => alu17, r17 => r17, a17 => a17, ob17 => ob17, msk17 => msk17, alu16 => alu16, r16 => r16, a16 => a16, ob16 => ob16, msk16 => msk16, alu15 => alu15);
-  i_bcterm : cadr_bcterm port map(mem0 => mem0, mem1 => mem1, mem2 => mem2, mem3 => mem3, mem4 => mem4, mem5 => mem5, mem6 => mem6, mem7 => mem7, mem8 => mem8, mem9 => mem9, mem10 => mem10, mem11 => mem11, mem12 => mem12, mem13 => mem13, mem14 => mem14, mem15 => mem15, mem16 => mem16, mem17 => mem17, mem18 => mem18, mem19 => mem19, mem20 => mem20, mem21 => mem21, mem22 => mem22, mem23 => mem23, mem24 => mem24, mem25 => mem25, mem26 => mem26, mem27 => mem27, mem28 => mem28, mem29 => mem29, mem30 => mem30, mem31 => mem31, \mempar in\ => \mempar in\, \-memgrant\ => \-memgrant\, int => int, \-loadmd\ => \-loadmd\, \-ignpar\ => \-ignpar\, \-memack\ => \-memack\);
-  i_ipar : cadr_ipar port map(ir41 => ir41, ir42 => ir42, ir43 => ir43, ir44 => ir44, ir45 => ir45, ir46 => ir46, ir47 => ir47, ipar3 => ipar3, ir36 => ir36, ir37 => ir37, ir38 => ir38, ir39 => ir39, ir40 => ir40, ir5 => ir5, ir6 => ir6, ir7 => ir7, ir8 => ir8, ir9 => ir9, ir10 => ir10, ir11 => ir11, ipar0 => ipar0, ir0 => ir0, ir1 => ir1, ir2 => ir2, ir3 => ir3, ir4 => ir4, ir29 => ir29, ir30 => ir30, ir31 => ir31, ir32 => ir32, ir33 => ir33, ir34 => ir34, ir35 => ir35, ipar2 => ipar2, ir24 => ir24, ir25 => ir25, ir26 => ir26, ir27 => ir27, ir28 => ir28, iparity => iparity, ipar1 => ipar1, ir48 => ir48, ir17 => ir17, ir18 => ir18, ir19 => ir19, ir20 => ir20, ir21 => ir21, ir22 => ir22, ir23 => ir23, ir12 => ir12, ir13 => ir13, ir14 => ir14, ir15 => ir15, ir16 => ir16, imodd => imodd, iparok => iparok);
-
+  
+  --- Clock Generation (clock1, clock2, clockd)
+  i_clock : clock port map (
+    \-clock_reset_b\ => \-clock_reset_b\,
+    \-hang\          => \-hang\,
+    \-ilong\         => \-ilong\,
+    sspeed0          => sspeed0,
+    sspeed1          => sspeed1,
+    machrun          => machrun,
+    \-machruna\      => \-machruna\,
+    lcry3            => lcry3,
+    reset            => reset,
+    \-srcpdlidx\     => \-srcpdlidx\,
+    \-srcpdlptr\     => \-srcpdlptr\,
+    cyclecompleted   => cyclecompleted,
+    \-tpr0\          => \-tpr0\,
+    \-tpr10\         => \-tpr10\,
+    \-tpr100\        => \-tpr100\,
+    \-tpr105\        => \-tpr105\,
+    \-tpr110\        => \-tpr110\,
+    \-tpr115\        => \-tpr115\,
+    \-tpr120\        => \-tpr120\,
+    \-tpr120a\       => \-tpr120a\,
+    \-tpr125\        => \-tpr125\,
+    \-tpr140\        => \-tpr140\,
+    \-tpr15\         => \-tpr15\,
+    \-tpr160\        => \-tpr160\,
+    \-tpr180\        => \-tpr180\,
+    \-tpr20\         => \-tpr20\,
+    \-tpr200\        => \-tpr200\,
+    \-tpr20a\        => \-tpr20a\,
+    \-tpr25\         => \-tpr25\,
+    \-tpr40\         => \-tpr40\,
+    \-tpr5\          => \-tpr5\,
+    \-tpr60\         => \-tpr60\,
+    \-tpr65\         => \-tpr65\,
+    \-tpr70\         => \-tpr70\,
+    \-tpr75\         => \-tpr75\,
+    \-tpr80\         => \-tpr80\,
+    \-tpr80a\        => \-tpr80a\,
+    \-tpr85\         => \-tpr85\,
+    \-tprend\        => \-tprend\,
+    tprend           => tprend,
+    \-tpw10\         => \-tpw10\,
+    \-tpw20\         => \-tpw20\,
+    \-tpw25\         => \-tpw25\,
+    \-tpw30\         => \-tpw30\,
+    \-tpw30a\        => \-tpw30a\,
+    \-tpw35\         => \-tpw35\,
+    \-tpw40\         => \-tpw40\,
+    \-tpw40a\        => \-tpw40a\,
+    \-tpw45\         => \-tpw45\,
+    \-tpw50\         => \-tpw50\,
+    \-tpw55\         => \-tpw55\,
+    \-tpw60\         => \-tpw60\,
+    \-tpw65\         => \-tpw65\,
+    \-tpw70\         => \-tpw70\,
+    \-tpw75\         => \-tpw75\,
+    \-clk0\          => \-clk0\,
+    clk1             => clk1,
+    clk2             => clk2,
+    clk3             => clk3,
+    clk4             => clk4,
+    clk5             => clk5,
+    \-mclk0\         => \-mclk0\,
+    mclk1            => mclk1,
+    mclk5            => mclk5,
+    mclk7            => mclk7,
+    tpclk            => tpclk,
+    \-tpclk\         => \-tpclk\,
+    \-tptse\         => \-tptse\,
+    tptse            => tptse,
+    tpwp             => tpwp,
+    tpwpiram         => tpwpiram,
+    \-tse1\          => \-tse1\,
+    \-tse2\          => \-tse2\,
+    \-tse3\          => \-tse3\,
+    \-tse4\          => \-tse4\,
+    \-wp1\           => \-wp1\,
+    \-wp2\           => \-wp2\,
+    \-wp3\           => \-wp3\,
+    \-wp4\           => \-wp4\,
+    \-wp5\           => \-wp5\,
+    \-clk1\          => \-clk1\,
+    clk1a            => clk1a,
+    \-clk2a\         => \-clk2a\,
+    clk2a            => clk2a,
+    clk2b            => clk2b,
+    \-clk2c\         => \-clk2c\,
+    clk2c            => clk2c,
+    \-clk3a\         => \-clk3a\,
+    clk3a            => clk3a,
+    clk3b            => clk3b,
+    clk3c            => clk3c,
+    \-clk3d\         => \-clk3d\,
+    clk3d            => clk3d,
+    clk3e            => clk3e,
+    clk3f            => clk3f,
+    \-clk3g\         => \-clk3g\,
+    \-clk4a\         => \-clk4a\,
+    clk4a            => clk4a,
+    clk4b            => clk4b,
+    clk4c            => clk4c,
+    \-clk4d\         => \-clk4d\,
+    clk4d            => clk4d,
+    \-clk4e\         => \-clk4e\,
+    clk4e            => clk4e,
+    clk4f            => clk4f,
+    \-lcry3\         => \-lcry3\,
+    \-mclk1\         => \-mclk1\,
+    mclk1a           => mclk1a,
+    \-reset\         => \-reset\,
+    srcpdlidx        => srcpdlidx,
+    srcpdlptr        => srcpdlptr,
+    tse1a            => tse1a,
+    tse1b            => tse1b,
+    tse2             => tse2,
+    tse3a            => tse3a,
+    tse4a            => tse4a,
+    tse4b            => tse4b,
+    \-upperhighok\   => \-upperhighok\,
+    wp1a             => wp1a,
+    wp1b             => wp1b,
+    wp2              => wp2,
+    wp3a             => wp3a,
+    wp4a             => wp4a,
+    wp4b             => wp4b,
+    wp4c             => wp4c
+  );
+  --- Microinstruction Fetch (ictl, iramXX, pctl, promX, iwr, debug)
+  i_imem  : imem port map (
+    PC               => PC,
+    idebug           => idebug,
+    \-iwrited\       => \-iwrited\,
+    promdisabled     => promdisabled,
+    \-wp5\           => \-wp5\,
+    IWR              => IWR,
+    I                => I,
+    \-iwriteda\      => \-iwriteda\,
+    iwriteda         => open,
+    \-promdisabled\  => \-promdisabled\,
+    ramdisable       => open,
+    wp5a             => open,
+    wp5b             => open,
+    wp5c             => open
+  );
+  i_prom  : prom port map (
+    PC               => PC,
+    \-ape\           => \-ape\,
+    \-dpe\           => \-dpe\,
+    \-idebug\        => \-idebug\,
+    \-ipe\           => \-ipe\,
+    \-iwriteda\      => \-iwriteda\,
+    \-mempe\         => \-mempe\,
+    \-mpe\           => \-mpe\,
+    \-pdlpe\         => \-pdlpe\,
+    \-promdisabled\  => \-promdisabled\,
+    \-spe\           => \-spe\,
+    \-v0pe\          => \-v0pe\,
+    \-v1pe\          => \-v1pe\,
+    I                => open, -- PROM I output (alternative to RAM)
+    \bottom.1k\      => \bottom.1k\,
+    dpe              => dpe,
+    i46              => i46,
+    ipe              => ipe,
+    \-promenable\    => \-promenable\,
+    promenable       => promenable,
+    tilt0            => tilt0,
+    tilt1            => tilt1
+  );
+  i_fetch : fetch port map (
+    clk2c => clk2c,
+    clk4c => clk4c,
+    \-idebug\ => \-idebug\,
+    \-lddbirh\ => open,
+    \-lddbirm\ => open,
+    \-lddbirl\ => open,
+    AA => open,
+    M => M,
+    SPY => SPY(15 downto 0),
+    I => I,
+    IWR => IWR
+  );
+  --- Microinstrction Modification and Main Instruction Register (ior, ireg)
+  i_ireg   : ireg port map(
+    clk3a => clk3a,
+    clk3b => clk3b,
+    \-destimod0\ => open,
+    \-destimod1\ => open,
+    I => I,
+    OB => OB,
+    IOB => open,
+    IR => IR
+  );
+  --- IR Decoding (source)
+  i_decode : decode port map(
+    \destimod0 l\ => open,
+    \-idebug\ => \-idebug\,
+    \-ir31\ => \-ir31\,
+    \iwrited l\ => open,
+    nop => nop,
+    IR => IR(44 downto 3),
+    dest => dest,
+    destm => destm,
+    imod => imod,
+    iralu => open,
+    irdisp => open,
+    irjump => open,
+    \-funct0\ => open,
+    \-funct1\ => open,
+    \-funct2\ => open,
+    \-funct3\ => open,
+    \-destimod0\ => open,
+    \-destimod1\ => open,
+    \-destintctl\ => open,
+    \-destlc\ => open,
+    \-destmdr\ => open,
+    \-destmem\ => open,
+    \-destpdl(p)\ => \-destpdl(p)\,
+    \-destpdl(x)\ => \-destpdl(x)\,
+    \-destpdlp\ => \-destpdlp\,
+    \-destpdltop\ => \-destpdltop\,
+    \-destpdlx\ => \-destpdlx\,
+    \-destspc\ => \-destspc\,
+    \-destvma\ => open,
+    \-srcdc\ => open,
+    \-srclc\ => open,
+    \-srcmap\ => open,
+    \-srcmd\ => open,
+    \-srcopc\ => open,
+    \-srcpdlidx\ => open,
+    \-srcpdlpop\ => \-srcpdlpop\,
+    \-srcpdlptr\ => open,
+    \-srcpdltop\ => \-srcpdltop\,
+    \-srcq\ => open,
+    \-srcspc\ => \-srcspc\,
+    \-srcspcpop\ => \-srcspcpop\,
+    \-srcvma\ => open,
+    \-div\ => open,
+    \-iralu\ => open,
+    \-irbyte\ => \-irbyte\,
+    \-irdisp\ => open,
+    \-irjump\ => open,
+    \-ir22\ => open,
+    \-ir25\ => open,
+    \-mul\ => open,
+    \-specalu\ => open
+  );
+  --- A & M Memory (actl, amem0, amem1, mctrl, mmem, mlatch, mf)
+  i_amem  : amem port map (
+    clk3d        => clk3d,
+    clk3e        => clk3e,
+    dest         => dest,
+    destm        => destm,
+    \-reset\     => \-reset\,
+    tse3a        => tse3a,
+    tse4a        => tse4a,
+    wp3a         => wp3a,
+    \-amemenb\   => \-amemenb\,
+    apassenb     => apassenb,
+    \-apassenb\  => \-apassenb\,
+    IR           => IR(41 downto 14),
+    L            => L,
+    A            => A,
+    AADR         => AADR,
+    AMEM         => AMEM,
+    lparity      => lparity,
+    amemparity   => amemparity,
+    aparity      => aparity,
+    a31a         => a31a,
+    a31b         => a31b,
+    \-apass\     => \-apass\,
+    apass1       => apass1,
+    apass2       => apass2,
+    \-awpa\      => \-awpa\,
+    \-awpb\      => \-awpb\,
+    \-awpc\      => \-awpc\,
+    destd        => destd,
+    destmd       => destmd,
+    wadr0        => wadr0,
+    wadr1        => wadr1,
+    wadr2        => wadr2,
+    wadr3        => wadr3,
+    wadr4        => wadr4,
+    wadr5        => wadr5,
+    wadr6        => wadr6,
+    wadr7        => wadr7,
+    wadr8        => wadr8,
+    wadr9        => wadr9
+  );
+  i_mmem  : mmem port map (
+    clk4a        => clk4a,
+    clk4e        => clk4e,
+    destmd       => destmd,
+    \-ir31\      => \-ir31\,
+    tse4a        => tse4a,
+    wp4b         => wp4b,
+    \-mpass\     => \-mpass\,
+    pdlenb       => pdlenb,
+    spcenb       => spcenb,
+    tse1a        => tse1a,
+    IR           => IR(30 downto 26),
+    L            => L,
+    MF           => MF,
+    lparity      => lparity,
+    wadr0        => wadr0,
+    wadr1        => wadr1,
+    wadr2        => wadr2,
+    wadr3        => wadr3,
+    wadr4        => wadr4,
+    M            => M,
+    MMEM         => MMEM,
+    mmemparity   => mmemparity,
+    mparity      => mparity,
+    mpass        => mpass,
+    \-mpass_out\ => \-mpass_out\,
+    mpassl       => mpassl,
+    \-mpassl\    => \-mpassl\,
+    \-mpassm\    => \-mpassm\,
+    \-mwpa\      => \-mwpa\,
+    \-mwpb\      => \-mwpb\,
+    srcm         => srcm
+  );  
+  --- Stack Buffer (pdlptr, pdlctl, pdl0, pdl1, platch)
+  i_pdl   : pdl port map (L => L, M => M, OB => OB(9 downto 0), PDL => PDL, PDLIDX => PDLIDX, PDLPTR => PDLPTR, MF => MF, clk3f => clk3f, clk4a => clk4a, clk4b => clk4b, \-clk4e\ => \-clk4e\, clk4f => clk4f, \-destpdl(p)\ => \-destpdl(p)\, \-destpdl(x)\ => \-destpdl(x)\, \-destpdlp\ => \-destpdlp\, \-destpdltop\ => \-destpdltop\, \-destpdlx\ => \-destpdlx\, \-destspc\ => \-destspc\, imod => imod, ir30 => IR(30), lparity => lparity, nop => nop, \-pdlcnt\ => \-pdlcnt\, \-reset\ => \-reset\, srcpdlidx => srcpdlidx, \-srcpdlpop\ => \-srcpdlpop\, srcpdlptr => srcpdlptr, \-srcpdltop\ => \-srcpdltop\, tse4b => tse4b, wp4a => wp4a, \-destspcd\ => \-destspcd\, imodd => imodd, \-imodd\ => \-imodd\, \-pdlcry3\ => \-pdlcry3\, \-pdlcry7\ => \-pdlcry7\, \-pdldrive\ => \-pdldrive\, pdlenb => pdlenb, pdlparity => pdlparity, pidrive => pidrive, \-ppdrive\ => \-ppdrive\, pdlwrite => pdlwrite, \-pdlwrited\ => \-pdlwrited\, pdlwrited => pdlwrited, pwidx => pwidx, \-pwidx\ => \-pwidx\);
+  --- Shifter/Masker (smctl, shift0, shift1, mskg4)
+  i_sm    : shifter_masker port map (IR => IR(13 downto 0), M => M, MSK => MSK, R => R, SA => SA, \-irbyte\ => \-irbyte\, \-sh3\ => \-sh3\, \-sh4\ => \-sh4\, ir31 => IR(31), \a=m\ => \a=m\, \-mr\ => \-mr\, \-sr\ => \-sr\);
+  -- ALU (alu0, alu1, aluc4)
+  i_alu   : alu port map (A => A, M => M, aluc0 => aluc0, aluc1 => aluc1, aluc2 => aluc2, aluc3 => aluc3, ALU => ALU, lcry3 => lcry3, lcry11 => lcry11, lcry19 => lcry19, lcry27 => lcry27);
+  --- The Q Register (qctl, q)
+  i_qreg  : qreg port map (clk2b => clk2b, ALU => ALU, \-ir0\ => \-ir0\, \-ir1\ => \-ir1\, \-iralu\ => \-iralu\, \-srcq\ => \-srcq\, tse2 => tse2, Q => Q, MF => MF, \-alu31\ => \-alu31\, \-qdrive\ => \-qdrive\, qdrive => qdrive, qs0 => qs0, qs1 => qs1, srcq => srcq);
+  --- The L Register (l)
+  i_lreg  : lreg port map(
+    clk3f => clk3f,
+    OB => OB,
+    L => L,
+    lparl => open,
+    \-lparm\ => open,
+    lparity => lparity,
+    \-lparity\ => open
+  );
+  --- The Dispatch Memory (dspctl, dram0, dram1, dram2)
+  i_dmem  : dmem port map (clk3e => clk3e, IR => IR(41 downto 5), A => A(17 downto 0), AA => open, dispenb => open, \-irdisp\ => open, \-funct2\ => open, wp2 => wp2, R => R(6 downto 0), dispwr => open, \-dmapbenb\ => open, \-dwea\ => open, \-dweb\ => open, \-dwec\ => open, DADR => DADR, \-DADR\ => open, dpar => open, dn => open, dp => open, dr => open, dpareven => open, dparok => open, \-dparh\ => open, dparl => open, DPC => DPC, vmo18 => open, vmo19 => open, \-vmo18\ => open, \-vmo19\ => open, DMASK => open);
+  --- Jump Conditions (flag)
+  i_jumpc  : jumpc port map (
+    clk3c => clk3c,
+    \-reset\ => \-reset\,
+    \a=m\ => \a=m\,
+    alu32 => open,
+    \-destintctl\ => open,
+    \-nopa\ => open,
+    r0 => open,
+    sintr => open,
+    \-vmaok\ => open,
+    IR => IR(46 downto 0),
+    OB => OB(29 downto 26),
+    \-alu32\ => open,
+    aluneg => open,
+    conds0 => open,
+    conds1 => open,
+    conds2 => open,
+    \-ilong\ => open,
+    \int.enable\ => open,
+    jcond => open,
+    \-jcond\ => open,
+    \lc byte mode\ => open,
+    \pgf.or.int\ => open,
+    \pgf.or.int.or.sb\ => open,
+    \prog.unibus.reset\ => open,
+    \sequence.break\ => open,
+    sint => open,
+    \-statbit\ => open
+  );
+  --- Flow of Control (contrl)
+  i_flowc : flowc port map(
+    clk3c => clk3c,
+    \-reset\ => \-reset\,
+    tse3a => tse3a,
+    \-funct2\ => open,
+    \-irdisp\ => open,
+    irdisp => open,
+    irjump => open,
+    \-jcond\ => open,
+    jcond => open,
+    \-nop11\ => open,
+    \-srcspc\ => \-srcspc\,
+    \-srcspcpop\ => \-srcspcpop\,
+    \-trap\ => open,
+    IR => IR(42 downto 6),
+    \-dfall\ => open,
+    \-destspc\ => open,
+    destspc => open,
+    dispenb => open,
+    dn => open,
+    dp => open,
+    dr => open,
+    \-ignpopj\ => open,
+    \-inop\ => open,
+    inop => open,
+    \-ipopj\ => open,
+    \-iwrited\ => open,
+    iwrite => open,
+    iwrited => open,
+    jcalf => open,
+    jfalse => open,
+    jret => open,
+    jretf => open,
+    n => open,
+    \-nop\ => open,
+    nop => nop,
+    \-nopa\ => open,
+    \-popj\ => open,
+    \-spcdrive\ => open,
+    spcdrive => open,
+    spcenb => spcenb,
+    \-spcpass\ => open,
+    \-spcwpass\ => open,
+    spcwpass => open,
+    \-spushd\ => open,
+    spush => open,
+    spushd => open,
+    \-srcspcpopreal\ => open
+  );
+  --- Microcode Subroutine Return Stack (spc, spclch, spcw, lpc)
+  i_spc   : spc port map (clk4a => clk4a, clk4b => clk4b, clk4c => clk4c, \-destspc\ => open, destspc => open, \-destspcd\ => open, destspcd => open, \-ignpopj\ => open, jcalf => open, jret => open, jretf => open, popj => open, spcdrive => open, \-spcdrive\ => open, spcenb => open, \-spcpass\ => open, spcwpass => open, \-spcwpass\ => open, spush => open, \-spush\ => open, spushd => open, \-spushd\ => open, tse2 => tse2, tse3a => tse3a, wp4a => wp4a, wp4b => wp4b, L => L, LPC => LPC, SPC => SPC, SPCO => SPCO, SPCW => SPCW, SPCPTR => SPCPTR, lparity => open, lpc13 => LPC(13), spcparity => open, spcwparity => open, spcparok => open, spcwparok => open);
+  --- Next PC Selector (npc)
+  i_npc   : npc port map(
+    clk4b => clk4b,
+    dpc4 => open,
+    pcs0 => open,
+    pcs1 => open,
+    spc1a => open,
+    trapa => open,
+    trapb => open,
+    IR => IR(25 downto 12),
+    DPC => open,
+    IPC => IPC,
+    NPC => open,
+    PC => PC,
+    SPC => open,
+    SPCO => open,
+    pccry3 => open,
+    pccry7 => open,
+    pccry11 => open
+  );
+  --- The LC register and Instruction Prefetch (lc, lcc)
+  i_lcreg : lcreg port map (clk1a => clk1a, clk2a => clk2a, clk2c => clk2c, clk3c => clk3c, OB => OB, IR => IR, SPC => SPC(18 downto 0), \-destlc\ => open, \-reset\ => \-reset\, \-srcspcpopreal\ => open, \-srclc\ => open, needfetch => open, \prog.unibus.reset\ => open, \int.enable\ => open, \sequence.break\ => open, tse1a => tse1a, int => open, irdisp => open, \-spop\ => open, LC => LC, MF => open, \lc byte mode\ => open, \-lcinc\ => open, lcinc => open, lcry3 => open, \-lcry3\ => open, \-lcry7\ => open, \-lcry11\ => open, \-lcry15\ => open, \-lcry19\ => open, \-lcry23\ => open, \-lcdrive\ => open, lcdrive => open, srclc => open, \-sh4\ => open, \-sh3\ => open, \inst in left half\ => open, \inst in 2nd or 4th quarter\ => open, \-lc modifies mrot\ => open, \-ifetch\ => open, \have wrong word\ => open, \last byte in word\ => open, \-newlc\ => open, \-newlc.in\ => open, newlc => open);
+  --- The VMA and VMA Selector (vma, vmas)
+  i_vma   : vma port map (clk1a => clk1a, clk2a => clk2a, clk2c => clk2c, OB => OB, LC => LC, MD => MD, VMAS => VMAS, \-srcvma\ => open, tse2 => tse2, \-vmaenb\ => open, vmasela => open, vmaselb => open, \-memstart\ => open, VMA => VMA, MF => open, MAPI => MAPI(23 downto 12), \-vmadrive\ => open, srcvma => open);
+  --- The MD and the MD Selector (md, mds)
+  i_md    : md port map (\-clk2c\ => \-clk2c\, tse2 => tse2, OB => OB, MDS => MDS, \-destmdr\ => open, \-ignpar\ => open, \-loadmd\ => open, \mempar in\ => open, \-srcmd\ => open, mdparodd => open, mdsela => open, mdselb => open, \-memdrive.a\ => open, \-memdrive.b\ => open, MD => MD, MF => open, MEM => MEM, \-mddrive\ => open, srcmd => open, destmdr => open, loadmd => open, mdclk => open, mdgetspar => open, mdhaspar => open, mdpar => open);
+  --- First and Second Level Maps (vmem0, vmem1, vmem2, vmemdr)
+  i_vmaps : vmaps port map (tse1a => tse1a, VMA => VMA, MAPI => MAPI(23 downto 8), VMAP => VMAP, VMO => VMO(23 downto 0), memstart => open, \-pfr\ => open, \-pfw\ => open, \-srcmap\ => open, srcmap => open, \-vm0wpa\ => open, \-vm0wpb\ => open, \-vm1wpa\ => open, \-vm1wpb\ => open, vmoparodd => open, MF => open, VMAP_OUT => open, VMO_OUT => open, \-mapdrive\ => open, \-mapi23\ => open, \-use.map\ => open, v0parok => open, vm0pari => open, vmoparok => open, vpari => open, vm1mpar => open, vm1pari => open, \-vm1lpar\ => open, vmoparm => open, vmopar => open, vmoparl => open, vmoparck => open, \-lvmo22\ => open, \-lvmo23\ => open, \-adrpar\ => open);
+  --- Memory Control Logic part I (vctl1, vctl2)
+  i_vctrl : vctl port map (clk2a => clk2a, clk2c => clk2c, mclk1a => mclk1a, \-clk3g\ => \-clk3g\, IR => IR(25 downto 19), VMA => VMA(26 downto 25), \-reset\ => \-reset\, wmap => open, \-memwr\ => open, \-memprepare\ => open, \-lvmo22\ => open, \-pfr\ => open, \-lvmo23\ => open, memrq => open, \-memack\ => open, \-memrd\ => open, \-ifetch\ => open, destmem => open, \-memgrant\ => open, \use.md\ => open, needfetch => open, lcinc => open, \-destmdr\ => open, \-destmem\ => open, \-destvma\ => open, \lm drive enb\ => open, wp1a => wp1a, wp1b => wp1b, wrcyc => open, \-srcmd\ => open, \-nopa\ => open, rdcyc => open, wrcyc_out => open, \-wmapd\ => open, wmapd => open, memprepare => open, \-pfw\ => open, \-vmaok\ => open, \-mfinishd\ => open, memrq_out => open, mbusy => open, \rd.in.progress\ => open, \set.rd.in.progress\ => open, \-rdfinish\ => open, \-mfinish\ => open, \-memop\ => open, memstart => open, \-memstart\ => open, \-mbusy.sync\ => open, \mbusy.sync\ => open, \-wait\ => open, \-hang\ => open, mapwr0d => open, mapwr1d => open, mdsela => open, mdselb => open, \-memdrive.a\ => open, \-memdrive.b\ => open, \-memprepare_out\ => open, \-memrd_out\ => open, \-memrq_out\ => open, \-memwr_out\ => open, nopa => open, \-pfr_out\ => open, \use.md_out\ => open, \-vm0wpa\ => open, \-vm0wpb\ => open, \-vm1wpa\ => open, \-vm1wpb\ => open, \-vmaenb\ => open, vmasela => open, vmaselb => open, \-wmap\ => open, wmap_out => open, \-wmapd_out\ => open);
+  --- Memory Control Logic part II (Overlord) (olord1, olord2)
+  i_olord : olord port map (\-clock reset a\ => open, \-reset\ => \-reset\, \-ldclk\ => open, mclk5a => open, mclk5 => mclk5, clk5 => clk5, \-mclk5\ => open, clk5a => open, \-clk5\ => open, reset => reset, \bus.power.reset l\ => open, \power reset a\ => open, \-upperhighok\ => \-upperhighok\, \-lowerhighok\ => open, \-boot\ => open, \-boot1\ => \-boot1\, \prog.bus.reset\ => open, \-bus.reset\ => open, \-clock reset b\ => open, \-clock reset a out\ => open, \-power reset\ => open, \boot.trap\ => open, \-boot2\ => open, \-ldmode\ => open, ldmode => open, \-busint.lm.reset\ => open, \-prog.reset\ => open, \prog.boot\ => open, speed1a => open, sspeed1 => sspeed1, speedclk => open, sspeed0 => sspeed0, speed0a => open, speed1 => open, speed0 => open, SPY => SPY(7 downto 0), errstop => open, stathenb => open, trapenb => open, promdisable => open, \-opcinh\ => open, opcinh => open, \-ldopc\ => open, opcclk => open, \-opcclk\ => open, \-lpc.hold\ => open, \lpc.hold\ => open, ldstat => open, \-ldstat\ => open, \-idebug\ => \-idebug\, idebug => idebug, nop11 => open, \-nop11\ => open, \-step\ => open, step => open, promdisabled => promdisabled, sstep => open, ssdone => open, srun => open, run => open, \-run\ => open, \-ssdone\ => open, \-errhalt\ => open, \-wait\ => open, \-stathalt\ => open, \stat.ovf\ => open, \-stc32\ => open, \-tpr60\ => \-tpr60\, statstop => open, \-machruna\ => \-machruna\, \-machrun\ => open, machrun => machrun, \-ape\ => \-ape\, \-mpe\ => \-mpe\, \-pdlpe\ => \-pdlpe\, \-dpe\ => \-dpe\, \-ipe\ => \-ipe\, \-spe\ => \-spe\, \-higherr\ => open, err => open, \-mempe\ => \-mempe\, \-v0pe\ => \-v0pe\, \-v1pe\ => \-v1pe\, \-halted\ => open, aparok => open, mmemparok => open, pdlparok => open, dparok => open, iparok => open, spcparok => open, highok => open, memparok => open, v0parok => open, vmoparok => open, statstop_out => open, \-halt\ => open, \-ldmode_out\ => open, errstop_in => open, \-errhalt_out\ => open);
+  --- spy 
+  i_spy : spy port map (\-dbread\ => open, \-dbwrite\ => open, EADR => open, IR => IR(47 downto 0), OB => OB, \-spy.irh\ => open, \-spy.irl\ => open, \-spy.irm\ => open, \-spy.obh\ => open, A => A(31 downto 16), AA => open, M => M, destspcd => open, imodd => open, ir48 => IR(48), iwrited => open, jcond => open, nop => open, pcs0 => open, pcs1 => open, pdlwrited => open, spushd => open, \-spy.ah\ => open, \-spy.flag2\ => open, \-spy.mh\ => open, \-spy.ml\ => open, \-vmaok\ => open, wmapd => open, \-ape\ => \-ape\, \-dpe\ => \-dpe\, err => open, \-higherr\ => open, \-ipe\ => \-ipe\, \-mempe\ => \-mempe\, \-mpe\ => \-mpe\, OPC => OPC, PC => PC, \-pdlpe\ => \-pdlpe\, promdisable => open, \-spe\ => \-spe\, \-spy.opc\ => open, \-spy.pc\ => open, srun => open, ssdone => open, \-stathalt\ => open, \-v0pe\ => \-v0pe\, \-v1pe\ => \-v1pe\, \-wait\ => open, SPY => SPY, \-ldclk\ => open, \-lddbirh\ => open, \-lddbirl\ => open, \-lddbirm\ => open, \-ldmode\ => open, \-ldopc\ => open, \-spy.al\ => open, \-spy.flag1\ => open, \-spy.sth\ => open, \-spy.stl\ => open);
+  --- other
+  i_stat  : cadr_stat port map(
+    \-clk5\ => \-clk5\, \-ldstat\ => open, \-stc32\ => open, \-tpr200\ => \-tpr200\, a0 => A(0), a1 => A(1), a10 => A(10), a11 => A(11), a12 => A(12), a13 => A(13), a14 => A(14), a15 => A(15), a16 => A(16), a17 => A(17), a18 => A(18), a19 => A(19), a2 => A(2), a20 => A(20), a21 => A(21), a22 => A(22), a23 => A(23), a24 => A(24), a25 => A(25), a26 => A(26), a27 => A(27), a28 => A(28), a29 => A(29), a3 => A(3), a30 => A(30), a31a => open, a4 => A(4), a5 => A(5), a6 => A(6), a7 => A(7), a8 => A(8), a9 => A(9), apc0 => open, apc1 => open, apc10 => open, apc11 => open, apc12 => open, apc13 => open, apc2 => open, apc3 => open, apc4 => open, apc5 => open, apc6 => open, apc7 => open, apc8 => open, apc9 => open, ipc0 => IPC(0), ipc1 => IPC(1), ipc10 => IPC(10), ipc11 => IPC(11), ipc12 => IPC(12), ipc13 => IPC(13), ipc2 => IPC(2), ipc3 => IPC(3), ipc4 => IPC(4), ipc5 => IPC(5), ipc6 => IPC(6), ipc7 => IPC(7), ipc8 => IPC(8), ipc9 => IPC(9), mpc0 => open, mpc1 => open, mpc10 => open, mpc11 => open, mpc12 => open, mpc13 => open, mpc2 => open, mpc3 => open, mpc4 => open, mpc5 => open, mpc6 => open, mpc7 => open, mpc8 => open, mpc9 => open, opc0 => OPC(0), opc1 => OPC(1), opc10 => OPC(10), opc11 => OPC(11), opc12 => OPC(12), opc13 => OPC(13), opc2 => OPC(2), opc3 => OPC(3), opc4 => OPC(4), opc5 => OPC(5), opc6 => OPC(6), opc7 => OPC(7), opc8 => OPC(8), opc9 => OPC(9), spc0 => SPC(0), spc1 => SPC(1), spc10 => SPC(10), spc11 => SPC(11), spc12 => SPC(12), spc13 => SPC(13), spc2 => SPC(2), spc3 => SPC(3), spc4 => SPC(4), spc5 => SPC(5), spc6 => SPC(6), spc7 => SPC(7), spc8 => SPC(8), spc9 => SPC(9), statstop => open, st0 => open, st1 => open, st10 => open, st11 => open, st12 => open, st13 => open, st14 => open, st15 => open, st16 => open, st17 => open, st18 => open, st19 => open, st2 => open, st20 => open, st21 => open, st22 => open, st23 => open, st24 => open, st25 => open, st26 => open, st27 => open, st28 => open, st29 => open, st3 => open, st30 => open, st31 => open, st4 => open, st5 => open, st6 => open, st7 => open, st8 => open, st9 => open
+  );
+  i_opcs  : cadr_opcs port map(
+    \-clk5\ => \-clk5\, opcclk => open, \-opcinh\ => open, pc0 => PC(0), pc1 => PC(1), pc10 => PC(10), pc11 => PC(11), pc12 => PC(12), pc13 => PC(13), pc2 => PC(2), pc3 => PC(3), pc4 => PC(4), pc5 => PC(5), pc6 => PC(6), pc7 => PC(7), pc8 => PC(8), pc9 => PC(9), opc0 => OPC(0), opc1 => OPC(1), opc10 => OPC(10), opc11 => OPC(11), opc12 => OPC(12), opc13 => OPC(13), opc2 => OPC(2), opc3 => OPC(3), opc4 => OPC(4), opc5 => OPC(5), opc6 => OPC(6), opc7 => OPC(7), opc8 => OPC(8), opc9 => OPC(9), opcclka => open, opcclkb => open, opcclkc => open, opcinha => open, opcinhb => open
+  );
+  i_apar  : cadr_apar port map(
+    a0 => A(0), a1 => A(1), a10 => A(10), a11 => A(11), a12 => A(12), a13 => A(13), a14 => A(14), a15 => A(15), a16 => A(16), a17 => A(17), a18 => A(18), a19 => A(19), a2 => A(2), a20 => A(20), a21 => A(21), a22 => A(22), a23 => A(23), a24 => A(24), a25 => A(25), a26 => A(26), a27 => A(27), a28 => A(28), a29 => A(29), a3 => A(3), a30 => A(30), a31a => open, a4 => A(4), a5 => A(5), a6 => A(6), a7 => A(7), a8 => A(8), a9 => A(9), aparity => open, aparok => open
+  );
+  i_iwrpar: cadr_iwrpar port map(
+    iwr0 => IWR(0), iwr1 => IWR(1), iwr10 => IWR(10), iwr11 => IWR(11), iwr12 => IWR(12), iwr13 => IWR(13), iwr14 => IWR(14), iwr15 => IWR(15), iwr16 => IWR(16), iwr17 => IWR(17), iwr18 => IWR(18), iwr19 => IWR(19), iwr2 => IWR(2), iwr20 => IWR(20), iwr21 => IWR(21), iwr22 => IWR(22), iwr23 => IWR(23), iwr24 => IWR(24), iwr25 => IWR(25), iwr26 => IWR(26), iwr27 => IWR(27), iwr28 => IWR(28), iwr29 => IWR(29), iwr3 => IWR(3), iwr30 => IWR(30), iwr31 => IWR(31), iwr32 => IWR(32), iwr33 => IWR(33), iwr34 => IWR(34), iwr35 => IWR(35), iwr36 => IWR(36), iwr37 => IWR(37), iwr38 => IWR(38), iwr39 => IWR(39), iwr4 => IWR(4), iwr40 => IWR(40), iwr41 => IWR(41), iwr42 => IWR(42), iwr43 => IWR(43), iwr44 => IWR(44), iwr45 => IWR(45), iwr46 => IWR(46), iwr47 => IWR(47), iwr48 => IWR(48), iwr5 => IWR(5), iwr6 => IWR(6), iwr7 => IWR(7), iwr8 => IWR(8), iwr9 => IWR(9), iwrparity => open, iwrparok => open
+  );
+  i_ipar  : cadr_ipar port map(
+    i0 => I(0), i1 => I(1), i10 => I(10), i11 => I(11), i12 => I(12), i13 => I(13), i14 => I(14), i15 => I(15), i16 => I(16), i17 => I(17), i18 => I(18), i19 => I(19), i2 => I(2), i20 => I(20), i21 => I(21), i22 => I(22), i23 => I(23), i24 => I(24), i25 => I(25), i26 => I(26), i27 => I(27), i28 => I(28), i29 => I(29), i3 => I(3), i30 => I(30), i31 => I(31), i32 => I(32), i33 => I(33), i34 => I(34), i35 => I(35), i36 => I(36), i37 => I(37), i38 => I(38), i39 => I(39), i4 => I(4), i40 => I(40), i41 => I(41), i42 => I(42), i43 => I(43), i44 => I(44), i45 => I(45), i46 => I(46), i47 => I(47), i48 => I(48), i5 => I(5), i6 => I(6), i7 => I(7), i8 => I(8), i9 => I(9), iparity => open, iparok => open
+  );
+  i_trap  : cadr_trap port map(
+    clk3d => clk3d, \-errhalt\ => open, \-higherr\ => open, \-int\ => open, \-ldb\ => open, \-ope\ => open, \-pi\ => open, \-progboot\ => open, \-trap\ => open, \-vma0\ => open, \-vma1\ => open, ir30 => IR(30), promdisable => open, \-reset\ => \-reset\, \-tpxct\ => open, \-trapenb\ => open, \-vm0lpar\ => open, \-vm1lpar\ => open, wp1a => wp1a, errhalt => open, highprerr => open, int => open, nop11 => open, p0 => open, p1 => open, p2 => open, p3 => open, trap => open, trapd => open, \trap enable\ => open
+  );
+  i_opcd  : cadr_opcd port map(
+    mclk1a => mclk1a, opcclka => open, opcclkb => open, opcclkc => open, opcinha => open, opcinhb => open, tprend => tprend, dc0 => open, dc1 => open, dc10 => open, dc11 => open, dc12 => open, dc13 => open, dc2 => open, dc3 => open, dc4 => open, dc5 => open, dc6 => open, dc7 => open, dc8 => open, dc9 => open
+  );
+  i_mo0   : cadr_mo0 port map(
+    a0 => A(0), a1 => A(1), a10 => A(10), a11 => A(11), a12 => A(12), a13 => A(13), a14 => A(14), a15 => A(15), a2 => A(2), a3 => A(3), a4 => A(4), a5 => A(5), a6 => A(6), a7 => A(7), a8 => A(8), a9 => A(9), alu0 => ALU(0), alu1 => ALU(1), alu10 => ALU(10), alu11 => ALU(11), alu12 => ALU(12), alu13 => ALU(13), alu14 => ALU(14), alu15 => ALU(15), alu16 => ALU(16), alu2 => ALU(2), alu3 => ALU(3), alu4 => ALU(4), alu5 => ALU(5), alu6 => ALU(6), alu7 => ALU(7), alu8 => ALU(8), alu9 => ALU(9), msk0 => MSK(0), msk1 => MSK(1), msk10 => MSK(10), msk11 => MSK(11), msk12 => MSK(12), msk13 => MSK(13), msk14 => MSK(14), msk15 => MSK(15), msk2 => MSK(2), msk3 => MSK(3), msk4 => MSK(4), msk5 => MSK(5), msk6 => MSK(6), msk7 => MSK(7), msk8 => MSK(8), msk9 => MSK(9), osel0b => open, osel1b => open, ob0 => OB(0), ob1 => OB(1), ob10 => OB(10), ob11 => OB(11), ob12 => OB(12), ob13 => OB(13), ob14 => OB(14), ob15 => OB(15), ob2 => OB(2), ob3 => OB(3), ob4 => OB(4), ob5 => OB(5), ob6 => OB(6), ob7 => OB(7), ob8 => OB(8), ob9 => OB(9)
+  );
+  i_mo1   : cadr_mo1 port map(
+    a16 => A(16), a17 => A(17), a18 => A(18), a19 => A(19), a20 => A(20), a21 => A(21), a22 => A(22), a23 => A(23), a24 => A(24), a25 => A(25), a26 => A(26), a27 => A(27), a28 => A(28), a29 => A(29), a30 => A(30), a31a => open, alu17 => ALU(17), alu18 => ALU(18), alu19 => ALU(19), alu20 => ALU(20), alu21 => ALU(21), alu22 => ALU(22), alu23 => ALU(23), alu24 => ALU(24), alu25 => ALU(25), alu26 => ALU(26), alu27 => ALU(27), alu28 => ALU(28), alu29 => ALU(29), alu30 => ALU(30), alu31 => ALU(31), msk16 => MSK(16), msk17 => MSK(17), msk18 => MSK(18), msk19 => MSK(19), msk20 => MSK(20), msk21 => MSK(21), msk22 => MSK(22), msk23 => MSK(23), msk24 => MSK(24), msk25 => MSK(25), msk26 => MSK(26), msk27 => MSK(27), msk28 => MSK(28), msk29 => MSK(29), msk30 => MSK(30), msk31 => MSK(31), osel0a => open, osel1a => open, ob16 => OB(16), ob17 => OB(17), ob18 => OB(18), ob19 => OB(19), ob20 => OB(20), ob21 => OB(21), ob22 => OB(22), ob23 => OB(23), ob24 => OB(24), ob25 => OB(25), ob26 => OB(26), ob27 => OB(27), ob28 => OB(28), ob29 => OB(29), ob30 => OB(30), ob31 => OB(31)
+  );
+  i_bcterm : cadr_bcterm port map(
+    \-ignpar\ => open, int => open, \-loadmd\ => open, mem0 => MEM(0), mem1 => MEM(1), mem10 => MEM(10), mem11 => MEM(11), mem12 => MEM(12), mem13 => MEM(13), mem14 => MEM(14), mem15 => MEM(15), mem16 => MEM(16), mem17 => MEM(17), mem18 => MEM(18), mem19 => MEM(19), mem2 => MEM(2), mem20 => MEM(20), mem21 => MEM(21), mem22 => MEM(22), mem23 => MEM(23), mem24 => MEM(24), mem25 => MEM(25), mem26 => MEM(26), mem27 => MEM(27), mem28 => MEM(28), mem29 => MEM(29), mem3 => MEM(3), mem30 => MEM(30), mem31 => MEM(31), mem4 => MEM(4), mem5 => MEM(5), mem6 => MEM(6), mem7 => MEM(7), mem8 => MEM(8), mem9 => MEM(9), \-memack\ => open, \-memgrant\ => open, \mempar in\ => open
+  );
+  
   process
   begin
-    -- this comes from clockd (checks hi1-hi12)
-    \-upperhighok\ <= '0';
-    -- these come from mbcpin
-    \prog.bus.reset\ <= '0';
-    \-busint.lm.reset\ <= '1';
-    -- ldmode + spy7 sets prog.reset to 1 in mode register
-    \-ldmode\ <= '1';
-    spy7 <= '0';
-    wait for 100 ns;
-    wait;
-    finish;
+    wait for 500 ns;
+    \-boot1\ <= '0';
+    wait for 10 ns;
+    \-boot1\ <= '1';    
+    wait for 5000 ns;
+    std.env.finish;
   end process;
   
   -- Poor substitute for the 5 octal display that was on the lower

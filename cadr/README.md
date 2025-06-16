@@ -8,8 +8,3 @@ A cadr component implements a CADR schematic page and named accordingly as cadr_
 The suds architecture of CADR components are auto-generated with `make suds` from `doc/ai/cadr/*.drw` files. The architecture is implemented in cadr_<PAGE>_suds.vhd files.
 
 `make suds` uses `soap/soap` utility to generate cadr_*_suds.vhd files but these files are also post-processed with `fix-suds.py` script and various sed commands. See `Makefile`.
-
-# Tools
-
-- `fix-suds.py`: fixes some errors in the generated suds files by `soap/soap`
-- `scan-unused-cadr-ports.py`: reports any unused port of cadr components to stdou

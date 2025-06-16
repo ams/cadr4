@@ -3,4 +3,4 @@ description:
 globs: tb/*
 alwaysApply: false
 ---
-The following signals have to be defined as bus: IR, M, MF, A, AA, AMEM, AADR, L, LC, WPC, LPC, ALU, XOUT, YOUT, I, SPY, DADR, DPC, MDS, MD, OB, IOB, IWR, MEM, MMEM, MSK, NPC, PC, IPC, SPC, SPCO, SPCW, SPCPTR, DC, OPC, PDL, PDLIDX, PDLPTR, Q, SA, R, RETA, ST, VMA, VMAS, MAPI, VMAP, VMO, PMA.
+The following signals have to be defined as bus: IR, M, MF, A, AA, AMEM, AADR, L, LC, WPC, LPC, ALU, I, SPY, DADR, DPC, MDS, MD, OB, IOB, IWR, MEM, MMEM, MSK, NPC, PC, IPC, SPC, SPCO, SPCW, SPCPTR, DC, OPC, PDL, PDLIDX, PDLPTR, Q, SA, R, RETA, ST, VMA, VMAS, MAPI, VMAP, VMO, PMA, WADR.

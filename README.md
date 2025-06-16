@@ -57,6 +57,8 @@ If the file contains "ignore" in its first line, the file is ignored, `--read-wa
 - dip: dip components
 - doc: various documents
 - rom: ROM files loaded to CADR (P)ROMs
+- scripts: helper/utility scripts
+- set: set components
 - soap: utility to generate cadr_*_suds.vhd files
 - tb: system tests
 - ttl: ttl components
@@ -65,11 +67,12 @@ Each folder has a README.md containing more information.
 
 ## Packages
 
+- work.set: set components
 - work.cadr: cadr components
 - work.dip: dip components
 - work.sn74: ttl sn74 components
 - work.other: other ttl components (am..., dm..., td... etc.)
-- work.misc: misc functions and procedures
+- work.misc: misc functions and procedures (no components)
 
 ## Documentation
 
