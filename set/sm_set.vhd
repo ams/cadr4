@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use work.cadr_book.all;
 
-entity shifter_masker is
+entity sm is
   port (
     -- Bus signals
     IR : in std_logic_vector(13 downto 0);
@@ -24,7 +24,7 @@ entity shifter_masker is
   );
 end;
 
-architecture rtl of shifter_masker is
+architecture rtl of sm is
   -- Internal signals for interconnections
   signal int_mskl0, int_mskl1, int_mskl2, int_mskl3, int_mskl4 : std_logic;
   signal int_mskr0, int_mskr1, int_mskr2, int_mskr3, int_mskr4 : std_logic;

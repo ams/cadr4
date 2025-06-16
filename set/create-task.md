@@ -23,12 +23,17 @@ Track your progress in the `Completed Set Components` section below.
 - vctl: cadr_vctl1, cadr_vctl2
 - olord: cadr_olord1, cadr_olord2
 - ireg: cadr_ior, cadr_ireg, cadr_ipar
-- fetch: cadr_iwr cadr_idebug
+- fetch: cadr_iwr, cadr_iwrpar, cadr_idebug
 - decode: cadr_source
 - lreg: cadr_l
 - jumpc: cadr_flag
 - flowc: cadr_contrl
 - npc: cadr_npc
+- stat: cadr_stat
+- trap: cadr_trap
+- opc: cadr_opcs, cadr_opcd
+- ampar: cadr_apar
+- mos: cadr_mo0, cadr_mo1
 
 # Completed Set Components
 
@@ -57,3 +62,8 @@ Track your progress in the `Completed Set Components` section below.
 ✅ jumpc: Completed - created set/jumpc.vhd and added to set/set.vhd
 ✅ flowc: Completed - created set/flowc.vhd and added to set/set.vhd
 ✅ npc: Completed - created set/npc.vhd and added to set/set.vhd
+✅ stat: Completed - created set/stat.vhd and added to set/set.vhd
+✅ trap: Completed - created set/trap.vhd and added to set/set.vhd
+✅ opc: Completed - created set/opc.vhd and added to set/set.vhd
+✅ ampar: Completed - created set/ampar.vhd and added to set/set.vhd
+✅ mos: Completed - created set/mos.vhd and added to set/set.vhd

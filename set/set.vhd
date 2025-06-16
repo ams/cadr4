@@ -3,7 +3,7 @@ use ieee.std_logic_1164.all;
 
 package set is
 
-  component clock is
+  component clock_set is
     port (
       -- Input signals
       \-clock_reset_b\ : in  std_logic;
@@ -140,7 +140,7 @@ package set is
     );
   end component;
 
-  component amem is
+  component amem_set is
     port (
       -- Clock and control signals
       clk3d           : in  std_logic;
@@ -182,7 +182,7 @@ package set is
     );
   end component;
 
-  component mmem is
+  component mmem_set is
     port (
       -- Clock and control signals
       clk4a           : in  std_logic;
@@ -223,7 +223,7 @@ package set is
     );
   end component;
 
-  component alu is
+  component alu_set is
     port (
       -- Bus signals
       A               : in  std_logic_vector(31 downto 0);
@@ -246,7 +246,7 @@ package set is
     );
   end component;
 
-  component spc is
+  component spc_set is
     port (
       -- Clock and control signals
       clk4a           : in  std_logic;
@@ -296,7 +296,7 @@ package set is
     );
   end component;
 
-  component dmem is
+  component dmem_set is
     port (
       -- Clock
       clk3e       : in  std_logic;
@@ -360,7 +360,7 @@ package set is
     );
   end component;
 
-  component shifter_masker is
+  component sm_set is
     port (
       -- Bus signals
       IR : in std_logic_vector(13 downto 0);
@@ -382,7 +382,7 @@ package set is
     );
   end component;
 
-  component pdl is
+  component pdl_set is
     port (
       -- Bus signals
       L : in std_logic_vector(31 downto 0);
@@ -437,7 +437,7 @@ package set is
     );
   end component;
 
-  component imem is
+  component imem_set is
     port (
       -- PC bus input
       PC : in std_logic_vector(13 downto 0);
@@ -465,7 +465,7 @@ package set is
     );
   end component;
 
-  component prom is
+  component prom_set is
     port (
       -- PC bus input
       PC : in std_logic_vector(13 downto 0);
@@ -499,7 +499,7 @@ package set is
     );
   end component;
 
-  component qreg is
+  component qreg_set is
     port (
       -- Clock
       clk2b : in std_logic;
@@ -530,7 +530,7 @@ package set is
     );
   end component;
 
-  component spy is
+  component spy_set is
     port (
       -- SPY0 inputs
       \-dbread\ : in std_logic;
@@ -605,7 +605,7 @@ package set is
     );
   end component;
 
-  component lcreg is
+  component lcreg_set is
     port (
       -- Clock signals
       clk1a : in std_logic;
@@ -664,7 +664,7 @@ package set is
     );
   end component;
 
-  component vma is
+  component vma_set is
     port (
       -- Clock signals
       clk1a : in std_logic;
@@ -696,7 +696,7 @@ package set is
     );
   end component;
 
-  component md is
+  component md_set is
     port (
       -- Clock signals
       \-clk2c\ : in std_logic;
@@ -735,7 +735,7 @@ package set is
     );
   end component;
 
-  component vmaps is
+  component vmaps_set is
     port (
       -- Clock signals
       tse1a : in std_logic;
@@ -784,7 +784,7 @@ package set is
     );
   end component;
 
-  component vctl is
+  component vctl_set is
     port (
       -- Clock signals
       clk2a : in std_logic;
@@ -871,7 +871,7 @@ package set is
     );
   end component;
 
-  component olord is
+  component olord_set is
     port (
       -- Clock and reset signals
       \-clock reset a\ : in  std_logic;
@@ -984,7 +984,7 @@ package set is
     );
   end component;
 
-  component ireg is
+  component ireg_set is
     port (
       -- Clock signals
       clk3a : in std_logic;
@@ -1019,7 +1019,7 @@ package set is
     );
   end component;
 
-  component npc is
+  component npc_set is
     port (
       -- Clock signal
       clk4b  : in  std_logic;
@@ -1050,7 +1050,7 @@ package set is
     );
   end component;
 
-  component fetch is
+  component fetch_set is
     port (
       -- Clock signals
       clk2c : in std_logic;
@@ -1069,11 +1069,18 @@ package set is
       
       -- Output bus signals
       I   : out std_logic_vector(48 downto 0);
-      IWR : out std_logic_vector(47 downto 0)
+      IWR : out std_logic_vector(47 downto 0);
+      
+      -- Parity outputs
+      iwrp1 : out std_logic;
+      iwrp2 : out std_logic;
+      iwrp3 : out std_logic;
+      iwrp4 : out std_logic;
+      iwr48 : out std_logic
     );
   end component;
 
-  component decode is
+  component decode_set is
     port (
       -- Input control signals
       \destimod0 l\ : in std_logic;
@@ -1142,7 +1149,7 @@ package set is
     );
   end component;
 
-  component lreg is
+  component lreg_set is
     port (
       -- Clock signal
       clk3f : in std_logic;
@@ -1161,7 +1168,7 @@ package set is
     );
   end component;
 
-  component jumpc is
+  component jumpc_set is
     port (
       -- Clock and reset signals
       clk3c         : in  std_logic;
@@ -1200,7 +1207,7 @@ package set is
     );
   end component;
 
-  component flowc is
+  component flowc_set is
     port (
       -- Clock and reset signals
       clk3c    : in  std_logic;
@@ -1256,6 +1263,153 @@ package set is
       spush            : out std_logic;
       spushd           : out std_logic;
       \-srcspcpopreal\ : out std_logic
+    );
+  end component;
+
+  component stat_set is
+    port (
+      -- Clock signal
+      clk5a     : in  std_logic;
+      
+      -- Control signals
+      \-ldstat\ : in  std_logic;
+      \-statbit\ : in  std_logic;
+      \-spy.sth\ : in  std_logic;
+      \-spy.stl\ : in  std_logic;
+      
+      -- Bus signals
+      IWR : in  std_logic_vector(31 downto 0);
+      
+      -- Output bus signals
+      SPY : out std_logic_vector(15 downto 0);
+      ST  : out std_logic_vector(31 downto 0);
+      
+      -- Carry outputs
+      \-stc4\  : out std_logic;
+      \-stc8\  : out std_logic;
+      \-stc12\ : out std_logic;
+      \-stc16\ : out std_logic;
+      \-stc20\ : out std_logic;
+      \-stc24\ : out std_logic;
+      \-stc28\ : out std_logic;
+      \-stc32\ : out std_logic
+    );
+  end component;
+
+  component trap_set is
+    port (
+      -- Input control signals
+      \boot.trap\ : in  std_logic;
+      mdhaspar    : in  std_logic;
+      mdpar       : in  std_logic;
+      trapenb     : in  std_logic;
+      \use.md\    : in  std_logic;
+      \-wait\     : in  std_logic;
+      
+      -- Bus signals  
+      MD : in std_logic_vector(31 downto 0);
+      
+      -- Output control signals
+      mdparerr   : out std_logic;
+      mdpareven  : out std_logic;
+      mdparl     : out std_logic;
+      mdparm     : out std_logic;
+      mdparodd   : out std_logic;
+      \-memparok\ : out std_logic;
+      memparok   : out std_logic;
+      \-parerr\  : out std_logic;
+      \-trap\    : out std_logic;
+      trapa      : out std_logic;
+      trapb      : out std_logic;
+      \-trapenb\ : out std_logic
+    );
+  end component;
+
+  component opc_set is
+    port (
+      -- Clock and control signals
+      \-clk5\         : in  std_logic;
+      opcclk          : in  std_logic;
+      \-opcinh\       : in  std_logic;
+      tse1b           : in  std_logic;
+      
+      -- Control signals for opcd
+      \-srcopc\       : in  std_logic;
+      \-srcdc\        : in  std_logic;
+      \-srcpdlidx\    : in  std_logic;
+      \-srcpdlptr\    : in  std_logic;
+      
+      -- Bus signals
+      PC              : in  std_logic_vector(13 downto 0);
+      DC              : in  std_logic_vector(9 downto 0);
+      
+      -- Output bus signals
+      OPC             : out std_logic_vector(13 downto 0);
+      MF              : out std_logic_vector(31 downto 0);
+      
+      -- Individual control output signals
+      opcclka         : out std_logic;
+      opcclkb         : out std_logic;
+      opcclkc         : out std_logic;
+      opcinha         : out std_logic;
+      opcinhb         : out std_logic;
+      \-opcdrive\     : out std_logic;
+      dcdrive         : out std_logic;
+      \-zero16.drive\ : out std_logic;
+      zero16          : out std_logic;
+      \zero16.drive\  : out std_logic;
+      \zero12.drive\  : out std_logic
+    );
+  end component;
+
+  component ampar_set is
+    port (
+      -- A bus inputs (32-bit)
+      A : in std_logic_vector(31 downto 0);
+      
+      -- M bus inputs (32-bit)  
+      M : in std_logic_vector(31 downto 0);
+      
+      -- Additional individual inputs
+      a31b      : in  std_logic;
+      aparity   : in  std_logic;
+      mparity   : in  std_logic;
+      srcm      : in  std_logic;
+      pdlenb    : in  std_logic;
+      
+      -- Parity check outputs
+      aparl     : out std_logic;
+      aparm     : out std_logic;
+      aparok    : out std_logic;
+      mmemparok : out std_logic;
+      mpareven  : out std_logic;
+      mparl     : out std_logic;
+      mparm     : out std_logic;
+      mparodd   : out std_logic;
+      pdlparok  : out std_logic
+    );
+  end component;
+
+  component mos_set is
+    port (
+      -- Bus signals - inputs
+      ALU : in std_logic_vector(32 downto 0);
+      A   : in std_logic_vector(31 downto 0);
+      R   : in std_logic_vector(31 downto 0);
+      MSK : in std_logic_vector(31 downto 0);
+      
+      -- Output bus signal
+      OB  : out std_logic_vector(31 downto 0);
+      
+      -- Control signals
+      osel0a : in std_logic;
+      osel1a : in std_logic;
+      osel0b : in std_logic;
+      osel1b : in std_logic;
+      
+      -- Special signals
+      a31b : in std_logic;
+      q31  : in std_logic
     );
   end component;
 

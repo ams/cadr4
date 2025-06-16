@@ -6,7 +6,6 @@
 build/
 
 soap/soap
-soap/*.o
 *.dSYM/
 
 **/__pycache__
@@ -14,3 +13,5 @@ soap/*.o
 cadr/*_suds.vhd
 
 *.opt
+*.o
+*.cf

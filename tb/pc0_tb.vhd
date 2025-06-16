@@ -11,7 +11,7 @@ use work.cadr_book.cadr_clockd;
 use work.icmem_book.cadr_olord1;
 use work.cadr_book.cadr_trap;
 use work.cadr_book.cadr_npc;
-use work.set.prom;
+use work.set.prom_set;
 use work.cadr_book.cadr_ireg;
 
 entity pc0_tb is
@@ -336,7 +336,7 @@ begin
   i_trap : cadr_trap port map(mdparerr => mdparerr, mdpareven => mdpareven, mdpar => mdpar, \-md5\ => \-MD\(5), \-md6\ => \-MD\(6), \-md7\ => \-MD\(7), \-md8\ => \-MD\(8), \-md9\ => \-MD\(9), \-md10\ => \-MD\(10), \-md11\ => \-MD\(11), mdparl => mdparl, \-md0\ => \-MD\(0), \-md1\ => \-MD\(1), \-md2\ => \-MD\(2), \-md3\ => \-MD\(3), \-md4\ => \-MD\(4), \-md17\ => \-MD\(17), \-md18\ => \-MD\(18), \-md19\ => \-MD\(19), \-md20\ => \-MD\(20), \-md21\ => \-MD\(21), \-md22\ => \-MD\(22), \-md23\ => \-MD\(23), mdparm => mdparm, \-md12\ => \-MD\(12), \-md13\ => \-MD\(13), \-md14\ => \-MD\(14), \-md15\ => \-MD\(15), \-md16\ => \-MD\(16), \-md29\ => \-MD\(29), \-md30\ => \-MD\(30), \-md31\ => \-MD\(31), mdparodd => mdparodd, \-md24\ => \-MD\(24), \-md25\ => \-MD\(25), \-md26\ => \-MD\(26), \-md27\ => \-MD\(27), \-md28\ => \-MD\(28), mdhaspar => mdhaspar, \use.md\ => \use.md\, \-wait\ => \-wait\, \-parerr\ => \-parerr\, \-trap\ => \-trap\, \boot.trap\ => \boot.trap\, \-trapenb\ => \-trapenb\, trapenb => trapenb, \-memparok\ => \-memparok\, trapb => trapb, trapa => trapa, memparok => memparok);
   i_npc : cadr_npc port map(ipc13 => IPC(13), pc13 => PC(13), ipc12 => IPC(12), pc12 => PC(12), pccry11 => pccry11, ipc9 => IPC(9), pc9 => PC(9), ipc8 => IPC(8), pc8 => PC(8), pccry7 => pccry7, ipc11 => IPC(11), pc11 => PC(11), ipc10 => IPC(10), pc10 => PC(10), ipc5 => IPC(5), pc5 => PC(5), ipc4 => IPC(4), pc4 => PC(4), pccry3 => pccry3, ipc7 => IPC(7), pc7 => PC(7), ipc6 => IPC(6), pc6 => PC(6), ipc1 => IPC(1), pc1 => PC(1), ipc0 => IPC(0), pc0 => PC(0), ipc3 => IPC(3), pc3 => PC(3), ipc2 => IPC(2), pc2 => PC(2), trapb => trapb, pcs1 => pcs1, dpc3 => DPC(3), ir15 => IR(15), spc3 => SPC(3), npc3 => NPC(3), npc2 => NPC(2), spc2 => SPC(2), ir14 => IR(14), dpc2 => DPC(2), pcs0 => pcs0, dpc1 => DPC(1), ir13 => IR(13), spc1a => spc1a, npc1 => NPC(1), npc0 => NPC(0), spc0 => SPC(0), ir12 => IR(12), dpc0 => DPC(0), npc13 => NPC(13), npc12 => NPC(12), clk4b => clk4b, npc11 => NPC(11), npc10 => NPC(10), npc9 => NPC(9), npc8 => NPC(8), npc7 => NPC(7), npc6 => NPC(6), npc5 => NPC(5), npc4 => NPC(4), trapa => trapa, dpc13 => DPC(13), ir25 => IR(25), spc13 => SPC(13), spc12 => SPC(12), ir24 => IR(24), dpc12 => DPC(12), dpc11 => DPC(11), ir23 => IR(23), spc11 => SPC(11), spc10 => SPC(10), ir22 => IR(22), dpc10 => DPC(10), dpc9 => DPC(9), ir21 => IR(21), spc9 => SPC(9), spc8 => SPC(8), ir20 => IR(20), dpc8 => DPC(8), dpc7 => DPC(7), ir19 => IR(19), spc7 => SPC(7), spc6 => SPC(6), ir18 => IR(18), dpc6 => DPC(6), dpc5 => DPC(5), ir17 => IR(17), spc5 => SPC(5), spc4 => SPC(4), ir16 => IR(16), dpc4 => dpc4);
 
-  i_prom : prom port map(
+  i_prom : prom_set port map(
     PC => PC,
     \-idebug\ => \-idebug\, \-promdisabled\ => \-promdisabled\, \-iwriteda\ => \-iwriteda\,
     \-ape\ => \-ape\, \-pdlpe\ => \-pdlpe\, \-spe\ => \-spe\, \-mpe\ => \-mpe\,

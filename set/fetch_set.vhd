@@ -21,7 +21,14 @@ entity fetch is
     
     -- Output bus signals
     I   : out std_logic_vector(48 downto 0);
-    IWR : out std_logic_vector(47 downto 0)
+    IWR : out std_logic_vector(47 downto 0);
+    
+    -- Parity outputs
+    iwrp1 : out std_logic;
+    iwrp2 : out std_logic;
+    iwrp3 : out std_logic;
+    iwrp4 : out std_logic;
+    iwr48 : out std_logic
   );
 end entity;
 
@@ -200,6 +207,63 @@ begin
       i45        => I(45),
       i46        => I(46),
       i47        => I(47)
+    );
+    
+  u_cadr_iwrpar : cadr_iwrpar
+    port map (
+      iwr0  => IWR(0),
+      iwr1  => IWR(1),
+      iwr2  => IWR(2),
+      iwr3  => IWR(3),
+      iwr4  => IWR(4),
+      iwr5  => IWR(5),
+      iwr6  => IWR(6),
+      iwr7  => IWR(7),
+      iwr8  => IWR(8),
+      iwr9  => IWR(9),
+      iwr10 => IWR(10),
+      iwr11 => IWR(11),
+      iwr12 => IWR(12),
+      iwr13 => IWR(13),
+      iwr14 => IWR(14),
+      iwr15 => IWR(15),
+      iwr16 => IWR(16),
+      iwr17 => IWR(17),
+      iwr18 => IWR(18),
+      iwr19 => IWR(19),
+      iwr20 => IWR(20),
+      iwr21 => IWR(21),
+      iwr22 => IWR(22),
+      iwr23 => IWR(23),
+      iwr24 => IWR(24),
+      iwr25 => IWR(25),
+      iwr26 => IWR(26),
+      iwr27 => IWR(27),
+      iwr28 => IWR(28),
+      iwr29 => IWR(29),
+      iwr30 => IWR(30),
+      iwr31 => IWR(31),
+      iwr32 => IWR(32),
+      iwr33 => IWR(33),
+      iwr34 => IWR(34),
+      iwr35 => IWR(35),
+      iwr36 => IWR(36),
+      iwr37 => IWR(37),
+      iwr38 => IWR(38),
+      iwr39 => IWR(39),
+      iwr40 => IWR(40),
+      iwr41 => IWR(41),
+      iwr42 => IWR(42),
+      iwr43 => IWR(43),
+      iwr44 => IWR(44),
+      iwr45 => IWR(45),
+      iwr46 => IWR(46),
+      iwr47 => IWR(47),
+      iwrp1 => iwrp1,
+      iwrp2 => iwrp2,
+      iwrp3 => iwrp3,
+      iwrp4 => iwrp4,
+      iwr48 => iwr48
     );
     
   -- Extend I bus to 49 bits - bit 48 is not connected to cadr_debug
