@@ -19,17 +19,14 @@ package set is
       \-srcpdlptr\     : in  std_logic;
       
       -- Output signals from cadr_clock1
-      cyclecompleted   : out std_logic;
       \-tpr60\         : out std_logic;
       
       -- Output signals from cadr_clock2
-      \-clk0\          : out std_logic;
       clk5             : out std_logic;
       mclk5            : out std_logic;
       \-wp5\           : out std_logic;
       
       -- Output signals from cadr_clockd
-      \-clk1\          : out std_logic;
       clk2a            : out std_logic;
       clk2c            : out std_logic;
       clk3b            : out std_logic;
@@ -118,7 +115,6 @@ package set is
       M               : out std_logic_vector(31 downto 0);
       
       -- Individual output signals
-      mmemparity      : out std_logic;
       mparity         : out std_logic;
       srcm            : out std_logic
     );
@@ -214,29 +210,21 @@ package set is
       R           : in  std_logic_vector(6 downto 0);
       
       -- Display memory control outputs
-      dispwr      : out std_logic;
       
       -- DRAM control outputs
-      \-dwea\     : out std_logic;
       
       -- Display address outputs
-      DADR        : out std_logic_vector(10 downto 0);
       
       -- Display data control
-      dpar        : out std_logic;
       
       -- Display parity control
-      dpareven    : out std_logic;
-      dparok      : out std_logic;
+      dparok      : out std_logic
       
       -- Display PC outputs
-      DPC         : out std_logic_vector(13 downto 0);
       
       -- Video memory outputs
-      vmo18       : out std_logic;
       
       -- Display mask outputs
-      DMASK       : out std_logic_vector(6 downto 0)
     );
   end component;
 
@@ -344,10 +332,9 @@ package set is
       \-v1pe\ : in std_logic;
       
       -- Instruction bus output
-      I : out std_logic_vector(48 downto 0);
+      I : out std_logic_vector(48 downto 0)
       
       -- PCTL outputs
-      \bottom.1k\ : out std_logic
     );
   end component;
 
@@ -367,13 +354,11 @@ package set is
       tse2 : in std_logic;
       
       -- Q register bus output
-      Q : out std_logic_vector(31 downto 0);
       
       -- M bus output (from QCTL)
-      MF : out std_logic_vector(31 downto 0);
+      MF : out std_logic_vector(31 downto 0)
       
       -- Control outputs from QCTL
-      \-alu31\ : out std_logic
     );
   end component;
 
@@ -482,7 +467,6 @@ package set is
       MF : out std_logic_vector(31 downto 0);
       
       -- Other outputs
-      \lc byte mode\ : out std_logic;
       lcinc : out std_logic;
       lcry3 : out std_logic;
       \-sh4\ : out std_logic;
@@ -515,10 +499,9 @@ package set is
       -- Bus outputs
       VMA : out std_logic_vector(31 downto 0);
       MF : out std_logic_vector(31 downto 0);
-      MAPI : out std_logic_vector(23 downto 12);
+      MAPI : out std_logic_vector(23 downto 12)
       
       -- Other outputs
-      \-vmadrive\ : out std_logic
     );
   end component;
 
@@ -549,7 +532,6 @@ package set is
       MF : out std_logic_vector(31 downto 0);
       
       -- Other outputs
-      \-mddrive\ : out std_logic;
       mdhaspar : out std_logic;
       mdpar : out std_logic
     );
@@ -582,7 +564,6 @@ package set is
       MF : out std_logic_vector(31 downto 0);
       
       -- Other outputs
-      \-mapdrive\ : out std_logic;
       v0parok : out std_logic;
       vmoparok : out std_logic;
       \-lvmo22\ : out std_logic;
@@ -630,7 +611,6 @@ package set is
       \-nopa\ : in std_logic;
       
       -- Other outputs
-      rdcyc : out std_logic;
       wmapd : out std_logic;
       \-pfw\ : out std_logic;
       \-vmaok\ : out std_logic;
@@ -661,7 +641,6 @@ package set is
       mclk5            : in  std_logic;
       clk5             : in  std_logic;
       reset            : out std_logic;
-      \bus.power.reset l\ : out std_logic;
       \-upperhighok\   : in  std_logic;
       \-boot\          : in  std_logic;
       \-boot1\         : in  std_logic;
@@ -669,7 +648,6 @@ package set is
       \-busint.lm.reset\ : in  std_logic;
       
       -- Speed control signals
-      speed1a          : out std_logic;
       sspeed1          : out std_logic;
       sspeed0          : out std_logic;
       
@@ -677,7 +655,6 @@ package set is
       SPY : in std_logic_vector(7 downto 0);
       
       -- Control signals
-      errstop          : out std_logic;
       trapenb          : out std_logic;
       promdisable      : out std_logic;
       \-opcinh\        : out std_logic;
@@ -743,13 +720,11 @@ package set is
       OB : in std_logic_vector(47 downto 0);
       
       -- Input/Output bus (48-bit)
-      IOB : out std_logic_vector(47 downto 0);
       
       -- Instruction register output (48-bit)
       IR : out std_logic_vector(48 downto 0);
       
       -- Parity outputs
-      ipar0 : out std_logic;
       iparok : out std_logic
     );
   end component;
@@ -771,12 +746,10 @@ package set is
       IR     : in  std_logic_vector(25 downto 12);
       
       -- Output bus signals
-      DPC    : out std_logic_vector(13 downto 0);
       PC     : out std_logic_vector(13 downto 0);
-      SPC    : out std_logic_vector(13 downto 0);
+      SPC    : out std_logic_vector(13 downto 0)
       
       -- Individual outputs
-      pccry3  : out std_logic
     );
   end component;
 
@@ -798,10 +771,9 @@ package set is
       SPY : in  std_logic_vector(15 downto 0);
       
       -- Output bus signals
-      I   : out std_logic_vector(48 downto 0);
+      I   : out std_logic_vector(48 downto 0)
       
       -- Parity outputs
-      iwrp1 : out std_logic
     );
   end component;
 
@@ -825,7 +797,6 @@ package set is
       irjump        : out std_logic;
       
       -- Function outputs  
-      \-funct0\     : out std_logic;
       \-funct2\     : out std_logic;
       
       -- Destination outputs
@@ -856,7 +827,6 @@ package set is
       \-srcspcpop\  : out std_logic;
       
       -- ALU function outputs
-      \-div\        : out std_logic;
       \-iralu\      : out std_logic;
       \-irdisp\     : out std_logic
     );
@@ -874,7 +844,6 @@ package set is
       L : out std_logic_vector(31 downto 0);
       
       -- Parity outputs
-      lparl      : out std_logic;
       lparity    : out std_logic
     );
   end component;
@@ -899,7 +868,6 @@ package set is
       OB : in std_logic_vector(29 downto 26);
       
       -- Output control signals
-      \-alu32\            : out std_logic;
       \-ilong\            : out std_logic;
       \int.enable\        : out std_logic;
       jcond               : out std_logic;
@@ -933,7 +901,6 @@ package set is
       IR : in std_logic_vector(42 downto 6);
       
       -- Output control signals
-      \-dfall\         : out std_logic;
       \-destspc\       : out std_logic;
       destspc          : out std_logic;
       \-ignpopj\       : out std_logic;
@@ -975,7 +942,6 @@ package set is
       SPY : out std_logic_vector(15 downto 0);
       
       -- Carry outputs
-      \-stc4\  : out std_logic;
       \-stc32\ : out std_logic
     );
   end component;
@@ -994,7 +960,6 @@ package set is
       MD : in std_logic_vector(31 downto 0);
       
       -- Output control signals
-      mdparerr   : out std_logic;
       mdparodd   : out std_logic;
       memparok   : out std_logic;
       \-trap\    : out std_logic;
@@ -1023,10 +988,9 @@ package set is
       
       -- Output bus signals
       OPC             : out std_logic_vector(13 downto 0);
-      MF              : out std_logic_vector(31 downto 0);
+      MF              : out std_logic_vector(31 downto 0)
       
       -- Individual control output signals
-      opcclka         : out std_logic
     );
   end component;
 
@@ -1046,7 +1010,6 @@ package set is
       pdlenb    : in  std_logic;
       
       -- Parity check outputs
-      aparl     : out std_logic;
       aparok    : out std_logic;
       mmemparok : out std_logic;
       pdlparok  : out std_logic
