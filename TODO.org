@@ -2,6 +2,28 @@ TODO List for the CADR project
 
 This is currently very much outdated while we refactor things.
 
+* TODO Catalog CADR schematics [0/4]
+
+ - [ ] CADR1; BUSINT BOOK
+ - [ ] CADRIO; IOB BOOK
+ - [ ] CADR; ICMEM BOOK
+ - [ ] CADR; CADR BOOK
+
+What else is missing?
+
+* TODO AI file system of CADR / Lisp Machine specific files
+
+Create a "dooms day" archive of CADR and Lisp Machine related files
+from AI.
+
+* TODO SUDS SVG hack
+
+Update the SUDS SVG hack drawings.
+
+* TODO Convert DRW files to PNG
+
+Setup a ITS system, and convert all DRW files to PNG.
+
 * TODO TTLs [49/59]
 
 Header template for files:
