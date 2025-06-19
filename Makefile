@@ -16,6 +16,7 @@ DRWDIR	  	  := doc/ai/cadr
 .DEFAULT_GOAL := all
 FIXSUDSPY     := scripts/fix-suds.py
 CREATESETSPY  := scripts/create-sets.py
+BUNDLE_BUSES  := 0
 
 OS := $(shell uname -s)
 
@@ -27,12 +28,11 @@ else
 endif
 
 # ttl and dip sources are found by wildcard, all *.vhd files under ttl and dip including _tb testbenches and packages
-TTL_SRCS  := $(wildcard ttl/*.vhd)
-DIP_SRCS  := $(wildcard dip/*.vhd)
+TTL_SRCS := $(wildcard ttl/*.vhd)
+DIP_SRCS := $(wildcard dip/*.vhd)
 
-# cadr sources (not testbenches) are found specifically from the lists below
-# cadr testbenches (_tb.vhd) are found by wildcard
-# packages (cadr_book.vhd, icmem_book.vhd) are explicitly added
+# cadr sources are found specifically from the lists below
+# packages (cadr_book.vhd, icmem_book.vhd) are explicitly added to CADR_SRCS below
 
 # these are removed from the original list bcpins caps cpins
 CADR_BOOK := actl alatch alu0 alu1 aluc4 amem0 amem1 apar clockd contrl \
@@ -45,22 +45,27 @@ ICMEM_BOOK := clock1 clock2 debug ictl iwrpar olord1 olord2 opcs pctl prom0 prom
 iram00 iram01 iram02 iram03 iram10 iram11 iram12 iram13 iram20 iram21 iram22 iram23 iram30 \
 iram31 iram32 iram33 spy0 spy4 stat
 
-SETS := $(shell cut -f1 -d' ' set/set_list.txt)
-
-SUDS_SRCS := $(patsubst %,cadr/cadr_%_suds.vhd, $(CADR_BOOK) $(ICMEM_BOOK))
 CADR_SRCS := $(patsubst %,cadr/cadr_%.vhd, $(CADR_BOOK) $(ICMEM_BOOK)) cadr/cadr_book.vhd cadr/icmem_book.vhd 
-SET_SRCS  := $(patsubst %,set/%.vhd, $(SETS)) set/set.vhd
-TB_SRCS   := set/set_tb.vhd # tb/cadr_tb.vhd # $(wildcard tb/*_tb.vhd)
+SUDS_SRCS := $(patsubst %,cadr/cadr_%_suds.vhd, $(CADR_BOOK) $(ICMEM_BOOK))
+
+# cadrio sources are found specifically from the lists below
+# package (cadrio_book.vhd) is explicitly added to CADRIO_SRCS below
+CADRIO_BOOK := iobcsr
+
+CADRIO_SRCS := $(patsubst %,cadrio/cadrio_%.vhd, $(CADRIO_BOOK)) cadrio/cadrio_book.vhd
+
+SETS := $(shell cut -f1 -d' ' set/set_list.txt)
+SET_SRCS := $(patsubst %,set/%.vhd, $(SETS)) set/set.vhd set/set_tb.vhd
+
+TB_SRCS  := # tb/cadr_tb.vhd # $(wildcard tb/*_tb.vhd)
 
 # exes mean these are testbenches so these will be compiled into executables also
 TTL_EXES  := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard ttl/*_tb.vhd)))
-DIP_EXES  := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard dip/*_tb.vhd)))
-CADR_EXES := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard cadr/*_tb.vhd)))
 TB_EXES   := build/set_tb # $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard tb/*_tb.vhd)))
 
 # all sources and executables
-SRCS := $(TTL_SRCS) $(DIP_SRCS) $(CADR_SRCS) $(SUDS_SRCS) $(SET_SRCS) $(TB_SRCS)
-EXES := $(TTL_EXES) $(DIP_EXECS) $(CADR_EXES) $(TB_EXES)
+SRCS := $(TTL_SRCS) $(DIP_SRCS) $(CADR_SRCS) $(SUDS_SRCS) $(CADRIO_SRCS) $(SET_SRCS) $(TB_SRCS)
+EXES := $(TTL_EXES) $(TB_EXES)
 
 # ghdl import and make works weird, all the build process is weird
 # there is no sane way to build object files manually in this way
@@ -84,11 +89,13 @@ $(BUILDDIR)/soap: soap/soap.c soap/unpack.c
 	mkdir -p $(BUILDDIR)
 	$(CC) -std=gnu99 -Wall -Wextra -O0 -ggdb3 -o $@ -g $^
 
-#set/vpackage.cache: $(CREATESETSPY) set/set_list.txt set/bus_list.txt cadr/cadr_book.vhd cadr/icmem_book.vhd
-#	python3 $(CREATESETSPY) -c $@ -s set/set_list.txt -b set/bus_list.txt --vhdl-files cadr/cadr_book.vhd cadr/icmem_book.vhd
-
-set/vpackage.cache: $(CREATESETSPY) set/set_list.txt cadr/cadr_book.vhd cadr/icmem_book.vhd
-	python3 $(CREATESETSPY) -c $@ -s set/set_list.txt --vhdl-files cadr/cadr_book.vhd cadr/icmem_book.vhd	
+ifeq ($(BUNDLE_BUSES),1)
+set/vpackage.cache: $(CREATESETSPY) set/set_list.txt set/bus_list.txt cadr/cadr_book.vhd cadr/icmem_book.vhd cadrio/cadrio_book.vhd
+	python3 $(CREATESETSPY) -c $@ -s set/set_list.txt -b set/bus_list.txt --vhdl-files cadr/cadr_book.vhd cadr/icmem_book.vhd
+else
+set/vpackage.cache: $(CREATESETSPY) set/set_list.txt cadr/cadr_book.vhd cadr/icmem_book.vhd cadrio/cadrio_book.vhd
+	python3 $(CREATESETSPY) -c $@ -s set/set_list.txt --vhdl-files cadr/cadr_book.vhd cadr/icmem_book.vhd cadrio/cadrio_book.vhd	
+endif
 
 set/%_set.vhd: set/vpackage.cache
 	python3 $(CREATESETSPY) -u $< -e $(patsubst %_set.vhd,%_set,$(notdir $@)) -o set

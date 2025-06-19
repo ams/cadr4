@@ -28,3 +28,4 @@ trap_set cadr_trap
 opc_set cadr_opcs cadr_opcd
 ampar_set cadr_apar
 mos_set cadr_mo0 cadr_mo1
+iob_set cadrio_iobcsr

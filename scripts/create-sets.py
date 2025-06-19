@@ -28,7 +28,7 @@ def parse_sets(filename: str) -> dict:
                 words = [word.strip() for word in line.split()]
                 if len(words) > 1:
                     set_name = words[0]
-                    set_components = words[1:]
+                    set_components = set(words[1:])
                     sets_dict[set_name] = set_components
     
     return sets_dict
@@ -334,6 +334,7 @@ class vComponent:
         print("", file=f)
         print("use work.cadr_book.all;", file=f)
         print("use work.icmem_book.all;", file=f)
+        print("use work.cadrio_book.all;", file=f)
         print("", file=f)
 
         print(f"entity {self.name} is", file=f)
