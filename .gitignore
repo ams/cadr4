@@ -11,7 +11,7 @@ soap/soap
 __pycache__/
 
 cadr/*_suds.vhd
-set/*_set.vhd
+set/*.vhd
 vpackage.cache
 
 *.opt
