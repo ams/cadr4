@@ -8,9 +8,10 @@ build/
 soap/soap
 *.dSYM/
 
-**/__pycache__
+__pycache__/
 
 cadr/*_suds.vhd
+vpackage.cache
 
 *.opt
 *.o
