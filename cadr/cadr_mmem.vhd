@@ -6,6 +6,7 @@ entity cadr_mmem is
     \-mwpa\    : in  std_logic;
     l16        : in  std_logic;
     \-madr4a\  : in  std_logic;
+    hi3        : in  std_logic;
     mmem16     : out std_logic;
     mmem17     : out std_logic;
     \-madr3a\  : in  std_logic;
@@ -16,6 +17,7 @@ entity cadr_mmem is
     \-mwpb\    : in  std_logic;
     l12        : in  std_logic;
     \-madr4b\  : in  std_logic;
+    hi2        : in  std_logic;
     mmem12     : out std_logic;
     mmem13     : out std_logic;
     \-madr3b\  : in  std_logic;

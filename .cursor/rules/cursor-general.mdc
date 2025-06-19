@@ -6,21 +6,32 @@ alwaysApply: true
 # Overview
 
 - This project is a digitally accurate functional simulation of the MIT CADR Lisp Machine.
-- This project is not a timing verification, hence no delays if it is not required for the function.
+- This project is not a timing verification, hence the components have no delays.
 - This project will not be synthesized. It will be simulated using GHDL with LLVM backend.
 - This project complies with VHDL-2008. You MUST write VHDL-2008 compliant code.
 
 # Project Structure
 
-- The project has four subdirectories containing vhd source files; ttl, dip, cadr and set.
-- The ttl subdirectory contains the TTL components. These are put into sn74 and other packages.
-- Ttl subdirectory also contains the misc package.
-- The dip subdirectory contains the wrappers of TTL components, so called DIP components. These are put into dip package.
-- The cadr subdirectory contains the MIT CADR schematic entities. These are put into cadr package.
-- The set subdirectory contains the set components which are a combination of one or more cadr components.
-- `cadr` entities depend on `dip`, `dip` entities depend on ttl packages (sn74, other, misc and unsorted).
-- The project uses no other library, everything is put into the work library.
+## Source Files
+
+- The project source code is stored in these directories: ttl, dip, cadr, set and tb.
+- The ttl subdirectory contains the TTL entities which are the basic logic ICs. These are put into sn74 (`ttl/sn74.vhd`) and other (`ttl/other.vhd`) packages.
+- The port names of TTL entities are not pin numbers but identify the signal depending on the IC.
+- Ttl subdirectory also contains the misc package which contains constants, functions and procedures.
+- The dip subdirectory contains the wrappers of TTL entities called DIP entities. These are put into dip (`dip/dip.vhd`) package. DIP entities are named `dip_<IC_PART_NUMBER>`.
+- The architecture of a dip entity contains only one TTL component instantiation. It allows a TTL component to be port mapped using pin numbers. The port names of DIP entities are always pin numbers such as p1, p2 etc.
+- The cadr subdirectory contains the CADR entities each of which implements a MIT CADR (v4) schematic page. These are put into cadr_book (`cadr/cadr_book.vhd`) and icmem_book (`cadr/icmem_book.vhd`) packages. CADR entities are named `cadr_<PAGE>` and stored in `cadr/cadr_<PAGE>.vhd` file.
+- `make` automatically generates `cadr/cadr_<PAGE>_suds.vhd` file which contain the architecture of cadr_<PAGE> entity. The suds file is generated from the <PAGE> schematic (`doc/ai/cadr/<PAGE>.drw`).
+- The architecture of a CADR entity contains only one or more DIP component instantiations, and, if required, some internal signals.
+- The set subdirectory contains the set entities each of which are a combination of one or more cadr entities. A set entity is named `<SET_NAME>_set` and stored in `set/<SET_NAME>_set.vhd`.
+
+## ROM Files
+
 - `rom` directory contains the ROM/PROM data. rom/X_Y.hex is the data for ROM chip with designator Y on schematic page X.
+
+## Library
+
+- The project uses no other library, everything is put into the work library.
 
 ## File Extensions
 
@@ -36,44 +47,55 @@ The project uses a Makefile based build system.
 
 There is only one Makefile, in the project root.
 
-The build artifacts (work library, objects, executables) are put into the `build` directory.
+The build artifacts (work library, objects, executables) are put into the `build` directory. Whenever you create a temporary file such as temporary shell or python scripts or a build artifact such as object files, you must create it under the build directory. If the directory does not exist, create it.
 
 Make targets are as follows.
 
-- `make all`: Compile all
+- `make all`: Compile all sources accessible from all test benches
 - `make ttl-check`: Run ttl testbenches
 - `make check`: Run all testbenches
 - `make clean`: Remove build artifacts (build directory)
-- `make dist-clean`: In addition to `make clean`, remove also generated suds files
+- `make dist-clean`: In addition to `make clean`, `dist-clean` target also removes the generated suds files.
 
-A single testbench (for example build/X_tb) can be run with `make run-X`. 
-
-A single testbench (for example build/X_tb) can be run to create waveforms with `make wf-X`.
+- A single testbench (for example build/X_tb) can be run with `make run-X`. 
+- The waveforms of a single testbench (for example build/X_tb) can be created with `make wf-X`.
 
 # Development Workflow
 
 ## Code Modification Guidelines
 
 - NEVER modify the Makefile.
-- NEVER modify port list, package and component definitions unless specifically instructed to do so.
+- NEVER modify port interface list of an entity or component unless specifically instructed to do so.
 - After changing a source file, run `make` to see everything compiles fine.
-- DO NOT write testbenches on your own without asking.
+- DO NOT write testbenches on your own unless specifically instructed to do so.
 
 ## Git Workflow
 
 - NEVER automatically commit changes.
 - When creating a commit message, summarize the changes in bullet-points and add "Co-Authored-By: Cursor <noreply@metebalci.com>" on its own line at the end.
 
-# Differences from datasheets
+# Specific Notes
+
+## TTL Entities (ttl folder)
 
 - SN74241 BENB is implemented as active high even though it is active low in the datasheet.
-
-# Notes
-
 - dip_5600 and dip_5610 both uses im5600. im5600 and im5610 are digitally equivalent.
 - Use `rom/dspctl_2f22.hex` for the testbenches related to im5600.
 - Use `rom/prom0_1b17.hex` for the testbenches related to sn74472 and dm74472.
-- The signal \machruna l\ is named correct, do not try to fix it.
+
+## Set Components (set folder)
+
+- Always update the relevant component port interface list in package file (set/set.vhd) when you modify the the port interface list of a set entity.
+
+- The port list of set components use bus signals when possible. Bus signals are in large case (IR rather than ir). The bus signals are listed below, the other signals names should be same as the port name of the component where that signal is used.
+
+- The following signals always have to be defined as bus in the port list of a set component unless only one line of the bus is used. For example, IR is a bus. If only IR(46) is used, this can be defined as ir46, otherwise it should always use the full IR bus in the port list. Here are the bus signals: IR, M, MF, A, AA, AMEM, AADR, L, LC, WPC, LPC, ALU, I, SPY, DADR, DPC, MDS, MD, OB, IOB, IWR, MEM, MMEM, MSK, NPC, PC, IPC, SPC, SPCO, SPCW, SPCPTR, DC, OPC, PDL, PDLIDX, PDLPTR, Q, SA, R, RETA, ST, VMA, VMAS, MAPI, VMAP, VMO, PMA, WADR.
+
+The internal signals should not be bus signals. Internal signal names should be same as the port name of the component where that signal is used.
+
+Write the component instantiation line in single line, compact form.
+
+Set components use set and/or cadr components, never dip or ttl components.
 
 # Resources
 

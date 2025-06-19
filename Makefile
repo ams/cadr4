@@ -15,6 +15,7 @@ BUILDDIR	  := build
 DRWDIR	  	  := doc/ai/cadr
 .DEFAULT_GOAL := all
 FIXSUDSPY     := scripts/fix-suds.py
+CREATESETSPY  := scripts/create-sets.py
 
 OS := $(shell uname -s)
 
@@ -34,7 +35,7 @@ DIP_SRCS  := $(wildcard dip/*.vhd)
 # packages (cadr_book.vhd, icmem_book.vhd) are explicitly added
 
 # these are removed from the original list bcpins caps cpins
-CADR_BOOK := actl alatch alu0 alu1 aluc4 amem0 amem1 apar bcterm clockd contrl \
+CADR_BOOK := actl alatch alu0 alu1 aluc4 amem0 amem1 apar clockd contrl \
 dram0 dram1 dram2 dspctl flag ior ipar ireg iwr l lc lcc lpc mctl md mds mf mlatch mmem mo0 mo1 \
 mskg4 npc opcd pdl0 pdl1 pdlctl pdlptr platch q qctl shift0 shift1 smctl source spc spclch spcpar \
 spcw spy1 spy2 trap vctl1 vctl2 vma vmas vmem0 vmem1 vmem2 vmemdr
@@ -44,16 +45,18 @@ ICMEM_BOOK := clock1 clock2 debug ictl iwrpar olord1 olord2 opcs pctl prom0 prom
 iram00 iram01 iram02 iram03 iram10 iram11 iram12 iram13 iram20 iram21 iram22 iram23 iram30 \
 iram31 iram32 iram33 spy0 spy4 stat
 
+SETS := $(shell cut -f1 -d' ' set/set_list.txt)
+
 SUDS_SRCS := $(patsubst %,cadr/cadr_%_suds.vhd, $(CADR_BOOK) $(ICMEM_BOOK))
 CADR_SRCS := $(patsubst %,cadr/cadr_%.vhd, $(CADR_BOOK) $(ICMEM_BOOK)) cadr/cadr_book.vhd cadr/icmem_book.vhd 
-SET_SRCS  := $(wildcard set/*.vhd) set/set.vhd
-TB_SRCS   := tb/cadr_tb.vhd # $(wildcard tb/*_tb.vhd)
+SET_SRCS  := $(patsubst %,set/%.vhd, $(SETS)) set/set.vhd
+TB_SRCS   := set/set_tb.vhd # tb/cadr_tb.vhd # $(wildcard tb/*_tb.vhd)
 
 # exes mean these are testbenches so these will be compiled into executables also
 TTL_EXES  := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard ttl/*_tb.vhd)))
 DIP_EXES  := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard dip/*_tb.vhd)))
 CADR_EXES := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard cadr/*_tb.vhd)))
-TB_EXES   := build/cadr_tb # $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard tb/*_tb.vhd)))
+TB_EXES   := build/set_tb # $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard tb/*_tb.vhd)))
 
 # all sources and executables
 SRCS := $(TTL_SRCS) $(DIP_SRCS) $(CADR_SRCS) $(SUDS_SRCS) $(SET_SRCS) $(TB_SRCS)
@@ -80,6 +83,21 @@ $(BUILDDIR)/%_tb: $(BUILDDIR)/work-obj$(GHDLSTD).cf
 $(BUILDDIR)/soap: soap/soap.c soap/unpack.c
 	mkdir -p $(BUILDDIR)
 	$(CC) -std=gnu99 -Wall -Wextra -O0 -ggdb3 -o $@ -g $^
+
+#set/vpackage.cache: $(CREATESETSPY) set/set_list.txt set/bus_list.txt cadr/cadr_book.vhd cadr/icmem_book.vhd
+#	python3 $(CREATESETSPY) -c $@ -s set/set_list.txt -b set/bus_list.txt --vhdl-files cadr/cadr_book.vhd cadr/icmem_book.vhd
+
+set/vpackage.cache: $(CREATESETSPY) set/set_list.txt cadr/cadr_book.vhd cadr/icmem_book.vhd
+	python3 $(CREATESETSPY) -c $@ -s set/set_list.txt --vhdl-files cadr/cadr_book.vhd cadr/icmem_book.vhd	
+
+set/%_set.vhd: set/vpackage.cache
+	python3 $(CREATESETSPY) -u $< -e $(patsubst %_set.vhd,%_set,$(notdir $@)) -o set
+
+set/set.vhd: set/vpackage.cache
+	python3 $(CREATESETSPY) -u $< -e set -o set
+
+set/set_tb.vhd: set/vpackage.cache
+	python3 $(CREATESETSPY) -u $< -e set_tb -o set
 
 # this is the basic method of generating a _suds.vhd file
 # however, a few particular _suds.vhd require special handling and they are handled with specific targets below
@@ -132,9 +150,9 @@ cadr/cadr_mskg4_suds.vhd: $(DRWDIR)/mskg4.drw $(BUILDDIR)/soap $(FIXSUDSPY) Make
 # remove two inverters from @1a19,p12 to -power reset, -power reset is directly driven by @1a19,p12
 cadr/cadr_olord2_suds.vhd: $(DRWDIR)/olord2.drw $(BUILDDIR)/soap $(FIXSUDSPY) Makefile dip/dip.vhd
 	$(BUILDDIR)/soap -n $< > $@
-	sed $(SEDOPTIONS) 's/olord2_1a19.*/olord2_1a19 : dip_16dummy port map (p12 => \\-power reset\\, p13 => \\-boot2\\);/g' cadr/cadr_olord2_suds.vhd
+	sed $(SEDOPTIONS) 's/olord2_1a19.*/olord2_1a19 : dip_16dummy port map (p12 => \\-power reset\\, p13 => \\-boot2\\);/g' cadr/cadr_olord2_suds.vhd	
 	sed $(SEDOPTIONS) '/olord2_1a20 : dip_74ls14 port map (p2 => \\@1a20,p9\\);/d' cadr/cadr_olord2_suds.vhd
-	sed $(SEDOPTIONS) '/olord2_1a20 : dip_74ls14 port map (p8 => \\-power reset\\, p9 => \\@1a20,p2\\);/d' cadr/cadr_olord2_suds.vhd
+	sed $(SEDOPTIONS) '/olord2_1a20 : dip_74ls14 port map (p8 => \\-power reset\\, p9 => \\@1a20,p2\\);/d' cadr/cadr_olord2_suds.vhd	
 	python3 $(FIXSUDSPY) -v $@
 
 # add rom files	
@@ -217,6 +235,8 @@ clean:
 
 dist-clean: clean
 	$(RM) -f cadr/cadr_*_suds.vhd
+	$(RM) -f set/*_set.vhd set/set.vhd
+	$(RM) -f set/vpackage.cache
 
 help: 
 	@echo "make all: build all testbenches"
@@ -226,4 +246,5 @@ help:
 	@echo "make wf-X: run testbench X (build/X_tb) to create waveforms"
 	@echo "make surfer-X: same as wf-X but also runs surfer with the waveform file"
 	@echo "make clean: clean build directory"
+	@echo "make dist-clean: clean and also remove suds and set files"
 	@echo "make help: show this help"

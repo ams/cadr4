@@ -49,6 +49,7 @@ entity cadr_actl is
     \-apass\    : out std_logic;
     tse3a       : in  std_logic;
     \-amemenb\  : out std_logic;
+    hi3         : in  std_logic;
     \-reset\    : in  std_logic;
     ir14        : in  std_logic;
     ir15        : in  std_logic;

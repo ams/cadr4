@@ -6,24 +6,24 @@ use work.other.all;
 
 entity dip_res20 is
   port (
-    p2  : inout std_logic;
-    p3  : inout std_logic;
-    p4  : inout std_logic;
-    p5  : inout std_logic;
-    p6  : inout std_logic;
-    p7  : inout std_logic;
-    p8  : inout std_logic;
-    p9  : inout std_logic;
-    p10 : inout std_logic;
-    p11 : inout std_logic;
-    p12 : inout std_logic;
-    p13 : inout std_logic;
-    p14 : inout std_logic;
-    p15 : inout std_logic;
-    p16 : inout std_logic;
-    p17 : inout std_logic;
-    p18 : inout std_logic;
-    p19 : inout std_logic
+    p2  : out std_logic;
+    p3  : out std_logic;
+    p4  : out std_logic;
+    p5  : out std_logic;
+    p6  : out std_logic;
+    p7  : out std_logic;
+    p8  : out std_logic;
+    p9  : out std_logic;
+    p10 : out std_logic;
+    p11 : out std_logic;
+    p12 : out std_logic;
+    p13 : out std_logic;
+    p14 : out std_logic;
+    p15 : out std_logic;
+    p16 : out std_logic;
+    p17 : out std_logic;
+    p18 : out std_logic;
+    p19 : out std_logic
     );
 end entity;
 

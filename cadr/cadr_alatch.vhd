@@ -70,6 +70,7 @@ entity cadr_alatch is
     amem2       : in  std_logic;
     amem1       : in  std_logic;
     amem0       : in  std_logic;
+    hi5         : in  std_logic;
     a31b        : out std_logic;
     aparity     : out std_logic;
     lparity     : in  std_logic;

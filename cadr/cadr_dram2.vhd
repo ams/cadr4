@@ -22,6 +22,7 @@ entity cadr_dram2 is
     aa16        : in  std_logic;
     r3          : in  std_logic;
     ir18b       : in  std_logic;
+    hi11        : in  std_logic;
     dmask6      : in  std_logic;
     r6          : in  std_logic;
     ir15b       : in  std_logic;
@@ -54,6 +55,7 @@ entity cadr_dram2 is
     \-dmapbenb\ : in  std_logic;
     vmo18       : in  std_logic;
     ir8b        : in  std_logic;
+    hi6         : in  std_logic;
     ir22b       : in  std_logic;
     ir21b       : in  std_logic;
     ir20b       : in  std_logic;

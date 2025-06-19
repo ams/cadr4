@@ -70,6 +70,7 @@ entity cadr_lc is
     mf14                : out std_logic;
     lc8                 : out std_logic;
     mf15                : out std_logic;
+    hi11                : in  std_logic;
     clk1a               : in  std_logic;
     ob20                : in  std_logic;
     ob21                : in  std_logic;

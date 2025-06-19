@@ -51,6 +51,7 @@ entity cadr_source is
     ir28          : in  std_logic;
     \-ir31\       : in  std_logic;
     ir29          : in  std_logic;
+    hi5           : in  std_logic;
     \-srcq\       : out std_logic;
     \-srcopc\     : out std_logic;
     \-srcpdltop\  : out std_logic;

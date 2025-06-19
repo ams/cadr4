@@ -13,6 +13,7 @@ entity cadr_alu1 is
     alumode  : in  std_logic;
     alu32    : out std_logic;
     m31      : in  std_logic;
+    hi12     : in  std_logic;
     a28      : in  std_logic;
     m28      : in  std_logic;
     \-cin28\ : in  std_logic;

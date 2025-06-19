@@ -8,6 +8,7 @@ entity cadr_spy0 is
     eadr2        : in  std_logic;
     \-dbread\    : in  std_logic;
     eadr3        : in  std_logic;
+    hi1          : in  std_logic;
     \-spy.obh\   : out std_logic;
     \-spy.obl\   : out std_logic;
     \-spy.pc\    : out std_logic;

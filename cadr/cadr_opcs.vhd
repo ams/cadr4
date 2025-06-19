@@ -3,6 +3,7 @@ use ieee.std_logic_1164.all;
 
 entity cadr_opcs is
   port (
+    hi2       : in  std_logic;
     opc13     : out std_logic;
     pc13      : in  std_logic;
     opcinha   : out std_logic;

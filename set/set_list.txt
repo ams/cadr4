@@ -1,0 +1,30 @@
+clock_set cadr_clock1 cadr_clock2 cadr_clockd
+amem_set cadr_actl cadr_amem0 cadr_amem1 cadr_alatch
+mmem_set cadr_mctl cadr_mmem cadr_mlatch cadr_mf
+dmem_set cadr_dspctl cadr_dram0 cadr_dram1 cadr_dram2
+alu_set cadr_alu0 cadr_alu1 cadr_aluc4
+shifter_masker_set cadr_smctl cadr_shift0 cadr_shift1 cadr_mskg4
+pdl_set cadr_pdlptr cadr_pdlctl cadr_pdl0 cadr_pdl1 cadr_platch
+spc_set cadr_spc cadr_spclch cadr_spcw cadr_spcpar cadr_lpc
+imem_set cadr_ictl cadr_iram00 cadr_iram01 cadr_iram02 cadr_iram03 cadr_iram10 cadr_iram11 cadr_iram12 cadr_iram13 cadr_iram20 cadr_iram21 cadr_iram22 cadr_iram23 cadr_iram30 cadr_iram31 cadr_iram32 cadr_iram33
+prom_set cadr_pctl cadr_prom0 cadr_prom1
+qreg_set cadr_qctl cadr_q
+spy_set cadr_spy0 cadr_spy1 cadr_spy2 cadr_spy4
+lcreg_set cadr_lc cadr_lcc
+vma_set cadr_vma cadr_vmas
+md_set cadr_md cadr_mds
+vmaps_set cadr_vmem0 cadr_vmem1 cadr_vmem2 cadr_vmemdr
+vctl_set cadr_vctl1 cadr_vctl2
+olord_set cadr_olord1 cadr_olord2
+ireg_set cadr_ior cadr_ireg cadr_ipar
+fetch_set cadr_iwr cadr_iwrpar cadr_debug
+decode_set cadr_source
+lreg_set cadr_l
+jumpc_set cadr_flag
+flowc_set cadr_contrl
+npc_set cadr_npc
+stat_set cadr_stat
+trap_set cadr_trap
+opc_set cadr_opcs cadr_opcd
+ampar_set cadr_apar
+mos_set cadr_mo0 cadr_mo1

@@ -37,6 +37,7 @@ entity cadr_clock2 is
     clk3             : out std_logic;
     mclk1            : out std_logic;
     machrun          : in  std_logic;
+    hi1              : in  std_logic;
     \-tpclk\         : out std_logic
     );
 end;

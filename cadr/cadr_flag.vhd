@@ -10,6 +10,7 @@ entity cadr_flag is
     \lc byte mode\      : out std_logic;
     ob28                : in  std_logic;
     \prog.unibus.reset\ : out std_logic;
+    hi4                 : in  std_logic;
     clk3c               : in  std_logic;
     \int.enable\        : out std_logic;
     ob27                : in  std_logic;
