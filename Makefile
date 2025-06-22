@@ -57,13 +57,15 @@ CREATESETS_OUTPUTDIR	:= set
 CREATESETS_PACKAGENAME  := set
 CREATESETS_ENTITYFILE	:= set/entity_list.txt
 CREATESETS_BUSFILE		:= set/bus_list.txt
-CREATESETS_VHDLFILES	:= cadr/cadr_book.vhd cadr/icmem_book.vhd cadrio/cadrio_book.vhd
+CREATESETS_VHDLFILES	:= cadr/cadr_book.vhd cadr/icmem_book.vhd cadrio/cadrio_book.vhd helper/helper.vhd
 CREATESETS_CACHEFILE 	:= set/set.cache
 CREATESETS_PACKAGEFILE 	:= set/set.vhd
 CREATESETS_TBFILE 		:= set/set_tb.vhd
 
 SETS := $(shell cut -f1 -d' ' $(CREATESETS_ENTITYFILE))
 SET_SRCS := $(patsubst %,set/%.vhd, $(SETS)) $(CREATESETS_PACKAGEFILE) $(CREATESETS_TBFILE)
+
+HELPER_SRCS := helper/helper.vhd helper/helper_required_signals.vhd
 
 TB_SRCS  := # tb/cadr_tb.vhd # $(wildcard tb/*_tb.vhd)
 
@@ -72,7 +74,7 @@ TTL_EXES  := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard ttl/*_tb.vhd)))
 TB_EXES   := $(patsubst set/%.vhd,build/%,$(CREATESETS_TBFILE)) # $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard tb/*_tb.vhd)))
 
 # all sources and executables
-SRCS := $(TTL_SRCS) $(DIP_SRCS) $(CADR_SRCS) $(SUDS_SRCS) $(CADRIO_SRCS) $(SET_SRCS) $(TB_SRCS)
+SRCS := $(TTL_SRCS) $(DIP_SRCS) $(CADR_SRCS) $(SUDS_SRCS) $(CADRIO_SRCS) $(SET_SRCS) $(HELPER_SRCS) $(TB_SRCS)
 EXES := $(TTL_EXES) $(TB_EXES)
 
 # ghdl import and make works weird, all the build process is weird
