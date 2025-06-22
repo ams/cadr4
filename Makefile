@@ -16,7 +16,6 @@ DRWDIR	  	  := doc/ai/cadr
 .DEFAULT_GOAL := all
 FIXSUDSPY     := scripts/fix-suds.py
 CREATESETSPY  := scripts/create-sets.py
-BUNDLE_BUSES  := 0
 
 OS := $(shell uname -s)
 
@@ -89,22 +88,21 @@ $(BUILDDIR)/soap: soap/soap.c soap/unpack.c
 	mkdir -p $(BUILDDIR)
 	$(CC) -std=gnu99 -Wall -Wextra -O0 -ggdb3 -o $@ -g $^
 
-ifeq ($(BUNDLE_BUSES),1)
-set/vpackage.cache: $(CREATESETSPY) set/set_list.txt set/bus_list.txt cadr/cadr_book.vhd cadr/icmem_book.vhd cadrio/cadrio_book.vhd
-	python3 $(CREATESETSPY) -c $@ -s set/set_list.txt -b set/bus_list.txt --vhdl-files cadr/cadr_book.vhd cadr/icmem_book.vhd
-else
-set/vpackage.cache: $(CREATESETSPY) set/set_list.txt cadr/cadr_book.vhd cadr/icmem_book.vhd cadrio/cadrio_book.vhd
-	python3 $(CREATESETSPY) -c $@ -s set/set_list.txt --vhdl-files cadr/cadr_book.vhd cadr/icmem_book.vhd cadrio/cadrio_book.vhd	
-endif
+CREATESETS_CACHEFILE 	:= set/create-sets.cache
+CREATESETS_PACKAGEFILE 	:= set/set.vhd
+CREATESETS_TBFILE 		:= set/set_tb.vhd
 
-set/%_set.vhd: set/vpackage.cache
-	python3 $(CREATESETSPY) -u $< -e $(patsubst %_set.vhd,%_set,$(notdir $@)) -o set
+$(CREATESETS_CACHEFILE): $(CREATESETSPY) set/entity_list.txt set/bus_list.txt cadr/cadr_book.vhd cadr/icmem_book.vhd cadrio/cadrio_book.vhd
+	python3 $(CREATESETSPY) -c $@ -e set/entity_list.txt -b set/bus_list.txt --vhdl-files cadr/cadr_book.vhd cadr/icmem_book.vhd cadrio/cadrio_book.vhd
 
-set/set.vhd: set/vpackage.cache
-	python3 $(CREATESETSPY) -u $< -e set -o set
+set/%_set.vhd: $(CREATESETS_CACHEFILE)
+	python3 $(CREATESETSPY) -u $< -o set --generate-entity $(patsubst %_set.vhd,%_set,$(notdir $@))
 
-set/set_tb.vhd: set/vpackage.cache
-	python3 $(CREATESETSPY) -u $< -e set_tb -o set
+$(CREATESETS_PACKAGEFILE): $(CREATESETS_CACHEFILE)
+	python3 $(CREATESETSPY) -u $< -o set --generate-package
+
+$(CREATESETS_TBFILE): $(CREATESETS_CACHEFILE)
+	python3 $(CREATESETSPY) -u $< -o set --generate-tb
 
 # this is the basic method of generating a _suds.vhd file
 # however, a few particular _suds.vhd require special handling and they are handled with specific targets below
@@ -242,8 +240,8 @@ clean:
 
 dist-clean: clean
 	$(RM) -f cadr/cadr_*_suds.vhd
-	$(RM) -f set/*_set.vhd set/set.vhd
-	$(RM) -f set/vpackage.cache
+	$(RM) -f set/*_set.vhd $(CREATESETS_PACKAGEFILE) $(CREATESETS_TBFILE)
+	$(RM) -f $(CREATESETS_CACHEFILE)
 
 help: 
 	@echo "make all: build all testbenches"
