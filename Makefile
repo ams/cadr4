@@ -53,14 +53,23 @@ CADRIO_BOOK := iobcsr
 
 CADRIO_SRCS := $(patsubst %,cadrio/cadrio_%.vhd, $(CADRIO_BOOK)) cadrio/cadrio_book.vhd
 
-SETS := $(shell cut -f1 -d' ' set/entity_list.txt)
-SET_SRCS := $(patsubst %,set/%.vhd, $(SETS)) set/set.vhd set/set_tb.vhd
+CREATESETS_OUTPUTDIR	:= set
+CREATESETS_PACKAGENAME  := set
+CREATESETS_ENTITYFILE	:= set/entity_list.txt
+CREATESETS_BUSFILE		:= set/bus_list.txt
+CREATESETS_VHDLFILES	:= cadr/cadr_book.vhd cadr/icmem_book.vhd cadrio/cadrio_book.vhd
+CREATESETS_CACHEFILE 	:= set/set.cache
+CREATESETS_PACKAGEFILE 	:= set/set.vhd
+CREATESETS_TBFILE 		:= set/set_tb.vhd
+
+SETS := $(shell cut -f1 -d' ' $(CREATESETS_ENTITYFILE))
+SET_SRCS := $(patsubst %,set/%.vhd, $(SETS)) $(CREATESETS_PACKAGEFILE) $(CREATESETS_TBFILE)
 
 TB_SRCS  := # tb/cadr_tb.vhd # $(wildcard tb/*_tb.vhd)
 
 # exes mean these are testbenches so these will be compiled into executables also
 TTL_EXES  := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard ttl/*_tb.vhd)))
-TB_EXES   := build/set_tb # $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard tb/*_tb.vhd)))
+TB_EXES   := $(patsubst set/%.vhd,build/%,$(CREATESETS_TBFILE)) # $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard tb/*_tb.vhd)))
 
 # all sources and executables
 SRCS := $(TTL_SRCS) $(DIP_SRCS) $(CADR_SRCS) $(SUDS_SRCS) $(CADRIO_SRCS) $(SET_SRCS) $(TB_SRCS)
@@ -88,22 +97,38 @@ $(BUILDDIR)/soap: soap/soap.c soap/unpack.c
 	mkdir -p $(BUILDDIR)
 	$(CC) -std=gnu99 -Wall -Wextra -O0 -ggdb3 -o $@ -g $^
 
-CREATESETS_CACHEFILE 	:= set/set.cache
-CREATESETS_PACKAGEFILE 	:= set/set.vhd
-CREATESETS_TBFILE 		:= set/set_tb.vhd
-
-$(CREATESETS_CACHEFILE): $(CREATESETSPY) set/entity_list.txt set/bus_list.txt cadr/cadr_book.vhd cadr/icmem_book.vhd cadrio/cadrio_book.vhd
-	python3 $(CREATESETSPY) -e set/entity_list.txt -b set/bus_list.txt --vhdl-files cadr/cadr_book.vhd cadr/icmem_book.vhd cadrio/cadrio_book.vhd -o set -p set --generate cache 
+$(CREATESETS_CACHEFILE): $(CREATESETSPY) $(CREATESETS_ENTITYFILE) $(CREATESETS_BUSFILE) $(CREATESETS_VHDLFILES)
+	$(info The process below will take some seconds, please wait...)
+	python3 $(CREATESETSPY) \
+	-e $(CREATESETS_ENTITYFILE) \
+	-b $(CREATESETS_BUSFILE) \
+	--vhdl-files $(CREATESETS_VHDLFILES) \
+	-o $(CREATESETS_OUTPUTDIR) \
+	-p $(CREATESETS_PACKAGENAME) \
+	--generate cache 
 # -v > set/set.log
 
 set/%_set.vhd: $(CREATESETS_CACHEFILE)
-	python3 $(CREATESETSPY) -u -o set -p set --generate entity --entity $(patsubst %_set.vhd,%_set,$(notdir $@))
+	python3 $(CREATESETSPY) \
+	-u \
+	-o $(CREATESETS_OUTPUTDIR) \
+	-p $(CREATESETS_PACKAGENAME) \
+	--generate entity \
+	--entity $(patsubst %_set.vhd,%_set,$(notdir $@))
 
 $(CREATESETS_PACKAGEFILE): $(CREATESETS_CACHEFILE)
-	python3 $(CREATESETSPY) -u -o set -p set --generate package
+	python3 $(CREATESETSPY) \
+	-u \
+	-o $(CREATESETS_OUTPUTDIR) \
+	-p $(CREATESETS_PACKAGENAME) \
+	--generate package
 
 $(CREATESETS_TBFILE): $(CREATESETS_CACHEFILE)
-	python3 $(CREATESETSPY) -u -o set -p set --generate tb
+	python3 $(CREATESETSPY) \
+	-u \
+	-o $(CREATESETS_OUTPUTDIR) \
+	-p $(CREATESETS_PACKAGENAME) \
+	--generate tb
 
 # this is the basic method of generating a _suds.vhd file
 # however, a few particular _suds.vhd require special handling and they are handled with specific targets below
