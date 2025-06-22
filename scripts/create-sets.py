@@ -2,14 +2,45 @@
 #
 # This script is used for port pruning and bus bundling.
 #
+# In cadr4, this script is used to generate new entities (under set package, 
+# under set folder) that wraps or groups cadr entities.
+#
+# Main reasons or benefits of this are:
+#
+# - unused signals in cadr4 are pruned (like many outputs in clock) 
+#   (pruned means either termianted with open or '0')
+# - the signals used only within a new entity are not visible to the outside
+# - the signals are bundled into buses, so a lot less are visible and they are
+#   much easier to visualize in waveform viewers
+# - a testbench is created either to be used as is or to be used as a template
+#
+# There were over 1.5K? signals in cadr_tb before, which was using cadr 
+# entities. Now, in set_tb.vhd, there are only over 300 signals.
+#
+# Hint: Since all the unused signals are pruned, if a particular signal is 
+# required in a testbench, an entity can be created with an in port for this
+# signal. This will prevent the pruning of the signal.
+#
+# Running the script will result (assuming the package name is set):
+# - a package file containing all new entities (e.g. set.vhd)
+# - a testbench file using all new entities (e.g. set_tb.vhd)
+# - a number of new entity files (<entity_name>_set.vhd)
+#
+# Limitations:
+# - generics not supported
+# - the bus bundling logic is not yet very sophisticated
+#
 # The idea is given a large set of entities, some of these entities are 
 # more connected to each other because they together form a particular 
-# function. This means if a new entity (called a set) is created 
-# instantiating these entities, the set entity will have less ports than 
-# the combination of these entities, because some of these ports can be 
+# function. This means if a new entity is created which instantiates the 
+# functional entities, the new entity will have less external ports than 
+# the combination of the entities it wraps, because some of these ports can be 
 # connected with internal signals. This is called port pruning.
 #
-# Port pruning rules: 
+# Port pruning is also removing all the signals by terminating them with '0' or
+# open if they are not used anywhere else in the system.
+#
+# Port pruning rules:
 # (A and B will form a set S)
 #
 # | A   | B   | System | S     | Result |
@@ -36,31 +67,10 @@
 # | pc3..6 | -      | PC_6_3         |                   |
 # | pc3..6 | pc8    | PC_6_3         | pc8               |
 #
-# A testbench instantiating all the set components can be generated.
-# The testbench will have internal signals for all ports of the set 
-# components. The width of the buses will be derived from the ranges 
-# of the ports it is used.
-#
-# Since unused signals will be removed or terminated in the system, 
-# if such a signal would be used as an external input, an additional 
-# entity should be created with its own set.
-#
-# The design of the script assumes the following usage:
-# - there are a large number of entities
-# - entities form clusters that can benefit from port pruning
-# - a set list file is created listing all sets
-# - a bus list file is created listing all buses
-#
-# Running the script will result:
-# - a package file containing all set components (set.vhd)
-# - a testbench file using all set components (set_tb.vhd)
-# - a number of set entity files (<entity_name>_set.vhd)
-#
-# Limitations:
-# - although the model is design in a way to allow multiple levels, only
-#   two levels are supported at the moment (set component and sub component)
-# - the script does not support generics
-# - the bus bundling logic is not very sophisticated
+# A testbench instantiating all the new entities/components can be generated.
+# The testbench will have internal signals for all ports of the new components. 
+# The width of the buses will be derived from the ranges of the ports it is 
+# used.
 
 import argparse
 import os
@@ -117,7 +127,7 @@ class vSignal:
     def __str__(self) -> str:
         return f"signal {self.name}: {self.get_type()}"
 
-    def dump_interface_signal_declaration(self, f) -> None:
+    def dump_signal_declaration(self, f) -> None:
         print(f"  signal {self.name}: {self.get_type()};", file=f)
 
 
@@ -155,7 +165,7 @@ class vPort:
     def __str__(self) -> str:
         return f"{self.name}: {self.mode} {self.get_type()}"
 
-    def dump_port_declaration(self, f, do_not_add_semicolon:bool=False) -> None:        
+    def dump_port_declaration(self, f, do_not_add_semicolon:bool) -> None:        
         semicolon = "" if do_not_add_semicolon else ";"
         print(f"      {self.name}: {self.mode} {self.get_type()}{semicolon}", file=f)
 
@@ -167,11 +177,9 @@ class vPortScalar(vPort, vSignalScalar):
     def __init__(self, name:str, mode:str, **kwargs):
         super().__init__(name=name, mode=mode, **kwargs)
 
-    def dump_association_element(self, f, associated_signal_element:Tuple[vSignal, int, int], do_not_add_comma:bool=False) -> None:
-        associated_signal, low, high = associated_signal_element
-        idx = low
+    def dump_association_element(self, f, associated_signal_element:Tuple[vSignal, int, int], do_not_add_comma:bool) -> None:
         comma = "" if do_not_add_comma else ","
-        if associated_signal is None:
+        if associated_signal_element is None:
             if self.mode == "in":
                 print(f"    {self.name} => '0'{comma}", file=f)
 
@@ -179,11 +187,12 @@ class vPortScalar(vPort, vSignalScalar):
                 print(f"    {self.name} => open{comma}", file=f)
 
         else:
+            associated_signal, idx, _ = associated_signal_element
             if isinstance(associated_signal, vSignalScalar):
                 print(f"    {self.name} => {associated_signal.name}{comma}", file=f)
 
             elif isinstance(associated_signal, vSignalArray):
-                    print(f"    {self.name} => {associated_signal.name}({idx}){comma}", file=f)
+                print(f"    {self.name} => {associated_signal.name}({idx}){comma}", file=f)
 
             else:
                 assert False, "vPortScalar.dump_association_element: associated_signal is not a vSignalScalar or vSignalArray"
@@ -196,18 +205,18 @@ class vPortArray(vPort, vSignalArray):
     def __init__(self, name:str, bus_name:str, low:int, high:int, mode:str, **kwargs):
         super().__init__(name=name, bus_name=bus_name, low=low, high=high, mode=mode, **kwargs)
 
-    def dump_association_element(self, f, associated_signal_element:Tuple[vSignal, int, int], do_not_add_comma:bool=False) -> None:
-        associated_signal, low, high = associated_signal_element
-        idx = low
+    def dump_association_element(self, f, associated_signal_element:Tuple[vSignal, int, int], do_not_add_comma:bool) -> None:        
         comma = "" if do_not_add_comma else ","
-        if associated_signal is None:
+        if associated_signal_element is None:
             if self.mode == "in":
                 print(f"    {self.name} => (others => '0'){comma}", file=f)
 
             else:
-                print(f"    {self.name} => (others => open){comma}", file=f)
+                # (others => open) is not allowed
+                print(f"    {self.name} => open{comma}", file=f)
 
         else:
+            associated_signal, low, high = associated_signal_element
             if isinstance(associated_signal, vSignalScalar):
                 assert False, "vPortArray.dump_association_element: associated_signal is a vSignalScalar"
 
@@ -256,58 +265,6 @@ class vInterface:
                 port.dump_port_declaration(f, do_not_add_semicolon=(i == (len(ports) - 1)))
             print(f"    );", file=f)
 
-    # association list does not include port map ( ), but only the contents
-    def dump_association_list(self, f, post_association_list:'vPortAssociationList') -> None:
-        ports = self.ordered_ports()
-        for i, port in enumerate(ports):
-            port.dump_port_map(f, do_not_add_comma=(i == (len(ports) - 1)))
-
-
-class vPortAssociationList:
-    def __init__(self):
-        self.ports:Dict[str, vPort] = {}
-        self.signals:Dict[str, Tuple[vSignal, int, int]] = {}
-
-    def dump_association_list(self, f) -> None:
-        for i, port in enumerate(ports):
-            do_not_add_comma = (i == (len(ports) - 1))
-            if port.name not in self.signals:
-                port.dump_association_element_terminated(f, do_not_add_comma)
-            
-            else:
-                port.dump_association_element(f, signals.get(port.name), do_not_add_comma)
-
-    # does not support vPortArray assignment by concataneation of multiple vSignal's
-    def add_association_element(self, port:vPort, signal:vSignal, low:int=None, high:int=None) -> None:
-        assert port is not None
-        assert signal is not None
-        # vPortScalar -> (vSignalScalar, _, _)
-        if isinstance(signal, vSignalScalar):
-            assert low is None and high is None
-
-        elif isinstance(signal, vSignalArray):
-
-            # vPortScalar -> (vSignalArray, idx, idx)
-            if isinstance(port, vPortScalar):
-                assert low is not None
-                high = low if high is None else high
-
-            # vPortArray -> (vSignalArray, low, high)
-            elif isinstance(port, vPortArray):
-                assert low is not None
-                assert high is not None
-            
-            else:
-                assert False, "vPortAssociationList.add_association_element: port is not a vPortScalar or vPortArray"
-
-            assert high >= low
-
-        else:
-            assert False, "vPortAssociationList.add_association_element: signal is not a vSignalScalar or vSignalArray"
-
-        self.ports[port.name] = port
-        self.signals[port.name] = (signal, low, high)
-
 
 # component in VHDL
 # the difference from entity is we do not know (or care) the implementation of component
@@ -317,20 +274,56 @@ class vComponent(vInterface):
         super().__init__()
         assert name is not None and len(name) > 0
         self.name = name
-        self.package_name = package_name        
+        self.package_name = package_name
+        self.association_list_elements:Dict[vPort, Tuple[vSignal, int, int]] = {}
 
     def __str__(self) -> str:
         return f"component {self.package_name}.{self.name}"
 
-    def dump_component_instantiation(self, f, post_association_list:vPortAssociationList) -> None:
-        print(f"  {self.name}_inst: {self.name} port map (", file=f)
-        self.interface.dump_association_list(f, post_association_list)
-        print(f"  );", file=f)
+    # does not support vPortArray assignment by concataneation of multiple vSignal's
+    def add_association_list_element(self, port:vPort, signal:vSignal, low:int=None, high:int=None) -> None:
+        assert port is not None
+        assert signal is not None        
+        if isinstance(port, vPortScalar):
+            # vPortScalar -> (vSignalScalar, _, _)
+            if isinstance(signal, vSignalScalar):
+                assert low is None and high is None, f"vComponent.add_association_list_element: low and high must be None for vSignalScalar"
+
+            # vPortScalar -> (vSignalArray, idx, idx)
+            elif isinstance(signal, vSignalArray):
+                assert low is not None and low >= 0, f"vComponent.add_association_list_element: low must be not None and >= 0 for vPortScalar"
+                high = low if high is None else high
+
+            else:
+                assert False, "vComponent.add_association_list_element: signal is not a vSignalScalar or vSignalArray"
+
+        # vPortArray -> (vSignalArray, low, high)
+        elif isinstance(port, vPortArray):
+
+            assert isinstance(signal, vSignalArray), f"vComponent.add_association_list_element: signal is not a vSignalArray for vPortArray"
+            assert low is not None and low >= 0, f"vComponent.add_association_list_element: low must be not None and >= 0 for vPortArray"
+            assert high is not None and high >= low, f"vComponent.add_association_list_element: high must be not None and >= low for vPortArray"
+
+        else:
+            assert False, "vComponent.add_association_list_element: signal is not a vSignalScalar or vSignalArray"
+
+        self.association_list_elements[port] = (signal, low, high)
 
     def dump_component_declaration(self, f) -> None:
         print(f"  component {self.name} is", file=f)
         self.dump_port_clause(f)
         print(f"  end component;", file=f)
+
+    def dump_component_instantiation(self, f) -> None:
+        print(f"  {self.name}_inst: {self.name} port map (", file=f)
+        ports = self.ordered_ports()
+        for i, port in enumerate(ports):
+            port.dump_association_element(
+                f, 
+                self.association_list_elements.get(port, None), 
+                do_not_add_comma=(i == (len(ports) - 1)))
+
+        print(f"  );", file=f)
 
     def is_signal_used_as_input(self, signal:vSignal) -> bool:
         assert signal is not None
@@ -379,10 +372,20 @@ class vEntity(vInterface):
         self.ports:Dict[str, vPort] = {}
         self.internal_signals = {}
         self.components = {}
-        self.association_lists:Dict[str, vPortAssociationList] = {}
 
     def __str__(self) -> str:
         return f"entity {self.package_name}.{self.name}"
+
+    def check_consistency(self) -> None:
+        # check port and internal signal name uniqueness
+        port_and_signal_names = set()
+        for port in self.ports.values():
+            assert port.name not in port_and_signal_names, f"vEntity.check_consistency: port {port.name} already exists"
+            port_and_signal_names.add(port.name)
+
+        for signal in self.internal_signals.values():
+            assert signal.name not in port_and_signal_names, f"vEntity.check_consistency: signal {signal.name} already exists"
+            port_and_signal_names.add(signal.name)
 
     def as_component(self) -> vComponent:
         component = vComponent(self.name, self.package_name)
@@ -391,31 +394,25 @@ class vEntity(vInterface):
 
         return component
 
-    def is_signal_used_as_input(self, signal:vSignal, exclude_component:'vComponent'=None) -> bool:
+    def is_signal_used_as_input(self, signal:vSignal) -> bool:
         assert signal is not None
         for port in self.in_ports():
             if port.name == signal.name:
                 return True
 
         for component in self.components.values():
-            if exclude_component is not None and component == exclude_component:
-                continue
-
             if component.is_signal_used_as_input(signal):
                 return True
 
         return False
 
-    def is_signal_used_as_output(self, signal:vSignal, exclude_component:'vComponent'=None) -> bool:
+    def is_signal_used_as_output(self, signal:vSignal) -> bool:
         assert signal is not None
         for port in self.out_ports():
             if port.name == signal.name:
                 return True
 
         for component in self.components.values():
-            if exclude_component is not None and component == exclude_component:
-                continue
-
             if component.is_signal_used_as_output(signal):
                 return True
 
@@ -444,9 +441,6 @@ class vEntity(vInterface):
             usages.update(component.find_output_usages(signal))
 
         return usages
-
-    def add_association_list(self, component:vComponent, association_list:vPortAssociationList) -> None:
-        self.association_lists[component.name] = association_list
 
     def add_port(self, port:vPort) -> None:
         assert port is not None
@@ -491,7 +485,7 @@ class vEntity(vInterface):
         
         print("", file=f)
         print(f"entity {self.name} is", file=f)
-        self.interface.dump_port_clause(f)        
+        self.dump_port_clause(f)        
         print("end entity;", file=f);
 
         print("", file=f)
@@ -587,30 +581,28 @@ class vEntity(vInterface):
             if (end > start):                
                 bus_port = vPortArray(signal_name, bus_name, start, end, mode)
                 self.add_port(bus_port)
-                verbose(f"vEntity.bundle_bus_ports: added bus port: {bus_port}")
                 # modify association
                 # 1. find ports having association to the port to be replaced (by name)
                 # 2. add association to the bus_port with bus index
                 # end+1 below because port range is inclusive
                 for i in range(start, end+1):
                     port_replaced_by_bus = bus_to_port[(bus_name, mode, i)]    
-                    for association_list in self.association_lists.values():
-                        for port in association_list.ports.values():
-                            (signal, low, high) = association_list.signals[port.name]
-                            if signal.name == port_replaced_by_bus.name:
-                                association_list.add_association_element(port, bus_port, i)
+                    for component in self.components.values():
+                        for port in component.ports.values():
+                            if port in component.association_list_elements:
+                                (signal, low, high) = component.association_list_elements[port]
+                                if signal.name == port_replaced_by_bus.name:
+                                    component.add_association_list_element(port, bus_port, i)
 
                     self.remove_port_by_name(port_replaced_by_bus.name)
 
 
-# general testbench for the set components/set package
+# general testbench for the entities
 class vTestBench(vEntity):
 
     def generate(self) -> None:
         bus_dict = {}
         for component in self.components.values():
-            association_list = vPortAssociationList()
-            self.add_association_list(component, association_list)
             for port in component.ports.values():
                 # find the lowest low and the highest high of port array/bus
                 if isinstance(port, vPortArray):
@@ -622,23 +614,21 @@ class vTestBench(vEntity):
         # now the lowest low and the highest high is found, port array/bus ports can be created
         # this also adds associations
         for bus_name, (low, high) in bus_dict.items():
-            bus = vSignalArray(bus_name, low, high)
+            bus = vSignalArray(bus_name, bus_name, low, high)
             self.add_internal_signal(bus)
             for component in self.components.values():
-                association_list = self.association_lists[component.name]
                 for port in component.ports.values():
                     if isinstance(port, vPortArray):
                         if port.name == bus_name:
-                            association_list.add_association(port, bus, port.low, port.high)
+                            component.add_association_list_element(port, bus, port.low, port.high)
 
         # add scalar ports and associations
         for component in self.components.values():
-            association_list = self.association_lists[component.name]
             for port in component.ports.values():
                 if isinstance(port, vPortScalar):
                     signal = vSignalScalar(port.name)
                     self.add_internal_signal(signal)
-                    association_lists.add_association(port, signal)
+                    component.add_association_list_element(port, signal)
 
 
 # something like a package in VHDL
@@ -699,6 +689,10 @@ class vSystem:
             package.add_component(entity.as_component())
 
         return package
+
+    def check_consistency(self) -> None:
+        for entity in self.entities.values():
+            entity.check_consistency()
 
     # load a referenced package from VHDL file
     def _load_referenced_package(self, filename: str) -> None:
@@ -803,46 +797,37 @@ class vSystem:
         assert entity is not None
         self.entities[entity.name] = entity    
 
-    def dump_tb(self, f) -> None:
-        assert f is not None
-        assert self.tb is not None, "vPackage.dump_tb: testbench not generated"
-        self.tb.dump_entity(f)
-
-    def dump_entity(self, entity_name:str, f) -> None:
-        assert entity_name is not None and len(entity_name) > 0
-        assert f is not None
-        assert entity_name in self.entities
-        self.entities[entity_name].dump_entity(f)
-
-    def is_signal_used_as_input(self, signal:vSignal, exclude_component:vComponent=None) -> bool:
+    def is_signal_used_as_input(self, signal:vSignal, exclude_entity:vEntity=None) -> bool:
         for entity in self.entities.values():
-            if exclude_component is None or entity != exclude_component:
-                if entity.is_signal_used_as_input(signal, exclude_component):
+            if exclude_entity is None or entity != exclude_entity:
+                if entity.is_signal_used_as_input(signal):
                     return True
 
         return False
 
-    def is_signal_used_as_output(self, signal:vSignal, exclude_component:vComponent=None) -> bool:
+    def is_signal_used_as_output(self, signal:vSignal, exclude_entity:vEntity=None) -> bool:
         for entity in self.entities.values():
-            if exclude_component is None or entity != exclude_component:
-                if entity.is_signal_used_as_output(signal, exclude_component):
+            if exclude_entity is None or entity != exclude_entity:
+                if entity.is_signal_used_as_output(signal):
                     return True
                     
         return False
 
-    def find_input_usages(self, signal:vSignal) -> set:
+    def find_input_usages(self, signal:vSignal, exclude_entity:vEntity=None) -> set:
         assert signal is not None
         usages = set()
         for entity in self.entities.values():
-            usages.update(entity.find_input_usages(signal))
+            if exclude_entity is None or entity != exclude_entity:
+                usages.update(entity.find_input_usages(signal))
 
         return usages
 
-    def find_output_usages(self, signal:vSignal) -> set:
+    def find_output_usages(self, signal:vSignal, exclude_entity:vEntity=None) -> set:
         assert signal is not None
         usages = set()
         for entity in self.entities.values():
-            usages.update(entity.find_output_usages(signal))
+            if exclude_entity is None or entity != exclude_entity:
+                usages.update(entity.find_output_usages(signal))
 
         return usages
 
@@ -852,7 +837,6 @@ class vSystem:
             verbose(f"entity: {entity.name}")
             for component in entity.components.values():
                 verbose(f"  component: {component.name}")
-                association_list = vPortAssociationList()
                 
                 for out_port in component.out_ports():
                     verbose(f"    out_port: {out_port.name}")
@@ -860,7 +844,7 @@ class vSystem:
                     is_input_to_aliens = self.is_signal_used_as_input(out_port, entity)
                     is_input_to_siblings = entity.is_signal_used_as_input(out_port)
 
-                    verbose(f"    is_input_to_aliens: {is_input_to_aliens} - {[x.name for x in self.find_input_usages(out_port)]}")
+                    verbose(f"    is_input_to_aliens: {is_input_to_aliens} - {[x.name for x in self.find_input_usages(out_port, entity)]}")
                     verbose(f"    is_input_to_siblings: {is_input_to_siblings} - {[x.name for x in entity.find_input_usages(out_port)]}")
 
                     existing_port = entity.ports.get(out_port.name, None)
@@ -873,7 +857,6 @@ class vSystem:
                         if existing_port is not None:
                             if existing_port.mode == "out" or existing_port.mode == "inout":
                                 verbose(f"    there is already a {existing_port.mode} port for out port: {out_port.name}")
-                                continue
 
                             elif existing_port.mode == "in":
                                 verbose(f"    changing {existing_port.mode} port to inout for out port: {out_port.name}")
@@ -886,7 +869,7 @@ class vSystem:
                             verbose(f"    adding out port for out port: {out_port.name}")
                             new_port = vPortScalar(out_port.name, "out")
                             entity.add_port(new_port)
-                            association_list.add_association_element(out_port, new_port)
+                            component.add_association_list_element(out_port, new_port)
                             # remove internal signal if there is one, since it is replaced by the new port
                             entity.remove_internal_signal_by_name(new_port.name)
                     
@@ -898,20 +881,20 @@ class vSystem:
                             verbose(f"    adding internal signal for out port: {out_port.name}")
                             new_signal = vSignalScalar(out_port.name)
                             entity.add_internal_signal(new_signal)
-                            association_list.add_association_element(out_port, new_signal)
+                            component.add_association_list_element(out_port, new_signal)
                         
                     # nobody receives it, mark unused, this will be terminated by open in port map
                     else:
-                        verbose(f"    out port: {out_port.name} as unused - it will be terminated by open")
+                        verbose(f"    out port: {out_port.name} is unused - it will be terminated by open")
                     
                 for in_port in component.in_ports():
                     verbose(f"    in_port: {in_port.name}")
 
                     is_output_from_aliens = self.is_signal_used_as_output(in_port, entity)
-                    is_output_from_siblings = component.is_signal_used_as_output(in_port)
+                    is_output_from_siblings = entity.is_signal_used_as_output(in_port)
 
-                    verbose(f"    is_output_from_aliens: {is_output_from_aliens} - {[x.name for x in self.find_output_usages(in_port)]}")
-                    verbose(f"    is_output_from_siblings: {is_output_from_siblings} - {[x.name for x in component.find_output_usages(in_port)]}")
+                    verbose(f"    is_output_from_aliens: {is_output_from_aliens} - {[x.name for x in self.find_output_usages(in_port, entity)]}")
+                    verbose(f"    is_output_from_siblings: {is_output_from_siblings} - {[x.name for x in entity.find_output_usages(in_port)]}")
 
                     existing_port = entity.ports.get(in_port.name, None)
 
@@ -948,7 +931,7 @@ class vSystem:
                             verbose(f"    adding {required_mode} port for in port: {in_port.name}")
                             new_port = vPortScalar(in_port.name, required_mode)
                             entity.add_port(new_port)
-                            association_list.add_association_element(in_port, new_port)
+                            component.add_association_list_element(in_port, new_port)
                             # remove internal signal if there is one, since it is replaced by the new port
                             entity.remove_internal_signal_by_name(new_port.name)
                     
@@ -960,13 +943,11 @@ class vSystem:
                             verbose(f"    adding internal signal for in port: {in_port.name}")
                             new_signal = vSignalScalar(in_port.name)
                             entity.add_internal_signal(new_signal)
-                            association_list.add_association_element(in_port, new_signal)
+                            component.add_association_list_element(in_port, new_signal)
 
                     # nobody outputs this, mark unused, this should not happen ?
                     else:
-                        verbose(f"    in port: {in_port.name} as unused - it will be terminated by '0'")
-
-                entity.add_association_list(component, association_list)
+                        verbose(f"    in port: {in_port.name} is unused - it will be terminated by '0'")
 
     def bundle_bus_ports(self) -> None:
         assert self.bus_name_regex_dict is not None
@@ -986,23 +967,20 @@ class vSystem:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="VHDL port-pruning and bus-bundling by introducing set entities")
+        description="VHDL port-pruning and bus-bundling utility")
     
     parser.add_argument(
-        "-c", "--create-cache-file",
-        help="create cache file")
-
-    parser.add_argument(
-        "-u", "--use-cache-file",
-        help="create cache file")    
+        "-u", "--use-cache",
+        action="store_true",
+        help="use cache")    
     
     parser.add_argument(
         "-e", "--entity_list_file",
-        help="File containing set definitions")
+        help="File containing what new entities wrap what components")
     
     parser.add_argument(
         "-b", "--bus_list_file",
-        help="File containing bus signal definitions")
+        help="File containing bus signal names")
     
     parser.add_argument(
         "--vhdl-files",
@@ -1016,51 +994,54 @@ def main():
 
     parser.add_argument(
         "-o", "--output-dir",
+        required=True,
         help="Output dir")
 
     parser.add_argument(
-        "--generate-package",
-        action="store_true",
-        help="Generate package file")
+        "--generate",
+        required=True,
+        choices=["cache", "package", "tb", "entity"],
+        help="generate action")
 
     parser.add_argument(
-        "--generate-tb",
-        action="store_true",
-        help="Generate package file")
-
-    parser.add_argument(
-        "--generate-entity",
-        help="Set entity name to generate")
+        "--entity",
+        help="entity to generate")
 
     parser.add_argument(
         "-p", "--package-name",
-        default="set",
+        required=True,
         help="Package name")
     
     args = parser.parse_args()
-
-    # if not specified, output dir is the same as the package name
-    if args.output_dir is None:
-        args.output_dir = args.package_name
 
     global VERBOSE
     VERBOSE = True if args.verbose else False
 
     system = None
 
-    if args.use_cache_file:
-        verbose(f"vSystem.main: using cache file: {args.use_cache_file}")
+    if args.package_name is None:
+        print(f"vSystem.main: package name not specified", file=sys.stderr)
+        parser.print_usage()
+        exit(1)
 
-        with open(args.use_cache_file, "rb") as f:
+    verbose(f"vSystem.main: package name: {args.package_name}")
+
+    if args.output_dir is None:
+        print(f"vSystem.main: output dir not specified", file=sys.stderr)
+        parser.print_usage()
+        exit(1)
+
+    verbose(f"vSystem.main: output dir: {args.output_dir}")
+
+    if args.use_cache:
+
+        cache_file = f"{args.package_name}.cache"
+        fpath = os.path.join(args.output_dir, cache_file)
+        verbose(f"vSystem.main: using cache file: {fpath}")
+        with open(fpath, "rb") as f:
             system = pickle.load(f)
 
     else:
-        if args.package_name is None:
-            print(f"vSystem.main: package name not specified", file=sys.stderr)
-            parser.print_usage()
-            exit(1)
-
-        verbose(f"vSystem.main: package name: {args.package_name}")
 
         if args.vhdl_files is None:
             print(f"vSystem.main: VHDL files not specified", file=sys.stderr)
@@ -1090,47 +1071,56 @@ def main():
         # this is where magic happens
         system.merge_entities()
         system.bundle_bus_ports()
+        system.check_consistency()
 
-    if args.create_cache_file:
-        verbose(f"vSystem.main: creating cache file: {args.create_cache_file}")
+    if args.generate == "cache":
 
-        with open(args.create_cache_file, "wb") as f:
+        cache_file = f"{args.package_name}.cache"
+        fpath = os.path.join(args.output_dir, cache_file)
+        verbose(f"vSystem.main: generating cache file: {fpath}")
+        with open(fpath, "wb") as f:
             pickle.dump(system, f)
 
-    else:
-        if args.output_dir is None:
-            print(f"vPackage.dump_package: output dir not specified", file=sys.stderr)
+    elif args.generate == "package":
+
+        package_file = f"{args.package_name}.vhd"
+        verbose(f"vSystem.main: generating package file: {package_file}")
+        fpath = os.path.join(args.output_dir, package_file)
+        with open(fpath, "w") as f:
+            system.as_package().dump_package(f)
+        
+    elif args.generate == "tb":
+
+        tb_entity_name = f"{args.package_name}_tb"
+        tb_file = f"{tb_entity_name}.vhd"
+        verbose(f"vSystem.main: generating testbench file: {tb_file}")
+        fpath = os.path.join(args.output_dir, tb_file)
+        with open(fpath, "w") as f:
+            system.generate_tb(tb_entity_name).dump_entity(f)
+
+    elif args.generate == "entity":
+
+        if args.entity is None:
+            print("vSystem.main: entity not specified", file=sys.stderr)
             parser.print_usage()
             exit(1)
 
-        verbose(f"vSystem.main: output dir: {args.output_dir}")
-
-        if args.generate_package:
-            package_file = f"{args.package_name}.vhd"
-            verbose(f"vSystem.main: generating package file: {package_file}")
-            fpath = os.path.join(args.output_dir, package_file)
-            with open(fpath, "w") as f:
-                system.as_package().dump_package(f)
-            
-        elif args.generate_tb:
-            tb_entity_name = f"{args.package_name}_tb"
-            tb_file = f"{tb_entity_name}.vhd"
-            verbose(f"vSystem.main: generating testbench file: {tb_file}")
-            fpath = os.path.join(args.output_dir, tb_file)
-            with open(fpath, "w") as f:
-                system.generate_tb(tb_entity_name).dump_entity(tb_entity_name, f)
-
-        elif args.generate_entity:
-            entity_file = f"{args.entity_name}.vhd"
-            verbose(f"vSystem.main: generating entity file: {entity_file}")
-            fpath = os.path.join(args.output_dir, entity_file)
-            with open(fpath, "w") as f:
-                system.dump_entity(args.entity_name, f)
-
-        else:
-            print("vPackage.dump_package: no action (generate-pkg, generate-tb, generate-entity) specified", file=sys.stderr)
+        if args.entity not in system.entities:
+            print(f"vSystem.main: entity {args.entity} not found", file=sys.stderr)
             parser.print_usage()
-            sys.exit(1)
+            exit(1)
+
+        entity_file = f"{args.entity}.vhd"
+        verbose(f"vSystem.main: generating entity file: {entity_file}")
+        fpath = os.path.join(args.output_dir, entity_file)
+        with open(fpath, "w") as f:
+            system.entities[args.entity].dump_entity(f)
+
+    else:
+
+        print("vPackage.dump_package: no action (generate_cache, generate-package, generate-tb, generate-entity) specified", file=sys.stderr)
+        parser.print_usage()
+        sys.exit(1)
 
 
 if __name__ == "__main__":

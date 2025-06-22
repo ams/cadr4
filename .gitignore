@@ -12,7 +12,8 @@ __pycache__/
 
 cadr/*_suds.vhd
 set/*.vhd
-set/create-sets.cache
+set/set.cache
+set/set.log
 
 *.opt
 *.o

@@ -53,7 +53,7 @@ CADRIO_BOOK := iobcsr
 
 CADRIO_SRCS := $(patsubst %,cadrio/cadrio_%.vhd, $(CADRIO_BOOK)) cadrio/cadrio_book.vhd
 
-SETS := $(shell cut -f1 -d' ' set/set_list.txt)
+SETS := $(shell cut -f1 -d' ' set/entity_list.txt)
 SET_SRCS := $(patsubst %,set/%.vhd, $(SETS)) set/set.vhd set/set_tb.vhd
 
 TB_SRCS  := # tb/cadr_tb.vhd # $(wildcard tb/*_tb.vhd)
@@ -88,21 +88,22 @@ $(BUILDDIR)/soap: soap/soap.c soap/unpack.c
 	mkdir -p $(BUILDDIR)
 	$(CC) -std=gnu99 -Wall -Wextra -O0 -ggdb3 -o $@ -g $^
 
-CREATESETS_CACHEFILE 	:= set/create-sets.cache
+CREATESETS_CACHEFILE 	:= set/set.cache
 CREATESETS_PACKAGEFILE 	:= set/set.vhd
 CREATESETS_TBFILE 		:= set/set_tb.vhd
 
 $(CREATESETS_CACHEFILE): $(CREATESETSPY) set/entity_list.txt set/bus_list.txt cadr/cadr_book.vhd cadr/icmem_book.vhd cadrio/cadrio_book.vhd
-	python3 $(CREATESETSPY) -c $@ -e set/entity_list.txt -b set/bus_list.txt --vhdl-files cadr/cadr_book.vhd cadr/icmem_book.vhd cadrio/cadrio_book.vhd
+	python3 $(CREATESETSPY) -e set/entity_list.txt -b set/bus_list.txt --vhdl-files cadr/cadr_book.vhd cadr/icmem_book.vhd cadrio/cadrio_book.vhd -o set -p set --generate cache 
+# -v > set/set.log
 
 set/%_set.vhd: $(CREATESETS_CACHEFILE)
-	python3 $(CREATESETSPY) -u $< -o set --generate-entity $(patsubst %_set.vhd,%_set,$(notdir $@))
+	python3 $(CREATESETSPY) -u -o set -p set --generate entity --entity $(patsubst %_set.vhd,%_set,$(notdir $@))
 
 $(CREATESETS_PACKAGEFILE): $(CREATESETS_CACHEFILE)
-	python3 $(CREATESETSPY) -u $< -o set --generate-package
+	python3 $(CREATESETSPY) -u -o set -p set --generate package
 
 $(CREATESETS_TBFILE): $(CREATESETS_CACHEFILE)
-	python3 $(CREATESETSPY) -u $< -o set --generate-tb
+	python3 $(CREATESETSPY) -u -o set -p set --generate tb
 
 # this is the basic method of generating a _suds.vhd file
 # however, a few particular _suds.vhd require special handling and they are handled with specific targets below
