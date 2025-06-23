@@ -10,7 +10,7 @@ GHDLMAKEOPTIONS		= -v -g -Wno-delayed-checks
 GHDLRUNOPTIONS		= -v -g
 GHDLSIMOPTIONS		= --backtrace-severity=warning #--assert-level=warning
 
-ENABLE_TILONCONSOLE := 1
+CADR4_TILONCONSOLE ?= 1
 
 # fix params
 BUILDDIR	  := build
@@ -192,7 +192,7 @@ cadr/cadr_olord2_suds.vhd: $(DRWDIR)/olord2.drw $(BUILDDIR)/soap $(FIXSUDSPY) Ma
 # replace til309 components with 5x_til309 component
 cadr/cadr_pctl_suds.vhd: $(DRWDIR)/pctl.drw $(BUILDDIR)/soap $(FIXSUDSPY) Makefile dip/dip.vhd
 	$(BUILDDIR)/soap -n $< > $@
-ifeq ($(ENABLE_TILONCONSOLE),1)
+ifeq ($(CADR4_TILONCONSOLE),1)
 	sed $(SEDOPTIONS) '/pctl_1f16.*/d' $@
 	sed $(SEDOPTIONS) '/pctl_1f17.*/d' $@
 	sed $(SEDOPTIONS) '/pctl_1f18.*/d' $@
