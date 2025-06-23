@@ -34,7 +34,7 @@ begin
     if enb_n = '0' then
       if sel = '0' then
         y1 <= a1; y2 <= a2; y3 <= a3; y4 <= a4;
-      elsif self = '1' then
+      elsif sel = '1' then
         y1 <= b1; y2 <= b2; y3 <= b3; y4 <= b4;
       else
         y1 <= 'X'; y2 <= 'X'; y3 <= 'X'; y4 <= 'X';
