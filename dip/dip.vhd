@@ -1103,25 +1103,25 @@ package dip is
   end component;
 
   component dip_5x_til309 is port (
-    pc0 : in std_logic;
-    pc1 : in std_logic;
-    pc2 : in std_logic;
-    pc3 : in std_logic;
-    pc4 : in std_logic;
-    pc5 : in std_logic;
-    pc6 : in std_logic;
-    pc7 : in std_logic;
-    pc8 : in std_logic;
-    pc9 : in std_logic;
-    pc10 : in std_logic;
-    pc11 : in std_logic;
-    pc12 : in std_logic;
-    pc13 : in std_logic;
-    promenable : in std_logic;
-    ipe : in std_logic;
-    dpe : in std_logic;
-    tilt0 : in std_logic;
-    tilt1 : in std_logic
+    p1 : in std_logic; --  pc0
+    p2 : in std_logic;
+    p3 : in std_logic;
+    p4 : in std_logic;
+    p5 : in std_logic;
+    p6 : in std_logic;
+    p7 : in std_logic;
+    p8 : in std_logic;
+    p9 : in std_logic;
+    p10 : in std_logic;
+    p11 : in std_logic;
+    p12 : in std_logic;
+    p13 : in std_logic;
+    p14 : in std_logic; -- pc13
+    p15 : in std_logic; -- promenable
+    p16 : in std_logic; -- ipe
+    p17 : in std_logic; -- dpe
+    p18 : in std_logic; -- tilt0 
+    p19 : in std_logic -- tilt1
     );
   end component;
 

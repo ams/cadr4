@@ -10,6 +10,8 @@ GHDLMAKEOPTIONS		= -v -g -Wno-delayed-checks
 GHDLRUNOPTIONS		= -v -g
 GHDLSIMOPTIONS		= --backtrace-severity=warning #--assert-level=warning
 
+ENABLE_TILONCONSOLE := 1
+
 # fix params
 BUILDDIR	  := build
 DRWDIR	  	  := doc/ai/cadr
@@ -107,8 +109,7 @@ $(CREATESETS_CACHEFILE): $(CREATESETSPY) $(CREATESETS_ENTITYFILE) $(CREATESETS_B
 	--vhdl-files $(CREATESETS_VHDLFILES) \
 	-o $(CREATESETS_OUTPUTDIR) \
 	-p $(CREATESETS_PACKAGENAME) \
-	--generate cache 
-# -v > set/set.log
+	--generate cache -v > set/set.log
 
 set/%_set.vhd: $(CREATESETS_CACHEFILE)
 	python3 $(CREATESETSPY) \
@@ -141,12 +142,12 @@ cadr/cadr_%_suds.vhd: $(DRWDIR)/%.drw $(BUILDDIR)/soap $(FIXSUDSPY) Makefile dip
 # modify bcterm components, soap emits dip names without @, so there are mistakes, 1b15 is used twice etc.
 cadr/cadr_bcterm_suds.vhd: $(DRWDIR)/bcterm.drw $(BUILDDIR)/soap $(FIXSUDSPY) Makefile dip/dip.vhd
 	$(BUILDDIR)/soap -n $< > $@
-	sed $(SEDOPTIONS) 's/bcterm_1b15 : dip_sip220_330_8 port map (p2 => mem0/bcterm_1b15_1 : dip_sip220_330_8 port map (p2 => mem0/' cadr/cadr_bcterm_suds.vhd
-	sed $(SEDOPTIONS) 's/bcterm_1b15 : dip_sip220_330_8 port map (p2 => mem6/bcterm_1b15_2 : dip_sip220_330_8 port map (p2 => mem6/' cadr/cadr_bcterm_suds.vhd
-	sed $(SEDOPTIONS) 's/bcterm_1b20 : dip_sip220_330_8 port map (p2 => mem12/bcterm_1b20_1 : dip_sip220_330_8 port map (p2 => mem12/' cadr/cadr_bcterm_suds.vhd
-	sed $(SEDOPTIONS) 's/bcterm_1b20 : dip_sip220_330_8 port map (p2 => mem18/bcterm_1b20_2 : dip_sip220_330_8 port map (p2 => mem18/' cadr/cadr_bcterm_suds.vhd
-	sed $(SEDOPTIONS) 's/bcterm_1b25 : dip_sip220_330_8 port map (p2 => mem24/bcterm_1b25_1 : dip_sip220_330_8 port map (p2 => mem24/' cadr/cadr_bcterm_suds.vhd
-	sed $(SEDOPTIONS) 's/bcterm_1b25 : dip_sip220_330_8 port map (p2 => mem30/bcterm_1b25_2 : dip_sip220_330_8 port map (p2 => mem30/' cadr/cadr_bcterm_suds.vhd
+	sed $(SEDOPTIONS) 's/bcterm_1b15 : dip_sip220_330_8 port map (p2 => mem0/bcterm_1b15_1 : dip_sip220_330_8 port map (p2 => mem0/' $@
+	sed $(SEDOPTIONS) 's/bcterm_1b15 : dip_sip220_330_8 port map (p2 => mem6/bcterm_1b15_2 : dip_sip220_330_8 port map (p2 => mem6/' $@
+	sed $(SEDOPTIONS) 's/bcterm_1b20 : dip_sip220_330_8 port map (p2 => mem12/bcterm_1b20_1 : dip_sip220_330_8 port map (p2 => mem12/' $@
+	sed $(SEDOPTIONS) 's/bcterm_1b20 : dip_sip220_330_8 port map (p2 => mem18/bcterm_1b20_2 : dip_sip220_330_8 port map (p2 => mem18/' $@
+	sed $(SEDOPTIONS) 's/bcterm_1b25 : dip_sip220_330_8 port map (p2 => mem24/bcterm_1b25_1 : dip_sip220_330_8 port map (p2 => mem24/' $@
+	sed $(SEDOPTIONS) 's/bcterm_1b25 : dip_sip220_330_8 port map (p2 => mem30/bcterm_1b25_2 : dip_sip220_330_8 port map (p2 => mem30/' $@
 	python3 $(FIXSUDSPY) -v $@
 
 # modify clock1 to alias -tpdone to -tpw60, this is a simple wire in the schematics
@@ -154,9 +155,9 @@ cadr/cadr_bcterm_suds.vhd: $(DRWDIR)/bcterm.drw $(BUILDDIR)/soap $(FIXSUDSPY) Ma
 cadr/cadr_clock1_suds.vhd: $(DRWDIR)/clock1.drw $(BUILDDIR)/soap $(FIXSUDSPY) Makefile dip/dip.vhd
 	$(BUILDDIR)/soap -n $< > $@
 ifeq ($(OS),Darwin)
-	sed $(SEDOPTIONS) 's/^architecture.*/&\'$$'\nalias \\\\-tpdone\\\\ : std_logic is \\\\-tpw60\\\\;/' cadr/cadr_clock1_suds.vhd
+	sed $(SEDOPTIONS) 's/^architecture.*/&\'$$'\nalias \\\\-tpdone\\\\ : std_logic is \\\\-tpw60\\\\;/' $@
 else
-	sed $(SEDOPTIONS) 's/^architecture.*/&\nalias \\-tpdone\\ : std_logic is \\-tpw60\\;/' cadr/cadr_clock1_suds.vhd
+	sed $(SEDOPTIONS) 's/^architecture.*/&\nalias \\-tpdone\\ : std_logic is \\-tpw60\\;/' $@
 endif
 	python3 $(FIXSUDSPY) -v $@
 
@@ -164,34 +165,46 @@ endif
 # this seems to be a mistake in drw, in wlr the 1c10 is connected to -machruna
 cadr/cadr_clock2_suds.vhd: $(DRWDIR)/clock2.drw $(BUILDDIR)/soap $(FIXSUDSPY) Makefile dip/dip.vhd
 	$(BUILDDIR)/soap -n $< > $@
-	sed $(SEDOPTIONS) 's/\\machruna l\\/\\-machruna\\/g' cadr/cadr_clock2_suds.vhd	
+	sed $(SEDOPTIONS) 's/\\machruna l\\/\\-machruna\\/g' $@
 	python3 $(FIXSUDSPY) -v $@
 
 # add rom file
 cadr/cadr_dspctl_suds.vhd: $(DRWDIR)/dspctl.drw $(BUILDDIR)/soap $(FIXSUDSPY) Makefile dip/dip.vhd
 	$(BUILDDIR)/soap -n $< > $@
-	sed $(SEDOPTIONS) -E 's/^([[:space:]]*([^[:space:]]+)[[:space:]]*:[[:space:]]*dip_5610)[[:space:]]+port map/\1 generic map (fn => "rom\/\2.hex") port map/' cadr/cadr_dspctl_suds.vhd
+	sed $(SEDOPTIONS) -E 's/^([[:space:]]*([^[:space:]]+)[[:space:]]*:[[:space:]]*dip_5610)[[:space:]]+port map/\1 generic map (fn => "rom\/\2.hex") port map/' $@
 	python3 $(FIXSUDSPY) -v $@
 
 # add rom files
 cadr/cadr_mskg4_suds.vhd: $(DRWDIR)/mskg4.drw $(BUILDDIR)/soap $(FIXSUDSPY) Makefile dip/dip.vhd
 	$(BUILDDIR)/soap -n $< > $@
-	sed $(SEDOPTIONS) -E 's/^([[:space:]]*([^[:space:]]+)[[:space:]]*:[[:space:]]*dip_5600)[[:space:]]+port map/\1 generic map (fn => "rom\/\2.hex") port map/' cadr/cadr_mskg4_suds.vhd
+	sed $(SEDOPTIONS) -E 's/^([[:space:]]*([^[:space:]]+)[[:space:]]*:[[:space:]]*dip_5600)[[:space:]]+port map/\1 generic map (fn => "rom\/\2.hex") port map/' $@
 	python3 $(FIXSUDSPY) -v $@
 \
 # modify olord2_1a19 port map
 # remove two inverters from @1a19,p12 to -power reset, -power reset is directly driven by @1a19,p12
 cadr/cadr_olord2_suds.vhd: $(DRWDIR)/olord2.drw $(BUILDDIR)/soap $(FIXSUDSPY) Makefile dip/dip.vhd
 	$(BUILDDIR)/soap -n $< > $@
-	sed $(SEDOPTIONS) 's/olord2_1a19.*/olord2_1a19 : dip_16dummy port map (p12 => \\-power reset\\, p13 => \\-boot2\\);/g' cadr/cadr_olord2_suds.vhd	
-	sed $(SEDOPTIONS) '/olord2_1a20 : dip_74ls14 port map (p2 => \\@1a20,p9\\);/d' cadr/cadr_olord2_suds.vhd
-	sed $(SEDOPTIONS) '/olord2_1a20 : dip_74ls14 port map (p8 => \\-power reset\\, p9 => \\@1a20,p2\\);/d' cadr/cadr_olord2_suds.vhd	
+	sed $(SEDOPTIONS) 's/olord2_1a19.*/olord2_1a19 : dip_16dummy port map (p12 => \\-power reset\\, p13 => \\-boot2\\, p14 => \\-boot1\\, p15 => hi2, p16 => hi1);/g' $@
+	sed $(SEDOPTIONS) '/olord2_1a20 : dip_74ls14 port map (p2 => \\@1a20,p9\\);/d' $@
+	sed $(SEDOPTIONS) '/olord2_1a20 : dip_74ls14 port map (p8 => \\-power reset\\, p9 => \\@1a20,p2\\);/d' $@
+	python3 $(FIXSUDSPY) -v $@
+
+# replace til309 components with 5x_til309 component
+cadr/cadr_pctl_suds.vhd: $(DRWDIR)/pctl.drw $(BUILDDIR)/soap $(FIXSUDSPY) Makefile dip/dip.vhd
+	$(BUILDDIR)/soap -n $< > $@
+ifeq ($(ENABLE_TILONCONSOLE),1)
+	sed $(SEDOPTIONS) '/pctl_1f16.*/d' $@
+	sed $(SEDOPTIONS) '/pctl_1f17.*/d' $@
+	sed $(SEDOPTIONS) '/pctl_1f18.*/d' $@
+	sed $(SEDOPTIONS) '/pctl_1f19.*/d' $@
+	sed $(SEDOPTIONS) 's/pctl_1f20.*/pctl_5x_til309 : dip_5x_til309 port map (p14 => pc13, p13 => pc12, p12 => pc11, p11 => pc10, p10 => pc9, p9 => pc8, p8 => pc7, p7 => pc6, p6 => pc5, p5 => pc4, p4 => pc3, p3 => pc2, p2 => pc1, p1 => pc0, p15 => promenable, p16 => ipe, p17 => dpe, p18 => tilt0, p19 => tilt1);/g' $@	
+endif	
 	python3 $(FIXSUDSPY) -v $@
 
 # add rom files	
 cadr/cadr_prom0_suds.vhd: $(DRWDIR)/prom0.drw $(BUILDDIR)/soap $(FIXSUDSPY) Makefile dip/dip.vhd
 	$(BUILDDIR)/soap -n $< > $@
-	sed $(SEDOPTIONS) -E 's/^([[:space:]]*prom0_([^[:space:]]+)[[:space:]]*:[[:space:]]*dip_74s472)[[:space:]]+port map/\1 generic map (fn => "rom\/promh9.\2.hex") port map/' cadr/cadr_prom0_suds.vhd
+	sed $(SEDOPTIONS) -E 's/^([[:space:]]*prom0_([^[:space:]]+)[[:space:]]*:[[:space:]]*dip_74s472)[[:space:]]+port map/\1 generic map (fn => "rom\/promh9.\2.hex") port map/' $@
 	python3 $(FIXSUDSPY) -v $@
 
 # add rom files
@@ -199,8 +212,8 @@ cadr/cadr_prom0_suds.vhd: $(DRWDIR)/prom0.drw $(BUILDDIR)/soap $(FIXSUDSPY) Make
 # prom1_1b20 (providing the last byte) points to prom.80.hex (because it contains the parity bit)
 cadr/cadr_prom1_suds.vhd: $(DRWDIR)/prom1.drw $(BUILDDIR)/soap $(FIXSUDSPY) Makefile dip/dip.vhd
 	$(BUILDDIR)/soap -n $< > $@	
-	sed $(SEDOPTIONS) -E 's/^([[:space:]]*[^[:space:]]+[[:space:]]*:[[:space:]]*dip_74s472)[[:space:]]+port map/\1 generic map (fn => "rom\/prom.00.hex") port map/' cadr/cadr_prom1_suds.vhd
-	sed $(SEDOPTIONS) -E 's/^([[:space:]]*prom1_1b20[[:space:]]*:[[:space:]]*dip_74s472)[[:space:]]+generic map \(fn => "rom\/prom\.00\.hex"\)/\1 generic map (fn => "rom\/prom.80.hex")/' cadr/cadr_prom1_suds.vhd
+	sed $(SEDOPTIONS) -E 's/^([[:space:]]*[^[:space:]]+[[:space:]]*:[[:space:]]*dip_74s472)[[:space:]]+port map/\1 generic map (fn => "rom\/prom.00.hex") port map/' $@
+	sed $(SEDOPTIONS) -E 's/^([[:space:]]*prom1_1b20[[:space:]]*:[[:space:]]*dip_74s472)[[:space:]]+generic map \(fn => "rom\/prom\.00\.hex"\)/\1 generic map (fn => "rom\/prom.80.hex")/' $@
 	python3 $(FIXSUDSPY) -v $@	
 
 .PHONY: all ttl-check check run-% run-tb wf-% wf-tb clean dist-clean help
@@ -254,7 +267,7 @@ wf-tb: $(TB)
 ifeq ($(WAVEOPTFILERECREATE),1)	
 	$(RM) $(WAVEOPTFILE)
 endif
-	$< $(GHDLSIMOPTIONS) $(GHDLWAVEOPTIONS) --disp-time
+	$< $(GHDLSIMOPTIONS) $(GHDLWAVEOPTIONS) --stop-time=10us
 
 surfer-%: $(BUILDDIR)/%_tb
 	TB=$< make surfer-tb
