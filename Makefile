@@ -117,21 +117,21 @@ set/%_set.vhd: $(CREATESETS_CACHEFILE)
 	-o $(CREATESETS_OUTPUTDIR) \
 	-p $(CREATESETS_PACKAGENAME) \
 	--generate entity \
-	--entity $(patsubst %_set.vhd,%_set,$(notdir $@))
+	--entity $(patsubst %_set.vhd,%_set,$(notdir $@)) -v >> set/set.log
 
 $(CREATESETS_PACKAGEFILE): $(CREATESETS_CACHEFILE)
 	python3 $(CREATESETSPY) \
 	-u \
 	-o $(CREATESETS_OUTPUTDIR) \
 	-p $(CREATESETS_PACKAGENAME) \
-	--generate package
+	--generate package -v >> set/set.log
 
 $(CREATESETS_TBFILE): $(CREATESETS_CACHEFILE)
 	python3 $(CREATESETSPY) \
 	-u \
 	-o $(CREATESETS_OUTPUTDIR) \
 	-p $(CREATESETS_PACKAGENAME) \
-	--generate tb
+	--generate tb -v >> set/set.log
 
 # this is the basic method of generating a _suds.vhd file
 # however, a few particular _suds.vhd require special handling and they are handled with specific targets below

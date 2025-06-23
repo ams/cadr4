@@ -122,7 +122,7 @@ class vSignal:
     def __init__(self, name:str, **kwargs):                
         super().__init__(**kwargs)
         assert name is not None and len(name) > 0
-        self.name:str = name        
+        self.name:str = name
 
     def __str__(self) -> str:
         return f"signal {self.name}: {self.get_type()}"
@@ -510,8 +510,8 @@ class vEntity(vInterface):
         # bus candidates are created considering the port mode
         # because start and end indices are only created for the same mode
         for port in self.ports.values():
-            for bus_name, regex in bus_name_regex_dict.items():
-                match = regex.match(port.name)
+            for bus_name, (pattern_scalar, pattern_array) in bus_name_regex_dict.items():
+                match = pattern_scalar.match(port.name)
                 if match:
                     bus_index = int(match.group(1))
                     bus_key = (bus_name, port.mode)
@@ -556,25 +556,31 @@ class vEntity(vInterface):
                     slice_num += 1
                     buses.append([bus_name, bus_name, slice_num, mode, bus_indices[i], bus_indices[-1]])
 
-        # if a bus_name is used twice (it has more than one slices), rename both with end and start e.g. BUS_END_START e.g. PC_5_3
-        # if there is only one slice of a bus, use the name as it is e.g. PC
-        last_bus_name = buses[0][1]
-        for i in range(1, len(buses)):
-            bus_name, signal_name, slice_num, mode, start, end = buses[i]
-            if bus_name == last_bus_name:
-                #short_mod = "i" if mode == "in" else "o" if mode == "out" else "io"
-                short_mod = ""
-                # change the first slice also (e.g. PC -> PC_3_0)
-                if slice_num == 1:
-                    prev_bus_name, _, _, _, prev_start, prev_end = buses[i-1]
-                    prev_signal_name = f"{prev_bus_name}{short_mod}_{prev_end}_{prev_start}"
-                    buses[i-1][1] = prev_signal_name
-                
-                # change the name of the current slice
-                signal_name = f"{bus_name}{short_mod}_{end}_{start}"
-                buses[i][1] = signal_name
+        def _commented_out():
+            # if a bus_name is used twice (it has more than one slices), rename both with end and start e.g. BUS_END_START e.g. PC_5_3
+            # if there is only one slice of a bus, use the name as it is e.g. PC
+            last_bus_name = buses[0][1]
+            for i in range(1, len(buses)):
+                bus_name, signal_name, slice_num, mode, start, end = buses[i]
+                if bus_name == last_bus_name:
+                    #short_mod = "i" if mode == "in" else "o" if mode == "out" else "io"
+                    short_mod = ""
+                    # change the first slice also (e.g. PC -> PC_3_0)
+                    if slice_num == 1:
+                        prev_bus_name, _, _, _, prev_start, prev_end = buses[i-1]
+                        prev_signal_name = f"{prev_bus_name}{short_mod}_{prev_end}_{prev_start}"
+                        buses[i-1][1] = prev_signal_name
+                    
+                    # change the name of the current slice
+                    signal_name = f"{bus_name}{short_mod}_{end}_{start}"
+                    buses[i][1] = signal_name
 
-            last_bus_name = bus_name
+                last_bus_name = bus_name
+
+        # recreate signal names
+        for i in range(0, len(buses)):
+            bus_name, _, _, _, start, end = buses[i]
+            buses[i][1] = f"{bus_name}_{end}_{start}"
 
         # add bus/array ports, remove the scalar ports it replaces
         for (bus_name, signal_name, slice_num, mode, start, end) in buses:
@@ -600,35 +606,65 @@ class vEntity(vInterface):
 # general testbench for the entities
 class vTestBench(vEntity):
 
-    def generate(self) -> None:
+    def generate(self, bus_name_regex_dict:Dict[str, re.Pattern]) -> None:
+        # find the range of buses to be added
         bus_dict = {}
         for component in self.components.values():
             for port in component.ports.values():
-                # find the lowest low and the highest high of port array/bus
                 if isinstance(port, vPortArray):
                     (low, high) = bus_dict.get(port.bus_name, (100, -1))
                     low = min(low, port.low)
                     high = max(high, port.high)
                     bus_dict[port.bus_name] = (low, high)
+                    verbose(f"vTestBench.generate: bus {port.bus_name} range: {low} to {high} due to: {port.name}")
+                
+                elif isinstance(port, vPortScalar):
+                    for bus_name, (pattern_scalar, pattern_array) in bus_name_regex_dict.items():
+                        match = pattern_scalar.match(port.name)
+                        if match:
+                            bus_idx = int(match.group(1))
+                            (low, high) = bus_dict.get(bus_name, (100, -1))
+                            low = min(low, bus_idx)
+                            high = max(high, bus_idx)
+                            bus_dict[bus_name] = (low, high)
+                            verbose(f"vTestBench.generate: bus {bus_name} range: {low} to {high} due to: {port.name}")
+                            break
+
+                else:
+                    assert False, f"vTestBench.generate: unexpected port type: {type(port)}"
         
-        # now the lowest low and the highest high is found, port array/bus ports can be created
-        # this also adds associations
+        # add bus signals
         for bus_name, (low, high) in bus_dict.items():
             bus = vSignalArray(bus_name, bus_name, low, high)
             self.add_internal_signal(bus)
-            for component in self.components.values():
-                for port in component.ports.values():
-                    if isinstance(port, vPortArray):
-                        if port.name == bus_name:
-                            component.add_association_list_element(port, bus, port.low, port.high)
 
-        # add scalar ports and associations
+        # add association list elements
         for component in self.components.values():
             for port in component.ports.values():
-                if isinstance(port, vPortScalar):
-                    signal = vSignalScalar(port.name)
-                    self.add_internal_signal(signal)
-                    component.add_association_list_element(port, signal)
+                if isinstance(port, vPortArray):
+                    assert port.bus_name in self.internal_signals, f"vTestBench.generate: bus {port.bus_name} not found"
+                    bus = self.internal_signals[port.bus_name]
+                    component.add_association_list_element(port, bus, port.low, port.high)
+                
+                elif isinstance(port, vPortScalar):
+                    # the port might be assigned from a bus
+                    # for example ir42, should be assigned from IR(42)
+                    assigned_from_bus = False
+                    for bus_name, (pattern_scalar, pattern_array) in bus_name_regex_dict.items():
+                        match = pattern_scalar.match(port.name)
+                        if match and bus_name in self.internal_signals:
+                            assigned_from_bus = True
+                            bus_idx = int(match.group(1))
+                            component.add_association_list_element(port, self.internal_signals[bus_name], bus_idx)
+                            break
+
+                    if not assigned_from_bus:
+                        signal = vSignalScalar(port.name)
+                        self.add_internal_signal(signal)
+                        component.add_association_list_element(port, signal)
+
+                else:
+                    assert False, f"vTestBench.generate: unexpected port type: {type(port)}"
 
 
 # something like a package in VHDL
@@ -789,9 +825,11 @@ class vSystem:
                     bus_name = line.split()[0]
                     # Create regex pattern: bus_name followed by one or two digits
                     # If first digit is 0, there cannot be a second digit
-                    # Pattern: bus_name + (0 | [1-9][0-9]?)
-                    pattern = f"{re.escape(bus_name.lower())}(0|[1-9][0-9]?)$"
-                    self.bus_name_regex_dict[bus_name] = re.compile(pattern)
+                    # Pattern scalar: busX
+                    # Pattern array: bus_X_Y
+                    pattern_scalar = f"{re.escape(bus_name.lower())}(0|[1-9][0-9]?)$"
+                    pattern_array = f"{re.escape(bus_name.lower())}_(0|[1-9][0-9]?)_(0|[1-9][0-9]?)$"
+                    self.bus_name_regex_dict[bus_name] = (re.compile(pattern_scalar), re.compile(pattern_array))
 
     def add_entity(self, entity:vEntity):
         assert entity is not None
@@ -954,12 +992,13 @@ class vSystem:
                 entity.bundle_bus_ports(self.bus_name_regex_dict)
 
     def generate_tb(self, tb_entity_name:str) -> None:
+        assert self.bus_name_regex_dict is not None
         assert self.tb is None, "vPackage.generate_tb: testbench already generated"
         tb_entity = vTestBench(tb_entity_name, self.package_name)
         for entity in self.entities.values():
             tb_entity.add_component(entity.as_component())
 
-        tb_entity.generate()
+        tb_entity.generate(self.bus_name_regex_dict)
         return tb_entity
 
 
