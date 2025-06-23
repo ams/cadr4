@@ -40,11 +40,11 @@ begin
     variable disp3 : std_logic_vector(2 downto 0);
     variable disp4 : std_logic_vector(2 downto 0);
   begin
-    write(l, to_string(p3 & p2 & p1));
-    write(l, to_string(p6 & p5 & p4));
-    write(l, to_string(p9 & p8 & p7));
-    write(l, to_string(p12 & p11 & p10));
-    write(l, to_string('0' & p14 & p13));
+    write(l, to_ostring(p3 & p2 & p1));
+    write(l, to_ostring(p6 & p5 & p4));
+    write(l, to_ostring(p9 & p8 & p7));
+    write(l, to_ostring(p12 & p11 & p10));
+    write(l, to_ostring('0' & p14 & p13));
 
     if p15 = '1' then
       write(l, String'(" PROMENABLE "));
