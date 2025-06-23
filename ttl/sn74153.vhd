@@ -39,9 +39,7 @@ begin
   
   process(all)
   begin
-    if enb1_n = '1' then
-      g1y <= '0';
-    else 
+    if enb1_n = '0' then
       case select_lines is
         when "00" => g1y <= g1c0;
         when "01" => g1y <= g1c1;
@@ -49,14 +47,14 @@ begin
         when "11" => g1y <= g1c3;
         when others => g1y <= 'X';
       end case;
+    else
+      g1y <= '0';
     end if;
   end process;
 
   process(all)
   begin
-    if enb2_n = '1' then
-      g2y <= '0';
-    else
+    if enb2_n = '0' then      
       case select_lines is
         when "00" => g2y <= g2c0;
         when "01" => g2y <= g2c1;
@@ -64,6 +62,8 @@ begin
         when "11" => g2y <= g2c3;
         when others => g2y <= 'X';
       end case;
+    else
+      g2y <= '0';
     end if;
   end process;
   

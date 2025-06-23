@@ -32,9 +32,11 @@ begin
 
   process (a, b, c, g1, g2a, g2b) is
     variable sel : std_logic_vector(2 downto 0);
+    variable g : std_logic;
   begin
+    g := g1 and not g2a and not g2b;
     -- Check enable conditions first
-    if g1 = '1' and g2a = '0' and g2b = '0' then
+    if g = '1' then
       -- Enabled: decode select inputs
       sel := a & b & c;  -- MSB to LSB: a, b, c (matching testbench expectations)
       
@@ -50,11 +52,8 @@ begin
         when "111" => y <= "01111111"; -- y7 active (low)
         when others => y <= "XXXXXXXX"; -- Unknown select inputs
       end case;
-    elsif (g1 /= '0' and g1 /= '1') or (g2a /= '0' and g2a /= '1') or (g2b /= '0' and g2b /= '1') then
-      -- Unknown enable signals
-      y <= "XXXXXXXX";
     else
-      -- Disabled: all outputs high (inactive)
+    -- Disabled: all outputs high (inactive)
       y <= (others => '1');
     end if;
   end process;

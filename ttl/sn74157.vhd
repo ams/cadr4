@@ -31,12 +31,16 @@ architecture ttl of sn74157 is
 begin
   process(all)
   begin
-    if enb_n = '1' then
-      y1 <= 'Z'; y2 <= 'Z'; y3 <= 'Z'; y4 <= 'Z';
-    elsif sel = '0' then
-      y1 <= a1; y2 <= a2; y3 <= a3; y4 <= a4;
+    if enb_n = '0' then
+      if sel = '0' then
+        y1 <= a1; y2 <= a2; y3 <= a3; y4 <= a4;
+      elsif self = '1' then
+        y1 <= b1; y2 <= b2; y3 <= b3; y4 <= b4;
+      else
+        y1 <= 'X'; y2 <= 'X'; y3 <= 'X'; y4 <= 'X';
+      end if;
     else
-      y1 <= b1; y2 <= b2; y3 <= b3; y4 <= b4;
+      y1 <= 'Z'; y2 <= 'Z'; y3 <= 'Z'; y4 <= 'Z';
     end if;
   end process;
 end architecture;

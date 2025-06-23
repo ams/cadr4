@@ -9,21 +9,20 @@ use ieee.std_logic_1164.all;
 
 entity sn74151 is
   port (
-    i3   : in  std_logic := 'H';
-    i2   : in  std_logic := 'H';
-    i1   : in  std_logic := 'H';
-    i0   : in  std_logic := 'H';
-    q    : out std_logic;
-    q_n  : out std_logic;
-    ce_n : in  std_logic := 'H';
-
-    sel0 : in std_logic := 'H';
-    sel1 : in std_logic := 'H';
-    sel2 : in std_logic := 'H';
+    i0   : in std_logic := 'H';
+    i1   : in std_logic := 'H';
+    i2   : in std_logic := 'H';
+    i3   : in std_logic := 'H';
     i4   : in std_logic := 'H';
     i5   : in std_logic := 'H';
     i6   : in std_logic := 'H';
-    i7   : in std_logic := 'H'
+    i7   : in std_logic := 'H';
+    sel0 : in std_logic := 'H';
+    sel1 : in std_logic := 'H';
+    sel2 : in std_logic := 'H';
+    ce_n : in std_logic := 'H';
+    q    : out std_logic;
+    q_n  : out std_logic
     );
 end;
 
@@ -31,41 +30,44 @@ architecture ttl of sn74151 is
 begin
   -- core multiplexer with active-low chip-enable
   process(all)
+    variable select_lines : std_logic_vector(2 downto 0);
   begin
+    
     if ce_n = '0' then
-      if sel2 = '0' and sel1 = '0' and sel0 = '0' then
-        q   <= i0;
-        q_n <= not i0;
-      elsif sel2 = '0' and sel1 = '0' and sel0 = '1' then
-        q   <= i1;
-        q_n <= not i1;
-      elsif sel2 = '0' and sel1 = '1' and sel0 = '0' then
-        q   <= i2;
-        q_n <= not i2;
-      elsif sel2 = '0' and sel1 = '1' and sel0 = '1' then
-        q   <= i3;
-        q_n <= not i3;
-      elsif sel2 = '1' and sel1 = '0' and sel0 = '0' then
-        q   <= i4;
-        q_n <= not i4;
-      elsif sel2 = '1' and sel1 = '0' and sel0 = '1' then
-        q   <= i5;
-        q_n <= not i5;
-      elsif sel2 = '1' and sel1 = '1' and sel0 = '0' then
-        q   <= i6;
-        q_n <= not i6;
-      elsif sel2 = '1' and sel1 = '1' and sel0 = '1' then
-        q   <= i7;
-        q_n <= not i7;
-      else
-        -- Handle undefined select combinations
-        q   <= 'X';
-        q_n <= 'X';
-      end if;
+      select_lines := sel2 & sel1 & sel0;
+      case select_lines is
+        when "000" =>
+          q   <= i0;
+          q_n <= not i0;
+        when "001" =>
+          q   <= i1;
+          q_n <= not i1;
+        when "010" =>
+          q   <= i2;
+          q_n <= not i2;
+        when "011" =>
+          q   <= i3;
+          q_n <= not i3;
+        when "100" => 
+          q   <= i4;
+          q_n <= not i4;
+        when "101" =>
+          q   <= i5;
+          q_n <= not i5;
+        when "110" =>
+          q   <= i6;
+          q_n <= not i6;
+        when "111" =>
+          q   <= i7;
+          q_n <= not i7;
+        when others =>
+          q   <= 'X';
+          q_n <= 'X';
+      end case;
     else
       -- Chip is disabled
-      q   <= 'X';
-      q_n <= 'X';
+      q   <= '0';
+      q_n <= '1';
     end if;
   end process;
 end architecture;
