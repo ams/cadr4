@@ -48,9 +48,10 @@ entity cadr_olord2 is
     srun                : in  std_logic;
     \boot.trap\         : out std_logic;
     \-boot2\            : out std_logic;
-    \-boot1\            : in std_logic;
+    -- inout because it is also pulled high in olord2
+    \-boot1\            : inout std_logic;
     hi2                 : out std_logic;
-    \-ldmode\           : out std_logic;
+    \-ldmode\           : in std_logic;
     ldmode              : out std_logic;
     mclk5               : in  std_logic;
     clk5                : in  std_logic;

@@ -341,9 +341,13 @@ package other is
       );
   end component;
 
-  component ic_16dummy port(
-    \-boot2\       : out std_logic; -- 13
-    \-power reset\ : out std_logic  -- 12
-    ); end component;
+  component ic_16dummy 
+    port(
+      hi1            : out std_logic;
+      hi2            : out std_logic;
+      \-boot1\       : out std_logic;
+      \-boot2\       : out std_logic;
+      \-power reset\ : out std_logic
+      ); end component;
 
 end;

@@ -43,7 +43,10 @@ package dip is
 
   component dip_16dummy is port (       -- ic_16dummy [16dummy]
     p12 : out std_logic;                -- \-power reset\
-    p13 : out std_logic                 -- \-boot2\
+    p13 : out std_logic;                -- \-boot2\
+    p14 : out std_logic;                -- \-boot1\
+    p15 : out std_logic;                -- hi2
+    p16 : out std_logic                 -- hi1
     );
   end component;
 
@@ -1096,6 +1099,29 @@ package dip is
     p15 : in std_logic;                 -- test_n
     p16 : in std_logic;                 -- ldp
     p17 : in std_logic                  -- i1
+    );
+  end component;
+
+  component dip_5x_til309 is port (
+    pc0 : in std_logic;
+    pc1 : in std_logic;
+    pc2 : in std_logic;
+    pc3 : in std_logic;
+    pc4 : in std_logic;
+    pc5 : in std_logic;
+    pc6 : in std_logic;
+    pc7 : in std_logic;
+    pc8 : in std_logic;
+    pc9 : in std_logic;
+    pc10 : in std_logic;
+    pc11 : in std_logic;
+    pc12 : in std_logic;
+    pc13 : in std_logic;
+    promenable : in std_logic;
+    ipe : in std_logic;
+    dpe : in std_logic;
+    tilt0 : in std_logic;
+    tilt1 : in std_logic
     );
   end component;
 
