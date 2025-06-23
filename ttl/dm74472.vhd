@@ -32,37 +32,18 @@ entity dm74472 is
 end;
 
 architecture ttl of dm74472 is
-  constant rom  : std_logic_vector := load_rom_file(fn);
-  signal addr : unsigned(8 downto 0) := (others => '0');
-  
-
-  
+  constant rom  : std_logic_vector := load_rom_file(fn);  
 begin
-  addr <= a8 & a7 & a6 & a5 & a4 & a3 & a2 & a1 & a0;
-
-  process(all)
+    process(all)
     variable data : std_logic_vector(7 downto 0);
-    variable addr_int : integer;
+    variable addr : unsigned(8 downto 0);
   begin
-    -- Check for unknown chip enable signal
-    if is_x(ce_n) then
-      -- Unknown chip enable produces unknown output
-      d7 <= 'X'; d6 <= 'X'; d5 <= 'X'; d4 <= 'X';
-      d3 <= 'X'; d2 <= 'X'; d1 <= 'X'; d0 <= 'X';
-    elsif ce_n = '0' then
-      -- Check for unknown address signals
-      if is_x(std_logic_vector(addr)) then
-        -- Unknown address produces unknown output
-        d7 <= 'X'; d6 <= 'X'; d5 <= 'X'; d4 <= 'X';
-        d3 <= 'X'; d2 <= 'X'; d1 <= 'X'; d0 <= 'X';
-      else
-        addr_int := to_integer(addr);
-        data := rom(addr_int * 8 + 7 downto addr_int * 8);
-        d7   <= data(7); d6 <= data(6); d5 <= data(5); d4 <= data(4);
-        d3   <= data(3); d2 <= data(2); d1 <= data(1); d0 <= data(0);
-      end if;
+    addr := (a8, a7, a6, a5, a4, a3, a2, a1, a0);
+    if ce_n = '0' then
+      data := rom(to_integer(addr) * 8 + 7 downto to_integer(addr) * 8);
+      d7 <= data(7); d6 <= data(6); d5 <= data(5); d4 <= data(4);
+      d3 <= data(3); d2 <= data(2); d1 <= data(1); d0 <= data(0);
     else
-      -- Chip disabled (ce_n = '1') - outputs are tri-state
       d7 <= 'Z'; d6 <= 'Z'; d5 <= 'Z'; d4 <= 'Z';
       d3 <= 'Z'; d2 <= 'Z'; d1 <= 'Z'; d0 <= 'Z';
     end if;

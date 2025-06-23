@@ -30,8 +30,13 @@ architecture ttl of dm9328 is
   signal rega : std_logic_vector(7 downto 0);
   signal regb : std_logic_vector(7 downto 0);
 begin
+  aq   <= rega(7);
+  aq_n <= not rega(7);
+  bq   <= regb(7);
+  bq_n <= not regb(7);
+
   -- Shift register A
-  process(aclk, clr_n)
+  process (all)
   begin
     if clr_n = '0' then
       rega <= (others => '0');
@@ -43,11 +48,9 @@ begin
       end if;
     end if;
   end process;
-  aq   <= rega(7);
-  aq_n <= not rega(7);
-
+  
   -- Shift register B
-  process(bclk, clr_n)
+  process (all)
   begin
     if clr_n = '0' then
       regb <= (others => '0');
@@ -59,6 +62,5 @@ begin
       end if;
     end if;
   end process;
-  bq   <= regb(7);
-  bq_n <= not regb(7);
+  
 end;

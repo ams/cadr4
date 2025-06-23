@@ -34,25 +34,17 @@ end am93425a;
 
 architecture ttl of am93425a is
   type ram_t is array (0 to 1023) of std_logic;
-  signal ram  : ram_t                := (others => '0');
-  signal addr : unsigned(9 downto 0) := (others => '0');
-  
-
-  
+  signal ram  : ram_t;
 begin
-  addr <= a9 & a8 & a7 & a6 & a5 & a4 & a3 & a2 & a1 & a0;
-
   process(all)
+    variable addr : unsigned(9 downto 0);
   begin
     if ce_n = '0' then
-      -- Check for unknown address or control signals
-      if is_x(std_logic_vector(addr)) or (ce_n /= '0' and ce_n /= '1') or (we_n /= '0' and we_n /= '1') then
-        do <= 'X';  -- Unknown address or control produces unknown output
-      else
+        addr := (a9, a8, a7, a6, a5, a4, a3, a2, a1, a0);
         if we_n = '0' then
           -- Write
           ram(to_integer(addr)) <= di;
-        end if;
+        else
         -- Read (always happens when enabled)
         do <= ram(to_integer(addr));
       end if;

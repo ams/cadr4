@@ -14,12 +14,10 @@ entity ff_dc is
     );
 end;
 
--- Updated implementation with proper X/U handling
 architecture ttl of ff_dc is
   signal q_int : std_logic;
 begin
-
-  q   <= q_int;
+  q <= q_int;
   -- Proper complement handling for unknown states
   q_n <= '0' when q_int = '1' else
          '1' when q_int = '0' else
@@ -28,13 +26,9 @@ begin
   process(clk, clr)
   begin
     if clr = '0' then
-      q_int <= '0';  -- Clear to 0
-    elsif clr /= '1' then
-      q_int <= 'X';  -- Unknown clear signal
+      q_int <= '0';
     elsif rising_edge(clk) then
-      q_int <= d;    -- Store data, including X/U values
-    elsif clk'event and is_x(clk) then
-      q_int <= 'X';  -- Clock went to unknown state
+      q_int <= d;
     end if;
   end process;
 end;

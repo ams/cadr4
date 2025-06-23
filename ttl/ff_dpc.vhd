@@ -22,8 +22,7 @@ end;
 architecture ttl of ff_dpc is
   signal q_int : std_logic;
 begin
-
-  q   <= q_int;
+  q <= q_int;
   -- Proper complement handling for unknown states
   q_n <= '0' when q_int = '1' else
          '1' when q_int = '0' else
@@ -36,12 +35,8 @@ begin
       q_int <= '1';  -- Preset to 1 (takes precedence even if clr is also active)
     elsif clr = '0' then
       q_int <= '0';  -- Clear to 0
-    elsif (pre /= '1' or clr /= '1') then
-      q_int <= 'X';  -- Unknown control signals
     elsif rising_edge(clk) then
       q_int <= d;    -- Normal operation, store data including X/U
-    elsif clk'event and is_x(clk) then
-      q_int <= 'X';  -- Clock went to unknown state
     end if;
   end process;
 

@@ -26,11 +26,8 @@ end dm8221;
 
 architecture ttl of dm8221 is
   type ram_t is array (0 to 31) of std_logic_vector(1 downto 0);
-  signal ram  : ram_t := (others => (others => '0'));
+  signal ram  : ram_t;
   signal addr : unsigned(4 downto 0);
-  
-
-  
 begin
   addr <= a4 & a3 & a2 & a1 & a0;
 
@@ -41,16 +38,12 @@ begin
   begin
     if falling_edge(wclk_n) then
       if ce = '1' and strobe = '1' then
-        -- Check for unknown address before writing
-        if not is_x(std_logic_vector(addr)) then
-          if we0_n = '0' then
-            ram(to_integer(addr))(0) <= i0;
-          end if;
-          if we1_n = '0' then
-            ram(to_integer(addr))(1) <= i1;
-          end if;
+        if we0_n = '0' then
+          ram(to_integer(addr))(0) <= i0;
         end if;
-        -- If address is unknown, do nothing (cannot write to unknown location)
+        if we1_n = '0' then
+          ram(to_integer(addr))(1) <= i1;
+        end if;
       end if;
     end if;
   end process;
@@ -62,15 +55,12 @@ begin
     variable word : std_logic_vector(1 downto 0);
   begin
     if ce = '1' then
-      -- Check for unknown address or control signals
-      if is_x(std_logic_vector(addr)) or (ce /= '0' and ce /= '1') then
-        d0 <= 'X'; d1 <= 'X';  -- Unknown address or control produces unknown output
-      else
-        word := ram(to_integer(addr));
-        d0   <= word(0); d1 <= word(1);
-      end if;
+      word := ram(to_integer(addr));
+      d0 <= word(0);
+      d1 <= word(1);
     else
-      d0 <= 'Z'; d1 <= 'Z';
+      d0 <= 'Z';
+      d1 <= 'Z';
     end if;
   end process;
 end;
