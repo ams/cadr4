@@ -62,14 +62,10 @@ begin
       -- Enabled: pass latched data
       o0 <= data(0); o1 <= data(1); o2 <= data(2); o3 <= data(3);
       o4 <= data(4); o5 <= data(5); o6 <= data(6); o7 <= data(7);
-    elsif oenb_n = '1' then
+    else
       -- Disabled: high impedance
       o0 <= 'Z'; o1 <= 'Z'; o2 <= 'Z'; o3 <= 'Z';
       o4 <= 'Z'; o5 <= 'Z'; o6 <= 'Z'; o7 <= 'Z';
-    else
-      -- Unknown enable signal: outputs unknown
-      o0 <= 'X'; o1 <= 'X'; o2 <= 'X'; o3 <= 'X';
-      o4 <= 'X'; o5 <= 'X'; o6 <= 'X'; o7 <= 'X';
     end if;
   end process;
 
