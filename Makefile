@@ -63,6 +63,8 @@ CREATESETS_VHDLFILES	:= cadr/cadr_book.vhd cadr/icmem_book.vhd cadrio/cadrio_boo
 CREATESETS_CACHEFILE 	:= set/set.cache
 CREATESETS_PACKAGEFILE 	:= set/set.vhd
 CREATESETS_TBFILE 		:= set/set_tb.vhd
+CREATESETS_ENABLELOG	:= 1
+CREATESETS_LOGFILE		:= set/set.log
 
 SETS := $(shell cut -f1 -d' ' $(CREATESETS_ENTITYFILE))
 SET_SRCS := $(patsubst %,set/%.vhd, $(SETS)) $(CREATESETS_PACKAGEFILE) $(CREATESETS_TBFILE)
@@ -101,6 +103,14 @@ $(BUILDDIR)/soap: soap/soap.c soap/unpack.c
 	mkdir -p $(BUILDDIR)
 	$(CC) -std=gnu99 -Wall -Wextra -O0 -ggdb3 -o $@ -g $^
 
+ifeq ($(CREATESETS_ENABLELOG),1)
+CREATESETS_LOGOPTION_NEW 	:= -v > $(CREATESETS_LOGFILE)
+CREATESETS_LOGOPTION_APPEND := -v >> $(CREATESETS_LOGFILE)
+else
+CREATESETS_LOGOPTION_NEW 	:=
+CREATESETS_LOGOPTION_APPEND :=
+endif
+
 $(CREATESETS_CACHEFILE): $(CREATESETSPY) $(CREATESETS_ENTITYFILE) $(CREATESETS_BUSFILE) $(CREATESETS_VHDLFILES)
 	$(info The process below will take some seconds, please wait...)
 	python3 $(CREATESETSPY) \
@@ -109,7 +119,7 @@ $(CREATESETS_CACHEFILE): $(CREATESETSPY) $(CREATESETS_ENTITYFILE) $(CREATESETS_B
 	--vhdl-files $(CREATESETS_VHDLFILES) \
 	-o $(CREATESETS_OUTPUTDIR) \
 	-p $(CREATESETS_PACKAGENAME) \
-	--generate cache -v > set/set.log
+	--generate cache $(CREATESETS_LOGOPTION_NEW)
 
 set/%_set.vhd: $(CREATESETS_CACHEFILE)
 	python3 $(CREATESETSPY) \
@@ -117,21 +127,21 @@ set/%_set.vhd: $(CREATESETS_CACHEFILE)
 	-o $(CREATESETS_OUTPUTDIR) \
 	-p $(CREATESETS_PACKAGENAME) \
 	--generate entity \
-	--entity $(patsubst %_set.vhd,%_set,$(notdir $@)) -v >> set/set.log
+	--entity $(patsubst %_set.vhd,%_set,$(notdir $@)) $(CREATESETS_LOGOPTION_APPEND)
 
 $(CREATESETS_PACKAGEFILE): $(CREATESETS_CACHEFILE)
 	python3 $(CREATESETSPY) \
 	-u \
 	-o $(CREATESETS_OUTPUTDIR) \
 	-p $(CREATESETS_PACKAGENAME) \
-	--generate package -v >> set/set.log
+	--generate package $(CREATESETS_LOGOPTION_APPEND)
 
 $(CREATESETS_TBFILE): $(CREATESETS_CACHEFILE)
 	python3 $(CREATESETSPY) \
 	-u \
 	-o $(CREATESETS_OUTPUTDIR) \
 	-p $(CREATESETS_PACKAGENAME) \
-	--generate tb -v >> set/set.log
+	--generate tb $(CREATESETS_LOGOPTION_APPEND)
 
 # this is the basic method of generating a _suds.vhd file
 # however, a few particular _suds.vhd require special handling and they are handled with specific targets below

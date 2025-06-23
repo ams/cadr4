@@ -3,74 +3,29 @@
 # This script is used for port pruning and bus bundling.
 #
 # In cadr4, this script is used to generate new entities (under set package, 
-# under set folder) that wraps or groups cadr entities.
+# under set folder) that wraps/groups cadr entities.
 #
 # Main reasons or benefits of this are:
 #
-# - unused signals in cadr4 are pruned (like many outputs in clock) 
-#   (pruned means either termianted with open or '0')
-# - the signals used only within a new entity are not visible to the outside
-# - the signals are bundled into buses, so a lot less are visible and they are
-#   much easier to visualize in waveform viewers
+# - unused signals in cadr4 are not visible in interfaces
+#   (like many outputs in clock) 
+# - the signals only used within a new entity are not visible to the outside
+#   (internal signals, not in port interface list)
+# - the signals are bundled into buses, so there are a lot less signals and 
+#   the are much easier to visualize in waveform viewers
 # - a testbench is created either to be used as is or to be used as a template
 #
 # There were over 1.5K? signals in cadr_tb before, which was using cadr 
-# entities. Now, in set_tb.vhd, there are only over 300 signals.
+# entities. Now, in set_tb.vhd, there are only slightly over 250 signals.
 #
-# Hint: Since all the unused signals are pruned, if a particular signal is 
-# required in a testbench, an entity can be created with an in port for this
-# signal. This will prevent the pruning of the signal.
+# Hint: If a particular signal is required in a testbench, an entity can be 
+# created with a port for this signal. This will prevent the pruning of 
+# the signal.
 #
 # Running the script will result (assuming the package name is set):
 # - a package file containing all new entities (e.g. set.vhd)
 # - a testbench file using all new entities (e.g. set_tb.vhd)
 # - a number of new entity files (<entity_name>_set.vhd)
-#
-# Limitations:
-# - generics not supported
-# - the bus bundling logic is not yet very sophisticated
-#
-# The idea is given a large set of entities, some of these entities are 
-# more connected to each other because they together form a particular 
-# function. This means if a new entity is created which instantiates the 
-# functional entities, the new entity will have less external ports than 
-# the combination of the entities it wraps, because some of these ports can be 
-# connected with internal signals. This is called port pruning.
-#
-# Port pruning is also removing all the signals by terminating them with '0' or
-# open if they are not used anywhere else in the system.
-#
-# Port pruning rules:
-# (A and B will form a set S)
-#
-# | A   | B   | System | S     | Result |
-# | --- | --- | ------ | ----- | ----- |
-# | in  | -   | -      | -     | pruned, terminated with '0'  |
-# | out | -   | -      | -     | pruned, terminated with open |
-# | in  | -   | out    | in    | |
-# | in  | out | -      | int   | pruned, made an internal signal of S |
-# | in  | out | in     | out   | |
-# | in  | out | out    | inout | |
-#
-# Also, the ports of the entities might be given as scalars (std_logic) 
-# rather than arrays (std_logic_vector). This might be inconvenient both 
-# for wiring up the entities and for debugging. The scalar signals can be 
-# bundled into a bus by using a simple regex pattern. For example, ports 
-# pc0, pc1, pc2 can be merged into PC bus. This is called bus bundling. 
-#
-# Bus bundling rules (assuming a bus name PC):
-#
-# | Port 1 | Port 2 | Bundled Ports  | Not Bundled Ports |
-# | ------ | ------ | -------------- | ----------------- |
-# | pc0..9 | -      | PC             |                   |
-# | pc0..4 | pc6..9 | PC_4_0, PC_9_6 |                   |
-# | pc3..6 | -      | PC_6_3         |                   |
-# | pc3..6 | pc8    | PC_6_3         | pc8               |
-#
-# A testbench instantiating all the new entities/components can be generated.
-# The testbench will have internal signals for all ports of the new components. 
-# The width of the buses will be derived from the ranges of the ports it is 
-# used.
 
 import argparse
 import os
