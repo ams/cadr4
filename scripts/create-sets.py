@@ -115,6 +115,7 @@ def signals_key_fn(signal:'vSignal') -> str:
 def ports_key_fn(port:'vPort') -> str:
     return port.mode + "_" + signal_name_key(port.name)
 
+VHDL_IDENTIFIER_PATTERN = re.compile(r'^[a-zA-Z_][a-zA-Z0-9_]*$')
 
 # the base class representing a signal in VHDL
 # this is not directly used, its subclasses, vSignalScalar and vSignalArray, are used
@@ -122,13 +123,27 @@ class vSignal:
     def __init__(self, name:str, **kwargs):                
         super().__init__(**kwargs)
         assert name is not None and len(name) > 0
-        self.name:str = name
+        # is provided name already escaped ? then derive the unescaped name
+        if name[0] == '\\':
+            assert name[-1] == '\\', f"vSignal.__init__: name {name} starts with / but does not end with /"
+            self.name:str = name[1:-1]
+            self.escaped_name:str = f"\\{self.name}\\"
+
+        # is provided name not a valid identifier ? then escape it
+        elif VHDL_IDENTIFIER_PATTERN.match(name) is None:
+                self.name:str = name
+                self.escaped_name:str = f"\\{name}\\"
+
+        # not escaped and it is a valid identifier, no need for escaping
+        else:
+            self.name:str = name
+            self.escaped_name = self.name
 
     def __str__(self) -> str:
         return f"signal {self.name}: {self.get_type()}"
 
     def dump_signal_declaration(self, f) -> None:
-        print(f"  signal {self.name}: {self.get_type()};", file=f)
+        print(f"  signal {self.escaped_name}: {self.get_type()};", file=f)
 
 
 # std_logic scalar signal in VHDL
@@ -167,7 +182,7 @@ class vPort:
 
     def dump_port_declaration(self, f, do_not_add_semicolon:bool) -> None:        
         semicolon = "" if do_not_add_semicolon else ";"
-        print(f"      {self.name}: {self.mode} {self.get_type()}{semicolon}", file=f)
+        print(f"      {self.escaped_name}: {self.mode} {self.get_type()}{semicolon}", file=f)
 
 
 # std_logic scalar port in VHDL
@@ -181,18 +196,18 @@ class vPortScalar(vPort, vSignalScalar):
         comma = "" if do_not_add_comma else ","
         if associated_signal_element is None:
             if self.mode == "in":
-                print(f"    {self.name} => '0'{comma}", file=f)
+                print(f"    {self.escaped_name} => '0'{comma}", file=f)
 
             else:
-                print(f"    {self.name} => open{comma}", file=f)
+                print(f"    {self.escaped_name} => open{comma}", file=f)
 
         else:
             associated_signal, idx, _ = associated_signal_element
             if isinstance(associated_signal, vSignalScalar):
-                print(f"    {self.name} => {associated_signal.name}{comma}", file=f)
+                print(f"    {self.escaped_name} => {associated_signal.escaped_name}{comma}", file=f)
 
             elif isinstance(associated_signal, vSignalArray):
-                print(f"    {self.name} => {associated_signal.name}({idx}){comma}", file=f)
+                print(f"    {self.escaped_name} => {associated_signal.escaped_name}({idx}){comma}", file=f)
 
             else:
                 assert False, "vPortScalar.dump_association_element: associated_signal is not a vSignalScalar or vSignalArray"
@@ -209,11 +224,11 @@ class vPortArray(vPort, vSignalArray):
         comma = "" if do_not_add_comma else ","
         if associated_signal_element is None:
             if self.mode == "in":
-                print(f"    {self.name} => (others => '0'){comma}", file=f)
+                print(f"    {self.escaped_name} => (others => '0'){comma}", file=f)
 
             else:
                 # (others => open) is not allowed
-                print(f"    {self.name} => open{comma}", file=f)
+                print(f"    {self.escaped_name} => open{comma}", file=f)
 
         else:
             associated_signal, low, high = associated_signal_element
@@ -221,7 +236,7 @@ class vPortArray(vPort, vSignalArray):
                 assert False, "vPortArray.dump_association_element: associated_signal is a vSignalScalar"
 
             elif isinstance(associated_signal, vSignalArray):
-                print(f"    {self.name} => {associated_signal.name}({high} downto {low}){comma}", file=f)
+                print(f"    {self.escaped_name} => {associated_signal.escaped_name}({high} downto {low}){comma}", file=f)
 
             else:
                 assert False, "vPortArray.dump_association_element: associated_signal is not a vSignalScalar or vSignalArray"
