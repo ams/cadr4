@@ -732,13 +732,13 @@ class vSystem:
                 assert port_decl is not None, f"vSystem._load_referenced_package: port declaration is empty"
                 # Parse port declaration: name : direction type
                 # Handle extended identifiers with backslashes
-                port_pattern = r'(\\[^\\]+\\|\w+)\s*:\s*(in|out)\s+(\w+)'
+                port_pattern = r'(\\[^\\]+\\|\w+)\s*:\s*(in|out|inout)\s+(\w+)'
                 port_match = re.match(port_pattern, port_decl, re.IGNORECASE)
                 assert port_match is not None, f"vSystem._load_referenced_package: port declaration is invalid: {port_decl}"
                 port_name = port_match.group(1)
                 port_mode = port_match.group(2).lower()
                 port_type = port_match.group(3)                
-                assert port_mode == "in" or port_mode == "out", f"vSystem._load_referenced_package: port mode is invalid: {port_mode}"
+                assert port_mode == "in" or port_mode == "out" or port_mode == "inout", f"vSystem._load_referenced_package: port mode is invalid: {port_mode}"
                 assert port_type == "std_logic", f"vSystem._load_referenced_package: port type is invalid: {port_type}" 
                 component.add_port(vPortScalar(port_name, port_mode))
             
@@ -855,6 +855,7 @@ class vSystem:
                     # this also covers the case it is both input to aliens and siblings
                     if is_input_to_aliens:
                         if existing_port is not None:
+                            component.add_association_list_element(out_port, existing_port)
                             if existing_port.mode == "out" or existing_port.mode == "inout":
                                 verbose(f"    there is already a {existing_port.mode} port for out port: {out_port.name}")
 
@@ -874,18 +875,16 @@ class vSystem:
                             entity.remove_internal_signal_by_name(new_port.name)
                     
                     # input to siblings only ? then use it as internal signal
-                    elif is_input_to_siblings:
+                    # or nobody outputs it, but maybe it is used internally, create an internal signal
+                    else:
                         if existing_port is not None:
                             verbose(f"    there is already a {existing_port.mode} port for out port: {out_port.name}")
+                            component.add_association_list_element(out_port, existing_port)
                         else:
                             verbose(f"    adding internal signal for out port: {out_port.name}")
                             new_signal = vSignalScalar(out_port.name)
                             entity.add_internal_signal(new_signal)
                             component.add_association_list_element(out_port, new_signal)
-                        
-                    # nobody receives it, mark unused, this will be terminated by open in port map
-                    else:
-                        verbose(f"    out port: {out_port.name} is unused - it will be terminated by open")
                     
                 for in_port in component.in_ports():
                     verbose(f"    in_port: {in_port.name}")
@@ -909,6 +908,7 @@ class vSystem:
                         required_mode = "inout" if is_output_from_siblings else "in"
 
                         if existing_port is not None:
+                            component.add_association_list_element(in_port, existing_port)
                             if existing_port.mode == "inout":
                                 verbose(f"    there is already a {existing_port.mode} port for in port: {in_port.name}")
 
@@ -936,18 +936,16 @@ class vSystem:
                             entity.remove_internal_signal_by_name(new_port.name)
                     
                     # output from siblings only ? then use it as internal signal
-                    elif is_output_from_siblings:
+                    # or nobody outputs it, but maybe it is used internally, create an internal signal
+                    else:
                         if existing_port is not None:
                             verbose(f"    there is already a {existing_port.mode} port for in port: {in_port.name}")
+                            component.add_association_list_element(in_port, existing_port)
                         else:
                             verbose(f"    adding internal signal for in port: {in_port.name}")
                             new_signal = vSignalScalar(in_port.name)
                             entity.add_internal_signal(new_signal)
                             component.add_association_list_element(in_port, new_signal)
-
-                    # nobody outputs this, mark unused, this should not happen ?
-                    else:
-                        verbose(f"    in port: {in_port.name} is unused - it will be terminated by '0'")
 
     def bundle_bus_ports(self) -> None:
         assert self.bus_name_regex_dict is not None
