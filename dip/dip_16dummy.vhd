@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 library work;
-use work.other.all;
+use work.other.dummy_type_A;
 
 entity dip_16dummy is
   port (
@@ -16,7 +16,7 @@ end entity;
 
 architecture dip of dip_16dummy is
 begin
-  U1 : ic_16dummy
+  U1 : dummy_type_A
     port map (
       \-power reset\ => p12,
       \-boot2\ => p13,

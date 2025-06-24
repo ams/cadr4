@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity ic_16dummy is
+entity dummy_type_A is
   port (
     hi1            : out std_logic; -- 16
     hi2            : out std_logic; -- 15
@@ -12,7 +12,7 @@ entity ic_16dummy is
     );
 end;
 
-architecture ttl of ic_16dummy is
+architecture ttl of dummy_type_A is
 begin
   hi1 <= 'H';
   hi2 <= 'H';

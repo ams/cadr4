@@ -1,10 +1,12 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-entity ic_16dummy_tb is
+use work.other.dummy_type_A;
+
+entity dummy_type_A_tb is
 end;
 
-architecture testbench of ic_16dummy_tb is
+architecture testbench of dummy_type_A_tb is
 
   signal hi1 : std_logic;
   signal hi2 : std_logic;
@@ -14,7 +16,7 @@ architecture testbench of ic_16dummy_tb is
 
 begin
 
-  uut : entity work.ic_16dummy port map(
+  uut : dummy_type_A port map(
     \-boot1\ => \-boot1\,
     \-boot2\ => \-boot2\,
     \-power reset\ => \-power reset\,

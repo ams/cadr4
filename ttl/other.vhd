@@ -60,7 +60,7 @@ package other is
       );
   end component;
 
-  component ic_16dummy 
+  component dummy_type_A 
     port(
       hi1            : out std_logic;
       hi2            : out std_logic;
