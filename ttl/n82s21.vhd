@@ -73,9 +73,12 @@ begin
         d0 <= word(0);
         d1 <= word(1);
       end if;
-    else
+    elsif ce = '0' then
       d0 <= 'Z';
       d1 <= 'Z';
+    else
+      d0 <= 'X';
+      d1 <= 'X';
     end if;
   end process;
 

@@ -38,16 +38,19 @@ begin
     if ce_n = '0' then
       addr := (a4, a3, a2, a1, a0);
       if is_x(addr) then
+        o7 <= 'X'; o6 <= 'X'; o5 <= 'X'; o4 <= 'X';
+        o3 <= 'X'; o2 <= 'X'; o1 <= 'X'; o0 <= 'X';
+      else
         data := rom(to_integer(addr) * 8 + 7 downto to_integer(addr) * 8);
         o7   <= data(7); o6 <= data(6); o5 <= data(5); o4 <= data(4);
         o3   <= data(3); o2 <= data(2); o1 <= data(1); o0 <= data(0);
-      else
-        o7 <= 'X'; o6 <= 'X'; o5 <= 'X'; o4 <= 'X';
-        o3 <= 'X'; o2 <= 'X'; o1 <= 'X'; o0 <= 'X';
       end if;
-    else
+    elsif ce_n = '1' then
       o7 <= 'Z'; o6 <= 'Z'; o5 <= 'Z'; o4 <= 'Z';
       o3 <= 'Z'; o2 <= 'Z'; o1 <= 'Z'; o0 <= 'Z';
+    else
+      o7 <= 'X'; o6 <= 'X'; o5 <= 'X'; o4 <= 'X';
+      o3 <= 'X'; o2 <= 'X'; o1 <= 'X'; o0 <= 'X';
     end if;
   end process;
 end architecture;

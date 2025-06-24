@@ -66,11 +66,16 @@ begin
       y2 <= reg4(2);
       y1 <= reg4(1);
       y0 <= reg4(0);
-    else
+    elsif oe_y_n = '1' then
       y3 <= 'Z';
       y2 <= 'Z';
       y1 <= 'Z';
       y0 <= 'Z';
+    else
+      y3 <= 'X';
+      y2 <= 'X';
+      y1 <= 'X';
+      y0 <= 'X';
     end if;
 
     if oe_w_n = '0' then
@@ -79,17 +84,27 @@ begin
         w2 <= not reg4(2);
         w1 <= not reg4(1);
         w0 <= not reg4(0);
-      else
+      elsif pol = '0' then
         w3 <= reg4(3);
         w2 <= reg4(2);
         w1 <= reg4(1);
         w0 <= reg4(0);
+      else
+        w3 <= 'X';
+        w2 <= 'X';
+        w1 <= 'X';
+        w0 <= 'X';
       end if;
-    else
+    elsif oe_w_n = '1' then
       w3 <= 'Z';
       w2 <= 'Z';
       w1 <= 'Z';
       w0 <= 'Z';
+    else
+      w3 <= 'X';
+      w2 <= 'X';
+      w1 <= 'X';
+      w0 <= 'X';
     end if;
   end process;
   

@@ -57,7 +57,7 @@ begin
       o5 <= q_int(5);
       o6 <= q_int(6);
       o7 <= q_int(7);
-    else
+    elsif oenb_n = '1' then
       -- Output enable inactive (high), outputs in high-impedance
       o0 <= 'Z';
       o1 <= 'Z';
@@ -67,6 +67,15 @@ begin
       o5 <= 'Z';
       o6 <= 'Z';
       o7 <= 'Z';
+    else
+      o0 <= 'X';
+      o1 <= 'X';
+      o2 <= 'X';
+      o3 <= 'X';
+      o4 <= 'X';
+      o5 <= 'X';
+      o6 <= 'X';
+      o7 <= 'X';
     end if;
   end process;
 

@@ -39,11 +39,16 @@ begin
         by <= not b0;
         cy <= not c0;
         dy <= not d0;
-      else
+      elsif sel = '1' then
         ay <= not a1;
         by <= not b1;
         cy <= not c1;
         dy <= not d1;
+      else 
+        ay <= 'X';
+        by <= 'X';
+        cy <= 'X';
+        dy <= 'X';
       end if;
     elsif enb_n = '1' then
       -- Disabled: high impedance

@@ -51,7 +51,7 @@ begin
         when "11"   => y1 <= "1110";
         when others => y1 <= "XXXX";
       end case;
-    elsif g1 = '0' then
+    elsif g1 = '1' then
       -- This is correct, it is not a tri-state output component
       y1 <= "1111";
     else
@@ -72,7 +72,7 @@ begin
         when "11"   => y2 <= "1110";
         when others => y2 <= "XXXX";
       end case;
-    elsif g2 = '0' then
+    elsif g2 = '1' then
       -- This is correct, it is not a tri-state output component
       y2 <= "1111";
     else
