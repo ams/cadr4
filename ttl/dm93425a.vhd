@@ -32,12 +32,12 @@ begin
   process(all)
     variable addr : unsigned(9 downto 0);
   begin
-    if ce_n = '0' then
+    if to_x01(ce_n) = '0' then
       addr := (a9, a8, a7, a6, a5, a4, a3, a2, a1, a0);
       if is_x(addr) then
         do <= 'X';
       else
-        if we_n = '0' then
+        if to_x01(we_n) = '0' then
           -- Write
           ram(to_integer(addr)) <= di;
         else
@@ -45,8 +45,10 @@ begin
           do <= ram(to_integer(addr));
         end if;
       end if;
-  else
-    do <= 'Z';
-  end if;
+    elsif to_x01(ce_n) = '1' then
+      do <= 'Z';
+    else
+      do <= 'X';
+    end if;
   end process;
 end architecture;

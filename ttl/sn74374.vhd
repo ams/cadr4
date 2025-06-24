@@ -1,11 +1,7 @@
--- SN74374: Octal D-Type Flip-Flops
--- Datasheet: Texas Instruments SN74LS374A Octal D-Type Edge-Triggered Flip-Flops With 3-State Outputs, PDIP (N) Package
--- URL: https://www.ti.com/lit/ds/symlink/sn74ls374a.pdf
+-- Octal D-Type Flip-Flops
 
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
-use ieee.std_logic_misc.all;
 
 entity sn74374 is
   port (
@@ -47,7 +43,7 @@ begin
   -- Output enable process: controls 3-state outputs
   process(oenb_n, q_int)
   begin
-    if oenb_n = '0' then
+    if to_x01(oenb_n) = '0' then
       -- Output enable active (low), drive stored data to outputs
       o0 <= q_int(0);
       o1 <= q_int(1);
@@ -57,7 +53,7 @@ begin
       o5 <= q_int(5);
       o6 <= q_int(6);
       o7 <= q_int(7);
-    elsif oenb_n = '1' then
+    elsif to_x01(oenb_n) = '1' then
       -- Output enable inactive (high), outputs in high-impedance
       o0 <= 'Z';
       o1 <= 'Z';

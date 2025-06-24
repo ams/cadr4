@@ -1,5 +1,4 @@
--- SN7486: Quadruple 2-input Exclusive-OR Gates
--- Datasheet: Texas Instruments SN74LS86A, SN74S86 (N Package / PDIP) - https://www.ti.com/lit/gpn/SN54S86
+-- Quadruple 2-input Exclusive-OR Gates
 
 library ieee;
 use ieee.std_logic_1164.all;

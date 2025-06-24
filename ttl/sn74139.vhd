@@ -1,12 +1,8 @@
 -- Dual 2-Line To 4-Line Decoders/Demultiplexers
--- This component decodes a 2-bit input to one of four active-low outputs.
 
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-
--- Datasheet: Texas Instruments SN74LS139A Dual 2-Line to 4-Line Decoders/Demultiplexers, PDIP (N) Package
--- URL: https://www.ti.com/lit/gpn/SN74LS139A
 
 entity sn74139 is
   port (
@@ -43,7 +39,7 @@ begin
   begin
     sel := a1 & b1;
 
-    if g1 = '0' then
+    if to_x01(g1) = '0' then
       case sel is
         when "00"   => y1 <= "0111";
         when "01"   => y1 <= "1011";
@@ -51,7 +47,7 @@ begin
         when "11"   => y1 <= "1110";
         when others => y1 <= "XXXX";
       end case;
-    elsif g1 = '1' then
+    elsif to_x01(g1) = '1' then
       -- This is correct, it is not a tri-state output component
       y1 <= "1111";
     else
@@ -64,7 +60,7 @@ begin
   begin
     sel := a2 & b2;
 
-    if g2 = '0' then
+    if to_x01(g2) = '0' then
       case sel is
         when "00"   => y2 <= "0111";
         when "01"   => y2 <= "1011";
@@ -72,7 +68,7 @@ begin
         when "11"   => y2 <= "1110";
         when others => y2 <= "XXXX";
       end case;
-    elsif g2 = '1' then
+    elsif to_x01(g2) = '1' then
       -- This is correct, it is not a tri-state output component
       y2 <= "1111";
     else

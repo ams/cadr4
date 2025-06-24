@@ -4,7 +4,6 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
 
 entity am25s09 is
   port (
@@ -31,16 +30,16 @@ architecture ttl of am25s09 is
 
 begin
 
-  i0 <= a1 when sel = '1' else a0;
+  i0 <= a1 when to_x01(sel) = '1' else a0 when to_x01(sel) = '0' else 'X';
   u0 : entity work.ff_d port map (clk => clk, d => i0, q => aq, q_n => open);
 
-  i1 <= b1 when sel = '1' else b0;
+  i1 <= b1 when to_x01(sel) = '1' else b0 when to_x01(sel) = '0' else 'X';
   u1 : entity work.ff_d port map (clk => clk, d => i1, q => bq, q_n => open);
 
-  i2 <= c1 when sel = '1' else c0;
+  i2 <= c1 when to_x01(sel) = '1' else c0 when to_x01(sel) = '0' else 'X';
   u2 : entity work.ff_d port map (clk => clk, d => i2, q => cq, q_n => open);
 
-  i3 <= d1 when sel = '1' else d0;
+  i3 <= d1 when to_x01(sel) = '1' else d0 when to_x01(sel) = '0' else 'X';
   u3 : entity work.ff_d port map (clk => clk, d => i3, q => dq, q_n => open);
 
 end architecture;

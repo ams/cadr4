@@ -1,6 +1,4 @@
--- SN7437: Quadruple 2-Input Positive-NAND Buffers
--- Datasheet: Texas Instruments SN74LS37 Quadruple 2-Input Positive-NAND Buffers, PDIP (N) Package
--- URL: https://www.ti.com/lit/gpn/SN74LS37
+-- Quadruple 2-Input Positive-NAND Buffers
 
 library ieee;
 use ieee.std_logic_1164.all;

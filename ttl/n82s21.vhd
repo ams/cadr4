@@ -43,14 +43,14 @@ begin
   process(all)
   begin
     if falling_edge(wclk_n) then
-      if ce = '1' and strobe = '1' then
+      if to_x01(ce) = '1' and to_x01(strobe) = '1' then
         if is_x(addr) then
           -- do nothing
         else
-          if we0_n = '0' then
+          if to_x01(we0_n) = '0' then
             ram(to_integer(addr))(0) <= i0;
           end if;
-          if we1_n = '0' then
+          if to_x01(we1_n) = '0' then
             ram(to_integer(addr))(1) <= i1;
           end if;
         end if;
@@ -64,7 +64,7 @@ begin
   process(all)
     variable word : std_logic_vector(1 downto 0);
   begin
-    if ce = '1' then
+    if to_x01(ce) = '1' then
       if is_x(addr) then
         d0 <= 'X';
         d1 <= 'X';
@@ -73,7 +73,7 @@ begin
         d0 <= word(0);
         d1 <= word(1);
       end if;
-    elsif ce = '0' then
+    elsif to_x01(ce) = '0' then
       d0 <= 'Z';
       d1 <= 'Z';
     else

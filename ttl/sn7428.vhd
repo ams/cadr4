@@ -3,12 +3,6 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
--- Datasheet: Texas Instruments SN5428 Quadruple 2-Input Positive-NOR Buffers, PDIP (N) Package
--- URL: https://www.ti.com/lit/gpn/SN5428
-
-library ieee;
-use ieee.std_logic_1164.all;
-
 entity sn7428 is
   port (
     g1a   : in  std_logic := 'H'; -- Pin 1

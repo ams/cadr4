@@ -1,14 +1,7 @@
--- SN74373: Octal D-Type Transparent Latches
--- Datasheet: Texas Instruments SN74LS373 Octal D-Type Transparent Latches, PDIP (N) Package
--- URL: https://www.ti.com/lit/ds/symlink/sn54s373.pdf
--- Note: The 'hold_n' (Latch Enable) signal follows the standard datasheet behavior:
--- hold_n = '1' (LE high): Transparent mode - inputs pass through to outputs
--- hold_n = '0' (LE low): Latch mode - data is held/latched
--- This matches the standard SN74373 datasheet specification.
+-- Octal D-Type Transparent Latches
 
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
 
 entity sn74373 is
   port (
@@ -43,10 +36,10 @@ begin
   begin
     input_data := i7 & i6 & i5 & i4 & i3 & i2 & i1 & i0;
     
-    if hold_n = '1' then
+    if to_x01(hold_n) = '1' then
       -- Transparent mode: pass input data (including X/U)
       data <= input_data;
-    elsif hold_n = '0' then
+    elsif to_x01(hold_n) = '0' then
       -- Hold mode: maintain current data
       null;  -- data unchanged
     else
@@ -58,11 +51,11 @@ begin
   -- Tri-state output process with proper X/U handling
   process(oenb_n, data)
   begin
-    if oenb_n = '0' then
+    if to_x01(oenb_n) = '0' then
       -- Enabled: pass latched data
       o0 <= data(0); o1 <= data(1); o2 <= data(2); o3 <= data(3);
       o4 <= data(4); o5 <= data(5); o6 <= data(6); o7 <= data(7);
-    elsif oenb_n = '1' then
+    elsif to_x01(oenb_n) = '1' then
       -- Disabled: high impedance
       o0 <= 'Z'; o1 <= 'Z'; o2 <= 'Z'; o3 <= 'Z';
       o4 <= 'Z'; o5 <= 'Z'; o6 <= 'Z'; o7 <= 'Z';

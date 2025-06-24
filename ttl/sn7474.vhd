@@ -1,10 +1,7 @@
--- SN7474: Dual D-Type Positive Edge Triggered Flip-Flops With Preset And Clear
--- Datasheet: Texas Instruments SN74S74 Dual D-Type Positive-Edge-Triggered Flip-Flops With Preset And Clear, PDIP (N) Package
--- URL: https://www.ti.com/lit/gpn/SN74S74
+-- Dual D-Type Positive Edge Triggered Flip-Flops With Preset And Clear
 
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
 
 entity sn7474 is
   port (

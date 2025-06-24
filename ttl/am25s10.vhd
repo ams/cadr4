@@ -31,7 +31,7 @@ begin
   process (all)
     variable sel : unsigned(1 downto 0);
   begin    
-    if ce_n = '0' then
+    if to_x01(ce_n) = '0' then
       sel := sel0 & sel1;
       case sel is
         when "00"   => o0 <= i0; o1 <= i1; o2 <= i2; o3 <= i3;

@@ -1,9 +1,7 @@
--- Datasheet: https://www.ti.com/lit/gpn/SN74LS08 (PDIP (N) Package)
--- SN7408: Quadruple 2-Input Positive-AND Gates
+-- Quadruple 2-Input Positive-AND Gates
 
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
 
 entity sn7408 is
   port (

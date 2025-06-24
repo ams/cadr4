@@ -4,7 +4,6 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
 
 -- di inputs
 -- e_n clock enable
@@ -47,10 +46,10 @@ begin
   ------------------------------------------------------------------
   process(cp, clr_n)
   begin
-    if clr_n = '0' then
+    if to_x01(clr_n) = '0' then
       reg4 <= "0000";
     elsif rising_edge(cp) then
-      if e_n = '0' then
+      if to_x01(e_n) = '0' then
         reg4 <= d3 & d2 & d1 & d0;
       end if;
     end if;
@@ -61,12 +60,12 @@ begin
   ------------------------------------------------------------------
   process(reg4, oe_y_n, oe_w_n, pol)
   begin
-    if oe_y_n = '0' then
+    if to_x01(oe_y_n) = '0' then
       y3 <= reg4(3);
       y2 <= reg4(2);
       y1 <= reg4(1);
       y0 <= reg4(0);
-    elsif oe_y_n = '1' then
+    elsif to_x01(oe_y_n) = '1' then
       y3 <= 'Z';
       y2 <= 'Z';
       y1 <= 'Z';
@@ -78,13 +77,13 @@ begin
       y0 <= 'X';
     end if;
 
-    if oe_w_n = '0' then
-      if pol = '1' then
+    if to_x01(oe_w_n) = '0' then
+      if to_x01(pol) = '1' then
         w3 <= not reg4(3);
         w2 <= not reg4(2);
         w1 <= not reg4(1);
         w0 <= not reg4(0);
-      elsif pol = '0' then
+      elsif to_x01(pol) = '0' then
         w3 <= reg4(3);
         w2 <= reg4(2);
         w1 <= reg4(1);
@@ -95,7 +94,7 @@ begin
         w1 <= 'X';
         w0 <= 'X';
       end if;
-    elsif oe_w_n = '1' then
+    elsif to_x01(oe_w_n) = '1' then
       w3 <= 'Z';
       w2 <= 'Z';
       w1 <= 'Z';

@@ -1,10 +1,7 @@
 -- 13-Input Positive-NAND Gate
--- Datasheet: https://www.ti.com/lit/ds/symlink/sn74s133.pdf (PDIP (N) Package)
--- This component implements a 13-input NAND gate.
 
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
 
 entity sn74133 is
   port (

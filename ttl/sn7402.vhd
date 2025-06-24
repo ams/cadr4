@@ -1,10 +1,7 @@
--- Datasheet: https://www.ti.com/lit/gpn/sn7402 (PDIP (N) Package)
-
 -- Quadruple 2-Input Positive-NOR Gates
 
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
 
 entity sn7402 is
   port (

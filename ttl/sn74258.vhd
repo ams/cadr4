@@ -1,8 +1,7 @@
--- SN74258: Quadruple 2-Line To 1-Line Inverse Data Selectors/Multiplexers
+-- Quadruple 2-Line To 1-Line Inverse Data Selectors/Multiplexers
 
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
 
 entity sn74258 is
   port (
@@ -32,14 +31,14 @@ begin
   process(all)
   begin
     -- Check for unknown enable or select signals
-    if enb_n = '0' then
+    if to_x01(enb_n) = '0' then
       -- Enabled: select inputs
-      if sel = '0' then
+      if to_x01(sel) = '0' then
         ay <= not a0;
         by <= not b0;
         cy <= not c0;
         dy <= not d0;
-      elsif sel = '1' then
+      elsif to_x01(sel) = '1' then
         ay <= not a1;
         by <= not b1;
         cy <= not c1;
@@ -50,7 +49,7 @@ begin
         cy <= 'X';
         dy <= 'X';
       end if;
-    elsif enb_n = '1' then
+    elsif to_x01(enb_n) = '1' then
       -- Disabled: high impedance
       ay <= 'Z';
       by <= 'Z';

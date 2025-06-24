@@ -1,11 +1,7 @@
 -- 4-2-3-2 Input AND-OR-INVERT Gate
--- This component implements a 4-2-3-2 input AND-OR-INVERT gate.
--- Datasheet: Texas Instruments SN74S64, SN74S65 4-2-3-2 Input AND-OR-INVERT Gates, PDIP (N) Package
--- URL: https://arwill.hu/forras/termek/felvezetok/ic-k/74-75/sn74s64n-integralt-aramkor-298292.pdf
 
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
 
 entity sn7464 is
   port (

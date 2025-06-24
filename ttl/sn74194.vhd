@@ -1,11 +1,7 @@
 -- 4-Bit Bidirectional Universal Shift Registers
--- SN74194 4-Bit Bidirectional Universal Shift Register
--- Datasheet: Texas Instruments SN74LS194A 4-Bit Bidirectional Universal Shift Registers, PDIP (N) Package
--- URL: https://www.ti.com/lit/gpn/SN74LS194A
 
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
 
 entity sn74194 is
   port (
@@ -35,7 +31,7 @@ begin
   process(clk, clr_n)
     variable sel : std_logic_vector(1 downto 0);
   begin
-    if clr_n = '0' then
+    if to_x01(clr_n) = '0' then
       reg <= (others => '0');
     elsif rising_edge(clk) then
       sel := s1 & s0;

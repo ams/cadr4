@@ -2,8 +2,6 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
-use ieee.std_logic_misc.all;
 
 entity ff_dc is
   port (
@@ -25,8 +23,10 @@ begin
 
   process(clk, clr)
   begin
-    if clr = '0' then
+    if to_x01(clr) = '0' then
       q_int <= '0';
+    elsif to_x01(clr) = 'X' then
+      q_int <= 'X';
     elsif rising_edge(clk) then
       q_int <= d;
     end if;

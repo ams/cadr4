@@ -1,10 +1,7 @@
--- SN7451: Dual 2-Wide 2-Input AND-OR-INVERT Gates
--- Datasheet: Texas Instruments SN74LS51 Dual 2-Wide 2-Input AND-OR-INVERT Gates, PDIP Package
--- URL: https://www.ti.com/lit/ds/symlink/sn74ls51.pdf
+-- Dual 2-Wide 2-Input AND-OR-INVERT Gates
 
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
 
 entity sn7451 is
   port (

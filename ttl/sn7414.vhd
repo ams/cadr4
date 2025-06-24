@@ -2,10 +2,6 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
-
--- Datasheet: Texas Instruments SN7414 Hex Schmitt-Trigger Inverters, PDIP (N) Package
--- URL: https://www.ti.com/lit/gpn/SN7414
 
 entity sn7414 is
   port (

@@ -4,7 +4,6 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
 
 entity am25s07 is
   port (
@@ -14,12 +13,12 @@ entity am25s07 is
     i3    : in  std_logic := 'H';
     i4    : in  std_logic := 'H';
     i5    : in  std_logic := 'H';
-    d0    : out std_logic := '0';
-    d1    : out std_logic := '0';
-    d2    : out std_logic := '0';
-    d3    : out std_logic := '0';
-    d4    : out std_logic := '0';
-    d5    : out std_logic := '0';
+    d0    : out std_logic;
+    d1    : out std_logic;
+    d2    : out std_logic;
+    d3    : out std_logic;
+    d4    : out std_logic;
+    d5    : out std_logic;
     clk   : in  std_logic := 'H';
     enb_n : in  std_logic := 'H'
     );
@@ -29,7 +28,7 @@ architecture ttl of am25s07 is
 begin
   process(all)
   begin
-    if enb_n = '0' then
+    if to_x01(enb_n) = '0' then
       if rising_edge(clk) then
         d0 <= i0; d1 <= i1; d2 <= i2;
         d3 <= i3; d4 <= i4; d5 <= i5;

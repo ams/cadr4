@@ -4,9 +4,6 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
--- Datasheet: Texas Instruments SN74LS283 4-Bit Binary Full Adders With Fast Carry, PDIP (N) Package
--- URL: https://www.ti.com/lit/gpn/SN74LS283
-
 entity sn74283 is
   port (
     ci : in std_logic := 'H'; -- Pin 7
@@ -37,11 +34,7 @@ begin
     variable sum : unsigned(4 downto 0);
   begin
     -- Check for unknown inputs
-    if (a0 /= '0' and a0 /= '1') or (a1 /= '0' and a1 /= '1') or 
-       (a2 /= '0' and a2 /= '1') or (a3 /= '0' and a3 /= '1') or
-       (b0 /= '0' and b0 /= '1') or (b1 /= '0' and b1 /= '1') or
-       (b2 /= '0' and b2 /= '1') or (b3 /= '0' and b3 /= '1') or
-       (ci /= '0' and ci /= '1') then
+    if is_x(a) or is_x(b) then
       -- Any unknown input causes unknown outputs
       s0 <= 'X'; s1 <= 'X'; s2 <= 'X'; s3 <= 'X'; co <= 'X';
     else

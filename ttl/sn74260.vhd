@@ -1,4 +1,4 @@
--- SN74260: Dual 5-Input Positive-NOR Gates
+-- Dual 5-Input Positive-NOR Gates
 
 library ieee;
 use ieee.std_logic_1164.all;

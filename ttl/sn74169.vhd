@@ -4,9 +4,6 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
--- Datasheet: Texas Instruments SN74LS169B Synchronous 4-Bit Up/Down Binary Counters, PDIP (N) Package
--- URL: https://www.ti.com/lit/gpn/SN74LS169B
-
 entity sn74169 is
   port (
     -- Control and status

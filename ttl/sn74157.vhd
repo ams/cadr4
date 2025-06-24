@@ -1,9 +1,7 @@
 -- Quadruple 2-Line To 1-Line Data Selectors/Multiplexers
--- This component selects one of two 4-bit data inputs based on a select line.
 
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
 
 entity sn74157 is
   port (
@@ -31,15 +29,15 @@ architecture ttl of sn74157 is
 begin
   process(all)
   begin
-    if enb_n = '0' then
-      if sel = '0' then
+    if to_x01(enb_n) = '0' then
+      if to_x01(sel) = '0' then
         y1 <= a1; y2 <= a2; y3 <= a3; y4 <= a4;
-      elsif sel = '1' then
+      elsif to_x01(sel) = '1' then
         y1 <= b1; y2 <= b2; y3 <= b3; y4 <= b4;
       else
         y1 <= 'X'; y2 <= 'X'; y3 <= 'X'; y4 <= 'X';
       end if;
-    elsif enb_n = '1' then
+    elsif to_x01(enb_n) = '1' then
       y1 <= 'Z'; y2 <= 'Z'; y3 <= 'Z'; y4 <= 'Z';
     else
       y1 <= 'X'; y2 <= 'X'; y3 <= 'X'; y4 <= 'X';

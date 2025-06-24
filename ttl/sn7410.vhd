@@ -1,10 +1,7 @@
--- Tripple 3-Input Positive-NAND Gates
--- Datasheet: https://www.ti.com/lit/gpn/SN54LS10-SP (PDIP (N) Package)
+-- Triple 3-Input Positive-NAND Gates
 
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
-
 
 entity sn7410 is
   port (

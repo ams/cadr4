@@ -1,11 +1,7 @@
--- SN74175: Quad D-Type Flip-Flops with Clear
+-- Quad D-Type Flip-Flops with Clear
 
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
-
--- Datasheet: Texas Instruments SN74LV175A Quadruple D-Type Flip-Flops With Clear, PDIP (N) Package
--- URL: https://www.ti.com/lit/ds/symlink/sn74lv175a.pdf
 
 entity sn74175 is
   port (

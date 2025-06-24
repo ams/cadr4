@@ -1,6 +1,4 @@
 -- Octal Buffers and Line Drivers With 3-State Outputs
--- Datasheet: Texas Instruments SNx4LS24x, SNx4S24x Octal Buffers and Line Drivers With 3-State Outputs, PDIP (N) Package
--- URL: https://www.ti.com/lit/gpn/SN74LS240
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -34,13 +32,13 @@ begin
 
   process (all)
   begin
-    if aenb_n = '0' then
+    if to_x01(aenb_n) = '0' then
       -- Enabled: pass inverted data, but handle unknown inputs
       aout0 <= 'X' when (ain0 /= '0' and ain0 /= '1') else not ain0;
       aout1 <= 'X' when (ain1 /= '0' and ain1 /= '1') else not ain1;
       aout2 <= 'X' when (ain2 /= '0' and ain2 /= '1') else not ain2;
       aout3 <= 'X' when (ain3 /= '0' and ain3 /= '1') else not ain3;
-    elsif aenb_n = '1' then
+    elsif to_x01(aenb_n) = '1' then
       -- Disabled: high impedance
       aout0 <= 'Z'; aout1 <= 'Z'; aout2 <= 'Z'; aout3 <= 'Z';
     else
@@ -50,13 +48,13 @@ begin
 
   process (all)
   begin
-    if benb_n = '0' then
+    if to_x01(benb_n) = '0' then
       -- Enabled: pass inverted data, but handle unknown inputs
       bout0 <= 'X' when (bin0 /= '0' and bin0 /= '1') else not bin0;
       bout1 <= 'X' when (bin1 /= '0' and bin1 /= '1') else not bin1;
       bout2 <= 'X' when (bin2 /= '0' and bin2 /= '1') else not bin2;
       bout3 <= 'X' when (bin3 /= '0' and bin3 /= '1') else not bin3;
-    elsif benb_n = '1' then
+    elsif to_x01(benb_n) = '1' then
       -- Disabled: high impedance
       bout0 <= 'Z'; bout1 <= 'Z'; bout2 <= 'Z'; bout3 <= 'Z';
     else

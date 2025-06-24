@@ -1,11 +1,7 @@
 -- 8-Line To 1-Line Data Selectors/Multiplexers
--- This component selects one of eight data inputs based on three select lines.
 
 library ieee;
 use ieee.std_logic_1164.all;
-
--- Datasheet: Texas Instruments SN74LS151 8-Line To 1-Line Data Selectors/Multiplexers, PDIP (N) Package
--- URL: https://www.ti.com/lit/gpn/SN74LS151
 
 entity sn74151 is
   port (
@@ -33,7 +29,7 @@ begin
     variable select_lines : std_logic_vector(2 downto 0);
   begin
     
-    if ce_n = '0' then
+    if to_x01(ce_n) = '0' then
       select_lines := sel2 & sel1 & sel0;
       case select_lines is
         when "000" =>
@@ -64,11 +60,14 @@ begin
           q   <= 'X';
           q_n <= 'X';
       end case;
-    else
+    elsif to_x01(ce_n) = '1' then
       -- Chip is disabled
       -- This is correct, it is not a tri-state output component
       q   <= '0';
       q_n <= '1';
+    else
+      q   <= 'X';
+      q_n <= 'X';
     end if;
   end process;
 end architecture;

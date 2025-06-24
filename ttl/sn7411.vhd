@@ -1,9 +1,7 @@
 -- Triple 3-Input Positive-AND Gates
--- Datasheet: https://www.ti.com/lit/gpn/SN74LS11 (PDIP (N) Package)
 
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
 
 entity sn7411 is
   port (

@@ -4,7 +4,6 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
 
 entity dm9328 is
   port (
@@ -37,13 +36,15 @@ begin
   -- Shift register A
   process (all)
   begin
-    if clr_n = '0' then
+    if to_x01(clr_n) = '0' then
       rega <= (others => '0');
     elsif rising_edge(aclk) then
-      if asel = '0' then
+      if to_x01(asel) = '0' then
         rega <= rega(6 downto 0) & ai0;
-      else
+      elsif to_x01(asel) = '1' then
         rega <= rega(6 downto 0) & ai1;
+      else
+        rega <= rega(6 downto 0) & 'X';
       end if;
     end if;
   end process;
@@ -51,13 +52,15 @@ begin
   -- Shift register B
   process (all)
   begin
-    if clr_n = '0' then
+    if to_x01(clr_n) = '0' then
       regb <= (others => '0');
     elsif rising_edge(bclk) then
-      if bsel = '0' then
+      if to_x01(bsel) = '0' then
         regb <= regb(6 downto 0) & bi0;
-      else
+      elsif to_x01(bsel) = '1' then
         regb <= regb(6 downto 0) & bi1;
+      else
+        regb <= regb(6 downto 0) & 'X';
       end if;
     end if;
   end process;

@@ -1,11 +1,7 @@
--- SN74138: 3-Line To 8-Line Decoder/Demultiplexer
+-- 3-Line To 8-Line Decoder/Demultiplexer
 
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
-
--- Datasheet: Texas Instruments SN74LS138 3-Line to 8-Line Decoder/Demultiplexer, PDIP (N) Package
--- URL: https://www.ti.com/lit/gpn/SN74LS138
 
 entity sn74138 is
   port (
@@ -36,7 +32,7 @@ begin
   begin
     g := g1 and not g2a and not g2b;
     -- Check enable conditions first
-    if g = '1' then
+    if to_x01(g) = '1' then
       -- Enabled: decode select inputs
       sel := a & b & c;  -- MSB to LSB: a, b, c (matching testbench expectations)
       
@@ -52,7 +48,7 @@ begin
         when "111" => y <= "01111111"; -- y7 active (low)
         when others => y <= "XXXXXXXX"; -- Unknown select inputs
       end case;
-    elsif g = '0' then
+    elsif to_x01(g) = '0' then
     -- Disabled: all outputs high (inactive)
     -- This is correct, it is not a tri-state output component
       y <= (others => '1');
