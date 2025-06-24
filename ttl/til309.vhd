@@ -1,6 +1,6 @@
--- TIL309: Numeric Displays With Logic
--- Datasheet: Texas Instruments TIL308, TIL309 Numeric Displays With Logic, 16-pin package
--- URL: https://pdf.dzsc.com/TIL/TIL308.pdf
+-- Numeric Displays With Logic
+-- Texas Instruments TIL309
+-- doc/ttl/til309.pdf
 
 library ieee;
 use ieee.std_logic_1164.all;
