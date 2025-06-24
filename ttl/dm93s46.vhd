@@ -1,6 +1,6 @@
 -- High Speed 6-Bit Identity Comparator
 -- Fairchild Semiconductor 93S46
--- doc/ttl/93s46.pdf
+-- doc/ttl/dm93s46.pdf
 
 library ieee;
 use ieee.std_logic_1164.all;
