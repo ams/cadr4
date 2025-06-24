@@ -49,17 +49,11 @@ iram31 iram32 iram33 spy0 spy4 stat
 CADR_SRCS := $(patsubst %,cadr/cadr_%.vhd, $(CADR_BOOK) $(ICMEM_BOOK)) cadr/cadr_book.vhd cadr/icmem_book.vhd 
 SUDS_SRCS := $(patsubst %,cadr/cadr_%_suds.vhd, $(CADR_BOOK) $(ICMEM_BOOK))
 
-# cadrio sources are found specifically from the lists below
-# package (cadrio_book.vhd) is explicitly added to CADRIO_SRCS below
-CADRIO_BOOK := iobcsr
-
-CADRIO_SRCS := $(patsubst %,cadrio/cadrio_%.vhd, $(CADRIO_BOOK)) cadrio/cadrio_book.vhd
-
 CREATESETS_OUTPUTDIR	:= set
 CREATESETS_PACKAGENAME  := set
 CREATESETS_ENTITYFILE	:= set/entity_list.txt
 CREATESETS_BUSFILE		:= set/bus_list.txt
-CREATESETS_VHDLFILES	:= cadr/cadr_book.vhd cadr/icmem_book.vhd cadrio/cadrio_book.vhd helper/helper.vhd
+CREATESETS_VHDLFILES	:= cadr/cadr_book.vhd cadr/icmem_book.vhd helper/helper.vhd
 CREATESETS_CACHEFILE 	:= set/set.cache
 CREATESETS_PACKAGEFILE 	:= set/set.vhd
 CREATESETS_TBFILE 		:= set/set_tb.vhd
@@ -78,7 +72,7 @@ TTL_EXES  := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard ttl/*_tb.vhd)))
 TB_EXES   := $(patsubst set/%.vhd,build/%,$(CREATESETS_TBFILE)) # $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard tb/*_tb.vhd)))
 
 # all sources and executables
-SRCS := $(TTL_SRCS) $(DIP_SRCS) $(CADR_SRCS) $(SUDS_SRCS) $(CADRIO_SRCS) $(SET_SRCS) $(HELPER_SRCS) $(TB_SRCS)
+SRCS := $(TTL_SRCS) $(DIP_SRCS) $(CADR_SRCS) $(SUDS_SRCS) $(SET_SRCS) $(HELPER_SRCS) $(TB_SRCS)
 EXES := $(TTL_EXES) $(TB_EXES)
 
 # ghdl import and make works weird, all the build process is weird
