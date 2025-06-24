@@ -7,13 +7,19 @@ All components have a testbench with `_tb` suffix. Run `make ttl-check` to run a
 
 # Naming
 
-On CADR4 schematics, part names of ICs have no letter prefix. VHDL requires identifiers to start with a letter. So all the entities in this folder starts with a letter, similar to how manufacturers name them.
+On CADR4 schematics, part names of ICs have no letter prefix. VHDL requires identifiers to start with a letter. So all the entities in this project starts with a letter, similar to how manufacturers name them.
 
-All part names names are converted to lower-case.
+All part names are converted to lower-case e.g. n82s21 rather than N82S21.
 
-The manufacturers of parts are checked from CADR AI documents.
+The manufacturers of parts are checked from CADR AI documents (doc/ai).
 
-Fairchild parts are also given as National parts. Fairchild parts has no prefix, whereas National has dm prefix.
+Fairchild parts are also given as National parts. Fairchild parts has no prefix, whereas National has dm prefix. So all Fairchild parts in this project have dm prefix.
+
+Other than sn74 entities, all entity names are exact to original part names (ignoring the dm prefix for Fairchild), i.e am25s07 is AMD Am25S07. However, the sn74 entities have no letter between the numbers (74 and functional name like 00) since this letter identifies the process tweaks (no letter=TTL, S=Schottky, LS=low-power Schottky etc.) and they are logically and from HDL point of view equivalent.
+
+# Datasheet
+
+Each entity has a datasheet under doc/ttl with the same name as the entity name.
 
 # Packages
 
@@ -22,7 +28,7 @@ Fairchild parts are also given as National parts. Fairchild parts has no prefix,
 - fairchild (dm...): dm9s42, dm93s46, dm9328, dm93425a
 - intel (d...): d2147
 - signetics (n...): n82s21
-- sn74 (sn74...) 
+- sn74 (sn74...) many sn74xx and sn74xxx
 - other: dummy_type_A, res20, sip220_330_8, sip330_470_8, til309
 
 ecc = Engineered Components Company
@@ -64,9 +70,9 @@ All ICs with open collector outputs are explicitly indicated.
 
 ## RAM & PROM
 
-- sn74s188: 32x8 PROM with open-collector outputs (replaces IM5600)
-- sn74s288: 32x8 PROM with tri-state outputs (replaces IM5610)
-- sn74s472: 512x8 PROM with tri-state outputs
+- sn74188: 32x8 PROM with open-collector outputs (replaces IM5600)
+- sn74288: 32x8 PROM with tri-state outputs (replaces IM5610)
+- sn74472: 512x8 PROM with tri-state outputs
 - d2147: 4096x1 RAM with tri-state outputs 
 - dm93425a: 1024x1 RAM with tri-state outputs
 - n82s21: 32x2 RAM with open-collector outputs
