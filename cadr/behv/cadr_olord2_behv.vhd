@@ -28,5 +28,5 @@ olord2_1c08 : dip_74s10o port map (p1 => '0', p2 => '0', p3 => '0', p4 => '0', p
 olord2_1c09 : \-prog.reset\ <= ldmode nand spy6;
               \-errhalt\    <= errstop nand err;
 olord2_1c18 : dip_74s32 port map (p1 => '0', p2 => '0', p3 => open, p4 => '0', p5 => '0', p6 => open, p8 => net_2, p9 => net_1, p10 => \prog.boot\, p11 => open, p12 => '0', p13 => '0');
-olord2_1d10 : dip_74s08 port map (p1 => '0', p2 => '0', p3 => open, p4 => ldmode, p5 => spy7, p6 => \prog.boot\, p8 => open, p9 => '0', p10 => '0', p11 => open, p12 => '0', p13 => '0');
+olord2_1d10 : \prog.boot\ <= ldmode and spy7;
 end architecture;

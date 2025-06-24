@@ -11,7 +11,7 @@ pdlctl_4c11 : dip_74s175 port map (p1 => \-reset\, p2 => pdlwrited, p3 => \-pdlw
 pdlctl_4c12 : dip_74s258 port map (p1 => \-pdlpb\, p2 => pdlptr0, p3 => pdlidx0, p4 => \-pdla0b\, p5 => pdlptr1, p6 => pdlidx1, p7 => \-pdla1b\, p9 => \-pdla2b\, p10 => pdlidx2, p11 => pdlptr2, p12 => \-pdla3b\, p13 => pdlidx3, p14 => pdlptr3, p15 => gnd);
 pdlctl_4c16 : dip_74s258 port map (p1 => \-pdlpa\, p2 => pdlptr8, p3 => pdlidx8, p4 => \-pdla8b\, p5 => pdlptr9, p6 => pdlidx9, p7 => \-pdla9b\, p9 => \-pdla0a\, p10 => pdlidx0, p11 => pdlptr0, p12 => \-pdla1a\, p13 => pdlidx1, p14 => pdlptr1, p15 => gnd);
 pdlctl_4c22 : dip_74s258 port map (p1 => \-pdlpa\, p2 => pdlptr2, p3 => pdlidx2, p4 => \-pdla2a\, p5 => pdlptr3, p6 => pdlidx3, p7 => \-pdla3a\, p9 => \-pdla4a\, p10 => pdlidx4, p11 => pdlptr4, p12 => \-pdla5a\, p13 => pdlidx5, p14 => pdlptr5, p15 => gnd);
-pdlctl_4d06 : dip_74s08o port map (p1 => '0', p2 => '0', p3 => open, p4 => net_0, p5 => \-destpdl(p)\, p6 => \-pdlcnt\, p8 => open, p9 => '0', p10 => '0', p11 => open, p12 => '0', p13 => '0');
+pdlctl_4d06 : \-pdlcnt\ <= net_0 and \-destpdl(p)\;
 pdlctl_4d07 : dip_74s51 port map (p1 => \-pwidx\, p2 => clk4b, p3 => ir30, p4 => \-clk4e\, p5 => \-pwidx\, p6 => \-pdlpa\, p8 => \-pdlpb\, p9 => clk4b, p10 => ir30, p13 => \-clk4e\);
 pdlctl_4d08 : pdlenb      <= \-srcpdlpop\ nand \-srcpdltop\;
               \-pdldrive\ <= pdlenb nand tse4b;

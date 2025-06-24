@@ -18,7 +18,7 @@ md_1d16 : dip_74s51 port map (p1 => '0', p2 => destmdr, p3 => \-clk2c\, p4 => lo
 md_1d18 : loadmd <= not \-loadmd\;
           destmdr <= not \-destmdr\;
 md_1d20 : dip_74s374 port map (p1 => gnd, p2 => \-md15\, p3 => \-mds15\, p4 => \-mds14\, p5 => \-md14\, p6 => \-md13\, p7 => \-mds13\, p8 => \-mds12\, p9 => \-md12\, p11 => mdclk, p12 => \-md11\, p13 => \-mds11\, p14 => \-mds10\, p15 => \-md10\, p16 => \-md9\, p17 => \-mds9\, p18 => \-mds8\, p19 => \-md8\);
-md_1e07 : dip_74s08 port map (p1 => '0', p2 => '0', p3 => open, p4 => '0', p5 => '0', p6 => open, p8 => mdgetspar, p9 => \-destmdr\, p10 => \-ignpar\, p11 => open, p12 => '0', p13 => '0');
+md_1e07 : mdgetspar <= \-destmdr\ and \-ignpar\;
 md_1e19 : dip_74s374 port map (p1 => gnd, p2 => open, p3 => '0', p4 => '0', p5 => open, p6 => open, p7 => '0', p8 => '0', p9 => open, p11 => mdclk, p12 => open, p13 => '0', p14 => '0', p15 => open, p16 => mdhaspar, p17 => mdgetspar, p18 => \mempar in\, p19 => mdpar);
 md_2a05 : srcmd <= not \-srcmd\;
 end architecture;
