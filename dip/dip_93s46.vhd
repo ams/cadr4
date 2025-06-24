@@ -25,7 +25,7 @@ end entity;
 
 architecture dip of dip_93s46 is
 begin
-  U1 : dm9346
+  U1 : dm93s46
     port map (
       a0  => p1,
       b0  => p2,
