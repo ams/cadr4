@@ -1,5 +1,6 @@
--- High Speed 6-Bit Identify Comparator
--- Datasheet for DM9346 not found. This VHDL model might be based on a non-standard or custom implementation.
+-- High Speed 6-Bit Identity Comparator
+-- National Semiconductor DM93S46
+-- doc/ttl/dm93s46.pdf
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -27,12 +28,15 @@ end entity;
 architecture ttl of dm93s46 is
 begin
 
-  eq <= enb
-        and (a0 xnor b0)
-        and (a1 xnor b1)
-        and (a2 xnor b2)
-        and (a3 xnor b3)
-        and (a4 xnor b4)
-        and (a5 xnor b5);
+  -- according to the logic diagram on the datasheet
+  -- assumed to be handling metavalues as well
+  eq <= enb and (
+    (a0 xnor b0) and
+    (a1 xnor b1) and
+    (a2 xnor b2) and
+    (a3 xnor b3) and
+    (a4 xnor b4) and
+    (a5 xnor b5)
+  );
 
 end architecture;
