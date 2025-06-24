@@ -1,25 +1,35 @@
 
 # TTL Components
 
-Since all components are TTL, all inputs are initialized to 'H'. This is critical for CADR to work, if changed, many things can break.
+Since all components are TTL, all inputs are initialized to 'H'.
 
 All components have a testbench with `_tb` suffix. Run `make ttl-check` to run all testbenches.
 
 # Naming
 
-On CADR4 schematics, part numbers of ICs have no letter prefix. VHDL requires identifiers to start with a letter. So all the entities in this folder starts with a letter.
+On CADR4 schematics, part names of ICs have no letter prefix. VHDL requires identifiers to start with a letter. So all the entities in this folder starts with a letter, similar to how manufacturers name them.
 
-All standard 74xx ICs start with prefix sn, so sn7400 rather than 7400.
+All part names names are converted to lower-case.
 
-Fairchild semiconductor parts, for example 93S46, has National semiconductor prefix dm, for example dm93s46.
+The manufacturers of parts are checked from CADR AI documents.
 
-AMD parts already start with prefix am, so they already have matching names.
+Fairchild parts are also given as National parts. Fairchild parts has no prefix, whereas National has dm prefix.
+
+# Packages
+
+- amd (am...): am25ls2519, am25s07, am25s09, am25s10, am93s48
+- ecc (ttldm): ttldm (ttldm-25, ttldm-50, ttldm-100, ttldm-250)
+- fairchild (dm...): dm9s42, dm93s46, dm9328, dm93425a
+- intel (d...): d2147
+- signetics (n...): n82s21
+- sn74 (sn74...) 
+- other: dummy_type_A, res20, sip220_330_8, sip330_470_8, til309
+
+ecc = Engineered Components Company
 
 # Parts
 
-Below are all IC parts used in CADR4.
-
-ICs not explicitly mentioned below are pure combinatorial logic gates such as sn7400.
+Below, all IC parts used in CADR4 are listed except the pure combinatorial logic gates such as sn7400. All combinatorial logic gates are in sn74 except fairchild dm9s42.
 
 All ICs with tri-state outputs are explicitly indicated.
 
@@ -47,20 +57,19 @@ All ICs with open collector outputs are explicitly indicated.
 - sn74194: 4-bit bidirectional universal shift register
 - sn74373: octal d-type transparent latch
 - sn74374: octal d-type ff
-- am2507: 6-bit register with common clock enable
-- am2509: quad 2 input high-speed register (quad d-type ff with 2-1 select)
-- am252519: quad register with two independently controlled tri-state outputs
+- am25s07: 6-bit register with common clock enable
+- am25s09: quad 2 input high-speed register (quad d-type ff with 2-1 select)
+- am25ls2519: quad register with two independently controlled tri-state outputs
 - dm9328: dual 8-bit shift register
 
 ## RAM & PROM
 
 - sn74s188: 32x8 PROM with open-collector outputs (replaces IM5600)
 - sn74s288: 32x8 PROM with tri-state outputs (replaces IM5610)
-- am2147: 4096x1 RAM with tri-state outputs 
-- am93425a: 1024x1 RAM with tri-state outputs
-- dm8221: 32x2 RAM with tri-state outputs
-- dm74472: 512x8 PROM with tri-state outputs
-
+- sn74s472: 512x8 PROM with tri-state outputs
+- d2147: 4096x1 RAM with tri-state outputs 
+- dm93425a: 1024x1 RAM with tri-state outputs
+- n82s21: 32x2 RAM with open-collector outputs
 
 ## Complex Logic (arithmetic, parity etc.)
 
@@ -75,5 +84,6 @@ All ICs with open collector outputs are explicitly indicated.
 
 ## Special
 
-- td25, td50, td100, td250: time delay
+- dummy_type_A: all passive elements
 - til309: numeric display with logic
+- ttldm: ttl delay line
