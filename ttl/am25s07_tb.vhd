@@ -1,12 +1,12 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-use work.other.all;
+use work.amd.am25s07;
 
-entity am2507_tb is
+entity am25s07_tb is
 end;
 
-architecture testbench of am2507_tb is
+architecture testbench of am25s07_tb is
 
   signal enb_n : std_logic;
   signal clk   : std_logic;
@@ -25,7 +25,7 @@ architecture testbench of am2507_tb is
 
 begin
 
-  uut : am2507 port map(
+  uut : am25s07 port map(
     i0    => i0,
     i1    => i1,
     i2    => i2,

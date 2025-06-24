@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 library work;
-use work.other.all;
+use work.amd.am25s09;
 
 entity dip_25s09 is
   port (
@@ -25,7 +25,7 @@ end dip_25s09;
 
 architecture behavioral of dip_25s09 is
 begin
-  U1 : am2509
+  U1 : am25s09
     port map(
       sel => p1,
       aq  => p2,

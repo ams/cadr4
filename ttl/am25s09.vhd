@@ -1,12 +1,12 @@
--- Datasheet for AM2509 Quad Two-Input High-Speed Register not found. This VHDL model might be based on a non-standard or custom implementation.
-
--- AM2509 Quad Two-Input High-Speed Register
+-- Quad Two-Input High-Speed Register
+-- AMD Am25S09
+-- doc/ttl/am25s09.pdf
 
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity am2509 is
+entity am25s09 is
   port (
     clk : in  std_logic := 'H';
     sel : in  std_logic := 'H';
@@ -23,9 +23,9 @@ entity am2509 is
     d1  : in  std_logic := 'H';
     dq  : out std_logic
     );
-end am2509;
+end entity;
 
-architecture ttl of am2509 is
+architecture ttl of am25s09 is
 
   signal i0, i1, i2, i3 : std_logic;
 
@@ -43,4 +43,4 @@ begin
   i3 <= d1 when sel = '1' else d0;
   u3 : entity work.ff_d port map (clk => clk, d => i3, q => dq, q_n => open);
 
-end ttl;
+end architecture;

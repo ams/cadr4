@@ -1,12 +1,12 @@
--- Datasheet for 6-bit AM2507 not found. This VHDL model might be based on a non-standard or custom implementation.
-
--- AM2507 Six-Bit Register with Common Clock Enable
+-- Hex Parallel D Registers with Register Enable
+-- AMD Am25S07
+-- doc/ttl/am25s07.pdf
 
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity am2507 is
+entity am25s07 is
   port (
     i0    : in  std_logic := 'H';
     i1    : in  std_logic := 'H';
@@ -23,9 +23,9 @@ entity am2507 is
     clk   : in  std_logic := 'H';
     enb_n : in  std_logic := 'H'
     );
-end am2507;
+end entity;
 
-architecture ttl of am2507 is
+architecture ttl of am25s07 is
 begin
   process(all)
   begin
@@ -36,4 +36,4 @@ begin
       end if;
     end if;
   end process;
-end;
+end architecture;

@@ -1,7 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-use work.other.all;
+use work.amd.am93s48
 
 entity am93s48_tb is
 end;

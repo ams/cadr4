@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 library work;
-use work.other.all;
+use work.amd.am25ls2519;
 
 entity dip_25ls2519 is
   port (
@@ -29,7 +29,7 @@ end entity;
 
 architecture dip of dip_25ls2519 is
 begin
-  U1 : am252519
+  U1 : am25ls2519w
     port map (
       d0     => p1,
       w0     => p2,

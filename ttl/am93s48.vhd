@@ -1,5 +1,6 @@
--- 12-input parity checker/generator
--- Datasheet: Am93S48 Twelve-Input Parity Checker/Generator, Molded DIP - https://img.quarktwin.com/product/pdf/4ea80813a14a030886c7473a7c3e5ead.pdf (DIP Package)
+-- Twelve-Input Parity Checker/Generator
+-- AMD Am93S48
+-- doc/ttl/am93s48.pdf
 
 library ieee;
 use ieee.std_logic_1164.all;

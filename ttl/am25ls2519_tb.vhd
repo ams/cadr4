@@ -1,12 +1,12 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-use work.other.all;
+use work.amd.am25ls2519;
 
-entity am252519_tb is
+entity am25ls2519_tb is
 end;
 
-architecture testbench of am252519_tb is
+architecture testbench of am25ls2519_tb is
 
   signal w3         : std_logic;
   signal w2         : std_logic;
@@ -29,7 +29,7 @@ architecture testbench of am252519_tb is
 
 begin
 
-  uut : entity work.am252519 port map(
+  uut : am25ls2519 port map(
     oe_y_n     => oe_y_n,
     pol        => pol,
     d0         => d0,

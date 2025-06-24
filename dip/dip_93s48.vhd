@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 library work;
-use work.other.all;
+use work.amd.am93s48;
 
 entity dip_93s48 is
   port (

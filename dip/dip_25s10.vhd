@@ -2,11 +2,9 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 library work;
-use work.other.all;
+use work.amd.am25s10;
 
 entity dip_25s10 is
-  -- p8 and p16 are gnd and vcc, am2510(ttl) doesn't have gnd and vcc
-  -- so they are not mapped.
   port (
     p1  : in  std_logic;
     p2  : in  std_logic;
@@ -27,7 +25,7 @@ end dip_25s10;
 
 architecture dip of dip_25s10 is
 begin
-  U1 : am2510
+  U1 : am25s10
     port map (
       i_3  => p1,
       i_2  => p2,

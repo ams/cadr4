@@ -1,6 +1,6 @@
--- AM252519 Quad Register with Two Independantly Controlled Three-State Outputs
--- Mete: port names and implementation matches to datasheet (ttl/doc/am25ls2519.pdf)
--- Mete: pin numbers are for CERDIP package
+-- Quad Register with Two Independantly Controlled Three-State Outputs
+-- AMD Am25LS2519
+-- ttl/doc/am25ls2519.pdf
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -15,7 +15,8 @@ use ieee.numeric_std.all;
 -- pol polarity control, when H, Wi is inverted
 -- clr_n asynch clear, when L, internal flip-flips are reset to L
 
-entity am252519 is
+-- pin numbers are for CERDIP package
+entity am25ls2519 is
   port (    
     d0         : in  std_logic := 'H'; -- 1
     d1         : in  std_logic := 'H'; -- 4
@@ -36,9 +37,9 @@ entity am252519 is
     pol        : in  std_logic := 'H'; -- 18
     clr_n      : in  std_logic := 'H' -- 19
     );
-end am252519;
+end entity;
 
-architecture ttl of am252519 is
+architecture ttl of am25ls2519 is
   signal reg4 : std_logic_vector(3 downto 0);
 begin
   ------------------------------------------------------------------
@@ -91,4 +92,5 @@ begin
       w0 <= 'Z';
     end if;
   end process;
-end;
+  
+end architecture;

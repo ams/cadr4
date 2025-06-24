@@ -1,12 +1,12 @@
--- Datasheet for AM2510 Four-Bit Shifter not found. This VHDL model might be based on a non-standard or custom implementation.
-
--- AM2510 Four-Bit Shifter
+-- Four-Bit Shifter with Three-State Outputs
+-- AMD Am25S10
+-- doc/ttl/am25s10.pdf
 
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity am2510 is
+entity am25s10 is
   port (
     sel1 : in  std_logic := 'H';
     sel0 : in  std_logic := 'H';
@@ -23,9 +23,9 @@ entity am2510 is
     o2   : out std_logic;
     o3   : out std_logic
     );
-end am2510;
+end entity;
 
-architecture ttl of am2510 is
+architecture ttl of am25s10 is
 begin
 
   process (all)
@@ -45,4 +45,4 @@ begin
     end if;
   end process;
 
-end;
+end architecture;
