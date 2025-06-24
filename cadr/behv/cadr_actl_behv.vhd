@@ -19,6 +19,6 @@ actl_3b27 : dip_93s46 port map (p1 => ir38, p2 => wadr6, p3 => ir39, p4 => wadr7
 actl_3b28 : dip_25s09 port map (p1 => destm, p2 => wadr7, p3 => ir21, p4 => gnd, p5 => gnd, p6 => ir20, p7 => wadr6, p9 => clk3d, p10 => wadr5, p11 => ir19, p12 => gnd, p13 => ir18, p14 => ir18, p15 => wadr4);
 actl_3b29 : dip_25s09 port map (p1 => destm, p2 => open, p3 => '0', p4 => '0', p5 => '0', p6 => '0', p7 => open, p9 => clk3d, p10 => wadr9, p11 => ir23, p12 => gnd, p13 => gnd, p14 => ir22, p15 => wadr8);
 actl_3b30 : dip_74s37 port map (p1 => wp3a, p2 => destd, p3 => \-awpa\, p4 => wp3a, p5 => destd, p6 => \-awpb\, p8 => \-awpc\, p9 => destd, p10 => wp3a, p11 => open, p12 => '0', p13 => '0');
-actl_4b11 : dip_74s11 port map (p1 => '0', p2 => '0', p3 => apass1, p4 => apass2, p5 => tse4a, p6 => apassenb, p8 => open, p9 => '0', p10 => '0', p11 => '0', p12 => open, p13 => '0');
+actl_4b11 : apassenb <= apass1 and apass2and and tse4a;
 actl_4b14 : dip_74s10 port map (p1 => '0', p2 => '0', p3 => '0', p4 => '0', p5 => '0', p6 => open, p8 => \-apassenb\, p9 => tse4a, p10 => apass2, p11 => apass1, p12 => open, p13 => '0');
 end architecture;

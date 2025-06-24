@@ -34,7 +34,8 @@ contrl_3e25 : dip_74s64 port map (p1 => ir7, p2 => dn, p3 => dispenb, p4 => ir7,
 contrl_3e26 : dip_74s64 port map (p1 => jcond, p2 => \-jcond\, p3 => jcalf, p4 => \-dr\, p5 => dp, p6 => dispenb, p8 => \-spush\, p9 => hi4, p10 => destspc, p11 => ir8, p12 => \-ir6\, p13 => irjump);
 contrl_3e27 : dip_74s64 port map (p1 => hi4, p2 => \-jcond\, p3 => jfalse, p4 => jcond, p5 => \-ir6\, p6 => irjump, p8 => pcs1, p9 => \-ignpopj\, p10 => popj, p11 => \-dp\, p12 => dr, p13 => dispenb);
 contrl_3e28 : dip_74s64 port map (p1 => hi4, p2 => \-jcond\, p3 => jretf, p4 => jcond, p5 => \-ir6\, p6 => jret, p8 => \-spop\, p9 => \-ignpopj\, p10 => net_1, p11 => \-dp\, p12 => dr, p13 => dispenb);
-contrl_3e29 : dip_74s11 port map (p1 => \-ir8\, p2 => irjump, p3 => irjump, p4 => ir8, p5 => ir9, p6 => iwrite, p8 => open, p9 => '0', p10 => '0', p11 => '0', p12 => jret, p13 => ir9);
+contrl_3e29 : jret <= irjump and and \-ir8\ and ir8;
+              iwrite <= irjump and ir8 and ir9;               
 contrl_3f20 : popj <= not \-popj\;
               \-ir8\ <= not ir8;
               \-ir6\ <= not ir6;
