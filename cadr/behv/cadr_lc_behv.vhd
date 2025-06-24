@@ -16,7 +16,7 @@ lc_1b28 : dip_74s169 port map (p1 => hi11, p2 => clk1a, p3 => ob16, p4 => ob17, 
 lc_1c30 : dip_74s169 port map (p1 => hi11, p2 => clk2a, p3 => ob12, p4 => ob13, p5 => ob14, p6 => ob15, p7 => gnd, p9 => \-destlc\, p10 => \-lcry11\, p11 => lc15, p12 => lc14, p13 => lc13, p14 => lc12, p15 => \-lcry15\);
 lc_1d29 : dip_74s169 port map (p1 => hi11, p2 => clk2c, p3 => ob8, p4 => ob9, p5 => ob10, p6 => ob11, p7 => gnd, p9 => \-destlc\, p10 => \-lcry7\, p11 => lc11, p12 => lc10, p13 => lc9, p14 => lc8, p15 => \-lcry11\);
 lc_2a04 : dip_74s08 port map (p1 => '0', p2 => '0', p3 => open, p4 => '0', p5 => '0', p6 => open, p8 => lcdrive, p9 => tse1a, p10 => srclc, p11 => open, p12 => '0', p13 => '0');
-lc_2a05 : dip_74s04 port map (p1 => \-srclc\, p2 => srclc, p3 => '0', p4 => open, p5 => '0', p6 => open, p8 => open, p9 => '0', p10 => open, p11 => '0', p12 => open, p13 => '0');
+lc_2a05 : srclc <= not \-srclc\;
 lc_2b03 : dip_74s169 port map (p1 => hi11, p2 => clk1a, p3 => ob24, p4 => ob25, p5 => '0', p6 => '0', p7 => gnd, p9 => \-destlc\, p10 => \-lcry23\, p11 => open, p12 => open, p13 => lc25, p14 => lc24, p15 => open);
 lc_2c05 : dip_74s169 port map (p1 => hi11, p2 => clk2a, p3 => ob4, p4 => ob5, p5 => ob6, p6 => ob7, p7 => gnd, p9 => \-destlc\, p10 => \-lcry3\, p11 => lc7, p12 => lc6, p13 => lc5, p14 => lc4, p15 => \-lcry7\);
 end architecture;

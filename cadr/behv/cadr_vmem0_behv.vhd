@@ -21,7 +21,7 @@ vmem0_1d04 : dip_93425a port map (p1 => \-mapi23\, p2 => mapi22, p3 => mapi21, p
 vmem0_1d05 : dip_93425a port map (p1 => mapi23, p2 => mapi22, p3 => mapi21, p4 => mapi20, p5 => mapi19, p6 => mapi18, p7 => vpari, p9 => mapi17, p10 => mapi16, p11 => mapi15, p12 => mapi14, p13 => mapi13, p14 => \-vm0wpa\, p15 => vm0pari);
 vmem0_1d09 : dip_93425a port map (p1 => \-mapi23\, p2 => mapi22, p3 => mapi21, p4 => mapi20, p5 => mapi19, p6 => mapi18, p7 => \-vmap0\, p9 => mapi17, p10 => mapi16, p11 => mapi15, p12 => mapi14, p13 => mapi13, p14 => \-vm0wpb\, p15 => \-vma27\);
 vmem0_1d10 : dip_93425a port map (p1 => \-mapi23\, p2 => mapi22, p3 => mapi21, p4 => mapi20, p5 => mapi19, p6 => mapi18, p7 => \-vmap1\, p9 => mapi17, p10 => mapi16, p11 => mapi15, p12 => mapi14, p13 => mapi13, p14 => \-vm0wpb\, p15 => \-vma28\);
-vmem0_1d18 : dip_74s04 port map (p1 => mapi23, p2 => \-mapi23\, p3 => '0', p4 => open, p5 => '0', p6 => open, p8 => open, p9 => '0', p10 => open, p11 => '0', p12 => open, p13 => '0');
+vmem0_1d18 : \-mapi23\ <= not mapi23;
 vmem0_1d27 : dip_74s02 port map (p1 => open, p2 => '0', p3 => '0', p4 => open, p5 => '0', p6 => '0', p8 => '0', p9 => '0', p10 => open, p11 => memstart, p12 => srcmap, p13 => \-use.map\);
 vmem0_1e26 : dip_74s32 port map (p1 => \-use.map\, p2 => net_0, p3 => v0parok, p4 => \-use.map\, p5 => vmoparodd, p6 => vmoparok, p8 => open, p9 => '0', p10 => '0', p11 => open, p12 => '0', p13 => '0');
 end architecture;

@@ -16,5 +16,5 @@ vmemdr_1d14 : dip_74s373 port map (p1 => gnd, p2 => \-lvmo23\, p3 => \-vmo23\, p
 vmemdr_1d15 : dip_74s373 port map (p1 => gnd, p2 => \-pma15\, p3 => \-vmo7\, p4 => \-vmo6\, p5 => \-pma14\, p6 => \-pma13\, p7 => \-vmo5\, p8 => \-vmo4\, p9 => \-pma12\, p11 => memstart, p12 => \-pma11\, p13 => \-vmo3\, p14 => \-vmo2\, p15 => \-pma10\, p16 => \-pma9\, p17 => \-vmo1\, p18 => \-vmo0\, p19 => \-pma8\);
 vmemdr_1e17 : dip_93s48 port map (p1 => \-vma6\, p2 => \-vma5\, p3 => \-vma4\, p4 => \-vma3\, p5 => \-vma2\, p6 => \-vma1\, p7 => \-vma0\, p9 => net_0, p10 => open, p11 => \-pma11\, p12 => \-pma10\, p13 => \-pma9\, p14 => \-pma8\, p15 => \-vma7\);
 vmemdr_1e18 : dip_93s48 port map (p1 => \-pma18\, p2 => \-pma17\, p3 => \-pma16\, p4 => \-pma15\, p5 => \-pma14\, p6 => \-pma13\, p7 => \-pma12\, p9 => \-adrpar\, p10 => open, p11 => net_0, p12 => gnd, p13 => \-pma21\, p14 => \-pma20\, p15 => \-pma19\);
-vmemdr_2a05 : dip_74s04 port map (p1 => '0', p2 => open, p3 => '0', p4 => open, p5 => '0', p6 => open, p8 => srcmap, p9 => \-srcmap\, p10 => open, p11 => '0', p12 => open, p13 => '0');
+vmemdr_2a05 : srcmap <= not \-srcmap\;
 end architecture;

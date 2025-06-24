@@ -7,7 +7,11 @@ use work.misc.all;
 architecture behv of cadr_dram1 is
 begin
 dram1_2f03 : dip_74s37 port map (p1 => '0', p2 => '0', p3 => open, p4 => wp2, p5 => dispwr, p6 => \-dweb\, p8 => open, p9 => '0', p10 => '0', p11 => open, p12 => '0', p13 => '0');
-dram1_2f04 : dip_74s04a port map (p1 => '0', p2 => open, p3 => \-vmo19\, p4 => vmo19, p5 => \-vmo18\, p6 => vmo18, p8 => \-dadr9b\, p9 => ir21b, p10 => \-dadr8b\, p11 => ir20b, p12 => \-dadr7b\, p13 => ir19b);
+dram1_2f04 : vmo19 <= not \-vmo19\;
+             vmo18 <= not \-vmo18\;
+             \-dadr9b\ <= not ir21b;
+             \-dadr8b\ <= not ir20b;
+             \-dadr7b\ <= not ir19b;
 dram1_2f05 : dip_74s64 port map (p1 => ir12b, p2 => vmo19, p3 => ir9b, p4 => r0, p5 => dmask0, p6 => \-dmapbenb\, p8 => \-dadr0b\, p9 => vmo18, p10 => ir8b, p11 => hi6, p12 => hi6, p13 => hi6);
 dram1_2f06 : dip_93425a port map (p1 => dadr10a, p2 => \-dadr0b\, p3 => \-dadr1b\, p4 => \-dadr2b\, p5 => \-dadr3b\, p6 => \-dadr4b\, p7 => dpc11, p9 => \-dadr5b\, p10 => \-dadr6b\, p11 => \-dadr7b\, p12 => \-dadr8b\, p13 => \-dadr9b\, p14 => \-dweb\, p15 => aa11);
 dram1_2f07 : dip_93425a port map (p1 => \-dadr10a\, p2 => \-dadr0b\, p3 => \-dadr1b\, p4 => \-dadr2b\, p5 => \-dadr3b\, p6 => \-dadr4b\, p7 => dpc11, p9 => \-dadr5b\, p10 => \-dadr6b\, p11 => \-dadr7b\, p12 => \-dadr8b\, p13 => \-dadr9b\, p14 => \-dweb\, p15 => aa11);

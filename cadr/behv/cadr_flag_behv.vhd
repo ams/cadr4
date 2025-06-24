@@ -14,6 +14,6 @@ flag_3e13 : dip_74s151 port map (p1 => \a=m\, p2 => alu32, p3 => aluneg, p4 => r
 flag_3e14 : dip_74s08 port map (p1 => ir2, p2 => ir5, p3 => conds2, p4 => ir1, p5 => ir5, p6 => conds1, p8 => conds0, p9 => ir5, p10 => ir0, p11 => open, p12 => '0', p13 => '0');
 flag_3e17 : dip_74s02o port map (p1 => open, p2 => '0', p3 => '0', p4 => open, p5 => '0', p6 => '0', p8 => '0', p9 => '0', p10 => open, p11 => \-alu32\, p12 => \a=m\, p13 => aluneg);
 flag_3e18 : dip_74s32 port map (p1 => '0', p2 => '0', p3 => open, p4 => \-vmaok\, p5 => sint, p6 => \pgf.or.int\, p8 => net_0, p9 => \sequence.break\, p10 => sint, p11 => \pgf.or.int.or.sb\, p12 => net_0, p13 => \-vmaok\);
-flag_3e22 : dip_74s04 port map (p1 => '0', p2 => open, p3 => '0', p4 => open, p5 => '0', p6 => open, p8 => \-alu32\, p9 => alu32, p10 => open, p11 => '0', p12 => open, p13 => '0');
+flag_3e22 : \-alu32\ <= not alu32;
 flag_4d09 : dip_74s08 port map (p1 => '0', p2 => '0', p3 => open, p4 => '0', p5 => '0', p6 => open, p8 => sint, p9 => \int.enable\, p10 => sintr, p11 => open, p12 => '0', p13 => '0');
 end architecture;

@@ -8,8 +8,18 @@ architecture behv of cadr_iram10 is
 begin
 iram10_2d11 : dip_2147 port map (p1 => pc0e, p2 => pc1e, p3 => pc2e, p4 => pc3e, p5 => pc4e, p6 => pc5e, p7 => i22, p8 => \-iwee\, p10 => \-ice0b\, p11 => iwr22, p12 => pc11e, p13 => pc10e, p14 => pc9e, p15 => pc8e, p16 => pc7e, p17 => pc6e);
 iram10_2d12 : dip_2147 port map (p1 => pc0e, p2 => pc1e, p3 => pc2e, p4 => pc3e, p5 => pc4e, p6 => pc5e, p7 => i23, p8 => \-iwee\, p10 => \-ice0b\, p11 => iwr23, p12 => pc11e, p13 => pc10e, p14 => pc9e, p15 => pc8e, p16 => pc7e, p17 => pc6e);
-iram10_2d13 : dip_74s04a port map (p1 => \-pcb6\, p2 => pc6e, p3 => \-pcb7\, p4 => pc7e, p5 => \-pcb8\, p6 => pc8e, p8 => pc9e, p9 => \-pcb9\, p10 => pc10e, p11 => \-pcb10\, p12 => pc11e, p13 => \-pcb11\);
-iram10_2d14 : dip_74s04a port map (p1 => \-pcb0\, p2 => pc0e, p3 => \-pcb1\, p4 => pc1e, p5 => \-pcb2\, p6 => pc2e, p8 => pc3e, p9 => \-pcb3\, p10 => pc4e, p11 => \-pcb4\, p12 => pc5e, p13 => \-pcb5\);
+iram10_2d13 : pc6e <= not \-pcb6\;
+              pc7e <= not \-pcb7\;
+              pc8e <= not \-pcb8\;
+              pc9e <= not \-pcb9\;
+              pc10e <= not \-pcb10\;
+              pc11e <= not \-pcb11\;
+iram10_2d14 : pc0e <= not \-pcb0\;
+              pc1e <= not \-pcb1\;
+              pc2e <= not \-pcb2\;
+              pc3e <= not \-pcb3\;
+              pc4e <= not \-pcb4\;
+              pc5e <= not \-pcb5\;
 iram10_2e11 : dip_2147 port map (p1 => pc0e, p2 => pc1e, p3 => pc2e, p4 => pc3e, p5 => pc4e, p6 => pc5e, p7 => i17, p8 => \-iwee\, p10 => \-ice0b\, p11 => iwr17, p12 => pc11e, p13 => pc10e, p14 => pc9e, p15 => pc8e, p16 => pc7e, p17 => pc6e);
 iram10_2e12 : dip_2147 port map (p1 => pc0e, p2 => pc1e, p3 => pc2e, p4 => pc3e, p5 => pc4e, p6 => pc5e, p7 => i18, p8 => \-iwee\, p10 => \-ice0b\, p11 => iwr18, p12 => pc11e, p13 => pc10e, p14 => pc9e, p15 => pc8e, p16 => pc7e, p17 => pc6e);
 iram10_2e13 : dip_2147 port map (p1 => pc0e, p2 => pc1e, p3 => pc2e, p4 => pc3e, p5 => pc4e, p6 => pc5e, p7 => i19, p8 => \-iwee\, p10 => \-ice0b\, p11 => iwr19, p12 => pc11e, p13 => pc10e, p14 => pc9e, p15 => pc8e, p16 => pc7e, p17 => pc6e);

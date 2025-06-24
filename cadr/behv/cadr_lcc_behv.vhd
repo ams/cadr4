@@ -26,7 +26,7 @@ lcc_3e11 : \-lc modifies mrot\ <= ir10 nand ir11;
            \-newlc.in\         <= \-lcinc\ nand \have wrong word\;
 lcc_3e12 : dip_74s175 port map (p1 => \-reset\, p2 => \-newlc\, p3 => newlc, p4 => \-newlc.in\, p5 => int, p6 => open, p7 => sintr, p9 => clk3c, p10 => \next.instrd\, p11 => open, p12 => \next.instr\, p13 => '0', p14 => open, p15 => open);
 lcc_3e17 : dip_74s02o port map (p1 => \next.instr\, p2 => \-spop\, p3 => net_4, p4 => \last byte in word\, p5 => lc1, p6 => lc0b, p8 => net_0, p9 => \next.instrd\, p10 => \-lcinc\, p11 => '0', p12 => '0', p13 => open);
-lcc_3e22 : dip_74s04 port map (p1 => '0', p2 => open, p3 => '0', p4 => open, p5 => needfetch, p6 => \-needfetch\, p8 => open, p9 => '0', p10 => open, p11 => '0', p12 => open, p13 => '0');
+lcc_3e22 : \-needfetch\ <= not needfetch;
 lcc_4d09 : dip_74s08 port map (p1 => '0', p2 => '0', p3 => open, p4 => spc14, p5 => \-needfetch\, p6 => spcmung, p8 => open, p9 => '0', p10 => '0', p11 => net_0, p12 => ir24, p13 => irdisp);
 lcc_4e03 : dip_74s32 port map (p1 => spcmung, p2 => spc1, p3 => spc1a, p4 => '0', p5 => '0', p6 => open, p8 => open, p9 => '0', p10 => '0', p11 => lcinc, p12 => \next.instrd\, p13 => net_0);
 end architecture;

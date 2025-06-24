@@ -10,7 +10,7 @@ mctl_4a16 : dip_74s258 port map (p1 => clk4e, p2 => wadr4, p3 => ir30, p4 => \-m
 mctl_4a18 : dip_74s258 port map (p1 => clk4e, p2 => wadr0, p3 => ir26, p4 => \-madr0b\, p5 => wadr1, p6 => ir27, p7 => \-madr1b\, p9 => \-madr2b\, p10 => ir28, p11 => wadr2, p12 => \-madr3b\, p13 => ir29, p14 => wadr3, p15 => gnd);
 mctl_4a19 : dip_res20 port map (p2 => open, p3 => mmem15, p4 => mmem14, p5 => mmem13, p6 => mmem12, p7 => mmem11, p8 => mmem10, p9 => mmem9, p10 => open, p11 => mmem8, p12 => mmem7, p13 => mmem6, p14 => mmem5, p15 => mmem4, p16 => mmem3, p17 => mmem2, p18 => mmem1, p19 => mmem0);
 mctl_4b11 : dip_74s11 port map (p1 => mpass, p2 => tse4a, p3 => '0', p4 => '0', p5 => '0', p6 => open, p8 => srcm, p9 => hi2, p10 => \-ir31\, p11 => \-mpass\, p12 => mpassl, p13 => \-ir31\);
-mctl_4b12 : dip_74s04 port map (p1 => mpass, p2 => \-mpass\, p3 => '0', p4 => open, p5 => '0', p6 => open, p8 => open, p9 => '0', p10 => open, p11 => '0', p12 => open, p13 => '0');
+mctl_4b12 : \-mpass\ <= not mpass;
 mctl_4b14 : dip_74s10 port map (p1 => mpass, p2 => tse4a, p3 => tse4a, p4 => \-ir31\, p5 => \-mpass\, p6 => \-mpassm\, p8 => open, p9 => '0', p10 => '0', p11 => '0', p12 => \-mpassl\, p13 => \-ir31\);
 mctl_4b18 : dip_93s46 port map (p1 => ir26, p2 => wadr0, p3 => ir27, p4 => wadr1, p5 => ir28, p6 => wadr2, p7 => hi2, p9 => mpass, p10 => ir29, p11 => wadr3, p12 => ir30, p13 => wadr4, p14 => hi2, p15 => destmd);
 mctl_4b19 : dip_74s258 port map (p1 => clk4e, p2 => wadr0, p3 => ir26, p4 => \-madr0a\, p5 => wadr1, p6 => ir27, p7 => \-madr1a\, p9 => \-madr2a\, p10 => ir28, p11 => wadr2, p12 => \-madr3a\, p13 => ir29, p14 => wadr3, p15 => gnd);

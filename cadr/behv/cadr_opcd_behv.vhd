@@ -8,7 +8,8 @@ architecture behv of cadr_opcd is
 signal net_0 : std_logic;
 signal net_1 : std_logic;
 begin
-opcd_1d18 : dip_74s04 port map (p1 => '0', p2 => open, p3 => \-srcdc\, p4 => net_1, p5 => \-srcopc\, p6 => net_0, p8 => open, p9 => '0', p10 => open, p11 => '0', p12 => open, p13 => '0');
+opcd_1d18 : net_1 <= not \-srcdc\;
+            net_0 <= not \-srcopc\;
 opcd_1e01 : dip_74s241 port map (p1 => \-opcdrive\, p2 => opc7, p3 => mf4, p4 => opc6, p5 => mf5, p6 => opc5, p7 => mf6, p8 => opc4, p9 => mf7, p11 => dc7, p12 => mf4, p13 => dc6, p14 => mf5, p15 => dc5, p16 => mf6, p17 => dc4, p18 => mf7, p19 => dcdrive);
 opcd_1e03 : dip_74s241 port map (p1 => \-opcdrive\, p2 => opc3, p3 => mf0, p4 => opc2, p5 => mf1, p6 => opc1, p7 => mf2, p8 => opc0, p9 => mf3, p11 => dc3, p12 => mf0, p13 => dc2, p14 => mf1, p15 => dc1, p16 => mf2, p17 => dc0, p18 => mf3, p19 => dcdrive);
 opcd_1e06 : \-opcdrive\     <= net_0 nand tse1b;

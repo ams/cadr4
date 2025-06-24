@@ -17,5 +17,5 @@ vma_1c22 : dip_25s07 port map (p1 => \-vmaenb\, p2 => \-vma0\, p3 => \-vmas0\, p
 vma_1c24 : dip_25s07 port map (p1 => \-vmaenb\, p2 => \-vma12\, p3 => \-vmas12\, p4 => \-vmas13\, p5 => \-vma13\, p6 => \-vmas14\, p7 => \-vma14\, p9 => clk2a, p10 => \-vma15\, p11 => \-vmas15\, p12 => \-vma16\, p13 => \-vmas16\, p14 => \-vmas17\, p15 => \-vma17\);
 vma_1c25 : dip_25s07 port map (p1 => \-vmaenb\, p2 => \-vma18\, p3 => \-vmas18\, p4 => \-vmas19\, p5 => \-vma19\, p6 => \-vmas20\, p7 => \-vma20\, p9 => clk2a, p10 => \-vma21\, p11 => \-vmas21\, p12 => \-vma22\, p13 => \-vmas22\, p14 => \-vmas23\, p15 => \-vma23\);
 vma_1d25 : dip_25s07 port map (p1 => \-vmaenb\, p2 => \-vma6\, p3 => \-vmas6\, p4 => \-vmas7\, p5 => \-vma7\, p6 => \-vmas8\, p7 => \-vma8\, p9 => clk2c, p10 => \-vma9\, p11 => \-vmas9\, p12 => \-vma10\, p13 => \-vmas10\, p14 => \-vmas11\, p15 => \-vma11\);
-vma_2a05 : dip_74s04 port map (p1 => '0', p2 => open, p3 => '0', p4 => open, p5 => \-srcvma\, p6 => srcvma, p8 => open, p9 => '0', p10 => open, p11 => '0', p12 => open, p13 => '0');
+vma_2a05 : srcvma <= not \-srcvma\;
 end architecture;

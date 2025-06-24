@@ -19,7 +19,10 @@ olord2_1a11 : dip_74s02 port map (p1 => \-clock reset b\, p2 => \power reset a\,
 olord2_1a18 : dip_74ls109 port map (p1 => \-boot\, p2 => srun, p3 => hi1, p4 => mclk5a, p5 => \-clock reset a\, p6 => open, p7 => \boot.trap\, p9 => open, p10 => open, p11 => '0', p12 => '0', p13 => '0', p14 => '0', p15 => '0');
 olord2_1a19 : dip_16dummy port map (p12 => \-power reset\, p13 => \-boot2\, p14 => \-boot1\, p15 => hi2, p16 => hi1);
 olord2_1a20 : dip_74ls14 port map (p1 => '0', p2 => open, p3 => \-boot1\, p4 => net_0, p5 => \-boot2\, p6 => net_1, p8 => open, p9 => '0', p10 => open, p11 => '0', p12 => open, p13 => '0');
-olord2_1b10 : dip_74s04 port map (p1 => \-ldmode\, p2 => ldmode, p3 => '0', p4 => open, p5 => mclk5, p6 => \-mclk5\, p8 => \-clk5\, p9 => clk5, p10 => open, p11 => '0', p12 => net_3, p13 => \-busint.lm.reset\);
+olord2_1b10 : ldmode <= not \-ldmode\;
+              \-mclk5\ <= not mclk5;
+              \-clk5\ <= not clk5;
+              net_3 <= not \-busint.lm.reset\;
 olord2_1c07 : \-lowerhighok\ <= hi2 nand hi1;
 olord2_1c08 : dip_74s10o port map (p1 => '0', p2 => '0', p3 => '0', p4 => '0', p5 => '0', p6 => open, p8 => reset, p9 => \-boot\, p10 => \-clock reset b\, p11 => \-prog.reset\, p12 => open, p13 => '0');
 olord2_1c09 : \-prog.reset\ <= ldmode nand spy6;
