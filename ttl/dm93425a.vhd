@@ -1,6 +1,6 @@
 -- 1024x1 Bit TTL Bipolar RAM
 -- Fairchild 93425A
--- doc/ttl/dm93425a.pdf (page 2-34)
+-- doc/ttl/dm93425a.pdf
 
 library ieee;
 use ieee.std_logic_1164.all;

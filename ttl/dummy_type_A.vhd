@@ -1,6 +1,21 @@
+-- Dummy Type A
+-- doc/ai/cadrpt/parts.64
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+
+--   ________    
+-- 1:|1K ohm|16:
+-- 2:|1K ohm|15:
+-- 3:|1K ohm|14:
+-- 4:|1K ohm|13:
+-- 5:|5K ohm|12:
+-- 6:|      |11:
+-- 7:|10Kohm|10:
+-- 8:| 82 uF|9:
+--   -------- 
+--    type A  
 
 entity dummy_type_A is
   port (
