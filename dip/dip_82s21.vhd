@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 library work;
-use work.other.all;
+use work.signetics.n82s21;
 
 entity dip_82s21 is
   port (
@@ -25,7 +25,7 @@ end entity;
 
 architecture dip of dip_82s21 is
 begin
-  U1 : dm8221
+  U1 : n82s21
     port map (
       wclk_n => p1,
       we0_n  => p2,
