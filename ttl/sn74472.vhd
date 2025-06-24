@@ -8,7 +8,7 @@ use ieee.numeric_std.all;
 
 use work.misc.load_rom_file;
 
-entity sn74s472 is
+entity sn74472 is
   generic (fn : string := "");
   port (
     a0   : in  std_logic := 'H';
@@ -32,7 +32,7 @@ entity sn74s472 is
     );
 end;
 
-architecture ttl of sn74s472 is
+architecture ttl of sn74472 is
   constant rom  : std_logic_vector := load_rom_file(fn);  
 begin
     process(all)

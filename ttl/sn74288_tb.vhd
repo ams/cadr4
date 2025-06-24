@@ -4,13 +4,13 @@ use ieee.numeric_std.all;
 use std.textio.all;
 use ieee.std_logic_textio.all;
 
-use work.sn74.sn74s288;
+use work.sn74.sn74288;
 use work.misc.load_rom_file;
 
-entity sn74s288_tb is
+entity sn74288_tb is
 end;
 
-architecture testbench of sn74s288_tb is
+architecture testbench of sn74288_tb is
 
   -- Initialize signals to avoid metavalue assertions from ieee.numeric_std
   signal o7   : std_logic := '0';
@@ -32,7 +32,7 @@ architecture testbench of sn74s288_tb is
 
 begin
 
-  uut : sn74s288
+  uut : sn74288
     generic map(fn => "rom/dspctl_2f22.hex")
     port map(
       o7   => o7,

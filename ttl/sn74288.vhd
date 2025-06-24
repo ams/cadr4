@@ -1,6 +1,6 @@
 -- (32x8) 256-Bit TTL PROM
--- National Semiconductor 74S188
--- doc/ttl/sn74s188.pdf
+-- National Semiconductor 74S288
+-- doc/ttl/sn74s288.pdf
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -8,7 +8,7 @@ use ieee.numeric_std.all;
 
 use work.misc.load_rom_file;
 
-entity sn74s188 is
+entity sn74288 is
   generic (fn : string := "");
   port (
     ce_n : in  std_logic := 'H';
@@ -28,7 +28,7 @@ entity sn74s188 is
     );
 end entity;
 
-architecture ttl of sn74s188 is
+architecture ttl of sn74288 is
   constant rom  : std_logic_vector := load_rom_file(fn);  
 begin
   process(all)
