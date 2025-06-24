@@ -534,6 +534,26 @@ package sn74 is
   end component;
   alias sn74s182 is sn74182;
 
+  component sn74s188 is
+    generic (fn : string);
+    port (
+      o7   : out std_logic;
+      o6   : out std_logic;
+      o5   : out std_logic;
+      o4   : out std_logic;
+      o3   : out std_logic;
+      o2   : out std_logic;
+      o1   : out std_logic;
+      o0   : out std_logic;
+      a4   : in  std_logic;
+      a3   : in  std_logic;
+      a2   : in  std_logic;
+      a1   : in  std_logic;
+      a0   : in  std_logic;
+      ce_n : in  std_logic
+      );
+  end component;
+
   component sn74194 is
     port (
       clr_n : in  std_logic;
@@ -614,6 +634,26 @@ package sn74 is
       );
   end component;
   alias sn74s283 is sn74283;
+
+  component sn74s288 is
+    generic (fn : string);
+    port (
+      o7   : out std_logic;
+      o6   : out std_logic;
+      o5   : out std_logic;
+      o4   : out std_logic;
+      o3   : out std_logic;
+      o2   : out std_logic;
+      o1   : out std_logic;
+      o0   : out std_logic;
+      a4   : in  std_logic;
+      a3   : in  std_logic;
+      a2   : in  std_logic;
+      a1   : in  std_logic;
+      a0   : in  std_logic;
+      ce_n : in  std_logic
+      );
+  end component;
 
   component sn74373 is
     port (

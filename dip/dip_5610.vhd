@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 library work;
-use work.other.all;
+use work.sn74.sn74s288;
 
 entity dip_5610 is
   generic (fn : string := "");
@@ -28,7 +28,7 @@ end dip_5610;
 
 architecture dip of dip_5610 is
 begin
-  U1 : im5600
+  U1 : sn74s288
     generic map (fn => fn)
     port map (
       o0   => p1,

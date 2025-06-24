@@ -1,5 +1,6 @@
--- 256 Bit Bipolar Read Only Memory
--- IM5600 256x8 Bipolar PROM
+-- (32x8) 256-Bit TTL PROM
+-- National Semiconductor 74S288
+-- doc/ttl/sn74s288.pdf
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -7,7 +8,7 @@ use ieee.numeric_std.all;
 
 use work.misc.all;
 
-entity im5600 is
+entity sn74s288 is
   generic (fn : string := "");
   port (
     ce_n : in  std_logic := 'H';
@@ -25,9 +26,9 @@ entity im5600 is
     o6   : out std_logic;
     o7   : out std_logic
     );
-end im5600;
+end entity;
 
-architecture ttl of im5600 is
+architecture ttl of sn74s288 is
   constant rom  : std_logic_vector := load_rom_file(fn);  
 begin
   process(all)
@@ -36,12 +37,17 @@ begin
   begin
     if ce_n = '0' then
       addr := (a4, a3, a2, a1, a0);
-      data := rom(to_integer(addr) * 8 + 7 downto to_integer(addr) * 8);
-      o7   <= data(7); o6 <= data(6); o5 <= data(5); o4 <= data(4);
-      o3   <= data(3); o2 <= data(2); o1 <= data(1); o0 <= data(0);
+      if is_x(addr) then
+        data := rom(to_integer(addr) * 8 + 7 downto to_integer(addr) * 8);
+        o7   <= data(7); o6 <= data(6); o5 <= data(5); o4 <= data(4);
+        o3   <= data(3); o2 <= data(2); o1 <= data(1); o0 <= data(0);
+      else
+        o7 <= 'X'; o6 <= 'X'; o5 <= 'X'; o4 <= 'X';
+        o3 <= 'X'; o2 <= 'X'; o1 <= 'X'; o0 <= 'X';
+      end if;
     else
       o7 <= 'Z'; o6 <= 'Z'; o5 <= 'Z'; o4 <= 'Z';
       o3 <= 'Z'; o2 <= 'Z'; o1 <= 'Z'; o0 <= 'Z';
     end if;
   end process;
-end;
+end architecture;

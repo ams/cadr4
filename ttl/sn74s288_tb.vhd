@@ -4,13 +4,12 @@ use ieee.numeric_std.all;
 use std.textio.all;
 use ieee.std_logic_textio.all;
 
-use work.other.all;
-use work.misc.all;
+use work.sn74.sn74s288;
 
-entity im5600_tb is
+entity sn74s288_tb is
 end;
 
-architecture testbench of im5600_tb is
+architecture testbench of sn74s288_tb is
 
   -- Initialize signals to avoid metavalue assertions from ieee.numeric_std
   signal o7   : std_logic := '0';
@@ -32,7 +31,7 @@ architecture testbench of im5600_tb is
 
 begin
 
-  uut : im5600
+  uut : sn74s288
     generic map(fn => "rom/dspctl_2f22.hex")
     port map(
       o7   => o7,
