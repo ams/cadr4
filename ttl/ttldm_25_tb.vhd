@@ -1,12 +1,12 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-use work.other.all;
+use work.ecc.ttldm_25;
 
-entity td25_tb is
+entity ttldm_25_tb is
 end;
 
-architecture testbench of td25_tb is
+architecture testbench of ttldm_25_tb is
 
   signal o_5ns  : std_logic;
   signal o_10ns : std_logic;
@@ -17,7 +17,7 @@ architecture testbench of td25_tb is
 
 begin
 
-  uut : td25 port map(
+  uut : ttldm_25 port map(
     input  => input,
     o_5ns  => o_5ns,
     o_10ns => o_10ns,

@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 library work;
-use work.other.all;
+use work.ecc.ttldm_250;
 
 entity dip_td250 is
   port (
@@ -17,7 +17,7 @@ end entity;
 
 architecture dip of dip_td250 is
 begin
-  U1 : td250
+  U1 : ttldm_250
     port map (
       input   => p1,
       o_50ns  => p12,
