@@ -1,4 +1,4 @@
--- Engineered Components Company
+-- Engineered Components Company components
 
 library ieee;
 use ieee.std_logic_1164.all;

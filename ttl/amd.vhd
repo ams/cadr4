@@ -1,5 +1,10 @@
+-- AMD components
+
 library ieee;
 use ieee.std_logic_1164.all;
+
+-- the component names in this package are exact
+-- there should not be any aliases
 
 package amd is
 

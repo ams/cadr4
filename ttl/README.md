@@ -1,7 +1,9 @@
 
-# TTL Components
+# ttl
 
-Since all components are TTL, all inputs are initialized to 'H'.
+This folder contains ttl components.
+
+Since all components are TTL compatible, all inputs are initialized to 'H'.
 
 All components have a testbench with `_tb` suffix. Run `make ttl-check` to run all testbenches.
 
@@ -17,7 +19,7 @@ Fairchild parts are also given as National parts. Fairchild parts has no prefix,
 
 Other than sn74 entities, all entity names are exact to original part names (ignoring the dm prefix for Fairchild), i.e am25s07 is AMD Am25S07. However, the sn74 entities have no letter between the numbers (74 and functional name like 00) since this letter identifies the process tweaks (no letter=TTL, S=Schottky, LS=low-power Schottky etc.) and they are logically and from HDL point of view equivalent.
 
-# Datasheet
+# Datasheets
 
 Each entity has a datasheet under doc/ttl with the same name as the entity name.
 

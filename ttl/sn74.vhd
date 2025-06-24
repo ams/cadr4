@@ -1,5 +1,10 @@
+-- SN74 components
+
 library ieee;
 use ieee.std_logic_1164.all;
+
+-- the component names in this package are not exact
+-- the aliases are defined at the end of this file
 
 package sn74 is
 
