@@ -10,7 +10,7 @@ signal net_0 : std_logic;
 signal net_1 : std_logic;
 begin
 clock1_1c08 : dip_74s10 port map (p1 => \-clock reset b\, p2 => \-tpdone\, p3 => \-hang\, p4 => \-clock reset b\, p5 => cyclecompleted, p6 => \-tpr0\, p8 => open, p9 => '0', p10 => '0', p11 => '0', p12 => net_0, p13 => net_1);
-clock1_1c09 : dip_74s00 port map (p1 => net_0, p2 => \-tpr40\, p3 => net_1, p4 => '0', p5 => '0', p6 => open, p8 => open, p9 => '0', p10 => '0', p11 => open, p12 => '0', p13 => '0');
+clock1_1c09 : net_1 <= net_0 nand \-tpr40\;
 clock1_1c10 : dip_74s02 port map (p1 => open, p2 => '0', p3 => '0', p4 => open, p5 => '0', p6 => '0', p8 => '0', p9 => '0', p10 => open, p11 => net_1, p12 => gnd, p13 => cyclecompleted);
 clock1_1c12 : dip_td50 port map (p1 => \-tprend\, p4 => \-tpw20\, p6 => \-tpw40\, p8 => \-tpw50\, p10 => \-tpw30\, p12 => \-tpw10\);
 clock1_1c14 : dip_td25 port map (p1 => \-tpw50\, p4 => \-tpw60\, p6 => \-tpw70\, p8 => \-tpw75\, p10 => \-tpw65\, p12 => \-tpw55\);

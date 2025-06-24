@@ -10,7 +10,8 @@ signal net_1 : std_logic;
 begin
 vctl1_1c23 : dip_74s175 port map (p1 => \-reset\, p2 => open, p3 => open, p4 => '0', p5 => net_1, p6 => rdcyc, p7 => wrcyc, p9 => clk2a, p10 => open, p11 => open, p12 => '0', p13 => wmap, p14 => \-wmapd\, p15 => wmapd);
 vctl1_1d16 : dip_74s51 port map (p1 => rdcyc, p2 => '0', p3 => '0', p4 => '0', p5 => '0', p6 => open, p8 => net_1, p9 => memprepare, p10 => \-memwr\, p13 => \-memprepare\);
-vctl1_1d17 : dip_74s00o port map (p1 => \-lvmo22\, p2 => wrcyc, p3 => \-pfw\, p4 => \-pfr\, p5 => \-pfw\, p6 => \-vmaok\, p8 => open, p9 => '0', p10 => '0', p11 => open, p12 => '0', p13 => '0');
+vctl1_1d17 : \-pfw\   <= \-lvmo22\ nand wrcyc;
+             \-vmaok\ <= \-pfr\ nand \-pfw\;
 vctl1_1d21 : dip_74s74 port map (p1 => \-mfinishd\, p2 => memrq, p3 => mclk1a, p4 => hi11, p5 => mbusy, p6 => open, p8 => open, p9 => \rd.in.progress\, p10 => hi11, p11 => mclk1a, p12 => \set.rd.in.progress\, p13 => \-rdfinish\);
 vctl1_1d22 : dip_td250 port map (p1 => net_0, p4 => \-rdfinish\, p6 => open, p8 => open, p10 => open, p12 => open);
 vctl1_1d23 : dip_td50 port map (p1 => \-mfinish\, p4 => open, p6 => net_0, p8 => open, p10 => \-mfinishd\, p12 => open);

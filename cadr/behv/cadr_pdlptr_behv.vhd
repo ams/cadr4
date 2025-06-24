@@ -15,5 +15,5 @@ pdlptr_4c01 : dip_74s241 port map (p1 => \-ppdrive\, p2 => pdlptr3, p3 => mf0, p
 pdlptr_4d04 : dip_74s241 port map (p1 => \-ppdrive\, p2 => gnd, p3 => mf8, p4 => gnd, p5 => mf9, p6 => pdlptr9, p7 => mf10, p8 => pdlptr8, p9 => mf11, p11 => gnd, p12 => mf8, p13 => gnd, p14 => mf9, p15 => pdlidx9, p16 => mf10, p17 => pdlidx8, p18 => mf11, p19 => pidrive);
 pdlptr_4d05 : dip_74s241 port map (p1 => \-ppdrive\, p2 => pdlptr7, p3 => mf4, p4 => pdlptr6, p5 => mf5, p6 => pdlptr5, p7 => mf6, p8 => pdlptr4, p9 => mf7, p11 => pdlidx7, p12 => mf4, p13 => pdlidx6, p14 => mf5, p15 => pdlidx5, p16 => mf6, p17 => pdlidx4, p18 => mf7, p19 => pidrive);
 pdlptr_4d06 : dip_74s08 port map (p1 => '0', p2 => '0', p3 => open, p4 => '0', p5 => '0', p6 => open, p8 => pidrive, p9 => srcpdlidx, p10 => tse4b, p11 => open, p12 => '0', p13 => '0');
-pdlptr_4d08 : dip_74s00 port map (p1 => '0', p2 => '0', p3 => open, p4 => '0', p5 => '0', p6 => open, p8 => \-ppdrive\, p9 => srcpdlptr, p10 => tse4b, p11 => open, p12 => '0', p13 => '0');
+pdlptr_4d08 : \-ppdrive\ <= srcpdlptr nand tse4b;
 end architecture;

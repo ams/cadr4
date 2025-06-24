@@ -22,7 +22,10 @@ aluc4_2b18 : dip_74s153 port map (p1 => gnd, p2 => alusub, p3 => gnd, p4 => hi12
 aluc4_2b20 : dip_74s37 port map (p1 => \-alumode\, p2 => \-alumode\, p3 => alumode, p4 => '0', p5 => '0', p6 => open, p8 => open, p9 => '0', p10 => '0', p11 => open, p12 => '0', p13 => '0');
 aluc4_2c10 : dip_74s02o port map (p1 => net_4, p2 => ir5, p3 => \-divposlasttime\, p4 => \-divposlasttime\, p5 => q0, p6 => ir6, p8 => \-divposlasttime\, p9 => \-div\, p10 => divsubcond, p11 => net_4, p12 => \-div\, p13 => divaddcond);
 aluc4_2c11 : dip_74s04a port map (p1 => a31b, p2 => \-a31\, p3 => ir4, p4 => \-ir4\, p5 => ir3, p6 => \-ir3\, p8 => \-ir2\, p9 => ir2, p10 => \-ir1\, p11 => ir1, p12 => \-ir0\, p13 => ir0);
-aluc4_2c15 : dip_74s00 port map (p1 => divaddcond, p2 => \-a31\, p3 => net_1, p4 => divsubcond, p5 => a31a, p6 => net_0, p8 => net_2, p9 => divsubcond, p10 => \-a31\, p11 => net_3, p12 => divaddcond, p13 => a31a);
+aluc4_2c15 : net_1 <= divaddcond nand \-a31\;
+             net_0 <= divsubcond nand a31a;
+             net_2 <= divsubcond nand \-a31\;
+             net_3 <= divaddcond nand a31a;
 aluc4_2c20 : dip_74s20o port map (p1 => \-mulnop\, p2 => net_2, p4 => net_3, p5 => \-irjump\, p6 => alusub, p8 => aluadd, p9 => \-mul\, p10 => hi12, p12 => net_0, p13 => net_1);
 aluc4_2d15 : dip_74s32o port map (p1 => '0', p2 => '0', p3 => open, p4 => \-mul\, p5 => q0, p6 => \-mulnop\, p8 => open, p9 => '0', p10 => '0', p11 => open, p12 => '0', p13 => '0');
 aluc4_2d21 : dip_7428 port map (p1 => osel1a, p2 => \-ir13\, p3 => \-iralu\, p4 => osel0a, p5 => \-ir12\, p6 => \-iralu\, p8 => \-iralu\, p9 => \-ir13\, p10 => osel1b, p11 => \-iralu\, p12 => \-ir12\, p13 => osel0b);

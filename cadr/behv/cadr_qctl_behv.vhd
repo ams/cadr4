@@ -6,7 +6,7 @@ use work.misc.all;
 
 architecture behv of cadr_qctl is
 begin
-qctl_1a18 : dip_74s00 port map (p1 => '0', p2 => '0', p3 => open, p4 => '0', p5 => '0', p6 => open, p8 => \-qdrive\, p9 => tse2, p10 => srcq, p11 => open, p12 => '0', p13 => '0');
+qctl_1a18 : \-qdrive\ <= tse2 nand srcq;
 qctl_1e12 : dip_74s241 port map (p1 => \-qdrive\, p2 => q7, p3 => mf0, p4 => q6, p5 => mf1, p6 => q5, p7 => mf2, p8 => q4, p9 => mf3, p11 => q3, p12 => mf4, p13 => q2, p14 => mf5, p15 => q1, p16 => mf6, p17 => q0, p18 => mf7, p19 => qdrive);
 qctl_1f08 : dip_74s241 port map (p1 => \-qdrive\, p2 => q31, p3 => mf24, p4 => q30, p5 => mf25, p6 => q29, p7 => mf26, p8 => q28, p9 => mf27, p11 => q27, p12 => mf28, p13 => q26, p14 => mf29, p15 => q25, p16 => mf30, p17 => q24, p18 => mf31, p19 => qdrive);
 qctl_1f10 : dip_74s241 port map (p1 => \-qdrive\, p2 => q23, p3 => mf16, p4 => q22, p5 => mf17, p6 => q21, p7 => mf18, p8 => q20, p9 => mf19, p11 => q19, p12 => mf20, p13 => q18, p14 => mf21, p15 => q17, p16 => mf22, p17 => q16, p18 => mf23, p19 => qdrive);

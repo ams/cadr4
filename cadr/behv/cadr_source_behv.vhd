@@ -7,7 +7,9 @@ use work.misc.all;
 architecture behv of cadr_source is
 signal net_0 : std_logic;
 begin
-source_3d02 : dip_74s00 port map (p1 => '0', p2 => '0', p3 => open, p4 => \-iralu\, p5 => \-irbyte\, p6 => dest, p8 => \-destmem\, p9 => ir23, p10 => destm, p11 => \-specalu\, p12 => ir8, p13 => iralu);
+source_3d02 : dest       <= \-iralu\ nand \-irbyte\;
+              \-destmem\ <= ir23 nand destm;
+              \-specalu\ <= ir8 nand iralu;
 source_3d03 : dip_74s04a port map (p1 => ir22, p2 => \-ir22\, p3 => ir25, p4 => \-ir25\, p5 => '0', p6 => open, p8 => irdisp, p9 => \-irdisp\, p10 => irjump, p11 => \-irjump\, p12 => iralu, p13 => \-iralu\);
 source_3d04 : dip_74s139 port map (p1 => \-specalu\, p2 => ir3, p3 => ir4, p4 => \-mul\, p5 => \-div\, p6 => open, p7 => open, p9 => open, p10 => open, p11 => open, p12 => open, p13 => '0', p14 => '0', p15 => '0');
 source_3d05 : dip_74s139 port map (p1 => nop, p2 => ir43, p3 => ir44, p4 => \-iralu\, p5 => \-irjump\, p6 => \-irdisp\, p7 => \-irbyte\, p9 => \-funct3\, p10 => \-funct2\, p11 => \-funct1\, p12 => \-funct0\, p13 => ir11, p14 => ir10, p15 => nop);
