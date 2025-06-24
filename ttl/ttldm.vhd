@@ -1,7 +1,11 @@
+-- Logic Delay Module
+-- Engineered Components Company TTLDM Generic Model
+-- doc/ttl/ttldm.pdf
+
 library ieee;
 use ieee.std_logic_1164.all;
 
-entity timedelay is
+entity ttldm is
   generic (
     single_tap_delay : time := 5 ns
     );
@@ -13,10 +17,9 @@ entity timedelay is
     tap4   : out std_logic := 'H';
     output : out std_logic := 'H'
     );
-end timedelay;
+end ttldm;
 
--- transport delay has to be used !!!
-architecture behavioral of timedelay is
+architecture behavioral of ttldm is
 begin
   tap1 <= transport input after single_tap_delay;
   tap2 <= transport input after single_tap_delay * 2;

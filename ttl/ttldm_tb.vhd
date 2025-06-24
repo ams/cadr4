@@ -1,12 +1,12 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
+use work.ecc.ttldm;
 
-
-entity timedelay_tb is
+entity ttldm_tb is
 end;
 
-architecture testbench of timedelay_tb is
+architecture testbench of ttldm_tb is
 
   signal input  : std_logic;
   signal tap1   : std_logic;
@@ -17,13 +17,15 @@ architecture testbench of timedelay_tb is
 
 begin
 
-  uut : entity work.timedelay port map(
-    input  => input,
-    tap1   => tap1,
-    tap2   => tap2,
-    tap3   => tap3,
-    tap4   => tap4,
-    output => output
+  uut : ttldm 
+    generic map (single_tap_delay => 5 ns)
+    port map(
+      input  => input,
+      tap1   => tap1,
+      tap2   => tap2,
+      tap3   => tap3,
+      tap4   => tap4,
+      output => output
     );
 
   stimulus : process
