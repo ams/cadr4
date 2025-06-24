@@ -4,13 +4,12 @@ use ieee.numeric_std.all;
 use std.textio.all;
 use ieee.std_logic_textio.all;
 
-use work.other.all;
-use work.misc.all;
+use work.sn74.sn74s472;
 
-entity dm74472_tb is
+entity sn74s472_tb is
 end;
 
-architecture testbench of dm74472_tb is
+architecture testbench of sn74s472_tb is
 
   -- Initialize signals to avoid metavalue assertions from ieee.numeric_std
   signal a8   : std_logic := '0';
@@ -36,7 +35,7 @@ architecture testbench of dm74472_tb is
 
 begin
 
-  uut : dm74472
+  uut : sn74s472
     generic map(fn => "rom/promh9.1b17.hex")
     port map(
     a0   => a0,
