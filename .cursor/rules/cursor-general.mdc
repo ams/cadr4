@@ -10,37 +10,6 @@ alwaysApply: true
 - This project will not be synthesized. It will be simulated using GHDL with LLVM backend.
 - This project complies with VHDL-2008. You MUST write VHDL-2008 compliant code.
 
-# Project Structure
-
-## Source Files
-
-- The project source code is stored in these directories: ttl, dip, cadr, set and tb.
-- The ttl subdirectory contains the TTL entities which are the basic logic ICs. These are put into sn74 (`ttl/sn74.vhd`) and other (`ttl/other.vhd`) packages.
-- The port names of TTL entities are not pin numbers but identify the signal depending on the IC.
-- Ttl subdirectory also contains the misc package which contains constants, functions and procedures.
-- The dip subdirectory contains the wrappers of TTL entities called DIP entities. These are put into dip (`dip/dip.vhd`) package. DIP entities are named `dip_<IC_PART_NUMBER>`.
-- The architecture of a dip entity contains only one TTL component instantiation. It allows a TTL component to be port mapped using pin numbers. The port names of DIP entities are always pin numbers such as p1, p2 etc.
-- The cadr subdirectory contains the CADR entities each of which implements a MIT CADR (v4) schematic page. These are put into cadr_book (`cadr/cadr_book.vhd`) and icmem_book (`cadr/icmem_book.vhd`) packages. CADR entities are named `cadr_<PAGE>` and stored in `cadr/cadr_<PAGE>.vhd` file.
-- `make` automatically generates `cadr/cadr_<PAGE>_suds.vhd` file which contain the architecture of cadr_<PAGE> entity. The suds file is generated from the <PAGE> schematic (`doc/ai/cadr/<PAGE>.drw`).
-- The architecture of a CADR entity contains only one or more DIP component instantiations, and, if required, some internal signals.
-- The set subdirectory contains the set entities each of which are a combination of one or more cadr entities. A set entity is named `<SET_NAME>_set` and stored in `set/<SET_NAME>_set.vhd`.
-
-## ROM Files
-
-- `rom` directory contains the ROM/PROM data. rom/X_Y.hex is the data for ROM chip with designator Y on schematic page X.
-
-## Library
-
-- The project uses no other library, everything is put into the work library.
-
-## File Extensions
-
-- `.vhd`: VHDL source files
-- `.o`: Compiled object files
-- `.cf`: GHDL design library files
-- `_tb`: Executable testbench files
-- `.ghw`: Waveform files
-
 # Build System
 
 The project uses a Makefile based build system.
@@ -60,46 +29,21 @@ Make targets are as follows.
 - A single testbench (for example build/X_tb) can be run with `make run-X`. 
 - The waveforms of a single testbench (for example build/X_tb) can be created with `make wf-X`.
 
-# Development Workflow
-
-## Code Modification Guidelines
+# Code Modification Guidelines
 
 - NEVER modify the Makefile.
 - NEVER modify port interface list of an entity or component unless specifically instructed to do so.
 - After changing a source file, run `make` to see everything compiles fine.
 - DO NOT write testbenches on your own unless specifically instructed to do so.
 
-## Git Workflow
+# Git Workflow
 
 - NEVER automatically commit changes.
 - When creating a commit message, summarize the changes in bullet-points and add "Co-Authored-By: Cursor <noreply@metebalci.com>" on its own line at the end.
 
-# Specific Notes
-
-## TTL Entities (ttl folder)
-
-- SN74241 BENB is implemented as active high even though it is active low in the datasheet.
-- dip_5600 and dip_5610 both uses im5600. im5600 and im5610 are digitally equivalent.
-- Use `rom/dspctl_2f22.hex` for the testbenches related to im5600.
-- Use `rom/prom0_1b17.hex` for the testbenches related to sn74472 and dm74472.
-
-## Set Components (set folder)
-
-- Always update the relevant component port interface list in package file (set/set.vhd) when you modify the the port interface list of a set entity.
-
-- The port list of set components use bus signals when possible. Bus signals are in large case (IR rather than ir). The bus signals are listed below, the other signals names should be same as the port name of the component where that signal is used.
-
-- The following signals always have to be defined as bus in the port list of a set component unless only one line of the bus is used. For example, IR is a bus. If only IR(46) is used, this can be defined as ir46, otherwise it should always use the full IR bus in the port list. Here are the bus signals: IR, M, MF, A, AA, AMEM, AADR, L, LC, WPC, LPC, ALU, I, SPY, DADR, DPC, MDS, MD, OB, IOB, IWR, MEM, MMEM, MSK, NPC, PC, IPC, SPC, SPCO, SPCW, SPCPTR, DC, OPC, PDL, PDLIDX, PDLPTR, Q, SA, R, RETA, ST, VMA, VMAS, MAPI, VMAP, VMO, PMA, WADR.
-
-The internal signals should not be bus signals. Internal signal names should be same as the port name of the component where that signal is used.
-
-Write the component instantiation line in single line, compact form.
-
-Set components use set and/or cadr components, never dip or ttl components.
-
 # Resources
 
 - CADR Schematics are in the PNG files linked from this URL: https://tumbleweed.nu/lm-3/schematics.html
-- Component datasheets for TTL logic families
+- Datasheets for TTL components
 - VHDL-2008 language reference
 - GHDL documentation at https://ghdl.github.io/ghdl/
