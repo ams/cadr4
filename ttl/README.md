@@ -13,11 +13,17 @@ On CADR4 schematics, part names of ICs have no letter prefix. VHDL requires iden
 
 All part names are converted to lower-case e.g. n82s21 rather than N82S21.
 
-The manufacturers of parts are checked from CADR AI documents (doc/ai).
+The manufacturers of parts are checked from CADR AI documents (doc/ai). The manufacturers are:
 
-Fairchild parts are also given as National parts. Fairchild parts has no prefix, whereas National has dm prefix. So all Fairchild parts in this project have dm prefix.
+- AMD: am prefix
+- Fairchild or National: dm prefix
+- Intel: d prefix
+- Signetics: n prefix
+- TI (or 7400 family in general): sn prefix
 
-Other than sn74 entities, all entity names are exact to original part names (ignoring the dm prefix for Fairchild), i.e am25s07 is AMD Am25S07. However, the sn74 entities have no letter between the numbers (74 and functional name like 00) since this letter identifies the process tweaks (no letter=TTL, S=Schottky, LS=low-power Schottky etc.) and they are logically and from HDL point of view equivalent.
+As some of Fairchild parts may have no prefix originally (e.g. 9S42), dm is also used for such parts and for example became dm9s42.
+
+Other than sn74 entities, all entity names are exact to original part names (ignoring the dm prefix for Fairchild), i.e am25s07 is AMD Am25S07. However, the sn74 entities have no letter between the numbers (temperature range 74 and functional code like 00) since this letter identifies the process tweaks (no letter=TTL, S=Schottky, LS=low-power Schottky etc.) and they are logically and from HDL point of view equivalent.
 
 # Datasheets
 
