@@ -28,7 +28,7 @@ olord2_1b10 : ldmode <= not \-ldmode\;
               \-clk5\ <= not clk5;
               net_3 <= not \-busint.lm.reset\;
 olord2_1c07 : \-lowerhighok\ <= hi2 nand hi1;
-olord2_1c08 : dip_74s10o port map (p1 => '0', p2 => '0', p3 => '0', p4 => '0', p5 => '0', p6 => open, p8 => reset, p9 => \-boot\, p10 => \-clock reset b\, p11 => \-prog.reset\, p12 => open, p13 => '0');
+olord2_1c08 : reset <= not (\-boot\ and \-clock reset b\ and \-prog.reset\);
 olord2_1c09 : \-prog.reset\ <= ldmode nand spy6;
               \-errhalt\    <= errstop nand err;
 olord2_1c18 : dip_74s32 port map (p1 => '0', p2 => '0', p3 => open, p4 => '0', p5 => '0', p6 => open, p8 => net_2, p9 => net_1, p10 => \prog.boot\, p11 => open, p12 => '0', p13 => '0');

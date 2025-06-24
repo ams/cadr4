@@ -9,7 +9,8 @@ alias \-tpdone\ : std_logic is \-tpw60\;
 signal net_0 : std_logic;
 signal net_1 : std_logic;
 begin
-clock1_1c08 : dip_74s10 port map (p1 => \-clock reset b\, p2 => \-tpdone\, p3 => \-hang\, p4 => \-clock reset b\, p5 => cyclecompleted, p6 => \-tpr0\, p8 => open, p9 => '0', p10 => '0', p11 => '0', p12 => net_0, p13 => net_1);
+clock1_1c08 : net_0 <= not (\-tpdone\ and \-clock reset b\ and net_1);
+              \-tpr0\ <= not (\-hang\ and \-clock reset b\ and cyclecompleted);
 clock1_1c09 : net_1 <= net_0 nand \-tpr40\;
 clock1_1c10 : cyclecompleted <= net_1 nor gnd;
 clock1_1c12 : dip_td50 port map (p1 => \-tprend\, p4 => \-tpw20\, p6 => \-tpw40\, p8 => \-tpw50\, p10 => \-tpw30\, p12 => \-tpw10\);
