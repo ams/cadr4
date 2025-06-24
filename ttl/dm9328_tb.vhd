@@ -1,7 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-use work.other.all;
+use work.fairchild.dm9328;
 
 entity dm9328_tb is
 end;

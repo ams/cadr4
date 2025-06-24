@@ -1,4 +1,6 @@
 -- Dual 8-Bit Shift Register
+-- Fairchild DM9328
+-- doc/ttl/dm9328.pdf
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -21,10 +23,7 @@ entity dm9328 is
     bq     : out std_logic; -- 14
     bq_n   : out std_logic  -- 15
     );
-end dm9328;
-
--- Datasheet: https://datasheet.sisoog.com/file/7a657573/datasheet/e2e7ec94a9d6aae7e5e57c76266892be30e12591.pdf (PDIP, N16E Package)
--- VCC = Pin 16, GND = Pin 8
+end entity;
 
 architecture ttl of dm9328 is
   signal rega : std_logic_vector(7 downto 0);
@@ -63,4 +62,4 @@ begin
     end if;
   end process;
   
-end;
+end architecture;
