@@ -15,5 +15,7 @@ opcs_1f10 : opcinha <= not \-opcinh\;
 opcs_1f11 : dip_9328 port map (p1 => hi2, p2 => open, p3 => opc5, p4 => gnd, p5 => '0', p6 => pc5, p7 => opcinhb, p9 => opcclkb, p10 => opcinhb, p11 => pc4, p12 => '0', p13 => gnd, p14 => opc4, p15 => open);
 opcs_1f12 : dip_9328 port map (p1 => hi2, p2 => open, p3 => opc3, p4 => gnd, p5 => '0', p6 => pc3, p7 => opcinhb, p9 => opcclkb, p10 => opcinhb, p11 => pc2, p12 => '0', p13 => gnd, p14 => opc2, p15 => open);
 opcs_1f13 : dip_9328 port map (p1 => hi2, p2 => open, p3 => opc1, p4 => gnd, p5 => '0', p6 => pc1, p7 => opcinhb, p9 => opcclkb, p10 => opcinhb, p11 => pc0, p12 => '0', p13 => gnd, p14 => opc0, p15 => open);
-opcs_1f14 : dip_74s02 port map (p1 => opcclka, p2 => \-clk5\, p3 => opcclk, p4 => opcclkb, p5 => \-clk5\, p6 => opcclk, p8 => opcclk, p9 => \-clk5\, p10 => opcclkc, p11 => '0', p12 => '0', p13 => open);
+opcs_1f14 : opcclka <=  \-clk5\ nor opcclk;
+            opcclkb <= \-clk5\ nor opcclk;
+            opcclkc <= opcclk nor \-clk5\;
 end architecture;

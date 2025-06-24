@@ -13,7 +13,7 @@ mf_1a23 : dip_74s241 port map (p1 => \-mfdrive\, p2 => mf15, p3 => m8, p4 => mf1
 mf_1a25 : dip_74s241 port map (p1 => \-mfdrive\, p2 => mf7, p3 => m0, p4 => mf6, p5 => m1, p6 => mf5, p7 => m2, p8 => mf4, p9 => m3, p11 => mf3, p12 => m4, p13 => mf2, p14 => m5, p15 => mf1, p16 => m6, p17 => mf0, p18 => m7, p19 => mfdrive);
 mf_1b24 : dip_74s241 port map (p1 => \-mfdrive\, p2 => mf31, p3 => m24, p4 => mf30, p5 => m25, p6 => mf29, p7 => m26, p8 => mf28, p9 => m27, p11 => mf27, p12 => m28, p13 => mf26, p14 => m29, p15 => mf25, p16 => m30, p17 => mf24, p18 => m31, p19 => mfdrive);
 mf_2a04 : mfdrive <= tse1a and mfenb;
-mf_3f14 : dip_74s02 port map (p1 => open, p2 => '0', p3 => '0', p4 => open, p5 => '0', p6 => '0', p8 => pdlenb, p9 => spcenb, p10 => net_0, p11 => '0', p12 => '0', p13 => open);
+mf_3f14 : net_0 <= pdlenb nor spcenb;
 mf_4d06 : mfenb <= net_0 and \-srcm\;
 mf_4d08 : \-srcm\ <= \-ir31\ nand \-mpass\;
 end architecture;

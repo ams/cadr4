@@ -14,7 +14,7 @@ flag_3e13 : dip_74s151 port map (p1 => \a=m\, p2 => alu32, p3 => aluneg, p4 => r
 flag_3e14 : conds2 <= ir2 and ir5;
             conds1 <= ir1 and ir5;
             conds0 <= ir5 and ir0;
-flag_3e17 : dip_74s02o port map (p1 => open, p2 => '0', p3 => '0', p4 => open, p5 => '0', p6 => '0', p8 => '0', p9 => '0', p10 => open, p11 => \-alu32\, p12 => \a=m\, p13 => aluneg);
+flag_3e17 : aluneg <= \-alu32\ nor \a=m\;
 flag_3e18 : dip_74s32 port map (p1 => '0', p2 => '0', p3 => open, p4 => \-vmaok\, p5 => sint, p6 => \pgf.or.int\, p8 => net_0, p9 => \sequence.break\, p10 => sint, p11 => \pgf.or.int.or.sb\, p12 => net_0, p13 => \-vmaok\);
 flag_3e22 : \-alu32\ <= not alu32;
 flag_4d09 : sint <= \int.enable\ and sintr;

@@ -20,7 +20,10 @@ aluc4_2b16 : dip_74s153 port map (p1 => gnd, p2 => alusub, p3 => gnd, p4 => hi12
 aluc4_2b17 : dip_74s153 port map (p1 => gnd, p2 => alusub, p3 => gnd, p4 => gnd, p5 => hi12, p6 => ir6, p7 => \-aluf1\, p9 => \-aluf0\, p10 => ir5, p11 => gnd, p12 => hi12, p13 => gnd, p14 => aluadd, p15 => gnd);
 aluc4_2b18 : dip_74s153 port map (p1 => gnd, p2 => alusub, p3 => gnd, p4 => hi12, p5 => hi12, p6 => ir7, p7 => \-alumode\, p9 => \-cin0\, p10 => \-ir2\, p11 => hi12, p12 => irjump, p13 => gnd, p14 => aluadd, p15 => gnd);
 aluc4_2b20 : dip_74s37 port map (p1 => \-alumode\, p2 => \-alumode\, p3 => alumode, p4 => '0', p5 => '0', p6 => open, p8 => open, p9 => '0', p10 => '0', p11 => open, p12 => '0', p13 => '0');
-aluc4_2c10 : dip_74s02o port map (p1 => net_4, p2 => ir5, p3 => \-divposlasttime\, p4 => \-divposlasttime\, p5 => q0, p6 => ir6, p8 => \-divposlasttime\, p9 => \-div\, p10 => divsubcond, p11 => net_4, p12 => \-div\, p13 => divaddcond);
+aluc4_2c10 : net_4 <= ir5 nor \-divposlasttime\;
+             \-divposlasttime\ <= q0 nor ir6;
+             divsubcond <= \-divposlasttime\ nor \-div\;
+             divaddcond <= net_4 nor \-div\;
 aluc4_2c11 : \-a31\ <= not a31b;
              \-ir4\ <= not ir4;
              \-ir3\ <= not ir3;

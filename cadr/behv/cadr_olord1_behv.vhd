@@ -17,6 +17,6 @@ olord1_1b10 : \-ssdone\ <= not ssdone;
               \stat.ovf\ <= not \-stc32\;
 olord1_1c01 : dip_7428 port map (p1 => open, p2 => '0', p3 => '0', p4 => open, p5 => '0', p6 => '0', p8 => \-tpr60\, p9 => gnd, p10 => speedclk, p11 => '0', p12 => '0', p13 => open);
 olord1_1c09 : \-stathalt\ <= stathenb nand statstop;
-olord1_1c10 : dip_74s02 port map (p1 => \-machruna\, p2 => gnd, p3 => machrun, p4 => open, p5 => '0', p6 => '0', p8 => '0', p9 => '0', p10 => open, p11 => '0', p12 => '0', p13 => open);
+olord1_1c10 : \-machruna\ <=  gnd nor machrun;
 olord1_1f10 : \-machrun\ <= not machrun;
 end architecture;
