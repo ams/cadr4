@@ -21,10 +21,10 @@ begin
     generic map (single_tap_delay => 10 ns)
     port map (
       input  => p1,
-      o_10ns => p12,
-      o_20ns => p4,
-      o_30ns => p10,
-      o_40ns => p6,
-      o_50ns => p8
+      tap1 => p12,
+      tap2 => p4,
+      tap3 => p10,
+      tap4 => p6,
+      output => p8
       );
 end architecture;

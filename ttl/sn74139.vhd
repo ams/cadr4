@@ -33,7 +33,12 @@ architecture ttl of sn74139 is
   signal y2 : unsigned(3 downto 0);
 begin
 
-  process (g1, a1, b1) is
+  -- drive output pins from internal vectors
+  g1y0 <= y1(3); g1y1 <= y1(2); g1y2 <= y1(1); g1y3 <= y1(0);
+  g2y3 <= y2(0); g2y2 <= y2(1); g2y1 <= y2(2); g2y0 <= y2(3);
+
+  process (all) is
+    
     variable sel : unsigned(1 downto 0);
   begin
     sel := a1 & b1;
@@ -44,14 +49,17 @@ begin
         when "01"   => y1 <= "1011";
         when "10"   => y1 <= "1101";
         when "11"   => y1 <= "1110";
-        when others => y1 <= "1111";
+        when others => y1 <= "XXXX";
       end case;
-    else
+    elsif g1 = '0' then
+      -- This is correct, it is not a tri-state output component
       y1 <= "1111";
+    else
+      y1 <= "XXXX";
     end if;
   end process;
 
-  process (g2, a2, b2) is
+  process (all) is
     variable sel : unsigned(1 downto 0);
   begin
     sel := a2 & b2;
@@ -62,15 +70,14 @@ begin
         when "01"   => y2 <= "1011";
         when "10"   => y2 <= "1101";
         when "11"   => y2 <= "1110";
-        when others => y2 <= "1111";
+        when others => y2 <= "XXXX";
       end case;
-    else
+    elsif g2 = '0' then
+      -- This is correct, it is not a tri-state output component
       y2 <= "1111";
+    else
+      y2 <= "XXXX";
     end if;
   end process;
-
-  -- drive output pins from internal vectors
-  g1y0 <= y1(3); g1y1 <= y1(2); g1y2 <= y1(1); g1y3 <= y1(0);
-  g2y3 <= y2(0); g2y2 <= y2(1); g2y1 <= y2(2); g2y0 <= y2(3);
-
+  
 end architecture;

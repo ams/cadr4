@@ -45,12 +45,17 @@ begin
         cy <= not c1;
         dy <= not d1;
       end if;
-    else
+    elsif enb_n = '1' then
       -- Disabled: high impedance
       ay <= 'Z';
       by <= 'Z';
       cy <= 'Z';
       dy <= 'Z';      
+    else
+      ay <= 'X';
+      by <= 'X';
+      cy <= 'X';
+      dy <= 'X';
     end if;
   end process;
 end;

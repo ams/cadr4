@@ -66,6 +66,7 @@ begin
       end case;
     else
       -- Chip is disabled
+      -- This is correct, it is not a tri-state output component
       q   <= '0';
       q_n <= '1';
     end if;

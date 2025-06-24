@@ -43,9 +43,11 @@ begin
       aout1 <= 'X' when (ain1 /= '0' and ain1 /= '1') else ain1;
       aout2 <= 'X' when (ain2 /= '0' and ain2 /= '1') else ain2;
       aout3 <= 'X' when (ain3 /= '0' and ain3 /= '1') else ain3;
-    else
+    elsif aenb_n = '1' then
       -- Disabled: high impedance
       aout0 <= 'Z'; aout1 <= 'Z'; aout2 <= 'Z'; aout3 <= 'Z';
+    else
+      aout0 <= 'X'; aout1 <= 'X'; aout2 <= 'X'; aout3 <= 'X';
     end if;
   end process;
 
@@ -57,9 +59,11 @@ begin
       bout1 <= 'X' when (bin1 /= '0' and bin1 /= '1') else bin1;
       bout2 <= 'X' when (bin2 /= '0' and bin2 /= '1') else bin2;
       bout3 <= 'X' when (bin3 /= '0' and bin3 /= '1') else bin3;
-    else
+    elsif benb = '0' then
       -- Disabled: high impedance
       bout0 <= 'Z'; bout1 <= 'Z'; bout2 <= 'Z'; bout3 <= 'Z';
+    else
+      bout0 <= 'X'; bout1 <= 'X'; bout2 <= 'X'; bout3 <= 'X';
     end if;
   end process;
 

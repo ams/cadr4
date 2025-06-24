@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 library work;
-use work.other.all;
+use work.fairchild.dm93s46;
 
 entity dip_93s46 is
   port (

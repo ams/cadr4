@@ -5,6 +5,7 @@ use std.textio.all;
 use ieee.std_logic_textio.all;
 
 use work.sn74.sn74s288;
+use work.misc.load_rom_file;
 
 entity sn74s288_tb is
 end;

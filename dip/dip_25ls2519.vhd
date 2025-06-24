@@ -29,7 +29,7 @@ end entity;
 
 architecture dip of dip_25ls2519 is
 begin
-  U1 : am25ls2519w
+  U1 : am25ls2519
     port map (
       d0     => p1,
       w0     => p2,

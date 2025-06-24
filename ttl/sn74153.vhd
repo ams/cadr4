@@ -9,37 +9,32 @@ use ieee.numeric_std.all;
 -- URL: https://www.ti.com/lit/gpn/SN74LS153
 
 entity sn74153 is
-  port (
-    
+  port (    
     sela   : in  std_logic := 'H'; -- Pin 14
-    selb   : in  std_logic := 'H'; -- Pin 2       
-   
+    selb   : in  std_logic := 'H'; -- Pin 2          
     enb1_n : in  std_logic := 'H'; -- Pin 1
     g1c0   : in  std_logic := 'H'; -- Pin 6
     g1c1   : in  std_logic := 'H'; -- Pin 5
     g1c2   : in  std_logic := 'H'; -- Pin 4
     g1c3   : in  std_logic := 'H'; -- Pin 3
     g1y    : out std_logic; -- Pin 7
-
     enb2_n : in  std_logic := 'H'; -- Pin 15
     g2c0   : in  std_logic := 'H'; -- Pin 10
     g2c1   : in  std_logic := 'H'; -- Pin 11
     g2c2   : in  std_logic := 'H'; -- Pin 12
     g2c3   : in  std_logic := 'H'; -- Pin 13
-    g2y    : out std_logic -- Pin 9
-    
+    g2y    : out std_logic -- Pin 9    
     );
 end;
 
 architecture rtl of sn74153 is
-  signal select_lines : std_logic_vector(1 downto 0);
 begin
 
-  select_lines <= selb & sela;
-  
   process(all)
+    variable select_lines : std_logic_vector(1 downto 0);
   begin
     if enb1_n = '0' then
+      select_lines := (selb, sela);
       case select_lines is
         when "00" => g1y <= g1c0;
         when "01" => g1y <= g1c1;
@@ -48,13 +43,16 @@ begin
         when others => g1y <= 'X';
       end case;
     else
+      -- This is correct, it is not a tri-state output component
       g1y <= '0';
     end if;
   end process;
 
   process(all)
+    variable select_lines : std_logic_vector(1 downto 0);
   begin
-    if enb2_n = '0' then      
+    if enb2_n = '0' then
+      select_lines := (selb, sela);
       case select_lines is
         when "00" => g2y <= g2c0;
         when "01" => g2y <= g2c1;
@@ -63,6 +61,7 @@ begin
         when others => g2y <= 'X';
       end case;
     else
+      -- This is correct, it is not a tri-state output component
       g2y <= '0';
     end if;
   end process;

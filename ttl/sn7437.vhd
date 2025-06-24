@@ -28,9 +28,9 @@ end;
 architecture ttl of sn7437 is
 begin
 
-  g1y <= g1a nand g1b;
-  g2y <= g2a nand g2b;
-  g3y <= g3a nand g3b;
-  g4y <= g4a nand g4b;
+  g1y <= not (g1a and g1b);
+  g2y <= not (g2a and g2b);
+  g3y <= not (g3a and g3b);
+  g4y <= not (g4a and g4b);
 
 end;

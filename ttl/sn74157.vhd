@@ -39,8 +39,10 @@ begin
       else
         y1 <= 'X'; y2 <= 'X'; y3 <= 'X'; y4 <= 'X';
       end if;
-    else
+    elsif enb_n = '1' then
       y1 <= 'Z'; y2 <= 'Z'; y3 <= 'Z'; y4 <= 'Z';
+    else
+      y1 <= 'X'; y2 <= 'X'; y3 <= 'X'; y4 <= 'X';
     end if;
   end process;
 end architecture;

@@ -52,9 +52,12 @@ begin
         when "111" => y <= "01111111"; -- y7 active (low)
         when others => y <= "XXXXXXXX"; -- Unknown select inputs
       end case;
-    else
+    elsif g = '0' then
     -- Disabled: all outputs high (inactive)
+    -- This is correct, it is not a tri-state output component
       y <= (others => '1');
+    else
+      y <= (others => 'X');
     end if;
   end process;
 

@@ -20,11 +20,11 @@ begin
   U1 : ttldm
     generic map (single_tap_delay => 5 ns)
     port map (
-      input  => p1,
-      o_5ns  => p12,
-      o_10ns => p4,
-      o_15ns => p10,
-      o_20ns => p6,
-      o_25ns => p8
+      input => p1,
+      tap1 => p12,
+      tap2 => p4,
+      tap3 => p10,
+      tap4 => p6,
+      output => p8
       );
 end architecture;

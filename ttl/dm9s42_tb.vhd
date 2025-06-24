@@ -3,7 +3,7 @@ use ieee.std_logic_1164.all;
 
 use work.fairchild.dm9s42;
 
-entity dm942_tb is
+entity dm9s42_tb is
 end;
 
 architecture testbench of dm9s42_tb is

@@ -6,7 +6,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-use work.misc.all;
+use work.misc.load_rom_file;
 
 entity sn74s472 is
   generic (fn : string := "");
