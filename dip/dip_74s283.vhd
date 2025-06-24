@@ -25,7 +25,7 @@ end entity;
 
 architecture dip of dip_74s283 is
 begin
-  U1 : sn74283
+  U1 : sn74s283
     port map (
       s1 => p1,
       b1 => p2,

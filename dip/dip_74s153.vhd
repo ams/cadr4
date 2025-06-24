@@ -25,7 +25,7 @@ end entity;
 
 architecture dip of dip_74s153 is
 begin
-  U1 : sn74153
+  U1 : sn74s153
     port map (
       sela   => p1,
       selb   => p15,

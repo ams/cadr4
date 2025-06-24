@@ -26,7 +26,7 @@ end dip_74ls109;
 
 architecture dip of dip_74ls109 is
 begin
-  U1 : sn74109
+  U1 : sn74ls109
     port map (
       clr1_n => p1,
       j1     => p2,

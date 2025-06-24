@@ -354,22 +354,6 @@ package dip is
     );
   end component;
 
-  component dip_74s11o is port (        -- sn7411 [74s11o]
-    p1  : in  std_logic;                -- g1a
-    p2  : in  std_logic;                -- g1b
-    p3  : in  std_logic;                -- g2a
-    p4  : in  std_logic;                -- g2b
-    p5  : in  std_logic;                -- g2c
-    p6  : out std_logic;                -- g2y
-    p8  : out std_logic;                -- g3y
-    p9  : in  std_logic;                -- g3a
-    p10 : in  std_logic;                -- g3b
-    p11 : in  std_logic;                -- g3c
-    p12 : out std_logic;                -- g1y
-    p13 : in  std_logic                 -- g1c
-    );
-  end component;
-
   component dip_74s133 is port (        -- sn74133 [74s133]
     p1  : in  std_logic;                -- g
     p2  : in  std_logic;                -- f
@@ -595,20 +579,6 @@ package dip is
   end component;
 
   component dip_74s20 is port (         -- sn7420 [74s20]
-    p1  : in  std_logic;                -- g1a
-    p2  : in  std_logic;                -- g1b
-    p4  : in  std_logic;                -- g1c
-    p5  : in  std_logic;                -- g1d
-    p6  : out std_logic;                -- g1y_n
-    p8  : out std_logic;                -- g2y_n
-    p9  : in  std_logic;                -- g2a
-    p10 : in  std_logic;                -- g2b
-    p12 : in  std_logic;                -- g2c
-    p13 : in  std_logic                 -- g2d
-    );
-  end component;
-
-  component dip_74s20o is port (        -- sn7420 [74s20o]
     p1  : in  std_logic;                -- g1a
     p2  : in  std_logic;                -- g1b
     p4  : in  std_logic;                -- g1c
@@ -1125,11 +1095,15 @@ package dip is
     );
   end component;
 
+  -- these aliases are only because these have different bodies in drw files
+  -- they are exactly the same IC, just shown different visually in drw
   alias dip_74s00o is dip_74s00;
   alias dip_74s02o is dip_74s02;
   alias dip_74s04a is dip_74s04;
   alias dip_74s08o is dip_74s08;
   alias dip_74s10o is dip_74s10;
+  alias dip_74s11o is dip_74s11;
+  alias dip_74s20o is dip_74s20;
   alias dip_74s32o is dip_74s32;
   alias dip_74s32w is dip_74s32;
   alias dip_74s133o is dip_74s133;

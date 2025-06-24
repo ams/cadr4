@@ -5,8 +5,6 @@ library work;
 use work.sn74.all;
 
 entity dip_7428 is
-  -- p7 and p14 are gnd and vcc, sn7428(ttl) doesn't have gnd and vcc
-  -- so they are not mapped.
   port (
     p1  : out std_logic;
     p2  : in  std_logic;
