@@ -24,7 +24,7 @@ package fairchild is
       );
   end component;
 
-  component dm93s46
+  component dm93s46 is
     port (
       a5  : in  std_logic;
       a4  : in  std_logic;
@@ -43,7 +43,7 @@ package fairchild is
       );
   end component;
 
-  component dm9s42
+  component dm9s42 is
     port (
       g1a1 : in  std_logic;
       g1b1 : in  std_logic;
@@ -59,6 +59,25 @@ package fairchild is
       g2c2 : in  std_logic;
       g2d2 : in  std_logic;
       out2 : out std_logic
+      );
+  end component;
+
+  component dm93425a is
+    port (
+      a0   : in  std_logic;
+      a1   : in  std_logic;
+      a2   : in  std_logic;
+      a3   : in  std_logic;
+      a4   : in  std_logic;
+      a5   : in  std_logic;
+      a6   : in  std_logic;
+      a7   : in  std_logic;
+      a8   : in  std_logic;
+      a9   : in  std_logic;
+      ce_n : in  std_logic;
+      we_n : in  std_logic;
+      di   : in  std_logic;
+      do   : out std_logic
       );
   end component;
 

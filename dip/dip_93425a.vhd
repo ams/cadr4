@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 library work;
-use work.other.all;
+use work.fairchild.dm93425a;
 
 entity dip_93425a is
   port (
@@ -25,7 +25,7 @@ end entity;
 
 architecture dip of dip_93425a is
 begin
-  U1 : am93425a
+  U1 : dm93425a
     port map (
       ce_n => p1,
       a0   => p2,
