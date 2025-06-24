@@ -2,30 +2,12 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity am2147_tb is
-end am2147_tb;
+use work.intel.d2147;
 
-architecture beh of am2147_tb is
-  component am2147
-    port (
-      a0   : in  std_logic;
-      a1   : in  std_logic;
-      a2   : in  std_logic;
-      a3   : in  std_logic;
-      a4   : in  std_logic;
-      a5   : in  std_logic;
-      a6   : in  std_logic;
-      a7   : in  std_logic;
-      a8   : in  std_logic;
-      a9   : in  std_logic;
-      a10  : in  std_logic;
-      a11  : in  std_logic;
-      ce_n : in  std_logic;
-      di   : in  std_logic;
-      we_n : in  std_logic;
-      do   : out std_logic
-      );
-  end component;
+entity d2147_tb is
+end entity;
+
+architecture ttl of d2147_tb is
 
   signal addr : std_logic_vector(11 downto 0);
   signal ce_n : std_logic;
@@ -35,7 +17,7 @@ architecture beh of am2147_tb is
 
 begin
 
-  uut : am2147
+  uut : d2147
     port map (
       a0   => addr(0),
       a1   => addr(1),
@@ -132,4 +114,4 @@ begin
     wait;
   end process;
 
-end beh;
+end architecture;
