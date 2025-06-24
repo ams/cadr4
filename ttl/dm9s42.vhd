@@ -1,10 +1,12 @@
--- 4-wide 2-input AND-OR-INVERT gates
+-- Dual 4-2 Input AND-OR gates
+-- Fairchild 9S42
+-- doc/ttl/9s42.pdf
 
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity dm942 is
+entity dm9s42 is
   port (
     g1a1 : in  std_logic := 'H'; -- Pin 1
     g1b1 : in  std_logic := 'H'; -- Pin 2
@@ -21,9 +23,9 @@ entity dm942 is
     g2d2 : in  std_logic := 'H'; -- Pin 14
     out2 : out std_logic  -- Pin 15
     );
-end dm942;
+end entity;
 
-architecture ttl of dm942 is
+architecture ttl of dm9s42 is
 begin
 
   -- Gate 1: (g1a1 AND g1b1) OR (g2a1 AND g2b1 AND g2c1 AND g2d1)
@@ -32,4 +34,4 @@ begin
   -- Gate 2: (g1a2 AND g1b2) OR (g2a2 AND g2b2 AND g2c2 AND g2d2)
   out2 <= (g1a2 and g1b2) or (g2a2 and g2b2 and g2c2 and g2d2);
 
-end;
+end architecture;

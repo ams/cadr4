@@ -1,6 +1,6 @@
 -- High Speed 6-Bit Identity Comparator
--- National Semiconductor DM93S46
--- doc/ttl/dm93s46.pdf
+-- Fairchild Semiconductor 93S46
+-- doc/ttl/93s46.pdf
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -28,8 +28,7 @@ end entity;
 architecture ttl of dm93s46 is
 begin
 
-  -- according to the logic diagram on the datasheet
-  -- assumed to be handling metavalues as well
+  -- according to the logic equation on the datasheet
   eq <= enb and (
     (a0 xnor b0) and
     (a1 xnor b1) and

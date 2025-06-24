@@ -3,6 +3,8 @@ use ieee.std_logic_1164.all;
 
 package fairchild is
 
+  -- yes this one is not called dm93s28 but dm9328
+  -- it is listed as Fairchild  or AMD, I decided fairchild
   component dm9328 is
     port (
       clr_n  : in  std_logic;
@@ -41,7 +43,7 @@ package fairchild is
       );
   end component;
 
-  component dm942
+  component dm9s42
     port (
       g1a1 : in  std_logic;
       g1b1 : in  std_logic;
@@ -59,6 +61,5 @@ package fairchild is
       out2 : out std_logic
       );
   end component;
-  alias dm9s42_1 is dm942;
 
 end;

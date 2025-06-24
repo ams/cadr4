@@ -1,12 +1,12 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-use work.other.all;
+use work.fairchild.dm9s42;
 
 entity dm942_tb is
 end;
 
-architecture testbench of dm942_tb is
+architecture testbench of dm9s42_tb is
 
   signal g1a1 : std_logic;
   signal g1b1 : std_logic;
@@ -25,7 +25,7 @@ architecture testbench of dm942_tb is
 
 begin
 
-  uut : dm942 port map(
+  uut : dm9s42 port map(
     g1a1 => g1a1,
     g1b1 => g1b1,
     g2a1 => g2a1,
