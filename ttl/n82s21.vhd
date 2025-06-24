@@ -1,5 +1,11 @@
--- High Speed Write-While-Read 64-Bit Bipolar RAM (32x2 RAM)
--- Datasheet for DM8221 not found. This VHDL model might be based on a non-standard or custom implementation.
+-- 32x2 WWRM (Write-While-Read Memory) RAM
+-- Signetics (Philips) N82S21
+-- doc/ttl/n82s21.pdf (page B150)
+
+-- A Write While Read Memory element is a RAM provided with output latches,
+-- in such a way that (read out) data may be retained in the latches either 
+-- when the chip is disabled or when new information has to be written in 
+-- the memory.
 
 library ieee;
 use ieee.std_logic_1164.all;
