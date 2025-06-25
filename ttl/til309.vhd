@@ -31,13 +31,12 @@ begin
   process(all)
     variable disp : std_logic_vector(3 downto 0);
   begin
-    disp := reg;
     if to_x01(test_n) = '0' then
       disp := (others => '1');
     elsif to_x01(blank_n) = '0' then
       disp := (others => '0');
     else
-      disp := (others => 'X');
+      disp := reg;
     end if;
     l8 <= disp(3); l4 <= disp(2); l2 <= disp(1); l1 <= disp(0);
   end process;
