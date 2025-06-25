@@ -21,16 +21,22 @@ begin
          '1' when q_int = '0' else
          'X';  -- Unknown complement for X, U, Z, W states
 
-  process (all)
+  process (clk, clr)
   begin
+    -- Asynchronous clear (active low)
     if to_x01(clr) = '0' then
       q_int <= '0';
     elsif to_x01(clr) = 'X' then
       q_int <= 'X';
-    elsif is_x(clk) then
-      q_int <= 'X';
-    elsif rising_edge(clk) then
-      q_int <= d;
+    -- Handle clock edges
+    elsif clk'event then
+      if is_x(clk) or is_x(clk'last_value) then
+        -- Clock transition involving metavalue - output becomes unknown
+        q_int <= 'X';
+      elsif clk = '1' and clk'last_value = '0' then
+        -- Valid rising edge
+        q_int <= d;
+      end if;
     end if;
   end process;
 end;
