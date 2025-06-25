@@ -27,9 +27,9 @@ end;
 architecture ttl of sn74175 is
 begin
 
-  u0 : entity work.ff_dc port map (clk => clk, clr => clr_n, d => d0, q => q0, q_n => q0_n);
-  u1 : entity work.ff_dc port map (clk => clk, clr => clr_n, d => d1, q => q1, q_n => q1_n);
-  u2 : entity work.ff_dc port map (clk => clk, clr => clr_n, d => d2, q => q2, q_n => q2_n);
-  u3 : entity work.ff_dc port map (clk => clk, clr => clr_n, d => d3, q => q3, q_n => q3_n);
+  u0 : entity work.ff_dpc port map (clk => clk, clr => clr_n, d => d0, q => q0, q_n => q0_n, enb_n => '0', pre => '1');
+  u1 : entity work.ff_dpc port map (clk => clk, clr => clr_n, d => d1, q => q1, q_n => q1_n, enb_n => '0', pre => '1');
+  u2 : entity work.ff_dpc port map (clk => clk, clr => clr_n, d => d2, q => q2, q_n => q2_n, enb_n => '0', pre => '1');
+  u3 : entity work.ff_dpc port map (clk => clk, clr => clr_n, d => d3, q => q3, q_n => q3_n, enb_n => '0', pre => '1');
 
 end;

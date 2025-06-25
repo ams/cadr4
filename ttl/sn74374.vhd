@@ -31,14 +31,14 @@ architecture ttl of sn74374 is
 begin
 
   -- 8 D flip-flops
-  u0 : entity work.ff_d port map (clk => clk, d => i0, q => q_int(0), q_n => open);
-  u1 : entity work.ff_d port map (clk => clk, d => i1, q => q_int(1), q_n => open);
-  u2 : entity work.ff_d port map (clk => clk, d => i2, q => q_int(2), q_n => open);
-  u3 : entity work.ff_d port map (clk => clk, d => i3, q => q_int(3), q_n => open);
-  u4 : entity work.ff_d port map (clk => clk, d => i4, q => q_int(4), q_n => open);
-  u5 : entity work.ff_d port map (clk => clk, d => i5, q => q_int(5), q_n => open);
-  u6 : entity work.ff_d port map (clk => clk, d => i6, q => q_int(6), q_n => open);
-  u7 : entity work.ff_d port map (clk => clk, d => i7, q => q_int(7), q_n => open);
+  u0 : entity work.ff_dpc port map (clk => clk, d => i0, q => q_int(0), q_n => open, enb_n => oenb_n, pre => '1', clr => '1');
+  u1 : entity work.ff_dpc port map (clk => clk, d => i1, q => q_int(1), q_n => open, enb_n => oenb_n, pre => '1', clr => '1');
+  u2 : entity work.ff_dpc port map (clk => clk, d => i2, q => q_int(2), q_n => open, enb_n => oenb_n, pre => '1', clr => '1');
+  u3 : entity work.ff_dpc port map (clk => clk, d => i3, q => q_int(3), q_n => open, enb_n => oenb_n, pre => '1', clr => '1');
+  u4 : entity work.ff_dpc port map (clk => clk, d => i4, q => q_int(4), q_n => open, enb_n => oenb_n, pre => '1', clr => '1');
+  u5 : entity work.ff_dpc port map (clk => clk, d => i5, q => q_int(5), q_n => open, enb_n => oenb_n, pre => '1', clr => '1');
+  u6 : entity work.ff_dpc port map (clk => clk, d => i6, q => q_int(6), q_n => open, enb_n => oenb_n, pre => '1', clr => '1');
+  u7 : entity work.ff_dpc port map (clk => clk, d => i7, q => q_int(7), q_n => open, enb_n => oenb_n, pre => '1', clr => '1');
 
   -- Output enable process: controls 3-state outputs
   process (all)

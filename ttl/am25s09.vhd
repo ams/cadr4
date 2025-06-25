@@ -31,15 +31,15 @@ architecture ttl of am25s09 is
 begin
 
   i0 <= a1 when to_x01(sel) = '1' else a0 when to_x01(sel) = '0' else 'X';
-  u0 : entity work.ff_d port map (clk => clk, d => i0, q => aq, q_n => open);
+  u0 : entity work.ff_dpc port map (clk => clk, d => i0, q => aq, q_n => open, enb_n => '0', pre => '1', clr => '1');
 
   i1 <= b1 when to_x01(sel) = '1' else b0 when to_x01(sel) = '0' else 'X';
-  u1 : entity work.ff_d port map (clk => clk, d => i1, q => bq, q_n => open);
+  u1 : entity work.ff_dpc port map (clk => clk, d => i1, q => bq, q_n => open, enb_n => '0', pre => '1', clr => '1');
 
   i2 <= c1 when to_x01(sel) = '1' else c0 when to_x01(sel) = '0' else 'X';
-  u2 : entity work.ff_d port map (clk => clk, d => i2, q => cq, q_n => open);
+  u2 : entity work.ff_dpc port map (clk => clk, d => i2, q => cq, q_n => open, enb_n => '0', pre => '1', clr => '1');
 
   i3 <= d1 when to_x01(sel) = '1' else d0 when to_x01(sel) = '0' else 'X';
-  u3 : entity work.ff_d port map (clk => clk, d => i3, q => dq, q_n => open);
+  u3 : entity work.ff_dpc port map (clk => clk, d => i3, q => dq, q_n => open, enb_n => '0', pre => '1', clr => '1');
 
 end architecture;

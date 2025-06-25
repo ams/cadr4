@@ -26,11 +26,11 @@ end;
 architecture ttl of sn74174 is
 begin
 
-  u1 : entity work.ff_dc port map (clk => clk, clr => clr_n, d => d1, q => q1, q_n => open);
-  u2 : entity work.ff_dc port map (clk => clk, clr => clr_n, d => d2, q => q2, q_n => open);
-  u3 : entity work.ff_dc port map (clk => clk, clr => clr_n, d => d3, q => q3, q_n => open);
-  u4 : entity work.ff_dc port map (clk => clk, clr => clr_n, d => d4, q => q4, q_n => open);
-  u5 : entity work.ff_dc port map (clk => clk, clr => clr_n, d => d5, q => q5, q_n => open);
-  u6 : entity work.ff_dc port map (clk => clk, clr => clr_n, d => d6, q => q6, q_n => open);
+  u1 : entity work.ff_dpc port map (clk => clk, clr => clr_n, d => d1, q => q1, q_n => open, enb_n => '0', pre => '1');
+  u2 : entity work.ff_dpc port map (clk => clk, clr => clr_n, d => d2, q => q2, q_n => open, enb_n => '0', pre => '1');
+  u3 : entity work.ff_dpc port map (clk => clk, clr => clr_n, d => d3, q => q3, q_n => open, enb_n => '0', pre => '1');
+  u4 : entity work.ff_dpc port map (clk => clk, clr => clr_n, d => d4, q => q4, q_n => open, enb_n => '0', pre => '1');
+  u5 : entity work.ff_dpc port map (clk => clk, clr => clr_n, d => d5, q => q5, q_n => open, enb_n => '0', pre => '1');
+  u6 : entity work.ff_dpc port map (clk => clk, clr => clr_n, d => d6, q => q6, q_n => open, enb_n => '0', pre => '1');
 
 end;

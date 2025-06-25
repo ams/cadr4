@@ -23,9 +23,9 @@ end;
 architecture ttl of sn7474 is
 begin
   -- first flip-flop
-  u1 : entity work.ff_dpc port map (clk => g1clk, pre => g1s_n, clr => g1r_n, d => g1d, q => g1q, q_n => g1q_n);
+  u1 : entity work.ff_dpc port map (clk => g1clk, pre => g1s_n, clr => g1r_n, d => g1d, q => g1q, q_n => g1q_n, enb_n => '0');
 
   -- second flip-flop
-  u2 : entity work.ff_dpc port map (clk => g2clk, pre => g2s_n, clr => g2r_n, d => g2d, q => g2q, q_n => g2q_n);
+  u2 : entity work.ff_dpc port map (clk => g2clk, pre => g2s_n, clr => g2r_n, d => g2d, q => g2q, q_n => g2q_n, enb_n => '0');
 
 end;

@@ -11,14 +11,16 @@ use ieee.std_logic_1164.all;
 entity ff_dpc is
   port (
     clk      : in  std_logic;
-    pre, clr : in  std_logic;
+    pre      : in  std_logic;
+    clr      : in  std_logic;
     d        : in  std_logic;
+    enb_n    : in  std_logic;
     q, q_n   : out std_logic
     );
 end;
 
 architecture ttl of ff_dpc is
-  signal q_int : std_logic;
+  signal q_int : std_logic := '0';
 begin
   q <= q_int;
   -- Proper complement handling for unknown states
@@ -38,8 +40,10 @@ begin
       q_int <= '0';
     elsif to_x01(pre) = 'X' or to_x01(clr) = 'X' then
       q_int <= 'X';
-    elsif rising_edge(clk) then
-      q_int <= d;
+    elsif to_x01(enb_n) = '0' then
+      if rising_edge(clk) then
+        q_int <= d;
+      end if;
     end if;
   end process;
 end; 

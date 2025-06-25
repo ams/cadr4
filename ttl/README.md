@@ -112,7 +112,7 @@ The components with open-collector outputs can only drive output to 0 or Z. An e
 
 # Notes on ff_ Usage
 
-FFs and Registers use general ff_ components. However, the following components are not using ff_ components:
+FFs and Registers use general ff_dpc and ff_jkpc components. However, the following components are not using them:
 
 - dm9328 (shift register)
 - sn74169 (up-down binary counter)

@@ -42,10 +42,10 @@ architecture ttl of am25ls2519 is
   signal q0, q1, q2, q3 : std_logic;
 begin
 
-  u1 : entity work.ff_d port map (clk => cp, d => d0, q => q0, q_n => open, enb_n => e_n);
-  u2 : entity work.ff_d port map (clk => cp, d => d1, q => q1, q_n => open, enb_n => e_n);
-  u3 : entity work.ff_d port map (clk => cp, d => d2, q => q2, q_n => open, enb_n => e_n);
-  u4 : entity work.ff_d port map (clk => cp, d => d3, q => q3, q_n => open, enb_n => e_n);
+  u1 : entity work.ff_dpc port map (clk => cp, d => d0, q => q0, q_n => open, enb_n => e_n, pre => '1', clr => clr_n);
+  u2 : entity work.ff_dpc port map (clk => cp, d => d1, q => q1, q_n => open, enb_n => e_n, pre => '1', clr => clr_n);
+  u3 : entity work.ff_dpc port map (clk => cp, d => d2, q => q2, q_n => open, enb_n => e_n, pre => '1', clr => clr_n);
+  u4 : entity work.ff_dpc port map (clk => cp, d => d3, q => q3, q_n => open, enb_n => e_n, pre => '1', clr => clr_n);
 
   process (all)
   begin
