@@ -117,4 +117,5 @@ FFs and Registers use general ff_ components. However, the following components 
 - dm9328 (shift register)
 - sn74169 (up-down binary counter)
 - sn74194 (shift register)
+- sn74373 (d-type transparent latch)
 - til309 (numeric display with logic)

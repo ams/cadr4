@@ -29,10 +29,15 @@ begin
   process (clk, pre, clr)
     variable jk : std_logic_vector(1 downto 0);
   begin
-    if to_x01(pre) = '0' then
+    -- conflicting inputs ?
+    if to_x01(pre) = '0' and to_x01(clr) = '0' then
+      q_int <= 'X';
+    -- preset
+    elsif to_x01(pre) = '0' then
       q_int <= '1';  -- Preset to 1
     elsif to_x01(pre) = 'X' then
       q_int <= 'X';
+    -- clear
     elsif to_x01(clr) = '0' then
       q_int <= '0';  -- Clear to 0
     elsif to_x01(clr) = 'X' then

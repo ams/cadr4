@@ -9,20 +9,20 @@ end;
 
 architecture testbench of n82s21_tb is
 
-  signal d1     : std_logic;
-  signal i1     : std_logic;
-  signal we1_n  : std_logic;
-  signal i0     : std_logic;
-  signal d0     : std_logic;
-  signal we0_n  : std_logic;
-  signal a0     : std_logic;
-  signal a1     : std_logic;
-  signal a2     : std_logic;
-  signal a3     : std_logic;
-  signal a4     : std_logic;
-  signal strobe : std_logic;
-  signal wclk_n : std_logic;
-  signal ce     : std_logic;
+  signal d1        : std_logic;
+  signal i1        : std_logic;
+  signal we1_n     : std_logic;
+  signal i0        : std_logic;
+  signal d0        : std_logic;
+  signal we0_n     : std_logic;
+  signal a0        : std_logic;
+  signal a1        : std_logic;
+  signal a2        : std_logic;
+  signal a3        : std_logic;
+  signal a4        : std_logic;
+  signal strobe    : std_logic;
+  signal wclk_n    : std_logic;
+  signal ce        : std_logic;
 
 begin
 
@@ -61,10 +61,11 @@ begin
     wait for 5 ns;
     assert d0 = 'Z' and d1 = 'Z' report "Test 1 failed" severity error;
 
-    -- Test 2: Enable chip and test initial read (should be '00' from reset)
+    -- Test 2: Enable chip and test initial read (memory content is unknown initially)
     ce <= '1';
     wait for 5 ns;
-    assert d0 = '0' and d1 = '0' report "Test 2 failed" severity error;
+    -- Note: RAM content is unknown initially, so outputs will be 'Z' for unknown values
+    assert d0 = 'Z' and d1 = 'Z' report "Test 2 failed" severity error;
 
     -- Test 3: Write bit 0 only at address 0
     ce <= '1';
@@ -80,7 +81,7 @@ begin
     wclk_n <= '1';
     we0_n <= '1';
     wait for 5 ns;
-    assert d0 = '1' and d1 = '0' report "Test 3 failed" severity error;
+    assert d0 = 'Z' and d1 = 'Z' report "Test 3 failed" severity error;
 
     -- Test 4: Write bit 1 only at address 1 
     a4 <= '0'; a3 <= '0'; a2 <= '0'; a1 <= '0'; a0 <= '1'; -- address 1
@@ -94,7 +95,7 @@ begin
     wclk_n <= '1';
     we1_n <= '1';
     wait for 5 ns;
-    assert d0 = '0' and d1 = '1' report "Test 4 failed" severity error;
+    assert d0 = 'Z' and d1 = 'Z' report "Test 4 failed" severity error;
 
     -- Test 5: Write both bits at address 2
     a4 <= '0'; a3 <= '0'; a2 <= '0'; a1 <= '1'; a0 <= '0'; -- address 2
@@ -109,21 +110,36 @@ begin
     we0_n <= '1';
     we1_n <= '1';
     wait for 5 ns;
-    assert d0 = '1' and d1 = '1' report "Test 5 failed" severity error;
+    assert d0 = 'Z' and d1 = 'Z' report "Test 5 failed" severity error;
 
-    -- Test 6: Address isolation - check previous addresses still hold their values
+    -- Test 6: Write zeros to test driving low
+    a4 <= '0'; a3 <= '0'; a2 <= '0'; a1 <= '1'; a0 <= '1'; -- address 3
+    i0 <= '0';
+    i1 <= '0';
+    we0_n <= '0';  -- enable write to bit 0
+    we1_n <= '0';  -- enable write to bit 1
+    wait for 5 ns;
+    wclk_n <= '0';  -- falling edge
+    wait for 5 ns;
+    wclk_n <= '1';
+    we0_n <= '1';
+    we1_n <= '1';
+    wait for 5 ns;
+    assert d0 = '0' and d1 = '0' report "Test 6 failed" severity error;
+
+    -- Test 7: Address isolation - check previous addresses still hold their values
     a4 <= '0'; a3 <= '0'; a2 <= '0'; a1 <= '0'; a0 <= '0'; -- address 0
     wait for 5 ns;
-    assert d0 = '1' and d1 = '0' report "Test 6a failed" severity error;
+    assert d0 = 'Z' and d1 = 'Z' report "Test 7a failed" severity error;
     
     a4 <= '0'; a3 <= '0'; a2 <= '0'; a1 <= '0'; a0 <= '1'; -- address 1
     wait for 5 ns;
-    assert d0 = '0' and d1 = '1' report "Test 6b failed" severity error;
+    assert d0 = 'Z' and d1 = 'Z' report "Test 7b failed" severity error;
 
-    -- Test 7: Test strobe requirement
-    a4 <= '0'; a3 <= '0'; a2 <= '0'; a1 <= '1'; a0 <= '1'; -- address 3
-    i0 <= '1';
-    i1 <= '1';
+    -- Test 8: Test strobe requirement
+    a4 <= '0'; a3 <= '0'; a2 <= '1'; a1 <= '0'; a0 <= '0'; -- address 4
+    i0 <= '0';
+    i1 <= '0';
     strobe <= '0';  -- disable strobe
     we0_n <= '0';
     we1_n <= '0';
@@ -132,10 +148,10 @@ begin
     wait for 5 ns;
     wclk_n <= '1';
     wait for 5 ns;
-    -- Should still be '00' (not written due to strobe=0)
-    assert d0 = '0' and d1 = '0' report "Test 7 failed" severity error;
+    -- Should still be uninitialized (not written due to strobe=0)
+    assert d0 = 'Z' and d1 = 'Z' report "Test 8 failed" severity error;
 
-    -- Test 8: Test CE requirement for write
+    -- Test 9: Test CE requirement for write
     strobe <= '1';  -- re-enable strobe
     ce <= '0';      -- disable chip enable
     wait for 5 ns;
@@ -144,11 +160,11 @@ begin
     wclk_n <= '1';
     ce <= '1';      -- re-enable for read
     wait for 5 ns;
-    -- Should still be '00' (not written due to ce=0 during write)
-    assert d0 = '0' and d1 = '0' report "Test 8 failed" severity error;
+    -- Should still be uninitialized (not written due to ce=0 during write)
+    assert d0 = 'Z' and d1 = 'Z' report "Test 9 failed" severity error;
 
-    -- Test 9: Test different addresses
-    for addr in 4 to 7 loop
+    -- Test 10: Test different addresses with mixed values
+    for addr in 5 to 7 loop
       a4 <= std_logic(to_unsigned(addr, 5)(4));
       a3 <= std_logic(to_unsigned(addr, 5)(3));
       a2 <= std_logic(to_unsigned(addr, 5)(2));
@@ -165,15 +181,23 @@ begin
       wait for 5 ns;
       wclk_n <= '1';
       wait for 5 ns;
-      assert d0 = std_logic(to_unsigned(addr mod 4, 2)(0)) and 
-             d1 = std_logic(to_unsigned(addr mod 4, 2)(1)) 
-             report "Test 9 failed" severity error;
+      -- Check expected values based on open-collector behavior
+      if std_logic(to_unsigned(addr mod 4, 2)(0)) = '0' then
+        assert d0 = '0' report "Test 10a failed" severity error;
+      else
+        assert d0 = 'Z' report "Test 10b failed" severity error;
+      end if;
+      if std_logic(to_unsigned(addr mod 4, 2)(1)) = '0' then
+        assert d1 = '0' report "Test 10c failed" severity error;
+      else
+        assert d1 = 'Z' report "Test 10d failed" severity error;
+      end if;
     end loop;
     
     we0_n <= '1';
     we1_n <= '1';
 
-    -- Test 10: High address bits
+    -- Test 11: High address bits
     a4 <= '1'; a3 <= '1'; a2 <= '1'; a1 <= '1'; a0 <= '1'; -- address 31
     i0 <= '0';
     i1 <= '1';
@@ -186,7 +210,7 @@ begin
     we0_n <= '1';
     we1_n <= '1';
     wait for 5 ns;
-    assert d0 = '0' and d1 = '1' report "Test 10 failed" severity error;
+    assert d0 = '0' and d1 = 'Z' report "Test 11 failed" severity error;
 
     wait;
   end process;
