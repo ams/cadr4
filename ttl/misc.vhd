@@ -6,27 +6,14 @@ use ieee.std_logic_textio.all;
 
 package misc is
 
+  constant gnd : std_logic := '0';
+
   procedure clkgen(signal clk : out std_logic; constant frequency : real);
   function pullup(s   : std_logic) return std_logic;
   function pulldown(s : std_logic) return std_logic;
   
   -- Generic ROM loading function
-  impure function load_rom_file(filename : string) return std_logic_vector;
-
-  constant gnd : std_logic := '0';
-  constant vcc : std_logic := '1';
-  constant hi1 : std_logic := '1';
-  constant hi2 : std_logic := '1';
-  constant hi3 : std_logic := '1';
-  constant hi4 : std_logic := '1';
-  constant hi5 : std_logic := '1';
-  constant hi6 : std_logic := '1';
-  constant hi7 : std_logic := '1';
-  constant hi8 : std_logic := '1';
-  constant hi9 : std_logic := '1';
-  constant hi10 : std_logic := '1';
-  constant hi11 : std_logic := '1';
-  constant hi12 : std_logic := '1';
+  impure function load_rom_file(filename : string) return std_logic_vector;  
 
 end;
 
