@@ -23,15 +23,17 @@ architecture dip of dip_74s51 is
 begin
   U1 : sn74s51
     port map (
-      g1a => p1,
-      g1b => p13,
-      g1c => p9,
-      g1d => p10,
-      g1y => p8,
-      g2a => p2,
-      g2b => p3,
-      g2c => p4,
-      g2d => p5,
-      g2y => p6
+      g1a => p2,
+      g1b => p3,
+      g1c => p4,
+      g1d => p5,
+      g1y => p6,
+
+      g2a => p9,
+      g2b => p10,
+      g2c => p13,
+      g2d => p1,
+      g2y => p8
+
       );
 end architecture;
