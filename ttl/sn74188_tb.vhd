@@ -54,6 +54,7 @@ begin
   process
     variable addr : unsigned(4 downto 0);
     variable expected_data : std_logic_vector(7 downto 0);
+    variable actual_data : std_logic_vector(7 downto 0);
   begin
     ce_n <= '0';
     for i in 0 to 31 loop
@@ -65,7 +66,18 @@ begin
       a0 <= addr(0);
       wait for 1 ns;
       expected_data := expected(i * 8 + 7 downto i * 8);
-      assert (o7 & o6 & o5 & o4 & o3 & o2 & o1 & o0) = expected_data
+      
+      -- Convert open-collector outputs: 'Z' means '1', '0' means '0'
+      actual_data(7) := '1' when o7 = 'Z' else '0';
+      actual_data(6) := '1' when o6 = 'Z' else '0';
+      actual_data(5) := '1' when o5 = 'Z' else '0';
+      actual_data(4) := '1' when o4 = 'Z' else '0';
+      actual_data(3) := '1' when o3 = 'Z' else '0';
+      actual_data(2) := '1' when o2 = 'Z' else '0';
+      actual_data(1) := '1' when o1 = 'Z' else '0';
+      actual_data(0) := '1' when o0 = 'Z' else '0';
+      
+      assert actual_data = expected_data
         report "Mismatch at address " & integer'image(i)
         severity error;
     end loop;
