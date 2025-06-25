@@ -6,8 +6,6 @@ use work.sn74.sn74s188;
 
 entity dip_5600 is
   generic (fn : string := "");
-  -- p8 and p16 are gnd and vcc, im5600(ttl) doesn't have gnd and vcc
-  -- so they are not mapped.
   port (
     p1  : out std_logic;
     p2  : out std_logic;
