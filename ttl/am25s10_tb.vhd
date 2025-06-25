@@ -62,17 +62,17 @@ begin
     assert o0 = '1' and o1 = '0' and o2 = '0' and o3 = '0'
       report "Test 1 failed: sel=00, expected o3o2o1o0=0001" severity error;
 
-    -- Test 2: sel="01" - shift right by 1 (sel0=0, sel1=1)
+    -- Test 2: sel="10" - shift right by 2 (sel1=1, sel0=0)
     sel1 <= '1'; sel0 <= '0';
     wait for 10 ns;
-    assert o0 = '1' and o1 = '1' and o2 = '0' and o3 = '0'
-      report "Test 2 failed: sel=01, expected o3o2o1o0=0011" severity error;
+    assert o0 = '1' and o1 = '1' and o2 = '1' and o3 = '0'
+      report "Test 2 failed: sel=10, expected o3o2o1o0=0111" severity error;
 
-    -- Test 3: sel="10" - shift right by 2 (sel0=1, sel1=0)
+    -- Test 3: sel="01" - shift right by 1 (sel1=0, sel0=1)
     sel1 <= '0'; sel0 <= '1';
     wait for 10 ns;
-    assert o0 = '1' and o1 = '1' and o2 = '1' and o3 = '0'
-      report "Test 3 failed: sel=10, expected o3o2o1o0=0111" severity error;
+    assert o0 = '1' and o1 = '1' and o2 = '0' and o3 = '0'
+      report "Test 3 failed: sel=01, expected o3o2o1o0=0011" severity error;
 
     -- Test 4: sel="11" - shift right by 3 (sel0=1, sel1=1)
     sel1 <= '1'; sel0 <= '1';
@@ -95,11 +95,11 @@ begin
     assert o0 = '0' and o1 = '1' and o2 = '0' and o3 = '1'
       report "Test 6 failed: sel=00 with pattern 1010" severity error;
 
-    -- Test 7: Same pattern with shift right by 2 (sel0=1, sel1=0)
+    -- Test 7: Same pattern with shift right by 1 (sel1=0, sel0=1)
     sel1 <= '0'; sel0 <= '1';
     wait for 10 ns;
-    assert o0 = '0' and o1 = '1' and o2 = '0' and o3 = '1'
-      report "Test 7 failed: sel=10 with shift by 2" severity error;
+    assert o0 = '1' and o1 = '0' and o2 = '1' and o3 = '0'
+      report "Test 7 failed: sel=01 with shift by 1" severity error;
 
     wait;
   end process;

@@ -27,21 +27,22 @@ end entity;
 
 architecture ttl of am25s10 is
 begin
-
   process (all)
     variable sel : unsigned(1 downto 0);
   begin    
     if to_x01(ce_n) = '0' then
-      sel := sel0 & sel1;
+      sel := sel1 & sel0;
       case sel is
-        when "00"   => o0 <= i0; o1 <= i1; o2 <= i2; o3 <= i3;
-        when "01"   => o0 <= i_1; o1 <= i0; o2 <= i1; o3 <= i2;
-        when "10"   => o0 <= i_2; o1 <= i_1; o2 <= i0; o3 <= i1;
-        when "11"   => o0 <= i_3; o1 <= i_2; o2 <= i_1; o3 <= i0;
-        when others => o0 <= 'X'; o1 <= 'X'; o2 <= 'X'; o3 <= 'X';
+        when "00"   => o3 <= i3;  o2 <= i2;  o1 <= i1;  o0 <= i0;    -- no shift
+        when "01"   => o3 <= i2;  o2 <= i1;  o1 <= i0;  o0 <= i_1;   -- shift right by 1
+        when "10"   => o3 <= i1;  o2 <= i0;  o1 <= i_1; o0 <= i_2;   -- shift right by 2
+        when "11"   => o3 <= i0;  o2 <= i_1; o1 <= i_2; o0 <= i_3;   -- shift right by 3
+        when others => o3 <= 'X'; o2 <= 'X'; o1 <= 'X'; o0 <= 'X';
       end case;
-    else
+    elsif to_x01(ce_n) = '1' then
       o0 <= 'Z'; o1 <= 'Z'; o2 <= 'Z'; o3 <= 'Z';
+    else
+      o0 <= 'X'; o1 <= 'X'; o2 <= 'X'; o3 <= 'X';
     end if;
   end process;
 

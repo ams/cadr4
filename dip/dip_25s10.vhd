@@ -27,19 +27,22 @@ architecture dip of dip_25s10 is
 begin
   U1 : am25s10
     port map (
-      i_3  => p1,
-      i_2  => p2,
-      i_1  => p3,
-      i0   => p4,
-      i1   => p5,
-      i2   => p6,
       i3   => p7,
+      i2   => p6,
+      i1   => p5,
+      i0   => p4,
+      i_1  => p3,
+      i_2  => p2,
+      i_3  => p1,
+
+      o3   => p11,
+      o2   => p12,      
+      o1   => p14,
+      o0   => p15,
+
       sel1 => p9,
       sel0 => p10,
-      o3   => p11,
-      o2   => p12,
-      ce_n => p13,
-      o1   => p14,
-      o0   => p15
+
+      ce_n => p13
       );
 end architecture;
