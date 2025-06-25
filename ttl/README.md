@@ -93,22 +93,32 @@ All ICs with open collector outputs are explicitly indicated.
 
 ## RAM & PROM
 
+### RAM
+
 - d2147: 4096x1 RAM with tri-state outputs 
 - dm93425a: 1024x1 RAM with tri-state outputs
 - n82s21: 32x2 RAM with open-collector outputs
+
+### PROM
+
 - sn74188: 32x8 PROM with open-collector outputs (replaces IM5600)
 - sn74288: 32x8 PROM with tri-state outputs (replaces IM5610)
 - sn74472: 512x8 PROM with tri-state outputs
 
-## Complex Logic (arithmetic, parity etc.)
+## Arithmetic and Parity
+
+### Arithmetic
 
 - am25s10: 4-bit shifter
-- am93s48: 12-bit odd/even parity generator/checker
 - dm93s46: 6-bit identify comparator
 - sn74181: 4-bit ALU
 - sn74182: look-ahead carry generator
-- sn74280: 9-bit odd/even parity generator/checker
 - sn74283: 4-bit binary full adder with fast carry
+
+### Parity Generator/Checker
+
+- am93s48: 12-bit odd/even parity generator/checker
+- sn74280: 9-bit odd/even parity generator/checker
 
 ## Special
 
@@ -136,4 +146,4 @@ FFs and Registers use general ff_dpc and ff_jkpc components. However, the follow
 
 # Notes on Initialization
 
-CADR reset is strange. It looks like not all the required things are reset on power on reset (e.g. D_FF for IR25 driving -ILONG required for clock to tick). Because of this, the initial state of all components other than classical RAMs and PROMs are initialized to zero. This includes ff_dpc, ff_jkpc and all the components in FFs, Registers and Counters section above.
+CADR reset is strange. It looks like not all the required things are reset on power on reset (e.g. D_FF for IR25 driving -ILONG required for clock to tick). Because of this, the initial state of all components other than classical RAMs and PROMs are initialized to zero. This includes ff_dpc, ff_jkpc and all the components in FFs, Registers and Counters section above and all RAMs. PROMs are initialized from hex files.
