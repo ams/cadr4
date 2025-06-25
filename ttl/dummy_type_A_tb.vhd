@@ -27,6 +27,7 @@ begin
   process
   begin
     -- Test static outputs
+    wait for 1 ns;
     assert hi1 = 'H' report "hi1 should be 'H'";
     assert hi2 = 'H' report "hi2 should be 'H'";
     assert \-boot1\ = 'H' report "-boot1 should be 'H'";
