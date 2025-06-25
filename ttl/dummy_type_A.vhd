@@ -4,17 +4,17 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
---   ________    
--- 1:|1K ohm|16:
--- 2:|1K ohm|15:
--- 3:|1K ohm|14:
--- 4:|1K ohm|13:
--- 5:|5K ohm|12:
--- 6:|      |11:
--- 7:|10Kohm|10:
--- 8:| 82 uF|9:
---   -------- 
---    type A  
+--           ________    
+-- vcc --- 1:|1K ohm|16: -- hi1
+--      |- 2:|1K ohm|15: -- hi2
+--      |- 3:|1K ohm|14: -- \-boot1\
+--      |- 4:|1K ohm|13: -- \-boot2\
+--      -- 5:|5K ohm|12: -- \-power reset\ (inverters are removed from olord2)
+--         6:|      |11:
+-- gnd -|- 7:|10Kohm|10: -|
+--      -- 8:| 82 uF|9:  --
+--           -------- 
+--            type A  
 
 entity dummy_type_A is
   port (
