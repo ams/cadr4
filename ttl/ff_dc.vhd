@@ -28,15 +28,8 @@ begin
       q_int <= '0';
     elsif to_x01(clr) = 'X' then
       q_int <= 'X';
-    -- Handle clock edges
-    elsif clk'event then
-      if is_x(clk) or is_x(clk'last_value) then
-        -- Clock transition involving metavalue - output becomes unknown
-        q_int <= 'X';
-      elsif clk = '1' and clk'last_value = '0' then
-        -- Valid rising edge
-        q_int <= d;
-      end if;
+    elsif rising_edge(clk) then
+      q_int <= d;
     end if;
   end process;
 end;

@@ -43,10 +43,10 @@ begin
         cnt      <= load_val;
 
       -- otherwise count when both enables are asserted (low)
-      elsif (enb_t_n = '0' and enb_p_n = '0') then
-        if up_dn = '1' then
+      elsif (to_x01(enb_t_n) = '0' and to_x01(enb_p_n) = '0') then
+        if to_x01(up_dn) = '1' then
           cnt <= cnt + 1;               -- up-count (wraps 15→0)
-        else
+        elsif to_x01(up_dn) = '0' then
           cnt <= cnt - 1;               -- down-count (wraps 0→15)
         end if;
       end if;
@@ -78,9 +78,9 @@ begin
     
     -- Check if counter is at terminal count (only if counter is valid)
     if cnt_is_valid then
-      if up_dn = '1' then
+      if to_x01(up_dn) = '1' then
         at_terminal_count := (cnt = to_unsigned(MAX_COUNT, COUNT_WIDTH));  -- up-count terminal
-      else
+      elsif to_x01(up_dn) = '0' then
         at_terminal_count := (cnt = to_unsigned(MIN_COUNT, COUNT_WIDTH));   -- down-count terminal
       end if;
     else
@@ -88,10 +88,10 @@ begin
     end if;
     
     -- Check if loading a terminal count value
-    if load_n = '0' then
-      if up_dn = '1' then
+    if to_x01(load_n) = '0' then
+      if to_x01(up_dn) = '1' then
         loading_terminal_count := (unsigned(std_logic_vector'(i3 & i2 & i1 & i0)) = to_unsigned(MAX_COUNT, COUNT_WIDTH));
-      else
+      elsif to_x01(up_dn) = '0' then
         loading_terminal_count := (unsigned(std_logic_vector'(i3 & i2 & i1 & i0)) = to_unsigned(MIN_COUNT, COUNT_WIDTH));
       end if;
     else
@@ -99,7 +99,7 @@ begin
     end if;
     
     -- Generate carry-out (active low)
-    if (enb_t_n = '0' and enb_p_n = '0') and (at_terminal_count or loading_terminal_count) then
+    if (to_x01(enb_t_n) = '0' and to_x01(enb_p_n) = '0') and (at_terminal_count or loading_terminal_count) then
       co_n <= '0';  -- Active low terminal count
     else
       co_n <= '1';  -- Not at terminal count

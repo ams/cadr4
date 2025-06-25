@@ -96,11 +96,12 @@ begin
     wait for CLK_PERIOD / 4;
     clr <= '1';
     
-    -- Test 9: Test unknown clock handling
-    d <= '1';
+    -- Test 9: Test unknown clock handling (realistic TTL behavior)
+    -- Unknown clock should not produce a valid edge, so flip-flop maintains state
+    d <= '1';  -- Set command (but won't execute due to unknown clock)
     clk <= 'X';
     wait for CLK_PERIOD / 4;
-    assert q = 'X' and q_n = 'X' report "Unknown clock should produce X" severity error;
+    assert q = '0' and q_n = '1' report "Unknown clock should maintain previous state" severity error;
     
     -- Resume normal clock
     clk <= '0';

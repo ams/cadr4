@@ -138,17 +138,18 @@ begin
     wait for 2 ns;
     assert q = 'X' and q_n = 'X' report "Unknown J and K inputs should produce X";
 
-    -- Reset to known state
+    -- Reset to known state  
     j <= '0'; k <= '1';
     clk <= '1'; wait for 1 ns; clk <= '0';
     wait for 2 ns;
 
-    -- Test 13: Test unknown clock handling
-    j <= '1'; k <= '0';
+    -- Test 13: Test unknown clock handling (realistic TTL behavior)
+    -- Unknown clock should not produce a valid edge, so flip-flop maintains state
+    j <= '1'; k <= '0';  -- Set command (but won't execute due to unknown clock)
     wait for 1 ns;
     clk <= 'X'; wait for 1 ns; clk <= '0';
     wait for 2 ns;
-    assert q = 'X' and q_n = 'X' report "Unknown clock should produce X";
+    assert q = '0' and q_n = '1' report "Unknown clock should maintain previous state";
 
     -- Test 14: Test U input handling - J uninitialized
     j <= 'U'; k <= '0';

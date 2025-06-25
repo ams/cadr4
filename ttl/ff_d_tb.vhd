@@ -57,10 +57,16 @@ begin
     clk <= '1'; wait for 1 ns; clk <= '0'; wait for 1 ns;
     assert q = 'U' and q_n = 'X' report "Uninitialized D input should produce U and X";
 
-    -- Test 7: Test unknown clock handling
+    -- Test 7: Test unknown clock handling - should maintain previous state
+    -- Set a known state first
     d <= '1';
+    clk <= '1'; wait for 1 ns; clk <= '0'; wait for 1 ns;
+    assert q = '1' and q_n = '0' report "Setup for unknown clock test failed";
+    
+    -- Now test unknown clock - should maintain previous state
+    d <= '0';  -- Change D, but unknown clock shouldn't clock it in
     clk <= 'X'; wait for 1 ns; clk <= '0'; wait for 1 ns;
-    assert q = 'X' and q_n = 'X' report "Unknown clock should produce X";
+    assert q = '1' and q_n = '0' report "Unknown clock should maintain previous state, not change output";
 
     -- Test 8: Multiple rapid D changes (only last value before clock should matter)
     d <= '0';

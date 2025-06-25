@@ -109,10 +109,11 @@ begin
     j <= '0'; k <= '0';
     clr <= '0'; wait for 1 ns; clr <= '1'; wait for 1 ns;
 
-    -- Test 13: Test unknown clock handling
-    j <= '1'; k <= '0';
+    -- Test 13: Test unknown clock handling (realistic TTL behavior)
+    -- Unknown clock should not produce a valid edge, so flip-flop maintains state
+    j <= '1'; k <= '0';  -- Set command (but won't execute due to unknown clock)
     clk <= 'X'; wait for 1 ns; clk <= '0'; wait for 1 ns;
-    assert q = 'X' and q_n = 'X' report "Unknown clock should produce X";
+    assert q = '0' and q_n = '1' report "Unknown clock should maintain previous state";
 
     -- Test 14: Test unknown preset signal
     pre <= 'X'; clr <= '1';

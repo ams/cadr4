@@ -33,7 +33,7 @@ begin
   begin
     if to_x01(clr_n) = '0' then
       reg <= (others => '0');
-    elsif is_x(clk) then
+    elsif to_x01(clr_n) = 'X' then
       reg <= (others => 'X');
     elsif rising_edge(clk) then
       sel := s1 & s0;
