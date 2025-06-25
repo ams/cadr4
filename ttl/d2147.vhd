@@ -29,7 +29,7 @@ end entity;
 
 architecture ttl of d2147 is
   type ram_t is array (0 to 4095) of std_logic;
-  signal ram : ram_t;
+  signal ram : ram_t := (others => '0');
 begin
   process (all)
     variable addr : unsigned(11 downto 0);
