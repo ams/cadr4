@@ -5,6 +5,8 @@ use work.helper.all;
 
 entity helper_required_signals is
   port (
+    -- mcpins
+    \-halt\: out std_logic := '1';
     -- mbcpin    
     mclk7: in std_logic;
     -- below are all spy related

@@ -4,6 +4,9 @@ use ieee.std_logic_1164.all;
 package helper is
   component helper_required_signals is
     port (
+      -- mcpins
+      \-halt\: out std_logic;
+      -- mbcpin
         mclk7: in std_logic;
     -- below are all spy related
     \-eadr0\: out std_logic;
