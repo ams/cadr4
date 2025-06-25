@@ -53,17 +53,17 @@ begin
     wait for 1 ns;
     assert ay = 'Z' and by = 'Z' and cy = 'Z' and dy = 'Z';
 
-    -- select input 0
+    -- select input 0 (outputs are inverted)
     enb_n <= '0'; sel <= '0';
     a0 <= '0'; b0 <= '1'; c0 <= '0'; d0 <= '1';
     wait for 1 ns;
-    assert ay = a0 and by = b0 and cy = c0 and dy = d0;
+    assert ay = (not a0) and by = (not b0) and cy = (not c0) and dy = (not d0);
 
-    -- select input 1
+    -- select input 1 (outputs are inverted)
     sel <= '1';
     a1 <= '1'; b1 <= '0'; c1 <= '1'; d1 <= '0';
     wait for 1 ns;
-    assert ay = a1 and by = b1 and cy = c1 and dy = d1;
+    assert ay = (not a1) and by = (not b1) and cy = (not c1) and dy = (not d1);
 
     wait;
   end process;
