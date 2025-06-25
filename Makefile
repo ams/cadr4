@@ -65,7 +65,7 @@ SET_SRCS := $(patsubst %,set/%.vhd, $(SETS)) $(CREATESETS_PACKAGEFILE) $(CREATES
 
 HELPER_SRCS := helper/helper.vhd helper/helper_required_signals.vhd
 
-TB_SRCS  := tb/mete_tb.vhd # tb/cadr_tb.vhd # $(wildcard tb/*_tb.vhd)
+TB_SRCS  := # tb/cadr_tb.vhd # $(wildcard tb/*_tb.vhd)
 
 # exes mean these are testbenches so these will be compiled into executables also
 TTL_EXES  := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard ttl/*_tb.vhd)))
