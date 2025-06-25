@@ -5,8 +5,9 @@ use ieee.std_logic_1164.all;
 
 entity ff_d is
   port (
-    clk    : in  std_logic;
-    d      : in  std_logic;
+    clk    : in  std_logic := 'H';
+    d      : in  std_logic := 'H';
+    enb_n  : in  std_logic := '0';
     q, q_n : out std_logic
     );
 end;
@@ -23,8 +24,12 @@ begin
 
   process (clk)
   begin
-    if rising_edge(clk) then
-      q_int <= d;
+    if to_x01(enb_n) = '0' then
+      if is_x(clk) then
+        q_int <= 'X';
+      elsif rising_edge(clk) then
+        q_int <= d;
+      end if;
     end if;
   end process;
 

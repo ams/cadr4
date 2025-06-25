@@ -26,13 +26,10 @@ end entity;
 
 architecture ttl of am25s07 is
 begin
-  process(all)
-  begin
-    if to_x01(enb_n) = '0' then
-      if rising_edge(clk) then
-        d0 <= i0; d1 <= i1; d2 <= i2;
-        d3 <= i3; d4 <= i4; d5 <= i5;
-      end if;
-    end if;
-  end process;
+  u1 : entity work.ff_d port map (clk => clk, d => i0, q => d0, q_n => open, enb_n => enb_n);
+  u2 : entity work.ff_d port map (clk => clk, d => i1, q => d1, q_n => open, enb_n => enb_n);
+  u3 : entity work.ff_d port map (clk => clk, d => i2, q => d2, q_n => open, enb_n => enb_n);
+  u4 : entity work.ff_d port map (clk => clk, d => i3, q => d3, q_n => open, enb_n => enb_n);
+  u5 : entity work.ff_d port map (clk => clk, d => i4, q => d4, q_n => open, enb_n => enb_n);
+  u6 : entity work.ff_d port map (clk => clk, d => i5, q => d5, q_n => open, enb_n => enb_n);
 end architecture;

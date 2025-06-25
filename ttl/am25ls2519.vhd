@@ -39,32 +39,21 @@ entity am25ls2519 is
 end entity;
 
 architecture ttl of am25ls2519 is
-  signal reg4 : std_logic_vector(3 downto 0);
+  signal q0, q1, q2, q3 : std_logic;
 begin
-  ------------------------------------------------------------------
-  -- register operation
-  ------------------------------------------------------------------
-  process(cp, clr_n)
-  begin
-    if to_x01(clr_n) = '0' then
-      reg4 <= "0000";
-    elsif rising_edge(cp) then
-      if to_x01(e_n) = '0' then
-        reg4 <= d3 & d2 & d1 & d0;
-      end if;
-    end if;
-  end process;
 
-  ------------------------------------------------------------------
-  -- output section
-  ------------------------------------------------------------------
-  process(reg4, oe_y_n, oe_w_n, pol)
+  u1 : entity work.ff_d port map (clk => cp, d => d0, q => q0, q_n => open, enb_n => e_n);
+  u2 : entity work.ff_d port map (clk => cp, d => d1, q => q1, q_n => open, enb_n => e_n);
+  u3 : entity work.ff_d port map (clk => cp, d => d2, q => q2, q_n => open, enb_n => e_n);
+  u4 : entity work.ff_d port map (clk => cp, d => d3, q => q3, q_n => open, enb_n => e_n);
+
+  process (all)
   begin
     if to_x01(oe_y_n) = '0' then
-      y3 <= reg4(3);
-      y2 <= reg4(2);
-      y1 <= reg4(1);
-      y0 <= reg4(0);
+      y3 <= q3;
+      y2 <= q2;
+      y1 <= q1;
+      y0 <= q0;
     elsif to_x01(oe_y_n) = '1' then
       y3 <= 'Z';
       y2 <= 'Z';
@@ -79,15 +68,15 @@ begin
 
     if to_x01(oe_w_n) = '0' then
       if to_x01(pol) = '1' then
-        w3 <= not reg4(3);
-        w2 <= not reg4(2);
-        w1 <= not reg4(1);
-        w0 <= not reg4(0);
+        w3 <= not q3;
+        w2 <= not q2;
+        w1 <= not q1;
+        w0 <= not q0;
       elsif to_x01(pol) = '0' then
-        w3 <= reg4(3);
-        w2 <= reg4(2);
-        w1 <= reg4(1);
-        w0 <= reg4(0);
+        w3 <= q3;
+        w2 <= q2;
+        w1 <= q1;
+        w0 <= q0;
       else
         w3 <= 'X';
         w2 <= 'X';

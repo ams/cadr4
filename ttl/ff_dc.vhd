@@ -27,6 +27,8 @@ begin
       q_int <= '0';
     elsif to_x01(clr) = 'X' then
       q_int <= 'X';
+    elsif is_x(clk) then
+      q_int <= 'X';
     elsif rising_edge(clk) then
       q_int <= d;
     end if;

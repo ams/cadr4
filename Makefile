@@ -8,7 +8,7 @@ GHDLSTD		= 08
 GHDLIMPORTOPTIONS	= -v -g
 GHDLMAKEOPTIONS		= -v -g -Wno-delayed-checks
 GHDLRUNOPTIONS		= -v -g
-GHDLSIMOPTIONS		= --backtrace-severity=warning #--assert-level=warning
+GHDLSIMOPTIONS		= --backtrace-severity=warning --assert-level=warning
 
 CADR4_TILONCONSOLE ?= 1
 
@@ -36,7 +36,7 @@ DIP_SRCS := $(wildcard dip/*.vhd)
 # packages (cadr_book.vhd, icmem_book.vhd) are explicitly added to CADR_SRCS below
 
 # these are removed from the original list bcpins caps cpins
-CADR_BOOK := actl alatch alu0 alu1 aluc4 amem0 amem1 apar clockd contrl \
+CADR_BOOK := actl alatch alu0 alu1 aluc4 amem0 amem1 apar bcterm clockd contrl \
 dram0 dram1 dram2 dspctl flag ior ipar ireg iwr l lc lcc lpc mctl md mds mf mlatch mmem mo0 mo1 \
 mskg4 npc opcd pdl0 pdl1 pdlctl pdlptr platch q qctl shift0 shift1 smctl source spc spclch spcpar \
 spcw spy1 spy2 trap vctl1 vctl2 vma vmas vmem0 vmem1 vmem2 vmemdr

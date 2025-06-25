@@ -37,6 +37,8 @@ begin
       q_int <= 'X';
     elsif to_x01(clr) = 'X' then
       q_int <= 'X';
+    elsif is_x(clk) then
+      q_int <= 'X';
     elsif rising_edge(clk) then
       q_int <= d;    -- Normal operation, store data including X/U
     end if;

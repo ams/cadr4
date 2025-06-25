@@ -24,7 +24,9 @@ begin
   process (clk) is
     variable jk : std_logic_vector(1 downto 0);
   begin
-    if rising_edge(clk) then
+    if is_x(clk) then
+      q_int <= 'X';
+    elsif rising_edge(clk) then
       jk := j & k;
       case jk is
         when "00"   => null;           -- Hold state
