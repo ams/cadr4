@@ -65,7 +65,7 @@ SET_SRCS := $(patsubst %,set/%.vhd, $(SETS)) $(CREATESETS_PACKAGEFILE) $(CREATES
 
 HELPER_SRCS := helper/helper.vhd helper/helper_required_signals.vhd
 
-TB_SRCS  := # tb/cadr_tb.vhd # $(wildcard tb/*_tb.vhd)
+TB_SRCS  := tb/mete_tb.vhd # tb/cadr_tb.vhd # $(wildcard tb/*_tb.vhd)
 
 # exes mean these are testbenches so these will be compiled into executables also
 TTL_EXES  := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard ttl/*_tb.vhd)))
@@ -166,7 +166,7 @@ endif
 	python3 $(FIXSUDSPY) -v $@
 
 # modify clock2_1c10, change \machruna l\ to \-machruna\
-# this seems to be a mistake in drw, in wlr the 1c10 is connected to -machruna
+# this seems to be a mistake in drw or soap, in wlr the 1c10 is connected to -machruna
 cadr/cadr_clock2_suds.vhd: $(DRWDIR)/clock2.drw $(BUILDDIR)/soap $(FIXSUDSPY) Makefile dip/dip.vhd
 	$(BUILDDIR)/soap -n $< > $@
 	sed $(SEDOPTIONS) 's/\\machruna l\\/\\-machruna\\/g' $@
@@ -215,10 +215,18 @@ cadr/cadr_prom0_suds.vhd: $(DRWDIR)/prom0.drw $(BUILDDIR)/soap $(FIXSUDSPY) Make
 # all prom1 chips point to prom.00.hex but prom1_1b20
 # prom1_1b20 (providing the last byte) points to prom.80.hex (because it contains the parity bit)
 cadr/cadr_prom1_suds.vhd: $(DRWDIR)/prom1.drw $(BUILDDIR)/soap $(FIXSUDSPY) Makefile dip/dip.vhd
-	$(BUILDDIR)/soap -n $< > $@	
+	$(BUILDDIR)/soap -n $< > $@
 	sed $(SEDOPTIONS) -E 's/^([[:space:]]*[^[:space:]]+[[:space:]]*:[[:space:]]*dip_74s472)[[:space:]]+port map/\1 generic map (fn => "rom\/prom.00.hex") port map/' $@
 	sed $(SEDOPTIONS) -E 's/^([[:space:]]*prom1_1b20[[:space:]]*:[[:space:]]*dip_74s472)[[:space:]]+generic map \(fn => "rom\/prom\.00\.hex"\)/\1 generic map (fn => "rom\/prom.80.hex")/' $@
-	python3 $(FIXSUDSPY) -v $@	
+	python3 $(FIXSUDSPY) -v $@
+
+# modify \destimod0 l\ and \iwrited l\ to -destimod0 and -iwrited
+# this seems to be a mistake in drw or soap, in wlr 3e05 is connected to -destimod0 and -iwrited 
+cadr/cadr_source_suds.vhd: $(DRWDIR)/source.drw $(BUILDDIR)/soap $(FIXSUDSPY) Makefile dip/dip.vhd
+	$(BUILDDIR)/soap -n $< > $@
+	sed $(SEDOPTIONS) 's/\\destimod0 l\\/\\-destimod0\\/g' $@
+	sed $(SEDOPTIONS) 's/\\iwrited l\\/\\-iwrited\\/g' $@
+	python3 $(FIXSUDSPY) -v $@
 
 .PHONY: all ttl-check check run-% run-tb wf-% wf-tb clean dist-clean help
 
