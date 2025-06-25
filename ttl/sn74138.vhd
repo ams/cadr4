@@ -26,7 +26,7 @@ architecture ttl of sn74138 is
   signal y : std_logic_vector(7 downto 0);
 begin
 
-  process (a, b, c, g1, g2a, g2b) is
+  process (all) is
     variable sel : std_logic_vector(2 downto 0);
     variable g : std_logic;
   begin

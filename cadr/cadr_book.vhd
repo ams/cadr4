@@ -3657,8 +3657,7 @@ package cadr_book is
       \-srcmd\      : out std_logic;
       \-srcmap\     : out std_logic;
       \-srcvma\     : out std_logic;
-      \destimod0 l\ : in  std_logic;
-      \iwrited l\   : in  std_logic;
+      \-iwrited\    : in  std_logic;
       \-destmdr\    : out std_logic;
       \-destvma\    : out std_logic;
       \-idebug\     : in  std_logic;

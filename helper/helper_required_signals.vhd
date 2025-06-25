@@ -10,10 +10,10 @@ entity helper_required_signals is
     -- mbcpin    
     mclk7: in std_logic;
     -- below are all spy related
-    \-eadr0\: out std_logic := '1';
-    \-eadr1\: out std_logic := '1';
-    \-eadr2\: out std_logic := '1';
-    \-eadr3\: out std_logic := '1';
+    eadr0: out std_logic := '0';
+    eadr1: out std_logic := '0';
+    eadr2: out std_logic := '0';
+    eadr3: out std_logic := '0';    
     \-dbread\: out std_logic := '1';
     \-dbwrite\: out std_logic := '1';
     -- initiates a clock reset

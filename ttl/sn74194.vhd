@@ -28,7 +28,7 @@ end;
 architecture ttl of sn74194 is
   signal reg : std_logic_vector(3 downto 0);
 begin
-  process(clk, clr_n)
+  process(all)
     variable sel : std_logic_vector(1 downto 0);
   begin
     if to_x01(clr_n) = '0' then

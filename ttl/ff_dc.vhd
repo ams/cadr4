@@ -21,7 +21,7 @@ begin
          '1' when q_int = '0' else
          'X';  -- Unknown complement for X, U, Z, W states
 
-  process(clk, clr)
+  process (all)
   begin
     if to_x01(clr) = '0' then
       q_int <= '0';

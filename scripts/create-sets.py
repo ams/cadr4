@@ -94,11 +94,16 @@ class vSignal:
             self.name:str = name
             self.escaped_name = self.name
 
+        self.set_default_value = False
+
     def __str__(self) -> str:
         return f"signal {self.name}: {self.get_type()}"
 
     def dump_signal_declaration(self, f) -> None:
-        print(f"  signal {self.escaped_name}: {self.get_type()};", file=f)
+        if self.set_default_value:
+            print(f"  signal {self.escaped_name}: {self.get_type()} := {self.get_default_value()};", file=f)
+        else:
+            print(f"  signal {self.escaped_name}: {self.get_type()};", file=f)
 
 
 # std_logic scalar signal in VHDL
@@ -109,6 +114,11 @@ class vSignalScalar(vSignal):
     def get_type(self) -> str:
         return "std_logic"
 
+    def get_default_value(self) -> str:
+        if self.name[0] == '-':
+            return "'1'"
+        else:
+            return "'0'"
 
 # std_logic_vector array signal in VHDL
 class vSignalArray(vSignal):
@@ -122,6 +132,12 @@ class vSignalArray(vSignal):
 
     def get_type(self) -> str:
         return f"std_logic_vector({self.high} downto {self.low})"
+
+    def get_default_value(self) -> str:
+        if self.name[0] == '-':
+            return "(others => '1')"
+        else:
+            return "(others => '0')"
 
 
 # the base class representing a port in VHDL
@@ -232,7 +248,9 @@ class vInterface:
         if len(ports) > 0:
             print(f"    port (", file=f)
             for i, port in enumerate(ports):
-                port.dump_port_declaration(f, do_not_add_semicolon=(i == (len(ports) - 1)))
+                do_not_add_semicolon = (i == (len(ports) - 1))
+                port.dump_port_declaration(f, do_not_add_semicolon=do_not_add_semicolon)
+
             print(f"    );", file=f)
 
 
@@ -287,7 +305,12 @@ class vComponent(vInterface):
     def dump_component_instantiation(self, f) -> None:
         print(f"  {self.name}_inst: {self.name} port map (", file=f)
         ports = self.ordered_ports()
+        last_mode = ""
         for i, port in enumerate(ports):
+            if port.mode != last_mode:
+                print(f"      -- {port.mode} ports", file=f)
+                last_mode = port.mode
+
             port.dump_association_element(
                 f, 
                 self.association_list_elements.get(port, None), 
@@ -841,6 +864,7 @@ class vSystem:
 
     def merge_entities(self) -> None:
         verbose("vSystem.merge_entities")
+        list_of_not_driven_ports = []
         for entity in self.entities.values():
             verbose(f"entity: {entity.name}")
             for component in entity.components.values():
@@ -900,6 +924,9 @@ class vSystem:
                     is_output_from_aliens = self.is_signal_used_as_output(in_port, entity)
                     is_output_from_siblings = entity.is_signal_used_as_output(in_port)
 
+                    if not self.is_signal_used_as_output(in_port):
+                        list_of_not_driven_ports.append((component, in_port))
+
                     verbose(f"    is_output_from_aliens: {is_output_from_aliens} - {[x.name for x in self.find_output_usages(in_port, entity)]}")
                     verbose(f"    is_output_from_siblings: {is_output_from_siblings} - {[x.name for x in entity.find_output_usages(in_port)]}")
 
@@ -954,6 +981,12 @@ class vSystem:
                             new_signal = vSignalScalar(in_port.name)
                             entity.add_internal_signal(new_signal)
                             component.add_association_list_element(in_port, new_signal)
+
+        if len(list_of_not_driven_ports) > 0:
+            for component, port in list_of_not_driven_ports:
+                print(f"vSystem.merge_entities: not driven port: {component.name}.{port.name}", file=sys.stderr)
+            
+            assert False, "vSystem.merge_entities: not driven ports found"
 
     def bundle_bus_ports(self) -> None:
         assert self.bus_name_regex_dict is not None

@@ -21,7 +21,7 @@ begin
          '1' when q_int = '0' else
          'X';  -- Unknown complement for X, U, Z, W states
 
-  process (clk) is
+  process (all) is
     variable jk : std_logic_vector(1 downto 0);
   begin
     if is_x(clk) then

@@ -41,7 +41,7 @@ begin
   u7 : entity work.ff_d port map (clk => clk, d => i7, q => q_int(7), q_n => open);
 
   -- Output enable process: controls 3-state outputs
-  process(oenb_n, q_int)
+  process (all)
   begin
     if to_x01(oenb_n) = '0' then
       -- Output enable active (low), drive stored data to outputs

@@ -26,7 +26,7 @@ begin
          '1' when q_int = '0' else
          'X';  -- Unknown complement for X, U, Z, W states
 
-  process (clk, pre, clr)
+  process (all)
   begin
     -- Handle preset/clear signals (preset has precedence over clear)
     if to_x01(pre) = '0' then

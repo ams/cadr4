@@ -22,7 +22,7 @@ begin
          '1' when q_int = '0' else
          'X';  -- Unknown complement for X, U, Z, W states
 
-  process (clk)
+  process (all)
   begin
     if to_x01(enb_n) = '0' then
       if is_x(clk) then

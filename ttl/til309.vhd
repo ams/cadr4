@@ -21,14 +21,14 @@ end;
 architecture ttl of til309 is
   signal reg : std_logic_vector(3 downto 0);
 begin
-  process(latch)
+  process (all)
   begin
     if rising_edge(latch) then
       reg <= i8 & i4 & i2 & i1;
     end if;
   end process;
 
-  process(all)
+  process (all)
     variable disp : std_logic_vector(3 downto 0);
   begin
     if to_x01(test_n) = '0' then

@@ -31,7 +31,7 @@ architecture ttl of sn74373 is
 begin
 
   -- Latch process with proper X/U handling
-  process(hold_n, i0, i1, i2, i3, i4, i5, i6, i7)
+  process (all)
     variable input_data : std_logic_vector(7 downto 0);
   begin
     input_data := i7 & i6 & i5 & i4 & i3 & i2 & i1 & i0;
@@ -49,7 +49,7 @@ begin
   end process;
 
   -- Tri-state output process with proper X/U handling
-  process(oenb_n, data)
+  process (all)
   begin
     if to_x01(oenb_n) = '0' then
       -- Enabled: pass latched data
