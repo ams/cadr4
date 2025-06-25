@@ -5,13 +5,13 @@ use ieee.std_logic_1164.all;
 
 entity sn74175 is
   port (
-    clk   : in std_logic := 'H';
-    clr_n : in std_logic := 'H';
+    clk   : in std_logic;
+    clr_n : in std_logic;
 
-    d0 : in std_logic := 'H';
-    d1 : in std_logic := 'H';
-    d2 : in std_logic := 'H';
-    d3 : in std_logic := 'H';
+    d0 : in std_logic;
+    d1 : in std_logic;
+    d2 : in std_logic;
+    d3 : in std_logic;
 
     q0   : out std_logic;
     q0_n : out std_logic;
@@ -25,11 +25,26 @@ entity sn74175 is
 end;
 
 architecture ttl of sn74175 is
+  signal clk_i, clr_n_i, d0_i, d1_i, d2_i, d3_i : std_logic;
 begin
 
-  u0 : entity work.ff_dpc port map (clk => clk, clr => clr_n, d => d0, q => q0, q_n => q0_n, enb_n => '0', pre => '1');
-  u1 : entity work.ff_dpc port map (clk => clk, clr => clr_n, d => d1, q => q1, q_n => q1_n, enb_n => '0', pre => '1');
-  u2 : entity work.ff_dpc port map (clk => clk, clr => clr_n, d => d2, q => q2, q_n => q2_n, enb_n => '0', pre => '1');
-  u3 : entity work.ff_dpc port map (clk => clk, clr => clr_n, d => d3, q => q3, q_n => q3_n, enb_n => '0', pre => '1');
+  clk_i <= 'H';
+  clr_n_i <= 'H';
+  d0_i <= 'H';
+  d1_i <= 'H';
+  d2_i <= 'H';
+  d3_i <= 'H';
+
+  clk_i <= clk;
+  clr_n_i <= clr_n;
+  d0_i <= d0;
+  d1_i <= d1;
+  d2_i <= d2;
+  d3_i <= d3;
+
+  u0 : entity work.ff_dpc port map (clk => clk_i, clr => clr_n_i, d => d0_i, q => q0, q_n => q0_n, enb_n => '0', pre => '1');
+  u1 : entity work.ff_dpc port map (clk => clk_i, clr => clr_n_i, d => d1_i, q => q1, q_n => q1_n, enb_n => '0', pre => '1');
+  u2 : entity work.ff_dpc port map (clk => clk_i, clr => clr_n_i, d => d2_i, q => q2, q_n => q2_n, enb_n => '0', pre => '1');
+  u3 : entity work.ff_dpc port map (clk => clk_i, clr => clr_n_i, d => d3_i, q => q3, q_n => q3_n, enb_n => '0', pre => '1');
 
 end;

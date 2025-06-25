@@ -11,15 +11,15 @@ use work.misc.load_rom_file;
 entity sn74472 is
   generic (fn : string := "");
   port (
-    a0   : in  std_logic := 'H';
-    a1   : in  std_logic := 'H';
-    a2   : in  std_logic := 'H';
-    a3   : in  std_logic := 'H';
-    a4   : in  std_logic := 'H';
-    a5   : in  std_logic := 'H';
-    a6   : in  std_logic := 'H';
-    a7   : in  std_logic := 'H';
-    a8   : in  std_logic := 'H';
+    a0   : in  std_logic;
+    a1   : in  std_logic;
+    a2   : in  std_logic;
+    a3   : in  std_logic;
+    a4   : in  std_logic;
+    a5   : in  std_logic;
+    a6   : in  std_logic;
+    a7   : in  std_logic;
+    a8   : in  std_logic;
     d0   : out std_logic;
     d1   : out std_logic;
     d2   : out std_logic;
@@ -28,19 +28,43 @@ entity sn74472 is
     d5   : out std_logic;
     d6   : out std_logic;
     d7   : out std_logic;
-    ce_n : in  std_logic := 'H'
+    ce_n : in  std_logic
     );
 end;
 
 architecture ttl of sn74472 is
+  signal a0_i, a1_i, a2_i, a3_i, a4_i, a5_i, a6_i, a7_i, a8_i, ce_n_i : std_logic;
   constant rom  : std_logic_vector := load_rom_file(fn);  
 begin
+
+  a0_i <= 'H';
+  a1_i <= 'H';
+  a2_i <= 'H';
+  a3_i <= 'H';
+  a4_i <= 'H';
+  a5_i <= 'H';
+  a6_i <= 'H';
+  a7_i <= 'H';
+  a8_i <= 'H';
+  ce_n_i <= 'H';
+
+  a0_i <= a0;
+  a1_i <= a1;
+  a2_i <= a2;
+  a3_i <= a3;
+  a4_i <= a4;
+  a5_i <= a5;
+  a6_i <= a6;
+  a7_i <= a7;
+  a8_i <= a8;
+  ce_n_i <= ce_n;
+
     process(all)
     variable data : std_logic_vector(7 downto 0);
     variable addr : unsigned(8 downto 0);
   begin
-    if to_x01(ce_n) = '0' then
-      addr := (a8, a7, a6, a5, a4, a3, a2, a1, a0);
+    if to_x01(ce_n_i) = '0' then
+      addr := (a8_i, a7_i, a6_i, a5_i, a4_i, a3_i, a2_i, a1_i, a0_i);
       if is_x(addr) then
         d7 <= 'X'; d6 <= 'X'; d5 <= 'X'; d4 <= 'X';
         d3 <= 'X'; d2 <= 'X'; d1 <= 'X'; d0 <= 'X';
@@ -49,7 +73,7 @@ begin
         d7 <= data(7); d6 <= data(6); d5 <= data(5); d4 <= data(4);
         d3 <= data(3); d2 <= data(2); d1 <= data(1); d0 <= data(0);
       end if;
-    elsif to_x01(ce_n) = '1' then
+    elsif to_x01(ce_n_i) = '1' then
       d7 <= 'Z'; d6 <= 'Z'; d5 <= 'Z'; d4 <= 'Z';
       d3 <= 'Z'; d2 <= 'Z'; d1 <= 'Z'; d0 <= 'Z';
     else

@@ -11,12 +11,12 @@ use work.misc.load_rom_file;
 entity sn74188 is
   generic (fn : string := "");
   port (
-    ce_n : in  std_logic := 'H';
-    a0   : in  std_logic := 'H';
-    a1   : in  std_logic := 'H';
-    a2   : in  std_logic := 'H';
-    a3   : in  std_logic := 'H';
-    a4   : in  std_logic := 'H';
+    ce_n : in  std_logic;
+    a0   : in  std_logic;
+    a1   : in  std_logic;
+    a2   : in  std_logic;
+    a3   : in  std_logic;
+    a4   : in  std_logic;
     o0   : out std_logic;
     o1   : out std_logic;
     o2   : out std_logic;
@@ -29,14 +29,30 @@ entity sn74188 is
 end entity;
 
 architecture ttl of sn74188 is
+  signal ce_n_i, a0_i, a1_i, a2_i, a3_i, a4_i : std_logic;
   constant rom  : std_logic_vector := load_rom_file(fn);  
 begin
+
+  ce_n_i <= 'H';
+  a0_i <= 'H';
+  a1_i <= 'H';
+  a2_i <= 'H';
+  a3_i <= 'H';
+  a4_i <= 'H';
+
+  ce_n_i <= ce_n;
+  a0_i <= a0;
+  a1_i <= a1;
+  a2_i <= a2;
+  a3_i <= a3;
+  a4_i <= a4;
+
   process(all)
     variable data : std_logic_vector(7 downto 0);
     variable addr : unsigned(4 downto 0);
   begin
-    if to_x01(ce_n) = '0' then
-      addr := (a4, a3, a2, a1, a0);
+    if to_x01(ce_n_i) = '0' then
+      addr := (a4_i, a3_i, a2_i, a1_i, a0_i);
       if is_x(addr) then
         o7 <= 'X'; o6 <= 'X'; o5 <= 'X'; o4 <= 'X';
         o3 <= 'X'; o2 <= 'X'; o1 <= 'X'; o0 <= 'X';        
@@ -54,7 +70,7 @@ begin
         o1 <= '0' when data(1) = '0' else 'Z';
         o0 <= '0' when data(0) = '0' else 'Z';
       end if;
-    elsif to_x01(ce_n) = '1' then
+    elsif to_x01(ce_n_i) = '1' then
       o7 <= 'Z'; o6 <= 'Z'; o5 <= 'Z'; o4 <= 'Z';
       o3 <= 'Z'; o2 <= 'Z'; o1 <= 'Z'; o0 <= 'Z';
     else

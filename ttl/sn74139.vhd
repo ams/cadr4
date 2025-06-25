@@ -6,9 +6,9 @@ use ieee.numeric_std.all;
 
 entity sn74139 is
   port (
-    g1   : in  std_logic := 'H'; -- Pin 3
-    b1   : in  std_logic := 'H'; -- Pin 2
-    a1   : in  std_logic := 'H'; -- Pin 1
+    g1   : in  std_logic; -- Pin 3
+    b1   : in  std_logic; -- Pin 2
+    a1   : in  std_logic; -- Pin 1
     g1y0 : out std_logic; -- Pin 4
     g1y1 : out std_logic; -- Pin 5
     g1y2 : out std_logic; -- Pin 6
@@ -18,16 +18,31 @@ entity sn74139 is
     g2y2 : out std_logic; -- Pin 11
     g2y1 : out std_logic; -- Pin 10
     g2y0 : out std_logic; -- Pin 9
-    g2   : in  std_logic := 'H'; -- Pin 13
-    b2   : in  std_logic := 'H'; -- Pin 14
-    a2   : in  std_logic := 'H'  -- Pin 15
+    g2   : in  std_logic; -- Pin 13
+    b2   : in  std_logic; -- Pin 14
+    a2   : in  std_logic  -- Pin 15
     );
 end;
 
 architecture ttl of sn74139 is
+  signal g1_i, b1_i, a1_i, g2_i, b2_i, a2_i : std_logic;
   signal y1 : unsigned(3 downto 0);
   signal y2 : unsigned(3 downto 0);
 begin
+
+  g1_i <= 'H';
+  b1_i <= 'H';
+  a1_i <= 'H';
+  g2_i <= 'H';
+  b2_i <= 'H';
+  a2_i <= 'H';
+
+  g1_i <= g1;
+  b1_i <= b1;
+  a1_i <= a1;
+  g2_i <= g2;
+  b2_i <= b2;
+  a2_i <= a2;
 
   -- drive output pins from internal vectors
   g1y0 <= y1(3); g1y1 <= y1(2); g1y2 <= y1(1); g1y3 <= y1(0);
@@ -37,9 +52,9 @@ begin
     
     variable sel : unsigned(1 downto 0);
   begin
-    sel := a1 & b1;
+    sel := a1_i & b1_i;
 
-    if to_x01(g1) = '0' then
+    if to_x01(g1_i) = '0' then
       case sel is
         when "00"   => y1 <= "0111";
         when "01"   => y1 <= "1011";
@@ -47,7 +62,7 @@ begin
         when "11"   => y1 <= "1110";
         when others => y1 <= "XXXX";
       end case;
-    elsif to_x01(g1) = '1' then
+    elsif to_x01(g1_i) = '1' then
       -- This is correct, it is not a tri-state output component
       y1 <= "1111";
     else
@@ -58,9 +73,9 @@ begin
   process (all) is
     variable sel : unsigned(1 downto 0);
   begin
-    sel := a2 & b2;
+    sel := a2_i & b2_i;
 
-    if to_x01(g2) = '0' then
+    if to_x01(g2_i) = '0' then
       case sel is
         when "00"   => y2 <= "0111";
         when "01"   => y2 <= "1011";
@@ -68,7 +83,7 @@ begin
         when "11"   => y2 <= "1110";
         when others => y2 <= "XXXX";
       end case;
-    elsif to_x01(g2) = '1' then
+    elsif to_x01(g2_i) = '1' then
       -- This is correct, it is not a tri-state output component
       y2 <= "1111";
     else

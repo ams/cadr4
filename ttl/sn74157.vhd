@@ -5,18 +5,18 @@ use ieee.std_logic_1164.all;
 
 entity sn74157 is
   port (
-    enb_n : in std_logic := 'H';
-    sel   : in std_logic := 'H';
+    enb_n : in std_logic;
+    sel   : in std_logic;
 
-    a1 : in std_logic := 'H';
-    a2 : in std_logic := 'H';
-    a3 : in std_logic := 'H';
-    a4 : in std_logic := 'H';
+    a1 : in std_logic;
+    a2 : in std_logic;
+    a3 : in std_logic;
+    a4 : in std_logic;
 
-    b1 : in std_logic := 'H';
-    b2 : in std_logic := 'H';
-    b3 : in std_logic := 'H';
-    b4 : in std_logic := 'H';
+    b1 : in std_logic;
+    b2 : in std_logic;
+    b3 : in std_logic;
+    b4 : in std_logic;
 
     y1 : out std_logic;
     y2 : out std_logic;
@@ -26,18 +26,42 @@ entity sn74157 is
 end;
 
 architecture ttl of sn74157 is
+  signal enb_n_i, sel_i, a1_i, a2_i, a3_i, a4_i, b1_i, b2_i, b3_i, b4_i : std_logic;
 begin
+
+  enb_n_i <= 'H';
+  sel_i <= 'H';
+  a1_i <= 'H';
+  a2_i <= 'H';
+  a3_i <= 'H';
+  a4_i <= 'H';
+  b1_i <= 'H';
+  b2_i <= 'H';
+  b3_i <= 'H';
+  b4_i <= 'H';
+
+  enb_n_i <= enb_n;
+  sel_i <= sel;
+  a1_i <= a1;
+  a2_i <= a2;
+  a3_i <= a3;
+  a4_i <= a4;
+  b1_i <= b1;
+  b2_i <= b2;
+  b3_i <= b3;
+  b4_i <= b4;
+
   process(all)
   begin
-    if to_x01(enb_n) = '0' then
-      if to_x01(sel) = '0' then
-        y1 <= a1; y2 <= a2; y3 <= a3; y4 <= a4;
-      elsif to_x01(sel) = '1' then
-        y1 <= b1; y2 <= b2; y3 <= b3; y4 <= b4;
+    if to_x01(enb_n_i) = '0' then
+      if to_x01(sel_i) = '0' then
+        y1 <= a1_i; y2 <= a2_i; y3 <= a3_i; y4 <= a4_i;
+      elsif to_x01(sel_i) = '1' then
+        y1 <= b1_i; y2 <= b2_i; y3 <= b3_i; y4 <= b4_i;
       else
         y1 <= 'X'; y2 <= 'X'; y3 <= 'X'; y4 <= 'X';
       end if;
-    elsif to_x01(enb_n) = '1' then
+    elsif to_x01(enb_n_i) = '1' then
       y1 <= 'Z'; y2 <= 'Z'; y3 <= 'Z'; y4 <= 'Z';
     else
       y1 <= 'X'; y2 <= 'X'; y3 <= 'X'; y4 <= 'X';

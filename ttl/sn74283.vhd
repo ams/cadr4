@@ -6,15 +6,15 @@ use ieee.numeric_std.all;
 
 entity sn74283 is
   port (
-    ci : in std_logic := 'H'; -- Pin 7
-    a0 : in std_logic := 'H'; -- Pin 5
-    a1 : in std_logic := 'H'; -- Pin 3
-    a2 : in std_logic := 'H'; -- Pin 14
-    a3 : in std_logic := 'H'; -- Pin 13
-    b0 : in std_logic := 'H'; -- Pin 6
-    b1 : in std_logic := 'H'; -- Pin 2
-    b2 : in std_logic := 'H'; -- Pin 15
-    b3 : in std_logic := 'H'; -- Pin 11
+    ci : in std_logic; -- Pin 7
+    a0 : in std_logic; -- Pin 5
+    a1 : in std_logic; -- Pin 3
+    a2 : in std_logic; -- Pin 14
+    a3 : in std_logic; -- Pin 13
+    b0 : in std_logic; -- Pin 6
+    b1 : in std_logic; -- Pin 2
+    b2 : in std_logic; -- Pin 15
+    b3 : in std_logic; -- Pin 11
     s0 : out std_logic; -- Pin 4
     s1 : out std_logic; -- Pin 1
     s2 : out std_logic; -- Pin 13
@@ -24,11 +24,33 @@ entity sn74283 is
 end;
 
 architecture ttl of sn74283 is
+  signal ci_i, a0_i, a1_i, a2_i, a3_i, b0_i, b1_i, b2_i, b3_i : std_logic;
   signal a : unsigned(3 downto 0);
   signal b : unsigned(3 downto 0);
 begin
-  a <= a3 & a2 & a1 & a0;
-  b <= b3 & b2 & b1 & b0;
+
+  ci_i <= 'H';
+  a0_i <= 'H';
+  a1_i <= 'H';
+  a2_i <= 'H';
+  a3_i <= 'H';
+  b0_i <= 'H';
+  b1_i <= 'H';
+  b2_i <= 'H';
+  b3_i <= 'H';
+
+  ci_i <= ci;
+  a0_i <= a0;
+  a1_i <= a1;
+  a2_i <= a2;
+  a3_i <= a3;
+  b0_i <= b0;
+  b1_i <= b1;
+  b2_i <= b2;
+  b3_i <= b3;
+
+  a <= a3_i & a2_i & a1_i & a0_i;
+  b <= b3_i & b2_i & b1_i & b0_i;
 
   process(all)
     variable sum : unsigned(4 downto 0);
@@ -39,7 +61,7 @@ begin
       s0 <= 'X'; s1 <= 'X'; s2 <= 'X'; s3 <= 'X'; co <= 'X';
     else
       -- All inputs are valid, perform addition
-      sum := ('0' & a) + ('0' & b) + ("0000" & ci);
+      sum := ('0' & a) + ('0' & b) + ("0000" & ci_i);
       s3  <= sum(3); s2 <= sum(2); s1 <= sum(1); s0 <= sum(0);
       co  <= sum(4);
     end if;

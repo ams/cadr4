@@ -24,19 +24,19 @@ use ieee.numeric_std.all;
 entity sn74181 is
   port (
     -- Control and status
-    m      : in  std_logic := 'H';  -- Mode: 1=Logic, 0=Arithmetic
-    cin_n  : in  std_logic := 'H';  -- Carry in (active low)
+    m      : in  std_logic;  -- Mode: 1=Logic, 0=Arithmetic
+    cin_n  : in  std_logic;  -- Carry in (active low)
     cout_n : out std_logic;  -- Carry out (active low)
     aeb    : out std_logic;  -- A equals B
     x      : out std_logic;  -- Carry propagate
     y      : out std_logic;  -- Carry generate
     
     -- Function select
-    s3, s2, s1, s0 : in std_logic := 'H';
+    s3, s2, s1, s0 : in std_logic;
     
     -- Data inputs
-    a3, a2, a1, a0 : in std_logic := 'H';
-    b3, b2, b1, b0 : in std_logic := 'H';
+    a3, a2, a1, a0 : in std_logic;
+    b3, b2, b1, b0 : in std_logic;
     
     -- Function outputs
     f3, f2, f1, f0 : out std_logic
@@ -44,6 +44,7 @@ entity sn74181 is
 end;
 
 architecture ttl of sn74181 is
+  signal m_i, cin_n_i, s3_i, s2_i, s1_i, s0_i, a3_i, a2_i, a1_i, a0_i, b3_i, b2_i, b1_i, b0_i : std_logic;
   signal a   : std_logic_vector(3 downto 0);
   signal b   : std_logic_vector(3 downto 0);
   signal sel : std_logic_vector(3 downto 0);
@@ -71,9 +72,40 @@ architecture ttl of sn74181 is
   end function;
 
 begin
-  a   <= a3 & a2 & a1 & a0;
-  b   <= b3 & b2 & b1 & b0;
-  sel <= s3 & s2 & s1 & s0;
+
+  m_i <= 'H';
+  cin_n_i <= 'H';
+  s3_i <= 'H';
+  s2_i <= 'H';
+  s1_i <= 'H';
+  s0_i <= 'H';
+  a3_i <= 'H';
+  a2_i <= 'H';
+  a1_i <= 'H';
+  a0_i <= 'H';
+  b3_i <= 'H';
+  b2_i <= 'H';
+  b1_i <= 'H';
+  b0_i <= 'H';
+
+  m_i <= m;
+  cin_n_i <= cin_n;
+  s3_i <= s3;
+  s2_i <= s2;
+  s1_i <= s1;
+  s0_i <= s0;
+  a3_i <= a3;
+  a2_i <= a2;
+  a1_i <= a1;
+  a0_i <= a0;
+  b3_i <= b3;
+  b2_i <= b2;
+  b1_i <= b1;
+  b0_i <= b0;
+
+  a   <= a3_i & a2_i & a1_i & a0_i;
+  b   <= b3_i & b2_i & b1_i & b0_i;
+  sel <= s3_i & s2_i & s1_i & s0_i;
 
   process(all)
     variable av, bv   : unsigned(3 downto 0);
@@ -86,10 +118,10 @@ begin
     variable x_var, y_var : std_logic;
   begin
     s   := sel;
-    cin := not cin_n;                   -- active low
+    cin := not cin_n_i;                   -- active low
 
     -- Check for unknown inputs first
-    if has_unknown(a) or has_unknown(b) or has_unknown(sel) or is_unknown(m) or is_unknown(cin_n) then
+    if has_unknown(a) or has_unknown(b) or has_unknown(sel) or is_unknown(m_i) or is_unknown(cin_n_i) then
       -- Any unknown input causes unknown outputs
       f0 <= 'X';
       f1 <= 'X';
@@ -104,7 +136,7 @@ begin
       av  := unsigned(a);
       bv  := unsigned(b);
 
-      if m = LOGIC_MODE then
+      if m_i = LOGIC_MODE then
         -- Logic mode (from datasheet function table)
         case s is
           when "0000" => logic_f := not std_logic_vector(av);           -- NOT A
@@ -173,7 +205,7 @@ begin
         
         -- In arithmetic mode: X = carry propagate, Y = carry generate
         -- X (carry propagate): true when all bit positions can propagate a carry
-        x_var := (a0 xor b0) and (a1 xor b1) and (a2 xor b2) and (a3 xor b3);
+        x_var := (a0_i xor b0_i) and (a1_i xor b1_i) and (a2_i xor b2_i) and (a3_i xor b3_i);
         -- Y (carry generate): true when this ALU generates a carry out (same as cout_var)
         y_var := cout_var;
       end if;

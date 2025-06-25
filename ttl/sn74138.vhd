@@ -5,12 +5,12 @@ use ieee.std_logic_1164.all;
 
 entity sn74138 is
   port (
-    a   : in  std_logic := 'H';
-    b   : in  std_logic := 'H';
-    c   : in  std_logic := 'H';
-    g1  : in  std_logic := 'H';
-    g2a : in  std_logic := 'H';
-    g2b : in  std_logic := 'H';
+    a   : in  std_logic;
+    b   : in  std_logic;
+    c   : in  std_logic;
+    g1  : in  std_logic;
+    g2a : in  std_logic;
+    g2b : in  std_logic;
     y0  : out std_logic;
     y1  : out std_logic;
     y2  : out std_logic;
@@ -23,18 +23,33 @@ entity sn74138 is
 end;
 
 architecture ttl of sn74138 is
+  signal a_i, b_i, c_i, g1_i, g2a_i, g2b_i : std_logic;
   signal y : std_logic_vector(7 downto 0);
 begin
+
+  a_i <= 'H';
+  b_i <= 'H';
+  c_i <= 'H';
+  g1_i <= 'H';
+  g2a_i <= 'H';
+  g2b_i <= 'H';
+
+  a_i <= a;
+  b_i <= b;
+  c_i <= c;
+  g1_i <= g1;
+  g2a_i <= g2a;
+  g2b_i <= g2b;
 
   process (all) is
     variable sel : std_logic_vector(2 downto 0);
     variable g : std_logic;
   begin
-    g := g1 and not g2a and not g2b;
+    g := g1_i and not g2a_i and not g2b_i;
     -- Check enable conditions first
     if to_x01(g) = '1' then
       -- Enabled: decode select inputs
-      sel := a & b & c;  -- MSB to LSB: a, b, c (matching testbench expectations)
+      sel := a_i & b_i & c_i;  -- MSB to LSB: a, b, c (matching testbench expectations)
       
       -- Handle all valid select combinations explicitly
       case sel is

@@ -5,62 +5,91 @@ use ieee.std_logic_1164.all;
 
 entity sn74151 is
   port (
-    i0   : in std_logic := 'H';
-    i1   : in std_logic := 'H';
-    i2   : in std_logic := 'H';
-    i3   : in std_logic := 'H';
-    i4   : in std_logic := 'H';
-    i5   : in std_logic := 'H';
-    i6   : in std_logic := 'H';
-    i7   : in std_logic := 'H';
-    sel0 : in std_logic := 'H';
-    sel1 : in std_logic := 'H';
-    sel2 : in std_logic := 'H';
-    ce_n : in std_logic := 'H';
+    i0   : in std_logic;
+    i1   : in std_logic;
+    i2   : in std_logic;
+    i3   : in std_logic;
+    i4   : in std_logic;
+    i5   : in std_logic;
+    i6   : in std_logic;
+    i7   : in std_logic;
+    sel0 : in std_logic;
+    sel1 : in std_logic;
+    sel2 : in std_logic;
+    ce_n : in std_logic;
     q    : out std_logic;
     q_n  : out std_logic
     );
 end;
 
 architecture ttl of sn74151 is
+  signal i0_i, i1_i, i2_i, i3_i, i4_i, i5_i, i6_i, i7_i : std_logic;
+  signal sel0_i, sel1_i, sel2_i, ce_n_i : std_logic;
 begin
+
+  i0_i <= 'H';
+  i1_i <= 'H';
+  i2_i <= 'H';
+  i3_i <= 'H';
+  i4_i <= 'H';
+  i5_i <= 'H';
+  i6_i <= 'H';
+  i7_i <= 'H';
+  sel0_i <= 'H';
+  sel1_i <= 'H';
+  sel2_i <= 'H';
+  ce_n_i <= 'H';
+
+  i0_i <= i0;
+  i1_i <= i1;
+  i2_i <= i2;
+  i3_i <= i3;
+  i4_i <= i4;
+  i5_i <= i5;
+  i6_i <= i6;
+  i7_i <= i7;
+  sel0_i <= sel0;
+  sel1_i <= sel1;
+  sel2_i <= sel2;
+  ce_n_i <= ce_n;
+
   -- core multiplexer with active-low chip-enable
   process(all)
     variable select_lines : std_logic_vector(2 downto 0);
   begin
     
-    if to_x01(ce_n) = '0' then
-      select_lines := sel2 & sel1 & sel0;
+    if to_x01(ce_n_i) = '0' then
+      select_lines := sel2_i & sel1_i & sel0_i;
       case select_lines is
         when "000" =>
-          q   <= i0;
-          q_n <= not i0;
+          q   <= i0_i;
+          q_n <= not i0_i;
         when "001" =>
-          q   <= i1;
-          q_n <= not i1;
+          q   <= i1_i;
+          q_n <= not i1_i;
         when "010" =>
-          q   <= i2;
-          q_n <= not i2;
+          q   <= i2_i;
+          q_n <= not i2_i;
         when "011" =>
-          q   <= i3;
-          q_n <= not i3;
+          q   <= i3_i;
+          q_n <= not i3_i;
         when "100" => 
-          q   <= i4;
-          q_n <= not i4;
+          q   <= i4_i;
+          q_n <= not i4_i;
         when "101" =>
-          q   <= i5;
-          q_n <= not i5;
+          q   <= i5_i;
+          q_n <= not i5_i;
         when "110" =>
-          q   <= i6;
-          q_n <= not i6;
+          q   <= i6_i;
+          q_n <= not i6_i;
         when "111" =>
-          q   <= i7;
-          q_n <= not i7;
+          q   <= i7_i;
+          q_n <= not i7_i;
         when others =>
           q   <= 'X';
           q_n <= 'X';
       end case;
-    elsif to_x01(ce_n) = '1' then
+    elsif to_x01(ce_n_i) = '1' then
       -- Chip is disabled
       -- This is correct, it is not a tri-state output component
       q   <= '0';
