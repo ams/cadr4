@@ -7,29 +7,49 @@ use ieee.std_logic_1164.all;
 
 entity am25s07 is
   port (
-    i0    : in  std_logic := 'H';
-    i1    : in  std_logic := 'H';
-    i2    : in  std_logic := 'H';
-    i3    : in  std_logic := 'H';
-    i4    : in  std_logic := 'H';
-    i5    : in  std_logic := 'H';
+    i0    : in  std_logic;
+    i1    : in  std_logic;
+    i2    : in  std_logic;
+    i3    : in  std_logic;
+    i4    : in  std_logic;
+    i5    : in  std_logic;
     d0    : out std_logic;
     d1    : out std_logic;
     d2    : out std_logic;
     d3    : out std_logic;
     d4    : out std_logic;
     d5    : out std_logic;
-    clk   : in  std_logic := 'H';
-    enb_n : in  std_logic := 'H'
+    clk   : in  std_logic;
+    enb_n : in  std_logic
     );
 end entity;
 
 architecture ttl of am25s07 is
+  signal i0_i, i1_i, i2_i, i3_i, i4_i, i5_i, clk_i, enb_n_i : std_logic;
 begin
-  u1 : entity work.ff_dpc port map (clk => clk, d => i0, q => d0, q_n => open, enb_n => enb_n, pre => '1', clr => '1');
-  u2 : entity work.ff_dpc port map (clk => clk, d => i1, q => d1, q_n => open, enb_n => enb_n, pre => '1', clr => '1');
-  u3 : entity work.ff_dpc port map (clk => clk, d => i2, q => d2, q_n => open, enb_n => enb_n, pre => '1', clr => '1');
-  u4 : entity work.ff_dpc port map (clk => clk, d => i3, q => d3, q_n => open, enb_n => enb_n, pre => '1', clr => '1');
-  u5 : entity work.ff_dpc port map (clk => clk, d => i4, q => d4, q_n => open, enb_n => enb_n, pre => '1', clr => '1');
-  u6 : entity work.ff_dpc port map (clk => clk, d => i5, q => d5, q_n => open, enb_n => enb_n, pre => '1', clr => '1');
+
+  i0_i <= 'H';
+  i1_i <= 'H';
+  i2_i <= 'H';
+  i3_i <= 'H';
+  i4_i <= 'H';
+  i5_i <= 'H';
+  clk_i <= 'H';
+  enb_n_i <= 'H';
+
+  i0_i <= i0;
+  i1_i <= i1;
+  i2_i <= i2;
+  i3_i <= i3;
+  i4_i <= i4;
+  i5_i <= i5;
+  clk_i <= clk;
+  enb_n_i <= enb_n;
+
+  u1 : entity work.ff_dpc port map (clk => clk_i, d => i0_i, q => d0, q_n => open, enb_n => enb_n_i, pre => '1', clr => '1');
+  u2 : entity work.ff_dpc port map (clk => clk_i, d => i1_i, q => d1, q_n => open, enb_n => enb_n_i, pre => '1', clr => '1');
+  u3 : entity work.ff_dpc port map (clk => clk_i, d => i2_i, q => d2, q_n => open, enb_n => enb_n_i, pre => '1', clr => '1');
+  u4 : entity work.ff_dpc port map (clk => clk_i, d => i3_i, q => d3, q_n => open, enb_n => enb_n_i, pre => '1', clr => '1');
+  u5 : entity work.ff_dpc port map (clk => clk_i, d => i4_i, q => d4, q_n => open, enb_n => enb_n_i, pre => '1', clr => '1');
+  u6 : entity work.ff_dpc port map (clk => clk_i, d => i5_i, q => d5, q_n => open, enb_n => enb_n_i, pre => '1', clr => '1');
 end architecture;

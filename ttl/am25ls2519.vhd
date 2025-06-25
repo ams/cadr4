@@ -17,14 +17,14 @@ use ieee.std_logic_1164.all;
 -- pin numbers are for CERDIP package
 entity am25ls2519 is
   port (    
-    d0         : in  std_logic := 'H'; -- 1
-    d1         : in  std_logic := 'H'; -- 4
-    d2         : in  std_logic := 'H'; -- 13
-    d3         : in  std_logic := 'H'; -- 16
-    e_n        : in  std_logic := 'H'; -- 17
-    cp         : in  std_logic := 'H'; -- 9
-    oe_y_n     : in  std_logic := 'H'; -- 8
-    oe_w_n     : in  std_logic := 'H'; -- 7
+    d0         : in  std_logic; -- 1
+    d1         : in  std_logic; -- 4
+    d2         : in  std_logic; -- 13
+    d3         : in  std_logic; -- 16
+    e_n        : in  std_logic; -- 17
+    cp         : in  std_logic; -- 9
+    oe_y_n     : in  std_logic; -- 8
+    oe_w_n     : in  std_logic; -- 7
     y0         : out std_logic; -- 3
     y1         : out std_logic; -- 6
     y2         : out std_logic; -- 11
@@ -33,28 +33,51 @@ entity am25ls2519 is
     w1         : out std_logic; -- 5
     w2         : out std_logic; -- 12
     w3         : out std_logic; -- 15
-    pol        : in  std_logic := 'H'; -- 18
-    clr_n      : in  std_logic := 'H' -- 19
+    pol        : in  std_logic; -- 18
+    clr_n      : in  std_logic -- 19
     );
 end entity;
 
 architecture ttl of am25ls2519 is
+  signal d0_i, d1_i, d2_i, d3_i, e_n_i, cp_i, oe_y_n_i, oe_w_n_i, pol_i, clr_n_i : std_logic;
   signal q0, q1, q2, q3 : std_logic;
 begin
 
-  u1 : entity work.ff_dpc port map (clk => cp, d => d0, q => q0, q_n => open, enb_n => e_n, pre => '1', clr => clr_n);
-  u2 : entity work.ff_dpc port map (clk => cp, d => d1, q => q1, q_n => open, enb_n => e_n, pre => '1', clr => clr_n);
-  u3 : entity work.ff_dpc port map (clk => cp, d => d2, q => q2, q_n => open, enb_n => e_n, pre => '1', clr => clr_n);
-  u4 : entity work.ff_dpc port map (clk => cp, d => d3, q => q3, q_n => open, enb_n => e_n, pre => '1', clr => clr_n);
+  d0_i <= 'H';
+  d1_i <= 'H';
+  d2_i <= 'H';
+  d3_i <= 'H';
+  e_n_i <= 'H';
+  cp_i <= 'H';
+  oe_y_n_i <= 'H';
+  oe_w_n_i <= 'H';
+  pol_i <= 'H';
+  clr_n_i <= 'H';
+
+  d0_i <= d0;
+  d1_i <= d1;
+  d2_i <= d2;
+  d3_i <= d3;
+  e_n_i <= e_n;
+  cp_i <= cp;
+  oe_y_n_i <= oe_y_n;
+  oe_w_n_i <= oe_w_n;
+  pol_i <= pol;
+  clr_n_i <= clr_n;
+
+  u1 : entity work.ff_dpc port map (clk => cp_i, d => d0_i, q => q0, q_n => open, enb_n => e_n_i, pre => '1', clr => clr_n_i);
+  u2 : entity work.ff_dpc port map (clk => cp_i, d => d1_i, q => q1, q_n => open, enb_n => e_n_i, pre => '1', clr => clr_n_i);
+  u3 : entity work.ff_dpc port map (clk => cp_i, d => d2_i, q => q2, q_n => open, enb_n => e_n_i, pre => '1', clr => clr_n_i);
+  u4 : entity work.ff_dpc port map (clk => cp_i, d => d3_i, q => q3, q_n => open, enb_n => e_n_i, pre => '1', clr => clr_n_i);
 
   process (all)
   begin
-    if to_x01(oe_y_n) = '0' then
+    if to_x01(oe_y_n_i) = '0' then
       y3 <= q3;
       y2 <= q2;
       y1 <= q1;
       y0 <= q0;
-    elsif to_x01(oe_y_n) = '1' then
+    elsif to_x01(oe_y_n_i) = '1' then
       y3 <= 'Z';
       y2 <= 'Z';
       y1 <= 'Z';
@@ -66,13 +89,13 @@ begin
       y0 <= 'X';
     end if;
 
-    if to_x01(oe_w_n) = '0' then
-      if to_x01(pol) = '1' then
+    if to_x01(oe_w_n_i) = '0' then
+      if to_x01(pol_i) = '1' then
         w3 <= not q3;
         w2 <= not q2;
         w1 <= not q1;
         w0 <= not q0;
-      elsif to_x01(pol) = '0' then
+      elsif to_x01(pol_i) = '0' then
         w3 <= q3;
         w2 <= q2;
         w1 <= q1;
@@ -83,7 +106,7 @@ begin
         w1 <= 'X';
         w0 <= 'X';
       end if;
-    elsif to_x01(oe_w_n) = '1' then
+    elsif to_x01(oe_w_n_i) = '1' then
       w3 <= 'Z';
       w2 <= 'Z';
       w1 <= 'Z';
