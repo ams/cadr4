@@ -27,19 +27,23 @@ architecture dip of dip_82s21 is
 begin
   U1 : n82s21
     port map (
-      wclk_n => p1,
-      we0_n  => p2,
-      i0     => p3,
-      a4     => p4,
-      ce     => p5,
-      strobe => p6,
-      d0     => p7,
-      d1     => p9,
-      a3     => p10,
-      a2     => p11,
-      a1     => p12,
-      a0     => p13,
       i1     => p14,
-      we1_n  => p15
+      we1_n  => p15,
+      d1     => p9,
+
+      i0     => p3,
+      we0_n  => p2,
+      d0     => p7,
+
+      a0     => p13,
+      a1     => p12,
+      a2     => p11,
+      a3     => p10,
+      a4     => p4,
+
+      latch_n=> p6,
+      wclk_n => p1,           
+      ce     => p5
+      
       );
 end architecture;
