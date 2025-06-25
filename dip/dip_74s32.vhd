@@ -32,8 +32,8 @@ begin
       g2b => p5,
       g2y => p6,
       g3y => p8,
-      g3b => p9,
-      g3a => p10,
+      g3b => p10,
+      g3a => p9,
       g4y => p11,
       g4b => p12,
       g4a => p13
