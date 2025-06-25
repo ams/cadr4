@@ -11,18 +11,21 @@ entity ttldm is
     );
   port (
     input  : in  std_logic;
-    tap1   : out std_logic := 'H';
-    tap2   : out std_logic := 'H';
-    tap3   : out std_logic := 'H';
-    tap4   : out std_logic := 'H';
-    output : out std_logic := 'H'
+    tap1   : out std_logic := '0';
+    tap2   : out std_logic := '0';
+    tap3   : out std_logic := '0';
+    tap4   : out std_logic := '0';
+    output : out std_logic := '0'
     );
 end ttldm;
 
 architecture behavioral of ttldm is
+  signal input_int : std_logic;
   signal input_var : std_logic;
 begin
-  input_var <= to_x01(input);
+  input_int <= 'H'; input_int <= input;
+  
+  input_var <= to_x01(input_int);
   tap1 <= transport input_var after single_tap_delay;
   tap2 <= transport input_var after single_tap_delay * 2;
   tap3 <= transport input_var after single_tap_delay * 3;
