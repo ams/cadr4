@@ -13,46 +13,74 @@ use ieee.numeric_std.all;
 
 entity n82s21 is
   port (
-    a0     : in  std_logic := 'H';
-    a1     : in  std_logic := 'H';
-    a2     : in  std_logic := 'H';
-    a3     : in  std_logic := 'H';
-    a4     : in  std_logic := 'H';
-    ce     : in  std_logic := 'H';
+    a0     : in  std_logic;
+    a1     : in  std_logic;
+    a2     : in  std_logic;
+    a3     : in  std_logic;
+    a4     : in  std_logic;
+    ce     : in  std_logic;
     d0     : out std_logic;
     d1     : out std_logic;
-    i0     : in  std_logic := 'H';
-    i1     : in  std_logic := 'H';
-    latch_n: in  std_logic := 'H';
-    wclk_n : in  std_logic := 'H';
-    we0_n  : in  std_logic := 'H';
-    we1_n  : in  std_logic := 'H'
+    i0     : in  std_logic;
+    i1     : in  std_logic;
+    latch_n: in  std_logic;
+    wclk_n : in  std_logic;
+    we0_n  : in  std_logic;
+    we1_n  : in  std_logic
     );
 end entity;
 
 architecture ttl of n82s21 is
+  signal a0_i, a1_i, a2_i, a3_i, a4_i, ce_i, i0_i, i1_i, latch_n_i, wclk_n_i, we0_n_i, we1_n_i : std_logic;
   type ram_t is array (0 to 31) of std_logic_vector(1 downto 0);
   signal ram : ram_t := (others => (others => '0'));
   signal addr : unsigned(4 downto 0);
   signal output_latches : std_logic_vector(1 downto 0) := (others => '0');
 begin
-  addr <= a4 & a3 & a2 & a1 & a0;
+
+  a0_i <= 'H';
+  a1_i <= 'H';
+  a2_i <= 'H';
+  a3_i <= 'H';
+  a4_i <= 'H';
+  ce_i <= 'H';
+  i0_i <= 'H';
+  i1_i <= 'H';
+  latch_n_i <= 'H';
+  wclk_n_i <= 'H';
+  we0_n_i <= 'H';
+  we1_n_i <= 'H';
+
+  a0_i <= a0;
+  a1_i <= a1;
+  a2_i <= a2;
+  a3_i <= a3;
+  a4_i <= a4;
+  ce_i <= ce;
+  i0_i <= i0;
+  i1_i <= i1;
+  latch_n_i <= latch_n;
+  wclk_n_i <= wclk_n;
+  we0_n_i <= we0_n;
+  we1_n_i <= we1_n;
+
+  addr <= a4_i & a3_i & a2_i & a1_i & a0_i;
 
   ------------------------------------------------------------------
   -- write on falling edge of wclk_n
   ------------------------------------------------------------------
   process(all)
   begin
-    if falling_edge(wclk_n) then
-      if to_x01(ce) = '1' then
+    if falling_edge(wclk_n_i) then
+      if to_x01(ce_i) = '1' then
         if is_x(addr) then
           -- do nothing
         else
-          if to_x01(we0_n) = '0' then
-            ram(to_integer(addr))(0) <= i0;
+          if to_x01(we0_n_i) = '0' then
+            ram(to_integer(addr))(0) <= i0_i;
           end if;
-          if to_x01(we1_n) = '0' then
-            ram(to_integer(addr))(1) <= i1;
+          if to_x01(we1_n_i) = '0' then
+            ram(to_integer(addr))(1) <= i1_i;
           end if;
         end if;
       end if;
@@ -65,8 +93,8 @@ begin
   process(all)
     variable word : std_logic_vector(1 downto 0);
   begin
-    if falling_edge(latch_n) then
-      if to_x01(ce) = '1' then
+    if falling_edge(latch_n_i) then
+      if to_x01(ce_i) = '1' then
         if is_x(addr) then
           output_latches <= (others => 'X');
         else
@@ -83,7 +111,7 @@ begin
     variable live_word : std_logic_vector(1 downto 0);
     variable output_word : std_logic_vector(1 downto 0);
   begin
-    if to_x01(ce) = '1' then
+    if to_x01(ce_i) = '1' then
       -- Get live data from memory
       if is_x(addr) then
         live_word := (others => 'X');
@@ -92,9 +120,9 @@ begin
       end if;
       
       -- Select between live data and latched data
-      if to_x01(latch_n) = '1' then
+      if to_x01(latch_n_i) = '1' then
         output_word := live_word;  -- Live data
-      elsif to_x01(latch_n) = '0' then
+      elsif to_x01(latch_n_i) = '0' then
         output_word := output_latches;  -- Latched data
       else
         output_word := (others => 'X');  -- Unknown latch_n state
@@ -105,7 +133,7 @@ begin
       d0 <= '0' when output_word(0) = '0' else 'Z';
       d1 <= '0' when output_word(1) = '0' else 'Z';
       
-    elsif to_x01(ce) = '0' then
+    elsif to_x01(ce_i) = '0' then
       d0 <= 'Z';
       d1 <= 'Z';
     else
