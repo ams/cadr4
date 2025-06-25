@@ -23,7 +23,7 @@ entity sn74169 is
 end;
 
 architecture ttl of sn74169 is
-  signal cnt : unsigned(3 downto 0);    -- internal 4-bit register
+  signal cnt : unsigned(3 downto 0) := (others => '0');    -- internal 4-bit register
   
   -- Named constants for better readability
   constant COUNT_WIDTH    : natural := 4;

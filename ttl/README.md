@@ -62,19 +62,34 @@ All ICs with open collector outputs are explicitly indicated.
 - sn74241: octal buffer and line driver with tri-state outputs
 - sn74244: octal buffer and line driver with tri-state outputs
 
-## FF & Register
+## FF & Register & Counter
 
-- am25ls2519: quad register with two independently controlled tri-state outputs
-- am25s07: 6-bit register with common clock enable
-- am25s09: quad 2 input high-speed register (quad d-type ff with 2-1 select)
-- dm9328: dual 8-bit shift register
+### Flip-Flops
+
 - sn7474: dual d-type positive edge triggered ff with preset and clear
 - sn74109: dual j-k positive edge triggered ff with preset and clear
 - sn74174: hex d-type ff with clear
 - sn74175: quad d-type ff with clear
-- sn74194: 4-bit bidirectional universal shift register
-- sn74373: octal d-type transparent latch with tri-state outputs
 - sn74374: octal d-type ff with tri-state outputs
+
+### Transparent Latches
+
+- sn74373: octal d-type transparent latch with tri-state outputs
+
+### Registers
+
+- am25ls2519: quad register with two independently controlled tri-state outputs
+- am25s07: 6-bit register with common clock enable
+- am25s09: quad 2 input high-speed register (quad d-type ff with 2-1 select)
+
+### Shift Registers
+
+- dm9328: dual 8-bit shift register
+- sn74194: 4-bit bidirectional universal shift register
+
+### Counters
+
+- sn74169: synchronous 4-bit up/down binary counter
 
 ## RAM & PROM
 
@@ -90,7 +105,6 @@ All ICs with open collector outputs are explicitly indicated.
 - am25s10: 4-bit shifter
 - am93s48: 12-bit odd/even parity generator/checker
 - dm93s46: 6-bit identify comparator
-- sn74169: synchronous 4-bit up/down binary counter
 - sn74181: 4-bit ALU
 - sn74182: look-ahead carry generator
 - sn74280: 9-bit odd/even parity generator/checker
@@ -119,3 +133,7 @@ FFs and Registers use general ff_dpc and ff_jkpc components. However, the follow
 - sn74194 (shift register)
 - sn74373 (d-type transparent latch)
 - til309 (numeric display with logic)
+
+# Notes on Initialization
+
+CADR reset is strange. It looks like not all the required things are reset on power on reset (e.g. D_FF for IR25 driving -ILONG required for clock to tick). Because of this, the initial state of all components other than classical RAMs and PROMs are initialized to zero. This includes ff_dpc, ff_jkpc and all the components in FFs, Registers and Counters section above.

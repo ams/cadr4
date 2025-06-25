@@ -25,8 +25,8 @@ entity dm9328 is
 end entity;
 
 architecture ttl of dm9328 is
-  signal rega : std_logic_vector(7 downto 0);
-  signal regb : std_logic_vector(7 downto 0);
+  signal rega : std_logic_vector(7 downto 0) := (others => '0');
+  signal regb : std_logic_vector(7 downto 0) := (others => '0');
 begin
   aq   <= rega(7);
   aq_n <= not rega(7);
