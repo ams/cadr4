@@ -19,21 +19,41 @@ entity til309 is
 end;
 
 architecture ttl of til309 is
+  signal i1_int     : std_logic;
+  signal i2_int     : std_logic;
+  signal i4_int     : std_logic;
+  signal i8_int     : std_logic;
+  signal dp_int     : std_logic;
+  signal latch_int  : std_logic;
+  signal blank_n_int: std_logic;
+  signal ldp_int    : std_logic;
+  signal test_n_int : std_logic;
+  
   signal reg : std_logic_vector(3 downto 0);
 begin
+  i1_int <= 'H'; i1_int <= i1;
+  i2_int <= 'H'; i2_int <= i2;
+  i4_int <= 'H'; i4_int <= i4;
+  i8_int <= 'H'; i8_int <= i8;
+  dp_int <= 'H'; dp_int <= dp;
+  latch_int <= 'H'; latch_int <= latch;
+  blank_n_int <= 'H'; blank_n_int <= blank_n;
+  ldp_int <= 'H'; ldp_int <= ldp;
+  test_n_int <= 'H'; test_n_int <= test_n;
+  
   process (all)
   begin
-    if rising_edge(latch) then
-      reg <= i8 & i4 & i2 & i1;
+    if rising_edge(latch_int) then
+      reg <= i8_int & i4_int & i2_int & i1_int;
     end if;
   end process;
 
   process (all)
     variable disp : std_logic_vector(3 downto 0);
   begin
-    if to_x01(test_n) = '0' then
+    if to_x01(test_n_int) = '0' then
       disp := (others => '1');
-    elsif to_x01(blank_n) = '0' then
+    elsif to_x01(blank_n_int) = '0' then
       disp := (others => '0');
     else
       disp := reg;
