@@ -21,7 +21,7 @@ package signetics is
       a2     : in  std_logic;
       a3     : in  std_logic;
       a4     : in  std_logic;
-      strobe : in  std_logic;
+      latch_n: in  std_logic;
       wclk_n : in  std_logic;
       ce     : in  std_logic
       );
