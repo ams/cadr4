@@ -30,60 +30,38 @@ entity sn74241 is
 end;
 
 architecture ttl of sn74241 is
-  signal aenb_n_i, ain0_i, ain1_i, ain2_i, ain3_i : std_logic;
-  signal benb_i, bin0_i, bin1_i, bin2_i, bin3_i : std_logic;
 begin
-
-  aenb_n_i <= 'H';
-  ain0_i <= 'H';
-  ain1_i <= 'H';
-  ain2_i <= 'H';
-  ain3_i <= 'H';
-  benb_i <= 'H';
-  bin0_i <= 'H';
-  bin1_i <= 'H';
-  bin2_i <= 'H';
-  bin3_i <= 'H';
-
-  aenb_n_i <= aenb_n;
-  ain0_i <= ain0;
-  ain1_i <= ain1;
-  ain2_i <= ain2;
-  ain3_i <= ain3;
-  benb_i <= benb;
-  bin0_i <= bin0;
-  bin1_i <= bin1;
-  bin2_i <= bin2;
-  bin3_i <= bin3;
 
   process (all)
   begin
-    if to_x01(aenb_n_i) = '0' then
-      -- Enabled: pass data through, but handle unknown inputs
-      aout0 <= 'X' when (ain0_i /= '0' and ain0_i /= '1') else ain0_i;
-      aout1 <= 'X' when (ain1_i /= '0' and ain1_i /= '1') else ain1_i;
-      aout2 <= 'X' when (ain2_i /= '0' and ain2_i /= '1') else ain2_i;
-      aout3 <= 'X' when (ain3_i /= '0' and ain3_i /= '1') else ain3_i;
-    elsif to_x01(aenb_n_i) = '1' then
+    if to_x01(aenb_n) = '0' then
+      -- Enabled: pass data through using to_x01 to handle unknown inputs
+      aout0 <= to_x01(ain0);
+      aout1 <= to_x01(ain1);
+      aout2 <= to_x01(ain2);
+      aout3 <= to_x01(ain3);
+    elsif to_x01(aenb_n) = '1' then
       -- Disabled: high impedance
       aout0 <= 'Z'; aout1 <= 'Z'; aout2 <= 'Z'; aout3 <= 'Z';
     else
+      -- Unknown enable state: outputs unknown
       aout0 <= 'X'; aout1 <= 'X'; aout2 <= 'X'; aout3 <= 'X';
     end if;
   end process;
 
   process (all)
   begin
-    if to_x01(benb_i) = '1' then
-      -- Enabled: pass data through, but handle unknown inputs
-      bout0 <= 'X' when (bin0_i /= '0' and bin0_i /= '1') else bin0_i;
-      bout1 <= 'X' when (bin1_i /= '0' and bin1_i /= '1') else bin1_i;
-      bout2 <= 'X' when (bin2_i /= '0' and bin2_i /= '1') else bin2_i;
-      bout3 <= 'X' when (bin3_i /= '0' and bin3_i /= '1') else bin3_i;
-    elsif to_x01(benb_i) = '0' then
+    if to_x01(benb) = '1' then
+      -- Enabled: pass data through using to_x01 to handle unknown inputs
+      bout0 <= to_x01(bin0);
+      bout1 <= to_x01(bin1);
+      bout2 <= to_x01(bin2);
+      bout3 <= to_x01(bin3);
+    elsif to_x01(benb) = '0' then
       -- Disabled: high impedance
       bout0 <= 'Z'; bout1 <= 'Z'; bout2 <= 'Z'; bout3 <= 'Z';
     else
+      -- Unknown enable state: outputs unknown
       bout0 <= 'X'; bout1 <= 'X'; bout2 <= 'X'; bout3 <= 'X';
     end if;
   end process;
