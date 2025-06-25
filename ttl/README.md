@@ -110,9 +110,9 @@ The components with open-collector outputs can only drive output to 0 or Z. An e
 
 - n82s21 32x2 RAM with open-collector outputs is used in mmem and spc to implement M and SPC memories. The outputs in mmem (MMEM[31:0]) are pulled-up with 2x res20 components (4b19 and 4b20) in mctl. The outputs at spc (SPCO[18:0]) are pulled-up with 2x res20 components (4e29 and 4e24) in spc.
 
-# Notes on ff_
+# Notes on ff_ Usage
 
-FFs and Registers use general ff_ components. However, the following components are not using ff_ components, this can be improved:
+FFs and Registers use general ff_ components. However, the following components are not using ff_ components:
 
 - dm9328 (shift register)
 - sn74169 (up-down binary counter)
