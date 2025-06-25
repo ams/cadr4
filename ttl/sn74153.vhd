@@ -29,7 +29,7 @@ begin
     variable select_lines : std_logic_vector(1 downto 0);
   begin
     if to_x01(enb1_n) = '0' then
-      select_lines := (selb, sela);
+      select_lines := selb & sela;
       case select_lines is
         when "00" => g1y <= g1c0;
         when "01" => g1y <= g1c1;
@@ -49,7 +49,7 @@ begin
     variable select_lines : std_logic_vector(1 downto 0);
   begin
     if to_x01(enb2_n) = '0' then
-      select_lines := (selb, sela);
+      select_lines := selb & sela;
       case select_lines is
         when "00" => g2y <= g2c0;
         when "01" => g2y <= g2c1;
