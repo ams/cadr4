@@ -42,8 +42,17 @@ begin
         o3 <= 'X'; o2 <= 'X'; o1 <= 'X'; o0 <= 'X';        
       else
         data := rom(to_integer(addr) * 8 + 7 downto to_integer(addr) * 8);
-        o7   <= data(7); o6 <= data(6); o5 <= data(5); o4 <= data(4);
-        o3   <= data(3); o2 <= data(2); o1 <= data(1); o0 <= data(0);
+        -- this is an open-collector output component
+        -- it can only drive low or high-z
+        -- an external pull-up resistor is required to drive high
+        o7 <= '0' when data(7) = '0' else 'Z';
+        o6 <= '0' when data(6) = '0' else 'Z';
+        o5 <= '0' when data(5) = '0' else 'Z';
+        o4 <= '0' when data(4) = '0' else 'Z';
+        o3 <= '0' when data(3) = '0' else 'Z';
+        o2 <= '0' when data(2) = '0' else 'Z';
+        o1 <= '0' when data(1) = '0' else 'Z';
+        o0 <= '0' when data(0) = '0' else 'Z';
       end if;
     elsif to_x01(ce_n) = '1' then
       o7 <= 'Z'; o6 <= 'Z'; o5 <= 'Z'; o4 <= 'Z';

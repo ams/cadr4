@@ -70,8 +70,11 @@ begin
         d1 <= 'X';
       else
         word := ram(to_integer(addr));
-        d0 <= word(0);
-        d1 <= word(1);
+        -- this is an open-collector output component
+        -- it can only drive low or high-z
+        -- an external pull-up resistor is required to drive high
+        d0 <= '0' when word(0) = '0' else 'Z';
+        d1 <= '0' when word(1) = '0' else 'Z';
       end if;
     elsif to_x01(ce) = '0' then
       d0 <= 'Z';
