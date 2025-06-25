@@ -12,7 +12,7 @@ qreg_set cadr_qctl cadr_q
 spy_set cadr_spy0 cadr_spy1 cadr_spy2 cadr_spy4
 lcreg_set cadr_lc cadr_lcc
 vma_set cadr_vma cadr_vmas
-md_set cadr_md cadr_mds
+md_set cadr_md cadr_mds cadr_bcterm
 vmaps_set cadr_vmem0 cadr_vmem1 cadr_vmem2 cadr_vmemdr
 vctl_set cadr_vctl1 cadr_vctl2
 olord_set cadr_olord1 cadr_olord2
