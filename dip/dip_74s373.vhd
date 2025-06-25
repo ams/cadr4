@@ -40,7 +40,7 @@ begin
       i2     => p7,
       i3     => p8,
       o3     => p9,
-      hold_n => not p11,
+      hold_n => p11,
       o4     => p12,
       i4     => p13,
       i5     => p14,
