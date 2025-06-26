@@ -163,7 +163,7 @@ ERROR-DIVIDE-BY-ZERO
 ERROR-PDL-BUFFER
 	(JUMP HALT-CONS ERROR-PDL-BUFFER)
     (ERROR-TABLE ERROR-PDL-BUFFER)
-
+
 ;;; Program starts here.  Create M-ZERO and M-ONES, and check the hardware a little.
 GO	((M-ZERO Q-R) SETZ)		;Make all zeros.  Result to Q-R, not to depend on M mem
 
