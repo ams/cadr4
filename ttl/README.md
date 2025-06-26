@@ -9,6 +9,10 @@ FFs and (normal) Registers are using ff_dpc and ff_jkpc common implementations. 
 
 Every TTL component has a datasheet under doc/ttl with the same name as the entity name.
 
+# Disparities
+
+- sn74153: it looks like sel inputs are reversed, either in the datasheet or in the schematics. Used in npc and aluc4.
+
 # TTL Compatibility
 
 Real TTL components behave like they have a weak pull-up at their input. To be able to simulate this behavior, TTL components have internal signals for all in ports and these signals are initialized to 'H'. Then, they are driven with the actual in port. So if in port is Z, the internal input signal is H. This cannot be done by simply setting in port default value to 'H', because in port cannot drive a signal, default value only functions when there is no driver (when even no Z, like unconnected).
@@ -73,6 +77,7 @@ All ICs with open collector outputs are explicitly indicated.
 
 - sn74138: 3-8 demux
 - sn74139: 2-4 demux
+- sn74153: dual 4-1 demux
 - sn74157: 2-1 mux with tri-state outputs
 - sn74258: quad 2-1 inverse mux with tri-state outputs
 
