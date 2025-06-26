@@ -1,11 +1,12 @@
 -- Octal Buffers and Line Drivers With 3-State Outputs
+-- Both enable inputs are active low
 
 library ieee;
 use ieee.std_logic_1164.all;
 
 entity sn74244 is
   port (
-    aenb_n : in  std_logic; -- Pin 1 (1G) - Note: VHDL is active high, datasheet is active low (1G with bar)
+    aenb_n : in  std_logic; -- Pin 1 (1G)
     ain0   : in  std_logic; -- Pin 2 (1A1)
     ain1   : in  std_logic; -- Pin 4 (1A2)
     ain2   : in  std_logic; -- Pin 6 (1A3)
@@ -15,7 +16,7 @@ entity sn74244 is
     aout2  : out std_logic; -- Pin 14 (1Y3)
     aout3  : out std_logic; -- Pin 12 (1Y4)
 
-    benb_n : in  std_logic; -- Pin 19 (2/G) - Note: VHDL is active high, datasheet is active low (2/G with bar)
+    benb_n : in  std_logic; -- Pin 19 (2/G)
     bin0   : in  std_logic; -- Pin 11 (2A1)
     bin1   : in  std_logic; -- Pin 13 (2A2)
     bin2   : in  std_logic; -- Pin 15 (2A3)
@@ -57,11 +58,11 @@ begin
   process (all)
   begin
     if to_x01(aenb_n_i) = '0' then
-      -- Enabled: pass data through, but handle unknown inputs
-      aout0 <= 'X' when (ain0_i /= '0' and ain0_i /= '1') else ain0_i;
-      aout1 <= 'X' when (ain1_i /= '0' and ain1_i /= '1') else ain1_i;
-      aout2 <= 'X' when (ain2_i /= '0' and ain2_i /= '1') else ain2_i;
-      aout3 <= 'X' when (ain3_i /= '0' and ain3_i /= '1') else ain3_i;
+      -- Enabled: pass data through using to_x01 to handle unknown inputs
+      aout0 <= to_x01(ain0_i);
+      aout1 <= to_x01(ain1_i);
+      aout2 <= to_x01(ain2_i);
+      aout3 <= to_x01(ain3_i);
     elsif to_x01(aenb_n_i) = '1' then
       -- Disabled: high impedance
       aout0 <= 'Z'; aout1 <= 'Z'; aout2 <= 'Z'; aout3 <= 'Z';
@@ -73,11 +74,11 @@ begin
   process (all)
   begin
     if to_x01(benb_n_i) = '0' then
-      -- Enabled: pass data through, but handle unknown inputs  
-      bout0 <= 'X' when (bin0_i /= '0' and bin0_i /= '1') else bin0_i;
-      bout1 <= 'X' when (bin1_i /= '0' and bin1_i /= '1') else bin1_i;
-      bout2 <= 'X' when (bin2_i /= '0' and bin2_i /= '1') else bin2_i;
-      bout3 <= 'X' when (bin3_i /= '0' and bin3_i /= '1') else bin3_i;
+      -- Enabled: pass data through using to_x01 to handle unknown inputs  
+      bout0 <= to_x01(bin0_i);
+      bout1 <= to_x01(bin1_i);
+      bout2 <= to_x01(bin2_i);
+      bout3 <= to_x01(bin3_i);
     elsif to_x01(benb_n_i) = '1' then
       -- Disabled: high impedance
       bout0 <= 'Z'; bout1 <= 'Z'; bout2 <= 'Z'; bout3 <= 'Z';

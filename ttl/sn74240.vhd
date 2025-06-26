@@ -1,4 +1,4 @@
--- Octal Buffers and Line Drivers With 3-State Outputs
+-- Octal Buffers and Line Drivers With 3-State Inverted Outputs
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -28,38 +28,60 @@ entity sn74240 is
 end;
 
 architecture ttl of sn74240 is
+  signal aenb_n_i, ain0_i, ain1_i, ain2_i, ain3_i : std_logic;
+  signal benb_n_i, bin0_i, bin1_i, bin2_i, bin3_i : std_logic;
 begin
+
+  aenb_n_i <= 'H';
+  ain0_i <= 'H';
+  ain1_i <= 'H';
+  ain2_i <= 'H';
+  ain3_i <= 'H';
+  benb_n_i <= 'H';
+  bin0_i <= 'H';
+  bin1_i <= 'H';
+  bin2_i <= 'H';
+  bin3_i <= 'H';
+
+  aenb_n_i <= aenb_n;
+  ain0_i <= ain0;
+  ain1_i <= ain1;
+  ain2_i <= ain2;
+  ain3_i <= ain3;
+  benb_n_i <= benb_n;
+  bin0_i <= bin0;
+  bin1_i <= bin1;
+  bin2_i <= bin2;
+  bin3_i <= bin3;
 
   process (all)
   begin
-    if to_x01(aenb_n) = '0' then
+    if to_x01(aenb_n_i) = '0' then
       -- Enabled: pass inverted data through using to_x01 to handle unknown inputs
-      aout0 <= not to_x01(ain0);
-      aout1 <= not to_x01(ain1);
-      aout2 <= not to_x01(ain2);
-      aout3 <= not to_x01(ain3);
-    elsif to_x01(aenb_n) = '1' then
+      aout0 <= not to_x01(ain0_i);
+      aout1 <= not to_x01(ain1_i);
+      aout2 <= not to_x01(ain2_i);
+      aout3 <= not to_x01(ain3_i);
+    elsif to_x01(aenb_n_i) = '1' then
       -- Disabled: high impedance
       aout0 <= 'Z'; aout1 <= 'Z'; aout2 <= 'Z'; aout3 <= 'Z';
     else
-      -- Unknown enable state: outputs unknown
       aout0 <= 'X'; aout1 <= 'X'; aout2 <= 'X'; aout3 <= 'X';
     end if;
   end process;
 
   process (all)
   begin
-    if to_x01(benb_n) = '0' then
+    if to_x01(benb_n_i) = '0' then
       -- Enabled: pass inverted data through using to_x01 to handle unknown inputs
-      bout0 <= not to_x01(bin0);
-      bout1 <= not to_x01(bin1);
-      bout2 <= not to_x01(bin2);
-      bout3 <= not to_x01(bin3);
-    elsif to_x01(benb_n) = '1' then
+      bout0 <= not to_x01(bin0_i);
+      bout1 <= not to_x01(bin1_i);
+      bout2 <= not to_x01(bin2_i);
+      bout3 <= not to_x01(bin3_i);
+    elsif to_x01(benb_n_i) = '1' then
       -- Disabled: high impedance
       bout0 <= 'Z'; bout1 <= 'Z'; bout2 <= 'Z'; bout3 <= 'Z';
     else
-      -- Unknown enable state: outputs unknown
       bout0 <= 'X'; bout1 <= 'X'; bout2 <= 'X'; bout3 <= 'X';
     end if;
   end process;
