@@ -49,12 +49,9 @@ begin
   g2y3 <= g2(3); g2y2 <= g2(2); g2y1 <= g2(1); g2y0 <= g2(0);
 
   process (all) is
-    
     variable sel : unsigned(1 downto 0);
   begin
-    -- why like this and not g1s1 & g1s0, I dont know
-    sel := g1s0_i & g1s1_i;
-
+    sel := g1s1_i & g1s0_i;
     if to_x01(g1e_n_i) = '0' then
       case sel is
         when "00"   => g1 <= "1110";
@@ -74,9 +71,7 @@ begin
   process (all) is
     variable sel : unsigned(1 downto 0);
   begin
-    -- why like this and not g1s1 & g1s0, I dont know
-    sel := g2s0_i & g2s1_i;
-
+    sel := g2s1_i & g2s0_i;
     if to_x01(g2e_n_i) = '0' then
       case sel is
         when "00"   => g2 <= "1110";

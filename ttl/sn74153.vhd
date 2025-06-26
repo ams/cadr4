@@ -60,8 +60,7 @@ begin
     variable select_lines : std_logic_vector(1 downto 0);
   begin
     if to_x01(enb1_n_i) = '0' then
-      -- why sela & selb and not selb & sela I dont know
-      select_lines := sela_i & selb_i;
+      select_lines := selb_i & sela_i;
       case select_lines is
         when "00" => g1y <= g1c0_i;
         when "01" => g1y <= g1c1_i;
@@ -81,8 +80,7 @@ begin
     variable select_lines : std_logic_vector(1 downto 0);
   begin
     if to_x01(enb2_n_i) = '0' then
-      -- why sela & selb and not selb & sela I dont know
-      select_lines := sela_i & selb_i;
+      select_lines := selb_i & sela_i;
       case select_lines is
         when "00" => g2y <= g2c0_i;
         when "01" => g2y <= g2c1_i;
