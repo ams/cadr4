@@ -49,31 +49,31 @@ begin
     if p15 = '1' then
       write(l, String'(" PROMENABLE "));
     else
-      write(l, String'(" promenable "));
+      write(l, String'("            "));
     end if;
 
     if p16 = '1' then
       write(l, String'("IPE "));
     else
-      write(l, String'("ipe "));
+      write(l, String'("    "));
     end if;
 
     if p17 = '1' then 
       write(l, String'("DPE "));
     else
-      write(l, String'("dpe "));
+      write(l, String'("    "));
     end if;
 
     if p18 = '1' then
       write(l, String'("TILT0 "));
     else
-      write(l, String'("tilt0 "));
+      write(l, String'("      "));
     end if;
 
     if p19 = '1' then
       write(l, String'("TILT1 "));
     else
-      write(l, String'("tilt1 "));
+      write(l, String'("      "));
     end if;
 
     write(l, now, justified => RIGHT, field => 10, UNIT => ns);
