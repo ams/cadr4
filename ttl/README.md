@@ -13,7 +13,7 @@ Every TTL component has a datasheet under doc/ttl with the same name as the enti
 
 Real TTL components behave like they have a weak pull-up at their input. To be able to simulate this behavior, TTL components have internal signals for all in ports and the inputs are checked for Z before assigning them to internal signals. If in port is 'Z', the internal input signal is set to 'H'. This cannot be done by simply setting in port default value to 'H', because in port cannot drive a signal, default value only functions when there is no driver (when even no Z, like unconnected).
 
-Also, TTL components use to_x01 function when using the inputs (internal input signals), thus treating 'H' and 'L' as '1' and '0'.
+This is done with misc.ttl_input function. Additionally, this function operates like to_x01 function, so Z and H is mapped to 1, L is mapped to 0.
 
 ## Open-Collector Outputs
 

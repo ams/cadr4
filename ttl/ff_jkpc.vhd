@@ -32,13 +32,13 @@ begin
   begin
     -- Asynchronous preset and clear (active low)
     -- Conflicting preset and clear signals produce undefined behavior (X)
-    if to_x01(pre) = '0' and to_x01(clr) = '0' then
+    if pre = '0' and clr = '0' then
       q_int <= 'X';  -- Undefined behavior when both are active
-    elsif to_x01(pre) = '0' then
+    elsif pre = '0' then
       q_int <= '1';
-    elsif to_x01(clr) = '0' then
+    elsif clr = '0' then
       q_int <= '0';
-    elsif to_x01(pre) = 'X' or to_x01(clr) = 'X' then
+    elsif pre = 'X' or clr = 'X' then
       q_int <= 'X';
     elsif rising_edge(clk) then
       jk := j & k;

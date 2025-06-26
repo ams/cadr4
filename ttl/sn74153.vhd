@@ -47,7 +47,7 @@ begin
   process(all)
     variable select_lines : std_logic_vector(1 downto 0);
   begin
-    if to_x01(enb1_n_i) = '0' then
+    if enb1_n_i = '0' then
       select_lines := selb_i & sela_i;
       case select_lines is
         when "00" => g1y <= g1c0_i;
@@ -56,7 +56,7 @@ begin
         when "11" => g1y <= g1c3_i;
         when others => g1y <= 'X';
       end case;
-    elsif to_x01(enb1_n_i) = '1' then
+    elsif enb1_n_i = '1' then
       -- This is correct, it is not a tri-state output component
       g1y <= '0';
     else
@@ -67,7 +67,7 @@ begin
   process(all)
     variable select_lines : std_logic_vector(1 downto 0);
   begin
-    if to_x01(enb2_n_i) = '0' then
+    if enb2_n_i = '0' then
       select_lines := selb_i & sela_i;
       case select_lines is
         when "00" => g2y <= g2c0_i;
@@ -76,7 +76,7 @@ begin
         when "11" => g2y <= g2c3_i;
         when others => g2y <= 'X';
       end case;
-    elsif to_x01(enb2_n_i) = '1' then
+    elsif enb2_n_i = '1' then
       -- This is correct, it is not a tri-state output component
       g2y <= '0';
     else

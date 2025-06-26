@@ -60,14 +60,14 @@ begin
   process(all)
   begin
     if falling_edge(wclk_n_i) then
-      if to_x01(ce_i) = '1' then
+      if ce_i = '1' then
         if is_x(addr) then
           -- do nothing
         else
-          if to_x01(we0_n_i) = '0' then
+          if we0_n_i = '0' then
             ram(to_integer(addr))(0) <= i0_i;
           end if;
-          if to_x01(we1_n_i) = '0' then
+          if we1_n_i = '0' then
             ram(to_integer(addr))(1) <= i1_i;
           end if;
         end if;
@@ -82,7 +82,7 @@ begin
     variable word : std_logic_vector(1 downto 0);
   begin
     if falling_edge(latch_n_i) then
-      if to_x01(ce_i) = '1' then
+      if ce_i = '1' then
         if is_x(addr) then
           output_latches <= (others => 'X');
         else
@@ -99,7 +99,7 @@ begin
     variable live_word : std_logic_vector(1 downto 0);
     variable output_word : std_logic_vector(1 downto 0);
   begin
-    if to_x01(ce_i) = '1' then
+    if ce_i = '1' then
       -- Get live data from memory
       if is_x(addr) then
         live_word := (others => 'X');
@@ -108,9 +108,9 @@ begin
       end if;
       
       -- Select between live data and latched data
-      if to_x01(latch_n_i) = '1' then
+      if latch_n_i = '1' then
         output_word := live_word;  -- Live data
-      elsif to_x01(latch_n_i) = '0' then
+      elsif latch_n_i = '0' then
         output_word := output_latches;  -- Latched data
       else
         output_word := (others => 'X');  -- Unknown latch_n state
@@ -121,7 +121,7 @@ begin
       d0 <= '0' when output_word(0) = '0' else 'Z';
       d1 <= '0' when output_word(1) = '0' else 'Z';
       
-    elsif to_x01(ce_i) = '0' then
+    elsif ce_i = '0' then
       d0 <= 'Z';
       d1 <= 'Z';
     else

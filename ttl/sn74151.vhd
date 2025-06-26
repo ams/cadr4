@@ -48,7 +48,7 @@ begin
     variable select_lines : std_logic_vector(2 downto 0);
   begin
     
-    if to_x01(ce_n_i) = '0' then
+    if ce_n_i = '0' then
       select_lines := sel2_i & sel1_i & sel0_i;
       case select_lines is
         when "000" =>
@@ -79,7 +79,7 @@ begin
           q   <= 'X';
           q_n <= 'X';
       end case;
-    elsif to_x01(ce_n_i) = '1' then
+    elsif ce_n_i = '1' then
       -- Chip is disabled
       -- This is correct, it is not a tri-state output component
       q   <= '0';

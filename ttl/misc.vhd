@@ -11,7 +11,7 @@ package misc is
   procedure clkgen(signal clk : out std_logic; constant frequency : real);
   function pullup(s   : std_logic) return std_logic;
   function pulldown(s : std_logic) return std_logic;
-  function ttl_input(input : std_logic) return std_logic;
+  function ttl_input(i : std_logic) return std_logic;
   
   -- Generic ROM loading function
   impure function load_rom_file(filename : string) return std_logic_vector;  
@@ -57,11 +57,13 @@ package body misc is
   end;
 
     -- Function to implement TTL input behavior
-  function ttl_input(input : std_logic) return std_logic is
+  function ttl_input(i : std_logic) return std_logic is
   begin
-    case input is
-      when 'Z' => return 'H';  -- High impedance gets weak pull-up
-      when others => return input;  -- All other values pass through
+    case i is
+      when 'Z' => return '1';  -- High impedance gets weak pull-up, return strong '1'
+      when 'H' => return '1';  -- Weak high becomes strong '1'
+      when 'L' => return '0';  -- Weak low becomes strong '0'
+      when others => return i; -- Pass through '0', '1', 'X', 'U', 'W', '-'
     end case;
   end function;
 

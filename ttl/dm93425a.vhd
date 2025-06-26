@@ -50,24 +50,24 @@ begin
   process(all)
     variable addr : unsigned(9 downto 0);
   begin
-    if to_x01(ce_n_i) = '0' then
+    if ce_n_i = '0' then
       addr := (a9_i, a8_i, a7_i, a6_i, a5_i, a4_i, a3_i, a2_i, a1_i, a0_i);
       if is_x(addr) then
-        if to_x01(we_n_i) = '1' then
+        if we_n_i = '1' then
           do <= 'X';
         end if;
       else
-        if to_x01(we_n_i) = '0' then
+        if we_n_i = '0' then
           -- Write
           ram(to_integer(addr)) <= di_i;
-        elsif to_x01(we_n_i) = '1' then
+        elsif we_n_i = '1' then
           -- Read (always happens when enabled)
           do <= ram(to_integer(addr));
         else
           -- do nothing
         end if;
       end if;
-    elsif to_x01(ce_n_i) = '1' then
+    elsif ce_n_i = '1' then
       do <= 'Z';
     else
       do <= 'X';

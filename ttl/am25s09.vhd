@@ -43,16 +43,16 @@ begin
   d0_i <= ttl_input(d0);
   d1_i <= ttl_input(d1);
 
-  i0 <= a1_i when to_x01(sel_i) = '1' else a0_i when to_x01(sel_i) = '0' else 'X';
+  i0 <= a1_i when sel_i = '1' else a0_i when sel_i = '0' else 'X';
   u0 : entity work.ff_dpc port map (clk => clk_i, d => i0, q => aq, q_n => open, enb_n => '0', pre => '1', clr => '1');
 
-  i1 <= b1_i when to_x01(sel_i) = '1' else b0_i when to_x01(sel_i) = '0' else 'X';
+  i1 <= b1_i when sel_i = '1' else b0_i when sel_i = '0' else 'X';
   u1 : entity work.ff_dpc port map (clk => clk_i, d => i1, q => bq, q_n => open, enb_n => '0', pre => '1', clr => '1');
 
-  i2 <= c1_i when to_x01(sel_i) = '1' else c0_i when to_x01(sel_i) = '0' else 'X';
+  i2 <= c1_i when sel_i = '1' else c0_i when sel_i = '0' else 'X';
   u2 : entity work.ff_dpc port map (clk => clk_i, d => i2, q => cq, q_n => open, enb_n => '0', pre => '1', clr => '1');
 
-  i3 <= d1_i when to_x01(sel_i) = '1' else d0_i when to_x01(sel_i) = '0' else 'X';
+  i3 <= d1_i when sel_i = '1' else d0_i when sel_i = '0' else 'X';
   u3 : entity work.ff_dpc port map (clk => clk_i, d => i3, q => dq, q_n => open, enb_n => '0', pre => '1', clr => '1');
 
 end architecture;

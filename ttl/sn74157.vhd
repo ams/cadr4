@@ -43,15 +43,15 @@ begin
 
   process(all)
   begin
-    if to_x01(enb_n_i) = '0' then
-      if to_x01(sel_i) = '0' then
+    if enb_n_i = '0' then
+      if sel_i = '0' then
         y1 <= a1_i; y2 <= a2_i; y3 <= a3_i; y4 <= a4_i;
-      elsif to_x01(sel_i) = '1' then
+      elsif sel_i = '1' then
         y1 <= b1_i; y2 <= b2_i; y3 <= b3_i; y4 <= b4_i;
       else
         y1 <= 'X'; y2 <= 'X'; y3 <= 'X'; y4 <= 'X';
       end if;
-    elsif to_x01(enb_n_i) = '1' then
+    elsif enb_n_i = '1' then
       y1 <= 'Z'; y2 <= 'Z'; y3 <= 'Z'; y4 <= 'Z';
     else
       y1 <= 'X'; y2 <= 'X'; y3 <= 'X'; y4 <= 'X';

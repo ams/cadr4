@@ -45,14 +45,14 @@ begin
   process(all)
   begin
     -- Check for unknown enable or select signals
-    if to_x01(enb_n_i) = '0' then
+    if enb_n_i = '0' then
       -- Enabled: select inputs
-      if to_x01(sel_i) = '0' then
+      if sel_i = '0' then
         ay <= not a0_i;
         by <= not b0_i;
         cy <= not c0_i;
         dy <= not d0_i;
-      elsif to_x01(sel_i) = '1' then
+      elsif sel_i = '1' then
         ay <= not a1_i;
         by <= not b1_i;
         cy <= not c1_i;
@@ -63,7 +63,7 @@ begin
         cy <= 'X';
         dy <= 'X';
       end if;
-    elsif to_x01(enb_n_i) = '1' then
+    elsif enb_n_i = '1' then
       -- Disabled: high impedance
       ay <= 'Z';
       by <= 'Z';

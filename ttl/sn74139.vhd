@@ -46,7 +46,7 @@ begin
     variable sel : unsigned(1 downto 0);
   begin
     sel := g1s1_i & g1s0_i;
-    if to_x01(g1e_n_i) = '0' then
+    if g1e_n_i = '0' then
       case sel is
         when "00"   => g1 <= "1110";
         when "01"   => g1 <= "1101";
@@ -54,7 +54,7 @@ begin
         when "11"   => g1 <= "0111";
         when others => g1 <= "XXXX";
       end case;
-    elsif to_x01(g1e_n_i) = '1' then
+    elsif g1e_n_i = '1' then
       -- This is correct, it is not a tri-state output component
       g1 <= "1111";
     else
@@ -66,7 +66,7 @@ begin
     variable sel : unsigned(1 downto 0);
   begin
     sel := g2s1_i & g2s0_i;
-    if to_x01(g2e_n_i) = '0' then
+    if g2e_n_i = '0' then
       case sel is
         when "00"   => g2 <= "1110";
         when "01"   => g2 <= "1101";
@@ -74,7 +74,7 @@ begin
         when "11"   => g2 <= "0111";
         when others => g2 <= "XXXX";
       end case;
-    elsif to_x01(g2e_n_i) = '1' then
+    elsif g2e_n_i = '1' then
       -- This is correct, it is not a tri-state output component
       g2 <= "1111";
     else

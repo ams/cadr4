@@ -52,9 +52,9 @@ begin
   process (all)
     variable disp : std_logic_vector(3 downto 0);
   begin
-    if to_x01(test_n_int) = '0' then
+    if test_n_int = '0' then
       disp := (others => '1');
-    elsif to_x01(blank_n_int) = '0' then
+    elsif blank_n_int = '0' then
       disp := (others => '0');
     else
       disp := reg;

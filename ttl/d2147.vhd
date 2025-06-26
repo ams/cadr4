@@ -67,22 +67,22 @@ begin
   process (all)
     variable addr : unsigned(11 downto 0);
   begin
-    if to_x01(ce_n_int) = '0' then
+    if ce_n_int = '0' then
       addr := (a11_int, a10_int, a9_int, a8_int, a7_int, a6_int, a5_int, a4_int, a3_int, a2_int, a1_int, a0_int);
       if is_x(addr) then
-        if to_x01(we_n_int) = '1' then
+        if we_n_int = '1' then
           do <= 'X';
         end if;
       else
-        if to_x01(we_n_int) = '0' then
+        if we_n_int = '0' then
           ram(to_integer(addr)) <= di_int;
-        elsif to_x01(we_n_int) = '1' then
+        elsif we_n_int = '1' then
           do <= ram(to_integer(addr));
         else
           -- do nothing
         end if;
       end if;
-    elsif to_x01(ce_n_int) = '1' then
+    elsif ce_n_int = '1' then
       do <= 'Z';
     else
       do <= 'X';

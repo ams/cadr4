@@ -51,12 +51,12 @@ begin
   -- Shift register A
   process (all)
   begin
-    if to_x01(clr_n_i) = '0' then
+    if clr_n_i = '0' then
       rega <= (others => '0');
     elsif rising_edge(aclk_i) then
-      if to_x01(asel_i) = '0' then
+      if asel_i = '0' then
         rega <= rega(6 downto 0) & ai0_i;
-      elsif to_x01(asel_i) = '1' then
+      elsif asel_i = '1' then
         rega <= rega(6 downto 0) & ai1_i;
       else
         rega <= rega(6 downto 0) & 'X';
@@ -67,12 +67,12 @@ begin
   -- Shift register B
   process (all)
   begin
-    if to_x01(clr_n_i) = '0' then
+    if clr_n_i = '0' then
       regb <= (others => '0');
     elsif rising_edge(bclk_i) then
-      if to_x01(bsel_i) = '0' then
+      if bsel_i = '0' then
         regb <= regb(6 downto 0) & bi0_i;
-      elsif to_x01(bsel_i) = '1' then
+      elsif bsel_i = '1' then
         regb <= regb(6 downto 0) & bi1_i;
       else
         regb <= regb(6 downto 0) & 'X';

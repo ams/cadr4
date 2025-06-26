@@ -7,6 +7,7 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
+use work.misc.all;
 
 entity ff_dpc is
   port (
@@ -20,29 +21,36 @@ entity ff_dpc is
 end;
 
 architecture ttl of ff_dpc is
+  signal clk_i, pre_i, clr_i, d_i, enb_n_i : std_logic;
   signal q_int : std_logic := '0';
 begin
+
+  clk_i <= ttl_input(clk);
+  pre_i <= ttl_input(pre);
+  clr_i <= ttl_input(clr);
+  d_i <= ttl_input(d);
+  enb_n_i <= ttl_input(enb_n);
   q <= q_int;
   -- Proper complement handling for unknown states
   q_n <= '0' when q_int = '1' else
          '1' when q_int = '0' else
          'X';  -- Unknown complement for X, U, Z, W states
 
-  process (clk, pre, clr)
+  process (clk_i, pre_i, clr_i)
   begin
     -- Asynchronous preset and clear (active low)
     -- Conflicting preset and clear signals produce undefined behavior (X)
-    if to_x01(pre) = '0' and to_x01(clr) = '0' then
+    if pre_i = '0' and clr_i = '0' then
       q_int <= 'X';  -- Undefined behavior when both are active
-    elsif to_x01(pre) = '0' then
+    elsif pre_i = '0' then
       q_int <= '1';
-    elsif to_x01(clr) = '0' then
+    elsif clr_i = '0' then
       q_int <= '0';
-    elsif to_x01(pre) = 'X' or to_x01(clr) = 'X' then
+    elsif pre_i = 'X' or clr_i = 'X' then
       q_int <= 'X';
-    elsif to_x01(enb_n) = '0' then
-      if rising_edge(clk) then
-        q_int <= d;
+    elsif enb_n_i = '0' then
+      if rising_edge(clk_i) then
+        q_int <= d_i;
       end if;
     end if;
   end process;

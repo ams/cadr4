@@ -45,9 +45,9 @@ begin
   process(all)
     variable sel : std_logic_vector(1 downto 0);
   begin
-    if to_x01(clr_n_i) = '0' then
+    if clr_n_i = '0' then
       reg <= (others => '0');
-    elsif to_x01(clr_n_i) = 'X' then
+    elsif clr_n_i = 'X' then
       reg <= (others => 'X');
     elsif rising_edge(clk_i) then
       sel := s1_i & s0_i;

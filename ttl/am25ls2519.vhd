@@ -62,12 +62,12 @@ begin
 
   process (all)
   begin
-    if to_x01(oe_y_n_i) = '0' then
+    if oe_y_n_i = '0' then
       y3 <= q3;
       y2 <= q2;
       y1 <= q1;
       y0 <= q0;
-    elsif to_x01(oe_y_n_i) = '1' then
+    elsif oe_y_n_i = '1' then
       y3 <= 'Z';
       y2 <= 'Z';
       y1 <= 'Z';
@@ -79,13 +79,13 @@ begin
       y0 <= 'X';
     end if;
 
-    if to_x01(oe_w_n_i) = '0' then
-      if to_x01(pol_i) = '1' then
+    if oe_w_n_i = '0' then
+      if pol_i = '1' then
         w3 <= not q3;
         w2 <= not q2;
         w1 <= not q1;
         w0 <= not q0;
-      elsif to_x01(pol_i) = '0' then
+      elsif pol_i = '0' then
         w3 <= q3;
         w2 <= q2;
         w1 <= q1;
@@ -96,7 +96,7 @@ begin
         w1 <= 'X';
         w0 <= 'X';
       end if;
-    elsif to_x01(oe_w_n_i) = '1' then
+    elsif oe_w_n_i = '1' then
       w3 <= 'Z';
       w2 <= 'Z';
       w1 <= 'Z';

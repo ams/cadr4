@@ -44,7 +44,7 @@ begin
   process (all)
     variable sel : unsigned(1 downto 0);
   begin    
-    if to_x01(ce_n_i) = '0' then
+    if ce_n_i = '0' then
       sel := sel1_i & sel0_i;
       case sel is
         when "00"   => o3 <= i3_i;  o2 <= i2_i;  o1 <= i1_i;  o0 <= i0_i;    -- no shift
@@ -53,7 +53,7 @@ begin
         when "11"   => o3 <= i0_i;  o2 <= i_1_i; o1 <= i_2_i; o0 <= i_3_i;   -- shift right by 3
         when others => o3 <= 'X'; o2 <= 'X'; o1 <= 'X'; o0 <= 'X';
       end case;
-    elsif to_x01(ce_n_i) = '1' then
+    elsif ce_n_i = '1' then
       o0 <= 'Z'; o1 <= 'Z'; o2 <= 'Z'; o3 <= 'Z';
     else
       o0 <= 'X'; o1 <= 'X'; o2 <= 'X'; o3 <= 'X';

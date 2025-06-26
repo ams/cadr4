@@ -49,10 +49,10 @@ begin
   begin
     input_data := i7_i & i6_i & i5_i & i4_i & i3_i & i2_i & i1_i & i0_i;
     
-    if to_x01(hold_n_i) = '1' then
+    if hold_n_i = '1' then
       -- Transparent mode: pass input data (including X/U)
       data <= input_data;
-    elsif to_x01(hold_n_i) = '0' then
+    elsif hold_n_i = '0' then
       -- Hold mode: maintain current data
       null;  -- data unchanged
     else
@@ -64,11 +64,11 @@ begin
   -- Tri-state output process with proper X/U handling
   process (all)
   begin
-    if to_x01(oenb_n_i) = '0' then
+    if oenb_n_i = '0' then
       -- Enabled: pass latched data
       o0 <= data(0); o1 <= data(1); o2 <= data(2); o3 <= data(3);
       o4 <= data(4); o5 <= data(5); o6 <= data(6); o7 <= data(7);
-    elsif to_x01(oenb_n_i) = '1' then
+    elsif oenb_n_i = '1' then
       -- Disabled: high impedance
       o0 <= 'Z'; o1 <= 'Z'; o2 <= 'Z'; o3 <= 'Z';
       o4 <= 'Z'; o5 <= 'Z'; o6 <= 'Z'; o7 <= 'Z';

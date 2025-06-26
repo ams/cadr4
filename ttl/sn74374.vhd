@@ -56,7 +56,7 @@ begin
   -- Output enable process: controls 3-state outputs
   process (all)
   begin
-    if to_x01(oenb_n_i) = '0' then
+    if oenb_n_i = '0' then
       -- Output enable active (low), drive stored data to outputs
       o0 <= q_int(0);
       o1 <= q_int(1);
@@ -66,7 +66,7 @@ begin
       o5 <= q_int(5);
       o6 <= q_int(6);
       o7 <= q_int(7);
-    elsif to_x01(oenb_n_i) = '1' then
+    elsif oenb_n_i = '1' then
       -- Output enable inactive (high), outputs in high-impedance
       o0 <= 'Z';
       o1 <= 'Z';

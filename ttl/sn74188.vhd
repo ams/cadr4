@@ -44,7 +44,7 @@ begin
     variable data : std_logic_vector(7 downto 0);
     variable addr : unsigned(4 downto 0);
   begin
-    if to_x01(ce_n_i) = '0' then
+    if ce_n_i = '0' then
       addr := (a4_i, a3_i, a2_i, a1_i, a0_i);
       if is_x(addr) then
         o7 <= 'X'; o6 <= 'X'; o5 <= 'X'; o4 <= 'X';
@@ -63,7 +63,7 @@ begin
         o1 <= '0' when data(1) = '0' else 'Z';
         o0 <= '0' when data(0) = '0' else 'Z';
       end if;
-    elsif to_x01(ce_n_i) = '1' then
+    elsif ce_n_i = '1' then
       o7 <= 'Z'; o6 <= 'Z'; o5 <= 'Z'; o4 <= 'Z';
       o3 <= 'Z'; o2 <= 'Z'; o1 <= 'Z'; o0 <= 'Z';
     else

@@ -47,13 +47,13 @@ begin
 
   process (all)
   begin
-    if to_x01(aenb_n_i) = '0' then
-      -- Enabled: pass data through using to_x01 to handle unknown inputs
-      aout0 <= to_x01(ain0_i);
-      aout1 <= to_x01(ain1_i);
-      aout2 <= to_x01(ain2_i);
-      aout3 <= to_x01(ain3_i);
-    elsif to_x01(aenb_n_i) = '1' then
+    if aenb_n_i = '0' then
+      -- Enabled: pass data through
+      aout0 <= ain0_i;
+      aout1 <= ain1_i;
+      aout2 <= ain2_i;
+      aout3 <= ain3_i;
+    elsif aenb_n_i = '1' then
       -- Disabled: high impedance
       aout0 <= 'Z'; aout1 <= 'Z'; aout2 <= 'Z'; aout3 <= 'Z';
     else
@@ -63,13 +63,13 @@ begin
 
   process (all)
   begin
-    if to_x01(benb_n_i) = '0' then
-      -- Enabled: pass data through using to_x01 to handle unknown inputs  
-      bout0 <= to_x01(bin0_i);
-      bout1 <= to_x01(bin1_i);
-      bout2 <= to_x01(bin2_i);
-      bout3 <= to_x01(bin3_i);
-    elsif to_x01(benb_n_i) = '1' then
+    if benb_n_i = '0' then
+      -- Enabled: pass data through
+      bout0 <= bin0_i;
+      bout1 <= bin1_i;
+      bout2 <= bin2_i;
+      bout3 <= bin3_i;
+    elsif benb_n_i = '1' then
       -- Disabled: high impedance
       bout0 <= 'Z'; bout1 <= 'Z'; bout2 <= 'Z'; bout3 <= 'Z';
     else

@@ -41,7 +41,7 @@ begin
   begin
     g := g1_i and not g2a_i and not g2b_i;
     -- Check enable conditions first
-    if to_x01(g) = '1' then
+    if g = '1' then
       -- Enabled: decode select inputs
       sel := a_i & b_i & c_i;  -- MSB to LSB: a, b, c (matching testbench expectations)
       
@@ -57,7 +57,7 @@ begin
         when "111" => y <= "01111111"; -- y7 active (low)
         when others => y <= "XXXXXXXX"; -- Unknown select inputs
       end case;
-    elsif to_x01(g) = '0' then
+    elsif g = '0' then
     -- Disabled: all outputs high (inactive)
     -- This is correct, it is not a tri-state output component
       y <= (others => '1');
