@@ -1,11 +1,35 @@
 
 # ttl
 
-This folder contains ttl components.
+This folder contains TTL components used in CADR.
 
-Since all components are TTL compatible, all inputs are initialized to 'H'.
+All components have a testbench with `_tb` suffix. Run `make ttl-check` to run all testbenches. Testbenches might not be necessarily 100% accurate.
 
-All components have a testbench with `_tb` suffix. Run `make ttl-check` to run all testbenches.
+FFs and (normal) Registers are using ff_dpc and ff_jkpc common implementations. Shift Registers, Counters and Latches (dm9328, sn74169 sn74194, sn74373, til309) are not using ff_ implementations.
+
+Every TTL component has a datasheet under doc/ttl with the same name as the entity name.
+
+# TTL Compatibility
+
+Real TTL components behave like they have a weak pull-up at their input. To be able to simulate this behavior, TTL components have internal signals for all in ports and these signals are initialized to 'H'. Then, they are driven with the actual in port. So if in port is Z, the internal input signal is H. This cannot be done by simply setting in port default value to 'H', because in port cannot drive a signal, default value only functions when there is no driver (when even no Z, like unconnected).
+
+Also, TTL components use to_x01 function when using the inputs (internal input signals), thus treating 'H' and 'L' as '1' and '0'.
+
+## Open-Collector Outputs
+
+The components with open-collector outputs can only drive output to 0 or Z. An external pull-up resistor is required to convert Z to 1.
+
+- sn74188 32x8 PROM is used as a replacement of 5600. 5600/sn74188 is only used in mskg4, and their outputs (MSK[31:0]) are pulled-up with 2x res20 components (2e20 and 2e15). See msk4g.
+
+- n82s21 32x2 RAM with open-collector outputs is used in mmem and spc to implement M and SPC memories. The outputs in mmem (MMEM[31:0]) are pulled-up with 2x res20 components (4b19 and 4b20) in mctl. The outputs at spc (SPCO[18:0]) are pulled-up with 2x res20 components (4e29 and 4e24) in spc.
+
+## TTLDM
+
+TTLDM is a special component, see the internal comments for how it is implemented and why.
+
+# Initial State
+
+CADR reset is a bit strange. It seems like not all the required things are reset on power on reset (e.g. D_FF for IR25 driving -ILONG required for clock to tick). Because of this, the initial state of all memory components (FFs, registers and counters, RAMs) are set to zero. PROMs are initialized from hex files.
 
 # Naming
 
@@ -21,13 +45,9 @@ The manufacturers of parts are checked from CADR AI documents (doc/ai). The manu
 - Signetics: n prefix
 - TI (or 7400 family in general): sn prefix
 
-As some of Fairchild parts may have no prefix originally (e.g. 9S42), dm is also used for such parts and for example became dm9s42.
+As some of Fairchild parts may have no prefix originally (e.g. 9S42), dm is used for such parts, for example 9S42 became dm9s42.
 
 Other than sn74 entities, all entity names are exact to original part names (ignoring the dm prefix for Fairchild), i.e am25s07 is AMD Am25S07. However, the sn74 entities have no letter between the numbers (temperature range 74 and functional code like 00) since this letter identifies the process tweaks (no letter=TTL, S=Schottky, LS=low-power Schottky etc.) and they are logically and from HDL point of view equivalent.
-
-# Datasheets
-
-Each entity has a datasheet under doc/ttl with the same name as the entity name.
 
 # Packages
 
@@ -72,10 +92,6 @@ All ICs with open collector outputs are explicitly indicated.
 - sn74175: quad d-type ff with clear
 - sn74374: octal d-type ff with tri-state outputs
 
-### Transparent Latches
-
-- sn74373: octal d-type transparent latch with tri-state outputs
-
 ### Registers
 
 - am25ls2519: quad register with two independently controlled tri-state outputs
@@ -86,6 +102,10 @@ All ICs with open collector outputs are explicitly indicated.
 
 - dm9328: dual 8-bit shift register
 - sn74194: 4-bit bidirectional universal shift register
+
+### Transparent Latches
+
+- sn74373: octal d-type transparent latch with tri-state outputs
 
 ### Counters
 
@@ -122,28 +142,6 @@ All ICs with open collector outputs are explicitly indicated.
 
 ## Special
 
-- dummy_type_A: all passive elements
+- dummy_type_A: all passive element (passive components on a dip socket)
 - til309: numeric display with logic
 - ttldm: ttl delay line
-
-# Notes on Components with Open-Collector Outputs
-
-The components with open-collector outputs can only drive output to 0 or Z. An external pull-up resistor is required to convert Z to 1.
-
-- sn74188 32x8 PROM is used as a replacement of 5600. 5600/sn74188 is only used in mskg4, and their outputs (MSK[31:0]) are pulled-up with 2x res20 components (2e20 and 2e15). See msk4g.
-
-- n82s21 32x2 RAM with open-collector outputs is used in mmem and spc to implement M and SPC memories. The outputs in mmem (MMEM[31:0]) are pulled-up with 2x res20 components (4b19 and 4b20) in mctl. The outputs at spc (SPCO[18:0]) are pulled-up with 2x res20 components (4e29 and 4e24) in spc.
-
-# Notes on ff_ Usage
-
-FFs and Registers use general ff_dpc and ff_jkpc components. However, the following components are not using them:
-
-- dm9328 (shift register)
-- sn74169 (up-down binary counter)
-- sn74194 (shift register)
-- sn74373 (d-type transparent latch)
-- til309 (numeric display with logic)
-
-# Notes on Initialization
-
-CADR reset is strange. It looks like not all the required things are reset on power on reset (e.g. D_FF for IR25 driving -ILONG required for clock to tick). Because of this, the initial state of all components other than classical RAMs and PROMs are initialized to zero. This includes ff_dpc, ff_jkpc and all the components in FFs, Registers and Counters section above and all RAMs. PROMs are initialized from hex files.
