@@ -4,6 +4,7 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
+use work.misc.all;
 
 -- di inputs
 -- e_n clock enable
@@ -43,27 +44,16 @@ architecture ttl of am25ls2519 is
   signal q0, q1, q2, q3 : std_logic;
 begin
 
-  d0_i <= 'H';
-  d1_i <= 'H';
-  d2_i <= 'H';
-  d3_i <= 'H';
-  e_n_i <= 'H';
-  cp_i <= 'H';
-  oe_y_n_i <= 'H';
-  oe_w_n_i <= 'H';
-  pol_i <= 'H';
-  clr_n_i <= 'H';
-
-  d0_i <= d0;
-  d1_i <= d1;
-  d2_i <= d2;
-  d3_i <= d3;
-  e_n_i <= e_n;
-  cp_i <= cp;
-  oe_y_n_i <= oe_y_n;
-  oe_w_n_i <= oe_w_n;
-  pol_i <= pol;
-  clr_n_i <= clr_n;
+  d0_i <= ttl_input(d0);
+  d1_i <= ttl_input(d1);
+  d2_i <= ttl_input(d2);
+  d3_i <= ttl_input(d3);
+  e_n_i <= ttl_input(e_n);
+  cp_i <= ttl_input(cp);
+  oe_y_n_i <= ttl_input(oe_y_n);
+  oe_w_n_i <= ttl_input(oe_w_n);
+  pol_i <= ttl_input(pol);
+  clr_n_i <= ttl_input(clr_n);
 
   u1 : entity work.ff_dpc port map (clk => cp_i, d => d0_i, q => q0, q_n => open, enb_n => e_n_i, pre => '1', clr => clr_n_i);
   u2 : entity work.ff_dpc port map (clk => cp_i, d => d1_i, q => q1, q_n => open, enb_n => e_n_i, pre => '1', clr => clr_n_i);

@@ -4,6 +4,7 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
+use work.misc.all;
 
 entity am25s07 is
   port (
@@ -28,23 +29,14 @@ architecture ttl of am25s07 is
   signal i0_i, i1_i, i2_i, i3_i, i4_i, i5_i, clk_i, enb_n_i : std_logic;
 begin
 
-  i0_i <= 'H';
-  i1_i <= 'H';
-  i2_i <= 'H';
-  i3_i <= 'H';
-  i4_i <= 'H';
-  i5_i <= 'H';
-  clk_i <= 'H';
-  enb_n_i <= 'H';
-
-  i0_i <= i0;
-  i1_i <= i1;
-  i2_i <= i2;
-  i3_i <= i3;
-  i4_i <= i4;
-  i5_i <= i5;
-  clk_i <= clk;
-  enb_n_i <= enb_n;
+  i0_i <= ttl_input(i0);
+  i1_i <= ttl_input(i1);
+  i2_i <= ttl_input(i2);
+  i3_i <= ttl_input(i3);
+  i4_i <= ttl_input(i4);
+  i5_i <= ttl_input(i5);
+  clk_i <= ttl_input(clk);
+  enb_n_i <= ttl_input(enb_n);
 
   u1 : entity work.ff_dpc port map (clk => clk_i, d => i0_i, q => d0, q_n => open, enb_n => enb_n_i, pre => '1', clr => '1');
   u2 : entity work.ff_dpc port map (clk => clk_i, d => i1_i, q => d1, q_n => open, enb_n => enb_n_i, pre => '1', clr => '1');

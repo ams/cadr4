@@ -2,6 +2,7 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
+use work.misc.all;
 
 entity sn74138 is
   port (
@@ -27,19 +28,12 @@ architecture ttl of sn74138 is
   signal y : std_logic_vector(7 downto 0);
 begin
 
-  a_i <= 'H';
-  b_i <= 'H';
-  c_i <= 'H';
-  g1_i <= 'H';
-  g2a_i <= 'H';
-  g2b_i <= 'H';
-
-  a_i <= a;
-  b_i <= b;
-  c_i <= c;
-  g1_i <= g1;
-  g2a_i <= g2a;
-  g2b_i <= g2b;
+  a_i <= ttl_input(a);
+  b_i <= ttl_input(b);
+  c_i <= ttl_input(c);
+  g1_i <= ttl_input(g1);
+  g2a_i <= ttl_input(g2a);
+  g2b_i <= ttl_input(g2b);
 
   process (all) is
     variable sel : std_logic_vector(2 downto 0);

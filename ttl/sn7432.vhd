@@ -3,6 +3,8 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
+use work.misc.all;
+
 entity sn7432 is
   port (
     g1a : in  std_logic; -- Pin 1
@@ -27,23 +29,14 @@ architecture ttl of sn7432 is
   signal g1a_i, g1b_i, g2a_i, g2b_i, g3a_i, g3b_i, g4a_i, g4b_i : std_logic;
 begin
 
-  g1a_i <= 'H';
-  g1b_i <= 'H';
-  g2a_i <= 'H';
-  g2b_i <= 'H';
-  g3a_i <= 'H';
-  g3b_i <= 'H';
-  g4a_i <= 'H';
-  g4b_i <= 'H';
-
-  g1a_i <= g1a;
-  g1b_i <= g1b;
-  g2a_i <= g2a;
-  g2b_i <= g2b;
-  g3a_i <= g3a;
-  g3b_i <= g3b;
-  g4a_i <= g4a;
-  g4b_i <= g4b;
+  g1a_i <= ttl_input(g1a);
+  g1b_i <= ttl_input(g1b);
+  g2a_i <= ttl_input(g2a);
+  g2b_i <= ttl_input(g2b);
+  g3a_i <= ttl_input(g3a);
+  g3b_i <= ttl_input(g3b);
+  g4a_i <= ttl_input(g4a);
+  g4b_i <= ttl_input(g4b);
 
   g1y <= g1a_i or g1b_i;
   g2y <= g2a_i or g2b_i;

@@ -2,6 +2,7 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
+use work.misc.all;
 
 entity sn7451 is
   port (
@@ -23,23 +24,14 @@ architecture ttl of sn7451 is
   signal g1a_i, g1b_i, g1c_i, g1d_i, g2a_i, g2b_i, g2c_i, g2d_i : std_logic;
 begin
 
-  g1a_i <= 'H';
-  g1b_i <= 'H';
-  g1c_i <= 'H';
-  g1d_i <= 'H';
-  g2a_i <= 'H';
-  g2b_i <= 'H';
-  g2c_i <= 'H';
-  g2d_i <= 'H';
-
-  g1a_i <= g1a;
-  g1b_i <= g1b;
-  g1c_i <= g1c;
-  g1d_i <= g1d;
-  g2a_i <= g2a;
-  g2b_i <= g2b;
-  g2c_i <= g2c;
-  g2d_i <= g2d;
+  g1a_i <= ttl_input(g1a);
+  g1b_i <= ttl_input(g1b);
+  g1c_i <= ttl_input(g1c);
+  g1d_i <= ttl_input(g1d);
+  g2a_i <= ttl_input(g2a);
+  g2b_i <= ttl_input(g2b);
+  g2c_i <= ttl_input(g2c);
+  g2d_i <= ttl_input(g2d);
 
   -- Gate 1: (g1a AND g1b) OR (g1c AND g1d) then invert
   g1y <= not ((g1a_i and g1b_i) or (g1c_i and g1d_i));

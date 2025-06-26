@@ -5,6 +5,8 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
+use work.misc.all;
+
 entity dm9328 is
   port (
     clr_n  : in  std_logic; -- 7
@@ -30,27 +32,16 @@ architecture ttl of dm9328 is
   signal regb : std_logic_vector(7 downto 0) := (others => '0');
 begin
 
-  clr_n_i <= 'H';
-  asel_i <= 'H';
-  ai1_i <= 'H';
-  ai0_i <= 'H';
-  aclk_i <= 'H';
-  comclk_i <= 'H';
-  bclk_i <= 'H';
-  bi0_i <= 'H';
-  bi1_i <= 'H';
-  bsel_i <= 'H';
-
-  clr_n_i <= clr_n;
-  asel_i <= asel;
-  ai1_i <= ai1;
-  ai0_i <= ai0;
-  aclk_i <= aclk;
-  comclk_i <= comclk;
-  bclk_i <= bclk;
-  bi0_i <= bi0;
-  bi1_i <= bi1;
-  bsel_i <= bsel;
+  clr_n_i <= ttl_input(clr_n);
+  asel_i <= ttl_input(asel);
+  ai1_i <= ttl_input(ai1);
+  ai0_i <= ttl_input(ai0);
+  aclk_i <= ttl_input(aclk);
+  comclk_i <= ttl_input(comclk);
+  bclk_i <= ttl_input(bclk);
+  bi0_i <= ttl_input(bi0);
+  bi1_i <= ttl_input(bi1);
+  bsel_i <= ttl_input(bsel);
 
   aq   <= rega(7);
   aq_n <= not rega(7);

@@ -2,6 +2,7 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
+use work.misc.all;
 
 entity sn7474 is
   port (
@@ -24,23 +25,14 @@ architecture ttl of sn7474 is
   signal g1r_n_i, g1d_i, g1clk_i, g1s_n_i, g2s_n_i, g2clk_i, g2d_i, g2r_n_i : std_logic;
 begin
 
-  g1r_n_i <= 'H';
-  g1d_i <= 'H';
-  g1clk_i <= 'H';
-  g1s_n_i <= 'H';
-  g2s_n_i <= 'H';
-  g2clk_i <= 'H';
-  g2d_i <= 'H';
-  g2r_n_i <= 'H';
-
-  g1r_n_i <= g1r_n;
-  g1d_i <= g1d;
-  g1clk_i <= g1clk;
-  g1s_n_i <= g1s_n;
-  g2s_n_i <= g2s_n;
-  g2clk_i <= g2clk;
-  g2d_i <= g2d;
-  g2r_n_i <= g2r_n;
+  g1r_n_i <= ttl_input(g1r_n);
+  g1d_i <= ttl_input(g1d);
+  g1clk_i <= ttl_input(g1clk);
+  g1s_n_i <= ttl_input(g1s_n);
+  g2s_n_i <= ttl_input(g2s_n);
+  g2clk_i <= ttl_input(g2clk);
+  g2d_i <= ttl_input(g2d);
+  g2r_n_i <= ttl_input(g2r_n);
 
   -- first flip-flop
   u1 : entity work.ff_dpc port map (clk => g1clk_i, pre => g1s_n_i, clr => g1r_n_i, d => g1d_i, q => g1q, q_n => g1q_n, enb_n => '0');

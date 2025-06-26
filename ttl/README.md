@@ -11,7 +11,7 @@ Every TTL component has a datasheet under doc/ttl with the same name as the enti
 
 # TTL Compatibility
 
-Real TTL components behave like they have a weak pull-up at their input. To be able to simulate this behavior, TTL components have internal signals for all in ports and these signals are initialized to 'H'. Then, they are driven with the actual in port. So if in port is Z, the internal input signal is H. This cannot be done by simply setting in port default value to 'H', because in port cannot drive a signal, default value only functions when there is no driver (when even no Z, like unconnected).
+Real TTL components behave like they have a weak pull-up at their input. To be able to simulate this behavior, TTL components have internal signals for all in ports and the inputs are checked for Z before assigning them to internal signals. If in port is 'Z', the internal input signal is set to 'H'. This cannot be done by simply setting in port default value to 'H', because in port cannot drive a signal, default value only functions when there is no driver (when even no Z, like unconnected).
 
 Also, TTL components use to_x01 function when using the inputs (internal input signals), thus treating 'H' and 'L' as '1' and '0'.
 

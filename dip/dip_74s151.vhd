@@ -35,10 +35,13 @@ begin
       i5   => p14,
       i6   => p13,
       i7   => p12,
-      sel0 => p11,
-      sel1 => p10,
+
       sel2 => p9,
+      sel1 => p10,
+      sel0 => p11,
+      
       ce_n => p7,
+      
       q    => p5,
       q_n  => p6
       );

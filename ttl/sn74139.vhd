@@ -3,6 +3,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+use work.misc.all;
 
 entity sn74139 is
   port (    
@@ -30,19 +31,12 @@ architecture ttl of sn74139 is
   signal g2 : unsigned(3 downto 0);
 begin
 
-  g1e_n_i <= 'H';
-  g1s0_i <= 'H';
-  g1s1_i <= 'H';
-  g2e_n_i <= 'H';
-  g2s0_i <= 'H';
-  g2s1_i <= 'H';
-
-  g1e_n_i <= g1e_n;
-  g1s0_i <= g1s0;
-  g1s1_i <= g1s1;
-  g2e_n_i <= g2e_n;
-  g2s0_i <= g2s0;
-  g2s1_i <= g2s1;
+  g1e_n_i <= ttl_input(g1e_n);
+  g1s0_i <= ttl_input(g1s0);
+  g1s1_i <= ttl_input(g1s1);
+  g2e_n_i <= ttl_input(g2e_n);
+  g2s0_i <= ttl_input(g2s0);
+  g2s1_i <= ttl_input(g2s1);
 
   -- drive output pins from internal vectors
   g1y3 <= g1(3); g1y2 <= g1(2); g1y1 <= g1(1); g1y0 <= g1(0);

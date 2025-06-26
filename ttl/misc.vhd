@@ -11,6 +11,7 @@ package misc is
   procedure clkgen(signal clk : out std_logic; constant frequency : real);
   function pullup(s   : std_logic) return std_logic;
   function pulldown(s : std_logic) return std_logic;
+  function ttl_input(input : std_logic) return std_logic;
   
   -- Generic ROM loading function
   impure function load_rom_file(filename : string) return std_logic_vector;  
@@ -54,6 +55,15 @@ package body misc is
     end case;
     return pull;
   end;
+
+    -- Function to implement TTL input behavior
+  function ttl_input(input : std_logic) return std_logic is
+  begin
+    case input is
+      when 'Z' => return 'H';  -- High impedance gets weak pull-up
+      when others => return input;  -- All other values pass through
+    end case;
+  end function;
 
   -- Generic ROM loading function that automatically determines file size
   impure function load_rom_file(filename : string) return std_logic_vector is

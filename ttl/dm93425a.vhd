@@ -6,6 +6,8 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+use work.misc.all;
+
 entity dm93425a is
   port (
     a0   : in  std_logic;
@@ -31,33 +33,19 @@ architecture ttl of dm93425a is
   signal ram : ram_t  := (others => '0');
 begin
 
-  a0_i <= 'H';
-  a1_i <= 'H';
-  a2_i <= 'H';
-  a3_i <= 'H';
-  a4_i <= 'H';
-  a5_i <= 'H';
-  a6_i <= 'H';
-  a7_i <= 'H';
-  a8_i <= 'H';
-  a9_i <= 'H';
-  ce_n_i <= 'H';
-  we_n_i <= 'H';
-  di_i <= 'H';
-
-  a0_i <= a0;
-  a1_i <= a1;
-  a2_i <= a2;
-  a3_i <= a3;
-  a4_i <= a4;
-  a5_i <= a5;
-  a6_i <= a6;
-  a7_i <= a7;
-  a8_i <= a8;
-  a9_i <= a9;
-  ce_n_i <= ce_n;
-  we_n_i <= we_n;
-  di_i <= di;
+  a0_i <= ttl_input(a0);
+  a1_i <= ttl_input(a1);
+  a2_i <= ttl_input(a2);
+  a3_i <= ttl_input(a3);
+  a4_i <= ttl_input(a4);
+  a5_i <= ttl_input(a5);
+  a6_i <= ttl_input(a6);
+  a7_i <= ttl_input(a7);
+  a8_i <= ttl_input(a8);
+  a9_i <= ttl_input(a9);
+  ce_n_i <= ttl_input(ce_n);
+  we_n_i <= ttl_input(we_n);
+  di_i <= ttl_input(di);
 
   process(all)
     variable addr : unsigned(9 downto 0);

@@ -4,6 +4,7 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
+use work.misc.all;
 
 entity am25s09 is
   port (
@@ -31,27 +32,16 @@ architecture ttl of am25s09 is
 
 begin
 
-  clk_i <= 'H';
-  sel_i <= 'H';
-  a0_i <= 'H';
-  a1_i <= 'H';
-  b0_i <= 'H';
-  b1_i <= 'H';
-  c0_i <= 'H';
-  c1_i <= 'H';
-  d0_i <= 'H';
-  d1_i <= 'H';
-
-  clk_i <= clk;
-  sel_i <= sel;
-  a0_i <= a0;
-  a1_i <= a1;
-  b0_i <= b0;
-  b1_i <= b1;
-  c0_i <= c0;
-  c1_i <= c1;
-  d0_i <= d0;
-  d1_i <= d1;
+  clk_i <= ttl_input(clk);
+  sel_i <= ttl_input(sel);
+  a0_i <= ttl_input(a0);
+  a1_i <= ttl_input(a1);
+  b0_i <= ttl_input(b0);
+  b1_i <= ttl_input(b1);
+  c0_i <= ttl_input(c0);
+  c1_i <= ttl_input(c1);
+  d0_i <= ttl_input(d0);
+  d1_i <= ttl_input(d1);
 
   i0 <= a1_i when to_x01(sel_i) = '1' else a0_i when to_x01(sel_i) = '0' else 'X';
   u0 : entity work.ff_dpc port map (clk => clk_i, d => i0, q => aq, q_n => open, enb_n => '0', pre => '1', clr => '1');

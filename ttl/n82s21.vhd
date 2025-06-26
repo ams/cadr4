@@ -10,6 +10,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+use work.misc.all;
 
 entity n82s21 is
   port (
@@ -38,31 +39,18 @@ architecture ttl of n82s21 is
   signal output_latches : std_logic_vector(1 downto 0) := (others => '0');
 begin
 
-  a0_i <= 'H';
-  a1_i <= 'H';
-  a2_i <= 'H';
-  a3_i <= 'H';
-  a4_i <= 'H';
-  ce_i <= 'H';
-  i0_i <= 'H';
-  i1_i <= 'H';
-  latch_n_i <= 'H';
-  wclk_n_i <= 'H';
-  we0_n_i <= 'H';
-  we1_n_i <= 'H';
-
-  a0_i <= a0;
-  a1_i <= a1;
-  a2_i <= a2;
-  a3_i <= a3;
-  a4_i <= a4;
-  ce_i <= ce;
-  i0_i <= i0;
-  i1_i <= i1;
-  latch_n_i <= latch_n;
-  wclk_n_i <= wclk_n;
-  we0_n_i <= we0_n;
-  we1_n_i <= we1_n;
+  a0_i <= ttl_input(a0);
+  a1_i <= ttl_input(a1);
+  a2_i <= ttl_input(a2);
+  a3_i <= ttl_input(a3);
+  a4_i <= ttl_input(a4);
+  ce_i <= ttl_input(ce);
+  i0_i <= ttl_input(i0);
+  i1_i <= ttl_input(i1);
+  latch_n_i <= ttl_input(latch_n);
+  wclk_n_i <= ttl_input(wclk_n);
+  we0_n_i <= ttl_input(we0_n);
+  we1_n_i <= ttl_input(we1_n);
 
   addr <= a4_i & a3_i & a2_i & a1_i & a0_i;
 

@@ -2,6 +2,7 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
+use work.misc.all;
 
 entity sn74258 is
   port (
@@ -30,27 +31,16 @@ architecture ttl of sn74258 is
   signal enb_n_i, sel_i, a0_i, a1_i, b0_i, b1_i, c0_i, c1_i, d0_i, d1_i : std_logic;
 begin
 
-  enb_n_i <= 'H';
-  sel_i <= 'H';
-  a0_i <= 'H';
-  a1_i <= 'H';
-  b0_i <= 'H';
-  b1_i <= 'H';
-  c0_i <= 'H';
-  c1_i <= 'H';
-  d0_i <= 'H';
-  d1_i <= 'H';
-
-  enb_n_i <= enb_n;
-  sel_i <= sel;
-  a0_i <= a0;
-  a1_i <= a1;
-  b0_i <= b0;
-  b1_i <= b1;
-  c0_i <= c0;
-  c1_i <= c1;
-  d0_i <= d0;
-  d1_i <= d1;
+  enb_n_i <= ttl_input(enb_n);
+  sel_i <= ttl_input(sel);
+  a0_i <= ttl_input(a0);
+  a1_i <= ttl_input(a1);
+  b0_i <= ttl_input(b0);
+  b1_i <= ttl_input(b1);
+  c0_i <= ttl_input(c0);
+  c1_i <= ttl_input(c1);
+  d0_i <= ttl_input(d0);
+  d1_i <= ttl_input(d1);
 
   process(all)
   begin

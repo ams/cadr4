@@ -2,6 +2,7 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
+use work.misc.all;
 
 entity sn74174 is
   port (
@@ -27,23 +28,14 @@ architecture ttl of sn74174 is
   signal clk_i, clr_n_i, d1_i, d2_i, d3_i, d4_i, d5_i, d6_i : std_logic;
 begin
 
-  clk_i <= 'H';
-  clr_n_i <= 'H';
-  d1_i <= 'H';
-  d2_i <= 'H';
-  d3_i <= 'H';
-  d4_i <= 'H';
-  d5_i <= 'H';
-  d6_i <= 'H';
-
-  clk_i <= clk;
-  clr_n_i <= clr_n;
-  d1_i <= d1;
-  d2_i <= d2;
-  d3_i <= d3;
-  d4_i <= d4;
-  d5_i <= d5;
-  d6_i <= d6;
+  clk_i <= ttl_input(clk);
+  clr_n_i <= ttl_input(clr_n);
+  d1_i <= ttl_input(d1);
+  d2_i <= ttl_input(d2);
+  d3_i <= ttl_input(d3);
+  d4_i <= ttl_input(d4);
+  d5_i <= ttl_input(d5);
+  d6_i <= ttl_input(d6);
 
   u1 : entity work.ff_dpc port map (clk => clk_i, clr => clr_n_i, d => d1_i, q => q1, q_n => open, enb_n => '0', pre => '1');
   u2 : entity work.ff_dpc port map (clk => clk_i, clr => clr_n_i, d => d2_i, q => q2, q_n => open, enb_n => '0', pre => '1');

@@ -7,6 +7,7 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 use work.misc.load_rom_file;
+use work.misc.ttl_input;
 
 entity sn74472 is
   generic (fn : string := "");
@@ -37,27 +38,16 @@ architecture ttl of sn74472 is
   constant rom  : std_logic_vector := load_rom_file(fn);  
 begin
 
-  a0_i <= 'H';
-  a1_i <= 'H';
-  a2_i <= 'H';
-  a3_i <= 'H';
-  a4_i <= 'H';
-  a5_i <= 'H';
-  a6_i <= 'H';
-  a7_i <= 'H';
-  a8_i <= 'H';
-  ce_n_i <= 'H';
-
-  a0_i <= a0;
-  a1_i <= a1;
-  a2_i <= a2;
-  a3_i <= a3;
-  a4_i <= a4;
-  a5_i <= a5;
-  a6_i <= a6;
-  a7_i <= a7;
-  a8_i <= a8;
-  ce_n_i <= ce_n;
+  a0_i <= ttl_input(a0);
+  a1_i <= ttl_input(a1);
+  a2_i <= ttl_input(a2);
+  a3_i <= ttl_input(a3);
+  a4_i <= ttl_input(a4);
+  a5_i <= ttl_input(a5);
+  a6_i <= ttl_input(a6);
+  a7_i <= ttl_input(a7);
+  a8_i <= ttl_input(a8);
+  ce_n_i <= ttl_input(ce_n);
 
     process(all)
     variable data : std_logic_vector(7 downto 0);

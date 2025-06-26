@@ -5,6 +5,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+use work.misc.all;
 
 entity am25s10 is
   port (
@@ -29,27 +30,16 @@ architecture ttl of am25s10 is
   signal sel1_i, sel0_i, ce_n_i, i3_i, i2_i, i1_i, i0_i, i_1_i, i_2_i, i_3_i : std_logic;
 begin
 
-  sel1_i <= 'H';
-  sel0_i <= 'H';
-  ce_n_i <= 'H';
-  i3_i <= 'H';
-  i2_i <= 'H';
-  i1_i <= 'H';
-  i0_i <= 'H';
-  i_1_i <= 'H';
-  i_2_i <= 'H';
-  i_3_i <= 'H';
-
-  sel1_i <= sel1;
-  sel0_i <= sel0;
-  ce_n_i <= ce_n;
-  i3_i <= i3;
-  i2_i <= i2;
-  i1_i <= i1;
-  i0_i <= i0;
-  i_1_i <= i_1;
-  i_2_i <= i_2;
-  i_3_i <= i_3;
+  sel1_i <= ttl_input(sel1);
+  sel0_i <= ttl_input(sel0);
+  ce_n_i <= ttl_input(ce_n);
+  i3_i <= ttl_input(i3);
+  i2_i <= ttl_input(i2);
+  i1_i <= ttl_input(i1);
+  i0_i <= ttl_input(i0);
+  i_1_i <= ttl_input(i_1);
+  i_2_i <= ttl_input(i_2);
+  i_3_i <= ttl_input(i_3);
 
   process (all)
     variable sel : unsigned(1 downto 0);

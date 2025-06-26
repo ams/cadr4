@@ -16,6 +16,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+use work.misc.all;
 
 -- Datasheet: Texas Instruments SN74LS181 Arithmetic Logic Units/Function Generators, PDIP (N) Package
 -- URL: https://www.ti.com/lit/ds/sdls136/sdls136.pdf
@@ -73,35 +74,20 @@ architecture ttl of sn74181 is
 
 begin
 
-  m_i <= 'H';
-  cin_n_i <= 'H';
-  s3_i <= 'H';
-  s2_i <= 'H';
-  s1_i <= 'H';
-  s0_i <= 'H';
-  a3_i <= 'H';
-  a2_i <= 'H';
-  a1_i <= 'H';
-  a0_i <= 'H';
-  b3_i <= 'H';
-  b2_i <= 'H';
-  b1_i <= 'H';
-  b0_i <= 'H';
-
-  m_i <= m;
-  cin_n_i <= cin_n;
-  s3_i <= s3;
-  s2_i <= s2;
-  s1_i <= s1;
-  s0_i <= s0;
-  a3_i <= a3;
-  a2_i <= a2;
-  a1_i <= a1;
-  a0_i <= a0;
-  b3_i <= b3;
-  b2_i <= b2;
-  b1_i <= b1;
-  b0_i <= b0;
+  m_i <= ttl_input(m);
+  cin_n_i <= ttl_input(cin_n);
+  s3_i <= ttl_input(s3);
+  s2_i <= ttl_input(s2);
+  s1_i <= ttl_input(s1);
+  s0_i <= ttl_input(s0);
+  a3_i <= ttl_input(a3);
+  a2_i <= ttl_input(a2);
+  a1_i <= ttl_input(a1);
+  a0_i <= ttl_input(a0);
+  b3_i <= ttl_input(b3);
+  b2_i <= ttl_input(b2);
+  b1_i <= ttl_input(b1);
+  b0_i <= ttl_input(b0);
 
   a   <= a3_i & a2_i & a1_i & a0_i;
   b   <= b3_i & b2_i & b1_i & b0_i;

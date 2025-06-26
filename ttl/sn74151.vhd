@@ -3,6 +3,8 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
+use work.misc.ttl_input;
+
 entity sn74151 is
   port (
     i0   : in std_logic;
@@ -27,31 +29,19 @@ architecture ttl of sn74151 is
   signal sel0_i, sel1_i, sel2_i, ce_n_i : std_logic;
 begin
 
-  i0_i <= 'H';
-  i1_i <= 'H';
-  i2_i <= 'H';
-  i3_i <= 'H';
-  i4_i <= 'H';
-  i5_i <= 'H';
-  i6_i <= 'H';
-  i7_i <= 'H';
-  sel0_i <= 'H';
-  sel1_i <= 'H';
-  sel2_i <= 'H';
-  ce_n_i <= 'H';
-
-  i0_i <= i0;
-  i1_i <= i1;
-  i2_i <= i2;
-  i3_i <= i3;
-  i4_i <= i4;
-  i5_i <= i5;
-  i6_i <= i6;
-  i7_i <= i7;
-  sel0_i <= sel0;
-  sel1_i <= sel1;
-  sel2_i <= sel2;
-  ce_n_i <= ce_n;
+  -- TTL-compatible assignments using function
+  i0_i <= ttl_input(i0);
+  i1_i <= ttl_input(i1);
+  i2_i <= ttl_input(i2);
+  i3_i <= ttl_input(i3);
+  i4_i <= ttl_input(i4);
+  i5_i <= ttl_input(i5);
+  i6_i <= ttl_input(i6);
+  i7_i <= ttl_input(i7);
+  sel0_i <= ttl_input(sel0);
+  sel1_i <= ttl_input(sel1);
+  sel2_i <= ttl_input(sel2);
+  ce_n_i <= ttl_input(ce_n);
 
   -- core multiplexer with active-low chip-enable
   process(all)

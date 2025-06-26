@@ -3,6 +3,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+use work.misc.all;
 
 entity sn74169 is
   port (
@@ -32,25 +33,15 @@ architecture ttl of sn74169 is
   constant MIN_COUNT      : natural := 0;
 begin
 
-  clk_i <= 'H';
-  up_dn_i <= 'H';
-  load_n_i <= 'H';
-  enb_p_n_i <= 'H';
-  enb_t_n_i <= 'H';
-  i3_i <= 'H';
-  i2_i <= 'H';
-  i1_i <= 'H';
-  i0_i <= 'H';
-
-  clk_i <= clk;
-  up_dn_i <= up_dn;
-  load_n_i <= load_n;
-  enb_p_n_i <= enb_p_n;
-  enb_t_n_i <= enb_t_n;
-  i3_i <= i3;
-  i2_i <= i2;
-  i1_i <= i1;
-  i0_i <= i0;
+  clk_i <= ttl_input(clk);
+  up_dn_i <= ttl_input(up_dn);
+  load_n_i <= ttl_input(load_n);
+  enb_p_n_i <= ttl_input(enb_p_n);
+  enb_t_n_i <= ttl_input(enb_t_n);
+  i3_i <= ttl_input(i3);
+  i2_i <= ttl_input(i2);
+  i1_i <= ttl_input(i1);
+  i0_i <= ttl_input(i0);
 
   ------------------------------------------------------------------
   -- synchronous logic

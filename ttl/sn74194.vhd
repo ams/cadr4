@@ -2,6 +2,7 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
+use work.misc.all;
 
 entity sn74194 is
   port (
@@ -30,27 +31,16 @@ architecture ttl of sn74194 is
   signal reg : std_logic_vector(3 downto 0) := (others => '0');
 begin
 
-  clk_i <= 'H';
-  sil_i <= 'H';
-  sir_i <= 'H';
-  clr_n_i <= 'H';
-  i0_i <= 'H';
-  i1_i <= 'H';
-  i2_i <= 'H';
-  i3_i <= 'H';
-  s0_i <= 'H';
-  s1_i <= 'H';
-
-  clk_i <= clk;
-  sil_i <= sil;
-  sir_i <= sir;
-  clr_n_i <= clr_n;
-  i0_i <= i0;
-  i1_i <= i1;
-  i2_i <= i2;
-  i3_i <= i3;
-  s0_i <= s0;
-  s1_i <= s1;
+  clk_i <= ttl_input(clk);
+  sil_i <= ttl_input(sil);
+  sir_i <= ttl_input(sir);
+  clr_n_i <= ttl_input(clr_n);
+  i0_i <= ttl_input(i0);
+  i1_i <= ttl_input(i1);
+  i2_i <= ttl_input(i2);
+  i3_i <= ttl_input(i3);
+  s0_i <= ttl_input(s0);
+  s1_i <= ttl_input(s1);
 
   process(all)
     variable sel : std_logic_vector(1 downto 0);

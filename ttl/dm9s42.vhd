@@ -5,6 +5,8 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
+use work.misc.all;
+
 entity dm9s42 is
   port (
     g1a1 : in  std_logic; -- Pin 1
@@ -28,31 +30,18 @@ architecture ttl of dm9s42 is
   signal g1a1_i, g1b1_i, g2a1_i, g2b1_i, g2c1_i, g2d1_i, g1a2_i, g1b2_i, g2a2_i, g2b2_i, g2c2_i, g2d2_i : std_logic;
 begin
 
-  g1a1_i <= 'H';
-  g1b1_i <= 'H';
-  g2a1_i <= 'H';
-  g2b1_i <= 'H';
-  g2c1_i <= 'H';
-  g2d1_i <= 'H';
-  g1a2_i <= 'H';
-  g1b2_i <= 'H';
-  g2a2_i <= 'H';
-  g2b2_i <= 'H';
-  g2c2_i <= 'H';
-  g2d2_i <= 'H';
-
-  g1a1_i <= g1a1;
-  g1b1_i <= g1b1;
-  g2a1_i <= g2a1;
-  g2b1_i <= g2b1;
-  g2c1_i <= g2c1;
-  g2d1_i <= g2d1;
-  g1a2_i <= g1a2;
-  g1b2_i <= g1b2;
-  g2a2_i <= g2a2;
-  g2b2_i <= g2b2;
-  g2c2_i <= g2c2;
-  g2d2_i <= g2d2;
+  g1a1_i <= ttl_input(g1a1);
+  g1b1_i <= ttl_input(g1b1);
+  g2a1_i <= ttl_input(g2a1);
+  g2b1_i <= ttl_input(g2b1);
+  g2c1_i <= ttl_input(g2c1);
+  g2d1_i <= ttl_input(g2d1);
+  g1a2_i <= ttl_input(g1a2);
+  g1b2_i <= ttl_input(g1b2);
+  g2a2_i <= ttl_input(g2a2);
+  g2b2_i <= ttl_input(g2b2);
+  g2c2_i <= ttl_input(g2c2);
+  g2d2_i <= ttl_input(g2d2);
 
   -- Gate 1: (g1a1 AND g1b1) OR (g2a1 AND g2b1 AND g2c1 AND g2d1)
   out1 <= (g1a1_i and g1b1_i) or (g2a1_i and g2b1_i and g2c1_i and g2d1_i);

@@ -2,6 +2,7 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
+use work.misc.all;
 
 entity sn74373 is
   port (
@@ -31,27 +32,16 @@ architecture ttl of sn74373 is
   signal data : std_logic_vector(7 downto 0) := (others => '0');
 begin
 
-  hold_n_i <= 'H';
-  oenb_n_i <= 'H';
-  i0_i <= 'H';
-  i1_i <= 'H';
-  i2_i <= 'H';
-  i3_i <= 'H';
-  i4_i <= 'H';
-  i5_i <= 'H';
-  i6_i <= 'H';
-  i7_i <= 'H';
-
-  hold_n_i <= hold_n;
-  oenb_n_i <= oenb_n;
-  i0_i <= i0;
-  i1_i <= i1;
-  i2_i <= i2;
-  i3_i <= i3;
-  i4_i <= i4;
-  i5_i <= i5;
-  i6_i <= i6;
-  i7_i <= i7;
+  hold_n_i <= ttl_input(hold_n);
+  oenb_n_i <= ttl_input(oenb_n);
+  i0_i <= ttl_input(i0);
+  i1_i <= ttl_input(i1);
+  i2_i <= ttl_input(i2);
+  i3_i <= ttl_input(i3);
+  i4_i <= ttl_input(i4);
+  i5_i <= ttl_input(i5);
+  i6_i <= ttl_input(i6);
+  i7_i <= ttl_input(i7);
 
   -- Latch process with proper X/U handling
   process (all)

@@ -5,6 +5,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+use work.misc.all;
 
 entity til309 is
   port (
@@ -31,15 +32,15 @@ architecture ttl of til309 is
   
   signal reg : std_logic_vector(3 downto 0);
 begin
-  i1_int <= 'H'; i1_int <= i1;
-  i2_int <= 'H'; i2_int <= i2;
-  i4_int <= 'H'; i4_int <= i4;
-  i8_int <= 'H'; i8_int <= i8;
-  dp_int <= 'H'; dp_int <= dp;
-  latch_int <= 'H'; latch_int <= latch;
-  blank_n_int <= 'H'; blank_n_int <= blank_n;
-  ldp_int <= 'H'; ldp_int <= ldp;
-  test_n_int <= 'H'; test_n_int <= test_n;
+  i1_int <= ttl_input(i1);
+  i2_int <= ttl_input(i2);
+  i4_int <= ttl_input(i4);
+  i8_int <= ttl_input(i8);
+  dp_int <= ttl_input(dp);
+  latch_int <= ttl_input(latch);
+  blank_n_int <= ttl_input(blank_n);
+  ldp_int <= ttl_input(ldp);
+  test_n_int <= ttl_input(test_n);
   
   process (all)
   begin

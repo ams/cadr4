@@ -2,6 +2,7 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
+use work.misc.all;
 
 entity sn74175 is
   port (
@@ -28,19 +29,12 @@ architecture ttl of sn74175 is
   signal clk_i, clr_n_i, d0_i, d1_i, d2_i, d3_i : std_logic;
 begin
 
-  clk_i <= 'H';
-  clr_n_i <= 'H';
-  d0_i <= 'H';
-  d1_i <= 'H';
-  d2_i <= 'H';
-  d3_i <= 'H';
-
-  clk_i <= clk;
-  clr_n_i <= clr_n;
-  d0_i <= d0;
-  d1_i <= d1;
-  d2_i <= d2;
-  d3_i <= d3;
+  clk_i <= ttl_input(clk);
+  clr_n_i <= ttl_input(clr_n);
+  d0_i <= ttl_input(d0);
+  d1_i <= ttl_input(d1);
+  d2_i <= ttl_input(d2);
+  d3_i <= ttl_input(d3);
 
   u0 : entity work.ff_dpc port map (clk => clk_i, clr => clr_n_i, d => d0_i, q => q0, q_n => q0_n, enb_n => '0', pre => '1');
   u1 : entity work.ff_dpc port map (clk => clk_i, clr => clr_n_i, d => d1_i, q => q1, q_n => q1_n, enb_n => '0', pre => '1');

@@ -3,6 +3,8 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
+use work.misc.all;
+
 entity sn74240 is
   port (
     aenb_n : in  std_logic; -- Pin 1 (1G_bar) : Channel 1 Output Enable (Active Low)
@@ -32,27 +34,16 @@ architecture ttl of sn74240 is
   signal benb_n_i, bin0_i, bin1_i, bin2_i, bin3_i : std_logic;
 begin
 
-  aenb_n_i <= 'H';
-  ain0_i <= 'H';
-  ain1_i <= 'H';
-  ain2_i <= 'H';
-  ain3_i <= 'H';
-  benb_n_i <= 'H';
-  bin0_i <= 'H';
-  bin1_i <= 'H';
-  bin2_i <= 'H';
-  bin3_i <= 'H';
-
-  aenb_n_i <= aenb_n;
-  ain0_i <= ain0;
-  ain1_i <= ain1;
-  ain2_i <= ain2;
-  ain3_i <= ain3;
-  benb_n_i <= benb_n;
-  bin0_i <= bin0;
-  bin1_i <= bin1;
-  bin2_i <= bin2;
-  bin3_i <= bin3;
+  aenb_n_i <= ttl_input(aenb_n);
+  ain0_i <= ttl_input(ain0);
+  ain1_i <= ttl_input(ain1);
+  ain2_i <= ttl_input(ain2);
+  ain3_i <= ttl_input(ain3);
+  benb_n_i <= ttl_input(benb_n);
+  bin0_i <= ttl_input(bin0);
+  bin1_i <= ttl_input(bin1);
+  bin2_i <= ttl_input(bin2);
+  bin3_i <= ttl_input(bin3);
 
   process (all)
   begin

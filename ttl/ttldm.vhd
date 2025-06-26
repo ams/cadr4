@@ -4,6 +4,7 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
+use work.misc.all;
 
 -- This is a critical component for the clock to tick properly.
 -- Proper clock after power on reset is:
@@ -37,8 +38,7 @@ architecture behavioral of ttldm is
   signal input_int : std_logic;
   signal input_var : std_logic;
 begin
-  input_int <= 'H';
-  input_int <= input;
+  input_int <= ttl_input(input);
   input_var <= to_x01(input_int);
   tap1 <= transport input_var after single_tap_delay;
   tap2 <= transport input_var after single_tap_delay * 2;

@@ -13,6 +13,7 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
+use work.misc.all;
 
 entity sn74182 is
   port (
@@ -41,25 +42,15 @@ architecture ttl of sn74182 is
   signal x3_i, y3_i, x2_i, y2_i, x1_i, y1_i, x0_i, y0_i, cin_n_i : std_logic;
 begin
 
-  x3_i <= 'H';
-  y3_i <= 'H';
-  x2_i <= 'H';
-  y2_i <= 'H';
-  x1_i <= 'H';
-  y1_i <= 'H';
-  x0_i <= 'H';
-  y0_i <= 'H';
-  cin_n_i <= 'H';
-
-  x3_i <= x3;
-  y3_i <= y3;
-  x2_i <= x2;
-  y2_i <= y2;
-  x1_i <= x1;
-  y1_i <= y1;
-  x0_i <= x0;
-  y0_i <= y0;
-  cin_n_i <= cin_n;
+  x3_i <= ttl_input(x3);
+  y3_i <= ttl_input(y3);
+  x2_i <= ttl_input(x2);
+  y2_i <= ttl_input(y2);
+  x1_i <= ttl_input(x1);
+  y1_i <= ttl_input(y1);
+  x0_i <= ttl_input(x0);
+  y0_i <= ttl_input(y0);
+  cin_n_i <= ttl_input(cin_n);
 
   -- Carry outputs (active low)
   cout0_n <= not (y0_i or (x0_i and cin_n_i));

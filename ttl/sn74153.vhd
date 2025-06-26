@@ -2,6 +2,7 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
+use work.misc.all;
 
 entity sn74153 is
   port (    
@@ -30,31 +31,18 @@ architecture rtl of sn74153 is
   signal enb2_n_i, g2c0_i, g2c1_i, g2c2_i, g2c3_i : std_logic;
 begin
 
-  sela_i <= 'H';
-  selb_i <= 'H';
-  enb1_n_i <= 'H';
-  g1c0_i <= 'H';
-  g1c1_i <= 'H';
-  g1c2_i <= 'H';
-  g1c3_i <= 'H';
-  enb2_n_i <= 'H';
-  g2c0_i <= 'H';
-  g2c1_i <= 'H';
-  g2c2_i <= 'H';
-  g2c3_i <= 'H';
-
-  sela_i <= sela;
-  selb_i <= selb;
-  enb1_n_i <= enb1_n;
-  g1c0_i <= g1c0;
-  g1c1_i <= g1c1;
-  g1c2_i <= g1c2;
-  g1c3_i <= g1c3;
-  enb2_n_i <= enb2_n;
-  g2c0_i <= g2c0;
-  g2c1_i <= g2c1;
-  g2c2_i <= g2c2;
-  g2c3_i <= g2c3;
+  sela_i <= ttl_input(sela);
+  selb_i <= ttl_input(selb);
+  enb1_n_i <= ttl_input(enb1_n);
+  g1c0_i <= ttl_input(g1c0);
+  g1c1_i <= ttl_input(g1c1);
+  g1c2_i <= ttl_input(g1c2);
+  g1c3_i <= ttl_input(g1c3);
+  enb2_n_i <= ttl_input(enb2_n);
+  g2c0_i <= ttl_input(g2c0);
+  g2c1_i <= ttl_input(g2c1);
+  g2c2_i <= ttl_input(g2c2);
+  g2c3_i <= ttl_input(g2c3);
 
   process(all)
     variable select_lines : std_logic_vector(1 downto 0);

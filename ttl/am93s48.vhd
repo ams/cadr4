@@ -5,6 +5,8 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
+use work.misc.all;
+
 entity am93s48 is
   port (
     i0  : in  std_logic; -- Pin 11
@@ -28,31 +30,18 @@ architecture ttl of am93s48 is
   signal i0_i, i1_i, i2_i, i3_i, i4_i, i5_i, i6_i, i7_i, i8_i, i9_i, i10_i, i11_i : std_logic;
 begin
 
-  i0_i <= 'H';
-  i1_i <= 'H';
-  i2_i <= 'H';
-  i3_i <= 'H';
-  i4_i <= 'H';
-  i5_i <= 'H';
-  i6_i <= 'H';
-  i7_i <= 'H';
-  i8_i <= 'H';
-  i9_i <= 'H';
-  i10_i <= 'H';
-  i11_i <= 'H';
-
-  i0_i <= i0;
-  i1_i <= i1;
-  i2_i <= i2;
-  i3_i <= i3;
-  i4_i <= i4;
-  i5_i <= i5;
-  i6_i <= i6;
-  i7_i <= i7;
-  i8_i <= i8;
-  i9_i <= i9;
-  i10_i <= i10;
-  i11_i <= i11;
+  i0_i <= ttl_input(i0);
+  i1_i <= ttl_input(i1);
+  i2_i <= ttl_input(i2);
+  i3_i <= ttl_input(i3);
+  i4_i <= ttl_input(i4);
+  i5_i <= ttl_input(i5);
+  i6_i <= ttl_input(i6);
+  i7_i <= ttl_input(i7);
+  i8_i <= ttl_input(i8);
+  i9_i <= ttl_input(i9);
+  i10_i <= ttl_input(i10);
+  i11_i <= ttl_input(i11);
 
   process(all)
     variable parity : std_logic;

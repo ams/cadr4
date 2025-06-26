@@ -5,6 +5,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+use work.misc.all;
 
 entity d2147 is
   port (
@@ -47,21 +48,21 @@ architecture ttl of d2147 is
   type ram_t is array (0 to 4095) of std_logic;
   signal ram : ram_t := (others => '0');
 begin
-  a0_int <= 'H'; a0_int <= a0;
-  a1_int <= 'H'; a1_int <= a1;
-  a2_int <= 'H'; a2_int <= a2;
-  a3_int <= 'H'; a3_int <= a3;
-  a4_int <= 'H'; a4_int <= a4;
-  a5_int <= 'H'; a5_int <= a5;
-  a6_int <= 'H'; a6_int <= a6;
-  a7_int <= 'H'; a7_int <= a7;
-  a8_int <= 'H'; a8_int <= a8;
-  a9_int <= 'H'; a9_int <= a9;
-  a10_int <= 'H'; a10_int <= a10;
-  a11_int <= 'H'; a11_int <= a11;
-  ce_n_int <= 'H'; ce_n_int <= ce_n;
-  di_int <= 'H'; di_int <= di;
-  we_n_int <= 'H'; we_n_int <= we_n;
+  a0_int <= ttl_input(a0);
+  a1_int <= ttl_input(a1);
+  a2_int <= ttl_input(a2);
+  a3_int <= ttl_input(a3);
+  a4_int <= ttl_input(a4);
+  a5_int <= ttl_input(a5);
+  a6_int <= ttl_input(a6);
+  a7_int <= ttl_input(a7);
+  a8_int <= ttl_input(a8);
+  a9_int <= ttl_input(a9);
+  a10_int <= ttl_input(a10);
+  a11_int <= ttl_input(a11);
+  ce_n_int <= ttl_input(ce_n);
+  di_int <= ttl_input(di);
+  we_n_int <= ttl_input(we_n);
   
   process (all)
     variable addr : unsigned(11 downto 0);
