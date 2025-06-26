@@ -59,13 +59,13 @@ begin
     assert (g1y = '1') report "MUX1 sel 00 failed" severity error;
     assert (g2y = '0') report "MUX2 disabled failed" severity error;
 
-    g1c0 <= '0'; g1c1 <= '1'; g1c2 <= '0'; g1c3 <= '0';
-    sela <= '1'; selb <= '0'; wait for clk_period;
-    assert (g1y = '1') report "MUX1 sel 01 failed" severity error;
-
     g1c0 <= '0'; g1c1 <= '0'; g1c2 <= '1'; g1c3 <= '0';
-    sela <= '0'; selb <= '1'; wait for clk_period;
+    sela <= '1'; selb <= '0'; wait for clk_period;
     assert (g1y = '1') report "MUX1 sel 10 failed" severity error;
+
+    g1c0 <= '0'; g1c1 <= '1'; g1c2 <= '0'; g1c3 <= '0';
+    sela <= '0'; selb <= '1'; wait for clk_period;
+    assert (g1y = '1') report "MUX1 sel 01 failed" severity error;
 
     g1c0 <= '0'; g1c1 <= '0'; g1c2 <= '0'; g1c3 <= '1';
     sela <= '1'; selb <= '1'; wait for clk_period;
@@ -80,13 +80,13 @@ begin
     assert (g2y = '1') report "MUX2 sel 00 failed" severity error;
     assert (g1y = '0') report "MUX1 disabled failed" severity error;
 
-    g2c0 <= '0'; g2c1 <= '1'; g2c2 <= '0'; g2c3 <= '0';
-    sela <= '1'; selb <= '0'; wait for clk_period;
-    assert (g2y = '1') report "MUX2 sel 01 failed" severity error;
-
     g2c0 <= '0'; g2c1 <= '0'; g2c2 <= '1'; g2c3 <= '0';
-    sela <= '0'; selb <= '1'; wait for clk_period;
+    sela <= '1'; selb <= '0'; wait for clk_period;
     assert (g2y = '1') report "MUX2 sel 10 failed" severity error;
+
+    g2c0 <= '0'; g2c1 <= '1'; g2c2 <= '0'; g2c3 <= '0';
+    sela <= '0'; selb <= '1'; wait for clk_period;
+    assert (g2y = '1') report "MUX2 sel 01 failed" severity error;
 
     g2c0 <= '0'; g2c1 <= '0'; g2c2 <= '0'; g2c3 <= '1';
     sela <= '1'; selb <= '1'; wait for clk_period;
