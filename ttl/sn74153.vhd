@@ -5,20 +5,23 @@ use ieee.std_logic_1164.all;
 
 entity sn74153 is
   port (    
-    sela   : in  std_logic; -- Pin 14
-    selb   : in  std_logic; -- Pin 2          
-    enb1_n : in  std_logic; -- Pin 1
     g1c0   : in  std_logic; -- Pin 6
     g1c1   : in  std_logic; -- Pin 5
     g1c2   : in  std_logic; -- Pin 4
     g1c3   : in  std_logic; -- Pin 3
+    enb1_n : in  std_logic; -- Pin 1
     g1y    : out std_logic; -- Pin 7
-    enb2_n : in  std_logic; -- Pin 15
+    
+
     g2c0   : in  std_logic; -- Pin 10
     g2c1   : in  std_logic; -- Pin 11
     g2c2   : in  std_logic; -- Pin 12
     g2c3   : in  std_logic; -- Pin 13
-    g2y    : out std_logic -- Pin 9    
+    enb2_n : in  std_logic; -- Pin 15
+    g2y    : out std_logic; -- Pin 9
+
+    sela   : in  std_logic; -- Pin 14
+    selb   : in  std_logic -- Pin 2
     );
 end;
 
@@ -57,7 +60,7 @@ begin
     variable select_lines : std_logic_vector(1 downto 0);
   begin
     if to_x01(enb1_n_i) = '0' then
-      select_lines := selb_i & sela_i;
+      select_lines := sela_i & selb_i;
       case select_lines is
         when "00" => g1y <= g1c0_i;
         when "01" => g1y <= g1c1_i;
@@ -77,7 +80,7 @@ begin
     variable select_lines : std_logic_vector(1 downto 0);
   begin
     if to_x01(enb2_n_i) = '0' then
-      select_lines := selb_i & sela_i;
+      select_lines := sela_i & selb_i;
       case select_lines is
         when "00" => g2y <= g2c0_i;
         when "01" => g2y <= g2c1_i;
