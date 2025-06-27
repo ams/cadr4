@@ -1,5 +1,6 @@
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 entity helper_bus_monitor is 
     port (
@@ -90,4 +91,15 @@ entity helper_bus_monitor is
     ir <= ir31 & ir30 & ir29 & ir28 & ir27 & ir26 & ir25 & ir24 & ir23 & ir22 & ir21 & ir20 & ir19 & ir18 & ir17 & ir16 & ir15 & ir14 & ir13 & ir12 & ir11 & ir10 & ir9 & ir8 & ir7 & ir6 & ir5 & ir4 & ir3 & ir2 & ir1 & ir0;
     npc <= npc13 & npc12 & npc11 & npc10 & npc9 & npc8 & npc7 & npc6 & npc5 & npc4 & npc3 & npc2 & npc1 & npc0;
     pc <= pc13 & pc12 & pc11 & pc10 & pc9 & pc8 & pc7 & pc6 & pc5 & pc4 & pc3 & pc2 & pc1 & pc0;
+
+    process (PC)
+    begin
+      if not is_x(PC) then
+        if ((unsigned(PC) > 1) and (unsigned(PC) < 8#45#)) then
+          report "PROM stucked at " & to_ostring(PC);
+          std.env.stop;
+        end if;
+      end if;
+    end process;
+
   end architecture;
