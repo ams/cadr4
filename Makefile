@@ -3,14 +3,22 @@
 # ghdl cannot work with parallel runs
 .NOTPARALLEL:
 
+# use TIL replacement that prints to console during simulation
+CADR4_TILONCONSOLE ?= 1
+# make path sed safe, escape / with \/ and \ with \\, dont quote the path
+# include the last directory separator (e.g. rom\/)
+# when setting from bash escape \ two times e.g. d:\\\\projects\\\\cadr4\\\\rom\\\\ 
+CADR4_ROMFILESPATH ?= rom\/
+
+$(info CADR4_TILONCONSOLE=$(CADR4_TILONCONSOLE))
+$(info CADR4_ROMFILESPATH=$(CADR4_ROMFILESPATH))
+
 GHDL		= ghdl
 GHDLSTD		= 08
 GHDLIMPORTOPTIONS	= -v -g
 GHDLMAKEOPTIONS		= -v -g -Wno-delayed-checks
 GHDLRUNOPTIONS		= -v -g
 GHDLSIMOPTIONS		= --backtrace-severity=warning --assert-level=warning
-
-CADR4_TILONCONSOLE ?= 1
 
 # fix params
 BUILDDIR	  := build
@@ -175,13 +183,13 @@ cadr/cadr_clock2_suds.vhd: $(DRWDIR)/clock2.drw $(BUILDDIR)/soap $(FIXSUDSPY) Ma
 # add rom file
 cadr/cadr_dspctl_suds.vhd: $(DRWDIR)/dspctl.drw $(BUILDDIR)/soap $(FIXSUDSPY) Makefile dip/dip.vhd
 	$(BUILDDIR)/soap -n $< > $@
-	sed $(SEDOPTIONS) -E 's/^([[:space:]]*([^[:space:]]+)[[:space:]]*:[[:space:]]*dip_5610)[[:space:]]+port map/\1 generic map (fn => "rom\/\2.hex") port map/' $@
+	sed $(SEDOPTIONS) -E 's/^([[:space:]]*([^[:space:]]+)[[:space:]]*:[[:space:]]*dip_5610)[[:space:]]+port map/\1 generic map (fn => "$(CADR4_ROMFILESPATH)\2.hex") port map/' $@
 	python3 $(FIXSUDSPY) -v $@
 
 # add rom files
 cadr/cadr_mskg4_suds.vhd: $(DRWDIR)/mskg4.drw $(BUILDDIR)/soap $(FIXSUDSPY) Makefile dip/dip.vhd
 	$(BUILDDIR)/soap -n $< > $@
-	sed $(SEDOPTIONS) -E 's/^([[:space:]]*([^[:space:]]+)[[:space:]]*:[[:space:]]*dip_5600)[[:space:]]+port map/\1 generic map (fn => "rom\/\2.hex") port map/' $@
+	sed $(SEDOPTIONS) -E 's/^([[:space:]]*([^[:space:]]+)[[:space:]]*:[[:space:]]*dip_5600)[[:space:]]+port map/\1 generic map (fn => "$(CADR4_ROMFILESPATH)\2.hex") port map/' $@
 	python3 $(FIXSUDSPY) -v $@
 \
 # modify olord2_1a19 port map
@@ -208,7 +216,7 @@ endif
 # add rom files	
 cadr/cadr_prom0_suds.vhd: $(DRWDIR)/prom0.drw $(BUILDDIR)/soap $(FIXSUDSPY) Makefile dip/dip.vhd
 	$(BUILDDIR)/soap -n $< > $@
-	sed $(SEDOPTIONS) -E 's/^([[:space:]]*prom0_([^[:space:]]+)[[:space:]]*:[[:space:]]*dip_74s472)[[:space:]]+port map/\1 generic map (fn => "rom\/promh9.\2.hex") port map/' $@
+	sed $(SEDOPTIONS) -E 's/^([[:space:]]*prom0_([^[:space:]]+)[[:space:]]*:[[:space:]]*dip_74s472)[[:space:]]+port map/\1 generic map (fn => "$(CADR4_ROMFILESPATH)promh9.\2.hex") port map/' $@
 	python3 $(FIXSUDSPY) -v $@
 
 # add rom files
@@ -216,8 +224,8 @@ cadr/cadr_prom0_suds.vhd: $(DRWDIR)/prom0.drw $(BUILDDIR)/soap $(FIXSUDSPY) Make
 # prom1_1b20 (providing the last byte) points to prom.80.hex (because it contains the parity bit)
 cadr/cadr_prom1_suds.vhd: $(DRWDIR)/prom1.drw $(BUILDDIR)/soap $(FIXSUDSPY) Makefile dip/dip.vhd
 	$(BUILDDIR)/soap -n $< > $@
-	sed $(SEDOPTIONS) -E 's/^([[:space:]]*[^[:space:]]+[[:space:]]*:[[:space:]]*dip_74s472)[[:space:]]+port map/\1 generic map (fn => "rom\/prom.00.hex") port map/' $@
-	sed $(SEDOPTIONS) -E 's/^([[:space:]]*prom1_1b20[[:space:]]*:[[:space:]]*dip_74s472)[[:space:]]+generic map \(fn => "rom\/prom\.00\.hex"\)/\1 generic map (fn => "rom\/prom.80.hex")/' $@
+	sed $(SEDOPTIONS) -E 's/^([[:space:]]*[^[:space:]]+[[:space:]]*:[[:space:]]*dip_74s472)[[:space:]]+port map/\1 generic map (fn => "$(CADR4_ROMFILESPATH)prom.00.hex") port map/' $@
+	sed $(SEDOPTIONS) -E 's/^([[:space:]]*prom1_1b20[[:space:]]*:[[:space:]]*dip_74s472)[[:space:]]+generic map \(fn => "rom\/prom\.00\.hex"\)/\1 generic map (fn => "$(CADR4_ROMFILESPATH)prom.80.hex")/' $@
 	python3 $(FIXSUDSPY) -v $@
 
 # modify \destimod0 l\ and \iwrited l\ to -destimod0 and -iwrited
@@ -228,9 +236,11 @@ cadr/cadr_source_suds.vhd: $(DRWDIR)/source.drw $(BUILDDIR)/soap $(FIXSUDSPY) Ma
 	sed $(SEDOPTIONS) 's/\\iwrited l\\/\\-iwrited\\/g' $@
 	python3 $(FIXSUDSPY) -v $@
 
-.PHONY: all ttl-check check run-% run-tb wf-% wf-tb clean dist-clean help
+.PHONY: all sources ttl-check check run-% run-tb wf-% wf-tb clean dist-clean help
 
 all: $(EXES)
+
+sources: $(SRCS)
 
 ttl-check: $(TTL_EXES)
 	for TB_EXE in $^; do TB=$$TB_EXE make run-tb || exit; done
@@ -295,9 +305,11 @@ dist-clean: clean
 	$(RM) -f cadr/cadr_*_suds.vhd
 	$(RM) -f set/*_set.vhd $(CREATESETS_PACKAGEFILE) $(CREATESETS_TBFILE)
 	$(RM) -f $(CREATESETS_CACHEFILE)
+	$(RM) -f $(CREATESETS_LOGFILE)
 
 help: 
 	@echo "make all: build all testbenches"
+	@echo "make sources: autogenerate SUDS and SET sources"
 	@echo "make check: run all testbenches"
 	@echo "make ttl-check: run all ttl testbenches"
 	@echo "make run-X: run testbench X (build/X_tb)"
