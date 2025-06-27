@@ -1,33 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-package helper is
-  component helper_required_signals is
-    port (
-      -- mcpins
-      \-halt\: out std_logic;
-      -- mbcpin
-        mclk7: in std_logic;
-      -- below are all spy related
-      eadr0: out std_logic;
-      eadr1: out std_logic;
-      eadr2: out std_logic;
-      eadr3: out std_logic;
-      \-dbread\: out std_logic;
-      \-dbwrite\: out std_logic;
-      -- initiates a clock reset
-      \-busint.lm.reset\: out std_logic;
-      -- initiates a boot
-      \-boot1\: out std_logic;
-      -- same as power reset or prog.bus.reset
-      \-bus.reset\: in std_logic;
-      \lm drive enb\: out std_logic;
-      -- same as power reset
-      \bus.power.reset l\: in std_logic
-    );
-  end component;
-
-  component helper_bus_monitor is 
+entity helper_bus_monitor is 
     port (
       ipc0    : in std_logic;
       ipc1    : in std_logic;
@@ -104,6 +78,16 @@ package helper is
       pc12    : in std_logic;
       pc13    : in std_logic
     );
-  end component;
+  end entity;
 
-end package;
+  architecture structural of helper_bus_monitor is
+    signal ipc : std_logic_vector(13 downto 0);
+    signal ir : std_logic_vector(31 downto 0);
+    signal npc : std_logic_vector(13 downto 0);
+    signal pc : std_logic_vector(13 downto 0);
+  begin
+    ipc <= ipc13 & ipc12 & ipc11 & ipc10 & ipc9 & ipc8 & ipc7 & ipc6 & ipc5 & ipc4 & ipc3 & ipc2 & ipc1 & ipc0;
+    ir <= ir31 & ir30 & ir29 & ir28 & ir27 & ir26 & ir25 & ir24 & ir23 & ir22 & ir21 & ir20 & ir19 & ir18 & ir17 & ir16 & ir15 & ir14 & ir13 & ir12 & ir11 & ir10 & ir9 & ir8 & ir7 & ir6 & ir5 & ir4 & ir3 & ir2 & ir1 & ir0;
+    npc <= npc13 & npc12 & npc11 & npc10 & npc9 & npc8 & npc7 & npc6 & npc5 & npc4 & npc3 & npc2 & npc1 & npc0;
+    pc <= pc13 & pc12 & pc11 & pc10 & pc9 & pc8 & pc7 & pc6 & pc5 & pc4 & pc3 & pc2 & pc1 & pc0;
+  end architecture;

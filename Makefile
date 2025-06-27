@@ -13,6 +13,8 @@ CADR4_ROMFILESPATH ?= rom\/
 $(info CADR4_TILONCONSOLE=$(CADR4_TILONCONSOLE))
 $(info CADR4_ROMFILESPATH=$(CADR4_ROMFILESPATH))
 
+CADR_TB_STOPTIME := 10us
+
 GHDL		= ghdl
 GHDLSTD		= 08
 GHDLIMPORTOPTIONS	= -v -g
@@ -25,7 +27,6 @@ BUILDDIR	  := build
 DRWDIR	  	  := doc/ai/cadr
 .DEFAULT_GOAL := all
 FIXSUDSPY     := scripts/fix-suds.py
-CREATESETSPY  := scripts/create-sets.py
 
 OS := $(shell uname -s)
 
@@ -57,30 +58,16 @@ iram31 iram32 iram33 spy0 spy4 stat
 CADR_SRCS := $(patsubst %,cadr/cadr_%.vhd, $(CADR_BOOK) $(ICMEM_BOOK)) cadr/cadr_book.vhd cadr/icmem_book.vhd 
 SUDS_SRCS := $(patsubst %,cadr/cadr_%_suds.vhd, $(CADR_BOOK) $(ICMEM_BOOK))
 
-CREATESETS_OUTPUTDIR	:= set
-CREATESETS_PACKAGENAME  := set
-CREATESETS_ENTITYFILE	:= set/entity_list.txt
-CREATESETS_BUSFILE		:= set/bus_list.txt
-CREATESETS_VHDLFILES	:= cadr/cadr_book.vhd cadr/icmem_book.vhd helper/helper.vhd
-CREATESETS_CACHEFILE 	:= set/set.cache
-CREATESETS_PACKAGEFILE 	:= set/set.vhd
-CREATESETS_TBFILE 		:= set/set_tb.vhd
-CREATESETS_ENABLELOG	:= 1
-CREATESETS_LOGFILE		:= set/set.log
+HELPER_SRCS := helper/helper.vhd helper/helper_required_signals.vhd helper/helper_bus_monitor.vhd
 
-SETS := $(shell cut -f1 -d' ' $(CREATESETS_ENTITYFILE))
-SET_SRCS := $(patsubst %,set/%.vhd, $(SETS)) $(CREATESETS_PACKAGEFILE) $(CREATESETS_TBFILE)
-
-HELPER_SRCS := helper/helper.vhd helper/helper_required_signals.vhd
-
-TB_SRCS  := # tb/cadr_tb.vhd # $(wildcard tb/*_tb.vhd)
+TB_SRCS  := tb/cadr_tb.vhd # $(wildcard tb/*_tb.vhd)
 
 # exes mean these are testbenches so these will be compiled into executables also
 TTL_EXES  := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard ttl/*_tb.vhd)))
-TB_EXES   := $(patsubst set/%.vhd,build/%,$(CREATESETS_TBFILE)) # $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard tb/*_tb.vhd)))
+TB_EXES   := build/cadr_tb # $(patsubst set/%.vhd,build/%,$(CREATESETS_TBFILE)) # $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard tb/*_tb.vhd)))
 
 # all sources and executables
-SRCS := $(TTL_SRCS) $(DIP_SRCS) $(CADR_SRCS) $(SUDS_SRCS) $(SET_SRCS) $(HELPER_SRCS) $(TB_SRCS)
+SRCS := $(TTL_SRCS) $(DIP_SRCS) $(CADR_SRCS) $(SUDS_SRCS) $(HELPER_SRCS) $(TB_SRCS)
 EXES := $(TTL_EXES) $(TB_EXES)
 
 # ghdl import and make works weird, all the build process is weird
@@ -105,45 +92,12 @@ $(BUILDDIR)/soap: soap/soap.c soap/unpack.c
 	mkdir -p $(BUILDDIR)
 	$(CC) -std=gnu99 -Wall -Wextra -O0 -ggdb3 -o $@ -g $^
 
-ifeq ($(CREATESETS_ENABLELOG),1)
-CREATESETS_LOGOPTION_NEW 	:= -v > $(CREATESETS_LOGFILE)
-CREATESETS_LOGOPTION_APPEND := -v >> $(CREATESETS_LOGFILE)
-else
-CREATESETS_LOGOPTION_NEW 	:=
-CREATESETS_LOGOPTION_APPEND :=
-endif
-
-$(CREATESETS_CACHEFILE): $(CREATESETSPY) $(CREATESETS_ENTITYFILE) $(CREATESETS_BUSFILE) $(CREATESETS_VHDLFILES)
-	$(info The process below will take some seconds, please wait...)
-	python3 $(CREATESETSPY) \
-	-e $(CREATESETS_ENTITYFILE) \
-	-b $(CREATESETS_BUSFILE) \
-	--vhdl-files $(CREATESETS_VHDLFILES) \
-	-o $(CREATESETS_OUTPUTDIR) \
-	-p $(CREATESETS_PACKAGENAME) \
-	--generate cache $(CREATESETS_LOGOPTION_NEW)
-
-set/%_set.vhd: $(CREATESETS_CACHEFILE)
-	python3 $(CREATESETSPY) \
-	-u \
-	-o $(CREATESETS_OUTPUTDIR) \
-	-p $(CREATESETS_PACKAGENAME) \
-	--generate entity \
-	--entity $(patsubst %_set.vhd,%_set,$(notdir $@)) $(CREATESETS_LOGOPTION_APPEND)
-
-$(CREATESETS_PACKAGEFILE): $(CREATESETS_CACHEFILE)
-	python3 $(CREATESETSPY) \
-	-u \
-	-o $(CREATESETS_OUTPUTDIR) \
-	-p $(CREATESETS_PACKAGENAME) \
-	--generate package $(CREATESETS_LOGOPTION_APPEND)
-
-$(CREATESETS_TBFILE): $(CREATESETS_CACHEFILE)
-	python3 $(CREATESETSPY) \
-	-u \
-	-o $(CREATESETS_OUTPUTDIR) \
-	-p $(CREATESETS_PACKAGENAME) \
-	--generate tb $(CREATESETS_LOGOPTION_APPEND)
+# generate cadr_tb.vhd using SUDS and helper components
+tb/cadr_tb.vhd: scripts/create-tb.py cadr/cadr_book.vhd cadr/icmem_book.vhd helper/helper.vhd
+	python3 $< \
+	--vhdl-files cadr/cadr_book.vhd cadr/icmem_book.vhd helper/helper.vhd \
+	-t $(patsubst %.vhd,%,$(notdir $@)) \
+	$@
 
 # this is the basic method of generating a _suds.vhd file
 # however, a few particular _suds.vhd require special handling and they are handled with specific targets below
@@ -275,6 +229,21 @@ else
 GHDLWAVEOPTIONS := --wave=$(WAVEFILE)
 endif
 
+# special targets for cadr_tb with --stop-time=$(CADR_TB_STOPTIME)
+run-cadr: $(BUILDDIR)/cadr_tb
+	$< $(GHDLSIMOPTIONS) --stop-time=$(CADR_TB_STOPTIME)
+
+wf-cadr: $(BUILDDIR)/cadr_tb
+ifeq ($(WAVEOPTFILERECREATE),1)	
+	$(RM) $(WAVEOPTFILE)
+endif
+	$< $(GHDLSIMOPTIONS) $(GHDLWAVEOPTIONS) --stop-time=$(CADR_TB_STOPTIME)
+
+surfer-cadr: $(BUILDDIR)/cadr_tb
+	make wf-cadr
+	surfer $(WAVEFILE)
+
+# run targets
 run-%: $(BUILDDIR)/%_tb
 	TB=$< make run-tb
 
@@ -282,6 +251,7 @@ run-%: $(BUILDDIR)/%_tb
 run-tb: $(TB)
 	$< $(GHDLSIMOPTIONS)
 
+# wf targets
 wf-%: $(BUILDDIR)/%_tb
 	TB=$< make wf-tb
 
@@ -289,8 +259,9 @@ wf-tb: $(TB)
 ifeq ($(WAVEOPTFILERECREATE),1)	
 	$(RM) $(WAVEOPTFILE)
 endif
-	$< $(GHDLSIMOPTIONS) $(GHDLWAVEOPTIONS) --stop-time=10us
+	$< $(GHDLSIMOPTIONS) $(GHDLWAVEOPTIONS)
 
+# surfer targets
 surfer-%: $(BUILDDIR)/%_tb
 	TB=$< make surfer-tb
 
@@ -303,18 +274,16 @@ clean:
 
 dist-clean: clean
 	$(RM) -f cadr/cadr_*_suds.vhd
-	$(RM) -f set/*_set.vhd $(CREATESETS_PACKAGEFILE) $(CREATESETS_TBFILE)
-	$(RM) -f $(CREATESETS_CACHEFILE)
-	$(RM) -f $(CREATESETS_LOGFILE)
+	$(RM) -f tb/cadr_tb.vhd
 
 help: 
 	@echo "make all: build all testbenches"
-	@echo "make sources: autogenerate SUDS and SET sources"
+	@echo "make sources: autogenerate suds and cadr_tb sources"
 	@echo "make check: run all testbenches"
 	@echo "make ttl-check: run all ttl testbenches"
 	@echo "make run-X: run testbench X (build/X_tb)"
 	@echo "make wf-X: run testbench X (build/X_tb) to create waveforms"
 	@echo "make surfer-X: same as wf-X but also runs surfer with the waveform file"
 	@echo "make clean: clean build directory"
-	@echo "make dist-clean: clean and also remove suds and set files"
+	@echo "make dist-clean: clean and also remove autogenerated source files"
 	@echo "make help: show this help"
