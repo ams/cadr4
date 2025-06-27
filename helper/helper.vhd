@@ -124,7 +124,7 @@ package helper is
       pc11    : in std_logic;
       pc12    : in std_logic;
       pc13    : in std_logic;
-      -- A bus (Address bus) - 31 bits
+      -- A bus (Address bus) - 32 bits
       a0      : in std_logic;
       a1      : in std_logic;
       a2      : in std_logic;
@@ -156,6 +156,7 @@ package helper is
       a28     : in std_logic;
       a29     : in std_logic;
       a30     : in std_logic;
+      a31a    : in std_logic;
       -- L bus (L register) - 32 bits
       l0      : in std_logic;
       l1      : in std_logic;
@@ -388,6 +389,39 @@ package helper is
       amem29  : in std_logic;
       amem30  : in std_logic;
       amem31  : in std_logic;
+      -- MMEM bus (M memory bus) - 32 bits + parity
+      mmem0   : in std_logic;
+      mmem1   : in std_logic;
+      mmem2   : in std_logic;
+      mmem3   : in std_logic;
+      mmem4   : in std_logic;
+      mmem5   : in std_logic;
+      mmem6   : in std_logic;
+      mmem7   : in std_logic;
+      mmem8   : in std_logic;
+      mmem9   : in std_logic;
+      mmem10  : in std_logic;
+      mmem11  : in std_logic;
+      mmem12  : in std_logic;
+      mmem13  : in std_logic;
+      mmem14  : in std_logic;
+      mmem15  : in std_logic;
+      mmem16  : in std_logic;
+      mmem17  : in std_logic;
+      mmem18  : in std_logic;
+      mmem19  : in std_logic;
+      mmem20  : in std_logic;
+      mmem21  : in std_logic;
+      mmem22  : in std_logic;
+      mmem23  : in std_logic;
+      mmem24  : in std_logic;
+      mmem25  : in std_logic;
+      mmem26  : in std_logic;
+      mmem27  : in std_logic;
+      mmem28  : in std_logic;
+      mmem29  : in std_logic;
+      mmem30  : in std_logic;
+      mmem31  : in std_logic;      
       -- VMA bus (Virtual memory address) - 32 bits
       \-vma0\ : in std_logic;
       \-vma1\ : in std_logic;
@@ -771,7 +805,24 @@ package helper is
       wadr6   : in std_logic;
       wadr7   : in std_logic;
       wadr8   : in std_logic;
-      wadr9   : in std_logic
+      wadr9   : in std_logic;
+      -- AADR bus - 10 bits
+      aadr0   : in std_logic;
+      aadr1   : in std_logic;
+      aadr2   : in std_logic;
+      aadr3   : in std_logic;
+      aadr4   : in std_logic;
+      aadr5   : in std_logic;
+      aadr6   : in std_logic;
+      aadr7   : in std_logic;
+      aadr8   : in std_logic;
+      aadr9   : in std_logic;
+      -- MADR bus - 5 bits
+      madr0   : in std_logic;
+      madr1   : in std_logic;
+      madr2   : in std_logic;
+      madr3   : in std_logic;
+      madr4   : in std_logic
     );
   end component;
 

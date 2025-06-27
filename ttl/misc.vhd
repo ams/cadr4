@@ -12,6 +12,7 @@ package misc is
   function pullup(s   : std_logic) return std_logic;
   function pulldown(s : std_logic) return std_logic;
   function ttl_input(i : std_logic) return std_logic;
+  function string_cast(s: string; width: integer) return string;
   
   -- Generic ROM loading function
   impure function load_rom_file(filename : string) return std_logic_vector;  
@@ -65,6 +66,11 @@ package body misc is
       when 'L' => return '0';  -- Weak low becomes strong '0'
       when others => return i; -- Pass through '0', '1', 'X', 'U', 'W', '-'
     end case;
+  end function;
+
+  function string_cast(s: string; width: integer) return string is
+  begin
+    return s & (1 to width - s'LENGTH => ' '); -- pad spaces
   end function;
 
   -- Generic ROM loading function that automatically determines file size

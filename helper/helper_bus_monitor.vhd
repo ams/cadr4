@@ -2,6 +2,8 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+use work.misc.string_cast;
+
 entity helper_bus_monitor is 
     port (
       -- IPC bus (incremented PC, PC+1) - 14 bits
@@ -68,7 +70,7 @@ entity helper_bus_monitor is
       ir45    : in std_logic;
       ir46    : in std_logic;
       ir47    : in std_logic;
-      ir48    : in std_logic;
+      ir48    : in std_logic;      
       -- NPC bus (Next PC) - 14 bits
       npc0    : in std_logic;
       npc1    : in std_logic;
@@ -99,7 +101,7 @@ entity helper_bus_monitor is
       pc11    : in std_logic;
       pc12    : in std_logic;
       pc13    : in std_logic;
-      -- A bus (Address bus) - 31 bits
+      -- A bus (Address bus) - 32 bits
       a0      : in std_logic;
       a1      : in std_logic;
       a2      : in std_logic;
@@ -131,6 +133,7 @@ entity helper_bus_monitor is
       a28     : in std_logic;
       a29     : in std_logic;
       a30     : in std_logic;
+      a31a    : in std_logic;
       -- L bus (L register) - 32 bits
       l0      : in std_logic;
       l1      : in std_logic;
@@ -363,6 +366,39 @@ entity helper_bus_monitor is
       amem29  : in std_logic;
       amem30  : in std_logic;
       amem31  : in std_logic;
+      -- MMEM bus (M memory bus) - 32 bits
+      mmem0   : in std_logic;
+      mmem1   : in std_logic;
+      mmem2   : in std_logic;
+      mmem3   : in std_logic;
+      mmem4   : in std_logic;
+      mmem5   : in std_logic;
+      mmem6   : in std_logic;
+      mmem7   : in std_logic;
+      mmem8   : in std_logic;
+      mmem9   : in std_logic;
+      mmem10  : in std_logic;
+      mmem11  : in std_logic;
+      mmem12  : in std_logic;
+      mmem13  : in std_logic;
+      mmem14  : in std_logic;
+      mmem15  : in std_logic;
+      mmem16  : in std_logic;
+      mmem17  : in std_logic;
+      mmem18  : in std_logic;
+      mmem19  : in std_logic;
+      mmem20  : in std_logic;
+      mmem21  : in std_logic;
+      mmem22  : in std_logic;
+      mmem23  : in std_logic;
+      mmem24  : in std_logic;
+      mmem25  : in std_logic;
+      mmem26  : in std_logic;
+      mmem27  : in std_logic;
+      mmem28  : in std_logic;
+      mmem29  : in std_logic;
+      mmem30  : in std_logic;
+      mmem31  : in std_logic;
       -- VMA bus (Virtual memory address) - 32 bits
       \-vma0\ : in std_logic;
       \-vma1\ : in std_logic;
@@ -746,16 +782,34 @@ entity helper_bus_monitor is
       wadr6   : in std_logic;
       wadr7   : in std_logic;
       wadr8   : in std_logic;
-      wadr9   : in std_logic
+      wadr9   : in std_logic;
+      -- AADR bus - 10 bits
+      aadr0   : in std_logic;
+      aadr1   : in std_logic;
+      aadr2   : in std_logic;
+      aadr3   : in std_logic;
+      aadr4   : in std_logic;
+      aadr5   : in std_logic;
+      aadr6   : in std_logic;
+      aadr7   : in std_logic;
+      aadr8   : in std_logic;
+      aadr9   : in std_logic;
+      -- MADR bus - 5 bits
+      madr0   : in std_logic;
+      madr1   : in std_logic;
+      madr2   : in std_logic;
+      madr3   : in std_logic;
+      madr4   : in std_logic
     );
   end entity;
 
   architecture structural of helper_bus_monitor is
     signal ipc : std_logic_vector(13 downto 0);
     signal ir : std_logic_vector(48 downto 0);
+    signal ir_disassembled : string(1 to 64);
     signal npc : std_logic_vector(13 downto 0);
     signal pc : std_logic_vector(13 downto 0);
-    signal a : std_logic_vector(30 downto 0);
+    signal a : std_logic_vector(31 downto 0);
     signal l : std_logic_vector(31 downto 0);
     signal m : std_logic_vector(31 downto 0);
     signal ob : std_logic_vector(31 downto 0);
@@ -763,6 +817,7 @@ entity helper_bus_monitor is
     signal spy : std_logic_vector(15 downto 0);
     signal mem : std_logic_vector(31 downto 0);
     signal amem : std_logic_vector(31 downto 0);
+    signal mmem : std_logic_vector(31 downto 0);
     signal vma : std_logic_vector(31 downto 0);
     signal md : std_logic_vector(31 downto 0);
     signal \-vma\ : std_logic_vector(31 downto 0);
@@ -780,12 +835,14 @@ entity helper_bus_monitor is
     signal opc : std_logic_vector(13 downto 0);
     signal spc : std_logic_vector(18 downto 0);
     signal wadr : std_logic_vector(9 downto 0);
+    signal aadr : std_logic_vector(9 downto 0);
+    signal madr : std_logic_vector(4 downto 0);
   begin
     ipc <= ipc13 & ipc12 & ipc11 & ipc10 & ipc9 & ipc8 & ipc7 & ipc6 & ipc5 & ipc4 & ipc3 & ipc2 & ipc1 & ipc0;
     ir <= ir48 & ir47 & ir46 & ir45 & ir44 & ir43 & ir42 & ir41 & ir40 & ir39 & ir38 & ir37 & ir36 & ir35 & ir34 & ir33 & ir32 & ir31 & ir30 & ir29 & ir28 & ir27 & ir26 & ir25 & ir24 & ir23 & ir22 & ir21 & ir20 & ir19 & ir18 & ir17 & ir16 & ir15 & ir14 & ir13 & ir12 & ir11 & ir10 & ir9 & ir8 & ir7 & ir6 & ir5 & ir4 & ir3 & ir2 & ir1 & ir0;
     npc <= npc13 & npc12 & npc11 & npc10 & npc9 & npc8 & npc7 & npc6 & npc5 & npc4 & npc3 & npc2 & npc1 & npc0;
     pc <= pc13 & pc12 & pc11 & pc10 & pc9 & pc8 & pc7 & pc6 & pc5 & pc4 & pc3 & pc2 & pc1 & pc0;
-    a <= a30 & a29 & a28 & a27 & a26 & a25 & a24 & a23 & a22 & a21 & a20 & a19 & a18 & a17 & a16 & a15 & a14 & a13 & a12 & a11 & a10 & a9 & a8 & a7 & a6 & a5 & a4 & a3 & a2 & a1 & a0;
+    a <= a31a & a30 & a29 & a28 & a27 & a26 & a25 & a24 & a23 & a22 & a21 & a20 & a19 & a18 & a17 & a16 & a15 & a14 & a13 & a12 & a11 & a10 & a9 & a8 & a7 & a6 & a5 & a4 & a3 & a2 & a1 & a0;
     l <= l31 & l30 & l29 & l28 & l27 & l26 & l25 & l24 & l23 & l22 & l21 & l20 & l19 & l18 & l17 & l16 & l15 & l14 & l13 & l12 & l11 & l10 & l9 & l8 & l7 & l6 & l5 & l4 & l3 & l2 & l1 & l0;
     m <= m31 & m30 & m29 & m28 & m27 & m26 & m25 & m24 & m23 & m22 & m21 & m20 & m19 & m18 & m17 & m16 & m15 & m14 & m13 & m12 & m11 & m10 & m9 & m8 & m7 & m6 & m5 & m4 & m3 & m2 & m1 & m0;
     ob <= ob31 & ob30 & ob29 & ob28 & ob27 & ob26 & ob25 & ob24 & ob23 & ob22 & ob21 & ob20 & ob19 & ob18 & ob17 & ob16 & ob15 & ob14 & ob13 & ob12 & ob11 & ob10 & ob9 & ob8 & ob7 & ob6 & ob5 & ob4 & ob3 & ob2 & ob1 & ob0;
@@ -793,6 +850,7 @@ entity helper_bus_monitor is
     spy <= spy15 & spy14 & spy13 & spy12 & spy11 & spy10 & spy9 & spy8 & spy7 & spy6 & spy5 & spy4 & spy3 & spy2 & spy1 & spy0;
     mem <= mem31 & mem30 & mem29 & mem28 & mem27 & mem26 & mem25 & mem24 & mem23 & mem22 & mem21 & mem20 & mem19 & mem18 & mem17 & mem16 & mem15 & mem14 & mem13 & mem12 & mem11 & mem10 & mem9 & mem8 & mem7 & mem6 & mem5 & mem4 & mem3 & mem2 & mem1 & mem0;
     amem <= amem31 & amem30 & amem29 & amem28 & amem27 & amem26 & amem25 & amem24 & amem23 & amem22 & amem21 & amem20 & amem19 & amem18 & amem17 & amem16 & amem15 & amem14 & amem13 & amem12 & amem11 & amem10 & amem9 & amem8 & amem7 & amem6 & amem5 & amem4 & amem3 & amem2 & amem1 & amem0;
+    mmem <= mmem31 & mmem30 & mmem29 & mmem28 & mmem27 & mmem26 & mmem25 & mmem24 & mmem23 & mmem22 & mmem21 & mmem20 & mmem19 & mmem18 & mmem17 & mmem16 & mmem15 & mmem14 & mmem13 & mmem12 & mmem11 & mmem10 & mmem9 & mmem8 & mmem7 & mmem6 & mmem5 & mmem4 & mmem3 & mmem2 & mmem1 & mmem0;
     \-vma\ <= \-vma31\ & \-vma30\ & \-vma29\ & \-vma28\ & \-vma27\ & \-vma26\ & \-vma25\ & \-vma24\ & \-vma23\ & \-vma22\ & \-vma21\ & \-vma20\ & \-vma19\ & \-vma18\ & \-vma17\ & \-vma16\ & \-vma15\ & \-vma14\ & \-vma13\ & \-vma12\ & \-vma11\ & \-vma10\ & \-vma9\ & \-vma8\ & \-vma7\ & \-vma6\ & \-vma5\ & \-vma4\ & \-vma3\ & \-vma2\ & \-vma1\ & \-vma0\;
     \-md\ <= \-md31\ & \-md30\ & \-md29\ & \-md28\ & \-md27\ & \-md26\ & \-md25\ & \-md24\ & \-md23\ & \-md22\ & \-md21\ & \-md20\ & \-md19\ & \-md18\ & \-md17\ & \-md16\ & \-md15\ & \-md14\ & \-md13\ & \-md12\ & \-md11\ & \-md10\ & \-md9\ & \-md8\ & \-md7\ & \-md6\ & \-md5\ & \-md4\ & \-md3\ & \-md2\ & \-md1\ & \-md0\;
     alu <= alu32 & alu31 & alu30 & alu29 & alu28 & alu27 & alu26 & alu25 & alu24 & alu23 & alu22 & alu21 & alu20 & alu19 & alu18 & alu17 & alu16 & alu15 & alu14 & alu13 & alu12 & alu11 & alu10 & alu9 & alu8 & alu7 & alu6 & alu5 & alu4 & alu3 & alu2 & alu1 & alu0;
@@ -808,6 +866,15 @@ entity helper_bus_monitor is
     opc <= opc13 & opc12 & opc11 & opc10 & opc9 & opc8 & opc7 & opc6 & opc5 & opc4 & opc3 & opc2 & opc1 & opc0;
     spc <= spc18 & spc17 & spc16 & spc15 & spc14 & spc13 & spc12 & spc11 & spc10 & spc9 & spc8 & spc7 & spc6 & spc5 & spc4 & spc3 & spc2 & spc1 & spc0;
     wadr <= wadr9 & wadr8 & wadr7 & wadr6 & wadr5 & wadr4 & wadr3 & wadr2 & wadr1 & wadr0;
+    aadr <= aadr9 & aadr8 & aadr7 & aadr6 & aadr5 & aadr4 & aadr3 & aadr2 & aadr1 & aadr0;
+    madr <= madr4 & madr3 & madr2 & madr1 & madr0;
+
+    process (IR)
+    begin
+      if not is_x(IR) then
+        ir_disassembled <= string_cast("mete", ir_disassembled'length);
+      end if;
+    end process;
 
     process (PC)
     begin
