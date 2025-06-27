@@ -27,19 +27,23 @@ architecture dip of dip_74s182 is
 begin
   U1 : sn74s182
     port map (
-      y1      => p1,
-      x1      => p2,
-      y0      => p3,
-      x0      => p4,
-      y3      => p5,
-      x3      => p6,
       xout    => p7,
-      cout2_n => p9,
       yout    => p10,
-      cout1_n => p11,
-      cout0_n => p12,
-      cin_n   => p13,
+      x3      => p6,
+      y3      => p5,
+
+      cout2_n => p9,
+      x2      => p15,
       y2      => p14,
-      x2      => p15
+    
+      cout1_n => p11,
+      x1      => p2,
+      y1      => p1,
+    
+      cout0_n => p12,
+      x0      => p4,
+      y0      => p3,
+
+      cin_n   => p13
       );
 end architecture;

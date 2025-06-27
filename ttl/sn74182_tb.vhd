@@ -38,19 +38,67 @@ architecture testbench of sn74182_tb is
   type testvec_array is array (natural range <>) of testvec;
   constant tests : testvec_array := (
     -- Test case 1: All propagate, no generate, no carry in
-    ( '1', ( '1','1','1','1' ), ( '0','0','0','0' ), ( '0','0','0','0' ), '1', '0' ),
+    -- cin_n='1' (no carry), x='1111', y='0000' (all propagate, no generate)
+    -- cout0_n = ~(y0 + x0*cin) = ~(0 + 1*0) = ~0 = '1'
+    -- cout1_n = ~(y1 + x1*y0 + x1*x0*cin) = ~(0 + 1*0 + 1*1*0) = ~0 = '1'
+    -- cout2_n = ~(y2 + x2*y1 + x2*x1*y0 + x2*x1*x0*cin) = ~(0 + 1*0 + 1*1*0 + 1*1*1*0) = ~0 = '1'
+    -- xout = x3*x2*x1*x0 = 1*1*1*1 = '1'
+    -- yout = y3 + x3*y2 + x3*x2*y1 + x3*x2*x1*y0 = 0 + 1*0 + 1*1*0 + 1*1*1*0 = '0'
+    ( '1', ( '1','1','1','1' ), ( '0','0','0','0' ), ( '1','1','1','0' ), '1', '0' ),
+    
     -- Test case 2: All propagate, carry in
-    ( '0', ( '1','1','1','1' ), ( '0','0','0','0' ), ( '1','1','1','1' ), '1', '0' ),
+    -- cin_n='0' (carry in), x='1111', y='0000' (all propagate, no generate)
+    -- cout0_n = ~(y0 + x0*cin) = ~(0 + 1*1) = ~1 = '0'
+    -- cout1_n = ~(y1 + x1*y0 + x1*x0*cin) = ~(0 + 1*0 + 1*1*1) = ~1 = '0'
+    -- cout2_n = ~(y2 + x2*y1 + x2*x1*y0 + x2*x1*x0*cin) = ~(0 + 1*0 + 1*1*0 + 1*1*1*1) = ~1 = '0'
+    -- xout = x3*x2*x1*x0 = 1*1*1*1 = '1'
+    -- yout = y3 + x3*y2 + x3*x2*y1 + x3*x2*x1*y0 = 0 + 1*0 + 1*1*0 + 1*1*1*0 = '0'
+    ( '0', ( '1','1','1','1' ), ( '0','0','0','0' ), ( '0','0','0','0' ), '1', '0' ),
+    
     -- Test case 3: All generate
+    -- cin_n='1' (no carry), x='0000', y='1111' (no propagate, all generate)
+    -- cout0_n = ~(y0 + x0*cin) = ~(1 + 0*0) = ~1 = '0'
+    -- cout1_n = ~(y1 + x1*y0 + x1*x0*cin) = ~(1 + 0*1 + 0*0*0) = ~1 = '0'
+    -- cout2_n = ~(y2 + x2*y1 + x2*x1*y0 + x2*x1*x0*cin) = ~(1 + 0*1 + 0*0*1 + 0*0*0*0) = ~1 = '0'
+    -- xout = x3*x2*x1*x0 = 0*0*0*0 = '0'
+    -- yout = y3 + x3*y2 + x3*x2*y1 + x3*x2*x1*y0 = 1 + 0*1 + 0*0*1 + 0*0*0*1 = '1'
     ( '1', ( '0','0','0','0' ), ( '1','1','1','1' ), ( '0','0','0','0' ), '0', '1' ),
-    -- Test case 6: Partial generate
-    ( '1', ( '0','0','0','0' ), ( '1','1','0','0' ), ( '0','0','1','1' ), '0', '0' ),
-    -- Test case 8: All inputs high
+    
+    -- Test case 4: Partial generate
+    -- cin_n='1' (no carry), x='0000', y='1100' (generate at positions 0,1 only)
+    -- cout0_n = ~(y0 + x0*cin) = ~(1 + 0*0) = ~1 = '0'
+    -- cout1_n = ~(y1 + x1*y0 + x1*x0*cin) = ~(1 + 0*1 + 0*0*0) = ~1 = '0'
+    -- cout2_n = ~(y2 + x2*y1 + x2*x1*y0 + x2*x1*x0*cin) = ~(0 + 0*1 + 0*0*1 + 0*0*0*0) = ~0 = '1'
+    -- xout = x3*x2*x1*x0 = 0*0*0*0 = '0'
+    -- yout = y3 + x3*y2 + x3*x2*y1 + x3*x2*x1*y0 = 0 + 0*0 + 0*0*1 + 0*0*0*1 = '0'
+    ( '1', ( '0','0','0','0' ), ( '1','1','0','0' ), ( '0','0','1','0' ), '0', '0' ),
+    
+    -- Test case 5: All inputs high (both propagate and generate)
+    -- cin_n='1' (no carry), x='1111', y='1111' (all propagate and generate)
+    -- cout0_n = ~(y0 + x0*cin) = ~(1 + 1*0) = ~1 = '0'
+    -- cout1_n = ~(y1 + x1*y0 + x1*x0*cin) = ~(1 + 1*1 + 1*1*0) = ~1 = '0'
+    -- cout2_n = ~(y2 + x2*y1 + x2*x1*y0 + x2*x1*x0*cin) = ~(1 + 1*1 + 1*1*1 + 1*1*1*0) = ~1 = '0'
+    -- xout = x3*x2*x1*x0 = 1*1*1*1 = '1'
+    -- yout = y3 + x3*y2 + x3*x2*y1 + x3*x2*x1*y0 = 1 + 1*1 + 1*1*1 + 1*1*1*1 = '1'
     ( '1', ( '1','1','1','1' ), ( '1','1','1','1' ), ( '0','0','0','0' ), '1', '1' ),
-    -- Test case 10: Single stage generate
-    ( '1', ( '0','0','0','0' ), ( '1','0','0','0' ), ( '0','1','1','1' ), '0', '0' ),
-    -- Test case 12: Single generate at LSB
-    ( '1', ( '0','0','0','0' ), ( '1','0','0','0' ), ( '0','1','1','1' ), '0', '0' )
+    
+    -- Test case 6: Single stage generate at LSB
+    -- cin_n='1' (no carry), x='0000', y='1000' (generate only at position 0)
+    -- cout0_n = ~(y0 + x0*cin) = ~(1 + 0*0) = ~1 = '0'
+    -- cout1_n = ~(y1 + x1*y0 + x1*x0*cin) = ~(0 + 0*1 + 0*0*0) = ~0 = '1'
+    -- cout2_n = ~(y2 + x2*y1 + x2*x1*y0 + x2*x1*x0*cin) = ~(0 + 0*0 + 0*0*1 + 0*0*0*0) = ~0 = '1'
+    -- xout = x3*x2*x1*x0 = 0*0*0*0 = '0'
+    -- yout = y3 + x3*y2 + x3*x2*y1 + x3*x2*x1*y0 = 0 + 0*0 + 0*0*0 + 0*0*0*1 = '0'
+    ( '1', ( '0','0','0','0' ), ( '1','0','0','0' ), ( '0','1','1','0' ), '0', '0' ),
+    
+    -- Test case 7: Mixed propagate and generate with carry
+    -- cin_n='0' (carry in), x='1010', y='0101' (alternating pattern)
+    -- cout0_n = ~(y0 + x0*cin) = ~(0 + 1*1) = ~1 = '0'
+    -- cout1_n = ~(y1 + x1*y0 + x1*x0*cin) = ~(1 + 0*0 + 0*1*1) = ~1 = '0'
+    -- cout2_n = ~(y2 + x2*y1 + x2*x1*y0 + x2*x1*x0*cin) = ~(0 + 1*1 + 1*0*0 + 1*0*1*1) = ~1 = '0'
+    -- xout = x3*x2*x1*x0 = 0*1*0*1 = '0'
+    -- yout = y3 + x3*y2 + x3*x2*y1 + x3*x2*x1*y0 = 1 + 0*0 + 0*1*1 + 0*1*0*0 = '1'
+    ( '0', ( '1','0','1','0' ), ( '0','1','0','1' ), ( '0','0','0','0' ), '0', '1' )
   );
 
 begin
