@@ -22,6 +22,7 @@ Make targets are as follows.
 
 - `make all`: Compile all sources accessible from all test benches
 - `make ttl-check`: Run ttl testbenches
+- `make run-cadr`: Run CADR testbench
 - `make check`: Run all testbenches
 - `make clean`: Remove build artifacts (build directory)
 - `make dist-clean`: In addition to `make clean`, `dist-clean` target also removes the generated suds files.

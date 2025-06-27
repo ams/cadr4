@@ -3,19 +3,15 @@
 \#*\#
 
 .DS_Store
-build/
-
-soap/soap
 *.dSYM/
-
 __pycache__/
-
-cadr/*_suds.vhd
-set/*.vhd
-set/set.cache
-set/set.log
-vivado/
 
 *.opt
 *.o
 *.cf
+
+build/
+cadr/*_suds.vhd
+soap/soap
+tb/cadr_tb.vhd
+vivado/
