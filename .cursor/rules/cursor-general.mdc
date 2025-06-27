@@ -32,8 +32,9 @@ Make targets are as follows.
 
 # Code Modification Guidelines
 
-- NEVER modify the Makefile.
+- NEVER modify `Makefile`.
 - NEVER modify port interface list of an entity or component unless specifically instructed to do so.
+- NEVER modify `cadr_tb.vhd`.
 - After changing a source file, run `make` to see everything compiles fine.
 - DO NOT write testbenches on your own unless specifically instructed to do so.
 
