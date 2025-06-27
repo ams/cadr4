@@ -10,9 +10,6 @@ CADR4_TILONCONSOLE ?= 1
 # when setting from bash escape \ two times e.g. d:\\\\projects\\\\cadr4\\\\rom\\\\ 
 CADR4_ROMFILESPATH ?= rom\/
 
-$(info CADR4_TILONCONSOLE=$(CADR4_TILONCONSOLE))
-$(info CADR4_ROMFILESPATH=$(CADR4_ROMFILESPATH))
-
 CADR_TB_STOPTIME := 1ms
 
 GHDL		= ghdl
