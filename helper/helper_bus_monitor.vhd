@@ -806,7 +806,6 @@ entity helper_bus_monitor is
   architecture structural of helper_bus_monitor is
     signal ipc : std_logic_vector(13 downto 0);
     signal ir : std_logic_vector(48 downto 0);
-    signal ir_disassembled : string(1 to 64);
     signal npc : std_logic_vector(13 downto 0);
     signal pc : std_logic_vector(13 downto 0);
     signal a : std_logic_vector(31 downto 0);
@@ -868,13 +867,6 @@ entity helper_bus_monitor is
     wadr <= wadr9 & wadr8 & wadr7 & wadr6 & wadr5 & wadr4 & wadr3 & wadr2 & wadr1 & wadr0;
     aadr <= aadr9 & aadr8 & aadr7 & aadr6 & aadr5 & aadr4 & aadr3 & aadr2 & aadr1 & aadr0;
     madr <= madr4 & madr3 & madr2 & madr1 & madr0;
-
-    process (IR)
-    begin
-      if not is_x(IR) then
-        ir_disassembled <= string_cast("mete", ir_disassembled'length);
-      end if;
-    end process;
 
     process (PC)
     begin
