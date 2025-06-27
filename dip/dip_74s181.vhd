@@ -35,27 +35,33 @@ architecture dip of dip_74s181 is
 begin
   U1 : sn74s181
     port map (
+      cout_n => p16,
+      y      => p17,
+      x      => p15,
+      aeb    => p14,
+
+      f3     => p13,
+      f2     => p11,
+      f1     => p10,
+      f0     => p9,
+      
+      b3     => p18,
+      b2     => p20,
+      b1     => p22,
       b0     => p1,
+
+      a3     => p19,
+      a2     => p21,
+      a1     => p23,
       a0     => p2,
+
+      m      => p8,
       s3     => p3,
       s2     => p4,
       s1     => p5,
       s0     => p6,
-      cin_n  => p7,
-      m      => p8,
-      f0     => p9,
-      f1     => p10,
-      f2     => p11,
-      f3     => p13,
-      aeb    => p14,
-      x      => p15,
-      cout_n => p16,
-      y      => p17,
-      b3     => p18,
-      a3     => p19,
-      b2     => p20,
-      a2     => p21,
-      b1     => p22,
-      a1     => p23
+
+      cin_n  => p7
+      
       );
 end architecture;
