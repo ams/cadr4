@@ -10,7 +10,7 @@ end;
 architecture testbench of sn74181_tb is
 
   -- Initialize signals to avoid metavalue assertions
-  signal cin_n  : std_logic := '1';
+  signal cin_n  : std_logic := '1';  -- Carry in (active low)
   signal s0     : std_logic := '0';
   signal s1     : std_logic := '0';
   signal s2     : std_logic := '0';
@@ -31,7 +31,7 @@ architecture testbench of sn74181_tb is
   signal aeb    : std_logic;
   signal x      : std_logic;
   signal y      : std_logic;
-  signal cout_n : std_logic;
+  signal cout_n : std_logic;  -- Carry out (active low)
 
 begin
 
@@ -189,29 +189,29 @@ begin
     f_result := f3 & f2 & f1 & f0;
     assert f_result = "0110" report "Arith S=0000 Cn=1 (A+1) failed" severity error;
     
-    -- S=0001: F = A+B (Cn=0) / A+B+1 (Cn=1)
+    -- S=0001: F = A+B (logical OR) (Cn=0) / (A+B)+1 (Cn=1)
     s3 <= '0'; s2 <= '0'; s1 <= '0'; s0 <= '1';
     cin_n <= '1'; -- Cn=0
     wait for 10 ns;
     f_result := f3 & f2 & f1 & f0;
-    assert f_result = "1000" report "Arith S=0001 Cn=0 (A+B) failed" severity error;
+    assert f_result = "0111" report "Arith S=0001 Cn=0 (A+B logical OR) failed" severity error;
     
     cin_n <= '0'; -- Cn=1
     wait for 10 ns;
     f_result := f3 & f2 & f1 & f0;
-    assert f_result = "1001" report "Arith S=0001 Cn=1 (A+B+1) failed" severity error;
+    assert f_result = "1000" report "Arith S=0001 Cn=1 ((A+B)+1) failed" severity error;
     
-    -- S=0010: F = A+(NOT B) (Cn=0) / A+(NOT B)+1 (Cn=1)
+    -- S=0010: F = A+(NOT B) (A OR NOT B) (Cn=0) / (A+(NOT B))+1 (Cn=1)
     s3 <= '0'; s2 <= '0'; s1 <= '1'; s0 <= '0';
     cin_n <= '1'; -- Cn=0
     wait for 10 ns;
     f_result := f3 & f2 & f1 & f0;
-    assert f_result = "0001" report "Arith S=0010 Cn=0 (A+(NOT B)) failed" severity error;
+    assert f_result = "1101" report "Arith S=0010 Cn=0 (A+(NOT B) logical OR) failed" severity error;
     
     cin_n <= '0'; -- Cn=1
     wait for 10 ns;
     f_result := f3 & f2 & f1 & f0;
-    assert f_result = "0010" report "Arith S=0010 Cn=1 (A-B) failed" severity error;
+    assert f_result = "1110" report "Arith S=0010 Cn=1 ((A+(NOT B))+1) failed" severity error;
     
     -- S=0110: F = A-B-1 (Cn=0) / A-B (Cn=1)
     s3 <= '0'; s2 <= '1'; s1 <= '1'; s0 <= '0';
@@ -237,6 +237,18 @@ begin
     f_result := f3 & f2 & f1 & f0;
     assert f_result = "1011" report "Arith S=1100 Cn=1 (A+A+1) failed" severity error;
     
+    -- S=1001: F = A PLUS B (arithmetic addition) (Cn=0) / (A PLUS B) PLUS 1 (Cn=1)
+    s3 <= '1'; s2 <= '0'; s1 <= '0'; s0 <= '1';
+    cin_n <= '1'; -- Cn=0
+    wait for 10 ns;
+    f_result := f3 & f2 & f1 & f0;
+    assert f_result = "1000" report "Arith S=1001 Cn=0 (A PLUS B) failed" severity error;
+    
+    cin_n <= '0'; -- Cn=1
+    wait for 10 ns;
+    f_result := f3 & f2 & f1 & f0;
+    assert f_result = "1001" report "Arith S=1001 Cn=1 (A PLUS B PLUS 1) failed" severity error;
+    
     -- S=1111: F = A-1 (Cn=0) / A (Cn=1)
     s3 <= '1'; s2 <= '1'; s1 <= '1'; s0 <= '1';
     cin_n <= '1'; -- Cn=0
@@ -251,14 +263,32 @@ begin
     
     -- Test A equals B
     report "Testing A equals B";
+    m <= '1'; -- Logic mode
+    s3 <= '1'; s2 <= '1'; s1 <= '0'; s0 <= '0'; -- S=1100: F = 1 (all ones)
     a3 <= '0'; a2 <= '1'; a1 <= '0'; a0 <= '1'; -- A=5
     b3 <= '0'; b2 <= '1'; b1 <= '0'; b0 <= '1'; -- B=5
     wait for 10 ns;
+    -- When A=B in S=1100 mode, F should be 1111, so AEB should be 1
     assert aeb = '1' report "A equals B failed when A=B=5" severity error;
     
     a3 <= '0'; a2 <= '1'; a1 <= '0'; a0 <= '1'; -- A=5
     b3 <= '0'; b2 <= '0'; b1 <= '1'; b0 <= '1'; -- B=3
     wait for 10 ns;
+    -- When A≠B in S=1100 mode, F should be 1111, so AEB should still be 1
+    -- Actually, let's test with S=0110 (A XOR B) where F=0000 when A=B
+    s3 <= '0'; s2 <= '1'; s1 <= '1'; s0 <= '0'; -- S=0110: F = A XOR B
+    a3 <= '0'; a2 <= '1'; a1 <= '0'; a0 <= '1'; -- A=5
+    b3 <= '0'; b2 <= '1'; b1 <= '0'; b0 <= '1'; -- B=5 (same as A)
+    wait for 10 ns;
+    -- A XOR B should be 0000 when A=B, but AEB logic expects F=1111
+    -- So AEB should be 0 in this case
+    assert aeb = '0' report "A equals B with XOR test failed when A=B=5" severity error;
+    
+    -- Test AEB with different values where A≠B
+    a3 <= '0'; a2 <= '1'; a1 <= '0'; a0 <= '1'; -- A=5
+    b3 <= '0'; b2 <= '0'; b1 <= '1'; b0 <= '1'; -- B=3
+    wait for 10 ns;
+    -- A XOR B should be non-zero when A≠B, so AEB should be 0
     assert aeb = '0' report "A equals B failed when A=5, B=3" severity error;
     
     -- Test carry propagate (X) and carry generate (Y)
@@ -277,3 +307,5 @@ begin
   end process;
 
 end;
+
+

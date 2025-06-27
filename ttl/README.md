@@ -136,6 +136,10 @@ All ICs with open collector outputs are explicitly indicated.
 - sn74182: look-ahead carry generator
 - sn74283: 4-bit binary full adder with fast carry
 
+#### ISCAS Models
+
+sn74181, sn74182 and sn74283 are implemented differently than other components. Because their gate-level models are available (https://tumbleweed.nu/r/iscas.restore/doc/trunk/index.html), the gate-lavel models (from Verilog files) are directly implemented in (translated to) VHDL.
+
 ### Parity Generator/Checker
 
 - am93s48: 12-bit odd/even parity generator/checker

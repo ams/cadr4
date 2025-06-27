@@ -10,48 +10,63 @@ entity sn74181 is
   port (
     -- Control and status
     m      : in  std_logic;  -- Mode: 1=Logic, 0=Arithmetic
-    cin_n  : in  std_logic;  -- Carry in (active low)
-    cout_n : out std_logic;  -- Carry out (active low)
+    cin_n  : in  std_logic;  -- Carry in (active low) - matches Verilog CNb
+    cout_n : out std_logic;  -- Carry out (active low) - matches Verilog CN4b
     aeb    : out std_logic;  -- A equals B
     x      : out std_logic;  -- Carry propagate
     y      : out std_logic;  -- Carry generate
     
-    -- Function select
+    -- Function select - matches Verilog S[3:0]
     s3, s2, s1, s0 : in std_logic;
     
-    -- Data inputs (active high)
+    -- Data inputs (active high) - matches Verilog A[3:0], B[3:0]
     a3, a2, a1, a0 : in std_logic;
     b3, b2, b1, b0 : in std_logic;
     
-    -- Function outputs (active high)
+    -- Function outputs (active high) - matches Verilog F[3:0]
     f3, f2, f1, f0 : out std_logic
     );
 end;
 
-architecture ttl of sn74181 is
+-- Gate-level structural architecture based on ISCAS benchmark implementation
+-- Implementing the exact gate structure from the ISCAS 74181.v model
+architecture iscas of sn74181 is
+  -- Input conditioning signals
   signal m_i, cin_n_i, s3_i, s2_i, s1_i, s0_i : std_logic;
   signal a3_i, a2_i, a1_i, a0_i : std_logic;
   signal b3_i, b2_i, b1_i, b0_i : std_logic;
-  signal a_vec   : std_logic_vector(3 downto 0);
-  signal b_vec   : std_logic_vector(3 downto 0);
-  signal sel     : std_logic_vector(3 downto 0);
-  signal cin     : std_logic;
-
-  -- Helper functions for unknown input detection
-  function has_unknown(vec : std_logic_vector) return boolean is
-  begin
-    for i in vec'range loop
-      if vec(i) /= '0' and vec(i) /= '1' then
-        return true;
-      end if;
-    end loop;
-    return false;
-  end function;
-
-  function is_unknown(sig : std_logic) return boolean is
-  begin
-    return (sig /= '0' and sig /= '1');
-  end function;
+  
+  -- Internal vectors for easier manipulation
+  signal a_vec, b_vec : std_logic_vector(3 downto 0);
+  signal s_vec : std_logic_vector(3 downto 0);
+  
+  -- Intermediate signals matching Verilog model exactly
+  -- E module signals (Gb in Verilog - generate-like signals)
+  signal e_vec : std_logic_vector(3 downto 0);
+  signal bb_vec : std_logic_vector(3 downto 0);  -- inverted B (Bb in Verilog)
+  signal abs3_vec : std_logic_vector(3 downto 0);  -- A*B*S3 (ABS3 in Verilog)
+  signal abbs2_vec : std_logic_vector(3 downto 0); -- A*~B*S2 (ABbS2 in Verilog)
+  
+  -- D module signals (Pb in Verilog - propagate-like signals)
+  signal d_vec : std_logic_vector(3 downto 0);
+  signal bbs1_vec : std_logic_vector(3 downto 0);  -- ~B*S1 (BbS1 in Verilog)
+  signal bs0_vec : std_logic_vector(3 downto 0);   -- B*S0 (BS0 in Verilog)
+  
+  -- CLA module signals - matching Verilog CLAmodule exactly
+  signal c_vec : std_logic_vector(3 downto 0);     -- internal carries
+  signal pb0, pb1, pb2, pb3 : std_logic;           -- propagate terms (buffered D)
+  signal cin_n_gb0, cin_n_gb01, cin_n_gb012 : std_logic;    -- carry terms
+  signal pb0gb1, pb0gb12, pb0gb123 : std_logic;    -- more carry terms
+  signal pb1gb2, pb1gb23 : std_logic;
+  signal pb2gb3 : std_logic;
+  signal x_int, y_int : std_logic;
+  signal x_cin_n, cout_n_int : std_logic;
+  
+  -- Sum module signals
+  signal exd_vec : std_logic_vector(3 downto 0);   -- E XOR D (EXD in Verilog)
+  signal cm_vec : std_logic_vector(3 downto 0);    -- C OR M (CM in Verilog)
+  signal f_vec : std_logic_vector(3 downto 0);     -- final result
+  signal aeb_int : std_logic;
 
 begin
 
@@ -71,211 +86,134 @@ begin
   b1_i <= ttl_input(b1);
   b0_i <= ttl_input(b0);
 
+  -- Create vectors for easier processing
   a_vec <= a3_i & a2_i & a1_i & a0_i;
   b_vec <= b3_i & b2_i & b1_i & b0_i;
-  sel <= s3_i & s2_i & s1_i & s0_i;
-  cin <= not cin_n_i;  -- Convert active low to active high
+  s_vec <= s3_i & s2_i & s1_i & s0_i;
 
-  process(all)
-    variable a_int, b_int : unsigned(3 downto 0);
-    variable f_result : std_logic_vector(3 downto 0);
-    variable cout_var : std_logic;
-    variable sum : unsigned(4 downto 0);
-    variable x_var, y_var : std_logic;
-  begin
-    -- Check for unknown inputs
-    if has_unknown(a_vec) or has_unknown(b_vec) or has_unknown(sel) or 
-       is_unknown(m_i) or is_unknown(cin_n_i) then
-      f0 <= 'X';
-      f1 <= 'X';
-      f2 <= 'X';
-      f3 <= 'X';
-      cout_n <= 'X';
-      aeb <= 'X';
-      x <= 'X';
-      y <= 'X';
-    else
+  -- E MODULE (exact gate-level implementation from Verilog Emodule)
+  -- Generate inverted B signals (Bb in Verilog)
+  bb_vec(0) <= not b0_i;
+  bb_vec(1) <= not b1_i;
+  bb_vec(2) <= not b2_i;
+  bb_vec(3) <= not b3_i;
+  
+  -- Generate A*B*S3 terms (ABS3 in Verilog)
+  abs3_vec(0) <= a0_i and b0_i and s3_i;
+  abs3_vec(1) <= a1_i and b1_i and s3_i;
+  abs3_vec(2) <= a2_i and b2_i and s3_i;
+  abs3_vec(3) <= a3_i and b3_i and s3_i;
+  
+  -- Generate A*~B*S2 terms (ABbS2 in Verilog)
+  abbs2_vec(0) <= a0_i and bb_vec(0) and s2_i;
+  abbs2_vec(1) <= a1_i and bb_vec(1) and s2_i;
+  abbs2_vec(2) <= a2_i and bb_vec(2) and s2_i;
+  abbs2_vec(3) <= a3_i and bb_vec(3) and s2_i;
+  
+  -- Generate E signals using NOR gates (E becomes Gb in CLAmodule)
+  e_vec(0) <= not (abs3_vec(0) or abbs2_vec(0));
+  e_vec(1) <= not (abs3_vec(1) or abbs2_vec(1));
+  e_vec(2) <= not (abs3_vec(2) or abbs2_vec(2));
+  e_vec(3) <= not (abs3_vec(3) or abbs2_vec(3));
 
-    a_int := unsigned(a_vec);
-    b_int := unsigned(b_vec);
-    cout_var := '0';
-    x_var := '0';
-    y_var := '0';
+  -- D MODULE (exact gate-level implementation from Verilog Dmodule)
+  -- Generate ~B*S1 terms (BbS1 in Verilog)
+  bbs1_vec(0) <= bb_vec(0) and s1_i;
+  bbs1_vec(1) <= bb_vec(1) and s1_i;
+  bbs1_vec(2) <= bb_vec(2) and s1_i;
+  bbs1_vec(3) <= bb_vec(3) and s1_i;
+  
+  -- Generate B*S0 terms (BS0 in Verilog)
+  bs0_vec(0) <= b0_i and s0_i;
+  bs0_vec(1) <= b1_i and s0_i;
+  bs0_vec(2) <= b2_i and s0_i;
+  bs0_vec(3) <= b3_i and s0_i;
+  
+  -- Generate D signals using NOR gates (D becomes Pb in CLAmodule)
+  d_vec(0) <= not (bbs1_vec(0) or bs0_vec(0) or a0_i);
+  d_vec(1) <= not (bbs1_vec(1) or bs0_vec(1) or a1_i);
+  d_vec(2) <= not (bbs1_vec(2) or bs0_vec(2) or a2_i);
+  d_vec(3) <= not (bbs1_vec(3) or bs0_vec(3) or a3_i);
 
-    if m_i = '1' then
-      -- Logic mode - Table 2 from datasheet (Active High Data)
-      case sel is
-        when "0000" => f_result := not a_vec;                    -- F = NOT A
-        when "0001" => f_result := not (a_vec or b_vec);         -- F = NOT(A+B)  
-        when "0010" => f_result := (not a_vec) and b_vec;        -- F = (NOT A)B
-        when "0011" => f_result := "0000";                       -- F = 0
-        when "0100" => f_result := not (a_vec and b_vec);        -- F = NOT(AB)
-        when "0101" => f_result := not b_vec;                    -- F = NOT B
-        when "0110" => f_result := a_vec xor b_vec;              -- F = A XOR B
-        when "0111" => f_result := a_vec and (not b_vec);        -- F = A(NOT B)
-        when "1000" => f_result := (not a_vec) or b_vec;         -- F = (NOT A)+B
-        when "1001" => f_result := not (a_vec xor b_vec);        -- F = NOT(A XOR B)
-        when "1010" => f_result := b_vec;                        -- F = B
-        when "1011" => f_result := a_vec and b_vec;              -- F = AB
-        when "1100" => f_result := "1111";                       -- F = 1
-        when "1101" => f_result := a_vec or (not b_vec);         -- F = A+(NOT B)
-        when "1110" => f_result := a_vec or b_vec;               -- F = A+B
-        when "1111" => f_result := a_vec;                        -- F = A
-        when others => f_result := "XXXX";
-      end case;
-      
-      -- In logic mode, carry outputs are not meaningful
-      cout_var := '0';
-      x_var := '0';
-      y_var := '0';
+  -- CLA MODULE (exact gate-level implementation from Verilog CLAmodule)
+  -- Generate C0 (inverted CNb)
+  c_vec(0) <= not cin_n_i;
+  
+  -- Buffer propagate signals (D goes to Pb in Verilog)
+  pb0 <= d_vec(0);
+  pb1 <= d_vec(1);
+  pb2 <= d_vec(2);
+  pb3 <= d_vec(3);
+  
+  -- Generate carry terms exactly matching Verilog CLAmodule
+  -- For C1: CNbGb0 = CNb * Gb[0] (E goes to Gb in Verilog)
+  cin_n_gb0 <= cin_n_i and e_vec(0);
+  
+  -- For C2: Pb0Gb1 = Pb[0] * Gb[1], CNbGb01 = CNb * Gb[0] * Gb[1]
+  pb0gb1 <= pb0 and e_vec(1);
+  cin_n_gb01 <= cin_n_i and e_vec(0) and e_vec(1);
+  
+  -- For C3: Pb1Gb2, Pb0Gb12, CNbGb012
+  pb1gb2 <= pb1 and e_vec(2);
+  pb0gb12 <= pb0 and e_vec(1) and e_vec(2);
+  cin_n_gb012 <= cin_n_i and e_vec(0) and e_vec(1) and e_vec(2);
+  
+  -- For group outputs: Pb2Gb3, Pb1Gb23, Pb0Gb123
+  pb2gb3 <= pb2 and e_vec(3);
+  pb1gb23 <= pb1 and e_vec(2) and e_vec(3);
+  pb0gb123 <= pb0 and e_vec(1) and e_vec(2) and e_vec(3);
+  
+  -- Generate group propagate and generate exactly like Verilog
+  -- X = NAND(Gb[0], Gb[1], Gb[2], Gb[3]) (E goes to Gb)
+  x_int <= not (e_vec(0) and e_vec(1) and e_vec(2) and e_vec(3));
+  -- Y = NOR(Pb3, Pb2Gb3, Pb1Gb23, Pb0Gb123) (D goes to Pb)
+  y_int <= not (pb3 or pb2gb3 or pb1gb23 or pb0gb123);
+  -- XCNb = NAND(Gb[0], Gb[1], Gb[2], Gb[3], CNb) (E goes to Gb)
+  x_cin_n <= not (e_vec(0) and e_vec(1) and e_vec(2) and e_vec(3) and cin_n_i);
+  -- CN4b = NAND(Y, XCNb)
+  cout_n_int <= not (y_int and x_cin_n);
+  
+  -- Generate internal carry signals using NOR gates
+  c_vec(3) <= not (pb2 or pb1gb2 or pb0gb12 or cin_n_gb012);
+  c_vec(2) <= not (pb1 or pb0gb1 or cin_n_gb01);
+  c_vec(1) <= not (pb0 or cin_n_gb0);
 
-    else
-      -- Arithmetic mode - Table 2 from datasheet (Active High Data)
-      case sel is
-        when "0000" =>  -- F = A / A+1
-          if cin = '0' then
-            sum := ('0' & a_int);
-          else
-            sum := ('0' & a_int) + 1;
-          end if;
-        
-        when "0001" =>  -- F = A+B / (A+B)+1
-          if cin = '0' then
-            sum := ('0' & a_int) + ('0' & b_int);
-          else
-            sum := ('0' & a_int) + ('0' & b_int) + 1;
-          end if;
-        
-        when "0010" =>  -- F = A+(NOT B) / (A+(NOT B))+1
-          if cin = '0' then
-            sum := ('0' & a_int) + ('0' & (not b_int));
-          else
-            sum := ('0' & a_int) + ('0' & (not b_int)) + 1;
-          end if;
-        
-        when "0011" =>  -- F = -1 (2's complement) / 0
-          if cin = '0' then
-            sum := "11111";  -- -1 in 2's complement (all 1s)
-          else
-            sum := "00000";  -- 0
-          end if;
-        
-        when "0100" =>  -- F = A + A(NOT B) / A + A(NOT B) + 1
-          if cin = '0' then
-            sum := ('0' & a_int) + ('0' & (a_int and (not b_int)));
-          else
-            sum := ('0' & a_int) + ('0' & (a_int and (not b_int))) + 1;
-          end if;
-        
-        when "0101" =>  -- F = (A+B) + A(NOT B) / (A+B) + A(NOT B) + 1
-          if cin = '0' then
-            sum := ('0' & (a_int or b_int)) + ('0' & (a_int and (not b_int)));
-          else
-            sum := ('0' & (a_int or b_int)) + ('0' & (a_int and (not b_int))) + 1;
-          end if;
-        
-        when "0110" =>  -- F = A - B - 1 / A - B
-          if cin = '0' then
-            sum := ('0' & a_int) - ('0' & b_int) - 1;
-          else
-            sum := ('0' & a_int) - ('0' & b_int);
-          end if;
-        
-        when "0111" =>  -- F = A(NOT B) - 1 / A(NOT B)
-          if cin = '0' then
-            sum := ('0' & (a_int and (not b_int))) - 1;
-          else
-            sum := ('0' & (a_int and (not b_int)));
-          end if;
-        
-        when "1000" =>  -- F = A + AB / A + AB + 1
-          if cin = '0' then
-            sum := ('0' & a_int) + ('0' & (a_int and b_int));
-          else
-            sum := ('0' & a_int) + ('0' & (a_int and b_int)) + 1;
-          end if;
-        
-        when "1001" =>  -- F = A + B / A + B + 1
-          if cin = '0' then
-            sum := ('0' & a_int) + ('0' & b_int);
-          else
-            sum := ('0' & a_int) + ('0' & b_int) + 1;
-          end if;
-        
-        when "1010" =>  -- F = (A+(NOT B)) + AB / (A+(NOT B)) + AB + 1
-          if cin = '0' then
-            sum := ('0' & (a_int or (not b_int))) + ('0' & (a_int and b_int));
-          else
-            sum := ('0' & (a_int or (not b_int))) + ('0' & (a_int and b_int)) + 1;
-          end if;
-        
-        when "1011" =>  -- F = AB - 1 / AB
-          if cin = '0' then
-            sum := ('0' & (a_int and b_int)) - 1;
-          else
-            sum := ('0' & (a_int and b_int));
-          end if;
-        
-        when "1100" =>  -- F = A + A (shift left) / A + A + 1
-          if cin = '0' then
-            sum := ('0' & a_int) + ('0' & a_int);
-          else
-            sum := ('0' & a_int) + ('0' & a_int) + 1;
-          end if;
-        
-        when "1101" =>  -- F = (A+B) + A / (A+B) + A + 1
-          if cin = '0' then
-            sum := ('0' & (a_int or b_int)) + ('0' & a_int);
-          else
-            sum := ('0' & (a_int or b_int)) + ('0' & a_int) + 1;
-          end if;
-        
-        when "1110" =>  -- F = (A+(NOT B)) + A / (A+(NOT B)) + A + 1
-          if cin = '0' then
-            sum := ('0' & (a_int or (not b_int))) + ('0' & a_int);
-          else
-            sum := ('0' & (a_int or (not b_int))) + ('0' & a_int) + 1;
-          end if;
-        
-        when "1111" =>  -- F = A - 1 / A
-          if cin = '0' then
-            sum := ('0' & a_int) - 1;
-          else
-            sum := ('0' & a_int);
-          end if;
-        
-        when others =>
-          sum := "00000";
-      end case;
-      
-      f_result := std_logic_vector(sum(3 downto 0));
-      cout_var := sum(4);
-      
-      -- Calculate carry propagate (X) and carry generate (Y)
-      -- X = 1 when all bit positions can propagate carry (A XOR B for all bits)
-      x_var := (a0_i xor b0_i) and (a1_i xor b1_i) and (a2_i xor b2_i) and (a3_i xor b3_i);
-      -- Y = carry generate (same as carry out)
-      y_var := cout_var;
-    end if;
+  -- SUM MODULE (exact gate-level implementation from Verilog Summodule)
+  -- Generate E XOR D terms (EXD in Verilog)
+  exd_vec(0) <= e_vec(0) xor d_vec(0);
+  exd_vec(1) <= e_vec(1) xor d_vec(1);
+  exd_vec(2) <= e_vec(2) xor d_vec(2);
+  exd_vec(3) <= e_vec(3) xor d_vec(3);
+  
+  -- Generate C OR M terms (CM in Verilog)
+  cm_vec(0) <= c_vec(0) or m_i;
+  cm_vec(1) <= c_vec(1) or m_i;
+  cm_vec(2) <= c_vec(2) or m_i;
+  cm_vec(3) <= c_vec(3) or m_i;
+  
+  -- Generate final function outputs (F in Verilog)
+  f_vec(0) <= exd_vec(0) xor cm_vec(0);
+  f_vec(1) <= exd_vec(1) xor cm_vec(1);
+  f_vec(2) <= exd_vec(2) xor cm_vec(2);
+  f_vec(3) <= exd_vec(3) xor cm_vec(3);
+  
+  -- Generate A equals B output (AEB in Verilog)
+  aeb_int <= f_vec(0) and f_vec(1) and f_vec(2) and f_vec(3);
 
-    -- Assign outputs
-    f0 <= f_result(0);
-    f1 <= f_result(1);
-    f2 <= f_result(2);
-    f3 <= f_result(3);
-    cout_n <= not cout_var;  -- Convert to active low
-    
-    -- A equals B comparison (only valid in subtract mode)
-    if a_vec = b_vec then
-      aeb <= '1';
-    else
-      aeb <= '0';
-    end if;
-    
-    x <= x_var;
-    y <= y_var;
-    
-    end if;  -- End of unknown input check
-  end process;
+  -- Output assignments
+  f0 <= f_vec(0);
+  f1 <= f_vec(1);
+  f2 <= f_vec(2);
+  f3 <= f_vec(3);
+  
+  -- Carry out matches Verilog CN4b
+  cout_n <= cout_n_int;
+  
+  -- A equals B output
+  aeb <= aeb_int;
+  
+  -- Group propagate and generate outputs
+  x <= x_int;
+  y <= y_int;
 
-end;
+end iscas;

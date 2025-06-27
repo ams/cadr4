@@ -438,7 +438,7 @@ package sn74 is
 
   component sn74181 is
     port (
-      cout_n : out std_logic;
+      cout_n : out std_logic;  -- Carry out (active low)
       y      : out std_logic;
       x      : out std_logic;
       aeb    : out std_logic;
@@ -464,7 +464,7 @@ package sn74 is
       s1 : in std_logic;
       s0 : in std_logic;
 
-      cin_n : in std_logic
+      cin_n : in std_logic  -- Carry in (active low)
       );
   end component;
 

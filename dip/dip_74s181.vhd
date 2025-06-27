@@ -61,7 +61,6 @@ begin
       s1     => p5,
       s0     => p6,
 
-      cin_n  => p7
-      
-      );
+      cin_n  => p7      
+    );
 end architecture;
