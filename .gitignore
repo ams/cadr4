@@ -10,6 +10,7 @@ __pycache__/
 *.o
 *.cf
 
+.vscode/
 build/
 cadr/*_suds.vhd
 soap/soap

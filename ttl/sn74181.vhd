@@ -210,10 +210,20 @@ begin
   cout_n <= cout_n_int;
   
   -- A equals B output
-  aeb <= aeb_int;
+  -- A=B output is open collector !
+  process (aeb_int)
+  begin
+    if aeb_int = '0' then
+      aeb <= '0';
+    elsif aeb_int = '1' then
+      aeb <= 'Z';
+    else
+      aeb <= aeb_int;
+    end if;
+  end process;
   
   -- Group propagate and generate outputs
   x <= x_int;
   y <= y_int;
 
-end iscas;
+end architecture;

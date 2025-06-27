@@ -261,35 +261,80 @@ begin
     f_result := f3 & f2 & f1 & f0;
     assert f_result = "0101" report "Arith S=1111 Cn=1 (A) failed" severity error;
     
-    -- Test A equals B
-    report "Testing A equals B";
+    -- Test A equals B according to datasheet specification
+    report "Testing A equals B (proper datasheet method)";
+    m <= '0'; -- Arithmetic mode
+    s3 <= '0'; s2 <= '1'; s1 <= '1'; s0 <= '0'; -- S=0110: subtract mode
+    cin_n <= '1'; -- Cn=H (no carry) as required by datasheet
+    
+    -- Test case 1: A=B=5
+    a3 <= '0'; a2 <= '1'; a1 <= '0'; a0 <= '1'; -- A=5
+    b3 <= '0'; b2 <= '1'; b1 <= '0'; b0 <= '1'; -- B=5
+    wait for 10 ns;
+    f_result := f3 & f2 & f1 & f0;
+    -- In subtract mode with A=B, result should be A-B-1 = -1 = 1111 (2's complement)
+    -- According to datasheet, AEB should be 1 when A=B in this mode
+    report "A=5, B=5: F=" & to_string(f_result) & ", AEB=" & std_logic'image(aeb);
+    assert aeb = '1' report "AEB should be 1 when A=B=5 in subtract mode" severity error;
+    
+    -- Test case 2: A=7, B=7
+    a3 <= '0'; a2 <= '1'; a1 <= '1'; a0 <= '1'; -- A=7
+    b3 <= '0'; b2 <= '1'; b1 <= '1'; b0 <= '1'; -- B=7
+    wait for 10 ns;
+    f_result := f3 & f2 & f1 & f0;
+    report "A=7, B=7: F=" & to_string(f_result) & ", AEB=" & std_logic'image(aeb);
+    assert aeb = '1' report "AEB should be 1 when A=B=7 in subtract mode" severity error;
+    
+    -- Test case 3: A≠B (A=5, B=3)
+    a3 <= '0'; a2 <= '1'; a1 <= '0'; a0 <= '1'; -- A=5
+    b3 <= '0'; b2 <= '0'; b1 <= '1'; b0 <= '1'; -- B=3
+    wait for 10 ns;
+    f_result := f3 & f2 & f1 & f0;
+    -- In subtract mode with A≠B, result should be A-B-1 = 5-3-1 = 1
+    report "A=5, B=3: F=" & to_string(f_result) & ", AEB=" & std_logic'image(aeb);
+    assert aeb = '0' report "AEB should be 0 when A/=B in subtract mode" severity error;
+    
+    -- Test case 4: A≠B (A=8, B=3)
+    a3 <= '1'; a2 <= '0'; a1 <= '0'; a0 <= '0'; -- A=8
+    b3 <= '0'; b2 <= '0'; b1 <= '1'; b0 <= '1'; -- B=3
+    wait for 10 ns;
+    f_result := f3 & f2 & f1 & f0;
+    -- In subtract mode with A≠B, result should be A-B-1 = 8-3-1 = 4
+    report "A=8, B=3: F=" & to_string(f_result) & ", AEB=" & std_logic'image(aeb);
+    assert aeb = '0' report "AEB should be 0 when A/=B (8,3) in subtract mode" severity error;
+
+    -- Test legacy AEB behavior (what the current implementation actually does)
+    report "Testing legacy AEB behavior (F=1111 detection)";
     m <= '1'; -- Logic mode
     s3 <= '1'; s2 <= '1'; s1 <= '0'; s0 <= '0'; -- S=1100: F = 1 (all ones)
     a3 <= '0'; a2 <= '1'; a1 <= '0'; a0 <= '1'; -- A=5
     b3 <= '0'; b2 <= '1'; b1 <= '0'; b0 <= '1'; -- B=5
     wait for 10 ns;
     -- When A=B in S=1100 mode, F should be 1111, so AEB should be 1
-    assert aeb = '1' report "A equals B failed when A=B=5" severity error;
+    assert aeb = '1' report "Legacy AEB test: A equals B failed when A=B=5" severity error;
     
     a3 <= '0'; a2 <= '1'; a1 <= '0'; a0 <= '1'; -- A=5
     b3 <= '0'; b2 <= '0'; b1 <= '1'; b0 <= '1'; -- B=3
     wait for 10 ns;
-    -- When A≠B in S=1100 mode, F should be 1111, so AEB should still be 1
-    -- Actually, let's test with S=0110 (A XOR B) where F=0000 when A=B
+    -- When A≠B in S=1100 mode, F should still be 1111, so AEB should still be 1
+    -- This shows the current implementation doesn't actually detect A=B properly
+    assert aeb = '1' report "Legacy AEB test: should be 1 in S=1100 mode regardless of A,B" severity error;
+    
+    -- Test with S=0110 (A XOR B) where F=0000 when A=B
     s3 <= '0'; s2 <= '1'; s1 <= '1'; s0 <= '0'; -- S=0110: F = A XOR B
     a3 <= '0'; a2 <= '1'; a1 <= '0'; a0 <= '1'; -- A=5
     b3 <= '0'; b2 <= '1'; b1 <= '0'; b0 <= '1'; -- B=5 (same as A)
     wait for 10 ns;
     -- A XOR B should be 0000 when A=B, but AEB logic expects F=1111
     -- So AEB should be 0 in this case
-    assert aeb = '0' report "A equals B with XOR test failed when A=B=5" severity error;
+    assert aeb = '0' report "Legacy AEB test: A XOR B with A=B should give AEB=0" severity error;
     
     -- Test AEB with different values where A≠B
     a3 <= '0'; a2 <= '1'; a1 <= '0'; a0 <= '1'; -- A=5
     b3 <= '0'; b2 <= '0'; b1 <= '1'; b0 <= '1'; -- B=3
     wait for 10 ns;
     -- A XOR B should be non-zero when A≠B, so AEB should be 0
-    assert aeb = '0' report "A equals B failed when A=5, B=3" severity error;
+    assert aeb = '0' report "Legacy AEB test: A XOR B with A/=B should give AEB=0" severity error;
     
     -- Test carry propagate (X) and carry generate (Y)
     report "Testing carry propagate and generate";
