@@ -524,6 +524,11 @@ package helper is
       alu30   : in std_logic;
       alu31   : in std_logic;
       alu32   : in std_logic;
+      -- ALUF bus - 4 bits
+      aluf0b  : in std_logic;
+      aluf1b  : in std_logic;
+      aluf2b  : in std_logic;
+      aluf3b  : in std_logic;
       -- Q bus - 32 bits
       q0      : in std_logic;
       q1      : in std_logic;

@@ -501,6 +501,11 @@ entity helper_bus_monitor is
       alu30   : in std_logic;
       alu31   : in std_logic;
       alu32   : in std_logic;
+      -- ALUF bus - 4 bits
+      aluf0b  : in std_logic;
+      aluf1b  : in std_logic;
+      aluf2b  : in std_logic;
+      aluf3b  : in std_logic;
       -- Q bus - 32 bits
       q0      : in std_logic;
       q1      : in std_logic;
@@ -823,7 +828,8 @@ entity helper_bus_monitor is
     signal md : std_logic_vector(31 downto 0);
     signal \-vma\ : std_logic_vector(31 downto 0);
     signal \-md\ : std_logic_vector(31 downto 0);
-    signal alu : std_logic_vector(32 downto 0);
+    signal alu : std_logic_vector(31 downto 0);
+    signal aluf : std_logic_vector(3 downto 0);
     signal q : std_logic_vector(31 downto 0);
     signal r : std_logic_vector(31 downto 0);
     signal aa : std_logic_vector(17 downto 0);
@@ -854,7 +860,8 @@ entity helper_bus_monitor is
     mmem <= mmem31 & mmem30 & mmem29 & mmem28 & mmem27 & mmem26 & mmem25 & mmem24 & mmem23 & mmem22 & mmem21 & mmem20 & mmem19 & mmem18 & mmem17 & mmem16 & mmem15 & mmem14 & mmem13 & mmem12 & mmem11 & mmem10 & mmem9 & mmem8 & mmem7 & mmem6 & mmem5 & mmem4 & mmem3 & mmem2 & mmem1 & mmem0;
     \-vma\ <= \-vma31\ & \-vma30\ & \-vma29\ & \-vma28\ & \-vma27\ & \-vma26\ & \-vma25\ & \-vma24\ & \-vma23\ & \-vma22\ & \-vma21\ & \-vma20\ & \-vma19\ & \-vma18\ & \-vma17\ & \-vma16\ & \-vma15\ & \-vma14\ & \-vma13\ & \-vma12\ & \-vma11\ & \-vma10\ & \-vma9\ & \-vma8\ & \-vma7\ & \-vma6\ & \-vma5\ & \-vma4\ & \-vma3\ & \-vma2\ & \-vma1\ & \-vma0\;
     \-md\ <= \-md31\ & \-md30\ & \-md29\ & \-md28\ & \-md27\ & \-md26\ & \-md25\ & \-md24\ & \-md23\ & \-md22\ & \-md21\ & \-md20\ & \-md19\ & \-md18\ & \-md17\ & \-md16\ & \-md15\ & \-md14\ & \-md13\ & \-md12\ & \-md11\ & \-md10\ & \-md9\ & \-md8\ & \-md7\ & \-md6\ & \-md5\ & \-md4\ & \-md3\ & \-md2\ & \-md1\ & \-md0\;
-    alu <= alu32 & alu31 & alu30 & alu29 & alu28 & alu27 & alu26 & alu25 & alu24 & alu23 & alu22 & alu21 & alu20 & alu19 & alu18 & alu17 & alu16 & alu15 & alu14 & alu13 & alu12 & alu11 & alu10 & alu9 & alu8 & alu7 & alu6 & alu5 & alu4 & alu3 & alu2 & alu1 & alu0;
+    alu <= alu31 & alu30 & alu29 & alu28 & alu27 & alu26 & alu25 & alu24 & alu23 & alu22 & alu21 & alu20 & alu19 & alu18 & alu17 & alu16 & alu15 & alu14 & alu13 & alu12 & alu11 & alu10 & alu9 & alu8 & alu7 & alu6 & alu5 & alu4 & alu3 & alu2 & alu1 & alu0;
+    aluf <= aluf3b & aluf2b & aluf1b & aluf0b;
     q <= q31 & q30 & q29 & q28 & q27 & q26 & q25 & q24 & q23 & q22 & q21 & q20 & q19 & q18 & q17 & q16 & q15 & q14 & q13 & q12 & q11 & q10 & q9 & q8 & q7 & q6 & q5 & q4 & q3 & q2 & q1 & q0;
     r <= r31 & r30 & r29 & r28 & r27 & r26 & r25 & r24 & r23 & r22 & r21 & r20 & r19 & r18 & r17 & r16 & r15 & r14 & r13 & r12 & r11 & r10 & r9 & r8 & r7 & r6 & r5 & r4 & r3 & r2 & r1 & r0;
     aa <= aa17 & aa16 & aa15 & aa14 & aa13 & aa12 & aa11 & aa10 & aa9 & aa8 & aa7 & aa6 & aa5 & aa4 & aa3 & aa2 & aa1 & aa0;
