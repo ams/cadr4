@@ -141,7 +141,7 @@ All ICs with open collector outputs are explicitly indicated.
 ### Arithmetic
 
 - am25s10: 4-bit shifter
-- dm93s46: 6-bit identify comparator
+- dm93s46: 6-bit identity comparator
 - sn74181: 4-bit ALU
 - sn74182: look-ahead carry generator
 - sn74283: 4-bit binary full adder with fast carry
