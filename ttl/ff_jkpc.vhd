@@ -17,7 +17,7 @@ entity ff_jkpc is
     );
 end;
 
-architecture ttl of ff_jkpc is
+architecture behavioral of ff_jkpc is
   signal q_int : std_logic := '0';
 begin
 

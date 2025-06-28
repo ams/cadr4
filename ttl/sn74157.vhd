@@ -26,7 +26,7 @@ entity sn74157 is
     );
 end;
 
-architecture ttl of sn74157 is
+architecture behavioral of sn74157 is
   signal enb_n_i, sel_i, a1_i, a2_i, a3_i, a4_i, b1_i, b2_i, b3_i, b4_i : std_logic;
 begin
 

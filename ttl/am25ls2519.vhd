@@ -39,7 +39,7 @@ entity am25ls2519 is
     );
 end entity;
 
-architecture ttl of am25ls2519 is
+architecture behavioral of am25ls2519 is
   signal d0_i, d1_i, d2_i, d3_i, e_n_i, cp_i, oe_y_n_i, oe_w_n_i, pol_i, clr_n_i : std_logic;
   signal q0, q1, q2, q3 : std_logic;
 begin

@@ -61,6 +61,16 @@ Other than sn74 entities, all entity names are exact to original part names (ign
 
 ecc = Engineered Components Company
 
+# Levels of Abstraction
+
+All parts are implemented in one of the three architectures:
+
+- behavioral: The implementation works to behave as same as the function or algorithm described in the datasheet. It probably consists of if or if-like statements, it is more software-ish. This is mostly the complex logic ICs.
+
+- functional: The implementation consists of a logical equivalence or RTL equations, most probably based on an equation on the datasheet. This is all the basic gates and some logic ICs with the logic equation or function table available in the datasheet.
+
+- structural: The implementation is wholly or mostly wiring of other components such as ff_ components. sn74181 ALU has a gate-level structural implementation.
+
 # Parts
 
 Below, all IC parts used in CADR4 are listed except the pure combinatorial logic gates such as sn7400. All combinatorial logic gates are in sn74 except fairchild dm9s42.
@@ -136,9 +146,7 @@ All ICs with open collector outputs are explicitly indicated.
 - sn74182: look-ahead carry generator
 - sn74283: 4-bit binary full adder with fast carry
 
-#### ISCAS Models
-
-sn74181, sn74182 and sn74283 are implemented differently than other components. Because their gate-level models are available (https://tumbleweed.nu/r/iscas.restore/doc/trunk/index.html), the gate-lavel models (from Verilog files) are directly implemented in (translated to) VHDL.
+sn74181 is implemented by translating the gate-level model available in Verilog (https://tumbleweed.nu/r/iscas.restore/doc/trunk/index.html). It is also possible to implement sn74182 and sn74283 like this.
 
 ### Parity Generator/Checker
 

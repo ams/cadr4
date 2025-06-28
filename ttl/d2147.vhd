@@ -28,7 +28,7 @@ entity d2147 is
     );
 end entity;
 
-architecture ttl of d2147 is
+architecture behavioral of d2147 is
   signal a0_int   : std_logic;
   signal a1_int   : std_logic;
   signal a2_int   : std_logic;

@@ -20,7 +20,7 @@ entity ff_dpc is
     );
 end;
 
-architecture ttl of ff_dpc is
+architecture behavioral of ff_dpc is
   signal clk_i, pre_i, clr_i, d_i, enb_n_i : std_logic;
   signal q_int : std_logic := '0';
 begin

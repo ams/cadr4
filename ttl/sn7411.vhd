@@ -23,7 +23,7 @@ entity sn7411 is
     );
 end;
 
-architecture ttl of sn7411 is
+architecture functional of sn7411 is
   signal g1a_i, g1b_i, g1c_i, g2a_i, g2b_i, g2c_i, g3a_i, g3b_i, g3c_i : std_logic;
 begin
 

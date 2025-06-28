@@ -23,7 +23,7 @@ entity sn74169 is
     );
 end;
 
-architecture ttl of sn74169 is
+architecture behavioral of sn74169 is
   signal clk_i, up_dn_i, load_n_i, enb_p_n_i, enb_t_n_i, i3_i, i2_i, i1_i, i0_i : std_logic;
   signal cnt : unsigned(3 downto 0) := (others => '0');    -- internal 4-bit register
   

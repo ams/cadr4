@@ -19,7 +19,7 @@ entity til309 is
     );
 end;
 
-architecture ttl of til309 is
+architecture behavioral of til309 is
   signal i1_int     : std_logic;
   signal i2_int     : std_logic;
   signal i4_int     : std_logic;

@@ -25,7 +25,7 @@ entity am25s09 is
     );
 end entity;
 
-architecture ttl of am25s09 is
+architecture structural of am25s09 is
 
   signal clk_i, sel_i, a0_i, a1_i, b0_i, b1_i, c0_i, c1_i, d0_i, d1_i : std_logic;
   signal i0, i1, i2, i3 : std_logic;

@@ -25,7 +25,7 @@ entity sn74109 is
     );
 end;
 
-architecture ttl of sn74109 is
+architecture structural of sn74109 is
   signal clr1_n_i, j1_i, k1_n_i, clk1_i, pre1_n_i, pre2_n_i, clk2_i, k2_n_i, j2_i, clr2_n_i : std_logic;
 begin
 

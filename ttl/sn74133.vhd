@@ -24,7 +24,7 @@ entity sn74133 is
     );
 end;
 
-architecture ttl of sn74133 is
+architecture functional of sn74133 is
   signal a_i, b_i, c_i, d_i, e_i, f_i, g_i, h_i, i_i, j_i, k_i, l_i, m_i : std_logic;
 begin
 

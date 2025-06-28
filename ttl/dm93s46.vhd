@@ -25,7 +25,7 @@ entity dm93s46 is
     );
 end entity;
 
-architecture ttl of dm93s46 is
+architecture functional of dm93s46 is
   signal a0_i, b0_i, a1_i, b1_i, a2_i, b2_i, enb_i, a3_i, b3_i, a4_i, b4_i, a5_i, b5_i : std_logic;
 begin
 

@@ -24,7 +24,7 @@ entity sn7486 is
     );
 end;
 
-architecture ttl of sn7486 is
+architecture functional of sn7486 is
   signal g1a_i, g1b_i, g2a_i, g2b_i, g3a_i, g3b_i, g4a_i, g4b_i : std_logic;
 begin
 

@@ -27,7 +27,7 @@ entity sn74374 is
     );
 end;
 
-architecture ttl of sn74374 is
+architecture behavioral of sn74374 is
   signal clk_i, oenb_n_i, i0_i, i1_i, i2_i, i3_i, i4_i, i5_i, i6_i, i7_i : std_logic;
   signal q_int : std_logic_vector(7 downto 0);
 begin

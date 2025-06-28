@@ -26,7 +26,7 @@ entity sn7404 is
     );
 end;
 
-architecture ttl of sn7404 is
+architecture functional of sn7404 is
   signal g1a_i, g2a_i, g3a_i, g4a_i, g5a_i, g6a_i : std_logic;
 begin
 

@@ -20,7 +20,7 @@ entity sn7451 is
     );
 end;
 
-architecture ttl of sn7451 is
+architecture functional of sn7451 is
   signal g1a_i, g1b_i, g1c_i, g1d_i, g2a_i, g2b_i, g2c_i, g2d_i : std_logic;
 begin
 

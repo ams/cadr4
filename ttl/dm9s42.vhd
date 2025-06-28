@@ -26,7 +26,7 @@ entity dm9s42 is
     );
 end entity;
 
-architecture ttl of dm9s42 is
+architecture functional of dm9s42 is
   signal g1a1_i, g1b1_i, g2a1_i, g2b1_i, g2c1_i, g2d1_i, g1a2_i, g1b2_i, g2a2_i, g2b2_i, g2c2_i, g2d2_i : std_logic;
 begin
 

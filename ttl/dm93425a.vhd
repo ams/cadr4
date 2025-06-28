@@ -27,7 +27,7 @@ entity dm93425a is
     );
 end entity;
 
-architecture ttl of dm93425a is
+architecture behavioral of dm93425a is
   signal a0_i, a1_i, a2_i, a3_i, a4_i, a5_i, a6_i, a7_i, a8_i, a9_i, ce_n_i, we_n_i, di_i : std_logic;
   type ram_t is array (0 to 1023) of std_logic;
   signal ram : ram_t  := (others => '0');

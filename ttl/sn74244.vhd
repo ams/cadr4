@@ -29,7 +29,7 @@ entity sn74244 is
     );
 end;
 
-architecture ttl of sn74244 is
+architecture behavioral of sn74244 is
   signal aenb_n_i, ain0_i, ain1_i, ain2_i, ain3_i : std_logic;
   signal benb_n_i, bin0_i, bin1_i, bin2_i, bin3_i : std_logic;
 begin

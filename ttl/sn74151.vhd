@@ -24,7 +24,7 @@ entity sn74151 is
     );
 end;
 
-architecture ttl of sn74151 is
+architecture behavioral of sn74151 is
   signal i0_i, i1_i, i2_i, i3_i, i4_i, i5_i, i6_i, i7_i : std_logic;
   signal sel0_i, sel1_i, sel2_i, ce_n_i : std_logic;
 begin

@@ -21,7 +21,7 @@ entity sn7464 is
     );
 end;
 
-architecture ttl of sn7464 is
+architecture functional of sn7464 is
   signal d4_i, b2_i, a2_i, c3_i, b3_i, a3_i, a1_i, b1_i, c4_i, b4_i, a4_i : std_logic;
 begin
 

@@ -25,7 +25,7 @@ entity sn74175 is
     );
 end;
 
-architecture ttl of sn74175 is
+architecture structural of sn74175 is
   signal clk_i, clr_n_i, d0_i, d1_i, d2_i, d3_i : std_logic;
 begin
 

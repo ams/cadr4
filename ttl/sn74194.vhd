@@ -26,7 +26,7 @@ entity sn74194 is
     );
 end;
 
-architecture ttl of sn74194 is
+architecture behavioral of sn74194 is
   signal clk_i, sil_i, sir_i, clr_n_i, i0_i, i1_i, i2_i, i3_i, s0_i, s1_i : std_logic;
   signal reg : std_logic_vector(3 downto 0) := (others => '0');
 begin

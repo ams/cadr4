@@ -12,7 +12,7 @@ entity sip220_330_8 is
     );
 end;
 
-architecture ttl of sip220_330_8 is
+architecture functional of sip220_330_8 is
 begin
   -- Weak pull-up resistors - can be overridden by strong drivers
   r2 <= 'H'; r3 <= 'H'; r4 <= 'H'; 

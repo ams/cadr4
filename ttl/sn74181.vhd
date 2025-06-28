@@ -30,7 +30,7 @@ end;
 
 -- Gate-level structural architecture based on ISCAS benchmark implementation
 -- Implementing the exact gate structure from the ISCAS 74181.v model
-architecture iscas of sn74181 is
+architecture structural of sn74181 is
   -- Input conditioning signals
   signal m_i, cin_n_i, s3_i, s2_i, s1_i, s0_i : std_logic;
   signal a3_i, a2_i, a1_i, a0_i : std_logic;
@@ -211,16 +211,7 @@ begin
   
   -- A equals B output
   -- A=B output is open collector !
-  process (aeb_int)
-  begin
-    if aeb_int = '0' then
-      aeb <= '0';
-    elsif aeb_int = '1' then
-      aeb <= 'Z';
-    else
-      aeb <= aeb_int;
-    end if;
-  end process;
+  aeb <= 'Z' when aeb_int = '1' else aeb_int;
   
   -- Group propagate and generate outputs
   x <= x_int;

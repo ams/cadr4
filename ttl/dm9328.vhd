@@ -26,7 +26,7 @@ entity dm9328 is
     );
 end entity;
 
-architecture ttl of dm9328 is
+architecture behavioral of dm9328 is
   signal clr_n_i, asel_i, ai1_i, ai0_i, aclk_i, comclk_i, bclk_i, bi0_i, bi1_i, bsel_i : std_logic;
   signal rega : std_logic_vector(7 downto 0) := (others => '0');
   signal regb : std_logic_vector(7 downto 0) := (others => '0');

@@ -25,7 +25,7 @@ entity am25s07 is
     );
 end entity;
 
-architecture ttl of am25s07 is
+architecture structural of am25s07 is
   signal i0_i, i1_i, i2_i, i3_i, i4_i, i5_i, clk_i, enb_n_i : std_logic;
 begin
 

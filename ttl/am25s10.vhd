@@ -26,7 +26,7 @@ entity am25s10 is
     );
 end entity;
 
-architecture ttl of am25s10 is
+architecture behavioral of am25s10 is
   signal sel1_i, sel0_i, ce_n_i, i3_i, i2_i, i1_i, i0_i, i_1_i, i_2_i, i_3_i : std_logic;
 begin
 

@@ -24,7 +24,7 @@ entity res20 is
     );
 end;
 
-architecture ttl of res20 is
+architecture functional of res20 is
 begin
   -- Weak pull-up resistors - can be overridden by strong drivers
   r2  <= 'H'; r3  <= 'H'; r4  <= 'H'; r5  <= 'H';

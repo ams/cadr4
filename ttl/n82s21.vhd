@@ -31,7 +31,7 @@ entity n82s21 is
     );
 end entity;
 
-architecture ttl of n82s21 is
+architecture behavioral of n82s21 is
   signal a0_i, a1_i, a2_i, a3_i, a4_i, ce_i, i0_i, i1_i, latch_n_i, wclk_n_i, we0_n_i, we1_n_i : std_logic;
   type ram_t is array (0 to 31) of std_logic_vector(1 downto 0);
   signal ram : ram_t := (others => (others => '0'));

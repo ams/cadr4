@@ -33,7 +33,7 @@ entity sn74472 is
     );
 end;
 
-architecture ttl of sn74472 is
+architecture behavioral of sn74472 is
   signal a0_i, a1_i, a2_i, a3_i, a4_i, a5_i, a6_i, a7_i, a8_i, ce_n_i : std_logic;
   constant rom  : std_logic_vector := load_rom_file(fn);  
 begin

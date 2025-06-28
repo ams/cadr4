@@ -26,7 +26,7 @@ entity dummy_type_A is
     );
 end;
 
-architecture ttl of dummy_type_A is
+architecture functional of dummy_type_A is
 begin
   hi1 <= 'H';
   hi2 <= 'H';

@@ -25,7 +25,7 @@ entity sn74139 is
     );
 end;
 
-architecture ttl of sn74139 is
+architecture behavioral of sn74139 is
   signal g1e_n_i, g1s0_i, g1s1_i, g2e_n_i, g2s0_i, g2s1_i : std_logic;
   signal g1 : unsigned(3 downto 0);
   signal g2 : unsigned(3 downto 0);

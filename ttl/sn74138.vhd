@@ -23,7 +23,7 @@ entity sn74138 is
     );
 end;
 
-architecture ttl of sn74138 is
+architecture behavioral of sn74138 is
   signal a_i, b_i, c_i, g1_i, g2a_i, g2b_i : std_logic;
   signal y : std_logic_vector(7 downto 0);
 begin

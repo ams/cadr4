@@ -29,7 +29,7 @@ entity sn74288 is
     );
 end entity;
 
-architecture ttl of sn74288 is
+architecture behavioral of sn74288 is
   signal ce_n_i, a0_i, a1_i, a2_i, a3_i, a4_i : std_logic;
   constant rom  : std_logic_vector := load_rom_file(fn);  
 begin
