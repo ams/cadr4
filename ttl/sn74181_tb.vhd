@@ -42,7 +42,7 @@ architecture testbench of sn74181_tb is
 
 begin
 
-  uut : sn74181 port map(
+  uut : entity work.sn74181(behavioral) port map(
     cout_n => cout_n,
     y      => y,
     x      => x,
@@ -81,7 +81,6 @@ begin
   begin
     
     -- Test Logic Mode (M = 1) - Table 2 Active High Data
-    report "Testing Logic Mode (M=1)";
     m <= '1';
     cin_n <= '1'; -- Don't care in logic mode
     
@@ -185,8 +184,32 @@ begin
     f_result := f3 & f2 & f1 & f0;
     assert f_result = "1010" report "Logic S=1111 (A) failed" severity error;
     
+    -- Test SETZ function (S=0011) with X inputs to verify output is still 0
+    m <= '1'; -- Logic mode
+    s3 <= '0'; s2 <= '0'; s1 <= '1'; s0 <= '1'; -- S=0011: SETZ function
+    
+    -- Test with all X inputs
+    a3 <= 'X'; a2 <= 'X'; a1 <= 'X'; a0 <= 'X'; -- A=XXXX
+    b3 <= 'X'; b2 <= 'X'; b1 <= 'X'; b0 <= 'X'; -- B=XXXX
+    wait for 10 ns;
+    f_result := f3 & f2 & f1 & f0;
+    assert f_result = "0000" report "SETZ with A=XXXX, B=XXXX should output F=0000" severity error;
+    
+    -- Test with mixed X and valid inputs
+    a3 <= 'X'; a2 <= '1'; a1 <= 'X'; a0 <= '0'; -- A=X1X0
+    b3 <= '1'; b2 <= 'X'; b1 <= '0'; b0 <= 'X'; -- B=1X0X
+    wait for 10 ns;
+    f_result := f3 & f2 & f1 & f0;
+    assert f_result = "0000" report "SETZ with A=X1X0, B=1X0X should output F=0000" severity error;
+    
+    -- Test with some X inputs
+    a3 <= 'X'; a2 <= 'X'; a1 <= '1'; a0 <= '1'; -- A=XX11
+    b3 <= '0'; b2 <= '0'; b1 <= 'X'; b0 <= 'X'; -- B=00XX
+    wait for 10 ns;
+    f_result := f3 & f2 & f1 & f0;
+    assert f_result = "0000" report "SETZ with A=XX11, B=00XX should output F=0000" severity error;
+    
     -- Test Arithmetic Mode (M = 0) - Table 2 Active High Data
-    report "Testing Arithmetic Mode (M=0)";
     m <= '0';
     
     -- Test data: A=5 (0101), B=3 (0011)
@@ -278,7 +301,6 @@ begin
     assert f_result = "0101" report "Arith S=1111 Cn=1 (A) failed" severity error;
     
     -- Test A equals B according to datasheet specification
-    report "Testing A equals B (proper datasheet method)";
     m <= '0'; -- Arithmetic mode
     s3 <= '0'; s2 <= '1'; s1 <= '1'; s0 <= '0'; -- S=0110: subtract mode
     cin_n <= '1'; -- Cn=H (with carry) as required by datasheet
@@ -290,7 +312,7 @@ begin
     f_result := f3 & f2 & f1 & f0;
     -- In subtract mode with A=B, result should be A-B-1 = -1 = 1111 (2's complement)
     -- According to datasheet, AEB should be Z (open-collector high) when A=B in this mode
-    report "A=5, B=5: F=" & to_string(f_result) & ", AEB=" & std_logic'image(aeb);
+
     assert aeb = 'Z' report "AEB should be Z (open-collector high) when A=B=5 in subtract mode" severity error;
     
     -- Test case 2: A=7, B=7
@@ -298,7 +320,7 @@ begin
     b3 <= '0'; b2 <= '1'; b1 <= '1'; b0 <= '1'; -- B=7
     wait for 10 ns;
     f_result := f3 & f2 & f1 & f0;
-    report "A=7, B=7: F=" & to_string(f_result) & ", AEB=" & std_logic'image(aeb);
+
     assert aeb = 'Z' report "AEB should be Z (open-collector high) when A=B=7 in subtract mode" severity error;
     
     -- Test case 3: A≠B (A=5, B=3)
@@ -307,7 +329,7 @@ begin
     wait for 10 ns;
     f_result := f3 & f2 & f1 & f0;
     -- In subtract mode with A≠B, result should be A-B-1 = 5-3-1 = 1
-    report "A=5, B=3: F=" & to_string(f_result) & ", AEB=" & std_logic'image(aeb);
+
     assert aeb = '0' report "AEB should be 0 when A/=B in subtract mode" severity error;
     
     -- Test case 4: A≠B (A=8, B=3)
@@ -316,11 +338,10 @@ begin
     wait for 10 ns;
     f_result := f3 & f2 & f1 & f0;
     -- In subtract mode with A≠B, result should be A-B-1 = 8-3-1 = 4
-    report "A=8, B=3: F=" & to_string(f_result) & ", AEB=" & std_logic'image(aeb);
+
     assert aeb = '0' report "AEB should be 0 when A/=B (8,3) in subtract mode" severity error;
 
     -- Test legacy AEB behavior (what the current implementation actually does)
-    report "Testing legacy AEB behavior (F=1111 detection)";
     m <= '1'; -- Logic mode
     s3 <= '1'; s2 <= '1'; s1 <= '0'; s0 <= '0'; -- S=1100: F = 1 (all ones)
     a3 <= '0'; a2 <= '1'; a1 <= '0'; a0 <= '1'; -- A=5
@@ -353,18 +374,18 @@ begin
     assert aeb = '0' report "Legacy AEB test: A XOR B with A/=B should give AEB=0" severity error;
     
     -- Test carry propagate (X) and carry generate (Y)
-    report "Testing carry propagate and generate";
     m <= '0'; -- Arithmetic mode
     a3 <= '1'; a2 <= '1'; a1 <= '1'; a0 <= '1'; -- A=15
     b3 <= '0'; b2 <= '0'; b1 <= '0'; b0 <= '1'; -- B=1
     s3 <= '0'; s2 <= '0'; s1 <= '0'; s0 <= '1'; -- A+B
     cin_n <= '0'; -- Cn=1
     wait for 10 ns;
+    f_result := f3 & f2 & f1 & f0;
+
     -- This should generate carry out (Y=1) and overflow
     assert cout_n = '0' report "Carry out should be active (cout_n=0) for 15+1+1" severity error;
     
     -- Test X and Y outputs specifically for A=B comparison
-    report "Testing X and Y outputs for A=B comparison";
     m <= '0'; -- Arithmetic mode
     s3 <= '0'; s2 <= '1'; s1 <= '1'; s0 <= '0'; -- S=0110: subtract mode (A-B-1)
     cin_n <= '1'; -- Cn=0 (no carry in)
@@ -375,7 +396,7 @@ begin
     wait for 10 ns;
     f_result := f3 & f2 & f1 & f0;
     -- A-B-1 = 5-5-1 = -1 = 1111 in 2's complement
-    report "A=B=5 subtract: F=" & to_string(f_result) & ", X=" & std_logic'image(x) & ", Y=" & std_logic'image(y) & ", AEB=" & std_logic'image(aeb);
+
     assert f_result = "1111" report "F should be 1111 for A=B=5 in subtract mode" severity error;
     assert aeb = 'Z' report "AEB should be Z when F=1111" severity error;
     -- For subtract mode with A=B, we expect specific X and Y values for proper cascading
@@ -389,7 +410,7 @@ begin
     b3 <= '0'; b2 <= '1'; b1 <= '1'; b0 <= '1'; -- B=7
     wait for 10 ns;
     f_result := f3 & f2 & f1 & f0;
-    report "A=B=7 subtract: F=" & to_string(f_result) & ", X=" & std_logic'image(x) & ", Y=" & std_logic'image(y) & ", AEB=" & std_logic'image(aeb);
+
     assert f_result = "1111" report "F should be 1111 for A=B=7 in subtract mode" severity error;
     assert aeb = 'Z' report "AEB should be Z when F=1111" severity error;
     assert x = '0' report "X should be 0 for A=B=7 in subtract mode" severity error;
@@ -401,7 +422,7 @@ begin
     wait for 10 ns;
     f_result := f3 & f2 & f1 & f0;
     -- A-B-1 = 5-3-1 = 1
-    report "A>B (5>3) subtract: F=" & to_string(f_result) & ", X=" & std_logic'image(x) & ", Y=" & std_logic'image(y) & ", AEB=" & std_logic'image(aeb);
+
     assert f_result = "0001" report "F should be 0001 for A=5, B=3 in subtract mode" severity error;
     assert aeb = '0' report "AEB should be 0 when A>B" severity error;
     
@@ -411,12 +432,11 @@ begin
     wait for 10 ns;
     f_result := f3 & f2 & f1 & f0;
     -- A-B-1 = 3-5-1 = -3 = 1101 in 2's complement
-    report "A<B (3<5) subtract: F=" & to_string(f_result) & ", X=" & std_logic'image(x) & ", Y=" & std_logic'image(y) & ", AEB=" & std_logic'image(aeb);
+
     assert f_result = "1101" report "F should be 1101 for A=3, B=5 in subtract mode" severity error;
     assert aeb = '0' report "AEB should be 0 when A<B" severity error;
     
     -- Test X and Y in addition mode for comparison
-    report "Testing X and Y outputs in addition mode";
     s3 <= '1'; s2 <= '0'; s1 <= '0'; s0 <= '1'; -- S=1001: A+B
     cin_n <= '1'; -- Cn=0 (no carry in)
     
@@ -426,7 +446,7 @@ begin
     wait for 10 ns;
     f_result := f3 & f2 & f1 & f0;
     -- A+B = 5+3 = 8
-    report "A+B (5+3) addition: F=" & to_string(f_result) & ", X=" & std_logic'image(x) & ", Y=" & std_logic'image(y);
+
     assert f_result = "1000" report "F should be 1000 for A=5, B=3 in addition mode" severity error;
     
     -- Test case: A=15, B=1 in addition mode (should overflow)
@@ -435,12 +455,11 @@ begin
     wait for 10 ns;
     f_result := f3 & f2 & f1 & f0;
     -- A+B = 15+1 = 16 = 0000 with carry out
-    report "A+B (15+1) addition: F=" & to_string(f_result) & ", X=" & std_logic'image(x) & ", Y=" & std_logic'image(y) & ", cout_n=" & std_logic'image(cout_n);
+
     assert f_result = "0000" report "F should be 0000 for A=15, B=1 in addition mode (overflow)" severity error;
     assert cout_n = '0' report "Carry out should be active (cout_n=0) for 15+1 overflow" severity error;
     
     -- Test cascading behavior for A=B comparison
-    report "Testing cascading behavior for A=B comparison";
     m <= '0'; -- Arithmetic mode
     s3 <= '0'; s2 <= '1'; s1 <= '1'; s0 <= '0'; -- S=0110: subtract mode
     cin_n <= '1'; -- Cn=0 (no carry in to first stage)
@@ -450,7 +469,7 @@ begin
     b3 <= '0'; b2 <= '1'; b1 <= '0'; b0 <= '1'; -- B=5
     wait for 10 ns;
     f_result := f3 & f2 & f1 & f0;
-    report "Cascading test - Stage 1 (A=B=5): F=" & to_string(f_result) & ", cout_n=" & std_logic'image(cout_n) & ", X=" & std_logic'image(x) & ", Y=" & std_logic'image(y);
+
     -- For A=B in subtract mode with Cn=H, result should be -1 (1111) and cout_n should be '1' (no borrow)
     -- According to datasheet: when Cn=H and A=B, Cn+4=H (meaning A≤B, which is true for A=B)
     assert f_result = "1111" report "Stage 1: F should be 1111 for A=B=5" severity error;
@@ -463,14 +482,13 @@ begin
     b3 <= '0'; b2 <= '1'; b1 <= '1'; b0 <= '1'; -- B=7
     wait for 10 ns;
     f_result := f3 & f2 & f1 & f0;
-    report "Cascading test - Stage 2 (A=B=7, cin_n=1): F=" & to_string(f_result) & ", cout_n=" & std_logic'image(cout_n) & ", X=" & std_logic'image(x) & ", Y=" & std_logic'image(y);
+
     -- With cin_n='1' (no carry in), A-B-1 = A-B-1 = -1 = 1111 for A=B
     -- According to datasheet: when Cn=H and A=B, Cn+4=H (no borrow)
     assert f_result = "1111" report "Stage 2: F should be 1111 for A=B=7 with Cn=H" severity error;
     assert cout_n = '1' report "Stage 2: cout_n should be 1 (no borrow) for A=B=7 with Cn=H" severity error;
     
     -- Manual calculation test for A=B=5 in subtract mode
-    report "Manual calculation for A=B=5, S=0110 (subtract)";
     m <= '0'; -- Arithmetic mode
     s3 <= '0'; s2 <= '1'; s1 <= '1'; s0 <= '0'; -- S=0110: subtract mode
     cin_n <= '1'; -- Cn=0 (no carry in)
@@ -500,7 +518,7 @@ begin
     -- Let me check what we're actually asserting...
     
     f_result := f3 & f2 & f1 & f0;
-    report "Manual calc A=B=5: F=" & to_string(f_result) & ", cout_n=" & std_logic'image(cout_n) & ", X=" & std_logic'image(x) & ", Y=" & std_logic'image(y);
+
     
     -- Wait, let me recalculate. For A-B-1 where A=B=5:
     -- Result should be 5-5-1 = -1 = 1111 in 2's complement
@@ -515,14 +533,13 @@ begin
     -- For A=B in subtract mode, there should be NO carry out, so cout_n='1' is right.
     
     -- Let me test a case that SHOULD generate carry out
-    report "Testing case that should generate carry out";
     a3 <= '0'; a2 <= '0'; a1 <= '1'; a0 <= '1'; -- A=3
     b3 <= '0'; b2 <= '1'; b1 <= '0'; b0 <= '1'; -- B=5  
     wait for 10 ns;
     f_result := f3 & f2 & f1 & f0;
     -- A-B-1 = 3-5-1 = -3 = 1101 in 2's complement
     -- This should involve borrowing, so there might be a carry out
-    report "A<B (3<5): F=" & to_string(f_result) & ", cout_n=" & std_logic'image(cout_n);
+
     
     -- Actually, let me check what the datasheet says about carry out for subtraction...
     -- In subtraction A-B-1, cout_n is the borrow output
@@ -530,10 +547,9 @@ begin
     -- For A=B: no borrow needed, so cout_n='1' is correct
     -- For A<B: borrow needed, so cout_n='0' should occur
     
-    report "All tests completed successfully";
+
     
     -- Test A=B cascading with SN74182 behavior
-    report "Testing A=B cascading with SN74182 carry lookahead behavior";
     m <= '0'; -- Arithmetic mode
     s3 <= '0'; s2 <= '1'; s1 <= '1'; s0 <= '0'; -- S=0110: subtract mode
     
@@ -544,7 +560,7 @@ begin
     wait for 10 ns;
     f_result := f3 & f2 & f1 & f0;
     -- With carry in, A-B-1+1 = A-B = 0 when A=B
-    report "A=B=5 with cin_n=0 (carry from SN74182): F=" & to_string(f_result) & ", cout_n=" & std_logic'image(cout_n) & ", X=" & std_logic'image(x) & ", Y=" & std_logic'image(y) & ", AEB=" & std_logic'image(aeb);
+
     -- For A=B with carry in, result should be 0000 and AEB should be '0' (since F≠1111)
     assert f_result = "0000" report "F should be 0000 for A=B=5 with carry in" severity error;
     assert aeb = '0' report "AEB should be 0 when F=0000 (not all 1s)" severity error;
@@ -555,7 +571,7 @@ begin
     -- Then only the first stage will show AEB='Z', others will show AEB='0'
     -- This breaks the wire-AND connection for multi-stage A=B detection!
     
-    report "This reveals the cascading issue: SN74182 generates carry even for A=B cases!";
+
     
     -- Test manual calculation test for A=B=5 in subtract mode"
     
