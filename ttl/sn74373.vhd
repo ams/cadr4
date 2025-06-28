@@ -6,6 +6,10 @@ use work.misc.all;
 
 entity sn74373 is
   port (
+    -- in the datasheet, instead of -hold, C is given
+    -- when C is high, output follows input
+    -- hence this is effectively same as having a -hold input
+    -- when -hold is low, output is latched (does not follow input)
     hold_n : in  std_logic; -- Pin 11 (LE) - Latch Enable
     oenb_n : in  std_logic; -- Pin 1 (OE_n)
     i0     : in  std_logic; -- Pin 3 (1D)
@@ -29,7 +33,7 @@ end;
 
 architecture behavioral of sn74373 is
   signal hold_n_i, oenb_n_i, i0_i, i1_i, i2_i, i3_i, i4_i, i5_i, i6_i, i7_i : std_logic;
-  signal data : std_logic_vector(7 downto 0) := (others => '0');
+  signal data : std_logic_vector(7 downto 0);
 begin
 
   hold_n_i <= ttl_input(hold_n);
