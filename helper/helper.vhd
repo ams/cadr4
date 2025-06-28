@@ -814,22 +814,22 @@ package helper is
       wadr8   : in std_logic;
       wadr9   : in std_logic;
       -- AADR bus - 10 bits
-      aadr0   : in std_logic;
-      aadr1   : in std_logic;
-      aadr2   : in std_logic;
-      aadr3   : in std_logic;
-      aadr4   : in std_logic;
-      aadr5   : in std_logic;
-      aadr6   : in std_logic;
-      aadr7   : in std_logic;
-      aadr8   : in std_logic;
-      aadr9   : in std_logic;
+      \-aadr0a\: in std_logic;
+      \-aadr1a\: in std_logic;
+      \-aadr2a\: in std_logic;
+      \-aadr3a\: in std_logic;
+      \-aadr4a\: in std_logic;
+      \-aadr5a\: in std_logic;
+      \-aadr6a\: in std_logic;
+      \-aadr7a\: in std_logic;
+      \-aadr8a\: in std_logic;
+      \-aadr9a\: in std_logic;
       -- MADR bus - 5 bits
-      madr0   : in std_logic;
-      madr1   : in std_logic;
-      madr2   : in std_logic;
-      madr3   : in std_logic;
-      madr4   : in std_logic
+      \-madr0a\: in std_logic;
+      \-madr1a\: in std_logic;
+      \-madr2a\: in std_logic;
+      \-madr3a\: in std_logic;
+      \-madr4a\: in std_logic
     );
   end component;
 

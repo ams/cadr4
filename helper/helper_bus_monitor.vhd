@@ -791,22 +791,22 @@ entity helper_bus_monitor is
       wadr8   : in std_logic;
       wadr9   : in std_logic;
       -- AADR bus - 10 bits
-      aadr0   : in std_logic;
-      aadr1   : in std_logic;
-      aadr2   : in std_logic;
-      aadr3   : in std_logic;
-      aadr4   : in std_logic;
-      aadr5   : in std_logic;
-      aadr6   : in std_logic;
-      aadr7   : in std_logic;
-      aadr8   : in std_logic;
-      aadr9   : in std_logic;
+      \-aadr0a\: in std_logic;
+      \-aadr1a\: in std_logic;
+      \-aadr2a\: in std_logic;
+      \-aadr3a\: in std_logic;
+      \-aadr4a\: in std_logic;
+      \-aadr5a\: in std_logic;
+      \-aadr6a\: in std_logic;
+      \-aadr7a\: in std_logic;
+      \-aadr8a\: in std_logic;
+      \-aadr9a\: in std_logic;
       -- MADR bus - 5 bits
-      madr0   : in std_logic;
-      madr1   : in std_logic;
-      madr2   : in std_logic;
-      madr3   : in std_logic;
-      madr4   : in std_logic
+      \-madr0a\: in std_logic;
+      \-madr1a\: in std_logic;
+      \-madr2a\: in std_logic;
+      \-madr3a\: in std_logic;
+      \-madr4a\: in std_logic
     );
   end entity;
 
@@ -842,6 +842,8 @@ entity helper_bus_monitor is
     signal opc : std_logic_vector(13 downto 0);
     signal spc : std_logic_vector(18 downto 0);
     signal wadr : std_logic_vector(9 downto 0);
+    signal \-aadr\ : std_logic_vector(9 downto 0);
+    signal \-madr\ : std_logic_vector(4 downto 0);
     signal aadr : std_logic_vector(9 downto 0);
     signal madr : std_logic_vector(4 downto 0);
   begin
@@ -874,8 +876,10 @@ entity helper_bus_monitor is
     opc <= opc13 & opc12 & opc11 & opc10 & opc9 & opc8 & opc7 & opc6 & opc5 & opc4 & opc3 & opc2 & opc1 & opc0;
     spc <= spc18 & spc17 & spc16 & spc15 & spc14 & spc13 & spc12 & spc11 & spc10 & spc9 & spc8 & spc7 & spc6 & spc5 & spc4 & spc3 & spc2 & spc1 & spc0;
     wadr <= wadr9 & wadr8 & wadr7 & wadr6 & wadr5 & wadr4 & wadr3 & wadr2 & wadr1 & wadr0;
-    aadr <= aadr9 & aadr8 & aadr7 & aadr6 & aadr5 & aadr4 & aadr3 & aadr2 & aadr1 & aadr0;
-    madr <= madr4 & madr3 & madr2 & madr1 & madr0;
+    \-aadr\ <= \-aadr9a\ & \-aadr8a\ & \-aadr7a\ & \-aadr6a\ & \-aadr5a\ & \-aadr4a\ & \-aadr3a\ & \-aadr2a\ & \-aadr1a\ & \-aadr0a\;
+    \-madr\ <= \-madr4a\ & \-madr3a\ & \-madr2a\ & \-madr1a\ & \-madr0a\;
+    aadr <= not \-aadr\;
+    madr <= not \-madr\;
 
     process (PC)
     begin
