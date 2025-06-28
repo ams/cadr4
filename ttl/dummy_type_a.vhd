@@ -16,7 +16,7 @@ use ieee.std_logic_1164.all;
 --           -------- 
 --            type A  
 
-entity dummy_type_A is
+entity dummy_type_a is
   port (
     hi1            : out std_logic; -- 16
     hi2            : out std_logic; -- 15
@@ -26,7 +26,7 @@ entity dummy_type_A is
     );
 end;
 
-architecture functional of dummy_type_A is
+architecture behavioral of dummy_type_a is
 begin
   hi1 <= 'H';
   hi2 <= 'H';
