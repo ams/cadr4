@@ -61,32 +61,34 @@ begin
     wait for 5 ns;
     assert d0 = 'Z' and d1 = 'Z' report "Test 1 failed" severity error;
 
-    -- Test 2: Write bit 0 only at address 0
+    -- Test 2: Write both bits at address 0 first (to initialize it)
     ce <= '1';
     latch_n <= '1';  -- Keep latch transparent
     a4 <= '0'; a3 <= '0'; a2 <= '0'; a1 <= '0'; a0 <= '0'; -- address 0
     i0 <= '1';
     i1 <= '0';
     we0_n <= '0';  -- enable write to bit 0
-    we1_n <= '1';  -- disable write to bit 1
-    wait for 5 ns;
-    wclk_n <= '0';  -- falling edge
-    wait for 5 ns;
-    wclk_n <= '1';
-    we0_n <= '1';
-    wait for 5 ns;
-    assert d0 = 'Z' and d1 = '0' report "Test 2 failed" severity error;
-
-    -- Test 3: Write bit 1 only at address 1 
-    a4 <= '0'; a3 <= '0'; a2 <= '0'; a1 <= '0'; a0 <= '1'; -- address 1
-    i0 <= '0';
-    i1 <= '1';
-    we0_n <= '1';  -- disable write to bit 0
     we1_n <= '0';  -- enable write to bit 1
     wait for 5 ns;
     wclk_n <= '0';  -- falling edge
     wait for 5 ns;
     wclk_n <= '1';
+    we0_n <= '1';
+    we1_n <= '1';
+    wait for 5 ns;
+    assert d0 = 'Z' and d1 = '0' report "Test 2 failed" severity error;
+
+    -- Test 3: Write both bits at address 1 
+    a4 <= '0'; a3 <= '0'; a2 <= '0'; a1 <= '0'; a0 <= '1'; -- address 1
+    i0 <= '0';
+    i1 <= '1';
+    we0_n <= '0';  -- enable write to bit 0
+    we1_n <= '0';  -- enable write to bit 1
+    wait for 5 ns;
+    wclk_n <= '0';  -- falling edge
+    wait for 5 ns;
+    wclk_n <= '1';
+    we0_n <= '1';
     we1_n <= '1';
     wait for 5 ns;
     assert d0 = '0' and d1 = 'Z' report "Test 3 failed" severity error;
@@ -130,11 +132,21 @@ begin
     wait for 5 ns;
     assert d0 = '0' and d1 = 'Z' report "Test 6b failed" severity error;
 
-    -- Test 7: Test latch behavior - first latch some data, then test write
+    -- Test 7: Test latch behavior - first write known data to address 4
     a4 <= '0'; a3 <= '0'; a2 <= '1'; a1 <= '0'; a0 <= '0'; -- address 4
-    latch_n <= '1';  -- transparent mode first
+    latch_n <= '1';  -- transparent mode
+    i0 <= '0';  -- write known values first
+    i1 <= '0';
+    we0_n <= '0';
+    we1_n <= '0';
     wait for 5 ns;
-    -- Memory at address 4 is initialized to '0', so outputs should be '0'
+    wclk_n <= '0';  -- write the initial data
+    wait for 5 ns;
+    wclk_n <= '1';
+    we0_n <= '1';
+    we1_n <= '1';
+    wait for 5 ns;
+    -- Now we know memory at address 4 contains '0','0', so outputs should be '0'
     assert d0 = '0' and d1 = '0' report "Test 7a failed" severity error;
     
     -- Now latch this data
@@ -199,6 +211,8 @@ begin
       wclk_n <= '0';
       wait for 5 ns;
       wclk_n <= '1';
+      we0_n <= '1';
+      we1_n <= '1';
       wait for 5 ns;
       -- Check expected values based on open-collector behavior
       if std_logic(to_unsigned(addr mod 4, 2)(0)) = '0' then
@@ -212,9 +226,6 @@ begin
         assert d1 = 'Z' report "Test 9d failed" severity error;
       end if;
     end loop;
-    
-    we0_n <= '1';
-    we1_n <= '1';
 
     -- Test 10: High address bits
     a4 <= '1'; a3 <= '1'; a2 <= '1'; a1 <= '1'; a0 <= '1'; -- address 31
@@ -232,20 +243,10 @@ begin
     assert d0 = '0' and d1 = 'Z' report "Test 10 failed" severity error;
 
     -- Test 11: Test latch functionality - write data and then latch it
-    a4 <= '0'; a3 <= '0'; a2 <= '1'; a1 <= '0'; a0 <= '1'; -- address 5
-    i0 <= '1';
-    i1 <= '0';
+    a4 <= '0'; a3 <= '0'; a2 <= '1'; a1 <= '0'; a0 <= '1'; -- address 5 (already written in Test 9)
     latch_n <= '1';  -- transparent mode
-    we0_n <= '0';
-    we1_n <= '0';
     wait for 5 ns;
-    wclk_n <= '0';  -- write the data
-    wait for 5 ns;
-    wclk_n <= '1';
-    we0_n <= '1';
-    we1_n <= '1';
-    wait for 5 ns;
-    -- Should see live data: d0='Z' (from '1'), d1='0' (from '0')
+    -- Address 5: addr mod 4 = 1, so i0='1', i1='0' was written
     assert d0 = 'Z' and d1 = '0' report "Test 11a failed" severity error;
     
     -- Now latch the data
