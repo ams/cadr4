@@ -27,19 +27,19 @@ architecture dip of dip_74s283 is
 begin
   U1 : sn74s283
     port map (
-      s1 => p1,
-      b1 => p2,
-      a1 => p3,
-      s0 => p4,
-      a0 => p5,
-      b0 => p6,
-      ci => p7,
-      co => p9,
-      s3 => p10,
-      b3 => p11,
+      co => p9,  
       a3 => p12,
-      s2 => p13,
       a2 => p14,
-      b2 => p15
+      a1 => p3,
+      a0 => p5,
+      s3 => p10,
+      s2 => p13,
+      s1 => p1,
+      s0 => p4,
+      b3 => p11,
+      b2 => p15,
+      b1 => p2,
+      b0 => p6,
+      ci => p7
       );
 end architecture;

@@ -72,6 +72,14 @@ begin
     f := s3 & s2 & s1 & s0;
     assert f = "1110" and co = '0';
 
+    -- Test X-state propagation: X input should produce X outputs
+    ci <= '0';
+    a3 <= 'X'; a2 <= '1'; a1 <= '1'; a0 <= '0';  -- X in a3
+    b3 <= '0'; b2 <= '1'; b1 <= '1'; b0 <= '1';
+    wait for 1 ns;
+    f := s3 & s2 & s1 & s0;
+    assert f = "XXXX" and co = 'X' report "X-state test failed: expected all X outputs";
+
     wait;
   end process;
 
