@@ -6,11 +6,6 @@ use work.misc.string_cast;
 
 entity helper_bus_monitor is 
     port (
-      -- clk
-      clk1    : in std_logic;
-      -- clk3f is clock for L register
-      clk3f   : in std_logic;
-      \-wp1\  : in std_logic;
       -- IPC bus (incremented PC, PC+1) - 14 bits
       ipc0    : in std_logic;
       ipc1    : in std_logic;
