@@ -32,7 +32,7 @@ Make targets are as follows.
 
 # Code Modification Guidelines
 
-- Skip the cadr/behv folder, the files there are not used.
+- Skip the files in cadr/behv folder, do not read or modify these files.
 - NEVER modify `Makefile`.
 - NEVER modify port interface list of an entity or component unless specifically instructed to do so.
 - NEVER modify `cadr_tb.vhd`.
