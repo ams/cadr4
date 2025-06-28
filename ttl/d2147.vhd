@@ -46,7 +46,7 @@ architecture behavioral of d2147 is
   signal we_n_int : std_logic;
   
   type ram_t is array (0 to 4095) of std_logic;
-  signal ram : ram_t := (others => '0');
+  signal ram : ram_t;
 begin
   a0_int <= ttl_input(a0);
   a1_int <= ttl_input(a1);

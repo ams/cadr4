@@ -34,9 +34,9 @@ end entity;
 architecture behavioral of n82s21 is
   signal a0_i, a1_i, a2_i, a3_i, a4_i, ce_i, i0_i, i1_i, latch_n_i, wclk_n_i, we0_n_i, we1_n_i : std_logic;
   type ram_t is array (0 to 31) of std_logic_vector(1 downto 0);
-  signal ram : ram_t := (others => (others => '0'));
+  signal ram : ram_t := (others => "00");  -- Initialize RAM to all zeros
   signal addr : unsigned(4 downto 0);
-  signal output_latches : std_logic_vector(1 downto 0) := (others => '0');
+  signal output_latches : std_logic_vector(1 downto 0) := "00";  -- Initialize latches
 begin
 
   a0_i <= ttl_input(a0);
@@ -57,7 +57,7 @@ begin
   ------------------------------------------------------------------
   -- write on falling edge of wclk_n
   ------------------------------------------------------------------
-  process(all)
+  process(wclk_n_i)
   begin
     if falling_edge(wclk_n_i) then
       if ce_i = '1' then
@@ -78,8 +78,7 @@ begin
   ------------------------------------------------------------------
   -- output latch control: latch data on falling edge of latch_n
   ------------------------------------------------------------------
-  process(all)
-    variable word : std_logic_vector(1 downto 0);
+  process(latch_n_i)
   begin
     if falling_edge(latch_n_i) then
       if ce_i = '1' then

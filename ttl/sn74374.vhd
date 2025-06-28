@@ -6,24 +6,24 @@ use work.misc.all;
 
 entity sn74374 is
   port (
-    clk   : in  std_logic; -- pin 10
-    oenb_n : in  std_logic; -- pin 1
-    i0 : in  std_logic; -- pin 3
-    i1 : in  std_logic; -- pin 4
-    i2 : in  std_logic; -- pin 9
-    i3 : in  std_logic; -- pin 11
-    i4 : in  std_logic; -- pin 13
-    i5 : in  std_logic; -- pin 14
-    i6 : in  std_logic; -- pin 17
-    i7 : in  std_logic; -- pin 18
-    o0 : out std_logic; -- pin 2
-    o1 : out std_logic; -- pin 5
-    o2 : out std_logic; -- pin 6
-    o3 : out std_logic; -- pin 7
-    o4 : out std_logic; -- pin 12
-    o5 : out std_logic; -- pin 15
-    o6 : out std_logic; -- pin 16
-    o7 : out std_logic  -- pin 19
+    clk   : in  std_logic;
+    oenb_n : in  std_logic;
+    i0 : in  std_logic;
+    i1 : in  std_logic;
+    i2 : in  std_logic;
+    i3 : in  std_logic;
+    i4 : in  std_logic;
+    i5 : in  std_logic;
+    i6 : in  std_logic;
+    i7 : in  std_logic;
+    o0 : out std_logic;
+    o1 : out std_logic;
+    o2 : out std_logic;
+    o3 : out std_logic;
+    o4 : out std_logic;
+    o5 : out std_logic;
+    o6 : out std_logic;
+    o7 : out std_logic
     );
 end;
 

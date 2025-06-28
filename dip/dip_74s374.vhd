@@ -31,23 +31,26 @@ architecture dip of dip_74s374 is
 begin
   U1 : sn74s374
     port map (
-      oenb_n => p1,
-      o0     => p2,
-      i0     => p3,
-      i1     => p4,
-      o1     => p5,
-      o2     => p6,
-      i2     => p7,
-      i3     => p8,
-      o3     => p9,
+      i7     => p3,
+      i6     => p4,
+      i5     => p7,
+      i4     => p8,
+      i3     => p13,
+      i2     => p14,
+      i1     => p17,
+      i0     => p18,
+
+      o7     => p2,
+      o6     => p5,
+      o5     => p6,
+      o4     => p9,
+      o3     => p12,
+      o2     => p15,
+      o1     => p16,
+      o0     => p19,
+
       clk    => p11,
-      o4     => p12,
-      i4     => p13,
-      i5     => p14,
-      o5     => p15,
-      o6     => p16,
-      i6     => p17,
-      i7     => p18,
-      o7     => p19
+      oenb_n => p1
+      
       );
 end architecture;
