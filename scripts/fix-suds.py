@@ -419,7 +419,7 @@ def fix_suds_file(file_path, verbose=False):
         for pin_num, direction in component_ports.items():
             if pin_num not in inst['ports']:
                 if direction == 'in':
-                    inst['ports'][pin_num] = "'0'"
+                    inst['ports'][pin_num] = "'Z'"
                 elif direction == 'out':
                     inst['ports'][pin_num] = "open"
                 elif direction == 'inout':
