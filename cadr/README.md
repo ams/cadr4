@@ -48,9 +48,41 @@ There are two main ways to boot CADR, from IOB (keyboard, chaos etc.) or SPY (PR
 
 - In the next clock cycle, PROM[PC=0] is loaded to IR.
 
-## A/M Memory Access
+## A/M/PDL Memory Access
 
-A/M memory writes are triggered with write pulses (WPx) which are generated from TPWP. TPWP is a 40ns pulse in the second half of CLK (-TPW30 <-> -TPW70). It looks like it may pass the end of the cycle but actual WPx signals are gated with DESTx, so it ends at the end of the CLK.
+"The only events which do not take place synchronous with the clock are the control signals for the A, M, and PDL scratchpads and the SPC stack. For these devices, a two stage cycle is performed."
+
+A write to A, M or PDL memory does not happen at the same (first) clock cycle as the execution of the instruction, but happens on the next (second) clock cycle.
+
+For example, PROM[45] instruction ((2@M Q-R) SETZ) means: set ALU function SETZ (set zeroes) which will output zeroes on ALU bus and store this (zeroes) in M[2] and also load Q from ALU. When IR is loaded with this instruction (when PC=46), ALU output is immediately set to zeroes and it is also output on the output bus OB. This is loaded into Q in the beginning of the next (second) clock cycle. However, the write to M[2] happens at the end of the second clock cycle. This delay is  ccomplished by using a register for DEST (destination A), DESTM (destination M) and PDLWRITE (destination PDL) signals, which become DESTD, DESTMD and PDLWRITED. The registered/delayed xD signals gate the write pulse, hence the write pulse happen one clock later.
+
+- DEST signal is always set with ALU and BYTE instructions.
+- DESTM signal is set when DEST is set but IR<25> is not set (meaning IR<18-14> contains the M scratchpad address)
+- PDLWRITE signal is set when DESTM is set and DESTPDL(X), DESTPDLTOP or DESTPDL(P) is asserted with an instruction having PDL memory as functional destination (IR<23-19>=10,11 or 12).
+
+In the above example, ((2@M Q-R) SETZ), DEST and DESTM is set.
+
+In the next cycle, DESTD and DESTMD will be set.
+
+"During the first phase, the source addresses of the respective devices are gated into the address inputs."
+
+The destination address of A in IR<23-14>, the destination address of M in IR<18-14> is loaded into WADR register in the beginning of the second clock cycle.
+
+"After the output data has settled, the outputs of these devices are latched."
+
+The data to be stored is loaded into the L register. The input to A, M and PDL memories are all the same, the L register.
+
+"Then, the address is changed to that specified as the write location from the previous instruction."
+
+WADR contains the Write Address of the destination. WADR is selected as the address input for the destination when clock is low, this happens before the write pulse. Thus, the write address is fed to the destination memory (A, M or PDL) before the write pulse.
+
+"After the address has settled, a write pulse is generated for the scratchpad memory to perform the write."
+
+Write pulses for A, M and PDL memories are generated with WPx signal together with relevant delayed/registered destination input (DESTD, DESTMD, PDLWRITED).
+
+WPx is generated from TPWP, which is a 40ns pulse in the second half of CLK (-TPW30 <-> -TPW70). It looks like it may pass the end of the cycle but actual WPx signals are gated with DESTD, DESTMD and PDLWRITED, so the write pulse for the memory ends at the end of the clock cycle.
+
+With the write pulse, the address input (in WADR or PDLPDR or PDLIDX) and the data in L register, the write operation is completed at the end of the second cycle.
 
 ### A Memory (actl, amem0, amem1)
 
@@ -60,9 +92,7 @@ Uses dm93425a.
 - Address: -AADR[0-9][A|B]
 - Data Input: LPARITY, L[31:0]
 - Data Output: AMEMPARITY, AMEM[31:0]
-- Write enable: -AWPA, -AWPB and -AWPC. (WP3A nand DESTD)
-
-DESTD signal follows DEST on the next clock. So the actual write takes place one cycle after the instruction having DEST.
+- Write enable: -AWPA, -AWPB, -AWPC (WP3A nand DESTD)
 
 ### M Memory (mmem)
 
@@ -75,7 +105,15 @@ Uses n82s21.
 - Write always enabled.
 - Write Clock: -MWPA, -MWPB (WP4B nand DESTMD)
 
-DESTMD signal follows DESTM on the next clock. So the actual write takes place one cycle after the instruction having DESTM.
+### PDL Memory (pdlctl, pdl0, pdl1)
+
+Uses 93425a.
+
+- (Outputs) always enabled.
+- Address: -PDLA[0-9][A|B]
+- Data Input: LPARITY, L[31:0]
+- Data Output: PDLPARITY, PDL[31:0]
+- Write enable: -PWPA, -PWPB, -PWPC (PDLWRITED nand WP4A)
 
 # Implementation Notes
 
