@@ -54,6 +54,7 @@ iram31 iram32 iram33 spy0 spy4 stat
 
 CADR_SRCS := $(patsubst %,cadr/cadr_%.vhd, $(CADR_BOOK) $(ICMEM_BOOK)) cadr/cadr_book.vhd cadr/icmem_book.vhd 
 SUDS_SRCS := $(patsubst %,cadr/cadr_%_suds.vhd, $(CADR_BOOK) $(ICMEM_BOOK))
+CADR_TB_SRCS := $(wildcard cadr/*_tb.vhd)
 
 HELPER_SRCS := helper/helper.vhd helper/helper_required_signals.vhd helper/helper_bus_monitor.vhd
 
@@ -61,11 +62,12 @@ TB_SRCS  := tb/cadr_tb.vhd # $(wildcard tb/*_tb.vhd)
 
 # exes mean these are testbenches so these will be compiled into executables also
 TTL_EXES  := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard ttl/*_tb.vhd)))
+CADR_EXES := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard cadr/*_tb.vhd)))
 TB_EXES   := build/cadr_tb # $(patsubst set/%.vhd,build/%,$(CREATESETS_TBFILE)) # $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard tb/*_tb.vhd)))
 
 # all sources and executables
-SRCS := $(TTL_SRCS) $(DIP_SRCS) $(CADR_SRCS) $(SUDS_SRCS) $(HELPER_SRCS) $(TB_SRCS)
-EXES := $(TTL_EXES) $(TB_EXES)
+SRCS := $(TTL_SRCS) $(DIP_SRCS) $(CADR_SRCS) $(SUDS_SRCS) $(CADR_TB_SRCS) $(HELPER_SRCS) $(TB_SRCS)
+EXES := $(TTL_EXES) $(CADR_EXES) $(TB_EXES)
 
 # ghdl import and make works weird, all the build process is weird
 # there is no sane way to build object files manually in this way
@@ -187,7 +189,7 @@ cadr/cadr_source_suds.vhd: $(DRWDIR)/source.drw $(BUILDDIR)/soap $(FIXSUDSPY) Ma
 	sed $(SEDOPTIONS) 's/\\iwrited l\\/\\-iwrited\\/g' $@
 	python3 $(FIXSUDSPY) -v $@
 
-.PHONY: all sources ttl-check check run-% run-tb wf-% wf-tb clean dist-clean help
+.PHONY: all sources ttl-check cadr-check check run-% run-tb wf-% wf-tb clean dist-clean help
 
 all: $(EXES)
 
@@ -196,7 +198,10 @@ sources: $(SRCS)
 ttl-check: $(TTL_EXES)
 	for TB_EXE in $^; do TB=$$TB_EXE make run-tb || exit; done
 
-check: $(EXES)
+cadr-check: $(CADR_EXES)
+	for TB_EXE in $^; do TB=$$TB_EXE make run-tb || exit; done
+
+check: $(TTL_EXES) $(CADR_EXES)
 	for EXE in $^; do TB=$$EXE make run-tb || exit; done
 
 # below is smart handling of wave opt file
@@ -276,8 +281,9 @@ dist-clean: clean
 help: 
 	@echo "make all: build all testbenches"
 	@echo "make sources: autogenerate suds and cadr_tb sources"
-	@echo "make check: run all testbenches"
+	@echo "make check: run all ttl and cadr testbenches"
 	@echo "make ttl-check: run all ttl testbenches"
+	@echo "make cadr-check: run all cadr testbenches"
 	@echo "make run-X: run testbench X (build/X_tb)"
 	@echo "make wf-X: run testbench X (build/X_tb) to create waveforms"
 	@echo "make surfer-X: same as wf-X but also runs surfer with the waveform file"

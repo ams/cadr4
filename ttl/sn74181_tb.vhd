@@ -488,92 +488,18 @@ begin
     assert f_result = "1111" report "Stage 2: F should be 1111 for A=B=7 with Cn=H" severity error;
     assert cout_n = '1' report "Stage 2: cout_n should be 1 (no borrow) for A=B=7 with Cn=H" severity error;
     
-    -- Manual calculation test for A=B=5 in subtract mode
+    -- Test specific case: S=1001 (A+B) with A=0, B=15, cin_n=0 (carry in)
     m <= '0'; -- Arithmetic mode
-    s3 <= '0'; s2 <= '1'; s1 <= '1'; s0 <= '0'; -- S=0110: subtract mode
-    cin_n <= '1'; -- Cn=0 (no carry in)
-    a3 <= '0'; a2 <= '1'; a1 <= '0'; a0 <= '1'; -- A=5 (0101)
-    b3 <= '0'; b2 <= '1'; b1 <= '0'; b0 <= '1'; -- B=5 (0101)
-    wait for 10 ns;
-    
-    -- According to Verilog reference, let's trace through:
-    -- Emodule: 
-    --   Bb = NOT B = NOT(0101) = 1010
-    --   ABS3 = A AND B AND S3 = 0101 AND 0101 AND 0 = 0000 
-    --   ABbS2 = A AND Bb AND S2 = 0101 AND 1010 AND 1 = 0000
-    --   E = NOR(ABS3, ABbS2) = NOR(0000, 0000) = 1111
-    --
-    -- Dmodule:
-    --   BbS1 = Bb AND S1 = 1010 AND 1 = 1010
-    --   BS0 = B AND S0 = 0101 AND 0 = 0000  
-    --   D = NOR(BbS1, BS0, A) = NOR(1010, 0000, 0101) = NOR(1111) = 0000
-    --
-    -- CLAmodule: E->Gb, D->Pb, CNb=1
-    --   X = NAND(Gb) = NAND(1111) = 0
-    --   For Y: all Pb terms are 0, so Y = NOR(0,0,0,0) = 1
-    --   XCNb = NAND(Gb,CNb) = NAND(1111,1) = NAND(1) = 0  
-    --   CN4b = NAND(Y,XCNb) = NAND(1,0) = 1
-    --
-    -- Expected: cout_n should be 1, but we're getting 1 in our test, so that's correct!
-    -- Let me check what we're actually asserting...
-    
-    f_result := f3 & f2 & f1 & f0;
-
-    
-    -- Wait, let me recalculate. For A-B-1 where A=B=5:
-    -- Result should be 5-5-1 = -1 = 1111 in 2's complement
-    -- But what should cout_n be? Let's think about this...
-    -- In 2's complement, -1 is represented as 1111
-    -- When we compute 5-5-1 in 4-bit arithmetic:
-    -- 5 - 5 - 1 = 0101 + 1010 + 0 = 1111 (with no carry out)
-    -- So cout_n should indeed be '1' (inactive, no carry)
-    
-    assert f_result = "1111" report "F should be 1111 for A=B=5 subtract" severity error;
-    -- The cout_n='1' is actually CORRECT! The issue is in my understanding.
-    -- For A=B in subtract mode, there should be NO carry out, so cout_n='1' is right.
-    
-    -- Let me test a case that SHOULD generate carry out
-    a3 <= '0'; a2 <= '0'; a1 <= '1'; a0 <= '1'; -- A=3
-    b3 <= '0'; b2 <= '1'; b1 <= '0'; b0 <= '1'; -- B=5  
+    s3 <= '1'; s2 <= '0'; s1 <= '0'; s0 <= '1'; -- S=1001: A+B function
+    cin_n <= '0'; -- Carry in (cin=1)
+    a3 <= '0'; a2 <= '0'; a1 <= '0'; a0 <= '0'; -- A=0 (0000)
+    b3 <= '1'; b2 <= '1'; b1 <= '1'; b0 <= '1'; -- B=15 (1111)
     wait for 10 ns;
     f_result := f3 & f2 & f1 & f0;
-    -- A-B-1 = 3-5-1 = -3 = 1101 in 2's complement
-    -- This should involve borrowing, so there might be a carry out
-
-    
-    -- Actually, let me check what the datasheet says about carry out for subtraction...
-    -- In subtraction A-B-1, cout_n is the borrow output
-    -- cout_n='0' means borrow occurred, cout_n='1' means no borrow
-    -- For A=B: no borrow needed, so cout_n='1' is correct
-    -- For A<B: borrow needed, so cout_n='0' should occur
-    
-
-    
-    -- Test A=B cascading with SN74182 behavior
-    m <= '0'; -- Arithmetic mode
-    s3 <= '0'; s2 <= '1'; s1 <= '1'; s0 <= '0'; -- S=0110: subtract mode
-    
-    -- Test what happens with cin_n='0' (carry in from SN74182)
-    cin_n <= '0'; -- Cin=1 (carry in from previous stage via SN74182)
-    a3 <= '0'; a2 <= '1'; a1 <= '0'; a0 <= '1'; -- A=5
-    b3 <= '0'; b2 <= '1'; b1 <= '0'; b0 <= '1'; -- B=5
-    wait for 10 ns;
-    f_result := f3 & f2 & f1 & f0;
-    -- With carry in, A-B-1+1 = A-B = 0 when A=B
-
-    -- For A=B with carry in, result should be 0000 and AEB should be '0' (since F≠1111)
-    assert f_result = "0000" report "F should be 0000 for A=B=5 with carry in" severity error;
-    assert aeb = '0' report "AEB should be 0 when F=0000 (not all 1s)" severity error;
-    
-    -- Test what this means for overall A=B detection across multiple stages
-    -- If first stage has A=B and produces cin_n='1' (no carry)
-    -- But subsequent stages get cin_n='0' (carry from SN74182)
-    -- Then only the first stage will show AEB='Z', others will show AEB='0'
-    -- This breaks the wire-AND connection for multi-stage A=B detection!
-    
-
-    
-    -- Test manual calculation test for A=B=5 in subtract mode"
+    -- Expected: A+B+1 = 0+15+1 = 16 = 0000 with carry out
+    -- So F should be 0000 and cout_n should be '0' (carry out active)
+    assert f_result = "0000" report "S=1001: F should be 0000 for A=0, B=15, cin_n=0 (A+B+1 = 16)" severity error;
+    assert cout_n = '0' report "S=1001: cout_n should be 0 (carry out) for A=0, B=15, cin_n=0 (overflow)" severity error;
     
     wait;
   end process;
