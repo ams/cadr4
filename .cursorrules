@@ -26,7 +26,7 @@ When you want to run a single testbench, for example cadr/cadr_alu_tb.vhd, you s
 - NEVER modify `Makefile`.
 - NEVER modify port interface list of an entity or component unless specifically instructed to do so.
 - NEVER modify `cadr/cadr_tb.vhd` and `cadr/cadr_%_suds.vhd` files, these are auto-generated.
-- NEVER read or modify the files under cadr/behv folder.
+- IGNORE the files under `cadr/behv` folder, NEVER read or modify these files.
 - After changing a source file, run `make` to see everything compiles fine.
 - DO NOT write testbenches on your own unless specifically instructed to do so.
 
