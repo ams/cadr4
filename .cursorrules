@@ -13,28 +13,22 @@ There is only one Makefile, in the project root.
 
 The build artifacts (work library, objects, executables) are put into the `build` directory. Whenever you create a temporary file such as temporary shell or python scripts or a build artifact such as object files, you must create it under the build directory. If the directory does not exist, create it.
 
-Make targets are as follows.
-
 - `make`: Compile all sources accessible from all test benches
 - `make sources`: Generate all required sources (suds etc.)
-- `make ttl-check`: Run ttl testbenches
-- `make cadr-check`: Run cadr testbenches
-- `make check`: Run all testbenches
 - `make clean`: Remove build artifacts (build directory)
 - `make dist-clean`: In addition to `make clean`, `dist-clean` target also removes the generated suds files.
+- `make run-X`: Run a single testbench `X_tb` compiled into `build/X_tb`
 
-- A single testbench (for example build/X_tb) can be run with `make run-X`. 
-- The waveforms of a single testbench (for example build/X_tb) can be created with `make wf-X`.
+When you want to run a single testbench, for example cadr/cadr_alu_tb.vhd, you should execute `make run-cadr_alu`.
 
 # Coding Guidelines
 
 - NEVER modify `Makefile`.
 - NEVER modify port interface list of an entity or component unless specifically instructed to do so.
-- NEVER modify `cadr_tb.vhd`.
+- NEVER modify `cadr/cadr_tb.vhd` and `cadr/cadr_%_suds.vhd` files, these are auto-generated.
 - NEVER read or modify the files under cadr/behv folder.
 - After changing a source file, run `make` to see everything compiles fine.
 - DO NOT write testbenches on your own unless specifically instructed to do so.
-- In a testbench, do not use report without an assert. Only problems should be reported.
 
 # Git Workflow
 

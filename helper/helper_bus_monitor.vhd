@@ -2,8 +2,6 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-use work.misc.string_cast;
-
 entity helper_bus_monitor is 
     port (
       -- IPC bus (incremented PC, PC+1) - 14 bits
@@ -878,15 +876,4 @@ entity helper_bus_monitor is
     \-madr\ <= \-madr4a\ & \-madr3a\ & \-madr2a\ & \-madr1a\ & \-madr0a\;
     aadr <= not \-aadr\;
     madr <= not \-madr\;
-
-    process (PC)
-    begin
-      if not is_x(PC) then
-        if ((unsigned(PC) > 1) and (unsigned(PC) < 8#45#)) then
-          report "PROM stucked at " & to_ostring(PC);
-          std.env.stop;
-        end if;
-      end if;
-    end process;
-
   end architecture;

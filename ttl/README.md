@@ -158,3 +158,45 @@ sn74181 is implemented by translating the gate-level model available in Verilog 
 - dummy_type_A: all passive element (passive components on a dip socket)
 - til309: numeric display with logic
 - ttldm: ttl delay line
+
+# sn74181 Function Table
+
+For active-high data (Table 2 in the datasheet).
+
+## Logic Functions (M=H)
+
+- 0000: F=~A
+- 0001: F=A NOR B
+- 0010: F=~A AND B
+- 0011: F=0
+- 0100: F=A NAND B
+- 0101: F=~B
+- 0110: F=A XOR B
+- 0111: F=A AND ~B
+- 1000: F=~A OR B
+- 1001: F=A XNOR B
+- 1010: F=B
+- 1011: F=A AND B
+- 1100: F=1
+- 1101: F=A or ~B
+- 1110: F=A OR B
+- 1111: F=A
+
+## Arithmetic Functions (M=L) with Carry (Cn_n=L)
+
+- 0000: F=A PLUS 1
+- 0001: F=(A OR B) PLUS 1
+- 0010: F=(A OR ~B) PLUS 1
+- 0011: F=ZERO
+- 0100: F=A PLUS (A AND ~B) PLUS 1
+- 0101: F=(A OR B) PLUS (A AND ~B) PLUS 1
+- 0110: F=A MINUS B
+- 0111: F=A AND ~B
+- 1000: F=A PLUS (A AND B) PLUS 1
+- 1001: F=A PLUS B PLUS 1
+- 1010: F=A PLUS ~B PLUS (A AND B) PLUS 1
+- 1011: F=A AND B
+- 1100: F=A PLUS A PLUS 1
+- 1101: F=(A OR B) PLUS A PLUS 1
+- 1110: F=(A OR ~B) PLUS A PLUS 1
+- 1111: F=A

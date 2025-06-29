@@ -13,6 +13,6 @@ __pycache__/
 .vscode/
 build/
 cadr/*_suds.vhd
+cadr/cadr_tb.vhd
 soap/soap
-tb/cadr_tb.vhd
 vivado/

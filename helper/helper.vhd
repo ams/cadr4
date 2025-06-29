@@ -831,4 +831,24 @@ package helper is
     );
   end component;
 
+  component helper_stop_if_prom_fails is 
+    port (
+      pc0     : in std_logic;
+      pc1     : in std_logic;
+      pc2     : in std_logic;
+      pc3     : in std_logic;
+      pc4     : in std_logic;
+      pc5     : in std_logic;
+      pc6     : in std_logic;
+      pc7     : in std_logic;
+      pc8     : in std_logic;
+      pc9     : in std_logic;
+      pc10    : in std_logic;
+      pc11    : in std_logic;
+      pc12    : in std_logic;
+      pc13    : in std_logic;
+      \-promenable\ : in std_logic
+    );
+  end component;
+
 end package;
