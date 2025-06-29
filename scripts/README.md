@@ -8,3 +8,4 @@
 - `find-cadr-buses.py`: lists the buses found from cadr suds files
 - `fix-suds.py`: fixes the generated suds files by `soap/soap`
 - `order-component-port-names.py`: order the port names in a package vhd
+- `order-entity-port-names.py`: order the port names in an entity vhd
