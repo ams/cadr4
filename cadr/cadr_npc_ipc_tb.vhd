@@ -238,17 +238,10 @@ begin
                ", Got IPC=" & integer'image(actual_ipc)
                severity error;
         errors := errors + 1;
-      else
-        report "PASS " & test_name & ": " &
-               "PC=" & integer'image(actual_pc) & 
-               " -> IPC=" & integer'image(actual_ipc)
-               severity note;
       end if;
     end procedure;
 
   begin
-    report "Starting cadr_npc testbench (PC increment functionality)..." severity note;
-    
     -- Wait for initial settling
     wait for 5 ns;
     
@@ -264,24 +257,16 @@ begin
     -- produces some output
     wait for 10 ns;
     
-    report "Component instantiated successfully. PC=" & integer'image(pc_to_integer) & 
-           ", IPC=" & integer'image(ipc_to_integer) severity note;
-    
     -- Test with hi4 = '0' (should disable increment)
     hi4 <= '0';
     wait for 10 ns;
-    report "With hi4='0': PC=" & integer'image(pc_to_integer) & 
-           ", IPC=" & integer'image(ipc_to_integer) severity note;
     
     -- Test with hi4 = '1' (should enable increment)  
     hi4 <= '1';
     wait for 10 ns;
-    report "With hi4='1': PC=" & integer'image(pc_to_integer) & 
-           ", IPC=" & integer'image(ipc_to_integer) severity note;
     
     -- Summary
     wait for 10 ns;
-    report "SUCCESS: cadr_npc component instantiation and basic functionality test completed!" severity note;
     
     test_done <= true;
     wait;

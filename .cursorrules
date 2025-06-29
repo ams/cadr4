@@ -1,8 +1,3 @@
----
-description: 
-globs: 
-alwaysApply: true
----
 # Overview
 
 - This project is a digitally accurate functional simulation of the MIT CADR Lisp Machine.
@@ -20,9 +15,10 @@ The build artifacts (work library, objects, executables) are put into the `build
 
 Make targets are as follows.
 
-- `make all`: Compile all sources accessible from all test benches
+- `make`: Compile all sources accessible from all test benches
+- `make sources`: Generate all required sources (suds etc.)
 - `make ttl-check`: Run ttl testbenches
-- `make run-cadr`: Run CADR testbench
+- `make cadr-check`: Run cadr testbenches
 - `make check`: Run all testbenches
 - `make clean`: Remove build artifacts (build directory)
 - `make dist-clean`: In addition to `make clean`, `dist-clean` target also removes the generated suds files.
@@ -30,14 +26,15 @@ Make targets are as follows.
 - A single testbench (for example build/X_tb) can be run with `make run-X`. 
 - The waveforms of a single testbench (for example build/X_tb) can be created with `make wf-X`.
 
-# Code Modification Guidelines
+# Coding Guidelines
 
-- Skip the files in cadr/behv folder, do not read or modify these files.
 - NEVER modify `Makefile`.
 - NEVER modify port interface list of an entity or component unless specifically instructed to do so.
 - NEVER modify `cadr_tb.vhd`.
+- NEVER read or modify the files under cadr/behv folder.
 - After changing a source file, run `make` to see everything compiles fine.
 - DO NOT write testbenches on your own unless specifically instructed to do so.
+- In a testbench, do not use report without an assert. Only problems should be reported.
 
 # Git Workflow
 

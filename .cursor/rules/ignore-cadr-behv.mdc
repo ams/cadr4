@@ -1,6 +1,0 @@
----
-description: 
-globs: cadr/behv/*
-alwaysApply: false
----
-Ignore the files under cadr/behv folder. Do not read or modify these files.

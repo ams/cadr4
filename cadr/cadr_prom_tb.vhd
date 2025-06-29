@@ -106,9 +106,6 @@ begin
     variable ref_entry : integer;
     
   begin
-         -- Report loaded data info
-     report "Loaded " & integer'image(rom_bytes) & " bytes (" & integer'image(rom_words) & " words) from rom/promh.mcr.9.hex";
-    
     for pc_val in 0 to 1023 loop  -- Iterate through pc values (reference data addresses)
       -- Set full 10-bit pc value (pc9 is bit 9, pc0-pc8 are bits 0-8)
       addr_vec := std_logic_vector(to_unsigned(pc_val, 10));
@@ -160,13 +157,6 @@ begin
         end if;
       end if;
     end loop;
-    
-    -- Report results
-    if error_count = 0 then
-      report "PROM testbench completed successfully - all data matches reference!";
-    else
-      report "PROM testbench completed with " & integer'image(error_count) & " errors";
-    end if;
     
     wait;
   end process;

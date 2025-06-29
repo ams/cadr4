@@ -10,6 +10,15 @@ The suds architecture of cadr components are auto-generated from
 `doc/ai/cadr/*.drw` files.  The architecture is in
 cadr_<PAGE>_suds.vhd files.
 
+# Testbenches
+
+| Test                 | Description                    | Relevant Pages |
+| -------------------- | ------------------------------ | -------------- |
+| cadr_alu             | Tests 32-bit ALU               | alu0, alu1, aluc4 |
+| cadr_npc_ipc         | Tests IPC Adder in NPC         | npc |
+| cadr_prom            | Tests Prom Contents            | prom0, prom1 |
+| cadr                 | Complete CADR Run              | all pages |
+
 # General Info
 
 ## Power On Reset

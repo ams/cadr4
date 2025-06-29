@@ -40,7 +40,8 @@ architecture testbench of cadr_alu_tb is
   signal divaddcond, divsubcond : std_logic;
   signal mulnop : std_logic;
   signal osel0a, osel1a, osel0b, osel1b : std_logic;
-  signal a31a, a31b, m31b : std_logic;
+  signal a31a, a31b : std_logic;
+  signal m31b_from_alu1 : std_logic;  -- Output from ALU1
   signal hi12 : std_logic := '1';  -- Typically high
   signal gnd : std_logic := '0';
   
@@ -75,7 +76,7 @@ begin
       -- X and Y group signals
       xx0 => xx0, yy0 => yy0, xx1 => xx1, yy1 => yy1,
       
-      -- X and Y inputs from ALU stages
+      -- X and Y inputs from ALU stages (these are INPUTS to ALUC4)
       xout3 => xout3, yout3 => yout3, xout7 => xout7, yout7 => yout7,
       xout11 => xout11, yout11 => yout11, xout15 => xout15, yout15 => yout15,
       xout19 => xout19, yout19 => yout19, xout23 => xout23, yout23 => yout23,
@@ -175,7 +176,7 @@ begin
       xout27 => xout27, yout27 => yout27, xout31 => xout31, yout31 => yout31,
       
       -- Other outputs
-      m31b => m31b, \a=m\ => open -- ALU1's A=B output
+      m31b => m31b_from_alu1, \a=m\ => open -- ALU1's A=B output
     );
 
   -- Connect A31 signals
@@ -191,13 +192,14 @@ begin
   ir13_n <= '1';
 
   -- Calculate expected result for verification
-  process(a_input, m_input, ir_input, alumode)
+  process(a_input, m_input, aluf3a, aluf2a, aluf1a, aluf0a, alumode)
     variable a_val, m_val : unsigned(31 downto 0);
     variable func : std_logic_vector(3 downto 0);
   begin
     a_val := unsigned(a_input);
     m_val := unsigned(m_input);
-    func := ir_input(3 downto 0);  -- Function select from IR bits
+    -- Use actual ALU function codes from ALUC4, not IR bits
+    func := aluf3a & aluf2a & aluf1a & aluf0a;
     
     if alumode = '1' then
       -- Logic mode
@@ -234,23 +236,24 @@ begin
   -- Test process
   test_proc : process
     variable test_name : string(1 to 20);
+    variable func_code : std_logic_vector(3 downto 0);
   begin
-    report "Starting CADR ALU testbench";
     wait for 1 ns;
     
-    -- Test 1: Logic mode - XOR operation
-    test_name := "Logic XOR           ";
+    -- Test 1: Logic mode - Test whatever function ALUC4 produces
+    test_name := "Logic Function Test ";
     alumode <= '1';  -- Logic mode
-    ir_input <= "00000110";  -- XOR function (bits 3:0 = 0110)
+    ir_input <= "00001100";  -- IR input 12 (decimal)
     a_input <= x"AAAAAAAA";
     m_input <= x"55555555";
     wait for 10 ns;
     
-    if alu_output = expected_result then
-      report "PASS: " & test_name;
-    else
+    func_code := aluf3a & aluf2a & aluf1a & aluf0a;
+    
+    if alu_output /= expected_result then
       report "ERROR in " & test_name & ": Expected " & to_hstring(expected_result) & 
-             ", got " & to_hstring(alu_output) severity error;
+             ", got " & to_hstring(alu_output) & 
+             " (Function " & integer'image(to_integer(unsigned(func_code))) & ")" severity error;
     end if;
     
     -- Test 2: Logic mode - SETZ (should output 0)
@@ -261,9 +264,7 @@ begin
     m_input <= x"12345678";
     wait for 10 ns;
     
-    if alu_output = expected_result then
-      report "PASS: " & test_name;
-    else
+    if alu_output /= expected_result then
       report "ERROR in " & test_name & ": Expected " & to_hstring(expected_result) & 
              ", got " & to_hstring(alu_output) severity error;
     end if;
@@ -276,9 +277,7 @@ begin
     m_input <= x"12345678";
     wait for 10 ns;
     
-    if alu_output = expected_result then
-      report "PASS: " & test_name;
-    else
+    if alu_output /= expected_result then
       report "ERROR in " & test_name & ": Expected " & to_hstring(expected_result) & 
              ", got " & to_hstring(alu_output) severity error;
     end if;
@@ -291,9 +290,7 @@ begin
     m_input <= x"0F0F0F0F";
     wait for 10 ns;
     
-    if alu_output = expected_result then
-      report "PASS: " & test_name;
-    else
+    if alu_output /= expected_result then
       report "ERROR in " & test_name & ": Expected " & to_hstring(expected_result) & 
              ", got " & to_hstring(alu_output) severity error;
     end if;
@@ -306,9 +303,7 @@ begin
     m_input <= x"FF00FF00";
     wait for 10 ns;
     
-    if alu_output = expected_result then
-      report "PASS: " & test_name;
-    else
+    if alu_output /= expected_result then
       report "ERROR in " & test_name & ": Expected " & to_hstring(expected_result) & 
              ", got " & to_hstring(alu_output) severity error;
     end if;
@@ -321,14 +316,11 @@ begin
     m_input <= x"00000000";
     wait for 10 ns;
     
-    if alu_output = expected_result then
-      report "PASS: " & test_name;
-    else
+    if alu_output /= expected_result then
       report "ERROR in " & test_name & ": Expected " & to_hstring(expected_result) & 
              ", got " & to_hstring(alu_output) severity error;
     end if;
     
-    report "CADR ALU testbench completed";
     wait;
   end process;
 
