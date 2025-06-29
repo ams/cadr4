@@ -5,10 +5,10 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity cadr_npc_tb is
+entity cadr_npc_ipc_tb is
 end entity;
 
-architecture testbench of cadr_npc_tb is
+architecture testbench of cadr_npc_ipc_tb is
   
   -- Component declaration
   component cadr_npc is
