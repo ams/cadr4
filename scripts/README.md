@@ -7,5 +7,6 @@
 - `decode-ir.py`: decodes a 48-bit CADR raw instruction to stdout
 - `find-cadr-buses.py`: lists the buses found from cadr suds files
 - `fix-suds.py`: fixes the generated suds files by `soap/soap`
+- `generate-alu-tests.py`: generates the test data used for various alu tbs
 - `order-component-port-names.py`: order the port names in a package vhd
 - `order-entity-port-names.py`: order the port names in an entity vhd

@@ -8,130 +8,123 @@ end;
 
 architecture testbench of sn74182_tb is
 
-  signal cin_n   : std_logic;
-  signal y0      : std_logic;
-  signal x0      : std_logic;
-  signal cout0_n : std_logic;
-  signal y1      : std_logic;
-  signal x1      : std_logic;
-  signal cout1_n : std_logic;
-  signal y2      : std_logic;
-  signal x2      : std_logic;
-  signal cout2_n : std_logic;
-  signal y3      : std_logic;
-  signal x3      : std_logic;
-  signal yout    : std_logic;
-  signal xout    : std_logic;
+  signal CN_e    : std_logic;
+  signal PB_e    : std_logic_vector(3 downto 0);
+  signal GB_e    : std_logic_vector(3 downto 0);
+  signal CNX_e   : std_logic;
+  signal CNY_e   : std_logic;
+  signal CNZ_e   : std_logic;
+  signal PBo_e   : std_logic;
+  signal GBo_e   : std_logic;
 
   type vec4 is array(0 to 3) of std_logic;
 
-  -- Test vector: {cin_n, x0, y0, x1, y1, x2, y2, x3, y3, exp_cout0_n, exp_cout1_n, exp_cout2_n, exp_xout, exp_yout}
+  -- Test vector: {CN_e, PB_e, GB_e, exp_CNX_e, exp_CNY_e, exp_CNZ_e, exp_PBo_e, exp_GBo_e}
   type testvec is record
-    cin_n : std_logic;
-    x     : vec4;
-    y     : vec4;
-    exp_cout : vec4; -- [0]=cout0_n, [1]=cout1_n, [2]=cout2_n, [3]=unused
-    exp_xout : std_logic;
-    exp_yout : std_logic;
+    CN_e : std_logic;
+    PB : vec4;
+    GB : vec4;
+    exp_CNX : std_logic; -- CNX_e (cout0_n)
+    exp_CNY : std_logic; -- CNY_e (cout1_n)
+    exp_CNZ : std_logic; -- CNZ_e (cout2_n)
+    exp_PBo : std_logic; -- PBo_e (xout)
+    exp_GBo : std_logic; -- GBo_e (yout)
   end record;
 
   type testvec_array is array (natural range <>) of testvec;
   constant tests : testvec_array := (
     -- Test case 1: All propagate, no generate, no carry in
-    -- cin_n='1' (no carry), x='1111', y='0000' (all propagate, no generate)
-    -- Implementation equations:
-    -- cout0_n = y0 AND (x0 OR cin_n) = 0 AND (1 OR 1) = 0 AND 1 = 0
-    -- cout1_n = y1 AND (x1 OR (y0 AND (x0 OR cin_n))) = 0 AND (1 OR (0 AND 1)) = 0 AND 1 = 0
-    -- cout2_n = y2 AND (x2 OR (y1 AND (x1 OR (y0 AND (x0 OR cin_n))))) = 0 AND (1 OR (0 AND 1)) = 0 AND 1 = 0
-    -- xout = x3 OR x2 OR x1 OR x0 = 1 OR 1 OR 1 OR 1 = 1
-    -- yout = y3 AND (x3 OR y2) AND (x3 OR x2 OR y1) AND (x3 OR x2 OR x1 OR y0) = 0 AND (1 OR 0) AND (1 OR 1 OR 0) AND (1 OR 1 OR 1 OR 0) = 0
-    ( '1', ( '1','1','1','1' ), ( '0','0','0','0' ), ( '0','0','0','0' ), '1', '0' ),
+    -- CN_e='0' (no carry), PB_e='1111', GB_e='0000' (all propagate, no generate)
+    -- CNX_e = NOT(PB[0] AND GB[0] OR CNB AND GB[0]) = NOT(1 AND 0 OR 1 AND 0) = NOT(0) = 1
+    -- CNY_e = NOT(PB[1] AND GB[1] OR PB[0] AND GB[0] AND GB[1] OR CNB AND GB[0] AND GB[1]) = NOT(0) = 1
+    -- CNZ_e = NOT(PB[2] AND GB[2] OR PB[1] AND GB[1] AND GB[2] OR PB[0] AND GB[0] AND GB[1] AND GB[2] OR CNB AND GB[0] AND GB[1] AND GB[2]) = NOT(0) = 1
+    -- PBo_e = PB[0] OR PB[1] OR PB[2] OR PB[3] = 1 OR 1 OR 1 OR 1 = 1
+    -- GBo_e = PB[3] AND GB[3] OR PB[2] AND GB[2] AND GB[3] OR PB[1] AND GB[1] AND GB[2] AND GB[3] OR GB[0] AND GB[1] AND GB[2] AND GB[3] = 0
+    ( '0', ( '1','1','1','1' ), ( '0','0','0','0' ), '1', '1', '1', '1', '0' ),
     
     -- Test case 2: All propagate, carry in
-    -- cin_n='0' (carry in), x='1111', y='0000' (all propagate, no generate)
-    -- cout0_n = y0 AND (x0 OR cin_n) = 0 AND (1 OR 0) = 0 AND 1 = 0
-    -- cout1_n = y1 AND (x1 OR (y0 AND (x0 OR cin_n))) = 0 AND (1 OR (0 AND 1)) = 0 AND 1 = 0
-    -- cout2_n = y2 AND (x2 OR (y1 AND (x1 OR (y0 AND (x0 OR cin_n))))) = 0 AND (1 OR (0 AND 1)) = 0 AND 1 = 0
-    -- xout = x3 OR x2 OR x1 OR x0 = 1 OR 1 OR 1 OR 1 = 1
-    -- yout = y3 AND (x3 OR y2) AND (x3 OR x2 OR y1) AND (x3 OR x2 OR x1 OR y0) = 0 AND (1 OR 0) AND (1 OR 1 OR 0) AND (1 OR 1 OR 1 OR 0) = 0
-    ( '0', ( '1','1','1','1' ), ( '0','0','0','0' ), ( '0','0','0','0' ), '1', '0' ),
+    -- CN_e='1' (carry in), PB_e='1111', GB_e='0000' (all propagate, no generate)
+    -- CNX_e = NOT(PB[0] AND GB[0] OR CNB AND GB[0]) = NOT(1 AND 0 OR 0 AND 0) = NOT(0) = 1
+    -- CNY_e = NOT(PB[1] AND GB[1] OR PB[0] AND GB[0] AND GB[1] OR CNB AND GB[0] AND GB[1]) = NOT(0) = 1
+    -- CNZ_e = NOT(PB[2] AND GB[2] OR PB[1] AND GB[1] AND GB[2] OR PB[0] AND GB[0] AND GB[1] AND GB[2] OR CNB AND GB[0] AND GB[1] AND GB[2]) = NOT(0) = 1
+    -- PBo_e = PB[0] OR PB[1] OR PB[2] OR PB[3] = 1 OR 1 OR 1 OR 1 = 1
+    -- GBo_e = PB[3] AND GB[3] OR PB[2] AND GB[2] AND GB[3] OR PB[1] AND GB[1] AND GB[2] AND GB[3] OR GB[0] AND GB[1] AND GB[2] AND GB[3] = 0
+    ( '1', ( '1','1','1','1' ), ( '0','0','0','0' ), '1', '1', '1', '1', '0' ),
     
     -- Test case 3: All generate
-    -- cin_n='1' (no carry), x='0000', y='1111' (no propagate, all generate)
-    -- cout0_n = y0 AND (x0 OR cin_n) = 1 AND (0 OR 1) = 1 AND 1 = 1
-    -- cout1_n = y1 AND (x1 OR (y0 AND (x0 OR cin_n))) = 1 AND (0 OR (1 AND 1)) = 1 AND 1 = 1
-    -- cout2_n = y2 AND (x2 OR (y1 AND (x1 OR (y0 AND (x0 OR cin_n))))) = 1 AND (0 OR (1 AND 1)) = 1 AND 1 = 1
-    -- xout = x3 OR x2 OR x1 OR x0 = 0 OR 0 OR 0 OR 0 = 0
-    -- yout = y3 AND (x3 OR y2) AND (x3 OR x2 OR y1) AND (x3 OR x2 OR x1 OR y0) = 1 AND (0 OR 1) AND (0 OR 0 OR 1) AND (0 OR 0 OR 0 OR 1) = 1 AND 1 AND 1 AND 1 = 1
-    ( '1', ( '0','0','0','0' ), ( '1','1','1','1' ), ( '1','1','1','0' ), '0', '1' ),
+    -- CN_e='0' (no carry), PB_e='0000', GB_e='1111' (no propagate, all generate)
+    -- CNX_e = NOT(PB[0] AND GB[0] OR CNB AND GB[0]) = NOT(0 AND 1 OR 1 AND 1) = NOT(1) = 0
+    -- CNY_e = NOT(PB[1] AND GB[1] OR PB[0] AND GB[0] AND GB[1] OR CNB AND GB[0] AND GB[1]) = NOT(0 OR 0 OR 1) = NOT(1) = 0
+    -- CNZ_e = NOT(PB[2] AND GB[2] OR PB[1] AND GB[1] AND GB[2] OR PB[0] AND GB[0] AND GB[1] AND GB[2] OR CNB AND GB[0] AND GB[1] AND GB[2]) = NOT(0 OR 0 OR 0 OR 1) = NOT(1) = 0
+    -- PBo_e = PB[0] OR PB[1] OR PB[2] OR PB[3] = 0 OR 0 OR 0 OR 0 = 0
+    -- GBo_e = PB[3] AND GB[3] OR PB[2] AND GB[2] AND GB[3] OR PB[1] AND GB[1] AND GB[2] AND GB[3] OR GB[0] AND GB[1] AND GB[2] AND GB[3] = 0 OR 0 OR 0 OR 1 = 1
+    ( '0', ( '0','0','0','0' ), ( '1','1','1','1' ), '0', '0', '0', '0', '1' ),
     
     -- Test case 4: Partial generate
-    -- cin_n='1' (no carry), x='0000', y='1100' (generate at positions 0,1 only)
-    -- cout0_n = y0 AND (x0 OR cin_n) = 1 AND (0 OR 1) = 1 AND 1 = 1
-    -- cout1_n = y1 AND (x1 OR (y0 AND (x0 OR cin_n))) = 1 AND (0 OR (1 AND 1)) = 1 AND 1 = 1
-    -- cout2_n = y2 AND (x2 OR (y1 AND (x1 OR (y0 AND (x0 OR cin_n))))) = 0 AND (0 OR (1 AND 1)) = 0 AND 1 = 0
-    -- xout = x3 OR x2 OR x1 OR x0 = 0 OR 0 OR 0 OR 0 = 0
-    -- yout = y3 AND (x3 OR y2) AND (x3 OR x2 OR y1) AND (x3 OR x2 OR x1 OR y0) = 0 AND (0 OR 0) AND (0 OR 0 OR 1) AND (0 OR 0 OR 0 OR 1) = 0 AND 0 AND 1 AND 1 = 0
-    ( '1', ( '0','0','0','0' ), ( '1','1','0','0' ), ( '1','1','0','0' ), '0', '0' ),
+    -- CN_e='0' (no carry), PB_e='0000', GB_e='1100' (generate at positions 0,1 only)
+    -- CNX_e = NOT(PB[0] AND GB[0] OR CNB AND GB[0]) = NOT(0 AND 1 OR 1 AND 1) = NOT(1) = 0
+    -- CNY_e = NOT(PB[1] AND GB[1] OR PB[0] AND GB[0] AND GB[1] OR CNB AND GB[0] AND GB[1]) = NOT(0 OR 0 OR 1) = NOT(1) = 0
+    -- CNZ_e = NOT(PB[2] AND GB[2] OR PB[1] AND GB[1] AND GB[2] OR PB[0] AND GB[0] AND GB[1] AND GB[2] OR CNB AND GB[0] AND GB[1] AND GB[2]) = NOT(0 OR 0 OR 0 OR 0) = NOT(0) = 1
+    -- PBo_e = PB[0] OR PB[1] OR PB[2] OR PB[3] = 0 OR 0 OR 0 OR 0 = 0
+    -- GBo_e = PB[3] AND GB[3] OR PB[2] AND GB[2] AND GB[3] OR PB[1] AND GB[1] AND GB[2] AND GB[3] OR GB[0] AND GB[1] AND GB[2] AND GB[3] = 0 OR 0 OR 0 OR 0 = 0
+    ( '0', ( '0','0','0','0' ), ( '1','1','0','0' ), '0', '0', '1', '0', '0' ),
     
     -- Test case 5: All inputs high (both propagate and generate)
-    -- cin_n='1' (no carry), x='1111', y='1111' (all propagate and generate)
-    -- cout0_n = y0 AND (x0 OR cin_n) = 1 AND (1 OR 1) = 1 AND 1 = 1
-    -- cout1_n = y1 AND (x1 OR (y0 AND (x0 OR cin_n))) = 1 AND (1 OR (1 AND 1)) = 1 AND 1 = 1
-    -- cout2_n = y2 AND (x2 OR (y1 AND (x1 OR (y0 AND (x0 OR cin_n))))) = 1 AND (1 OR (1 AND 1)) = 1 AND 1 = 1
-    -- xout = x3 OR x2 OR x1 OR x0 = 1 OR 1 OR 1 OR 1 = 1
-    -- yout = y3 AND (x3 OR y2) AND (x3 OR x2 OR y1) AND (x3 OR x2 OR x1 OR y0) = 1 AND (1 OR 1) AND (1 OR 1 OR 1) AND (1 OR 1 OR 1 OR 1) = 1 AND 1 AND 1 AND 1 = 1
-    ( '1', ( '1','1','1','1' ), ( '1','1','1','1' ), ( '1','1','1','0' ), '1', '1' ),
+    -- CN_e='0' (no carry), PB_e='1111', GB_e='1111' (all propagate and generate)
+    -- CNX_e = NOT(PB[0] AND GB[0] OR CNB AND GB[0]) = NOT(1 AND 1 OR 1 AND 1) = NOT(1) = 0
+    -- CNY_e = NOT(PB[1] AND GB[1] OR PB[0] AND GB[0] AND GB[1] OR CNB AND GB[0] AND GB[1]) = NOT(1 OR 1 OR 1) = NOT(1) = 0
+    -- CNZ_e = NOT(PB[2] AND GB[2] OR PB[1] AND GB[1] AND GB[2] OR PB[0] AND GB[0] AND GB[1] AND GB[2] OR CNB AND GB[0] AND GB[1] AND GB[2]) = NOT(1 OR 1 OR 1 OR 1) = NOT(1) = 0
+    -- PBo_e = PB[0] OR PB[1] OR PB[2] OR PB[3] = 1 OR 1 OR 1 OR 1 = 1
+    -- GBo_e = PB[3] AND GB[3] OR PB[2] AND GB[2] AND GB[3] OR PB[1] AND GB[1] AND GB[2] AND GB[3] OR GB[0] AND GB[1] AND GB[2] AND GB[3] = 1 OR 1 OR 1 OR 1 = 1
+    ( '0', ( '1','1','1','1' ), ( '1','1','1','1' ), '0', '0', '0', '1', '1' ),
     
     -- Test case 6: Single stage generate at LSB
-    -- cin_n='1' (no carry), x='0000', y='1000' (generate only at position 0)
-    -- cout0_n = y0 AND (x0 OR cin_n) = 1 AND (0 OR 1) = 1 AND 1 = 1
-    -- cout1_n = y1 AND (x1 OR (y0 AND (x0 OR cin_n))) = 0 AND (0 OR (1 AND 1)) = 0 AND 1 = 0
-    -- cout2_n = y2 AND (x2 OR (y1 AND (x1 OR (y0 AND (x0 OR cin_n))))) = 0 AND (0 OR (0 AND 1)) = 0 AND 0 = 0
-    -- xout = x3 OR x2 OR x1 OR x0 = 0 OR 0 OR 0 OR 0 = 0
-    -- yout = y3 AND (x3 OR y2) AND (x3 OR x2 OR y1) AND (x3 OR x2 OR x1 OR y0) = 0 AND (0 OR 0) AND (0 OR 0 OR 0) AND (0 OR 0 OR 0 OR 1) = 0 AND 0 AND 0 AND 1 = 0
-    ( '1', ( '0','0','0','0' ), ( '1','0','0','0' ), ( '1','0','0','0' ), '0', '0' ),
+    -- CN_e='0' (no carry), PB_e='0000', GB_e='1000' (generate only at position 0)
+    -- CNX_e = NOT(PB[0] AND GB[0] OR CNB AND GB[0]) = NOT(0 AND 1 OR 1 AND 1) = NOT(1) = 0
+    -- CNY_e = NOT(PB[1] AND GB[1] OR PB[0] AND GB[0] AND GB[1] OR CNB AND GB[0] AND GB[1]) = NOT(0 OR 0 OR 0) = NOT(0) = 1
+    -- CNZ_e = NOT(PB[2] AND GB[2] OR PB[1] AND GB[1] AND GB[2] OR PB[0] AND GB[0] AND GB[1] AND GB[2] OR CNB AND GB[0] AND GB[1] AND GB[2]) = NOT(0 OR 0 OR 0 OR 0) = NOT(0) = 1
+    -- PBo_e = PB[0] OR PB[1] OR PB[2] OR PB[3] = 0 OR 0 OR 0 OR 0 = 0
+    -- GBo_e = PB[3] AND GB[3] OR PB[2] AND GB[2] AND GB[3] OR PB[1] AND GB[1] AND GB[2] AND GB[3] OR GB[0] AND GB[1] AND GB[2] AND GB[3] = 0 OR 0 OR 0 OR 0 = 0
+    ( '0', ( '0','0','0','0' ), ( '1','0','0','0' ), '0', '1', '1', '0', '0' ),
     
     -- Test case 7: Mixed propagate and generate with carry
-    -- cin_n='0' (carry in), x='1010', y='0101' (alternating pattern)
-    -- cout0_n = y0 AND (x0 OR cin_n) = 0 AND (1 OR 0) = 0 AND 1 = 0
-    -- cout1_n = y1 AND (x1 OR (y0 AND (x0 OR cin_n))) = 1 AND (0 OR (0 AND 1)) = 1 AND 0 = 0
-    -- cout2_n = y2 AND (x2 OR (y1 AND (x1 OR (y0 AND (x0 OR cin_n))))) = 0 AND (1 OR (1 AND 0)) = 0 AND 1 = 0
-    -- xout = x3 OR x2 OR x1 OR x0 = 0 OR 1 OR 0 OR 1 = 1
-    -- yout = y3 AND (x3 OR y2) AND (x3 OR x2 OR y1) AND (x3 OR x2 OR x1 OR y0) = 1 AND (0 OR 0) AND (0 OR 1 OR 1) AND (0 OR 1 OR 0 OR 0) = 1 AND 0 AND 1 AND 1 = 0
-    ( '0', ( '1','0','1','0' ), ( '0','1','0','1' ), ( '0','0','0','0' ), '1', '0' )
+    -- CN_e='1' (carry in), PB_e='1010', GB_e='0101' (alternating pattern)
+    -- CNX_e = NOT(PB[0] AND GB[0] OR CNB AND GB[0]) = NOT(1 AND 0 OR 0 AND 0) = NOT(0) = 1
+    -- CNY_e = NOT(PB[1] AND GB[1] OR PB[0] AND GB[0] AND GB[1] OR CNB AND GB[0] AND GB[1]) = NOT(0 AND 1 OR 0 OR 0) = NOT(0) = 1
+    -- CNZ_e = NOT(PB[2] AND GB[2] OR PB[1] AND GB[1] AND GB[2] OR PB[0] AND GB[0] AND GB[1] AND GB[2] OR CNB AND GB[0] AND GB[1] AND GB[2]) = NOT(1 AND 0 OR 0 OR 0 OR 0) = NOT(0) = 1
+    -- PBo_e = PB[0] OR PB[1] OR PB[2] OR PB[3] = 1 OR 0 OR 1 OR 0 = 1
+    -- GBo_e = PB[3] AND GB[3] OR PB[2] AND GB[2] AND GB[3] OR PB[1] AND GB[1] AND GB[2] AND GB[3] OR GB[0] AND GB[1] AND GB[2] AND GB[3] = 0 OR 0 OR 0 OR 0 = 0
+    ( '1', ( '1','0','1','0' ), ( '0','1','0','1' ), '1', '1', '1', '1', '0' )
   );
 
 begin
 
   uut : sn74182 port map(
-    xout => xout,
-    yout => yout,
-    x3   => x3,
-    y3   => y3,
-    cout2_n => cout2_n,
-    x2      => x2,
-    y2      => y2,
-    cout1_n => cout1_n,
-    x1      => x1,
-    y1      => y1,
-    cout0_n => cout0_n,
-    x0      => x0,
-    y0      => y0,
-    cin_n => cin_n
+    PBo_e => PBo_e,
+    GBo_e => GBo_e,
+    CNZ_e => CNZ_e,
+    CNY_e => CNY_e,
+    CNX_e => CNX_e,
+    PB_e  => PB_e,
+    GB_e  => GB_e,
+    CN_e  => CN_e
   );
 
   process
     variable start_time : time;
     variable end_time : time;
+    variable test_count : integer := 0;
+    variable pass_count : integer := 0;
   begin
+    report "=== Starting SN74182 Tests ===";
+    
     for i in tests'range loop
+      test_count := test_count + 1;
+      
       -- Apply inputs
-      cin_n <= tests(i).cin_n;
-      x0 <= tests(i).x(0); y0 <= tests(i).y(0);
-      x1 <= tests(i).x(1); y1 <= tests(i).y(1);
-      x2 <= tests(i).x(2); y2 <= tests(i).y(2);
-      x3 <= tests(i).x(3); y3 <= tests(i).y(3);
+      CN_e <= tests(i).CN_e;
+      PB_e <= tests(i).PB(3) & tests(i).PB(2) & tests(i).PB(1) & tests(i).PB(0);
+      GB_e <= tests(i).GB(3) & tests(i).GB(2) & tests(i).GB(1) & tests(i).GB(0);
       
       -- Record start time
       start_time := now;
@@ -149,25 +142,28 @@ begin
         severity warning;
       
       -- Check outputs
-      if not (cout0_n = tests(i).exp_cout(0) and 
-              cout1_n = tests(i).exp_cout(1) and 
-              cout2_n = tests(i).exp_cout(2) and 
-              xout = tests(i).exp_xout and 
-              yout = tests(i).exp_yout) then
-        report "Test " & integer'image(i) & " failed: " &
-          "cin_n=" & std_logic'image(cin_n) &
-          ", x0=" & std_logic'image(x0) & ", y0=" & std_logic'image(y0) &
-          ", x1=" & std_logic'image(x1) & ", y1=" & std_logic'image(y1) &
-          ", x2=" & std_logic'image(x2) & ", y2=" & std_logic'image(y2) &
-          ", x3=" & std_logic'image(x3) & ", y3=" & std_logic'image(y3) &
-          ", cout0_n=" & std_logic'image(cout0_n) & " (exp " & std_logic'image(tests(i).exp_cout(0)) & ")" &
-          ", cout1_n=" & std_logic'image(cout1_n) & " (exp " & std_logic'image(tests(i).exp_cout(1)) & ")" &
-          ", cout2_n=" & std_logic'image(cout2_n) & " (exp " & std_logic'image(tests(i).exp_cout(2)) & ")" &
-          ", xout=" & std_logic'image(xout) & " (exp " & std_logic'image(tests(i).exp_xout) & ")" &
-          ", yout=" & std_logic'image(yout) & " (exp " & std_logic'image(tests(i).exp_yout) & ")"
+      if not (CNX_e = tests(i).exp_CNX and 
+              CNY_e = tests(i).exp_CNY and 
+              CNZ_e = tests(i).exp_CNZ and 
+              PBo_e = tests(i).exp_PBo and 
+              GBo_e = tests(i).exp_GBo) then
+        report "FAIL: Test " & integer'image(i) & ": " &
+          "CN_e=" & std_logic'image(CN_e) &
+          ", PB_e=" & to_string(PB_e) &
+          ", GB_e=" & to_string(GB_e) &
+          ", CNX_e=" & std_logic'image(CNX_e) & " (exp " & std_logic'image(tests(i).exp_CNX) & ")" &
+          ", CNY_e=" & std_logic'image(CNY_e) & " (exp " & std_logic'image(tests(i).exp_CNY) & ")" &
+          ", CNZ_e=" & std_logic'image(CNZ_e) & " (exp " & std_logic'image(tests(i).exp_CNZ) & ")" &
+          ", PBo_e=" & std_logic'image(PBo_e) & " (exp " & std_logic'image(tests(i).exp_PBo) & ")" &
+          ", GBo_e=" & std_logic'image(GBo_e) & " (exp " & std_logic'image(tests(i).exp_GBo) & ")"
           severity error;
+      else
+        pass_count := pass_count + 1;
+        report "PASS: Test " & integer'image(i);
       end if;
     end loop;
+    
+    report "=== SN74182 Tests Complete: " & integer'image(pass_count) & "/" & integer'image(test_count) & " passed ===";
     wait;
   end process;
 

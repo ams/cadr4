@@ -159,11 +159,28 @@ sn74181 is implemented by translating the gate-level model available in Verilog 
 - til309: numeric display with logic
 - ttldm: ttl delay line
 
-# sn74181 Function Table
+# ALU
 
-For active-high data (Table 2 in the datasheet).
+The sn74181 4-bit ALU and the sn74182 Carry Look-Ahead (CLA) implements the ALU functionality. They are tested both individually and also in various combinations forming 8, 16 and 32 bit ALUs. Finally, CADR ALU is tested using the cadr_alu0, cadr_alu1 and cadr_aluc4 components.
 
-## Logic Functions (M=H)
+## Testbenches
+
+- sn74181_tb
+- sn74182_tb
+- alu_8bit_tb: 2x sn74181, 1x sn74182
+- alu_16bit_tb: 4x sn74181, 1x sn74182
+- alu_32bit_tb: 8x sn74181, 3x sn74182
+- cadr_alu_tb: cadr_alu0, cadr_alu1, cadr_aluc4 (8x sn74181, 3x sn74182)
+
+### Test Data
+
+Test data for these testbenches are generated with `scripts/generate-alu-testdata.py` script. It takes a width parameter and outputs a number of test vectors. The output is printed on stdout, each line is a bit string consisting of A,B,ALU MODE,ALU SEL,CARRY IN,EXPECTED RESULT,EXPECTED CARRY OUT bits. The width of A,B and EXPECTED RESULT depends on the width parameter provided (4, 8, 16 or 32 bits).
+
+## sn74181 Function Table
+
+CADR always use active-high data signal designations, thus Table 2 in the datasheet.
+
+### Logic Functions (M=H)
 
 - 0000: F=~A
 - 0001: F=A NOR B
@@ -182,7 +199,26 @@ For active-high data (Table 2 in the datasheet).
 - 1110: F=A OR B
 - 1111: F=A
 
-## Arithmetic Functions (M=L) with Carry (Cn_n=L)
+### Arithmetic Functions (M=L) without Carry (Cn_n=H)
+
+- 0000: F=A
+- 0001: F=(A OR B)
+- 0010: F=(A OR ~B)
+- 0011: F=MINUS 1 (2's COMPL)
+- 0100: F=A PLUS (A AND ~B)
+- 0101: F=(A OR B) PLUS (A AND ~B)
+- 0110: F=A MINUS B MINUS 1
+- 0111: F=A AND ~B MINUS 1
+- 1000: F=A PLUS (A AND B)
+- 1001: F=A PLUS B
+- 1010: F=A PLUS ~B PLUS (A AND B)
+- 1011: F=A AND B MINUS 1
+- 1100: F=A PLUS A
+- 1101: F=(A OR B) PLUS A
+- 1110: F=(A OR ~B) PLUS A
+- 1111: F=A MINUS 1
+
+### Arithmetic Functions (M=L) with Carry (Cn_n=L)
 
 - 0000: F=A PLUS 1
 - 0001: F=(A OR B) PLUS 1

@@ -438,56 +438,37 @@ package sn74 is
 
   component sn74181 is
     port (
-      cout_n : out std_logic;  -- Carry out (active low)
-      y      : out std_logic;
-      x      : out std_logic;
-      aeb    : out std_logic;
-
-      f3 : out std_logic;
-      f2 : out std_logic;
-      f1 : out std_logic;
-      f0 : out std_logic;
-
-      b3 : in std_logic;
-      b2 : in std_logic;
-      b1 : in std_logic;
-      b0 : in std_logic;
-
-      a3 : in std_logic;
-      a2 : in std_logic;
-      a1 : in std_logic;
-      a0 : in std_logic;
-
-      m  : in std_logic;
-      s3 : in std_logic;
-      s2 : in std_logic;
-      s1 : in std_logic;
-      s0 : in std_logic;
-
-      cin_n : in std_logic  -- Carry in (active low)
+      -- Control and status (external ports with _e suffix)
+      M_e      : in  std_logic;  -- Mode: 1=Logic, 0=Arithmetic
+      CNb_e    : in  std_logic;  -- Carry in (active low)
+      CN4b_e   : out std_logic;  -- Carry out (active low)
+      AEB_e    : out std_logic;  -- A equals B
+      X_e      : out std_logic;  -- Carry propagate
+      Y_e      : out std_logic;  -- Carry generate
+      
+      -- Function select
+      S_e      : in  std_logic_vector(3 downto 0); -- S3, S2, S1, S0
+      
+      -- Data inputs
+      A_e      : in  std_logic_vector(3 downto 0); -- A3, A2, A1, A0
+      B_e      : in  std_logic_vector(3 downto 0); -- B3, B2, B1, B0
+      
+      -- Function outputs
+      F_e      : out std_logic_vector(3 downto 0)  -- F3, F2, F1, F0
       );
   end component;
 
   component sn74182 is
     port (
-      xout : out std_logic;
-      yout : out std_logic;
-      x3   : in std_logic;
-      y3   : in std_logic;
+      PBo_e   : out std_logic;  -- Propagate output
+      GBo_e   : out std_logic;  -- Generate output
+      CNZ_e   : out std_logic;  -- Carry out 2 (active-low)
+      CNY_e   : out std_logic;  -- Carry out 1 (active-low)
+      CNX_e   : out std_logic;  -- Carry out 0 (active-low)
 
-      cout2_n : out std_logic;
-      x2      : in  std_logic;
-      y2      : in  std_logic;
-
-      cout1_n : out std_logic;
-      x1      : in  std_logic;
-      y1      : in  std_logic;
-
-      cout0_n : out std_logic;
-      x0      : in  std_logic;
-      y0      : in  std_logic;
-
-      cin_n : in std_logic
+      PB_e    : in  std_logic_vector(3 downto 0);  -- Propagate inputs [3:0]
+      GB_e    : in  std_logic_vector(3 downto 0);  -- Generate inputs [3:0]
+      CN_e    : in  std_logic   -- Carry in
       );
   end component;
 

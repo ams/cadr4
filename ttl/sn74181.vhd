@@ -3,324 +3,181 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
+
 use work.misc.all;
 
 entity sn74181 is
   port (
-    -- Control and status
-    m      : in  std_logic;  -- Mode: 1=Logic, 0=Arithmetic
-    cin_n  : in  std_logic;  -- Carry in (active low) - matches Verilog CNb
-    cout_n : out std_logic;  -- Carry out (active low) - matches Verilog CN4b
-    aeb    : out std_logic;  -- A equals B
-    x      : out std_logic;  -- Carry propagate
-    y      : out std_logic;  -- Carry generate
+    -- Control and status (external ports with _e suffix)
+    M_e      : in  std_logic;  -- Mode: 1=Logic, 0=Arithmetic
+    CNb_e    : in  std_logic;  -- Carry in (active low)
+    CN4b_e   : out std_logic;  -- Carry out (active low)
+    AEB_e    : out std_logic;  -- A equals B
+    X_e      : out std_logic;  -- Carry propagate
+    Y_e      : out std_logic;  -- Carry generate
     
-    -- Function select - matches Verilog S[3:0]
-    s3, s2, s1, s0 : in std_logic;
+    -- Function select
+    S_e      : in  std_logic_vector(3 downto 0); -- S3, S2, S1, S0
     
-    -- Data inputs (active high) - matches Verilog A[3:0], B[3:0]
-    a3, a2, a1, a0 : in std_logic;
-    b3, b2, b1, b0 : in std_logic;
+    -- Data inputs
+    A_e      : in  std_logic_vector(3 downto 0); -- A3, A2, A1, A0
+    B_e      : in  std_logic_vector(3 downto 0); -- B3, B2, B1, B0
     
-    -- Function outputs (active high) - matches Verilog F[3:0]
-    f3, f2, f1, f0 : out std_logic
+    -- Function outputs
+    F_e      : out std_logic_vector(3 downto 0)  -- F3, F2, F1, F0
     );
 end;
 
--- Behavioral architecture implementing SN74181 function table directly
--- This handles X inputs more predictably than the gate-level implementation
-architecture behavioral of sn74181 is
-  -- Input conditioning signals
-  signal m_i, cin_n_i, s3_i, s2_i, s1_i, s0_i : std_logic;
-  signal a3_i, a2_i, a1_i, a0_i : std_logic;
-  signal b3_i, b2_i, b1_i, b0_i : std_logic;
+-- Perfect line-by-line translation from doc/ttl/74181.v
+architecture structural of sn74181 is
+  -- Internal signals matching Verilog exactly
+  signal A, B, S : std_logic_vector(3 downto 0);
+  signal M, CNb : std_logic;
+  signal F : std_logic_vector(3 downto 0);
+  signal CN4b, AEB, X, Y : std_logic;
+  signal E, D, C, Bb : std_logic_vector(3 downto 0);
   
-  -- Internal vectors for easier manipulation
-  signal a_vec, b_vec : std_logic_vector(3 downto 0);
-  signal s_vec : std_logic_vector(3 downto 0);
-  signal f_vec : std_logic_vector(3 downto 0);
-  signal cin : std_logic;  -- carry in (active high)
+  -- Emodule internal signals
+  signal ABS3, ABbS2 : std_logic_vector(3 downto 0);
+  
+  -- Dmodule internal signals
+  signal BbS1, BS0 : std_logic_vector(3 downto 0);
+  
+  -- CLAmodule internal signals (exact Verilog names)
+  signal Pb0, Pb1, Pb2, Pb3 : std_logic;
+  signal CNbGb0, CNbGb01, CNbGb012 : std_logic;
+  signal Pb0Gb1, Pb1Gb2, Pb2Gb3 : std_logic;
+  signal Pb0Gb12, Pb1Gb23, Pb0Gb123 : std_logic;
+  signal XCNb : std_logic;
+  
+  -- Summodule internal signals
+  signal EXD, CM : std_logic_vector(3 downto 0);
   
 begin
 
-  -- Input conditioning
-  m_i <= ttl_input(m);
-  cin_n_i <= ttl_input(cin_n);
-  s3_i <= ttl_input(s3);
-  s2_i <= ttl_input(s2);
-  s1_i <= ttl_input(s1);
-  s0_i <= ttl_input(s0);
-  a3_i <= ttl_input(a3);
-  a2_i <= ttl_input(a2);
-  a1_i <= ttl_input(a1);
-  a0_i <= ttl_input(a0);
-  b3_i <= ttl_input(b3);
-  b2_i <= ttl_input(b2);
-  b1_i <= ttl_input(b1);
-  b0_i <= ttl_input(b0);
-
-  -- Create vectors for easier processing
-  a_vec <= a3_i & a2_i & a1_i & a0_i;
-  b_vec <= b3_i & b2_i & b1_i & b0_i;
-  s_vec <= s3_i & s2_i & s1_i & s0_i;
-  cin <= not cin_n_i;  -- Convert active low to active high
-
-  -- Main ALU function process
-  process(all)
-    variable a_int, b_int : unsigned(3 downto 0);
-    variable result : unsigned(4 downto 0);  -- 5 bits to capture carry
-    variable f_temp : std_logic_vector(3 downto 0);
-    variable cout_temp : std_logic;
-    variable x_temp, y_temp : std_logic;
-    variable aeb_temp : std_logic;
-  begin
-    -- Initialize outputs to avoid latches
-    f_temp := "0000";
-    cout_temp := '1';  -- carry out inactive (active low)
-    x_temp := '0';
-    y_temp := '0';
-    aeb_temp := '0';
-    
-    -- Check for X inputs and handle them appropriately
-    if is_x(a_vec) or is_x(b_vec) or is_x(s_vec) or is_x(m_i) or is_x(cin_n_i) then
-      -- Special handling for SETZ function (S=0011) - should always output 0
-      if s_vec = "0011" and m_i = '1' then
-        f_temp := "0000";  -- SETZ always outputs 0 regardless of inputs
-        cout_temp := '1';  -- No carry out in logic mode
-        x_temp := '1';     -- Propagate = 1 for SETZ
-        y_temp := '0';     -- Generate = 0 for SETZ
-        aeb_temp := '1';   -- AEB = 1 when F = 0000
-      -- Special handling for SETO function (S=1100) - should always output 1
-      elsif s_vec = "1100" and m_i = '1' then
-        f_temp := "1111";  -- SETO always outputs 1 regardless of inputs
-        cout_temp := '1';  -- No carry out in logic mode
-        x_temp := '0';     -- Propagate = 0 for SETO
-        y_temp := '1';     -- Generate = 1 for SETO
-        aeb_temp := '1';   -- AEB = 1 when F = 1111
-      else
-        -- For other functions with X inputs, propagate X
-        f_temp := "XXXX";
-        cout_temp := 'X';
-        x_temp := 'X';
-        y_temp := 'X';
-        aeb_temp := 'X';
-      end if;
-    else
-      -- Normal operation with valid inputs
-      a_int := unsigned(a_vec);
-      b_int := unsigned(b_vec);
-      
-      if m_i = '1' then
-        -- Logic Mode - implement function table directly
-        case s_vec is
-          when "0000" => f_temp := not a_vec;                    -- NOT A
-          when "0001" => f_temp := not (a_vec or b_vec);         -- NOT(A+B)
-          when "0010" => f_temp := (not a_vec) and b_vec;        -- (NOT A)B
-          when "0011" => f_temp := "0000";                       -- 0 (SETZ)
-          when "0100" => f_temp := not (a_vec and b_vec);        -- NOT(AB)
-          when "0101" => f_temp := not b_vec;                    -- NOT B
-          when "0110" => f_temp := a_vec xor b_vec;              -- A XOR B
-          when "0111" => f_temp := a_vec and (not b_vec);        -- A(NOT B)
-          when "1000" => f_temp := (not a_vec) or b_vec;         -- (NOT A)+B
-          when "1001" => f_temp := not (a_vec xor b_vec);        -- NOT(A XOR B)
-          when "1010" => f_temp := b_vec;                        -- B
-          when "1011" => f_temp := a_vec and b_vec;              -- AB
-          when "1100" => f_temp := "1111";                       -- 1 (SETO)
-          when "1101" => f_temp := a_vec or (not b_vec);         -- A+(NOT B)
-          when "1110" => f_temp := a_vec or b_vec;               -- A+B
-          when "1111" => f_temp := a_vec;                        -- A
-          when others => f_temp := "XXXX";
-        end case;
-        
-        -- Logic mode outputs
-        cout_temp := '1';  -- No carry out in logic mode
-        
-        -- X and Y generation for logic mode (simplified)
-        case s_vec is
-          when "0011" => x_temp := '1'; y_temp := '0';  -- SETZ
-          when "1100" => x_temp := '0'; y_temp := '1';  -- SETO
-          when others => x_temp := '1'; y_temp := '0';  -- Default for other logic functions
-        end case;
-        
-      else
-        -- Arithmetic Mode - implement arithmetic operations
-        case s_vec is
-          when "0000" => -- A (Cn=0) / A+1 (Cn=1)
-            if cin = '0' then
-              result := resize(a_int, 5);
-            else
-              result := resize(a_int, 5) + 1;
-            end if;
-            
-          when "0001" => -- (A+B) logical OR (Cn=0) / (A+B)+1 (Cn=1)
-            if cin = '0' then
-              result := resize(unsigned(a_vec or b_vec), 5);
-            else
-              result := resize(unsigned(a_vec or b_vec), 5) + 1;
-            end if;
-            
-          when "0010" => -- A+(NOT B) (Cn=0) / (A+(NOT B))+1 (Cn=1)
-            if cin = '0' then
-              result := resize(unsigned(a_vec or (not b_vec)), 5);
-            else
-              result := resize(unsigned(a_vec or (not b_vec)), 5) + 1;
-            end if;
-            
-          when "0011" => -- Minus 1 (Cn=0) / 0 (Cn=1)
-            if cin = '0' then
-              result := "11111";  -- -1 in 2's complement
-            else
-              result := "00000";  -- 0
-            end if;
-            
-          when "0100" => -- A+(A AND NOT B) (Cn=0) / A+(A AND NOT B)+1 (Cn=1)
-            if cin = '0' then
-              result := resize(a_int, 5) + resize(unsigned(a_vec and (not b_vec)), 5);
-            else
-              result := resize(a_int, 5) + resize(unsigned(a_vec and (not b_vec)), 5) + 1;
-            end if;
-            
-          when "0101" => -- (A+B)+(A AND NOT B) (Cn=0) / (A+B)+(A AND NOT B)+1 (Cn=1)
-            if cin = '0' then
-              result := resize(unsigned(a_vec or b_vec) + unsigned(a_vec and (not b_vec)), 5);
-            else
-              result := resize(unsigned(a_vec or b_vec) + unsigned(a_vec and (not b_vec)), 5) + 1;
-            end if;
-            
-          when "0110" => -- A-B-1 (Cn=0) / A-B (Cn=1)
-            if cin = '0' then
-              result := resize(a_int, 5) - resize(b_int, 5) - 1;
-            else
-              result := resize(a_int, 5) - resize(b_int, 5);
-            end if;
-            
-          when "0111" => -- (A AND NOT B)-1 (Cn=0) / (A AND NOT B) (Cn=1)
-            if cin = '0' then
-              result := resize(unsigned(a_vec and (not b_vec)), 5) - 1;
-            else
-              result := resize(unsigned(a_vec and (not b_vec)), 5);
-            end if;
-            
-          when "1000" => -- A+(A AND B) (Cn=0) / A+(A AND B)+1 (Cn=1)
-            if cin = '0' then
-              result := resize(a_int, 5) + resize(unsigned(a_vec and b_vec), 5);
-            else
-              result := resize(a_int, 5) + resize(unsigned(a_vec and b_vec), 5) + 1;
-            end if;
-            
-          when "1001" => -- A+B (Cn=0) / A+B+1 (Cn=1)
-            if cin = '0' then
-              result := resize(a_int, 5) + resize(b_int, 5);
-            else
-              result := resize(a_int, 5) + resize(b_int, 5) + 1;
-            end if;
-            
-          when "1010" => -- (A+NOT B)+(A AND B) (Cn=0) / (A+NOT B)+(A AND B)+1 (Cn=1)
-            if cin = '0' then
-              result := resize(unsigned(a_vec or (not b_vec)) + unsigned(a_vec and b_vec), 5);
-            else
-              result := resize(unsigned(a_vec or (not b_vec)) + unsigned(a_vec and b_vec), 5) + 1;
-            end if;
-            
-          when "1011" => -- (A AND B)-1 (Cn=0) / (A AND B) (Cn=1)
-            if cin = '0' then
-              result := resize(unsigned(a_vec and b_vec), 5) - 1;
-            else
-              result := resize(unsigned(a_vec and b_vec), 5);
-            end if;
-            
-          when "1100" => -- A+A (Cn=0) / A+A+1 (Cn=1) [shift left]
-            if cin = '0' then
-              result := resize(a_int, 5) + resize(a_int, 5);
-            else
-              result := resize(a_int, 5) + resize(a_int, 5) + 1;
-            end if;
-            
-          when "1101" => -- (A+B)+(A+B) (Cn=0) / (A+B)+(A+B)+1 (Cn=1)
-            if cin = '0' then
-              result := resize((unsigned(a_vec or b_vec)) + (unsigned(a_vec or b_vec)), 5);
-            else
-              result := resize((unsigned(a_vec or b_vec)) + (unsigned(a_vec or b_vec)), 5) + 1;
-            end if;
-            
-          when "1110" => -- (A+NOT B)+(A+NOT B) (Cn=0) / (A+NOT B)+(A+NOT B)+1 (Cn=1)
-            if cin = '0' then
-              result := resize((unsigned(a_vec or (not b_vec))) + (unsigned(a_vec or (not b_vec))), 5);
-            else
-              result := resize((unsigned(a_vec or (not b_vec))) + (unsigned(a_vec or (not b_vec))), 5) + 1;
-            end if;
-            
-          when "1111" => -- A-1 (Cn=0) / A (Cn=1)
-            if cin = '0' then
-              result := resize(a_int, 5) - 1;
-            else
-              result := resize(a_int, 5);
-            end if;
-            
-          when others =>
-            result := "XXXXX";
-        end case;
-        
-        f_temp := std_logic_vector(result(3 downto 0));
-        
-        -- Carry out logic depends on the operation type
-        case s_vec is
-          when "0110" | "0111" | "1011" | "1111" => -- Subtraction operations
-            -- For subtraction, borrow logic is different
-            -- For A=B cases, no borrow should occur
-            if a_int = b_int then
-              cout_temp := '1';  -- No borrow for A=B
-            else
-              cout_temp := not result(4);  -- Standard borrow logic
-            end if;
-          when others => -- Addition and other operations
-            cout_temp := not result(4);  -- Convert to active low
-        end case;
-        
-        -- Generate X (propagate) and Y (generate) for arithmetic mode
-        -- Simplified implementation - proper implementation would require more complex logic
-        if result(4) = '1' then
-          y_temp := '1';  -- Generate carry
-        else
-          y_temp := '0';
-        end if;
-        
-        -- X is more complex and depends on the specific operation
-        -- For now, simplified implementation based on result
-        if result(3 downto 0) = "1111" then
-          x_temp := '0';  -- No propagate when all bits are 1
-        else
-          x_temp := '1';  -- Default propagate
-        end if;
-      end if;
-      
-      -- A equals B detection (when F = 1111)
-      if f_temp = "1111" then
-        aeb_temp := '1';
-      else
-        aeb_temp := '0';
-      end if;
-    end if;
-    
-    -- Assign outputs
-    f_vec <= f_temp;
-    cout_n <= cout_temp;
-    x <= x_temp;
-    y <= y_temp;
-    
-    -- A=B output is open collector !
-    if aeb_temp = '1' then
-      aeb <= 'Z';
-    else
-      aeb <= aeb_temp;
-    end if;
-  end process;
-
+  -- Input assignments
+  A <= A_e;
+  B <= B_e;
+  S <= S_e;
+  M <= M_e;
+  CNb <= CNb_e;
+  
   -- Output assignments
-  f0 <= f_vec(0);
-  f1 <= f_vec(1);
-  f2 <= f_vec(2);
-  f3 <= f_vec(3);
+  F_e <= F;
+  CN4b_e <= CN4b;
+  AEB_e <= AEB;
+  X_e <= X;
+  Y_e <= Y;
+  
+  -- Emodule: Line-by-line translation from Verilog
+  -- not Bb0gate(Bb[0], B[0]);
+  Bb(0) <= not B(0);
+  Bb(1) <= not B(1);
+  Bb(2) <= not B(2);
+  Bb(3) <= not B(3);
+  
+  -- and ABS30gate(ABS3[0], A[0], B[0], S[3]);
+  ABS3(0) <= A(0) and B(0) and S(3);
+  ABS3(1) <= A(1) and B(1) and S(3);
+  ABS3(2) <= A(2) and B(2) and S(3);
+  ABS3(3) <= A(3) and B(3) and S(3);
+  
+  -- and ABbS20gate(ABbS2[0], A[0], Bb[0], S[2]);
+  ABbS2(0) <= A(0) and Bb(0) and S(2);
+  ABbS2(1) <= A(1) and Bb(1) and S(2);
+  ABbS2(2) <= A(2) and Bb(2) and S(2);
+  ABbS2(3) <= A(3) and Bb(3) and S(2);
+  
+  -- nor E0gate(E[0], ABS3[0], ABbS2[0]);
+  E(0) <= not (ABS3(0) or ABbS2(0));
+  E(1) <= not (ABS3(1) or ABbS2(1));
+  E(2) <= not (ABS3(2) or ABbS2(2));
+  E(3) <= not (ABS3(3) or ABbS2(3));
+
+  -- Dmodule: Line-by-line translation from Verilog
+  -- and BbS10gate(BbS1[0], Bb[0], S[1]);
+  BbS1(0) <= Bb(0) and S(1);
+  BbS1(1) <= Bb(1) and S(1);
+  BbS1(2) <= Bb(2) and S(1);
+  BbS1(3) <= Bb(3) and S(1);
+  
+  -- and BS00gate(BS0[0], B[0], S[0]);
+  BS0(0) <= B(0) and S(0);
+  BS0(1) <= B(1) and S(0);
+  BS0(2) <= B(2) and S(0);
+  BS0(3) <= B(3) and S(0);
+  
+  -- nor D0gate(D[0], BbS1[0], BS0[0], A[0]);
+  D(0) <= not (BbS1(0) or BS0(0) or A(0));
+  D(1) <= not (BbS1(1) or BS0(1) or A(1));
+  D(2) <= not (BbS1(2) or BS0(2) or A(2));
+  D(3) <= not (BbS1(3) or BS0(3) or A(3));
+
+  -- CLAmodule: Line-by-line translation from Verilog
+  -- not C0gate(C[0], CNb);
+  C(0) <= not CNb;
+  
+  -- buf Pb0gate(Pb0, Pb[0]); -- Note: Pb = D, Gb = E in the instantiation
+  Pb0 <= D(0);
+  Pb1 <= D(1);
+  Pb2 <= D(2);
+  Pb3 <= D(3);
+  
+  -- and CNbGb0gate(CNbGb0, CNb, Gb[0]);
+  CNbGb0 <= CNb and E(0);
+  CNbGb01 <= CNb and E(0) and E(1);
+  CNbGb012 <= CNb and E(0) and E(1) and E(2);
+  
+  -- and Pb0Gb1gate(Pb0Gb1, Pb[0], Gb[1]);
+  Pb0Gb1 <= D(0) and E(1);
+  Pb1Gb2 <= D(1) and E(2);
+  Pb2Gb3 <= D(2) and E(3);
+  
+  Pb0Gb12 <= D(0) and E(1) and E(2);
+  Pb1Gb23 <= D(1) and E(2) and E(3);
+  Pb0Gb123 <= D(0) and E(1) and E(2) and E(3);
+  
+  -- nand Xgate(X, Gb[0], Gb[1], Gb[2], Gb[3]);
+  X <= not (E(0) and E(1) and E(2) and E(3));
+  
+  -- nor Ygate(Y, Pb3,Pb2Gb3,Pb1Gb23,Pb0Gb123);
+  Y <= not (Pb3 or Pb2Gb3 or Pb1Gb23 or Pb0Gb123);
+  
+  -- nand XCNbgate(XCNb, Gb[0], Gb[1], Gb[2], Gb[3], CNb);
+  XCNb <= not (E(0) and E(1) and E(2) and E(3) and CNb);
+  
+  -- nand CN4bgate(CN4b, Y, XCNb);
+  CN4b <= not (Y and XCNb);
+  
+  -- nor C3gate(C[3], Pb2, Pb1Gb2, Pb0Gb12, CNbGb012);
+  C(3) <= not (Pb2 or Pb1Gb2 or Pb0Gb12 or CNbGb012);
+  
+  -- nor C2gate(C[2], Pb1, Pb0Gb1, CNbGb01);
+  C(2) <= not (Pb1 or Pb0Gb1 or CNbGb01);
+  
+  -- nor C1gate(C[1], Pb0, CNbGb0);
+  C(1) <= not (Pb0 or CNbGb0);
+
+  -- Summodule: Line-by-line translation from Verilog
+  -- xor EXD0gate(EXD[0], E[0], D[0]);
+  EXD(0) <= E(0) xor D(0);
+  EXD(1) <= E(1) xor D(1);
+  EXD(2) <= E(2) xor D(2);
+  EXD(3) <= E(3) xor D(3);
+  
+  -- or CM0gate(CM[0], C[0], M);
+  CM(0) <= C(0) or M;
+  CM(1) <= C(1) or M;
+  CM(2) <= C(2) or M;
+  CM(3) <= C(3) or M;
+  
+  -- xor F0gate(F[0], EXD[0], CM[0]);
+  F(0) <= EXD(0) xor CM(0);
+  F(1) <= EXD(1) xor CM(1);
+  F(2) <= EXD(2) xor CM(2);
+  F(3) <= EXD(3) xor CM(3);
+  
+  -- and AEBgate(AEB, F[0], F[1], F[2], F[3]);
+  AEB <= F(0) and F(1) and F(2) and F(3);
 
 end architecture;

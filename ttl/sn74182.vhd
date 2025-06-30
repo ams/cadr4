@@ -7,63 +7,127 @@ use work.misc.all;
 
 entity sn74182 is
   port (
-    xout    : out std_logic;
-    yout    : out std_logic;
-    cout2_n : out std_logic;
-    cout1_n : out std_logic;
-    cout0_n : out std_logic;
+    PBo_e   : out std_logic;  -- Propagate output
+    GBo_e   : out std_logic;  -- Generate output
+    CNZ_e   : out std_logic;  -- Carry out 2 (active-low)
+    CNY_e   : out std_logic;  -- Carry out 1 (active-low)
+    CNX_e   : out std_logic;  -- Carry out 0 (active-low)
 
-    x3      : in  std_logic;
-    y3      : in  std_logic;
-    x2      : in  std_logic;
-    y2      : in  std_logic;
-    x1      : in  std_logic;
-    y1      : in  std_logic;
-    x0      : in  std_logic;
-    y0      : in  std_logic;
-
-    cin_n   : in std_logic
+    PB_e    : in  std_logic_vector(3 downto 0);  -- Propagate inputs [3:0]
+    GB_e    : in  std_logic_vector(3 downto 0);  -- Generate inputs [3:0]
+    CN_e    : in  std_logic   -- Carry in
     );
 end;
 
--- Architecture based on 74182 datasheet equations
-architecture functional of sn74182 is
+-- Gate-level architecture translated line by line from ISCAS 74182 Verilog model
+architecture gate_level of sn74182 is
   -- Input conditioning signals
-  signal x3_i, y3_i, x2_i, y2_i, x1_i, y1_i, x0_i, y0_i, cin_n_i : std_logic;
-begin
-  -- Input conditioning
-  x3_i <= ttl_input(x3);
-  y3_i <= ttl_input(y3);
-  x2_i <= ttl_input(x2);
-  y2_i <= ttl_input(y2);
-  x1_i <= ttl_input(x1);
-  y1_i <= ttl_input(y1);
-  x0_i <= ttl_input(x0);
-  y0_i <= ttl_input(y0);
-  cin_n_i <= ttl_input(cin_n);
-
-  -- equations are from TI 74182 datasheet
-
-  -- Pay attention, in the datasheet, for active-high (X,Y) equations
-  -- Cn on the right hand side is actually Cn_bar, I think it is a typo.
-  -- This can be verified by applying de morgan's law to the P, G equations.
-
-  -- Carry (active-low, Cout_bar) outputs
-  -- C_bar(n+x) = not (Y0 (X0 + Cn_bar))
-  -- if you apply de morgan's law to Cn+x equation, this is the same.
-  cout0_n <= y0_i and (x0_i or cin_n_i);
-  cout1_n <= y1_i and (x1_i or (y0_i and (x0_i or cin_n_i)));
-  cout2_n <= y2_i and (x2_i or (y1_i and (x1_i or (y0_i and (x0_i or cin_n_i)))));
-
-  -- Group (active-high, X, Y) outputs (from datasheet):
-  -- group propagate
-  -- X = X3 + X2 + X1 + X0
-  -- if you apply de morgan's law to P_bar equation, this is the same.
-  xout <= x3_i or x2_i or x1_i or x0_i;
+  signal PB_i : std_logic_vector(3 downto 0);
+  signal GB_i : std_logic_vector(3 downto 0);
+  signal CN_i : std_logic;
   
-  -- group generate
-  -- Y = Y3(X3 + Y2)(X3 + X2 + Y1)(X3 + X2 + X1 + Y0)
-  -- if you apply de morgan's law to G_bar equation, this is the same.
-  yout <= y3_i and (x3_i or y2_i) and (x3_i or x2_i or y1_i) and (x3_i or x2_i or x1_i or y0_i);
+  -- Internal signals matching Verilog model exactly
+  signal CNB : std_logic;
+  
+  -- AND gate outputs - first level
+  signal PB0GB0 : std_logic;
+  signal CNBGB0 : std_logic;
+  
+  -- AND gate outputs - second level
+  signal PB1GB1 : std_logic;
+  signal PB0GB01 : std_logic;
+  signal CNBGB01 : std_logic;
+  
+  -- AND gate outputs - third level
+  signal PB2GB2 : std_logic;
+  signal PB1GB12 : std_logic;
+  signal PB0GB012 : std_logic;
+  signal CNBGB012 : std_logic;
+  
+  -- AND gate outputs - fourth level
+  signal PB3GB3 : std_logic;
+  signal PB2GB23 : std_logic;
+  signal PB1GB123 : std_logic;
+  signal GB0123 : std_logic;
+  
+  -- Output signals
+  signal PBo : std_logic;
+  signal GBo : std_logic;
+  signal CNX : std_logic;
+  signal CNY : std_logic;
+  signal CNZ : std_logic;
 
-end;
+begin
+
+  -- Input conditioning
+  PB_i <= ttl_input(PB_e(3)) & ttl_input(PB_e(2)) & ttl_input(PB_e(1)) & ttl_input(PB_e(0));
+  GB_i <= ttl_input(GB_e(3)) & ttl_input(GB_e(2)) & ttl_input(GB_e(1)) & ttl_input(GB_e(0));
+  CN_i <= ttl_input(CN_e);
+
+  -- Line-by-line translation of Verilog gates:
+  
+  -- not CNBgate(CNB, CN);
+  CNB <= not CN_i;
+
+  -- and PB0GB0gate(PB0GB0, PB[0], GB[0]);
+  PB0GB0 <= PB_i(0) and GB_i(0);
+  
+  -- and CNBGB0gate(CNBGB0, CNB, GB[0]);
+  CNBGB0 <= CNB and GB_i(0);
+
+  -- and PB1GB1gate(PB1GB1, PB[1], GB[1]);
+  PB1GB1 <= PB_i(1) and GB_i(1);
+  
+  -- and PB0GB01gate(PB0GB01, PB[0], GB[0], GB[1]);
+  PB0GB01 <= PB_i(0) and GB_i(0) and GB_i(1);
+  
+  -- and CNBGB01gate(CNBGB01, CNB, GB[0], GB[1]);
+  CNBGB01 <= CNB and GB_i(0) and GB_i(1);
+
+  -- and PB2GB2gate(PB2GB2, PB[2], GB[2]);
+  PB2GB2 <= PB_i(2) and GB_i(2);
+  
+  -- and PB1GB12gate(PB1GB12, PB[1], GB[1], GB[2]);
+  PB1GB12 <= PB_i(1) and GB_i(1) and GB_i(2);
+  
+  -- and PB0GB012gate(PB0GB012, PB[0], GB[0], GB[1], GB[2]);
+  PB0GB012 <= PB_i(0) and GB_i(0) and GB_i(1) and GB_i(2);
+  
+  -- and CNBGB012gate(CNBGB012, CNB, GB[0], GB[1], GB[2]);
+  CNBGB012 <= CNB and GB_i(0) and GB_i(1) and GB_i(2);
+
+  -- and PB3GB3gate(PB3GB3, PB[3], GB[3]);
+  PB3GB3 <= PB_i(3) and GB_i(3);
+  
+  -- and PB2GB23gate(PB2GB23, PB[2], GB[2], GB[3]);
+  PB2GB23 <= PB_i(2) and GB_i(2) and GB_i(3);
+  
+  -- and PB1GB123gate(PB1GB123, PB[1], GB[1], GB[2], GB[3]);
+  PB1GB123 <= PB_i(1) and GB_i(1) and GB_i(2) and GB_i(3);
+  
+  -- and GB0123gate(GB0123, GB[0], GB[1], GB[2], GB[3]);
+  GB0123 <= GB_i(0) and GB_i(1) and GB_i(2) and GB_i(3);
+
+  -- or PBogate(PBo,PB[0],PB[1],PB[2],PB[3]);
+  PBo <= PB_i(0) or PB_i(1) or PB_i(2) or PB_i(3);
+
+  -- or GBogate(GBo,PB3GB3,PB2GB23,PB1GB123,GB0123);
+  GBo <= PB3GB3 or PB2GB23 or PB1GB123 or GB0123;
+
+  -- nor CNZgate(CNZ,PB2GB2,PB1GB12,PB0GB012,CNBGB012);
+  CNZ <= not (PB2GB2 or PB1GB12 or PB0GB012 or CNBGB012);
+
+  -- nor CNYgate(CNY,PB1GB1,PB0GB01,CNBGB01);
+  CNY <= not (PB1GB1 or PB0GB01 or CNBGB01);
+
+  -- nor CNXgate(CNX,PB0GB0,CNBGB0);
+  CNX <= not (PB0GB0 or CNBGB0);
+
+  -- Output assignments
+  PBo_e <= PBo;
+  GBo_e <= GBo;
+  CNZ_e <= CNZ;  -- NOR output is active-low as required
+  CNY_e <= CNY;  -- NOR output is active-low as required
+  CNX_e <= CNX;  -- NOR output is active-low as required
+
+end architecture;
