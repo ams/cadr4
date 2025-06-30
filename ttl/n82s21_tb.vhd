@@ -278,6 +278,82 @@ begin
     -- Now should see the new memory content: d0='0' (from '0'), d1='Z' (from '1')
     assert d0 = '0' and d1 = 'Z' report "Test 12 failed" severity error;
 
+    -- Test 13: Test timing sequence - data input changes, address changes, then wclk
+    -- Setup: we's=0, latch=1 throughout, ce=1
+    ce <= '1';
+    latch_n <= '1';  -- transparent mode throughout
+    we0_n <= '0';    -- enable writes throughout
+    we1_n <= '0';
+    wclk_n <= '1';   -- start with wclk high
+    
+    -- Step 1: Change data inputs first
+    i0 <= '1';  -- set data to write
+    i1 <= '0';
+    wait for 5 ns;
+    
+    -- Step 2: Change address (to a fresh address we haven't used)
+    a4 <= '0'; a3 <= '1'; a2 <= '0'; a1 <= '0'; a0 <= '0'; -- address 8
+    wait for 5 ns;
+    -- At this point, we should see whatever was previously stored at address 8 (likely 'Z','Z' if uninitialized)
+    
+    -- Step 3: Now bring wclk down to perform the write
+    wclk_n <= '0';  -- falling edge - this should write i0='1', i1='0' to address 8
+    wait for 5 ns;
+    -- Question: Is the write immediately reflected in outputs?
+    -- Expected: d0 should show 'Z' (from i0='1'), d1 should show '0' (from i1='0')
+    assert d0 = 'Z' and d1 = '0' report "Test 13a: Write not immediately reflected" severity note;
+    
+    -- Step 4: Complete the write cycle
+    wclk_n <= '1';
+    wait for 5 ns;
+    -- Should definitely see the written data now
+    assert d0 = 'Z' and d1 = '0' report "Test 13b: Write not visible after wclk cycle" severity error;
+    
+    -- Step 5: Change address to see if outputs change to something else
+    a4 <= '0'; a3 <= '1'; a2 <= '0'; a1 <= '0'; a0 <= '1'; -- address 9 (uninitialized)
+    wait for 5 ns;
+    -- Should see different outputs (likely 'Z','Z' for uninitialized memory)
+    assert d0 = 'Z' and d1 = 'Z' report "Test 13c: Address change not reflected in outputs" severity note;
+    
+    -- Step 6: Go back to address 8 to confirm our write is still there
+    a4 <= '0'; a3 <= '1'; a2 <= '0'; a1 <= '0'; a0 <= '0'; -- address 8
+    wait for 5 ns;
+    -- Should see our written data again
+    assert d0 = 'Z' and d1 = '0' report "Test 13d: Written data lost" severity error;
+    
+    -- Step 7: Write different data to address 9 using the same sequence
+    -- Change data first
+    i0 <= '0';  -- different data
+    i1 <= '1';
+    wait for 5 ns;
+    
+    -- Change address
+    a4 <= '0'; a3 <= '1'; a2 <= '0'; a1 <= '0'; a0 <= '1'; -- address 9
+    wait for 5 ns;
+    
+    -- Write with wclk
+    wclk_n <= '0';  -- write i0='0', i1='1' to address 9
+    wait for 5 ns;
+    -- Check immediate reflection
+    assert d0 = '0' and d1 = 'Z' report "Test 13e: Second write not immediately reflected" severity note;
+    
+    wclk_n <= '1';
+    wait for 5 ns;
+    assert d0 = '0' and d1 = 'Z' report "Test 13f: Second write not visible after wclk cycle" severity error;
+    
+    -- Final verification: toggle between addresses to see both values
+    a4 <= '0'; a3 <= '1'; a2 <= '0'; a1 <= '0'; a0 <= '0'; -- address 8
+    wait for 5 ns;
+    assert d0 = 'Z' and d1 = '0' report "Test 13g: First address data corrupted" severity error;
+    
+    a4 <= '0'; a3 <= '1'; a2 <= '0'; a1 <= '0'; a0 <= '1'; -- address 9
+    wait for 5 ns;
+    assert d0 = '0' and d1 = 'Z' report "Test 13h: Second address data corrupted" severity error;
+    
+    -- Clean up
+    we0_n <= '1';
+    we1_n <= '1';
+
     wait;
   end process;
 

@@ -54,14 +54,14 @@ begin
         -- this is an open-collector output component
         -- it can only drive low or high-z
         -- an external pull-up resistor is required to drive high
-        o7 <= '0' when data(7) = '0' else 'Z';
-        o6 <= '0' when data(6) = '0' else 'Z';
-        o5 <= '0' when data(5) = '0' else 'Z';
-        o4 <= '0' when data(4) = '0' else 'Z';
-        o3 <= '0' when data(3) = '0' else 'Z';
-        o2 <= '0' when data(2) = '0' else 'Z';
-        o1 <= '0' when data(1) = '0' else 'Z';
-        o0 <= '0' when data(0) = '0' else 'Z';
+        o7 <= '0' when data(7) = '0' else 'Z' when data(7) = '1' else data(7);
+        o6 <= '0' when data(6) = '0' else 'Z' when data(6) = '1' else data(6);
+        o5 <= '0' when data(5) = '0' else 'Z' when data(5) = '1' else data(5);
+        o4 <= '0' when data(4) = '0' else 'Z' when data(4) = '1' else data(4);
+        o3 <= '0' when data(3) = '0' else 'Z' when data(3) = '1' else data(3);
+        o2 <= '0' when data(2) = '0' else 'Z' when data(2) = '1' else data(2);
+        o1 <= '0' when data(1) = '0' else 'Z' when data(1) = '1' else data(1);
+        o0 <= '0' when data(0) = '0' else 'Z' when data(0) = '1' else data(0);
       end if;
     elsif ce_n_i = '1' then
       o7 <= 'Z'; o6 <= 'Z'; o5 <= 'Z'; o4 <= 'Z';

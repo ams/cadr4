@@ -34,9 +34,9 @@ end entity;
 architecture behavioral of n82s21 is
   signal a0_i, a1_i, a2_i, a3_i, a4_i, ce_i, i0_i, i1_i, latch_n_i, wclk_n_i, we0_n_i, we1_n_i : std_logic;
   type ram_t is array (0 to 31) of std_logic_vector(1 downto 0);
-  signal ram : ram_t;  -- Uninitialized RAM (realistic)
+  signal ram : ram_t;  -- Uninitialized RAM (defaults to 'U')
   signal addr : unsigned(4 downto 0);
-  signal output_latches : std_logic_vector(1 downto 0);  -- Uninitialized latches
+  signal output_latches : std_logic_vector(1 downto 0);  -- Uninitialized latches (defaults to 'U')
 begin
 
   a0_i <= ttl_input(a0);
@@ -57,7 +57,7 @@ begin
   ------------------------------------------------------------------
   -- write on falling edge of wclk_n
   ------------------------------------------------------------------
-  process(wclk_n_i)
+  process(all)
   begin
     if falling_edge(wclk_n_i) then
       if ce_i = '1' then
@@ -79,7 +79,7 @@ begin
   ------------------------------------------------------------------
   -- output latch control: latch data on falling edge of latch_n
   ------------------------------------------------------------------
-  process(latch_n_i)
+  process(all)
   begin
     if falling_edge(latch_n_i) then
       if ce_i = '1' then
@@ -118,8 +118,8 @@ begin
       
       -- Drive open-collector outputs
       -- Can only drive low or high-z, external pull-up required for high
-      d0 <= '0' when output_word(0) = '0' else 'Z';
-      d1 <= '0' when output_word(1) = '0' else 'Z';
+      d0 <= '0' when output_word(0) = '0' else 'Z' when output_word(0) = '1' else output_word(0);
+      d1 <= '0' when output_word(1) = '0' else 'Z' when output_word(1) = '1' else output_word(1);
       
     elsif ce_i = '0' then
       d0 <= 'Z';

@@ -53,16 +53,31 @@ architecture structural of sn74181 is
   -- Summodule internal signals
   signal EXD, CM : std_logic_vector(3 downto 0);
   
+  -- Special function detection signals
+  signal set_zero, set_ones : std_logic;
+  signal F_normal : std_logic_vector(3 downto 0);
+  
 begin
 
   -- Input assignments
-  A <= A_e;
-  B <= B_e;
-  S <= S_e;
-  M <= M_e;
-  CNb <= CNb_e;
+  A <= ttl_input(A_e(3)) & ttl_input(A_e(2)) & ttl_input(A_e(1)) & ttl_input(A_e(0));
+  B <= ttl_input(B_e(3)) & ttl_input(B_e(2)) & ttl_input(B_e(1)) & ttl_input(B_e(0));
+  S <= ttl_input(S_e(3)) & ttl_input(S_e(2)) & ttl_input(S_e(1)) & ttl_input(S_e(0));
+  M <= ttl_input(M_e);
+  CNb <= ttl_input(CNb_e);
   
-  -- Output assignments
+  -- Special function detection
+  -- This is required to set outputs zero or one when inputs contains Xs or Us.
+  -- It only hijacks F outputs and AEB output, other signals are not affected.
+  -- M=1, S="0011" -> set zero
+  set_zero <= M and (not S(3)) and (not S(2)) and S(1) and S(0);
+  -- M=1, S="1100" -> set ones  
+  set_ones <= M and S(3) and S(2) and (not S(1)) and (not S(0));
+  
+  -- Output assignments with special function override
+  F <= "0000" when set_zero = '1' else
+       "1111" when set_ones = '1' else
+       F_normal;
   F_e <= F;
   CN4b_e <= CN4b;
   AEB_e <= 'Z' when AEB = '1' else AEB;
@@ -172,12 +187,14 @@ begin
   CM(3) <= C(3) or M;
   
   -- xor F0gate(F[0], EXD[0], CM[0]);
-  F(0) <= EXD(0) xor CM(0);
-  F(1) <= EXD(1) xor CM(1);
-  F(2) <= EXD(2) xor CM(2);
-  F(3) <= EXD(3) xor CM(3);
+  F_normal(0) <= EXD(0) xor CM(0);
+  F_normal(1) <= EXD(1) xor CM(1);
+  F_normal(2) <= EXD(2) xor CM(2);
+  F_normal(3) <= EXD(3) xor CM(3);
   
   -- and AEBgate(AEB, F[0], F[1], F[2], F[3]);
-  AEB <= F(0) and F(1) and F(2) and F(3);
+  AEB <= '1' when set_ones = '1' else  -- All F bits are 1
+         '0' when set_zero = '1' else  -- All F bits are 0  
+         (F_normal(0) and F_normal(1) and F_normal(2) and F_normal(3));
 
 end architecture;

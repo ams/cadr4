@@ -150,9 +150,11 @@ endif
 
 # modify clock2_1c10, change \machruna l\ to \-machruna\
 # this seems to be a mistake in drw or soap, in wlr the 1c10 is connected to -machruna
+# also change \-tpw70\ that resets the TPWP signal to \-tpw45\ to keep it within the cycle
 cadr/cadr_clock2_suds.vhd: $(DRWDIR)/clock2.drw $(BUILDDIR)/soap $(FIXSUDSPY) Makefile dip/dip.vhd
 	$(BUILDDIR)/soap -n $< > $@
 	sed $(SEDOPTIONS) 's/\\machruna l\\/\\-machruna\\/g' $@
+	sed $(SEDOPTIONS) 's/clock2_1c06.*p10 => \\-tpw70\\/clock2_1c06 : dip_74s10 port map (p8 => \\@1c07,p9\\, p9 => \\-clock reset b\\, p10 => \\-tpw45\\, p11 => \\@1c07,p8\\);/' $@
 	python3 $(FIXSUDSPY) -v $@
 
 # add rom file

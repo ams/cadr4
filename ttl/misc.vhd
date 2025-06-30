@@ -64,7 +64,7 @@ package body misc is
       when 'Z' => return '1';  -- High impedance gets weak pull-up, return strong '1'
       when 'H' => return '1';  -- Weak high becomes strong '1'
       when 'L' => return '0';  -- Weak low becomes strong '0'
-      when others => return i; -- Pass through '0', '1', 'X', 'U', 'W', '-'
+      when others => return i; -- Pass through
     end case;
   end function;
 

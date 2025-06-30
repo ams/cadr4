@@ -29,7 +29,9 @@ TTLDM is a special component, see the internal comments for how it is implemente
 
 # Initial State
 
-CADR reset is a bit strange. It seems like not all the required things are reset on power on reset (e.g. D_FF for IR25 driving -ILONG required for clock to tick). Because of this, the initial state of all memory components (FFs, registers and counters, RAMs) are set to zero. PROMs are initialized from hex files.
+CADR reset is minimal. It seems like not all the required things are reset on power on reset (e.g. D_FF for IR25 driving -ILONG required for clock to tick). Because of this, the initial state of all memory components (FFs, registers and counters) are set to zero. PROMs are initialized from hex files.
+
+RAMs (d2147, dm93425a and n82s21) are not initialized to zero. n82s21 has open-collector outputs, but it also outputs U if memory is not initialized. In order to make this work sn74181 (ALU) has a special handling for set zeroes and set ones operation. (see ALU section below)
 
 # Naming
 
@@ -145,7 +147,7 @@ All ICs with open collector outputs are explicitly indicated.
 - sn74182: look-ahead carry generator
 - sn74283: 4-bit binary full adder with fast carry
 
-sn74181 is implemented by translating the gate-level model available in Verilog (https://tumbleweed.nu/r/iscas.restore/doc/trunk/index.html). It is also possible to implement sn74182 and sn74283 like this.
+sn74181 is implemented by translating the gate-level model available in Verilog (https://tumbleweed.nu/r/iscas.restore/doc/trunk/index.html). However, it requires a hack. (see ALU>Hack section below)
 
 ### Parity Generator/Checker
 
@@ -161,6 +163,10 @@ sn74181 is implemented by translating the gate-level model available in Verilog 
 # ALU
 
 The sn74181 4-bit ALU and the sn74182 Carry Look-Ahead (CLA) implements the ALU functionality. They are tested both individually and also in various combinations forming 8, 16 and 32 bit ALUs. Finally, CADR ALU is tested using the cadr_alu0, cadr_alu1 and cadr_aluc4 components.
+
+## Hack
+
+Because gate-model ALU would output U or X values if A or B contains U or X, a special hack is implemented to output zeroes or ones for logical operations F=0 and F=1.
 
 ## Testbenches
 
