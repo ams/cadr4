@@ -114,6 +114,17 @@ Uses n82s21.
 - Write always enabled.
 - Write Clock: -MWPA, -MWPB (WP4B nand DESTMD)
 
+### Shared use of M and A Memory
+
+When functional destination is used in ALU and BYTE instructions (IR<25>=0), an M address has to be specified independent of it is intended or not. 0 is selected for this purpose. So M[0] is like a garbage register (probably set in CADRLP), always written when functional write is made without a specific M target.
+
+Also, ALU and BYTE instructions set DEST and IR<25> not set asserts DESTM. Meaning all ALU and BYTE instructions write to A mem and some (IR<25>=0) also to M mem. When IR<25>=0, the M address is also used as A address (there is selector in actl for this). Hence, when M[0] is written as garbage A[0] is also written.
+
+This can be observed in the following instruction from PROM:
+
+00154 0000101400010317:	 ((Q-R) ADD ALU-CARRY-IN-ONE M-ONES A-ZERO)
+
+
 ### PDL Memory (pdlctl, pdl0, pdl1)
 
 Uses 93425a.

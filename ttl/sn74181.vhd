@@ -65,7 +65,7 @@ begin
   -- Output assignments
   F_e <= F;
   CN4b_e <= CN4b;
-  AEB_e <= AEB;
+  AEB_e <= 'Z' when AEB = '1' else AEB;
   X_e <= X;
   Y_e <= Y;
   
