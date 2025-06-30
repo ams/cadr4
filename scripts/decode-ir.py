@@ -101,59 +101,55 @@ class CADRDecoder:
     
     # M source functional sources (IR<30-26> when IR<31>=1)
     M_FUNCTIONAL_SOURCES = {
-        0x00: "DISPATCH-CONSTANT",
-        0x01: "SPC-POINTER-AND-DATA",
-        0x02: "PDL-POINTER",
-        0x03: "PDL-INDEX",
-        0x05: "PDL-BUFFER-INDEXED",
-        0x06: "OPC-REGISTERS",
-        0x07: "Q-REGISTER",
-        0x0A: "VMA-REGISTER",
-        0x0B: "MEMORY-MAP-DATA",
-        0x0C: "MD-REGISTER",
-        0x0D: "LC-LOCATION-COUNTER",
-        0x0E: "SPC-POINTER-AND-DATA-POP",
-        0x18: "PDL-BUFFER-POINTER-POP",
-        0x19: "PDL-BUFFER-POINTER"
+        0o00: "DISPATCH-CONSTANT",
+        0o01: "SPC-POINTER-AND-DATA",
+        0o02: "PDL-POINTER",
+        0o03: "PDL-INDEX",
+        0o05: "PDL-BUFFER-BY-INDEX",
+        0o06: "OPC-REGISTERS",
+        0o07: "Q-REGISTER",
+        0o12: "VMA-REGISTER",
+        0o13: "MAP[MD]",
+        0o14: "MD-REGISTER",
+        0o15: "LC-LOCATION-COUNTER",
+        0o16: "SPC-POINTER-AND-DATA-POP",
+        0o30: "PDL-BUFFER-BY-POINTER-POP",
+        0o31: "PDL-BUFFER-BY-POINTER"
     }
     
     # Functional destinations (IR<23-19> when IR<25>=0)
     FUNCTIONAL_DESTINATIONS = {
-        0x00: "NONE",
-        0x01: "LC-LOCATION-COUNTER",
-        0x02: "INTERRUPT-CONTROL",
-        0x03: "IMOD-ENABLE",  # Based on source decode logic
-        0x04: "UNUSED-04",
-        0x05: "UNUSED-05",
-        0x06: "UNUSED-06",
-        0x07: "UNUSED-07",
-        0x08: "UNUSED-08",
-        0x09: "UNUSED-09",
-        0x0A: "PDL-POINTER-ADDRESSED",
-        0x0B: "PDL-POINTER-ADDRESSED-PUSH",
-        0x0C: "PDL-INDEX-ADDRESSED",
-        0x0D: "PDL-INDEX",
-        0x0E: "PDL-POINTER",
-        0x0F: "SPC-DATA-PUSH",
-        0x10: "OA-REGISTER-LOW",
-        0x11: "OA-REGISTER-HIGH",
-        0x12: "VMA-REGISTER-LOW",
-        0x13: "VMA-REGISTER-HIGH", 
-        0x14: "VMA-REGISTER",
-        0x15: "VMA-START-READ",
-        0x16: "VMA-START-WRITE",
-        0x17: "VMA-WRITE-MAP",
-        0x18: "MD-REGISTER-LOW",
-        0x19: "MD-REGISTER-HIGH",
-        0x1A: "UNUSED-1A",
-        0x1B: "UNUSED-1B",
-        0x1C: "UNUSED-1C",
-        0x1D: "UNUSED-1D",
-        0x1E: "MD-REGISTER",
-        0x1F: "MD-START-READ",
-        # Note: Higher values possible with 5-bit field
-        0x20: "MD-START-WRITE",
-        0x21: "MD-WRITE-MAP"
+        0o00: "NONE",
+        0o01: "LC-LOCATION-COUNTER",
+        0o02: "INTERRUPT-CONTROL",
+        0o03: "IMOD-ENABLE",  # Based on source decode logic
+        0o04: "UNUSED-04",
+        0o05: "UNUSED-05",
+        0o06: "UNUSED-06",
+        0o07: "UNUSED-07",
+        0o10: "C-PDL-BUFFER-POINTER",
+        0o11: "C-PDL-BUFFER-POINTER-PUSH",
+        0o12: "C-PDL-BUFFER-INDEX",
+        0o13: "PDL-BUFFER-INDEX",
+        0o14: "PDL-BUFFER-POINTER",
+        0o15: "SPC-DATA-PUSH",
+        0o16: "OA-REGISTER-LOW",
+        0o17: "OA-REGISTER-HIGH",
+        0o20: "VMA-REGISTER",
+        0o21: "VMA-REGISTER-START-READ", 
+        0o22: "VMA-REGISTER-START-WRITE",
+        0o23: "VMA-REGISTER-WRITE-MAP",
+        0o24: "UNUSED-24",
+        0o25: "UNUSED-25",
+        0o26: "UNUSED-26",
+        0o30: "MD-REGISTER-MEMORY-DATA",
+        0o31: "MD-REGISTER-START-READ",
+        0o32: "MD-REGISTER-START-WRITE",
+        0o33: "MD-REGISTER-WRITE-MAP",
+        0o34: "UNUSED-34",
+        0o35: "UNUSED-35",
+        0o36: "UNUSED-36",
+        0o37: "UNUSED-37"
     }
 
     def __init__(self):
@@ -221,8 +217,13 @@ class CADRDecoder:
             func_dest = (dest >> 5) & 0x1F
             m_dest = dest & 0x1F
             func_name = self.FUNCTIONAL_DESTINATIONS.get(func_dest, f"UNKNOWN-{self.format_number(func_dest, 2)}")
-            dest_desc = f"{func_name} + M[{self.format_number(m_dest, 2)}]"
-            result.append(self.format_line("IR<25-14>", dest_value, "Destination", dest_desc))
+            
+            # Show functional destination and M parts separately
+            func_value = self.format_number(func_dest, 2)
+            m_value = self.format_number(m_dest, 2)
+            dest_parts = f"{func_value},{m_value}"
+            dest_desc = f"{func_name} + M[{m_value}]"
+            result.append(self.format_line("IR<25-14>", dest_parts, "Destination", dest_desc))
         
         # Output bus control (IR<13-12>)
         out_ctrl = (inst_value >> 12) & 3
@@ -364,8 +365,13 @@ class CADRDecoder:
             func_dest = (dest >> 5) & 0x1F
             m_dest = dest & 0x1F
             func_name = self.FUNCTIONAL_DESTINATIONS.get(func_dest, f"UNKNOWN-{self.format_number(func_dest, 2)}")
-            dest_desc = f"{func_name} + M[{self.format_number(m_dest, 2)}]"
-            result.append(self.format_line("IR<25-14>", dest_value, "Destination", dest_desc))
+            
+            # Show functional destination and M parts separately
+            func_value = self.format_number(func_dest, 2)
+            m_value = self.format_number(m_dest, 2)
+            dest_parts = f"{func_value},{m_value}"
+            dest_desc = f"{func_name} + M[{m_value}]"
+            result.append(self.format_line("IR<25-14>", dest_parts, "Destination", dest_desc))
         
         # Byte operation control (IR<13-12>)
         mr_bit = (inst_value >> 13) & 1  # Mask Rotate
