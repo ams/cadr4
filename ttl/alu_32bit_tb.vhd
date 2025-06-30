@@ -39,11 +39,11 @@ architecture testbench of alu_32bit_tb is
   
   -- Carry lookahead signals (active low) - 3 levels
   -- First level CLA (bits 0-15)
-  signal cout0_n, cout1_n, cout2_n : std_logic; -- intermediate carries from first CLA
+  signal cout4_n, cout8_n, cout12_n : std_logic; -- carries at bit positions 4, 8, 12
   signal x0_out, y0_out : std_logic; -- first CLA outputs
   
   -- Second level CLA (bits 16-31) 
-  signal cout4_n, cout5_n, cout6_n : std_logic; -- intermediate carries from second CLA
+  signal cout20_n, cout24_n, cout28_n : std_logic; -- carries at bit positions 20, 24, 28
   signal x1_out, y1_out : std_logic; -- second CLA outputs
   
   -- Third level CLA (combines the two 16-bit sections)
@@ -72,7 +72,7 @@ begin
     B_e => s_b(7 downto 4),
     S_e => s_s,
     M_e => s_m,
-    CNb_e => cout0_n,  -- Carry from first CLA
+    CNb_e => cout4_n,  -- Carry from bit position 4
     F_e => alu1_f,
     X_e => alu1_x,
     Y_e => alu1_y,
@@ -86,7 +86,7 @@ begin
     B_e => s_b(11 downto 8),
     S_e => s_s,
     M_e => s_m,
-    CNb_e => cout1_n,  -- Carry from first CLA
+    CNb_e => cout8_n,  -- Carry from bit position 8
     F_e => alu2_f,
     X_e => alu2_x,
     Y_e => alu2_y,
@@ -100,7 +100,7 @@ begin
     B_e => s_b(15 downto 12),
     S_e => s_s,
     M_e => s_m,
-    CNb_e => cout2_n,  -- Carry from first CLA
+    CNb_e => cout12_n,  -- Carry from bit position 12
     F_e => alu3_f,
     X_e => alu3_x,
     Y_e => alu3_y,
@@ -128,7 +128,7 @@ begin
     B_e => s_b(23 downto 20),
     S_e => s_s,
     M_e => s_m,
-    CNb_e => cout4_n,  -- Carry from second CLA
+    CNb_e => cout20_n,  -- Carry from bit position 20
     F_e => alu5_f,
     X_e => alu5_x,
     Y_e => alu5_y,
@@ -142,7 +142,7 @@ begin
     B_e => s_b(27 downto 24),
     S_e => s_s,
     M_e => s_m,
-    CNb_e => cout5_n,  -- Carry from second CLA
+    CNb_e => cout24_n,  -- Carry from bit position 24
     F_e => alu6_f,
     X_e => alu6_x,
     Y_e => alu6_y,
@@ -156,7 +156,7 @@ begin
     B_e => s_b(31 downto 28),
     S_e => s_s,
     M_e => s_m,
-    CNb_e => cout6_n,  -- Carry from second CLA
+    CNb_e => cout28_n,  -- Carry from bit position 28
     F_e => alu7_f,
     X_e => alu7_x,
     Y_e => alu7_y,
@@ -169,9 +169,9 @@ begin
     CNB_e => s_cin_n,
     X_e => alu3_x & alu2_x & alu1_x & alu0_x,  -- X[3:0] = alu3_x, alu2_x, alu1_x, alu0_x
     Y_e => alu3_y & alu2_y & alu1_y & alu0_y,  -- Y[3:0] = alu3_y, alu2_y, alu1_y, alu0_y
-    CNX_e => cout0_n,
-    CNY_e => cout1_n,
-    CNZ_e => cout2_n,
+    CNX_e => cout4_n,
+    CNY_e => cout8_n,
+    CNZ_e => cout12_n,
     Xo_e => x0_out,
     Yo_e => y0_out
   );
@@ -181,9 +181,9 @@ begin
     CNB_e => cout16_n,
     X_e => alu7_x & alu6_x & alu5_x & alu4_x,  -- X[3:0] = alu7_x, alu6_x, alu5_x, alu4_x
     Y_e => alu7_y & alu6_y & alu5_y & alu4_y,  -- Y[3:0] = alu7_y, alu6_y, alu5_y, alu4_y
-    CNX_e => cout4_n,
-    CNY_e => cout5_n,
-    CNZ_e => cout6_n,
+    CNX_e => cout20_n,
+    CNY_e => cout24_n,
+    CNZ_e => cout28_n,
     Xo_e => x1_out,
     Yo_e => y1_out
   );
@@ -196,8 +196,8 @@ begin
     CNX_e => cout16_n,  -- Carry from low 16 bits to high 16 bits
     CNY_e => open,      -- Not used
     CNZ_e => open,      -- Not used
-    Xo_e => x2_out,    -- Not used
-    Yo_e => y2_out     -- Not used
+    Xo_e => x2_out,    -- Overall propagate output (used for testing)
+    Yo_e => y2_out     -- Overall generate output (used for testing)
   );
   
   -- Combine ALU outputs
@@ -246,8 +246,8 @@ begin
       -- Wait for propagation
       wait for 30 ns;
       
-      -- Check results (only check F output for now, like CADR ALU)
-      if s_f = v_f then
+      -- Check results (F, X, and Y outputs) - try first CLA outputs
+      if s_f = v_f and x0_out = v_x and y0_out = v_y then
         pass_count := pass_count + 1;
         report "PASS: Test " & integer'image(test_count) & 
                " | A=" & to_hstring(v_a) & 
@@ -263,7 +263,9 @@ begin
                " M='" & std_logic'image(v_m) & 
                "' S=" & to_bstring(v_s) & 
                " CNb='" & std_logic'image(s_cin_n) & 
-               "' Expected F=" & to_hstring(v_f) & " Got F=" & to_hstring(s_f)
+               "' Expected F=" & to_hstring(v_f) & " Got F=" & to_hstring(s_f) &
+               " Expected X=" & std_logic'image(v_x) & " Got X=" & std_logic'image(x0_out) &
+               " Expected Y=" & std_logic'image(v_y) & " Got Y=" & std_logic'image(y0_out)
                severity error;
       end if;
     end loop;

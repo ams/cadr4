@@ -219,60 +219,70 @@ begin
   
   -- Test process
   test_proc: process
-    file test_vectors : text;
-    variable status : boolean;
+    file test_vectors_file : text;
     variable test_line : line;
-    variable a_val, b_val, expected_val : std_logic_vector(31 downto 0);
-    variable alu_mode_val, cin_val, dummy_carry_val : std_logic;
-    variable alu_sel_val : std_logic_vector(3 downto 0);
+    variable v_a, v_b, v_f : std_logic_vector(31 downto 0);
+    variable v_m, v_cin, v_cout, v_x, v_y : std_logic;
+    variable v_s : std_logic_vector(3 downto 0);
     variable ir2, ir3, ir4, ir5, ir6, ir7 : std_logic;
     variable full_ir : std_logic_vector(7 downto 0);
     variable test_count : integer := 0;
+    variable pass_count : integer := 0;
   begin
     report "=== Starting CADR ALU Tests ===";
     
-    file_open(test_vectors, "build/cadr_alu_tb.txt", read_mode);
+    file_open(test_vectors_file, "build/alu_32bit_tb.txt", read_mode);
     
-    while not endfile(test_vectors) loop
-      readline(test_vectors, test_line);
-      hread(test_line, a_val);
-      hread(test_line, b_val);
-      read(test_line, alu_mode_val);
-      read(test_line, alu_sel_val);
-      read(test_line, cin_val);
-      hread(test_line, expected_val);
-      read(test_line, dummy_carry_val);  -- Read but ignore carry value
+    while not endfile(test_vectors_file) loop
+      readline(test_vectors_file, test_line);
+      test_count := test_count + 1;
+      
+      -- Read test vector: A(32bit) B(32bit) M(1bit) S(4bit) Cin(1bit) F(32bit) Cout(1bit) X(1bit) Y(1bit)
+      read(test_line, v_a);
+      read(test_line, v_b);
+      read(test_line, v_m);
+      read(test_line, v_s);
+      read(test_line, v_cin);
+      read(test_line, v_f);
+      read(test_line, v_cout);
+      read(test_line, v_x);
+      read(test_line, v_y);
 
+      -- Convert 74181-style inputs to CADR IR format
       -- pay attention to polarity and position changes here
-      ir3 := alu_sel_val(3);
-      ir4 := alu_sel_val(2);
-      ir6 := not alu_sel_val(1);
-      ir5 := not alu_sel_val(0);
-      ir7 := not alu_mode_val;
-      ir2 := cin_val;
+      ir3 := v_s(3);
+      ir4 := v_s(2);
+      ir6 := not v_s(1);
+      ir5 := not v_s(0);
+      ir7 := not v_m;
+      ir2 := not v_cin;  -- Invert CIN for active-low carry system
       -- ir1 and ir0 are tied to "00"
       full_ir := ir7 & ir6 & ir5 & ir4 & ir3 & ir2 & "00";
       
-      -- Connect a_val to ALU's M port and b_val to ALU's A port
-      a_input <= b_val;
-      m_input <= a_val;
+      -- Connect v_a to ALU's M port and v_b to ALU's A port
+      a_input <= v_b;
+      m_input <= v_a;
       ir_input <= full_ir;
-      wait for 10 ns;
+      wait for 30 ns;
       
-      test_count := test_count + 1;
-      
-      if alu_output = expected_val then
-        report "PASS: Test " & integer'image(test_count) &
-        " ALU_MODE=" & std_logic'image(alu_mode_val) & 
-        " ALU_SEL=" & to_bstring(alu_sel_val) & 
-        " CIN=" & std_logic'image(cin_val);
+      if alu_output = v_f then
+        pass_count := pass_count + 1;
+        report "PASS: Test " & integer'image(test_count) & 
+               " | A=" & to_hstring(v_a) & 
+               " B=" & to_hstring(v_b) & 
+               " M='" & std_logic'image(v_m) & 
+               "' S=" & to_bstring(v_s) & 
+               " CIN='" & std_logic'image(v_cin) & 
+               "' F=" & to_hstring(v_f);
       else
-        report "ERROR in Test " & integer'image(test_count) & ": A=" & 
-               to_hstring(a_val) & " B=" & to_hstring(b_val) & 
-               " ALU_MODE=" & std_logic'image(alu_mode_val) & 
-               " ALU_SEL=" & to_bstring(alu_sel_val) & 
-               " CIN=" & std_logic'image(cin_val) & 
-               " Expected=" & to_hstring(expected_val) & " Got=" & to_hstring(alu_output) &
+        report "FAIL: Test " & integer'image(test_count) & 
+               " | A=" & to_hstring(v_a) & 
+               " B=" & to_hstring(v_b) & 
+               " M='" & std_logic'image(v_m) & 
+               "' S=" & to_bstring(v_s) & 
+               " CIN='" & std_logic'image(v_cin) & 
+               "' Expected F=" & to_hstring(v_f) & " Got F=" & to_hstring(alu_output) &
+               " IR=" & to_bstring(full_ir) &
                " alumode=" & std_logic'image(alumode) &
                " aluf3b=" & std_logic'image(aluf3b) &
                " aluf2b=" & std_logic'image(aluf2b) &
@@ -285,9 +295,10 @@ begin
                severity error;
       end if;
     end loop;
-    file_close(test_vectors);
-
-    report "=== ALU Tests Complete ===";
+    
+    file_close(test_vectors_file);
+    
+    report "=== CADR ALU Tests Complete: " & integer'image(pass_count) & "/" & integer'image(test_count) & " passed ===";
     wait;
   end process;
 

@@ -30,8 +30,8 @@ architecture dip of dip_74s182 is
 begin
   U1 : sn74s182
     port map (
-          Xo_e    => p7,
-    Yo_e    => p10,
+      Xo_e    => p7,
+      Yo_e    => p10,
       CNZ_e   => p9,
       CNY_e   => p11,
       CNX_e   => p12,

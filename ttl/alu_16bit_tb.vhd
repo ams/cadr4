@@ -35,7 +35,7 @@ architecture testbench of alu_16bit_tb is
   signal alu0_cout, alu1_cout, alu2_cout, alu3_cout : std_logic;
   
   -- Carry lookahead signals (active low)
-  signal cout0_n, cout1_n, cout2_n : std_logic; -- intermediate carries (active low)
+  signal cout4_n, cout8_n, cout12_n : std_logic; -- carries at bit positions 4, 8, 12
   signal xout, yout : std_logic; -- CLA outputs
   
 begin
@@ -60,7 +60,7 @@ begin
     B_e => b_input(7 downto 4),
     S_e => sel,
     M_e => mode,
-    CNb_e => cout0_n,  -- Carry from CLA
+    CNb_e => cout4_n,  -- Carry from bit position 4
     F_e => alu1_f,
     X_e => alu1_x,
     Y_e => alu1_y,
@@ -74,7 +74,7 @@ begin
     B_e => b_input(11 downto 8),
     S_e => sel,
     M_e => mode,
-    CNb_e => cout1_n,  -- Carry from CLA
+    CNb_e => cout8_n,  -- Carry from bit position 8
     F_e => alu2_f,
     X_e => alu2_x,
     Y_e => alu2_y,
@@ -88,7 +88,7 @@ begin
     B_e => b_input(15 downto 12),
     S_e => sel,
     M_e => mode,
-    CNb_e => cout2_n,  -- Carry from CLA
+    CNb_e => cout12_n,  -- Carry from bit position 12
     F_e => alu3_f,
     X_e => alu3_x,
     Y_e => alu3_y,
@@ -117,9 +117,9 @@ begin
     CNB_e => cnb,  -- Direct active-low carry connection
     X_e => alu3_x & alu2_x & alu1_x & alu0_x,  -- X[3:0] = alu3_x, alu2_x, alu1_x, alu0_x
     Y_e => alu3_y & alu2_y & alu1_y & alu0_y,  -- Y[3:0] = alu3_y, alu2_y, alu1_y, alu0_y
-    CNX_e => cout0_n,
-    CNY_e => cout1_n,
-    CNZ_e => cout2_n,
+    CNX_e => cout4_n,
+    CNY_e => cout8_n,
+    CNZ_e => cout12_n,
     Xo_e => xout,
     Yo_e => yout
   );
