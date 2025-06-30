@@ -82,6 +82,84 @@ def get_arith_ops_no_carry(mask):
     }
 
 
+def sn74182_xy_function(pb_inputs, gb_inputs):
+    """
+    Calculate X and Y outputs for SN74182 carry lookahead generator.
+    
+    PBo (overall propagate) = PB[0] | PB[1] | PB[2] | PB[3]
+    GBo (overall generate) = PB3GB3 | PB2GB23 | PB1GB123 | GB0123
+    
+    Args:
+        pb_inputs: List of PB inputs (X outputs from individual ALUs)
+        gb_inputs: List of GB inputs (Y outputs from individual ALUs)
+    
+    Returns:
+        (PBo, GBo) tuple
+    """
+    # Pad inputs to 4 elements with 1s for PB and 0s for GB (inactive values)
+    pb = pb_inputs + [1] * (4 - len(pb_inputs))
+    gb = gb_inputs + [0] * (4 - len(gb_inputs))
+    
+    # Calculate intermediate terms
+    PB3GB3 = pb[3] & gb[3]
+    PB2GB23 = pb[2] & gb[2] & gb[3]
+    PB1GB123 = pb[1] & gb[1] & gb[2] & gb[3]
+    GB0123 = gb[0] & gb[1] & gb[2] & gb[3]
+    
+    # Calculate outputs
+    PBo = pb[0] | pb[1] | pb[2] | pb[3]
+    GBo = PB3GB3 | PB2GB23 | PB1GB123 | GB0123
+    
+    return PBo, GBo
+
+
+def sn74181_xy_function(a_val, b_val, sel_bits, mask):
+    """
+    Calculate X and Y outputs for SN74181 based on the internal logic.
+    
+    X (carry propagate) = ~(E[0] & E[1] & E[2] & E[3])
+    Y (carry generate) = ~(Pb3 | Pb2Gb3 | Pb1Gb23 | Pb0Gb123)
+    
+    Where:
+    E[i] = ~((A[i] & B[i] & S[3]) | (A[i] & ~B[i] & S[2]))
+    D[i] = ~(~B[i] & S[1] | B[i] & S[0] | A[i])
+    """
+    # Extract individual select bits
+    s0 = int(sel_bits[3])  # LSB
+    s1 = int(sel_bits[2])
+    s2 = int(sel_bits[1])  
+    s3 = int(sel_bits[0])  # MSB
+    
+    # Calculate E and D (Pb) bit by bit
+    E = [0] * 4
+    D = [0] * 4
+    
+    for i in range(4):
+        a_bit = (a_val >> i) & 1
+        b_bit = (b_val >> i) & 1
+        bb_bit = 1 - b_bit  # ~B[i]
+        
+        # E[i] = ~((A[i] & B[i] & S[3]) | (A[i] & ~B[i] & S[2]))
+        E[i] = 1 - ((a_bit & b_bit & s3) | (a_bit & bb_bit & s2))
+        
+        # D[i] = ~(~B[i] & S[1] | B[i] & S[0] | A[i])
+        D[i] = 1 - ((bb_bit & s1) | (b_bit & s0) | a_bit)
+    
+    # Calculate X = ~(E[0] & E[1] & E[2] & E[3])
+    X = 1 - (E[0] & E[1] & E[2] & E[3])
+    
+    # Calculate Y = ~(Pb3 | Pb2Gb3 | Pb1Gb23 | Pb0Gb123)
+    # Where Pb = D, Gb = E
+    Pb3 = D[3]
+    Pb2Gb3 = D[2] & E[3]
+    Pb1Gb23 = D[1] & E[2] & E[3]
+    Pb0Gb123 = D[0] & E[1] & E[2] & E[3]
+    
+    Y = 1 - (Pb3 | Pb2Gb3 | Pb1Gb23 | Pb0Gb123)
+    
+    return X, Y
+
+
 def get_arith_ops_with_carry(mask):
     """
     Arithmetic operations with carry for different ALU widths.
@@ -126,16 +204,41 @@ def generate_tests(inputs, width):
                     name, op = logical_ops_dict[sel]
                     full_res = op(a_val, b_val)
                     # Mask result to width and convert directly to binary
-                    masked_result = full_res & mask
-                    expected_carry = 0  # Always 0, not checked in testbenches
+                    expected_result = full_res & mask
+                    expected_carry = 0  # Always 0
+                    # Calculate X and Y outputs
+                    if width == 4:
+                        expected_x, expected_y = sn74181_xy_function(a_val, b_val, sel, mask)
+                    elif width in [8, 16, 32]:
+                        # For cascaded ALUs, calculate X and Y from individual 4-bit ALUs
+                        pb_inputs = []
+                        gb_inputs = []
+                        
+                        # Split into 4-bit chunks and calculate X,Y for each
+                        for i in range(0, width, 4):
+                            a_chunk = (a_val >> i) & 0xF
+                            b_chunk = (b_val >> i) & 0xF
+                            x_chunk, y_chunk = sn74181_xy_function(a_chunk, b_chunk, sel, 0xF)
+                            pb_inputs.append(x_chunk)
+                            gb_inputs.append(y_chunk)
+                        
+                        # Calculate overall X and Y using SN74182 logic
+                        expected_x, expected_y = sn74182_xy_function(pb_inputs, gb_inputs)
+                    else:
+                        expected_x, expected_y = 0, 0
+                    
+                    # carry output CN4b is active-low
+                    expected_carry_cnb4_signal = 1 - expected_carry
                     # Convert everything to binary and concatenate
                     a_bin_width = f'{a_val:0{width}b}'
                     b_bin_width = f'{b_val:0{width}b}'
                     mode_bin = '1' if mode == '1' else '0'
                     cnb_bin = f'{cnb_signal:01b}'
-                    expected_result_bin = f'{masked_result:0{width}b}'
-                    expected_carry_bin = f'{expected_carry:01b}'
-                    print(f'{a_bin_width}{b_bin_width}{mode_bin}{sel}{cnb_bin}{expected_result_bin}{expected_carry_bin}')
+                    expected_result_bin = f'{expected_result:0{width}b}'
+                    expected_carry_bin = f'{expected_carry_cnb4_signal:01b}'
+                    expected_x_bin = f'{expected_x:01b}'
+                    expected_y_bin = f'{expected_y:01b}'
+                    print(f'{a_bin_width} {b_bin_width} {mode_bin} {sel} {cnb_bin} {expected_result_bin} {expected_carry_bin} {expected_x_bin} {expected_y_bin}')
 
     # Arithmetic mode
     mode = '0'
@@ -146,18 +249,45 @@ def generate_tests(inputs, width):
             for a_val in inputs:
                 for b_val in inputs:
                     name, op = arith_ops_dict[sel]
+                    
+                    # Calculate result
                     full_res = op(a_val, b_val)
-                    # Mask result to width and convert directly to binary
-                    masked_result = full_res & mask
-                    expected_carry = 0  # Always 0, not checked in testbenches
+                    expected_result = full_res & mask
+                    expected_carry = 0  # Always 0
+                    
+                    # Calculate X and Y outputs
+                    if width == 4:
+                        expected_x, expected_y = sn74181_xy_function(a_val, b_val, sel, mask)
+                    elif width in [8, 16, 32]:
+                        # For cascaded ALUs, calculate X and Y from individual 4-bit ALUs
+                        pb_inputs = []
+                        gb_inputs = []
+                        
+                        # Split into 4-bit chunks and calculate X,Y for each
+                        for i in range(0, width, 4):
+                            a_chunk = (a_val >> i) & 0xF
+                            b_chunk = (b_val >> i) & 0xF
+                            x_chunk, y_chunk = sn74181_xy_function(a_chunk, b_chunk, sel, 0xF)
+                            pb_inputs.append(x_chunk)
+                            gb_inputs.append(y_chunk)
+                        
+                        # Calculate overall X and Y using SN74182 logic
+                        expected_x, expected_y = sn74182_xy_function(pb_inputs, gb_inputs)
+                    else:
+                        expected_x, expected_y = 0, 0
+                    
+                    # carry output CN4b is active-low
+                    expected_carry_cnb4_signal = 1 - expected_carry
                     # Convert everything to binary and concatenate
                     a_bin_width = f'{a_val:0{width}b}'
                     b_bin_width = f'{b_val:0{width}b}'
                     mode_bin = '1' if mode == '1' else '0'
                     cnb_bin = f'{cnb_signal:01b}'
-                    expected_result_bin = f'{masked_result:0{width}b}'
-                    expected_carry_bin = f'{expected_carry:01b}'
-                    print(f'{a_bin_width}{b_bin_width}{mode_bin}{sel}{cnb_bin}{expected_result_bin}{expected_carry_bin}')
+                    expected_result_bin = f'{expected_result:0{width}b}'
+                    expected_carry_bin = f'{expected_carry_cnb4_signal:01b}'
+                    expected_x_bin = f'{expected_x:01b}'
+                    expected_y_bin = f'{expected_y:01b}'
+                    print(f'{a_bin_width} {b_bin_width} {mode_bin} {sel} {cnb_bin} {expected_result_bin} {expected_carry_bin} {expected_x_bin} {expected_y_bin}')
 
 
 def main():
