@@ -827,7 +827,40 @@ package helper is
       \-madr1a\: in std_logic;
       \-madr2a\: in std_logic;
       \-madr3a\: in std_logic;
-      \-madr4a\: in std_logic
+      \-madr4a\: in std_logic;
+      -- MF bus - 32 bits
+      mf0     : in std_logic;
+      mf1     : in std_logic;
+      mf2     : in std_logic;
+      mf3     : in std_logic;
+      mf4     : in std_logic;
+      mf5     : in std_logic;
+      mf6     : in std_logic;
+      mf7     : in std_logic;
+      mf8     : in std_logic;
+      mf9     : in std_logic;
+      mf10    : in std_logic;
+      mf11    : in std_logic;
+      mf12    : in std_logic;
+      mf13    : in std_logic;
+      mf14    : in std_logic;
+      mf15    : in std_logic;
+      mf16    : in std_logic;
+      mf17    : in std_logic;
+      mf18    : in std_logic;
+      mf19    : in std_logic;
+      mf20    : in std_logic;
+      mf21    : in std_logic;
+      mf22    : in std_logic;
+      mf23    : in std_logic;
+      mf24    : in std_logic;
+      mf25    : in std_logic;
+      mf26    : in std_logic;
+      mf27    : in std_logic;
+      mf28    : in std_logic;
+      mf29    : in std_logic;
+      mf30    : in std_logic;
+      mf31    : in std_logic
     );
   end component;
 
