@@ -45,11 +45,8 @@ begin
   test_proc: process
     file test_vectors : text;
     variable test_line : line;
-    variable line_str : string(1 to 19);  -- 19 characters total
-    variable a_val, b_val, expected_f : std_logic_vector(3 downto 0);
-    variable expected_cn4b : std_logic;
-    variable mode_val, cin_val : std_logic_vector(0 downto 0);
-    variable s_val : std_logic_vector(3 downto 0);
+    variable a_val, b_val, s_val, expected_f : std_logic_vector(3 downto 0);
+    variable mode_val, cin_val, expected_cn4b, expected_x, expected_y : std_logic;
     variable test_count : integer := 0;
   begin
     report "Starting sn74181 tests from file...";
@@ -58,36 +55,36 @@ begin
     
     while not endfile(test_vectors) loop
       readline(test_vectors, test_line);
-      read(test_line, line_str);
       
-      -- Extract individual fields from the 19-character string
-      -- Format: A(4) + B(4) + M(1) + S(4) + CNb(1) + Expected_F(4) + Expected_CN4b(1) = 19 chars
-      for i in 0 to 3 loop
-        a_val(3-i) := '1' when line_str(i+1) = '1' else '0';        -- Chars 1-4: A
-        b_val(3-i) := '1' when line_str(i+5) = '1' else '0';        -- Chars 5-8: B
-        s_val(3-i) := '1' when line_str(i+10) = '1' else '0';       -- Chars 10-13: S
-        expected_f(3-i) := '1' when line_str(i+15) = '1' else '0';  -- Chars 15-18: Expected_F
-      end loop;
-      mode_val(0) := '1' when line_str(9) = '1' else '0';           -- Char 9: M
-      cin_val(0) := '1' when line_str(14) = '1' else '0';           -- Char 14: CNb
-      -- Read the dummy carry value but don't use it for checking
-      expected_cn4b := '0';  -- Dummy value, not used in comparison
+      -- Read space-delimited fields
+      read(test_line, a_val);
+      read(test_line, b_val);
+      read(test_line, mode_val);
+      read(test_line, s_val);
+      read(test_line, cin_val);
+      read(test_line, expected_f);
+      read(test_line, expected_cn4b);
+      read(test_line, expected_x);
+      read(test_line, expected_y);
 
       s_a <= a_val;
       s_b <= b_val;
-      s_m <= mode_val(0);
+      s_m <= mode_val;
       s_s <= s_val;
-      s_cin_n <= cin_val(0);
+      s_cin_n <= cin_val;
       wait for 10 ns;
       
       test_count := test_count + 1;
       
-      -- Check only F output, ignore carry for SN74181
-      if s_f = expected_f then
+      -- Check F, X, and Y outputs
+      if s_f = expected_f and s_x = expected_x and s_y = expected_y then
         report "PASS: Test " & integer'image(test_count);
       else
-        report "FAIL: Test " & integer'image(test_count) & " | F expected " & 
-               to_bstring(expected_f) & " got " & to_bstring(s_f) severity error;
+        report "FAIL: Test " & integer'image(test_count) & 
+               " | A=" & to_bstring(s_a) & " B=" & to_bstring(s_b) & " S=" & to_bstring(s_s) & " CNb=" & std_logic'image(s_cin_n) &
+               " | F expected " & to_bstring(expected_f) & " got " & to_bstring(s_f) &
+               " | X expected " & std_logic'image(expected_x) & " got " & std_logic'image(s_x) &
+               " | Y expected " & std_logic'image(expected_y) & " got " & std_logic'image(s_y) severity error;
       end if;
     end loop;
     file_close(test_vectors);

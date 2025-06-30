@@ -22,7 +22,7 @@ entity dip_74s182 is
     p4  : in  std_logic; -- X0
     p3  : in  std_logic; -- Y0
     
-    p13 : in  std_logic
+    p13 : in  std_logic  -- CNB (active low)
     );
 end entity;
 
@@ -37,6 +37,6 @@ begin
       CNX_e   => p12,
       X_e     => p6 & p15 & p2 & p4,  -- X[3:0] = p6,p15,p2,p4
       Y_e     => p5 & p14 & p1 & p3,  -- Y[3:0] = p5,p14,p1,p3
-      CN_e    => p13
+      CNB_e   => p13
       );
 end architecture;

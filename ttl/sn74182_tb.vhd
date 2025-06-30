@@ -9,7 +9,7 @@ end;
 
 architecture testbench of sn74182_tb is
 
-  signal CN_e    : std_logic;
+  signal CNB_e   : std_logic;
   signal X_e     : std_logic_vector(3 downto 0);
   signal Y_e     : std_logic_vector(3 downto 0);
   signal CNX_e   : std_logic;
@@ -22,7 +22,7 @@ architecture testbench of sn74182_tb is
 
   -- Test vector: {CN_e, X_e, Y_e, exp_CNX_e, exp_CNY_e, exp_CNZ_e, exp_Xo_e, exp_Yo_e}
   type testvec is record
-    CN_e : std_logic;
+    CNB_e : std_logic;
     PB : vec4;
     GB : vec4;
     exp_CNX : std_logic; -- CNX_e (cout0_n)
@@ -35,40 +35,40 @@ architecture testbench of sn74182_tb is
   type testvec_array is array (natural range <>) of testvec;
   constant tests : testvec_array := (
     -- Test case 1: All propagate, original carry was 1
-    -- CN_e='0' (CNB=0, original carry was 1), X_e='1111', Y_e='0000' (all propagate, no generate)
-    -- CNX_e = NOT(PB[0] AND GB[0] OR CNB AND GB[0]) = NOT(1 AND 0 OR 0 AND 0) = NOT(0) = 1
-    -- CNY_e = NOT(PB[1] AND GB[1] OR PB[0] AND GB[0] AND GB[1] OR CNB AND GB[0] AND GB[1]) = NOT(0) = 1
-    -- CNZ_e = NOT(PB[2] AND GB[2] OR PB[1] AND GB[1] AND GB[2] OR PB[0] AND GB[0] AND GB[1] AND GB[2] OR CNB AND GB[0] AND GB[1] AND GB[2]) = NOT(0) = 1
+    -- CNB_e='0' (CNB=0, CN=1, original carry was 1), X_e='1111', Y_e='0000' (all propagate, no generate)
+    -- CNX_e = NOT(PB[0] AND GB[0] OR CN AND GB[0]) = NOT(1 AND 0 OR 1 AND 0) = NOT(0) = 1
+    -- CNY_e = NOT(PB[1] AND GB[1] OR PB[0] AND GB[0] AND GB[1] OR CN AND GB[0] AND GB[1]) = NOT(0) = 1
+    -- CNZ_e = NOT(PB[2] AND GB[2] OR PB[1] AND GB[1] AND GB[2] OR PB[0] AND GB[0] AND GB[1] AND GB[2] OR CN AND GB[0] AND GB[1] AND GB[2]) = NOT(0) = 1
     -- Xo_e = PB[0] OR PB[1] OR PB[2] OR PB[3] = 1 OR 1 OR 1 OR 1 = 1
     -- Yo_e = PB[3] AND GB[3] OR PB[2] AND GB[2] AND GB[3] OR PB[1] AND GB[1] AND GB[2] AND GB[3] OR GB[0] AND GB[1] AND GB[2] AND GB[3] = 0
     ( '0', ( '1','1','1','1' ), ( '0','0','0','0' ), '1', '1', '1', '1', '0' ),
     
     -- Test case 2: All propagate, original carry was 0  
-    -- CN_e='1' (CNB=1, original carry was 0), X_e='1111', Y_e='0000' (all propagate, no generate)
-    -- CNX_e = NOT(PB[0] AND GB[0] OR CNB AND GB[0]) = NOT(1 AND 0 OR 1 AND 0) = NOT(0) = 1
-    -- CNY_e = NOT(PB[1] AND GB[1] OR PB[0] AND GB[0] AND GB[1] OR CNB AND GB[0] AND GB[1]) = NOT(0) = 1
-    -- CNZ_e = NOT(PB[2] AND GB[2] OR PB[1] AND GB[1] AND GB[2] OR PB[0] AND GB[0] AND GB[1] AND GB[2] OR CNB AND GB[0] AND GB[1] AND GB[2]) = NOT(0) = 1
+    -- CNB_e='1' (CNB=1, CN=0, original carry was 0), X_e='1111', Y_e='0000' (all propagate, no generate)
+    -- CNX_e = NOT(PB[0] AND GB[0] OR CN AND GB[0]) = NOT(1 AND 0 OR 0 AND 0) = NOT(0) = 1
+    -- CNY_e = NOT(PB[1] AND GB[1] OR PB[0] AND GB[0] AND GB[1] OR CN AND GB[0] AND GB[1]) = NOT(0) = 1
+    -- CNZ_e = NOT(PB[2] AND GB[2] OR PB[1] AND GB[1] AND GB[2] OR PB[0] AND GB[0] AND GB[1] AND GB[2] OR CN AND GB[0] AND GB[1] AND GB[2]) = NOT(0) = 1
     -- Xo_e = PB[0] OR PB[1] OR PB[2] OR PB[3] = 1 OR 1 OR 1 OR 1 = 1
     -- Yo_e = PB[3] AND GB[3] OR PB[2] AND GB[2] AND GB[3] OR PB[1] AND GB[1] AND GB[2] AND GB[3] OR GB[0] AND GB[1] AND GB[2] AND GB[3] = 0
     ( '1', ( '1','1','1','1' ), ( '0','0','0','0' ), '1', '1', '1', '1', '0' ),
     
     -- Test case 3: All generate
-    -- CN_e='0' (CNB=0, original carry was 1), X_e='0000', Y_e='1111' (no propagate, all generate)
-    -- CNX_e = NOT(PB[0] AND GB[0] OR CNB AND GB[0]) = NOT(0 AND 1 OR 0 AND 1) = NOT(0) = 1
-    -- CNY_e = NOT(PB[1] AND GB[1] OR PB[0] AND GB[0] AND GB[1] OR CNB AND GB[0] AND GB[1]) = NOT(0 OR 0 OR 0) = NOT(0) = 1
-    -- CNZ_e = NOT(PB[2] AND GB[2] OR PB[1] AND GB[1] AND GB[2] OR PB[0] AND GB[0] AND GB[1] AND GB[2] OR CNB AND GB[0] AND GB[1] AND GB[2]) = NOT(0 OR 0 OR 0 OR 0) = NOT(0) = 1
+    -- CNB_e='0' (CNB=0, CN=1, original carry was 1), X_e='0000', Y_e='1111' (no propagate, all generate)
+    -- CNX_e = NOT(PB[0] AND GB[0] OR CN AND GB[0]) = NOT(0 AND 1 OR 1 AND 1) = NOT(0 OR 1) = NOT(1) = 0
+    -- CNY_e = NOT(PB[1] AND GB[1] OR PB[0] AND GB[0] AND GB[1] OR CN AND GB[0] AND GB[1]) = NOT(0 OR 0 OR 1) = NOT(1) = 0
+    -- CNZ_e = NOT(PB[2] AND GB[2] OR PB[1] AND GB[1] AND GB[2] OR PB[0] AND GB[0] AND GB[1] AND GB[2] OR CN AND GB[0] AND GB[1] AND GB[2]) = NOT(0 OR 0 OR 0 OR 1) = NOT(1) = 0
     -- Xo_e = PB[0] OR PB[1] OR PB[2] OR PB[3] = 0 OR 0 OR 0 OR 0 = 0
     -- Yo_e = PB[3] AND GB[3] OR PB[2] AND GB[2] AND GB[3] OR PB[1] AND GB[1] AND GB[2] AND GB[3] OR GB[0] AND GB[1] AND GB[2] AND GB[3] = 0 OR 0 OR 0 OR 1 = 1
-    ( '0', ( '0','0','0','0' ), ( '1','1','1','1' ), '1', '1', '1', '0', '1' ),
+    ( '0', ( '0','0','0','0' ), ( '1','1','1','1' ), '0', '0', '0', '0', '1' ),
     
     -- Test case 4: Partial generate
-    -- CN_e='0' (CNB=0, original carry was 1), X_e='0000', Y_e='1100' (generate at positions 0,1 only)
-    -- CNX_e = NOT(PB[0] AND GB[0] OR CNB AND GB[0]) = NOT(0 AND 1 OR 0 AND 1) = NOT(0) = 1
-    -- CNY_e = NOT(PB[1] AND GB[1] OR PB[0] AND GB[0] AND GB[1] OR CNB AND GB[0] AND GB[1]) = NOT(0 OR 0 OR 0) = NOT(0) = 1
-    -- CNZ_e = NOT(PB[2] AND GB[2] OR PB[1] AND GB[1] AND GB[2] OR PB[0] AND GB[0] AND GB[1] AND GB[2] OR CNB AND GB[0] AND GB[1] AND GB[2]) = NOT(0 OR 0 OR 0 OR 0) = NOT(0) = 1
+    -- CNB_e='0' (CNB=0, CN=1, original carry was 1), X_e='0000', Y_e='1100' (generate at positions 0,1 only)
+    -- CNX_e = NOT(PB[0] AND GB[0] OR CN AND GB[0]) = NOT(0 AND 1 OR 1 AND 1) = NOT(0 OR 1) = NOT(1) = 0
+    -- CNY_e = NOT(PB[1] AND GB[1] OR PB[0] AND GB[0] AND GB[1] OR CN AND GB[0] AND GB[1]) = NOT(0 OR 0 OR 1) = NOT(1) = 0
+    -- CNZ_e = NOT(PB[2] AND GB[2] OR PB[1] AND GB[1] AND GB[2] OR PB[0] AND GB[0] AND GB[1] AND GB[2] OR CN AND GB[0] AND GB[1] AND GB[2]) = NOT(0 OR 0 OR 0 OR 0) = NOT(0) = 1
     -- Xo_e = PB[0] OR PB[1] OR PB[2] OR PB[3] = 0 OR 0 OR 0 OR 0 = 0
     -- Yo_e = PB[3] AND GB[3] OR PB[2] AND GB[2] AND GB[3] OR PB[1] AND GB[1] AND GB[2] AND GB[3] OR GB[0] AND GB[1] AND GB[2] AND GB[3] = 0 OR 0 OR 0 OR 0 = 0
-    ( '0', ( '0','0','0','0' ), ( '1','1','0','0' ), '1', '1', '1', '0', '0' ),
+    ( '0', ( '0','0','0','0' ), ( '1','1','0','0' ), '0', '0', '1', '0', '0' ),
     
     -- Test case 5: All inputs high (both propagate and generate)
     -- CN_e='0' (CNB=0, original carry was 1), X_e='1111', Y_e='1111' (all propagate and generate)
@@ -80,28 +80,28 @@ architecture testbench of sn74182_tb is
     ( '0', ( '1','1','1','1' ), ( '1','1','1','1' ), '0', '0', '0', '1', '1' ),
     
     -- Test case 6: Single stage generate at LSB
-    -- CN_e='0' (CNB=0, original carry was 1), X_e='0000', Y_e='1000' (generate only at position 0)
-    -- CNX_e = NOT(PB[0] AND GB[0] OR CNB AND GB[0]) = NOT(0 AND 1 OR 0 AND 1) = NOT(0) = 1
-    -- CNY_e = NOT(PB[1] AND GB[1] OR PB[0] AND GB[0] AND GB[1] OR CNB AND GB[0] AND GB[1]) = NOT(0 OR 0 OR 0) = NOT(0) = 1
-    -- CNZ_e = NOT(PB[2] AND GB[2] OR PB[1] AND GB[1] AND GB[2] OR PB[0] AND GB[0] AND GB[1] AND GB[2] OR CNB AND GB[0] AND GB[1] AND GB[2]) = NOT(0 OR 0 OR 0 OR 0) = NOT(0) = 1
+    -- CNB_e='0' (CNB=0, CN=1, original carry was 1), X_e='0000', Y_e='1000' (generate only at position 0)
+    -- CNX_e = NOT(PB[0] AND GB[0] OR CN AND GB[0]) = NOT(0 AND 1 OR 1 AND 1) = NOT(0 OR 1) = NOT(1) = 0
+    -- CNY_e = NOT(PB[1] AND GB[1] OR PB[0] AND GB[0] AND GB[1] OR CN AND GB[0] AND GB[1]) = NOT(0 OR 0 OR 0) = NOT(0) = 1
+    -- CNZ_e = NOT(PB[2] AND GB[2] OR PB[1] AND GB[1] AND GB[2] OR PB[0] AND GB[0] AND GB[1] AND GB[2] OR CN AND GB[0] AND GB[1] AND GB[2]) = NOT(0 OR 0 OR 0 OR 0) = NOT(0) = 1
     -- Xo_e = PB[0] OR PB[1] OR PB[2] OR PB[3] = 0 OR 0 OR 0 OR 0 = 0
     -- Yo_e = PB[3] AND GB[3] OR PB[2] AND GB[2] AND GB[3] OR PB[1] AND GB[1] AND GB[2] AND GB[3] OR GB[0] AND GB[1] AND GB[2] AND GB[3] = 0 OR 0 OR 0 OR 0 = 0
-    ( '0', ( '0','0','0','0' ), ( '1','0','0','0' ), '1', '1', '1', '0', '0' ),
+    ( '0', ( '0','0','0','0' ), ( '1','0','0','0' ), '0', '1', '1', '0', '0' ),
     
     -- Test case 7: Mixed propagate and generate with carry
-    -- CN_e='1' (CNB=1, original carry was 0), X_e='1010', Y_e='0101' (alternating pattern)
-    -- CNX_e = NOT(PB[0] AND GB[0] OR CNB AND GB[0]) = NOT(1 AND 0 OR 1 AND 0) = NOT(0) = 1
-    -- CNY_e = NOT(PB[1] AND GB[1] OR PB[0] AND GB[0] AND GB[1] OR CNB AND GB[0] AND GB[1]) = NOT(0 AND 1 OR 0 OR 0) = NOT(0) = 1
-    -- CNZ_e = NOT(PB[2] AND GB[2] OR PB[1] AND GB[1] AND GB[2] OR PB[0] AND GB[0] AND GB[1] AND GB[2] OR CNB AND GB[0] AND GB[1] AND GB[2]) = NOT(1 AND 0 OR 0 OR 0 OR 0) = NOT(0) = 1
+    -- CNB_e='1' (CNB=1, CN=0, original carry was 0), X_e='1010', Y_e='0101' (alternating pattern)
+    -- CNX_e = NOT(PB[0] AND GB[0] OR CN AND GB[0]) = NOT(1 AND 0 OR 0 AND 0) = NOT(0) = 1
+    -- CNY_e = NOT(PB[1] AND GB[1] OR PB[0] AND GB[0] AND GB[1] OR CN AND GB[0] AND GB[1]) = NOT(0 AND 1 OR 0 OR 0) = NOT(0) = 1
+    -- CNZ_e = NOT(PB[2] AND GB[2] OR PB[1] AND GB[1] AND GB[2] OR PB[0] AND GB[0] AND GB[1] AND GB[2] OR CN AND GB[0] AND GB[1] AND GB[2]) = NOT(1 AND 0 OR 0 OR 0 OR 0) = NOT(0) = 1
     -- Xo_e = PB[0] OR PB[1] OR PB[2] OR PB[3] = 1 OR 0 OR 1 OR 0 = 1
     -- Yo_e = PB[3] AND GB[3] OR PB[2] AND GB[2] AND GB[3] OR PB[1] AND GB[1] AND GB[2] AND GB[3] OR GB[0] AND GB[1] AND GB[2] AND GB[3] = 0 OR 0 OR 0 OR 0 = 0
     ( '1', ( '1','0','1','0' ), ( '0','1','0','1' ), '1', '1', '1', '1', '0' ),
     
     -- Additional test case 8: No propagate, no generate
-    -- CN_e='0' (CNB=0, original carry was 1), X_e='0000', Y_e='0000' (no propagate, no generate)
-    -- CNX_e = NOT(PB[0] AND GB[0] OR CNB AND GB[0]) = NOT(0 AND 0 OR 0 AND 0) = NOT(0) = 1
-    -- CNY_e = NOT(PB[1] AND GB[1] OR PB[0] AND GB[0] AND GB[1] OR CNB AND GB[0] AND GB[1]) = NOT(0 OR 0 OR 0) = NOT(0) = 1
-    -- CNZ_e = NOT(PB[2] AND GB[2] OR PB[1] AND GB[1] AND GB[2] OR PB[0] AND GB[0] AND GB[1] AND GB[2] OR CNB AND GB[0] AND GB[1] AND GB[2]) = NOT(0 OR 0 OR 0 OR 0) = NOT(0) = 1
+    -- CNB_e='0' (CNB=0, CN=1, original carry was 1), X_e='0000', Y_e='0000' (no propagate, no generate)
+    -- CNX_e = NOT(PB[0] AND GB[0] OR CN AND GB[0]) = NOT(0 AND 0 OR 1 AND 0) = NOT(0) = 1
+    -- CNY_e = NOT(PB[1] AND GB[1] OR PB[0] AND GB[0] AND GB[1] OR CN AND GB[0] AND GB[1]) = NOT(0 OR 0 OR 0) = NOT(0) = 1
+    -- CNZ_e = NOT(PB[2] AND GB[2] OR PB[1] AND GB[1] AND GB[2] OR PB[0] AND GB[0] AND GB[1] AND GB[2] OR CN AND GB[0] AND GB[1] AND GB[2]) = NOT(0 OR 0 OR 0 OR 0) = NOT(0) = 1
     -- Xo_e = PB[0] OR PB[1] OR PB[2] OR PB[3] = 0 OR 0 OR 0 OR 0 = 0
     -- Yo_e = PB[3] AND GB[3] OR PB[2] AND GB[2] AND GB[3] OR PB[1] AND GB[1] AND GB[2] AND GB[3] OR GB[0] AND GB[1] AND GB[2] AND GB[3] = 0 OR 0 OR 0 OR 0 = 0
     ( '0', ( '0','0','0','0' ), ( '0','0','0','0' ), '1', '1', '1', '0', '0' )
@@ -118,7 +118,7 @@ begin
     CNX_e => CNX_e,
     X_e   => X_e,
     Y_e   => Y_e,
-    CN_e  => CN_e
+    CNB_e => CNB_e
   );
 
   test_process : process
@@ -136,7 +136,7 @@ begin
       test_count := test_count + 1;
       
       -- Apply inputs
-      CN_e <= t.CN_e;
+      CNB_e <= t.CNB_e;
       X_e <= t.PB(3) & t.PB(2) & t.PB(1) & t.PB(0);
       Y_e <= t.GB(3) & t.GB(2) & t.GB(1) & t.GB(0);
       
@@ -151,7 +151,7 @@ begin
           Yo_e = t.exp_Yo) then
         pass_count := pass_count + 1;
         report "PASS: Test " & integer'image(i) & " - " &
-               "CN=" & std_logic'image(t.CN_e) &
+               "CNB=" & std_logic'image(t.CNB_e) &
                ", PB=" & to_string(t.PB) &
                ", GB=" & to_string(t.GB) &
                " => CNX=" & std_logic'image(CNX_e) &
@@ -162,7 +162,7 @@ begin
       else
         fail_count := fail_count + 1;
         report "FAIL: Test " & integer'image(i) & " - " &
-               "CN=" & std_logic'image(t.CN_e) &
+               "CNB=" & std_logic'image(t.CNB_e) &
                ", PB=" & to_string(t.PB) &
                ", GB=" & to_string(t.GB) &
                " => Expected: CNX=" & std_logic'image(t.exp_CNX) &

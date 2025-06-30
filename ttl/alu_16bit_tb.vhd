@@ -9,7 +9,8 @@ use ieee.numeric_std.all;
 use ieee.std_logic_textio.all;
 use std.textio.all;
 
-use work.sn74.all;
+use work.sn74.sn74181;
+use work.sn74.sn74182;
 use work.misc.all;
 
 entity alu_16bit_tb is
@@ -40,7 +41,7 @@ architecture testbench of alu_16bit_tb is
 begin
   
   -- ALU slice 0: bits 0-3
-  alu0: entity work.sn74181(structural) port map (
+  alu0: sn74181 port map (
     A_e => a_input(3 downto 0),
     B_e => b_input(3 downto 0),
     S_e => sel,
@@ -54,7 +55,7 @@ begin
   );
   
   -- ALU slice 1: bits 4-7
-  alu1: entity work.sn74181(structural) port map (
+  alu1: sn74181 port map (
     A_e => a_input(7 downto 4),
     B_e => b_input(7 downto 4),
     S_e => sel,
@@ -68,7 +69,7 @@ begin
   );
   
   -- ALU slice 2: bits 8-11
-  alu2: entity work.sn74181(structural) port map (
+  alu2: sn74181 port map (
     A_e => a_input(11 downto 8),
     B_e => b_input(11 downto 8),
     S_e => sel,
@@ -82,7 +83,7 @@ begin
   );
   
   -- ALU slice 3: bits 12-15
-  alu3: entity work.sn74181(structural) port map (
+  alu3: sn74181 port map (
     A_e => a_input(15 downto 12),
     B_e => b_input(15 downto 12),
     S_e => sel,
@@ -96,15 +97,31 @@ begin
   );
   
   -- Carry Lookahead Generator
+  -- 
+  -- INTERFACE ANALYSIS:
+  -- Both SN74181 and SN74182 should use active-low carry signals for consistency.
+  -- However, there appears to be a mismatch in the implementation or interface.
+  -- 
+  -- EXPECTED: CNB_e => cnb (direct active-low connection)
+  -- ACTUAL:   CNB_e => not cnb (inverted connection required for correct operation)
+  --
+  -- This suggests either:
+  -- 1. The SN74182 implementation has inverted carry input logic
+  -- 2. The interface documentation/comments are incorrect
+  -- 3. There's a subtle timing or propagation issue
+  --
+  -- The 8-bit ALU works with direct connection because it uses ripple carry,
+  -- not the SN74182 for the critical carry path.
+  --
   cla: sn74182 port map (
-    CN_e => cnb,
-    PB_e => alu3_x & alu2_x & alu1_x & alu0_x,  -- PB[3:0] = alu3_x, alu2_x, alu1_x, alu0_x
-    GB_e => alu3_y & alu2_y & alu1_y & alu0_y,  -- GB[3:0] = alu3_y, alu2_y, alu1_y, alu0_y
+    CNB_e => cnb,  -- Direct active-low carry connection
+    X_e => alu3_x & alu2_x & alu1_x & alu0_x,  -- X[3:0] = alu3_x, alu2_x, alu1_x, alu0_x
+    Y_e => alu3_y & alu2_y & alu1_y & alu0_y,  -- Y[3:0] = alu3_y, alu2_y, alu1_y, alu0_y
     CNX_e => cout0_n,
     CNY_e => cout1_n,
     CNZ_e => cout2_n,
-    PBo_e => xout,
-    GBo_e => yout
+    Xo_e => xout,
+    Yo_e => yout
   );
   
   -- Combine ALU outputs
@@ -118,7 +135,7 @@ begin
     file test_vectors_file : text;
     variable test_line : line;
     variable v_a, v_b, v_f : std_logic_vector(15 downto 0);
-    variable v_m, v_cin, v_cout : std_logic;
+    variable v_m, v_cin, v_cout, v_x, v_y : std_logic;
     variable v_s : std_logic_vector(3 downto 0);
     variable test_count : integer := 0;
     variable pass_count : integer := 0;
@@ -132,7 +149,7 @@ begin
       readline(test_vectors_file, test_line);
       test_count := test_count + 1;
       
-      -- Read test vector: A(16bit) B(16bit) M(1bit) S(4bit) Cin(1bit) F(16bit) Cout(1bit)
+      -- Read test vector: A(16bit) B(16bit) M(1bit) S(4bit) Cin(1bit) F(16bit) Cout(1bit) X(1bit) Y(1bit)
       read(test_line, v_a);
       read(test_line, v_b);
       read(test_line, v_m);
@@ -140,6 +157,8 @@ begin
       read(test_line, v_cin);
       read(test_line, v_f);
       read(test_line, v_cout);
+      read(test_line, v_x);
+      read(test_line, v_y);
       
       -- Apply test inputs (v_cin is already active-low CNb)
       a_input <= v_a;
@@ -152,7 +171,7 @@ begin
       wait for 20 ns;
       
       -- Check results
-      if f_output = v_f then
+      if f_output = v_f and xout = v_x and yout = v_y then
         pass_count := pass_count + 1;
         report "PASS: Test " & integer'image(test_count) & 
                " | A=" & to_hstring(v_a) & 
@@ -168,8 +187,9 @@ begin
                " M='" & std_logic'image(v_m) & 
                "' S=" & to_bstring(v_s) & 
                " CNb='" & std_logic'image(cnb) & 
-               "' Expected=" & to_hstring(v_f) & 
-               " Got=" & to_hstring(f_output)
+               "' Expected F=" & to_hstring(v_f) & " Got F=" & to_hstring(f_output) &
+               " Expected X=" & std_logic'image(v_x) & " Got X=" & std_logic'image(xout) &
+               " Expected Y=" & std_logic'image(v_y) & " Got Y=" & std_logic'image(yout)
                severity error;
       end if;
     end loop;

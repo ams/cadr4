@@ -468,7 +468,7 @@ package sn74 is
 
       X_e     : in  std_logic_vector(3 downto 0);  -- Propagate inputs [3:0]
       Y_e     : in  std_logic_vector(3 downto 0);  -- Generate inputs [3:0]
-      CN_e    : in  std_logic   -- Carry in
+      CNB_e   : in  std_logic   -- Carry in (active-low)
       );
   end component;
 
