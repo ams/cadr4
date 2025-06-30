@@ -122,6 +122,13 @@ class CADRDecoder:
         0x00: "NONE",
         0x01: "LC-LOCATION-COUNTER",
         0x02: "INTERRUPT-CONTROL",
+        0x03: "IMOD-ENABLE",  # Based on source decode logic
+        0x04: "UNUSED-04",
+        0x05: "UNUSED-05",
+        0x06: "UNUSED-06",
+        0x07: "UNUSED-07",
+        0x08: "UNUSED-08",
+        0x09: "UNUSED-09",
         0x0A: "PDL-POINTER-ADDRESSED",
         0x0B: "PDL-POINTER-ADDRESSED-PUSH",
         0x0C: "PDL-INDEX-ADDRESSED",
@@ -130,12 +137,21 @@ class CADRDecoder:
         0x0F: "SPC-DATA-PUSH",
         0x10: "OA-REGISTER-LOW",
         0x11: "OA-REGISTER-HIGH",
+        0x12: "VMA-REGISTER-LOW",
+        0x13: "VMA-REGISTER-HIGH", 
         0x14: "VMA-REGISTER",
         0x15: "VMA-START-READ",
         0x16: "VMA-START-WRITE",
         0x17: "VMA-WRITE-MAP",
+        0x18: "MD-REGISTER-LOW",
+        0x19: "MD-REGISTER-HIGH",
+        0x1A: "UNUSED-1A",
+        0x1B: "UNUSED-1B",
+        0x1C: "UNUSED-1C",
+        0x1D: "UNUSED-1D",
         0x1E: "MD-REGISTER",
         0x1F: "MD-START-READ",
+        # Note: Higher values possible with 5-bit field
         0x20: "MD-START-WRITE",
         0x21: "MD-WRITE-MAP"
     }
@@ -375,7 +391,13 @@ class CADRDecoder:
             # Calculate the mask: (2^byte_length - 1) rotated left by rotation positions
             base_mask = (1 << byte_length) - 1
             final_mask = ((base_mask << rotation) | (base_mask >> (32 - rotation))) & 0xFFFFFFFF
-            mask_str = self.format_number(final_mask, 8)
+            
+            # Format mask in both octal and hex
+            if self.number_format == 'hex':
+                mask_str = f"{final_mask:08X} ({final_mask:011o})"
+            else:
+                mask_str = f"{final_mask:011o} (0x{final_mask:08X})"
+            
             operation_with_mask = f"{operation}, mask={mask_str}"
         else:
             operation_with_mask = operation
