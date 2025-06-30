@@ -278,18 +278,19 @@ class CADRDecoder:
         result.append(self.format_line("IR<6>", str(invert), "Invert Condition", str(invert)))
         
         # Condition test type (IR<5>)
-        test_desc = "Yes" if bit_test else "Bit Test"
-        result.append(self.format_line("IR<5>", str(bit_test), "Condition Test", test_desc))
+        test_desc = "Condition Test" if bit_test else "Bit Test"
+        result.append(self.format_line("IR<5>", str(bit_test), "Test Type", test_desc))
         
-        # Jump condition (IR<4-0>)
+        # Jump condition or bit number (IR<4-0>)
         condition_field = inst_value & 0x1F
         cond_value = self.format_number(condition_field, 2)
-        if bit_test:
+        if bit_test:  # IR<5> = 1: condition number
             condition = self.JUMP_CONDITIONS.get(condition_field, f"UNKNOWN-{self.format_number(condition_field, 2)}")
             result.append(self.format_line("IR<4-0>", cond_value, "Jump Condition", condition))
-        else:
-            bit_desc = f"Test bit {condition_field} of M source"
-            result.append(self.format_line("IR<4-0>", cond_value, "Bit Number", bit_desc))
+        else:  # IR<5> = 0: left rotation count
+            tested_bit = (32 - condition_field) % 32
+            bit_desc = f"Test bit {tested_bit} of M source (left rotate by {condition_field})"
+            result.append(self.format_line("IR<4-0>", cond_value, "Bit Test", bit_desc))
         
         return result
     
