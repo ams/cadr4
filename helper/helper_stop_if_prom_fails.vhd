@@ -30,7 +30,10 @@ architecture behavioral of helper_stop_if_prom_fails is
     process (\-promenable\, pc)
     begin
       if \-promenable\ = '0' then
-        if ((unsigned(pc) > 1) and (unsigned(pc) < 8#45#)) then
+        if (is_x(pc)) then
+          report "PC is invalid: " & to_ostring(PC);
+          std.env.stop;
+        elsif ((unsigned(pc) > 1) and (unsigned(pc) < 8#45#)) then
           report "PROM stucked at " & to_ostring(PC);
           std.env.stop;
         end if;

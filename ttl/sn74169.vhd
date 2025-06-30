@@ -84,31 +84,31 @@ begin
   process(all)
     variable at_terminal_count : boolean;
     variable loading_terminal_count : boolean;
-    variable cnt_is_valid : boolean;
+    variable cnt_std : std_logic_vector(3 downto 0);
   begin
-    -- Check if counter has valid (non-metavalue) content
-    cnt_is_valid := not (is_x(std_logic_vector(cnt)));
+    -- Convert counter to std_logic_vector for metavalue checking
+    cnt_std := std_logic_vector(cnt);
+    
+    -- Initialize variables
+    at_terminal_count := false;
+    loading_terminal_count := false;
     
     -- Check if counter is at terminal count (only if counter is valid)
-    if cnt_is_valid then
+    if not is_x(cnt_std) then
       if up_dn_i = '1' then
-        at_terminal_count := (cnt = to_unsigned(MAX_COUNT, COUNT_WIDTH));  -- up-count terminal
+        at_terminal_count := (cnt_std = "1111");  -- up-count terminal (15)
       elsif up_dn_i = '0' then
-        at_terminal_count := (cnt = to_unsigned(MIN_COUNT, COUNT_WIDTH));   -- down-count terminal
+        at_terminal_count := (cnt_std = "0000");  -- down-count terminal (0)
       end if;
-    else
-      at_terminal_count := false;  -- Undefined counter cannot be at terminal count
     end if;
     
     -- Check if loading a terminal count value
     if load_n_i = '0' then
       if up_dn_i = '1' then
-        loading_terminal_count := (unsigned(std_logic_vector'(i3_i & i2_i & i1_i & i0_i)) = to_unsigned(MAX_COUNT, COUNT_WIDTH));
+        loading_terminal_count := std_logic_vector'(i3_i & i2_i & i1_i & i0_i) = "1111";  -- loading 15
       elsif up_dn_i = '0' then
-        loading_terminal_count := (unsigned(std_logic_vector'(i3_i & i2_i & i1_i & i0_i)) = to_unsigned(MIN_COUNT, COUNT_WIDTH));
+        loading_terminal_count := std_logic_vector'(i3_i & i2_i & i1_i & i0_i) = "0000";  -- loading 0
       end if;
-    else
-      loading_terminal_count := false;
     end if;
     
     -- Generate carry-out (active low)
