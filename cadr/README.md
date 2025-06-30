@@ -124,7 +124,6 @@ This can be observed in the following instruction from PROM:
 
 00154 0000101400010317:	 ((Q-R) ADD ALU-CARRY-IN-ONE M-ONES A-ZERO)
 
-
 ### PDL Memory (pdlctl, pdl0, pdl1)
 
 Uses 93425a.
