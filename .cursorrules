@@ -26,6 +26,7 @@ When you want to run a single testbench, for example cadr/cadr_alu_tb.vhd, you s
 - NEVER modify `Makefile`.
 - NEVER modify port interface list of an entity or component unless specifically instructed to do so.
 - NEVER modify `cadr/cadr_tb.vhd` and `cadr/cadr_%_suds.vhd` files, these are auto-generated.
+- Unless not specifically instructed to do so, NEVER modify ttl/sn74181.vhd and ttl/sn74182.vhd. These implement accurate models, and their implementation must be correct.
 - The architecture of the components defined in `cadr/cadr_book.vhd` and `cadr/icmem_book.vhd` are in `cadr/cadr_%_suds.vhd` files, and they are correct by definition and cannot be modified. The component port definitions are most probably correct but might have port direction errors.
 - IGNORE the files under `cadr/behv` folder, NEVER read or modify these files.
 - After changing a source file, run `make` to see everything compiles fine.
