@@ -460,14 +460,14 @@ package sn74 is
 
   component sn74182 is
     port (
-      PBo_e   : out std_logic;  -- Propagate output
-      GBo_e   : out std_logic;  -- Generate output
+      Xo_e    : out std_logic;  -- Group Propagate output
+      Yo_e    : out std_logic;  -- Group Generate output
       CNZ_e   : out std_logic;  -- Carry out 2 (active-low)
       CNY_e   : out std_logic;  -- Carry out 1 (active-low)
       CNX_e   : out std_logic;  -- Carry out 0 (active-low)
 
-      PB_e    : in  std_logic_vector(3 downto 0);  -- Propagate inputs [3:0]
-      GB_e    : in  std_logic_vector(3 downto 0);  -- Generate inputs [3:0]
+      X_e     : in  std_logic_vector(3 downto 0);  -- Propagate inputs [3:0]
+      Y_e     : in  std_logic_vector(3 downto 0);  -- Generate inputs [3:0]
       CN_e    : in  std_logic   -- Carry in
       );
   end component;
