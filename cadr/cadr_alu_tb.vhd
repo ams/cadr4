@@ -229,7 +229,6 @@ begin
     variable test_count : integer := 0;
     variable pass_count : integer := 0;
   begin
-    report "=== Starting CADR ALU Tests ===";
     
     file_open(test_vectors_file, "build/alu_32bit_tb.txt", read_mode);
     
@@ -267,13 +266,6 @@ begin
       
       if alu_output = v_f then
         pass_count := pass_count + 1;
-        report "PASS: Test " & integer'image(test_count) & 
-               " | A=" & to_hstring(v_a) & 
-               " B=" & to_hstring(v_b) & 
-               " M='" & std_logic'image(v_m) & 
-               "' S=" & to_bstring(v_s) & 
-               " CIN='" & std_logic'image(v_cin) & 
-               "' F=" & to_hstring(v_f);
       else
         report "FAIL: Test " & integer'image(test_count) & 
                " | A=" & to_hstring(v_a) & 
@@ -298,7 +290,6 @@ begin
     
     file_close(test_vectors_file);
     
-    report "=== CADR ALU Tests Complete: " & integer'image(pass_count) & "/" & integer'image(test_count) & " passed ===";
     wait;
   end process;
 

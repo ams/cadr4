@@ -150,15 +150,6 @@ begin
           Xo_e = t.exp_Xo and 
           Yo_e = t.exp_Yo) then
         pass_count := pass_count + 1;
-        report "PASS: Test " & integer'image(i) & " - " &
-               "CNB=" & std_logic'image(t.CNB_e) &
-               ", PB=" & to_string(t.PB) &
-               ", GB=" & to_string(t.GB) &
-               " => CNX=" & std_logic'image(CNX_e) &
-               ", CNY=" & std_logic'image(CNY_e) &
-               ", CNZ=" & std_logic'image(CNZ_e) &
-               ", Xo=" & std_logic'image(Xo_e) &
-               ", Yo=" & std_logic'image(Yo_e);
       else
         fail_count := fail_count + 1;
         report "FAIL: Test " & integer'image(i) & " - " &
@@ -179,26 +170,11 @@ begin
       end if;
     end procedure;
     
-  begin
-    report "=== Starting SN74182 Tests with Known Correct Values ===";
-    
+  begin    
     -- Run all test cases
     for i in tests'range loop
       run_test(i, tests(i));
-    end loop;
-    
-    -- Final Report
-    report "=== SN74182 Test Summary ===";
-    report "Total Tests: " & integer'image(test_count);
-    report "Passed: " & integer'image(pass_count);
-    report "Failed: " & integer'image(fail_count);
-    
-    if fail_count = 0 then
-      report "*** ALL TESTS PASSED - SN74182 FUNCTIONAL IMPLEMENTATION VERIFIED ***" severity note;
-    else
-      report "*** " & integer'image(fail_count) & " TESTS FAILED ***" severity error;
-    end if;
-    
+    end loop;    
     wait;
   end process;
 

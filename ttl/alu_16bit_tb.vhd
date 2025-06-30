@@ -140,8 +140,6 @@ begin
     variable test_count : integer := 0;
     variable pass_count : integer := 0;
   begin
-    report "=== Starting 16-bit ALU Tests (4x SN74181 + 1x SN74182) ===";
-    report "Interface: Active-high data, Mode=1 for logic, CNb=active-low carry-in";
     
     file_open(test_vectors_file, "build/alu_16bit_tb.txt", read_mode);
     
@@ -173,13 +171,6 @@ begin
       -- Check results
       if f_output = v_f and xout = v_x and yout = v_y then
         pass_count := pass_count + 1;
-        report "PASS: Test " & integer'image(test_count) & 
-               " | A=" & to_hstring(v_a) & 
-               " B=" & to_hstring(v_b) & 
-               " M='" & std_logic'image(v_m) & 
-               "' S=" & to_bstring(v_s) & 
-               " CNb='" & std_logic'image(cnb) & 
-               "' F=" & to_hstring(v_f);
       else
         report "FAIL: Test " & integer'image(test_count) & 
                " | A=" & to_hstring(v_a) & 
@@ -196,7 +187,6 @@ begin
     
     file_close(test_vectors_file);
     
-    report "=== 16-bit ALU Tests Complete: " & integer'image(pass_count) & "/" & integer'image(test_count) & " passed ===";
     wait;
   end process;
 

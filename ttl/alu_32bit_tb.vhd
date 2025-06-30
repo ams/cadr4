@@ -216,8 +216,6 @@ begin
     variable test_count : integer := 0;
     variable pass_count : integer := 0;
   begin
-    report "=== Starting 32-bit ALU Tests (8x SN74181 + 3x SN74182) ===";
-    report "Interface: Active-high data, Mode=1 for logic, CNb=active-low carry-in";
     
     file_open(test_vectors_file, "build/alu_32bit_tb.txt", read_mode);
     
@@ -249,13 +247,6 @@ begin
       -- Check results (F, X, and Y outputs) - try first CLA outputs
       if s_f = v_f and x0_out = v_x and y0_out = v_y then
         pass_count := pass_count + 1;
-        report "PASS: Test " & integer'image(test_count) & 
-               " | A=" & to_hstring(v_a) & 
-               " B=" & to_hstring(v_b) & 
-               " M='" & std_logic'image(v_m) & 
-               "' S=" & to_bstring(v_s) & 
-               " CNb='" & std_logic'image(s_cin_n) & 
-               "' F=" & to_hstring(v_f);
       else
         report "FAIL: Test " & integer'image(test_count) & 
                " | A=" & to_hstring(v_a) & 
@@ -272,7 +263,6 @@ begin
     
     file_close(test_vectors_file);
     
-    report "=== 32-bit ALU Tests Complete: " & integer'image(pass_count) & "/" & integer'image(test_count) & " passed ===";
     wait;
   end process;
 

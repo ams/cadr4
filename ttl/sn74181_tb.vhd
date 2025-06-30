@@ -49,8 +49,6 @@ begin
     variable mode_val, cin_val, expected_cn4b, expected_x, expected_y : std_logic;
     variable test_count : integer := 0;
   begin
-    report "Starting sn74181 tests from file...";
-    
     file_open(test_vectors, "build/sn74181_tb.txt", read_mode);
     
     while not endfile(test_vectors) loop
@@ -78,7 +76,7 @@ begin
       
       -- Check F, X, and Y outputs
       if s_f = expected_f and s_x = expected_x and s_y = expected_y then
-        report "PASS: Test " & integer'image(test_count);
+        -- Test passed
       else
         report "FAIL: Test " & integer'image(test_count) & 
                " | A=" & to_bstring(s_a) & " B=" & to_bstring(s_b) & " S=" & to_bstring(s_s) & " CNb=" & std_logic'image(s_cin_n) &
@@ -89,7 +87,6 @@ begin
     end loop;
     file_close(test_vectors);
 
-    report "Tests complete. Total: " & integer'image(test_count);
     wait;
   end process;
 
