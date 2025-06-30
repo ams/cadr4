@@ -19,11 +19,11 @@ This is done with misc.ttl_input function. Additionally, this function operates 
 
 The components with open-collector outputs can only drive output to 0 or Z. An external pull-up resistor is required to convert Z to 1.
 
-- sn74188 32x8 PROM is used as a replacement of 5600. 5600/sn74188 is only used in mskg4, and their outputs (MSK[31:0]) are pulled-up with 2x res20 components (2e20 and 2e15). See msk4g.
+- sn74188 32x8 PROM is used as a replacement of 5600. 5600/sn74188 is only used in mskg4, and their outputs (MSK[31:0]) are pulled-up with 2x res20 components (2e20 and 2e15). See msk4g, and CADRPT; INVEN TORY ("used instead of 5600s").
 
 - n82s21 32x2 RAM with open-collector outputs is used in mmem and spc to implement M and SPC memories. The outputs in mmem (MMEM[31:0]) are pulled-up with 2x res20 components (4b19 and 4b20) in mctl. The outputs at spc (SPCO[18:0]) are pulled-up with 2x res20 components (4e29 and 4e24) in spc.
 
-## TTLDM
+## TTLDM (time delay circuit)
 
 TTLDM is a special component, see the internal comments for how it is implemented and why.
 
@@ -44,6 +44,7 @@ The manufacturers of parts are checked from CADR AI documents (doc/ai). The manu
 - Intel: d prefix
 - Signetics: n prefix
 - TI (or 7400 family in general): sn prefix
+- Engineered Components Company: ecc prefix
 
 As some of Fairchild parts may have no prefix originally (e.g. 9S42), dm is used for such parts, for example 9S42 became dm9s42.
 
@@ -58,8 +59,6 @@ Other than sn74 entities, all entity names are exact to original part names (ign
 - signetics (n...): n82s21
 - sn74 (sn74...) many sn74xx and sn74xxx
 - other: dummy_type_A, res20, sip220_330_8, sip330_470_8, til309
-
-ecc = Engineered Components Company
 
 # Levels of Abstraction
 
