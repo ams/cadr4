@@ -11,10 +11,13 @@ https://gitlab.c3sl.ufpr.br/roberto/cmips/-/blob/a427f438d0b095efa73c28fd29d451b
 https://github.com/ibm2030/SimpleSDHC
 http://stevenmerrifield.com/tools/sd.vhd
 https://github.com/ibm2030/SimpleSDHC/blob/master/sd_spi.vhd
+https://github.com/ZipCPU/sdspi/tree/master/bench/cpp
 
 # DDR on Arty
 https://forum.digilent.com/topic/27389-arty-a7-microblaze-ddr3-tutorial/
 https://github.com/viktor-nikolov/MicroBlaze-DDR3-tutorial
+https://github.com/kisek/fpga_arty_a7_dram
+https://github.com/ultraembedded/core_ddr3_controller
 
 # AXI
 https://zipcpu.com/blog/2022/05/07/learning-axi.html
