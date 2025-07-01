@@ -27,6 +27,8 @@ GHDLSIMOPTIONS		= --assert-level=none --ieee-asserts=disable
 endif
 
 # fix params
+#PROM0_HEX    := rom/fast-promh.mcr.hex
+PROM0_HEX     := rom/promh.mcr.9.hex
 BUILDDIR	  := build
 DRWDIR	  	  := doc/ai/cadr
 .DEFAULT_GOAL := all
@@ -206,9 +208,16 @@ endif
 	python3 $(FIXSUDSPY) -v $@
 
 # add rom files	
-cadr/cadr_prom0_suds.vhd: $(DRWDIR)/prom0.drw $(BUILDDIR)/soap $(FIXSUDSPY) Makefile dip/dip.vhd
+cadr/cadr_prom0_suds.vhd: $(DRWDIR)/prom0.drw $(BUILDDIR)/soap $(FIXSUDSPY) Makefile dip/dip.vhd scripts/split-hex.py $(PROM_HEX)
+	python3 scripts/split-hex.py --from-hex $(PROM0_HEX) --from-width 48 --to-width 8 --to-prefix prom0 --to-words 512 --reverse --out-dir $(BUILDDIR)
+	mv $(BUILDDIR)/prom0.0.hex $(BUILDDIR)/prom0.1e17.hex
+	mv $(BUILDDIR)/prom0.1.hex $(BUILDDIR)/prom0.1e19.hex
+	mv $(BUILDDIR)/prom0.2.hex $(BUILDDIR)/prom0.1d16.hex
+	mv $(BUILDDIR)/prom0.3.hex $(BUILDDIR)/prom0.1c20.hex
+	mv $(BUILDDIR)/prom0.4.hex $(BUILDDIR)/prom0.1b17.hex
+	mv $(BUILDDIR)/prom0.5.hex $(BUILDDIR)/prom0.1b19.hex
 	$(BUILDDIR)/soap -n $< > $@
-	sed $(SEDOPTIONS) -E 's/^([[:space:]]*prom0_([^[:space:]]+)[[:space:]]*:[[:space:]]*dip_74s472)[[:space:]]+port map/\1 generic map (fn => "$(CADR4_ROMFILESPATH)promh9.\2.hex") port map/' $@
+	sed $(SEDOPTIONS) -E 's/^([[:space:]]*prom0_([^[:space:]]+)[[:space:]]*:[[:space:]]*dip_74s472)[[:space:]]+port map/\1 generic map (fn => "$(BUILDDIR)\/prom0.\2.hex") port map/' $@
 	python3 $(FIXSUDSPY) -v $@
 
 # add rom files

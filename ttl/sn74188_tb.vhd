@@ -5,7 +5,7 @@ use std.textio.all;
 use ieee.std_logic_textio.all;
 
 use work.sn74.sn74188;
-use work.misc.load_rom_file;
+use work.misc.load_hex_file;
 
 entity sn74188_tb is
 end;
@@ -28,7 +28,7 @@ architecture testbench of sn74188_tb is
   signal a0   : std_logic := '0';
   signal ce_n : std_logic := '0';
 
-  constant expected : std_logic_vector := load_rom_file("rom/dspctl_2f22.hex");
+  constant expected : work.misc.word_array_t(0 to 31)(7 downto 0) := load_hex_file("rom/dspctl_2f22.hex", 32, 8);
 
 begin
 
@@ -65,7 +65,7 @@ begin
       a1 <= addr(1);
       a0 <= addr(0);
       wait for 1 ns;
-      expected_data := expected(i * 8 + 7 downto i * 8);
+      expected_data := expected(i);
       
       -- Convert open-collector outputs: 'Z' means '1', '0' means '0'
       actual_data(7) := '1' when o7 = 'Z' else '0';

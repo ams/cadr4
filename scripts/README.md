@@ -10,3 +10,4 @@
 - `generate-alu-tests.py`: generates the test data used for various alu tbs
 - `order-component-port-names.py`: order the port names in a package vhd
 - `order-entity-port-names.py`: order the port names in an entity vhd
+- `split-hex.py`: splits a hex file to smaller hex files to initialize components

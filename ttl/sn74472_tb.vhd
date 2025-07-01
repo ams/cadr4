@@ -5,7 +5,7 @@ use std.textio.all;
 use ieee.std_logic_textio.all;
 
 use work.sn74.sn74472;
-use work.misc.load_rom_file;
+use work.misc.load_hex_file;
 
 entity sn74472_tb is
 end;
@@ -32,7 +32,7 @@ architecture testbench of sn74472_tb is
   signal a1   : std_logic := '0';
   signal a0   : std_logic := '0';
 
-  constant expected : std_logic_vector := load_rom_file("rom/promh9.1b17.hex");
+  constant expected : work.misc.word_array_t(0 to 511)(7 downto 0) := load_hex_file("rom/promh9.1b17.hex", 512, 8);
 
 begin
 
@@ -76,7 +76,7 @@ begin
       a1 <= addr(1);
       a0 <= addr(0);
       wait for 1 ns;
-      expected_data := expected(i * 8 + 7 downto i * 8);
+      expected_data := expected(i);
       assert (d7 & d6 & d5 & d4 & d3 & d2 & d1 & d0) = expected_data
         report "Mismatch at address " & integer'image(i)
         severity error;

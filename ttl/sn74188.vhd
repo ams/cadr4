@@ -29,8 +29,8 @@ entity sn74188 is
 end entity;
 
 architecture behavioral of sn74188 is
-  signal ce_n_i, a0_i, a1_i, a2_i, a3_i, a4_i : std_logic;
-  constant rom  : std_logic_vector := load_rom_file(fn);  
+  signal ce_n_i, a0_i, a1_i, a2_i, a3_i, a4_i : std_logic;  
+  constant rom : work.misc.word_array_t(0 to 31)(7 downto 0) := load_hex_file(fn, 32, 8);  
 begin
 
   ce_n_i <= ttl_input(ce_n);
@@ -50,7 +50,7 @@ begin
         o7 <= 'X'; o6 <= 'X'; o5 <= 'X'; o4 <= 'X';
         o3 <= 'X'; o2 <= 'X'; o1 <= 'X'; o0 <= 'X';        
       else
-        data := rom(to_integer(addr) * 8 + 7 downto to_integer(addr) * 8);
+        data := rom(to_integer(addr));
         -- this is an open-collector output component
         -- it can only drive low or high-z
         -- an external pull-up resistor is required to drive high

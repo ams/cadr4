@@ -24,12 +24,13 @@ architecture testbench of cadr_prom_tb is
   signal i32, i33, i34, i35, i36, i37, i38, i39 : std_logic;
   signal i40, i41, i42, i43, i44, i45, i47, i48 : std_logic;
   
-  -- Combined 48-bit output (i46 is missing)
+  -- Combined 48-bit output (i46 is missing from PROM chips, set to '1' for parity)
   signal prom_data : std_logic_vector(47 downto 0);
+  signal i46 : std_logic := '1';  -- i46 is parity bit, set to '1' for odd parity
   
-  -- Load reference data as constant
-  constant reference_rom : std_logic_vector := load_rom_file("rom/promh.mcr.9.hex");
-  constant rom_bytes : integer := reference_rom'length / 8;  -- Number of bytes in file
+  -- Load reference data as constant (byte array)
+  constant reference_rom : work.misc.word_array_t(0 to 2723)(7 downto 0) := load_hex_file("rom/promh.mcr.9.hex", 2724, 8);
+  constant rom_bytes : integer := reference_rom'length;  -- Number of bytes in file
   constant rom_words : integer := rom_bytes / 6;  -- Number of 48-bit words (6 bytes each, since 2724/6=454)
   
 begin
@@ -87,8 +88,8 @@ begin
       i44 => i44, i45 => i45, i47 => i47, i48 => i48
     );
   
-  -- Combine individual signals into vector for easier handling
-  prom_data <= i48 & i47 & i45 & i44 & i43 & i42 & i41 & i40 &
+  -- Combine individual signals into vector for easier handling (MSB first, i46 inserted)
+  prom_data <= i47 & i46 & i45 & i44 & i43 & i42 & i41 & i40 &
                i39 & i38 & i37 & i36 & i35 & i34 & i33 & i32 &
                i31 & i30 & i29 & i28 & i27 & i26 & i25 & i24 &
                i23 & i22 & i21 & i20 & i19 & i18 & i17 & i16 &
@@ -121,9 +122,11 @@ begin
       ref_entry := pc_val;
       
       -- Get expected data from reference (if available)
-      if ref_entry < rom_words then
-        -- Extract 48-bit entry from flat vector (6 bytes per entry, MSB first)
-        expected_data := reference_rom(ref_entry*48+47 downto ref_entry*48);
+      if ref_entry * 6 + 5 < rom_bytes then
+        -- Extract 48-bit entry from word array (6 bytes per entry, MSB first)
+        expected_data := reference_rom(ref_entry*6) & reference_rom(ref_entry*6+1) & 
+                        reference_rom(ref_entry*6+2) & reference_rom(ref_entry*6+3) & 
+                        reference_rom(ref_entry*6+4) & reference_rom(ref_entry*6+5);
         
         -- Compare actual vs expected
         if actual_data /= expected_data then

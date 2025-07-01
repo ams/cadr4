@@ -19,6 +19,79 @@ cadr_<PAGE>_suds.vhd files.
 | cadr_prom            | Tests Prom Contents            | prom0, prom1 |
 | cadr                 | Complete CADR Run              | all pages |
 
+# Special Initialization with promh.10
+
+In order to speed up boot, the memory clearing and initializing can be done in VHDL. promh.10 is modified to jump FUDGE-INITIAL-DISK-PARAMETERS directly, and M, A, PDL, SPC, L1-MAP, L2-MAP, IMEM, DMEM are initialized in vhdls with values at that point. The actual values are taken from usim when PC reaches 257.
+
+Memory Contents (decimal index, hex value):
+
+```
+MMEM
+0: 0x20001
+1: 0x400
+3: 0xFFFFFFFF
+4: 0x20000
+5: 0x4000000
+
+AMEM
+0: 0x20001
+1: 0x400
+3: 0xFFFFFFFF
+4: 0x20000
+5: 0x4000000
+32: 0x1
+33: 0x2
+34: 0x3
+35: 0x4
+36: 0x5
+37: 0x9
+38: 0x20
+39: 0x100
+40: 0x2000
+41: 0x770
+42: 0x9FFEF0
+43: 0x200205
+
+L1-MAP
+0: 0x0
+1: 0x1
+2: 0x2
+3: 0x3
+4: 0x4
+5: 0x5
+6: 0x6
+7: 0x7
+8: 0x8
+9: 0x9
+10: 0xA
+11: 0xB
+12: 0xC
+13: 0xD
+14: 0xE
+15: 0xF
+16: 0x10
+17: 0x11
+18: 0x12
+19: 0x13
+20: 0x14
+21: 0x15
+22: 0x16
+23: 0x17
+24: 0x18
+25: 0x19
+26: 0x1A
+27: 0x1B
+28: 0x1C
+29: 0x1D
+30: 0x1E
+31: 0x1F
+... so on until 2047
+
+DMEM
+0: 0x20000
+
+PDL, SPC, L2-MAP, IMEM are all zeroes.
+```
 # General Info
 
 ## Power On Reset

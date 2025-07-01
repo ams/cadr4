@@ -6,7 +6,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-use work.misc.load_rom_file;
+use work.misc.load_hex_file;
 use work.misc.ttl_input;
 
 entity sn74472 is
@@ -34,8 +34,8 @@ entity sn74472 is
 end;
 
 architecture behavioral of sn74472 is
-  signal a0_i, a1_i, a2_i, a3_i, a4_i, a5_i, a6_i, a7_i, a8_i, ce_n_i : std_logic;
-  constant rom  : std_logic_vector := load_rom_file(fn);  
+  signal a0_i, a1_i, a2_i, a3_i, a4_i, a5_i, a6_i, a7_i, a8_i, ce_n_i : std_logic;  
+  constant rom : work.misc.word_array_t(0 to 511)(7 downto 0) := load_hex_file(fn, 512, 8);  
 begin
 
   a0_i <= ttl_input(a0);
@@ -59,7 +59,7 @@ begin
         d7 <= 'X'; d6 <= 'X'; d5 <= 'X'; d4 <= 'X';
         d3 <= 'X'; d2 <= 'X'; d1 <= 'X'; d0 <= 'X';
       else
-        data := rom(to_integer(addr) * 8 + 7 downto to_integer(addr) * 8);
+        data := rom(to_integer(addr));
         d7 <= data(7); d6 <= data(6); d5 <= data(5); d4 <= data(4);
         d3 <= data(3); d2 <= data(2); d1 <= data(1); d0 <= data(0);
       end if;

@@ -9,6 +9,9 @@ use ieee.numeric_std.all;
 use work.misc.all;
 
 entity dm93425a is
+  generic (
+    fn : string := ""
+  );
   port (
     a0   : in  std_logic;
     a1   : in  std_logic;
@@ -29,8 +32,7 @@ end entity;
 
 architecture behavioral of dm93425a is
   signal a0_i, a1_i, a2_i, a3_i, a4_i, a5_i, a6_i, a7_i, a8_i, a9_i, ce_n_i, we_n_i, di_i : std_logic;
-  type ram_t is array (0 to 1023) of std_logic;
-  signal ram : ram_t;
+  signal ram : work.misc.word_array_t(0 to 1023)(0 downto 0) := load_hex_file(fn, 1024, 1);
 begin
 
   a0_i <= ttl_input(a0);
@@ -59,10 +61,10 @@ begin
       else
         if we_n_i = '0' then
           -- Write
-          ram(to_integer(addr)) <= di_i;
+          ram(to_integer(addr))(0) <= di_i;
         elsif we_n_i = '1' then
           -- Read (always happens when enabled)
-          do <= ram(to_integer(addr));
+          do <= ram(to_integer(addr))(0);
         else
           -- do nothing
         end if;

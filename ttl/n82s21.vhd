@@ -13,6 +13,9 @@ use ieee.numeric_std.all;
 use work.misc.all;
 
 entity n82s21 is
+  generic (
+    fn : string := ""
+  );
   port (
     a0     : in  std_logic;
     a1     : in  std_logic;
@@ -32,9 +35,8 @@ entity n82s21 is
 end entity;
 
 architecture behavioral of n82s21 is
-  signal a0_i, a1_i, a2_i, a3_i, a4_i, ce_i, i0_i, i1_i, latch_n_i, wclk_n_i, we0_n_i, we1_n_i : std_logic;
-  type ram_t is array (0 to 31) of std_logic_vector(1 downto 0);
-  signal ram : ram_t;  -- Uninitialized RAM (defaults to 'U')
+  signal a0_i, a1_i, a2_i, a3_i, a4_i, ce_i, i0_i, i1_i, latch_n_i, wclk_n_i, we0_n_i, we1_n_i : std_logic;  
+  signal ram : work.misc.word_array_t(0 to 31)(1 downto 0) := load_hex_file(fn, 32, 2);
   signal addr : unsigned(4 downto 0);
   signal output_latches : std_logic_vector(1 downto 0);  -- Uninitialized latches (defaults to 'U')
 begin
