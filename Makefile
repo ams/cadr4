@@ -10,7 +10,8 @@ CADR4_TILONCONSOLE ?= 1
 # when setting from bash escape \ two times e.g. d:\\\\projects\\\\cadr4\\\\rom\\\\ 
 CADR4_ROMFILESPATH ?= rom\/
 
-CADR_TB_STOPTIME := 1ms
+# set to 0 for no limit
+CADR_TB_STOPTIME := 0
 
 GHDL		= ghdl
 GHDLSTD		= 08
@@ -256,7 +257,11 @@ endif
 
 # cadr_tb runs with a time limit
 ifeq ($(TB),build/cadr_tb)
+ifeq ($(CADR_TB_STOPTIME),0)
+GHDLSTOPTIMEOPTION :=
+else
 GHDLSTOPTIMEOPTION := --stop-time=$(CADR_TB_STOPTIME)
+endif
 else
 GHDLSTOPTIMEOPTION :=
 endif
