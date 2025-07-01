@@ -27,19 +27,19 @@ architecture dip of dip_74s138 is
 begin
   U1 : sn74s138
     port map (
-      a   => p1,
-      b   => p2,
-      c   => p3,
-      g1  => p6,
-      g2a => p4,
-      g2b => p5,
-      y0  => p15,
-      y1  => p14,
-      y2  => p13,
-      y3  => p12,
-      y4  => p11,
-      y5  => p10,
+      y7  => p7,
       y6  => p9,
-      y7  => p7
+      y5  => p10,
+      y4  => p11,
+      y3  => p12,
+      y2  => p13,
+      y1  => p14,
+      y0  => p15,
+      sel2 => p3,
+      sel1 => p2,
+      sel0 => p1,
+      g1  => p6,
+      g2a => p5,
+      g2b => p4
       );
 end architecture;

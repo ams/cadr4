@@ -278,9 +278,9 @@ package sn74 is
 
   component sn74138 is
     port (
-      a   : in  std_logic;
-      b   : in  std_logic;
-      c   : in  std_logic;
+      sel2 : in  std_logic;
+      sel1 : in  std_logic;
+      sel0 : in  std_logic;
       g2a : in  std_logic;
       g2b : in  std_logic;
       g1  : in  std_logic;

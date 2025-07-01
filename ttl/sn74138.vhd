@@ -6,31 +6,31 @@ use work.misc.all;
 
 entity sn74138 is
   port (
-    a   : in  std_logic;
-    b   : in  std_logic;
-    c   : in  std_logic;
-    g1  : in  std_logic;
-    g2a : in  std_logic;
-    g2b : in  std_logic;
-    y0  : out std_logic;
-    y1  : out std_logic;
-    y2  : out std_logic;
-    y3  : out std_logic;
-    y4  : out std_logic;
-    y5  : out std_logic;
-    y6  : out std_logic;
-    y7  : out std_logic
+    sel2 : in  std_logic;
+    sel1 : in  std_logic;
+    sel0 : in  std_logic;
+    g1   : in  std_logic;
+    g2a  : in  std_logic;
+    g2b  : in  std_logic;
+    y0   : out std_logic;
+    y1   : out std_logic;
+    y2   : out std_logic;
+    y3   : out std_logic;
+    y4   : out std_logic;
+    y5   : out std_logic;
+    y6   : out std_logic;
+    y7   : out std_logic
     );
 end;
 
 architecture behavioral of sn74138 is
-  signal a_i, b_i, c_i, g1_i, g2a_i, g2b_i : std_logic;
+  signal sel2_i, sel1_i, sel0_i, g1_i, g2a_i, g2b_i : std_logic;
   signal y : std_logic_vector(7 downto 0);
 begin
 
-  a_i <= ttl_input(a);
-  b_i <= ttl_input(b);
-  c_i <= ttl_input(c);
+  sel2_i <= ttl_input(sel2);
+  sel1_i <= ttl_input(sel1);
+  sel0_i <= ttl_input(sel0);
   g1_i <= ttl_input(g1);
   g2a_i <= ttl_input(g2a);
   g2b_i <= ttl_input(g2b);
@@ -43,7 +43,7 @@ begin
     -- Check enable conditions first
     if g = '1' then
       -- Enabled: decode select inputs
-      sel := a_i & b_i & c_i;  -- MSB to LSB: a, b, c (matching testbench expectations)
+      sel := sel2 & sel1 & sel0;
       
       -- Handle all valid select combinations explicitly
       case sel is
