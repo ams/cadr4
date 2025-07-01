@@ -11,7 +11,7 @@ CADR4_TILONCONSOLE ?= 1
 CADR4_ROMFILESPATH ?= rom\/
 
 # set to 0 for no limit
-CADR_TB_STOPTIME := 0
+CADR_TB_STOPTIME := 1ms
 
 GHDL		= ghdl
 GHDLSTD		= 08

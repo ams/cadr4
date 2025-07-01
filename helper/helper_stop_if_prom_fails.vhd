@@ -28,14 +28,18 @@ architecture behavioral of helper_stop_if_prom_fails is
     pc <= pc13 & pc12 & pc11 & pc10 & pc9 & pc8 & pc7 & pc6 & pc5 & pc4 & pc3 & pc2 & pc1 & pc0;
 
     process (\-promenable\, pc)
+       variable last_reported_pc : std_logic_vector(13 downto 0) := (others => '0');
     begin
       if \-promenable\ = '0' then
         if (is_x(pc)) then
-          report "PC is invalid: " & to_ostring(PC);
+          report "PC is invalid: " & to_ostring(pc);
           std.env.stop;
         elsif ((unsigned(pc) > 1) and (unsigned(pc) < 8#45#)) then
-          report "PROM stucked at " & to_ostring(PC);
+          report "PROM stucked at PC=" & to_ostring(pc);
           std.env.stop;
+        elsif ((unsigned(pc) > unsigned(last_reported_pc))) then
+          report "PC=" & to_ostring(pc);
+          last_reported_pc := pc;
         end if;
       end if;
     end process;

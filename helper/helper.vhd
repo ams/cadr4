@@ -983,4 +983,10 @@ package helper is
     );
   end component;
 
+  component helper_cycle_counter is 
+    port (
+      clk1 : in std_logic
+    );
+  end component;
+
 end package;
