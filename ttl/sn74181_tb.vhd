@@ -49,7 +49,7 @@ begin
     variable mode_val, cin_val, expected_cn4b, expected_x, expected_y : std_logic;
     variable test_count : integer := 0;
   begin
-    file_open(test_vectors, "build/sn74181_tb.txt", read_mode);
+    file_open(test_vectors, "ttl/sn74181_tb.txt", read_mode);
     
     while not endfile(test_vectors) loop
       readline(test_vectors, test_line);

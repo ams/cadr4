@@ -217,7 +217,7 @@ begin
     variable pass_count : integer := 0;
   begin
     
-    file_open(test_vectors_file, "build/alu_32bit_tb.txt", read_mode);
+    file_open(test_vectors_file, "ttl/alu_32bit_tb.txt", read_mode);
     
     while not endfile(test_vectors_file) loop
       readline(test_vectors_file, test_line);
