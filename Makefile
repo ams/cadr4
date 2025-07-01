@@ -223,7 +223,8 @@ sources: $(SRCS)
 check-ttl: $(TTL_EXES)
 	for TB_EXE in $^; do TB=$$TB_EXE make run-tb || exit; done
 
-check-cadr: $(CADR_EXES)
+# run all except cadr_tb which runs forever
+check-cadr: $(filter-out build/cadr_tb,$(CADR_EXES))
 	for TB_EXE in $^; do TB=$$TB_EXE make run-tb || exit; done
 
 check: check-ttl check-cadr
