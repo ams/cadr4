@@ -10,3 +10,4 @@ https://gitlab.c3sl.ufpr.br/roberto/cmips/-/blob/a427f438d0b095efa73c28fd29d451b
 # SD card stuff
 https://github.com/ibm2030/SimpleSDHC
 http://stevenmerrifield.com/tools/sd.vhd
+https://github.com/ibm2030/SimpleSDHC/blob/master/sd_spi.vhd
