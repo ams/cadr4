@@ -12,11 +12,10 @@ architecture behavioral of helper_cycle_counter is
     signal counter : unsigned(63 downto 0) := (others => '0');
 begin
 
-    -- Counter process
     process (clk1)
     begin
         if rising_edge(clk1) then
-            counter <= counter + 1;
+          counter <= counter + 1;
         end if;
     end process;
 
