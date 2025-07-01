@@ -27,5 +27,5 @@ dram2_2f02 : dadr10c <= not \-dadr10c\;
              \-dadr9c\ <= not ir21b;
              \-dadr8c\ <= not ir20b;
              \-dadr7c\ <= not ir19b;
-dram2_2f03 : dip_74s37 port map (p1 => '0', p2 => '0', p3 => open, p4 => '0', p5 => '0', p6 => open, p8 => \-dwec\, p9 => dispwr, p10 => wp2, p11 => open, p12 => '0', p13 => '0');
+dram2_2f03 : \-dwec\  <= not (dispwr and wp2);
 end architecture;

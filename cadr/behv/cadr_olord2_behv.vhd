@@ -13,7 +13,10 @@ begin
 olord2_1a02 : dip_74s133o port map (p1 => \-ape\, p2 => \-mpe\, p3 => \-pdlpe\, p4 => \-dpe\, p5 => \-ipe\, p6 => \-spe\, p7 => \-higherr\, p9 => err, p10 => \-mempe\, p11 => \-v0pe\, p12 => \-v1pe\, p13 => \-halted\, p14 => hi1, p15 => hi1);
 olord2_1a03 : dip_74s374 port map (p1 => gnd, p2 => \-ape\, p3 => aparok, p4 => mmemparok, p5 => \-mpe\, p6 => \-pdlpe\, p7 => pdlparok, p8 => dparok, p9 => \-dpe\, p11 => clk5a, p12 => \-ipe\, p13 => iparok, p14 => spcparok, p15 => \-spe\, p16 => \-higherr\, p17 => highok, p18 => memparok, p19 => \-mempe\);
 olord2_1a05 : dip_74s374 port map (p1 => gnd, p2 => \-v0pe\, p3 => v0parok, p4 => vmoparok, p5 => \-v1pe\, p6 => statstop, p7 => \stat.ovf\, p8 => \-halt\, p9 => \-halted\, p11 => clk5a, p12 => open, p13 => '0', p14 => '0', p15 => open, p16 => open, p17 => '0', p18 => '0', p19 => open);
-olord2_1a06 : dip_74s37 port map (p1 => \-mclk5\, p2 => \-mclk5\, p3 => mclk5a, p4 => \-clk5\, p5 => \-clk5\, p6 => clk5a, p8 => \-reset\, p9 => hi1, p10 => reset, p11 => \bus.power.reset l\, p12 => \power reset a\, p13 => \power reset a\);
+olord2_1a06 : mclk5a <= not (\-mclk5\  and \-mclk5\);
+              clk5a <= not (\-clk5\  and \-clk5\);
+              \-reset\  <= not (hi1 and reset);
+              \bus.power.reset_l\  <= not (\power_reset_a\  and \power_reset_a\);
 olord2_1a07 : highok <=  \-upperhighok\ nor \-lowerhighok\;
               \-boot\ <= net_0 nor net_2;
               \-bus.reset\ <= \power reset a\ nor \prog.bus.reset\;

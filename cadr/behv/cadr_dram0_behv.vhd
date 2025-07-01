@@ -6,7 +6,7 @@ use work.misc.all;
 
 architecture behv of cadr_dram0 is
 begin
-dram0_2f03 : dip_74s37 port map (p1 => wp2, p2 => dispwr, p3 => \-dwea\, p4 => '0', p5 => '0', p6 => open, p8 => open, p9 => '0', p10 => '0', p11 => open, p12 => '0', p13 => '0');
+dram0_2f03 : \-dwec\  <= not (dispwr and wp2);
 dram0_2f21 : dadr10a <= not \-dadr10a\;
              \-dadr10a\ <= not ir22b;
              \-dadr9a\ <= not ir21b;

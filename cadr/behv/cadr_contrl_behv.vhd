@@ -44,5 +44,7 @@ contrl_3f20 : popj <= not \-popj\;
               \-dr\ <= not dr;
 contrl_3f30 : dip_74s64 port map (p1 => hi4, p2 => \-dfall\, p3 => dispenb, p4 => hi4, p5 => \-jcond\, p6 => jretf, p8 => pcs0, p9 => hi4, p10 => popj, p11 => jcond, p12 => \-ir6\, p13 => jret);
 contrl_4d09 : \-spcnt\ <= \-spush\ and \-spop\;
-contrl_4e30 : dip_74s37 port map (p1 => \-destspcd\, p2 => \-destspcd\, p3 => destspcd, p4 => wp4c, p5 => spushd, p6 => \-swpb\, p8 => \-swpa\, p9 => spushd, p10 => wp4c, p11 => open, p12 => '0', p13 => '0');
+contrl_4e30 : destspcd <= not (\-destspcd\  and \-destspcd\);
+              \-swpb\  <= not (wp4c and spushd);
+              \-swpa\  <= not (spushd and wp4c);
 end architecture;

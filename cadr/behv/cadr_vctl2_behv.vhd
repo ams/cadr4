@@ -8,7 +8,10 @@ architecture behv of cadr_vctl2 is
 begin
 vctl2_1c15 : mapwr0d <=  \-wmapd\ nor \-vma26\;
              mapwr1d <= \-wmapd\ nor \-vma25\;
-vctl2_1d07 : dip_74s37 port map (p1 => mapwr0d, p2 => wp1a, p3 => \-vm0wpa\, p4 => mapwr0d, p5 => wp1a, p6 => \-vm0wpb\, p8 => \-vm1wpa\, p9 => wp1b, p10 => mapwr1d, p11 => \-vm1wpb\, p12 => wp1b, p13 => mapwr1d);
+vctl2_1d07 : \-vm0wpa\  <= not (mapwr0d and wp1a);
+             \-vm0wpb\  <= not (mapwr0d and wp1a);
+             \-vm1wpa\  <= not (wp1b and mapwr1d);
+             \-vm1wpb\  <= not (wp1b and mapwr1d);
 vctl2_1d26 : \-pfr\ <= not \-lvmo23\;
              wmap <= not \-wmap\;
              \-memrq\ <= not memrq;
