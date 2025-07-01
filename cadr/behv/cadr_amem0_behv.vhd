@@ -5,22 +5,36 @@ use work.dip.all;
 use work.misc.all;
 
 architecture behv of cadr_amem0 is
+  signal l_int : std_logic_vector(16 to 31);
+  signal amem_int : std_logic_vector(16 to 31);
+
+  function get_awp(i : integer) return std_logic is
+  begin
+    case i is
+      when 22 | 23 | 30 | 31 | 28 | 26 | 24 | 27 | 29 => return awpa;
+      when others                                     => return awpb;
+    end case;
+  end;
+
 begin
-amem0_3a07 : dip_93425a port map (p1 => gnd, p2 => \-aadr0b\, p3 => \-aadr1b\, p4 => \-aadr2b\, p5 => \-aadr3b\, p6 => \-aadr4b\, p7 => amem22, p9 => \-aadr5b\, p10 => \-aadr6b\, p11 => \-aadr7b\, p12 => \-aadr8b\, p13 => \-aadr9b\, p14 => \-awpa\, p15 => l22);
-amem0_3a08 : dip_93425a port map (p1 => gnd, p2 => \-aadr0b\, p3 => \-aadr1b\, p4 => \-aadr2b\, p5 => \-aadr3b\, p6 => \-aadr4b\, p7 => amem20, p9 => \-aadr5b\, p10 => \-aadr6b\, p11 => \-aadr7b\, p12 => \-aadr8b\, p13 => \-aadr9b\, p14 => \-awpb\, p15 => l20);
-amem0_3a09 : dip_93425a port map (p1 => gnd, p2 => \-aadr0b\, p3 => \-aadr1b\, p4 => \-aadr2b\, p5 => \-aadr3b\, p6 => \-aadr4b\, p7 => amem18, p9 => \-aadr5b\, p10 => \-aadr6b\, p11 => \-aadr7b\, p12 => \-aadr8b\, p13 => \-aadr9b\, p14 => \-awpb\, p15 => l18);
-amem0_3a10 : dip_93425a port map (p1 => gnd, p2 => \-aadr0b\, p3 => \-aadr1b\, p4 => \-aadr2b\, p5 => \-aadr3b\, p6 => \-aadr4b\, p7 => amem16, p9 => \-aadr5b\, p10 => \-aadr6b\, p11 => \-aadr7b\, p12 => \-aadr8b\, p13 => \-aadr9b\, p14 => \-awpb\, p15 => l16);
-amem0_3a11 : dip_93425a port map (p1 => gnd, p2 => \-aadr0b\, p3 => \-aadr1b\, p4 => \-aadr2b\, p5 => \-aadr3b\, p6 => \-aadr4b\, p7 => amem23, p9 => \-aadr5b\, p10 => \-aadr6b\, p11 => \-aadr7b\, p12 => \-aadr8b\, p13 => \-aadr9b\, p14 => \-awpa\, p15 => l23);
-amem0_3a13 : dip_93425a port map (p1 => gnd, p2 => \-aadr0b\, p3 => \-aadr1b\, p4 => \-aadr2b\, p5 => \-aadr3b\, p6 => \-aadr4b\, p7 => amem21, p9 => \-aadr5b\, p10 => \-aadr6b\, p11 => \-aadr7b\, p12 => \-aadr8b\, p13 => \-aadr9b\, p14 => \-awpb\, p15 => l21);
-amem0_3a14 : dip_93425a port map (p1 => gnd, p2 => \-aadr0b\, p3 => \-aadr1b\, p4 => \-aadr2b\, p5 => \-aadr3b\, p6 => \-aadr4b\, p7 => amem19, p9 => \-aadr5b\, p10 => \-aadr6b\, p11 => \-aadr7b\, p12 => \-aadr8b\, p13 => \-aadr9b\, p14 => \-awpb\, p15 => l19);
-amem0_3a15 : dip_93425a port map (p1 => gnd, p2 => \-aadr0b\, p3 => \-aadr1b\, p4 => \-aadr2b\, p5 => \-aadr3b\, p6 => \-aadr4b\, p7 => amem17, p9 => \-aadr5b\, p10 => \-aadr6b\, p11 => \-aadr7b\, p12 => \-aadr8b\, p13 => \-aadr9b\, p14 => \-awpb\, p15 => l17);
-amem0_3b06 : dip_93425a port map (p1 => gnd, p2 => \-aadr0b\, p3 => \-aadr1b\, p4 => \-aadr2b\, p5 => \-aadr3b\, p6 => \-aadr4b\, p7 => amemparity, p9 => \-aadr5b\, p10 => \-aadr6b\, p11 => \-aadr7b\, p12 => \-aadr8b\, p13 => \-aadr9b\, p14 => \-awpa\, p15 => lparity);
-amem0_3b07 : dip_93425a port map (p1 => gnd, p2 => \-aadr0b\, p3 => \-aadr1b\, p4 => \-aadr2b\, p5 => \-aadr3b\, p6 => \-aadr4b\, p7 => amem30, p9 => \-aadr5b\, p10 => \-aadr6b\, p11 => \-aadr7b\, p12 => \-aadr8b\, p13 => \-aadr9b\, p14 => \-awpa\, p15 => l30);
-amem0_3b08 : dip_93425a port map (p1 => gnd, p2 => \-aadr0b\, p3 => \-aadr1b\, p4 => \-aadr2b\, p5 => \-aadr3b\, p6 => \-aadr4b\, p7 => amem28, p9 => \-aadr5b\, p10 => \-aadr6b\, p11 => \-aadr7b\, p12 => \-aadr8b\, p13 => \-aadr9b\, p14 => \-awpa\, p15 => l28);
-amem0_3b09 : dip_93425a port map (p1 => gnd, p2 => \-aadr0b\, p3 => \-aadr1b\, p4 => \-aadr2b\, p5 => \-aadr3b\, p6 => \-aadr4b\, p7 => amem26, p9 => \-aadr5b\, p10 => \-aadr6b\, p11 => \-aadr7b\, p12 => \-aadr8b\, p13 => \-aadr9b\, p14 => \-awpa\, p15 => l26);
-amem0_3b10 : dip_93425a port map (p1 => gnd, p2 => \-aadr0b\, p3 => \-aadr1b\, p4 => \-aadr2b\, p5 => \-aadr3b\, p6 => \-aadr4b\, p7 => amem24, p9 => \-aadr5b\, p10 => \-aadr6b\, p11 => \-aadr7b\, p12 => \-aadr8b\, p13 => \-aadr9b\, p14 => \-awpa\, p15 => l24);
-amem0_3b11 : dip_93425a port map (p1 => gnd, p2 => \-aadr0b\, p3 => \-aadr1b\, p4 => \-aadr2b\, p5 => \-aadr3b\, p6 => \-aadr4b\, p7 => amem31, p9 => \-aadr5b\, p10 => \-aadr6b\, p11 => \-aadr7b\, p12 => \-aadr8b\, p13 => \-aadr9b\, p14 => \-awpa\, p15 => l31);
-amem0_3b12 : dip_93425a port map (p1 => gnd, p2 => \-aadr0b\, p3 => \-aadr1b\, p4 => \-aadr2b\, p5 => \-aadr3b\, p6 => \-aadr4b\, p7 => amem29, p9 => \-aadr5b\, p10 => \-aadr6b\, p11 => \-aadr7b\, p12 => \-aadr8b\, p13 => \-aadr9b\, p14 => \-awpa\, p15 => l29);
-amem0_3b13 : dip_93425a port map (p1 => gnd, p2 => \-aadr0b\, p3 => \-aadr1b\, p4 => \-aadr2b\, p5 => \-aadr3b\, p6 => \-aadr4b\, p7 => amem27, p9 => \-aadr5b\, p10 => \-aadr6b\, p11 => \-aadr7b\, p12 => \-aadr8b\, p13 => \-aadr9b\, p14 => \-awpa\, p15 => l27);
-amem0_3b14 : dip_93425a port map (p1 => gnd, p2 => \-aadr0b\, p3 => \-aadr1b\, p4 => \-aadr2b\, p5 => \-aadr3b\, p6 => \-aadr4b\, p7 => amem25, p9 => \-aadr5b\, p10 => \-aadr6b\, p11 => \-aadr7b\, p12 => \-aadr8b\, p13 => \-aadr9b\, p14 => \-awpa\, p15 => l25);
+  l_int    <= l16 & l17 & l18 & l19 & l20 & l21 & l22 & l23 & l24 & l25 & l26 & l27 & l28 & l29 & l30 & l31;
+  amem_int <= amem16 & amem17 & amem18 & amem19 & amem20 & amem21 & amem22 & amem23 & amem24 & amem25 & amem26 & amem27 & amem28 & amem29 & amem30 & amem31;
+
+  gen_amem0 : for i in 16 to 31 generate
+    dip_inst : dip_93425a port map (p1  => gnd,
+                                    p2  => \-aadr0b\,
+                                    p3  => \-aadr1b\,
+                                    p4  => \-aadr2b\,
+                                    p5  => \-aadr3b\,
+                                    p6  => \-aadr4b\,
+                                    p7  => amem(i),
+                                    p9  => \-aadr5b\,
+                                    p10 => \-aadr6b\,
+                                    p11 => \-aadr7b\,
+                                    p12 => \-aadr8b\,
+                                    p13 => \-aadr9b\,
+                                    p14 => get_awp(i),
+                                    p15 => l(i));
+  end generate;
+
 end architecture;
