@@ -88,12 +88,16 @@ package body misc is
     file f : text;
     variable l : line;
     variable byte_val : std_logic_vector(7 downto 0);
-    variable temp_data : std_logic_vector(16384 * 8 - 1 downto 0) := (others => 'U'); -- 16KB max
-    variable byte_count : integer := 0;
     variable result : word_array_t(0 to size - 1)(width - 1 downto 0);
     variable default_val : std_logic_vector(7 downto 0);
     variable temp_line : line;
+    variable word_index : integer := 0;
   begin
+    -- Check width parameter is valid
+    assert width >= 1 and width <= 8 
+      report "load_hex_file: width must be between 1 and 8, got " & integer'image(width) 
+      severity failure;
+    
     -- Check if filename is empty and initialize to 'U' if so
     if filename'length = 0 then
       result := (others => (others => 'U'));
@@ -126,63 +130,18 @@ package body misc is
       
       file_open(f, filename, read_mode);
       
-      -- First pass: read all bytes from file
-      while not endfile(f) loop
+      -- Read bytes from file and assign directly to result
+      while not endfile(f) and word_index < size loop
         readline(f, l);
-        if l'length > 0 then  -- Skip empty lines
-          hread(l, byte_val);  -- Read two hex digits (1 byte)
-          temp_data(byte_count * 8 + 7 downto byte_count * 8) := byte_val;
-          byte_count := byte_count + 1;
-        end if;
+        -- Assert that line is not empty
+        assert l'length > 0 
+          report "load_hex_file: Empty line found in hex file '" & filename & "' at word " & integer'image(word_index) 
+          severity failure;
+        hread(l, byte_val);  -- Read two hex digits (1 byte)
+        result(word_index) := byte_val(width - 1 downto 0);
+        word_index := word_index + 1;
       end loop;
       file_close(f);
-      
-      -- Convert flat data to word array based on width
-      case width is
-        when 1 =>
-          -- 1-bit wide: each byte provides 8 memory words, each word is std_logic_vector(0 downto 0)
-          for i in 0 to size - 1 loop
-            if i / 8 < byte_count then
-              result(i)(0 downto 0) := temp_data(i downto i);
-            end if;
-          end loop;
-          
-        when 2 =>
-          -- 2-bit wide: each byte provides 4 memory words
-          for i in 0 to size - 1 loop
-            if i / 4 < byte_count then
-              result(i) := temp_data((i / 4) * 8 + (i mod 4) * 2 + 1 downto (i / 4) * 8 + (i mod 4) * 2);
-            end if;
-          end loop;
-          
-        when 4 =>
-          -- 4-bit wide: each byte provides 2 memory words
-          for i in 0 to size - 1 loop
-            if i / 2 < byte_count then
-              if i mod 2 = 0 then
-                result(i) := temp_data((i / 2) * 8 + 3 downto (i / 2) * 8);
-              else
-                result(i) := temp_data((i / 2) * 8 + 7 downto (i / 2) * 8 + 4);
-              end if;
-            end if;
-          end loop;
-          
-        when 8 =>
-          -- 8-bit wide: each byte is one memory word
-          for i in 0 to size - 1 loop
-            if i < byte_count then
-              result(i) := temp_data(i * 8 + 7 downto i * 8);
-            end if;
-          end loop;
-          
-        when others =>
-          -- Default: treat as 8-bit wide
-          for i in 0 to size - 1 loop
-            if i < byte_count then
-              result(i) := temp_data(i * 8 + 7 downto i * 8);
-            end if;
-          end loop;
-      end case;
     end if;
     
     return result;

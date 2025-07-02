@@ -934,7 +934,65 @@ entity helper_bus_monitor is
       \-mds28\  : in std_logic;
       \-mds29\  : in std_logic;
       \-mds30\  : in std_logic;
-      \-mds31\  : in std_logic
+      \-mds31\  : in std_logic;
+      -- VMO bus - 24 bits
+      \-vmo0\   : in std_logic;
+      \-vmo1\   : in std_logic;
+      \-vmo2\   : in std_logic;
+      \-vmo3\   : in std_logic;
+      \-vmo4\   : in std_logic;
+      \-vmo5\   : in std_logic;
+      \-vmo6\   : in std_logic;
+      \-vmo7\   : in std_logic;
+      \-vmo8\   : in std_logic;
+      \-vmo9\   : in std_logic;
+      \-vmo10\  : in std_logic;
+      \-vmo11\  : in std_logic;
+      \-vmo12\  : in std_logic;
+      \-vmo13\  : in std_logic;
+      \-vmo14\  : in std_logic;
+      \-vmo15\  : in std_logic;
+      \-vmo16\  : in std_logic;
+      \-vmo17\  : in std_logic;
+      \-vmo18\  : in std_logic;
+      \-vmo19\  : in std_logic;
+      \-vmo20\  : in std_logic;
+      \-vmo21\  : in std_logic;
+      \-vmo22\  : in std_logic;
+      \-vmo23\  : in std_logic;
+      -- VMAS bus - 32 bits
+      \-vmas0\  : in std_logic;
+      \-vmas1\  : in std_logic;
+      \-vmas2\  : in std_logic;
+      \-vmas3\  : in std_logic;
+      \-vmas4\  : in std_logic;
+      \-vmas5\  : in std_logic;
+      \-vmas6\  : in std_logic;
+      \-vmas7\  : in std_logic;
+      \-vmas8\  : in std_logic;
+      \-vmas9\  : in std_logic;
+      \-vmas10\ : in std_logic;
+      \-vmas11\ : in std_logic;
+      \-vmas12\ : in std_logic;
+      \-vmas13\ : in std_logic;
+      \-vmas14\ : in std_logic;
+      \-vmas15\ : in std_logic;
+      \-vmas16\ : in std_logic;
+      \-vmas17\ : in std_logic;
+      \-vmas18\ : in std_logic;
+      \-vmas19\ : in std_logic;
+      \-vmas20\ : in std_logic;
+      \-vmas21\ : in std_logic;
+      \-vmas22\ : in std_logic;
+      \-vmas23\ : in std_logic;
+      \-vmas24\ : in std_logic;
+      \-vmas25\ : in std_logic;
+      \-vmas26\ : in std_logic;
+      \-vmas27\ : in std_logic;
+      \-vmas28\ : in std_logic;
+      \-vmas29\ : in std_logic;
+      \-vmas30\ : in std_logic;
+      \-vmas31\ : in std_logic
     );
   end entity;
 
@@ -964,7 +1022,7 @@ entity helper_bus_monitor is
     signal dpc : std_logic_vector(13 downto 0);
     signal iwr : std_logic_vector(48 downto 0);
     signal lc : std_logic_vector(25 downto 0);
-    signal mapi : std_logic_vector(15 downto 0);
+    signal mapi : std_logic_vector(23 downto 8);
     signal msk : std_logic_vector(31 downto 0);
     signal opc : std_logic_vector(13 downto 0);
     signal spc : std_logic_vector(18 downto 0);
@@ -982,6 +1040,10 @@ entity helper_bus_monitor is
     signal \-mds\ : std_logic_vector(31 downto 0);
     signal mds : std_logic_vector(31 downto 0);
     signal md : std_logic_vector(31 downto 0);
+    signal \-vmo\ : std_logic_vector(23 downto 0);
+    signal vmo : std_logic_vector(23 downto 0);
+    signal \-vmas\ : std_logic_vector(31 downto 0);
+    signal vmas : std_logic_vector(31 downto 0);
   begin
     ipc <= ipc13 & ipc12 & ipc11 & ipc10 & ipc9 & ipc8 & ipc7 & ipc6 & ipc5 & ipc4 & ipc3 & ipc2 & ipc1 & ipc0;
     ir <= ir48 & ir47 & ir46 & ir45 & ir44 & ir43 & ir42 & ir41 & ir40 & ir39 & ir38 & ir37 & ir36 & ir35 & ir34 & ir33 & ir32 & ir31 & ir30 & ir29 & ir28 & ir27 & ir26 & ir25 & ir24 & ir23 & ir22 & ir21 & ir20 & ir19 & ir18 & ir17 & ir16 & ir15 & ir14 & ir13 & ir12 & ir11 & ir10 & ir9 & ir8 & ir7 & ir6 & ir5 & ir4 & ir3 & ir2 & ir1 & ir0;
@@ -1025,4 +1087,8 @@ entity helper_bus_monitor is
     \-mds\ <= \-mds31\ & \-mds30\ & \-mds29\ & \-mds28\ & \-mds27\ & \-mds26\ & \-mds25\ & \-mds24\ & \-mds23\ & \-mds22\ & \-mds21\ & \-mds20\ & \-mds19\ & \-mds18\ & \-mds17\ & \-mds16\ & \-mds15\ & \-mds14\ & \-mds13\ & \-mds12\ & \-mds11\ & \-mds10\ & \-mds9\ & \-mds8\ & \-mds7\ & \-mds6\ & \-mds5\ & \-mds4\ & \-mds3\ & \-mds2\ & \-mds1\ & \-mds0\;
     mds <= not \-mds\;
     md <= not \-md\;
+    \-vmo\ <= \-vmo23\ & \-vmo22\ & \-vmo21\ & \-vmo20\ & \-vmo19\ & \-vmo18\ & \-vmo17\ & \-vmo16\ & \-vmo15\ & \-vmo14\ & \-vmo13\ & \-vmo12\ & \-vmo11\ & \-vmo10\ & \-vmo9\ & \-vmo8\ & \-vmo7\ & \-vmo6\ & \-vmo5\ & \-vmo4\ & \-vmo3\ & \-vmo2\ & \-vmo1\ & \-vmo0\;
+    vmo <= not \-vmo\;
+    \-vmas\ <= \-vmas31\ & \-vmas30\ & \-vmas29\ & \-vmas28\ & \-vmas27\ & \-vmas26\ & \-vmas25\ & \-vmas24\ & \-vmas23\ & \-vmas22\ & \-vmas21\ & \-vmas20\ & \-vmas19\ & \-vmas18\ & \-vmas17\ & \-vmas16\ & \-vmas15\ & \-vmas14\ & \-vmas13\ & \-vmas12\ & \-vmas11\ & \-vmas10\ & \-vmas9\ & \-vmas8\ & \-vmas7\ & \-vmas6\ & \-vmas5\ & \-vmas4\ & \-vmas3\ & \-vmas2\ & \-vmas1\ & \-vmas0\;
+    vmas <= not \-vmas\;
   end architecture;

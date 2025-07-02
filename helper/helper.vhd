@@ -959,7 +959,65 @@ package helper is
       \-mds28\  : in std_logic;
       \-mds29\  : in std_logic;
       \-mds30\  : in std_logic;
-      \-mds31\  : in std_logic
+      \-mds31\  : in std_logic;
+      -- VMO bus - 24 bits
+      \-vmo0\   : in std_logic;
+      \-vmo1\   : in std_logic;
+      \-vmo2\   : in std_logic;
+      \-vmo3\   : in std_logic;
+      \-vmo4\   : in std_logic;
+      \-vmo5\   : in std_logic;
+      \-vmo6\   : in std_logic;
+      \-vmo7\   : in std_logic;
+      \-vmo8\   : in std_logic;
+      \-vmo9\   : in std_logic;
+      \-vmo10\  : in std_logic;
+      \-vmo11\  : in std_logic;
+      \-vmo12\  : in std_logic;
+      \-vmo13\  : in std_logic;
+      \-vmo14\  : in std_logic;
+      \-vmo15\  : in std_logic;
+      \-vmo16\  : in std_logic;
+      \-vmo17\  : in std_logic;
+      \-vmo18\  : in std_logic;
+      \-vmo19\  : in std_logic;
+      \-vmo20\  : in std_logic;
+      \-vmo21\  : in std_logic;
+      \-vmo22\  : in std_logic;
+      \-vmo23\  : in std_logic;
+      -- VMAS bus - 32 bits
+      \-vmas0\  : in std_logic;
+      \-vmas1\  : in std_logic;
+      \-vmas2\  : in std_logic;
+      \-vmas3\  : in std_logic;
+      \-vmas4\  : in std_logic;
+      \-vmas5\  : in std_logic;
+      \-vmas6\  : in std_logic;
+      \-vmas7\  : in std_logic;
+      \-vmas8\  : in std_logic;
+      \-vmas9\  : in std_logic;
+      \-vmas10\ : in std_logic;
+      \-vmas11\ : in std_logic;
+      \-vmas12\ : in std_logic;
+      \-vmas13\ : in std_logic;
+      \-vmas14\ : in std_logic;
+      \-vmas15\ : in std_logic;
+      \-vmas16\ : in std_logic;
+      \-vmas17\ : in std_logic;
+      \-vmas18\ : in std_logic;
+      \-vmas19\ : in std_logic;
+      \-vmas20\ : in std_logic;
+      \-vmas21\ : in std_logic;
+      \-vmas22\ : in std_logic;
+      \-vmas23\ : in std_logic;
+      \-vmas24\ : in std_logic;
+      \-vmas25\ : in std_logic;
+      \-vmas26\ : in std_logic;
+      \-vmas27\ : in std_logic;
+      \-vmas28\ : in std_logic;
+      \-vmas29\ : in std_logic;
+      \-vmas30\ : in std_logic;
+      \-vmas31\ : in std_logic
     );
   end component;
 
