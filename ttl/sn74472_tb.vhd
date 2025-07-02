@@ -32,12 +32,12 @@ architecture testbench of sn74472_tb is
   signal a1   : std_logic := '0';
   signal a0   : std_logic := '0';
 
-  constant expected : work.misc.word_array_t(0 to 511)(7 downto 0) := load_hex_file("rom/promh9.1b17.hex", 512, 8);
+  constant expected : work.misc.word_array_t(0 to 511)(7 downto 0) := load_hex_file("doc/promh.9/promh9.1b17.hex", 512, 8);
 
 begin
 
   uut : sn74472
-    generic map(fn => "rom/promh9.1b17.hex")
+    generic map(fn => "doc/promh.9/promh9.1b17.hex")
     port map(
     a0   => a0,
     a1   => a1,
