@@ -51,6 +51,7 @@ package dip is
   end component;
 
   component dip_2147 is 
+    generic (fn : string := "");
     port (          -- am2147 [2147]
     p1  : in  std_logic;                -- a0
     p2  : in  std_logic;                -- a1

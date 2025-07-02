@@ -1,3 +1,7 @@
+# this is the original setup
+# PROMs are loaded with original hex files
+# and only PROM1 is initialized to zeroes since it has no hex files
+
 dspctl.2f22 rom/dspctl.2f22.hex
 
 mskg4.2d11 rom/mskg4.2d11.hex

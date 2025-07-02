@@ -8,6 +8,9 @@ use ieee.numeric_std.all;
 use work.misc.all;
 
 entity d2147 is
+  generic (
+    fn : string := ""
+  );
   port (
     a0   : in  std_logic;
     a1   : in  std_logic;
@@ -45,7 +48,7 @@ architecture behavioral of d2147 is
   signal di_int   : std_logic;
   signal we_n_int : std_logic;
   
-  signal ram : work.misc.word_array_t(0 to 4095)(0 downto 0) := (others => (others => '0'));
+  signal ram : work.misc.word_array_t(0 to 4095)(0 downto 0) := load_hex_file(fn, 4096, 1);
   
 begin
   a0_int <= ttl_input(a0);

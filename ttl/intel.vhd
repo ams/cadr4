@@ -9,6 +9,9 @@ use ieee.std_logic_1164.all;
 package intel is
 
   component d2147
+    generic (
+      fn : string := ""
+    );
     port(
       a0   : in  std_logic;
       a1   : in  std_logic;
