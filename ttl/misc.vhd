@@ -80,7 +80,10 @@ package body misc is
     return s & (1 to width - s'LENGTH => ' '); -- pad spaces
   end function;
 
-            -- Generic hex file loading function that returns word array
+  -- Generic hex file loading function that returns word array
+  -- if filename is "", returns U, this is usually the default in generic map
+  -- if filename is ":X" or ":XX", returns X or XX to initialize for example with 0 or 1
+  -- if filename is a file, returns the file contents
   impure function load_hex_file(filename : string; size : integer; width : integer) return word_array_t is
     file f : text;
     variable l : line;
@@ -91,14 +94,25 @@ package body misc is
     variable default_val : std_logic_vector(7 downto 0);
     variable temp_line : line;
   begin
+    -- Check if filename is empty and initialize to 'U' if so
+    if filename'length = 0 then
+      result := (others => (others => 'U'));
+      return result;
+    end if;
+    
     if filename'length > 0 and filename(filename'left) = ':' then
       -- Initialize all words with hex value after ':'
       if filename'length = 2 then
         -- Single hex digit - pad with leading zero
         write(temp_line, "0" & filename(filename'left + 1 to filename'right));
-      else
-        -- Two hex digits or more
+      elsif filename'length = 3 then
+        -- Two hex digits
         write(temp_line, filename(filename'left + 1 to filename'right));
+      else
+        -- Invalid format - too many or no hex digits after ':'
+        assert false report "load_hex_file: Invalid hex format '" & filename & "'. Expected :X or :XX where X is hex digit." severity failure;
+        result := (others => (others => 'U'));
+        return result;
       end if;
       hread(temp_line, default_val);
       

@@ -1,0 +1,24 @@
+dspctl.2f22 rom/dspctl.2f22.hex
+
+mskg4.2d11 rom/mskg4.2d11.hex
+mskg4.2d12 rom/mskg4.2d12.hex
+mskg4.2e11 rom/mskg4.2e11.hex
+mskg4.2e12 rom/mskg4.2e12.hex
+mskg4.2d16 rom/mskg4.2d16.hex
+mskg4.2d17 rom/mskg4.2d17.hex
+mskg4.2e16 rom/mskg4.2e16.hex
+mskg4.2e17 rom/mskg4.2e17.hex
+
+prom0.1e17 rom/promh9.1e17.hex
+prom0.1e19 rom/promh9.1e19.hex
+prom0.1d16 rom/promh9.1d16.hex
+prom0.1c20 rom/promh9.1c20.hex
+prom0.1b17 rom/promh9.1b17.hex
+prom0.1b19 rom/promh9.1b19.hex
+
+prom1.1e18 :0
+prom1.1e20 :0
+prom1.1d17 :0
+prom1.1b16 :0
+prom1.1b18 :0
+prom1.1b20 :80

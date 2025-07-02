@@ -4,13 +4,27 @@ Split a hex file into multiple interleaved hex files based on bit width conversi
 
 This utility takes a hex file containing data for RAM of a certain bit width and splits
 it into multiple hex files for RAMs of a smaller bit width using interleaving.
+Optionally calculates odd parity for each word and outputs it to a separate file.
+
+The tool supports two types of splitting:
+1. Word splitting: Wide words are split into narrower parts (interleaved)
+2. Stack splitting: When total capacity exceeds target RAM size, multiple stacks are created
 
 Examples:
-  python split-hex.py data.hex 16 8 output 256
+  python split-hex.py --from-hex data.hex --from-width 16 --to-width 8 --to-prefix output --to-words 256 --out-dir ./output
     Split a 16-bit hex file into two 8-bit files with 256 words each
   
-  python split-hex.py promh.mcr.9.hex 48 8 promh9 512 --reverse
+  python split-hex.py --from-hex promh.mcr.9.hex --from-width 48 --to-width 8 --to-prefix promh9 --to-words 512 --out-dir ./rom --reverse
     Split a 48-bit hex file into six 8-bit files with 512 words each, reversed
+    
+  python split-hex.py --from-hex data.hex --from-width 16 --to-width 8 --to-prefix output --to-words 256 --out-dir ./output --add-parity
+    Split a 16-bit hex file into two 8-bit files plus a parity file with odd parity bits
+    
+  python split-hex.py --from-hex data.hex --from-width 18 --from-hex-width 32 --to-width 8 --to-prefix output --to-words 256 --out-dir ./output
+    Split an 18-bit value stored in 32-bit hex format, using only the 18 LSBs
+    
+  python split-hex.py --from-hex data.hex --from-width 16 --from-size 1024 --to-width 8 --to-size 256 --to-prefix output --out-dir ./output
+    Split with stacking: 1024 words of 16-bit data automatically creates 4 stacks of 256-word 8-bit RAMs
 """
 
 import sys
@@ -75,11 +89,11 @@ def convert_to_format(hex_byte, to_width):
     return results
 
 
-def split_hex(hex_file, from_width, to_width, prefix, out_dir, to_words=None, reverse=False):
-    """Split hex file based on bit width conversion and interleaving."""
+def split_hex(hex_file, from_width, to_width, prefix, out_dir, reverse=False, add_parity=False, from_hex_width=None, from_size=None, to_size=None):
+    """Split hex file based on bit width conversion and interleaving, with optional stacking."""
     
     # Validate inputs
-    if from_width <= 0 or to_width <= 0:
+    if from_width <= 0 or to_width <= 0 or from_hex_width <= 0:
         print("Error: Bit widths must be positive integers.")
         sys.exit(1)
     
@@ -91,27 +105,48 @@ def split_hex(hex_file, from_width, to_width, prefix, out_dir, to_words=None, re
         print(f"Error: from_width ({from_width}) must be divisible by to_width ({to_width}).")
         sys.exit(1)
     
-    # Validate that to_width * to_words is a multiple of 8
-    if to_words is not None and (to_width * to_words) % 8 != 0:
-        print(f"Error: to_width ({to_width}) * to_words ({to_words}) = {to_width * to_words} must be a multiple of 8.")
+    if from_hex_width % 8 != 0:
+        print(f"Error: from_hex_width ({from_hex_width}) must be a multiple of 8.")
         sys.exit(1)
     
-    # Create output directory if it doesn't exist
-    if not os.path.exists(out_dir):
-        os.makedirs(out_dir)
-        print(f"Created output directory: {out_dir}")
-    
-    # Calculate how many output files we need
-    num_files = from_width // to_width
-    from_bytes = from_width // 8
-    
-    if from_width % 8 != 0:
-        print("Error: from_width must be a multiple of 8.")
+    if from_hex_width < from_width:
+        print(f"Error: from_hex_width ({from_hex_width}) must be >= from_width ({from_width}).")
         sys.exit(1)
+    
+
+    
+    # Determine stacking configuration
+    if from_size <= 0 or to_size <= 0:
+        print("Error: Sizes must be positive integers.")
+        sys.exit(1)
+    
+    if from_size > to_size:
+        # Stacking needed
+        if from_size % to_size != 0:
+            print(f"Error: from_size ({from_size}) must be a multiple of to_size ({to_size}) for stacking.")
+            sys.exit(1)
+        
+        num_stacks = from_size // to_size
+        print(f"Stacking: {num_stacks} stacks, {to_size} words per output file")
+    elif from_size < to_size:
+        print(f"Error: from_size ({from_size}) cannot be smaller than to_size ({to_size}).")
+        sys.exit(1)
+    else:
+        # from_size == to_size, no stacking needed
+        num_stacks = 1
+        print(f"No stacking: from_size equals to_size ({from_size} words per output file)")
+        
+    # Calculate how many output files we need for word splitting
+    num_word_files = from_width // to_width
+    from_hex_bytes = from_hex_width // 8
     
     print(f"Converting from {from_width}-bit to {to_width}-bit")
-    print(f"Input: {from_bytes} bytes per word")
-    print(f"Output: {to_width}-bit hex, {num_files} files")
+    print(f"Input hex format: {from_hex_width}-bit ({from_hex_bytes} bytes per word)")
+    print(f"Using: {from_width}-bit (LSB)")
+    print(f"Word splitting: {to_width}-bit hex, {num_word_files} files per stack")
+    print(f"Stack splitting: {num_stacks} stacks, {to_size} words per stack")
+    if add_parity:
+        print("Calculating odd parity for each word")
     
     # Read input hex file
     hex_values = read_hex_file(hex_file)
@@ -120,114 +155,175 @@ def split_hex(hex_file, from_width, to_width, prefix, out_dir, to_words=None, re
         print("Error: No hex values found in input file.")
         sys.exit(1)
     
-    # Check if input is individual bytes (2 hex digits each) or complete words
-    if len(hex_values[0]) == 2:
-        # Input file contains individual bytes, one per line
-        print("Input format: Individual bytes (one per line)")
+    # Initialize parity values list if needed - always as list of stacks
+    parity_values = [[] for _ in range(num_stacks)] if add_parity else None
+    
+    # Initialize output files: [word_file][stack] - always as 2D array
+    output_files = [[[] for _ in range(num_stacks)] for _ in range(num_word_files)]
+    
+    # Input file contains individual bytes, one per line
+    print("Input format: Individual bytes (one per line)")
+    
+    # Create a properly sized zero-filled memory space
+    
+    # Create memory as a list of integers (one per word)
+    memory = [0] * from_size
+    print(f"Created zero-filled memory: {from_size} words of {from_width} bits each")
+    
+    # Read hex file data into memory, respecting from_hex_width
+    hex_word_bytes = from_hex_bytes
+    hex_words_available = len(hex_values) // hex_word_bytes
+    
+    print(f"Hex file has {len(hex_values)} bytes, which gives {hex_words_available} words of {from_hex_width} bits")
+    
+    # Read available words from hex file
+    words_to_read = min(hex_words_available, from_size)
+    for word_idx in range(words_to_read):
+        word_start = word_idx * hex_word_bytes
+        word_hex_bytes = hex_values[word_start:word_start + hex_word_bytes]
         
-        # Validate that total number of bytes is divisible by from_bytes
-        if len(hex_values) % from_bytes != 0:
-            print(f"Error: Total bytes ({len(hex_values)}) must be divisible by from_width bytes ({from_bytes}).")
-            sys.exit(1)
+        # Convert bytes to a single hex string and then to integer
+        full_hex_value = ''.join(word_hex_bytes)
+        full_value = int(full_hex_value, 16)
         
-        # Group bytes into words and then split
-        output_files = [[] for _ in range(num_files)]
+        # Extract only the valid bits (from_width bits from the from_hex_width bits)
+        if from_width <= from_hex_width:
+            # Take LSB from_width bits
+            mask = (1 << from_width) - 1
+            memory[word_idx] = full_value & mask
+        else:
+            # from_width > from_hex_width, use all available bits
+            memory[word_idx] = full_value
+    
+    print(f"Loaded {words_to_read} words from hex file into memory")
+    
+    # Apply reversal if requested (at the memory level)
+    if reverse:
+        memory.reverse()
+        print("Reversed memory contents")
+    
+    # Now process the memory and distribute to output files
+    for word_idx, word_value in enumerate(memory):
+        # Calculate parity for the word if needed
+        if add_parity:
+            bit_count = bin(word_value).count('1')
+            parity_bit = 1 if bit_count % 2 == 0 else 0
+            # Determine which stack this word belongs to
+            stack_idx = word_idx // to_size if num_stacks > 1 else 0
+            if stack_idx < num_stacks:
+                parity_values[stack_idx].append(f"{parity_bit:02X}")
         
-        # Process bytes in groups of from_bytes
-        for word_start in range(0, len(hex_values), from_bytes):
-            # Extract one word (from_bytes consecutive bytes)
-            word_bytes = hex_values[word_start:word_start + from_bytes]
+        # Convert word to hex and process byte by byte for output
+        hex_digits_needed = ((from_width + 7) // 8) * 2
+        word_hex_value = f"{word_value:0{hex_digits_needed}X}"
+        
+        # Determine which stack this word belongs to
+        stack_idx = word_idx // to_size if num_stacks > 1 else 0
+        if stack_idx >= num_stacks:
+            break  # Skip excess words
+        
+        # Split into bytes and distribute to output files
+        byte_idx = 0
+        for i in range(0, len(word_hex_value), 2):
+            hex_byte = word_hex_value[i:i+2]
+            # Convert each byte to the target format
+            converted_values = convert_to_format(hex_byte, to_width)
             
-            # Distribute bytes to output files using interleaving
-            byte_idx = 0
-            for hex_byte in word_bytes:
-                # Convert each byte to the target format
-                converted_values = convert_to_format(hex_byte, to_width)
-                
-                # Distribute the converted values to output files
-                for val in converted_values:
-                    file_idx = byte_idx % num_files
-                    output_files[file_idx].append(val)
-                    byte_idx += 1
-        
-    else:
-        # Input file contains complete words
-        print("Input format: Complete words")
-        
-        # Validate that each hex value has the correct number of hex digits
-        expected_hex_digits = from_bytes * 2
-        for i, value in enumerate(hex_values):
-            if len(value) != expected_hex_digits:
-                print(f"Error: Line {i+1} has {len(value)} hex digits, expected {expected_hex_digits} for {from_width}-bit width.")
-                sys.exit(1)
-        
-        # Initialize output arrays
-        output_files = [[] for _ in range(num_files)]
-        
-        # Process each input hex value
-        for hex_value in hex_values:
-            # Split hex value into individual bytes
-            hex_bytes = []
-            for i in range(0, len(hex_value), 2):
-                hex_bytes.append(hex_value[i:i+2])
-            
-            # Process each byte and distribute to output files
-            byte_idx = 0
-            for hex_byte in hex_bytes:
-                # Convert each byte to the target format
-                converted_values = convert_to_format(hex_byte, to_width)
-                
-                # Distribute the converted values to output files
-                for val in converted_values:
-                    file_idx = byte_idx % num_files
-                    output_files[file_idx].append(val)
-                    byte_idx += 1
+            # Distribute the converted values to output files
+            for val in converted_values:
+                file_idx = byte_idx % num_word_files
+                output_files[file_idx][stack_idx].append(val)
+                byte_idx += 1
     
     # Apply padding and/or reversing if requested
-    for i in range(num_files):
-        # Pad with zeros if to_words is specified
-        if to_words is not None:
-            current_words = len(output_files[i])
-            if current_words > to_words:
-                print(f"Warning: File {i} has {current_words} words, truncating to {to_words}")
-                output_files[i] = output_files[i][:to_words]
-            elif current_words < to_words:
-                padding_needed = to_words - current_words
+    for i in range(num_word_files):
+        for j in range(num_stacks):
+            # Pad with zeros to reach to_size
+            current_words = len(output_files[i][j])
+            if current_words > to_size:
+                print(f"Warning: File {i}.{j} has {current_words} words, truncating to {to_size}")
+                output_files[i][j] = output_files[i][j][:to_size]
+            elif current_words < to_size:
+                padding_needed = to_size - current_words
                 zero_value = "00"
-                output_files[i].extend([zero_value] * padding_needed)
-                print(f"Padded file {i} with {padding_needed} zero words")
-        
-        # Reverse if requested
-        if reverse:
-            output_files[i].reverse()
-            print(f"Reversed file {i}")
+                output_files[i][j].extend([zero_value] * padding_needed)
+                print(f"Padded file {i}.{j} with {padding_needed} zero words")
+            
+            # Reverse if requested
+            if reverse:
+                output_files[i][j].reverse()
+                print(f"Reversed file {i}.{j}")
     
-    # Write output files
-    for i in range(num_files):
-        output_filename = os.path.join(out_dir, f"{prefix}.{i}.hex")
-        write_hex_file(output_filename, output_files[i])
-        print(f"Written {len(output_files[i])} values to {output_filename}")
+    # Handle parity file padding and reversing (parity values are already distributed across stacks)
+    if add_parity:
+        # Apply padding and reversing per stack
+        for j in range(num_stacks):
+            current_words = len(parity_values[j])
+            if current_words > to_size:
+                print(f"Warning: Parity file {j} has {current_words} words, truncating to {to_size}")
+                parity_values[j] = parity_values[j][:to_size]
+            elif current_words < to_size:
+                padding_needed = to_size - current_words
+                parity_values[j].extend(["00"] * padding_needed)
+                print(f"Padded parity file {j} with {padding_needed} zero words")
+            
+            if reverse:
+                parity_values[j].reverse()
+                print(f"Reversed parity file {j}")
+    
+    # Write output files (always use three-part naming: prefix.word.stack.hex)
+    for i in range(num_word_files):
+        for j in range(num_stacks):
+            output_filename = os.path.join(out_dir, f"{prefix}.{i}.{j}.hex")
+            write_hex_file(output_filename, output_files[i][j])
+            print(f"Written {len(output_files[i][j])} values to {output_filename}")
+    
+    # Write parity file if requested (always use three-part naming: prefix.p.stack.hex)
+    if add_parity:
+        # parity_values is always a list of lists (one per stack)
+        for j in range(num_stacks):
+            parity_filename = os.path.join(out_dir, f"{prefix}.p.{j}.hex")
+            write_hex_file(parity_filename, parity_values[j])
+            print(f"Written {len(parity_values[j])} parity values to {parity_filename}")
 
 
 def main():
     parser = argparse.ArgumentParser(
-        description='Split a hex file into multiple interleaved hex files based on bit width conversion.',
+        description='Split a hex file into multiple interleaved hex files based on bit width conversion with optional stacking.',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
   %(prog)s --from-hex data.hex --from-width 16 --to-width 8 --to-prefix output --to-words 256 --out-dir ./output
-    Split a 16-bit hex file into two 8-bit hex files with 256 words each in ./output directory
+    Word splitting: Split a 16-bit hex file into two 8-bit hex files with 256 words each
+    Creates files: output.0.0.hex, output.1.0.hex
 
   %(prog)s --from-hex promh.mcr.9.hex --from-width 48 --to-width 8 --to-prefix promh9 --to-words 512 --out-dir ./rom --reverse
-    Split a 48-bit hex file into six 8-bit hex files with 512 words each in ./rom directory, reversed
+    Word splitting: Split a 48-bit hex file into six 8-bit hex files with 512 words each, reversed
+    Creates files: promh9.0.0.hex, promh9.1.0.hex, promh9.2.0.hex, promh9.3.0.hex, promh9.4.0.hex, promh9.5.0.hex
+
+  %(prog)s --from-hex data.hex --from-width 16 --from-size 1024 --to-width 8 --to-size 256 --to-prefix output --out-dir ./output
+    Stack splitting: 1024 words of 16-bit data automatically creates 4 stacks of 256-word 8-bit RAMs
+    Creates files: output.0.0.hex, output.1.0.hex, output.0.1.hex, output.1.1.hex, output.0.2.hex, output.1.2.hex, output.0.3.hex, output.1.3.hex
 
   %(prog)s --from-hex data.hex --from-width 8 --to-width 1 --to-prefix bits --to-words 64 --out-dir ./bits
-    Split an 8-bit hex file into eight 1-bit files with 64 values each in ./bits directory
+    Word splitting: Split an 8-bit hex file into eight 1-bit files with 64 values each
+    Creates files: bits.0.0.hex, bits.1.0.hex, bits.2.0.hex, bits.3.0.hex, bits.4.0.hex, bits.5.0.hex, bits.6.0.hex, bits.7.0.hex
+
+  %(prog)s --from-hex data.hex --from-width 16 --to-width 8 --to-prefix output --to-words 256 --out-dir ./output --add-parity
+    Word splitting with parity: Split a 16-bit hex file into two 8-bit hex files plus a parity file
+    Creates files: output.0.0.hex, output.1.0.hex, output.p.0.hex
+
+  %(prog)s --from-hex data.hex --from-width 18 --from-hex-width 32 --to-width 8 --to-prefix output --to-words 256 --out-dir ./output
+    Word splitting: Split an 18-bit value stored in 32-bit hex format, using only the 18 LSBs
+    Creates files: output.0.0.hex, output.1.0.hex, output.2.0.hex
 
 Output format:
+- All files use consistent naming: prefix.N.S.hex (where N is word part, S is stack index starting from 0)
+- Even with no stacking, stack index .0 is used for consistency
 - All output files are .hex format with one hex byte (two hex digits) per line
 - For 2-bit width: each 2-bit value is written as 00, 01, 02, or 03
 - For 1-bit width: each 1-bit value is written as 00 or 01
+- Parity files: prefix.p.S.hex (where S is stack index starting from 0)
         """
     )
     
@@ -237,7 +333,11 @@ Output format:
     parser.add_argument('--from-width', 
                        type=int,
                        required=True,
-                       help='Original bit width (must be multiple of 8)')
+                       help='Original bit width')
+    parser.add_argument('--from-hex-width', 
+                       type=int,
+                       required=True,
+                       help='Bit width of hex data in input file (must be multiple of 8)')
     parser.add_argument('--to-width', 
                        type=int,
                        required=True,
@@ -246,21 +346,32 @@ Output format:
     parser.add_argument('--to-prefix', 
                        required=True,
                        help='Prefix for output files')
-    parser.add_argument('--to-words', 
-                       type=int,
-                       required=True,
-                       help='Number of words in each output file (pad with zeros if needed)')
+
     parser.add_argument('--out-dir', 
                        required=True,
                        help='Output directory for generated hex files')
     parser.add_argument('--reverse', 
                        action='store_true',
                        help='Reverse the order of entries in each output file')
+    parser.add_argument('--add-parity', 
+                       action='store_true',
+                       help='Calculate odd parity for each word and output it to a separate file')
+    parser.add_argument('--from-size', 
+                       type=int,
+                       required=True,
+                       help='Total capacity of input data in words')
+    parser.add_argument('--to-size', 
+                       type=int,
+                       required=True,
+                       help='Total capacity of each output hex file in words')
     
     args = parser.parse_args()
     
+
+    
     split_hex(getattr(args, 'from_hex'), getattr(args, 'from_width'), getattr(args, 'to_width'), 
-              getattr(args, 'to_prefix'), args.out_dir, getattr(args, 'to_words'), args.reverse)
+              getattr(args, 'to_prefix'), args.out_dir, args.reverse, args.add_parity, 
+              getattr(args, 'from_hex_width'), getattr(args, 'from_size'), getattr(args, 'to_size'))
 
 
 if __name__ == "__main__":

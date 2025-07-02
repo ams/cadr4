@@ -206,8 +206,50 @@ def find_at_signals(instantiations):
     
     return at_signals
 
-def fix_suds_file(file_path, verbose=False):
+def parse_generic_map_file(generic_map_file_path):
+    """Parse a text file containing generic map assignments in format: <page>.<label> <fn_value>"""
+    generic_mappings = {}
+    
+    if not generic_map_file_path or not os.path.exists(generic_map_file_path):
+        return generic_mappings
+    
+    try:
+        with open(generic_map_file_path, 'r') as f:
+            for line_num, line in enumerate(f, 1):
+                line = line.strip()
+                # Skip empty lines and comments
+                if not line or line.startswith('#') or line.startswith('--'):
+                    continue
+                
+                # Parse format: <page>.<label> <fn_value>
+                parts = line.split(None, 1)  # Split on whitespace, max 2 parts
+                if len(parts) != 2:
+                    print(f"Warning: Invalid format in {generic_map_file_path} line {line_num}: {line}")
+                    continue
+                
+                page_label, fn_value = parts
+                if '.' not in page_label:
+                    print(f"Warning: Invalid page.label format in {generic_map_file_path} line {line_num}: {page_label}")
+                    continue
+                
+                page, label = page_label.split('.', 1)
+                
+                if page not in generic_mappings:
+                    generic_mappings[page] = {}
+                
+                generic_mappings[page][label] = fn_value
+                
+    except Exception as e:
+        print(f"Error reading generic map file {generic_map_file_path}: {e}")
+        sys.exit(1)
+    
+    return generic_mappings
+
+def fix_suds_file(file_path, verbose=False, generic_mappings=None):
     """Fix the SUDS VHDL file according to the three issues."""
+    
+    if generic_mappings is None:
+        generic_mappings = {}
     
     # Parse component definitions
     dip_file_path = 'dip/dip.vhd'
@@ -403,6 +445,36 @@ def fix_suds_file(file_path, verbose=False):
                     if inst['ports'][port_pin] in net:
                         inst['ports'][port_pin] = net_signal_name
     
+    # Apply generic mappings from file
+    if page_name in generic_mappings:
+        page_mappings = generic_mappings[page_name]
+        for label, fn_value in page_mappings.items():
+            # Construct full label name by combining page name with label
+            full_label = f"{page_name}_{label}"
+            
+            if full_label in merged_instantiations:
+                # Check if the component supports generics
+                component = merged_instantiations[full_label]['component']
+                resolved_name, component_def = resolve_component_name(component, components, aliases)
+                has_generics = component_def['has_generics'] if component_def else False
+                
+                if has_generics:
+                    # Add fn generic mapping
+                    merged_instantiations[full_label]['generics']['fn'] = f'"{fn_value}"'
+                    if verbose:
+                        print(f"Applied generic mapping: {page_name}.{label} fn => \"{fn_value}\"")
+                else:
+                    print(f"Error: Component '{component}' for label '{label}' does not support generics")
+                    print(f"Cannot apply generic mapping: {page_name}.{label} fn => \"{fn_value}\"")
+                    sys.exit(1)
+            else:
+                print(f"Error: Label '{label}' not found in page '{page_name}' for generic mapping")
+                print(f"Full label '{full_label}' not found. Available labels in page '{page_name}': {', '.join(sorted(merged_instantiations.keys()))}")
+                sys.exit(1)
+    elif generic_mappings and verbose:
+        available_pages = ', '.join(sorted(generic_mappings.keys()))
+        print(f"Note: No mappings found for page '{page_name}'. Available pages in mapping file: {available_pages}")
+    
     # Issue 3: Add missing port terminations
     for label, inst in merged_instantiations.items():
         component = inst['component']
@@ -497,16 +569,47 @@ def fix_suds_file(file_path, verbose=False):
 
 def main():
     verbose = False
-    if len(sys.argv) == 3 and sys.argv[1] == "-v":
-        verbose = True
-        file_path = sys.argv[2]
-    elif len(sys.argv) == 2:
-        file_path = sys.argv[1]
-    else:
-        print("Usage: fix-suds.py [-v] <suds_file.vhd>")
+    generic_map_file = None
+    file_path = None
+    
+    # Parse command line arguments
+    i = 1
+    while i < len(sys.argv):
+        arg = sys.argv[i]
+        if arg == "-v":
+            verbose = True
+        elif arg == "-g" or arg == "--generic-map":
+            if i + 1 >= len(sys.argv):
+                print("Error: -g/--generic-map option requires a filename")
+                sys.exit(1)
+            generic_map_file = sys.argv[i + 1]
+            i += 1  # Skip the filename argument
+        elif not arg.startswith("-"):
+            if file_path is None:
+                file_path = arg
+            else:
+                print("Error: Multiple input files specified")
+                sys.exit(1)
+        else:
+            print(f"Error: Unknown option {arg}")
+            sys.exit(1)
+        i += 1
+    
+    if file_path is None:
+        print("Usage: fix-suds.py [-v] [-g|--generic-map <generic_file.txt>] <suds_file.vhd>")
+        print("  -v                     : Verbose output")
+        print("  -g, --generic-map FILE : Read generic mappings from FILE")
+        print("                          Format: <page>.<label> <fn_value>")
         sys.exit(1)
     
-    fix_suds_file(file_path, verbose)
+    # Parse generic mappings if file provided
+    generic_mappings = {}
+    if generic_map_file:
+        generic_mappings = parse_generic_map_file(generic_map_file)
+        if verbose:
+            print(f"Loaded {sum(len(page_mappings) for page_mappings in generic_mappings.values())} generic mappings from {generic_map_file}")
+    
+    fix_suds_file(file_path, verbose, generic_mappings)
 
 if __name__ == "__main__":
     main() 
