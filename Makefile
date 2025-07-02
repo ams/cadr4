@@ -14,7 +14,7 @@ CADR4_STOPTIME     ?= 10ms
 # set to 1 to disable assertions to improve performance
 CADR4_NOASSERTS    ?= 0
 # set to 1 to use fast prom table using pre-initialized memories
-CADR4_FASTPROM     ?= 1
+CADR4_FASTPROM     ?= 0
 
 GHDL	:= ghdl
 GHDLSTD := 08
