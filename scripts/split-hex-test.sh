@@ -7,9 +7,18 @@ python3 ./split-hex.py \
 --to-prefix prom0 \
 --out-dir ../build
 
-diff -q ../build/prom0.0.0.hex ../doc/promh.9/promh9.1e17.hex
-diff -q ../build/prom0.1.0.hex ../doc/promh.9/promh9.1e19.hex
-diff -q ../build/prom0.2.0.hex ../doc/promh.9/promh9.1d16.hex
-diff -q ../build/prom0.3.0.hex ../doc/promh.9/promh9.1c20.hex
-diff -q ../build/prom0.4.0.hex ../doc/promh.9/promh9.1b17.hex
-diff -q ../build/prom0.5.0.hex ../doc/promh.9/promh9.1b19.hex
+diff -q ../build/prom0.0.0.hex ../doc/promh.9/promh9.1e17.hex || exit 1
+diff -q ../build/prom0.8.0.hex ../doc/promh.9/promh9.1e19.hex || exit 1
+diff -q ../build/prom0.16.0.hex ../doc/promh.9/promh9.1d16.hex || exit 1
+diff -q ../build/prom0.24.0.hex ../doc/promh.9/promh9.1c20.hex || exit 1
+diff -q ../build/prom0.32.0.hex ../doc/promh.9/promh9.1b17.hex || exit 1
+diff -q ../build/prom0.40.0.hex ../doc/promh.9/promh9.1b19.hex || exit 1
+
+mkdir -p ../build
+python3 ./split-hex.py \
+--from-hex ../rom/mmem.hex --from-hex-width 32 \
+--from-size 32 --from-width 32 \
+--reverse --add-parity \
+--to-size 32 --to-width 2 \
+--to-prefix mmem \
+--out-dir ../build

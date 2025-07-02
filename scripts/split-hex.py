@@ -65,29 +65,6 @@ def write_hex_file(filename, hex_values):
         sys.exit(1)
 
 
-def convert_to_format(hex_byte, to_width):
-    """Convert a hex byte to the specified format and width."""
-    # Convert hex byte to integer
-    byte_val = int(hex_byte, 16)
-    
-    results = []
-    
-    if to_width == 8:
-        # 8-bit: return as-is in hex format
-        results.append(hex_byte.lower())
-    elif to_width == 2:
-        # 2-bit: split byte into 4 parts (2 bits each)
-        for i in range(4):
-            bits = (byte_val >> (6 - i * 2)) & 0x3
-            results.append(f"{bits:02x}")
-    elif to_width == 1:
-        # 1-bit: split byte into 8 parts (1 bit each)
-        for i in range(8):
-            bit = (byte_val >> (7 - i)) & 0x1
-            results.append(f"{bit:02x}")
-    
-    return results
-
 
 def split_hex(hex_file, from_width, to_width, prefix, out_dir, reverse=False, add_parity=False, from_hex_width=None, from_size=None, to_size=None, includes_parity=False):
     """Split hex file based on bit width conversion and interleaving, with optional stacking."""
@@ -192,12 +169,14 @@ def split_hex(hex_file, from_width, to_width, prefix, out_dir, reverse=False, ad
     # Load available hex data into words
     words_to_read = min(hex_words_available, to_size)
     
+    # Read from hex into words
     for word_idx in range(words_to_read):
         word_start = word_idx * hex_word_bytes
         word_hex_bytes = hex_values[word_start:word_start + hex_word_bytes]
         
-        # Convert bytes to a single hex string and then to integer
-        full_hex_value = ''.join(word_hex_bytes)
+        # Convert bytes to a single hex string and then to integer (little-endian: reverse byte order)
+        # If hex file has AB CD EF, we want to interpret it as EFCDAB
+        full_hex_value = ''.join(reversed(word_hex_bytes))
         full_value = int(full_hex_value, 16)
         
         # Extract only the valid bits (from_width bits from the from_hex_width bits)
@@ -208,75 +187,70 @@ def split_hex(hex_file, from_width, to_width, prefix, out_dir, reverse=False, ad
         else:
             # from_width > from_hex_width, use all available bits
             word_value = full_value
-        
-        # Handle parity for actual data
+
+        # if adding parity, it should be added to the existing words also
         if add_parity:
-            # Apply left-padding by shifting left first (only for add_parity)
-            if left_pad_bits > 0:
-                word_value = word_value << left_pad_bits
-            
-            # Calculate odd parity for the word
+            # Calculate odd parity for the original word (before any padding)
             bit_count = bin(word_value).count('1')
             parity_bit = 1 if bit_count % 2 == 0 else 0
-            
-            # Add parity bit at MSB (expand word width)
-            parity_bit_pos = final_width - left_pad_bits - 1  # MSB of data portion
+            # Add parity bit right after the original data (at bit from_width)
             if parity_bit:
-                word_value |= (1 << parity_bit_pos)
-        # For includes_parity case, word stays the same (already has parity)
-        
+                word_value |= (1 << from_width);
+                
         words.append(word_value)
     
     print(f"Loaded {words_to_read} words from hex file")
     
-    # Handle padding if needed
+    # add padding if needed with parity
     if words_to_read < to_size:
         padding_words = to_size - words_to_read
-        
-        if includes_parity and padding_words > 0:
-            print(f"Calculating parity for {padding_words} padding words")
-            
+        print(f"Adding {padding_words} padding words")
+        if includes_parity:
             # For each padding word, create word with parity
             for pad_word_idx in range(padding_words):
-                # Zero data with odd parity = set bit 7 to 1
-                # This creates 0x80 in the last byte (file 5)
-                word_value = 0x80  # Set bit 7
+                # Zero data with odd parity = set parity bit to 1
+                # Parity bit is at position from_width (same as used for actual data)
+                word_value = 0  # Start with zero data
+                
+                # zero data has parity bit set at MSB (from_width - 1)
+                word_value |= (1 << (from_width - 1))
                 
                 words.append(word_value)
+
+            print(f"Added {padding_words} padding words (included parity)")
+
         else:
-            # Add simple zero padding words
+            # Add simple zero padding words with parity
             for pad_word_idx in range(padding_words):
-                words.append(0)
+                words.append(1 << from_width)
             
-            print(f"Added {padding_words} padding words (all zeros)")
+            print(f"Added {padding_words} padding words (added parity)")
     
     print(f"Total words: {len(words)}")
     
     # Now process the words and distribute to output files
     for word_idx, word_value in enumerate(words):
-        # Convert word to hex and process byte by byte for output
-        hex_digits_needed = ((final_width + 7) // 8) * 2
-        word_hex_value = f"{word_value:0{hex_digits_needed}x}"
-        
         # Determine which stack this word belongs to
         stack_idx = word_idx // to_size if num_stacks > 1 else 0
         if stack_idx >= num_stacks:
             break  # Skip excess words
         
-        # Split into bytes and distribute to output files
-        byte_idx = 0
-        for i in range(0, len(word_hex_value), 2):
-            hex_byte = word_hex_value[i:i+2]
-            # Convert each byte to the target format
-            converted_values = convert_to_format(hex_byte, to_width)
+        # Extract to_width-sized chunks directly from the word (LSB first to match file naming)
+        for chunk_idx in range(num_output_files):
+            # Calculate bit position from LSB (to match file naming scheme)
+            bit_position = chunk_idx * to_width
             
-            # Distribute the converted values to output files
-            for val in converted_values:
-                file_idx = byte_idx % num_output_files
-                output_files[file_idx][stack_idx].append(val)
-                byte_idx += 1
+            # Extract to_width bits starting at bit_position
+            mask = (1 << to_width) - 1
+            bits = (word_value >> bit_position) & mask
+            
+            # Convert to hex format
+            hex_value = f"{bits:02x}"
+            
+            # Store in the file corresponding to this bit position
+            output_files[chunk_idx][stack_idx].append(hex_value)
     
-    # Write output files (always use three-part naming: prefix.word.stack.hex)
+    # Write output files (naming: prefix.bitpos.stack.hex where bitpos indicates bit range)
     for i in range(num_output_files):
         for j in range(num_stacks):
             # Apply reversing if requested (at the very end, just before output)
@@ -284,10 +258,13 @@ def split_hex(hex_file, from_width, to_width, prefix, out_dir, reverse=False, ad
             if reverse:
                 final_output.reverse()
             
-            output_filename = os.path.join(out_dir, f"{prefix}.{i}.{j}.hex")
+            # Calculate bit position for this file (starting bit of the range)
+            bit_pos = i * to_width
+            output_filename = os.path.join(out_dir, f"{prefix}.{bit_pos}.{j}.hex")
             write_hex_file(output_filename, final_output)
             reverse_text = " (reversed)" if reverse else ""
-            print(f"Written {len(final_output)} values to {output_filename}{reverse_text}")
+            bit_range = f"bits {bit_pos}-{bit_pos + to_width - 1}" if to_width > 1 else f"bit {bit_pos}"
+            print(f"Written {len(final_output)} values to {output_filename}{reverse_text} ({bit_range})")
 
 
 def main():

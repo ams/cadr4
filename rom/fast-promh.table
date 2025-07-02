@@ -88,22 +88,22 @@ mskg4.2e16 rom/mskg4.2e16.hex
 mskg4.2e17 rom/mskg4.2e17.hex
 
 mmem.4a25 build/mmem.0.0.hex
-mmem.4a30 build/mmem.1.0.hex
-mmem.4a24 build/mmem.2.0.hex
-mmem.4a29 build/mmem.3.0.hex
-mmem.4a23 build/mmem.4.0.hex
-mmem.4a28 build/mmem.5.0.hex
-mmem.4a22 build/mmem.6.0.hex
-mmem.4a27 build/mmem.7.0.hex
-mmem.4a21 build/mmem.8.0.hex
-mmem.4a26 build/mmem.9.0.hex
-mmem.4b25 build/mmem.10.0.hex
-mmem.4b30 build/mmem.11.0.hex
-mmem.4b24 build/mmem.12.0.hex
-mmem.4b29 build/mmem.13.0.hex
-mmem.4b23 build/mmem.14.0.hex
-mmem.4b28 build/mmem.15.0.hex
-mmem.4b27 build/mmem.16.0.hex
+mmem.4a30 build/mmem.2.0.hex
+mmem.4a24 build/mmem.4.0.hex
+mmem.4a29 build/mmem.6.0.hex
+mmem.4a23 build/mmem.8.0.hex
+mmem.4a28 build/mmem.10.0.hex
+mmem.4a22 build/mmem.12.0.hex
+mmem.4a27 build/mmem.14.0.hex
+mmem.4a21 build/mmem.16.0.hex
+mmem.4a26 build/mmem.18.0.hex
+mmem.4b25 build/mmem.20.0.hex
+mmem.4b30 build/mmem.22.0.hex
+mmem.4b24 build/mmem.24.0.hex
+mmem.4b29 build/mmem.26.0.hex
+mmem.4b23 build/mmem.28.0.hex
+mmem.4b28 build/mmem.30.0.hex
+mmem.4b27 build/mmem.32.0.hex
 
 pdl1.4c30 :0
 pdl1.4c29 :0
@@ -140,11 +140,11 @@ pdl0.4d11 :0
 pdl0.4c10 :1
 
 prom0.1e17 build/prom0.0.0.hex
-prom0.1e19 build/prom0.1.0.hex
-prom0.1d16 build/prom0.2.0.hex
-prom0.1c20 build/prom0.3.0.hex
-prom0.1b17 build/prom0.4.0.hex
-prom0.1b19 build/prom0.5.0.hex
+prom0.1e19 build/prom0.8.0.hex
+prom0.1d16 build/prom0.16.0.hex
+prom0.1c20 build/prom0.24.0.hex
+prom0.1b17 build/prom0.32.0.hex
+prom0.1b19 build/prom0.40.0.hex
 
 prom1.1e18 :0
 prom1.1e20 :0
