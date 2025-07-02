@@ -28,12 +28,12 @@ architecture testbench of sn74188_tb is
   signal a0   : std_logic := '0';
   signal ce_n : std_logic := '0';
 
-  constant expected : work.misc.word_array_t(0 to 31)(7 downto 0) := load_hex_file("rom/dspctl_2f22.hex", 32, 8);
+  constant expected : work.misc.word_array_t(0 to 31)(7 downto 0) := load_hex_file("rom/dspctl.2f22.hex", 32, 8);
 
 begin
 
   uut : sn74188
-    generic map(fn => "rom/dspctl_2f22.hex")
+    generic map(fn => "rom/dspctl.2f22.hex")
     port map(
       o7   => o7,
       o6   => o6,

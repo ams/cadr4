@@ -6,7 +6,7 @@ use work.misc.all;
 
 architecture behv of cadr_dspctl is
 begin
-dspctl_2f22 : dip_5610 generic map (fn => "rom/dspctl_2f22.hex") port map (p1 => dmask0, p2 => dmask1, p3 => dmask2, p4 => dmask3, p5 => dmask4, p6 => dmask5, p7 => dmask6, p9 => open, p10 => ir5, p11 => ir6, p12 => ir7, p13 => gnd, p14 => gnd, p15 => gnd);
+dspctl_2f22 : dip_5610 generic map (fn => "rom/dspctl.2f22.hex") port map (p1 => dmask0, p2 => dmask1, p3 => dmask2, p4 => dmask3, p5 => dmask4, p6 => dmask5, p7 => dmask6, p9 => open, p10 => ir5, p11 => ir6, p12 => ir7, p13 => gnd, p14 => gnd, p15 => gnd);
 dspctl_3c14 : dip_25s07 port map (p1 => \-irdisp\, p2 => dc6, p3 => ir38, p4 => ir39, p5 => dc7, p6 => ir40, p7 => dc8, p9 => clk3e, p10 => dc9, p11 => ir41, p12 => open, p13 => '0', p14 => '0', p15 => open);
 dspctl_3c15 : dip_25s07 port map (p1 => \-irdisp\, p2 => dc0, p3 => ir32, p4 => ir33, p5 => dc1, p6 => ir34, p7 => dc2, p9 => clk3e, p10 => dc3, p11 => ir35, p12 => dc4, p13 => ir36, p14 => ir37, p15 => dc5);
 dspctl_3d02 : dparok <= dpareven nand dispenb;
