@@ -5,6 +5,7 @@ library work;
 use work.fairchild.dm93425a;
 
 entity dip_93425a is
+  generic (fn : string := "");
   port (
     p1  : in  std_logic;
     p2  : in  std_logic;
@@ -26,6 +27,7 @@ end entity;
 architecture dip of dip_93425a is
 begin
   U1 : dm93425a
+    generic map (fn => fn)
     port map (
       ce_n => p1,
       a0   => p2,

@@ -5,6 +5,7 @@ library work;
 use work.signetics.n82s21;
 
 entity dip_82s21 is
+  generic (fn : string := "");
   port (
     p1  : in  std_logic;
     p2  : in  std_logic;
@@ -26,6 +27,7 @@ end entity;
 architecture dip of dip_82s21 is
 begin
   U1 : n82s21
+    generic map (fn => fn)
     port map (
       i1     => p14,
       we1_n  => p15,

@@ -17,6 +17,9 @@ package misc is
   -- Generic hex file loading function for ROM and RAM
   -- File format: two hex digits per line (1 byte per line: 00-FF)
   -- size: number of memory words, width: bits per word
+  -- filename: file to load, or special values:
+  --   ":hex_value" = initialize all words to hex_value (1-2 hex digits, e.g., ":A", ":FF")
+  --   otherwise = load from file (initialize unloaded words to 'U')
   -- Returns word array for consistent memory access
   type word_array_t is array (natural range <>) of std_logic_vector;
   impure function load_hex_file(filename : string; size : integer; width : integer) return word_array_t;
@@ -77,18 +80,35 @@ package body misc is
     return s & (1 to width - s'LENGTH => ' '); -- pad spaces
   end function;
 
-  -- Generic hex file loading function that returns word array
+            -- Generic hex file loading function that returns word array
   impure function load_hex_file(filename : string; size : integer; width : integer) return word_array_t is
     file f : text;
     variable l : line;
     variable byte_val : std_logic_vector(7 downto 0);
-    variable temp_data : std_logic_vector(16384 * 8 - 1 downto 0) := (others => '0'); -- 16KB max
+    variable temp_data : std_logic_vector(16384 * 8 - 1 downto 0) := (others => 'U'); -- 16KB max
     variable byte_count : integer := 0;
     variable result : word_array_t(0 to size - 1)(width - 1 downto 0);
+    variable default_val : std_logic_vector(7 downto 0);
+    variable temp_line : line;
   begin
-    if filename /= "" then
-      -- Initialize to zeros only when we have a file to load
-      result := (others => (others => '0'));
+    if filename'length > 0 and filename(filename'left) = ':' then
+      -- Initialize all words with hex value after ':'
+      if filename'length = 2 then
+        -- Single hex digit - pad with leading zero
+        write(temp_line, "0" & filename(filename'left + 1 to filename'right));
+      else
+        -- Two hex digits or more
+        write(temp_line, filename(filename'left + 1 to filename'right));
+      end if;
+      hread(temp_line, default_val);
+      
+      -- Initialize all words with default value (truncated to width)
+      for i in 0 to size - 1 loop
+        result(i) := default_val(width - 1 downto 0);
+      end loop;
+    else
+      -- Load from file - initialize with 'U' first
+      result := (others => (others => 'U'));
       
       file_open(f, filename, read_mode);
       
@@ -104,14 +124,14 @@ package body misc is
       file_close(f);
       
       -- Convert flat data to word array based on width
-             case width is
-         when 1 =>
-           -- 1-bit wide: each byte provides 8 memory words, each word is std_logic_vector(0 downto 0)
-           for i in 0 to size - 1 loop
-             if i / 8 < byte_count then
-               result(i)(0 downto 0) := temp_data(i downto i);
-             end if;
-           end loop;
+      case width is
+        when 1 =>
+          -- 1-bit wide: each byte provides 8 memory words, each word is std_logic_vector(0 downto 0)
+          for i in 0 to size - 1 loop
+            if i / 8 < byte_count then
+              result(i)(0 downto 0) := temp_data(i downto i);
+            end if;
+          end loop;
           
         when 2 =>
           -- 2-bit wide: each byte provides 4 memory words

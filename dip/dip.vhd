@@ -50,7 +50,8 @@ package dip is
     );
   end component;
 
-  component dip_2147 is port (          -- am2147 [2147]
+  component dip_2147 is 
+    port (          -- am2147 [2147]
     p1  : in  std_logic;                -- a0
     p2  : in  std_logic;                -- a1
     p3  : in  std_logic;                -- a2
@@ -865,7 +866,9 @@ package dip is
     );
   end component;
 
-  component dip_82s21 is port (         -- dm8221 [82s21]
+  component dip_82s21 is 
+    generic (fn : string := "");
+    port (         -- dm8221 [82s21]
     p1  : in  std_logic;                -- wclk_n
     p2  : in  std_logic;                -- we0_n
     p3  : in  std_logic;                -- i0
@@ -901,7 +904,9 @@ package dip is
     );
   end component;
 
-  component dip_93425a is port (        -- am93425a [93425a]
+  component dip_93425a is 
+    generic (fn : string := "");
+    port (        -- am93425a [93425a]
     p1  : in  std_logic;                -- ce_n
     p2  : in  std_logic;                -- a0
     p3  : in  std_logic;                -- a1

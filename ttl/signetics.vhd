@@ -9,6 +9,7 @@ use ieee.std_logic_1164.all;
 package signetics is
 
   component n82s21 is
+    generic (fn : string := "");
     port (
       d1     : out std_logic;
       i1     : in  std_logic;
