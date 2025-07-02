@@ -21,7 +21,7 @@ cadr_<PAGE>_suds.vhd files.
 
 # Special Initialization with promh.10
 
-In order to speed up boot, the memory clearing and initializing can be done in VHDL. promh.10 is modified to jump FUDGE-INITIAL-DISK-PARAMETERS directly, and M, A, PDL, SPC, L1-MAP, L2-MAP, IMEM, DMEM are initialized in vhdls with values at that point. The actual values are taken from usim when PC reaches 257.
+In order to speed up boot, the memory clearing and initializing can be done in VHDL. fast-promh.mcr.hex is modified to jump FUDGE-INITIAL-DISK-PARAMETERS directly, and M, A, PDL, SPC, L1-MAP, L2-MAP, IMEM, DMEM are initialized in vhdls with values at that point. The actual values are taken from usim when PC reaches 257.
 
 Memory Contents (decimal index, hex value):
 

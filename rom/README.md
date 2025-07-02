@@ -1,6 +1,29 @@
-# DSPCTL (dispatch)
 
-DSPCTL_2F22	// dispatch prom
+This folder contains PROM and RAM hex files and generic-map tables.
+
+# dspctl and mskg4
+
+dspctl and mskg4 uses dspctl.2f22.hex and mskg4.*.hex files.
+
+# promh.mcr.9.hex and promh9.table
+
+promh.mcr.9.hex is the official and original PROM of CADR. This file is used to generate prom0 hex files during build.
+
+To use this prom, promh9.table should be used with fix-suds.py.
+
+# fast-promh.mcr.hex and fast-promh.table
+
+fast-promh.mcr.hex is promh.mcr.9.hex with a modified first instruction, which jumps to 0257 (FUDGE-INITIAL-DISK-PARAMETERS) rather than 045 (GO). The idea is to skip memory initialization to speed up booting. When it is used, all memories have to be initialized and some has to be pre-loaded with some values.
+
+To use this prom, fast-promh.table should be used with fix-suds.py.
+
+amem.hex, dram.hex, mmem.hex and vmem0.hex contains the preloading values for A-MEMORY, D-MEMORY (DPC), M-MEMORY and LEVEL-1-MAP.
+
+# Details
+
+## DSPCTL
+
+DSPCTL.2F22	// dispatch prom
 
 0 0000000
 1 0000001
@@ -11,9 +34,7 @@ DSPCTL_2F22	// dispatch prom
 6 0111111
 7 1111111
 
-  <remainder zero -- unused>
-
-# MSKG4 (mask generation)
+## MSKG4 (mask generation)
 
 MSKG4_2D12	// right, 24-31
 MSKG4_2E12	// r, 16-23
@@ -60,19 +81,4 @@ index
  36    01111111111111111111111111111111     11000000000000000000000000000000
  37    11111111111111111111111111111111     10000000000000000000000000000000
 
-# PROM
-
-PROM0_1B19	// prom 40-48, ce0
-PROM0_1B17	// prom 32-39, ce0
-PROM0_1C20	// prom 24-31, ce0
-PROM0_1D16	// prom 16-23, ce0
-PROM0_1E19	// prom 8-15, ce0
-PROM0_1E17	// prom 0-7, ce0
-
-promh9.* files (see doc/ai/lispm1) come from the 24 Feb 1981 tape.
-These are converted to their hex format with `convert_prom_to_hex.py`.
-These match to promh.mcr.9 i-mem contents.  These are for PROM0 only.
-PROM1 does not contain any data and loaded with prom.00.hex and
-prom.80.hex files containing only zeroes with correct parity.
-
-Hex file are indexed 512 to 0.
+  <remainder zero -- unused>
