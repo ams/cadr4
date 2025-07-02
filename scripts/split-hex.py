@@ -74,22 +74,22 @@ def convert_to_format(hex_byte, to_width):
     
     if to_width == 8:
         # 8-bit: return as-is in hex format
-        results.append(hex_byte.upper())
+        results.append(hex_byte.lower())
     elif to_width == 2:
         # 2-bit: split byte into 4 parts (2 bits each)
         for i in range(4):
             bits = (byte_val >> (6 - i * 2)) & 0x3
-            results.append(f"{bits:02X}")
+            results.append(f"{bits:02x}")
     elif to_width == 1:
         # 1-bit: split byte into 8 parts (1 bit each)
         for i in range(8):
             bit = (byte_val >> (7 - i)) & 0x1
-            results.append(f"{bit:02X}")
+            results.append(f"{bit:02x}")
     
     return results
 
 
-def split_hex(hex_file, from_width, to_width, prefix, out_dir, reverse=False, add_parity=False, from_hex_width=None, from_size=None, to_size=None):
+def split_hex(hex_file, from_width, to_width, prefix, out_dir, reverse=False, add_parity=False, from_hex_width=None, from_size=None, to_size=None, includes_parity=False):
     """Split hex file based on bit width conversion and interleaving, with optional stacking."""
     
     # Validate inputs
@@ -101,10 +101,6 @@ def split_hex(hex_file, from_width, to_width, prefix, out_dir, reverse=False, ad
         print(f"Error: to_width must be 1, 2, or 8, got {to_width}")
         sys.exit(1)
     
-    if from_width % to_width != 0:
-        print(f"Error: from_width ({from_width}) must be divisible by to_width ({to_width}).")
-        sys.exit(1)
-    
     if from_hex_width % 8 != 0:
         print(f"Error: from_hex_width ({from_hex_width}) must be a multiple of 8.")
         sys.exit(1)
@@ -113,7 +109,9 @@ def split_hex(hex_file, from_width, to_width, prefix, out_dir, reverse=False, ad
         print(f"Error: from_hex_width ({from_hex_width}) must be >= from_width ({from_width}).")
         sys.exit(1)
     
-
+    if add_parity and includes_parity:
+        print("Error: Cannot use both --add-parity and --includes-parity simultaneously.")
+        sys.exit(1)
     
     # Determine stacking configuration
     if from_size <= 0 or to_size <= 0:
@@ -129,24 +127,48 @@ def split_hex(hex_file, from_width, to_width, prefix, out_dir, reverse=False, ad
         num_stacks = from_size // to_size
         print(f"Stacking: {num_stacks} stacks, {to_size} words per output file")
     elif from_size < to_size:
-        print(f"Error: from_size ({from_size}) cannot be smaller than to_size ({to_size}).")
-        sys.exit(1)
+        if not (includes_parity or add_parity):
+            print(f"Error: from_size ({from_size}) cannot be smaller than to_size ({to_size}) unless --includes-parity or --add-parity is used.")
+            sys.exit(1)
+        else:
+            # Padding (with or without parity calculation)
+            num_stacks = 1
+            if includes_parity:
+                print(f"Padding with parity: from {from_size} to {to_size} words per output file")
+            else:
+                print(f"Padding: from {from_size} to {to_size} words per output file")
     else:
         # from_size == to_size, no stacking needed
         num_stacks = 1
         print(f"No stacking: from_size equals to_size ({from_size} words per output file)")
-        
-    # Calculate how many output files we need for word splitting
-    num_word_files = from_width // to_width
+    
+    # Calculate effective word width after parity handling
+    if add_parity:
+        effective_width = from_width + 1  # Add new parity bit
+        print(f"Adding parity: expanding from {from_width} to {effective_width} bits per word")
+    else:
+        effective_width = from_width  # Keep original width
+        if includes_parity:
+            print(f"Input includes parity: using {effective_width} bits per word, will calculate parity for padding")
+    
+    # Calculate final width after left-padding to make divisible by to_width
+    if effective_width % to_width != 0:
+        final_width = ((effective_width + to_width - 1) // to_width) * to_width
+        left_pad_bits = final_width - effective_width
+        print(f"Left-padding: from {effective_width} to {final_width} bits per word (adding {left_pad_bits} zero bits)")
+    else:
+        final_width = effective_width
+        left_pad_bits = 0
+    
+    # Calculate how many output files we need
+    num_output_files = final_width // to_width
+    
     from_hex_bytes = from_hex_width // 8
     
+    print(f"Input hex format: {from_hex_width}-bit for {from_width}-bit data")
     print(f"Converting from {from_width}-bit to {to_width}-bit")
-    print(f"Input hex format: {from_hex_width}-bit ({from_hex_bytes} bytes per word)")
-    print(f"Using: {from_width}-bit (LSB)")
-    print(f"Word splitting: {to_width}-bit hex, {num_word_files} files per stack")
+    print(f"Final word width: {final_width}-bit, {num_output_files} files per stack")
     print(f"Stack splitting: {num_stacks} stacks, {to_size} words per stack")
-    if add_parity:
-        print("Calculating odd parity for each word")
     
     # Read input hex file
     hex_values = read_hex_file(hex_file)
@@ -155,20 +177,8 @@ def split_hex(hex_file, from_width, to_width, prefix, out_dir, reverse=False, ad
         print("Error: No hex values found in input file.")
         sys.exit(1)
     
-    # Initialize parity values list if needed - always as list of stacks
-    parity_values = [[] for _ in range(num_stacks)] if add_parity else None
-    
-    # Initialize output files: [word_file][stack] - always as 2D array
-    output_files = [[[] for _ in range(num_stacks)] for _ in range(num_word_files)]
-    
-    # Input file contains individual bytes, one per line
-    print("Input format: Individual bytes (one per line)")
-    
-    # Create a properly sized zero-filled memory space
-    
-    # Create memory as a list of integers (one per word)
-    memory = [0] * from_size
-    print(f"Created zero-filled memory: {from_size} words of {from_width} bits each")
+    # Initialize output files: [word_file][stack]
+    output_files = [[[] for _ in range(num_stacks)] for _ in range(num_output_files)]
     
     # Read hex file data into memory, respecting from_hex_width
     hex_word_bytes = from_hex_bytes
@@ -176,8 +186,12 @@ def split_hex(hex_file, from_width, to_width, prefix, out_dir, reverse=False, ad
     
     print(f"Hex file has {len(hex_values)} bytes, which gives {hex_words_available} words of {from_hex_width} bits")
     
-    # Read available words from hex file
-    words_to_read = min(hex_words_available, from_size)
+    # Create an array of word values (integers)
+    words = []
+    
+    # Load available hex data into words
+    words_to_read = min(hex_words_available, to_size)
+    
     for word_idx in range(words_to_read):
         word_start = word_idx * hex_word_bytes
         word_hex_bytes = hex_values[word_start:word_start + hex_word_bytes]
@@ -190,32 +204,59 @@ def split_hex(hex_file, from_width, to_width, prefix, out_dir, reverse=False, ad
         if from_width <= from_hex_width:
             # Take LSB from_width bits
             mask = (1 << from_width) - 1
-            memory[word_idx] = full_value & mask
+            word_value = full_value & mask
         else:
             # from_width > from_hex_width, use all available bits
-            memory[word_idx] = full_value
-    
-    print(f"Loaded {words_to_read} words from hex file into memory")
-    
-    # Apply reversal if requested (at the memory level)
-    if reverse:
-        memory.reverse()
-        print("Reversed memory contents")
-    
-    # Now process the memory and distribute to output files
-    for word_idx, word_value in enumerate(memory):
-        # Calculate parity for the word if needed
+            word_value = full_value
+        
+        # Handle parity for actual data
         if add_parity:
+            # Apply left-padding by shifting left first (only for add_parity)
+            if left_pad_bits > 0:
+                word_value = word_value << left_pad_bits
+            
+            # Calculate odd parity for the word
             bit_count = bin(word_value).count('1')
             parity_bit = 1 if bit_count % 2 == 0 else 0
-            # Determine which stack this word belongs to
-            stack_idx = word_idx // to_size if num_stacks > 1 else 0
-            if stack_idx < num_stacks:
-                parity_values[stack_idx].append(f"{parity_bit:02X}")
+            
+            # Add parity bit at MSB (expand word width)
+            parity_bit_pos = final_width - left_pad_bits - 1  # MSB of data portion
+            if parity_bit:
+                word_value |= (1 << parity_bit_pos)
+        # For includes_parity case, word stays the same (already has parity)
         
+        words.append(word_value)
+    
+    print(f"Loaded {words_to_read} words from hex file")
+    
+    # Handle padding if needed
+    if words_to_read < to_size:
+        padding_words = to_size - words_to_read
+        
+        if includes_parity and padding_words > 0:
+            print(f"Calculating parity for {padding_words} padding words")
+            
+            # For each padding word, create word with parity
+            for pad_word_idx in range(padding_words):
+                # Zero data with odd parity = set bit 7 to 1
+                # This creates 0x80 in the last byte (file 5)
+                word_value = 0x80  # Set bit 7
+                
+                words.append(word_value)
+        else:
+            # Add simple zero padding words
+            for pad_word_idx in range(padding_words):
+                words.append(0)
+            
+            print(f"Added {padding_words} padding words (all zeros)")
+    
+    print(f"Total words: {len(words)}")
+    
+    # Now process the words and distribute to output files
+    for word_idx, word_value in enumerate(words):
         # Convert word to hex and process byte by byte for output
-        hex_digits_needed = ((from_width + 7) // 8) * 2
-        word_hex_value = f"{word_value:0{hex_digits_needed}X}"
+        hex_digits_needed = ((final_width + 7) // 8) * 2
+        word_hex_value = f"{word_value:0{hex_digits_needed}x}"
         
         # Determine which stack this word belongs to
         stack_idx = word_idx // to_size if num_stacks > 1 else 0
@@ -231,60 +272,22 @@ def split_hex(hex_file, from_width, to_width, prefix, out_dir, reverse=False, ad
             
             # Distribute the converted values to output files
             for val in converted_values:
-                file_idx = byte_idx % num_word_files
+                file_idx = byte_idx % num_output_files
                 output_files[file_idx][stack_idx].append(val)
                 byte_idx += 1
     
-    # Apply padding and/or reversing if requested
-    for i in range(num_word_files):
-        for j in range(num_stacks):
-            # Pad with zeros to reach to_size
-            current_words = len(output_files[i][j])
-            if current_words > to_size:
-                print(f"Warning: File {i}.{j} has {current_words} words, truncating to {to_size}")
-                output_files[i][j] = output_files[i][j][:to_size]
-            elif current_words < to_size:
-                padding_needed = to_size - current_words
-                zero_value = "00"
-                output_files[i][j].extend([zero_value] * padding_needed)
-                print(f"Padded file {i}.{j} with {padding_needed} zero words")
-            
-            # Reverse if requested
-            if reverse:
-                output_files[i][j].reverse()
-                print(f"Reversed file {i}.{j}")
-    
-    # Handle parity file padding and reversing (parity values are already distributed across stacks)
-    if add_parity:
-        # Apply padding and reversing per stack
-        for j in range(num_stacks):
-            current_words = len(parity_values[j])
-            if current_words > to_size:
-                print(f"Warning: Parity file {j} has {current_words} words, truncating to {to_size}")
-                parity_values[j] = parity_values[j][:to_size]
-            elif current_words < to_size:
-                padding_needed = to_size - current_words
-                parity_values[j].extend(["00"] * padding_needed)
-                print(f"Padded parity file {j} with {padding_needed} zero words")
-            
-            if reverse:
-                parity_values[j].reverse()
-                print(f"Reversed parity file {j}")
-    
     # Write output files (always use three-part naming: prefix.word.stack.hex)
-    for i in range(num_word_files):
+    for i in range(num_output_files):
         for j in range(num_stacks):
+            # Apply reversing if requested (at the very end, just before output)
+            final_output = output_files[i][j][:]  # Make a copy
+            if reverse:
+                final_output.reverse()
+            
             output_filename = os.path.join(out_dir, f"{prefix}.{i}.{j}.hex")
-            write_hex_file(output_filename, output_files[i][j])
-            print(f"Written {len(output_files[i][j])} values to {output_filename}")
-    
-    # Write parity file if requested (always use three-part naming: prefix.p.stack.hex)
-    if add_parity:
-        # parity_values is always a list of lists (one per stack)
-        for j in range(num_stacks):
-            parity_filename = os.path.join(out_dir, f"{prefix}.p.{j}.hex")
-            write_hex_file(parity_filename, parity_values[j])
-            print(f"Written {len(parity_values[j])} parity values to {parity_filename}")
+            write_hex_file(output_filename, final_output)
+            reverse_text = " (reversed)" if reverse else ""
+            print(f"Written {len(final_output)} values to {output_filename}{reverse_text}")
 
 
 def main():
@@ -303,19 +306,23 @@ Examples:
 
   %(prog)s --from-hex data.hex --from-width 16 --from-size 1024 --to-width 8 --to-size 256 --to-prefix output --out-dir ./output
     Stack splitting: 1024 words of 16-bit data automatically creates 4 stacks of 256-word 8-bit RAMs
-    Creates files: output.0.0.hex, output.1.0.hex, output.0.1.hex, output.1.1.hex, output.0.2.hex, output.1.2.hex, output.0.3.hex, output.1.3.hex
+    Creates files: output.0.0.hex, output.1.0.hex, output.0.1.hex, output.1.1.hex, output.0.2.hex, output.1.2.hex, output.0.3.hex
 
   %(prog)s --from-hex data.hex --from-width 8 --to-width 1 --to-prefix bits --to-words 64 --out-dir ./bits
     Word splitting: Split an 8-bit hex file into eight 1-bit files with 64 values each
     Creates files: bits.0.0.hex, bits.1.0.hex, bits.2.0.hex, bits.3.0.hex, bits.4.0.hex, bits.5.0.hex, bits.6.0.hex, bits.7.0.hex
 
   %(prog)s --from-hex data.hex --from-width 16 --to-width 8 --to-prefix output --to-words 256 --out-dir ./output --add-parity
-    Word splitting with parity: Split a 16-bit hex file into two 8-bit hex files plus a parity file
-    Creates files: output.0.0.hex, output.1.0.hex, output.p.0.hex
+    Word splitting with parity: Split a 16-bit hex file with added parity into three 8-bit hex files (17 bits padded to 24 bits)
+    Creates files: output.0.0.hex, output.1.0.hex, output.2.0.hex
 
   %(prog)s --from-hex data.hex --from-width 18 --from-hex-width 32 --to-width 8 --to-prefix output --to-words 256 --out-dir ./output
     Word splitting: Split an 18-bit value stored in 32-bit hex format, using only the 18 LSBs
     Creates files: output.0.0.hex, output.1.0.hex, output.2.0.hex
+
+  %(prog)s --from-hex promh.mcr.9.hex --from-width 48 --from-hex-width 48 --from-size 454 --to-size 512 --to-width 8 --to-prefix promh9 --out-dir ./rom --reverse --includes-parity
+    Word splitting with parity padding: Split a 48-bit microcode file (454 words) with existing parity into six 8-bit files (512 words each), with parity-corrected padding
+    Creates files: promh9.0.0.hex, promh9.1.0.hex, promh9.2.0.hex, promh9.3.0.hex, promh9.4.0.hex, promh9.5.0.hex
 
 Output format:
 - All files use consistent naming: prefix.N.S.hex (where N is word part, S is stack index starting from 0)
@@ -323,7 +330,7 @@ Output format:
 - All output files are .hex format with one hex byte (two hex digits) per line
 - For 2-bit width: each 2-bit value is written as 00, 01, 02, or 03
 - For 1-bit width: each 1-bit value is written as 00 or 01
-- Parity files: prefix.p.S.hex (where S is stack index starting from 0)
+- Parity is integrated into regular output files when --add-parity or --includes-parity is used
         """
     )
     
@@ -346,7 +353,6 @@ Output format:
     parser.add_argument('--to-prefix', 
                        required=True,
                        help='Prefix for output files')
-
     parser.add_argument('--out-dir', 
                        required=True,
                        help='Output directory for generated hex files')
@@ -356,6 +362,9 @@ Output format:
     parser.add_argument('--add-parity', 
                        action='store_true',
                        help='Calculate odd parity for each word and output it to a separate file')
+    parser.add_argument('--includes-parity', 
+                       action='store_true',
+                       help='Input data includes parity bits - calculate parity for padding areas')
     parser.add_argument('--from-size', 
                        type=int,
                        required=True,
@@ -371,7 +380,7 @@ Output format:
     
     split_hex(getattr(args, 'from_hex'), getattr(args, 'from_width'), getattr(args, 'to_width'), 
               getattr(args, 'to_prefix'), args.out_dir, args.reverse, args.add_parity, 
-              getattr(args, 'from_hex_width'), getattr(args, 'from_size'), getattr(args, 'to_size'))
+              getattr(args, 'from_hex_width'), getattr(args, 'from_size'), getattr(args, 'to_size'), args.includes_parity)
 
 
 if __name__ == "__main__":

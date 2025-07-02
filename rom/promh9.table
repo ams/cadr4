@@ -13,12 +13,19 @@ mskg4.2d17 rom/mskg4.2d17.hex
 mskg4.2e16 rom/mskg4.2e16.hex
 mskg4.2e17 rom/mskg4.2e17.hex
 
-prom0.1e17 rom/promh9.1e17.hex
-prom0.1e19 rom/promh9.1e19.hex
-prom0.1d16 rom/promh9.1d16.hex
-prom0.1c20 rom/promh9.1c20.hex
-prom0.1b17 rom/promh9.1b17.hex
-prom0.1b19 rom/promh9.1b19.hex
+#prom0.1e17 rom/promh9.1e17.hex
+#prom0.1e19 rom/promh9.1e19.hex
+#prom0.1d16 rom/promh9.1d16.hex
+#prom0.1c20 rom/promh9.1c20.hex
+#prom0.1b17 rom/promh9.1b17.hex
+#prom0.1b19 rom/promh9.1b19.hex
+
+prom0.1e17 build/prom0.0.0.hex
+prom0.1e19 build/prom0.1.0.hex
+prom0.1d16 build/prom0.2.0.hex
+prom0.1c20 build/prom0.3.0.hex
+prom0.1b17 build/prom0.4.0.hex
+prom0.1b19 build/prom0.5.0.hex
 
 prom1.1e18 :0
 prom1.1e20 :0

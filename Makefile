@@ -10,7 +10,7 @@ CADR4_TILONCONSOLE ?= 1
 # when setting from bash escape \ two times e.g. d:\\\\projects\\\\cadr4\\\\rom\\\\ 
 CADR4_ROMFILESPATH ?= rom
 # set to 0 for no limit
-CADR4_STOPTIME     ?= 1ms
+CADR4_STOPTIME     ?= 10ms
 # set to 1 to disable assertions to improve performance
 CADR4_NOASSERTS    ?= 0
 # set to 1 to use fast prom table using pre-initialized memories
@@ -291,19 +291,18 @@ help:
 
 ifeq ($(CADR4_FASTPROM),1)
 
-.PHONY: amem.roms dram.roms mmem.roms vmem0.roms prom0.roms
+# these dependencies are not all but it is simple enough to work
 
-cadr/cadr_amem0_suds.vhd: amem.roms
-cadr/cadr_amem1_suds.vhd: amem.roms
-cadr/cadr_dram0_suds.vhd: dram.roms
-cadr/cadr_dram1_suds.vhd: dram.roms
-cadr/cadr_dram2_suds.vhd: dram.roms
-cadr/cadr_mmem_suds.vhd: mmem.roms
-cadr/cadr_prom0_suds.vhd: prom0.roms
-cadr/cadr_vmem0_suds.vhd: vmem0.roms
-cadr/cadr_vmem0_suds.vhd: vmem0.roms
+cadr/cadr_amem0_suds.vhd: $(BUILDDIR)/amem.0.0.hex
+cadr/cadr_amem1_suds.vhd: $(BUILDDIR)/amem.0.0.hex
+cadr/cadr_dram0_suds.vhd: $(BUILDDIR)/dram.0.0.hex
+cadr/cadr_dram1_suds.vhd: $(BUILDDIR)/dram.0.0.hex
+cadr/cadr_dram2_suds.vhd: $(BUILDDIR)/dram.0.0.hex
+cadr/cadr_mmem_suds.vhd: $(BUILDDIR)/mmem.0.0.hex
+cadr/cadr_prom0_suds.vhd: $(BUILDDIR)/prom0.0.0.hex
+cadr/cadr_vmem0_suds.vhd: $(BUILDDIR)/vmem0.0.0.hex
 
-amem.roms:
+$(BUILDDIR)/amem.0.0.hex:
 	python3 $(SPLITHEXPY) \
 	--from-hex $(ROMDIR)/amem.hex --from-hex-width 32 \
 	--from-size 1024 --from-width 32 \
@@ -312,7 +311,7 @@ amem.roms:
 	--to-prefix amem \
 	--out-dir $(BUILDDIR)
 
-dram.roms:
+$(BUILDDIR)/dram.0.0.hex:
 	python3 $(SPLITHEXPY) \
 	--from-hex $(ROMDIR)/dram.hex --from-hex-width 32 \
 	--from-size 2048 --from-width 17 \
@@ -321,7 +320,7 @@ dram.roms:
 	--to-prefix dram \
 	--out-dir $(BUILDDIR)
 
-mmem.roms:
+$(BUILDDIR)/mmem.0.0.hex:
 	python3 $(SPLITHEXPY) \
 	--from-hex $(ROMDIR)/mmem.hex --from-hex-width 32 \
 	--from-size 32 --from-width 32 \
@@ -330,7 +329,16 @@ mmem.roms:
 	--to-prefix mmem \
 	--out-dir $(BUILDDIR)
 
-vmem0.roms:
+$(BUILDDIR)/prom0.0.0.hex:
+	python3 $(SPLITHEXPY) \
+	--from-hex $(ROMDIR)/fast-promh.mcr.hex --from-hex-width 48 \
+	--from-size 512 --from-width 48 \
+	--reverse --includes-parity \
+	--to-size 512 --to-width 8 \
+	--to-prefix prom0 \
+	--out-dir $(BUILDDIR)
+
+$(BUILDDIR)/vmem0.0.0.hex:
 	python3 $(SPLITHEXPY) \
 	--from-hex $(ROMDIR)/vmem0.hex --from-hex-width 32 \
 	--from-size 2048 --from-width 5 \
@@ -339,11 +347,15 @@ vmem0.roms:
 	--to-prefix vmem0 \
 	--out-dir $(BUILDDIR)
 
-prom0.roms:
+else
+
+cadr/cadr_prom0_suds.vhd: $(BUILDDIR)/prom0.0.0.hex
+
+$(BUILDDIR)/prom0.0.0.hex:
 	python3 $(SPLITHEXPY) \
-	--from-hex $(ROMDIR)/fast-promh.mcr.hex --from-hex-width 64 \
+	--from-hex $(ROMDIR)/promh.mcr.9.hex --from-hex-width 48 \
 	--from-size 512 --from-width 48 \
-	--reverse \
+	--reverse --includes-parity \
 	--to-size 512 --to-width 8 \
 	--to-prefix prom0 \
 	--out-dir $(BUILDDIR)

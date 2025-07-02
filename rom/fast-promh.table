@@ -37,7 +37,7 @@ amem0.3b08 build/amem.28.0.hex
 amem0.3b12 build/amem.29.0.hex
 amem0.3b07 build/amem.30.0.hex
 amem0.3b11 build/amem.31.0.hex
-amem0.3b06 build/amem.p.0.hex 
+amem0.3b06 build/amem.32.0.hex 
 
 dram0.3f09 build/dram.0.0.hex
 dram0.3f08 build/dram.0.1.hex
@@ -73,8 +73,8 @@ dram2.1f22 build/dram.15.0.hex
 dram2.1f21 build/dram.15.1.hex
 dram2.1f19 build/dram.16.0.hex
 dram2.1f18 build/dram.16.1.hex
-dram2.1f17 build/dram.p.0.hex
-dram2.1f16 build/dram.p.1.hex
+dram2.1f17 build/dram.17.0.hex
+dram2.1f16 build/dram.17.1.hex
 
 dspctl.2f22 rom/dspctl.2f22.hex
 
@@ -103,7 +103,7 @@ mmem.4b24 build/mmem.12.0.hex
 mmem.4b29 build/mmem.13.0.hex
 mmem.4b23 build/mmem.14.0.hex
 mmem.4b28 build/mmem.15.0.hex
-mmem.4b27 build/mmem.p.0.hex
+mmem.4b27 build/mmem.16.0.hex
 
 pdl1.4c30 :0
 pdl1.4c29 :0
@@ -174,8 +174,8 @@ vmem0.1c13 build/vmem0.3.0.hex
 vmem0.1c11 build/vmem0.3.1.hex
 vmem0.1c14 build/vmem0.4.0.hex
 vmem0.1c12 build/vmem0.4.1.hex
-vmem0.1d05 build/vmem0.p.0.hex
-vmem0.1d04 build/vmem0.p.1.hex
+vmem0.1d05 build/vmem0.5.0.hex
+vmem0.1d04 build/vmem0.5.1.hex
 
 vmem1.1d11 :0
 vmem1.1e14 :0
