@@ -12,5 +12,6 @@ __pycache__/
 
 .vscode/
 build/
+cadr/cadr_tb.vhd
 soap/soap
 vivado/
