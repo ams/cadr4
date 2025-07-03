@@ -1,23 +1,29 @@
 
+# rom
+
 This folder contains PROM and RAM hex files and generic-map tables.
 
-# dspctl and mskg4
+## dspctl and mskg4
 
 dspctl and mskg4 uses dspctl.2f22.hex and mskg4.*.hex files.
 
-# promh.mcr.9.hex and promh9.table
+## promh.mcr.9.hex and promh9.table
 
-promh.mcr.9.hex is the official and original PROM of CADR. This file is used to generate prom0 hex files during build.
+promh.mcr.9.hex is the official and original PROM of CADR.
 
-To use this prom, promh9.table should be used with fix-suds.py.
+This file is used to generate promh9/*.hex files. They can be regenerated with `make regenerate-hex-files`.
 
-# fast-promh.mcr.hex and fast-promh.table
+To use this prom, promh9.table should be used with fix-suds.py. This is done by calling `make regenerate-promh9-suds`.
+
+## fast-promh.mcr.hex and fast-promh.table
 
 fast-promh.mcr.hex is promh.mcr.9.hex with a modified first instruction, which jumps to 0257 (FUDGE-INITIAL-DISK-PARAMETERS) rather than 045 (GO). The idea is to skip memory initialization to speed up booting. When it is used, all memories have to be initialized and some has to be pre-loaded with some values.
 
-To use this prom, fast-promh.table should be used with fix-suds.py.
-
 amem.hex, dram.hex, mmem.hex and vmem0.hex contains the preloading values for A-MEMORY, D-MEMORY (DPC), M-MEMORY and LEVEL-1-MAP.
+
+These files are used to generate fast-promh/*.hex files. They can be regenerated with `make regenerate-hex-files`.
+
+To use this prom, fast-promh.table should be used with fix-suds.py. This is done by calling `make regenerate-fast-promh-suds`. This is the default and the suds file in the repo are generated like this.
 
 # Details
 

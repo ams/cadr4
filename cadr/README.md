@@ -7,8 +7,8 @@ accordingly as cadr_<PAGE>.  The cadr components are grouped into two
 packages `cadr_book` and `icmem_book`.
 
 The suds architecture of cadr components are auto-generated from
-`doc/ai/cadr/*.drw` files.  The architecture is in
-cadr_<PAGE>_suds.vhd files.
+`doc/ai/cadr/*.drw` files. The architecture is in
+cadr_<PAGE>_suds.vhd files. These can be regenerated with `make regenerate-fast-promh-suds`.
 
 # Testbenches
 
