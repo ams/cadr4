@@ -8,13 +8,6 @@ package helper is
       \-halt\: out std_logic;
       -- mbcpin
         mclk7: in std_logic;
-      -- below are all spy related
-      eadr0: out std_logic;
-      eadr1: out std_logic;
-      eadr2: out std_logic;
-      eadr3: out std_logic;
-      \-dbread\: out std_logic;
-      \-dbwrite\: out std_logic;
       -- initiates a clock reset
       \-busint.lm.reset\: out std_logic;
       -- initiates a boot
@@ -24,6 +17,35 @@ package helper is
       \lm drive enb\: out std_logic;
       -- same as power reset
       \bus.power.reset l\: in std_logic
+    );
+  end component;
+
+  component helper_spy is
+    port (
+      -- below are all spy related
+      eadr0: out std_logic;
+      eadr1: out std_logic;
+      eadr2: out std_logic;
+      eadr3: out std_logic;
+      \-dbread\: out std_logic;
+      \-dbwrite\: out std_logic;
+      -- SPY bus - 16 bits
+      spy0  : inout std_logic;
+      spy1  : inout std_logic;
+      spy2  : inout std_logic;
+      spy3  : inout std_logic;
+      spy4  : inout std_logic;
+      spy5  : inout std_logic;
+      spy6  : inout std_logic;
+      spy7  : inout std_logic;
+      spy8  : inout std_logic;
+      spy9  : inout std_logic;
+      spy10 : inout std_logic;
+      spy11 : inout std_logic;
+      spy12 : inout std_logic;
+      spy13 : inout std_logic;
+      spy14 : inout std_logic;
+      spy15 : inout std_logic
     );
   end component;
 

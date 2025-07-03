@@ -9,13 +9,6 @@ entity helper_required_signals is
     \-halt\: out std_logic := '1';
     -- mbcpin    
     mclk7: in std_logic;
-    -- below are all spy related
-    eadr0: out std_logic := '0';
-    eadr1: out std_logic := '0';
-    eadr2: out std_logic := '0';
-    eadr3: out std_logic := '0';    
-    \-dbread\: out std_logic := '1';
-    \-dbwrite\: out std_logic := '1';
     -- initiates a clock reset
     \-busint.lm.reset\: out std_logic := '1';
     -- initiates a boot
@@ -30,12 +23,4 @@ end entity;
 
 architecture structural of helper_required_signals is
 begin
-  process
-  begin
-    wait for 200 ns;
-    \-boot1\ <= '0';
-    wait for 20 ns;
-    \-boot1\ <= 'Z';
-    wait;
-  end process;
 end architecture;
