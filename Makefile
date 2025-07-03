@@ -130,8 +130,14 @@ check: check-cadr check-dip check-helper check-ttl
 ## else if first line is "ignore", then it is ignored
 ## else it is used
 
+# cadr_tb is generated under build that is removed on clean
+# so use the opt file in project root for that
+ifeq ($(TB),build/cadr_tb)
+WAVEOPTFILE := cadr_tb.opt
+else
 WAVEOPTFILE := $(patsubst %.vhd,%.opt,$(shell find . -name "$(notdir $(TB)).vhd"))
-#$(info wave opt file: $(WAVEOPTFILE))
+endif
+
 WAVEFILE := $(BUILDDIR)/$(notdir $(TB)).ghw
 ifneq ("$(wildcard $(WAVEOPTFILE))","")
 WAVEOPTCONTENTS := $(shell head -1 $(WAVEOPTFILE))
