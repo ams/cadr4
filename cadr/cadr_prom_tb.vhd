@@ -29,7 +29,7 @@ architecture testbench of cadr_prom_tb is
   signal i46 : std_logic;  -- i46 is parity bit, calculated from other bits
   
   -- Load reference data as constant (byte array)
-  constant reference_rom : work.misc.word_array_t(0 to 2723)(7 downto 0) := load_hex_file("rom/promh.mcr.9.hex", 2724, 8);
+  constant reference_rom : work.misc.word_array_t(0 to 2723)(7 downto 0) := load_hex_file("rom/fast-promh.mcr.hex", 2724, 8);
   constant rom_bytes : integer := reference_rom'length;  -- Number of bytes in file
   constant rom_words : integer := rom_bytes / 6;  -- Number of 48-bit words (6 bytes each, since 2724/6=454)
   
