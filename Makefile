@@ -10,9 +10,6 @@ CADR4_TILONCONSOLE ?= 1
 CADR4_STOPTIME     ?= 10ms
 # set to 1 to disable assertions to improve performance
 CADR4_NOASSERTS    ?= 0
-# set to 0 to use official promh9 table
-# this is going to change suds, so they have to be regenerated
-CADR4_FASTPROM     ?= 1
 
 # default GHDL settings
 GHDL	:= ghdl
