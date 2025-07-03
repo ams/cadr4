@@ -1,0 +1,25 @@
+-- AMEM1 -- A MEMORY RIGHT
+
+library work;
+use work.dip.all;
+use work.misc.all;
+
+architecture suds of cadr_amem1 is
+begin
+amem1_3a17 : dip_93425a generic map (fn => "rom/fast-promh/amem.6.0.hex") port map (p1 => gnd, p2 => \-aadr0a\, p3 => \-aadr1a\, p4 => \-aadr2a\, p5 => \-aadr3a\, p6 => \-aadr4a\, p7 => amem6, p9 => \-aadr5a\, p10 => \-aadr6a\, p11 => \-aadr7a\, p12 => \-aadr8a\, p13 => \-aadr9a\, p14 => \-awpc\, p15 => l6);
+amem1_3a18 : dip_93425a generic map (fn => "rom/fast-promh/amem.4.0.hex") port map (p1 => gnd, p2 => \-aadr0a\, p3 => \-aadr1a\, p4 => \-aadr2a\, p5 => \-aadr3a\, p6 => \-aadr4a\, p7 => amem4, p9 => \-aadr5a\, p10 => \-aadr6a\, p11 => \-aadr7a\, p12 => \-aadr8a\, p13 => \-aadr9a\, p14 => \-awpc\, p15 => l4);
+amem1_3a19 : dip_93425a generic map (fn => "rom/fast-promh/amem.2.0.hex") port map (p1 => gnd, p2 => \-aadr0a\, p3 => \-aadr1a\, p4 => \-aadr2a\, p5 => \-aadr3a\, p6 => \-aadr4a\, p7 => amem2, p9 => \-aadr5a\, p10 => \-aadr6a\, p11 => \-aadr7a\, p12 => \-aadr8a\, p13 => \-aadr9a\, p14 => \-awpc\, p15 => l2);
+amem1_3a20 : dip_93425a generic map (fn => "rom/fast-promh/amem.0.0.hex") port map (p1 => gnd, p2 => \-aadr0a\, p3 => \-aadr1a\, p4 => \-aadr2a\, p5 => \-aadr3a\, p6 => \-aadr4a\, p7 => amem0, p9 => \-aadr5a\, p10 => \-aadr6a\, p11 => \-aadr7a\, p12 => \-aadr8a\, p13 => \-aadr9a\, p14 => \-awpc\, p15 => l0);
+amem1_3a22 : dip_93425a generic map (fn => "rom/fast-promh/amem.7.0.hex") port map (p1 => gnd, p2 => \-aadr0a\, p3 => \-aadr1a\, p4 => \-aadr2a\, p5 => \-aadr3a\, p6 => \-aadr4a\, p7 => amem7, p9 => \-aadr5a\, p10 => \-aadr6a\, p11 => \-aadr7a\, p12 => \-aadr8a\, p13 => \-aadr9a\, p14 => \-awpc\, p15 => l7);
+amem1_3a23 : dip_93425a generic map (fn => "rom/fast-promh/amem.5.0.hex") port map (p1 => gnd, p2 => \-aadr0a\, p3 => \-aadr1a\, p4 => \-aadr2a\, p5 => \-aadr3a\, p6 => \-aadr4a\, p7 => amem5, p9 => \-aadr5a\, p10 => \-aadr6a\, p11 => \-aadr7a\, p12 => \-aadr8a\, p13 => \-aadr9a\, p14 => \-awpc\, p15 => l5);
+amem1_3a24 : dip_93425a generic map (fn => "rom/fast-promh/amem.3.0.hex") port map (p1 => gnd, p2 => \-aadr0a\, p3 => \-aadr1a\, p4 => \-aadr2a\, p5 => \-aadr3a\, p6 => \-aadr4a\, p7 => amem3, p9 => \-aadr5a\, p10 => \-aadr6a\, p11 => \-aadr7a\, p12 => \-aadr8a\, p13 => \-aadr9a\, p14 => \-awpc\, p15 => l3);
+amem1_3a25 : dip_93425a generic map (fn => "rom/fast-promh/amem.1.0.hex") port map (p1 => gnd, p2 => \-aadr0a\, p3 => \-aadr1a\, p4 => \-aadr2a\, p5 => \-aadr3a\, p6 => \-aadr4a\, p7 => amem1, p9 => \-aadr5a\, p10 => \-aadr6a\, p11 => \-aadr7a\, p12 => \-aadr8a\, p13 => \-aadr9a\, p14 => \-awpc\, p15 => l1);
+amem1_3b17 : dip_93425a generic map (fn => "rom/fast-promh/amem.14.0.hex") port map (p1 => gnd, p2 => \-aadr0a\, p3 => \-aadr1a\, p4 => \-aadr2a\, p5 => \-aadr3a\, p6 => \-aadr4a\, p7 => amem14, p9 => \-aadr5a\, p10 => \-aadr6a\, p11 => \-aadr7a\, p12 => \-aadr8a\, p13 => \-aadr9a\, p14 => \-awpb\, p15 => l14);
+amem1_3b18 : dip_93425a generic map (fn => "rom/fast-promh/amem.12.0.hex") port map (p1 => gnd, p2 => \-aadr0a\, p3 => \-aadr1a\, p4 => \-aadr2a\, p5 => \-aadr3a\, p6 => \-aadr4a\, p7 => amem12, p9 => \-aadr5a\, p10 => \-aadr6a\, p11 => \-aadr7a\, p12 => \-aadr8a\, p13 => \-aadr9a\, p14 => \-awpb\, p15 => l12);
+amem1_3b19 : dip_93425a generic map (fn => "rom/fast-promh/amem.10.0.hex") port map (p1 => gnd, p2 => \-aadr0a\, p3 => \-aadr1a\, p4 => \-aadr2a\, p5 => \-aadr3a\, p6 => \-aadr4a\, p7 => amem10, p9 => \-aadr5a\, p10 => \-aadr6a\, p11 => \-aadr7a\, p12 => \-aadr8a\, p13 => \-aadr9a\, p14 => \-awpc\, p15 => l10);
+amem1_3b20 : dip_93425a generic map (fn => "rom/fast-promh/amem.8.0.hex") port map (p1 => gnd, p2 => \-aadr0a\, p3 => \-aadr1a\, p4 => \-aadr2a\, p5 => \-aadr3a\, p6 => \-aadr4a\, p7 => amem8, p9 => \-aadr5a\, p10 => \-aadr6a\, p11 => \-aadr7a\, p12 => \-aadr8a\, p13 => \-aadr9a\, p14 => \-awpc\, p15 => l8);
+amem1_3b22 : dip_93425a generic map (fn => "rom/fast-promh/amem.15.0.hex") port map (p1 => gnd, p2 => \-aadr0a\, p3 => \-aadr1a\, p4 => \-aadr2a\, p5 => \-aadr3a\, p6 => \-aadr4a\, p7 => amem15, p9 => \-aadr5a\, p10 => \-aadr6a\, p11 => \-aadr7a\, p12 => \-aadr8a\, p13 => \-aadr9a\, p14 => \-awpb\, p15 => l15);
+amem1_3b23 : dip_93425a generic map (fn => "rom/fast-promh/amem.13.0.hex") port map (p1 => gnd, p2 => \-aadr0a\, p3 => \-aadr1a\, p4 => \-aadr2a\, p5 => \-aadr3a\, p6 => \-aadr4a\, p7 => amem13, p9 => \-aadr5a\, p10 => \-aadr6a\, p11 => \-aadr7a\, p12 => \-aadr8a\, p13 => \-aadr9a\, p14 => \-awpb\, p15 => l13);
+amem1_3b24 : dip_93425a generic map (fn => "rom/fast-promh/amem.11.0.hex") port map (p1 => gnd, p2 => \-aadr0a\, p3 => \-aadr1a\, p4 => \-aadr2a\, p5 => \-aadr3a\, p6 => \-aadr4a\, p7 => amem11, p9 => \-aadr5a\, p10 => \-aadr6a\, p11 => \-aadr7a\, p12 => \-aadr8a\, p13 => \-aadr9a\, p14 => \-awpb\, p15 => l11);
+amem1_3b25 : dip_93425a generic map (fn => "rom/fast-promh/amem.9.0.hex") port map (p1 => gnd, p2 => \-aadr0a\, p3 => \-aadr1a\, p4 => \-aadr2a\, p5 => \-aadr3a\, p6 => \-aadr4a\, p7 => amem9, p9 => \-aadr5a\, p10 => \-aadr6a\, p11 => \-aadr7a\, p12 => \-aadr8a\, p13 => \-aadr9a\, p14 => \-awpc\, p15 => l9);
+end architecture;
