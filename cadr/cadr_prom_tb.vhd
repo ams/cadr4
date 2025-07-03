@@ -24,9 +24,9 @@ architecture testbench of cadr_prom_tb is
   signal i32, i33, i34, i35, i36, i37, i38, i39 : std_logic;
   signal i40, i41, i42, i43, i44, i45, i47, i48 : std_logic;
   
-  -- Combined 48-bit output (i46 is missing from PROM chips, set to '1' for parity)
+  -- Combined 48-bit output (i46 is missing from PROM chips, calculated as parity)
   signal prom_data : std_logic_vector(47 downto 0);
-  signal i46 : std_logic := '1';  -- i46 is parity bit, set to '1' for odd parity
+  signal i46 : std_logic;  -- i46 is parity bit, calculated from other bits
   
   -- Load reference data as constant (byte array)
   constant reference_rom : work.misc.word_array_t(0 to 2723)(7 downto 0) := load_hex_file("rom/promh.mcr.9.hex", 2724, 8);
@@ -88,6 +88,14 @@ begin
       i44 => i44, i45 => i45, i47 => i47, i48 => i48
     );
   
+  -- Calculate parity bit i46 (odd parity of all other bits)
+  i46 <= i0 xor i1 xor i2 xor i3 xor i4 xor i5 xor i6 xor i7 xor
+         i8 xor i9 xor i10 xor i11 xor i12 xor i13 xor i14 xor i15 xor
+         i16 xor i17 xor i18 xor i19 xor i20 xor i21 xor i22 xor i23 xor
+         i24 xor i25 xor i26 xor i27 xor i28 xor i29 xor i30 xor i31 xor
+         i32 xor i33 xor i34 xor i35 xor i36 xor i37 xor i38 xor i39 xor
+         i40 xor i41 xor i42 xor i43 xor i44 xor i45 xor i47 xor i48;
+
   -- Combine individual signals into vector for easier handling (MSB first, i46 inserted)
   prom_data <= i47 & i46 & i45 & i44 & i43 & i42 & i41 & i40 &
                i39 & i38 & i37 & i36 & i35 & i34 & i33 & i32 &
@@ -123,17 +131,24 @@ begin
       
       -- Get expected data from reference (if available)
       if ref_entry * 6 + 5 < rom_bytes then
-        -- Extract 48-bit entry from word array (6 bytes per entry, MSB first)
-        expected_data := reference_rom(ref_entry*6) & reference_rom(ref_entry*6+1) & 
-                        reference_rom(ref_entry*6+2) & reference_rom(ref_entry*6+3) & 
-                        reference_rom(ref_entry*6+4) & reference_rom(ref_entry*6+5);
+        -- Extract 48-bit entry from word array (6 bytes per entry, LSB first)
+        -- Hex file contains: i47,i46,i45...i0 (48 bits including i46)
+        -- Hardware outputs: parity,i47,i45...i0 (48 bits, parity instead of i46)
+        -- Hex file has 1 byte per line, so entry N starts at line N*6
+        expected_data := reference_rom(ref_entry*6+5) & reference_rom(ref_entry*6+4) & 
+                        reference_rom(ref_entry*6+3) & reference_rom(ref_entry*6+2) & 
+                        reference_rom(ref_entry*6+1) & reference_rom(ref_entry*6);
         
-        -- Compare actual vs expected
-        if actual_data /= expected_data then
+        -- i46 is statistics bit, not available in the hardware
+        -- i47 is unused
+        -- i48 is parity, not available in hex
+        -- actual_data: i48,i47,i45...i0 -> i45...i0
+        -- expected_data: i47,i46,i45...i0 -> i45...i0
+        if (actual_data(45 downto 0) /= expected_data(45 downto 0)) then
           if pc9 = '0' then
             report "PROM0 pc=" & to_ostring(to_unsigned(pc_val, 16)) & 
-                   " (ref[" & to_ostring(to_unsigned(ref_entry, 16)) & "]): expected " & to_ostring(expected_data) & 
-                   " (0x" & to_hstring(expected_data) & "), got " & to_ostring(actual_data) & 
+                   " (ref[" & to_ostring(to_unsigned(ref_entry, 16)) & "]): expected " & to_bstring(expected_data) & 
+                   " (0x" & to_hstring(expected_data) & "), got " & to_bstring(actual_data) & 
                    " (0x" & to_hstring(actual_data) & ")"
               severity error;
           else
@@ -150,7 +165,7 @@ begin
         expected_data := (others => '0');
         -- because all zeroes have parity 1
         expected_data(47) := '1';
-        if actual_data /= expected_data then
+        if actual_data(45 downto 0) /= expected_data(45 downto 0) then
           report "PC " & to_ostring(to_unsigned(pc_val, 16)) & 
                  " should output zero (beyond reference data), expected " & to_ostring(expected_data) & 
                  " (0x" & to_hstring(expected_data) & "), got " & to_ostring(actual_data) & 
