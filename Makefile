@@ -30,15 +30,17 @@ endif
 .DEFAULT_GOAL := all
 
 # folders
-BUILDDIR	  := build
-ROMDIR	 	  := rom
-DRWDIR	  	  := doc/ai/cadr
+BUILDDIR	  	:= build
+ROMDIR	 	  	:= rom
+CADR_DRWDIR	  	:= doc/ai/cadr
+CADR1_DRWDIR	:= doc/ai/cadr1
 
 # scripts used in this Makefile
-CREATE_TB_PY := scripts/create-tb.py
-FIXSUDS_PY   := scripts/fix-suds.py
+CREATE_TB_PY	:= scripts/create-tb.py
+FIXSUDS_PY   	:= scripts/fix-suds.py
 GENERATE_ALU_TESTDATA_PY := scripts/generate-alu-testdata.py
-SPLITHEX_PY  := scripts/split-hex.py
+SPLITHEX_PY  	:= scripts/split-hex.py
+CREATE_CADR1_TB_PY := scripts/create-cadr1-tb.py
 
 # OS specific settings
 OS := $(shell uname -s)
@@ -213,12 +215,13 @@ help:
 	@echo "make run-X: run testbench X (build/X_tb)"
 	@echo "make wf-X: run testbench X (build/X_tb) to create waveforms"
 	@echo "make surfer-X: same as wf-X but also runs surfer with the waveform file"
-	@echo "make regenerate-fast-promh-suds: autogenerate fast promh suds sources"
-	@echo "make regenerate-promh9-suds: autogenerate promh9 suds sources"
+	@echo "make regenerate-fast-promh-cadr-suds: autogenerate fast promh cadr suds sources"
+	@echo "make regenerate-promh9-cadr-suds: autogenerate promh9 cadr suds sources"
+	@echo "make regenerate-cadr1-suds: autogenerate cadr1 suds sources"
 	@echo "make regenerate-alu-testdata: autogenerate ALU testdata"
 	@echo "make regenerate-hex-files: regenerate hex files"
 
-# ===== START OF SUDS AUTOGENERATION =====
+# ===== START OF CADR SUDS AUTOGENERATION =====
 
 # these are removed from the original list: bcpins caps cpins
 CADR_BOOK := actl alatch alu0 alu1 aluc4 amem0 amem1 apar bcterm clockd contrl \
@@ -231,27 +234,27 @@ ICMEM_BOOK := clock1 clock2 debug ictl iwrpar olord1 olord2 opcs pctl prom0 prom
 iram00 iram01 iram02 iram03 iram10 iram11 iram12 iram13 iram20 iram21 iram22 iram23 iram30 \
 iram31 iram32 iram33 spy0 spy4 stat
 
-.PHONY: regenerate-fast-promh-suds
-regenerate-fast-promh-suds:
-	FIXSUDS_GENERICMAP=rom/fast-promh.table make regenerate-suds
+.PHONY: regenerate-fast-promh-cadr-suds
+regenerate-fast-promh-cadr-suds:
+	FIXSUDS_GENERICMAP=rom/fast-promh.table make regenerate-cadr-suds
 
-.PHONY: regenerate-promh9-suds
-regenerate-promh9-suds:
-	FIXSUDS_GENERICMAP=rom/promh9.table make regenerate-suds
+.PHONY: regenerate-promh9-cadr-suds
+regenerate-promh9-cadr-suds:
+	FIXSUDS_GENERICMAP=rom/promh9.table make regenerate-cadr-suds
 
 # generate all suds files
 # call generate-page-suds for each page setting PAGE variable
-.PHONY: regenerate-suds
-regenerate-suds:
+.PHONY: regenerate-cadr-suds
+regenerate-cadr-suds:
 # removing existing ones because new ones can be added or existing ones can be removed
 	$(RM) cadr/cadr_*_suds.vhd
-	for PAGE in $(CADR_BOOK) $(ICMEM_BOOK); do FIXSUDS_GENERICMAP=$(FIXSUDS_GENERICMAP) PAGE=$$PAGE make regenerate-suds-page || exit; done
+	for PAGE in $(CADR_BOOK) $(ICMEM_BOOK); do FIXSUDS_GENERICMAP=$(FIXSUDS_GENERICMAP) PAGE=$$PAGE make regenerate-cadr-suds-page || exit; done
 
 # generate suds file for a single page
 # a few particular _suds.vhd require special handling and they are handled with if cases below
-.PHONY: regenerate-suds-page
-regenerate-suds-page: $(FIXSUDS_PY) $(DRWDIR)/$(PAGE).drw $(BUILDDIR)/soap dip/dip.vhd
-	$(BUILDDIR)/soap -n $(DRWDIR)/$(PAGE).drw > cadr/cadr_$(PAGE)_suds.vhd
+.PHONY: regenerate-cadr-suds-page
+regenerate-cadr-suds-page: $(FIXSUDS_PY) $(CADR_DRWDIR)/$(PAGE).drw $(BUILDDIR)/soap dip/dip.vhd
+	$(BUILDDIR)/soap -n $(CADR_DRWDIR)/$(PAGE).drw > cadr/cadr_$(PAGE)_suds.vhd
 ifeq ($(PAGE),bcterm)
 # modify bcterm components, soap emits dip names without @, so there are mistakes, 1b15 is used twice etc.
 	sed $(SEDOPTIONS) 's/bcterm_1b15 : dip_sip220_330_8 port map (p2 => mem0/bcterm_1b15_1 : dip_sip220_330_8 port map (p2 => mem0/' cadr/cadr_$(PAGE)_suds.vhd
@@ -298,6 +301,29 @@ endif
 	python3 $(FIXSUDS_PY) --generic-map $(FIXSUDS_GENERICMAP) cadr/cadr_$(PAGE)_suds.vhd
 
 # ===== END OF SUDS AUTOGENERATION =====
+
+# ===== START OF CADR1 SUDS AUTOGENERATION =====
+
+# removed because no digital schematic: caps, ctp, cubus, cxbus, dpadr, dpdata
+# problem dbgin reqerr requ ubcyc
+BUSINT_BOOK := buspar bussel clm datctl dbgout diag lmadr lmdata \
+rbuf reqlm reqtim requb rqsync uba ubd ubintc ubmap ubmast ubxa uprior \
+wbuf xa xapar xbd xd
+
+# generate all suds files
+.PHONY: regenerate-cadr1-suds
+regenerate-cadr1-suds:
+# removing existing ones because new ones can be added or existing ones can be removed
+	$(RM) cadr1/cadr1_*_suds.vhd
+	for PAGE in $(BUSINT_BOOK); do PAGE=$$PAGE make regenerate-cadr1-suds-page || exit; done
+
+# generate suds file for a single page
+.PHONY: regenerate-cadr1-suds-page
+regenerate-cadr1-suds-page: $(FIXSUDS_PY) $(CADR1_DRWDIR)/$(PAGE).drw $(BUILDDIR)/soap dip/dip.vhd
+	$(BUILDDIR)/soap -n $(CADR1_DRWDIR)/$(PAGE).drw > cadr1/cadr1_$(PAGE)_suds.vhd
+#python3 $(FIXSUDS_PY) cadr1/cadr1_$(PAGE)_suds.vhd
+
+# ===== END OF CADR1 SUDS AUTOGENERATION =====
 
 # ===== START OF ALU TESTDATA AUTOGENERATION =====
 
