@@ -21,6 +21,7 @@
  * $Id$
  */
 
+#include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -39,6 +40,7 @@ int debug;
 char page_name[256];
 
 #define MAX_H_TYPE_NAMES	100
+#define MAX_H_FILE_SPECS	100
 
 struct header_s {
 	int h_version;
@@ -50,7 +52,7 @@ struct header_s {
 	char *h_type_names[MAX_H_TYPE_NAMES];
 
 	int h_file_spec_count;
-	char *h_file_specs[MAX_H_TYPE_NAMES];
+	char *h_file_specs[MAX_H_FILE_SPECS];
 };
 
 struct trailer_s {
@@ -157,11 +159,11 @@ struct signal_s *signals;
 struct header_s header;
 struct trailer_s trailer;
 
-#define MAX_BODIES 100
+#define MAX_BODIES 400
 int body_count;
 struct body_s bodies[MAX_BODIES];
 
-#define MAX_SET_CENTERS 100
+#define MAX_SET_CENTERS 400
 int set_center_count;
 struct set_center_s set_centers[MAX_SET_CENTERS];
 
@@ -187,6 +189,8 @@ add_body(struct body_s *bdy)
 		printf("can't add body with id zero\n");
 		return -1;
 	}
+
+    assert (bdy->body_id < MAX_BODIES);
 
 	b = &bodies[bdy->body_id];
 	*b = *bdy;
@@ -306,6 +310,7 @@ add_point(struct point_s *pnt)
 				MID_POINTS, pnt->id[1]);
 			exit(1);
 		}
+        assert (pnt->id[1] < MAX_POINTS);
 		p = &points[pnt->id[1]];
 
 		if (pnt->id[1] >= zero_point_max) {
@@ -313,6 +318,7 @@ add_point(struct point_s *pnt)
 		}
 	}
 	else {
+        assert ((1000 + mixed_point_count) < MAX_POINTS);
 		p = &points[1000 + mixed_point_count++];
 	}
 
@@ -566,6 +572,8 @@ parse_header(int p, struct header_s *h)
 		if (show_suds)
 			printf("type names '%s'\n", l_type_names);
 
+        assert (h->h_type_name_count < MAX_H_TYPE_NAMES);
+
 		h->h_type_names[h->h_type_name_count++] = 
 			strdup(l_type_names);
 	}
@@ -579,6 +587,8 @@ parse_header(int p, struct header_s *h)
 		p = grab_6bit_ascii(p, l_filespec);
 		if (show_suds)
 			printf("filespec '%s'\n", l_filespec);
+
+        assert (h->h_file_spec_count < MAX_H_FILE_SPECS);
 
 		h->h_file_specs[h->h_file_spec_count++] = strdup(l_type_names);
 	}
@@ -631,6 +641,8 @@ parse_body_def(int p)
 				break;
 			}
 
+            assert (bd->pin_count < MAX_BODY_DEF_PINS);
+
 			bd->pins[bd->pin_count].loc[0] = up[p++];
 			bd->pins[bd->pin_count].loc[1] = up[p++];
 			bd->pins[bd->pin_count].bits = up[p++];
@@ -647,6 +659,8 @@ parse_body_def(int p)
 				break;
 			}
 
+            assert (bd->line_count < MAX_BODY_DEF_LINES);
+
 			bd->lines[bd->line_count][0] = up[p++];
 			bd->lines[bd->line_count][1] = up[p++];
 			bd->line_count++;
@@ -661,6 +675,8 @@ parse_body_def(int p)
 				p += 2;
 				break;
 			}
+
+            assert (bd->prop_count < MAX_BODY_DEF_PROPS);
 
 			pp = new_prop(p);
 			bd->props[bd->prop_count++] = pp;
@@ -704,6 +720,10 @@ parse_macro(int p)
 
 		p  = grab_7bit_ascii(p, name);
 		p  = grab_9bit(p, macro);
+
+        if (show_suds) {
+            printf("name '%s'\n", name);
+        }
 	}
 
 	return p;
@@ -731,7 +751,10 @@ parse_body(int p)
 		if (debug) printf("top %d\n", p);
 
 		if (up[p] == 0 && up[p+1] == 0400000)
+        {
+            p = p + 2;
 			break;
+        }
 
 		memset((char *)b, 0, sizeof(*b));
 
@@ -766,6 +789,10 @@ parse_body(int p)
 				p += 2;
 				break;
 			}
+
+            if (debug) printf("parse_one_body(%d)\n", p);
+
+            assert (b->prop_count < MAX_BODY_DEF_PROPS);
 
 			pp = new_prop(p);
 			b->props[b->prop_count++] = pp;
@@ -806,9 +833,13 @@ parse_body(int p)
 			printf("refdes '%s'\n", b->refdes);
 
 		add_body(b);
+
+        if (debug) printf("end_of_parse_one_body(%d)\n", p);
+
 	}
 
-	p += 2;
+    if (debug) printf("end_of_parse_body(%d)\n", p);
+
 	return p;
 }
 
@@ -817,17 +848,29 @@ parse_set_center(int p)
 {
 	struct set_center_s *sc;
 
+    if (debug) printf("parse_set_center p %d\n", p);
+
 	while (1) {
+        
+        if (debug) printf("top %d\n", p);
+
+        if (debug) printf("set_center_top %d %d %d %d %d %d\n", up[p], up[p+1], up[p+2], up[p+3], up[p+4], up[p+5]);
+
 		if (up[p] == 0 && up[p+1] == 0400000) {
 			p += 2;
 			break;
 		}
+
+        assert (set_center_count < MAX_SET_CENTERS);
 
 		sc = &set_centers[set_center_count++];
 
 		/* loc of set center */
 		sc->loc[0] = up[p++];
 		sc->loc[1] = up[p++];
+
+        sc->body_id_count = 0;
+        sc->point_id_count = 0;
 
 		/* body id's */
 		while (1) {
@@ -836,9 +879,11 @@ parse_set_center(int p)
 				break;
 			}
 
-			sc->body_id[sc->body_id_count][0] = up[p++];
-			sc->body_id[sc->body_id_count][1] = up[p++];
-			sc->body_id_count++;
+            assert (sc->body_id_count < MAX_SET_CENTERS_BODY_IDS);
+
+            sc->body_id[sc->body_id_count][0] = up[p++];
+            sc->body_id[sc->body_id_count][1] = up[p++];
+            sc->body_id_count++;
 		}
 
 		/* point id's */
@@ -848,11 +893,18 @@ parse_set_center(int p)
 				break;
 			}
 
-			sc->point_id[sc->point_id_count][0] = up[p++];
-			sc->point_id[sc->point_id_count][1] = up[p++];
-			sc->point_id_count++;
+            assert (sc->point_id_count < MAX_SET_CENTERS_POINT_IDS);
+
+            sc->point_id[sc->point_id_count][0] = up[p++];
+            sc->point_id[sc->point_id_count][1] = up[p++];
+            sc->point_id_count++;
 		}
+
+        //is this required ?
+        //if (sc->body_id_count == 0 && sc->point_id_count == 0) break;
 	}
+
+    if (debug) printf("end_of_parse_set_center p %d\n", p);
 
 	return p;
 }
@@ -871,8 +923,10 @@ parse_pins(int p)
 
 		if (debug) printf("top p %d\n", p);
 
-		if (up[p] == 0 && up[p+1] == 0400000)
-			break;
+		if (up[p] == 0 && up[p+1] == 0400000) {
+            p += 2;
+            break;
+        }
 
 		memset((char *)pnt, 0, sizeof(*pnt));
 
@@ -952,11 +1006,12 @@ parse_pins(int p)
 			printf("pin '%s'\n", pnt->name_of_pin);
 			printf("loc (%d, %d)\n", pnt->loc[0], pnt->loc[1]);
 			printf("id (%d, %d) ", pnt->id[0], pnt->id[1]);
-			if (pnt->id[0] && pnt->id[1])
-				printf("%s ",
-				       bodies[pnt->id[1]].name_of_body);
-			printf("%s\n",
-			       bodies[pnt->id[1]].refdes);
+			if (pnt->id[0] > 0 && pnt->id[1] > 0 && pnt->id[1] < MAX_BODIES) {
+				printf("%s %s",
+				       bodies[pnt->id[1]].name_of_body,
+                       bodies[pnt->id[1]].refdes);
+            }
+            printf("\n");
 
 			printf("bits %d, pin name %d\n",
 			       pnt->bits, pnt->pinname);
@@ -989,8 +1044,10 @@ parse_pins(int p)
 		}
 		
 		if (id1 && show_suds) {
-			printf("%s ", bodies[id1].name_of_body);
-			printf("%s ", bodies[id1].refdes);
+            if (id1 < MAX_BODIES) {
+                printf("%s ", bodies[id1].name_of_body);
+                printf("%s ", bodies[id1].refdes);
+            }
 			printf("\n");
 		}
 
@@ -1029,9 +1086,13 @@ parse_pins(int p)
 		}
 
 		add_point(pnt);
-	}
 
-	p += 2;
+        if (debug) printf("end_of_parse_one_pin(%d)\n", p);
+
+	}
+	
+    if (debug) printf("end_of_parse_pins(%d)\n", p);
+
 	return p;
 }
 
@@ -1040,7 +1101,7 @@ parse_trailer(int p, struct trailer_s *t)
 {
 	p = grab_7bit_ascii(p, t->t_draw_by);
 	p = grab_7bit_ascii(p, t->t_title_line_1);
-	p = grab_7bit_ascii(p, t->t_title_line_2);
+	p = grab_7bit_ascii(p, t->t_title_line_2);    
 	p += 2;
 
 	if (show_suds) {
@@ -1169,9 +1230,11 @@ follow_one(int index, int npi, int pass)
 	/* remember the names of pins in the body */
 	if (points[index].id[0] && points[index].id[1]) {
 		struct body_s *b;
+        assert (index < MAX_POINTS);
 		int pn = points[index].pinname;
-
+        assert (points[index].id[1] < MAX_BODIES);
 		b = &bodies[ points[index].id[1] ];
+        assert (pn < MAX_BODY_NAMED_PINS);
 		if (b->named_pin_index[ pn ] == 0)
 			b->named_pin_index[ pn ] = 
 				points[index].named_pin_index;
@@ -1535,8 +1598,9 @@ follow_annotate_body(struct point_s *orig,
 
 			/* fix this pin's body */
 			pn = p->pinname;
+            assert (p->id[1] < MAX_BODIES);
 			b = &bodies[ p->id[1] ];
-
+            assert (pn < MAX_BODY_NAMED_PINS);
 			b->named_pin_index[ pn ] = orig_pi;
 
 			if (show_follow)
@@ -1578,16 +1642,17 @@ follow_find_net_name(int *ppi, struct point_s *orig, struct point_s *last, struc
 	if (show_follow) show_point(p);
 
 	bi = p->id[1];
-	b = &bodies[bi];
-
-	if (p->pinname != '\0') {
-	if (b->named_pin_index[ p->pinname ]) {
-		*ppi = b->named_pin_index[ p->pinname ];
-		if (show_follow)
-			printf("hit %s\n",
-			       points[ *ppi ].name_of_pin);
-	}
-	}
+    assert (bi < MAX_BODIES);
+    b = &bodies[bi];
+    if (p->pinname != '\0') {
+        assert (p->pinname < MAX_BODY_NAMED_PINS);
+        if (b->named_pin_index[ p->pinname ]) {
+            *ppi = b->named_pin_index[ p->pinname ];
+            if (show_follow)
+                printf("hit %s\n",
+                    points[ *ppi ].name_of_pin);
+        }
+    }
 
 	next = find_point(p->d[0], p->d[1]);
 	if (next != last)
@@ -1635,7 +1700,9 @@ follow_apply_net_name(int pi, int *pfixed, struct point_s *orig,
 		return;
 
 	bi = p->id[1];
+    assert (bi < MAX_BODIES);
 	b = &bodies[bi];
+    assert (p->pinname < MAX_BODY_NAMED_PINS);
 
 	/* possibly fix body this point refers */
 	if (b->named_pin_index[ p->pinname ] == 0) {

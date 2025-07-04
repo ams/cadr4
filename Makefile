@@ -246,6 +246,9 @@ regenerate-promh9-cadr-suds:
 # call generate-page-suds for each page setting PAGE variable
 .PHONY: regenerate-cadr-suds
 regenerate-cadr-suds:
+ifndef FIXSUDS_GENERICMAP
+	$(error FIXSUDS_GENERICMAP is not set, run regenerate-fast-promh-cadr-suds or regenerate-promh9-cadr-suds)
+endif
 # removing existing ones because new ones can be added or existing ones can be removed
 	$(RM) cadr/cadr_*_suds.vhd
 	for PAGE in $(CADR_BOOK) $(ICMEM_BOOK); do FIXSUDS_GENERICMAP=$(FIXSUDS_GENERICMAP) PAGE=$$PAGE make regenerate-cadr-suds-page || exit; done
@@ -254,6 +257,9 @@ regenerate-cadr-suds:
 # a few particular _suds.vhd require special handling and they are handled with if cases below
 .PHONY: regenerate-cadr-suds-page
 regenerate-cadr-suds-page: $(FIXSUDS_PY) $(CADR_DRWDIR)/$(PAGE).drw $(BUILDDIR)/soap dip/dip.vhd
+ifndef PAGE
+	$(error PAGE is not set, run regenerate-fast-promh-cadr-suds or regenerate-promh9-cadr-suds)
+endif
 	$(BUILDDIR)/soap -n $(CADR_DRWDIR)/$(PAGE).drw > cadr/cadr_$(PAGE)_suds.vhd
 ifeq ($(PAGE),bcterm)
 # modify bcterm components, soap emits dip names without @, so there are mistakes, 1b15 is used twice etc.
@@ -322,6 +328,9 @@ regenerate-cadr1-suds:
 # generate suds file for a single page
 .PHONY: regenerate-cadr1-suds-page
 regenerate-cadr1-suds-page: $(FIXSUDS_PY) $(CADR1_DRWDIR)/$(PAGE).drw $(BUILDDIR)/soap dip/dip.vhd
+ifndef PAGE
+	$(error PAGE is not set, run regenerate-cadr1-suds)
+endif
 	$(BUILDDIR)/soap -n $(CADR1_DRWDIR)/$(PAGE).drw > cadr1/cadr1_$(PAGE)_suds.vhd
 #python3 $(FIXSUDS_PY) cadr1/cadr1_$(PAGE)_suds.vhd
 
