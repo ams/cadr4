@@ -304,10 +304,12 @@ endif
 
 # ===== START OF CADR1 SUDS AUTOGENERATION =====
 
-# removed because no digital schematic: caps, ctp, cubus, cxbus, dpadr, dpdata
-# problem dbgin reqerr requ ubcyc
-BUSINT_BOOK := buspar bussel clm datctl dbgout diag lmadr lmdata \
-rbuf reqlm reqtim requb rqsync uba ubd ubintc ubmap ubmast ubxa uprior \
+# these are removed because they have no digital schematic: 
+# caps, ctp, cubus, cxbus, dpadr, dpdata
+BUSINT_BOOK := buspar bussel clm datctl \
+dbgin dbgout diag lmadr lmdata \
+rbuf reqerr reqlm reqtim requ requb rqsync \
+uba ubcyc ubd ubintc ubmap ubmast ubxa uprior \
 wbuf xa xapar xbd xd
 
 # generate all suds files
