@@ -94,6 +94,12 @@ $(BUILDDIR)/soap: soap/soap.c soap/unpack.c
 	mkdir -p $(BUILDDIR)
 	$(CC) -std=gnu99 -Wall -Wextra -O0 -ggdb3 -o $@ -g $^
 
+# soap is used to generate _suds.vhd files
+$(BUILDDIR)/soap4: soap/soap4.c soap/unpack4.c
+	mkdir -p $(BUILDDIR)
+	$(CC) -std=gnu99 -Wall -Wextra -O0 -ggdb3 -I soap -o $@ -g $^
+
+
 # generate cadr_tb.vhd using SUDS and helper components
 $(CADR_TB_SRC): $(CREATE_TB_PY) cadr/cadr_book.vhd cadr/icmem_book.vhd helper/helper.vhd
 	mkdir -p $(BUILDDIR)
