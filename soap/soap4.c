@@ -27,17 +27,18 @@
  */
 
 #include <assert.h>
+#include <ctype.h>
+#include <libgen.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <string.h>
-#include <ctype.h>
+#include <unistd.h>
 
-#include "unpack4.h"
 #include "soap4.h"
+#include "unpack4.h"
 
-// 1MW is more than enough for any suds file
-#define MAX_WORDS_IN_SUDS_FILE (1024*1024)
+#define MAX_HALF_WORDS (1024*1024)
 
 static uint32_t *half_words;
 static size_t half_words_len;
@@ -67,28 +68,13 @@ struct set_center_s set_centers[MAX_SET_CENTERS];
 struct trailer_s _trailer;
 struct trailer_s *trailer = &_trailer;
 
-#define MAX_SIGNALS 1000
-size_t signals_count;
-struct signal_s signals[MAX_SIGNALS];
-
 #define LEN(x) (sizeof(x)/sizeof(x[0]))
-
-#define BYTE_TO_BINARY_PATTERN "%c%c%c%c%c%c%c%c"
-#define BYTE_TO_BINARY(byte)  \
-  ((byte) & 0x80 ? '1' : '0'), \
-  ((byte) & 0x40 ? '1' : '0'), \
-  ((byte) & 0x20 ? '1' : '0'), \
-  ((byte) & 0x10 ? '1' : '0'), \
-  ((byte) & 0x08 ? '1' : '0'), \
-  ((byte) & 0x04 ? '1' : '0'), \
-  ((byte) & 0x02 ? '1' : '0'), \
-  ((byte) & 0x01 ? '1' : '0') 
 
 #define DEBUG(...) { if (debug) fprintf(stderr, __VA_ARGS__); }
 #define DUMP_RAW(...) { fprintf(stderr, __VA_ARGS__); }
 #define DUMP_VHDL(...) { fprintf(stdout, __VA_ARGS__); }
 
-#define LEFT_HALF_WORD(x) ((x >> 32) & 0777777)
+#define LEFT_HALF_WORD(x) ((x >> 18) & 0777777)
 #define RIGHT_HALF_WORD(x) (x & 0777777)
 
 #define X_WORD(x) LEFT_HALF_WORD(x)
@@ -103,12 +89,24 @@ struct signal_s signals[MAX_SIGNALS];
 #define DEBUG_WORD(name, value) \
     DEBUG("%s %llu\n", name, value)
 
-#define DEBUG_ID(s, id) \
-    DEBUG("%s (%llu, %llu) (%06llo, %06llo)\n", s, \
-        LEFT_HALF_WORD(id), RIGHT_HALF_WORD(id), \
-        LEFT_HALF_WORD(id), RIGHT_HALF_WORD(id))
+#define DEBUG_ID_PAIR(s, id) \
+    DEBUG("%s id(%u, %u) (#o%06o, #o%06o)\n", s, \
+        id.x, id.y, id.x, id.y)
 
-#define DEBUG_XY(s, xy) DEBUG_ID(s, xy)
+#define DEBUG_ID(s, id) \
+    DEBUG("%s id(%u) (#o%06o)\n", s, id, id)
+
+#define DEBUG_XY(s, xy) DEBUG("%s xy(%d, %d)\n", s, xy.x, xy.y)
+
+static void
+DEBUG_BITS(char *s, HALF_WORD bits)
+{
+    DEBUG("%s #o%06o #b", s, bits);
+    for (int i = 0; i < 18; i++) {
+        DEBUG("%c", (bits & (1 << (17 - i))) ? '1' : '0');
+    }
+    DEBUG("\n");
+}
 
 #define BREAK_IF_NEXT_WORD_IS(this) \
     { \
@@ -123,143 +121,123 @@ struct signal_s signals[MAX_SIGNALS];
 static size_t half_words_idx_stack[8];
 static size_t half_words_idx_stack_idx = 0;
 
-void parser_push()
+static void 
+parser_push()
 {
     assert (half_words_idx_stack_idx < LEN(half_words_idx_stack));
     half_words_idx_stack[half_words_idx_stack_idx++] = half_words_idx;
 }
 
-void parser_pop()
+static void 
+parser_pop()
 {
     assert (half_words_idx_stack_idx > 0);
     half_words_idx = half_words_idx_stack[--half_words_idx_stack_idx];
 }
 
 // read 18-bit half-word without debug output
-HALF_WORD read_half_word_no_debug(void) {
+static HALF_WORD 
+read_half_word_no_debug(void) {
     assert (half_words_idx < half_words_len);
     HALF_WORD result = half_words[half_words_idx++] & 0777777;
     return result;
 }
 
 // 18-bit half-word
-HALF_WORD read_half_word(void) {
+static HALF_WORD 
+read_half_word(void) {
     HALF_WORD result = read_half_word_no_debug();
-    if (debug_parsing) printf("read_half_word %06o\n", result);
+    if (debug_parsing) printf("read_half_word #o%06o\n", result);
     return result;
 }
 
 // 36-bit word
 // word = half-word1 << 18 | half-word2
-WORD read_word(void) {
+static WORD 
+read_word(void) {
     WORD w1 = read_half_word_no_debug();
     WORD w2 = read_half_word_no_debug();
     WORD result = (w1 << 18) | w2;
-    if (debug_parsing) printf("read_word %012llo (%06llo, %06llo)\n", 
+    if (debug_parsing) printf("read_word #o%012llo (#o%06llo, #o%06llo)\n", 
         result, w1, w2);
     return result;
 }
 
-WORD peek_word() {
+// 36-bit word to x,y signed int
+static void 
+read_pair(struct pair_s *result) {
+    result->x = read_half_word_no_debug();
+    result->y = read_half_word_no_debug();
+    if (debug_parsing) printf("read_pair %d %d (#o%06o, #o%06o)\n", 
+        result->x, result->y, result->x, result->y);
+}
+
+/* sign extend the half word */
+SIGNED_HALF_WORD
+int18(HALF_WORD n)
+{
+	if (n & (1 << 17)) return n | 0xfffc0000;
+	return n;
+}
+
+// 36-bit word to x,y signed int
+static void 
+read_signed_pair(struct signed_pair_s *result) {
+    HALF_WORD w1 = read_half_word_no_debug();
+    HALF_WORD w2 = read_half_word_no_debug();
+    result->x = int18(w1);
+    result->y = int18(w2);
+    if (debug_parsing) printf("read_signed_pair %d %d (#o%06o, #o%06o)\n", 
+        result->x, result->y, w1, w2);
+}
+
+static WORD 
+peek_word() {
     parser_push();
     WORD w1 = read_half_word_no_debug();
     WORD w2 = read_half_word_no_debug();
     parser_pop();
     WORD result = (w1 << 18) | w2;
-    if (debug_parsing) printf("peek_word %012llo (%06llo, %06llo)\n", 
+    if (debug_parsing) printf("peek_word #o%012llo (#o%06llo, #o%06llo)\n", 
         result, w1, w2);
     return result;
 } 
 
-void
-add_body_def(struct body_def_s *bd)
-{
-    assert (body_defs_count < MAX_BODY_DEFS);
-    memcpy(body_defs + body_defs_count, bd, sizeof(struct body_def_s));
-    body_defs_count++;
-}
-
 struct body_def_s *
 find_body_def(char *name)
 {
+    assert (name != NULL);
+    assert (name[0] != 0);
+
     for (size_t i = 0; i < body_defs_count; i++) {
-        if (strcmp(body_defs[i].name, name) == 0) return &body_defs[i];
+        struct body_def_s *bd = &body_defs[i];
+        if (bd->name == NULL) continue;
+        if (bd->name[0] == 0) continue;
+        if (strcmp(bd->name, name) == 0) return bd;
     }
 
-    assert (0);
-}
-
-void
-add_body(struct body_s *b)
-{
-    memcpy(bodies + bodies_count, b, sizeof(struct body_s));
-    bodies_count++;
-}
-
-struct body_s *
-find_body(WORD body_id)
-{
-    for (size_t i = 0; i < bodies_count; i++) {
-        if (bodies[i].body_id == body_id) return &bodies[i];
-    }
-
-    assert (0);
-}
-
-void
-add_point(struct point_s *p)
-{
-    assert (points_count < MAX_POINTS);
-    memcpy(points + points_count, p, sizeof(struct point_s));
-    points_count++;
+    return NULL;
 }
 
 struct point_s *
-find_point(WORD point_id)
+find_point_by_pin_id_and_body_id(HALF_WORD pin_id, HALF_WORD body_id)
 {
     for (size_t i = 0; i < points_count; i++) {
-        if (points[i].id == point_id) return &points[i];
+        struct point_s *p = &points[i];
+        if (p->down_id.x == pin_id && p->down_id.y == body_id) return p;
+        if (p->up_id.x == pin_id && p->up_id.y == body_id) return p;
+        if (p->left_id.x == pin_id && p->left_id.y == body_id) return p;
+        if (p->right_id.x == pin_id && p->right_id.y == body_id) return p;
     }
 
-    assert (0);
-}
-
-void
-add_signal(char *name, WORD id)
-{
-    assert (signals_count < MAX_SIGNALS);
-
-    struct signal_s *s = &signals[signals_count];
-    signals_count++;
-
-    s->name = strdup(name);
-	s->id = id;
-}
-
-struct signal_s *
-find_signal(WORD id)
-{
-	for (size_t i = 0; i < signals_count; i++) {
-        struct signal_s *s = &signals[i];
-		if (s->id == id) return s;
-    }
-
-	assert (0);
+    return NULL;
 }
 
 struct prop_s *
-new_prop()
-{
-	struct prop_s *pp = (struct prop_s *) malloc(sizeof(*pp));
-	memset(pp, 0, sizeof(struct prop_s));
-	return pp;
-}
-
-struct prop_s *
-find_prop(struct prop_s **props, size_t prop_count, char *name)
+find_prop(struct prop_s *props, size_t prop_count, char *name)
 {
     for (size_t i = 0; i < prop_count; i++) {
-        struct prop_s *p = props[i];
+        struct prop_s *p = &props[i];
         if (strcmp(p->name, name) == 0) return p;
     }
     return NULL;
@@ -356,6 +334,30 @@ dump_raw(int dump_wide_flag, char *suds_filename)
 
 /* ---------------------------------------------------------------- */
 
+#define MAX_MANAGED_STRDUPS 10000
+static size_t managed_strdups_count = 0;
+static char *managed_strdups[MAX_MANAGED_STRDUPS] = {0};
+
+static char*
+managed_strdup(char *s)
+{
+    assert (managed_strdups_count < MAX_MANAGED_STRDUPS);
+    char *managed_s = strdup(s);
+    assert (managed_s != NULL);
+    managed_strdups[managed_strdups_count++] = managed_s;
+    return managed_s;
+}
+
+static void
+free_managed_strdups(void)
+{
+    for (size_t i = 0; i < managed_strdups_count; i++) {
+        free(managed_strdups[i]);
+    }
+
+    managed_strdups_count = 0;
+}
+
 char
 six_bit_to_ascii(uint16_t c)
 {
@@ -394,6 +396,8 @@ parse_string(int bit_per_char)
     char buffer[1024];
     size_t s_idx = 0;
 
+    // this looks like an infinite loop but EOF is asserted in read_word
+    // an assertion means the file is corrupted
     while (1) {
         WORD word = read_word();
         for (size_t i = 0; i < chars_per_word; i++) {
@@ -401,7 +405,7 @@ parse_string(int bit_per_char)
             assert (s_idx < LEN(buffer));
             buffer[s_idx++] = conversion_func(c);
             if (c == 0) {
-                return strdup(buffer);
+                return managed_strdup(buffer);
             }
         }
     }
@@ -437,6 +441,8 @@ parse_9bit_ascii_raw(uint16_t *buffer, size_t max_len)
 
     size_t s_idx = 0;
 
+    // this looks like an infinite loop but EOF is asserted in read_word
+    // an assertion means the file is corrupted
     while (1) {
         WORD word = read_word();
         for (size_t i = 0; i < chars_per_word; i++) {
@@ -489,30 +495,31 @@ parse_body_defs(void)
 {
     DEBUG("BODY_DEFs(%zu)\n", half_words_idx);
 
-    memset(&body_defs, 0, sizeof(body_defs));
-
 	while (1) {
 		BREAK_IF_NEXT_WORD_IS(0);
         DEBUG("\tBODY_DEF(%zu)\n", half_words_idx);                
 
-        struct body_def_s body_def;
-        memset(&body_def, 0, sizeof(body_def));
-        struct body_def_s *bd = &body_def;
+        assert (body_defs_count < MAX_BODY_DEFS);
+        struct body_def_s *bd = &body_defs[body_defs_count++];
 
         bd->name = parse_7bit_ascii();
         DEBUG("\t\tname '%s'\n", bd->name);
 
         // dont know what this is
         // it exists in original soap.c but not described in suds.txt
-        free(parse_7bit_ascii());
+        parse_7bit_ascii();
 
         bd->bits = read_half_word();
+        DEBUG_BITS("\t\tbits", bd->bits);
 
         // unused
         read_half_word();
 
-		bd->loc_offset = read_word();
-		bd->loc_char_offset = read_word();
+		read_signed_pair(&bd->loc_offset);
+        DEBUG_XY("\t\tloc_offset", bd->loc_offset);
+
+		read_signed_pair(&bd->loc_char_offset);
+        DEBUG_XY("\t\tloc_char_offset", bd->loc_char_offset);
 
         DEBUG("\t\tpins:\n");
 
@@ -521,28 +528,31 @@ parse_body_defs(void)
 
             assert (bd->pin_count < MAX_BODY_DEF_PINS);
 
-			bd->pins[bd->pin_count].loc_of_pin = read_word();
-			bd->pins[bd->pin_count].bits       = read_half_word();
-			bd->pins[bd->pin_count].pin_id     = read_half_word();
-            DEBUG("\t\t\tpin id %d %06o\n", 
-                bd->pins[bd->pin_count].pin_id,
-                bd->pins[bd->pin_count].pin_id);
-			bd->pins[bd->pin_count].pin_pos    = read_half_word();
-			bd->pins[bd->pin_count].pin_name   = read_half_word();
-		}
+            struct pin_s *pin = &bd->pins[bd->pin_count++];
 
-        //DEBUG("\tlines:\n");
+			read_signed_pair(&pin->loc_of_pin);
+            DEBUG_XY("\t\t\tloc_of_pin", pin->loc_of_pin);
+
+			pin->bits = read_half_word();
+            DEBUG_BITS("\t\t\tpin bits", pin->bits);
+
+			pin->id = read_half_word();
+            DEBUG_ID("\t\t\tpin id %d",  pin->id);
+
+			pin->pos = read_half_word();
+            DEBUG_HALF_WORD("\t\t\tpin pos", pin->pos);
+			
+            pin->name = read_half_word();
+            DEBUG_HALF_WORD("\t\t\tpin name", pin->name);
+		}
 
 		while (1) {
             BREAK_IF_NEXT_WORD_IS(0400000);
-
-            assert (bd->line_count < MAX_BODY_DEF_LINES);
-
-			bd->lines[bd->line_count] = read_word();
-            //DEBUG("\t\tline %d %d\n", bd->lines[bd->line_count][0], bd->lines[bd->line_count][1]);
+            read_word();
 			bd->line_count++;
-
 		}
+
+        DEBUG("\t\t# of lines: %zu\n", bd->line_count);
 
         DEBUG("\t\tprops:\n");
 
@@ -551,20 +561,18 @@ parse_body_defs(void)
 
             assert (bd->prop_count < MAX_BODY_DEF_PROPS);
 
-			struct prop_s *pp = new_prop();
-			bd->props[bd->prop_count++] = pp;
+			struct prop_s *prop = &bd->props[bd->prop_count++];
 
-            pp->value = parse_7bit_ascii();
-			pp->name = parse_7bit_ascii();
+            prop->value = parse_7bit_ascii();
+			prop->name = parse_7bit_ascii();
 
-            DEBUG("\t\t\t'%s' -> '%s'\n", pp->name, pp->value);
+            DEBUG("\t\t\t'%s' -> '%s'\n", prop->name, prop->value);
 
-			pp->text_size       = read_word();
-			pp->text_location   = read_word();
-			pp->constant_offset = read_word();
+			prop->text_size = read_word();
+
+			read_signed_pair(&prop->text_location);
+			read_signed_pair(&prop->constant_offset);
 		}
-
-        add_body_def(bd);
 
         DEBUG("\t/BODY_DEF(%zu)\n", half_words_idx);
 	}
@@ -584,8 +592,6 @@ parse_macros(void)
 
         char *name = parse_7bit_ascii();
         DEBUG("\tname '%s'\n", name);
-        // not used
-        free(name);
 
         uint16_t buffer[1024];
         parse_9bit_ascii_raw(buffer, LEN(buffer));
@@ -601,19 +607,16 @@ parse_bodies(void)
 {
     DEBUG("BODYs(%zu)\n", half_words_idx);
 
-	memset(&bodies, 0, sizeof(bodies));
-
 	while (1) {
         BREAK_IF_NEXT_WORD_IS(0400000);
         
 		DEBUG("\tBODY(%zu)\n", half_words_idx);
 
-        struct body_s body;
-        memset(&body, 0, sizeof(body));
-        struct body_s *b = &body;
+        assert (bodies_count < MAX_BODIES);
+        struct body_s *b = &bodies[bodies_count++];
 
-		b->loc_of_body = read_word();
-        DEBUG_XY("\t\tloc_of_body", b->loc_of_body);
+		read_signed_pair(&b->loc);
+        DEBUG_XY("\t\tloc_of_body", b->loc);
 
 		b->orientation = read_word();
 
@@ -621,9 +624,12 @@ parse_bodies(void)
 		if (b->orientation >= 0400000) {
 
             b->card_loc = read_half_word();
-            b->body_loc = read_half_word();
+            DEBUG_HALF_WORD("\t\tcard_loc", b->card_loc);
 
-            /* create the reference designator */
+            b->body_loc = read_half_word();
+            DEBUG_HALF_WORD("\t\tbody_loc", b->body_loc);
+
+            // create the reference designator
             b->refdes[0] = '0' + ((b->body_loc >> 15) & 7);
             b->refdes[1] = ('A'-1) + ((b->body_loc >> 12) & 7);
             const int n = (b->body_loc >> 6) & 077;
@@ -631,16 +637,16 @@ parse_bodies(void)
             b->refdes[4] = 0;
             DEBUG("\t\trefdes '%s'\n", b->refdes);
 
-            b->const_offset = read_word();
-            b->char_offset  = read_word();
+            read_signed_pair(&b->const_offset);
+            read_signed_pair(&b->char_offset);
 
         }
 
-		b->body_bits = read_half_word();
-        DEBUG("\t\tbody bits %d\n", b->body_bits);
+		b->bits = read_half_word();
+        DEBUG_BITS("\t\tbody bits", b->bits);
 
-		b->body_id   = read_half_word();
-        DEBUG("\t\tbody id %d %06o\n", b->body_id, b->body_id);
+		b->id = read_half_word();
+        DEBUG_ID("\t\tbody id", b->id);
 
         b->name_of_body_def = parse_7bit_ascii();
         DEBUG("\t\tname_of_body_def %s\n", b->name_of_body_def);
@@ -652,20 +658,18 @@ parse_bodies(void)
 
             assert (b->prop_count < MAX_BODY_DEF_PROPS);
 
-			struct prop_s *pp = new_prop();
-			b->props[b->prop_count++] = pp;
+			struct prop_s *prop = &b->props[b->prop_count++];
 
-            pp->value = parse_7bit_ascii();
-            pp->name = parse_7bit_ascii();
+            prop->value = parse_7bit_ascii();
+            prop->name = parse_7bit_ascii();
 
-            DEBUG("\t\t\t'%s' -> '%s'\n", pp->name, pp->value);
+            DEBUG("\t\t\t'%s' -> '%s'\n", prop->name, prop->value);
 
-			pp->text_size       = read_word();
-			pp->text_location   = read_word();
-			pp->constant_offset = read_word();
+			prop->text_size = read_word();
+
+			read_signed_pair(&prop->text_location);
+			read_signed_pair(&prop->constant_offset);
         }
-
-        add_body(b);
 
         DEBUG("\t/BODY(%zu)\n", half_words_idx);
 
@@ -684,88 +688,55 @@ parse_points(void)
 
         DEBUG("\tPOINT(%zu)\n", half_words_idx);
 
-        struct point_s point;
-        memset(&point, 0, sizeof(point));
-	    struct point_s *pnt = &point;
+        assert (points_count < MAX_POINTS);
+	    struct point_s *pnt = &points[points_count++];
 
-        pnt->loc_of_point = read_word();
-        DEBUG_XY("\t\tloc_of_point", pnt->loc_of_point);
+        read_signed_pair(&pnt->loc);
+        DEBUG_XY("\t\tloc_of_point", pnt->loc);
 
-        pnt->id = read_word();
-        DEBUG_ID("\t\tpoint id", pnt->id);
+        read_pair(&pnt->id);
+        DEBUG_ID_PAIR("\t\tpoint id", pnt->id);
 
-		pnt->down_id = read_word();
-        DEBUG_ID("\t\tdown_id", pnt->down_id);
+		read_pair(&pnt->down_id);
+        DEBUG_ID_PAIR("\t\tdown_id", pnt->down_id);
 
-		pnt->up_id = read_word();
-        DEBUG_ID("\t\tup_id", pnt->up_id);
+		read_pair(&pnt->up_id);
+        DEBUG_ID_PAIR("\t\tup_id", pnt->up_id);
 
-        pnt->left_id = read_word();
-        DEBUG_ID("\t\tleft_id", pnt->left_id);
+        read_pair(&pnt->left_id);
+        DEBUG_ID_PAIR("\t\tleft_id", pnt->left_id);
 
-        pnt->right_id = read_word();
-        DEBUG_ID("\t\tright_id", pnt->right_id);
+        read_pair(&pnt->right_id);
+        DEBUG_ID_PAIR("\t\tright_id", pnt->right_id);
 
 		pnt->bits = read_half_word();
-        DEBUG("\t\tbits %d %06o\n", pnt->bits, pnt->bits);
-        DEBUG("\t\tbits "BYTE_TO_BINARY_PATTERN" "BYTE_TO_BINARY_PATTERN" "BYTE_TO_BINARY_PATTERN"\n",
-            BYTE_TO_BINARY(pnt->bits>>16), BYTE_TO_BINARY(pnt->bits>>8), BYTE_TO_BINARY(pnt->bits));
+        DEBUG_BITS("\t\tbits", pnt->bits);
 
         pnt->pin_name = read_half_word();
+        DEBUG_HALF_WORD("\t\tpin_name", pnt->pin_name);
 
 		pnt->size_of_text = read_word();
         DEBUG_WORD("\t\tsize_of_text", pnt->size_of_text);
     
         // IF SIZE OF TEXT NOT 0, THE NEXT TWO FOLLOW
         if (pnt->size_of_text != 0) {
-            pnt->const_offset_from_point_loc = read_word();
+            read_signed_pair(&pnt->const_offset_from_point_loc);
             pnt->name = parse_7bit_ascii();
             DEBUG("\t\tname '%s'\n", pnt->name);
-
             // IF CPIN ON IN BITS
             // bit 16 is not written anywhere, it is identified experimentally
             if ((pnt->bits & (1 << 16)) != 0) {
                 DEBUG("\t\tCPIN ON\n");
-                read_half_word(); // card loc
-                read_half_word(); // io loc
-                pnt->const_offset = read_word();
+
+                pnt->card_loc = read_half_word();
+                DEBUG_HALF_WORD("\t\tcard_loc", pnt->card_loc);
+
+                pnt->io_loc = read_half_word();
+                DEBUG_HALF_WORD("\t\tio_loc", pnt->io_loc);
+
+                read_signed_pair(&pnt->const_offset);
             }
         }
-
-        /*
-		if (pnt->name != NULL) {
-			
-            DEBUG("\t\tsignal '%s' (%d, %d)\n", 
-                pnt->name, 
-                pnt->id[0], 
-                pnt->id[1]);
-
-            add_signal(pnt->name, pnt->id[0], pnt->id[1]);
-
-		} else {
-
-			struct signal_s *s;
-
-			if (pnt->id[0] == 0 && pnt->id[1] == 0)
-				s = 0;
-			else
-				s = find_signal(pnt->id[0], pnt->id[1]);
-
-			if (s) {
-				if (s->pin == 0) {
-
-					s->pin = pnt->pinname;
-					s->body = find_body(pnt->id[1]);
-
-				} else {
-
-                    // already set
-
-				}
-			}
-		}*/
-
-		add_point(pnt);
 
         DEBUG("\t/POINT(%zu)\n", half_words_idx);
 
@@ -779,8 +750,6 @@ parse_set_centers(void)
 {
 	DEBUG("SET_CENTER(%zu)\n", half_words_idx);
 
-    memset(&set_centers, 0, sizeof(set_centers));
-
 	while (1) {
         BREAK_IF_NEXT_WORD_IS(0400000);
 
@@ -793,29 +762,27 @@ parse_set_centers(void)
         struct set_center_s *sc = &set_center;
 
 		/* loc of set center */
-		sc->loc = read_word();
+		read_signed_pair(&sc->loc);
         DEBUG_XY("\t\tloc", sc->loc);
 
         sc->body_id_count = 0;
         sc->point_id_count = 0;
 
-		DEBUG("\t\tbody id's:\n");
-
 		while (1) {
             BREAK_IF_NEXT_WORD_IS(0);
-            assert (sc->body_id_count < MAX_SET_CENTERS_BODY_IDS);
-            sc->body_id[sc->body_id_count] = read_word();
+            read_word();
             sc->body_id_count++;
 		}
 
-        DEBUG("\t\tpoint id's:\n");
+        DEBUG("\t\t# of body ids: %zu\n", sc->body_id_count);
 		
 		while (1) {
             BREAK_IF_NEXT_WORD_IS(0);
-            assert (sc->point_id_count < MAX_SET_CENTERS_POINT_IDS);
-            sc->point_id[sc->point_id_count] = read_word();
+            read_word();
             sc->point_id_count++;
 		}
+
+        DEBUG("\t\t# of point ids: %zu\n", sc->point_id_count);
 
         DEBUG("\t/SET_CENTER(%zu)\n", half_words_idx);
 	}
@@ -827,8 +794,6 @@ static void
 parse_trailer(void)
 {
     DEBUG("TRAILER(%zu)\n", half_words_idx);
-
-    memset(trailer, 0, sizeof(struct trailer_s));
 
     trailer->drawn_by = parse_7bit_ascii();
 	DEBUG("\tdrawn by: '%s'\n", trailer->drawn_by);
@@ -899,13 +864,9 @@ parse_extra_declarations(void)
         BREAK_IF_NEXT_WORD_IS(0);
         char *description = parse_7bit_ascii();
         DEBUG("\tdescription '%s'\n", description);
-        // not used
-        free(description);
 
         char *part_number = parse_7bit_ascii();
         DEBUG("\tpart number '%s'\n", part_number);
-        // not used
-        free(part_number);
 
         while (1) {
             BREAK_IF_NEXT_WORD_IS(0);
@@ -926,18 +887,12 @@ parse_signals(void)
         BREAK_IF_NEXT_WORD_IS(0);
         char *name = parse_7bit_ascii();
         DEBUG("\tname '%s'\n", name);
-        // not used
-        free(name);
 
         char *property_name = parse_7bit_ascii();
         DEBUG("\tproperty name '%s'\n", property_name);
-        // not used
-        free(property_name);
 
         char *property_value = parse_7bit_ascii();
         DEBUG("\tproperty value '%s'\n", property_value);
-        // not used
-        free(property_value);
     }
 
     DEBUG("/SIGNALS(%zu)\n", half_words_idx);
@@ -952,8 +907,6 @@ parse_dip_definitions(void)
         BREAK_IF_NEXT_WORD_IS(0);
         char *filespec = parse_6bit_ascii();
         DEBUG("\tdip definition filespec '%s'\n", filespec);
-        // not used
-        free(filespec);
     }
 
     DEBUG("/DIP_DEFINITIONS(%zu)\n", half_words_idx);
@@ -968,20 +921,20 @@ parse_wire_rule_checks(void)
         BREAK_IF_NEXT_WORD_IS(0);
         char *filespec = parse_6bit_ascii();
         DEBUG("\twire rule check filespec '%s'\n", filespec);
-        // not used
-        free(filespec);
     }
 
     DEBUG("/WIRE_RULE_CHECKS(%zu)\n", half_words_idx);
 }
 
 static void
-parse_suds()
+parse_initialize(bool clear_body_defs)
 {
     // clear counters and memory
     memset(header, 0, sizeof(struct header_s));
-    body_defs_count = 0;
-    memset(body_defs, 0, sizeof(body_defs));
+    if (clear_body_defs) {
+        body_defs_count = 0;
+        memset(body_defs, 0, sizeof(body_defs));
+    }
     bodies_count = 0;
     memset(bodies, 0, sizeof(bodies));
     points_count = 0;
@@ -989,13 +942,16 @@ parse_suds()
     set_centers_count = 0;
     memset(set_centers, 0, sizeof(set_centers));
     memset(trailer, 0, sizeof(struct trailer_s));
-    signals_count = 0;
-    memset(signals, 0, sizeof(signals));
+}
 
+static void
+parse_suds()
+{
     // start parsing from word 0
 	half_words_idx = 0;
 
     DEBUG("PARSE_SUDS(%zu)\n", half_words_idx);
+    DEBUG("body_defs_count: %zu\n", body_defs_count);
 
 	parse_header();
 	parse_body_defs();
@@ -1013,143 +969,10 @@ parse_suds()
 
 	if (half_words_idx < half_words_len) {
 		DEBUG("REACHED END OF FILE at word %zu (file has %zu words)\n", half_words_idx, half_words_len);
-	}	
-    
-}
-
-static void
-free_suds()
-{
-    free(header->source_name);
-    free(header->page_name);
-    free(header->nomenclature_type);
-    free(header->board_type);
-
-    for (size_t i = 0; i < header->type_names_of_library_bodies_count; i++) {
-        free(header->type_names_of_library_bodies[i]);
-    }
-
-    for (size_t i = 0; i < header->library_file_specs_count; i++) {
-        free(header->library_file_specs[i]);
-    }
-
-    for (size_t i = 0; i < LEN(body_defs); i++) {
-        struct body_def_s *bd = &body_defs[i];
-        free(bd->name);
-        for (size_t j = 0; j < bd->prop_count; j++) {
-            free(bd->props[j]->value);
-            free(bd->props[j]->name);
-            free(bd->props[j]);
-        }
-    }
-
-    for (size_t i = 0; i < LEN(bodies); i++) {
-        struct body_s *b = &bodies[i];
-        free(b->name_of_body_def);
-        for (size_t j = 0; j < b->prop_count; j++) {
-            free(b->props[j]->value);
-            free(b->props[j]->name);
-            free(b->props[j]);
-        }
-    }
-
-    for (size_t i = 0; i < LEN(points); i++) {
-        struct point_s *p = &points[i];
-        free(p->name);
-    }    
-
-    free(trailer->drawn_by);
-    free(trailer->title_line_1);
-    free(trailer->title_line_2);
-    free(trailer->revision);
-    free(trailer->module);
-    free(trailer->variable);
-    free(trailer->prefix);
-    free(trailer->project);
-    free(trailer->page);
-    free(trailer->of);
-    free(trailer->drawing_code);
-    free(trailer->site_line_1);
-    free(trailer->site_line_2);
-    free(trailer->next_higher_assembly_number);
-    free(trailer->drawn_by_filespec);
-    free(trailer->checked_by_filespec);
-    free(trailer->engineered_by_filespec);
-
-    for (size_t i = 0; i < LEN(signals); i++) {
-        struct signal_s *s = &signals[i];
-        free(s->name);
-    }
+	}	    
 }
 
 /* ---------------------------------------------------------------- */
-
-static void
-set_name(char *filename)
-{
-	header->source_name = strdup(filename);
-
-    char *p, *p1;
-
-    char page_name[256] = {};
-
-	p = filename;
-	p1 = page_name;
-
-	if (strchr(filename, '/')) {
-		char *p2;
-		p2 = filename + strlen(filename);
-		while (*p2 != '/')
-			p2--;
-		p = p2+1;
-	}
-
-	while (*p) {
-		if (*p == '.')
-			break;
-		*p1++ = toupper(*p);
-		p++;
-	}
-
-	*p1 = 0;
-
-    header->page_name = strdup(page_name);
-}
-
-static void
-set_body_def_of_bodies(void)
-{
-    for (size_t i = 0; i < MAX_BODIES; i++) {
-        struct body_s *b = &bodies[i];
-        if (b->body_id == 0) continue;
-        if (b->name_of_body_def == NULL) continue;
-        b->body_def = find_body_def(b->name_of_body_def);
-    }
-}
-
-static void
-set_dip_type_of_bodies(void)
-{
-    for (size_t i = 0; i < MAX_BODIES; i++) {
-        struct body_s *b = &bodies[i];
-        if (b->body_id == 0) continue;
-        if (b->refdes[0] == 0) continue;
-        struct prop_s *prop = find_prop(b->props, b->prop_count, "DIPTYPE");
-        if (prop != NULL) {
-            b->dip_type = prop->value;
-        } else if (b->body_def != NULL) {
-            prop = find_prop(b->body_def->props, b->body_def->prop_count, "DIPTYPE");
-            if (prop != NULL) {
-                b->dip_type = prop->value;
-            }
-        }
-        if (b->dip_type != NULL) {
-            DEBUG("body refdes '%s' has DIPTYPE '%s'\n", b->refdes, b->dip_type);
-        } else {
-            DEBUG("body refdes '%s' has no DIPTYPE\n", b->refdes);
-        }
-    }
-}
 
 static char *
 strlwr(char *s)
@@ -1159,9 +982,8 @@ strlwr(char *s)
 	return s;
 }
 
-__attribute__((unused))
 static char *
-format_name(char *s)
+format_signal_name(char *s)
 {
 	static char b[256];
 
@@ -1173,18 +995,23 @@ format_name(char *s)
 	return strlwr(s);
 }
 
-static int
-dump_vhdl(void)
+static void
+dump_vhdl(
+    const char *page_name, 
+    const char *architecture_name, 
+    const char *entity_name)
 {
-    if (trailer->title_line_2[0]) {
+    DEBUG("DUMP_VHDL('%s', '%s', '%s')\n", page_name, architecture_name, entity_name);
+
+    if (trailer->title_line_2 != NULL && trailer->title_line_2[0] != 0) {
 
         DUMP_VHDL("-- %s -- %s\n",
-            header->page_name,
+            page_name,
             trailer->title_line_2);
 
     } else {
 
-        DUMP_VHDL("-- %s\n", header->page_name);
+        DUMP_VHDL("-- %s\n", page_name);
         
     }
 
@@ -1193,103 +1020,119 @@ dump_vhdl(void)
     DUMP_VHDL("use work.misc.all;\n");
     DUMP_VHDL("\n");
 
-	DUMP_VHDL("architecture suds of cadr_%s is\n", strlwr(header->page_name));
+	DUMP_VHDL("architecture %s of cadr_%s is\n", 
+        architecture_name,
+        entity_name);
 	DUMP_VHDL("begin\n");
 
-	for (int i = 0; i < MAX_BODIES; i++) {
+	for (size_t i = 0; i < bodies_count; i++) {
 
-        struct body_s *b = find_body(i);
+        struct body_s *b = &bodies[i];
 
-        if (b->body_id == 0) continue;
-        if (b->body_def == NULL) continue;
+        DEBUG_ID("body id", b->id);
+
+        if (b->id == 0) continue;
+        if (b->name_of_body_def == NULL) continue;
+        if (b->name_of_body_def[0] == 0) continue;
         if (b->refdes[0] == 0) continue;
 
-		/* hack */
-		if (strcmp(b->body_def->name, "TABLE") == 0)
-			continue;
-		if (strcmp(b->body_def->name, "COMMENT") == 0)
-			continue;
-		if (strcmp(b->body_def->name, "BYPASS") == 0)
-			continue;
-		if (strcmp(b->refdes, "0@00") == 0)
-			continue;
+        DEBUG("body refdes '%s'\n", b->refdes);
+        DEBUG("body def name '%s'\n", b->name_of_body_def);
+
+        struct body_def_s *bd = find_body_def(b->name_of_body_def);
+        assert (bd != NULL);
+
+        struct prop_s *diptype_prop = find_prop(bd->props, bd->prop_count, "DIPTYPE");
+        assert (diptype_prop != NULL);
+
+        DEBUG("body def diptype '%s'\n", diptype_prop->value);
 
         // component is dip_<name>
-		char dip_name[512];
-        if (b->dip_type != NULL) {
-            sprintf(dip_name, "dip_%s", strlwr(b->dip_type));
-        } else {
-            sprintf(dip_name, "dip_%s", strlwr(b->body_def->name));
-        }
+		char component_name[64];
+        char *diptype_lower = managed_strdup(diptype_prop->value);
+        assert (strlen(diptype_lower) < 32);
+        snprintf(component_name, LEN(component_name), "dip_%s", 
+            strlwr(diptype_lower));            
+
 		// replace / and - with _ in the dip file
 		// for example dip_sip220/330-8 becomes dip_sip220_330_8
-		char* pdip_name = dip_name;
-		while (*pdip_name != '\0') {
-			if (*pdip_name == '/') *pdip_name = '_';
-			if (*pdip_name == '-') *pdip_name = '_';
-			pdip_name++;
+		char* pcomponent_name = component_name;
+		while (*pcomponent_name != '\0') {
+			if (*pcomponent_name == '/') *pcomponent_name = '_';
+			if (*pcomponent_name == '-') *pcomponent_name = '_';
+			pcomponent_name++;
 		}
+
+        DEBUG("component name '%s'\n", component_name);
 
         // component instanatiation label is <PAGE>_<REFDES>
-        char component_label[512];
-        sprintf(component_label, "%s_%s", 
-            strlwr(header->page_name), 
-            strlwr(b->refdes));
+        char component_label[64];
+        char *refdes_lower = managed_strdup(b->refdes);
+        assert (strlen(page_name) < 32);
+        assert (strlen(refdes_lower) < 32);
+        snprintf(component_label, LEN(component_label), "%s_%s", 
+            page_name, 
+            strlwr(refdes_lower));
+
+        DEBUG("component label '%s'\n", component_label);
 
         // <PAGE>_<REFDES> : dip_<BODY_NAME> port map
-		DUMP_VHDL("%s : %s port map (", component_label, dip_name);
+		DUMP_VHDL("%s : %s port map (", component_label, component_name);
 
-        int printed_once = 0;
-        for (size_t j = 0; j < b->body_def->pin_count; j++) {
-            
-            struct point_s *p = &points[b->body_def->pins[j].loc_of_pin];
+        bool printed_once = false;
+        
+        // there is a need for tracing from a body def pin to anything it can 
+        // reach through points
 
-            if (printed_once != 0) DUMP_VHDL(", ");
+        for (size_t j = 0; j < bd->pin_count; j++) {
 
-            // p<PIN_NUMBER> => <NAME_OF_PIN>
-            DUMP_VHDL("p%llu => %s",
-                p->id,
-                "");
+            struct pin_s *pin = &bd->pins[j];
 
-            printed_once = 1;
-        }
+            DEBUG_ID("pin id", pin->id);
 
-        /*
-        int printed_once = 0;
-		for (int j = 1; j < MAX_BODY_NAMED_PINS; j++) {
-			int pi = b->named_pin_index[j];
-			if (pi) {
-				char *name_of_pin = format_name(points[pi].name);
-				// ignore nc pins, because they are connected to both inputs and outputs and not helping anything
-			    if (strcmp(name_of_pin, "nc") != 0) {
-					if (printed_once != 0) DUMP_VHDL(", ");
+            for (size_t k = 0; k < points_count; k++) {
+
+                struct point_s *point = &points[k];
+
+                if ((point->down_id.x == pin->id && point->down_id.y == b->id) ||
+                    (point->up_id.x == pin->id && point->up_id.y == b->id) ||
+                    (point->left_id.x == pin->id && point->left_id.y == b->id) ||
+                    (point->right_id.x == pin->id && point->right_id.y == b->id)) {
+
+                    DEBUG_ID_PAIR("point id", point->id);
+
+                    if (point == NULL) continue;
+                    if (point->name == NULL) continue;
 
                     // p<PIN_NUMBER> => <NAME_OF_PIN>
-					DUMP_VHDL("p%d => %s",
-						j,
-						name_of_pin);
+                    if (printed_once) DUMP_VHDL(", ");
+                    DUMP_VHDL("p%u => %s",
+                        pin->id,
+                        format_signal_name(point->name));
+                    printed_once = true;
 
-					printed_once = 1;
-				}
-			}
-		}
-        */
+                }
+
+            }
+        }
 
 		DUMP_VHDL(");\n");
 	}
 
 	DUMP_VHDL("end architecture;\n");
-	return 0;
+
+    DEBUG("/DUMP_VHDL\n");
 }
 
 static void
 usage(char *argv[])
 {
-	fprintf(stderr, "usage: %s [-d] [-n] [-r] <suds file>\n", argv[0]);
+	fprintf(stderr, "usage: %s [-d] [-p] [-e <suds library file>] [-r or -v or -w] <suds file>\n", argv[0]);
 	fprintf(stderr, "-d	enable debug (stderr)\n");
     fprintf(stderr, "-p enable debug parsing (stderr)\n");
-    fprintf(stderr, "-n	dump VHDL (stdout)\n");
+    fprintf(stderr, "-e	also load body definitions from <suds library file>\n");
     fprintf(stderr, "-r	dump raw 18-bit words (stdout)\n");
+    fprintf(stderr, "-v	dump VHDL (stdout)\n");
     fprintf(stderr, "-w	dump raw 18-bit words, wide format (stdout)\n");
 	exit(0);
 }
@@ -1301,10 +1144,11 @@ int main(int argc, char *argv[])
 {
 	int c;
 
+    char *library_suds_filename = NULL;
     int dump_vhdl_flag = 0;
     int dump_raw_flag = 0;
 
-	while ((c = getopt(argc, argv, "dpnrw")) != -1) {
+	while ((c = getopt(argc, argv, "dpe:vrw")) != -1) {
 		switch (c) {
 		case 'd':
 			debug++;
@@ -1312,11 +1156,14 @@ int main(int argc, char *argv[])
         case 'p':
             debug_parsing++;
             break;
-		case 'n':
-			dump_vhdl_flag = 1;
-			break;
+        case 'e':
+            library_suds_filename = managed_strdup(optarg);
+            break;
 		case 'r':
 			dump_raw_flag = 1;
+			break;
+        case 'v':
+			dump_vhdl_flag = 1;
 			break;
         case 'w':
 			dump_raw_flag = 2;
@@ -1326,40 +1173,59 @@ int main(int argc, char *argv[])
 
 	if (optind >= argc) usage(argv);
     
-    char *suds_filename = argv[optind];    
-    
-    half_words = (uint32_t *) malloc(2*MAX_WORDS_IN_SUDS_FILE * sizeof(uint32_t));
-    half_words_len = unpack(suds_filename, half_words, 2*MAX_WORDS_IN_SUDS_FILE);
+    char *suds_filename = argv[optind];      
 
-    if (half_words_len > 0) {
+    half_words = (uint32_t *) malloc(
+        MAX_HALF_WORDS * sizeof(uint32_t));
 
-        set_name(suds_filename);
+    if (dump_raw_flag > 0) {
 
-        if (dump_raw_flag > 0) {
+        half_words_len = unpack(
+            suds_filename, half_words, MAX_HALF_WORDS);
 
-            dump_raw(dump_raw_flag, suds_filename);
-
-        } else {
-
-            DEBUG("%s\n", suds_filename);
-            DEBUG("%zu words (18-bit)\n", half_words_len);
-
-            parse_suds();
-            set_body_def_of_bodies();
-            set_dip_type_of_bodies();
-
-            if (dump_vhdl_flag) {
-                //find_all_net_names();
-                dump_vhdl();
-            }
-
-            free_suds();
-
-        }
+        dump_raw(dump_raw_flag, suds_filename);        
 
     } else {
 
-        fprintf(stderr, "error: cannot unpack %s\n", suds_filename);
+        // clear everything
+        parse_initialize(true);
+
+        if (library_suds_filename != NULL) {
+
+            half_words_len = unpack(
+                library_suds_filename, 
+                half_words,
+                MAX_HALF_WORDS);
+
+            parse_suds();
+
+            // clear everything but body defs
+            parse_initialize(false);
+        }
+
+        half_words_len = unpack(
+            suds_filename, half_words, MAX_HALF_WORDS);
+
+        parse_suds();
+
+        DEBUG("%s\n", suds_filename);
+        DEBUG("%zu words (18-bit)\n", half_words_len);
+
+        // page name is base file name without extension
+        char *page_name_copy = managed_strdup(basename(suds_filename));
+        const char *page_name = page_name_copy;
+        char *dot = strchr(page_name_copy, '.');
+        if (dot != NULL) *dot = 0;
+
+        assert (strlen(page_name) < 16);
+
+        if (dump_vhdl_flag) {
+            const char *architecture_name = "suds";
+            // entity name is as same as the page name
+            dump_vhdl(page_name, architecture_name, page_name);
+        }
+
+        free_managed_strdups();
 
     }
 
@@ -1367,4 +1233,6 @@ int main(int argc, char *argv[])
 
 	exit(0);
 }
+
+
 

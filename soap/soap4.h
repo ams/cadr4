@@ -1,18 +1,30 @@
 #pragma once
 
-#define WORD        uint64_t
-#define HALF_WORD   uint32_t
+#define WORD                uint64_t
+#define HALF_WORD           uint32_t
+#define SIGNED_HALF_WORD    int32_t
 
 #define MAX_TYPE_NAMES_OF_LIBRARY_BODIES	100
 #define MAX_LIBRARY_FILE_SPECS	            100
 
+#define MAX_BODY_DEF_PINS    100
+#define MAX_BODY_DEF_PROPS   100
+#define MAX_BODY_PROPS       100
+
 // all char * that are result of parsing has to be freed
 // they are strdup'ed
 
-struct header_s {
-	char *source_name;
-    char *page_name;
+struct pair_s {
+    HALF_WORD x;
+    HALF_WORD y;
+};
 
+struct signed_pair_s {
+    SIGNED_HALF_WORD x;
+    SIGNED_HALF_WORD y;
+};
+
+struct header_s {
     WORD version;
 	char *nomenclature_type;
 	char *board_type;
@@ -49,93 +61,78 @@ struct prop_s {
 	char *value;
 	char *name;
 	WORD text_size;
-	WORD text_location;
-	WORD constant_offset;
+	struct signed_pair_s text_location;
+	struct signed_pair_s constant_offset;
 };
 
-#define MAX_BODY_DEF_PINS 100
-#define MAX_BODY_DEF_LINES 100
-#define MAX_BODY_DEF_PROPS 100
+struct pin_s {
+    struct signed_pair_s loc_of_pin;
+    HALF_WORD bits;
+    HALF_WORD id;
+    HALF_WORD pos;
+    HALF_WORD name;
+};
 
 struct body_def_s {
 	char *name;
     HALF_WORD bits;
-	WORD loc_offset;
-    WORD loc_char_offset;
+	struct signed_pair_s loc_offset;
+    struct signed_pair_s loc_char_offset;
 
 	size_t pin_count;
-	struct {
-		WORD loc_of_pin;
-		HALF_WORD bits;
-        HALF_WORD pin_id;
-		HALF_WORD pin_pos;
-        HALF_WORD pin_name;
-	} pins[MAX_BODY_DEF_PINS];
+	struct pin_s pins[MAX_BODY_DEF_PINS];
 
 	size_t line_count;
-	WORD lines[MAX_BODY_DEF_LINES];
+    //not stored because not used
+	//WORD lines[MAX_BODY_DEF_LINES];
 
 	size_t prop_count;
-	struct prop_s *props[MAX_BODY_DEF_PROPS];
+	struct prop_s props[MAX_BODY_DEF_PROPS];
 };
 
-#define MAX_BODY_NAMED_PINS 40
-
 struct body_s {	
-	WORD loc_of_body;
+	struct signed_pair_s loc;
 	WORD orientation;
 	HALF_WORD card_loc;
     HALF_WORD body_loc;
-	WORD const_offset;
-	WORD char_offset;
-	HALF_WORD body_bits;
-	HALF_WORD body_id;
+	struct signed_pair_s const_offset;
+	struct signed_pair_s char_offset;
+	HALF_WORD bits;
+	HALF_WORD id;
     char *name_of_body_def;
 	size_t prop_count;
-	struct prop_s *props[MAX_BODY_DEF_PROPS];
+	struct prop_s props[MAX_BODY_PROPS];
 
     // not-parsed
     // refdes is genearated not parsed
 	char refdes[5];
-    // body def is found from name_of_body_def
-    struct body_def_s *body_def;
-    // dip_type is found from props, no need to free this
-    char *dip_type;
-    // 
-    int named_pin_index[MAX_BODY_NAMED_PINS];
 };
 
-#define MAX_SET_CENTERS_BODY_IDS 100
-#define MAX_SET_CENTERS_POINT_IDS 100
-
 struct set_center_s {
-	WORD loc;
+	struct signed_pair_s loc;
 	size_t body_id_count;
-	WORD body_id[MAX_SET_CENTERS_BODY_IDS];
+    //not stored because not used
+	//WORD body_id[MAX_SET_CENTERS_BODY_IDS];
 	size_t point_id_count;
-	WORD point_id[MAX_SET_CENTERS_POINT_IDS];
+    //not stored because not used
+	//WORD point_id[MAX_SET_CENTERS_POINT_IDS];
 };
 
 struct point_s {
-	WORD loc_of_point;
-	WORD id;
-	WORD down_id, up_id, left_id, right_id;
+	struct signed_pair_s loc;
+	struct pair_s id;
+	struct pair_s down_id;
+    struct pair_s up_id;
+    struct pair_s left_id;
+    struct pair_s right_id;
 	HALF_WORD bits;
     HALF_WORD pin_name;
 	WORD size_of_text;
-	WORD const_offset;
-	WORD const_offset_from_point_loc;
+	struct signed_pair_s const_offset;
+	struct signed_pair_s const_offset_from_point_loc;
+    // optional name
 	char *name;
-
-    // not-parsed
-	char visited;
-	int named_pin_index;
-};
-
-struct signal_s {
-	struct signal_s *next;
-	char *name;
-	WORD id;
-	int pin;
-	struct body_s *body;
+    // optional card_loc and io_loc
+    HALF_WORD card_loc;
+    HALF_WORD io_loc;
 };
