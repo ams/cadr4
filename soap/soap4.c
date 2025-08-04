@@ -48,7 +48,7 @@ static int debug_parsing = 0;
 
 #define MAX_INTERNAL_NETS 100
 char* internal_net_names[MAX_INTERNAL_NETS];
-size_t internal_net_names_count = 0;
+size_t internal_net_names_count;
 
 struct header_s _header;
 struct header_s *header = &_header;
@@ -281,6 +281,14 @@ new_internal_net_name()
     return internal_net_names[internal_net_names_count-1];
 }
 
+void
+to_upper(char *s)
+{
+    for (size_t i = 0; s[i] != 0; i++) {
+        s[i] = toupper(s[i]);
+    }
+}
+
 /* ---------------------------------------------------------------- */
 
 // it is easier to propagate net names once than running bfs everytime
@@ -307,13 +315,13 @@ propagate_net_name(struct point_s* starting_point)
     while (queue_head < queue_tail) {
 
         struct point_s* current = queue[queue_head++];
+
         if (current != starting_point) {
             if (current->name != NULL) {
-                DEBUG("intermediate point id(%u, %u) has a name '%s', cannot set net name '%s'\n", 
-                    current->id.x, current->id.y, current->name, starting_point->name);
-                assert (0);
+                DEBUG("point already has net name %s\n", current->name);
+            } else {
+                current->name = starting_point->name;
             }
-            current->name = starting_point->name;
         }
         
         // check all connected points (down, up, left, right, same)
@@ -1196,8 +1204,11 @@ dump_vhdl(
 
     if (trailer->title_line_2 != NULL && trailer->title_line_2[0] != 0) {
 
+        char *page_name_upper = managed_strdup((char*)page_name);
+        to_upper(page_name_upper);
+
         DUMP_VHDL("-- %s -- %s\n",
-            page_name,
+            page_name_upper,
             trailer->title_line_2);
 
     } else {
@@ -1205,6 +1216,8 @@ dump_vhdl(
         DUMP_VHDL("-- %s\n", page_name);
         
     }
+
+    DUMP_VHDL("\n");
 
     DUMP_VHDL("library work;\n");
     DUMP_VHDL("use work.dip.all;\n");
@@ -1215,6 +1228,7 @@ dump_vhdl(
         architecture_name,
         entity_name);
 
+    // no need to format these, they are net_XX format
     for (size_t i = 0; i < internal_net_names_count; i++) {
         DUMP_VHDL("signal %s : std_logic;\n", internal_net_names[i]);
     }
@@ -1302,6 +1316,16 @@ dump_vhdl(
             // if there is no name, it means there is no net name
             // this means a pin is directly connected to another pin
             if (point_of_pin->name == NULL) {
+                DEBUG("point of pin has no name\n");
+                assert(0);
+            }
+
+            char *net_name = format_signal_name(point_of_pin->name);
+
+            // skip nc nets
+            if (strcmp(net_name, "nc") == 0) {
+                DEBUG("point of pin has name 'nc', skipping\n");
+                continue;
             }
 
             // it is important to use the name at point_of_pin and 
@@ -1311,9 +1335,7 @@ dump_vhdl(
             
             // p<PIN_NUMBER> => <NAME_OF_PIN>
             if (printed_once) DUMP_VHDL(", ");
-            DUMP_VHDL("p%u => %s",
-                point_of_pin->pin_name,
-                format_signal_name(point_of_pin->name));
+            DUMP_VHDL("p%u => %s", point_of_pin->pin_name, net_name);
             printed_once = true;
 
         }
@@ -1420,7 +1442,7 @@ int main(int argc, char *argv[])
 
         // page name is base file name without extension
         char *page_name_copy = managed_strdup(basename(suds_filename));
-        const char *page_name = page_name_copy;
+        char *page_name = page_name_copy;
         char *dot = strchr(page_name_copy, '.');
         if (dot != NULL) *dot = 0;
 

@@ -44,7 +44,7 @@ SPLITHEX_PY  	:= scripts/split-hex.py
 CREATE_CADR1_TB_PY := scripts/create-cadr1-tb.py
 
 # soap utility
-USE_SOAP4          := 0
+USE_SOAP4          := 1
 
 ifeq ($(USE_SOAP4),1)
 SOAP               := $(BUILDDIR)/soap4
@@ -69,7 +69,7 @@ else
 endif
 
 # source files are found by wildcard
-CADR_SRCS   := $(wildcard cadr/*.vhd) $(wildcard $(CADR_SUDS_DIR)/*.vhd) $(wildcard cadr/behv/*.vhd)
+CADR_SRCS   := $(wildcard cadr/*.vhd) $(wildcard $(CADR_SUDS_DIR)/*.vhd)
 DIP_SRCS    := $(wildcard dip/*.vhd)
 HELPER_SRCS := $(wildcard helper/*.vhd)
 TTL_SRCS    := $(wildcard ttl/*.vhd)
@@ -312,7 +312,11 @@ else ifeq ($(PAGE),clock2)
 # this seems to be a mistake in drw or soap, in wlr the 1c10 is connected to -machruna
 # also change \-tpw70\ that resets the TPWP signal to \-tpw45\ to keep it within the cycle
 	sed $(SEDOPTIONS) 's/\\machruna l\\/\\-machruna\\/g' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
+ifeq ($(USE_SOAP4),1)
+	sed $(SEDOPTIONS) 's/clock2_1c06.*p10 => \\-tpw70\\/clock2_1c06 : dip_74s10 port map (p8 => net_00, p9 => \\-clock reset b\\, p10 => \\-tpw45\\, p11 => net_03);/' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
+else
 	sed $(SEDOPTIONS) 's/clock2_1c06.*p10 => \\-tpw70\\/clock2_1c06 : dip_74s10 port map (p8 => \\@1c07,p9\\, p9 => \\-clock reset b\\, p10 => \\-tpw45\\, p11 => \\@1c07,p8\\);/' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
+endif	
 else ifeq ($(PAGE),olord2)
 # modify olord2_1a19 port map
 # remove two inverters from @1a19,p12 to -power reset, -power reset is directly driven by @1a19,p12
