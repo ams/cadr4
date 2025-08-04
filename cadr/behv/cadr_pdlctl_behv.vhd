@@ -21,5 +21,5 @@ pdlctl_4d20 : \-pwpa\  <= not (pdlwrited and wp4a);
               \-pwpb\  <= not (pdlwrited and wp4a);
               \-pwpc\  <= not (wp4a and pdlwrited);
 pdlctl_4d24 : dip_74s258 port map (p1 => \-pdlpa\, p2 => pdlptr6, p3 => pdlidx6, p4 => \-pdla6a\, p5 => pdlptr7, p6 => pdlidx7, p7 => \-pdla7a\, p9 => \-pdla8a\, p10 => pdlidx8, p11 => pdlptr8, p12 => \-pdla9a\, p13 => pdlidx9, p14 => pdlptr9, p15 => gnd);
-pdlctl_4e03 : dip_74s32o port map (p1 => '0', p2 => '0', p3 => open, p4 => '0', p5 => '0', p6 => open, p8 => net_0, p9 => \-srcpdlpop\, p10 => nop, p11 => open, p12 => '0', p13 => '0');
+pdlctl_4e03 : net_0 <= \-srcpdlpop\ or nop;
 end architecture;

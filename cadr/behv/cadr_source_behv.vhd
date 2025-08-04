@@ -23,6 +23,7 @@ source_3d21 : destm <= \-ir25\ and dest;
 source_3d22 : dip_74s138 port map (p1 => ir26, p2 => ir27, p3 => ir28, p4 => \-ir31\, p5 => ir29, p6 => hi5, p7 => \-srcq\, p9 => \-srcopc\, p10 => \-srcpdltop\, p11 => \-srcpdlpop\, p12 => \-srcpdlidx\, p13 => \-srcpdlptr\, p14 => \-srcspc\, p15 => \-srcdc\);
 source_3d23 : dip_74s138 port map (p1 => ir26, p2 => ir27, p3 => ir28, p4 => \-ir31\, p5 => gnd, p6 => ir29, p7 => open, p9 => open, p10 => open, p11 => \-srcspcpop\, p12 => \-srclc\, p13 => \-srcmd\, p14 => \-srcmap\, p15 => \-srcvma\);
 source_3e05 : net_0 <= \destimod0 l\ and \iwrited l\;
-source_3e09 : dip_74s32o port map (p1 => '0', p2 => '0', p3 => open, p4 => \-destmem\, p5 => \-ir22\, p6 => \-destmdr\, p8 => \-destvma\, p9 => ir22, p10 => \-destmem\, p11 => open, p12 => '0', p13 => '0');
+source_3e09 : \-destmdr\ <= \-destmem\ or \-ir22\;
+              \-destvma\ <= ir22 or \-destmem\;
 source_4d10 : imod <= not (net_0 and \-destimod1\ and \-idebug\);
 end architecture;

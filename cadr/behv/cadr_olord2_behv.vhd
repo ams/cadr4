@@ -34,6 +34,6 @@ olord2_1c07 : \-lowerhighok\ <= hi2 nand hi1;
 olord2_1c08 : reset <= not (\-boot\ and \-clock reset b\ and \-prog.reset\);
 olord2_1c09 : \-prog.reset\ <= ldmode nand spy6;
               \-errhalt\    <= errstop nand err;
-olord2_1c18 : dip_74s32 port map (p1 => '0', p2 => '0', p3 => open, p4 => '0', p5 => '0', p6 => open, p8 => net_2, p9 => net_1, p10 => \prog.boot\, p11 => open, p12 => '0', p13 => '0');
+olord2_1c18 : net_2 <= net_1 or \prog.boot\;
 olord2_1d10 : \prog.boot\ <= ldmode and spy7;
 end architecture;

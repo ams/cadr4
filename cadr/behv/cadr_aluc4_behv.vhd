@@ -42,6 +42,6 @@ aluc4_2c15 : net_1 <= divaddcond nand \-a31\;
              net_3 <= divaddcond nand a31a;
 aluc4_2c20 : alusub <= not (\-mulnop\ and net_2 and net_3 and \-irjump\);
              aluadd <= not (\-mul\ and hi12 and net_0 and net_1);
-aluc4_2d15 : dip_74s32o port map (p1 => '0', p2 => '0', p3 => open, p4 => \-mul\, p5 => q0, p6 => \-mulnop\, p8 => open, p9 => '0', p10 => '0', p11 => open, p12 => '0', p13 => '0');
+aluc4_2d15 : \-mulnop\ <= \-mul\ or q0;
 aluc4_2d21 : dip_7428 port map (p1 => osel1a, p2 => \-ir13\, p3 => \-iralu\, p4 => osel0a, p5 => \-ir12\, p6 => \-iralu\, p8 => \-iralu\, p9 => \-ir13\, p10 => osel1b, p11 => \-iralu\, p12 => \-ir12\, p13 => osel0b);
 end architecture;
