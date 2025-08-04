@@ -1,5 +1,6 @@
 library ieee;
 use ieee.std_logic_1164.all;
+
 entity cadr_aluc4 is
   port (
     \-a31\            : out std_logic;
@@ -33,14 +34,10 @@ entity cadr_aluc4 is
     a31a              : in  std_logic;
     a31b              : in  std_logic;
     aluadd            : out std_logic;
-    aluf0a            : out std_logic;
-    aluf0b            : out std_logic;
-    aluf1a            : out std_logic;
-    aluf1b            : out std_logic;
-    aluf2a            : out std_logic;
-    aluf2b            : out std_logic;
-    aluf3a            : out std_logic;
-    aluf3b            : out std_logic;
+    aluf0a, aluf0b    : out std_logic;  -- Same signal.
+    aluf1a, aluf1b    : out std_logic;  -- Same signal.
+    aluf2a, aluf2b    : out std_logic;  -- Same signal.
+    aluf3a, aluf3b    : out std_logic;  -- Same signal.
     alumode           : out std_logic;
     alusub            : out std_logic;
     divaddcond        : out std_logic;
@@ -55,10 +52,8 @@ entity cadr_aluc4 is
     ir6               : in  std_logic;
     ir7               : in  std_logic;
     irjump            : in  std_logic;
-    osel0a            : out std_logic;
-    osel0b            : out std_logic;
-    osel1a            : out std_logic;
-    osel1b            : out std_logic;
+    osel0a, osel0b    : out std_logic;  -- Same signal.
+    osel1a, osel1b    : out std_logic;  -- Same signal.
     q0                : in  std_logic;
     xout3             : in  std_logic;
     xout7             : in  std_logic;
