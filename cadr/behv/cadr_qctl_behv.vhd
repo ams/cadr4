@@ -14,5 +14,6 @@ qctl_1f15 : dip_74s241 port map (p1 => \-qdrive\, p2 => q15, p3 => mf8, p4 => q1
 qctl_2a04 : qdrive <= tse2 and srcq;
 qctl_2a05 : srcq <= not \-srcq\;
             \-alu31\ <= not alu31;
-qctl_2b19 : dip_7428 port map (p1 => open, p2 => '0', p3 => '0', p4 => open, p5 => '0', p6 => '0', p8 => \-iralu\, p9 => \-ir1\, p10 => qs1, p11 => \-iralu\, p12 => \-ir0\, p13 => qs0);
+qctl_2b19 : qs1 <= \-iralu\ nor \-ir1\;
+            qs0 <= \-iralu\ nor \-ir0\;
 end architecture;
