@@ -53,7 +53,7 @@ else
 endif
 
 # source files are found by wildcard
-CADR_SRCS   := $(wildcard cadr/*.vhd)
+CADR_SRCS   := $(wildcard cadr/*.vhd) $(wildcard cadr/suds/*.vhd) $(wildcard cadr/behv/*.vhd)
 DIP_SRCS    := $(wildcard dip/*.vhd)
 HELPER_SRCS := $(wildcard helper/*.vhd)
 TTL_SRCS    := $(wildcard ttl/*.vhd)
@@ -76,7 +76,7 @@ EXES := $(CADR_EXES) $(DIP_EXES) $(HELPER_EXES) $(TTL_EXES) $(CADR_TB_EXE)
 # there is no sane way to build object files manually in this way
 # building (and linking) a tb will build object files, less worries like this
 # all objects and _tb executables are build into $(BUILDDIR)
-# because SRCS includes SUDS_SRCS, this will trigger building of cadr/cadr_*_suds.vhd files
+# because SRCS includes SUDS_SRCS, this will trigger building of cadr/suds/cadr_*_suds.vhd files
 
 $(BUILDDIR)/work-obj$(GHDLSTD).cf: $(SRCS)
 	mkdir -p $(BUILDDIR)
@@ -256,7 +256,7 @@ ifndef FIXSUDS_GENERICMAP
 	$(error FIXSUDS_GENERICMAP is not set, run regenerate-fast-promh-cadr-suds or regenerate-promh9-cadr-suds)
 endif
 # removing existing ones because new ones can be added or existing ones can be removed
-	$(RM) cadr/cadr_*_suds.vhd
+	$(RM) cadr/suds/cadr_*_suds.vhd
 	for PAGE in $(CADR_BOOK) $(ICMEM_BOOK); do FIXSUDS_GENERICMAP=$(FIXSUDS_GENERICMAP) PAGE=$$PAGE make regenerate-cadr-suds-page || exit; done
 
 # generate suds file for a single page
@@ -266,51 +266,51 @@ regenerate-cadr-suds-page: $(FIXSUDS_PY) $(CADR_DRWDIR)/$(PAGE).drw $(BUILDDIR)/
 ifndef PAGE
 	$(error PAGE is not set, run regenerate-fast-promh-cadr-suds or regenerate-promh9-cadr-suds)
 endif
-	$(BUILDDIR)/soap -n $(CADR_DRWDIR)/$(PAGE).drw > cadr/cadr_$(PAGE)_suds.vhd
+	$(BUILDDIR)/soap -n $(CADR_DRWDIR)/$(PAGE).drw > cadr/suds/cadr_$(PAGE)_suds.vhd
 ifeq ($(PAGE),bcterm)
 # modify bcterm components, soap emits dip names without @, so there are mistakes, 1b15 is used twice etc.
-	sed $(SEDOPTIONS) 's/bcterm_1b15 : dip_sip220_330_8 port map (p2 => mem0/bcterm_1b15_1 : dip_sip220_330_8 port map (p2 => mem0/' cadr/cadr_$(PAGE)_suds.vhd
-	sed $(SEDOPTIONS) 's/bcterm_1b15 : dip_sip220_330_8 port map (p2 => mem6/bcterm_1b15_2 : dip_sip220_330_8 port map (p2 => mem6/' cadr/cadr_$(PAGE)_suds.vhd
-	sed $(SEDOPTIONS) 's/bcterm_1b20 : dip_sip220_330_8 port map (p2 => mem12/bcterm_1b20_1 : dip_sip220_330_8 port map (p2 => mem12/' cadr/cadr_$(PAGE)_suds.vhd
-	sed $(SEDOPTIONS) 's/bcterm_1b20 : dip_sip220_330_8 port map (p2 => mem18/bcterm_1b20_2 : dip_sip220_330_8 port map (p2 => mem18/' cadr/cadr_$(PAGE)_suds.vhd	
-	sed $(SEDOPTIONS) 's/bcterm_1b25 : dip_sip220_330_8 port map (p2 => mem24/bcterm_1b25_1 : dip_sip220_330_8 port map (p2 => mem24/' cadr/cadr_$(PAGE)_suds.vhd
-	sed $(SEDOPTIONS) 's/bcterm_1b25 : dip_sip220_330_8 port map (p2 => mem30/bcterm_1b25_2 : dip_sip220_330_8 port map (p2 => mem30/' cadr/cadr_$(PAGE)_suds.vhd
+	sed $(SEDOPTIONS) 's/bcterm_1b15 : dip_sip220_330_8 port map (p2 => mem0/bcterm_1b15_1 : dip_sip220_330_8 port map (p2 => mem0/' cadr/suds/cadr_$(PAGE)_suds.vhd
+	sed $(SEDOPTIONS) 's/bcterm_1b15 : dip_sip220_330_8 port map (p2 => mem6/bcterm_1b15_2 : dip_sip220_330_8 port map (p2 => mem6/' cadr/suds/cadr_$(PAGE)_suds.vhd
+	sed $(SEDOPTIONS) 's/bcterm_1b20 : dip_sip220_330_8 port map (p2 => mem12/bcterm_1b20_1 : dip_sip220_330_8 port map (p2 => mem12/' cadr/suds/cadr_$(PAGE)_suds.vhd
+	sed $(SEDOPTIONS) 's/bcterm_1b20 : dip_sip220_330_8 port map (p2 => mem18/bcterm_1b20_2 : dip_sip220_330_8 port map (p2 => mem18/' cadr/suds/cadr_$(PAGE)_suds.vhd	
+	sed $(SEDOPTIONS) 's/bcterm_1b25 : dip_sip220_330_8 port map (p2 => mem24/bcterm_1b25_1 : dip_sip220_330_8 port map (p2 => mem24/' cadr/suds/cadr_$(PAGE)_suds.vhd
+	sed $(SEDOPTIONS) 's/bcterm_1b25 : dip_sip220_330_8 port map (p2 => mem30/bcterm_1b25_2 : dip_sip220_330_8 port map (p2 => mem30/' cadr/suds/cadr_$(PAGE)_suds.vhd
 else ifeq ($(PAGE),clock1)
 # modify clock1 to alias -tpdone to -tpw60, this is a simple wire in the schematics
 # this is done after fix-suds.py because it may modify it or get confused with these additions
 ifeq ($(OS),Darwin)
-	sed $(SEDOPTIONS) 's/^architecture.*/&\'$$'\nalias \\\\-tpdone\\\\ : std_logic is \\\\-tpw60\\\\;/' cadr/cadr_$(PAGE)_suds.vhd
+	sed $(SEDOPTIONS) 's/^architecture.*/&\'$$'\nalias \\\\-tpdone\\\\ : std_logic is \\\\-tpw60\\\\;/' cadr/suds/cadr_$(PAGE)_suds.vhd
 else
-	sed $(SEDOPTIONS) 's/^architecture.*/&\nalias \\-tpdone\\ : std_logic is \\-tpw60\\;/' cadr/cadr_$(PAGE)_suds.vhd
+	sed $(SEDOPTIONS) 's/^architecture.*/&\nalias \\-tpdone\\ : std_logic is \\-tpw60\\;/' cadr/suds/cadr_$(PAGE)_suds.vhd
 endif
 else ifeq ($(PAGE),clock2)
 # modify clock2_1c10, change \machruna l\ to \-machruna\
 # this seems to be a mistake in drw or soap, in wlr the 1c10 is connected to -machruna
 # also change \-tpw70\ that resets the TPWP signal to \-tpw45\ to keep it within the cycle
-	sed $(SEDOPTIONS) 's/\\machruna l\\/\\-machruna\\/g' cadr/cadr_$(PAGE)_suds.vhd
-	sed $(SEDOPTIONS) 's/clock2_1c06.*p10 => \\-tpw70\\/clock2_1c06 : dip_74s10 port map (p8 => \\@1c07,p9\\, p9 => \\-clock reset b\\, p10 => \\-tpw45\\, p11 => \\@1c07,p8\\);/' cadr/cadr_$(PAGE)_suds.vhd
+	sed $(SEDOPTIONS) 's/\\machruna l\\/\\-machruna\\/g' cadr/suds/cadr_$(PAGE)_suds.vhd
+	sed $(SEDOPTIONS) 's/clock2_1c06.*p10 => \\-tpw70\\/clock2_1c06 : dip_74s10 port map (p8 => \\@1c07,p9\\, p9 => \\-clock reset b\\, p10 => \\-tpw45\\, p11 => \\@1c07,p8\\);/' cadr/suds/cadr_$(PAGE)_suds.vhd
 else ifeq ($(PAGE),olord2)
 # modify olord2_1a19 port map
 # remove two inverters from @1a19,p12 to -power reset, -power reset is directly driven by @1a19,p12
-	sed $(SEDOPTIONS) 's/olord2_1a19.*/olord2_1a19 : dip_16dummy port map (p12 => \\-power reset\\, p13 => \\-boot2\\, p14 => \\-boot1\\, p15 => hi2, p16 => hi1);/g' cadr/cadr_$(PAGE)_suds.vhd
-	sed $(SEDOPTIONS) '/olord2_1a20 : dip_74ls14 port map (p2 => \\@1a20,p9\\);/d' cadr/cadr_$(PAGE)_suds.vhd
-	sed $(SEDOPTIONS) '/olord2_1a20 : dip_74ls14 port map (p8 => \\-power reset\\, p9 => \\@1a20,p2\\);/d' cadr/cadr_$(PAGE)_suds.vhd
+	sed $(SEDOPTIONS) 's/olord2_1a19.*/olord2_1a19 : dip_16dummy port map (p12 => \\-power reset\\, p13 => \\-boot2\\, p14 => \\-boot1\\, p15 => hi2, p16 => hi1);/g' cadr/suds/cadr_$(PAGE)_suds.vhd
+	sed $(SEDOPTIONS) '/olord2_1a20 : dip_74ls14 port map (p2 => \\@1a20,p9\\);/d' cadr/suds/cadr_$(PAGE)_suds.vhd
+	sed $(SEDOPTIONS) '/olord2_1a20 : dip_74ls14 port map (p8 => \\-power reset\\, p9 => \\@1a20,p2\\);/d' cadr/suds/cadr_$(PAGE)_suds.vhd
 else ifeq ($(PAGE),pctl)
 ifeq ($(CADR4_TILONCONSOLE),1)
 # replace til309 components with 5x_til309 component
-	sed $(SEDOPTIONS) '/pctl_1f16.*/d' cadr/cadr_$(PAGE)_suds.vhd
-	sed $(SEDOPTIONS) '/pctl_1f17.*/d' cadr/cadr_$(PAGE)_suds.vhd
-	sed $(SEDOPTIONS) '/pctl_1f18.*/d' cadr/cadr_$(PAGE)_suds.vhd
-	sed $(SEDOPTIONS) '/pctl_1f19.*/d' cadr/cadr_$(PAGE)_suds.vhd
-	sed $(SEDOPTIONS) 's/pctl_1f20.*/pctl_5x_til309 : dip_5x_til309 port map (p14 => pc13, p13 => pc12, p12 => pc11, p11 => pc10, p10 => pc9, p9 => pc8, p8 => pc7, p7 => pc6, p6 => pc5, p5 => pc4, p4 => pc3, p3 => pc2, p2 => pc1, p1 => pc0, p15 => promenable, p16 => ipe, p17 => dpe, p18 => tilt0, p19 => tilt1);/g' cadr/cadr_$(PAGE)_suds.vhd
+	sed $(SEDOPTIONS) '/pctl_1f16.*/d' cadr/suds/cadr_$(PAGE)_suds.vhd
+	sed $(SEDOPTIONS) '/pctl_1f17.*/d' cadr/suds/cadr_$(PAGE)_suds.vhd
+	sed $(SEDOPTIONS) '/pctl_1f18.*/d' cadr/suds/cadr_$(PAGE)_suds.vhd
+	sed $(SEDOPTIONS) '/pctl_1f19.*/d' cadr/suds/cadr_$(PAGE)_suds.vhd
+	sed $(SEDOPTIONS) 's/pctl_1f20.*/pctl_5x_til309 : dip_5x_til309 port map (p14 => pc13, p13 => pc12, p12 => pc11, p11 => pc10, p10 => pc9, p9 => pc8, p8 => pc7, p7 => pc6, p6 => pc5, p5 => pc4, p4 => pc3, p3 => pc2, p2 => pc1, p1 => pc0, p15 => promenable, p16 => ipe, p17 => dpe, p18 => tilt0, p19 => tilt1);/g' cadr/suds/cadr_$(PAGE)_suds.vhd
 endif
 else ifeq ($(PAGE),source)
 # modify \destimod0 l\ and \iwrited l\ to -destimod0 and -iwrited
 # this seems to be a mistake in drw or soap, in wlr 3e05 is connected to -destimod0 and -iwrited
-	sed $(SEDOPTIONS) 's/\\destimod0 l\\/\\-destimod0\\/g' cadr/cadr_$(PAGE)_suds.vhd
-	sed $(SEDOPTIONS) 's/\\iwrited l\\/\\-iwrited\\/g' cadr/cadr_$(PAGE)_suds.vhd
+	sed $(SEDOPTIONS) 's/\\destimod0 l\\/\\-destimod0\\/g' cadr/suds/cadr_$(PAGE)_suds.vhd
+	sed $(SEDOPTIONS) 's/\\iwrited l\\/\\-iwrited\\/g' cadr/suds/cadr_$(PAGE)_suds.vhd
 endif
-	python3 $(FIXSUDS_PY) --generic-map $(FIXSUDS_GENERICMAP) cadr/cadr_$(PAGE)_suds.vhd
+	python3 $(FIXSUDS_PY) --generic-map $(FIXSUDS_GENERICMAP) cadr/suds/cadr_$(PAGE)_suds.vhd
 
 # ===== END OF SUDS AUTOGENERATION =====
 
@@ -328,7 +328,7 @@ wbuf xa xapar xbd xd
 .PHONY: regenerate-cadr1-suds
 regenerate-cadr1-suds:
 # removing existing ones because new ones can be added or existing ones can be removed
-	$(RM) cadr1/cadr1_*_suds.vhd
+	$(RM) cadr1/suds/cadr1_*_suds.vhd
 	for PAGE in $(BUSINT_BOOK); do PAGE=$$PAGE make regenerate-cadr1-suds-page || exit; done
 
 # generate suds file for a single page
@@ -337,8 +337,8 @@ regenerate-cadr1-suds-page: $(FIXSUDS_PY) $(CADR1_DRWDIR)/$(PAGE).drw $(BUILDDIR
 ifndef PAGE
 	$(error PAGE is not set, run regenerate-cadr1-suds)
 endif
-	$(BUILDDIR)/soap -n $(CADR1_DRWDIR)/$(PAGE).drw > cadr1/cadr1_$(PAGE)_suds.vhd
-#python3 $(FIXSUDS_PY) cadr1/cadr1_$(PAGE)_suds.vhd
+	$(BUILDDIR)/soap -n $(CADR1_DRWDIR)/$(PAGE).drw > cadr1/suds/cadr1_$(PAGE)_suds.vhd
+#python3 $(FIXSUDS_PY) cadr1/suds/cadr1_$(PAGE)_suds.vhd
 
 # ===== END OF CADR1 SUDS AUTOGENERATION =====
 
