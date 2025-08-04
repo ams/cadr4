@@ -21,6 +21,6 @@ actl_3b29 : dip_25s09 port map (p1 => destm, p2 => open, p3 => '0', p4 => '0', p
 actl_3b30 : \-awpa\ <= not (wp3a and destd);
             \-awpb\ <= not (wp3a and destd);
             \-awpc\ <= not (destd and wp3a);
-actl_4b11 : apassenb <= apass1 and apass2and and tse4a;
+actl_4b11 : apassenb    <=      apass1 and apass2 and tse4a;
 actl_4b14 : \-apassenb\ <= not (apass1 and apass1 and tse4a);
 end architecture;

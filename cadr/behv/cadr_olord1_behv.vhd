@@ -13,7 +13,7 @@ olord1_1a09 : dip_74s175 port map (p1 => \-reset\, p2 => ldstat, p3 => \-ldstat\
 olord1_1a10 : dip_74s174 port map (p1 => \-clock reset a\, p2 => promdisabled, p3 => promdisable, p4 => sstep, p5 => ssdone, p6 => step, p7 => sstep, p9 => mclk5a, p10 => srun, p11 => run, p12 => open, p13 => '0', p14 => '0', p15 => open);
 olord1_1a14 : dip_74s74 port map (p1 => \-clock reset a\, p2 => spy0, p3 => \-ldclk\, p4 => \-boot\, p5 => run, p6 => \-run\, p8 => open, p9 => open, p10 => '0', p11 => '0', p12 => '0', p13 => '0');
 olord1_1a15 : dip_9s42_1 port map (p1 => sstep, p2 => \-ssdone\, p3 => srun, p4 => \-errhalt\, p5 => \-wait\, p6 => \-stathalt\, p7 => machrun, p9 => open, p10 => '0', p11 => '0', p12 => '0', p13 => '0', p14 => '0', p15 => '0');
-olord1_1b10 : \-ssdone\ <= not ssdone;
+olord1_1b10 : \-ssdone\  <= not ssdone;
               \stat.ovf\ <= not \-stc32\;
 olord1_1c01 : speedclk <= \-tpr60\ nor gnd;
 olord1_1c09 : \-stathalt\ <= stathenb nand statstop;

@@ -6,9 +6,9 @@ use work.misc.all;
 
 architecture behv of cadr_dram1 is
 begin
-dram1_2f03 : \-dwec\  <= not (dispwr and wp2);
-dram1_2f04 : vmo19 <= not \-vmo19\;
-             vmo18 <= not \-vmo18\;
+dram1_2f03 : \-dwec\ <= not (dispwr and wp2);
+dram1_2f04 : vmo19     <= not \-vmo19\;
+             vmo18     <= not \-vmo18\;
              \-dadr9b\ <= not ir21b;
              \-dadr8b\ <= not ir20b;
              \-dadr7b\ <= not ir19b;

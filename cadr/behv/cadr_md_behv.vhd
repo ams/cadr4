@@ -15,7 +15,7 @@ md_1b16 : dip_74s374 port map (p1 => gnd, p2 => \-md31\, p3 => \-mds31\, p4 => \
 md_1c17 : dip_74s374 port map (p1 => gnd, p2 => \-md7\, p3 => \-mds7\, p4 => \-mds6\, p5 => \-md6\, p6 => \-md5\, p7 => \-mds5\, p8 => \-mds4\, p9 => \-md4\, p11 => mdclk, p12 => \-md3\, p13 => \-mds3\, p14 => \-mds2\, p15 => \-md2\, p16 => \-md1\, p17 => \-mds1\, p18 => \-mds0\, p19 => \-md0\);
 md_1c19 : dip_74s374 port map (p1 => gnd, p2 => \-md23\, p3 => \-mds23\, p4 => \-mds22\, p5 => \-md22\, p6 => \-md21\, p7 => \-mds21\, p8 => \-mds20\, p9 => \-md20\, p11 => mdclk, p12 => \-md19\, p13 => \-mds19\, p14 => \-mds18\, p15 => \-md18\, p16 => \-md17\, p17 => \-mds17\, p18 => \-mds16\, p19 => \-md16\);
 md_1d16 : dip_74s51 port map (p1 => '0', p2 => destmdr, p3 => \-clk2c\, p4 => loadmd, p5 => loadmd, p6 => mdclk, p8 => open, p9 => '0', p10 => '0', p13 => '0');
-md_1d18 : loadmd <= not \-loadmd\;
+md_1d18 : loadmd  <= not \-loadmd\;
           destmdr <= not \-destmdr\;
 md_1d20 : dip_74s374 port map (p1 => gnd, p2 => \-md15\, p3 => \-mds15\, p4 => \-mds14\, p5 => \-md14\, p6 => \-md13\, p7 => \-mds13\, p8 => \-mds12\, p9 => \-md12\, p11 => mdclk, p12 => \-md11\, p13 => \-mds11\, p14 => \-mds10\, p15 => \-md10\, p16 => \-md9\, p17 => \-mds9\, p18 => \-mds8\, p19 => \-md8\);
 md_1e07 : mdgetspar <= \-destmdr\ and \-ignpar\;

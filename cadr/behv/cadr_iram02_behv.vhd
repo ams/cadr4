@@ -8,18 +8,18 @@ architecture behv of cadr_iram02 is
 begin
 iram02_2d01 : dip_2147 port map (p1 => pc0c, p2 => pc1c, p3 => pc2c, p4 => pc3c, p5 => pc4c, p6 => pc5c, p7 => i10, p8 => \-iwec\, p10 => \-ice2a\, p11 => iwr10, p12 => pc11c, p13 => pc10c, p14 => pc9c, p15 => pc8c, p16 => pc7c, p17 => pc6c);
 iram02_2d02 : dip_2147 port map (p1 => pc0c, p2 => pc1c, p3 => pc2c, p4 => pc3c, p5 => pc4c, p6 => pc5c, p7 => i11, p8 => \-iwec\, p10 => \-ice2a\, p11 => iwr11, p12 => pc11c, p13 => pc10c, p14 => pc9c, p15 => pc8c, p16 => pc7c, p17 => pc6c);
-iram02_2d03 : pc6c <= not \-pcb6\;
-              pc7c <= not \-pcb7\;
-              pc8c <= not \-pcb8\;
-              pc9c <= not \-pcb9\;
+iram02_2d03 : pc6c  <= not \-pcb6\;
+              pc7c  <= not \-pcb7\;
+              pc8c  <= not \-pcb8\;
+              pc9c  <= not \-pcb9\;
               pc10c <= not \-pcb10\;
               pc11c <= not \-pcb11\;
-iram02_2d04 : pc0c <= not \-pcb0\;
-              pc1c <= not \-pcb1\;
-              pc2c <= not \-pcb2\;
-              pc3c <= not \-pcb3\;
-              pc4c <= not \-pcb4\;
-              pc5c <= not \-pcb5\;
+iram02_2d04 : pc0c  <= not \-pcb0\;
+              pc1c  <= not \-pcb1\;
+              pc2c  <= not \-pcb2\;
+              pc3c  <= not \-pcb3\;
+              pc4c  <= not \-pcb4\;
+              pc5c  <= not \-pcb5\;
 iram02_2e01 : dip_2147 port map (p1 => pc0c, p2 => pc1c, p3 => pc2c, p4 => pc3c, p5 => pc4c, p6 => pc5c, p7 => i5, p8 => \-iwec\, p10 => \-ice2a\, p11 => iwr5, p12 => pc11c, p13 => pc10c, p14 => pc9c, p15 => pc8c, p16 => pc7c, p17 => pc6c);
 iram02_2e02 : dip_2147 port map (p1 => pc0c, p2 => pc1c, p3 => pc2c, p4 => pc3c, p5 => pc4c, p6 => pc5c, p7 => i6, p8 => \-iwec\, p10 => \-ice2a\, p11 => iwr6, p12 => pc11c, p13 => pc10c, p14 => pc9c, p15 => pc8c, p16 => pc7c, p17 => pc6c);
 iram02_2e03 : dip_2147 port map (p1 => pc0c, p2 => pc1c, p3 => pc2c, p4 => pc3c, p5 => pc4c, p6 => pc5c, p7 => i7, p8 => \-iwec\, p10 => \-ice2a\, p11 => iwr7, p12 => pc11c, p13 => pc10c, p14 => pc9c, p15 => pc8c, p16 => pc7c, p17 => pc6c);
