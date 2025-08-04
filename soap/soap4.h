@@ -11,9 +11,6 @@
 #define MAX_BODY_DEF_PROPS   100
 #define MAX_BODY_PROPS       100
 
-// all char * that are result of parsing has to be freed
-// they are strdup'ed
-
 struct pair_s {
     HALF_WORD x;
     HALF_WORD y;
@@ -135,4 +132,7 @@ struct point_s {
     // optional card_loc and io_loc
     HALF_WORD card_loc;
     HALF_WORD io_loc;
+    // for BFS traversal
+    bool visited;
+    struct pair_s same_id;
 };

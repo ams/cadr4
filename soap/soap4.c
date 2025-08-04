@@ -46,6 +46,10 @@ static size_t half_words_idx;
 static int debug = 0;
 static int debug_parsing = 0;
 
+#define MAX_INTERNAL_NETS 100
+char* internal_net_names[MAX_INTERNAL_NETS];
+size_t internal_net_names_count = 0;
+
 struct header_s _header;
 struct header_s *header = &_header;
 
@@ -84,10 +88,10 @@ struct trailer_s *trailer = &_trailer;
 #define BODY_ID_OF_POINT_ID(point_id) RIGHT_HALF_WORD(point_id)
 
 #define DEBUG_HALF_WORD(name, value) \
-    DEBUG("%s %u\n", name, value)
+    DEBUG("%s %u #o%06o\n", name, value, value)
 
 #define DEBUG_WORD(name, value) \
-    DEBUG("%s %llu\n", name, value)
+    DEBUG("%s %llu #o%012llo\n", name, value, value)
 
 #define DEBUG_ID_PAIR(s, id) \
     DEBUG("%s id(%u, %u) (#o%06o, #o%06o)\n", s, \
@@ -219,18 +223,196 @@ find_body_def(char *name)
     return NULL;
 }
 
-struct point_s *
-find_point_by_pin_id_and_body_id(HALF_WORD pin_id, HALF_WORD body_id)
+struct body_s *
+find_body(HALF_WORD id)
 {
-    for (size_t i = 0; i < points_count; i++) {
-        struct point_s *p = &points[i];
-        if (p->down_id.x == pin_id && p->down_id.y == body_id) return p;
-        if (p->up_id.x == pin_id && p->up_id.y == body_id) return p;
-        if (p->left_id.x == pin_id && p->left_id.y == body_id) return p;
-        if (p->right_id.x == pin_id && p->right_id.y == body_id) return p;
+    for (size_t i = 0; i < bodies_count; i++) {
+        struct body_s *b = &bodies[i];
+        if (b->id == id) return b;
     }
 
     return NULL;
+}
+
+struct point_s *
+find_point(HALF_WORD pin_id, HALF_WORD body_id)
+{
+    for (size_t i = 0; i < points_count; i++) {
+        struct point_s *p = &points[i];
+        if (p->id.x == pin_id && p->id.y == body_id) return p;
+    }
+
+    return NULL;
+}
+
+/* ---------------------------------------------------------------- */
+
+#define MAX_MANAGED_STRDUPS 10000
+static size_t managed_strdups_count = 0;
+static char *managed_strdups[MAX_MANAGED_STRDUPS] = {0};
+
+static char*
+managed_strdup(char *s)
+{
+    assert (managed_strdups_count < MAX_MANAGED_STRDUPS);
+    char *managed_s = strdup(s);
+    assert (managed_s != NULL);
+    managed_strdups[managed_strdups_count++] = managed_s;
+    return managed_s;
+}
+
+static void
+free_managed_strdups(void)
+{
+    for (size_t i = 0; i < managed_strdups_count; i++) {
+        free(managed_strdups[i]);
+    }
+
+    managed_strdups_count = 0;
+}
+
+static char*
+new_internal_net_name()
+{
+    assert (internal_net_names_count < MAX_INTERNAL_NETS);
+    char buffer[32];
+    snprintf(buffer, LEN(buffer), "net_%02zu", internal_net_names_count);
+    internal_net_names[internal_net_names_count++] = managed_strdup(buffer);
+    return internal_net_names[internal_net_names_count-1];
+}
+
+/* ---------------------------------------------------------------- */
+
+// it is easier to propagate net names once than running bfs everytime
+
+void
+propagate_net_name(struct point_s* starting_point)
+{
+    // first reset all points to unvisited
+    for (size_t i = 0; i < points_count; i++) {
+        struct point_s *p = &points[i];
+        p->visited = false;
+    }
+
+    // simple queue for BFS using array
+    struct point_s* queue[MAX_POINTS];
+    size_t queue_head = 0;
+    size_t queue_tail = 0;
+        
+    // add starting point to queue
+    queue[queue_tail++] = starting_point;
+    starting_point->visited = true;
+    
+    // BFS traversal
+    while (queue_head < queue_tail) {
+
+        struct point_s* current = queue[queue_head++];
+        if (current != starting_point) {
+            if (current->name != NULL) {
+                DEBUG("intermediate point id(%u, %u) has a name '%s', cannot set net name '%s'\n", 
+                    current->id.x, current->id.y, current->name, starting_point->name);
+                assert (0);
+            }
+            current->name = starting_point->name;
+        }
+        
+        // check all connected points (down, up, left, right, same)
+        struct pair_s connections[5] = {
+            current->down_id,
+            current->up_id, 
+            current->left_id,
+            current->right_id,
+            current->same_id
+        };
+        
+        for (int dir = 0; dir < 5; dir++) {
+
+            struct pair_s conn_id = connections[dir];
+            
+            // skip unconnected points (id 0,0)
+            if (conn_id.x == 0 && conn_id.y == 0) {
+                continue;
+            }
+
+            struct point_s *connected_point = find_point(conn_id.x, conn_id.y);
+
+            if (!connected_point->visited) {
+                queue[queue_tail++] = connected_point;
+                connected_point->visited = true;
+            }
+
+        }
+    }
+}
+
+void
+propagate_net_names(void)
+{
+    struct point_s* queue[MAX_POINTS];
+    size_t queue_head = 0;
+    size_t queue_tail = 0;
+
+    // find points with net names and add them to the queue
+    for (size_t i = 0; i < points_count; i++) {
+        struct point_s *p = &points[i];
+        if (p->name != NULL) queue[queue_tail++] = p;
+    }
+
+    // propagate net names
+    while (queue_head < queue_tail) {
+        struct point_s* current = queue[queue_head++];
+        propagate_net_name(current);
+    }
+}
+
+// if component1.pin1 is connected to component2.pin1, this has no net name
+// it means this is an internal signal
+// the method below finds such points and assigns a random net name
+// the net name is saved and an internal signal is created
+void
+assign_anonymous_net_names(void)
+{
+    internal_net_names_count = 0;
+    for (size_t i = 0; i < points_count; i++) {
+        struct point_s *p = &points[i];
+        if (p->id.x == 0 || p->id.y == 0) continue;
+        if (p->name != NULL) continue;        
+        p->name = new_internal_net_name();
+        propagate_net_name(p);
+    }
+}
+
+// so a body has a body def
+// body def has pins
+// you expect this corresponds to the physical pins
+// however it is not exactly like that, there can be 1+ pin for each physical pin
+// pratically it seems there is 1 or 2 pins for each physical pin
+// 2 body def pins are used for visual purpose only but their net names then are messed up
+// the method below connects such body def pins and this is used when propagating net names
+// basically point has 5 connections (down, up, left, right, same)
+void
+assign_same_ids_of_points(void)
+{
+    for (size_t i = 0; i < bodies_count; i++) {
+        struct body_s *body = &bodies[i];
+        struct body_def_s *body_def = find_body_def(body->name_of_body_def);
+        assert (body_def != NULL);
+        for (size_t j = 0; j < body_def->pin_count; j++) {
+            struct pin_s *pin1 = &body_def->pins[j];
+            struct point_s *point1 = find_point(pin1->id, body->id);
+            for (size_t k = 0; k < body_def->pin_count; k++) {
+                if (j == k) continue;
+                struct pin_s *pin2 = &body_def->pins[k];
+                if (pin1->name == pin2->name) {
+                    struct point_s *point2 = find_point(pin2->id, body->id);
+                    // double check there is only one such thing
+                    assert (point1->same_id.x == 0 && point1->same_id.y == 0);
+                    point1->same_id.x = point2->id.x;
+                    point1->same_id.y = point2->id.y;
+                }
+            }
+        }
+    }
 }
 
 struct prop_s *
@@ -284,24 +466,25 @@ dump_raw(int dump_wide_flag, char *suds_filename)
     if (dump_wide_flag == 2) {
 
         size_t p = 0;
-        const int words_per_line = 8;
+        const int half_words_per_line = 8;
 
         while (p < half_words_len) {
-            for (size_t j = 0; j < words_per_line; j+=2) {
+            for (size_t j = 0; j < half_words_per_line; j++) {
                 if (j == 0) DUMP_RAW("%06zu ", p);
                 size_t pj = p + j;
-                if ((pj + 1) <  half_words_len) {
+                if (pj < half_words_len) {
+                    HALF_WORD w = half_words[pj];
+                    DUMP_RAW("%06o", w);
+                } else {
+                    DUMP_RAW("      ");
+                }
+                DUMP_RAW(" ");
+            }
+            for (size_t j = 0; j < half_words_per_line; j+=2) {
+                size_t pj = p + j;
+                if (pj <  half_words_len) {
                     HALF_WORD w1 = half_words[pj];
                     HALF_WORD w2 = half_words[pj+1];
-                    DUMP_RAW("%06o %06o ", w1, w2);
-                } else {
-                    DUMP_RAW("        ");
-                }
-            }
-            for (size_t j = 0; j < words_per_line; j++) {
-                if ((p + j + 1) <  half_words_len) {
-                    HALF_WORD w1 = half_words[p + j];
-                    HALF_WORD w2 = half_words[p + j + 1];
                     char chars[5];
                     words_to_ascii(w1, w2, chars);
                     DUMP_RAW("%c%c%c%c%c",
@@ -309,10 +492,10 @@ dump_raw(int dump_wide_flag, char *suds_filename)
                 } else {
                     DUMP_RAW("     ");
                 }
-                if (j < (words_per_line - 1)) DUMP_RAW(" ");
+                if (j < (half_words_per_line - 1)) DUMP_RAW(" ");
             }
             DUMP_RAW("\n");
-            p += words_per_line;
+            p += half_words_per_line;
         }
 
     } else if (dump_wide_flag == 1) {
@@ -333,30 +516,6 @@ dump_raw(int dump_wide_flag, char *suds_filename)
 }
 
 /* ---------------------------------------------------------------- */
-
-#define MAX_MANAGED_STRDUPS 10000
-static size_t managed_strdups_count = 0;
-static char *managed_strdups[MAX_MANAGED_STRDUPS] = {0};
-
-static char*
-managed_strdup(char *s)
-{
-    assert (managed_strdups_count < MAX_MANAGED_STRDUPS);
-    char *managed_s = strdup(s);
-    assert (managed_s != NULL);
-    managed_strdups[managed_strdups_count++] = managed_s;
-    return managed_s;
-}
-
-static void
-free_managed_strdups(void)
-{
-    for (size_t i = 0; i < managed_strdups_count; i++) {
-        free(managed_strdups[i]);
-    }
-
-    managed_strdups_count = 0;
-}
 
 char
 six_bit_to_ascii(uint16_t c)
@@ -475,7 +634,7 @@ parse_header(void)
         BREAK_IF_NEXT_WORD_IS(0);
         assert (header->type_names_of_library_bodies_count < MAX_TYPE_NAMES_OF_LIBRARY_BODIES);
         header->type_names_of_library_bodies[header->type_names_of_library_bodies_count] = parse_7bit_ascii();
-		DEBUG("\t\ttype name '%s'\n", header->type_names_of_library_bodies[header->type_names_of_library_bodies_count]);
+		DEBUG("\ttype name '%s'\n", header->type_names_of_library_bodies[header->type_names_of_library_bodies_count]);
         header->type_names_of_library_bodies_count++;
 	}
 
@@ -483,8 +642,10 @@ parse_header(void)
 		BREAK_IF_NEXT_WORD_IS(0);
         assert (header->library_file_specs_count < MAX_LIBRARY_FILE_SPECS);
         header->library_file_specs[header->library_file_specs_count] = parse_6bit_ascii();
-		DEBUG("\t\tfilespec '%s'\n", header->library_file_specs[header->library_file_specs_count]);
+		DEBUG("\tlibrary filespec '%s'\n", header->library_file_specs[header->library_file_specs_count]);
         header->library_file_specs_count++;
+        WORD library_bits = read_word();
+        DEBUG_WORD("\tlibrary bits", library_bits);
 	}
 
     DEBUG("/HEADER(%zu)\n", half_words_idx);
@@ -497,7 +658,7 @@ parse_body_defs(void)
 
 	while (1) {
 		BREAK_IF_NEXT_WORD_IS(0);
-        DEBUG("\tBODY_DEF(%zu)\n", half_words_idx);                
+        DEBUG("\tBODY_DEF(%zu)\n", half_words_idx);
 
         assert (body_defs_count < MAX_BODY_DEFS);
         struct body_def_s *bd = &body_defs[body_defs_count++];
@@ -526,6 +687,8 @@ parse_body_defs(void)
 		while (1) {
 			BREAK_IF_NEXT_WORD_IS(0400000);
 
+            DEBUG("\t\tBODY_DEF_PIN(%zu)\n", half_words_idx);
+
             assert (bd->pin_count < MAX_BODY_DEF_PINS);
 
             struct pin_s *pin = &bd->pins[bd->pin_count++];
@@ -537,13 +700,15 @@ parse_body_defs(void)
             DEBUG_BITS("\t\t\tpin bits", pin->bits);
 
 			pin->id = read_half_word();
-            DEBUG_ID("\t\t\tpin id %d",  pin->id);
+            DEBUG_ID("\t\t\tpin id",  pin->id);
 
 			pin->pos = read_half_word();
             DEBUG_HALF_WORD("\t\t\tpin pos", pin->pos);
 			
             pin->name = read_half_word();
             DEBUG_HALF_WORD("\t\t\tpin name", pin->name);
+
+            DEBUG("\t\t/BODY_DEF_PIN(%zu)\n", half_words_idx);
 		}
 
 		while (1) {
@@ -559,6 +724,8 @@ parse_body_defs(void)
 		while (1) {
             BREAK_IF_NEXT_WORD_IS(0);
 
+            DEBUG("\t\tBODY_DEF_PROP(%zu)\n", half_words_idx);
+
             assert (bd->prop_count < MAX_BODY_DEF_PROPS);
 
 			struct prop_s *prop = &bd->props[bd->prop_count++];
@@ -572,6 +739,8 @@ parse_body_defs(void)
 
 			read_signed_pair(&prop->text_location);
 			read_signed_pair(&prop->constant_offset);
+
+            DEBUG("\t\t/BODY_DEF_PROP(%zu)\n", half_words_idx);
 		}
 
         DEBUG("\t/BODY_DEF(%zu)\n", half_words_idx);
@@ -619,6 +788,7 @@ parse_bodies(void)
         DEBUG_XY("\t\tloc_of_body", b->loc);
 
 		b->orientation = read_word();
+        DEBUG_WORD("\t\torientation", b->orientation);
 
         // ORIENTATION+400000 (IF LOCATION FOLLOWS)
 		if (b->orientation >= 0400000) {
@@ -656,6 +826,8 @@ parse_bodies(void)
 		while (1) {
             BREAK_IF_NEXT_WORD_IS(0);
 
+            DEBUG("\t\tBODY_PROP(%zu)\n", half_words_idx);
+
             assert (b->prop_count < MAX_BODY_DEF_PROPS);
 
 			struct prop_s *prop = &b->props[b->prop_count++];
@@ -669,6 +841,8 @@ parse_bodies(void)
 
 			read_signed_pair(&prop->text_location);
 			read_signed_pair(&prop->constant_offset);
+
+            DEBUG("\t\t/BODY_PROP(%zu)\n", half_words_idx);
         }
 
         DEBUG("\t/BODY(%zu)\n", half_words_idx);
@@ -717,14 +891,18 @@ parse_points(void)
 
 		pnt->size_of_text = read_word();
         DEBUG_WORD("\t\tsize_of_text", pnt->size_of_text);
-    
+
         // IF SIZE OF TEXT NOT 0, THE NEXT TWO FOLLOW
         if (pnt->size_of_text != 0) {
+
             read_signed_pair(&pnt->const_offset_from_point_loc);
+
             pnt->name = parse_7bit_ascii();
             DEBUG("\t\tname '%s'\n", pnt->name);
+
             // IF CPIN ON IN BITS
-            // bit 16 is not written anywhere, it is identified experimentally
+            // CPIN ON bit seems to be bit 16
+            // it is not documented anywhere, found out experimentally
             if ((pnt->bits & (1 << 16)) != 0) {
                 DEBUG("\t\tCPIN ON\n");
 
@@ -974,6 +1152,19 @@ parse_suds()
 
 /* ---------------------------------------------------------------- */
 
+void
+apply_hacks(void)
+{
+    // this is because bcterm.drw has a few errors
+    if (strcmp(trailer->title_line_2, "BUSINT CABLE TERMINATION") == 0) {
+        find_body(7)->refdes[3] = '6'; // 1B15 => 1B16
+        find_body(10)->refdes[3] = '1'; // 1B20 => 1B21
+        find_body(12)->refdes[3] = '6'; // 1B25 => 1B26
+    }
+}
+
+/* ---------------------------------------------------------------- */
+
 static char *
 strlwr(char *s)
 {
@@ -1023,6 +1214,11 @@ dump_vhdl(
 	DUMP_VHDL("architecture %s of cadr_%s is\n", 
         architecture_name,
         entity_name);
+
+    for (size_t i = 0; i < internal_net_names_count; i++) {
+        DUMP_VHDL("signal %s : std_logic;\n", internal_net_names[i]);
+    }
+
 	DUMP_VHDL("begin\n");
 
 	for (size_t i = 0; i < bodies_count; i++) {
@@ -1040,7 +1236,11 @@ dump_vhdl(
         DEBUG("body def name '%s'\n", b->name_of_body_def);
 
         struct body_def_s *bd = find_body_def(b->name_of_body_def);
-        assert (bd != NULL);
+        if (bd == NULL) {
+            DEBUG("body def not found: '%s'\n", b->name_of_body_def);
+            DEBUG("did you forget to use -e option?\n");
+            exit(1);
+        }
 
         struct prop_s *diptype_prop = find_prop(bd->props, bd->prop_count, "DIPTYPE");
         assert (diptype_prop != NULL);
@@ -1090,30 +1290,32 @@ dump_vhdl(
 
             DEBUG_ID("pin id", pin->id);
 
-            for (size_t k = 0; k < points_count; k++) {
+            struct point_s *point_of_pin = find_point(pin->id, b->id);
 
-                struct point_s *point = &points[k];
-
-                if ((point->down_id.x == pin->id && point->down_id.y == b->id) ||
-                    (point->up_id.x == pin->id && point->up_id.y == b->id) ||
-                    (point->left_id.x == pin->id && point->left_id.y == b->id) ||
-                    (point->right_id.x == pin->id && point->right_id.y == b->id)) {
-
-                    DEBUG_ID_PAIR("point id", point->id);
-
-                    if (point == NULL) continue;
-                    if (point->name == NULL) continue;
-
-                    // p<PIN_NUMBER> => <NAME_OF_PIN>
-                    if (printed_once) DUMP_VHDL(", ");
-                    DUMP_VHDL("p%u => %s",
-                        pin->id,
-                        format_signal_name(point->name));
-                    printed_once = true;
-
-                }
-
+            if (point_of_pin == NULL) {
+                DEBUG("point of pin not found: %u, %u, skipping\n", pin->id, b->id);
+                continue;
             }
+
+            DEBUG_ID_PAIR("point of pin id", point_of_pin->id);
+
+            // if there is no name, it means there is no net name
+            // this means a pin is directly connected to another pin
+            if (point_of_pin->name == NULL) {
+            }
+
+            // it is important to use the name at point_of_pin and 
+            // not the name of the pin because a single symbol is instantiated
+            // with different pin names (e.g. 123 first, then 456)
+            // think about a chip with multiple same gates, symbol is a gate
+            
+            // p<PIN_NUMBER> => <NAME_OF_PIN>
+            if (printed_once) DUMP_VHDL(", ");
+            DUMP_VHDL("p%u => %s",
+                point_of_pin->pin_name,
+                format_signal_name(point_of_pin->name));
+            printed_once = true;
+
         }
 
 		DUMP_VHDL(");\n");
@@ -1127,13 +1329,13 @@ dump_vhdl(
 static void
 usage(char *argv[])
 {
-	fprintf(stderr, "usage: %s [-d] [-p] [-e <suds library file>] [-r or -v or -w] <suds file>\n", argv[0]);
-	fprintf(stderr, "-d	enable debug (stderr)\n");
-    fprintf(stderr, "-p enable debug parsing (stderr)\n");
-    fprintf(stderr, "-e	also load body definitions from <suds library file>\n");
-    fprintf(stderr, "-r	dump raw 18-bit words (stdout)\n");
-    fprintf(stderr, "-v	dump VHDL (stdout)\n");
-    fprintf(stderr, "-w	dump raw 18-bit words, wide format (stdout)\n");
+	fprintf(stderr, "usage: %s [-d] [-p] [-e <suds library file>] [-o <raw|vhdl|wide>] <suds file>\n", argv[0]);
+	fprintf(stderr, "-d       enable debug (stderr)\n");
+    fprintf(stderr, "-p       enable debug parsing (stderr)\n");
+    fprintf(stderr, "-e       also load body definitions from <suds library file>\n");
+    fprintf(stderr, "-o raw   dump raw 18-bit words (stdout)\n");
+    fprintf(stderr, "-o vhdl  dump VHDL (stdout)\n");
+    fprintf(stderr, "-o wide  dump raw 18-bit words, wide format (stdout)\n");
 	exit(0);
 }
 
@@ -1145,29 +1347,34 @@ int main(int argc, char *argv[])
 	int c;
 
     char *library_suds_filename = NULL;
-    int dump_vhdl_flag = 0;
-    int dump_raw_flag = 0;
+    char *dump_format = NULL;
+    int dump_raw_flag = 0; // 0 = no, 1 = raw, 2 = wide
+    int dump_vhdl_flag = 0; // 0 = no, 1 = vhdl
 
-	while ((c = getopt(argc, argv, "dpe:vrw")) != -1) {
+	while ((c = getopt(argc, argv, "dpe:o:")) != -1) {
 		switch (c) {
-		case 'd':
-			debug++;
-			break;
-        case 'p':
-            debug_parsing++;
-            break;
-        case 'e':
-            library_suds_filename = managed_strdup(optarg);
-            break;
-		case 'r':
-			dump_raw_flag = 1;
-			break;
-        case 'v':
-			dump_vhdl_flag = 1;
-			break;
-        case 'w':
-			dump_raw_flag = 2;
-			break;
+            case 'd':
+                debug++;
+                break;
+            case 'p':
+                debug_parsing++;
+                break;
+            case 'e':
+                library_suds_filename = managed_strdup(optarg);
+                break;
+            case 'o':
+                dump_format = managed_strdup(optarg);
+                if (strcmp(dump_format, "raw") == 0) {
+                    dump_raw_flag = 1;
+                } else if (strcmp(dump_format, "vhdl") == 0) {
+                    dump_vhdl_flag = 1;
+                } else if (strcmp(dump_format, "wide") == 0) {
+                    dump_raw_flag = 2;
+                } else {
+                    fprintf(stderr, "invalid dump format: %s\n", dump_format);
+                    exit(1);
+                }
+                break;
 		}
 	}
 
@@ -1220,6 +1427,10 @@ int main(int argc, char *argv[])
         assert (strlen(page_name) < 16);
 
         if (dump_vhdl_flag) {
+            apply_hacks();
+            assign_same_ids_of_points();
+            propagate_net_names();
+            assign_anonymous_net_names();
             const char *architecture_name = "suds";
             // entity name is as same as the page name
             dump_vhdl(page_name, architecture_name, page_name);

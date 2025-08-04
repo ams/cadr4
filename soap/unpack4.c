@@ -216,7 +216,7 @@ unpack(char *filename, uint32_t *half_words, size_t max_len)
 
 		if (c >= 0360) {
 
-            // > 0360 cannot occur in the middle of a word
+            // >= 0360 cannot occur in the middle of a word
             assert ((bi % 5) == 0);
 
             assert (bi < bi_max);
@@ -277,7 +277,7 @@ unpack(char *filename, uint32_t *half_words, size_t max_len)
 
         if (g360) {
 
-            left_half_word = ((bytes[i] & 017U) << 14U) | (bytes[i+1] << 6U) | ((bytes[i+2] & 033U) >> 2U);
+            left_half_word = ((bytes[i] & 017U) << 14U) | (bytes[i+1] << 6U) | ((bytes[i+2] >> 2U) & 077U);
             right_half_word = ((bytes[i+2] & 03U) << 16U) | (bytes[i+3] << 8U) | (bytes[i+4] << 0U);
 
         } else {

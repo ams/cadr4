@@ -26,8 +26,6 @@ It also comes with unpack4.h for the unpack function.
 
 ## soap4.c
 
-THIS IS STILL A WORK IN PROGRESS.
-
 The new soap4.c has some features removed and some features added comparing to original soap.c. SUDS and netlist dump features are removed, but it has the following new features:
 
 - raw 18-bit word output in wide format (8 half-words in one line)
@@ -40,4 +38,4 @@ It also comes with soap4.h for the struct definitions.
 
 ## resources
 
-- suds.txt: original from https://github.com/lisper/cpus-cadr/blob/master/suds/suds.txt
+- suds.txt: downloaded from https://github.com/lisper/cpus-cadr/blob/master/suds/suds.txt

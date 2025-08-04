@@ -1103,6 +1103,7 @@ package dip is
 
   -- these aliases are only because these have different bodies in drw files
   -- they are exactly the same IC, just shown different visually in drw
+  -- these are only required when soap is used
   alias dip_74s00o is dip_74s00;
   alias dip_74s02o is dip_74s02;
   alias dip_74s04a is dip_74s04;
@@ -1114,5 +1115,9 @@ package dip is
   alias dip_74s32w is dip_74s32;
   alias dip_74s133o is dip_74s133;
   alias dip_74ls240 is dip_74s240;
+
+
+  -- this is only required when soap4 is used
+  alias dip_9s42 is dip_9s42_1;
 
 end package;
