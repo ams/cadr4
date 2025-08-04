@@ -36,6 +36,14 @@ The main and actually only purpose of soap4 is to output a VHDL file given a drw
 
 It also comes with soap4.h for the struct definitions.
 
+The differences are:
+
+- soap was not using body defs and outputing VHDL only based on points, soap4 is using body defs (hence requires the library also)
+
+- soap4 uses DIPTYPE prop, hence no need for aliases in dip.vhd
+
+- it handles the internal signals automatically, creates an internal signal and connects the pins to this signal.
+
 ## resources
 
 - suds.txt: downloaded from https://github.com/lisper/cpus-cadr/blob/master/suds/suds.txt
