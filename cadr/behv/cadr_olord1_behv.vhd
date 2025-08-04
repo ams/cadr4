@@ -17,6 +17,6 @@ olord1_1b10 : \-ssdone\ <= not ssdone;
               \stat.ovf\ <= not \-stc32\;
 olord1_1c01 : speedclk <= \-tpr60\ nor gnd;
 olord1_1c09 : \-stathalt\ <= stathenb nand statstop;
-olord1_1c10 : \-machruna\ <=  gnd nor machrun;
+olord1_1c10 : \-machruna\ <=  machrun nor gnd;
 olord1_1f10 : \-machrun\ <= not machrun;
 end architecture;

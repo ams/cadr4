@@ -8,7 +8,7 @@ architecture behv of cadr_clockd is
 begin
 clockd_1b18 : clk1a <= not (\-clk1\  and hi12);
               \-reset\  <= not (reset and hi12);
-              mclk1a <= not (hi12 and \-mclk1\); 
+              mclk1a <= not (hi12 and \-mclk1\);
 clockd_1b19 : \-mclk1\ <= not mclk1;
               \-clk1\ <= not clk1;
               wp1b <= not \-wp1\;

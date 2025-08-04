@@ -22,7 +22,7 @@ olord2_1a07 : highok <=  \-upperhighok\ nor \-lowerhighok\;
               \-bus.reset\ <= \power reset a\ nor \prog.bus.reset\;
 olord2_1a11 : \-clock reset b\ <=  \power reset a\ nor net_3;
               \-clock reset a\ <= \power reset a\ nor net_3;
-              \power reset a\ <= gnd nor \-power reset\;
+              \power reset a\ <= \-power nor gnd reset\;
 olord2_1a18 : dip_74ls109 port map (p1 => \-boot\, p2 => srun, p3 => hi1, p4 => mclk5a, p5 => \-clock reset a\, p6 => open, p7 => \boot.trap\, p9 => open, p10 => open, p11 => '0', p12 => '0', p13 => '0', p14 => '0', p15 => '0');
 olord2_1a19 : dip_16dummy port map (p12 => \-power reset\, p13 => \-boot2\, p14 => \-boot1\, p15 => hi2, p16 => hi1);
 olord2_1a20 : dip_74ls14 port map (p1 => '0', p2 => open, p3 => \-boot1\, p4 => net_0, p5 => \-boot2\, p6 => net_1, p8 => open, p9 => '0', p10 => open, p11 => '0', p12 => open, p13 => '0');

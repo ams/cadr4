@@ -45,6 +45,6 @@ aluc4_2c20 : alusub <= not (\-mulnop\ and net_2 and net_3 and \-irjump\);
 aluc4_2d15 : \-mulnop\ <= \-mul\ or q0;
 aluc4_2d21 : osel1a <= \-ir13\ nor \-iralu\;
              osel0a <= \-ir12\ nor \-iralu\;
-             osel1b <= \-iralu\ nor \-ir13\; 
+             osel1b <= \-iralu\ nor \-ir13\;
              osel0b <= \-iralu\ nor \-ir12\;
 end architecture;
