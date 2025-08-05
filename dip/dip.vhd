@@ -1101,23 +1101,243 @@ package dip is
     );
   end component;
 
+  component dip_dm8838 is port (       -- dm8838 [dm8838]
+    p1  : in std_logic;                -- S1B
+    p2  : in std_logic;                -- I1B
+    p3  : in std_logic;                -- I0B
+    p4  : in std_logic;                -- ZB
+    p5  : in std_logic;                -- I0A
+    p6  : in std_logic;                -- I1A
+    p7  : in std_logic;                -- GND
+    p8  : in std_logic;                -- S1A
+    p9  : in std_logic;                -- S0
+    p10 : in std_logic;                -- I1C
+    p11 : in std_logic;                -- I0C
+    p12 : in std_logic;                -- S1C
+    p13 : in std_logic;                -- I0D
+    p14 : in std_logic;                -- VCC
+    p15 : in std_logic;                -- S1D
+    p16 : in std_logic                 -- I1D
+    );
+  end component;
+
+  component dip_26s10 is port (        -- 26s10 [26s10]
+    p1  : in std_logic;                -- VCC
+    p2  : in std_logic;                -- I1
+    p3  : in std_logic;                -- I2
+    p4  : in std_logic;                -- O1
+    p5  : in std_logic;                -- O2
+    p6  : in std_logic;                -- I3
+    p7  : in std_logic;                -- I4
+    p8  : in std_logic;                -- GND
+    p9  : in std_logic;                -- O4
+    p10 : in std_logic;                -- I4
+    p11 : in std_logic;                -- O3
+    p12 : in std_logic;                -- G
+    p13 : in std_logic;                -- O1
+    p14 : in std_logic;                -- I1
+    p15 : in std_logic;                -- O2
+    p16 : in std_logic                 -- VCC
+    );
+  end component;
+
+  component dip_mtd100 is port (       -- mtd100 [mtd100]
+    p1  : in std_logic;                -- A1
+    p2  : in std_logic;                -- GND
+    p3  : in std_logic;                -- A2
+    p4  : in std_logic;                -- NC
+    p5  : in std_logic;                -- B1
+    p6  : in std_logic;                -- NC
+    p7  : in std_logic;                -- VCC
+    p8  : in std_logic;                -- Q1
+    p9  : in std_logic;                -- NC
+    p10 : in std_logic;                -- Q2
+    p11 : in std_logic;                -- NC
+    p12 : in std_logic                 -- B2
+    );
+  end component;
+
+  component dip_74ls27 is port (       -- sn74ls27 [74ls27]
+    p1  : in std_logic;                -- 1A
+    p2  : in std_logic;                -- 1B
+    p3  : in std_logic;                -- 1C
+    p4  : in std_logic;                -- 1Y
+    p5  : in std_logic;                -- 2A
+    p6  : in std_logic;                -- 2B
+    p7  : in std_logic;                -- GND
+    p8  : in std_logic;                -- 2Y
+    p9  : in std_logic;                -- 2C
+    p10 : in std_logic;                -- 3A
+    p11 : in std_logic;                -- 3B
+    p12 : in std_logic;                -- 3Y
+    p13 : in std_logic;                -- 3C
+    p14 : in std_logic                 -- VCC
+    );
+  end component;
+
+  component dip_74ls74 is port (       -- sn74ls74 [74ls74]
+    p1  : in std_logic;                -- 1CLR
+    p2  : in std_logic;                -- 1D
+    p3  : in std_logic;                -- 1CLK
+    p4  : in std_logic;                -- 1PR
+    p5  : in std_logic;                -- 1Q
+    p6  : in std_logic;                -- 1QN
+    p7  : in std_logic;                -- GND
+    p8  : in std_logic;                -- 2QN
+    p9  : in std_logic;                -- 2Q
+    p10 : in std_logic;                -- 2PR
+    p11 : in std_logic;                -- 2CLK
+    p12 : in std_logic;                -- 2D
+    p13 : in std_logic;                -- 2CLR
+    p14 : in std_logic                 -- VCC
+    );
+  end component;
+
+  component dip_74ls112 is port (      -- sn74ls112 [74ls112]
+    p1  : in std_logic;                -- 1CLK
+    p2  : in std_logic;                -- 1K
+    p3  : in std_logic;                -- 1J
+    p4  : in std_logic;                -- 1PR
+    p5  : in std_logic;                -- 1Q
+    p6  : in std_logic;                -- 1QN
+    p7  : in std_logic;                -- 1CLR
+    p8  : in std_logic;                -- GND
+    p9  : in std_logic;                -- 2CLR
+    p10 : in std_logic;                -- 2QN
+    p11 : in std_logic;                -- 2Q
+    p12 : in std_logic;                -- 2PR
+    p13 : in std_logic;                -- 2J
+    p14 : in std_logic;                -- 2K
+    p15 : in std_logic;                -- 2CLK
+    p16 : in std_logic                 -- VCC
+    );
+  end component;
+
+  component dip_74276 is port (        -- sn74276 [74276]
+    p1  : in std_logic;                -- 1CLR
+    p2  : in std_logic;                -- 1J
+    p3  : in std_logic;                -- 1CLK
+    p4  : in std_logic;                -- 1K
+    p5  : in std_logic;                -- 1Q
+    p6  : in std_logic;                -- 1QN
+    p7  : in std_logic;                -- 2CLR
+    p8  : in std_logic;                -- 2J
+    p9  : in std_logic;                -- 2CLK
+    p10 : in std_logic;                -- GND
+    p11 : in std_logic;                -- 2K
+    p12 : in std_logic;                -- 2Q
+    p13 : in std_logic;                -- 2QN
+    p14 : in std_logic;                -- 3CLR
+    p15 : in std_logic;                -- 3J
+    p16 : in std_logic;                -- 3CLK
+    p17 : in std_logic;                -- 3K
+    p18 : in std_logic;                -- 3Q
+    p19 : in std_logic;                -- 3QN
+    p20 : in std_logic                 -- VCC
+    );
+  end component;
+
+  component dip_8304 is port (         -- ic8304 [8304]
+    p1  : in std_logic;                -- D0
+    p2  : in std_logic;                -- D1
+    p3  : in std_logic;                -- D2
+    p4  : in std_logic;                -- D3
+    p5  : in std_logic;                -- D4
+    p6  : in std_logic;                -- D5
+    p7  : in std_logic;                -- D6
+    p8  : in std_logic;                -- D7
+    p9  : in std_logic;                -- G
+    p10 : in std_logic;                -- GND
+    p11 : in std_logic;                -- LE
+    p12 : in std_logic;                -- Q7
+    p13 : in std_logic;                -- Q6
+    p14 : in std_logic;                -- Q5
+    p15 : in std_logic;                -- Q4
+    p16 : in std_logic;                -- Q3
+    p17 : in std_logic;                -- Q2
+    p18 : in std_logic;                -- Q1
+    p19 : in std_logic;                -- Q0
+    p20 : in std_logic                 -- VCC
+    );
+  end component;
+
+  component dip_29701 is port (        -- ic29701 [29701]
+    p1  : in std_logic;                -- VCC
+    p2  : in std_logic;                -- D3
+    p3  : in std_logic;                -- D2
+    p4  : in std_logic;                -- Q3
+    p5  : in std_logic;                -- Q2
+    p6  : in std_logic;                -- Q1
+    p7  : in std_logic;                -- Q0
+    p8  : in std_logic;                -- GND
+    p9  : in std_logic;                -- D1
+    p10 : in std_logic;                -- D0
+    p11 : in std_logic;                -- D1
+    p12 : in std_logic;                -- D0
+    p13 : in std_logic;                -- G1
+    p14 : in std_logic;                -- G2
+    p15 : in std_logic;                -- LE
+    p16 : in std_logic                 -- VCC
+    );
+  end component;
+
+  component dip_74s38 is port (        -- 74s38 [74s38]
+    p1  : in std_logic;                -- 1A
+    p2  : in std_logic;                -- 1B
+    p3  : in std_logic;                -- 1Y
+    p4  : in std_logic;                -- 2A
+    p5  : in std_logic;                -- 2B
+    p6  : in std_logic;                -- 2Y
+    p7  : in std_logic;                -- GND
+    p8  : in std_logic;                -- 3Y
+    p9  : in std_logic;                -- 3B
+    p10 : in std_logic;                -- 3A
+    p11 : in std_logic;                -- 4Y
+    p12 : in std_logic;                -- 4B
+    p13 : in std_logic;                -- 4A
+    p14 : in std_logic                 -- VCC
+    );
+  end component;
+
+  component dip_74ls163 is port (      -- 74ls163 [74ls163]
+    p1  : in std_logic;                -- CLR
+    p2  : in std_logic;                -- CLK
+    p3  : in std_logic;                -- A
+    p4  : in std_logic;                -- B
+    p5  : in std_logic;                -- C
+    p6  : in std_logic;                -- D
+    p7  : in std_logic;                -- ENP
+    p8  : in std_logic;                -- GND
+    p9  : in std_logic;                -- LOAD
+    p10 : in std_logic;                -- ENT
+    p11 : in std_logic;                -- QD
+    p12 : in std_logic;                -- QC
+    p13 : in std_logic;                -- QB
+    p14 : in std_logic;                -- QA
+    p15 : in std_logic;                -- RCO
+    p16 : in std_logic                 -- VCC
+    );
+  end component;
+
   -- these aliases are only because these have different bodies in drw files
   -- they are exactly the same IC, just shown different visually in drw
   -- these are only required when soap is used
-  alias dip_74s00o is dip_74s00;
-  alias dip_74s02o is dip_74s02;
-  alias dip_74s04a is dip_74s04;
-  alias dip_74s08o is dip_74s08;
-  alias dip_74s10o is dip_74s10;
-  alias dip_74s11o is dip_74s11;
-  alias dip_74s20o is dip_74s20;
-  alias dip_74s32o is dip_74s32;
-  alias dip_74s32w is dip_74s32;
-  alias dip_74s133o is dip_74s133;
+  --alias dip_74s00o is dip_74s00;
+  --alias dip_74s02o is dip_74s02;
+  --alias dip_74s04a is dip_74s04;
+  --alias dip_74s08o is dip_74s08;
+  --alias dip_74s10o is dip_74s10;
+  --alias dip_74s11o is dip_74s11;
+  --alias dip_74s20o is dip_74s20;
+  --alias dip_74s32o is dip_74s32;
+  --alias dip_74s32w is dip_74s32;
+  --alias dip_74s133o is dip_74s133;
+
+  -- this is used in both s and ls form
   alias dip_74ls240 is dip_74s240;
 
-
   -- this is only required when soap4 is used
+  -- the component can be renamed if only soap4 is used
   alias dip_9s42 is dip_9s42_1;
 
 end package;
