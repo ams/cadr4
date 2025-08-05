@@ -1,0 +1,81 @@
+-- CADR1_RBUF
+-- Generated entity from suds architecture
+
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity cadr1_rbuf is
+  port (
+    \-bus_ub\ : in std_logic;
+    \-rbufwe\ : inout std_logic;
+    \-ub read buffer\ : in std_logic;
+    \-ubpn0b\ : inout std_logic;
+    \-ubpn1b\ : inout std_logic;
+    \-ubpn2b\ : inout std_logic;
+    \-ubpn3b\ : inout std_logic;
+    bus0 : in std_logic;
+    bus1 : in std_logic;
+    bus10 : in std_logic;
+    bus11 : in std_logic;
+    bus12 : in std_logic;
+    bus13 : in std_logic;
+    bus14 : in std_logic;
+    bus15 : in std_logic;
+    bus16 : inout std_logic;
+    bus17 : inout std_logic;
+    bus18 : inout std_logic;
+    bus19 : inout std_logic;
+    bus2 : in std_logic;
+    bus20 : inout std_logic;
+    bus21 : inout std_logic;
+    bus22 : inout std_logic;
+    bus23 : inout std_logic;
+    bus24 : inout std_logic;
+    bus25 : inout std_logic;
+    bus26 : inout std_logic;
+    bus27 : inout std_logic;
+    bus28 : inout std_logic;
+    bus29 : inout std_logic;
+    bus3 : in std_logic;
+    bus30 : inout std_logic;
+    bus31 : inout std_logic;
+    bus4 : in std_logic;
+    bus5 : in std_logic;
+    bus6 : in std_logic;
+    bus7 : in std_logic;
+    bus8 : in std_logic;
+    bus9 : in std_logic;
+    rbuf16 : inout std_logic;
+    rbuf17 : inout std_logic;
+    rbuf18 : inout std_logic;
+    rbuf19 : inout std_logic;
+    rbuf20 : inout std_logic;
+    rbuf21 : inout std_logic;
+    rbuf22 : inout std_logic;
+    rbuf23 : inout std_logic;
+    rbuf24 : inout std_logic;
+    rbuf25 : inout std_logic;
+    rbuf26 : inout std_logic;
+    rbuf27 : inout std_logic;
+    rbuf28 : inout std_logic;
+    rbuf29 : inout std_logic;
+    rbuf30 : inout std_logic;
+    rbuf31 : inout std_logic;
+    udo0 : out std_logic;
+    udo1 : out std_logic;
+    udo10 : out std_logic;
+    udo11 : out std_logic;
+    udo12 : out std_logic;
+    udo13 : out std_logic;
+    udo14 : out std_logic;
+    udo15 : out std_logic;
+    udo2 : out std_logic;
+    udo3 : out std_logic;
+    udo4 : out std_logic;
+    udo5 : out std_logic;
+    udo6 : out std_logic;
+    udo7 : out std_logic;
+    udo8 : out std_logic;
+    udo9 : out std_logic
+  );
+end entity;

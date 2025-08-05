@@ -507,7 +507,28 @@ class vSystem:
         with open(filename, 'r') as f:
             content = f.read()
         # Remove comments (-- to end of line)
-        content = re.sub(r'--.*', '', content)    
+        # Remove comments, but not -- that appears inside extended identifiers (\...\)
+        # This regex handles extended identifiers by matching them first and preserving them
+        def remove_comments(match):
+            line = match.group(0)
+            # If the line contains extended identifiers, be more careful
+            if '\\' in line:
+                # Split by extended identifiers and process each part
+                parts = re.split(r'(\\[^\\]*\\)', line)
+                result_parts = []
+                for part in parts:
+                    if part.startswith('\\') and part.endswith('\\'):
+                        # This is an extended identifier, keep it as-is
+                        result_parts.append(part)
+                    else:
+                        # This is regular content, remove comments
+                        result_parts.append(re.sub(r'--.*', '', part))
+                return ''.join(result_parts)
+            else:
+                # No extended identifiers, safe to remove comments normally
+                return re.sub(r'--.*', '', line)
+        
+        content = re.sub(r'.*', remove_comments, content)    
         # Find the first package
         package_match = re.search(r'package\s+(\w+)\s+is\s*(.*?)\s*end\s+package', content, re.DOTALL | re.IGNORECASE)
         assert package_match is not None, f"vSystem._load_referenced_package: package not found in {filename}"
@@ -537,8 +558,9 @@ class vSystem:
                 port_decl = port_decl.strip()
                 assert port_decl is not None, f"vSystem._load_referenced_package: port declaration is empty"
                 # Parse port declaration: name : direction type
-                # Handle extended identifiers with backslashes
-                port_pattern = r'(\\[^\\]+\\|\w+)\s*:\s*(in|out|inout)\s+(\w+)'
+                # Handle extended identifiers with backslashes and clean up whitespace/newlines
+                port_decl = re.sub(r'\s+', ' ', port_decl.strip())  # Normalize whitespace
+                port_pattern = r'(\\[^\\]*\\|\w+)\s*:\s*(in|out|inout)\s+(\w+)'
                 port_match = re.match(port_pattern, port_decl, re.IGNORECASE)
                 assert port_match is not None, f"vSystem._load_referenced_package: port declaration is invalid: {port_decl}"
                 port_name = port_match.group(1)

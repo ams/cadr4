@@ -1,0 +1,63 @@
+-- CADR1_UBMAST
+-- Generated entity from suds architecture
+
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity cadr1_ubmast is
+  port (
+    \--bbsy in\ : inout std_logic;
+    \--db need ub\ : in std_logic;
+    \--lmneedub\ : in std_logic;
+    \--npg in\ : inout std_logic;
+    \--ssyn in\ : inout std_logic;
+    \-db bus req\ : inout std_logic;
+    \-db need ub\ : inout std_logic;
+    \-db reset\ : inout std_logic;
+    \-db ub granted\ : inout std_logic;
+    \-db ub master\ : inout std_logic;
+    \-db ub selected\ : inout std_logic;
+    \-db ub set master\ : inout std_logic;
+    \-dbub granted\ : in std_logic;
+    \-debug reset\ : in std_logic;
+    \-lm bus req\ : inout std_logic;
+    \-lm need ub\ : in std_logic;
+    \-lm reset\ : inout std_logic;
+    \-lm ub granted\ : inout std_logic;
+    \-lm ub master\ : inout std_logic;
+    \-lm ub selected\ : inout std_logic;
+    \-lm ub set master\ : inout std_logic;
+    \-lmub granted\ : in std_logic;
+    \-local enable\ : in std_logic;
+    \-npg in\ : in std_logic;
+    \-npg out\ : out std_logic;
+    \-npg1 out\ : inout std_logic;
+    \-ub bbsy\ : inout std_logic;
+    \-ub msyn\ : inout std_logic;
+    \-ub sack\ : inout std_logic;
+    \-ub ssyn\ : inout std_logic;
+    \bbsy in\ : inout std_logic;
+    \bus ready\ : inout std_logic;
+    \bus req\ : out std_logic;
+    \db need ub\ : in std_logic;
+    \db ub granted\ : inout std_logic;
+    \db ub master\ : out std_logic;
+    \db ub selected\ : inout std_logic;
+    \lm ub granted\ : inout std_logic;
+    \lm ub master\ : out std_logic;
+    \lm ub selected\ : inout std_logic;
+    lmneedub : in std_logic;
+    \msyn in\ : inout std_logic;
+    \msyn out\ : inout std_logic;
+    \npg in\ : inout std_logic;
+    \npg1 in\ : inout std_logic;
+    \npg1 in t100\ : inout std_logic;
+    \npg1 out\ : inout std_logic;
+    \npg2 in\ : inout std_logic;
+    \npg2 in t100\ : inout std_logic;
+    \npg2 out\ : inout std_logic;
+    \sack in\ : inout std_logic;
+    \ssyn in\ : inout std_logic;
+    \ssyn out\ : inout std_logic
+  );
+end entity;

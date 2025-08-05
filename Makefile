@@ -48,8 +48,8 @@ USE_SOAP4          := 1
 
 ifeq ($(USE_SOAP4),1)
 SOAP               := $(BUILDDIR)/soap4
-SOAP_OPTIONS_CADR  := -o vhdl -e doc/ai/cadr/bodies.drw
-SOAP_OPTIONS_CADR1 := -o vhdl
+SOAP_OPTIONS_CADR  := -o vhdl -e doc/ai/cadr/bodies.drw -x cadr
+SOAP_OPTIONS_CADR1 := -o vhdl -x cadr1
 FIXSUDS_PY   	   := scripts/fix-suds.soap4.py
 else
 SOAP               := $(BUILDDIR)/soap
@@ -117,7 +117,7 @@ $(BUILDDIR)/soap4: soap/soap4.c soap/unpack4.c
 	$(CC) -std=gnu99 -Wall -Wextra -O0 -ggdb3 -I soap -o $@ -g $^
 
 # generate cadr_tb.vhd using SUDS and helper components
-$(CADR_TB_SRC): $(CREATE_TB_PY) cadr/cadr_book.vhd cadr/icmem_book.vhd helper/helper.vhd
+$(CADR_TB_SRC): $(CREATE_TB_PY) cadr/cadr_book.vhd cadr/icmem_book.vhd cadr1/busint_book.vhd helper/helper.vhd
 	mkdir -p $(BUILDDIR)
 	python3 $< \
 	--vhdl-files cadr/cadr_book.vhd cadr/icmem_book.vhd helper/helper.vhd \
@@ -358,21 +358,12 @@ endif
 # ===== START OF CADR1 SUDS AUTOGENERATION =====
 
 # these are removed because they have no digital schematic: 
-# caps, ctp, cubus, cxbus, dpadr, dpdata
+# blank, caps, ctp, cubus, cxbus, dpadr, dpdata
 BUSINT_BOOK := buspar bussel clm datctl \
 dbgin dbgout diag lmadr lmdata \
 rbuf reqerr reqlm reqtim requ requb rqsync \
 uba ubcyc ubd ubintc ubmap ubmast ubxa uprior \
 wbuf xa xapar xbd xd
-
-# this is the version only needed for UB, DEBUG, SPY, NO XBUS support
-# BUSINT_BOOK := diag dbgin dbgout lmadr lmdata reqerr uba ubd ubintc 
-# buspar
-# bussel rbuf wbuf
-# ubmap ubxa
-# clm datctl
-# reqlm reqtim requ requb rqsync
-# ubcyc ubmast uprior
 
 # generate all suds files
 .PHONY: regenerate-cadr1-suds
