@@ -1299,12 +1299,24 @@ format_signal_name(char *s)
 {
 	static char b[256];
 
+    // if there is a special character, escape the name
 	if (strchr(s, ' ') || s[0] == '-' || s[0] == '@' || strchr(s, '=') || strchr(s, '.') || strchr(s, '/') || strchr(s, '-')) {
 		sprintf(b, "\\%s\\", s);
-		return strlwr(b);
 	}
+    else 
+    {
+        sprintf(b, "%s", s);
+    }
 
-	return strlwr(s);
+    char* p = b;
+
+    // replace non-printable characters with '_'
+    while (*p) {
+        if ((*p < 32) || (*p > 126)) *p= '_';
+        p++;
+    }
+
+	return strlwr(b);
 }
 
 static void
@@ -1411,10 +1423,7 @@ dump_vhdl(
             page_name, 
             strlwr(refdes_lower));
 
-        DEBUG("component label '%s'\n", component_label);
-
-        // <PAGE>_<REFDES> : dip_<BODY_NAME> port map
-        DUMP_VHDL("%s : %s port map (", component_label, component_name);
+        DEBUG("component label '%s'\n", component_label);        
 
         bool printed_once = false;
 
@@ -1514,7 +1523,14 @@ dump_vhdl(
                 // think about a chip with multiple same gates, symbol is a gate
                 
                 // p<PIN_NUMBER> => <NAME_OF_PIN>
-                if (printed_once) DUMP_VHDL(", ");
+                if (printed_once) {
+                    DUMP_VHDL(", ");
+                } else {
+                    // before first print, print out the component label
+                    // this eliminates printing empty port maps
+                    // <PAGE>_<REFDES> : dip_<BODY_NAME> port map
+                    DUMP_VHDL("%s : %s port map (", component_label, component_name);
+                }
                 DUMP_VHDL("p%u => %s", point_of_pin->pin_name, net_name);
                 printed_once = true;
 
@@ -1522,7 +1538,7 @@ dump_vhdl(
 
         }
 
-		DUMP_VHDL(");\n");
+		if (printed_once) DUMP_VHDL(");\n");
 	}
 
 	DUMP_VHDL("end architecture;\n");

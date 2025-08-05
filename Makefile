@@ -70,12 +70,14 @@ endif
 
 # source files are found by wildcard
 CADR_SRCS   := $(wildcard cadr/*.vhd) $(wildcard $(CADR_SUDS_DIR)/*.vhd)
+CADR1_SRCS  := $(wildcard cadr1/*.vhd) $(wildcard $(CADR1_SUDS_DIR)/*.vhd)
 DIP_SRCS    := $(wildcard dip/*.vhd)
 HELPER_SRCS := $(wildcard helper/*.vhd)
 TTL_SRCS    := $(wildcard ttl/*.vhd)
 
 # exes mean these are testbenches so these will be compiled into executables also
 CADR_EXES   := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard cadr/*_tb.vhd)))
+CADR1_EXES  := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard cadr1/*_tb.vhd)))
 DIP_EXES    := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard dip/*_tb.vhd)))
 HELPER_EXES := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard helper/*_tb.vhd)))
 TTL_EXES    := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard ttl/*_tb.vhd)))
@@ -90,9 +92,8 @@ EXES := $(CADR_EXES) $(DIP_EXES) $(HELPER_EXES) $(TTL_EXES) $(CADR_TB_EXE)
 
 # ghdl import and make works weird, all the build process is weird
 # there is no sane way to build object files manually in this way
-# building (and linking) a tb will build object files, less worries like this
+# building (and linking) a tb will build object files
 # all objects and _tb executables are build into $(BUILDDIR)
-# because SRCS includes SUDS_SRCS, this will trigger building of cadr/suds/cadr_*_suds.vhd files
 
 $(BUILDDIR)/work-obj$(GHDLSTD).cf: $(SRCS)
 	mkdir -p $(BUILDDIR)
@@ -110,7 +111,7 @@ $(BUILDDIR)/soap: soap/soap.c soap/unpack.c
 	mkdir -p $(BUILDDIR)
 	$(CC) -std=gnu99 -Wall -Wextra -O0 -ggdb3 -o $@ -g $^
 
-# soap is used to generate _suds.vhd files
+# soap4 is used to generate _suds.vhd files
 $(BUILDDIR)/soap4: soap/soap4.c soap/unpack4.c
 	mkdir -p $(BUILDDIR)
 	$(CC) -std=gnu99 -Wall -Wextra -O0 -ggdb3 -I soap -o $@ -g $^
@@ -129,6 +130,10 @@ all: $(EXES)
 # run all except cadr_tb which might run forever
 .PHONY: check-cadr
 check-cadr: $(filter-out build/cadr_tb,$(CADR_EXES))
+	for TB_EXE in $^; do TB=$$TB_EXE make run-tb || exit; done
+
+.PHONY: check-cadr1
+check-cadr1: $(CADR1_EXES)
 	for TB_EXE in $^; do TB=$$TB_EXE make run-tb || exit; done
 
 .PHONY: check-dip
