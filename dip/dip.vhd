@@ -50,6 +50,12 @@ package dip is
     );
   end component;
 
+  component dip_dummy4 is port (       -- dummy4 [dummy4]
+    p2  : out std_logic;                -- vco cap2
+    p3  : out std_logic                 -- vco cap1
+    );
+  end component;
+
   component dip_2147 is 
     generic (fn : string := "");
     port (          -- am2147 [2147]
@@ -705,6 +711,25 @@ package dip is
     );
   end component;
 
+  component dip_74s288 is port (        -- 74s288 [74s288]
+    p1  : in  std_logic;                -- a0
+    p2  : in  std_logic;                -- a1
+    p3  : in  std_logic;                -- a2
+    p4  : in  std_logic;                -- a3
+    p5  : out std_logic;                -- d0
+    p6  : out std_logic;                -- d1
+    p7  : out std_logic;                -- d2
+    p8  : in  std_logic;                -- vcc
+    p9  : in  std_logic;                -- gnd
+    p10 : out std_logic;                -- d3
+    p11 : out std_logic;                -- d4
+    p12 : out std_logic;                -- d5
+    p13 : out std_logic;                -- d6
+    p14 : out std_logic;                -- d7
+    p15 : in  std_logic                 -- a4
+    );
+  end component;
+
   component dip_74s32 is port (         -- sn7432 [74s32]
     p1  : in  std_logic;                -- g1a
     p2  : in  std_logic;                -- g1b
@@ -998,6 +1023,16 @@ package dip is
     p17 : inout std_logic;              -- r17
     p18 : inout std_logic;              -- r18
     p19 : inout std_logic               -- r19
+    );
+  end component;
+
+  component dip_sip180_390_8 is port (  -- sip180_390_8 [sip180/390-8]
+    p2 : inout std_logic;               -- r2
+    p3 : inout std_logic;               -- r3
+    p4 : inout std_logic;               -- r4
+    p5 : inout std_logic;               -- r5
+    p6 : inout std_logic;               -- r6
+    p7 : inout std_logic                -- r7
     );
   end component;
 
@@ -1319,6 +1354,50 @@ package dip is
     );
   end component;
 
+  component dip_74ls273 is port (      -- 74ls273 [74ls273]
+    p1  : in  std_logic;                -- clr
+    p2  : out std_logic;                -- q0
+    p3  : in  std_logic;                -- d0
+    p4  : in  std_logic;                -- d1
+    p5  : out std_logic;                -- q1
+    p6  : out std_logic;                -- q2
+    p7  : in  std_logic;                -- d2
+    p8  : in  std_logic;                -- gnd
+    p9  : out std_logic;                -- q3
+    p10 : in  std_logic;                -- vcc
+    p11 : in  std_logic;                -- clk
+    p12 : out std_logic;                -- q4
+    p13 : in  std_logic;                -- d3
+    p14 : in  std_logic;                -- d4
+    p15 : out std_logic;                -- q5
+    p16 : out std_logic;                -- q6
+    p17 : in  std_logic;                -- d5
+    p18 : in  std_logic;                -- d6
+    p19 : out std_logic;                -- q7
+    p20 : in  std_logic                 -- d7
+    );
+  end component;
+
+  component dip_74ls124 is port (      -- 74ls124 [74ls124]
+    p1  : in  std_logic;                -- c1a
+    p2  : in  std_logic;                -- c1b
+    p3  : out std_logic;                -- y1
+    p4  : in  std_logic;                -- r1/c1
+    p5  : in  std_logic;                -- r2/c2
+    p6  : out std_logic;                -- y2
+    p7  : in  std_logic;                -- c2b
+    p8  : in  std_logic;                -- gnd
+    p9  : in  std_logic;                -- c2a
+    p10 : in  std_logic;                -- disable2
+    p11 : out std_logic;                -- freq range2
+    p12 : in  std_logic;                -- disable1
+    p13 : out std_logic;                -- freq range1
+    p14 : in  std_logic;                -- vcc
+    p15 : in  std_logic;                -- enable2
+    p16 : in  std_logic                 -- enable1
+    );
+  end component;
+
   -- these aliases are only because these have different bodies in drw files
   -- they are exactly the same IC, just shown different visually in drw
   -- these are only required when soap is used
@@ -1333,8 +1412,9 @@ package dip is
   --alias dip_74s32w is dip_74s32;
   --alias dip_74s133o is dip_74s133;
 
-  -- this is used in both s and ls form
+  -- these are used in both s and ls form
   alias dip_74ls240 is dip_74s240;
+  alias dip_74ls374 is dip_74s374;
 
   -- this is only required when soap4 is used
   -- the component can be renamed if only soap4 is used
