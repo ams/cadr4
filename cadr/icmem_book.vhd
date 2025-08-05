@@ -418,7 +418,7 @@ package icmem_book is
     \-v1pe\             : out std_logic;
     aparok              : in  std_logic;
     \boot.trap\         : out std_logic;
-    \bus.power.reset l\ : out std_logic;
+    \-bus.power.reset\  : out std_logic;
     clk5                : in  std_logic;
     clk5a               : out std_logic;
     dparok              : in  std_logic;

@@ -35,7 +35,7 @@ entity cadr_olord2 is
     \-clk5\             : out std_logic;
     \-reset\            : out std_logic;
     reset               : out std_logic;
-    \bus.power.reset l\ : out std_logic;
+    \-bus.power.reset\  : out std_logic;
     \power reset a\     : out std_logic;
     \-upperhighok\      : in  std_logic;
     \-lowerhighok\      : out std_logic;
