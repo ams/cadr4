@@ -19,8 +19,8 @@ olord2_1a06 : dip_74s37 port map (p1 => \-mclk5\, p2 => \-mclk5\, p3 => mclk5a, 
 olord2_1a07 : dip_74s02 port map (p1 => highok, p2 => \-upperhighok\, p3 => \-lowerhighok\, p4 => \-boot\, p5 => net_03, p6 => net_02, p8 => \power reset a\, p9 => \prog.bus.reset\, p10 => \-bus.reset\, p11 => 'Z', p12 => 'Z', p13 => open);
 olord2_1a11 : dip_74s02 port map (p1 => \-clock reset b\, p2 => \power reset a\, p3 => net_00, p4 => \-clock reset a\, p5 => \power reset a\, p6 => net_00, p8 => gnd, p9 => \-power reset\, p10 => \power reset a\, p11 => 'Z', p12 => 'Z', p13 => open);
 olord2_1a18 : dip_74ls109 port map (p1 => \-boot\, p2 => srun, p3 => hi1, p4 => mclk5a, p5 => \-clock reset a\, p6 => open, p7 => \boot.trap\, p9 => open, p10 => open, p11 => 'Z', p12 => 'Z', p13 => 'Z', p14 => 'Z', p15 => 'Z');
-olord2_1a19 : dip_16dummy port map (p12 => \-power reset\, p13 => \-boot2\, p14 => \-boot1\, p15 => hi2, p16 => hi1);
-olord2_1a20 : dip_74ls14 port map (p1 => net_05, p2 => net_01, p3 => \-boot1\, p4 => net_03, p5 => \-boot2\, p6 => net_04, p8 => \-power reset\, p9 => net_01, p10 => open, p11 => 'Z', p12 => open, p13 => 'Z');
+olord2_1a19 : dip_16dummy port map (p1 => vcc, p2 => vcc, p3 => vcc, p4 => vcc, p5 => vcc, p7 => gnd, p8 => gnd, p9 => net_05, p10 => net_05, p12 => \-power reset\, p13 => \-boot2\, p14 => \-boot1\, p15 => hi2, p16 => hi1);
+olord2_1a20 : dip_74ls14 port map (p1 => 'Z', p2 => open, p3 => \-boot1\, p4 => net_03, p5 => \-boot2\, p6 => net_04, p8 => open, p9 => 'Z', p10 => open, p11 => 'Z', p12 => open, p13 => 'Z');
 olord2_1b10 : dip_74s04 port map (p1 => \-ldmode\, p2 => ldmode, p3 => 'Z', p4 => open, p5 => mclk5, p6 => \-mclk5\, p8 => \-clk5\, p9 => clk5, p10 => open, p11 => 'Z', p12 => net_00, p13 => \-busint.lm.reset\);
 olord2_1c07 : dip_74s00 port map (p1 => 'Z', p2 => 'Z', p3 => open, p4 => 'Z', p5 => 'Z', p6 => open, p8 => open, p9 => 'Z', p10 => 'Z', p11 => \-lowerhighok\, p12 => hi2, p13 => hi1);
 olord2_1c08 : dip_74s10 port map (p1 => 'Z', p2 => 'Z', p3 => 'Z', p4 => 'Z', p5 => 'Z', p6 => open, p8 => reset, p9 => \-boot\, p10 => \-clock reset b\, p11 => \-prog.reset\, p12 => open, p13 => 'Z');

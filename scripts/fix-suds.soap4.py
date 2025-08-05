@@ -288,45 +288,6 @@ def fix_suds_file(file_path, verbose=False, generic_mappings=None):
                 instantiations.append(inst)
                 instantiation_lines.append(i)
     
-    # Issue 1: Merge repeated designators
-    merged_instantiations = {}
-    
-    for inst in instantiations:
-        label = inst['label']
-        component = inst['component']
-        
-        if label in merged_instantiations:
-            # Check if component names match (resolve through aliases)
-            existing_component = merged_instantiations[label]['component']
-            existing_resolved, existing_def = resolve_component_name(existing_component, components, aliases)
-            current_resolved, current_def = resolve_component_name(component, components, aliases)
-            
-            if existing_resolved != current_resolved:
-                print(f"Error: Component mismatch for label {label}: {existing_component} (resolves to {existing_resolved}) vs {component} (resolves to {current_resolved})")
-                sys.exit(1)
-            
-            # Check for duplicate pins
-            for pin, signal in inst['ports'].items():
-                if pin in merged_instantiations[label]['ports']:
-                    print(f"Error: Duplicate pin p{pin} for label {label}")
-                    sys.exit(1)
-                merged_instantiations[label]['ports'][pin] = signal
-            
-            # Merge generics (should be the same for same component)
-            for gen_name, gen_value in inst['generics'].items():
-                if gen_name in merged_instantiations[label]['generics']:
-                    if merged_instantiations[label]['generics'][gen_name] != gen_value:
-                        print(f"Error: Generic mismatch for {label}.{gen_name}: {merged_instantiations[label]['generics'][gen_name]} vs {gen_value}")
-                        sys.exit(1)
-                else:
-                    merged_instantiations[label]['generics'][gen_name] = gen_value
-        else:
-            merged_instantiations[label] = {
-                'component': component,
-                'ports': inst['ports'].copy(),
-                'generics': inst['generics'].copy()
-            }
-    
     # Apply generic mappings from file
     if page_name in generic_mappings:
         page_mappings = generic_mappings[page_name]
@@ -334,15 +295,22 @@ def fix_suds_file(file_path, verbose=False, generic_mappings=None):
             # Construct full label name by combining page name with label
             full_label = f"{page_name}_{label}"
             
-            if full_label in merged_instantiations:
+            # Find the instantiation with matching label
+            target_inst = None
+            for inst in instantiations:
+                if inst['label'] == full_label:
+                    target_inst = inst
+                    break
+            
+            if target_inst:
                 # Check if the component supports generics
-                component = merged_instantiations[full_label]['component']
+                component = target_inst['component']
                 resolved_name, component_def = resolve_component_name(component, components, aliases)
                 has_generics = component_def['has_generics'] if component_def else False
                 
                 if has_generics:
                     # Add fn generic mapping
-                    merged_instantiations[full_label]['generics']['fn'] = f'"{fn_value}"'
+                    target_inst['generics']['fn'] = f'"{fn_value}"'
                     if verbose:
                         print(f"Applied generic mapping: {page_name}.{label} fn => \"{fn_value}\"")
                 else:
@@ -350,15 +318,16 @@ def fix_suds_file(file_path, verbose=False, generic_mappings=None):
                     print(f"Cannot apply generic mapping: {page_name}.{label} fn => \"{fn_value}\"")
                     sys.exit(1)
             else:
+                available_labels = [inst['label'] for inst in instantiations]
                 print(f"Error: Label '{label}' not found in page '{page_name}' for generic mapping")
-                print(f"Full label '{full_label}' not found. Available labels in page '{page_name}': {', '.join(sorted(merged_instantiations.keys()))}")
+                print(f"Full label '{full_label}' not found. Available labels in page '{page_name}': {', '.join(sorted(available_labels))}")
                 sys.exit(1)
     elif generic_mappings and verbose:
         available_pages = ', '.join(sorted(generic_mappings.keys()))
         print(f"Note: No mappings found for page '{page_name}'. Available pages in mapping file: {available_pages}")
     
-    # Issue 3: Add missing port terminations
-    for label, inst in merged_instantiations.items():
+    # Add missing port terminations
+    for inst in instantiations:
         component = inst['component']
         
         # Resolve component name through aliases if necessary for port lookup
@@ -401,8 +370,8 @@ def fix_suds_file(file_path, verbose=False, generic_mappings=None):
         result_lines.extend(signal_assignments)
     
     # Add component instantiations
-    for label in sorted(merged_instantiations.keys()):
-        inst = merged_instantiations[label]
+    for inst in sorted(instantiations, key=lambda x: x['label']):
+        label = inst['label']
         component = inst['component']
         ports = inst['ports']
         generics = inst['generics']

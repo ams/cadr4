@@ -103,6 +103,9 @@ struct body_s {
     // not-parsed
     // refdes is genearated not parsed
 	char refdes[5];
+
+    // used when dumping vhdl
+    bool vhdl_dumped;
 };
 
 struct set_center_s {

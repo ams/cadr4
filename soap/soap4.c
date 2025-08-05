@@ -1237,51 +1237,56 @@ dump_vhdl(
 
 	for (size_t i = 0; i < bodies_count; i++) {
 
-        struct body_s *b = &bodies[i];
+        struct body_s *reference_body = &bodies[i];
 
-        DEBUG_ID("body id", b->id);
+        if (reference_body->id == 0) continue;
+        if (reference_body->vhdl_dumped) continue;
 
-        if (b->id == 0) continue;
-        if (b->name_of_body_def == NULL) continue;
-        if (b->name_of_body_def[0] == 0) continue;
-        if (b->refdes[0] == 0) continue;
+        char *current_refdes = reference_body->refdes;
 
-        DEBUG("body refdes '%s'\n", b->refdes);
-        DEBUG("body def name '%s'\n", b->name_of_body_def);
+        DEBUG("current refdes '%s'\n", current_refdes);
 
-        struct body_def_s *bd = find_body_def(b->name_of_body_def);
-        if (bd == NULL) {
-            DEBUG("body def not found: '%s'\n", b->name_of_body_def);
+        struct body_def_s *current_body_def = find_body_def(
+            reference_body->name_of_body_def);
+
+        if (current_body_def == NULL) {
+            DEBUG("body def not found: '%s'\n", 
+                reference_body->name_of_body_def);
             DEBUG("did you forget to use -e option?\n");
             exit(1);
         }
 
-        struct prop_s *diptype_prop = find_prop(bd->props, bd->prop_count, "DIPTYPE");
-        assert (diptype_prop != NULL);
+        DEBUG("current body def name '%s'\n", current_body_def->name);
+
+        struct prop_s *diptype_prop = find_prop(
+                current_body_def->props, 
+                current_body_def->prop_count, 
+                "DIPTYPE");
+            assert (diptype_prop != NULL);
 
         DEBUG("body def diptype '%s'\n", diptype_prop->value);
 
         // component is dip_<name>
-		char component_name[64];
+        char component_name[64];            
         char *diptype_lower = managed_strdup(diptype_prop->value);
         assert (strlen(diptype_lower) < 32);
         snprintf(component_name, LEN(component_name), "dip_%s", 
-            strlwr(diptype_lower));            
+            strlwr(diptype_lower));
 
-		// replace / and - with _ in the dip file
-		// for example dip_sip220/330-8 becomes dip_sip220_330_8
-		char* pcomponent_name = component_name;
-		while (*pcomponent_name != '\0') {
-			if (*pcomponent_name == '/') *pcomponent_name = '_';
-			if (*pcomponent_name == '-') *pcomponent_name = '_';
-			pcomponent_name++;
-		}
+        // replace / and - with _ in the dip file
+        // for example dip_sip220/330-8 becomes dip_sip220_330_8
+        char* pcomponent_name = component_name;
+        while (*pcomponent_name != '\0') {
+            if (*pcomponent_name == '/') *pcomponent_name = '_';
+            if (*pcomponent_name == '-') *pcomponent_name = '_';
+            pcomponent_name++;
+        }
 
         DEBUG("component name '%s'\n", component_name);
 
         // component instanatiation label is <PAGE>_<REFDES>
         char component_label[64];
-        char *refdes_lower = managed_strdup(b->refdes);
+        char *refdes_lower = managed_strdup(current_refdes);
         assert (strlen(page_name) < 32);
         assert (strlen(refdes_lower) < 32);
         snprintf(component_label, LEN(component_label), "%s_%s", 
@@ -1291,52 +1296,80 @@ dump_vhdl(
         DEBUG("component label '%s'\n", component_label);
 
         // <PAGE>_<REFDES> : dip_<BODY_NAME> port map
-		DUMP_VHDL("%s : %s port map (", component_label, component_name);
+        DUMP_VHDL("%s : %s port map (", component_label, component_name);
 
         bool printed_once = false;
-        
-        // there is a need for tracing from a body def pin to anything it can 
-        // reach through points
 
-        for (size_t j = 0; j < bd->pin_count; j++) {
+        for (size_t k = 0; k < bodies_count; k++) {
 
-            struct pin_s *pin = &bd->pins[j];
+            struct body_s *b = &bodies[k];
 
-            DEBUG_ID("pin id", pin->id);
+            if (strcmp(current_refdes, b->refdes) != 0) continue;
+            if (b->vhdl_dumped) continue;
 
-            struct point_s *point_of_pin = find_point(pin->id, b->id);
+            b->vhdl_dumped = true;
 
-            if (point_of_pin == NULL) {
-                DEBUG("point of pin not found: %u, %u, skipping\n", pin->id, b->id);
-                continue;
+            DEBUG_ID("body id", b->id);
+
+            if (b->id == 0) continue;
+            if (b->name_of_body_def == NULL) continue;
+            if (b->name_of_body_def[0] == 0) continue;
+            if (b->refdes[0] == 0) continue;
+
+            DEBUG("body refdes '%s'\n", b->refdes);
+            DEBUG("body def name '%s'\n", b->name_of_body_def);
+
+            if (strcmp(current_body_def->name, b->name_of_body_def) != 0) {
+                DEBUG("body def name mismatch: '%s' != '%s'\n", 
+                    current_body_def->name, 
+                    b->name_of_body_def);
             }
-
-            DEBUG_ID_PAIR("point of pin id", point_of_pin->id);
-
-            // if there is no name, it means there is no net name
-            // this means a pin is directly connected to another pin
-            if (point_of_pin->name == NULL) {
-                DEBUG("point of pin has no name\n");
-                assert(0);
-            }
-
-            char *net_name = format_signal_name(point_of_pin->name);
-
-            // skip nc nets
-            if (strcmp(net_name, "nc") == 0) {
-                DEBUG("point of pin has name 'nc', skipping\n");
-                continue;
-            }
-
-            // it is important to use the name at point_of_pin and 
-            // not the name of the pin because a single symbol is instantiated
-            // with different pin names (e.g. 123 first, then 456)
-            // think about a chip with multiple same gates, symbol is a gate
             
-            // p<PIN_NUMBER> => <NAME_OF_PIN>
-            if (printed_once) DUMP_VHDL(", ");
-            DUMP_VHDL("p%u => %s", point_of_pin->pin_name, net_name);
-            printed_once = true;
+            // there is a need for tracing from a body def pin to anything it can 
+            // reach through points
+
+            for (size_t j = 0; j < current_body_def->pin_count; j++) {
+
+                struct pin_s *pin = &current_body_def->pins[j];
+
+                DEBUG_ID("pin id", pin->id);
+
+                struct point_s *point_of_pin = find_point(pin->id, b->id);
+
+                if (point_of_pin == NULL) {
+                    DEBUG("point of pin not found: %u, %u, skipping\n", 
+                        pin->id, b->id);
+                    continue;
+                }
+
+                DEBUG_ID_PAIR("point of pin id", point_of_pin->id);
+
+                // if there is no name, it means there is no net name
+                // this means a pin is directly connected to another pin
+                if (point_of_pin->name == NULL) {
+                    DEBUG("point of pin has no name\n");
+                    assert(0);
+                }
+
+                char *net_name = format_signal_name(point_of_pin->name);
+
+                // skip nc nets
+                if (strcmp(net_name, "nc") == 0) {
+                    DEBUG("point of pin has name 'nc', skipping\n");
+                    continue;
+                }
+
+                // it is important to use the name at point_of_pin and 
+                // not the name of the pin because a single symbol is instantiated
+                // with different pin names (e.g. 123 first, then 456)
+                // think about a chip with multiple same gates, symbol is a gate
+                
+                // p<PIN_NUMBER> => <NAME_OF_PIN>
+                if (printed_once) DUMP_VHDL(", ");
+                DUMP_VHDL("p%u => %s", point_of_pin->pin_name, net_name);
+                printed_once = true;
+
+            }
 
         }
 

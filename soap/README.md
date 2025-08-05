@@ -36,13 +36,19 @@ The main and actually only purpose of soap4 is to output a VHDL file given a drw
 
 It also comes with soap4.h for the struct definitions.
 
-The differences are:
+It has one exceptional hack, for BUSINT CABLE TERMINATION (bcterm) drw, because this file incorrectly has duplicate reference designators. The duplicates are changed to 1B16, 1B21 and 1B26.
 
-- soap was not using body defs and outputing VHDL only based on points, soap4 is using body defs (hence requires the library also)
+The differences from soap are:
 
-- soap4 uses DIPTYPE prop, hence no need for aliases in dip.vhd
+- soap4 uses DIPTYPE prop, hence there is no need for aliases in dip.vhd.
 
-- it handles the internal signals automatically, creates an internal signal and connects the pins to this signal.
+- soap4 handles the internal signals (one pin of a component is connected to another pin of a component) automatically. It creates an internal signal with a random name starting with `net_` and connects the pins to this internal signal. Basically `net_` becomes the net name for unnamed nets.
+
+- soap4 handles merging bodies belonging to a single reference designator. It only outputs one component instantiation.
+
+Some cases not handled are:
+
+- Another name for the same net (for example -TPW60 = -TPDONE in CLOCK1) is not handled, this should be an alias but it also depends on which of these are driving or which is declared as port.
 
 ## resources
 

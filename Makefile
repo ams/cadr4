@@ -313,16 +313,21 @@ else ifeq ($(PAGE),clock2)
 # also change \-tpw70\ that resets the TPWP signal to \-tpw45\ to keep it within the cycle
 	sed $(SEDOPTIONS) 's/\\machruna l\\/\\-machruna\\/g' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
 ifeq ($(USE_SOAP4),1)
-	sed $(SEDOPTIONS) 's/clock2_1c06.*p10 => \\-tpw70\\/clock2_1c06 : dip_74s10 port map (p8 => net_00, p9 => \\-clock reset b\\, p10 => \\-tpw45\\, p11 => net_03);/' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
+	sed $(SEDOPTIONS) 's/clock2_1c06.*p10 => \\-tpw70\\/clock2_1c06 : dip_74s10 port map (p4 => \\-tpr25\\, p3 => \\-tptse\\, p5 => \\-clock reset b\\, p6 => tptse, p1 => \\-tprend\\, p2 => tpclk, p13 => \\-clock reset b\\, p12 => \\-tpclk\\, p10 => \\-tpw45\\, p11 => net_03, p9 => \\-clock reset b\\, p8 => net_00);/' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
 else
 	sed $(SEDOPTIONS) 's/clock2_1c06.*p10 => \\-tpw70\\/clock2_1c06 : dip_74s10 port map (p8 => \\@1c07,p9\\, p9 => \\-clock reset b\\, p10 => \\-tpw45\\, p11 => \\@1c07,p8\\);/' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
-endif	
+endif
+# remove two inverters after dummy and drive -power reset directly from dummy
 else ifeq ($(PAGE),olord2)
-# modify olord2_1a19 port map
-# remove two inverters from @1a19,p12 to -power reset, -power reset is directly driven by @1a19,p12
+ifeq ($(USE_SOAP4),1)
+# change dip_dummy to dip_16dummy
+	sed $(SEDOPTIONS) 's/olord2_1a19.*/olord2_1a19 : dip_16dummy port map (p16 => hi1, p15 => hi2, p14 => \\-boot1\\, p13 => \\-boot2\\, p12 => \\-power reset\\, p10 => net_05, p9 => net_05, p8 => gnd, p7 => gnd, p5 => vcc, p4 => vcc, p3 => vcc, p2 => vcc, p1 => vcc);/' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
+	sed $(SEDOPTIONS) 's/olord2_1a20.*/olord2_1a20 : dip_74ls14 port map (p6 => net_04, p5 => \\-boot2\\, p4 => net_03, p3 => \\-boot1\\);/' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd	
+else
 	sed $(SEDOPTIONS) 's/olord2_1a19.*/olord2_1a19 : dip_16dummy port map (p12 => \\-power reset\\, p13 => \\-boot2\\, p14 => \\-boot1\\, p15 => hi2, p16 => hi1);/g' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
 	sed $(SEDOPTIONS) '/olord2_1a20 : dip_74ls14 port map (p2 => \\@1a20,p9\\);/d' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
 	sed $(SEDOPTIONS) '/olord2_1a20 : dip_74ls14 port map (p8 => \\-power reset\\, p9 => \\@1a20,p2\\);/d' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
+endif	
 else ifeq ($(PAGE),pctl)
 ifeq ($(CADR4_TILONCONSOLE),1)
 # replace til309 components with 5x_til309 component
