@@ -1339,10 +1339,12 @@ format_signal_name(char *s)
 static void
 dump_vhdl(
     const char *page_name, 
-    const char *architecture_name, 
+    const char *architecture_name,
+    const char *entity_prefix,
     const char *entity_name)
 {
-    DEBUG("DUMP_VHDL('%s', '%s', '%s')\n", page_name, architecture_name, entity_name);
+    DEBUG("DUMP_VHDL('%s', '%s', '%s', '%s')\n", 
+        page_name, architecture_name, entity_prefix, entity_name);
 
     if (trailer->title_line_2 != NULL && trailer->title_line_2[0] != 0) {
 
@@ -1366,8 +1368,9 @@ dump_vhdl(
     DUMP_VHDL("use work.misc.all;\n");
     DUMP_VHDL("\n");
 
-	DUMP_VHDL("architecture %s of cadr_%s is\n", 
+	DUMP_VHDL("architecture %s of %s_%s is\n", 
         architecture_name,
+        entity_prefix,
         entity_name);
 
     // no need to format these, they are net_XX format
@@ -1571,9 +1574,10 @@ dump_vhdl(
 static void
 usage(char *argv[])
 {
-	fprintf(stderr, "usage: %s [-d] [-p] [-e <suds library file>] [-o <raw|vhdl|wide>] <suds file>\n", argv[0]);
+	fprintf(stderr, "usage: %s [-d] [-p] [-e <suds library file>] [-o <raw|vhdl|wide>] -x <entity prefix> <suds file>\n", argv[0]);
 	fprintf(stderr, "-d       enable debug (stderr)\n");
     fprintf(stderr, "-p       enable debug parsing (stderr)\n");
+    fprintf(stderr, "-x       entity prefix\n");
     fprintf(stderr, "-e       also load body definitions from <suds library file>\n");
     fprintf(stderr, "-o raw   dump raw 18-bit words (stdout)\n");
     fprintf(stderr, "-o vhdl  dump VHDL (stdout)\n");
@@ -1592,14 +1596,18 @@ int main(int argc, char *argv[])
     char *dump_format = NULL;
     int dump_raw_flag = 0; // 0 = no, 1 = raw, 2 = wide
     int dump_vhdl_flag = 0; // 0 = no, 1 = vhdl
+    char *entity_prefix = NULL;
 
-	while ((c = getopt(argc, argv, "dpe:o:")) != -1) {
+	while ((c = getopt(argc, argv, "dpx:e:o:")) != -1) {
 		switch (c) {
             case 'd':
                 debug++;
                 break;
             case 'p':
                 debug_parsing++;
+                break;
+            case 'x':
+                entity_prefix = managed_strdup(optarg);
                 break;
             case 'e':
                 library_suds_filename = managed_strdup(optarg);
@@ -1676,7 +1684,7 @@ int main(int argc, char *argv[])
             assign_anonymous_net_names();
             const char *architecture_name = "suds";
             // entity name is as same as the page name
-            dump_vhdl(page_name, architecture_name, page_name);
+            dump_vhdl(page_name, architecture_name, entity_prefix, page_name);
         }
 
         free_managed_strdups();
