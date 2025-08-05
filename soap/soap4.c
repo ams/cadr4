@@ -446,6 +446,8 @@ parse_body_defs(void)
 
             struct pin_s *pin = &bd->pins[bd->pin_count++];
 
+            pin->ignore_when_dumping_vhdl = false;
+
 			read_signed_pair(&pin->loc_of_pin);
             DEBUG_XY("\t\t\tloc_of_pin", pin->loc_of_pin);
 
@@ -462,6 +464,16 @@ parse_body_defs(void)
             DEBUG_HALF_WORD("\t\t\tpin name", pin->name);
 
             DEBUG("\t\t/BODY_DEF_PIN(%zu)\n", half_words_idx);
+
+            // if pin->name is used before, ignore this pin when dumping vhdl
+            if (bd->pin_count > 1) {
+                for (size_t i = 0; i < bd->pin_count-1; i++) {
+                    struct pin_s *pin2 = &bd->pins[i];
+                    if (pin->name == pin2->name) {
+                        pin->ignore_when_dumping_vhdl = true;
+                    }
+                }
+            }
 		}
 
 		while (1) {
@@ -1045,43 +1057,61 @@ assign_same_ids_of_points(void)
 {
     DEBUG("assign_same_ids_of_points\n");
     for (size_t i = 0; i < bodies_count; i++) {
+
         struct body_s *body = &bodies[i];
+
         if (should_skip_body(body)) continue;
+
         struct body_def_s *body_def = find_body_def(body->name_of_body_def);
+
         if (body_def == NULL) {
             DEBUG("cannot find body def name:'%s', skipping\n", 
                 body->name_of_body_def);
             DEBUG("did you forget to use -e option?\n");
             assert (0);
         }
+
         DEBUG("finding same id pins in body id:%u, refdes:'%s', body def name:'%s'\n", 
             body->id,
             body->refdes,
             body_def->name);
+
         for (size_t j = 0; j < body_def->pin_count; j++) {
+
             struct pin_s *pin1 = &body_def->pins[j];
+
             DEBUG("checking pin1 id:%u, name:%u\n", pin1->id, pin1->name);
+
             struct point_s *point1 = find_point(pin1->id, body->id);
+
             if (point1 == NULL) {
                 DEBUG("cannot find point1, skipping\n");
                 continue;
             }
+
             assert (point1 != NULL);
+
+            // compare pin1 to all other pins if any has same name
             for (size_t k = 0; k < body_def->pin_count; k++) {
+
+                // skip its own
                 if (j == k) continue;
+
                 struct pin_s *pin2 = &body_def->pins[k];
+
                 DEBUG("checking pin2 id:%u, name:%u\n", pin2->id, pin2->name);
+
                 if (pin1->name == pin2->name) {
+
                     struct point_s *point2 = find_point(pin2->id, body->id);
-                    if (point2 == NULL) {
-                        DEBUG("pin1=pin2 but cannot find point2, skipping\n");
-                        continue;
-                    }
+
                     assert (point2 != NULL);
+
                     // double check there is only one such thing
                     assert (point1->same_id.x == 0 && point1->same_id.y == 0);
                     point1->same_id.x = point2->id.x;
-                    point1->same_id.y = point2->id.y;
+                    point1->same_id.y = point2->id.y;   
+
                 }
             }
         }
@@ -1505,6 +1535,11 @@ dump_vhdl(
                 struct pin_s *pin = &bd->pins[j];
 
                 DEBUG_ID("pin id", pin->id);
+
+                if (pin->ignore_when_dumping_vhdl) {
+                    DEBUG("pin is ignored when dumping vhdl\n");
+                    continue;
+                }
 
                 struct point_s *point_of_pin = find_point(pin->id, b->id);
 

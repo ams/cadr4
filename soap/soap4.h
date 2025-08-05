@@ -68,6 +68,9 @@ struct pin_s {
     HALF_WORD id;
     HALF_WORD pos;
     HALF_WORD name;
+
+    // used when dumping vhdl
+    bool ignore_when_dumping_vhdl;
 };
 
 struct body_def_s {
