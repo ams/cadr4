@@ -87,8 +87,8 @@ CADR_TB_SRC := build/cadr_tb.vhd
 CADR_TB_EXE := build/cadr_tb
 
 # all sources and executables
-SRCS := $(CADR_SRCS) $(DIP_SRCS) $(HELPER_SRCS) $(TTL_SRCS) $(CADR_TB_SRC)
-EXES := $(CADR_EXES) $(DIP_EXES) $(HELPER_EXES) $(TTL_EXES) $(CADR_TB_EXE)
+SRCS := $(CADR_SRCS) $(CADR1_SRCS) $(DIP_SRCS) $(HELPER_SRCS) $(TTL_SRCS) $(CADR_TB_SRC)
+EXES := $(CADR_EXES) $(CADR1_EXES) $(DIP_EXES) $(HELPER_EXES) $(TTL_EXES) $(CADR_TB_EXE)
 
 # ghdl import and make works weird, all the build process is weird
 # there is no sane way to build object files manually in this way
@@ -149,7 +149,7 @@ check-ttl: $(TTL_EXES)
 	for TB_EXE in $^; do TB=$$TB_EXE make run-tb || exit; done
 
 .PHONY: check
-check: check-cadr check-dip check-helper check-ttl
+check: check-cadr check-cadr1 check-dip check-helper check-ttl
 
 # below is smart handling of wave opt file
 # if file does not exist, it is not used
@@ -264,7 +264,7 @@ iram31 iram32 iram33 spy0 spy4 stat
 .PHONY: regen
 regen: 
 	make regenerate-fast-promh-cadr-suds
-#make regenerate-cadr1-suds
+	make regenerate-cadr1-suds
 
 .PHONY: regenerate-fast-promh-cadr-suds
 regenerate-fast-promh-cadr-suds:
@@ -364,6 +364,15 @@ dbgin dbgout diag lmadr lmdata \
 rbuf reqerr reqlm reqtim requ requb rqsync \
 uba ubcyc ubd ubintc ubmap ubmast ubxa uprior \
 wbuf xa xapar xbd xd
+
+# this is the version only needed for UB, DEBUG, SPY, NO XBUS support
+# BUSINT_BOOK := diag dbgin dbgout lmadr lmdata reqerr uba ubd ubintc 
+# buspar
+# bussel rbuf wbuf
+# ubmap ubxa
+# clm datctl
+# reqlm reqtim requ requb rqsync
+# ubcyc ubmast uprior
 
 # generate all suds files
 .PHONY: regenerate-cadr1-suds

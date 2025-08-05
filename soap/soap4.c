@@ -78,12 +78,12 @@ static int debug_parsing = 0;
 
 #define DEBUG_ID_PAIR(s, id) \
     DEBUG("%s id(%u, %u) (#o%06o, #o%06o)\n", s, \
-        id.x, id.y, id.x, id.y)
+        id.x, id.y, id.x & 0777777, id.y & 0777777)
 
 #define DEBUG_ID(s, id) \
     DEBUG("%s id(%u) (#o%06o)\n", s, id, id)
 
-#define DEBUG_XY(s, xy) DEBUG("%s xy(%d, %d)\n", s, xy.x, xy.y)
+#define DEBUG_XY(s, xy) DEBUG("%s xy(%d, %d) (#o%06o, #o%06o)\n", s, xy.x, xy.y, xy.x & 0777777, xy.y & 0777777)
 
 static void
 DEBUG_BITS(char *s, HALF_WORD bits)
@@ -706,6 +706,17 @@ parse_points(void)
                 read_signed_pair(&pnt->const_offset);
             }
         }
+        else
+        {
+            // encountered this in cadr1/dbgin.drw
+            // I dont know what this is
+            // in soap.c 011000 and 001000 are handled this way
+            if (pnt->bits == 011000) {
+                DEBUG("\t\tbits 011000, reading 2 extra words\n");
+                read_word();
+                read_word();
+            }
+        }
 
         DEBUG("\t/POINT(%zu)\n", half_words_idx);
 
@@ -998,20 +1009,26 @@ static void
 apply_hacks(void)
 {
     DEBUG("apply_hacks\n");
-    // this is because bcterm.drw has duplicate refdeses for different bodies
+    // because bcterm.drw has duplicate refdeses for different bodies
     if (strcmp(trailer->title_line_2, "BUSINT CABLE TERMINATION") == 0) {
         find_body(7)->refdes[3] = '6'; // 1B15 => 1B16
         find_body(10)->refdes[3] = '1'; // 1B20 => 1B21
         find_body(12)->refdes[3] = '6'; // 1B25 => 1B26
     }
-    // because reqtim.drw has one duplicate refdes for different bodies
+    // reqtim.drw has one duplicate refdes for different bodies
     else if (strcmp(trailer->title_line_2, "XBUS & UNIBUS TIMEOUT") == 0) {
         find_body(18)->refdes[3] = '4'; // 0B03 => 0B04
     }
-    // because uprior.drw has duplicate refdeses for different bodies
+    // uprior.drw has duplicate refdeses for different bodies
     else if (strcmp(trailer->title_line_2, "UNIBUS BUS GRANT") == 0) {
         find_body(20)->refdes[3] = '7'; // 0F13 => 0F17 (F14,F15 is used)
         find_body(24)->refdes[3] = '8'; // 0F14 => 0F18 (F14,F15 is used)
+    }
+    // reqerr.drw has a space in dip type value '74 276' 
+    else if (strcmp(trailer->title_line_2, "ERROR LOGIC") == 0) {
+        struct body_def_s *bd = find_body_def("74276");
+        struct prop_s *prop = find_prop(bd->props, bd->prop_count, "DIPTYPE");
+        prop->value = managed_strdup("74276");
     }
 }
 
@@ -1504,6 +1521,9 @@ dump_vhdl(
                 }
 
                 char *net_name = format_signal_name(point_of_pin->name);
+
+                assert (net_name != NULL);
+                assert (net_name[0] != 0);
 
                 // skip nc nets
                 if (strcmp(net_name, "nc") == 0) {
