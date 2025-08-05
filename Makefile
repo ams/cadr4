@@ -278,6 +278,7 @@ ifndef FIXSUDS_GENERICMAP
 endif
 # removing existing ones because new ones can be added or existing ones can be removed
 	$(RM) $(CADR_SUDS_DIR)/cadr_*_suds.vhd
+	mkdir -p $(CADR_SUDS_DIR)
 	for PAGE in $(CADR_BOOK) $(ICMEM_BOOK); do FIXSUDS_GENERICMAP=$(FIXSUDS_GENERICMAP) PAGE=$$PAGE make regenerate-cadr-suds-page || exit; done
 
 # generate suds file for a single page
@@ -310,11 +311,11 @@ endif
 else ifeq ($(PAGE),clock2)
 # modify clock2_1c10, change \machruna l\ to \-machruna\
 # this seems to be a mistake in drw or soap, in wlr the 1c10 is connected to -machruna
-# also change \-tpw70\ that resets the TPWP signal to \-tpw45\ to keep it within the cycle
-	sed $(SEDOPTIONS) 's/\\machruna l\\/\\-machruna\\/g' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
+# also change \-tpw70\ that resets the TPWP signal to \-tpw45\ to keep it within the cycle	
 ifeq ($(USE_SOAP4),1)
 	sed $(SEDOPTIONS) 's/clock2_1c06.*p10 => \\-tpw70\\/clock2_1c06 : dip_74s10 port map (p4 => \\-tpr25\\, p3 => \\-tptse\\, p5 => \\-clock reset b\\, p6 => tptse, p1 => \\-tprend\\, p2 => tpclk, p13 => \\-clock reset b\\, p12 => \\-tpclk\\, p10 => \\-tpw45\\, p11 => net_03, p9 => \\-clock reset b\\, p8 => net_00);/' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
 else
+	sed $(SEDOPTIONS) 's/\\machruna l\\/\\-machruna\\/g' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
 	sed $(SEDOPTIONS) 's/clock2_1c06.*p10 => \\-tpw70\\/clock2_1c06 : dip_74s10 port map (p8 => \\@1c07,p9\\, p9 => \\-clock reset b\\, p10 => \\-tpw45\\, p11 => \\@1c07,p8\\);/' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
 endif
 # remove two inverters after dummy and drive -power reset directly from dummy
@@ -340,8 +341,10 @@ endif
 else ifeq ($(PAGE),source)
 # modify \destimod0 l\ and \iwrited l\ to -destimod0 and -iwrited
 # this seems to be a mistake in drw or soap, in wlr 3e05 is connected to -destimod0 and -iwrited
+ifneq ($(USE_SOAP4),1)
 	sed $(SEDOPTIONS) 's/\\destimod0 l\\/\\-destimod0\\/g' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
 	sed $(SEDOPTIONS) 's/\\iwrited l\\/\\-iwrited\\/g' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
+endif	
 endif
 	python3 $(FIXSUDS_PY) --generic-map $(FIXSUDS_GENERICMAP) $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
 
@@ -362,6 +365,7 @@ wbuf xa xapar xbd xd
 regenerate-cadr1-suds:
 # removing existing ones because new ones can be added or existing ones can be removed
 	$(RM) $(CADR1_SUDS_DIR)/cadr1_*_suds.vhd
+	mkdir -p $(CADR1_SUDS_DIR)
 	for PAGE in $(BUSINT_BOOK); do PAGE=$$PAGE make regenerate-cadr1-suds-page || exit; done
 
 # generate suds file for a single page
