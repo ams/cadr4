@@ -321,7 +321,7 @@ endif
 else ifeq ($(PAGE),olord2)
 ifeq ($(USE_SOAP4),1)
 # change dip_dummy to dip_16dummy
-	sed $(SEDOPTIONS) 's/olord2_1a19.*/olord2_1a19 : dip_16dummy port map (p16 => hi1, p15 => hi2, p14 => \\-boot1\\, p13 => \\-boot2\\, p12 => \\-power reset\\, p10 => net_05, p9 => net_05, p8 => gnd, p7 => gnd, p5 => vcc, p4 => vcc, p3 => vcc, p2 => vcc, p1 => vcc);/' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
+	sed $(SEDOPTIONS) 's/olord2_1a19.*/olord2_1a19 : dip_16dummy port map (p16 => hi1, p15 => hi2, p14 => \\-boot1\\, p13 => \\-boot2\\, p12 => \\-power reset\\);/' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
 	sed $(SEDOPTIONS) 's/olord2_1a20.*/olord2_1a20 : dip_74ls14 port map (p6 => net_04, p5 => \\-boot2\\, p4 => net_03, p3 => \\-boot1\\);/' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd	
 else
 	sed $(SEDOPTIONS) 's/olord2_1a19.*/olord2_1a19 : dip_16dummy port map (p12 => \\-power reset\\, p13 => \\-boot2\\, p14 => \\-boot1\\, p15 => hi2, p16 => hi1);/g' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd

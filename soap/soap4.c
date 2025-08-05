@@ -1359,6 +1359,12 @@ dump_vhdl(
                     continue;
                 }
 
+                // skip vcc nets
+                if (strcmp(net_name, "vcc") == 0) {
+                    DEBUG("point of pin has name 'vcc', skipping\n");
+                    continue;
+                }
+
                 // it is important to use the name at point_of_pin and 
                 // not the name of the pin because a single symbol is instantiated
                 // with different pin names (e.g. 123 first, then 456)
