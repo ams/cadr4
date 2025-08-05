@@ -998,11 +998,20 @@ static void
 apply_hacks(void)
 {
     DEBUG("apply_hacks\n");
-    // this is because bcterm.drw has a few errors
+    // this is because bcterm.drw has duplicate refdeses for different bodies
     if (strcmp(trailer->title_line_2, "BUSINT CABLE TERMINATION") == 0) {
         find_body(7)->refdes[3] = '6'; // 1B15 => 1B16
         find_body(10)->refdes[3] = '1'; // 1B20 => 1B21
         find_body(12)->refdes[3] = '6'; // 1B25 => 1B26
+    }
+    // because reqtim.drw has one duplicate refdes for different bodies
+    else if (strcmp(trailer->title_line_2, "XBUS & UNIBUS TIMEOUT") == 0) {
+        find_body(18)->refdes[3] = '4'; // 0B03 => 0B04
+    }
+    // because uprior.drw has duplicate refdeses for different bodies
+    else if (strcmp(trailer->title_line_2, "UNIBUS BUS GRANT") == 0) {
+        find_body(20)->refdes[3] = '7'; // 0F13 => 0F17 (F14,F15 is used)
+        find_body(24)->refdes[3] = '8'; // 0F14 => 0F18 (F14,F15 is used)
     }
 }
 
@@ -1347,33 +1356,37 @@ dump_vhdl(
 
         if (reference_body->vhdl_dumped) continue;
 
-        char *current_refdes = reference_body->refdes;
+        char *reference_refdes = reference_body->refdes;
 
-        DEBUG("current refdes '%s'\n", current_refdes);
+        DEBUG("reference refdes '%s'\n", reference_refdes);
 
-        struct body_def_s *current_body_def = find_body_def(
+        struct body_def_s *reference_body_def = find_body_def(
             reference_body->name_of_body_def);
 
-        if (current_body_def == NULL) {
-            DEBUG("body def not found: '%s'\n", 
+        if (reference_body_def == NULL) {
+            DEBUG("reference body def not found: '%s'\n", 
                 reference_body->name_of_body_def);
             DEBUG("did you forget to use -e option?\n");
             assert (0);
         }
 
-        DEBUG("current body def name '%s'\n", current_body_def->name);
+        DEBUG("reference body def name '%s'\n", reference_body_def->name);
 
-        struct prop_s *diptype_prop = find_prop(
-                current_body_def->props, 
-                current_body_def->prop_count, 
+        struct prop_s *reference_diptype_prop = find_prop(
+                reference_body_def->props, 
+                reference_body_def->prop_count, 
                 "DIPTYPE");
-            assert (diptype_prop != NULL);
 
-        DEBUG("body def diptype '%s'\n", diptype_prop->value);
+        if (reference_diptype_prop == NULL) {
+            DEBUG("reference diptype not found, skipping\n");
+            continue;
+        }
+
+        DEBUG("reference diptype '%s'\n", reference_diptype_prop->value);
 
         // component is dip_<name>
         char component_name[64];            
-        char *diptype_lower = managed_strdup(diptype_prop->value);
+        char *diptype_lower = managed_strdup(reference_diptype_prop->value);
         assert (strlen(diptype_lower) < 32);
         snprintf(component_name, LEN(component_name), "dip_%s", 
             strlwr(diptype_lower));
@@ -1391,7 +1404,7 @@ dump_vhdl(
 
         // component instanatiation label is <PAGE>_<REFDES>
         char component_label[64];
-        char *refdes_lower = managed_strdup(current_refdes);
+        char *refdes_lower = managed_strdup(reference_refdes);
         assert (strlen(page_name) < 32);
         assert (strlen(refdes_lower) < 32);
         snprintf(component_label, LEN(component_label), "%s_%s", 
@@ -1411,7 +1424,7 @@ dump_vhdl(
 
             if (should_skip_body(b)) continue;
 
-            if (strcmp(current_refdes, b->refdes) != 0) continue;
+            if (strcmp(reference_refdes, b->refdes) != 0) continue;
             if (b->vhdl_dumped) continue;
 
             b->vhdl_dumped = true;
@@ -1426,18 +1439,41 @@ dump_vhdl(
             DEBUG("body refdes '%s'\n", b->refdes);
             DEBUG("body def name '%s'\n", b->name_of_body_def);
 
-            if (strcmp(current_body_def->name, b->name_of_body_def) != 0) {
-                DEBUG("body def name mismatch: '%s' != '%s'\n", 
-                    current_body_def->name, 
-                    b->name_of_body_def);
+            // body def may mismatch due to visually different body defs
+            // but dip types should be the same if exists
+            struct body_def_s *bd = find_body_def(b->name_of_body_def);
+
+            if (bd == NULL) {
+                DEBUG("body def not found: '%s'\n", b->name_of_body_def);
+                DEBUG("did you forget to use -e option?\n");
+                assert (0);
+            }
+
+            struct prop_s *diptype_prop = find_prop(
+                bd->props, 
+                bd->prop_count, 
+                "DIPTYPE");
+
+            if (diptype_prop != NULL) {
+                if (
+                    strcmp(
+                        reference_diptype_prop->value, 
+                        diptype_prop->value) != 0) {
+
+                    DEBUG("body def diptype mismatch: ref:'%s' != '%s'\n", 
+                        reference_diptype_prop->value, 
+                        diptype_prop->value);
+
+                    assert (0);
+                }
             }
             
             // there is a need for tracing from a body def pin to anything it can 
             // reach through points
 
-            for (size_t j = 0; j < current_body_def->pin_count; j++) {
+            for (size_t j = 0; j < bd->pin_count; j++) {
 
-                struct pin_s *pin = &current_body_def->pins[j];
+                struct pin_s *pin = &bd->pins[j];
 
                 DEBUG_ID("pin id", pin->id);
 
