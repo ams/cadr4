@@ -641,3 +641,144 @@ Header template for files:
  - [X] Implement component
  - [X] Implement skeleton testbench
  - [X] Implement rudimentary testbench
+
+* TODO TTLs (CADR1) [0/16]
+** TODO dip_dm8838        -- dm8838 [dm8838] [1/5]
+ - [X] Store datasheet and upstream URL.
+   https://datasheet4u.com/pdf-down/D/M/8/DM8838-NationalSemiconductor.pdf
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO dip_26s10         -- 26s10 [26s10] [1/5]
+ - [X] Store datasheet and upstream URL.
+   https://www.ti.com/lit/ds/symlink/am26s10.pdf
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO dip_mtd100        -- mtd100 [mtd100] [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO dip_74ls27        -- sn74ls27 [74ls27] [1/5]
+ - [X] Store datasheet and upstream URL.
+   https://www.ti.com/lit/ds/symlink/sn74ls27.pdf
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO dip_74ls74        -- sn74ls74 [74ls74] [1/5]
+ - [X] Store datasheet and upstream URL.
+   https://www.ti.com/lit/ds/symlink/sn74ls74a.pdf
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO dip_74ls112       -- sn74ls112 [74ls112] [1/5]
+ - [X] Store datasheet and upstream URL.
+   https://www.ti.com/lit/ds/symlink/sn74ls112a.pdf
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO dip_74276         -- sn74276 [74276] [1/5]
+ - [X] Store datasheet and upstream URL.
+   https://rocelec.widen.net/view/pdf/hbx9rcxnhd/TXII-S-A0002212497-1.pdf
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO dip_8304          -- ic8304 [8304] [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO dip_29701         -- ic29701 [29701] [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO dip_74s38         -- 74s38 [74s38] [1/5]
+ - [X] Store datasheet and upstream URL.
+   https://www.ti.com/lit/ds/symlink/sn74ls38.pdf
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO dip_74ls163       -- 74ls163 [74ls163] [1/5]
+ - [X] Store datasheet and upstream URL.
+   https://web.mit.edu/pmagic/www/document/74ls163.pdf
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO dip_dummy4        -- dummy4 [dummy4] [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO dip_74s288         -- 74s288 [74s288] [1/5]
+ - [X] Store datasheet and upstream URL.
+   https://www.syntax.com.tw/upload/pdf/IC-74S288.pdf
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO dip_sip180_390_8   -- sip180_390_8 [sip180/390-8] [0/5]
+ - [ ] Store datasheet and upstream URL.
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO dip_74ls273       -- 74ls273 [74ls273] [1/5]
+ - [X] Store datasheet and upstream URL.
+   https://www.ti.com/lit/ds/symlink/sn74ls273.pdf
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
+** TODO dip_74ls124       -- 74ls124 [74ls124] [1/5]
+ - [X] Store datasheet and upstream URL.
+   https://www.ti.com/lit/ds/symlink/sn54s124.pdf
+ - [ ] Implement skeleton component.
+   All components should have on the first line a single line
+   description of the component.
+ - [ ] Implement component
+ - [ ] Implement skeleton testbench
+ - [ ] Implement rudimentary testbench
