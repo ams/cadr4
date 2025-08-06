@@ -42,6 +42,11 @@ CREATE_TB_PY	:= scripts/create-tb.py
 GENERATE_ALU_TESTDATA_PY := scripts/generate-alu-testdata.py
 SPLITHEX_PY  	:= scripts/split-hex.py
 CREATE_CADR1_TB_PY := scripts/create-cadr1-tb.py
+CREATE_ENTITY_FROM_SUDS_PY := scripts/create-entity-from-suds.py
+CREATE_PACKAGE_FROM_ENTITIES_PY := scripts/create-package-from-entities.py
+
+# other vars
+DIP_VHD := dip/dip.vhd
 
 # soap utility
 USE_SOAP4          := 1
@@ -289,7 +294,7 @@ endif
 # generate suds file for a single page
 # a few particular _suds.vhd require special handling and they are handled with if cases below
 .PHONY: regenerate-cadr-suds-page
-regenerate-cadr-suds-page: $(FIXSUDS_PY) $(CADR_DRWDIR)/$(PAGE).drw $(SOAP) dip/dip.vhd
+regenerate-cadr-suds-page: $(FIXSUDS_PY) $(CADR_DRWDIR)/$(PAGE).drw $(SOAP) $(DIP_VHD)
 ifndef PAGE
 	$(error PAGE is not set, run regenerate-fast-promh-cadr-suds or regenerate-promh9-cadr-suds)
 endif
@@ -372,15 +377,17 @@ regenerate-cadr1-suds:
 	$(RM) $(CADR1_SUDS_DIR)/cadr1_*_suds.vhd
 	mkdir -p $(CADR1_SUDS_DIR)
 	for PAGE in $(BUSINT_BOOK); do PAGE=$$PAGE make regenerate-cadr1-suds-page || exit; done
+	python3 $(CREATE_PACKAGE_FROM_ENTITIES_PY) -p cadr1/busint_book.vhd -e cadr1/cadr1_*.vhd
 
 # generate suds file for a single page
 .PHONY: regenerate-cadr1-suds-page
-regenerate-cadr1-suds-page: $(FIXSUDS_PY) $(CADR1_DRWDIR)/$(PAGE).drw $(SOAP) dip/dip.vhd
+regenerate-cadr1-suds-page: $(FIXSUDS_PY) $(CADR1_DRWDIR)/$(PAGE).drw $(SOAP) $(DIP_VHD)
 ifndef PAGE
 	$(error PAGE is not set, run regenerate-cadr1-suds)
 endif
 	$(SOAP) $(SOAP_OPTIONS_CADR1) $(CADR1_DRWDIR)/$(PAGE).drw > $(CADR1_SUDS_DIR)/cadr1_$(PAGE)_suds.vhd
 	python3 $(FIXSUDS_PY) $(CADR1_SUDS_DIR)/cadr1_$(PAGE)_suds.vhd
+	python3 $(CREATE_ENTITY_FROM_SUDS_PY) -o cadr1/cadr1_$(PAGE).vhd -d $(DIP_VHD) $(CADR1_SUDS_DIR)/cadr1_$(PAGE)_suds.vhd
 
 # ===== END OF CADR1 SUDS AUTOGENERATION =====
 

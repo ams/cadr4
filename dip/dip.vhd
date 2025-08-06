@@ -51,8 +51,10 @@ package dip is
   end component;
 
   component dip_dummy4 is port (       -- dummy4 [dummy4]
-    p2  : out std_logic;                -- vco cap2
-    p3  : out std_logic                 -- vco cap1
+    p1  : in std_logic; 
+    p2  : in std_logic;
+    p3  : out std_logic;
+    p4  : out std_logic
     );
   end component;
 

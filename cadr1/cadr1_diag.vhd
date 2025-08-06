@@ -1,49 +1,46 @@
--- CADR1_DIAG
--- Generated entity from suds architecture
-
 library ieee;
 use ieee.std_logic_1164.all;
 
 entity cadr1_diag is
   port (
-    \-select spy\ : inout std_logic;
-    \-spy read\ : out std_logic;
-    \-spy write\ : out std_logic;
-    \select spy\ : inout std_logic;
-    \spy 0\ : inout std_logic;
-    \spy 1\ : inout std_logic;
-    \spy 10\ : inout std_logic;
-    \spy 11\ : inout std_logic;
-    \spy 12\ : inout std_logic;
-    \spy 13\ : inout std_logic;
-    \spy 14\ : inout std_logic;
-    \spy 15\ : inout std_logic;
-    \spy 2\ : inout std_logic;
-    \spy 3\ : inout std_logic;
-    \spy 4\ : inout std_logic;
-    \spy 5\ : inout std_logic;
-    \spy 6\ : inout std_logic;
-    \spy 7\ : inout std_logic;
-    \spy 8\ : inout std_logic;
-    \spy 9\ : inout std_logic;
-    \ub reg write pulse\ : in std_logic;
-    ubrd : in std_logic;
-    ubwr : inout std_logic;
-    \udo 0\ : inout std_logic;
-    \udo 1\ : inout std_logic;
-    \udo 10\ : inout std_logic;
-    \udo 11\ : inout std_logic;
-    \udo 12\ : inout std_logic;
-    \udo 13\ : inout std_logic;
-    \udo 14\ : inout std_logic;
-    \udo 15\ : inout std_logic;
-    \udo 2\ : inout std_logic;
-    \udo 3\ : inout std_logic;
-    \udo 4\ : inout std_logic;
-    \udo 5\ : inout std_logic;
-    \udo 6\ : inout std_logic;
-    \udo 7\ : inout std_logic;
-    \udo 8\ : inout std_logic;
-    \udo 9\ : inout std_logic
+    \-select spy\   : in     std_logic;
+    \ub reg write pulse\ : in     std_logic;
+    spy0            : in     std_logic;
+    spy1            : in     std_logic;
+    spy10           : in     std_logic;
+    spy11           : in     std_logic;
+    spy12           : in     std_logic;
+    spy13           : in     std_logic;
+    spy14           : in     std_logic;
+    spy15           : in     std_logic;
+    spy2            : in     std_logic;
+    spy3            : in     std_logic;
+    spy4            : in     std_logic;
+    spy5            : in     std_logic;
+    spy6            : in     std_logic;
+    spy7            : in     std_logic;
+    spy8            : in     std_logic;
+    spy9            : in     std_logic;
+    ubrd            : in     std_logic;
+    ubwr            : in     std_logic;
+    udo0            : in     std_logic;
+    udo1            : in     std_logic;
+    udo10           : in     std_logic;
+    udo11           : in     std_logic;
+    udo12           : in     std_logic;
+    udo13           : in     std_logic;
+    udo14           : in     std_logic;
+    udo15           : in     std_logic;
+    udo2            : in     std_logic;
+    udo3            : in     std_logic;
+    udo4            : in     std_logic;
+    udo5            : in     std_logic;
+    udo6            : in     std_logic;
+    udo7            : in     std_logic;
+    udo8            : in     std_logic;
+    udo9            : in     std_logic;
+    \select spy\    : inout  std_logic;
+    \-spy read\     : out    std_logic;
+    \-spy write\    : out    std_logic
   );
-end entity;
+end entity cadr1_diag;

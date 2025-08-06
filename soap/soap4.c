@@ -114,6 +114,54 @@ strlwr(char *s)
 	return s;
 }
 
+// if signal name is 'PREFIX DIGITS', remove space and return PREFIXDIGITS
+// it is careful to not do something if PREFIX DIGITS is followed by a non-digit
+static char *
+fix_bus_signal_name_in_cadr1(char *s)
+{
+    DEBUG("fix_bus_signal_name_in_cadr1 '%s'\n", s);
+
+    static const char *prefixes[] = {
+        "ADR", "XADDR", "UBA", "UAO", "XAO", 
+        "MEM", "BUS", "XBUS", "UDO", "UDI", "XDI", 
+        "SPY", "SPY ADR", "DBD", 
+        "WBUF", "RBUF", "UBMA", NULL};
+
+    const char **p = prefixes;
+
+    while (*p) {
+        const char *prefix = *p;
+        DEBUG("prefix '%s'\n", prefix);
+        size_t len = strlen(prefix);
+        if (strncmp(s, prefix, len) == 0) {
+            if (s[len] == ' ') {
+                bool remove_space = true;
+                char *p2 = s + len + 1;
+                if (*p2 != 0) {
+                    while (*p2) {
+                        if (*p2 < '0' || *p2 > '9') {
+                            remove_space = false;
+                            break;
+                        }
+                        p2++;
+                    }
+                    if (remove_space) {
+                        static char b[256];
+                        snprintf(b, sizeof(b), "%s%s", prefix, s+len+1);
+                        DEBUG("fixed '%s'\n", b);
+                        return b;
+                    }
+                }
+            }
+        }
+        p++;
+    }
+
+    DEBUG("not fixed '%s'\n", s);
+
+    return s;
+}
+
 static char *
 fix_signal_name(char *s)
 {
@@ -177,7 +225,12 @@ fix_signal_name(char *s)
         if (*p == ' ') {
             // create '-... L' or '-... l'
             static char negb[1024];
-            snprintf(negb, sizeof(negb), "-%s", b);
+            // is it negation of negation, then just remove the negation in front
+            if (b[0] == '-') {
+                snprintf(negb, sizeof(negb), "%s", b+1);
+            } else {
+                snprintf(negb, sizeof(negb), "-%s", b);
+            }
             // delete last 2 chars, ' L' or ' l', and terminate with 0
             p = negb;
             while (*p) p++;
@@ -768,7 +821,9 @@ parse_points(void)
 
             read_signed_pair(&pnt->const_offset_from_point_loc);
 
-            pnt->name = managed_strdup(fix_signal_name(parse_7bit_ascii()));
+            pnt->name = managed_strdup(
+                fix_signal_name(
+                    fix_bus_signal_name_in_cadr1(parse_7bit_ascii())));
             DEBUG("\t\tname '%s'\n", pnt->name);            
 
             // IF CPIN ON IN BITS

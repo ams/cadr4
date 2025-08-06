@@ -10,9 +10,21 @@
 - `order-entity-port-names.py`: order the port names in an entity vhd
 - `split-hex.py`: splits a hex file to smaller hex files to initialize components
 
+## create-entity-from-suds.py
+
+Create the entity VHDL file from the SUDS VHDL file.
+
+## create-package-from-entities.py
+
+Create the package VHDL file containing components for the given entity VHDL files.
+
 ## create-tb.py
 
 It generates a master testbench, called cadr_tb in cadr/cadr_tb.vhd at the moment. It uses the given (package) vhd files to find components, creates a signal for each unique port name in all components and then instantiates each component once with a port map, mapping ports to signals of the same name. No other vhdl code can be entered to this file, so everything else should be done in the instantiated components.
+
+## decode-ir.py
+
+Decodes a given CADR IR for human friendly use.
 
 ## fix-suds.py
 
