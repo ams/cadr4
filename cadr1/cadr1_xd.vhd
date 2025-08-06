@@ -108,6 +108,7 @@ entity cadr1_xd is
     xdi6 : inout std_logic;
     xdi7 : inout std_logic;
     xdi8 : inout std_logic;
-    xdi9 : inout std_logic
+    xdi9 : inout std_logic;
+    \hi 15-30\ : in std_logic
   );
 end entity;

@@ -120,7 +120,7 @@ $(BUILDDIR)/soap4: soap/soap4.c soap/unpack4.c
 $(CADR_TB_SRC): $(CREATE_TB_PY) cadr/cadr_book.vhd cadr/icmem_book.vhd cadr1/busint_book.vhd helper/helper.vhd
 	mkdir -p $(BUILDDIR)
 	python3 $< \
-	--vhdl-files cadr/cadr_book.vhd cadr/icmem_book.vhd helper/helper.vhd \
+	--vhdl-files cadr/cadr_book.vhd cadr/icmem_book.vhd cadr1/busint_book.vhd helper/helper.vhd \
 	-t $(patsubst %.vhd,%,$(notdir $@)) \
 	$@
 
@@ -380,7 +380,7 @@ ifndef PAGE
 	$(error PAGE is not set, run regenerate-cadr1-suds)
 endif
 	$(SOAP) $(SOAP_OPTIONS_CADR1) $(CADR1_DRWDIR)/$(PAGE).drw > $(CADR1_SUDS_DIR)/cadr1_$(PAGE)_suds.vhd
-#python3 $(FIXSUDS_PY) cadr1/suds/cadr1_$(PAGE)_suds.vhd
+	python3 $(FIXSUDS_PY) $(CADR1_SUDS_DIR)/cadr1_$(PAGE)_suds.vhd
 
 # ===== END OF CADR1 SUDS AUTOGENERATION =====
 

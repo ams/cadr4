@@ -33,6 +33,8 @@ entity cadr1_requ is
     ubwr : in std_logic;
     \ubx grant a\ : in std_logic;
     ubxrq : inout std_logic;
-    xack : in std_logic
+    xack : in std_logic;
+    \hi 1-14\ : in std_logic;
+    \hi 15-30\ : in std_logic
   );
 end entity;

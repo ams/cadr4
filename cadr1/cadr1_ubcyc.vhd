@@ -58,6 +58,7 @@ entity cadr1_ubcyc is
     ubrd : in std_logic;
     ubwr : in std_logic;
     udi7 : in std_logic;
-    \write through enb\ : out std_logic
+    \write through enb\ : out std_logic;
+    \hi 1-14\ : in std_logic
   );
 end entity;

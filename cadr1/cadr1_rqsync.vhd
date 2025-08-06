@@ -49,6 +49,8 @@ entity cadr1_rqsync is
     ubxrqs : out std_logic;
     \xbus extgrant out\ : out std_logic;
     \xbus extrq in\ : in std_logic;
-    xrqs : out std_logic
+    xrqs : out std_logic;
+    \hi 1-14\ : in std_logic;
+    \hi 15-30\ : in std_logic
   );
 end entity;

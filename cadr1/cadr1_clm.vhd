@@ -10,6 +10,7 @@ entity cadr1_clm is
     \-mclk7\ : inout std_logic;
     \-memrq\ : inout std_logic;
     \-xbus power reset\ : inout std_logic;
+    \hi 15-30\ : in std_logic;
     clk0 : inout std_logic;
     wrcyc : inout std_logic
   );

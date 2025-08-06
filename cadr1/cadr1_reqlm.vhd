@@ -46,6 +46,7 @@ entity cadr1_reqlm is
     \xbus ignpar in\ : in std_logic;
     \xbus request\ : inout std_logic;
     xrd : in std_logic;
-    xwr : in std_logic
+    xwr : in std_logic;
+    \hi 1-14\ : in std_logic
   );
 end entity;

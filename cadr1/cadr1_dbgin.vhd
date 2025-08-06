@@ -63,6 +63,8 @@ entity cadr1_dbgin is
     uao7 : inout std_logic;
     uao8 : inout std_logic;
     uao9 : inout std_logic;
-    \unibus init in\ : in std_logic
+    \unibus init in\ : in std_logic;
+    \hi 1-14\ : in std_logic;
+    \hi 15-30\ : in std_logic
   );
 end entity;

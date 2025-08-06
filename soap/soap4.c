@@ -114,6 +114,99 @@ strlwr(char *s)
 	return s;
 }
 
+static char *
+fix_signal_name(char *s)
+{
+	static char b[256];
+    sprintf(b, "%s", s);    
+
+    char* p;
+
+    // if there is ascii 23 or semicolon (;), terminate the string there
+    // these are used as comments
+    // an example is DBGIN, RESET;RESET TO BUSSES;RESET ARBITER
+    p = b;
+    while (*p) {
+        if ((*p == 23) || (*p == ';')) {
+            *p = 0;
+            break;
+        }
+        p++;
+    }
+    
+    // trim space at the end
+    p = b;
+    // find end
+    while (*p) p++;
+    p--;
+    // terminate after last non-space character from the end
+    while (p >= b) {
+        if (*p != ' ') {
+            p++;
+            *p = 0;
+            break;
+        }
+        p--;
+    }
+
+    // replace right arrow with >
+    p = b;
+    while (*p) {
+        if (*p == 031) *p = '>';
+        p++;
+    }
+
+    // fail if there is still a non-printable character
+    p = b;
+    while (*p) {
+        if ((*p < 32) || (*p > 126)) {
+            fprintf(stderr, "\nnon-printable character: %d in '%s'\n", *p, s);
+            assert (0);
+        }
+        p++;
+    }
+
+    // change name '... L' or '... l' to '-...'
+    p = b;
+    // find the end
+    while (*p) p++;
+    p--;
+    // check if ends with ' L' or ' l'
+    if (*p == 'L' || *p == 'l') {
+        p--;
+        if (*p == ' ') {
+            // create '-... L' or '-... l'
+            static char negb[1024];
+            snprintf(negb, sizeof(negb), "-%s", b);
+            // delete last 2 chars, ' L' or ' l', and terminate with 0
+            p = negb;
+            while (*p) p++;
+            p--; p--;
+            *p = 0;
+            snprintf(b, sizeof(b), "%s", negb);
+        }
+    }
+
+    return b;
+}
+
+static char *
+escape_signal_name(char *s)
+{
+    static char b[256];
+
+    // if there is a special character, escape the name
+	if (strchr(s, ' ') || s[0] == '-' || s[0] == '@' || strchr(s, '=') || strchr(s, '.') || strchr(s, '/') || strchr(s, '-')) {    
+		sprintf(b, "\\%s\\", s);
+	}
+    else 
+    {
+        sprintf(b, "%s", s);
+    }
+
+    return strlwr(b);
+}
+
 /* ---------------------------------------------------------------- */
 
 #define MAX_MANAGED_STRDUPS 10000
@@ -675,33 +768,8 @@ parse_points(void)
 
             read_signed_pair(&pnt->const_offset_from_point_loc);
 
-            pnt->name = parse_7bit_ascii();
-            DEBUG("\t\tname '%s'\n", pnt->name);
-
-            // change name '... L' or '... l' to '-...'
-            char *pname = pnt->name;
-            // find the end
-            while (*pname) pname++;
-            pname--;
-            // check if ends with ' L' or ' l'
-            if (*pname == 'L' || *pname == 'l') {
-                pname--;
-                if (*pname == ' ') {
-                    // create '-... L' or '-... l'
-                    char buffer[1024];
-                    snprintf(buffer, sizeof(buffer), "-%s", pnt->name);
-                    // delete last 2 chars, ' L' or ' l', and terminate with 0
-                    char *pname = buffer;
-                    while (*pname) pname++;
-                    pname--; pname--;
-                    *pname = 0;
-                    // modify the name
-                    DEBUG("\t\tchanging name from '%s' to '%s'\n", 
-                        pnt->name, buffer);
-                    pnt->name = managed_strdup(buffer);
-                    DEBUG("\t\tname '%s'\n", pnt->name);
-                }
-            }
+            pnt->name = managed_strdup(fix_signal_name(parse_7bit_ascii()));
+            DEBUG("\t\tname '%s'\n", pnt->name);            
 
             // IF CPIN ON IN BITS
             // CPIN ON bit seems to be bit 16
@@ -1341,30 +1409,7 @@ dump_raw(int dump_wide_flag, char *suds_filename)
 
 /* ---------------------------------------------------------------- */
 
-static char *
-format_signal_name(char *s)
-{
-	static char b[256];
 
-    // if there is a special character, escape the name
-	if (strchr(s, ' ') || s[0] == '-' || s[0] == '@' || strchr(s, '=') || strchr(s, '.') || strchr(s, '/') || strchr(s, '-')) {
-		sprintf(b, "\\%s\\", s);
-	}
-    else 
-    {
-        sprintf(b, "%s", s);
-    }
-
-    char* p = b;
-
-    // replace non-printable characters with '_'
-    while (*p) {
-        if ((*p < 32) || (*p > 126)) *p= '_';
-        p++;
-    }
-
-	return strlwr(b);
-}
 
 static void
 dump_vhdl(
@@ -1558,7 +1603,7 @@ dump_vhdl(
                     assert(0);
                 }
 
-                char *net_name = format_signal_name(point_of_pin->name);
+                char *net_name = escape_signal_name(point_of_pin->name);
 
                 assert (net_name != NULL);
                 assert (net_name[0] != 0);

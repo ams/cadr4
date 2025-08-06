@@ -29,7 +29,7 @@ entity cadr1_uprior is
     \-ub npr\ : inout std_logic;
     \any grant\ : in std_logic;
     \any grant dlyd\ : out std_logic;
-    \any int grant not used\ : inout std_logic;
+    \any int grant\ : inout std_logic;
     bg4o : out std_logic;
     bg4p : in std_logic;
     bg5o : out std_logic;
@@ -62,6 +62,7 @@ entity cadr1_uprior is
     \ub npg in\ : inout std_logic;
     \ub npg out\ : inout std_logic;
     \unibus init in\ : inout std_logic;
-    \unibus intr in\ : inout std_logic
+    \unibus intr in\ : inout std_logic;
+    \hi 1-14\ : in std_logic
   );
 end entity;

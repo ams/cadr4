@@ -59,6 +59,7 @@ entity cadr1_datctl is
     wrcyc : in std_logic;
     \write data _ ub\ : inout std_logic;
     \write through\ : inout std_logic;
+    \hi 1-14\ : in std_logic;
     xwr : out std_logic
   );
 end entity;

@@ -46,8 +46,8 @@ package busint_book is
 
   component cadr1_bussel is
   port (
-    \-ub16_bus\ : in    std_logic;
-    \-ub32_bus\ : in    std_logic;
+    \-ub16>bus\ : in    std_logic;
+    \-ub32>bus\ : in    std_logic;
     bus0        : out   std_logic;
     bus1        : out   std_logic;
     bus10       : out   std_logic;
@@ -121,6 +121,7 @@ package busint_book is
     \-mclk7\    : inout std_logic;
     \-memrq\    : inout std_logic;
     \-xbus power reset\: inout std_logic;
+    \hi 15-30\  : in    std_logic;
     clk0        : inout std_logic;
     wrcyc       : inout std_logic
   );
@@ -130,33 +131,33 @@ package busint_book is
   port (
     \--ub reg cyc t150\: in    std_logic;
     \--write through\: in    std_logic;
-    \-bus_ub\   : out   std_logic;
+    \-bus>ub\   : out   std_logic;
     \-dbub master\: in    std_logic;
-    \-lmadr_ub\ : out   std_logic;
-    \-lmadr_xbus\: out   std_logic;
+    \-lmadr>ub\ : out   std_logic;
+    \-lmadr>xbus\: out   std_logic;
     \-lmbus enb\: out   std_logic;
     \-lmrd\     : out   std_logic;
     \-lmwr\     : out   std_logic;
     \-select debug\: in    std_logic;
     \-select spy\: in    std_logic;
     \-ub write buffer\: in    std_logic;
-    \-ub16_bus\ : out   std_logic;
-    \-ub32_bus\ : out   std_logic;
-    \-ubaddr_xbus\: out   std_logic;
+    \-ub16>bus\ : out   std_logic;
+    \-ub32>bus\ : out   std_logic;
+    \-ubaddr>xbus\: out   std_logic;
     \-ubadrive\ : out   std_logic;
     \-ubdrive\  : inout std_logic;
-    \-ubmap _ udo\: out   std_logic;
+    \-ubmap > udo\: out   std_logic;
     \-ubmapwe\  : out   std_logic;
     \-ubrd\     : out   std_logic;
     \-ubwr\     : inout std_logic;
     \-ubwr a\   : out   std_logic;
-    \-udi _ udo\: out   std_logic;
+    \-udi > udo\: out   std_logic;
     \-wbufwe\   : out   std_logic;
     \-write through\: in    std_logic;
     \-xaddrdrive\: out   std_logic;
-    \-xb_bus\   : out   std_logic;
+    \-xb>bus\   : out   std_logic;
     \-xdrive\   : inout std_logic;
-    \bus _ lm\  : out   std_logic;
+    \bus > lm\  : out   std_logic;
     \c1 in\     : in    std_logic;
     \dbub master\: in    std_logic;
     \debug in wr\: in    std_logic;
@@ -179,8 +180,9 @@ package busint_book is
     \ubx grant\ : in    std_logic;
     \ubx grant a\: in    std_logic;
     wrcyc       : in    std_logic;
-    \write data _ ub\: inout std_logic;
+    \write data > ub\: inout std_logic;
     \write through\: inout std_logic;
+    \hi 1-14\   : in    std_logic;
     xwr         : out   std_logic
   );
   end component;
@@ -200,7 +202,7 @@ package busint_book is
     \-lm unibus reset\: in    std_logic;
     \-local enable\: inout std_logic;
     \-reset\    : out   std_logic;
-    \busint lm reset l reset processor\: out   std_logic;
+    \-busint lm reset\: out   std_logic;
     \db need ub\: out   std_logic;
     dbd0        : inout std_logic;
     dbd1        : inout std_logic;
@@ -244,7 +246,9 @@ package busint_book is
     uao7        : inout std_logic;
     uao8        : inout std_logic;
     uao9        : inout std_logic;
-    \unibus init in\: in    std_logic
+    \unibus init in\: in    std_logic;
+    \hi 1-14\   : in    std_logic;
+    \hi 15-30\  : in    std_logic
   );
   end component;
 
@@ -283,10 +287,10 @@ package busint_book is
     \mempar to lm\: out   std_logic;
     \select debug\: inout std_logic;
     \select debug dlyd\: inout std_logic;
-    \spy adr 1\ : out   std_logic;
-    \spy adr 2\ : out   std_logic;
-    \spy adr 3\ : out   std_logic;
-    \spy adr 4\ : out   std_logic;
+    \spy adr1\ : out   std_logic;
+    \spy adr2\ : out   std_logic;
+    \spy adr3\ : out   std_logic;
+    \spy adr4\ : out   std_logic;
     \uba 1\     : in    std_logic;
     \uba 2\     : in    std_logic;
     \uba 3\     : in    std_logic;
@@ -310,7 +314,9 @@ package busint_book is
     \udo 7\     : inout std_logic;
     \udo 8\     : inout std_logic;
     \udo 9\     : inout std_logic;
-    \xbus par in\: in    std_logic
+    \xbus par in\: in    std_logic;
+    \hi 1-14\   : in    std_logic;
+    \hi 15-30\  : in    std_logic
   );
   end component;
 
@@ -381,7 +387,7 @@ package busint_book is
     \-adr8\     : inout std_logic;
     \-adr9\     : inout std_logic;
     \-lmadr_ub\ : inout std_logic;
-    \-lmadr_xbus\: inout std_logic;
+    \-lmadr>xbus\: inout std_logic;
     uao1        : inout std_logic;
     uao10       : inout std_logic;
     uao11       : inout std_logic;
@@ -496,7 +502,7 @@ package busint_book is
 
   component cadr1_rbuf is
   port (
-    \-bus_ub\   : in    std_logic;
+    \-bus>ub\   : in    std_logic;
     \-rbufwe\   : inout std_logic;
     \-ub read buffer\: in    std_logic;
     \-ubpn0b\   : inout std_logic;
@@ -618,7 +624,8 @@ package busint_book is
     \xbus par in\: in    std_logic;
     \xbus par out\: out   std_logic;
     \xbus request\: inout std_logic;
-    xrd         : in    std_logic
+    xrd         : in    std_logic;
+    \hi 1-14\   : in    std_logic
   );
   end component;
 
@@ -664,7 +671,8 @@ package busint_book is
     \xbus ignpar in\: in    std_logic;
     \xbus request\: inout std_logic;
     xrd         : in    std_logic;
-    xwr         : in    std_logic
+    xwr         : in    std_logic;
+    \hi 1-14\   : in    std_logic
   );
   end component;
 
@@ -720,7 +728,9 @@ package busint_book is
     ubwr        : in    std_logic;
     \ubx grant a\: in    std_logic;
     ubxrq       : inout std_logic;
-    xack        : in    std_logic
+    xack        : in    std_logic;
+    \hi 1-14\   : in    std_logic;
+    \hi 15-30\  : in    std_logic
   );
   end component;
 
@@ -745,7 +755,8 @@ package busint_book is
     \ssyn t200\ : out   std_logic;
     \ssyn t250\ : out   std_logic;
     \ssyn t50\  : out   std_logic;
-    \unibus request\: inout std_logic
+    \unibus request\: inout std_logic;
+    \hi 1-14\   : in    std_logic
   );
   end component;
 
@@ -794,7 +805,9 @@ package busint_book is
     ubxrqs      : out   std_logic;
     \xbus extgrant out\: out   std_logic;
     \xbus extrq in\: in    std_logic;
-    xrqs        : out   std_logic
+    xrqs        : out   std_logic;
+    \hi 1-14\   : in    std_logic;
+    \hi 15-30\  : in    std_logic
   );
   end component;
 
@@ -845,12 +858,12 @@ package busint_book is
     uao7        : inout std_logic;
     uao8        : inout std_logic;
     uao9        : inout std_logic;
-    \uba 12\    : in    std_logic;
-    \uba 14\    : in    std_logic;
-    \uba 15\    : in    std_logic;
-    \uba 7\     : in    std_logic;
-    \uba 8\     : in    std_logic;
-    \uba 9\     : in    std_logic;
+    \uba12\    : in    std_logic;
+    \uba14\    : in    std_logic;
+    \uba15\    : in    std_logic;
+    \uba7\     : in    std_logic;
+    \uba8\     : in    std_logic;
+    \uba9\     : in    std_logic;
     uba0        : inout std_logic;
     uba1        : inout std_logic;
     uba10       : inout std_logic;
@@ -911,10 +924,10 @@ package busint_book is
     \ub reg cyc t50\: inout std_logic;
     \ub reg write pulse\: inout std_logic;
     \ub17-14=map\: inout std_logic;
-    \uba 1\     : in    std_logic;
-    \uba 2\     : in    std_logic;
-    \uba 5\     : in    std_logic;
-    \uba 6\     : in    std_logic;
+    \uba1\     : in    std_logic;
+    \uba2\     : in    std_logic;
+    \uba5\     : in    std_logic;
+    \uba6\     : in    std_logic;
     uba1        : in    std_logic;
     uba10       : in    std_logic;
     uba11       : in    std_logic;
@@ -926,7 +939,8 @@ package busint_book is
     ubrd        : in    std_logic;
     ubwr        : in    std_logic;
     udi7        : in    std_logic;
-    \write through enb\: out   std_logic
+    \write through enb\: out   std_logic;
+    \hi 1-14\   : in    std_logic
   );
   end component;
 
@@ -1026,7 +1040,7 @@ package busint_book is
     \-disable int grant\: inout std_logic;
     \-intc drive\: inout std_logic;
     \-intr ssyn\: inout std_logic;
-    \-lmadr_xbus\: inout std_logic;
+    \-lmadr>xbus\: inout std_logic;
     \-load int ctl reg\: inout std_logic;
     \-load int ctl2 reg\: inout std_logic;
     \-local enable\: inout std_logic;
@@ -1076,7 +1090,8 @@ package busint_book is
     \unibus intr in\: in    std_logic;
     xao20       : inout std_logic;
     xao21       : inout std_logic;
-    \xbus intr in\: in    std_logic
+    \xbus intr in\: in    std_logic;
+    \hi 15-30\  : in    std_logic
   );
   end component;
 
@@ -1220,13 +1235,14 @@ package busint_book is
     \npg2 out\  : inout std_logic;
     \sack in\   : inout std_logic;
     \ssyn in\   : inout std_logic;
-    \ssyn out\  : inout std_logic
+    \ssyn out\  : inout std_logic;
+    \hi 1-14\   : in    std_logic
   );
   end component;
 
   component cadr1_ubxa is
   port (
-    \-ubaddr_xbus\: in    std_logic;
+    \-ubaddr>xbus\: in    std_logic;
     uba2        : in    std_logic;
     uba3        : in    std_logic;
     uba4        : in    std_logic;
@@ -1299,7 +1315,7 @@ package busint_book is
     \-ub npr\   : inout std_logic;
     \any grant\ : in    std_logic;
     \any grant dlyd\: out   std_logic;
-    \any int grant not used\: inout std_logic;
+    \any int grant\: inout std_logic;
     bg4o        : out   std_logic;
     bg4p        : in    std_logic;
     bg5o        : out   std_logic;
@@ -1332,7 +1348,8 @@ package busint_book is
     \ub npg in\ : inout std_logic;
     \ub npg out\: inout std_logic;
     \unibus init in\: inout std_logic;
-    \unibus intr in\: inout std_logic
+    \unibus intr in\: inout std_logic;
+    \hi 1-14\   : in    std_logic
   );
   end component;
 
@@ -1455,28 +1472,28 @@ package busint_book is
 
   component cadr1_xapar is
   port (
-    \xao 0\     : in    std_logic;
-    \xao 1\     : in    std_logic;
-    \xao 10\    : in    std_logic;
-    \xao 11\    : in    std_logic;
-    \xao 12\    : in    std_logic;
-    \xao 13\    : in    std_logic;
-    \xao 14\    : in    std_logic;
-    \xao 15\    : in    std_logic;
-    \xao 16\    : in    std_logic;
-    \xao 17\    : in    std_logic;
-    \xao 18\    : in    std_logic;
-    \xao 19\    : in    std_logic;
-    \xao 2\     : in    std_logic;
-    \xao 20\    : in    std_logic;
-    \xao 21\    : in    std_logic;
-    \xao 3\     : in    std_logic;
-    \xao 4\     : in    std_logic;
-    \xao 5\     : in    std_logic;
-    \xao 6\     : in    std_logic;
-    \xao 7\     : in    std_logic;
-    \xao 8\     : in    std_logic;
-    \xao 9\     : in    std_logic;
+    \xao0\     : in    std_logic;
+    \xao1\     : in    std_logic;
+    \xao10\    : in    std_logic;
+    \xao11\    : in    std_logic;
+    \xao12\    : in    std_logic;
+    \xao13\    : in    std_logic;
+    \xao14\    : in    std_logic;
+    \xao15\    : in    std_logic;
+    \xao16\    : in    std_logic;
+    \xao17\    : in    std_logic;
+    \xao18\    : in    std_logic;
+    \xao19\    : in    std_logic;
+    \xao2\     : in    std_logic;
+    \xao20\    : in    std_logic;
+    \xao21\    : in    std_logic;
+    \xao3\     : in    std_logic;
+    \xao4\     : in    std_logic;
+    \xao5\     : in    std_logic;
+    \xao6\     : in    std_logic;
+    \xao7\     : in    std_logic;
+    \xao8\     : in    std_logic;
+    \xao9\     : in    std_logic;
     \xao par even\: out   std_logic;
     \xao par odd\: out   std_logic
   );
@@ -1484,7 +1501,7 @@ package busint_book is
 
   component cadr1_xbd is
   port (
-    \-xb_bus\   : in    std_logic;
+    \-xb>bus\   : in    std_logic;
     bus0        : out   std_logic;
     bus1        : out   std_logic;
     bus10       : out   std_logic;
@@ -1656,7 +1673,8 @@ package busint_book is
     xdi6        : inout std_logic;
     xdi7        : inout std_logic;
     xdi8        : inout std_logic;
-    xdi9        : inout std_logic
+    xdi9        : inout std_logic;
+    \hi 15-30\  : in    std_logic
   );
   end component;
 

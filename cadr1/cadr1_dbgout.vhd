@@ -66,6 +66,8 @@ entity cadr1_dbgout is
     \udo 7\ : inout std_logic;
     \udo 8\ : inout std_logic;
     \udo 9\ : inout std_logic;
-    \xbus par in\ : in std_logic
+    \xbus par in\ : in std_logic;
+    \hi 1-14\ : in std_logic;
+    \hi 15-30\ : in std_logic
   );
 end entity;

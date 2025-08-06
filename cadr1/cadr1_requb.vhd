@@ -25,6 +25,7 @@ entity cadr1_requb is
     \ssyn t200\ : out std_logic;
     \ssyn t250\ : out std_logic;
     \ssyn t50\ : out std_logic;
-    \unibus request\ : inout std_logic
+    \unibus request\ : inout std_logic;
+    \hi 1-14\ : in std_logic
   );
 end entity;

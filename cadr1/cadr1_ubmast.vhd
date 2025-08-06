@@ -58,6 +58,7 @@ entity cadr1_ubmast is
     \npg2 out\ : inout std_logic;
     \sack in\ : inout std_logic;
     \ssyn in\ : inout std_logic;
-    \ssyn out\ : inout std_logic
+    \ssyn out\ : inout std_logic;
+    \hi 1-14\ : in std_logic
   );
 end entity;

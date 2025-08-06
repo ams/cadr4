@@ -52,6 +52,7 @@ entity cadr1_reqerr is
     \xbus par in\ : in std_logic;
     \xbus par out\ : out std_logic;
     \xbus request\ : inout std_logic;
-    xrd : in std_logic
+    xrd : in std_logic;
+    \hi 1-14\ : in std_logic
   );
 end entity;

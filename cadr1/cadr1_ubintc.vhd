@@ -63,6 +63,7 @@ entity cadr1_ubintc is
     \unibus intr in\ : in std_logic;
     xao20 : inout std_logic;
     xao21 : inout std_logic;
-    \xbus intr in\ : in std_logic
+    \xbus intr in\ : in std_logic;
+    \hi 15-30\ : in std_logic
   );
 end entity;
