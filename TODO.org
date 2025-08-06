@@ -1,7 +1,5 @@
 TODO List for the CADR project
 
-This is currently very much outdated while we refactor things.
-
 * TODO Catalog CADR schematics [0/4]
 
  - [ ] CADR1; BUSINT BOOK
