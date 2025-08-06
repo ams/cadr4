@@ -39,7 +39,8 @@ package busint_book is
     bus9                : in     std_logic;
     \bus 0-11 par odd\  : inout  std_logic;
     \bus 12-23 par odd\ : inout  std_logic;
-    \bus par even\      : out    std_logic
+    \bus par even\      : out    std_logic;
+    \bus par odd\       : out    std_logic
   );
   end component;
 
@@ -109,7 +110,8 @@ package busint_book is
     bus5            : out    std_logic;
     bus6            : out    std_logic;
     bus7            : out    std_logic;
-    bus8            : out    std_logic
+    bus8            : out    std_logic;
+    bus9            : out    std_logic
   );
   end component;
 
@@ -120,7 +122,8 @@ package busint_book is
     \-xbus power reset\ : inout  std_logic;
     \hi 15-30\          : inout  std_logic;
     clk0                : inout  std_logic;
-    wrcyc               : inout  std_logic
+    wrcyc               : inout  std_logic;
+    \-clk\              : out    std_logic
   );
   end component;
 
@@ -178,7 +181,8 @@ package busint_book is
     \-wbufwe\            : out    std_logic;
     \-xaddrdrive\        : out    std_logic;
     \-xb>bus\            : out    std_logic;
-    \bus > lm\           : out    std_logic
+    \bus > lm\           : out    std_logic;
+    xwr                  : out    std_logic
   );
   end component;
 
@@ -242,7 +246,8 @@ package busint_book is
     uao5                 : out    std_logic;
     uao6                 : out    std_logic;
     uao7                 : out    std_logic;
-    uao8                 : out    std_logic
+    uao8                 : out    std_logic;
+    uao9                 : out    std_logic
   );
   end component;
 
@@ -309,7 +314,8 @@ package busint_book is
     \mempar to lm\      : out    std_logic;
     \spy adr1\          : out    std_logic;
     \spy adr2\          : out    std_logic;
-    \spy adr3\          : out    std_logic
+    \spy adr3\          : out    std_logic;
+    \spy adr4\          : out    std_logic
   );
   end component;
 
@@ -352,7 +358,8 @@ package busint_book is
     udo8                 : in     std_logic;
     udo9                 : in     std_logic;
     \select spy\         : inout  std_logic;
-    \-spy read\          : out    std_logic
+    \-spy read\          : out    std_logic;
+    \-spy write\         : out    std_logic
   );
   end component;
 
@@ -415,7 +422,8 @@ package busint_book is
     xao5            : out    std_logic;
     xao6            : out    std_logic;
     xao7            : out    std_logic;
-    xao8            : out    std_logic
+    xao8            : out    std_logic;
+    xao9            : out    std_logic
   );
   end component;
 
@@ -485,7 +493,8 @@ package busint_book is
     mem28           : inout  std_logic;
     mem29           : inout  std_logic;
     mem3            : inout  std_logic;
-    mem4            : inout  std_logic
+    mem4            : inout  std_logic;
+    mem5            : inout  std_logic
   );
   end component;
 
@@ -560,7 +569,8 @@ package busint_book is
     udo5              : out    std_logic;
     udo6              : out    std_logic;
     udo7              : out    std_logic;
-    udo8              : out    std_logic
+    udo8              : out    std_logic;
+    udo9              : out    std_logic
   );
   end component;
 
@@ -611,7 +621,8 @@ package busint_book is
     udo3                : out    std_logic;
     udo4                : out    std_logic;
     udo5                : out    std_logic;
-    udo6                : out    std_logic
+    udo6                : out    std_logic;
+    udo7                : out    std_logic
   );
   end component;
 
@@ -658,7 +669,8 @@ package busint_book is
     \-loadmd\          : out    std_logic;
     \-xbus request\    : out    std_logic;
     \lm memdrive enb\  : out    std_logic;
-    \lmneedub (early)\ : out    std_logic
+    \lmneedub (early)\ : out    std_logic;
+    \loadmd ack\       : out    std_logic
   );
   end component;
 
@@ -671,15 +683,16 @@ package busint_book is
     \timeout 1\          : in     std_logic;
     \timeout 2\          : in     std_logic;
     \timeout 3\          : in     std_logic;
+    \vco cap2\           : in     std_logic;
     \hung timeout\       : inout  std_logic;
     \nxm timeout\        : inout  std_logic;
     \prom hung timeout\  : inout  std_logic;
     \prom nxm timeout\   : inout  std_logic;
     \prom unused\        : inout  std_logic;
     \vco cap1\           : inout  std_logic;
-    \vco cap2\           : inout  std_logic;
     \-hung timeout\      : out    std_logic;
-    \-nxm timeout\       : out    std_logic
+    \-nxm timeout\       : out    std_logic;
+    \unused timeout\     : out    std_logic
   );
   end component;
 
@@ -713,7 +726,8 @@ package busint_book is
     ubxrq             : inout  std_logic;
     \-rbufwe\         : out    std_logic;
     \-ub invalid\     : out    std_logic;
-    \-ub to md\       : out    std_logic
+    \-ub to md\       : out    std_logic;
+    \ssyn out\        : out    std_logic
   );
   end component;
 
@@ -740,52 +754,54 @@ package busint_book is
     \msyn out\         : out    std_logic;
     \ssyn t150\        : out    std_logic;
     \ssyn t200\        : out    std_logic;
-    \ssyn t250\        : out    std_logic
+    \ssyn t250\        : out    std_logic;
+    \ssyn t50\         : out    std_logic
   );
   end component;
 
   component cadr1_rqsync is
   port (
-    \-clk\           : in     std_logic;
-    \-hung timeout\  : in     std_logic;
-    \-lmxrq\         : in     std_logic;
-    \-loadmd ack\    : in     std_logic;
-    \-xbus request\  : in     std_logic;
-    \hi 1-14\        : in     std_logic;
-    \hi 15-30\       : in     std_logic;
-    \xbus busy in\   : in     std_logic;
-    \xbus extrq in\  : in     std_logic;
-    clk0             : in     std_logic;
-    lmubrq           : in     std_logic;
-    ubxrq            : in     std_logic;
-    \-free\          : inout  std_logic;
-    \-grant reset\   : inout  std_logic;
-    \-lmub grant\    : inout  std_logic;
-    \-lmubrqs\       : inout  std_logic;
-    \-lmx grant\     : inout  std_logic;
-    \-ubx grant\     : inout  std_logic;
-    \-ubxrqs\        : inout  std_logic;
-    \-xrqs\          : inout  std_logic;
-    \int busy t40\   : inout  std_logic;
-    \int busy t80\   : inout  std_logic;
-    \int busy\       : inout  std_logic;
-    \lmub grant set\ : inout  std_logic;
-    \lmub grant\     : inout  std_logic;
-    \lmx grant set\  : inout  std_logic;
-    \ubx grant set\  : inout  std_logic;
-    free             : inout  std_logic;
-    lmubrqs          : inout  std_logic;
-    ubxrqs           : inout  std_logic;
-    xrqs             : inout  std_logic;
-    \-int busy t80\  : out    std_logic;
-    \grant reset\    : out    std_logic;
-    \int busy t100\  : out    std_logic;
-    \int busy t20\   : out    std_logic;
-    \int busy t60\   : out    std_logic;
-    \lmx grant a\    : out    std_logic;
-    \lmx grant\      : out    std_logic;
-    \ubx grant a\    : out    std_logic;
-    \ubx grant\      : out    std_logic
+    \-clk\              : in     std_logic;
+    \-hung timeout\     : in     std_logic;
+    \-lmxrq\            : in     std_logic;
+    \-loadmd ack\       : in     std_logic;
+    \-xbus request\     : in     std_logic;
+    \hi 1-14\           : in     std_logic;
+    \hi 15-30\          : in     std_logic;
+    \xbus busy in\      : in     std_logic;
+    \xbus extrq in\     : in     std_logic;
+    clk0                : in     std_logic;
+    lmubrq              : in     std_logic;
+    ubxrq               : in     std_logic;
+    \-free\             : inout  std_logic;
+    \-grant reset\      : inout  std_logic;
+    \-lmub grant\       : inout  std_logic;
+    \-lmubrqs\          : inout  std_logic;
+    \-lmx grant\        : inout  std_logic;
+    \-ubx grant\        : inout  std_logic;
+    \-ubxrqs\           : inout  std_logic;
+    \-xrqs\             : inout  std_logic;
+    \int busy t40\      : inout  std_logic;
+    \int busy t80\      : inout  std_logic;
+    \int busy\          : inout  std_logic;
+    \lmub grant set\    : inout  std_logic;
+    \lmub grant\        : inout  std_logic;
+    \lmx grant set\     : inout  std_logic;
+    \ubx grant set\     : inout  std_logic;
+    free                : inout  std_logic;
+    lmubrqs             : inout  std_logic;
+    ubxrqs              : inout  std_logic;
+    xrqs                : inout  std_logic;
+    \-int busy t80\     : out    std_logic;
+    \grant reset\       : out    std_logic;
+    \int busy t100\     : out    std_logic;
+    \int busy t20\      : out    std_logic;
+    \int busy t60\      : out    std_logic;
+    \lmx grant a\       : out    std_logic;
+    \lmx grant\         : out    std_logic;
+    \ubx grant a\       : out    std_logic;
+    \ubx grant\         : out    std_logic;
+    \xbus extgrant out\ : out    std_logic
   );
   end component;
 
@@ -852,7 +868,8 @@ package busint_book is
     \-uba 14\       : out    std_logic;
     \-uba 15\       : out    std_logic;
     \-uba 7\        : out    std_logic;
-    \-uba 8\        : out    std_logic
+    \-uba 8\        : out    std_logic;
+    \-uba 9\        : out    std_logic
   );
   end component;
 
@@ -907,7 +924,8 @@ package busint_book is
     \select page\        : out    std_logic;
     \ub reg cyc t100\    : out    std_logic;
     \ub reg cyc t200\    : out    std_logic;
-    \ub reg cyc t250\    : out    std_logic
+    \ub reg cyc t250\    : out    std_logic;
+    \write through enb\  : out    std_logic
   );
   end component;
 
@@ -961,7 +979,8 @@ package busint_book is
     udo5            : inout  std_logic;
     udo6            : inout  std_logic;
     udo7            : inout  std_logic;
-    udo8            : inout  std_logic
+    udo8            : inout  std_logic;
+    udo9            : inout  std_logic
   );
   end component;
 
@@ -1023,7 +1042,8 @@ package busint_book is
     udo7                 : out    std_logic;
     udo8                 : out    std_logic;
     udo9                 : out    std_logic;
-    xao20                : out    std_logic
+    xao20                : out    std_logic;
+    xao21                : out    std_logic
   );
   end component;
 
@@ -1094,7 +1114,8 @@ package busint_book is
     udo5            : out    std_logic;
     udo6            : out    std_logic;
     udo7            : out    std_logic;
-    udo8            : out    std_logic
+    udo8            : out    std_logic;
+    udo9            : out    std_logic
   );
   end component;
 
@@ -1147,7 +1168,8 @@ package busint_book is
     \npg2 out\          : inout  std_logic;
     \-npg out\          : out    std_logic;
     \bus req\           : out    std_logic;
-    \db ub master\      : out    std_logic
+    \db ub master\      : out    std_logic;
+    \lm ub master\      : out    std_logic
   );
   end component;
 
@@ -1196,7 +1218,8 @@ package busint_book is
     xao5            : out    std_logic;
     xao6            : out    std_logic;
     xao7            : out    std_logic;
-    xao8            : out    std_logic
+    xao8            : out    std_logic;
+    xao9            : out    std_logic
   );
   end component;
 
@@ -1259,7 +1282,8 @@ package busint_book is
     bg4o                 : out    std_logic;
     bg5o                 : out    std_logic;
     bg6o                 : out    std_logic;
-    bg7o                 : out    std_logic
+    bg7o                 : out    std_logic;
+    npgo                 : out    std_logic
   );
   end component;
 
@@ -1304,7 +1328,8 @@ package busint_book is
     wbuf5           : in     std_logic;
     wbuf6           : in     std_logic;
     wbuf7           : in     std_logic;
-    wbuf8           : in     std_logic
+    wbuf8           : in     std_logic;
+    wbuf9           : in     std_logic
   );
   end component;
 
@@ -1374,7 +1399,8 @@ package busint_book is
     xao6                 : in     std_logic;
     xao7                 : in     std_logic;
     xao8                 : in     std_logic;
-    xao9                 : in     std_logic
+    xao9                 : in     std_logic;
+    \lm power reset\     : inout  std_logic
   );
   end component;
 
@@ -1402,7 +1428,8 @@ package busint_book is
     xao7            : in     std_logic;
     xao8            : in     std_logic;
     xao9            : in     std_logic;
-    \xao par even\  : out    std_logic
+    \xao par even\  : out    std_logic;
+    \xao par odd\   : out    std_logic
   );
   end component;
 
@@ -1471,7 +1498,8 @@ package busint_book is
     bus5            : out    std_logic;
     bus6            : out    std_logic;
     bus7            : out    std_logic;
-    bus8            : out    std_logic
+    bus8            : out    std_logic;
+    bus9            : out    std_logic
   );
   end component;
 
@@ -1579,7 +1607,8 @@ package busint_book is
     xdi5             : in     std_logic;
     xdi6             : in     std_logic;
     xdi7             : in     std_logic;
-    xdi8             : in     std_logic
+    xdi8             : in     std_logic;
+    xdi9             : in     std_logic
   );
   end component;
 

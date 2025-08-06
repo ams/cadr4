@@ -153,6 +153,13 @@ def parse_port_section(port_section: str) -> List[Tuple[str, str, str]]:
     lines = port_section.split('\n')
     current_port = ""
     
+    # Find the last non-empty line to properly detect end of port section
+    last_non_empty_line = None
+    for line in reversed(lines):
+        if line.strip():
+            last_non_empty_line = line.strip()
+            break
+    
     for line in lines:
         line = line.strip()
         if not line:
@@ -161,8 +168,8 @@ def parse_port_section(port_section: str) -> List[Tuple[str, str, str]]:
         current_port += " " + line
         
         # Check if this line ends a port declaration (has semicolon not inside quotes)
-        # or if it's the last line without semicolon
-        if line.endswith(';') or (line == lines[-1].strip() and not line.endswith(';')):
+        # or if it's the last non-empty line without semicolon
+        if line.endswith(';') or (line == last_non_empty_line and not line.endswith(';')):
             # Remove trailing semicolon
             current_port = current_port.strip()
             if current_port.endswith(';'):

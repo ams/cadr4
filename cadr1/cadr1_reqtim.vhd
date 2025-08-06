@@ -10,13 +10,13 @@ entity cadr1_reqtim is
     \timeout 1\     : in     std_logic;
     \timeout 2\     : in     std_logic;
     \timeout 3\     : in     std_logic;
+    \vco cap2\      : in     std_logic;
     \hung timeout\  : inout  std_logic;
     \nxm timeout\   : inout  std_logic;
     \prom hung timeout\ : inout  std_logic;
     \prom nxm timeout\ : inout  std_logic;
     \prom unused\   : inout  std_logic;
     \vco cap1\      : inout  std_logic;
-    \vco cap2\      : inout  std_logic;
     \-hung timeout\ : out    std_logic;
     \-nxm timeout\  : out    std_logic;
     \unused timeout\ : out    std_logic
