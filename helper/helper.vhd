@@ -4,19 +4,8 @@ use ieee.std_logic_1164.all;
 package helper is
   component helper_required_signals is
     port (
-      -- mcpins
-      \-halt\: out std_logic;
-      -- mbcpin
-        mclk7: in std_logic;
-      -- initiates a clock reset
-      \-busint.lm.reset\: out std_logic;
-      -- initiates a boot
-      \-boot1\: out std_logic;
-      -- same as power reset or prog.bus.reset
-      \-bus.reset\: in std_logic;
-      \lm drive enb\: out std_logic;
-      -- same as power reset
-      \bus.power.reset l\: in std_logic
+      \-halt\: out std_logic := '1';
+      \-boot1\: out std_logic := '1'
     );
   end component;
 
@@ -1094,7 +1083,6 @@ package helper is
 
   component helper_bus_interface_cable is
     port (
-
       -- cadr:bcpins
       \mempar in\: out std_logic;
       \-pma21\: in std_logic;
@@ -1124,20 +1112,19 @@ package helper is
       \-memgrant\: in std_logic;    
       \int\: in std_logic;
       \mempar out\: in std_logic;
-
       -- cadr:mbcpin
+      mclk7: in std_logic;
       eadr0: in std_logic;
       eadr1: in std_logic;
       eadr2: in std_logic;
       eadr3: in std_logic;
       \-dbread\: in std_logic;
       \-dbwrite\: in std_logic;
-      \-busint.lm.reset\: in std_logic;
+      \-busint.lm.reset\: out std_logic;
       \-boot1\: in std_logic;
       \-bus.reset\: in std_logic;
-      \lm drive enb\: in std_logic;
+      \lm drive enb\: out std_logic;
       \-bus.power.reset\: in std_logic;
-
       -- cadr1:clm
       \mempar to lm\: in std_logic;
       \-adr21\: out std_logic;
@@ -1167,16 +1154,17 @@ package helper is
       \-lm grant\: out std_logic;
       \-lm int\: out std_logic;
       \mempar from lm\: out std_logic;
+      \-mclk7\: out std_logic;
       \spy adr1\: out std_logic;
       \spy adr2\: out std_logic;
       \spy adr3\: out std_logic;
       \spy adr4\: out std_logic;
       \-spy read\: out std_logic;
       \-spy write\: out std_logic;
-      \-busint lm reset\: out std_logic;
+      \-busint lm reset\: in std_logic;
       \-lm boot\: out std_logic;
       \-lm unibus reset\: out std_logic;
-      \-lm memdrive enb\: out std_logic;
+      \-lm memdrive enb\: in std_logic;
       \-lm power reset\: out std_logic
     );
   end component;
