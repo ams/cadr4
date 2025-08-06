@@ -71,8 +71,9 @@ Header template for files:
  - [X] Implement skeleton testbench
  - [X] Implement rudimentary testbench
 
-** TODO td25 (DELAY 50NS INCS) [4/5]
- - [ ] Store datasheet and upstream URL.
+** TODO td25 (DELAY 50NS INCS) [5/5]
+ - [X] Store datasheet and upstream URL.
+	http://cornucopiaplastics.com/documents/TTLDM_XXMT.pdf (doc/ttl/TTLDM_XXMT.pdf)
 	(doc/ttl/ttldm-25.pdf)
  - [X] Implement skeleton component.
    All components should have on the first line a single line
@@ -81,8 +82,9 @@ Header template for files:
  - [X] Implement skeleton testbench
  - [X] Implement rudimentary testbench
 
-** TODO td50 (DELAY 10NS INCS) [4/5]
- - [ ] Store datasheet and upstream URL.
+** TODO td50 (DELAY 10NS INCS) [5/5]
+ - [X] Store datasheet and upstream URL.
+   Same as td25.
  - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -90,8 +92,9 @@ Header template for files:
  - [X] Implement skeleton testbench
  - [X] Implement rudimentary testbench
 
-** TODO td100 (DELAY 20NS INCS) [4/5]
- - [ ] Store datasheet and upstream URL.
+** TODO td100 (DELAY 20NS INCS) [5/5]
+ - [X] Store datasheet and upstream URL.
+   Same as td25.
  - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
@@ -101,6 +104,7 @@ Header template for files:
 
 ** TODO td250 (DELAY 50NS INCS) [4/5]
  - [ ] Store datasheet and upstream URL.
+   Same as td25.
  - [X] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
