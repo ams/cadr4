@@ -992,7 +992,30 @@ entity helper_bus_monitor is
       \-vmas28\ : in std_logic;
       \-vmas29\ : in std_logic;
       \-vmas30\ : in std_logic;
-      \-vmas31\ : in std_logic
+      \-vmas31\ : in std_logic;
+      -- ADR bus (Address) - 22 bits
+      \-adr0\   : in std_logic;
+      \-adr1\   : in std_logic;
+      \-adr2\   : in std_logic;
+      \-adr3\   : in std_logic;
+      \-adr4\   : in std_logic;
+      \-adr5\   : in std_logic;
+      \-adr6\   : in std_logic;
+      \-adr7\   : in std_logic;
+      \-adr8\   : in std_logic;
+      \-adr9\   : in std_logic;
+      \-adr10\  : in std_logic;
+      \-adr11\  : in std_logic;
+      \-adr12\  : in std_logic;
+      \-adr13\  : in std_logic;
+      \-adr14\  : in std_logic;
+      \-adr15\  : in std_logic;
+      \-adr16\  : in std_logic;
+      \-adr17\  : in std_logic;
+      \-adr18\  : in std_logic;
+      \-adr19\  : in std_logic;
+      \-adr20\  : in std_logic;
+      \-adr21\  : in std_logic
     );
   end entity;
 
@@ -1044,6 +1067,7 @@ entity helper_bus_monitor is
     signal vmo : std_logic_vector(23 downto 0);
     signal \-vmas\ : std_logic_vector(31 downto 0);
     signal vmas : std_logic_vector(31 downto 0);
+    signal \-adr\ : std_logic_vector(21 downto 0);
   begin
     ipc <= ipc13 & ipc12 & ipc11 & ipc10 & ipc9 & ipc8 & ipc7 & ipc6 & ipc5 & ipc4 & ipc3 & ipc2 & ipc1 & ipc0;
     ir <= ir48 & ir47 & ir46 & ir45 & ir44 & ir43 & ir42 & ir41 & ir40 & ir39 & ir38 & ir37 & ir36 & ir35 & ir34 & ir33 & ir32 & ir31 & ir30 & ir29 & ir28 & ir27 & ir26 & ir25 & ir24 & ir23 & ir22 & ir21 & ir20 & ir19 & ir18 & ir17 & ir16 & ir15 & ir14 & ir13 & ir12 & ir11 & ir10 & ir9 & ir8 & ir7 & ir6 & ir5 & ir4 & ir3 & ir2 & ir1 & ir0;
@@ -1091,4 +1115,5 @@ entity helper_bus_monitor is
     vmo <= not \-vmo\;
     \-vmas\ <= \-vmas31\ & \-vmas30\ & \-vmas29\ & \-vmas28\ & \-vmas27\ & \-vmas26\ & \-vmas25\ & \-vmas24\ & \-vmas23\ & \-vmas22\ & \-vmas21\ & \-vmas20\ & \-vmas19\ & \-vmas18\ & \-vmas17\ & \-vmas16\ & \-vmas15\ & \-vmas14\ & \-vmas13\ & \-vmas12\ & \-vmas11\ & \-vmas10\ & \-vmas9\ & \-vmas8\ & \-vmas7\ & \-vmas6\ & \-vmas5\ & \-vmas4\ & \-vmas3\ & \-vmas2\ & \-vmas1\ & \-vmas0\;
     vmas <= not \-vmas\;
+    \-adr\ <= \-adr21\ & \-adr20\ & \-adr19\ & \-adr18\ & \-adr17\ & \-adr16\ & \-adr15\ & \-adr14\ & \-adr13\ & \-adr12\ & \-adr11\ & \-adr10\ & \-adr9\ & \-adr8\ & \-adr7\ & \-adr6\ & \-adr5\ & \-adr4\ & \-adr3\ & \-adr2\ & \-adr1\ & \-adr0\;
   end architecture;

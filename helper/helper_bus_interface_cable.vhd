@@ -12,7 +12,7 @@ entity helper_bus_interface_cable is
   port (
 
     -- cadr:bcpins
-    \mem par in\: out std_logic;
+    \mempar in\: out std_logic;
     \-pma21\: in std_logic;
     \-pma20\: in std_logic;
     \-pma19\: in std_logic;
@@ -55,7 +55,7 @@ entity helper_bus_interface_cable is
     \-bus.power.reset\: in std_logic;
 
     -- cadr1:clm
-    \mem par to lm\: in std_logic;
+    \mempar to lm\: in std_logic;
     \-adr21\: out std_logic;
     \-adr20\: out std_logic;
     \-adr19\: out std_logic;
@@ -82,7 +82,7 @@ entity helper_bus_interface_cable is
     \-lm ignpar\: out std_logic;
     \-lm grant\: out std_logic;
     \-lm int\: out std_logic;
-    \-mempar from lm\: out std_logic;
+    \mempar from lm\: out std_logic;
     \spy adr1\: out std_logic;
     \spy adr2\: out std_logic;
     \spy adr3\: out std_logic;
@@ -105,7 +105,7 @@ begin
 
   -- J12
   -- mem11:0 same
-  \mem par in\ <= \mem par to lm\;
+  \mempar in\ <= \mempar to lm\;
   -- -adrpar same
   -- -pma21:8 and -vma7:0 becomes -adr
   \-adr21\ <= \-pma21\;

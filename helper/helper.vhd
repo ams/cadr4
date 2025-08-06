@@ -1039,7 +1039,30 @@ package helper is
       \-vmas28\ : in std_logic;
       \-vmas29\ : in std_logic;
       \-vmas30\ : in std_logic;
-      \-vmas31\ : in std_logic
+      \-vmas31\ : in std_logic;
+      -- ADR bus (Address) - 22 bits
+      \-adr0\   : in std_logic;
+      \-adr1\   : in std_logic;
+      \-adr2\   : in std_logic;
+      \-adr3\   : in std_logic;
+      \-adr4\   : in std_logic;
+      \-adr5\   : in std_logic;
+      \-adr6\   : in std_logic;
+      \-adr7\   : in std_logic;
+      \-adr8\   : in std_logic;
+      \-adr9\   : in std_logic;
+      \-adr10\  : in std_logic;
+      \-adr11\  : in std_logic;
+      \-adr12\  : in std_logic;
+      \-adr13\  : in std_logic;
+      \-adr14\  : in std_logic;
+      \-adr15\  : in std_logic;
+      \-adr16\  : in std_logic;
+      \-adr17\  : in std_logic;
+      \-adr18\  : in std_logic;
+      \-adr19\  : in std_logic;
+      \-adr20\  : in std_logic;
+      \-adr21\  : in std_logic
     );
   end component;
 
@@ -1066,6 +1089,95 @@ package helper is
   component helper_cycle_counter is 
     port (
       clk1 : in std_logic
+    );
+  end component;
+
+  component helper_bus_interface_cable is
+    port (
+
+      -- cadr:bcpins
+      \mempar in\: out std_logic;
+      \-pma21\: in std_logic;
+      \-pma20\: in std_logic;
+      \-pma19\: in std_logic;
+      \-pma18\: in std_logic;
+      \-pma17\: in std_logic;
+      \-pma16\: in std_logic;
+      \-pma15\: in std_logic;
+      \-pma14\: in std_logic;
+      \-pma13\: in std_logic;
+      \-pma12\: in std_logic;
+      \-pma11\: in std_logic;
+      \-pma10\: in std_logic;
+      \-pma9\: in std_logic;
+      \-pma8\: in std_logic;
+      \-vma7\: in std_logic;
+      \-vma6\: in std_logic;
+      \-vma5\: in std_logic;
+      \-vma4\: in std_logic;
+      \-vma3\: in std_logic;
+      \-vma2\: in std_logic;
+      \-vma1\: in std_logic;
+      \-vma0\: in std_logic;    
+      \-memack\: in std_logic;
+      \-ignpar\: in std_logic;
+      \-memgrant\: in std_logic;    
+      \int\: in std_logic;
+      \mempar out\: in std_logic;
+
+      -- cadr:mbcpin
+      eadr0: in std_logic;
+      eadr1: in std_logic;
+      eadr2: in std_logic;
+      eadr3: in std_logic;
+      \-dbread\: in std_logic;
+      \-dbwrite\: in std_logic;
+      \-busint.lm.reset\: in std_logic;
+      \-boot1\: in std_logic;
+      \-bus.reset\: in std_logic;
+      \lm drive enb\: in std_logic;
+      \-bus.power.reset\: in std_logic;
+
+      -- cadr1:clm
+      \mempar to lm\: in std_logic;
+      \-adr21\: out std_logic;
+      \-adr20\: out std_logic;
+      \-adr19\: out std_logic;
+      \-adr18\: out std_logic;
+      \-adr17\: out std_logic;
+      \-adr16\: out std_logic;
+      \-adr15\: out std_logic;
+      \-adr14\: out std_logic;
+      \-adr13\: out std_logic;
+      \-adr12\: out std_logic;
+      \-adr11\: out std_logic;
+      \-adr10\: out std_logic;
+      \-adr9\: out std_logic;
+      \-adr8\: out std_logic;
+      \-adr7\: out std_logic;
+      \-adr6\: out std_logic;
+      \-adr5\: out std_logic;
+      \-adr4\: out std_logic;
+      \-adr3\: out std_logic;
+      \-adr2\: out std_logic;
+      \-adr1\: out std_logic;
+      \-adr0\: out std_logic;
+      \-lm ack\: out std_logic;
+      \-lm ignpar\: out std_logic;
+      \-lm grant\: out std_logic;
+      \-lm int\: out std_logic;
+      \mempar from lm\: out std_logic;
+      \spy adr1\: out std_logic;
+      \spy adr2\: out std_logic;
+      \spy adr3\: out std_logic;
+      \spy adr4\: out std_logic;
+      \-spy read\: out std_logic;
+      \-spy write\: out std_logic;
+      \-busint lm reset\: out std_logic;
+      \-lm boot\: out std_logic;
+      \-lm unibus reset\: out std_logic;
+      \-lm memdrive enb\: out std_logic;
+      \-lm power reset\: out std_logic
     );
   end component;
 
