@@ -10,21 +10,13 @@ entity cadr1_ubmast is
     \-lmub granted\ : in     std_logic;
     \-local enable\ : in     std_logic;
     \-npg in\       : in     std_logic;
-    \-ub bbsy\      : in     std_logic;
-    \-ub msyn\      : in     std_logic;
-    \-ub sack\      : in     std_logic;
-    \-ub ssyn\      : in     std_logic;
-    \bbsy in\       : in     std_logic;
     \db need ub\    : in     std_logic;
     \hi 1-14\       : in     std_logic;
-    \msyn in\       : in     std_logic;
     \msyn out\      : in     std_logic;
     \npg1 in t100\  : in     std_logic;
     \npg1 in\       : in     std_logic;
     \npg2 in t100\  : in     std_logic;
     \npg2 in\       : in     std_logic;
-    \sack in\       : in     std_logic;
-    \ssyn in\       : in     std_logic;
     \ssyn out\      : in     std_logic;
     lmneedub        : in     std_logic;
     \-db bus req\   : inout  std_logic;
@@ -38,6 +30,11 @@ entity cadr1_ubmast is
     \-lm ub selected\ : inout  std_logic;
     \-lm ub set master\ : inout  std_logic;
     \-npg1 out\     : inout  std_logic;
+    \-ub bbsy\      : inout  std_logic;
+    \-ub msyn\      : inout  std_logic;
+    \-ub sack\      : inout  std_logic;
+    \-ub ssyn\      : inout  std_logic;
+    \bbsy in\       : inout  std_logic;
     \bus ready\     : inout  std_logic;
     \db ub granted\ : inout  std_logic;
     \db ub selected\ : inout  std_logic;
@@ -46,11 +43,14 @@ entity cadr1_ubmast is
     \npg in\        : inout  std_logic;
     \npg1 out\      : inout  std_logic;
     \npg2 out\      : inout  std_logic;
+    \sack in\       : inout  std_logic;
+    \ssyn in\       : inout  std_logic;
     \-db ub granted\ : out    std_logic;
     \-lm ub granted\ : out    std_logic;
     \-npg out\      : out    std_logic;
     \bus req\       : out    std_logic;
     \db ub master\  : out    std_logic;
-    \lm ub master\  : out    std_logic
+    \lm ub master\  : out    std_logic;
+    \msyn in\       : out    std_logic
   );
 end entity cadr1_ubmast;

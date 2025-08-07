@@ -3,6 +3,25 @@ use ieee.std_logic_1164.all;
 
 package fairchild is
 
+  component dm8838 is
+  port (
+      in1 : in    std_logic; -- Input 1
+      in2 : in    std_logic; -- Input 2  
+      in3 : in    std_logic; -- Input 3
+      in4 : in    std_logic; -- Input 4
+      out1 : out  std_logic; -- Output 1
+      out2 : out  std_logic; -- Output 2
+      out3 : out  std_logic; -- Output 3
+      out4 : out  std_logic; -- Output 4
+      bus1 : inout std_logic; -- Bidirectional bus 1
+      bus2 : inout std_logic; -- Bidirectional bus 2
+      bus3 : inout std_logic; -- Bidirectional bus 3
+      bus4 : inout std_logic; -- Bidirectional bus 4
+      disable_a : in std_logic; -- Disable A (active high)
+      disable_b : in std_logic  -- Disable B (active high)
+      );
+  end component;
+
   component dm9328 is
   port (
       clr_n  : in  std_logic; -- 7

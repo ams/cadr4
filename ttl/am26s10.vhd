@@ -46,6 +46,10 @@ begin
       z3 <= i3_i;
     elsif e_n_i = '1' then
       -- Disabled: receiving, open collector outputs (high impedance)
+      b0 <= 'Z';
+      b1 <= 'Z';
+      b2 <= 'Z';
+      b3 <= 'Z';
       z0 <= not b0;
       z1 <= not b1;
       z2 <= not b2;

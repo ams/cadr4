@@ -338,22 +338,24 @@ package dip is
 
   component dip_74ls163 is
   port (
-    p1 : in std_logic;    -- CLR
-    p2 : in std_logic;    -- CLK
-    p3 : in std_logic;    -- A
-    p4 : in std_logic;    -- B
-    p5 : in std_logic;    -- C
-    p6 : in std_logic;    -- D
-    p7 : in std_logic;    -- ENP
-    p8 : in std_logic;    -- GND
-    p9 : in std_logic;    -- LOAD
-    p10 : in std_logic;   -- ENT
-    p11 : in std_logic;   -- QD
-    p12 : in std_logic;   -- QC
-    p13 : in std_logic;   -- QB
-    p14 : in std_logic;   -- QA
-    p15 : in std_logic;   -- RCO
-    p16 : in std_logic    -- VCC
+      p15 : out std_logic;   -- TC
+
+      p6 : in std_logic;    -- I3
+      p5 : in std_logic;    -- I2
+      p4 : in std_logic;    -- I1
+      p3 : in std_logic;    -- I0
+
+      p11 : out std_logic;   -- D3
+      p12 : out std_logic;   -- D2
+      p13 : out std_logic;   -- D1
+      p14 : out std_logic;   -- D0
+
+      p10 : in std_logic;   -- ENB T
+      p7 : in std_logic;    -- ENB P
+
+      p9 : in std_logic;    -- PE_n
+      p1 : in std_logic;    -- -SYNC CLR
+      p2 : in std_logic     -- CLK
     );
   end component;
 
@@ -1253,22 +1255,23 @@ package dip is
 
   component dip_dm8838 is
   port (
-    p1 : in std_logic;    -- S1B
-    p2 : in std_logic;    -- I1B
-    p3 : in std_logic;    -- I0B
-    p4 : in std_logic;    -- ZB
-    p5 : in std_logic;    -- I0A
-    p6 : in std_logic;    -- I1A
-    p7 : in std_logic;    -- GND
-    p8 : in std_logic;    -- S1A
-    p9 : in std_logic;    -- S0
-    p10 : in std_logic;   -- I1C
-    p11 : in std_logic;   -- I0C
-    p12 : in std_logic;   -- S1C
-    p13 : in std_logic;   -- I0D
-    p14 : in std_logic;   -- VCC
-    p15 : in std_logic;   -- S1D
-    p16 : in std_logic    -- I1D
+      p5 : in std_logic; -- in 4
+      p2 : in std_logic; -- in 3
+      p11 : in std_logic; -- in 2
+      p14 : in std_logic; -- in 1
+
+      p6 : out std_logic; -- out 4
+      p3 : out std_logic; -- out 3
+      p10 : out std_logic; -- out 2
+      p13 : out std_logic; -- out 1
+
+      p4 : inout std_logic; -- bus 4
+      p1 : inout std_logic; -- bus 3
+      p12 : inout std_logic; -- bus 2
+      p15 : inout std_logic; -- bus 1
+
+      p9 : in std_logic; -- disable_a / -ena
+      p7 : in std_logic -- disable_b / -enb
     );
   end component;
 

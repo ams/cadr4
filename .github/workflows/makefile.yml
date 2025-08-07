@@ -26,8 +26,8 @@ jobs:
     - name: Fix libLLVM-18.so.18.1 path (symlink)
       run: sudo ln -s /lib/x86_64-linux-gnu/libLLVM.so.18.1 /lib/x86_64-linux-gnu/libLLVM-18.so.18.1
 
-    - name: Build
-      run: make all
-
     - name: Regen
       run: make regen
+
+    - name: Build
+      run: make

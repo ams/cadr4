@@ -301,6 +301,24 @@ package sn74 is
       );
   end component;
 
+  component sn74163 is
+  port (
+      -- Control and status
+      tc      : out std_logic;  -- Terminal count
+      clk     : in  std_logic;  -- Clock
+      clr_n   : in  std_logic;  -- Synchronous clear (active low)
+      pe_n    : in  std_logic;  -- Parallel enable (active low)
+      enb_p   : in  std_logic;  -- Count enable parallel
+      enb_t   : in  std_logic;  -- Count enable trickle
+
+      -- Data inputs (parallel load)
+      i3, i2, i1, i0 : in  std_logic;
+
+      -- Data outputs
+      d3, d2, d1, d0 : out std_logic
+      );
+  end component;
+
   component sn74169 is
   port (
       -- Control and status
