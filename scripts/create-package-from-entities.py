@@ -14,6 +14,35 @@ from pathlib import Path
 from typing import Dict, List, Tuple
 
 
+def remove_vhdl_comments(line: str) -> str:
+    """
+    Remove VHDL comments from a line.
+    VHDL comments start with -- and continue to the end of the line.
+    Be careful with escaped identifiers that might contain --
+    """
+    # Handle escaped identifiers - they start and end with backslashes
+    in_escaped_identifier = False
+    result = ""
+    i = 0
+    
+    while i < len(line):
+        char = line[i]
+        
+        if char == '\\':
+            # Toggle escaped identifier state
+            in_escaped_identifier = not in_escaped_identifier
+            result += char
+            i += 1
+        elif char == '-' and not in_escaped_identifier and i + 1 < len(line) and line[i + 1] == '-':
+            # Found comment start, ignore rest of line
+            break
+        else:
+            result += char
+            i += 1
+    
+    return result
+
+
 def parse_entity_declaration(entity_file: Path) -> Tuple[str, List[Tuple[str, str]], List[Tuple[str, str, str]]]:
     """
     Parse a VHDL entity file and extract the entity name, generic and port declarations.
@@ -156,12 +185,16 @@ def parse_port_section(port_section: str) -> List[Tuple[str, str, str]]:
     # Find the last non-empty line to properly detect end of port section
     last_non_empty_line = None
     for line in reversed(lines):
-        if line.strip():
-            last_non_empty_line = line.strip()
+        stripped_line = remove_vhdl_comments(line).strip()
+        if stripped_line:
+            last_non_empty_line = stripped_line
             break
     
     for line in lines:
-        line = line.strip()
+        # Remove VHDL comments first
+        line_without_comments = remove_vhdl_comments(line)
+        line = line_without_comments.strip()
+        
         if not line:
             continue
             
