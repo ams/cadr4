@@ -272,7 +272,7 @@ regen:
 
 .PHONY: regenerate-packages
 regenerate-packages:
-	python3 $(CREATE_PACKAGE_FROM_ENTITIES_PY) -p dip/dip.vhd -a dip/aliases.txt -i dip/dip_*.vhd
+	python3 $(CREATE_PACKAGE_FROM_ENTITIES_PY) -p dip/dip.vhd -a dip/dip_aliases.txt -i dip/dip_*.vhd
 	python3 $(CREATE_PACKAGE_FROM_ENTITIES_PY) -p helper/helper.vhd -i helper/helper_*.vhd
 	python3 $(CREATE_PACKAGE_FROM_ENTITIES_PY) -p ttl/amd.vhd -i ttl/am*.vhd -e ttl/*_tb.vhd
 	python3 $(CREATE_PACKAGE_FROM_ENTITIES_PY) -p ttl/ecc.vhd -i ttl/ttldm.vhd -e ttl/*_tb.vhd

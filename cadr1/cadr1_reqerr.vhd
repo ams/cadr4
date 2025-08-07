@@ -4,7 +4,6 @@ use ieee.std_logic_1164.all;
 entity cadr1_reqerr is
   port (
     \-adrpar\       : in     std_logic;
-    \-any par error\ : in     std_logic;
     \-db read status\ : in     std_logic;
     \-free\         : in     std_logic;
     \-int busy t80\ : in     std_logic;
@@ -20,7 +19,6 @@ entity cadr1_reqerr is
     \lm par error\  : in     std_logic;
     \lmx grant a\   : in     std_logic;
     \mempar from lm\ : in     std_logic;
-    \ub map error\  : in     std_logic;
     \ub nxm error\  : in     std_logic;
     \ub xbus t100\  : in     std_logic;
     \unibus request\ : in     std_logic;
@@ -41,6 +39,8 @@ entity cadr1_reqerr is
     lmwr            : in     std_logic;
     xrd             : in     std_logic;
     \-xbus ignpar in\ : inout  std_logic;
+    \ub map error\  : inout  std_logic;
+    \-any par error\ : out    std_logic;
     \xbus par out\  : out    std_logic;
     udo0            : out    std_logic;
     udo1            : out    std_logic;

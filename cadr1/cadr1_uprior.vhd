@@ -3,7 +3,6 @@ use ieee.std_logic_1164.all;
 
 entity cadr1_uprior is
   port (
-    \-clear grant\  : in     std_logic;
     \-clk\          : in     std_logic;
     \-disable int grant\ : in     std_logic;
     \-local enable\ : in     std_logic;
@@ -21,11 +20,6 @@ entity cadr1_uprior is
     \hi 1-14\       : in     std_logic;
     \local enable\  : in     std_logic;
     \sack in\       : in     std_logic;
-    \ub bg4 in\     : in     std_logic;
-    \ub bg5 in\     : in     std_logic;
-    \ub bg6 in\     : in     std_logic;
-    \ub bg7 in\     : in     std_logic;
-    \ub npg out\    : in     std_logic;
     \unibus init in\ : in     std_logic;
     \unibus intr in\ : in     std_logic;
     br4             : in     std_logic;
@@ -40,10 +34,12 @@ entity cadr1_uprior is
     \-bg5o\         : inout  std_logic;
     \-bg6o\         : inout  std_logic;
     \-bg7o\         : inout  std_logic;
+    \-clear grant\  : inout  std_logic;
     \-npgo\         : inout  std_logic;
     \any grant dlyd\ : inout  std_logic;
     \any grant\     : inout  std_logic;
     \ub npg in\     : inout  std_logic;
+    \ub npg out\    : inout  std_logic;
     bg4p            : inout  std_logic;
     bg5p            : inout  std_logic;
     bg6p            : inout  std_logic;
@@ -57,6 +53,10 @@ entity cadr1_uprior is
     sackd           : inout  std_logic;
     \-any grant dlyd\ : out    std_logic;
     \any int grant\ : out    std_logic;
+    \ub bg4 in\     : out    std_logic;
+    \ub bg5 in\     : out    std_logic;
+    \ub bg6 in\     : out    std_logic;
+    \ub bg7 in\     : out    std_logic;
     bg4o            : out    std_logic;
     bg5o            : out    std_logic;
     bg6o            : out    std_logic;

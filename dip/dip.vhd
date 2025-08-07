@@ -384,21 +384,19 @@ package dip is
 
   component dip_74ls27 is
   port (
-    p1 : in std_logic;    -- 1A
-    p2 : in std_logic;    -- 1B
-    p3 : in std_logic;    -- 1C
-    p4 : in std_logic;    -- 1Y
-    p5 : in std_logic;    -- 2A
-    p6 : in std_logic;    -- 2B
-    p7 : in std_logic;    -- GND
-    p8 : in std_logic;    -- 2Y
-    p9 : in std_logic;    -- 2C
-    p10 : in std_logic;   -- 3A
-    p11 : in std_logic;   -- 3B
-    p12 : in std_logic;   -- 3Y
-    p13 : in std_logic;   -- 3C
-    p14 : in std_logic    -- VCC
-    );
+      p1  : in  std_logic; -- 1A
+      p2  : in  std_logic; -- 1B
+      p3  : in  std_logic; -- 2A
+      p4  : in  std_logic; -- 2B
+      p5  : in  std_logic; -- 2C
+      p6  : out std_logic; -- 2Y
+      p8  : out std_logic; -- 3Y
+      p9  : in  std_logic; -- 3A
+      p10 : in  std_logic; -- 3B
+      p11 : in  std_logic; -- 3C
+      p12 : out std_logic; -- 1Y
+      p13 : in  std_logic  -- 1C
+      );
   end component;
 
   component dip_74ls273 is
@@ -423,25 +421,6 @@ package dip is
     p18 : in  std_logic;                  -- d6
     p19 : out std_logic;                  -- q7
     p20 : in  std_logic                   -- d7
-    );
-  end component;
-
-  component dip_74ls74 is
-  port (
-    p1 : in std_logic;    -- 1CLR
-    p2 : in std_logic;    -- 1D
-    p3 : in std_logic;    -- 1CLK
-    p4 : in std_logic;    -- 1PR
-    p5 : in std_logic;    -- 1Q
-    p6 : in std_logic;    -- 1QN
-    p7 : in std_logic;    -- GND
-    p8 : in std_logic;    -- 2QN
-    p9 : in std_logic;    -- 2Q
-    p10 : in std_logic;   -- 2PR
-    p11 : in std_logic;   -- 2CLK
-    p12 : in std_logic;   -- 2D
-    p13 : in std_logic;   -- 2CLR
-    p14 : in std_logic    -- VCC
     );
   end component;
 
@@ -1028,20 +1007,18 @@ package dip is
 
   component dip_74s38 is
   port (
-    p1 : in std_logic;    -- 1A
-    p2 : in std_logic;    -- 1B
-    p3 : in std_logic;    -- 1Y
-    p4 : in std_logic;    -- 2A
-    p5 : in std_logic;    -- 2B
-    p6 : in std_logic;    -- 2Y
-    p7 : in std_logic;    -- GND
-    p8 : in std_logic;    -- 3Y
-    p9 : in std_logic;    -- 3B
-    p10 : in std_logic;   -- 3A
-    p11 : in std_logic;   -- 4Y
-    p12 : in std_logic;   -- 4B
-    p13 : in std_logic;   -- 4A
-    p14 : in std_logic    -- VCC
+      p1  : in  std_logic;  -- 1A
+      p2  : in  std_logic;  -- 1B
+      p3  : out std_logic;  -- 1Y
+      p4  : in  std_logic;  -- 2A
+      p5  : in  std_logic;  -- 2B
+      p6  : out std_logic;  -- 2Y
+      p8  : out std_logic;  -- 3Y
+      p9  : in  std_logic;  -- 3B
+      p10 : in  std_logic;  -- 3A
+      p11 : out std_logic;  -- 4Y
+      p12 : in  std_logic;  -- 4B
+      p13 : in  std_logic  -- 4A
     );
   end component;
 
@@ -1441,6 +1418,7 @@ package dip is
       );
   end component;
 
+alias dip_74ls74 is dip_74s74;
 alias dip_74ls240 is dip_74s240;
 alias dip_74ls374 is dip_74s374;
 alias dip_9s42 is dip_9s42_1;

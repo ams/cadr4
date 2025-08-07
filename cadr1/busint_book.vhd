@@ -577,7 +577,6 @@ package busint_book is
   component cadr1_reqerr is
   port (
       \-adrpar\       : in     std_logic;
-      \-any par error\ : in     std_logic;
       \-db read status\ : in     std_logic;
       \-free\         : in     std_logic;
       \-int busy t80\ : in     std_logic;
@@ -593,7 +592,6 @@ package busint_book is
       \lm par error\  : in     std_logic;
       \lmx grant a\   : in     std_logic;
       \mempar from lm\ : in     std_logic;
-      \ub map error\  : in     std_logic;
       \ub nxm error\  : in     std_logic;
       \ub xbus t100\  : in     std_logic;
       \unibus request\ : in     std_logic;
@@ -614,6 +612,8 @@ package busint_book is
       lmwr            : in     std_logic;
       xrd             : in     std_logic;
       \-xbus ignpar in\ : inout  std_logic;
+      \ub map error\  : inout  std_logic;
+      \-any par error\ : out    std_logic;
       \xbus par out\  : out    std_logic;
       udo0            : out    std_logic;
       udo1            : out    std_logic;
@@ -989,20 +989,14 @@ package busint_book is
       \-adr20\        : in     std_logic;
       \-adr21\        : in     std_logic;
       \-clk\          : in     std_logic;
-      \-disable int grant\ : in     std_logic;
       \-intc drive\   : in     std_logic;
-      \-intr ssyn\    : in     std_logic;
       \-lmadr>xbus\   : in     std_logic;
       \-load int ctl reg\ : in     std_logic;
       \-load int ctl2 reg\ : in     std_logic;
       \-local enable\ : in     std_logic;
       \-reset\        : in     std_logic;
-      \-ub int\       : in     std_logic;
-      \disable int grant\ : in     std_logic;
       \hi 15-30\      : in     std_logic;
-      \intr ssyn\     : in     std_logic;
       \local enable\  : in     std_logic;
-      \ub int\        : in     std_logic;
       \unibus intr in\ : in     std_logic;
       \xbus intr in\  : in     std_logic;
       udi0            : in     std_logic;
@@ -1019,10 +1013,16 @@ package busint_book is
       udi7            : in     std_logic;
       udi8            : in     std_logic;
       udi9            : in     std_logic;
+      \-disable int grant\ : inout  std_logic;
+      \-intr ssyn\    : inout  std_logic;
+      \-ub int\       : inout  std_logic;
       \-xbus intr in\ : inout  std_logic;
       \enable ub ints\ : inout  std_logic;
       \int stops grants\ : inout  std_logic;
       \intr in\       : inout  std_logic;
+      \intr ssyn\     : inout  std_logic;
+      \ub int\        : inout  std_logic;
+      \disable int grant\ : out    std_logic;
       \lm int\        : out    std_logic;
       level0          : out    std_logic;
       level1          : out    std_logic;
@@ -1122,13 +1122,9 @@ package busint_book is
   component cadr1_ubmast is
   port (
       \-db need ub\   : in     std_logic;
-      \-db ub granted\ : in     std_logic;
-      \-db ub selected\ : in     std_logic;
       \-dbub granted\ : in     std_logic;
       \-debug reset\  : in     std_logic;
       \-lm need ub\   : in     std_logic;
-      \-lm ub granted\ : in     std_logic;
-      \-lm ub selected\ : in     std_logic;
       \-lmub granted\ : in     std_logic;
       \-local enable\ : in     std_logic;
       \-npg in\       : in     std_logic;
@@ -1137,13 +1133,8 @@ package busint_book is
       \-ub sack\      : in     std_logic;
       \-ub ssyn\      : in     std_logic;
       \bbsy in\       : in     std_logic;
-      \bus ready\     : in     std_logic;
       \db need ub\    : in     std_logic;
-      \db ub granted\ : in     std_logic;
-      \db ub selected\ : in     std_logic;
       \hi 1-14\       : in     std_logic;
-      \lm ub granted\ : in     std_logic;
-      \lm ub selected\ : in     std_logic;
       \msyn in\       : in     std_logic;
       \msyn out\      : in     std_logic;
       \npg1 in t100\  : in     std_logic;
@@ -1157,15 +1148,24 @@ package busint_book is
       \-db bus req\   : inout  std_logic;
       \-db reset\     : inout  std_logic;
       \-db ub master\ : inout  std_logic;
+      \-db ub selected\ : inout  std_logic;
       \-db ub set master\ : inout  std_logic;
       \-lm bus req\   : inout  std_logic;
       \-lm reset\     : inout  std_logic;
       \-lm ub master\ : inout  std_logic;
+      \-lm ub selected\ : inout  std_logic;
       \-lm ub set master\ : inout  std_logic;
       \-npg1 out\     : inout  std_logic;
+      \bus ready\     : inout  std_logic;
+      \db ub granted\ : inout  std_logic;
+      \db ub selected\ : inout  std_logic;
+      \lm ub granted\ : inout  std_logic;
+      \lm ub selected\ : inout  std_logic;
       \npg in\        : inout  std_logic;
       \npg1 out\      : inout  std_logic;
       \npg2 out\      : inout  std_logic;
+      \-db ub granted\ : out    std_logic;
+      \-lm ub granted\ : out    std_logic;
       \-npg out\      : out    std_logic;
       \bus req\       : out    std_logic;
       \db ub master\  : out    std_logic;
@@ -1225,7 +1225,6 @@ package busint_book is
 
   component cadr1_uprior is
   port (
-      \-clear grant\  : in     std_logic;
       \-clk\          : in     std_logic;
       \-disable int grant\ : in     std_logic;
       \-local enable\ : in     std_logic;
@@ -1243,11 +1242,6 @@ package busint_book is
       \hi 1-14\       : in     std_logic;
       \local enable\  : in     std_logic;
       \sack in\       : in     std_logic;
-      \ub bg4 in\     : in     std_logic;
-      \ub bg5 in\     : in     std_logic;
-      \ub bg6 in\     : in     std_logic;
-      \ub bg7 in\     : in     std_logic;
-      \ub npg out\    : in     std_logic;
       \unibus init in\ : in     std_logic;
       \unibus intr in\ : in     std_logic;
       br4             : in     std_logic;
@@ -1262,10 +1256,12 @@ package busint_book is
       \-bg5o\         : inout  std_logic;
       \-bg6o\         : inout  std_logic;
       \-bg7o\         : inout  std_logic;
+      \-clear grant\  : inout  std_logic;
       \-npgo\         : inout  std_logic;
       \any grant dlyd\ : inout  std_logic;
       \any grant\     : inout  std_logic;
       \ub npg in\     : inout  std_logic;
+      \ub npg out\    : inout  std_logic;
       bg4p            : inout  std_logic;
       bg5p            : inout  std_logic;
       bg6p            : inout  std_logic;
@@ -1279,6 +1275,10 @@ package busint_book is
       sackd           : inout  std_logic;
       \-any grant dlyd\ : out    std_logic;
       \any int grant\ : out    std_logic;
+      \ub bg4 in\     : out    std_logic;
+      \ub bg5 in\     : out    std_logic;
+      \ub bg6 in\     : out    std_logic;
+      \ub bg7 in\     : out    std_logic;
       bg4o            : out    std_logic;
       bg5o            : out    std_logic;
       bg6o            : out    std_logic;
