@@ -143,6 +143,26 @@ package sn74 is
       );
   end component;
 
+  component sn74112 is
+  port (
+      clr1_n : in  std_logic;
+      j1     : in  std_logic;
+      k1     : in  std_logic;
+      clk1   : in  std_logic;
+      pre1_n : in  std_logic;
+      q1     : out std_logic;
+      q1_n   : out std_logic;
+
+      q2_n   : out std_logic;
+      q2     : out std_logic;
+      pre2_n : in  std_logic;
+      clk2   : in  std_logic;
+      k2     : in  std_logic;
+      j2     : in  std_logic;
+      clr2_n : in  std_logic
+      );
+  end component;
+
   component sn74133 is
   port (
       a   : in  std_logic; -- Pin 1
