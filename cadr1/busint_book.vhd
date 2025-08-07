@@ -260,7 +260,6 @@ package busint_book is
       \debug out ack\ : in     std_logic;
       \hi 1-14\       : in     std_logic;
       \hi 15-30\      : in     std_logic;
-      \select debug dlyd\ : in     std_logic;
       \ud > debug\    : in     std_logic;
       \xbus par in\   : in     std_logic;
       uba1            : in     std_logic;
@@ -271,6 +270,7 @@ package busint_book is
       ubwr            : in     std_logic;
       \-dbd enb\      : inout  std_logic;
       \debug active\  : inout  std_logic;
+      \select debug dlyd\ : inout  std_logic;
       \select debug\  : inout  std_logic;
       dbd0            : inout  std_logic;
       dbd1            : inout  std_logic;
@@ -709,7 +709,6 @@ package busint_book is
       \loadmd ack\    : in     std_logic;
       \msyn in\       : in     std_logic;
       \ub reg cyc t250\ : in     std_logic;
-      \ub xbus t100\  : in     std_logic;
       \ubx grant a\   : in     std_logic;
       mapvalid        : in     std_logic;
       ubma17          : in     std_logic;
@@ -723,6 +722,7 @@ package busint_book is
       \-uback\        : inout  std_logic;
       \-ubxrq\        : inout  std_logic;
       \ub xbus t0\    : inout  std_logic;
+      \ub xbus t100\  : inout  std_logic;
       ubxrq           : inout  std_logic;
       \-rbufwe\       : out    std_logic;
       \-ub invalid\   : out    std_logic;
@@ -1131,9 +1131,7 @@ package busint_book is
       \db need ub\    : in     std_logic;
       \hi 1-14\       : in     std_logic;
       \msyn out\      : in     std_logic;
-      \npg1 in t100\  : in     std_logic;
       \npg1 in\       : in     std_logic;
-      \npg2 in t100\  : in     std_logic;
       \npg2 in\       : in     std_logic;
       \ssyn out\      : in     std_logic;
       lmneedub        : in     std_logic;
@@ -1159,7 +1157,9 @@ package busint_book is
       \lm ub granted\ : inout  std_logic;
       \lm ub selected\ : inout  std_logic;
       \npg in\        : inout  std_logic;
+      \npg1 in t100\  : inout  std_logic;
       \npg1 out\      : inout  std_logic;
+      \npg2 in t100\  : inout  std_logic;
       \npg2 out\      : inout  std_logic;
       \sack in\       : inout  std_logic;
       \ssyn in\       : inout  std_logic;

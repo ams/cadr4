@@ -10,7 +10,6 @@ entity cadr1_dbgout is
     \debug out ack\ : in     std_logic;
     \hi 1-14\       : in     std_logic;
     \hi 15-30\      : in     std_logic;
-    \select debug dlyd\ : in     std_logic;
     \ud > debug\    : in     std_logic;
     \xbus par in\   : in     std_logic;
     uba1            : in     std_logic;
@@ -21,6 +20,7 @@ entity cadr1_dbgout is
     ubwr            : in     std_logic;
     \-dbd enb\      : inout  std_logic;
     \debug active\  : inout  std_logic;
+    \select debug dlyd\ : inout  std_logic;
     \select debug\  : inout  std_logic;
     dbd0            : inout  std_logic;
     dbd1            : inout  std_logic;

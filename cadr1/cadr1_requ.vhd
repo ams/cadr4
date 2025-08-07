@@ -14,7 +14,6 @@ entity cadr1_requ is
     \loadmd ack\    : in     std_logic;
     \msyn in\       : in     std_logic;
     \ub reg cyc t250\ : in     std_logic;
-    \ub xbus t100\  : in     std_logic;
     \ubx grant a\   : in     std_logic;
     mapvalid        : in     std_logic;
     ubma17          : in     std_logic;
@@ -28,6 +27,7 @@ entity cadr1_requ is
     \-uback\        : inout  std_logic;
     \-ubxrq\        : inout  std_logic;
     \ub xbus t0\    : inout  std_logic;
+    \ub xbus t100\  : inout  std_logic;
     ubxrq           : inout  std_logic;
     \-rbufwe\       : out    std_logic;
     \-ub invalid\   : out    std_logic;

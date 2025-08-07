@@ -13,9 +13,7 @@ entity cadr1_ubmast is
     \db need ub\    : in     std_logic;
     \hi 1-14\       : in     std_logic;
     \msyn out\      : in     std_logic;
-    \npg1 in t100\  : in     std_logic;
     \npg1 in\       : in     std_logic;
-    \npg2 in t100\  : in     std_logic;
     \npg2 in\       : in     std_logic;
     \ssyn out\      : in     std_logic;
     lmneedub        : in     std_logic;
@@ -41,7 +39,9 @@ entity cadr1_ubmast is
     \lm ub granted\ : inout  std_logic;
     \lm ub selected\ : inout  std_logic;
     \npg in\        : inout  std_logic;
+    \npg1 in t100\  : inout  std_logic;
     \npg1 out\      : inout  std_logic;
+    \npg2 in t100\  : inout  std_logic;
     \npg2 out\      : inout  std_logic;
     \sack in\       : inout  std_logic;
     \ssyn in\       : inout  std_logic;
