@@ -588,15 +588,11 @@ package busint_book is
       \-xao par even\ : in     std_logic;
       \bus par even\  : in     std_logic;
       \hi 1-14\       : in     std_logic;
-      \lm adr par error\ : in     std_logic;
-      \lm par error\  : in     std_logic;
       \lmx grant a\   : in     std_logic;
       \mempar from lm\ : in     std_logic;
-      \ub nxm error\  : in     std_logic;
       \ub xbus t100\  : in     std_logic;
       \unibus request\ : in     std_logic;
       \write through enb\ : in     std_logic;
-      \xb nxm error\  : in     std_logic;
       \xbus ignpar in\ : in     std_logic;
       \xbus par in\   : in     std_logic;
       \xbus request\  : in     std_logic;
@@ -611,7 +607,11 @@ package busint_book is
       lmwr            : in     std_logic;
       xrd             : in     std_logic;
       \-xbus ignpar in\ : inout  std_logic;
+      \lm adr par error\ : inout  std_logic;
+      \lm par error\  : inout  std_logic;
       \ub map error\  : inout  std_logic;
+      \ub nxm error\  : inout  std_logic;
+      \xb nxm error\  : inout  std_logic;
       \xb par error\  : inout  std_logic;
       \-any par error\ : out    std_logic;
       \xbus par out\  : out    std_logic;

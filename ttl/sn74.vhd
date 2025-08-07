@@ -627,6 +627,41 @@ package sn74 is
       );
   end component;
 
+  component sn74276 is
+  port (
+      clr_n  : in  std_logic;  -- Common clear (active low)
+      set_n  : in  std_logic;  -- Common preset (active low)
+
+      -- Flip-flop 1
+      j1     : in  std_logic;
+      k1_n   : in  std_logic;  -- K input (active low)
+      clk1_n : in  std_logic;  -- Clock 1 (negative edge)
+      q1     : out std_logic;
+      q1_n   : out std_logic;
+
+      -- Flip-flop 2
+      j2     : in  std_logic;
+      k2_n   : in  std_logic;  -- K input (active low)
+      clk2_n : in  std_logic;  -- Clock 2 (negative edge)
+      q2     : out std_logic;
+      q2_n   : out std_logic;
+
+      -- Flip-flop 3
+      j3     : in  std_logic;
+      k3_n   : in  std_logic;  -- K input (active low)
+      clk3_n : in  std_logic;  -- Clock 3 (negative edge)
+      q3     : out std_logic;
+      q3_n   : out std_logic;
+
+      -- Flip-flop 4
+      j4     : in  std_logic;
+      k4_n   : in  std_logic;  -- K input (active low)
+      clk4_n : in  std_logic;  -- Clock 4 (negative edge)
+      q4     : out std_logic;
+      q4_n   : out std_logic
+      );
+  end component;
+
   component sn7428 is
   port (
       g1a   : in  std_logic; -- Pin 1
