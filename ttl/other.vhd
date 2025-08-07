@@ -36,6 +36,17 @@ package other is
       );
   end component;
 
+  component sip180_390_8 is
+  port (
+      r2 : inout std_logic; -- 2
+      r3 : inout std_logic; -- 3
+      r4 : inout std_logic; -- 4
+      r5 : inout std_logic; -- 5
+      r6 : inout std_logic; -- 6
+      r7 : inout std_logic  -- 7
+      );
+  end component;
+
   component sip220_330_8 is
   port (
       r2 : inout std_logic; -- 2

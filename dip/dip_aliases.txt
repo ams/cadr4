@@ -1,3 +1,4 @@
+alias dip_74s288 is dip_5610;
 alias dip_74ls74 is dip_74s74;
 alias dip_74ls240 is dip_74s240;
 alias dip_74ls374 is dip_74s374;

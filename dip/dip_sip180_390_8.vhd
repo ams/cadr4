@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 library work;
-use work.other.all;
+use work.other.sip180_390_8;
 
 entity dip_sip180_390_8 is
   port (
@@ -17,5 +17,13 @@ end entity;
 
 architecture dip of dip_sip180_390_8 is
 begin
-  -- Empty architecture as requested
+  U1 : sip180_390_8
+    port map (
+      r2 => p2,
+      r3 => p3,
+      r4 => p4,
+      r5 => p5,
+      r6 => p6,
+      r7 => p7
+      );
 end architecture;
