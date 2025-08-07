@@ -586,6 +586,29 @@ package sn74 is
       );
   end component;
 
+  component sn74273 is
+  port (
+      clr_n : in  std_logic; -- Pin 1 (CLR)
+      clk   : in  std_logic; -- Pin 11 (CLK)
+      d0    : in  std_logic; -- Pin 3 (1D)
+      d1    : in  std_logic; -- Pin 4 (2D)
+      d2    : in  std_logic; -- Pin 7 (3D)
+      d3    : in  std_logic; -- Pin 8 (4D)
+      d4    : in  std_logic; -- Pin 13 (5D)
+      d5    : in  std_logic; -- Pin 14 (6D)
+      d6    : in  std_logic; -- Pin 17 (7D)
+      d7    : in  std_logic; -- Pin 18 (8D)
+      q0    : out std_logic; -- Pin 2 (1Q)
+      q1    : out std_logic; -- Pin 5 (2Q)
+      q2    : out std_logic; -- Pin 6 (3Q)
+      q3    : out std_logic; -- Pin 9 (4Q)
+      q4    : out std_logic; -- Pin 12 (5Q)
+      q5    : out std_logic; -- Pin 15 (6Q)
+      q6    : out std_logic; -- Pin 16 (7Q)
+      q7    : out std_logic  -- Pin 19 (8Q)
+      );
+  end component;
+
   component sn7428 is
   port (
       g1a   : in  std_logic; -- Pin 1
