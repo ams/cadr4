@@ -707,8 +707,8 @@ Header template for files:
  - [ ] Implement component
  - [ ] Implement skeleton testbench
  - [ ] Implement rudimentary testbench
-** TODO am8304 [8304] [0/5]
- - [ ] Store datasheet and upstream URL.
+** TODO am8304 [8304] [1/5]
+ - [X] Store datasheet and upstream URL.
  - [ ] Implement skeleton component.
    All components should have on the first line a single line
    description of the component.
