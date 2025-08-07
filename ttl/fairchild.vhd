@@ -1,74 +1,29 @@
--- Fairchild semiconductor components
-
 library ieee;
 use ieee.std_logic_1164.all;
 
--- the component names in this package are exact
--- there should not be any aliases
-
 package fairchild is
 
-  -- yes this one is not called dm93s28 but dm9328
-  -- it is listed as Fairchild  or AMD, I decided fairchild
   component dm9328 is
-    port (
-      clr_n  : in  std_logic;
-      aq_n   : out std_logic;
-      aq     : out std_logic;
-      asel   : in  std_logic;
-      ai1    : in  std_logic;
-      ai0    : in  std_logic;
-      aclk   : in  std_logic;
-      comclk : in  std_logic;
-      bclk   : in  std_logic;
-      bi0    : in  std_logic;
-      bi1    : in  std_logic;
-      bsel   : in  std_logic;
-      bq     : out std_logic;
-      bq_n   : out std_logic
-      );
-  end component;
-
-  component dm93s46 is
-    port (
-      a5  : in  std_logic;
-      a4  : in  std_logic;
-      a3  : in  std_logic;
-      a2  : in  std_logic;
-      a1  : in  std_logic;
-      a0  : in  std_logic;
-      b5  : in  std_logic;
-      b4  : in  std_logic;
-      b3  : in  std_logic;
-      b2  : in  std_logic;
-      b1  : in  std_logic;
-      b0  : in  std_logic;
-      enb : in  std_logic;
-      eq  : out std_logic
-      );
-  end component;
-
-  component dm9s42 is
-    port (
-      g1a1 : in  std_logic;
-      g1b1 : in  std_logic;
-      g2a1 : in  std_logic;
-      g2b1 : in  std_logic;
-      g2c1 : in  std_logic;
-      g2d1 : in  std_logic;
-      out1 : out std_logic;
-      g1a2 : in  std_logic;
-      g1b2 : in  std_logic;
-      g2a2 : in  std_logic;
-      g2b2 : in  std_logic;
-      g2c2 : in  std_logic;
-      g2d2 : in  std_logic;
-      out2 : out std_logic
+  port (
+      clr_n  : in  std_logic; -- 7
+      aq_n   : out std_logic; -- 1
+      aq     : out std_logic; -- 2
+      asel   : in  std_logic; -- 3
+      ai1    : in  std_logic; -- 5
+      ai0    : in  std_logic; -- 4
+      aclk   : in  std_logic; -- 6
+      comclk : in  std_logic; -- 9
+      bclk   : in  std_logic; -- 10
+      bi0    : in  std_logic; -- 11
+      bi1    : in  std_logic; -- 12
+      bsel   : in  std_logic; -- 13
+      bq     : out std_logic; -- 14
+      bq_n   : out std_logic  -- 15
       );
   end component;
 
   component dm93425a is
-    generic (fn : string := "");
+  generic (fn : string := "");
     port (
       a0   : in  std_logic;
       a1   : in  std_logic;
@@ -87,4 +42,42 @@ package fairchild is
       );
   end component;
 
-end;
+  component dm93s46 is
+  port (
+      a0  : in  std_logic;
+      b0  : in  std_logic;
+      a1  : in  std_logic;
+      b1  : in  std_logic;
+      a2  : in  std_logic;
+      b2  : in  std_logic;
+      enb : in  std_logic;
+      eq  : out std_logic;
+      a3  : in  std_logic;
+      b3  : in  std_logic;
+      a4  : in  std_logic;
+      b4  : in  std_logic;
+      a5  : in  std_logic;
+      b5  : in  std_logic
+      );
+  end component;
+
+  component dm9s42 is
+  port (
+      g1a1 : in  std_logic; -- Pin 1
+      g1b1 : in  std_logic; -- Pin 2
+      g2a1 : in  std_logic; -- Pin 3
+      g2b1 : in  std_logic; -- Pin 4
+      g2c1 : in  std_logic; -- Pin 5
+      g2d1 : in  std_logic; -- Pin 6
+      out1 : out std_logic; -- Pin 8
+      g1a2 : in  std_logic; -- Pin 9
+      g1b2 : in  std_logic; -- Pin 10
+      g2a2 : in  std_logic; -- Pin 11
+      g2b2 : in  std_logic; -- Pin 12
+      g2c2 : in  std_logic; -- Pin 13
+      g2d2 : in  std_logic; -- Pin 14
+      out2 : out std_logic  -- Pin 15
+      );
+  end component;
+
+end package;

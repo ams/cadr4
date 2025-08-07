@@ -13,9 +13,7 @@ use ieee.numeric_std.all;
 use work.misc.all;
 
 entity n82s21 is
-  generic (
-    fn : string := ""
-  );
+  generic (fn : string := "");
   port (
     a0     : in  std_logic;
     a1     : in  std_logic;

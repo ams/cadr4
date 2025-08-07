@@ -1,14 +1,12 @@
--- Engineered Components Company components
-
 library ieee;
 use ieee.std_logic_1164.all;
 
 package ecc is
 
   component ttldm is
-    generic (
-      single_tap_delay : time
-    );
+  generic (
+      single_tap_delay : time := 5 ns
+      );
     port (
       input  : in  std_logic;
       tap1   : out std_logic := 'H';
@@ -16,7 +14,7 @@ package ecc is
       tap3   : out std_logic := 'H';
       tap4   : out std_logic := 'H';
       output : out std_logic := 'H'
-    );
+      );
   end component;
 
-end;
+end package;

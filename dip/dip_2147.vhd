@@ -5,9 +5,7 @@ library work;
 use work.intel.d2147;
 
 entity dip_2147 is
-  generic (
-    fn : string := ""
-  );
+  generic (fn : string := "");
   port (
     p1  : in  std_logic;
     p2  : in  std_logic;
@@ -31,9 +29,7 @@ end entity;
 architecture dip of dip_2147 is
 begin
   U1 : d2147
-    generic map (
-      fn => fn
-    )
+    generic map (fn => fn)
     port map (
       a0   => p1,
       a1   => p2,
