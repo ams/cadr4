@@ -4,7 +4,7 @@ use ieee.std_logic_1164.all;
 library work;
 use work.fairchild.dm9s42;
 
-entity dip_9s42_1 is
+entity dip_9s42 is
   port (
     p1  : in  std_logic;
     p2  : in  std_logic;
@@ -23,7 +23,7 @@ entity dip_9s42_1 is
     );
 end entity;
 
-architecture dip of dip_9s42_1 is
+architecture dip of dip_9s42 is
 begin
   U1 : dm9s42
     port map (

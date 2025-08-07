@@ -3,16 +3,6 @@ use ieee.std_logic_1164.all;
 
 package dip is
 
-  component dip_16dummy is
-  port (
-      p12 : out std_logic;
-      p13 : out std_logic;
-      p14 : out std_logic;
-      p15 : out std_logic;
-      p16 : out std_logic
-      );
-  end component;
-
   component dip_2147 is
   generic (fn : string := "");
     port (
@@ -1215,7 +1205,7 @@ package dip is
       );
   end component;
 
-  component dip_9s42_1 is
+  component dip_9s42 is
   port (
       p1  : in  std_logic;
       p2  : in  std_logic;
@@ -1254,6 +1244,16 @@ package dip is
       p9 : in std_logic; -- disable_a / -ena
       p7 : in std_logic -- disable_b / -enb
     );
+  end component;
+
+  component dip_dummy is
+  port (
+      p12 : out std_logic;
+      p13 : out std_logic;
+      p14 : out std_logic;
+      p15 : out std_logic;
+      p16 : out std_logic
+      );
   end component;
 
   component dip_dummy4_reqtim_b03 is
@@ -1410,6 +1410,5 @@ alias dip_74s288 is dip_5610;
 alias dip_74ls74 is dip_74s74;
 alias dip_74ls240 is dip_74s240;
 alias dip_74ls374 is dip_74s374;
-alias dip_9s42 is dip_9s42_1;
 
 end package;

@@ -4,7 +4,7 @@ use ieee.std_logic_1164.all;
 library work;
 use work.other.dummy_type_a;
 
-entity dip_16dummy is
+entity dip_dummy is
   port (
     p12 : out std_logic;
     p13 : out std_logic;
@@ -14,7 +14,7 @@ entity dip_16dummy is
     );
 end entity;
 
-architecture dip of dip_16dummy is
+architecture dip of dip_dummy is
 begin
   U1 : dummy_type_a
     port map (

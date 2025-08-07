@@ -45,20 +45,11 @@ CREATE_CADR1_TB_PY := scripts/create-cadr1-tb.py
 CREATE_ENTITY_FROM_SUDS_PY := scripts/create-entity-from-suds.py
 CREATE_PACKAGE_FROM_ENTITIES_PY := scripts/create-package-from-entities.py
 
-# soap utility
-USE_SOAP4          := 1
-
-ifeq ($(USE_SOAP4),1)
+# soap vars
 SOAP               := $(BUILDDIR)/soap4
 SOAP_OPTIONS_CADR  := -o vhdl -e doc/ai/cadr/bodies.drw -x cadr
 SOAP_OPTIONS_CADR1 := -o vhdl -x cadr1
 FIXSUDS_PY   	   := scripts/fix-suds.soap4.py
-else
-SOAP               := $(BUILDDIR)/soap
-SOAP_OPTIONS_CADR  := -n
-SOAP_OPTIONS_CADR1 := -n
-FIXSUDS_PY   	   := scripts/fix-suds.soap.py
-endif
 
 # OS specific settings
 OS := $(shell uname -s)
@@ -312,18 +303,7 @@ ifndef PAGE
 	$(error PAGE is not set, run regenerate-fast-promh-cadr-suds or regenerate-promh9-cadr-suds)
 endif
 	$(SOAP) $(SOAP_OPTIONS_CADR) $(CADR_DRWDIR)/$(PAGE).drw > $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
-ifeq ($(PAGE),bcterm)
-# soap4 does not have this problem
-ifneq ($(USE_SOAP4),1)
-# modify bcterm components, soap emits dip names without @, so there are mistakes, 1b15 is used twice etc.
-	sed $(SEDOPTIONS) 's/bcterm_1b15 : dip_sip220_330_8 port map (p2 => mem0/bcterm_1b15_1 : dip_sip220_330_8 port map (p2 => mem0/' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
-	sed $(SEDOPTIONS) 's/bcterm_1b15 : dip_sip220_330_8 port map (p2 => mem6/bcterm_1b15_2 : dip_sip220_330_8 port map (p2 => mem6/' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
-	sed $(SEDOPTIONS) 's/bcterm_1b20 : dip_sip220_330_8 port map (p2 => mem12/bcterm_1b20_1 : dip_sip220_330_8 port map (p2 => mem12/' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
-	sed $(SEDOPTIONS) 's/bcterm_1b20 : dip_sip220_330_8 port map (p2 => mem18/bcterm_1b20_2 : dip_sip220_330_8 port map (p2 => mem18/' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd	
-	sed $(SEDOPTIONS) 's/bcterm_1b25 : dip_sip220_330_8 port map (p2 => mem24/bcterm_1b25_1 : dip_sip220_330_8 port map (p2 => mem24/' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
-	sed $(SEDOPTIONS) 's/bcterm_1b25 : dip_sip220_330_8 port map (p2 => mem30/bcterm_1b25_2 : dip_sip220_330_8 port map (p2 => mem30/' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
-endif	
-else ifeq ($(PAGE),clock1)
+ifeq ($(PAGE),clock1)
 # modify clock1 to alias -tpdone to -tpw60, this is a simple wire in the schematics
 # this is done after fix-suds.py because it may modify it or get confused with these additions
 ifeq ($(OS),Darwin)
@@ -332,26 +312,11 @@ else
 	sed $(SEDOPTIONS) 's/^architecture.*/&\nalias \\-tpdone\\ : std_logic is \\-tpw60\\;/' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
 endif
 else ifeq ($(PAGE),clock2)
-# modify clock2_1c10, change \machruna l\ to \-machruna\
-# this seems to be a mistake in drw or soap, in wlr the 1c10 is connected to -machruna
-# also change \-tpw70\ that resets the TPWP signal to \-tpw45\ to keep it within the cycle	
-ifeq ($(USE_SOAP4),1)
 	sed $(SEDOPTIONS) 's/clock2_1c06.*p10 => \\-tpw70\\/clock2_1c06 : dip_74s10 port map (p4 => \\-tpr25\\, p3 => \\-tptse\\, p5 => \\-clock reset b\\, p6 => tptse, p1 => \\-tprend\\, p2 => tpclk, p13 => \\-clock reset b\\, p12 => \\-tpclk\\, p10 => \\-tpw45\\, p11 => net_03, p9 => \\-clock reset b\\, p8 => net_00);/' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
-else
-	sed $(SEDOPTIONS) 's/\\machruna l\\/\\-machruna\\/g' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
-	sed $(SEDOPTIONS) 's/clock2_1c06.*p10 => \\-tpw70\\/clock2_1c06 : dip_74s10 port map (p8 => \\@1c07,p9\\, p9 => \\-clock reset b\\, p10 => \\-tpw45\\, p11 => \\@1c07,p8\\);/' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
-endif
-# remove two inverters after dummy and drive -power reset directly from dummy
 else ifeq ($(PAGE),olord2)
-ifeq ($(USE_SOAP4),1)
-# change dip_dummy to dip_16dummy
-	sed $(SEDOPTIONS) 's/olord2_1a19.*/olord2_1a19 : dip_16dummy port map (p16 => hi1, p15 => hi2, p14 => \\-boot1\\, p13 => \\-boot2\\, p12 => \\-power reset\\);/' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
+# remove two inverters after dummy and drive -power reset directly from dummy
+	sed $(SEDOPTIONS) 's/olord2_1a19.*/olord2_1a19 : dip_dummy port map (p16 => hi1, p15 => hi2, p14 => \\-boot1\\, p13 => \\-boot2\\, p12 => \\-power reset\\);/' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
 	sed $(SEDOPTIONS) 's/olord2_1a20.*/olord2_1a20 : dip_74ls14 port map (p6 => net_04, p5 => \\-boot2\\, p4 => net_03, p3 => \\-boot1\\);/' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd	
-else
-	sed $(SEDOPTIONS) 's/olord2_1a19.*/olord2_1a19 : dip_16dummy port map (p12 => \\-power reset\\, p13 => \\-boot2\\, p14 => \\-boot1\\, p15 => hi2, p16 => hi1);/g' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
-	sed $(SEDOPTIONS) '/olord2_1a20 : dip_74ls14 port map (p2 => \\@1a20,p9\\);/d' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
-	sed $(SEDOPTIONS) '/olord2_1a20 : dip_74ls14 port map (p8 => \\-power reset\\, p9 => \\@1a20,p2\\);/d' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
-endif	
 else ifeq ($(PAGE),pctl)
 ifeq ($(CADR4_TILONCONSOLE),1)
 # replace til309 components with 5x_til309 component
@@ -361,13 +326,6 @@ ifeq ($(CADR4_TILONCONSOLE),1)
 	sed $(SEDOPTIONS) '/pctl_1f19.*/d' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
 	sed $(SEDOPTIONS) 's/pctl_1f20.*/pctl_5x_til309 : dip_5x_til309 port map (p14 => pc13, p13 => pc12, p12 => pc11, p11 => pc10, p10 => pc9, p9 => pc8, p8 => pc7, p7 => pc6, p6 => pc5, p5 => pc4, p4 => pc3, p3 => pc2, p2 => pc1, p1 => pc0, p15 => promenable, p16 => ipe, p17 => dpe, p18 => tilt0, p19 => tilt1);/g' cadr/suds/cadr_$(PAGE)_suds.vhd
 endif
-else ifeq ($(PAGE),source)
-# modify \destimod0 l\ and \iwrited l\ to -destimod0 and -iwrited
-# this seems to be a mistake in drw or soap, in wlr 3e05 is connected to -destimod0 and -iwrited
-ifneq ($(USE_SOAP4),1)
-	sed $(SEDOPTIONS) 's/\\destimod0 l\\/\\-destimod0\\/g' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
-	sed $(SEDOPTIONS) 's/\\iwrited l\\/\\-iwrited\\/g' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
-endif	
 endif
 	python3 $(FIXSUDS_PY) --generic-map $(FIXSUDS_GENERICMAP) $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
 
