@@ -28,21 +28,21 @@ entity cadr1_wbuf is
     udi7            : in     std_logic;
     udi8            : in     std_logic;
     udi9            : in     std_logic;
-    wbuf0           : in     std_logic;
-    wbuf1           : in     std_logic;
-    wbuf10          : in     std_logic;
-    wbuf11          : in     std_logic;
-    wbuf12          : in     std_logic;
-    wbuf13          : in     std_logic;
-    wbuf14          : in     std_logic;
-    wbuf15          : in     std_logic;
-    wbuf2           : in     std_logic;
-    wbuf3           : in     std_logic;
-    wbuf4           : in     std_logic;
-    wbuf5           : in     std_logic;
-    wbuf6           : in     std_logic;
-    wbuf7           : in     std_logic;
-    wbuf8           : in     std_logic;
-    wbuf9           : in     std_logic
+    wbuf0           : out    std_logic;
+    wbuf1           : out    std_logic;
+    wbuf10          : out    std_logic;
+    wbuf11          : out    std_logic;
+    wbuf12          : out    std_logic;
+    wbuf13          : out    std_logic;
+    wbuf14          : out    std_logic;
+    wbuf15          : out    std_logic;
+    wbuf2           : out    std_logic;
+    wbuf3           : out    std_logic;
+    wbuf4           : out    std_logic;
+    wbuf5           : out    std_logic;
+    wbuf6           : out    std_logic;
+    wbuf7           : out    std_logic;
+    wbuf8           : out    std_logic;
+    wbuf9           : out    std_logic
   );
 end entity cadr1_wbuf;

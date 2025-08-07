@@ -397,7 +397,13 @@ regenerate-cadr1-suds-page: $(FIXSUDS_PY) $(CADR1_DRWDIR)/$(PAGE).drw $(SOAP) di
 ifndef PAGE
 	$(error PAGE is not set, run regenerate-cadr1-suds)
 endif
-	$(SOAP) $(SOAP_OPTIONS_CADR1) $(CADR1_DRWDIR)/$(PAGE).drw > $(CADR1_SUDS_DIR)/cadr1_$(PAGE)_suds.vhd
+	$(SOAP) $(SOAP_OPTIONS_CADR1) $(CADR1_DRWDIR)/$(PAGE).drw > $(CADR1_SUDS_DIR)/cadr1_$(PAGE)_suds.vhd	
+ifeq ($(PAGE),reqtim)
+	sed $(SEDOPTIONS) 's/reqtim_0b04 : dip_dummy4/reqtim_0b04 : dip_dummy4_reqtim_b03/g' $(CADR1_SUDS_DIR)/cadr1_$(PAGE)_suds.vhd
+else ifeq ($(PAGE),uprior)
+	sed $(SEDOPTIONS) 's/uprior_0f17 : dip_dummy4/uprior_0f17 : dip_dummy4_uprior_f13/g' $(CADR1_SUDS_DIR)/cadr1_$(PAGE)_suds.vhd
+	sed $(SEDOPTIONS) 's/uprior_0f18 : dip_dummy4/uprior_0f18 : dip_dummy4_uprior_f14/g' $(CADR1_SUDS_DIR)/cadr1_$(PAGE)_suds.vhd
+endif
 	python3 $(FIXSUDS_PY) $(CADR1_SUDS_DIR)/cadr1_$(PAGE)_suds.vhd
 	python3 $(CREATE_ENTITY_FROM_SUDS_PY) -o cadr1/cadr1_$(PAGE).vhd -d dip/dip.vhd $(CADR1_SUDS_DIR)/cadr1_$(PAGE)_suds.vhd
 	python3 $(CREATE_PACKAGE_FROM_ENTITIES_PY) -p cadr1/busint_book.vhd -i cadr1/cadr1_*.vhd

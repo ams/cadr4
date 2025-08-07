@@ -6,7 +6,6 @@ entity cadr1_reqtim is
     \-debug timeout inh\ : in     std_logic;
     \int busy\      : in     std_logic;
     \select debug\  : in     std_logic;
-    \vco cap2\      : in     std_logic;
     \hung timeout\  : inout  std_logic;
     \nxm timeout\   : inout  std_logic;
     \prom hung timeout\ : inout  std_logic;
@@ -17,6 +16,7 @@ entity cadr1_reqtim is
     \timeout 2\     : inout  std_logic;
     \timeout 3\     : inout  std_logic;
     \vco cap1\      : inout  std_logic;
+    \vco cap2\      : inout  std_logic;
     \-hung timeout\ : out    std_logic;
     \-nxm timeout\  : out    std_logic;
     \unused timeout\ : out    std_logic

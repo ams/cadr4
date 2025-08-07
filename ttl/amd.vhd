@@ -101,6 +101,25 @@ package amd is
       );
   end component;
 
+  component am29701 is
+  port (
+      i1      : in  std_logic;
+      i2      : in  std_logic;
+      i3      : in  std_logic;
+      i4      : in  std_logic;
+      o1      : out std_logic;
+      o2      : out std_logic;
+      o3      : out std_logic;
+      o4      : out std_logic;
+      a0      : in  std_logic;
+      a1      : in  std_logic;
+      a2      : in  std_logic;
+      a3      : in  std_logic;
+      write_n : in  std_logic;
+      ce_n    : in  std_logic
+    );
+  end component;
+
   component am8304 is
   port (
       a0           : inout std_logic;

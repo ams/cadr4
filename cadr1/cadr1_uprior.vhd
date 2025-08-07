@@ -8,7 +8,6 @@ entity cadr1_uprior is
     \-local enable\ : in     std_logic;
     \-npg out\      : in     std_logic;
     \bus req\       : in     std_logic;
-    \hi 1-14\       : in     std_logic;
     \local enable\  : in     std_logic;
     \sack in\       : in     std_logic;
     level0          : in     std_logic;
@@ -30,6 +29,7 @@ entity cadr1_uprior is
     \any grant dlyd\ : inout  std_logic;
     \any grant\     : inout  std_logic;
     \grant timeout\ : inout  std_logic;
+    \hi 1-14\       : inout  std_logic;
     \ub npg in\     : inout  std_logic;
     \ub npg out\    : inout  std_logic;
     bg4p            : inout  std_logic;

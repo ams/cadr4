@@ -135,22 +135,23 @@ package dip is
 
   component dip_29701 is
   port (
-    p1 : in std_logic;    -- VCC
-    p2 : in std_logic;    -- D3
-    p3 : in std_logic;    -- D2
-    p4 : in std_logic;    -- Q3
-    p5 : in std_logic;    -- Q2
-    p6 : in std_logic;    -- Q1
-    p7 : in std_logic;    -- Q0
-    p8 : in std_logic;    -- GND
-    p9 : in std_logic;    -- D1
-    p10 : in std_logic;   -- D0
-    p11 : in std_logic;   -- D1
-    p12 : in std_logic;   -- D0
-    p13 : in std_logic;   -- G1
-    p14 : in std_logic;   -- G2
-    p15 : in std_logic;   -- LE
-    p16 : in std_logic    -- VCC
+      p4 : in std_logic; -- I1
+      p6 : in std_logic; -- I2
+      p10 : in std_logic; -- I3
+      p12 : in std_logic; -- I4
+
+      p5 : out std_logic; -- O1
+      p7 : out std_logic; -- O2
+      p9 : out std_logic; -- O3
+      p11 : out std_logic; -- O4
+
+      p1 : in std_logic; -- A3
+      p15 : in std_logic; -- A2
+      p14 : in std_logic; -- A1
+      p13 : in std_logic; -- A0
+
+      p3 : in std_logic; -- WRITE_n
+      p2 : in std_logic -- CE_n
     );
   end component;
 
@@ -1255,12 +1256,24 @@ package dip is
     );
   end component;
 
-  component dip_dummy4 is
+  component dip_dummy4_reqtim_b03 is
   port (
-    p1  : in std_logic; 
-    p2  : in std_logic;
-    p3  : out std_logic;
-    p4  : out std_logic
+      p2  : inout std_logic;
+      p3  : inout std_logic
+    );
+  end component;
+
+  component dip_dummy4_uprior_f13 is
+  port (
+      p1  : inout std_logic; 
+      p2  : in std_logic;
+      p3  : inout std_logic
+    );
+  end component;
+
+  component dip_dummy4_uprior_f14 is
+  port (
+      p1  : inout std_logic
     );
   end component;
 
