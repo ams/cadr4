@@ -101,6 +101,29 @@ package amd is
       );
   end component;
 
+  component am8304 is
+  port (
+      a0           : inout std_logic;
+      a1           : inout std_logic;
+      a2           : inout std_logic;
+      a3           : inout std_logic;
+      a4           : inout std_logic;
+      a5           : inout std_logic;
+      a6           : inout std_logic;
+      a7           : inout std_logic;
+      b0           : inout std_logic;
+      b1           : inout std_logic;
+      b2           : inout std_logic;
+      b3           : inout std_logic;
+      b4           : inout std_logic;
+      b5           : inout std_logic;
+      b6           : inout std_logic;
+      b7           : inout std_logic;
+      chip_disable : in    std_logic;
+      transmit     : in    std_logic
+      );
+  end component;
+
   component am93s48 is
   port (
       i0  : in  std_logic; -- Pin 11
