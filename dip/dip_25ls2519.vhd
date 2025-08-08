@@ -31,23 +31,27 @@ architecture dip of dip_25ls2519 is
 begin
   U1 : am25ls2519
     port map (
-      d0     => p1,
-      w0     => p2,
-      y0     => p3,
-      d1     => p4,
-      w1     => p5,
-      y1     => p6,
+      -- w section
       oe_w_n => p7,
-      oe_y_n => p8,
-      cp     => p9,
-      w2     => p11,
-      y2     => p12,
-      d2     => p13,
-      w3     => p14,
-      y3     => p15,
-      d3     => p16,
-      e_n    => p17,
       pol    => p18,
+      w0     => p2,
+      w1     => p5,
+      w2     => p12,
+      w3     => p15,
+      -- data inputs
+      d0     => p1,
+      d1     => p4,
+      d2     => p13,
+      d3     => p16,
+      -- y section
+      oe_y_n => p8,
+      y0     => p3,
+      y1     => p6,
+      y2     => p11,
+      y3     => p14,
+      -- control section
+      cp     => p9,
+      e_n    => p17,
       clr_n  => p19
       );
 end architecture;

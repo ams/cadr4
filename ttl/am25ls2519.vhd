@@ -62,7 +62,13 @@ begin
 
   process (all)
   begin
-    if oe_y_n_i = '0' then
+    -- Async clear takes priority over output enable
+    if clr_n_i = '0' then
+      y3 <= '0';
+      y2 <= '0';
+      y1 <= '0';
+      y0 <= '0';
+    elsif oe_y_n_i = '0' then
       y3 <= q3;
       y2 <= q2;
       y1 <= q1;
@@ -79,7 +85,13 @@ begin
       y0 <= 'X';
     end if;
 
-    if oe_w_n_i = '0' then
+    -- Async clear takes priority over output enable for W outputs too
+    if clr_n_i = '0' then
+      w3 <= '0';
+      w2 <= '0';
+      w1 <= '0';
+      w0 <= '0';
+    elsif oe_w_n_i = '0' then
       if pol_i = '1' then
         w3 <= not q3;
         w2 <= not q2;
