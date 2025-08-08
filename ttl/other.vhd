@@ -13,17 +13,6 @@ package other is
       );
   end component;
 
-  component mtd100 is
-  port (
-      i0 : in std_logic; -- 1
-      i1 : in std_logic; -- 3
-      i2 : in std_logic; -- 5
-      o0 : out std_logic; -- 12
-      o1 : out std_logic; -- 10
-      o2 : out std_logic  -- 8
-    );
-  end component;
-
   component res20 is
   port (
       r2  : out std_logic; -- 2

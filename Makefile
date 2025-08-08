@@ -266,10 +266,10 @@ regenerate-packages:
 	python3 $(CREATE_PACKAGE_FROM_ENTITIES_PY) -p dip/dip.vhd -a dip/dip_aliases.txt -i dip/dip_*.vhd
 	python3 $(CREATE_PACKAGE_FROM_ENTITIES_PY) -p helper/helper.vhd -i helper/helper_*.vhd
 	python3 $(CREATE_PACKAGE_FROM_ENTITIES_PY) -p ttl/amd.vhd -i ttl/am*.vhd -e ttl/*_tb.vhd
-	python3 $(CREATE_PACKAGE_FROM_ENTITIES_PY) -p ttl/ecc.vhd -i ttl/ttldm.vhd -e ttl/*_tb.vhd
+	python3 $(CREATE_PACKAGE_FROM_ENTITIES_PY) -p ttl/ecc.vhd -i ttl/ttldm.vhd ttl/mttldl.vhd  -e ttl/*_tb.vhd
 	python3 $(CREATE_PACKAGE_FROM_ENTITIES_PY) -p ttl/fairchild.vhd -i ttl/dm*.vhd -e ttl/*_tb.vhd
 	python3 $(CREATE_PACKAGE_FROM_ENTITIES_PY) -p ttl/intel.vhd -i ttl/d2147.vhd -e ttl/*_tb.vhd
-	python3 $(CREATE_PACKAGE_FROM_ENTITIES_PY) -p ttl/other.vhd -i ttl/dummy_type_a.vhd ttl/mtd100.vhd ttl/res20.vhd ttl/sip*.vhd ttl/til309.vhd -e ttl/*_tb.vhd
+	python3 $(CREATE_PACKAGE_FROM_ENTITIES_PY) -p ttl/other.vhd -i ttl/dummy_type_a.vhd ttl/res20.vhd ttl/sip*.vhd ttl/til309.vhd -e ttl/*_tb.vhd
 	python3 $(CREATE_PACKAGE_FROM_ENTITIES_PY) -p ttl/signetics.vhd -i ttl/n82s21.vhd -e ttl/*_tb.vhd
 	python3 $(CREATE_PACKAGE_FROM_ENTITIES_PY) -p ttl/sn74.vhd -a ttl/sn74_aliases.txt -i ttl/sn74*.vhd -e ttl/*_tb.vhd	
 

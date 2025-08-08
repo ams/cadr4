@@ -10,6 +10,7 @@ __pycache__/
 *.o
 *.cf
 
+.surfer/
 .vscode/
 build/
 cadr1/suds/cadr1_*_suds.vhd

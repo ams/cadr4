@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 library work;
-use work.other.mtd100;
+use work.ecc.mttldl;
 
 entity dip_mtd100 is port (
     p1 : in std_logic;
@@ -16,7 +16,8 @@ end entity;
 
 architecture dip of dip_mtd100 is
 begin
-  U1 : mtd100
+  U1 : mttldl
+    generic map (delay => 100 ns)
     port map (
       i0 => p1,
       i1 => p3,

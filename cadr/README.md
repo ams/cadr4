@@ -96,7 +96,7 @@ PDL, SPC, L2-MAP, IMEM are all zeroes.
 
 ## Power On Reset
 
-- when VCC applied, -BOOT1 and -BOOT2 are high (thus not asserted) and -POWER RESET is initially (for X ns, see below) asserted. (olord2)
+- when VCC applied, -BOOT1 and -BOOT2 are high (thus not asserted) and -POWER RESET is initially (for X ns, see below) asserted (=low). (olord2)
 
 - -POWER RESET assertion is used to assert -CLOCK RESET A and -CLOCK RESET B. (olord2)
 
@@ -107,6 +107,8 @@ PDL, SPC, L2-MAP, IMEM are all zeroes.
 - It is critical that -ILONG and -HANG be a non-metavalue, otherwise the required signals becomes metavalues.
 
 - -CLOCK RESET B asserted resets the SR latch in clock2 to start generating TPCLK. TPCLK is set with -TPR0 and reset with -TPREND. (clock2)
+
+- -TPCLK drives -MCLK0 immediately. However, to drive -CLK0, MACHRUN has to be asserted. Thus, the bus is clocked immediately, but the CPU is not. MACHRUN is set from SRUN which is set from RUN which is set by -BOOT signal. Thus, it can be said that reset starts MCLK but not CLK, boot starts CLK.
 
 - After X ns, -POWER RESET is de-asserted which de-asserts -CLOCK RESET A/B. This completes the reset. (olord2)
 
