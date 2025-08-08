@@ -61,8 +61,8 @@ static int debug_parsing = 0;
 #define DUMP_RAW(...) { fprintf(stderr, __VA_ARGS__); }
 #define DUMP_VHDL(...) { fprintf(stdout, __VA_ARGS__); }
 
-#define LEFT_HALF_WORD(x) ((x >> 18) & 0777777)
-#define RIGHT_HALF_WORD(x) (x & 0777777)
+#define LEFT_HALF_WORD(x) ((uint32_t)((x >> 18) & 0777777))
+#define RIGHT_HALF_WORD(x) ((uint32_t)(x & 0777777))
 
 #define X_WORD(x) LEFT_HALF_WORD(x)
 #define Y_WORD(x) RIGHT_HALF_WORD(x)
@@ -74,7 +74,7 @@ static int debug_parsing = 0;
     DEBUG("%s %u #o%06o\n", name, value, value)
 
 #define DEBUG_WORD(name, value) \
-    DEBUG("%s %llu #o%012llo\n", name, value, value)
+    DEBUG("%s %llu #o%012llo (#o%06o, #o%06o)\n", name, value, value, LEFT_HALF_WORD(value), RIGHT_HALF_WORD(value))
 
 #define DEBUG_ID_PAIR(s, id) \
     DEBUG("%s id(%u, %u) (#o%06o, #o%06o)\n", s, \
@@ -119,8 +119,6 @@ strlwr(char *s)
 static char *
 fix_bus_signal_name_in_cadr1(char *s)
 {
-    DEBUG("fix_bus_signal_name_in_cadr1 '%s'\n", s);
-
     static const char *prefixes[] = {
         "ADR", "XADDR", "UBA", "UAO", "XAO", 
         "MEM", "BUS", "XBUS", "UDO", "UDI", "XDI", 
@@ -131,7 +129,6 @@ fix_bus_signal_name_in_cadr1(char *s)
 
     while (*p) {
         const char *prefix = *p;
-        DEBUG("prefix '%s'\n", prefix);
         size_t len = strlen(prefix);
         if (strncmp(s, prefix, len) == 0) {
             if (s[len] == ' ') {
@@ -148,7 +145,6 @@ fix_bus_signal_name_in_cadr1(char *s)
                     if (remove_space) {
                         static char b[256];
                         snprintf(b, sizeof(b), "%s%s", prefix, s+len+1);
-                        DEBUG("fixed '%s'\n", b);
                         return b;
                     }
                 }
@@ -156,8 +152,6 @@ fix_bus_signal_name_in_cadr1(char *s)
         }
         p++;
     }
-
-    DEBUG("not fixed '%s'\n", s);
 
     return s;
 }
@@ -816,42 +810,97 @@ parse_points(void)
 		pnt->size_of_text = read_word();
         DEBUG_WORD("\t\tsize_of_text", pnt->size_of_text);
 
+        HALF_WORD known_bits[] = {
+            0000000,
+            0040000,
+            0011000,
+            0051000,
+            0200000,
+        };
+
+        bool known_bit_found = false;
+        for (size_t i = 0; i < LEN(known_bits); i++) {
+            if (pnt->bits == known_bits[i]) {
+                known_bit_found = true;
+                break;
+            }
+        }
+
+        if (!known_bit_found) {
+            fprintf(stderr, "unexpected point bits #o%06o\n", pnt->bits);
+            exit (1);
+        }
+
         // IF SIZE OF TEXT NOT 0, THE NEXT TWO FOLLOW
         if (pnt->size_of_text != 0) {
 
             read_signed_pair(&pnt->const_offset_from_point_loc);
+            DEBUG_XY("\t\tconst_offset_from_point_loc", pnt->const_offset_from_point_loc);
 
-            pnt->name = managed_strdup(
-                fix_signal_name(
-                    fix_bus_signal_name_in_cadr1(parse_7bit_ascii())));
-            DEBUG("\t\tname '%s'\n", pnt->name);            
+            char *name = parse_7bit_ascii();
+            DEBUG("\t\tparsed name '%s'\n", name);
 
-            // IF CPIN ON IN BITS
-            // CPIN ON bit seems to be bit 16
-            // it is not documented anywhere, found out experimentally
-            if ((pnt->bits & (1 << 16)) != 0) {
-                DEBUG("\t\tCPIN ON\n");
+            pnt->name = managed_strdup(fix_signal_name(
+                fix_bus_signal_name_in_cadr1(name)));
+            DEBUG("\t\tfinal name '%s'\n", pnt->name);
 
-                pnt->card_loc = read_half_word();
-                DEBUG_HALF_WORD("\t\tcard_loc", pnt->card_loc);
-
-                pnt->io_loc = read_half_word();
-                DEBUG_HALF_WORD("\t\tio_loc", pnt->io_loc);
-
-                read_signed_pair(&pnt->const_offset);
-            }
         }
-        else
-        {
-            // encountered this in cadr1/dbgin.drw
-            // I dont know what this is
-            // in soap.c 011000 and 001000 are handled this way
-            if (pnt->bits == 011000) {
-                DEBUG("\t\tbits 011000, reading 2 extra words\n");
-                read_word();
-                read_word();
-            }
+    
+        // IF CPIN ON IN BITS
+        // from soap.c and from below commented multiple if cases
+        // I derive that CPIN bit is bit 10 (01000), if it is set, then
+        // two more words should be read
+        // this is in consistent with soap.c and also with new bits encountered
+        // in cadr1 (dbgin) like 051000
+        if ((pnt->bits & 01000) != 0) { // CPIN ON ?
+
+            pnt->card_loc = read_half_word();
+            DEBUG_HALF_WORD("\t\tcard_loc", pnt->card_loc);
+
+            pnt->io_loc = read_half_word();
+            DEBUG_HALF_WORD("\t\tio_loc", pnt->io_loc);
+
+            read_signed_pair(&pnt->const_offset);
+            DEBUG_XY("\t\tconst_offset", pnt->const_offset);
+
         }
+
+        /*
+        if (pnt->bits == 0) {
+
+            // already done above
+
+        } else if (pnt->bits == 040000) {
+
+            assert (pnt->size_of_text > 0);
+
+        } else if (pnt->bits == 011000) {
+
+            assert (pnt->size_of_text == 0);
+
+            WORD w1 = read_word();
+            WORD w2 = read_word();
+            DEBUG_WORD("\t\tread_word()", w1);
+            DEBUG_WORD("\t\tread_word()", w2);
+
+        } else if (pnt->bits == 051000) {
+
+            WORD w1 = read_word();
+            WORD w2 = read_word();
+            DEBUG_WORD("\t\tread_word()", w1);
+            DEBUG_WORD("\t\tread_word()", w2);
+
+        } else if (pnt->bits == 0200000) {
+
+            // already done above            
+
+        } else {
+            
+            DEBUG("unexpected point bits #o%06o\n", pnt->bits);
+            exit (1);
+
+        }
+        */
 
         DEBUG("\t/POINT(%zu)\n", half_words_idx);
 
@@ -920,9 +969,7 @@ parse_trailer(void)
     DEBUG("\ttitle 2: '%s'\n", trailer->title_line_2);
 
     trailer->card_loc = read_word();
-    DEBUG("\tcard_loc: (%llu, %llu)\n", 
-        LEFT_HALF_WORD(trailer->card_loc),
-        RIGHT_HALF_WORD(trailer->card_loc));
+    DEBUG_WORD("\tcard_loc\n", trailer->card_loc);
 
     trailer->revision = parse_7bit_ascii();
     DEBUG("\trevision: '%s'\n", trailer->revision);

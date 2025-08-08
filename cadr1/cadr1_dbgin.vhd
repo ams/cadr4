@@ -4,7 +4,6 @@ use ieee.std_logic_1164.all;
 entity cadr1_dbgin is
   port (
     \-dbub master\  : in     std_logic;
-    \-debug reset\  : in     std_logic;
     \-lm power reset\ : in     std_logic;
     \-lm unibus reset\ : in     std_logic;
     \dbub master\   : in     std_logic;
@@ -33,6 +32,7 @@ entity cadr1_dbgin is
     \-db need ub\   : inout  std_logic;
     \-db read status\ : inout  std_logic;
     \-debug in req\ : inout  std_logic;
+    \-debug reset\  : inout  std_logic;
     \-debugee reset\ : inout  std_logic;
     \-local enable\ : inout  std_logic;
     \debug in a0\   : inout  std_logic;

@@ -1156,35 +1156,6 @@ package helper is
     );
   end component;
 
-  component helper_spy is
-  port (
-      -- below are all spy related
-      eadr0: out std_logic;
-      eadr1: out std_logic;
-      eadr2: out std_logic;
-      eadr3: out std_logic;
-      \-dbread\: out std_logic;
-      \-dbwrite\: out std_logic;
-      -- SPY bus - 16 bits
-      spy0  : inout std_logic;
-      spy1  : inout std_logic;
-      spy2  : inout std_logic;
-      spy3  : inout std_logic;
-      spy4  : inout std_logic;
-      spy5  : inout std_logic;
-      spy6  : inout std_logic;
-      spy7  : inout std_logic;
-      spy8  : inout std_logic;
-      spy9  : inout std_logic;
-      spy10 : inout std_logic;
-      spy11 : inout std_logic;
-      spy12 : inout std_logic;
-      spy13 : inout std_logic;
-      spy14 : inout std_logic;
-      spy15 : inout std_logic
-    );
-  end component;
-
   component helper_stop_if_prom_fails is
   port (
         pc0     : in std_logic;
