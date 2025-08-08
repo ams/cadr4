@@ -1152,7 +1152,7 @@ package helper is
   component helper_required_signals is
   port (
       \-halt\: out std_logic := '1';
-      \-boot1\: out std_logic := '1'
+      \-lm boot\: out std_logic
     );
   end component;
 
