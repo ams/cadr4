@@ -1,0 +1,54 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity busint_reqerr is
+  port (
+    \-adrpar\       : in     std_logic;
+    \-db read status\ : in     std_logic;
+    \-int busy t80\ : in     std_logic;
+    \-lmx grant\    : in     std_logic;
+    \-nxm timeout\  : in     std_logic;
+    \-reset err\    : in     std_logic;
+    \-ub err drive\ : in     std_logic;
+    \-ub invalid\   : in     std_logic;
+    \-xao par even\ : in     std_logic;
+    \bus par even\  : in     std_logic;
+    \hi 1-14\       : in     std_logic;
+    \lmx grant a\   : in     std_logic;
+    \mempar from lm\ : in     std_logic;
+    \ub xbus t100\  : in     std_logic;
+    \unibus request\ : in     std_logic;
+    \xbus ignpar in\ : in     std_logic;
+    \xbus par in\   : in     std_logic;
+    \xbus request\  : in     std_logic;
+    lmwr            : in     std_logic;
+    xrd             : in     std_logic;
+    \-free\         : inout  std_logic;
+    \lm adr par error\ : inout  std_logic;
+    \lm par error\  : inout  std_logic;
+    \ub map error\  : inout  std_logic;
+    \ub nxm error\  : inout  std_logic;
+    \write through enb\ : inout  std_logic;
+    \xb nxm error\  : inout  std_logic;
+    \xb par error\  : inout  std_logic;
+    dbd0            : inout  std_logic;
+    dbd1            : inout  std_logic;
+    dbd2            : inout  std_logic;
+    dbd3            : inout  std_logic;
+    dbd4            : inout  std_logic;
+    dbd5            : inout  std_logic;
+    dbd6            : inout  std_logic;
+    dbd7            : inout  std_logic;
+    \-any par error\ : out    std_logic;
+    \-xbus ignpar in\ : out    std_logic;
+    \xbus par out\  : out    std_logic;
+    udo0            : out    std_logic;
+    udo1            : out    std_logic;
+    udo2            : out    std_logic;
+    udo3            : out    std_logic;
+    udo4            : out    std_logic;
+    udo5            : out    std_logic;
+    udo6            : out    std_logic;
+    udo7            : out    std_logic
+  );
+end entity busint_reqerr;

@@ -32,24 +32,32 @@ endif
 # folders
 BUILDDIR	  	:= build
 ROMDIR	 	  	:= rom
-CADR_DRWDIR	  	:= doc/ai/cadr
-CADR1_DRWDIR	:= doc/ai/cadr1
+
+CADR_DIR		:= cadr
 CADR_SUDS_DIR	:= cadr/suds
-CADR1_SUDS_DIR	:= cadr1/suds
+CADR_DRWDIR	  	:= doc/ai/cadr
+
+ICMEM_DIR		:= cadr
+ICMEM_SUDS_DIR  := cadr/suds
+ICMEM_DRWDIR    := doc/ai/cadr
+
+BUSINT_DIR		:= cadr1
+BUSINT_SUDS_DIR	:= cadr1/suds
+BUSINT_DRWDIR	:= doc/ai/cadr1
 
 # scripts used in this Makefile
-CREATE_TB_PY	:= scripts/create-tb.py
-GENERATE_ALU_TESTDATA_PY := scripts/generate-alu-testdata.py
-SPLITHEX_PY  	:= scripts/split-hex.py
-CREATE_CADR1_TB_PY := scripts/create-cadr1-tb.py
+CREATE_TB_PY := scripts/create-tb.py
 CREATE_ENTITY_FROM_SUDS_PY := scripts/create-entity-from-suds.py
 CREATE_PACKAGE_FROM_ENTITIES_PY := scripts/create-package-from-entities.py
+GENERATE_ALU_TESTDATA_PY := scripts/generate-alu-testdata.py
+SPLITHEX_PY := scripts/split-hex.py
 
 # soap vars
-SOAP               := $(BUILDDIR)/soap4
-SOAP_OPTIONS_CADR  := -o vhdl -e doc/ai/cadr/bodies.drw -x cadr
-SOAP_OPTIONS_CADR1 := -o vhdl -x cadr1
-FIXSUDS_PY   	   := scripts/fix-suds.soap4.py
+SOAP                := $(BUILDDIR)/soap4
+SOAP_OPTIONS_CADR   := -o vhdl -e doc/ai/cadr/bodies.drw -x cadr
+SOAP_OPTIONS_ICMEM  := -o vhdl -e doc/ai/cadr/bodies.drw -x icmem
+SOAP_OPTIONS_BUSINT := -o vhdl -x busint
+FIXSUDS_PY   	    := scripts/fix-suds.soap4.py
 
 # OS specific settings
 OS := $(shell uname -s)
@@ -62,15 +70,17 @@ else
 endif
 
 # source files are found by wildcard
-CADR_SRCS   := $(wildcard cadr/*.vhd) $(wildcard $(CADR_SUDS_DIR)/*.vhd)
-CADR1_SRCS  := $(wildcard cadr1/*.vhd) $(wildcard $(CADR1_SUDS_DIR)/*.vhd)
+CADR_SRCS   := $(wildcard $(CADR_DIR)/cadr_*.vhd) $(wildcard $(CADR_DIR)/cadr_*_tb.vhd) $(wildcard $(CADR_SUDS_DIR)/cadr_*_suds.vhd)
+ICMEM_SRCS  := $(wildcard $(ICMEM_DIR)/icmem_*.vhd) $(wildcard $(ICMEM_DIR)/icmem_*_tb.vhd) $(wildcard $(ICMEM_SUDS_DIR)/icmem_*_suds.vhd)
+BUSINT_SRCS := $(wildcard $(BUSINT_DIR)/busint_*.vhd) $(wildcard $(BUSINT_DIR)/busint_*_tb.vhd) $(wildcard $(BUSINT_SUDS_DIR)/busint_*_suds.vhd)
 DIP_SRCS    := $(wildcard dip/*.vhd)
 HELPER_SRCS := $(wildcard helper/*.vhd)
 TTL_SRCS    := $(wildcard ttl/*.vhd)
 
 # exes mean these are testbenches so these will be compiled into executables also
-CADR_EXES   := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard cadr/*_tb.vhd)))
-CADR1_EXES  := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard cadr1/*_tb.vhd)))
+CADR_EXES   := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard $(CADR_DIR)/cadr_*_tb.vhd)))
+ICMEM_EXES  := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard $(ICMEM_DIR)/icmem_*_tb.vhd)))
+BUSINT_EXES := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard $(BUSINT_DIR)/busint_*_tb.vhd)))
 DIP_EXES    := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard dip/*_tb.vhd)))
 HELPER_EXES := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard helper/*_tb.vhd)))
 TTL_EXES    := $(patsubst %.vhd,$(BUILDDIR)/%,$(notdir $(wildcard ttl/*_tb.vhd)))
@@ -80,8 +90,8 @@ CADR_TB_SRC := build/cadr_tb.vhd
 CADR_TB_EXE := build/cadr_tb
 
 # all sources and executables
-SRCS := $(CADR_SRCS) $(CADR1_SRCS) $(DIP_SRCS) $(HELPER_SRCS) $(TTL_SRCS) $(CADR_TB_SRC)
-EXES := $(CADR_EXES) $(CADR1_EXES) $(DIP_EXES) $(HELPER_EXES) $(TTL_EXES) $(CADR_TB_EXE)
+SRCS := $(CADR_SRCS) $(ICMEM_SRCS) $(BUSINT_SRCS) $(DIP_SRCS) $(HELPER_SRCS) $(TTL_SRCS) $(CADR_TB_SRC)
+EXES := $(CADR_EXES) $(ICMEM_SRCS) $(BUSINT_EXES) $(DIP_EXES) $(HELPER_EXES) $(TTL_EXES) $(CADR_TB_EXE)
 
 # ghdl import and make works weird, all the build process is weird
 # there is no sane way to build object files manually in this way
@@ -110,10 +120,10 @@ $(BUILDDIR)/soap4: soap/soap4.c soap/unpack4.c
 	$(CC) -std=gnu99 -Wall -Wextra -O0 -ggdb3 -I soap -o $@ -g $^
 
 # generate cadr_tb.vhd using SUDS and helper components
-$(CADR_TB_SRC): $(CREATE_TB_PY) cadr/cadr_book.vhd cadr/icmem_book.vhd cadr1/busint_book.vhd helper/helper.vhd
+$(CADR_TB_SRC): $(CREATE_TB_PY) $(CADR_DIR)/cadr_book.vhd $(ICMEM_DIR)/icmem_book.vhd $(BUSINT_DIR)/busint_book.vhd helper/helper.vhd
 	mkdir -p $(BUILDDIR)
 	python3 $< \
-	--vhdl-files cadr/cadr_book.vhd cadr/icmem_book.vhd cadr1/busint_book.vhd helper/helper.vhd \
+	--vhdl-files $(CADR_DIR)/cadr_book.vhd $(ICMEM_DIR)/icmem_book.vhd $(BUSINT_DIR)/busint_book.vhd helper/helper.vhd \
 	-t $(patsubst %.vhd,%,$(notdir $@)) \
 	$@
 
@@ -125,8 +135,12 @@ all: $(EXES)
 check-cadr: $(filter-out build/cadr_tb,$(CADR_EXES))
 	for TB_EXE in $^; do TB=$$TB_EXE make run-tb || exit; done
 
-.PHONY: check-cadr1
-check-cadr1: $(CADR1_EXES)
+.PHONY: check-icmem
+check-icmem: $(ICMEM_EXES)
+	for TB_EXE in $^; do TB=$$TB_EXE make run-tb || exit; done
+
+.PHONY: check-busint
+check-busint: $(BUSINT_EXES)
 	for TB_EXE in $^; do TB=$$TB_EXE make run-tb || exit; done
 
 .PHONY: check-dip
@@ -142,7 +156,7 @@ check-ttl: $(TTL_EXES)
 	for TB_EXE in $^; do TB=$$TB_EXE make run-tb || exit; done
 
 .PHONY: check
-check: check-cadr check-cadr1 check-dip check-helper check-ttl
+check: check-cadr check-icmem check-busint check-dip check-helper check-ttl
 
 # below is smart handling of wave opt file
 # if file does not exist, it is not used
@@ -234,32 +248,24 @@ help:
 	@echo "make run-X: run testbench X (build/X_tb)"
 	@echo "make wf-X: run testbench X (build/X_tb) to create waveforms"
 	@echo "make surfer-X: same as wf-X but also runs surfer with the waveform file"
-	@echo "make regen: regenerate (fast-promh-cadr, cadr1, packages)"
+	@echo "make regen: regenerate (fast-promh-cadr, fast-promh-icmem, busint, packages)"
 	@echo "make regenerate-packages: regenerate packages (dip, helper, ttls)"
 	@echo "make regenerate-fast-promh-cadr-suds: autogenerate fast promh cadr suds sources"
 	@echo "make regenerate-promh9-cadr-suds: autogenerate promh9 cadr suds sources"
-	@echo "make regenerate-cadr1-suds: autogenerate cadr1 suds sources"
+	@echo "make regenerate-fast-promh-icmem-suds: autogenerate fast promh icmem suds sources"
+	@echo "make regenerate-promh9-icmem-suds: autogenerate promh9 icmem suds sources"
+	@echo "make regenerate-busint-suds: autogenerate busint suds sources"
 	@echo "make regenerate-alu-testdata: autogenerate ALU testdata"
 	@echo "make regenerate-hex-files: regenerate hex files"
 
 # ===== START OF CADR SUDS AUTOGENERATION =====
 
-# these are removed from the original list: bcpins caps cpins
-CADR_BOOK := actl alatch alu0 alu1 aluc4 amem0 amem1 apar bcterm clockd contrl \
-dram0 dram1 dram2 dspctl flag ior ipar ireg iwr l lc lcc lpc mctl md mds mf mlatch mmem mo0 mo1 \
-mskg4 npc opcd pdl0 pdl1 pdlctl pdlptr platch q qctl shift0 shift1 smctl source spc spclch spcpar \
-spcw spy1 spy2 trap vctl1 vctl2 vma vmas vmem0 vmem1 vmem2 vmemdr
-
-# these are removed from the original list: icaps mbcpin mcpins
-ICMEM_BOOK := clock1 clock2 debug ictl iwrpar olord1 olord2 opcs pctl prom0 prom1 \
-iram00 iram01 iram02 iram03 iram10 iram11 iram12 iram13 iram20 iram21 iram22 iram23 iram30 \
-iram31 iram32 iram33 spy0 spy4 stat
-
 .PHONY: regen
 regen: 
 	make regenerate-packages
 	make regenerate-fast-promh-cadr-suds
-	make regenerate-cadr1-suds	
+	make regenerate-fast-promh-icmem-suds
+	make regenerate-busint-suds	
 
 .PHONY: regenerate-packages
 regenerate-packages:
@@ -274,6 +280,12 @@ regenerate-packages:
 	python3 $(CREATE_PACKAGE_FROM_ENTITIES_PY) -p ttl/sn74.vhd -a ttl/sn74_aliases.txt -i ttl/sn74*.vhd -e ttl/*_tb.vhd	
 
 # ===== START OF CADR SUDS AUTOGENERATION =====
+
+# these are removed from the original list: bcpins caps cpins
+CADR_BOOK := actl alatch alu0 alu1 aluc4 amem0 amem1 apar bcterm clockd contrl \
+dram0 dram1 dram2 dspctl flag ior ipar ireg iwr l lc lcc lpc mctl md mds mf mlatch mmem mo0 mo1 \
+mskg4 npc opcd pdl0 pdl1 pdlctl pdlptr platch q qctl shift0 shift1 smctl source spc spclch spcpar \
+spcw spy1 spy2 trap vctl1 vctl2 vma vmas vmem0 vmem1 vmem2 vmemdr
 
 .PHONY: regenerate-fast-promh-cadr-suds
 regenerate-fast-promh-cadr-suds:
@@ -293,45 +305,106 @@ endif
 # removing existing ones because new ones can be added or existing ones can be removed
 	$(RM) $(CADR_SUDS_DIR)/cadr_*_suds.vhd
 	mkdir -p $(CADR_SUDS_DIR)
-	for PAGE in $(CADR_BOOK) $(ICMEM_BOOK); do FIXSUDS_GENERICMAP=$(FIXSUDS_GENERICMAP) PAGE=$$PAGE make regenerate-cadr-suds-page || exit; done
+	for PAGE in $(CADR_BOOK); do SUDS_FILE="cadr_$${PAGE}_suds.vhd" ENTITY_FILE="cadr_$${PAGE}.vhd" FIXSUDS_GENERICMAP=$(FIXSUDS_GENERICMAP) PAGE=$${PAGE} make regenerate-cadr-suds-page || exit; done
+	python3 $(CREATE_PACKAGE_FROM_ENTITIES_PY) -p $(CADR_DIR)/cadr_book.vhd -i $(CADR_DIR)/cadr_*.vhd -e $(CADR_DIR)/*_tb.vhd
 
 # generate suds file for a single page
 # a few particular _suds.vhd require special handling and they are handled with if cases below
 .PHONY: regenerate-cadr-suds-page
 regenerate-cadr-suds-page: $(FIXSUDS_PY) $(CADR_DRWDIR)/$(PAGE).drw $(SOAP) dip/dip.vhd
+ifndef SUDS_FILE
+	$(error SUDS_FILE is not set, run regenerate-fast-promh-cadr-suds or regenerate-promh9-cadr-suds)
+endif
+ifndef ENTITY_FILE
+	$(error ENTITY_FILE is not set, run regenerate-fast-promh-cadr-suds or regenerate-promh9-cadr-suds)
+endif
+ifndef FIXSUDS_GENERICMAP
+	$(error FIXSUDS_GENERICMAP is not set, run regenerate-fast-promh-cadr-suds or regenerate-promh9-cadr-suds)
+endif
 ifndef PAGE
 	$(error PAGE is not set, run regenerate-fast-promh-cadr-suds or regenerate-promh9-cadr-suds)
 endif
-	$(SOAP) $(SOAP_OPTIONS_CADR) $(CADR_DRWDIR)/$(PAGE).drw > $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
+	$(SOAP) $(SOAP_OPTIONS_CADR) $(CADR_DRWDIR)/$(PAGE).drw > $(CADR_SUDS_DIR)/$(SUDS_FILE)
+	python3 $(FIXSUDS_PY) --generic-map $(FIXSUDS_GENERICMAP) --page $(PAGE) $(CADR_SUDS_DIR)/$(SUDS_FILE)
+	python3 $(CREATE_ENTITY_FROM_SUDS_PY) -o $(CADR_DIR)/$(ENTITY_FILE) -d dip/dip.vhd $(CADR_SUDS_DIR)/$(SUDS_FILE)
+
+# ===== END OF CADR SUDS AUTOGENERATION =====
+
+# ===== START OF ICMEM SUDS AUTOGENERATION =====
+
+# these are removed from the original list: icaps mbcpin mcpins
+ICMEM_BOOK := clock1 clock2 debug ictl iwrpar olord1 olord2 opcs pctl prom0 prom1 \
+iram00 iram01 iram02 iram03 iram10 iram11 iram12 iram13 iram20 iram21 iram22 iram23 iram30 \
+iram31 iram32 iram33 spy0 spy4 stat
+
+.PHONY: regenerate-fast-promh-icmem-suds
+regenerate-fast-promh-icmem-suds:
+	FIXSUDS_GENERICMAP=rom/fast-promh.table make regenerate-icmem-suds
+
+.PHONY: regenerate-promh9-icmem-suds
+regenerate-promh9-icmem-suds:
+	FIXSUDS_GENERICMAP=rom/promh9.table make regenerate-icmem-suds
+
+# generate all suds files
+# call generate-page-suds for each page setting PAGE variable
+.PHONY: regenerate-icmem-suds
+regenerate-icmem-suds:
+ifndef FIXSUDS_GENERICMAP
+	$(error FIXSUDS_GENERICMAP is not set, run regenerate-fast-promh-cadr-suds or regenerate-promh9-cadr-suds)
+endif
+# removing existing ones because new ones can be added or existing ones can be removed
+	$(RM) $(ICMEM_SUDS_DIR)/icmem_*_suds.vhd
+	mkdir -p $(ICMEM_SUDS_DIR)
+	for PAGE in $(ICMEM_BOOK); do SUDS_FILE="icmem_$${PAGE}_suds.vhd" ENTITY_FILE="icmem_$${PAGE}.vhd" FIXSUDS_GENERICMAP=$(FIXSUDS_GENERICMAP) PAGE=$${PAGE} make regenerate-icmem-suds-page || exit; done
+	python3 $(CREATE_PACKAGE_FROM_ENTITIES_PY) -p $(ICMEM_DIR)/icmem_book.vhd -i $(ICMEM_DIR)/icmem_*.vhd -e $(ICMEM_DIR)/*_tb.vhd
+
+# generate suds file for a single page
+# a few particular _suds.vhd require special handling and they are handled with if cases below
+.PHONY: regenerate-icmem-suds-page
+regenerate-icmem-suds-page: $(FIXSUDS_PY) $(ICMEM_DRWDIR)/$(PAGE).drw $(SOAP) dip/dip.vhd
+ifndef SUDS_FILE
+	$(error SUDS_FILE is not set, run regenerate-fast-promh-icmem-suds or regenerate-promh9-icmem-suds)
+endif
+ifndef ENTITY_FILE
+	$(error ENTITY_FILE is not set, run regenerate-fast-promh-icmem-suds or regenerate-promh9-icmem-suds)
+endif
+ifndef FIXSUDS_GENERICMAP
+	$(error FIXSUDS_GENERICMAP is not set, run regenerate-fast-promh-icmem-suds or regenerate-promh9-icmem-suds)
+endif
+ifndef PAGE
+	$(error PAGE is not set, run regenerate-fast-promh-icmem-suds or regenerate-promh9-icmem-suds)
+endif
+	$(SOAP) $(SOAP_OPTIONS_ICMEM) $(ICMEM_DRWDIR)/$(PAGE).drw > $(ICMEM_SUDS_DIR)/$(SUDS_FILE)
 ifeq ($(PAGE),clock1)
 # modify clock1 to alias -tpdone to -tpw60, this is a simple wire in the schematics
 # this is done after fix-suds.py because it may modify it or get confused with these additions
 ifeq ($(OS),Darwin)
-	sed $(SEDOPTIONS) 's/^architecture.*/&\'$$'\nalias \\\\-tpdone\\\\ : std_logic is \\\\-tpw60\\\\;/' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
+	sed $(SEDOPTIONS) 's/^architecture.*/&\'$$'\nalias \\\\-tpdone\\\\ : std_logic is \\\\-tpw60\\\\;/' $(ICMEM_SUDS_DIR)/$(SUDS_FILE)
 else
-	sed $(SEDOPTIONS) 's/^architecture.*/&\nalias \\-tpdone\\ : std_logic is \\-tpw60\\;/' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
+	sed $(SEDOPTIONS) 's/^architecture.*/&\nalias \\-tpdone\\ : std_logic is \\-tpw60\\;/' $(ICMEM_SUDS_DIR)/$(SUDS_FILE)
 endif
 else ifeq ($(PAGE),clock2)
-	sed $(SEDOPTIONS) 's/clock2_1c06.*p10 => \\-tpw70\\/clock2_1c06 : dip_74s10 port map (p4 => \\-tpr25\\, p3 => \\-tptse\\, p5 => \\-clock reset b\\, p6 => tptse, p1 => \\-tprend\\, p2 => tpclk, p13 => \\-clock reset b\\, p12 => \\-tpclk\\, p10 => \\-tpw45\\, p11 => net_03, p9 => \\-clock reset b\\, p8 => net_00);/' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
+	sed $(SEDOPTIONS) 's/clock2_1c06.*p10 => \\-tpw70\\/clock2_1c06 : dip_74s10 port map (p4 => \\-tpr25\\, p3 => \\-tptse\\, p5 => \\-clock reset b\\, p6 => tptse, p1 => \\-tprend\\, p2 => tpclk, p13 => \\-clock reset b\\, p12 => \\-tpclk\\, p10 => \\-tpw45\\, p11 => net_03, p9 => \\-clock reset b\\, p8 => net_00);/' $(ICMEM_SUDS_DIR)/$(SUDS_FILE)
 else ifeq ($(PAGE),olord2)
 # remove two inverters after dummy and drive -power reset directly from dummy
-	sed $(SEDOPTIONS) 's/olord2_1a19.*/olord2_1a19 : dip_dummy port map (p16 => hi1, p15 => hi2, p14 => \\-boot1\\, p13 => \\-boot2\\, p12 => \\-power reset\\);/' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
-	sed $(SEDOPTIONS) 's/olord2_1a20.*/olord2_1a20 : dip_74ls14 port map (p6 => net_04, p5 => \\-boot2\\, p4 => net_03, p3 => \\-boot1\\);/' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd	
+	sed $(SEDOPTIONS) 's/olord2_1a19.*/olord2_1a19 : dip_dummy port map (p16 => hi1, p15 => hi2, p14 => \\-boot1\\, p13 => \\-boot2\\, p12 => \\-power reset\\);/' $(ICMEM_SUDS_DIR)/$(SUDS_FILE)
+	sed $(SEDOPTIONS) 's/olord2_1a20.*/olord2_1a20 : dip_74ls14 port map (p6 => net_04, p5 => \\-boot2\\, p4 => net_03, p3 => \\-boot1\\);/' $(ICMEM_SUDS_DIR)/$(SUDS_FILE)
 else ifeq ($(PAGE),pctl)
 ifeq ($(CADR4_TILONCONSOLE),1)
 # replace til309 components with 5x_til309 component
-	sed $(SEDOPTIONS) '/pctl_1f16.*/d' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
-	sed $(SEDOPTIONS) '/pctl_1f17.*/d' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
-	sed $(SEDOPTIONS) '/pctl_1f18.*/d' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
-	sed $(SEDOPTIONS) '/pctl_1f19.*/d' $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
-	sed $(SEDOPTIONS) 's/pctl_1f20.*/pctl_5x_til309 : dip_5x_til309 port map (p14 => pc13, p13 => pc12, p12 => pc11, p11 => pc10, p10 => pc9, p9 => pc8, p8 => pc7, p7 => pc6, p6 => pc5, p5 => pc4, p4 => pc3, p3 => pc2, p2 => pc1, p1 => pc0, p15 => promenable, p16 => ipe, p17 => dpe, p18 => tilt0, p19 => tilt1);/g' cadr/suds/cadr_$(PAGE)_suds.vhd
+	sed $(SEDOPTIONS) '/pctl_1f16.*/d' $(ICMEM_SUDS_DIR)/$(SUDS_FILE)
+	sed $(SEDOPTIONS) '/pctl_1f17.*/d' $(ICMEM_SUDS_DIR)/$(SUDS_FILE)
+	sed $(SEDOPTIONS) '/pctl_1f18.*/d' $(ICMEM_SUDS_DIR)/$(SUDS_FILE)
+	sed $(SEDOPTIONS) '/pctl_1f19.*/d' $(ICMEM_SUDS_DIR)/$(SUDS_FILE)
+	sed $(SEDOPTIONS) 's/pctl_1f20.*/pctl_5x_til309 : dip_5x_til309 port map (p14 => pc13, p13 => pc12, p12 => pc11, p11 => pc10, p10 => pc9, p9 => pc8, p8 => pc7, p7 => pc6, p6 => pc5, p5 => pc4, p4 => pc3, p3 => pc2, p2 => pc1, p1 => pc0, p15 => promenable, p16 => ipe, p17 => dpe, p18 => tilt0, p19 => tilt1);/g' $(ICMEM_SUDS_DIR)/$(SUDS_FILE)
 endif
 endif
-	python3 $(FIXSUDS_PY) --generic-map $(FIXSUDS_GENERICMAP) $(CADR_SUDS_DIR)/cadr_$(PAGE)_suds.vhd
+	python3 $(FIXSUDS_PY) --generic-map $(FIXSUDS_GENERICMAP) --page $(PAGE) $(ICMEM_SUDS_DIR)/$(SUDS_FILE)
+	python3 $(CREATE_ENTITY_FROM_SUDS_PY) -o $(ICMEM_DIR)/$(ENTITY_FILE) -d dip/dip.vhd $(ICMEM_SUDS_DIR)/$(SUDS_FILE)
 
-# ===== END OF CADR SUDS AUTOGENERATION =====
+# ===== END OF ICMEM SUDS AUTOGENERATION =====
 
-# ===== START OF CADR1 SUDS AUTOGENERATION =====
+# ===== START OF BUSINT SUDS AUTOGENERATION =====
 
 # these are removed because they have no digital schematic: 
 # blank, caps, ctp, cubus, cxbus, dpadr, dpdata
@@ -342,29 +415,35 @@ uba ubcyc ubd ubintc ubmap ubmast ubxa uprior \
 wbuf xa xapar xbd xd
 
 # generate all suds files
-.PHONY: regenerate-cadr1-suds
-regenerate-cadr1-suds:
+.PHONY: regenerate-busint-suds
+regenerate-busint-suds:
 # removing existing ones because new ones can be added or existing ones can be removed
-	$(RM) $(CADR1_SUDS_DIR)/cadr1_*_suds.vhd
-	mkdir -p $(CADR1_SUDS_DIR)
-	for PAGE in $(BUSINT_BOOK); do PAGE=$$PAGE make regenerate-cadr1-suds-page || exit; done	
+	$(RM) $(BUSINT_SUDS_DIR)/busint_*_suds.vhd
+	mkdir -p $(BUSINT_SUDS_DIR)
+	for PAGE in $(BUSINT_BOOK); do SUDS_FILE="busint_$${PAGE}_suds.vhd" ENTITY_FILE="busint_$${PAGE}.vhd" PAGE=$$PAGE make regenerate-busint-suds-page || exit; done
+	python3 $(CREATE_PACKAGE_FROM_ENTITIES_PY) -p $(BUSINT_DIR)/busint_book.vhd -i $(BUSINT_DIR)/busint_*.vhd -e $(BUSINT_DIR)/*_tb.vhd
 
 # generate suds file for a single page
-.PHONY: regenerate-cadr1-suds-page
-regenerate-cadr1-suds-page: $(FIXSUDS_PY) $(CADR1_DRWDIR)/$(PAGE).drw $(SOAP) dip/dip.vhd
+.PHONY: regenerate-busint-suds-page
+regenerate-busint-suds-page: $(FIXSUDS_PY) $(BUSINT_DRWDIR)/$(PAGE).drw $(SOAP) dip/dip.vhd
+ifndef SUDS_FILE
+	$(error SUDS_FILE is not set, run regenerate-busint-suds)
+endif
+ifndef ENTITY_FILE
+	$(error ENTITY_FILE is not set, run regenerate-busint-suds)
+endif
 ifndef PAGE
-	$(error PAGE is not set, run regenerate-cadr1-suds)
+	$(error PAGE is not set, run regenerate-busint-suds)
 endif
-	$(SOAP) $(SOAP_OPTIONS_CADR1) $(CADR1_DRWDIR)/$(PAGE).drw > $(CADR1_SUDS_DIR)/cadr1_$(PAGE)_suds.vhd	
+	$(SOAP) $(SOAP_OPTIONS_BUSINT) $(BUSINT_DRWDIR)/$(PAGE).drw > $(BUSINT_SUDS_DIR)/$(SUDS_FILE)
 ifeq ($(PAGE),reqtim)
-	sed $(SEDOPTIONS) 's/reqtim_0b04 : dip_dummy4/reqtim_0b04 : dip_dummy4_reqtim_b03/g' $(CADR1_SUDS_DIR)/cadr1_$(PAGE)_suds.vhd
+	sed $(SEDOPTIONS) 's/reqtim_0b04 : dip_dummy4/reqtim_0b04 : dip_dummy4_reqtim_b03/g' $(BUSINT_SUDS_DIR)/$(SUDS_FILE)
 else ifeq ($(PAGE),uprior)
-	sed $(SEDOPTIONS) 's/uprior_0f17 : dip_dummy4/uprior_0f17 : dip_dummy4_uprior_f13/g' $(CADR1_SUDS_DIR)/cadr1_$(PAGE)_suds.vhd
-	sed $(SEDOPTIONS) 's/uprior_0f18 : dip_dummy4/uprior_0f18 : dip_dummy4_uprior_f14/g' $(CADR1_SUDS_DIR)/cadr1_$(PAGE)_suds.vhd
+	sed $(SEDOPTIONS) 's/uprior_0f17 : dip_dummy4/uprior_0f17 : dip_dummy4_uprior_f13/g' $(BUSINT_SUDS_DIR)/$(SUDS_FILE)
+	sed $(SEDOPTIONS) 's/uprior_0f18 : dip_dummy4/uprior_0f18 : dip_dummy4_uprior_f14/g' $(BUSINT_SUDS_DIR)/$(SUDS_FILE)
 endif
-	python3 $(FIXSUDS_PY) $(CADR1_SUDS_DIR)/cadr1_$(PAGE)_suds.vhd
-	python3 $(CREATE_ENTITY_FROM_SUDS_PY) -o cadr1/cadr1_$(PAGE).vhd -d dip/dip.vhd $(CADR1_SUDS_DIR)/cadr1_$(PAGE)_suds.vhd
-	python3 $(CREATE_PACKAGE_FROM_ENTITIES_PY) -p cadr1/busint_book.vhd -i cadr1/cadr1_*.vhd
+	python3 $(FIXSUDS_PY) --page $(PAGE) $(BUSINT_SUDS_DIR)/$(SUDS_FILE)
+	python3 $(CREATE_ENTITY_FROM_SUDS_PY) -o $(BUSINT_DIR)/$(ENTITY_FILE) -d dip/dip.vhd $(BUSINT_SUDS_DIR)/$(SUDS_FILE)
 
 # ===== END OF CADR1 SUDS AUTOGENERATION =====
 
@@ -375,7 +454,7 @@ regenerate-alu-testdata: $(GENERATE_ALU_TESTDATA_PY)
 	python3 $< --width 4  > ttl/sn74181_tb.txt
 	python3 $< --width 16 > ttl/alu_16bit_tb.txt
 	python3 $< --width 32 > ttl/alu_32bit_tb.txt
-	python3 $< --width 32 > cadr/cadr_alu_tb.txt
+	python3 $< --width 32 > $(CADR_DIR)/cadr_alu_tb.txt
 
 # ===== END OF ALU TESTDATA AUTOGENERATION =====
 

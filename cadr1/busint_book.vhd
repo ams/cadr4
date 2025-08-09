@@ -3,7 +3,7 @@ use ieee.std_logic_1164.all;
 
 package busint_book is
 
-  component cadr1_buspar is
+  component busint_buspar is
   port (
       bus0            : in     std_logic;
       bus1            : in     std_logic;
@@ -37,14 +37,14 @@ package busint_book is
       bus7            : in     std_logic;
       bus8            : in     std_logic;
       bus9            : in     std_logic;
-      \bus 0-11 par odd\ : inout  std_logic;
-      \bus 12-23 par odd\ : inout  std_logic;
+      \bus 0-11 par odd\ : out    std_logic;
+      \bus 12-23 par odd\ : out    std_logic;
       \bus par even\  : out    std_logic;
       \bus par odd\   : out    std_logic
     );
   end component;
 
-  component cadr1_bussel is
+  component busint_bussel is
   port (
       \-ub16>bus\     : in     std_logic;
       \-ub32>bus\     : in     std_logic;
@@ -115,19 +115,19 @@ package busint_book is
     );
   end component;
 
-  component cadr1_clm is
+  component busint_clm is
   port (
       \-mclk7\        : inout  std_logic;
       \-memrq\        : inout  std_logic;
       \-xbus power reset\ : inout  std_logic;
       \hi 15-30\      : inout  std_logic;
-      clk0            : inout  std_logic;
       wrcyc           : inout  std_logic;
-      \-clk\          : out    std_logic
+      \-clk\          : out    std_logic;
+      clk0            : out    std_logic
     );
   end component;
 
-  component cadr1_datctl is
+  component busint_datctl is
   port (
       \-dbub master\  : in     std_logic;
       \-select debug\ : in     std_logic;
@@ -158,11 +158,6 @@ package busint_book is
       ubrd            : in     std_logic;
       ubwr            : in     std_logic;
       wrcyc           : in     std_logic;
-      \-ubdrive\      : inout  std_logic;
-      \-ubwr\         : inout  std_logic;
-      \-xdrive\       : inout  std_logic;
-      \write data > ub\ : inout  std_logic;
-      \write through\ : inout  std_logic;
       \-bus>ub\       : out    std_logic;
       \-lmadr>ub\     : out    std_logic;
       \-lmadr>xbus\   : out    std_logic;
@@ -173,20 +168,25 @@ package busint_book is
       \-ub32>bus\     : out    std_logic;
       \-ubaddr>xbus\  : out    std_logic;
       \-ubadrive\     : out    std_logic;
+      \-ubdrive\      : out    std_logic;
       \-ubmap > udo\  : out    std_logic;
       \-ubmapwe\      : out    std_logic;
       \-ubrd\         : out    std_logic;
       \-ubwr a\       : out    std_logic;
+      \-ubwr\         : out    std_logic;
       \-udi > udo\    : out    std_logic;
       \-wbufwe\       : out    std_logic;
       \-xaddrdrive\   : out    std_logic;
       \-xb>bus\       : out    std_logic;
+      \-xdrive\       : out    std_logic;
       \bus > lm\      : out    std_logic;
+      \write data > ub\ : out    std_logic;
+      \write through\ : out    std_logic;
       xwr             : out    std_logic
     );
   end component;
 
-  component cadr1_dbgin is
+  component busint_dbgin is
   port (
       \-dbub master\  : in     std_logic;
       \-lm power reset\ : in     std_logic;
@@ -212,25 +212,25 @@ package busint_book is
       dbd7            : in     std_logic;
       dbd8            : in     std_logic;
       dbd9            : in     std_logic;
-      \-db adr0 clk\  : inout  std_logic;
-      \-db adr1 clk\  : inout  std_logic;
-      \-db need ub\   : inout  std_logic;
-      \-db read status\ : inout  std_logic;
       \-debug in req\ : inout  std_logic;
-      \-debug reset\  : inout  std_logic;
-      \-debugee reset\ : inout  std_logic;
-      \-local enable\ : inout  std_logic;
       \debug in a0\   : inout  std_logic;
       \debug in a1\   : inout  std_logic;
       \debug in wr\   : inout  std_logic;
       \debug out ack\ : inout  std_logic;
       \local enable\  : inout  std_logic;
-      reset           : inout  std_logic;
       \-busint lm reset\ : out    std_logic;
+      \-db adr0 clk\  : out    std_logic;
+      \-db adr1 clk\  : out    std_logic;
+      \-db need ub\   : out    std_logic;
+      \-db read status\ : out    std_logic;
+      \-debug reset\  : out    std_logic;
       \-debug timeout inh\ : out    std_logic;
+      \-debugee reset\ : out    std_logic;
+      \-local enable\ : out    std_logic;
       \-reset\        : out    std_logic;
       \db need ub\    : out    std_logic;
       \debug ack\     : out    std_logic;
+      reset           : out    std_logic;
       uao1            : out    std_logic;
       uao10           : out    std_logic;
       uao11           : out    std_logic;
@@ -251,7 +251,7 @@ package busint_book is
     );
   end component;
 
-  component cadr1_dbgout is
+  component busint_dbgout is
   port (
       \-select debug\ : in     std_logic;
       \dbub master\   : in     std_logic;
@@ -268,10 +268,6 @@ package busint_book is
       uba4            : in     std_logic;
       ubrd            : in     std_logic;
       ubwr            : in     std_logic;
-      \-dbd enb\      : inout  std_logic;
-      \debug active\  : inout  std_logic;
-      \select debug dlyd\ : inout  std_logic;
-      \select debug\  : inout  std_logic;
       dbd0            : inout  std_logic;
       dbd1            : inout  std_logic;
       dbd10           : inout  std_logic;
@@ -304,14 +300,18 @@ package busint_book is
       udo7            : inout  std_logic;
       udo8            : inout  std_logic;
       udo9            : inout  std_logic;
+      \-dbd enb\      : out    std_logic;
       \-debug > ud\   : out    std_logic;
       \-debug out req\ : out    std_logic;
+      \debug active\  : out    std_logic;
       \debug in ack\  : out    std_logic;
       \debug out a0\  : out    std_logic;
       \debug out a1\  : out    std_logic;
       \debug out wr\  : out    std_logic;
       \debug ssyn\    : out    std_logic;
       \mempar to lm\  : out    std_logic;
+      \select debug dlyd\ : out    std_logic;
+      \select debug\  : out    std_logic;
       \spy adr1\      : out    std_logic;
       \spy adr2\      : out    std_logic;
       \spy adr3\      : out    std_logic;
@@ -319,13 +319,12 @@ package busint_book is
     );
   end component;
 
-  component cadr1_diag is
+  component busint_diag is
   port (
       \-select spy\   : in     std_logic;
       \ub reg write pulse\ : in     std_logic;
       ubrd            : in     std_logic;
       ubwr            : in     std_logic;
-      \select spy\    : inout  std_logic;
       spy0            : inout  std_logic;
       spy1            : inout  std_logic;
       spy10           : inout  std_logic;
@@ -359,11 +358,12 @@ package busint_book is
       udo8            : inout  std_logic;
       udo9            : inout  std_logic;
       \-spy read\     : out    std_logic;
-      \-spy write\    : out    std_logic
+      \-spy write\    : out    std_logic;
+      \select spy\    : out    std_logic
     );
   end component;
 
-  component cadr1_lmadr is
+  component busint_lmadr is
   port (
       \-adr0\         : in     std_logic;
       \-adr10\        : in     std_logic;
@@ -427,7 +427,7 @@ package busint_book is
     );
   end component;
 
-  component cadr1_lmdata is
+  component busint_lmdata is
   port (
       \-lmbus enb\    : in     std_logic;
       \bus > lm\      : in     std_logic;
@@ -498,7 +498,7 @@ package busint_book is
     );
   end component;
 
-  component cadr1_rbuf is
+  component busint_rbuf is
   port (
       \-bus>ub\       : in     std_logic;
       \-rbufwe\       : in     std_logic;
@@ -539,22 +539,22 @@ package busint_book is
       bus7            : in     std_logic;
       bus8            : in     std_logic;
       bus9            : in     std_logic;
-      rbuf16          : inout  std_logic;
-      rbuf17          : inout  std_logic;
-      rbuf18          : inout  std_logic;
-      rbuf19          : inout  std_logic;
-      rbuf20          : inout  std_logic;
-      rbuf21          : inout  std_logic;
-      rbuf22          : inout  std_logic;
-      rbuf23          : inout  std_logic;
-      rbuf24          : inout  std_logic;
-      rbuf25          : inout  std_logic;
-      rbuf26          : inout  std_logic;
-      rbuf27          : inout  std_logic;
-      rbuf28          : inout  std_logic;
-      rbuf29          : inout  std_logic;
-      rbuf30          : inout  std_logic;
-      rbuf31          : inout  std_logic;
+      rbuf16          : out    std_logic;
+      rbuf17          : out    std_logic;
+      rbuf18          : out    std_logic;
+      rbuf19          : out    std_logic;
+      rbuf20          : out    std_logic;
+      rbuf21          : out    std_logic;
+      rbuf22          : out    std_logic;
+      rbuf23          : out    std_logic;
+      rbuf24          : out    std_logic;
+      rbuf25          : out    std_logic;
+      rbuf26          : out    std_logic;
+      rbuf27          : out    std_logic;
+      rbuf28          : out    std_logic;
+      rbuf29          : out    std_logic;
+      rbuf30          : out    std_logic;
+      rbuf31          : out    std_logic;
       udo0            : out    std_logic;
       udo1            : out    std_logic;
       udo10           : out    std_logic;
@@ -574,7 +574,7 @@ package busint_book is
     );
   end component;
 
-  component cadr1_reqerr is
+  component busint_reqerr is
   port (
       \-adrpar\       : in     std_logic;
       \-db read status\ : in     std_logic;
@@ -597,7 +597,6 @@ package busint_book is
       lmwr            : in     std_logic;
       xrd             : in     std_logic;
       \-free\         : inout  std_logic;
-      \-xbus ignpar in\ : inout  std_logic;
       \lm adr par error\ : inout  std_logic;
       \lm par error\  : inout  std_logic;
       \ub map error\  : inout  std_logic;
@@ -614,6 +613,7 @@ package busint_book is
       dbd6            : inout  std_logic;
       dbd7            : inout  std_logic;
       \-any par error\ : out    std_logic;
+      \-xbus ignpar in\ : out    std_logic;
       \xbus par out\  : out    std_logic;
       udo0            : out    std_logic;
       udo1            : out    std_logic;
@@ -626,7 +626,7 @@ package busint_book is
     );
   end component;
 
-  component cadr1_reqlm is
+  component busint_reqlm is
   port (
       \-adr17\        : in     std_logic;
       \-adr18\        : in     std_logic;
@@ -655,48 +655,48 @@ package busint_book is
       ubxrq           : in     std_logic;
       xrd             : in     std_logic;
       xwr             : in     std_logic;
-      \-lmxrq\        : inout  std_logic;
-      \-loadmd ack\   : inout  std_logic;
-      \-xack\         : inout  std_logic;
-      \adr=unibus\    : inout  std_logic;
-      \ub md load\    : inout  std_logic;
-      \xbus request\  : inout  std_logic;
-      lmxrq           : inout  std_logic;
-      xack            : inout  std_logic;
       \-lm grant\     : out    std_logic;
       \-lm ignpar\    : out    std_logic;
       \-lmack\        : out    std_logic;
+      \-lmxrq\        : out    std_logic;
+      \-loadmd ack\   : out    std_logic;
       \-loadmd\       : out    std_logic;
+      \-xack\         : out    std_logic;
       \-xbus request\ : out    std_logic;
+      \adr=unibus\    : out    std_logic;
       \lm memdrive enb\ : out    std_logic;
       \lmneedub (early)\ : out    std_logic;
-      \loadmd ack\    : out    std_logic
+      \loadmd ack\    : out    std_logic;
+      \ub md load\    : out    std_logic;
+      \xbus request\  : out    std_logic;
+      lmxrq           : out    std_logic;
+      xack            : out    std_logic
     );
   end component;
 
-  component cadr1_reqtim is
+  component busint_reqtim is
   port (
       \-debug timeout inh\ : in     std_logic;
       \int busy\      : in     std_logic;
       \select debug\  : in     std_logic;
-      \hung timeout\  : inout  std_logic;
-      \nxm timeout\   : inout  std_logic;
-      \prom hung timeout\ : inout  std_logic;
-      \prom nxm timeout\ : inout  std_logic;
-      \prom unused\   : inout  std_logic;
-      \timeout 0\     : inout  std_logic;
-      \timeout 1\     : inout  std_logic;
-      \timeout 2\     : inout  std_logic;
-      \timeout 3\     : inout  std_logic;
       \vco cap1\      : inout  std_logic;
       \vco cap2\      : inout  std_logic;
       \-hung timeout\ : out    std_logic;
       \-nxm timeout\  : out    std_logic;
+      \hung timeout\  : out    std_logic;
+      \nxm timeout\   : out    std_logic;
+      \prom hung timeout\ : out    std_logic;
+      \prom nxm timeout\ : out    std_logic;
+      \prom unused\   : out    std_logic;
+      \timeout 0\     : out    std_logic;
+      \timeout 1\     : out    std_logic;
+      \timeout 2\     : out    std_logic;
+      \timeout 3\     : out    std_logic;
       \unused timeout\ : out    std_logic
     );
   end component;
 
-  component cadr1_requ is
+  component busint_requ is
   port (
       \-ub read xbus\ : in     std_logic;
       \-ub write xbus\ : in     std_logic;
@@ -719,19 +719,19 @@ package busint_book is
       ubwr            : in     std_logic;
       writeok         : in     std_logic;
       xack            : in     std_logic;
-      \-uback\        : inout  std_logic;
-      \-ubxrq\        : inout  std_logic;
-      \ub xbus t0\    : inout  std_logic;
-      \ub xbus t100\  : inout  std_logic;
-      ubxrq           : inout  std_logic;
       \-rbufwe\       : out    std_logic;
       \-ub invalid\   : out    std_logic;
       \-ub to md\     : out    std_logic;
-      \ssyn out\      : out    std_logic
+      \-uback\        : out    std_logic;
+      \-ubxrq\        : out    std_logic;
+      \ssyn out\      : out    std_logic;
+      \ub xbus t0\    : out    std_logic;
+      \ub xbus t100\  : out    std_logic;
+      ubxrq           : out    std_logic
     );
   end component;
 
-  component cadr1_requb is
+  component busint_requb is
   port (
       \-clk\          : in     std_logic;
       \db need ub\    : in     std_logic;
@@ -744,22 +744,22 @@ package busint_book is
       \nxm timeout\   : in     std_logic;
       \ssyn in\       : in     std_logic;
       reset           : in     std_logic;
-      \lm need ub\    : inout  std_logic;
-      \ssyn t0\       : inout  std_logic;
-      \ssyn t100\     : inout  std_logic;
-      \unibus request\ : inout  std_logic;
       \-lm need ub\   : out    std_logic;
       \-unibus request\ : out    std_logic;
+      \lm need ub\    : out    std_logic;
       \lmub rq\       : out    std_logic;
       \msyn out\      : out    std_logic;
+      \ssyn t0\       : out    std_logic;
+      \ssyn t100\     : out    std_logic;
       \ssyn t150\     : out    std_logic;
       \ssyn t200\     : out    std_logic;
       \ssyn t250\     : out    std_logic;
-      \ssyn t50\      : out    std_logic
+      \ssyn t50\      : out    std_logic;
+      \unibus request\ : out    std_logic
     );
   end component;
 
-  component cadr1_rqsync is
+  component busint_rqsync is
   port (
       \-clk\          : in     std_logic;
       \-hung timeout\ : in     std_logic;
@@ -773,39 +773,39 @@ package busint_book is
       clk0            : in     std_logic;
       lmubrq          : in     std_logic;
       ubxrq           : in     std_logic;
-      \-free\         : inout  std_logic;
-      \-grant reset\  : inout  std_logic;
-      \-lmub grant\   : inout  std_logic;
-      \-lmubrqs\      : inout  std_logic;
-      \-lmx grant\    : inout  std_logic;
-      \-ubx grant\    : inout  std_logic;
-      \-ubxrqs\       : inout  std_logic;
-      \-xrqs\         : inout  std_logic;
-      \int busy t40\  : inout  std_logic;
-      \int busy t80\  : inout  std_logic;
-      \int busy\      : inout  std_logic;
-      \lmub grant set\ : inout  std_logic;
-      \lmub grant\    : inout  std_logic;
-      \lmx grant set\ : inout  std_logic;
-      \ubx grant set\ : inout  std_logic;
-      free            : inout  std_logic;
-      lmubrqs         : inout  std_logic;
-      ubxrqs          : inout  std_logic;
-      xrqs            : inout  std_logic;
+      \-free\         : out    std_logic;
+      \-grant reset\  : out    std_logic;
       \-int busy t80\ : out    std_logic;
+      \-lmub grant\   : out    std_logic;
+      \-lmubrqs\      : out    std_logic;
+      \-lmx grant\    : out    std_logic;
+      \-ubx grant\    : out    std_logic;
+      \-ubxrqs\       : out    std_logic;
+      \-xrqs\         : out    std_logic;
       \grant reset\   : out    std_logic;
       \int busy t100\ : out    std_logic;
       \int busy t20\  : out    std_logic;
+      \int busy t40\  : out    std_logic;
       \int busy t60\  : out    std_logic;
+      \int busy t80\  : out    std_logic;
+      \int busy\      : out    std_logic;
+      \lmub grant set\ : out    std_logic;
+      \lmub grant\    : out    std_logic;
       \lmx grant a\   : out    std_logic;
+      \lmx grant set\ : out    std_logic;
       \lmx grant\     : out    std_logic;
       \ubx grant a\   : out    std_logic;
+      \ubx grant set\ : out    std_logic;
       \ubx grant\     : out    std_logic;
-      \xbus extgrant out\ : out    std_logic
+      \xbus extgrant out\ : out    std_logic;
+      free            : out    std_logic;
+      lmubrqs         : out    std_logic;
+      ubxrqs          : out    std_logic;
+      xrqs            : out    std_logic
     );
   end component;
 
-  component cadr1_uba is
+  component busint_uba is
   port (
       \-ubadrive\     : in     std_logic;
       \c1 out\        : in     std_logic;
@@ -845,12 +845,6 @@ package busint_book is
       \-ub adr8\      : inout  std_logic;
       \-ub adr9\      : inout  std_logic;
       \-ub c1\        : inout  std_logic;
-      uba12           : inout  std_logic;
-      uba14           : inout  std_logic;
-      uba15           : inout  std_logic;
-      uba7            : inout  std_logic;
-      uba8            : inout  std_logic;
-      uba9            : inout  std_logic;
       \-uba 12\       : out    std_logic;
       \-uba 14\       : out    std_logic;
       \-uba 15\       : out    std_logic;
@@ -862,18 +856,24 @@ package busint_book is
       uba1            : out    std_logic;
       uba10           : out    std_logic;
       uba11           : out    std_logic;
+      uba12           : out    std_logic;
       uba13           : out    std_logic;
+      uba14           : out    std_logic;
+      uba15           : out    std_logic;
       uba16           : out    std_logic;
       uba17           : out    std_logic;
       uba2            : out    std_logic;
       uba3            : out    std_logic;
       uba4            : out    std_logic;
       uba5            : out    std_logic;
-      uba6            : out    std_logic
+      uba6            : out    std_logic;
+      uba7            : out    std_logic;
+      uba8            : out    std_logic;
+      uba9            : out    std_logic
     );
   end component;
 
-  component cadr1_ubcyc is
+  component busint_ubcyc is
   port (
       \-uba12\        : in     std_logic;
       \-uba14\        : in     std_logic;
@@ -899,37 +899,37 @@ package busint_book is
       ubrd            : in     std_logic;
       ubwr            : in     std_logic;
       udi7            : in     std_logic;
-      \-reset err\    : inout  std_logic;
-      \-select interrupt\ : inout  std_logic;
-      \-select page\  : inout  std_logic;
-      \-select spy\   : inout  std_logic;
-      \-ub read buffer\ : inout  std_logic;
-      \-ub reg cyc t150\ : inout  std_logic;
-      \-ub wr xbus\   : inout  std_logic;
-      \-ub write buffer\ : inout  std_logic;
-      \-write through enb\ : inout  std_logic;
-      \-write through\ : inout  std_logic;
-      \ub reg cyc t0\ : inout  std_logic;
-      \ub reg cyc t150\ : inout  std_logic;
-      \ub reg cyc t50\ : inout  std_logic;
-      \ub reg write pulse\ : inout  std_logic;
-      \ub17-14=map\   : inout  std_logic;
       \-intc drive\   : out    std_logic;
       \-load int ctl reg\ : out    std_logic;
       \-load int ctl2 reg\ : out    std_logic;
+      \-reset err\    : out    std_logic;
       \-select debug\ : out    std_logic;
+      \-select interrupt\ : out    std_logic;
+      \-select page\  : out    std_logic;
+      \-select spy\   : out    std_logic;
       \-ub err drive\ : out    std_logic;
+      \-ub read buffer\ : out    std_logic;
       \-ub read xbus\ : out    std_logic;
+      \-ub reg cyc t150\ : out    std_logic;
+      \-ub wr xbus\   : out    std_logic;
+      \-ub write buffer\ : out    std_logic;
       \-ub write xbus\ : out    std_logic;
+      \-write through enb\ : out    std_logic;
+      \-write through\ : out    std_logic;
       \select page\   : out    std_logic;
+      \ub reg cyc t0\ : out    std_logic;
       \ub reg cyc t100\ : out    std_logic;
+      \ub reg cyc t150\ : out    std_logic;
       \ub reg cyc t200\ : out    std_logic;
       \ub reg cyc t250\ : out    std_logic;
+      \ub reg cyc t50\ : out    std_logic;
+      \ub reg write pulse\ : out    std_logic;
+      \ub17-14=map\   : out    std_logic;
       \write through enb\ : out    std_logic
     );
   end component;
 
-  component cadr1_ubd is
+  component busint_ubd is
   port (
       \-ubdrive\      : in     std_logic;
       \-udi > udo\    : in     std_logic;
@@ -949,42 +949,42 @@ package busint_book is
       \-ubd7\         : inout  std_logic;
       \-ubd8\         : inout  std_logic;
       \-ubd9\         : inout  std_logic;
-      udi0            : inout  std_logic;
-      udi1            : inout  std_logic;
-      udi10           : inout  std_logic;
-      udi11           : inout  std_logic;
-      udi12           : inout  std_logic;
-      udi13           : inout  std_logic;
-      udi14           : inout  std_logic;
-      udi15           : inout  std_logic;
-      udi2            : inout  std_logic;
-      udi3            : inout  std_logic;
-      udi4            : inout  std_logic;
-      udi5            : inout  std_logic;
-      udi6            : inout  std_logic;
-      udi7            : inout  std_logic;
-      udi8            : inout  std_logic;
-      udi9            : inout  std_logic;
-      udo0            : inout  std_logic;
-      udo1            : inout  std_logic;
-      udo10           : inout  std_logic;
-      udo11           : inout  std_logic;
-      udo12           : inout  std_logic;
-      udo13           : inout  std_logic;
-      udo14           : inout  std_logic;
-      udo15           : inout  std_logic;
-      udo2            : inout  std_logic;
-      udo3            : inout  std_logic;
-      udo4            : inout  std_logic;
-      udo5            : inout  std_logic;
-      udo6            : inout  std_logic;
-      udo7            : inout  std_logic;
-      udo8            : inout  std_logic;
-      udo9            : inout  std_logic
+      udi0            : out    std_logic;
+      udi1            : out    std_logic;
+      udi10           : out    std_logic;
+      udi11           : out    std_logic;
+      udi12           : out    std_logic;
+      udi13           : out    std_logic;
+      udi14           : out    std_logic;
+      udi15           : out    std_logic;
+      udi2            : out    std_logic;
+      udi3            : out    std_logic;
+      udi4            : out    std_logic;
+      udi5            : out    std_logic;
+      udi6            : out    std_logic;
+      udi7            : out    std_logic;
+      udi8            : out    std_logic;
+      udi9            : out    std_logic;
+      udo0            : out    std_logic;
+      udo1            : out    std_logic;
+      udo10           : out    std_logic;
+      udo11           : out    std_logic;
+      udo12           : out    std_logic;
+      udo13           : out    std_logic;
+      udo14           : out    std_logic;
+      udo15           : out    std_logic;
+      udo2            : out    std_logic;
+      udo3            : out    std_logic;
+      udo4            : out    std_logic;
+      udo5            : out    std_logic;
+      udo6            : out    std_logic;
+      udo7            : out    std_logic;
+      udo8            : out    std_logic;
+      udo9            : out    std_logic
     );
   end component;
 
-  component cadr1_ubintc is
+  component busint_ubintc is
   port (
       \-adr20\        : in     std_logic;
       \-adr21\        : in     std_logic;
@@ -1013,17 +1013,17 @@ package busint_book is
       udi7            : in     std_logic;
       udi8            : in     std_logic;
       udi9            : in     std_logic;
-      \-disable int grant\ : inout  std_logic;
-      \-intr ssyn\    : inout  std_logic;
-      \-ub int\       : inout  std_logic;
-      \-xbus intr in\ : inout  std_logic;
-      \enable ub ints\ : inout  std_logic;
-      \int stops grants\ : inout  std_logic;
-      \intr in\       : inout  std_logic;
-      \intr ssyn\     : inout  std_logic;
-      \ub int\        : inout  std_logic;
+      \-disable int grant\ : out    std_logic;
+      \-intr ssyn\    : out    std_logic;
+      \-ub int\       : out    std_logic;
+      \-xbus intr in\ : out    std_logic;
       \disable int grant\ : out    std_logic;
+      \enable ub ints\ : out    std_logic;
+      \int stops grants\ : out    std_logic;
+      \intr in\       : out    std_logic;
+      \intr ssyn\     : out    std_logic;
       \lm int\        : out    std_logic;
+      \ub int\        : out    std_logic;
       level0          : out    std_logic;
       level1          : out    std_logic;
       udo0            : out    std_logic;
@@ -1047,7 +1047,7 @@ package busint_book is
     );
   end component;
 
-  component cadr1_ubmap is
+  component busint_ubmap is
   port (
       \-ubmap > udo\  : in     std_logic;
       \-ubmapwe\      : in     std_logic;
@@ -1076,30 +1076,29 @@ package busint_book is
       udi7            : in     std_logic;
       udi8            : in     std_logic;
       udi9            : in     std_logic;
-      \-ubpn0a\       : inout  std_logic;
-      \-ubpn1a\       : inout  std_logic;
-      \-ubpn2a\       : inout  std_logic;
-      \-ubpn3a\       : inout  std_logic;
-      mapvalid        : inout  std_logic;
-      ubma10          : inout  std_logic;
-      ubma11          : inout  std_logic;
-      ubma12          : inout  std_logic;
-      ubma13          : inout  std_logic;
-      ubma14          : inout  std_logic;
-      ubma15          : inout  std_logic;
-      ubma16          : inout  std_logic;
-      ubma17          : inout  std_logic;
-      ubma18          : inout  std_logic;
-      ubma19          : inout  std_logic;
-      ubma20          : inout  std_logic;
-      ubma21          : inout  std_logic;
-      ubma8           : inout  std_logic;
-      ubma9           : inout  std_logic;
-      writeok         : inout  std_logic;
+      \-ubpn0a\       : out    std_logic;
       \-ubpn0b\       : out    std_logic;
+      \-ubpn1a\       : out    std_logic;
       \-ubpn1b\       : out    std_logic;
+      \-ubpn2a\       : out    std_logic;
       \-ubpn2b\       : out    std_logic;
+      \-ubpn3a\       : out    std_logic;
       \-ubpn3b\       : out    std_logic;
+      mapvalid        : out    std_logic;
+      ubma10          : out    std_logic;
+      ubma11          : out    std_logic;
+      ubma12          : out    std_logic;
+      ubma13          : out    std_logic;
+      ubma14          : out    std_logic;
+      ubma15          : out    std_logic;
+      ubma16          : out    std_logic;
+      ubma17          : out    std_logic;
+      ubma18          : out    std_logic;
+      ubma19          : out    std_logic;
+      ubma20          : out    std_logic;
+      ubma21          : out    std_logic;
+      ubma8           : out    std_logic;
+      ubma9           : out    std_logic;
       udo0            : out    std_logic;
       udo1            : out    std_logic;
       udo10           : out    std_logic;
@@ -1115,11 +1114,12 @@ package busint_book is
       udo6            : out    std_logic;
       udo7            : out    std_logic;
       udo8            : out    std_logic;
-      udo9            : out    std_logic
+      udo9            : out    std_logic;
+      writeok         : out    std_logic
     );
   end component;
 
-  component cadr1_ubmast is
+  component busint_ubmast is
   port (
       \-db need ub\   : in     std_logic;
       \-dbub granted\ : in     std_logic;
@@ -1135,45 +1135,45 @@ package busint_book is
       \npg2 in\       : in     std_logic;
       \ssyn out\      : in     std_logic;
       lmneedub        : in     std_logic;
-      \-db bus req\   : inout  std_logic;
-      \-db reset\     : inout  std_logic;
-      \-db ub master\ : inout  std_logic;
-      \-db ub selected\ : inout  std_logic;
-      \-db ub set master\ : inout  std_logic;
-      \-lm bus req\   : inout  std_logic;
-      \-lm reset\     : inout  std_logic;
-      \-lm ub master\ : inout  std_logic;
-      \-lm ub selected\ : inout  std_logic;
-      \-lm ub set master\ : inout  std_logic;
-      \-npg1 out\     : inout  std_logic;
       \-ub bbsy\      : inout  std_logic;
       \-ub msyn\      : inout  std_logic;
       \-ub sack\      : inout  std_logic;
       \-ub ssyn\      : inout  std_logic;
-      \bbsy in\       : inout  std_logic;
-      \bus ready\     : inout  std_logic;
-      \db ub granted\ : inout  std_logic;
-      \db ub selected\ : inout  std_logic;
-      \lm ub granted\ : inout  std_logic;
-      \lm ub selected\ : inout  std_logic;
-      \npg in\        : inout  std_logic;
-      \npg1 in t100\  : inout  std_logic;
-      \npg1 out\      : inout  std_logic;
-      \npg2 in t100\  : inout  std_logic;
-      \npg2 out\      : inout  std_logic;
-      \sack in\       : inout  std_logic;
-      \ssyn in\       : inout  std_logic;
+      \-db bus req\   : out    std_logic;
+      \-db reset\     : out    std_logic;
       \-db ub granted\ : out    std_logic;
+      \-db ub master\ : out    std_logic;
+      \-db ub selected\ : out    std_logic;
+      \-db ub set master\ : out    std_logic;
+      \-lm bus req\   : out    std_logic;
+      \-lm reset\     : out    std_logic;
       \-lm ub granted\ : out    std_logic;
+      \-lm ub master\ : out    std_logic;
+      \-lm ub selected\ : out    std_logic;
+      \-lm ub set master\ : out    std_logic;
       \-npg out\      : out    std_logic;
+      \-npg1 out\     : out    std_logic;
+      \bbsy in\       : out    std_logic;
+      \bus ready\     : out    std_logic;
       \bus req\       : out    std_logic;
+      \db ub granted\ : out    std_logic;
       \db ub master\  : out    std_logic;
+      \db ub selected\ : out    std_logic;
+      \lm ub granted\ : out    std_logic;
       \lm ub master\  : out    std_logic;
-      \msyn in\       : out    std_logic
+      \lm ub selected\ : out    std_logic;
+      \msyn in\       : out    std_logic;
+      \npg in\        : out    std_logic;
+      \npg1 in t100\  : out    std_logic;
+      \npg1 out\      : out    std_logic;
+      \npg2 in t100\  : out    std_logic;
+      \npg2 out\      : out    std_logic;
+      \sack in\       : out    std_logic;
+      \ssyn in\       : out    std_logic
     );
   end component;
 
-  component cadr1_ubxa is
+  component busint_ubxa is
   port (
       \-ubaddr>xbus\  : in     std_logic;
       uba2            : in     std_logic;
@@ -1223,7 +1223,7 @@ package busint_book is
     );
   end component;
 
-  component cadr1_uprior is
+  component busint_uprior is
   port (
       \-clk\          : in     std_logic;
       \-disable int grant\ : in     std_logic;
@@ -1235,12 +1235,6 @@ package busint_book is
       level0          : in     std_logic;
       level1          : in     std_logic;
       reset           : in     std_logic;
-      \-bg4o\         : inout  std_logic;
-      \-bg5o\         : inout  std_logic;
-      \-bg6o\         : inout  std_logic;
-      \-bg7o\         : inout  std_logic;
-      \-clear grant\  : inout  std_logic;
-      \-npgo\         : inout  std_logic;
       \-ub br4\       : inout  std_logic;
       \-ub br5\       : inout  std_logic;
       \-ub br6\       : inout  std_logic;
@@ -1248,31 +1242,21 @@ package busint_book is
       \-ub init\      : inout  std_logic;
       \-ub intr\      : inout  std_logic;
       \-ub npr\       : inout  std_logic;
-      \any grant dlyd\ : inout  std_logic;
-      \any grant\     : inout  std_logic;
-      \grant timeout\ : inout  std_logic;
       \hi 1-14\       : inout  std_logic;
       \ub npg in\     : inout  std_logic;
       \ub npg out\    : inout  std_logic;
-      bg4p            : inout  std_logic;
-      bg5p            : inout  std_logic;
-      bg6p            : inout  std_logic;
-      bg7p            : inout  std_logic;
-      br4             : inout  std_logic;
-      br4d            : inout  std_logic;
-      br5             : inout  std_logic;
-      br5d            : inout  std_logic;
-      br6             : inout  std_logic;
-      br6d            : inout  std_logic;
-      br7             : inout  std_logic;
-      br7d            : inout  std_logic;
-      npgp            : inout  std_logic;
-      npr             : inout  std_logic;
-      nprd            : inout  std_logic;
-      sackd           : inout  std_logic;
       \-any grant dlyd\ : out    std_logic;
+      \-bg4o\         : out    std_logic;
+      \-bg5o\         : out    std_logic;
+      \-bg6o\         : out    std_logic;
+      \-bg7o\         : out    std_logic;
+      \-clear grant\  : out    std_logic;
       \-npg in\       : out    std_logic;
+      \-npgo\         : out    std_logic;
+      \any grant dlyd\ : out    std_logic;
+      \any grant\     : out    std_logic;
       \any int grant\ : out    std_logic;
+      \grant timeout\ : out    std_logic;
       \ub bg4 in\     : out    std_logic;
       \ub bg5 in\     : out    std_logic;
       \ub bg6 in\     : out    std_logic;
@@ -1280,14 +1264,30 @@ package busint_book is
       \unibus init in\ : out    std_logic;
       \unibus intr in\ : out    std_logic;
       bg4o            : out    std_logic;
+      bg4p            : out    std_logic;
       bg5o            : out    std_logic;
+      bg5p            : out    std_logic;
       bg6o            : out    std_logic;
+      bg6p            : out    std_logic;
       bg7o            : out    std_logic;
-      npgo            : out    std_logic
+      bg7p            : out    std_logic;
+      br4             : out    std_logic;
+      br4d            : out    std_logic;
+      br5             : out    std_logic;
+      br5d            : out    std_logic;
+      br6             : out    std_logic;
+      br6d            : out    std_logic;
+      br7             : out    std_logic;
+      br7d            : out    std_logic;
+      npgo            : out    std_logic;
+      npgp            : out    std_logic;
+      npr             : out    std_logic;
+      nprd            : out    std_logic;
+      sackd           : out    std_logic
     );
   end component;
 
-  component cadr1_wbuf is
+  component busint_wbuf is
   port (
       \-ubpn0a\       : in     std_logic;
       \-ubpn0b\       : in     std_logic;
@@ -1333,7 +1333,7 @@ package busint_book is
     );
   end component;
 
-  component cadr1_xa is
+  component busint_xa is
   port (
       \-lm power reset\ : in     std_logic;
       \-xaddrdrive\   : in     std_logic;
@@ -1396,7 +1396,7 @@ package busint_book is
       \-xbus power reset\ : inout  std_logic;
       \-xbus rq\      : inout  std_logic;
       \-xbus sync\    : inout  std_logic;
-      \lm power reset\ : inout  std_logic;
+      \lm power reset\ : out    std_logic;
       \xbus ack in\   : out    std_logic;
       \xbus busy in\  : out    std_logic;
       \xbus extrq in\ : out    std_logic;
@@ -1404,7 +1404,7 @@ package busint_book is
     );
   end component;
 
-  component cadr1_xapar is
+  component busint_xapar is
   port (
       xao0            : in     std_logic;
       xao1            : in     std_logic;
@@ -1433,7 +1433,7 @@ package busint_book is
     );
   end component;
 
-  component cadr1_xbd is
+  component busint_xbd is
   port (
       \-xb>bus\       : in     std_logic;
       xdi0            : in     std_logic;
@@ -1503,7 +1503,7 @@ package busint_book is
     );
   end component;
 
-  component cadr1_xd is
+  component busint_xd is
   port (
       \-xdrive\       : in     std_logic;
       \hi 15-30\      : in     std_logic;

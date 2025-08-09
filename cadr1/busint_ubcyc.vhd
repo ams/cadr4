@@ -1,0 +1,58 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity busint_ubcyc is
+  port (
+    \-uba12\        : in     std_logic;
+    \-uba14\        : in     std_logic;
+    \-uba15\        : in     std_logic;
+    \-uba7\         : in     std_logic;
+    \-uba8\         : in     std_logic;
+    \-uba9\         : in     std_logic;
+    \-ubpn3a\       : in     std_logic;
+    \c1 in\         : in     std_logic;
+    \hi 1-14\       : in     std_logic;
+    \msyn in\       : in     std_logic;
+    uba1            : in     std_logic;
+    uba10           : in     std_logic;
+    uba11           : in     std_logic;
+    uba13           : in     std_logic;
+    uba14           : in     std_logic;
+    uba15           : in     std_logic;
+    uba16           : in     std_logic;
+    uba17           : in     std_logic;
+    uba2            : in     std_logic;
+    uba5            : in     std_logic;
+    uba6            : in     std_logic;
+    ubrd            : in     std_logic;
+    ubwr            : in     std_logic;
+    udi7            : in     std_logic;
+    \-intc drive\   : out    std_logic;
+    \-load int ctl reg\ : out    std_logic;
+    \-load int ctl2 reg\ : out    std_logic;
+    \-reset err\    : out    std_logic;
+    \-select debug\ : out    std_logic;
+    \-select interrupt\ : out    std_logic;
+    \-select page\  : out    std_logic;
+    \-select spy\   : out    std_logic;
+    \-ub err drive\ : out    std_logic;
+    \-ub read buffer\ : out    std_logic;
+    \-ub read xbus\ : out    std_logic;
+    \-ub reg cyc t150\ : out    std_logic;
+    \-ub wr xbus\   : out    std_logic;
+    \-ub write buffer\ : out    std_logic;
+    \-ub write xbus\ : out    std_logic;
+    \-write through enb\ : out    std_logic;
+    \-write through\ : out    std_logic;
+    \select page\   : out    std_logic;
+    \ub reg cyc t0\ : out    std_logic;
+    \ub reg cyc t100\ : out    std_logic;
+    \ub reg cyc t150\ : out    std_logic;
+    \ub reg cyc t200\ : out    std_logic;
+    \ub reg cyc t250\ : out    std_logic;
+    \ub reg cyc t50\ : out    std_logic;
+    \ub reg write pulse\ : out    std_logic;
+    \ub17-14=map\   : out    std_logic;
+    \write through enb\ : out    std_logic
+  );
+end entity busint_ubcyc;

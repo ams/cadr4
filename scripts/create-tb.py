@@ -436,6 +436,10 @@ class vEntity(vInterface):
 
         print("begin", file=f);
         for component in sorted(self.components.values(), key=lambda x: x.name):
+            # Skip components with no ports (e.g., testbench components)
+            if len(component.ports) == 0:
+                verbose(f"vEntity.dump_entity: skipping component {component.name} with no ports")
+                continue
             component.dump_component_instantiation(f)
 
         print("end architecture;", file=f);  
@@ -448,6 +452,10 @@ class vTestBench(vEntity):
         # add internal signals and 
         # association list elements for port mapping the components
         for component in self.components.values():
+            # Skip components with no ports (e.g., testbench components)
+            if len(component.ports) == 0:
+                verbose(f"vTestBench.generate: skipping component {component.name} with no ports")
+                continue
             for port in component.ports.values():
                 assert isinstance(port, vPortScalar)
                 signal = vSignalScalar(port.name)
@@ -550,24 +558,27 @@ class vSystem:
             component_body = re.sub(generic_pattern, '', component_body, flags=re.IGNORECASE)            
             # Find port declaration
             port_match = re.search(r'port\s*\(\s*(.*?)\s*\)\s*;', component_body, re.DOTALL | re.IGNORECASE)
-            assert port_match is not None, f"vSystem._load_referenced_package: port not found in {filename}"                
+            if port_match is None:
+                # Component has no ports (e.g., testbench components), skip it
+                verbose(f"vSystem._load_referenced_package: component {component_name} in {filename} has no ports, skipping")
+                continue
             port_content = port_match.group(1)
             # Split port declarations by semicolon
             port_declarations = [p.strip() for p in port_content.split(';') if p.strip()]        
             for port_decl in port_declarations:
                 port_decl = port_decl.strip()
-                assert port_decl is not None, f"vSystem._load_referenced_package: port declaration is empty"
+                assert port_decl is not None, f"vSystem._load_referenced_package: port declaration is empty in component {component_name} from {filename}"
                 # Parse port declaration: name : direction type
                 # Handle extended identifiers with backslashes and clean up whitespace/newlines
                 port_decl = re.sub(r'\s+', ' ', port_decl.strip())  # Normalize whitespace
                 port_pattern = r'(\\[^\\]*\\|\w+)\s*:\s*(in|out|inout)\s+(\w+)'
                 port_match = re.match(port_pattern, port_decl, re.IGNORECASE)
-                assert port_match is not None, f"vSystem._load_referenced_package: port declaration is invalid: {port_decl}"
+                assert port_match is not None, f"vSystem._load_referenced_package: port declaration is invalid in component {component_name} from {filename}: {port_decl}"
                 port_name = port_match.group(1)
                 port_mode = port_match.group(2).lower()
                 port_type = port_match.group(3)                
-                assert port_mode == "in" or port_mode == "out" or port_mode == "inout", f"vSystem._load_referenced_package: port mode is invalid: {port_mode}"
-                assert port_type == "std_logic", f"vSystem._load_referenced_package: port type is invalid: {port_type}" 
+                assert port_mode == "in" or port_mode == "out" or port_mode == "inout", f"vSystem._load_referenced_package: port mode is invalid in component {component_name} from {filename}: {port_mode}"
+                assert port_type == "std_logic", f"vSystem._load_referenced_package: port type is invalid in component {component_name} from {filename}: {port_type}" 
                 component.add_port(vPortScalar(port_name, port_mode))
             
         self.referenced_packages[package.name] = package

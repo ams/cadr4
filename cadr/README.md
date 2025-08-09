@@ -106,6 +106,8 @@ PDL, SPC, L2-MAP, IMEM are all zeroes.
 
 - It is critical that -ILONG and -HANG be a non-metavalue, otherwise the required signals becomes metavalues.
 
+- -ILONG depends on the IR and initially it comes randomly from IRAM. Until a better method is found, it is ESSENTIAL that IRAM is initialized to 0.
+
 - -CLOCK RESET B asserted resets the SR latch in clock2 to start generating TPCLK. TPCLK is set with -TPR0 and reset with -TPREND. (clock2)
 
 - -TPCLK drives -MCLK0 immediately. However, to drive -CLK0, MACHRUN has to be asserted. Thus, the bus is clocked immediately, but the CPU is not. MACHRUN is set from SRUN which is set from RUN which is set by -BOOT signal. Thus, it can be said that reset starts MCLK but not CLK, boot starts CLK.

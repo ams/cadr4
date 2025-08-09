@@ -1,0 +1,57 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity icmem_iram10 is
+  port (
+    \-ice0b\        : in     std_logic;
+    \-iwee\         : in     std_logic;
+    \-pcb0\         : in     std_logic;
+    \-pcb10\        : in     std_logic;
+    \-pcb11\        : in     std_logic;
+    \-pcb1\         : in     std_logic;
+    \-pcb2\         : in     std_logic;
+    \-pcb3\         : in     std_logic;
+    \-pcb4\         : in     std_logic;
+    \-pcb5\         : in     std_logic;
+    \-pcb6\         : in     std_logic;
+    \-pcb7\         : in     std_logic;
+    \-pcb8\         : in     std_logic;
+    \-pcb9\         : in     std_logic;
+    iwr12           : in     std_logic;
+    iwr13           : in     std_logic;
+    iwr14           : in     std_logic;
+    iwr15           : in     std_logic;
+    iwr16           : in     std_logic;
+    iwr17           : in     std_logic;
+    iwr18           : in     std_logic;
+    iwr19           : in     std_logic;
+    iwr20           : in     std_logic;
+    iwr21           : in     std_logic;
+    iwr22           : in     std_logic;
+    iwr23           : in     std_logic;
+    i12             : out    std_logic;
+    i13             : out    std_logic;
+    i14             : out    std_logic;
+    i15             : out    std_logic;
+    i16             : out    std_logic;
+    i17             : out    std_logic;
+    i18             : out    std_logic;
+    i19             : out    std_logic;
+    i20             : out    std_logic;
+    i21             : out    std_logic;
+    i22             : out    std_logic;
+    i23             : out    std_logic;
+    pc0e            : out    std_logic;
+    pc10e           : out    std_logic;
+    pc11e           : out    std_logic;
+    pc1e            : out    std_logic;
+    pc2e            : out    std_logic;
+    pc3e            : out    std_logic;
+    pc4e            : out    std_logic;
+    pc5e            : out    std_logic;
+    pc6e            : out    std_logic;
+    pc7e            : out    std_logic;
+    pc8e            : out    std_logic;
+    pc9e            : out    std_logic
+  );
+end entity icmem_iram10;

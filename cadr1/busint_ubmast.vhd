@@ -1,0 +1,56 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity busint_ubmast is
+  port (
+    \-db need ub\   : in     std_logic;
+    \-dbub granted\ : in     std_logic;
+    \-debug reset\  : in     std_logic;
+    \-lm need ub\   : in     std_logic;
+    \-lmub granted\ : in     std_logic;
+    \-local enable\ : in     std_logic;
+    \-npg in\       : in     std_logic;
+    \db need ub\    : in     std_logic;
+    \hi 1-14\       : in     std_logic;
+    \msyn out\      : in     std_logic;
+    \npg1 in\       : in     std_logic;
+    \npg2 in\       : in     std_logic;
+    \ssyn out\      : in     std_logic;
+    lmneedub        : in     std_logic;
+    \-ub bbsy\      : inout  std_logic;
+    \-ub msyn\      : inout  std_logic;
+    \-ub sack\      : inout  std_logic;
+    \-ub ssyn\      : inout  std_logic;
+    \-db bus req\   : out    std_logic;
+    \-db reset\     : out    std_logic;
+    \-db ub granted\ : out    std_logic;
+    \-db ub master\ : out    std_logic;
+    \-db ub selected\ : out    std_logic;
+    \-db ub set master\ : out    std_logic;
+    \-lm bus req\   : out    std_logic;
+    \-lm reset\     : out    std_logic;
+    \-lm ub granted\ : out    std_logic;
+    \-lm ub master\ : out    std_logic;
+    \-lm ub selected\ : out    std_logic;
+    \-lm ub set master\ : out    std_logic;
+    \-npg out\      : out    std_logic;
+    \-npg1 out\     : out    std_logic;
+    \bbsy in\       : out    std_logic;
+    \bus ready\     : out    std_logic;
+    \bus req\       : out    std_logic;
+    \db ub granted\ : out    std_logic;
+    \db ub master\  : out    std_logic;
+    \db ub selected\ : out    std_logic;
+    \lm ub granted\ : out    std_logic;
+    \lm ub master\  : out    std_logic;
+    \lm ub selected\ : out    std_logic;
+    \msyn in\       : out    std_logic;
+    \npg in\        : out    std_logic;
+    \npg1 in t100\  : out    std_logic;
+    \npg1 out\      : out    std_logic;
+    \npg2 in t100\  : out    std_logic;
+    \npg2 out\      : out    std_logic;
+    \sack in\       : out    std_logic;
+    \ssyn in\       : out    std_logic
+  );
+end entity busint_ubmast;

@@ -105,6 +105,27 @@ def parse_dip_components(dip_file: Path) -> Dict[str, Dict[str, str]]:
     return components
 
 
+def extract_alias_signals(suds_file: Path) -> Set[str]:
+    """
+    Extract alias signal names from a SUDS file.
+    
+    Returns a set of alias signal names that should be excluded from ports.
+    """
+    aliases = set()
+    
+    with open(suds_file, 'r') as f:
+        content = f.read()
+    
+    # Pattern to match alias statements: alias signal_name : type is target_signal;
+    alias_pattern = r'alias\s+([^\s:]+)\s*:\s*[^;]+;'
+    
+    alias_matches = re.findall(alias_pattern, content)
+    for alias_name in alias_matches:
+        aliases.add(alias_name.strip())
+    
+    return aliases
+
+
 def extract_signals_from_suds(suds_file: Path) -> Set[str]:
     """
     Extract all signal names used in port maps from a SUDS file.
@@ -112,14 +133,16 @@ def extract_signals_from_suds(suds_file: Path) -> Set[str]:
     Returns a set of signal names (preserving original form).
     """
     signals = set()
+    aliases = extract_alias_signals(suds_file)
     
     with open(suds_file, 'r') as f:
         content = f.read()
     
     # Pattern to match port map statements
-    # Matches: component_name : dip_component port map (pin => signal, ...)
+    # Matches: component_name : dip_component [generic map (...)] port map (pin => signal, ...)
     # Need to handle nested parentheses in signal names like \signal (name)\
-    port_map_pattern = r':\s*dip_\w+\s+port\s+map\s*\((.+)\);'
+    # Updated to handle optional generic map clause before port map
+    port_map_pattern = r':\s*dip_\w+\s+(?:generic\s+map\s*\([^)]*\)\s+)?port\s+map\s*\((.+)\);'
     
     port_maps = re.findall(port_map_pattern, content)
     
@@ -170,12 +193,12 @@ def extract_signals_from_suds(suds_file: Path) -> Set[str]:
         
         for signal in signal_names:
             signal = signal.strip()
-            # Filter out non-signal values and internal signals
-            if signal not in ['open', 'gnd', 'hi1', 'hi2', 'hi3', "'Z'", "'0'", "'1'"]:
+            # Filter out non-signal values, internal signals, and aliases
+            if signal not in ['open', 'gnd', "'Z'", "'0'", "'1'"]:
                 # Don't modify signal names, preserve them as-is
-                # Skip internal signals (net_xx) and power/ground signals
+                # Skip internal signals (net_xx), power/ground signals, and aliases
                 if (signal and not signal.startswith('gnd') and not signal.startswith('vcc') 
-                    and not signal.startswith('net_')):
+                    and not signal.startswith('net_') and signal not in aliases):
                     signals.add(signal)
     
     return signals
@@ -188,13 +211,15 @@ def determine_signal_directions(suds_file: Path, dip_components: Dict[str, Dict[
     Returns a dictionary mapping signal names to their directions.
     """
     signal_directions = {}
+    aliases = extract_alias_signals(suds_file)
     
     with open(suds_file, 'r') as f:
         content = f.read()
     
     # Pattern to match complete port map statements
     # Need to handle nested parentheses in signal names like \signal (name)\
-    instance_pattern = r'(\w+)\s*:\s*(dip_\w+)\s+port\s+map\s*\((.+)\);'
+    # Updated to handle optional generic map clause before port map
+    instance_pattern = r'(\w+)\s*:\s*(dip_\w+)\s+(?:generic\s+map\s*\([^)]*\)\s+)?port\s+map\s*\((.+)\);'
     
     instances = re.findall(instance_pattern, content)
     
@@ -250,13 +275,13 @@ def determine_signal_directions(suds_file: Path, dip_components: Dict[str, Dict[
             signal = signal.strip()
             
             # Skip non-signal values
-            if signal in ['open', 'gnd', 'hi1', 'hi2', 'hi3', "'Z'", "'0'", "'1'"]:
+            if signal in ['open', 'gnd', "'Z'", "'0'", "'1'"]:
                 continue
             
             # Keep original signal name but check if it's a valid signal
-            # Skip internal signals (net_xx) and power/ground signals
+            # Skip internal signals (net_xx), power/ground signals, and aliases
             if (signal and not signal.startswith('gnd') and not signal.startswith('vcc') 
-                and not signal.startswith('net_')):
+                and not signal.startswith('net_') and signal not in aliases):
                 if pin in component_pins:
                     pin_direction = component_pins[pin]
                     
@@ -272,8 +297,14 @@ def determine_signal_directions(suds_file: Path, dip_components: Dict[str, Dict[
                     # Handle conflicting directions (signal used as both input and output)
                     if signal in signal_directions:
                         if signal_directions[signal] != entity_direction:
-                            # If there's a conflict, use inout
-                            signal_directions[signal] = 'inout'
+                            # Only use inout if one of the directions is actually inout
+                            if signal_directions[signal] == 'inout' or entity_direction == 'inout':
+                                signal_directions[signal] = 'inout'
+                            # For in/out conflicts, prefer out (signal is generated internally)
+                            elif entity_direction == 'out' or signal_directions[signal] == 'out':
+                                signal_directions[signal] = 'out'
+                            else:
+                                signal_directions[signal] = 'in'
                     else:
                         signal_directions[signal] = entity_direction
     

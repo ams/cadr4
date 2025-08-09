@@ -1,0 +1,57 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity busint_ubd is
+  port (
+    \-ubdrive\      : in     std_logic;
+    \-udi > udo\    : in     std_logic;
+    \-ubd0\         : inout  std_logic;
+    \-ubd10\        : inout  std_logic;
+    \-ubd11\        : inout  std_logic;
+    \-ubd12\        : inout  std_logic;
+    \-ubd13\        : inout  std_logic;
+    \-ubd14\        : inout  std_logic;
+    \-ubd15\        : inout  std_logic;
+    \-ubd1\         : inout  std_logic;
+    \-ubd2\         : inout  std_logic;
+    \-ubd3\         : inout  std_logic;
+    \-ubd4\         : inout  std_logic;
+    \-ubd5\         : inout  std_logic;
+    \-ubd6\         : inout  std_logic;
+    \-ubd7\         : inout  std_logic;
+    \-ubd8\         : inout  std_logic;
+    \-ubd9\         : inout  std_logic;
+    udi0            : out    std_logic;
+    udi1            : out    std_logic;
+    udi10           : out    std_logic;
+    udi11           : out    std_logic;
+    udi12           : out    std_logic;
+    udi13           : out    std_logic;
+    udi14           : out    std_logic;
+    udi15           : out    std_logic;
+    udi2            : out    std_logic;
+    udi3            : out    std_logic;
+    udi4            : out    std_logic;
+    udi5            : out    std_logic;
+    udi6            : out    std_logic;
+    udi7            : out    std_logic;
+    udi8            : out    std_logic;
+    udi9            : out    std_logic;
+    udo0            : out    std_logic;
+    udo1            : out    std_logic;
+    udo10           : out    std_logic;
+    udo11           : out    std_logic;
+    udo12           : out    std_logic;
+    udo13           : out    std_logic;
+    udo14           : out    std_logic;
+    udo15           : out    std_logic;
+    udo2            : out    std_logic;
+    udo3            : out    std_logic;
+    udo4            : out    std_logic;
+    udo5            : out    std_logic;
+    udo6            : out    std_logic;
+    udo7            : out    std_logic;
+    udo8            : out    std_logic;
+    udo9            : out    std_logic
+  );
+end entity busint_ubd;

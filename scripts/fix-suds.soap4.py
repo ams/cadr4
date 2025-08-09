@@ -232,40 +232,22 @@ def parse_generic_map_file(generic_map_file_path):
     
     return generic_mappings
 
-def fix_suds_file(file_path, verbose=False, generic_mappings=None):
+def fix_suds_file(file_path, page_name, verbose=False, generic_mappings=None):
     """Fix the SUDS VHDL file according to the three issues."""
-    
+
     if generic_mappings is None:
         generic_mappings = {}
-    
+
     # Parse component definitions
     dip_file_path = 'dip/dip.vhd'
     components, aliases = parse_component_definitions(dip_file_path)
-    
+
     # Parse VHDL file
     result = parse_vhd_file(file_path, verbose)
     if result is None:
         # Empty file - skip processing
         return
     lines, begin_line, end_line = result
-    
-    # Get page name from architecture line
-    page_name = None
-    for line in lines:
-        # Look for architecture line: architecture suds of <PAGE> is
-        match = re.match(r'\s*architecture\s+suds\s+of\s+(\w+)\s+is', line, re.IGNORECASE)
-        if match:
-            entity_name = match.group(1)
-            # Check if entity name is in cadr_<PAGE> format or just <PAGE> format
-            if entity_name.startswith('cadr_'):
-                page_name = entity_name[5:]  # Remove 'cadr_' prefix
-            else:
-                page_name = entity_name
-            break
-    
-    if page_name is None:
-        print(f"Error: Could not find architecture line with suds pattern in {file_path}")
-        sys.exit(1)
     
     # Extract existing signal declarations
     existing_signals = set()
@@ -418,6 +400,7 @@ def main():
     verbose = False
     generic_map_file = None
     file_path = None
+    page_override = None
     
     # Parse command line arguments
     i = 1
@@ -431,6 +414,12 @@ def main():
                 sys.exit(1)
             generic_map_file = sys.argv[i + 1]
             i += 1  # Skip the filename argument
+        elif arg == "-p" or arg == "--page":
+            if i + 1 >= len(sys.argv):
+                print("Error: -p/--page option requires a page name (e.g., iram00)")
+                sys.exit(1)
+            page_override = sys.argv[i + 1]
+            i += 1
         elif not arg.startswith("-"):
             if file_path is None:
                 file_path = arg
@@ -443,10 +432,14 @@ def main():
         i += 1
     
     if file_path is None:
-        print("Usage: fix-suds.py [-v] [-g|--generic-map <generic_file.txt>] <suds_file.vhd>")
+        print("Usage: fix-suds.py -p|--page <page> [-v] [-g|--generic-map <generic_file.txt>] <suds_file.vhd>")
+        print("  -p, --page PAGE        : Page name (mandatory), e.g., iram00, clock1, buspar")
         print("  -v                     : Verbose output")
-        print("  -g, --generic-map FILE : Read generic mappings from FILE")
-        print("                          Format: <page>.<label> <fn_value>")
+        print("  -g, --generic-map FILE : Read generic mappings from FILE (Format: <page>.<label> <fn_value>)")
+        sys.exit(1)
+
+    if page_override is None:
+        print("Error: page name is required. Use -p|--page <page> (e.g., iram00)")
         sys.exit(1)
     
     # Parse generic mappings if file provided
@@ -456,7 +449,7 @@ def main():
         if verbose:
             print(f"Loaded {sum(len(page_mappings) for page_mappings in generic_mappings.values())} generic mappings from {generic_map_file}")
     
-    fix_suds_file(file_path, verbose, generic_mappings)
+    fix_suds_file(file_path, page_override, verbose, generic_mappings)
 
 if __name__ == "__main__":
     main() 
