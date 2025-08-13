@@ -84,6 +84,7 @@ All ICs with open collector outputs are explicitly indicated.
 
 - sn74138: 3-8 demux
 - sn74139: 2-4 demux
+- sn74151: 8-1 mux
 - sn74153: dual 4-1 demux
 - sn74157: 2-1 mux with tri-state outputs
 - sn74258: quad 2-1 inverse mux with tri-state outputs
@@ -94,14 +95,24 @@ All ICs with open collector outputs are explicitly indicated.
 - sn74241: octal buffer and line driver with tri-state outputs
 - sn74244: octal buffer and line driver with tri-state outputs
 
+## Bus Transceivers
+
+- am26s10: quad open collector bus transceiver
+- am8304: octal three-state bidirectional bus transceiver
+- dm8838: quad unified bus transceiver
+- 
+
 ## FF & Register & Counter
 
 ### Flip-Flops
 
 - sn7474: dual d-type positive edge triggered ff with preset and clear
 - sn74109: dual j-k positive edge triggered ff with preset and clear
+- sn74112: dual j-k negative edge triggered ff with present and clear
 - sn74174: hex d-type ff with clear
 - sn74175: quad d-type ff with clear
+- sn74273: octal d-type ff with clear
+- sn74276: quadruple j-k flip-flops
 - sn74374: octal d-type ff with tri-state outputs
 
 ### Registers
@@ -121,12 +132,14 @@ All ICs with open collector outputs are explicitly indicated.
 
 ### Counters
 
+- sn74163: synchronous 4-bit counter
 - sn74169: synchronous 4-bit up/down binary counter
 
 ## RAM & PROM
 
 ### RAM
 
+- am29701: 64x1 RAM with tri-state outputs
 - d2147: 4096x1 RAM with tri-state outputs 
 - dm93425a: 1024x1 RAM with tri-state outputs
 - n82s21: 32x2 RAM with open-collector outputs
@@ -157,6 +170,8 @@ sn74181 is implemented by translating the gate-level model available in Verilog 
 ## Special
 
 - dummy_type_A: all passive element (passive components on a dip socket)
+- mttldl: ttl delay line
+- sn74124: dual VCO but implemented as a fixed frequency oscillator
 - til309: numeric display with logic
 - ttldm: ttl delay line
 
