@@ -30,8 +30,11 @@ def parse_component_definitions(dip_file_path):
             print(f"Error: Multiple definitions found for component {component_name}")
             sys.exit(1)
         
+        # Remove VHDL line comments before extracting ports so commented pins are not parsed
+        ports_section_no_comments = re.sub(r"--.*", "", ports_section)
+
         ports = {}
-        for port_match in re.finditer(port_pattern, ports_section):
+        for port_match in re.finditer(port_pattern, ports_section_no_comments):
             pin_num = int(port_match.group(1))
             direction = port_match.group(2).lower()
             ports[pin_num] = direction
@@ -320,6 +323,10 @@ def fix_suds_file(file_path, page_name, verbose=False, generic_mappings=None):
             sys.exit(1)
         
         component_ports = component_def['ports']
+
+        # Drop any port mappings that are not actually part of the component definition
+        # to avoid propagating invalid pins (e.g., pins that are commented out in dip.vhd)
+        inst['ports'] = {pin: sig for pin, sig in inst['ports'].items() if pin in component_ports}
         
         for pin_num, direction in component_ports.items():
             if pin_num not in inst['ports']:

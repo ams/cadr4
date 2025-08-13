@@ -163,6 +163,13 @@ package sn74 is
       );
   end component;
 
+  component sn74124 is
+  port (
+      en_n : in  std_logic;
+      y    : out std_logic
+    );
+  end component;
+
   component sn74133 is
   port (
       a   : in  std_logic; -- Pin 1
