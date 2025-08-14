@@ -442,7 +442,7 @@ else ifeq ($(PAGE),uprior)
 	sed $(SEDOPTIONS) 's/uprior_0f17 : dip_dummy4/uprior_0f17 : dip_dummy4_uprior_f13/g' $(BUSINT_SUDS_DIR)/$(SUDS_FILE)
 	sed $(SEDOPTIONS) 's/uprior_0f18 : dip_dummy4/uprior_0f18 : dip_dummy4_uprior_f14/g' $(BUSINT_SUDS_DIR)/$(SUDS_FILE)
 endif
-	python3 $(FIXSUDS_PY) --page $(PAGE) $(BUSINT_SUDS_DIR)/$(SUDS_FILE)
+	python3 $(FIXSUDS_PY) --generic-map rom/busint.table --page $(PAGE) $(BUSINT_SUDS_DIR)/$(SUDS_FILE)
 	python3 $(CREATE_ENTITY_FROM_SUDS_PY) -o $(BUSINT_DIR)/$(ENTITY_FILE) -d dip/dip.vhd $(BUSINT_SUDS_DIR)/$(SUDS_FILE)
 
 # ===== END OF CADR1 SUDS AUTOGENERATION =====
