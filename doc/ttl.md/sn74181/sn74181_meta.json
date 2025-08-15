@@ -1,0 +1,1418 @@
+{
+  "table_of_contents": [
+    {
+      "title": "SN54LS181, SN54S181 ... FK PACKAGE\n(TOP VIEW)",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          358.294921875,
+          224.25
+        ],
+        [
+          523.248046875,
+          224.25
+        ],
+        [
+          523.248046875,
+          243.75
+        ],
+        [
+          358.294921875,
+          243.75
+        ]
+      ]
+    },
+    {
+      "title": "TYPICAL ADDITION TIMES",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          257.888671875,
+          392.51953125
+        ],
+        [
+          364.5,
+          392.51953125
+        ],
+        [
+          364.5,
+          403.34765625
+        ],
+        [
+          257.888671875,
+          403.34765625
+        ]
+      ]
+    },
+    {
+      "title": "description",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          64.5,
+          502.734375
+        ],
+        [
+          121.69775390625,
+          502.734375
+        ],
+        [
+          121.69775390625,
+          514.3359375
+        ],
+        [
+          64.5,
+          514.3359375
+        ]
+      ]
+    },
+    {
+      "title": "SN54LS181, SN54S181\nSN74LS181, SN74S181\nARITHMETIC LOGIC UNITS/FUNCTION GENERATORS",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          43.5,
+          15.61376953125
+        ],
+        [
+          339.0,
+          15.61376953125
+        ],
+        [
+          339.0,
+          62.50341796875
+        ],
+        [
+          43.5,
+          62.50341796875
+        ]
+      ]
+    },
+    {
+      "title": "description (continued)",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          44.25,
+          77.39208984375
+        ],
+        [
+          160.5,
+          77.39208984375
+        ],
+        [
+          160.5,
+          88.70361328125
+        ],
+        [
+          44.25,
+          88.70361328125
+        ]
+      ]
+    },
+    {
+      "title": "signal designations",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          45.75,
+          533.671875
+        ],
+        [
+          143.4375,
+          533.671875
+        ],
+        [
+          143.4375,
+          544.5
+        ],
+        [
+          45.75,
+          544.5
+        ]
+      ]
+    },
+    {
+      "title": "SN54LS181, SN54S181\nSN74LS181, SN74S181\nARITHMETIC LOGIC UNITS/FUNCTION GENERATORS\nSDLS136 \u2013 DECEMBER 1972 \u2013 REVISED MARCH 1988",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          273.0,
+          14.64697265625
+        ],
+        [
+          568.5,
+          14.64697265625
+        ],
+        [
+          568.5,
+          66.0
+        ],
+        [
+          273.0,
+          66.0
+        ]
+      ]
+    },
+    {
+      "title": "logic symbols<sup>\u2020</sup> and signal designations (active-low data)",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          64.02392578125,
+          76.5
+        ],
+        [
+          355.5,
+          76.5
+        ],
+        [
+          355.5,
+          88.70361328125
+        ],
+        [
+          64.02392578125,
+          88.70361328125
+        ]
+      ]
+    },
+    {
+      "title": "FIGURE 1 (USE WITH TABLE 1)",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          243.75,
+          348.626953125
+        ],
+        [
+          393.75,
+          348.626953125
+        ],
+        [
+          393.75,
+          360.0
+        ],
+        [
+          243.75,
+          360.0
+        ]
+      ]
+    },
+    {
+      "title": "SN54LS181, SN54S181\nSN74LS181, SN74S181\nARITHMETIC LOGIC UNITS/FUNCTION GENERATORS",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          43.5,
+          15.75
+        ],
+        [
+          339.0,
+          15.75
+        ],
+        [
+          339.0,
+          62.69677734375
+        ],
+        [
+          43.5,
+          62.69677734375
+        ]
+      ]
+    },
+    {
+      "title": "FIGURE 2 (USE WITH TABLE 2)",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          221.25,
+          355.5
+        ],
+        [
+          371.25,
+          355.5
+        ],
+        [
+          371.25,
+          366.802734375
+        ],
+        [
+          221.25,
+          366.802734375
+        ]
+      ]
+    },
+    {
+      "title": "TABLE 2",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          278.25,
+          377.630859375
+        ],
+        [
+          315.0,
+          377.630859375
+        ],
+        [
+          315.0,
+          386.912109375
+        ],
+        [
+          278.25,
+          386.912109375
+        ]
+      ]
+    },
+    {
+      "title": "logic diagram (positive logic)",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          63.75,
+          76.5
+        ],
+        [
+          213.0,
+          76.5
+        ],
+        [
+          213.0,
+          89.18701171875
+        ],
+        [
+          63.75,
+          89.18701171875
+        ]
+      ]
+    },
+    {
+      "title": "SN54LS181, SN54S181\nSN74LS181, SN74S181\nARITHMETIC LOGIC UNITS/FUNCTION GENERATORS\nSDLS136 \u2013 DECEMBER 1972 \u2013 REVISED MARCH 1988",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          42.75,
+          15.4083251953125
+        ],
+        [
+          339.0,
+          15.4083251953125
+        ],
+        [
+          339.0,
+          65.25
+        ],
+        [
+          42.75,
+          65.25
+        ]
+      ]
+    },
+    {
+      "title": "SN54LS181, SN54S181\nSN74LS181, SN74S181\nARITHMETIC LOGIC UNITS/FUNCTION GENERATORS<br>SDLS136 \u2013 DECEMBER 1972 \u2013 REVISED MARCH 1988",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          268.9453125,
+          15.5654296875
+        ],
+        [
+          568.5,
+          15.5654296875
+        ],
+        [
+          568.5,
+          67.5
+        ],
+        [
+          268.9453125,
+          66.75
+        ]
+      ]
+    },
+    {
+      "title": "switching characteristics, V_{CC} = 5 V, T_A = 25\u00b0C, (C_L = 15 pF, R_L = 2 k\\Omega, see note 4)",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          65.25,
+          75.75
+        ],
+        [
+          465.75,
+          75.75
+        ],
+        [
+          465.75,
+          89.4287109375
+        ],
+        [
+          65.25,
+          89.4287109375
+        ]
+      ]
+    },
+    {
+      "title": "schematics of inputs and outputs",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          66.75,
+          438.75
+        ],
+        [
+          220.5,
+          438.75
+        ],
+        [
+          220.5,
+          450.0
+        ],
+        [
+          66.75,
+          450.0
+        ]
+      ]
+    },
+    {
+      "title": "SN54LS181, SN54S181\nSN74LS181, SN74S181\nARITHMETIC LOGIC UNITS/FUNCTION GENERATORS",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          43.5,
+          15.1907958984375
+        ],
+        [
+          339.0,
+          15.1907958984375
+        ],
+        [
+          339.0,
+          61.92333984375
+        ],
+        [
+          43.5,
+          61.92333984375
+        ]
+      ]
+    },
+    {
+      "title": "absolute maximum ratings over operating free-air temperature range (unless otherwise noted)",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          44.25,
+          78.06884765625
+        ],
+        [
+          469.5,
+          76.5
+        ],
+        [
+          469.5,
+          89.18701171875
+        ],
+        [
+          44.25,
+          90.0
+        ]
+      ]
+    },
+    {
+      "title": "recommended operating conditions",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          45.64599609375,
+          209.98828125
+        ],
+        [
+          210.076171875,
+          209.98828125
+        ],
+        [
+          210.076171875,
+          220.4296875
+        ],
+        [
+          45.64599609375,
+          220.4296875
+        ]
+      ]
+    },
+    {
+      "title": "electrical characteristics over recommended operating free-air temperature range (unless otherwise noted)",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          45.75,
+          301.060546875
+        ],
+        [
+          526.5,
+          300.0
+        ],
+        [
+          526.5,
+          311.888671875
+        ],
+        [
+          45.75,
+          314.25
+        ]
+      ]
+    },
+    {
+      "title": "SN54LS181, SN54S181\nSN74LS181, SN74S181\nARITHMETIC LOGIC UNITS/FUNCTION GENERATORS<br>SDLS136 \u2013 DECEMBER 1972 \u2013 REVISED MARCH 1988",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          267.75,
+          15.75
+        ],
+        [
+          568.5,
+          15.75
+        ],
+        [
+          568.5,
+          67.5
+        ],
+        [
+          267.75,
+          66.75
+        ]
+      ]
+    },
+    {
+      "title": "switching characteristics, V<sub>CC</sub> = 5 V, T<sub>A</sub> = 25^{\\circ}C (C<sub>L</sub> = 15 pF, R<sub>L</sub> = 280 \\Omega , see note 4)",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          63.75,
+          75.75
+        ],
+        [
+          463.5,
+          72.75
+        ],
+        [
+          463.5,
+          88.55859375
+        ],
+        [
+          63.75,
+          91.5
+        ]
+      ]
+    },
+    {
+      "title": "schematics of inputs and outputs",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          68.25,
+          426.75
+        ],
+        [
+          221.25,
+          426.75
+        ],
+        [
+          221.25,
+          437.765625
+        ],
+        [
+          68.25,
+          437.765625
+        ]
+      ]
+    },
+    {
+      "title": "SN54LS181, SN54S181\nSN74LS181, SN74S181\nARITHMETIC LOGIC UNITS/FUNCTION GENERATORS\nSDLS136 \u2013 DECEMBER 1972 \u2013 REVISED MARCH 1988",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          42.75,
+          15.75
+        ],
+        [
+          339.0,
+          15.75
+        ],
+        [
+          339.0,
+          66.0
+        ],
+        [
+          42.75,
+          66.0
+        ]
+      ]
+    },
+    {
+      "title": "PARAMETER MEASUREMENT INFORMATION\nSUM MODE TEST TABLE",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          175.2626953125,
+          76.61865234375
+        ],
+        [
+          412.5,
+          76.5
+        ],
+        [
+          412.5,
+          99.0
+        ],
+        [
+          175.2626953125,
+          99.0
+        ]
+      ]
+    },
+    {
+      "title": "DIFF MODE TEST TABLE\nFUNCTION INPUTS: S1 = S2 = 4.5 V, S0 = S3 = M = 0 V",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          197.9736328125,
+          322.5234375
+        ],
+        [
+          406.40625,
+          322.5234375
+        ],
+        [
+          406.40625,
+          344.1796875
+        ],
+        [
+          197.9736328125,
+          344.1796875
+        ]
+      ]
+    },
+    {
+      "title": "LOGIC MODE TEST TABLE\nFUNCTION INPUTS: S1 = S2 = M = 4.5 \\text{ V}, S0 = S3 = 0 \\text{ V}",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          188.560546875,
+          595.93359375
+        ],
+        [
+          400.4296875,
+          595.93359375
+        ],
+        [
+          400.4296875,
+          618.36328125
+        ],
+        [
+          188.560546875,
+          618.36328125
+        ]
+      ]
+    },
+    {
+      "title": "PACKAGING INFORMATION",
+      "heading_level": null,
+      "page_id": 10,
+      "polygon": [
+        [
+          35.23953695458593,
+          98.2708740234375
+        ],
+        [
+          188.09326171875,
+          98.2708740234375
+        ],
+        [
+          188.09326171875,
+          111.6351318359375
+        ],
+        [
+          35.23953695458593,
+          111.6351318359375
+        ]
+      ]
+    },
+    {
+      "title": "MECHANICAL DATA",
+      "heading_level": null,
+      "page_id": 12,
+      "polygon": [
+        [
+          456.75,
+          15.396240234375
+        ],
+        [
+          569.25,
+          15.396240234375
+        ],
+        [
+          569.25,
+          31.130859375
+        ],
+        [
+          456.75,
+          31.130859375
+        ]
+      ]
+    },
+    {
+      "title": "J (R-GDIP-T**)",
+      "heading_level": null,
+      "page_id": 12,
+      "polygon": [
+        [
+          54.648193359375,
+          74.5400390625
+        ],
+        [
+          133.5,
+          74.5400390625
+        ],
+        [
+          133.5,
+          86.625
+        ],
+        [
+          54.648193359375,
+          86.625
+        ]
+      ]
+    },
+    {
+      "title": "CERAMIC DUAL-IN-LINE PACKAGE",
+      "heading_level": null,
+      "page_id": 12,
+      "polygon": [
+        [
+          397.44140625,
+          76.5
+        ],
+        [
+          568.5,
+          76.5
+        ],
+        [
+          568.5,
+          87.25341796875
+        ],
+        [
+          397.44140625,
+          87.25341796875
+        ]
+      ]
+    },
+    {
+      "title": "IMPORTANT NOTICE AND DISCLAIMER",
+      "heading_level": null,
+      "page_id": 13,
+      "polygon": [
+        [
+          191.25,
+          77.150390625
+        ],
+        [
+          420.75,
+          77.150390625
+        ],
+        [
+          420.75,
+          90.3955078125
+        ],
+        [
+          191.25,
+          90.3955078125
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          183
+        ],
+        [
+          "Line",
+          81
+        ],
+        [
+          "Span",
+          49
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "ListItem",
+          5
+        ],
+        [
+          "Table",
+          3
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "PageFooter",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 6,
+        "llm_error_count": 0,
+        "llm_tokens_used": 18183,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          136
+        ],
+        [
+          "Span",
+          43
+        ],
+        [
+          "Line",
+          31
+        ],
+        [
+          "Text",
+          7
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 3,
+        "llm_error_count": 0,
+        "llm_tokens_used": 8883,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          267
+        ],
+        [
+          "Span",
+          101
+        ],
+        [
+          "Line",
+          99
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 3,
+        "llm_error_count": 0,
+        "llm_tokens_used": 8789,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          261
+        ],
+        [
+          "Line",
+          108
+        ],
+        [
+          "Span",
+          11
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 3,
+        "llm_error_count": 0,
+        "llm_tokens_used": 9133,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          27
+        ],
+        [
+          "Span",
+          5
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 2,
+        "llm_error_count": 0,
+        "llm_tokens_used": 3906,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 5,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          716
+        ],
+        [
+          "Span",
+          23
+        ],
+        [
+          "Line",
+          18
+        ],
+        [
+          "Text",
+          11
+        ],
+        [
+          "Table",
+          3
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 4,
+        "llm_error_count": 1,
+        "llm_tokens_used": 14405,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 6,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          208
+        ],
+        [
+          "Line",
+          24
+        ],
+        [
+          "Span",
+          19
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 4,
+        "llm_error_count": 1,
+        "llm_tokens_used": 14020,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 7,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          840
+        ],
+        [
+          "Span",
+          26
+        ],
+        [
+          "Line",
+          19
+        ],
+        [
+          "Text",
+          9
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "Table",
+          3
+        ],
+        [
+          "ListItem",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 4,
+        "llm_error_count": 0,
+        "llm_tokens_used": 14928,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 8,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          320
+        ],
+        [
+          "Line",
+          24
+        ],
+        [
+          "Span",
+          14
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 4,
+        "llm_error_count": 0,
+        "llm_tokens_used": 13616,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 9,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          641
+        ],
+        [
+          "Span",
+          18
+        ],
+        [
+          "Line",
+          16
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "Table",
+          3
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 4,
+        "llm_error_count": 0,
+        "llm_tokens_used": 13381,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 10,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          144
+        ],
+        [
+          "Span",
+          33
+        ],
+        [
+          "Line",
+          26
+        ],
+        [
+          "Text",
+          14
+        ],
+        [
+          "PageHeader",
+          3
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 2,
+        "llm_error_count": 0,
+        "llm_tokens_used": 6464,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 11,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          9
+        ],
+        [
+          "Span",
+          7
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 1,
+        "llm_error_count": 0,
+        "llm_tokens_used": 1613,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 12,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          103
+        ],
+        [
+          "Span",
+          10
+        ],
+        [
+          "ListItem",
+          4
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 2,
+        "llm_error_count": 0,
+        "llm_tokens_used": 3278,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 13,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          20
+        ],
+        [
+          "Span",
+          20
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "SectionHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data/sn74181"
+}

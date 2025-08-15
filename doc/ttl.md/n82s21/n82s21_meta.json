@@ -1,0 +1,464 @@
+{
+  "table_of_contents": [
+    {
+      "title": "THIS PRODUCT AVAILABLE IN 0\u00b0C TO 75\u00b0C TEMPERATURE RANGE ONLY",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          104.888671875,
+          101.25
+        ],
+        [
+          482.25,
+          99.75
+        ],
+        [
+          482.25,
+          114.08203125
+        ],
+        [
+          104.888671875,
+          115.62890625
+        ]
+      ]
+    },
+    {
+      "title": "AVAILABLE SOON",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          64.5,
+          126.0
+        ],
+        [
+          159.7236328125,
+          126.0
+        ],
+        [
+          159.7236328125,
+          137.478515625
+        ],
+        [
+          64.5,
+          139.025390625
+        ]
+      ]
+    },
+    {
+      "title": "DESCRIPTION",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          64.5,
+          152.25
+        ],
+        [
+          138.13330078125,
+          152.25
+        ],
+        [
+          138.13330078125,
+          162.7119140625
+        ],
+        [
+          64.5,
+          164.2587890625
+        ]
+      ]
+    },
+    {
+      "title": "FEATURES",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          64.5,
+          445.5
+        ],
+        [
+          122.25,
+          444.75
+        ],
+        [
+          122.25,
+          456.328125
+        ],
+        [
+          64.5,
+          457.875
+        ]
+      ]
+    },
+    {
+      "title": "TRUTH TABLE",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          65.25,
+          568.5
+        ],
+        [
+          144.333984375,
+          568.5
+        ],
+        [
+          144.333984375,
+          580.078125
+        ],
+        [
+          65.25,
+          581.625
+        ]
+      ]
+    },
+    {
+      "title": "OBJECTIVE SPECIFICATION",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          339.75,
+          125.25
+        ],
+        [
+          489.779296875,
+          125.0068359375
+        ],
+        [
+          489.779296875,
+          136.9951171875
+        ],
+        [
+          339.75,
+          138.5419921875
+        ]
+      ]
+    },
+    {
+      "title": "APPLICATIONS",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          333.75,
+          153.0
+        ],
+        [
+          412.3828125,
+          153.0
+        ],
+        [
+          412.3828125,
+          163.2919921875
+        ],
+        [
+          333.75,
+          164.8388671875
+        ]
+      ]
+    },
+    {
+      "title": "LOGIC DIAGRAM",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          330.802734375,
+          219.0
+        ],
+        [
+          420.75,
+          219.0
+        ],
+        [
+          420.75,
+          230.09765625
+        ],
+        [
+          330.802734375,
+          231.64453125
+        ]
+      ]
+    },
+    {
+      "title": "SIGNETICS DIGITAL 8000 SERIES TTL/MSI - 82S21",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          42.0,
+          62.25
+        ],
+        [
+          303.609375,
+          62.25
+        ],
+        [
+          303.609375,
+          74.9267578125
+        ],
+        [
+          42.0,
+          74.9267578125
+        ]
+      ]
+    },
+    {
+      "title": "OBJECTIVE ELECTRICAL CHARACTERISTICS (T_A = 25^{\\circ}C and V_{CC} = 5.0V)",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          41.25,
+          84.0
+        ],
+        [
+          406.107421875,
+          84.0
+        ],
+        [
+          406.107421875,
+          99.0
+        ],
+        [
+          41.25,
+          99.0
+        ]
+      ]
+    },
+    {
+      "title": "NOTES:",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          42.75,
+          414.75
+        ],
+        [
+          75.0,
+          414.75
+        ],
+        [
+          75.0,
+          423.84375
+        ],
+        [
+          42.75,
+          423.84375
+        ]
+      ]
+    },
+    {
+      "title": "AC WAVEFORMS",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          42.0,
+          534.75
+        ],
+        [
+          129.69140625,
+          534.75
+        ],
+        [
+          129.69140625,
+          546.8203125
+        ],
+        [
+          42.0,
+          546.8203125
+        ]
+      ]
+    },
+    {
+      "title": "TYPICAL APPLICATION",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          63.75,
+          400.5
+        ],
+        [
+          184.5,
+          400.5
+        ],
+        [
+          184.5,
+          413.015625
+        ],
+        [
+          63.75,
+          413.015625
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          126
+        ],
+        [
+          "Span",
+          67
+        ],
+        [
+          "Line",
+          49
+        ],
+        [
+          "SectionHeader",
+          8
+        ],
+        [
+          "ListItem",
+          8
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "TextInlineMath",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 4,
+        "llm_error_count": 0,
+        "llm_tokens_used": 11656,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          350
+        ],
+        [
+          "Span",
+          32
+        ],
+        [
+          "Line",
+          29
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "ListItem",
+          3
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 2,
+        "llm_error_count": 0,
+        "llm_tokens_used": 7373,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          58
+        ],
+        [
+          "Span",
+          6
+        ],
+        [
+          "Figure",
+          3
+        ],
+        [
+          "TextInlineMath",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 8,
+        "llm_error_count": 1,
+        "llm_tokens_used": 21569,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data/n82s21"
+}

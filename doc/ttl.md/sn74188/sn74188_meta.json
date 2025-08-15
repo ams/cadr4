@@ -1,0 +1,590 @@
+{
+  "table_of_contents": [
+    {
+      "title": "National<br>Semiconductor",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          69.75,
+          53.6572265625
+        ],
+        [
+          245.25,
+          53.6572265625
+        ],
+        [
+          245.25,
+          97.646484375
+        ],
+        [
+          69.0,
+          97.646484375
+        ]
+      ]
+    },
+    {
+      "title": "DM54/74S188\n(32 x 8) 256-Bit TTL PROM",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          69.75,
+          108.1845703125
+        ],
+        [
+          276.0,
+          108.1845703125
+        ],
+        [
+          276.0,
+          146.0830078125
+        ],
+        [
+          69.75,
+          146.0830078125
+        ]
+      ]
+    },
+    {
+      "title": "General Description",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          70.5,
+          154.6875
+        ],
+        [
+          197.525390625,
+          154.6875
+        ],
+        [
+          197.525390625,
+          171.509765625
+        ],
+        [
+          70.5,
+          171.509765625
+        ]
+      ]
+    },
+    {
+      "title": "Features",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          305.25,
+          155.84765625
+        ],
+        [
+          361.5,
+          155.84765625
+        ],
+        [
+          361.5,
+          170.54296875
+        ],
+        [
+          305.25,
+          170.54296875
+        ]
+      ]
+    },
+    {
+      "title": "Block Diagram",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          70.5,
+          291.779296875
+        ],
+        [
+          164.056640625,
+          291.779296875
+        ],
+        [
+          164.056640625,
+          309.181640625
+        ],
+        [
+          70.5,
+          309.181640625
+        ]
+      ]
+    },
+    {
+      "title": "Ordering Information",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          45.75,
+          290.25
+        ],
+        [
+          180.791015625,
+          290.25
+        ],
+        [
+          180.791015625,
+          306.75
+        ],
+        [
+          45.75,
+          306.75
+        ]
+      ]
+    },
+    {
+      "title": "",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          559.705078125,
+          483.3984375
+        ],
+        [
+          569.267578125,
+          483.3984375
+        ],
+        [
+          569.267578125,
+          526.7109375
+        ],
+        [
+          559.705078125,
+          526.7109375
+        ]
+      ]
+    },
+    {
+      "title": "Absolute Maximun Ratings (Note 1)",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          75.005859375,
+          56.1708984375
+        ],
+        [
+          278.25,
+          56.1708984375
+        ],
+        [
+          278.25,
+          71.15625
+        ],
+        [
+          75.005859375,
+          71.15625
+        ]
+      ]
+    },
+    {
+      "title": "DC Flectrical Characteristics (Note 3)",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          76.5,
+          171.9931640625
+        ],
+        [
+          291.65625,
+          171.9931640625
+        ],
+        [
+          291.65625,
+          186.8818359375
+        ],
+        [
+          76.5,
+          186.8818359375
+        ]
+      ]
+    },
+    {
+      "title": "Operating Conditions\nMin\nMax\nUnits\nSupply Voltage (V_{CC})\nMilitary\n4.50\n5.50\n\u0667\nCommercial\n4.75\n5.25\nv\nAmbient Temperature (T_A)\nMilitary\n-55\n+125\n\u00b0C\n0\n+70\n\u00b0C\nCommercial\nLogical \"0\" Input Voltage\n0\n0.8\nv\nLogical \"1\" Input Voltage\n2.0\n5.5\n\u0667",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          324.75,
+          55.5
+        ],
+        [
+          545.0625,
+          55.5
+        ],
+        [
+          545.0625,
+          171.75
+        ],
+        [
+          324.75,
+          171.75
+        ]
+      ]
+    },
+    {
+      "title": "AC Electrical Characteristics with Standard Load and Operating Conditions",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          77.25,
+          526.5
+        ],
+        [
+          428.51953125,
+          527.09765625
+        ],
+        [
+          428.51953125,
+          541.01953125
+        ],
+        [
+          77.25,
+          541.01953125
+        ]
+      ]
+    },
+    {
+      "title": "COMMERCIAL TEMP RANGE (0\u00b0C to +70\u00b0C)",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          77.25,
+          546.43359375
+        ],
+        [
+          252.509765625,
+          546.0
+        ],
+        [
+          252.509765625,
+          558.03515625
+        ],
+        [
+          77.25,
+          558.03515625
+        ]
+      ]
+    },
+    {
+      "title": "AC Electrical Characteristics with Standard Load and Operating Conditions (Continued)",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          64.248046875,
+          56.654296875
+        ],
+        [
+          460.5,
+          56.654296875
+        ],
+        [
+          460.5,
+          72.0
+        ],
+        [
+          64.248046875,
+          71.54296875
+        ]
+      ]
+    },
+    {
+      "title": "Functional Description",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          65.25,
+          215.015625
+        ],
+        [
+          207.984375,
+          215.015625
+        ],
+        [
+          207.984375,
+          231.64453125
+        ],
+        [
+          64.5,
+          231.64453125
+        ]
+      ]
+    },
+    {
+      "title": "TESTABILITY",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          66.0,
+          231.0
+        ],
+        [
+          123.8642578125,
+          231.0
+        ],
+        [
+          123.8642578125,
+          243.24609375
+        ],
+        [
+          66.0,
+          243.24609375
+        ]
+      ]
+    },
+    {
+      "title": "RELIABILITY",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          65.25,
+          369.703125
+        ],
+        [
+          119.75537109375,
+          369.703125
+        ],
+        [
+          119.75537109375,
+          381.3046875
+        ],
+        [
+          65.25,
+          381.3046875
+        ]
+      ]
+    },
+    {
+      "title": "TITANIUM-TUNGSTEN FUSES",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          300.0,
+          231.064453125
+        ],
+        [
+          421.048828125,
+          231.064453125
+        ],
+        [
+          421.048828125,
+          243.052734375
+        ],
+        [
+          300.0,
+          243.052734375
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          56
+        ],
+        [
+          "Span",
+          30
+        ],
+        [
+          "TableCell",
+          21
+        ],
+        [
+          "ListItem",
+          6
+        ],
+        [
+          "SectionHeader",
+          5
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 3,
+        "llm_error_count": 0,
+        "llm_tokens_used": 7190,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          79
+        ],
+        [
+          "TableCell",
+          34
+        ],
+        [
+          "Span",
+          8
+        ],
+        [
+          "Table",
+          3
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 3,
+        "llm_error_count": 0,
+        "llm_tokens_used": 7638,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          425
+        ],
+        [
+          "Span",
+          52
+        ],
+        [
+          "Line",
+          45
+        ],
+        [
+          "SectionHeader",
+          5
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "Table",
+          3
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 3,
+        "llm_error_count": 0,
+        "llm_tokens_used": 11334,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          130
+        ],
+        [
+          "Span",
+          52
+        ],
+        [
+          "Line",
+          49
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "SectionHeader",
+          5
+        ],
+        [
+          "PageFooter",
+          2
+        ],
+        [
+          "Table",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 1,
+        "llm_error_count": 0,
+        "llm_tokens_used": 4225,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data/sn74188"
+}

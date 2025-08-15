@@ -1,0 +1,573 @@
+{
+  "table_of_contents": [
+    {
+      "title": "Am25S07.Am25S08\nHex/Quad Parallel D Registers With Register Enable",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          98.9501279739649,
+          83.38875611498952
+        ],
+        [
+          464.76575260498663,
+          83.38875611498952
+        ],
+        [
+          464.76575260498663,
+          131.3257305175066
+        ],
+        [
+          98.9501279739649,
+          131.3257305175066
+        ]
+      ]
+    },
+    {
+      "title": "Distinctive Characteristics",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          23.987909811870278,
+          159.66464594826567
+        ],
+        [
+          140.2265653759241,
+          159.66464594826567
+        ],
+        [
+          140.2265653759241,
+          170.99062252044678
+        ],
+        [
+          23.987909811870278,
+          170.99062252044678
+        ]
+      ]
+    },
+    {
+      "title": "FUNCTIONAL DESCRIPTION",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          37.27265701442957,
+          213.63579387444
+        ],
+        [
+          158.6812532544136,
+          213.63579387444
+        ],
+        [
+          158.6812532544136,
+          224.4251920580864
+        ],
+        [
+          37.27265701442957,
+          224.4251920580864
+        ]
+      ]
+    },
+    {
+      "title": "MAXIMUM RATINGS (Above which the useful life may be impaired)",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          44.39296966046095,
+          77.95832478225178
+        ],
+        [
+          327.5848933683535,
+          77.95832478225178
+        ],
+        [
+          327.5848933683535,
+          89.96531851962209
+        ],
+        [
+          44.39296966046095,
+          89.96531851962209
+        ]
+      ]
+    },
+    {
+      "title": "ELECTRICAL CHARACTERISTICS OVER OPERATING TEMPERATURE RANGE (Unless Otherwise Noted)",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          47.975819623740556,
+          305.83650491498776
+        ],
+        [
+          527.7750108242035,
+          305.83650491498776
+        ],
+        [
+          527.7750108242035,
+          318.55224147439003
+        ],
+        [
+          47.975819623740556,
+          318.55224147439003
+        ]
+      ]
+    },
+    {
+      "title": "Switching Characteristics (T_A = +25^{\\circ}C)",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          44.90156342089176,
+          663.3953599258925
+        ],
+        [
+          213.64232176196967,
+          664.8945584793975
+        ],
+        [
+          213.64232176196967,
+          676.8881469074362
+        ],
+        [
+          44.90156342089176,
+          676.5638573765755
+        ]
+      ]
+    },
+    {
+      "title": "Am25S07 LOADING RULES\n(In STTL Unit Loads)",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          80.20957343344124,
+          92.95031031730021
+        ],
+        [
+          218.69531698524952,
+          92.95031031730021
+        ],
+        [
+          218.69531698524952,
+          117.9670881330967
+        ],
+        [
+          80.20957343344124,
+          117.9670881330967
+        ]
+      ]
+    },
+    {
+      "title": "Am25S08 LOADING RULES\n(In STTL Unit Loads)",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          338.0796039110467,
+          92.95031031730021
+        ],
+        [
+          477.49688479304314,
+          91.45111176379537
+        ],
+        [
+          477.49688479304314,
+          122.59123357385397
+        ],
+        [
+          338.0796039110467,
+          122.59123357385397
+        ]
+      ]
+    },
+    {
+      "title": "DEFINITION OF FUNCTIONAL TERMS",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          29.235265083216902,
+          443.7627718374332
+        ],
+        [
+          222.637787941421,
+          443.7627718374332
+        ],
+        [
+          222.637787941421,
+          457.48212227225304
+        ],
+        [
+          29.235265083216902,
+          457.48212227225304
+        ]
+      ]
+    },
+    {
+      "title": "SCHOTTKY INPUT/OUTPUT\nCURRENT INTERFACE CONDITIONS",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          328.3345155499744,
+          446.0115696676905
+        ],
+        [
+          485.9250099658966,
+          446.0115696676905
+        ],
+        [
+          485.9250099658966,
+          466.5248955786228
+        ],
+        [
+          328.3345155499744,
+          466.5248955786228
+        ]
+      ]
+    },
+    {
+      "title": "DEFINITION OF SWITCHING TERMS",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          50.97430835022434,
+          95.94870742430989
+        ],
+        [
+          204.01875418424606,
+          95.94870742430989
+        ],
+        [
+          204.01875418424606,
+          104.91672211140394
+        ],
+        [
+          50.97430835022434,
+          104.91672211140394
+        ]
+      ]
+    },
+    {
+      "title": "SCHOTTKY PARAMETER MEASUREMENTS\nFOR STANDARD ACTIVE-PULLUP TOTEM-POLE OUTPUTS",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          164.91687995660817,
+          395.03881884852586
+        ],
+        [
+          416.78993298124607,
+          395.03881884852586
+        ],
+        [
+          416.78993298124607,
+          419.05033572018147
+        ],
+        [
+          164.91687995660817,
+          419.05033572018147
+        ]
+      ]
+    },
+    {
+      "title": "LOAD TEST CIRCUIT",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          371.4187576174736,
+          431.7691834093945
+        ],
+        [
+          463.2562595009804,
+          431.7691834093945
+        ],
+        [
+          463.2562595009804,
+          442.2738217115402
+        ],
+        [
+          371.4187576174736,
+          442.2738217115402
+        ]
+      ]
+    },
+    {
+      "title": "PULSE WIDTH",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          386.0554235347873,
+          620.6682011510046
+        ],
+        [
+          446.98125916719437,
+          620.6682011510046
+        ],
+        [
+          446.98125916719437,
+          629.7058502435684
+        ],
+        [
+          386.0554235347873,
+          629.7058502435684
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          131
+        ],
+        [
+          "Span",
+          33
+        ],
+        [
+          "Text",
+          14
+        ],
+        [
+          "ListItem",
+          4
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 2,
+        "llm_error_count": 0,
+        "llm_tokens_used": 4825,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          368
+        ],
+        [
+          "Span",
+          10
+        ],
+        [
+          "Line",
+          8
+        ],
+        [
+          "Text",
+          7
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Table",
+          3
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 6,
+        "llm_error_count": 0,
+        "llm_tokens_used": 24017,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          431
+        ],
+        [
+          "Span",
+          41
+        ],
+        [
+          "Line",
+          36
+        ],
+        [
+          "Text",
+          8
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "Table",
+          4
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 6,
+        "llm_error_count": 1,
+        "llm_tokens_used": 15805,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          77
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 3,
+        "llm_error_count": 0,
+        "llm_tokens_used": 8848,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          170
+        ],
+        [
+          "Line",
+          83
+        ],
+        [
+          "Span",
+          52
+        ],
+        [
+          "ListItem",
+          8
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "Figure",
+          5
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 6,
+        "llm_error_count": 0,
+        "llm_tokens_used": 15094,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 5,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          107
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Span",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 1,
+        "llm_error_count": 1,
+        "llm_tokens_used": 2241,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data/am25s07"
+}

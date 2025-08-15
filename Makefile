@@ -295,6 +295,7 @@ help:
 	@echo "make regenerate-busint-suds: autogenerate busint suds sources"
 	@echo "make regenerate-alu-testdata: autogenerate ALU testdata"
 	@echo "make regenerate-hex-files: regenerate hex files"
+	@echo "make convert-ttl-pdfs: convert doc/ttl/*.pdf to doc/ttl.md/*.md"
 
 # ===== START OF CADR SUDS AUTOGENERATION =====
 
@@ -557,3 +558,24 @@ regenerate-promh9-hex-files: $(SPLITHEX_PY) $(ROMDIR)/promh.mcr.9.hex
 	--out-dir $(PROMH9_HEX_OUTPUT_DIR)
 
 # ===== END OF FAST PROM HEX AUTOGENERATION =====
+
+TTL_PDFS := $(wildcard doc/ttl/*.pdf)
+
+.PHONY: convert-ttl-pdfs
+convert-ttl-pdfs:
+ifeq (, $(shell which marker))
+	$(error "No marker executable in $(PATH)")
+endif
+ifndef GEMINI_API_KEY
+	$(error "convert-ttl-pdfs require a GEMINI_API_KEY")
+endif
+	mkdir -p doc/ttl.md
+# iterate over all pdf files under doc/ttl
+# if doc/ttl.md/<pdf> directory does not exist, call marker
+# this is to be able to restart a previous convert-ttl-pdfs job
+	@for pdf_file in doc/ttl/*.pdf; do \
+		if [ ! -d "doc/ttl.md/$$(basename $${pdf_file%%.*})" ]; then \
+			echo "converting $${pdf_file}" ; \
+			marker_single --force_ocr --use_llm --gemini_api_key="${GEMINI_API_KEY}" --output_dir doc/ttl.md --redo_inline_math --disable_image_extraction $${pdf_file} ; \
+		fi ; \
+	done

@@ -1,0 +1,638 @@
+{
+  "table_of_contents": [
+    {
+      "title": "Am25S10",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          212.50687339156866,
+          24.46289174258709
+        ],
+        [
+          318.7012475878,
+          24.46289174258709
+        ],
+        [
+          318.7012475878,
+          51.469924226403236
+        ],
+        [
+          212.50687339156866,
+          51.469924226403236
+        ]
+      ]
+    },
+    {
+      "title": "DISTINCTIVE CHARACTERISTICS",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          193.9612485319376,
+          94.95516058802605
+        ],
+        [
+          337.78922344951803,
+          93.64486409124926
+        ],
+        [
+          337.78922344951803,
+          104.97516104578972
+        ],
+        [
+          193.9612485319376,
+          104.97516104578972
+        ]
+      ]
+    },
+    {
+      "title": "GENERAL DESCRIPTION",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          212.70984359127078,
+          148.10813176631927
+        ],
+        [
+          322.0087475627661,
+          146.83514689507885
+        ],
+        [
+          322.0087475627661,
+          158.12813222408295
+        ],
+        [
+          212.70984359127078,
+          158.12813222408295
+        ]
+      ]
+    },
+    {
+      "title": "By suitable interconnection, the Am25S10 can be used to\nshift any number of bits any number of places up or down.\nShifting can be logical, with logic zeroes pulled in at either\nor both ends of the shifting field; arithmetic, where the sign\nbit is repeated during a shift down; or end around, where",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          265.07249799370766,
+          157.81500720977783
+        ],
+        [
+          454.6298417602161,
+          157.81500720977783
+        ],
+        [
+          454.6298417602161,
+          202.2729064370984
+        ],
+        [
+          265.07249799370766,
+          205.2695420880184
+        ]
+      ]
+    },
+    {
+      "title": "RELATED PRODUCTS",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          223.9445184288379,
+          468.9734793689763
+        ],
+        [
+          320.8274975717068,
+          468.9734793689763
+        ],
+        [
+          320.8274975717068,
+          479.7075219154358
+        ],
+        [
+          223.9445184288379,
+          479.7075219154358
+        ]
+      ]
+    },
+    {
+      "title": "PIN DESCRIPTION",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          221.69758346132448,
+          28.468038683739778
+        ],
+        [
+          304.76249769330025,
+          27.71887977100978
+        ],
+        [
+          304.76249769330025,
+          38.90578302741051
+        ],
+        [
+          221.69758346132448,
+          38.90578302741051
+        ]
+      ]
+    },
+    {
+      "title": "LOADING RULES (In Unit Loads)",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          96.61820360307722,
+          154.32673602237878
+        ],
+        [
+          226.9404317188558,
+          152.8284181969188
+        ],
+        [
+          226.9404317188558,
+          164.39063251018524
+        ],
+        [
+          96.61820360307722,
+          164.39063251018524
+        ]
+      ]
+    },
+    {
+      "title": "LOGIC EQUATIONS",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          322.80965699942857,
+          152.07925928418882
+        ],
+        [
+          408.9487469047308,
+          152.07925928418882
+        ],
+        [
+          408.9487469047308,
+          162.6684449315071
+        ],
+        [
+          322.80965699942857,
+          162.6684449315071
+        ]
+      ]
+    },
+    {
+      "title": "TRUTH TABLE",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          335.5422884820046,
+          257.710665979118
+        ],
+        [
+          400.7034025398939,
+          257.710665979118
+        ],
+        [
+          400.7034025398939,
+          267.87844973802567
+        ],
+        [
+          335.5422884820046,
+          267.87844973802567
+        ]
+      ]
+    },
+    {
+      "title": "ABSOLUTE MAXIMUM RATINGS",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          91.3753553455459,
+          31.136368609964848
+        ],
+        [
+          230.93437325209376,
+          30.71551542192976
+        ],
+        [
+          231.43430165388264,
+          40.823673740029335
+        ],
+        [
+          91.3753553455459,
+          41.203740200149674
+        ]
+      ]
+    },
+    {
+      "title": "OPERATING RANGES",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          318.3157870644017,
+          28.57265755534172
+        ],
+        [
+          414.8549968600273,
+          27.71887977100978
+        ],
+        [
+          414.8549968600273,
+          38.78836114704609
+        ],
+        [
+          318.3157870644017,
+          38.78836114704609
+        ]
+      ]
+    },
+    {
+      "title": "Military (M) Devices",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          271.8791310691243,
+          71.91925562207943
+        ],
+        [
+          339.2549974322319,
+          71.91925562207943
+        ],
+        [
+          339.2549974322319,
+          80.39484742283821
+        ],
+        [
+          271.8791310691243,
+          80.39484742283821
+        ]
+      ]
+    },
+    {
+      "title": "DC CHARACTERISTICS over operating range unless otherwise specified",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          68.15702734790719,
+          176.44594556093216
+        ],
+        [
+          338.7824974358082,
+          174.55402666608865
+        ],
+        [
+          338.7824974358082,
+          186.77907103300095
+        ],
+        [
+          68.15702734790719,
+          188.03888709522852
+        ]
+      ]
+    },
+    {
+      "title": "PERFORMANCE CURVES\nSWITCHING CHARACTERISTICS",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          199.63124848902225,
+          410.5390841760368
+        ],
+        [
+          339.287180094527,
+          410.5390841760368
+        ],
+        [
+          339.287180094527,
+          430.8600196838379
+        ],
+        [
+          199.63124848902225,
+          430.8600196838379
+        ]
+      ]
+    },
+    {
+      "title": "SCHOTTKY INPUT/OUTPUT\nCURRENT INTERFACE CONDITIONS",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          168.09187372773886,
+          157.32337167329877
+        ],
+        [
+          328.0525052569599,
+          157.32337167329877
+        ],
+        [
+          328.0525052569599,
+          185.8396959900856
+        ],
+        [
+          168.09187372773886,
+          185.8396959900856
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Span",
+          31
+        ],
+        [
+          "Line",
+          30
+        ],
+        [
+          "TableCell",
+          16
+        ],
+        [
+          "SectionHeader",
+          5
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "ListItem",
+          4
+        ],
+        [
+          "PageFooter",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 3,
+        "llm_error_count": 0,
+        "llm_tokens_used": 7292,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          87
+        ],
+        [
+          "Span",
+          3
+        ],
+        [
+          "PageFooter",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 1,
+        "llm_error_count": 0,
+        "llm_tokens_used": 2199,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          318
+        ],
+        [
+          "Span",
+          48
+        ],
+        [
+          "Line",
+          19
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "Table",
+          4
+        ],
+        [
+          "TextInlineMath",
+          2
+        ],
+        [
+          "PageFooter",
+          2
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 6,
+        "llm_error_count": 1,
+        "llm_tokens_used": 16270,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          84
+        ],
+        [
+          "Span",
+          3
+        ],
+        [
+          "PageFooter",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 1,
+        "llm_error_count": 0,
+        "llm_tokens_used": 2242,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          266
+        ],
+        [
+          "Line",
+          48
+        ],
+        [
+          "Span",
+          17
+        ],
+        [
+          "Text",
+          7
+        ],
+        [
+          "SectionHeader",
+          5
+        ],
+        [
+          "Table",
+          4
+        ],
+        [
+          "Figure",
+          3
+        ],
+        [
+          "PageFooter",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 10,
+        "llm_error_count": 0,
+        "llm_tokens_used": 22787,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 5,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          125
+        ],
+        [
+          "Line",
+          22
+        ],
+        [
+          "Span",
+          8
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "PageFooter",
+          2
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 2,
+        "llm_error_count": 0,
+        "llm_tokens_used": 6655,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 6,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Text",
+          3
+        ],
+        [
+          "Line",
+          3
+        ],
+        [
+          "Span",
+          3
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data/am25s10"
+}

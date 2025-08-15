@@ -1,0 +1,2822 @@
+{
+  "table_of_contents": [
+    {
+      "title": "SN54160 THRU SN54163, SN54LS160A THRU SN54LS163A, SN54S162,\nSN54S163, SN74160 THRU SN74163, SN74LS160A THRU SN74LS163A,\nSN74S162, SN74S163 SYNCHRONOUS 4-BIT COUNTERS\nSDLS060 - OCTOBER 1976 - REVISED MARCH 1988",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          181.5,
+          15.3599853515625
+        ],
+        [
+          568.5,
+          15.3599853515625
+        ],
+        [
+          568.5,
+          65.25
+        ],
+        [
+          181.5,
+          65.25
+        ]
+      ]
+    },
+    {
+      "title": "description",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          55.5,
+          339.75
+        ],
+        [
+          108.0,
+          339.75
+        ],
+        [
+          108.0,
+          350.173828125
+        ],
+        [
+          55.5,
+          350.173828125
+        ]
+      ]
+    },
+    {
+      "title": "SN54160 THRU SN54163, SN54LS160A THRU SN54LS163A, SN54S162,\nSN54S163, SN74160 THRU SN74163, SN74LS160A THRU SN74LS163A,\nSN74S162, SN74S163 SYNCHRONOUS 4-BIT COUNTERS\nSDLS060 - OCTOBER 1976 - REVISED MARCH 1988",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          42.8818359375,
+          14.236083984375
+        ],
+        [
+          431.5078125,
+          14.236083984375
+        ],
+        [
+          431.5078125,
+          65.25
+        ],
+        [
+          42.8818359375,
+          65.25
+        ]
+      ]
+    },
+    {
+      "title": "\\text{logic symbols}^{\\dagger}",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          58.5,
+          223.13671875
+        ],
+        [
+          126.0,
+          223.13671875
+        ],
+        [
+          126.0,
+          234.3515625
+        ],
+        [
+          58.5,
+          234.3515625
+        ]
+      ]
+    },
+    {
+      "title": "SN54LS160A THRU SN54LS163A, SN54S162,\nSN54S163, SN74LS160A THRU SN74LS163A,\nSN74S162, SN74S163 SYNCHRONOUS 4-BIT COUNTERS\nSDLS060 - OCTOBER 1976 - REVISED MARCH 1988",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          255.75,
+          15.75
+        ],
+        [
+          568.5,
+          15.75
+        ],
+        [
+          568.5,
+          65.25
+        ],
+        [
+          255.75,
+          65.25
+        ]
+      ]
+    },
+    {
+      "title": "SN54160, SN54162, SN74160, SN74162\nSYNCHRONOUS 4-BIT COUNTERS",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          42.75,
+          15.251220703125
+        ],
+        [
+          258.0,
+          15.251220703125
+        ],
+        [
+          258.0,
+          44.980224609375
+        ],
+        [
+          42.75,
+          44.980224609375
+        ]
+      ]
+    },
+    {
+      "title": "logic diagram (positive logic)",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          55.5,
+          91.5
+        ],
+        [
+          198.75,
+          91.5
+        ],
+        [
+          198.75,
+          102.8671875
+        ],
+        [
+          55.5,
+          102.8671875
+        ]
+      ]
+    },
+    {
+      "title": "SN54160, SN74160 SYNCHRONOUS DECADE COUNTERS",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          205.294921875,
+          116.25
+        ],
+        [
+          441.75,
+          116.25
+        ],
+        [
+          441.75,
+          126.45703125
+        ],
+        [
+          205.294921875,
+          126.45703125
+        ]
+      ]
+    },
+    {
+      "title": "SN54161, SN54163, SN74161, SN74163\nSYNCHRONOUS 4-BIT COUNTERS",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          354.75,
+          14.8040771484375
+        ],
+        [
+          570.0,
+          14.8040771484375
+        ],
+        [
+          570.0,
+          45.3427734375
+        ],
+        [
+          354.75,
+          45.3427734375
+        ]
+      ]
+    },
+    {
+      "title": "logic diagram (positive logic)",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          75.75,
+          80.1474609375
+        ],
+        [
+          246.0,
+          80.1474609375
+        ],
+        [
+          246.0,
+          94.552734375
+        ],
+        [
+          75.75,
+          94.552734375
+        ]
+      ]
+    },
+    {
+      "title": "SN54LS160A, SN54LS162A, SN74LS160A, SN74LS162A\nSYNCHRONOUS 4-BIT COUNTERS",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          42.75,
+          14.55029296875
+        ],
+        [
+          349.5,
+          14.55029296875
+        ],
+        [
+          349.5,
+          44.5693359375
+        ],
+        [
+          42.75,
+          44.5693359375
+        ]
+      ]
+    },
+    {
+      "title": "logic diagram (positive logic)",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          58.5,
+          84.44970703125
+        ],
+        [
+          227.25,
+          84.44970703125
+        ],
+        [
+          227.25,
+          98.27490234375
+        ],
+        [
+          58.5,
+          98.27490234375
+        ]
+      ]
+    },
+    {
+      "title": "SN54LS160A, SN74LS160A SYNCHRONOUS\nDECADE COUNTERS",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          178.5,
+          113.2119140625
+        ],
+        [
+          397.5,
+          113.2119140625
+        ],
+        [
+          397.5,
+          137.5751953125
+        ],
+        [
+          178.5,
+          137.5751953125
+        ]
+      ]
+    },
+    {
+      "title": "SN54LS161A, SN54LS163A, SN74LS161A, SN74LS163A\nSYNCHRONOUS 4-BIT COUNTERS",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          263.25,
+          15.1424560546875
+        ],
+        [
+          569.25,
+          15.1424560546875
+        ],
+        [
+          569.25,
+          45.10107421875
+        ],
+        [
+          263.25,
+          45.10107421875
+        ]
+      ]
+    },
+    {
+      "title": "logic diagram (positive logic)",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          67.5,
+          79.5
+        ],
+        [
+          231.0,
+          79.5
+        ],
+        [
+          231.0,
+          93.6826171875
+        ],
+        [
+          67.5,
+          93.6826171875
+        ]
+      ]
+    },
+    {
+      "title": "SN54LS163A, SN74LS163A SYNCHRONOUS\nBINARY COUNTERS",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          205.5,
+          111.0
+        ],
+        [
+          412.5,
+          111.0
+        ],
+        [
+          412.5,
+          135.3515625
+        ],
+        [
+          205.5,
+          135.3515625
+        ]
+      ]
+    },
+    {
+      "title": "SN54S162, SN74S162<br>SYNCHRONOUS 4-BIT COUNTERS",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          42.75,
+          13.5
+        ],
+        [
+          236.25,
+          13.5
+        ],
+        [
+          236.25,
+          44.32763671875
+        ],
+        [
+          42.75,
+          44.32763671875
+        ]
+      ]
+    },
+    {
+      "title": "logic diagram (positive logic)",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          60.0,
+          81.017578125
+        ],
+        [
+          211.5,
+          81.017578125
+        ],
+        [
+          211.5,
+          93.97265625
+        ],
+        [
+          60.0,
+          93.97265625
+        ]
+      ]
+    },
+    {
+      "title": "SN54S162, SN74S162 SYNCHRONOUS DECADE COUNTER",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          170.25,
+          117.0
+        ],
+        [
+          417.0,
+          117.0
+        ],
+        [
+          417.0,
+          128.1005859375
+        ],
+        [
+          170.25,
+          128.1005859375
+        ]
+      ]
+    },
+    {
+      "title": "SN54S163, SN74S163<br>SYNCHRONOUS 4-BIT COUNTERS",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          375.75,
+          14.25
+        ],
+        [
+          570.0,
+          14.25
+        ],
+        [
+          570.0,
+          44.9560546875
+        ],
+        [
+          375.75,
+          44.9560546875
+        ]
+      ]
+    },
+    {
+      "title": "logic diagram (positive logic)",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          69.0,
+          79.5
+        ],
+        [
+          219.75,
+          79.5
+        ],
+        [
+          219.75,
+          93.0
+        ],
+        [
+          69.0,
+          93.0
+        ]
+      ]
+    },
+    {
+      "title": "SN54160, SN54162, SN54LS160A, SN54LS162A, SN54S162,\nSN74160, SN74162, SN74LS160A, SN74LS162A, SN74S162\nSYNCHRONOUS 4-BIT COUNTERS",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          42.75,
+          15.71044921875
+        ],
+        [
+          367.55859375,
+          15.71044921875
+        ],
+        [
+          367.55859375,
+          62.26171875
+        ],
+        [
+          42.75,
+          62.26171875
+        ]
+      ]
+    },
+    {
+      "title": "'160, '162, 'LS160A, 'LS162A, 'S162 DECADE COUNTERS",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          179.4462890625,
+          89.25
+        ],
+        [
+          473.25,
+          90.7822265625
+        ],
+        [
+          473.25,
+          104.25
+        ],
+        [
+          179.4462890625,
+          103.1572265625
+        ]
+      ]
+    },
+    {
+      "title": "'161, 'LS161A, '163, 'LS163A, 'S163 BINARY COUNTERS",
+      "heading_level": null,
+      "page_id": 10,
+      "polygon": [
+        [
+          146.25,
+          87.75
+        ],
+        [
+          429.1171875,
+          87.75
+        ],
+        [
+          429.1171875,
+          100.0634765625
+        ],
+        [
+          146.25,
+          100.0634765625
+        ]
+      ]
+    },
+    {
+      "title": "typical clear, preset, count, and inhibit sequences",
+      "heading_level": null,
+      "page_id": 10,
+      "polygon": [
+        [
+          57.75,
+          114.5654296875
+        ],
+        [
+          283.5,
+          114.5654296875
+        ],
+        [
+          283.5,
+          125.25
+        ],
+        [
+          57.75,
+          125.25
+        ]
+      ]
+    },
+    {
+      "title": "SN54160 THRU SN54163, SN74160 THRU SN74163\nSYNCHRONOUS 4-BIT COUNTERS",
+      "heading_level": null,
+      "page_id": 11,
+      "polygon": [
+        [
+          42.75,
+          13.97021484375
+        ],
+        [
+          321.5390625,
+          13.97021484375
+        ],
+        [
+          321.5390625,
+          44.3759765625
+        ],
+        [
+          42.75,
+          44.3759765625
+        ]
+      ]
+    },
+    {
+      "title": "schematics of inputs and outputs",
+      "heading_level": null,
+      "page_id": 11,
+      "polygon": [
+        [
+          55.20849609375,
+          84.93310546875
+        ],
+        [
+          208.5,
+          84.93310546875
+        ],
+        [
+          208.5,
+          96.75
+        ],
+        [
+          55.20849609375,
+          96.75
+        ]
+      ]
+    },
+    {
+      "title": "absolute maximum ratings over operating free-air temperature range (unless otherwise noted)",
+      "heading_level": null,
+      "page_id": 11,
+      "polygon": [
+        [
+          58.5,
+          364.869140625
+        ],
+        [
+          483.75,
+          364.869140625
+        ],
+        [
+          483.75,
+          376.083984375
+        ],
+        [
+          58.5,
+          376.083984375
+        ]
+      ]
+    },
+    {
+      "title": "recommended operating conditions",
+      "heading_level": null,
+      "page_id": 11,
+      "polygon": [
+        [
+          54.0,
+          496.93359375
+        ],
+        [
+          219.0,
+          496.93359375
+        ],
+        [
+          219.0,
+          507.76171875
+        ],
+        [
+          54.0,
+          507.76171875
+        ]
+      ]
+    },
+    {
+      "title": "SN54160 THRU SN54163, SN74160 THRU SN74163\nSYNCHRONOUS 4-BIT COUNTERS",
+      "heading_level": null,
+      "page_id": 12,
+      "polygon": [
+        [
+          290.9091796875,
+          14.115234375
+        ],
+        [
+          569.25,
+          14.115234375
+        ],
+        [
+          569.25,
+          45.3427734375
+        ],
+        [
+          290.9091796875,
+          45.3427734375
+        ]
+      ]
+    },
+    {
+      "title": "electrical characteristics over recommended operating free-air temperature range (unless otherwise noted)",
+      "heading_level": null,
+      "page_id": 12,
+      "polygon": [
+        [
+          68.25,
+          87.75
+        ],
+        [
+          547.5,
+          87.75
+        ],
+        [
+          547.5,
+          99.2900390625
+        ],
+        [
+          68.25,
+          99.2900390625
+        ]
+      ]
+    },
+    {
+      "title": "switching characteristics, V_{CC} = 5 \\text{ V}, T_A = 25^{\\circ}\\text{C}",
+      "heading_level": null,
+      "page_id": 12,
+      "polygon": [
+        [
+          58.64501953125,
+          391.166015625
+        ],
+        [
+          282.392578125,
+          391.166015625
+        ],
+        [
+          282.392578125,
+          403.34765625
+        ],
+        [
+          58.64501953125,
+          403.34765625
+        ]
+      ]
+    },
+    {
+      "title": "SN54LS160 THRU SN54LS163A, SN74LS160 THRU SN74LS163A\nSYNCHRONOUS 4-BIT COUNTERS",
+      "heading_level": null,
+      "page_id": 13,
+      "polygon": [
+        [
+          42.75,
+          13.897705078125
+        ],
+        [
+          396.75,
+          13.897705078125
+        ],
+        [
+          396.75,
+          44.255126953125
+        ],
+        [
+          42.75,
+          44.255126953125
+        ]
+      ]
+    },
+    {
+      "title": "SDLS060 - OCTOBER 1976 - REVISED MARCH 1988",
+      "heading_level": null,
+      "page_id": 13,
+      "polygon": [
+        [
+          42.75,
+          56.25
+        ],
+        [
+          219.041015625,
+          56.25
+        ],
+        [
+          219.041015625,
+          66.95068359375
+        ],
+        [
+          42.75,
+          66.95068359375
+        ]
+      ]
+    },
+    {
+      "title": "schematics of inputs and outputs",
+      "heading_level": null,
+      "page_id": 13,
+      "polygon": [
+        [
+          57.0,
+          82.5
+        ],
+        [
+          211.271484375,
+          82.5
+        ],
+        [
+          211.271484375,
+          94.98779296875
+        ],
+        [
+          57.0,
+          94.98779296875
+        ]
+      ]
+    },
+    {
+      "title": "absolute maximum ratings over operating free-air temperature range (unless otherwise noted)",
+      "heading_level": null,
+      "page_id": 13,
+      "polygon": [
+        [
+          57.0,
+          353.84765625
+        ],
+        [
+          527.25,
+          353.84765625
+        ],
+        [
+          527.25,
+          365.44921875
+        ],
+        [
+          57.0,
+          365.44921875
+        ]
+      ]
+    },
+    {
+      "title": "recommended operating conditions",
+      "heading_level": null,
+      "page_id": 13,
+      "polygon": [
+        [
+          57.0,
+          472.95703125
+        ],
+        [
+          220.833984375,
+          472.95703125
+        ],
+        [
+          220.833984375,
+          484.55859375
+        ],
+        [
+          57.0,
+          484.55859375
+        ]
+      ]
+    },
+    {
+      "title": "SN54LS160 THRU SN54LS163A, SN74LS160 THRU SN74LS163A\nSYNCHRONOUS 4-BIT COUNTERS",
+      "heading_level": null,
+      "page_id": 14,
+      "polygon": [
+        [
+          216.75,
+          14.2965087890625
+        ],
+        [
+          569.25,
+          14.2965087890625
+        ],
+        [
+          569.25,
+          45.1494140625
+        ],
+        [
+          216.75,
+          45.1494140625
+        ]
+      ]
+    },
+    {
+      "title": "electrical characteristics over recommended operating free-air temperature range (unless otherwise noted)",
+      "heading_level": null,
+      "page_id": 14,
+      "polygon": [
+        [
+          67.9833984375,
+          82.41943359375
+        ],
+        [
+          538.5,
+          80.25
+        ],
+        [
+          538.5,
+          92.86083984375
+        ],
+        [
+          67.9833984375,
+          93.75
+        ]
+      ]
+    },
+    {
+      "title": "switching characteristics, V_{CC} = 5 \\text{ V}, T_A = 25^{\\circ} \\text{C}",
+      "heading_level": null,
+      "page_id": 14,
+      "polygon": [
+        [
+          65.25,
+          477.75
+        ],
+        [
+          283.5,
+          477.75
+        ],
+        [
+          283.5,
+          490.359375
+        ],
+        [
+          65.25,
+          490.359375
+        ]
+      ]
+    },
+    {
+      "title": "SN54S162, SN54S163, SN74S162, SN74S163\nSYNCHRONOUS 4-BIT COUNTERS",
+      "heading_level": null,
+      "page_id": 15,
+      "polygon": [
+        [
+          42.75,
+          13.994384765625
+        ],
+        [
+          288.0,
+          13.994384765625
+        ],
+        [
+          288.0,
+          45.221923828125
+        ],
+        [
+          42.75,
+          45.221923828125
+        ]
+      ]
+    },
+    {
+      "title": "SDLS060 - OCTOBER 1976 - REVISED MARCH 1988",
+      "heading_level": null,
+      "page_id": 15,
+      "polygon": [
+        [
+          43.5,
+          56.25
+        ],
+        [
+          218.25,
+          56.25
+        ],
+        [
+          218.25,
+          66.9990234375
+        ],
+        [
+          43.5,
+          66.9990234375
+        ]
+      ]
+    },
+    {
+      "title": "schematics of inputs and outputs",
+      "heading_level": null,
+      "page_id": 15,
+      "polygon": [
+        [
+          54.61083984375,
+          80.87255859375
+        ],
+        [
+          207.75,
+          80.87255859375
+        ],
+        [
+          207.75,
+          91.99072265625
+        ],
+        [
+          54.61083984375,
+          91.99072265625
+        ]
+      ]
+    },
+    {
+      "title": "absolute maximum ratings over operating free-air temperature range (unless otherwise noted)",
+      "heading_level": null,
+      "page_id": 15,
+      "polygon": [
+        [
+          54.0,
+          322.716796875
+        ],
+        [
+          480.0,
+          322.716796875
+        ],
+        [
+          480.0,
+          333.75
+        ],
+        [
+          54.0,
+          333.75
+        ]
+      ]
+    },
+    {
+      "title": "recommended operating conditions",
+      "heading_level": null,
+      "page_id": 15,
+      "polygon": [
+        [
+          54.75,
+          411.08203125
+        ],
+        [
+          219.7880859375,
+          411.08203125
+        ],
+        [
+          219.7880859375,
+          422.25
+        ],
+        [
+          54.75,
+          422.25
+        ]
+      ]
+    },
+    {
+      "title": "SN54S162, SN54S163, SN74S162, SN74S163\nSYNCHRONOUS 4-BIT COUNTERS",
+      "heading_level": null,
+      "page_id": 16,
+      "polygon": [
+        [
+          323.9296875,
+          14.35693359375
+        ],
+        [
+          569.25,
+          14.35693359375
+        ],
+        [
+          569.25,
+          45.3427734375
+        ],
+        [
+          323.9296875,
+          45.3427734375
+        ]
+      ]
+    },
+    {
+      "title": "electrical characteristics over recommended operating free-air temperature range (unless otherwise noted)",
+      "heading_level": null,
+      "page_id": 16,
+      "polygon": [
+        [
+          69.75,
+          79.5
+        ],
+        [
+          540.75,
+          79.5
+        ],
+        [
+          540.75,
+          90.83056640625
+        ],
+        [
+          69.75,
+          90.83056640625
+        ]
+      ]
+    },
+    {
+      "title": "switching characteristics, V_{CC} = 5 \\text{ V}, T_A = 25^{\\circ} \\text{C}",
+      "heading_level": null,
+      "page_id": 16,
+      "polygon": [
+        [
+          69.75,
+          348.75
+        ],
+        [
+          290.3115234375,
+          348.75
+        ],
+        [
+          290.3115234375,
+          362.25
+        ],
+        [
+          69.75,
+          362.25
+        ]
+      ]
+    },
+    {
+      "title": "SN54160 THRU SN54163, SN54LS160A THRU SN54LS163A, SN54S162,\nSN54S163, SN74160 THRU SN74163, SN74LS160A THRU SN74LS163A,\nSN74S162, SN74S163 SYNCHRONOUS 4-BIT COUNTERS",
+      "heading_level": null,
+      "page_id": 17,
+      "polygon": [
+        [
+          43.03125,
+          14.4173583984375
+        ],
+        [
+          433.001953125,
+          14.4173583984375
+        ],
+        [
+          433.001953125,
+          62.11669921875
+        ],
+        [
+          43.03125,
+          62.11669921875
+        ]
+      ]
+    },
+    {
+      "title": "FIGURE 1-SWITCHING TIMES",
+      "heading_level": null,
+      "page_id": 17,
+      "polygon": [
+        [
+          243.75,
+          681.3984375
+        ],
+        [
+          361.5,
+          681.3984375
+        ],
+        [
+          361.5,
+          691.453125
+        ],
+        [
+          243.75,
+          691.453125
+        ]
+      ]
+    },
+    {
+      "title": "SN54160 THRU SN54163, SN54LS160A THRU SN54LS163A,\nSN74160 THRU SN74163, SN74LS160A THRU SN74LS163A,\nSYNCHRONOUS 4-BIT COUNTERS",
+      "heading_level": null,
+      "page_id": 18,
+      "polygon": [
+        [
+          242.6484375,
+          15.5654296875
+        ],
+        [
+          568.5,
+          15.5654296875
+        ],
+        [
+          568.5,
+          55.5
+        ],
+        [
+          242.6484375,
+          55.5
+        ]
+      ]
+    },
+    {
+      "title": "SN54S162, SN54S163, SN74S162, SN74S163\nSYNCHRONOUS 4-BIT COUNTERS",
+      "heading_level": null,
+      "page_id": 19,
+      "polygon": [
+        [
+          43.25537109375,
+          14.26025390625
+        ],
+        [
+          288.0703125,
+          14.26025390625
+        ],
+        [
+          288.0703125,
+          44.666015625
+        ],
+        [
+          43.25537109375,
+          44.666015625
+        ]
+      ]
+    },
+    {
+      "title": "PARAMETER MEASUREMENT INFORMATION",
+      "heading_level": null,
+      "page_id": 19,
+      "polygon": [
+        [
+          190.5,
+          83.14453125
+        ],
+        [
+          423.75,
+          83.14453125
+        ],
+        [
+          423.75,
+          95.2294921875
+        ],
+        [
+          190.5,
+          95.2294921875
+        ]
+      ]
+    },
+    {
+      "title": "VOLTAGE WAVEFORMS",
+      "heading_level": null,
+      "page_id": 19,
+      "polygon": [
+        [
+          249.75,
+          653.16796875
+        ],
+        [
+          344.25,
+          653.16796875
+        ],
+        [
+          344.25,
+          663.0
+        ],
+        [
+          249.75,
+          663.0
+        ]
+      ]
+    },
+    {
+      "title": "FIGURE 4-PULSE WIDTHS, SETUP TIMES, HOLD TIMES, AND RELEASE TIME",
+      "heading_level": null,
+      "page_id": 19,
+      "polygon": [
+        [
+          141.75,
+          694.5
+        ],
+        [
+          435.0,
+          696.09375
+        ],
+        [
+          435.0,
+          706.5
+        ],
+        [
+          141.75,
+          706.1484375
+        ]
+      ]
+    },
+    {
+      "title": "SN54160 THRU SN54163, SN54LS160A THRU SN54LS163A, SN54S162,\nSN54S163, SN74160 THRU SN74163, SN74LS160A THRU SN74LS163A,\nSN74S162, SN74S163 SYNCHRONOUS 4-BIT COUNTERS\nSDLS060 - OCTOBER 1976 - REVISED MARCH 1988",
+      "heading_level": null,
+      "page_id": 20,
+      "polygon": [
+        [
+          180.0,
+          14.74365234375
+        ],
+        [
+          568.96875,
+          14.74365234375
+        ],
+        [
+          568.96875,
+          65.25
+        ],
+        [
+          180.0,
+          65.25
+        ]
+      ]
+    },
+    {
+      "title": "TYPICAL APPLICATION DATA",
+      "heading_level": null,
+      "page_id": 20,
+      "polygon": [
+        [
+          235.5,
+          79.5
+        ],
+        [
+          387.28125,
+          79.5
+        ],
+        [
+          387.28125,
+          91.70068359375
+        ],
+        [
+          235.5,
+          91.70068359375
+        ]
+      ]
+    },
+    {
+      "title": "N-BIT SYNCHRONOUS COUNTERS",
+      "heading_level": null,
+      "page_id": 20,
+      "polygon": [
+        [
+          226.5,
+          161.25
+        ],
+        [
+          395.6484375,
+          161.25
+        ],
+        [
+          395.6484375,
+          172.669921875
+        ],
+        [
+          226.5,
+          172.669921875
+        ]
+      ]
+    },
+    {
+      "title": "SN54160 THRU SN54163, SN54LS160A THRU SN54LS163A, SN54S162,\nSN54S163, SN74160 THRU SN74163, SN74LS160A THRU SN74LS163A,\nSN74S162, SN74S163 SYNCHRONOUS 4-BIT COUNTERS<br>SDLS060 \u2013 OCTOBER 1976 \u2013 REVISED MARCH 1988",
+      "heading_level": null,
+      "page_id": 21,
+      "polygon": [
+        [
+          42.732421875,
+          14.332763671875
+        ],
+        [
+          432.75,
+          14.332763671875
+        ],
+        [
+          432.75,
+          66.75
+        ],
+        [
+          42.732421875,
+          66.75
+        ]
+      ]
+    },
+    {
+      "title": "TAPE AND REEL INFORMATION",
+      "heading_level": null,
+      "page_id": 22,
+      "polygon": [
+        [
+          59.972157197840076,
+          91.87852405011654
+        ],
+        [
+          234.17253255844116,
+          91.87852405011654
+        ],
+        [
+          234.17253255844116,
+          104.93494588881731
+        ],
+        [
+          59.972157197840076,
+          104.93494588881731
+        ]
+      ]
+    },
+    {
+      "title": "OUADRANT ASSIGNMENTS FOR PIN 1 ORIENTATION IN TAPE",
+      "heading_level": null,
+      "page_id": 22,
+      "polygon": [
+        [
+          163.4241283641142,
+          291.30327835679054
+        ],
+        [
+          408.90586361289024,
+          291.30327835679054
+        ],
+        [
+          408.90586361289024,
+          302.522129714489
+        ],
+        [
+          163.4241283641142,
+          302.522129714489
+        ]
+      ]
+    },
+    {
+      "title": "PACKAGE MATERIALS INFORMATION",
+      "heading_level": null,
+      "page_id": 23,
+      "polygon": [
+        [
+          311.85521742876836,
+          26.234537086739447
+        ],
+        [
+          573.7824426591396,
+          26.234537086739447
+        ],
+        [
+          573.7824426591396,
+          43.90826307237148
+        ],
+        [
+          311.85521742876836,
+          43.90826307237148
+        ]
+      ]
+    },
+    {
+      "title": "Texas\nINSTRUMENTS",
+      "heading_level": null,
+      "page_id": 24,
+      "polygon": [
+        [
+          63.434172961860895,
+          29.642913285642862
+        ],
+        [
+          163.5324764996767,
+          29.642913285642862
+        ],
+        [
+          163.5324764996767,
+          57.206470500677824
+        ],
+        [
+          63.434172961860895,
+          57.206470500677824
+        ]
+      ]
+    },
+    {
+      "title": "TUBE",
+      "heading_level": null,
+      "page_id": 24,
+      "polygon": [
+        [
+          59.972157197840076,
+          91.20152439922094
+        ],
+        [
+          94.45614758659812,
+          91.20152439922094
+        ],
+        [
+          94.45614758659812,
+          104.45137470960617
+        ],
+        [
+          59.972157197840076,
+          104.45137470960617
+        ]
+      ]
+    },
+    {
+      "title": "B - Alignment groove width",
+      "heading_level": null,
+      "page_id": 24,
+      "polygon": [
+        [
+          89.30814698338509,
+          234.0484507381916
+        ],
+        [
+          227.90005400776863,
+          234.0484507381916
+        ],
+        [
+          227.90005400776863,
+          248.8533232227856
+        ],
+        [
+          89.30814698338509,
+          248.8533232227856
+        ]
+      ]
+    },
+    {
+      "title": "PACKAGE MATERIALS INFORMATION",
+      "heading_level": null,
+      "page_id": 25,
+      "polygon": [
+        [
+          311.85521742876836,
+          26.234537086739447
+        ],
+        [
+          573.4837532043457,
+          26.234537086739447
+        ],
+        [
+          573.4837532043457,
+          44.053334426134825
+        ],
+        [
+          311.85521742876836,
+          44.053334426134825
+        ]
+      ]
+    },
+    {
+      "title": "IMPORTANT NOTICE AND DISCLAIMER",
+      "heading_level": null,
+      "page_id": 26,
+      "polygon": [
+        [
+          191.25,
+          52.1103515625
+        ],
+        [
+          420.75,
+          52.1103515625
+        ],
+        [
+          420.75,
+          65.4521484375
+        ],
+        [
+          191.25,
+          65.4521484375
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          97
+        ],
+        [
+          "Span",
+          45
+        ],
+        [
+          "TableCell",
+          32
+        ],
+        [
+          "ListItem",
+          6
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "Figure",
+          3
+        ],
+        [
+          "PageFooter",
+          3
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 6,
+        "llm_error_count": 0,
+        "llm_tokens_used": 21840,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          189
+        ],
+        [
+          "Span",
+          21
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "Figure",
+          3
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 4,
+        "llm_error_count": 0,
+        "llm_tokens_used": 7256,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          176
+        ],
+        [
+          "Span",
+          10
+        ],
+        [
+          "Figure",
+          4
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "TextInlineMath",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 6,
+        "llm_error_count": 0,
+        "llm_tokens_used": 12716,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          48
+        ],
+        [
+          "Span",
+          10
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 2,
+        "llm_error_count": 0,
+        "llm_tokens_used": 3040,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          43
+        ],
+        [
+          "Span",
+          10
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 2,
+        "llm_error_count": 0,
+        "llm_tokens_used": 3331,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 5,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          51
+        ],
+        [
+          "Span",
+          12
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 2,
+        "llm_error_count": 0,
+        "llm_tokens_used": 3014,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 6,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          40
+        ],
+        [
+          "TableCell",
+          20
+        ],
+        [
+          "Span",
+          8
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 3,
+        "llm_error_count": 0,
+        "llm_tokens_used": 5903,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 7,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          42
+        ],
+        [
+          "Span",
+          6
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 2,
+        "llm_error_count": 0,
+        "llm_tokens_used": 3333,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 8,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          46
+        ],
+        [
+          "Span",
+          6
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 2,
+        "llm_error_count": 0,
+        "llm_tokens_used": 3351,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 9,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          48
+        ],
+        [
+          "Span",
+          12
+        ],
+        [
+          "ListItem",
+          4
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 2,
+        "llm_error_count": 0,
+        "llm_tokens_used": 3061,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 10,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          45
+        ],
+        [
+          "Span",
+          12
+        ],
+        [
+          "ListItem",
+          4
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 2,
+        "llm_error_count": 0,
+        "llm_tokens_used": 3263,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 11,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          405
+        ],
+        [
+          "Line",
+          23
+        ],
+        [
+          "Span",
+          11
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "Figure",
+          2
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 5,
+        "llm_error_count": 0,
+        "llm_tokens_used": 13176,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 12,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          435
+        ],
+        [
+          "Span",
+          23
+        ],
+        [
+          "Line",
+          17
+        ],
+        [
+          "Text",
+          9
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 3,
+        "llm_error_count": 0,
+        "llm_tokens_used": 11793,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 13,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          415
+        ],
+        [
+          "Line",
+          21
+        ],
+        [
+          "Span",
+          9
+        ],
+        [
+          "SectionHeader",
+          5
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 4,
+        "llm_error_count": 0,
+        "llm_tokens_used": 11847,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 14,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          666
+        ],
+        [
+          "Span",
+          24
+        ],
+        [
+          "Line",
+          18
+        ],
+        [
+          "Text",
+          10
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 3,
+        "llm_error_count": 0,
+        "llm_tokens_used": 11258,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 15,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          357
+        ],
+        [
+          "Line",
+          27
+        ],
+        [
+          "Span",
+          20
+        ],
+        [
+          "SectionHeader",
+          5
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Footnote",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 4,
+        "llm_error_count": 0,
+        "llm_tokens_used": 12127,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 16,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          419
+        ],
+        [
+          "Span",
+          20
+        ],
+        [
+          "Line",
+          13
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "TextInlineMath",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 5,
+        "llm_error_count": 0,
+        "llm_tokens_used": 19485,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 17,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          92
+        ],
+        [
+          "Span",
+          33
+        ],
+        [
+          "ListItem",
+          3
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "Figure",
+          2
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 3,
+        "llm_error_count": 0,
+        "llm_tokens_used": 6987,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 18,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          107
+        ],
+        [
+          "Span",
+          13
+        ],
+        [
+          "ListItem",
+          2
+        ],
+        [
+          "PageFooter",
+          2
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 1,
+        "llm_error_count": 0,
+        "llm_tokens_used": 2225,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 19,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          83
+        ],
+        [
+          "Span",
+          19
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 2,
+        "llm_error_count": 0,
+        "llm_tokens_used": 3021,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 20,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          71
+        ],
+        [
+          "Span",
+          12
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "Figure",
+          2
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 4,
+        "llm_error_count": 0,
+        "llm_tokens_used": 11248,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 21,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          69
+        ],
+        [
+          "Span",
+          8
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 3,
+        "llm_error_count": 0,
+        "llm_tokens_used": 7555,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 22,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          130
+        ],
+        [
+          "Line",
+          59
+        ],
+        [
+          "Span",
+          8
+        ],
+        [
+          "Figure",
+          3
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 5,
+        "llm_error_count": 0,
+        "llm_tokens_used": 10988,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 23,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          80
+        ],
+        [
+          "Line",
+          8
+        ],
+        [
+          "Span",
+          5
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 3,
+        "llm_error_count": 0,
+        "llm_tokens_used": 6377,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 24,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          542
+        ],
+        [
+          "Line",
+          15
+        ],
+        [
+          "Span",
+          8
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 3,
+        "llm_error_count": 1,
+        "llm_tokens_used": 12830,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 25,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          234
+        ],
+        [
+          "Line",
+          5
+        ],
+        [
+          "Span",
+          4
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 2,
+        "llm_error_count": 0,
+        "llm_tokens_used": 6860,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 26,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          20
+        ],
+        [
+          "Span",
+          20
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "SectionHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data/sn74163"
+}

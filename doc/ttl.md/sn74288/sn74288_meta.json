@@ -1,0 +1,571 @@
+{
+  "table_of_contents": [
+    {
+      "title": "National<br>Semiconductor",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          72.75,
+          55.880859375
+        ],
+        [
+          248.25,
+          55.880859375
+        ],
+        [
+          247.5,
+          99.193359375
+        ],
+        [
+          72.0,
+          99.193359375
+        ]
+      ]
+    },
+    {
+      "title": "DM54/74S288 (32 x 8)\n256-Bit TTL PROM",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          72.75,
+          110.25
+        ],
+        [
+          245.25,
+          110.25
+        ],
+        [
+          245.25,
+          149.9501953125
+        ],
+        [
+          72.75,
+          149.9501953125
+        ]
+      ]
+    },
+    {
+      "title": "General Description",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          72.75,
+          157.1044921875
+        ],
+        [
+          200.8125,
+          157.1044921875
+        ],
+        [
+          200.8125,
+          173.7333984375
+        ],
+        [
+          72.75,
+          173.7333984375
+        ]
+      ]
+    },
+    {
+      "title": "Features",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          307.5,
+          158.6513671875
+        ],
+        [
+          365.25,
+          158.6513671875
+        ],
+        [
+          365.25,
+          173.3466796875
+        ],
+        [
+          307.5,
+          173.3466796875
+        ]
+      ]
+    },
+    {
+      "title": "Block Diagram",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          72.75,
+          301.447265625
+        ],
+        [
+          165.0,
+          301.447265625
+        ],
+        [
+          165.0,
+          318.849609375
+        ],
+        [
+          72.75,
+          318.849609375
+        ]
+      ]
+    },
+    {
+      "title": "Ordering Information",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          42.75,
+          309.0
+        ],
+        [
+          179.296875,
+          309.0
+        ],
+        [
+          179.296875,
+          324.650390625
+        ],
+        [
+          42.75,
+          324.650390625
+        ]
+      ]
+    },
+    {
+      "title": "Military Temp Range (-55^{\\circ}\\text{C to } + 125^{\\circ}\\text{C})",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          196.7783203125,
+          465.99609375
+        ],
+        [
+          361.5,
+          465.99609375
+        ],
+        [
+          361.5,
+          477.0
+        ],
+        [
+          196.7783203125,
+          477.0
+        ]
+      ]
+    },
+    {
+      "title": "Absolute Maximum Ratings (Note 1)",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          81.75,
+          61.48828125
+        ],
+        [
+          288.75,
+          61.48828125
+        ],
+        [
+          288.75,
+          75.7001953125
+        ],
+        [
+          81.75,
+          75.7001953125
+        ]
+      ]
+    },
+    {
+      "title": "Operating Conditions",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          329.25,
+          59.98974609375
+        ],
+        [
+          466.5,
+          59.98974609375
+        ],
+        [
+          466.5,
+          76.71533203125
+        ],
+        [
+          329.25,
+          76.71533203125
+        ]
+      ]
+    },
+    {
+      "title": "DC Electrical Characteristics (Note 3)",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          81.0,
+          201.673828125
+        ],
+        [
+          294.943359375,
+          201.673828125
+        ],
+        [
+          294.943359375,
+          217.529296875
+        ],
+        [
+          81.0,
+          217.529296875
+        ]
+      ]
+    },
+    {
+      "title": "AC Electrical Characteristics with Standard Load and Operating Conditions",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          66.75,
+          52.54541015625
+        ],
+        [
+          415.96875,
+          52.54541015625
+        ],
+        [
+          415.96875,
+          70.91455078125
+        ],
+        [
+          66.75,
+          70.91455078125
+        ]
+      ]
+    },
+    {
+      "title": "MILITARY TEMPERATURE RANGE (-55^{\\circ}\\text{C to } + 125^{\\circ}\\text{C})",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          64.6962890625,
+          207.474609375
+        ],
+        [
+          281.3466796875,
+          207.474609375
+        ],
+        [
+          281.3466796875,
+          219.462890625
+        ],
+        [
+          64.6962890625,
+          219.462890625
+        ]
+      ]
+    },
+    {
+      "title": "Functional Description",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          65.25,
+          345.146484375
+        ],
+        [
+          208.880859375,
+          345.146484375
+        ],
+        [
+          208.880859375,
+          362.162109375
+        ],
+        [
+          65.25,
+          362.162109375
+        ]
+      ]
+    },
+    {
+      "title": "TESTABILITY",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          66.0,
+          364.482421875
+        ],
+        [
+          123.49072265625,
+          364.482421875
+        ],
+        [
+          123.49072265625,
+          376.470703125
+        ],
+        [
+          66.0,
+          376.470703125
+        ]
+      ]
+    },
+    {
+      "title": "RELIABILITY",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          66.0,
+          503.5078125
+        ],
+        [
+          120.35302734375,
+          503.5078125
+        ],
+        [
+          120.35302734375,
+          515.109375
+        ],
+        [
+          66.0,
+          515.109375
+        ]
+      ]
+    },
+    {
+      "title": "TITANIUM-TUNGSTEN FUSES",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          300.75,
+          364.869140625
+        ],
+        [
+          422.54296875,
+          364.869140625
+        ],
+        [
+          422.54296875,
+          377.244140625
+        ],
+        [
+          300.75,
+          377.244140625
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          52
+        ],
+        [
+          "Span",
+          28
+        ],
+        [
+          "TableCell",
+          22
+        ],
+        [
+          "ListItem",
+          6
+        ],
+        [
+          "SectionHeader",
+          5
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 3,
+        "llm_error_count": 0,
+        "llm_tokens_used": 7260,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          78
+        ],
+        [
+          "TableCell",
+          21
+        ],
+        [
+          "Span",
+          6
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 3,
+        "llm_error_count": 0,
+        "llm_tokens_used": 7192,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          428
+        ],
+        [
+          "Span",
+          20
+        ],
+        [
+          "Line",
+          16
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Table",
+          3
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 3,
+        "llm_error_count": 0,
+        "llm_tokens_used": 10219,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          255
+        ],
+        [
+          "Span",
+          57
+        ],
+        [
+          "Line",
+          51
+        ],
+        [
+          "SectionHeader",
+          6
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "PageFooter",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 2,
+        "llm_error_count": 0,
+        "llm_tokens_used": 8455,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data/sn74288"
+}

@@ -1,0 +1,126 @@
+{
+  "table_of_contents": [
+    {
+      "title": "Multiple TTL Military Logic Delay Line",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          103.5,
+          32.82275390625
+        ],
+        [
+          522.75,
+          32.82275390625
+        ],
+        [
+          522.75,
+          74.58837890625
+        ],
+        [
+          103.5,
+          74.58837890625
+        ]
+      ]
+    },
+    {
+      "title": "MECHANICAL DIAGRAM",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          388.5,
+          268.576171875
+        ],
+        [
+          533.109375,
+          268.576171875
+        ],
+        [
+          533.109375,
+          282.111328125
+        ],
+        [
+          388.5,
+          282.111328125
+        ]
+      ]
+    },
+    {
+      "title": "Operating Specifications:",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          364.271484375,
+          521.68359375
+        ],
+        [
+          487.5,
+          521.68359375
+        ],
+        [
+          487.5,
+          534.05859375
+        ],
+        [
+          364.271484375,
+          534.05859375
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          136
+        ],
+        [
+          "Line",
+          102
+        ],
+        [
+          "Span",
+          54
+        ],
+        [
+          "Text",
+          10
+        ],
+        [
+          "ListItem",
+          10
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Figure",
+          2
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 4,
+        "llm_error_count": 0,
+        "llm_tokens_used": 9389,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data/mttldl"
+}

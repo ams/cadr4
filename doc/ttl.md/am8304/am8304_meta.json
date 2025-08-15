@@ -1,0 +1,478 @@
+{
+  "table_of_contents": [
+    {
+      "title": "Am73/8303 \u2022 Am73/8304B\nOctal Three-State Bidirectional Bus Transceivers",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          79.45225419511308,
+          17.93408203125
+        ],
+        [
+          361.7250088453293,
+          17.93408203125
+        ],
+        [
+          361.7250088453293,
+          51.0
+        ],
+        [
+          79.45225419511308,
+          52.5
+        ]
+      ]
+    },
+    {
+      "title": "DISTINCTIVE CHARACTERISTICS",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          4.497297407270552,
+          98.25
+        ],
+        [
+          125.28750306367874,
+          98.25
+        ],
+        [
+          125.28750306367874,
+          107.296875
+        ],
+        [
+          4.497297407270552,
+          107.296875
+        ]
+      ]
+    },
+    {
+      "title": "FUNCTIONAL DESCRIPTION",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          229.36216777079815,
+          95.8125
+        ],
+        [
+          331.300909002264,
+          95.8125
+        ],
+        [
+          331.300909002264,
+          105.4921875
+        ],
+        [
+          229.36216777079815,
+          105.4921875
+        ]
+      ]
+    },
+    {
+      "title": "ABSOLUTE MAXIMUM RATINGS (Above which the useful life may be impaired)",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          41.681251019239426,
+          28.5
+        ],
+        [
+          338.8125082850456,
+          32.25
+        ],
+        [
+          338.8125082850456,
+          43.5
+        ],
+        [
+          41.22522623331339,
+          42.328125
+        ]
+      ]
+    },
+    {
+      "title": "ELECTRICAL CHARACTERISTICS",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          40.47567666543497,
+          113.25
+        ],
+        [
+          190.8562546670437,
+          114.75
+        ],
+        [
+          190.8562546670437,
+          125.1796875
+        ],
+        [
+          40.47567666543497,
+          125.1796875
+        ]
+      ]
+    },
+    {
+      "title": "AC ELECTRICAL CHARACTERISTICS (V_{CC} = 5.0V, T_A = 25^{\\circ}C)",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          1.4990991357568506,
+          30.0
+        ],
+        [
+          257.15625628829,
+          28.5
+        ],
+        [
+          257.15625628829,
+          41.5693359375
+        ],
+        [
+          1.4990991357568506,
+          43.5
+        ]
+      ]
+    },
+    {
+      "title": "AC ELECTRICAL CHARACTERISTICS (V_{CC} = 5.0V, T_A = 25^{\\circ}C)",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          38.390625938773155,
+          25.5
+        ],
+        [
+          289.5750070810318,
+          28.341796875
+        ],
+        [
+          289.5750070810318,
+          40.5
+        ],
+        [
+          38.390625938773155,
+          39.826171875
+        ]
+      ]
+    },
+    {
+      "title": "DEFINITION OF FUNCTIONAL TERMS",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          40.95000100135803,
+          543.0
+        ],
+        [
+          181.35000443458557,
+          544.359375
+        ],
+        [
+          181.35000443458557,
+          555.515625
+        ],
+        [
+          40.95000100135803,
+          555.515625
+        ]
+      ]
+    },
+    {
+      "title": "Am73/8303/8304B",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          37.933594677597284,
+          3.0
+        ],
+        [
+          116.02500283718109,
+          1.5
+        ],
+        [
+          116.02500283718109,
+          12.7353515625
+        ],
+        [
+          37.933594677597284,
+          12.75
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          113
+        ],
+        [
+          "Span",
+          41
+        ],
+        [
+          "ListItem",
+          13
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 2,
+        "llm_error_count": 0,
+        "llm_tokens_used": 3996,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          822
+        ],
+        [
+          "Span",
+          20
+        ],
+        [
+          "Line",
+          14
+        ],
+        [
+          "Text",
+          7
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 2,
+        "llm_error_count": 0,
+        "llm_tokens_used": 11349,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          325
+        ],
+        [
+          "Span",
+          13
+        ],
+        [
+          "Line",
+          6
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "TextInlineMath",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 4,
+        "llm_error_count": 0,
+        "llm_tokens_used": 16826,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          286
+        ],
+        [
+          "Span",
+          39
+        ],
+        [
+          "Line",
+          18
+        ],
+        [
+          "ListItem",
+          3
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 2,
+        "llm_error_count": 0,
+        "llm_tokens_used": 11278,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          100
+        ],
+        [
+          "Span",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 1,
+        "llm_error_count": 0,
+        "llm_tokens_used": 2241,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 5,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          130
+        ],
+        [
+          "Span",
+          2
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 1,
+        "llm_error_count": 0,
+        "llm_tokens_used": 2278,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data/am8304"
+}

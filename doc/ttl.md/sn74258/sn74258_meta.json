@@ -1,0 +1,1311 @@
+{
+  "table_of_contents": [
+    {
+      "title": "description",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          66.71337890625,
+          360.0
+        ],
+        [
+          121.5,
+          360.0
+        ],
+        [
+          121.5,
+          371.056640625
+        ],
+        [
+          66.71337890625,
+          371.056640625
+        ]
+      ]
+    },
+    {
+      "title": "(TOP VIEW)",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          438.0,
+          121.5
+        ],
+        [
+          486.75,
+          121.5
+        ],
+        [
+          486.75,
+          132.451171875
+        ],
+        [
+          438.0,
+          132.451171875
+        ]
+      ]
+    },
+    {
+      "title": "SN54LS257B, SN54LS258B, SN54S257, SN54S258\nSN74LS257B, SN74LS258B, SN74S257, SN74S258\nQUADRUPLE 2-LINE TO 1-LINE DATA SELECTORS/MULTIPLEXERS\nSDLS148 - OCTOBER 1976 - REVISED MARCH 1988",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          43.330078125,
+          14.7919921875
+        ],
+        [
+          414.0,
+          14.7919921875
+        ],
+        [
+          414.0,
+          66.0
+        ],
+        [
+          43.330078125,
+          66.0
+        ]
+      ]
+    },
+    {
+      "title": "logic diagrams (positive logic)",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          51.0,
+          76.8603515625
+        ],
+        [
+          200.25,
+          76.8603515625
+        ],
+        [
+          200.25,
+          88.6552734375
+        ],
+        [
+          51.0,
+          88.6552734375
+        ]
+      ]
+    },
+    {
+      "title": "logic symbols<sup>\u2020</sup>",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          49.60546875,
+          364.482421875
+        ],
+        [
+          124.7607421875,
+          364.482421875
+        ],
+        [
+          124.7607421875,
+          377.25
+        ],
+        [
+          49.60546875,
+          377.25
+        ]
+      ]
+    },
+    {
+      "title": "SN54LS257B, SN54LS258B, SN54S257, SN54S258\nSN74LS257B, SN74LS258B, SN74S257, SN74S258\nQUADRUPLE 2-LINE TO 1-LINE DATA SELECTORS/MULTIPLEXERS",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          198.0,
+          14.7315673828125
+        ],
+        [
+          569.267578125,
+          14.7315673828125
+        ],
+        [
+          569.267578125,
+          63.37353515625
+        ],
+        [
+          198.0,
+          63.37353515625
+        ]
+      ]
+    },
+    {
+      "title": "schematics of inputs and outputs",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          68.25,
+          78.0
+        ],
+        [
+          219.75,
+          78.0
+        ],
+        [
+          219.75,
+          89.28369140625
+        ],
+        [
+          68.25,
+          89.28369140625
+        ]
+      ]
+    },
+    {
+      "title": "SN54LS257B, SN54LS258B, SN54S257, SN54S258\nSN74LS257B, SN74LS258B, SN74S257, SN74S258\nQUADRUPLE 2-LINE TO 1-LINE DATA SELECTORS/MULTIPLEXERS",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          43.5,
+          14.9974365234375
+        ],
+        [
+          414.0,
+          14.9974365234375
+        ],
+        [
+          414.0,
+          61.82666015625
+        ],
+        [
+          43.5,
+          61.82666015625
+        ]
+      ]
+    },
+    {
+      "title": "recommended operating conditions",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          47.25,
+          76.5
+        ],
+        [
+          212.0185546875,
+          78.0
+        ],
+        [
+          212.0185546875,
+          89.09033203125
+        ],
+        [
+          47.25,
+          89.09033203125
+        ]
+      ]
+    },
+    {
+      "title": "electrical characteristics over recommended operating free-air temperature range (unless otherwise noted)",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          45.75,
+          191.25
+        ],
+        [
+          528.328125,
+          194.51953125
+        ],
+        [
+          528.328125,
+          205.5
+        ],
+        [
+          45.75,
+          205.34765625
+        ]
+      ]
+    },
+    {
+      "title": "switching characteristics, V<sub>CC</sub> = 5 V, T<sub>A</sub> = 25^{\\circ}C, R<sub>L</sub> = 667 \\Omega",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          44.82421875,
+          473.25
+        ],
+        [
+          332.296875,
+          473.25
+        ],
+        [
+          332.296875,
+          488.0390625
+        ],
+        [
+          44.82421875,
+          488.0390625
+        ]
+      ]
+    },
+    {
+      "title": "SN54LS257B, SN54LS258B, SN54S257, SN54S258\nSN74LS257B, SN74LS258B, SN74S257, SN74S258\nQUADRUPLE 2-LINE TO 1-LINE DATA SELECTORS/MULTIPLEXERS",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          198.2724609375,
+          14.8040771484375
+        ],
+        [
+          569.25,
+          14.8040771484375
+        ],
+        [
+          569.25,
+          62.31005859375
+        ],
+        [
+          198.2724609375,
+          62.31005859375
+        ]
+      ]
+    },
+    {
+      "title": "recommended operating conditions",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          66.75,
+          77.19873046875
+        ],
+        [
+          229.5,
+          77.19873046875
+        ],
+        [
+          229.5,
+          87.75
+        ],
+        [
+          66.75,
+          87.75
+        ]
+      ]
+    },
+    {
+      "title": "switching characteristics, V<sub>CC</sub> = 5 V, T<sub>A</sub> = 25\u00b0C, R<sub>L</sub> = 280 \\Omega",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          72.75,
+          523.6171875
+        ],
+        [
+          356.203125,
+          522.75
+        ],
+        [
+          356.203125,
+          534.4453125
+        ],
+        [
+          72.75,
+          536.25
+        ]
+      ]
+    },
+    {
+      "title": "PACKAGING INFORMATION",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          59.25,
+          90.0
+        ],
+        [
+          212.0185546875,
+          90.0
+        ],
+        [
+          212.0185546875,
+          105.1875
+        ],
+        [
+          59.25,
+          105.1875
+        ]
+      ]
+    },
+    {
+      "title": "PACKAGE OPTION ADDENDUM",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          357.0,
+          26.25
+        ],
+        [
+          573.75,
+          26.25
+        ],
+        [
+          573.75,
+          43.2158203125
+        ],
+        [
+          357.0,
+          43.2158203125
+        ]
+      ]
+    },
+    {
+      "title": "PACKAGE OPTION ADDENDUM",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          357.0,
+          26.25
+        ],
+        [
+          574.048828125,
+          26.25
+        ],
+        [
+          574.048828125,
+          43.239990234375
+        ],
+        [
+          357.0,
+          43.239990234375
+        ]
+      ]
+    },
+    {
+      "title": "FK (S-CQCC-N**)",
+      "heading_level": null,
+      "page_id": 11,
+      "polygon": [
+        [
+          62.940673828125,
+          75.16845703125
+        ],
+        [
+          147.75,
+          75.16845703125
+        ],
+        [
+          147.75,
+          87.44677734375
+        ],
+        [
+          62.940673828125,
+          87.44677734375
+        ]
+      ]
+    },
+    {
+      "title": "LEADLESS CERAMIC CHIP CARRIER",
+      "heading_level": null,
+      "page_id": 11,
+      "polygon": [
+        [
+          388.5,
+          75.75
+        ],
+        [
+          568.5,
+          75.75
+        ],
+        [
+          568.5,
+          87.4951171875
+        ],
+        [
+          388.5,
+          87.4951171875
+        ]
+      ]
+    },
+    {
+      "title": "N (R-PDIP-T**)",
+      "heading_level": null,
+      "page_id": 12,
+      "polygon": [
+        [
+          57.75,
+          94.5
+        ],
+        [
+          171.228515625,
+          94.5
+        ],
+        [
+          171.228515625,
+          112.1484375
+        ],
+        [
+          57.75,
+          112.1484375
+        ]
+      ]
+    },
+    {
+      "title": "MECHANICAL DATA",
+      "heading_level": null,
+      "page_id": 14,
+      "polygon": [
+        [
+          251.25,
+          75.75
+        ],
+        [
+          363.076171875,
+          75.75
+        ],
+        [
+          363.076171875,
+          89.67041015625
+        ],
+        [
+          251.25,
+          89.67041015625
+        ]
+      ]
+    },
+    {
+      "title": "PLASTIC SMALL-OUTLINE PACKAGE",
+      "heading_level": null,
+      "page_id": 14,
+      "polygon": [
+        [
+          382.201171875,
+          93.0
+        ],
+        [
+          561.0,
+          93.0
+        ],
+        [
+          561.0,
+          105.57421875
+        ],
+        [
+          382.201171875,
+          105.57421875
+        ]
+      ]
+    },
+    {
+      "title": "NS (R-PDSO-G**)\n14-PINS SHOWN",
+      "heading_level": null,
+      "page_id": 14,
+      "polygon": [
+        [
+          51.0,
+          92.25
+        ],
+        [
+          136.5,
+          92.25
+        ],
+        [
+          136.5,
+          119.25
+        ],
+        [
+          51.0,
+          119.25
+        ]
+      ]
+    },
+    {
+      "title": "IMPORTANT NOTICE",
+      "heading_level": null,
+      "page_id": 15,
+      "polygon": [
+        [
+          270.75,
+          76.42529296875
+        ],
+        [
+          363.0,
+          76.42529296875
+        ],
+        [
+          363.0,
+          86.47998046875
+        ],
+        [
+          270.75,
+          86.47998046875
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          185
+        ],
+        [
+          "Line",
+          67
+        ],
+        [
+          "Span",
+          45
+        ],
+        [
+          "Text",
+          8
+        ],
+        [
+          "ListItem",
+          4
+        ],
+        [
+          "Table",
+          3
+        ],
+        [
+          "PageFooter",
+          3
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Figure",
+          2
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 7,
+        "llm_error_count": 0,
+        "llm_tokens_used": 16778,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          196
+        ],
+        [
+          "Span",
+          9
+        ],
+        [
+          "Figure",
+          7
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 9,
+        "llm_error_count": 0,
+        "llm_tokens_used": 17441,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          36
+        ],
+        [
+          "TableCell",
+          28
+        ],
+        [
+          "Span",
+          9
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Figure",
+          2
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 4,
+        "llm_error_count": 0,
+        "llm_tokens_used": 9345,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          562
+        ],
+        [
+          "Span",
+          32
+        ],
+        [
+          "Line",
+          21
+        ],
+        [
+          "Text",
+          11
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "Table",
+          3
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 4,
+        "llm_error_count": 1,
+        "llm_tokens_used": 15942,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          799
+        ],
+        [
+          "Span",
+          28
+        ],
+        [
+          "Line",
+          22
+        ],
+        [
+          "Text",
+          13
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Table",
+          3
+        ],
+        [
+          "TextInlineMath",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 6,
+        "llm_error_count": 0,
+        "llm_tokens_used": 23869,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 5,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          720
+        ],
+        [
+          "Line",
+          6
+        ],
+        [
+          "Span",
+          6
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 3,
+        "llm_error_count": 0,
+        "llm_tokens_used": 12839,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 6,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          531
+        ],
+        [
+          "Line",
+          5
+        ],
+        [
+          "Span",
+          5
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 5,
+        "llm_error_count": 0,
+        "llm_tokens_used": 19843,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 7,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          639
+        ],
+        [
+          "Line",
+          5
+        ],
+        [
+          "Span",
+          5
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 5,
+        "llm_error_count": 0,
+        "llm_tokens_used": 22048,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 8,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          198
+        ],
+        [
+          "Span",
+          37
+        ],
+        [
+          "Line",
+          30
+        ],
+        [
+          "Text",
+          13
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 2,
+        "llm_error_count": 0,
+        "llm_tokens_used": 12338,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 9,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          79
+        ],
+        [
+          "Span",
+          9
+        ],
+        [
+          "ListItem",
+          4
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 1,
+        "llm_error_count": 0,
+        "llm_tokens_used": 1752,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 10,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          41
+        ],
+        [
+          "Span",
+          8
+        ],
+        [
+          "ListItem",
+          5
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "TextInlineMath",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 5,
+        "llm_error_count": 0,
+        "llm_tokens_used": 12110,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 11,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          119
+        ],
+        [
+          "Span",
+          10
+        ],
+        [
+          "ListItem",
+          4
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 2,
+        "llm_error_count": 0,
+        "llm_tokens_used": 3287,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 12,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          70
+        ],
+        [
+          "Span",
+          9
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "ListItem",
+          3
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 2,
+        "llm_error_count": 0,
+        "llm_tokens_used": 2287,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 13,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          39
+        ],
+        [
+          "Span",
+          8
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "ListItem",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 2,
+        "llm_error_count": 0,
+        "llm_tokens_used": 2333,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 14,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          51
+        ],
+        [
+          "Span",
+          11
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "ListItem",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 2,
+        "llm_error_count": 0,
+        "llm_tokens_used": 2772,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 15,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          88
+        ],
+        [
+          "Line",
+          32
+        ],
+        [
+          "Span",
+          32
+        ],
+        [
+          "Text",
+          11
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Table",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 1,
+        "llm_error_count": 0,
+        "llm_tokens_used": 3638,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data/sn74258"
+}

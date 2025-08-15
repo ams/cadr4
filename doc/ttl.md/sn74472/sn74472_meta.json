@@ -1,0 +1,1021 @@
+{
+  "table_of_contents": [
+    {
+      "title": "TTL\nMEMORIES",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          65.2499973591831,
+          64.48929526474467
+        ],
+        [
+          123.74999499155416,
+          64.48929526474467
+        ],
+        [
+          123.74999499155416,
+          92.6542978217185
+        ],
+        [
+          65.2499973591831,
+          92.6542978217185
+        ]
+      ]
+    },
+    {
+      "title": "SERIES 54/74, 54S/74S\nPROGRAMMABLE READ-ONLY MEMORIES",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          224.72752996726194,
+          63.26964908397349
+        ],
+        [
+          448.4999818481781,
+          63.26964908397349
+        ],
+        [
+          448.4999818481781,
+          92.56605563331686
+        ],
+        [
+          224.72752996726194,
+          92.56605563331686
+        ]
+      ]
+    },
+    {
+      "title": "description",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          42.749998269809616,
+          520.4136152759628
+        ],
+        [
+          86.24999650926502,
+          520.4136152759628
+        ],
+        [
+          86.24999650926502,
+          530.5120366706396
+        ],
+        [
+          42.749998269809616,
+          530.5120366706396
+        ]
+      ]
+    },
+    {
+      "title": "SERIES 54/74, 54S/74S\nPROGRAMMABLE READ-ONLY MEMORIES",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          219.5068414293928,
+          65.98904429332843
+        ],
+        [
+          442.5000110710109,
+          65.98904429332843
+        ],
+        [
+          442.5000110710109,
+          93.71320120806922
+        ],
+        [
+          219.5068414293928,
+          93.71320120806922
+        ]
+      ]
+    },
+    {
+      "title": "description (continued)",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          37.50000093822126,
+          109.48182348665854
+        ],
+        [
+          128.14453445607796,
+          109.48182348665854
+        ],
+        [
+          128.14453445607796,
+          118.24452883127378
+        ],
+        [
+          37.50000093822126,
+          118.24452883127378
+        ]
+      ]
+    },
+    {
+      "title": "schematics of inputs and outputs",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          36.42627044260735,
+          231.7115305299828
+        ],
+        [
+          164.6894572454039,
+          231.7115305299828
+        ],
+        [
+          164.6894572454039,
+          240.19522946173674
+        ],
+        [
+          36.42627044260735,
+          240.19522946173674
+        ]
+      ]
+    },
+    {
+      "title": "TYPES SN54186. SN74186\nPROGRAMMABLE READ-ONLY MEMORIES",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          44.25,
+          63.09316448867321
+        ],
+        [
+          267.4423828125,
+          63.09316448867321
+        ],
+        [
+          267.4423828125,
+          92.47781312465668
+        ],
+        [
+          44.25,
+          92.47781312465668
+        ]
+      ]
+    },
+    {
+      "title": "recommended conditions for programming",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          45.859130859375,
+          106.48232437070475
+        ],
+        [
+          208.5,
+          106.48232437070475
+        ],
+        [
+          208.5,
+          116.12671953439713
+        ],
+        [
+          45.859130859375,
+          116.12671953439713
+        ]
+      ]
+    },
+    {
+      "title": "step-by-step programming procedure",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          46.5,
+          273.70456616413543
+        ],
+        [
+          184.5,
+          273.70456616413543
+        ],
+        [
+          184.5,
+          282.37500190734863
+        ],
+        [
+          46.5,
+          282.37500190734863
+        ]
+      ]
+    },
+    {
+      "title": "TYPES SN54188A, SN74188A, AND SERIES 54S/74S\nPROGRAMMABLE READ-ONLY MEMORIES",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          172.63916447554948,
+          66.00515489984537
+        ],
+        [
+          445.6582142750267,
+          66.00515489984537
+        ],
+        [
+          445.6582142750267,
+          95.38980273627385
+        ],
+        [
+          172.63916447554948,
+          95.38980273627385
+        ]
+      ]
+    },
+    {
+      "title": "recommended conditions for programming",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          39.75000099451454,
+          110.23169898999181
+        ],
+        [
+          201.7500050476304,
+          110.23169898999181
+        ],
+        [
+          201.7500050476304,
+          119.23020502999115
+        ],
+        [
+          39.75000099451454,
+          119.23020502999115
+        ]
+      ]
+    },
+    {
+      "title": "step-by-step programming procedure",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          37.90942477658973,
+          290.95169529331173
+        ],
+        [
+          178.50000446593322,
+          290.95169529331173
+        ],
+        [
+          178.50000446593322,
+          299.20032582997777
+        ],
+        [
+          37.90942477658973,
+          299.20032582997777
+        ]
+      ]
+    },
+    {
+      "title": "TYPES SN54186, SN54188A, SN74186, SN74188A\nPROGRAMMABLE READ-ONLY MEMORIES",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          42.75,
+          62.989543993938014
+        ],
+        [
+          297.10546875,
+          62.989543993938014
+        ],
+        [
+          297.10546875,
+          92.21308656036854
+        ],
+        [
+          42.75,
+          92.21308656036854
+        ]
+      ]
+    },
+    {
+      "title": "recommended operating conditions",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          44.25,
+          105.73244884696739
+        ],
+        [
+          178.5,
+          105.73244884696739
+        ],
+        [
+          178.5,
+          115.59726640582085
+        ],
+        [
+          44.25,
+          115.59726640582085
+        ]
+      ]
+    },
+    {
+      "title": "electrical characteristics over recommended operating free-air temperature range (unless otherwise noted)",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          43.5,
+          193.4678851242382
+        ],
+        [
+          438.7763671875,
+          194.21776064797555
+        ],
+        [
+          438.7763671875,
+          204.19242325425148
+        ],
+        [
+          43.5,
+          204.19242325425148
+        ]
+      ]
+    },
+    {
+      "title": "SERIES 54S/74S\nPROGRAMMABLE READ-ONLY MEMORIES WITH OPEN-COLLECTOR OUTPUTS",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          37.49999917215771,
+          65.12273791854386
+        ],
+        [
+          443.24999021490413,
+          65.12273791854386
+        ],
+        [
+          443.24999021490413,
+          94.06617699345225
+        ],
+        [
+          37.49999917215771,
+          94.06617699345225
+        ]
+      ]
+    },
+    {
+      "title": "recommended operating conditions",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          36.749999188714554,
+          110.98158280236099
+        ],
+        [
+          171.74999620848232,
+          110.98158280236099
+        ],
+        [
+          171.74999620848232,
+          119.9211393378064
+        ],
+        [
+          36.749999188714554,
+          119.9211393378064
+        ]
+      ]
+    },
+    {
+      "title": "electrical characteristics over recommended operating free-air temperature range (unless otherwise noted)",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          36.749999188714554,
+          225.71254340209904
+        ],
+        [
+          431.99999046325684,
+          225.71254340209904
+        ],
+        [
+          431.99999046325684,
+          235.6066534451384
+        ],
+        [
+          36.749999188714554,
+          235.6066534451384
+        ]
+      ]
+    },
+    {
+      "title": "switching characteristics over recommended ranges of TA and VCC (unless otherwise noted)",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          36.749999188714554,
+          407.1824287951488
+        ],
+        [
+          382.49999155600864,
+          407.1824287951488
+        ],
+        [
+          382.49999155600864,
+          417.6806866278045
+        ],
+        [
+          36.749999188714554,
+          417.6806866278045
+        ]
+      ]
+    },
+    {
+      "title": "SERIES 54S/74S\nPROGRAMMABLE READ-ONLY MEMORIES WITH 3-STATE OUTPUTS",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          42.75,
+          62.82843792438507
+        ],
+        [
+          400.095703125,
+          62.82843792438507
+        ],
+        [
+          400.095703125,
+          91.9483599960804
+        ],
+        [
+          42.75,
+          91.9483599960804
+        ]
+      ]
+    },
+    {
+      "title": "recommended operating conditions",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          45.0,
+          107.98207541817945
+        ],
+        [
+          180.0,
+          107.98207541817945
+        ],
+        [
+          180.0,
+          117.00914141535759
+        ],
+        [
+          45.0,
+          117.00914141535759
+        ]
+      ]
+    },
+    {
+      "title": "electrical characteristics over recommended operating free-air temperature range (unless otherwise noted)",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          45.0,
+          225.71253264494456
+        ],
+        [
+          440.25,
+          225.71253264494456
+        ],
+        [
+          440.25,
+          235.60664221644402
+        ],
+        [
+          45.0,
+          235.60664221644402
+        ]
+      ]
+    },
+    {
+      "title": "switching characteristics over recommended ranges of TA and VCC (unless otherwise noted)",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          44.25,
+          457.424069479788
+        ],
+        [
+          390.8408203125,
+          457.424069479788
+        ],
+        [
+          390.8408203125,
+          467.92232681211095
+        ],
+        [
+          44.25,
+          467.92232681211095
+        ]
+      ]
+    },
+    {
+      "title": "SERIES 54/74. 54S/74S\nPROGRAMMABLE READ-ONLY MEMORIES",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          217.49999466501635,
+          66.73892614702962
+        ],
+        [
+          439.49998921965374,
+          66.73892614702962
+        ],
+        [
+          439.49998921965374,
+          94.50738987192744
+        ],
+        [
+          217.49999466501635,
+          94.50738987192744
+        ]
+      ]
+    },
+    {
+      "title": "FIGURE 5-SWITCHING TIMES OF 'S287, 'S288, 'S471, AND 'S472",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          136.80614898807835,
+          623.896478138524
+        ],
+        [
+          336.97264798451215,
+          623.896478138524
+        ],
+        [
+          336.97264798451215,
+          632.8730160237756
+        ],
+        [
+          136.80614898807835,
+          632.8730160237756
+        ]
+      ]
+    },
+    {
+      "title": "TEXAS INSTRUMENTS",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          247.49999392915655,
+          651.6418744018958
+        ],
+        [
+          378.74999070976986,
+          651.6418744018958
+        ],
+        [
+          378.74999070976986,
+          671.3466126476415
+        ],
+        [
+          247.49999392915655,
+          671.3466126476415
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          158
+        ],
+        [
+          "Line",
+          42
+        ],
+        [
+          "Span",
+          34
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "ListItem",
+          4
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "PageFooter",
+          3
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 3,
+        "llm_error_count": 1,
+        "llm_tokens_used": 15722,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          76
+        ],
+        [
+          "Line",
+          55
+        ],
+        [
+          "Span",
+          23
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "PageFooter",
+          3
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 2,
+        "llm_error_count": 0,
+        "llm_tokens_used": 5602,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          125
+        ],
+        [
+          "Line",
+          56
+        ],
+        [
+          "Span",
+          37
+        ],
+        [
+          "ListItem",
+          9
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "PageFooter",
+          2
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 2,
+        "llm_error_count": 0,
+        "llm_tokens_used": 6464,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          209
+        ],
+        [
+          "Line",
+          58
+        ],
+        [
+          "Span",
+          44
+        ],
+        [
+          "ListItem",
+          13
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "PageFooter",
+          3
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 3,
+        "llm_error_count": 0,
+        "llm_tokens_used": 10543,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          488
+        ],
+        [
+          "Span",
+          23
+        ],
+        [
+          "Line",
+          16
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Table",
+          3
+        ],
+        [
+          "PageFooter",
+          3
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 3,
+        "llm_error_count": 0,
+        "llm_tokens_used": 11578,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 5,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          408
+        ],
+        [
+          "Span",
+          14
+        ],
+        [
+          "Line",
+          12
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "Table",
+          3
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "PageFooter",
+          2
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 5,
+        "llm_error_count": 1,
+        "llm_tokens_used": 18820,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 6,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          640
+        ],
+        [
+          "Span",
+          13
+        ],
+        [
+          "Line",
+          9
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "Table",
+          3
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "PageFooter",
+          2
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 6,
+        "llm_error_count": 0,
+        "llm_tokens_used": 25061,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 7,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          112
+        ],
+        [
+          "Span",
+          47
+        ],
+        [
+          "Text",
+          8
+        ],
+        [
+          "ListItem",
+          7
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Figure",
+          2
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 3,
+        "llm_error_count": 0,
+        "llm_tokens_used": 5584,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data/sn74472"
+}

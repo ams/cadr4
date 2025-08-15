@@ -1,0 +1,520 @@
+{
+  "table_of_contents": [
+    {
+      "title": "Am29700 \u2022 Am29701",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          112.5,
+          37.49019647735396
+        ],
+        [
+          367.5,
+          37.49019647735396
+        ],
+        [
+          367.5,
+          76.48000081380208
+        ],
+        [
+          112.5,
+          76.48000081380208
+        ]
+      ]
+    },
+    {
+      "title": "Refer to\nAm27S06 \u2022 Am27S07\nBipolar Memory RAM Product Specification",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          77.25,
+          121.46823658662683
+        ],
+        [
+          407.25,
+          121.46823658662683
+        ],
+        [
+          407.25,
+          180.7027470208461
+        ],
+        [
+          77.25,
+          180.7027470208461
+        ]
+      ]
+    },
+    {
+      "title": "Am27LS06 \u2022 Am27LS07\nLow Power, Noninverting 64-Bit Bipolar RAM",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          116.25,
+          29.450215157121416
+        ],
+        [
+          403.5,
+          29.450215157121416
+        ],
+        [
+          403.5,
+          69.44537183269858
+        ],
+        [
+          116.25,
+          69.44537183269858
+        ]
+      ]
+    },
+    {
+      "title": "DISTINCTIVE CHARACTERISTICS",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          60.0,
+          92.92992286384106
+        ],
+        [
+          179.15625,
+          92.92992286384106
+        ],
+        [
+          179.15625,
+          102.34054796397685
+        ],
+        [
+          60.0,
+          102.34054796397685
+        ]
+      ]
+    },
+    {
+      "title": "FUNCTIONAL DESCRIPTION",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          269.71875,
+          93.01394630223513
+        ],
+        [
+          370.5,
+          93.01394630223513
+        ],
+        [
+          370.5,
+          102.42457140237092
+        ],
+        [
+          269.71875,
+          102.42457140237092
+        ]
+      ]
+    },
+    {
+      "title": "Am27LS06/LS07",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          392.2734375,
+          23.243921815959457
+        ],
+        [
+          467.25,
+          23.243921815959457
+        ],
+        [
+          467.25,
+          33.966474970802665
+        ],
+        [
+          392.2734375,
+          33.966474970802665
+        ]
+      ]
+    },
+    {
+      "title": "MAXIMUM RATINGS (Above which the useful life may be impaired)",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          26.25,
+          36.74039254780688
+        ],
+        [
+          259.5,
+          36.74039254780688
+        ],
+        [
+          259.5,
+          47.23764756146599
+        ],
+        [
+          26.25,
+          47.23764756146599
+        ]
+      ]
+    },
+    {
+      "title": "OPERATING RANGE",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          25.5,
+          183.7019627390344
+        ],
+        [
+          114.92578125,
+          183.7019627390344
+        ],
+        [
+          114.92578125,
+          194.09414269030094
+        ],
+        [
+          25.5,
+          194.09414269030094
+        ]
+      ]
+    },
+    {
+      "title": "FUNCTION TABLE",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          243.75,
+          183.7019627390344
+        ],
+        [
+          323.25,
+          183.7019627390344
+        ],
+        [
+          323.25,
+          194.26218956708908
+        ],
+        [
+          243.75,
+          194.26218956708908
+        ]
+      ]
+    },
+    {
+      "title": "ELECTRICAL CHARACTERISTICS OVER OPERATING RANGE (Unless Otherwise Noted)",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          25.5,
+          311.1686307620379
+        ],
+        [
+          373.078125,
+          311.1686307620379
+        ],
+        [
+          373.078125,
+          322.1458628028631
+        ],
+        [
+          25.5,
+          322.1458628028631
+        ]
+      ]
+    },
+    {
+      "title": "Am27LS06/LS07",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          33.75,
+          18.74509823867698
+        ],
+        [
+          107.7890625,
+          18.74509823867698
+        ],
+        [
+          107.7890625,
+          28.736015930771824
+        ],
+        [
+          33.75,
+          28.736015930771824
+        ]
+      ]
+    },
+    {
+      "title": "SWITCHING CHARACTERISTICS OVER OPERATING RANGE (Unless Otherwise Noted)",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          39.744140625,
+          32.99137290007148
+        ],
+        [
+          381.9375,
+          32.99137290007148
+        ],
+        [
+          381.9375,
+          42.494853967800736
+        ],
+        [
+          39.744140625,
+          42.494853967800736
+        ]
+      ]
+    },
+    {
+      "title": "Am27LS06/LS07",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          387.10546875,
+          28.252881160005924
+        ],
+        [
+          463.5,
+          28.252881160005924
+        ],
+        [
+          463.5,
+          38.755810959264636
+        ],
+        [
+          387.10546875,
+          38.755810959264636
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          9
+        ],
+        [
+          "Span",
+          9
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "PageFooter",
+          2
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 1,
+        "llm_error_count": 0,
+        "llm_tokens_used": 3084,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          116
+        ],
+        [
+          "Span",
+          53
+        ],
+        [
+          "ListItem",
+          9
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 1,
+        "llm_error_count": 0,
+        "llm_tokens_used": 2377,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          312
+        ],
+        [
+          "Span",
+          27
+        ],
+        [
+          "Line",
+          12
+        ],
+        [
+          "SectionHeader",
+          5
+        ],
+        [
+          "Table",
+          4
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "PageFooter",
+          2
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 7,
+        "llm_error_count": 1,
+        "llm_tokens_used": 19200,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          243
+        ],
+        [
+          "Span",
+          53
+        ],
+        [
+          "Line",
+          50
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "TextInlineMath",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 3,
+        "llm_error_count": 0,
+        "llm_tokens_used": 11600,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          141
+        ],
+        [
+          "Span",
+          47
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "ListItem",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 1,
+        "llm_error_count": 0,
+        "llm_tokens_used": 1885,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data/am29701"
+}

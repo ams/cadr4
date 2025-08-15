@@ -1,0 +1,451 @@
+{
+  "table_of_contents": [
+    {
+      "title": "FAIRCHILD",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          105.0,
+          111.4716796875
+        ],
+        [
+          195.0,
+          111.4716796875
+        ],
+        [
+          195.0,
+          130.0341796875
+        ],
+        [
+          105.0,
+          130.0341796875
+        ]
+      ]
+    },
+    {
+      "title": "DM9328\nDual 8-Bit Shift Register",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          105.0,
+          153.6240234375
+        ],
+        [
+          267.75,
+          153.6240234375
+        ],
+        [
+          267.75,
+          189.3955078125
+        ],
+        [
+          105.0,
+          189.3955078125
+        ]
+      ]
+    },
+    {
+      "title": "General Description",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          105.0,
+          196.7431640625
+        ],
+        [
+          212.9150390625,
+          196.7431640625
+        ],
+        [
+          212.9150390625,
+          209.6015625
+        ],
+        [
+          105.0,
+          209.6015625
+        ]
+      ]
+    },
+    {
+      "title": "Ordering Code:",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          105.0,
+          315.17578125
+        ],
+        [
+          188.560546875,
+          315.17578125
+        ],
+        [
+          188.560546875,
+          328.5
+        ],
+        [
+          105.0,
+          328.5
+        ]
+      ]
+    },
+    {
+      "title": "Functional Description",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          119.25,
+          109.5
+        ],
+        [
+          241.5,
+          109.5
+        ],
+        [
+          241.5,
+          121.236328125
+        ],
+        [
+          119.25,
+          121.236328125
+        ]
+      ]
+    },
+    {
+      "title": "Shift Select Table",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          315.75,
+          198.0
+        ],
+        [
+          409.9921875,
+          198.0
+        ],
+        [
+          409.9921875,
+          209.794921875
+        ],
+        [
+          315.75,
+          209.794921875
+        ]
+      ]
+    },
+    {
+      "title": "Absolute Maximum Ratings(Note 1)",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          105.0,
+          108.75
+        ],
+        [
+          277.5,
+          108.75
+        ],
+        [
+          277.5,
+          120.849609375
+        ],
+        [
+          105.0,
+          120.849609375
+        ]
+      ]
+    },
+    {
+      "title": "DM9328",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          500.25,
+          104.25
+        ],
+        [
+          513.087890625,
+          104.25
+        ],
+        [
+          513.087890625,
+          145.5
+        ],
+        [
+          500.25,
+          145.5
+        ]
+      ]
+    },
+    {
+      "title": "Recommended Operating Conditions",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          104.25,
+          189.0
+        ],
+        [
+          302.25,
+          189.0
+        ],
+        [
+          302.25,
+          202.5
+        ],
+        [
+          104.25,
+          202.5
+        ]
+      ]
+    },
+    {
+      "title": "Switching Characteristics",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          119.25,
+          107.314453125
+        ],
+        [
+          256.5,
+          107.314453125
+        ],
+        [
+          256.5,
+          120.65625
+        ],
+        [
+          119.25,
+          120.65625
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          72
+        ],
+        [
+          "Span",
+          22
+        ],
+        [
+          "TableCell",
+          12
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "PageFooter",
+          2
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 3,
+        "llm_error_count": 0,
+        "llm_tokens_used": 8257,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          43
+        ],
+        [
+          "Span",
+          42
+        ],
+        [
+          "Line",
+          41
+        ],
+        [
+          "Text",
+          8
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 2,
+        "llm_error_count": 0,
+        "llm_tokens_used": 3583,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          319
+        ],
+        [
+          "Span",
+          58
+        ],
+        [
+          "Line",
+          48
+        ],
+        [
+          "Text",
+          24
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "PageFooter",
+          2
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 2,
+        "llm_error_count": 0,
+        "llm_tokens_used": 7183,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          82
+        ],
+        [
+          "Line",
+          4
+        ],
+        [
+          "Span",
+          3
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "PageFooter",
+          2
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Text",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 3,
+        "llm_error_count": 1,
+        "llm_tokens_used": 6082,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          76
+        ],
+        [
+          "Span",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "Text",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 1,
+        "llm_error_count": 0,
+        "llm_tokens_used": 2300,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data/dm9328"
+}

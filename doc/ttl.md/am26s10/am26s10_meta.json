@@ -1,0 +1,64 @@
+{
+  "table_of_contents": [
+    {
+      "title": "BUS TRANSCEIVERS",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          168.22168987244368,
+          28.237208053469658
+        ],
+        [
+          331.90007895231247,
+          28.237208053469658
+        ],
+        [
+          331.90007895231247,
+          48.90058770775795
+        ],
+        [
+          168.22168987244368,
+          48.90058770775795
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          87
+        ],
+        [
+          "Span",
+          2
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 2,
+        "llm_error_count": 0,
+        "llm_tokens_used": 3211,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data/am26s10"
+}

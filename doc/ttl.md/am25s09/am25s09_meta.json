@@ -1,0 +1,624 @@
+{
+  "table_of_contents": [
+    {
+      "title": "Am25S09",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          211.56187339872122,
+          27.281016871333122
+        ],
+        [
+          321.7724975645542,
+          27.281016871333122
+        ],
+        [
+          321.7724975645542,
+          54.44461186230183
+        ],
+        [
+          211.56187339872122,
+          54.44461186230183
+        ]
+      ]
+    },
+    {
+      "title": "DISTINCTIVE CHARACTERISTICS",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          195.48334217366786,
+          97.39065865489924
+        ],
+        [
+          338.53820177202255,
+          97.39065865489924
+        ],
+        [
+          338.53820177202255,
+          107.79328617453575
+        ],
+        [
+          195.48334217366786,
+          107.79328617453575
+        ]
+      ]
+    },
+    {
+      "title": "GENERAL DESCRIPTION",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          213.45882191377527,
+          149.83178254599883
+        ],
+        [
+          321.3117003544196,
+          149.83178254599883
+        ],
+        [
+          321.3117003544196,
+          160.4765698313713
+        ],
+        [
+          213.45882191377527,
+          160.4765698313713
+        ]
+      ]
+    },
+    {
+      "title": "inputs selected by the S line is stored in the four flip-flops at\nthe clock LOW-to-HIGH transition. When the S input is\nLOW, the D_{iA} input data will be stored in the register. When\nthe S input is HIGH, the D<sub>iB</sub> input data will be stored in the\nregister.",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          273.3770877141332,
+          163.60781997442245
+        ],
+        [
+          455.01749655604357,
+          163.60781997442245
+        ],
+        [
+          455.01749655604357,
+          205.56657189130783
+        ],
+        [
+          273.3770877141332,
+          205.56657189130783
+        ]
+      ]
+    },
+    {
+      "title": "RELATED PRODUCTS",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          219.94874833524224,
+          424.7731035179067
+        ],
+        [
+          317.28374759852886,
+          424.7731035179067
+        ],
+        [
+          317.28374759852886,
+          435.5568948984146
+        ],
+        [
+          219.94874833524224,
+          435.5568948984146
+        ]
+      ]
+    },
+    {
+      "title": "Am25S09",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          43.440742705259524,
+          17.230654992789866
+        ],
+        [
+          59.91826580035797,
+          17.230654992789866
+        ],
+        [
+          59.91826580035797,
+          64.4276664947795
+        ],
+        [
+          43.440742705259524,
+          64.4276664947795
+        ]
+      ]
+    },
+    {
+      "title": "PIN DESCRIPTION",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          220.94860513882,
+          25.4714030328198
+        ],
+        [
+          303.3449977040291,
+          25.4714030328198
+        ],
+        [
+          303.3449977040291,
+          36.70878672376971
+        ],
+        [
+          220.94860513882,
+          36.70878672376971
+        ]
+      ]
+    },
+    {
+      "title": "FUNCTION TABLE",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          223.19554010633343,
+          198.52711187344843
+        ],
+        [
+          304.0851989368167,
+          198.52711187344843
+        ],
+        [
+          304.0851989368167,
+          210.4200096130371
+        ],
+        [
+          223.19554010633343,
+          210.4200096130371
+        ]
+      ]
+    },
+    {
+      "title": "ABSOLUTE MAXIMUM RATINGS",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          90.77906181290746,
+          27.555001258850098
+        ],
+        [
+          232.94249823689458,
+          26.96972085827979
+        ],
+        [
+          232.94249823689458,
+          36.87047043442726
+        ],
+        [
+          90.77906181290746,
+          36.87047043442726
+        ]
+      ]
+    },
+    {
+      "title": "OPERATING RANGES",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          318.46499758958817,
+          26.220561945549793
+        ],
+        [
+          415.79999685287476,
+          26.220561945549793
+        ],
+        [
+          415.79999685287476,
+          35.97023601830006
+        ],
+        [
+          318.46499758958817,
+          35.97023601830006
+        ]
+      ]
+    },
+    {
+      "title": "Commercial (C) Devices\nTemperature ....................................",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          272.62810939162875,
+          39.70542237468969
+        ],
+        [
+          461.37064666275637,
+          39.70542237468969
+        ],
+        [
+          461.37064666275637,
+          58.750080808997154
+        ],
+        [
+          272.62810939162875,
+          58.750080808997154
+        ]
+      ]
+    },
+    {
+      "title": "DC CHARACTERISTICS over operating range unless otherwise specified",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          68.90600567041166,
+          173.0015704035759
+        ],
+        [
+          338.7824974358082,
+          171.55739101516866
+        ],
+        [
+          338.7824974358082,
+          182.70844584703445
+        ],
+        [
+          68.90600567041166,
+          183.54393361884857
+        ]
+      ]
+    },
+    {
+      "title": "SWITCHING CHARACTERISTICS (T_A = +25^{\\circ}C)",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          71.58374945819378,
+          400.8000183105469
+        ],
+        [
+          256.8995646190348,
+          400.05085939781685
+        ],
+        [
+          256.8995646190348,
+          411.4462687969208
+        ],
+        [
+          71.58374945819378,
+          412.0374020014968
+        ]
+      ]
+    },
+    {
+      "title": "LOADING RULES (In Unit Loads)",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          181.79437362402678,
+          20.976449556439835
+        ],
+        [
+          314.5708954518793,
+          20.976449556439835
+        ],
+        [
+          314.5708954518793,
+          31.136368609964848
+        ],
+        [
+          181.79437362402678,
+          31.136368609964848
+        ]
+      ]
+    },
+    {
+      "title": "SCHOTTKY INPUT/OUTPUT\nCURRENT INTERFACE CONDITIONS",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          170.01807920851573,
+          297.41608835380765
+        ],
+        [
+          329.8049975037575,
+          295.91777052834766
+        ],
+        [
+          329.8049975037575,
+          317.19563949108124
+        ],
+        [
+          170.01807920851573,
+          317.19563949108124
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          39
+        ],
+        [
+          "Span",
+          28
+        ],
+        [
+          "TableCell",
+          16
+        ],
+        [
+          "SectionHeader",
+          5
+        ],
+        [
+          "ListItem",
+          4
+        ],
+        [
+          "PageFooter",
+          3
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Table",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 3,
+        "llm_error_count": 0,
+        "llm_tokens_used": 7869,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          96
+        ],
+        [
+          "Span",
+          3
+        ],
+        [
+          "PageFooter",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 1,
+        "llm_error_count": 0,
+        "llm_tokens_used": 2200,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          98
+        ],
+        [
+          "Span",
+          14
+        ],
+        [
+          "Line",
+          10
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "PageFooter",
+          2
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 3,
+        "llm_error_count": 0,
+        "llm_tokens_used": 8097,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          75
+        ],
+        [
+          "Span",
+          4
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "Text",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 1,
+        "llm_error_count": 0,
+        "llm_tokens_used": 1781,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          359
+        ],
+        [
+          "Line",
+          21
+        ],
+        [
+          "Span",
+          20
+        ],
+        [
+          "Text",
+          7
+        ],
+        [
+          "Table",
+          6
+        ],
+        [
+          "SectionHeader",
+          5
+        ],
+        [
+          "PageFooter",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "ListItem",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 12,
+        "llm_error_count": 0,
+        "llm_tokens_used": 35081,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 5,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          178
+        ],
+        [
+          "Line",
+          24
+        ],
+        [
+          "Span",
+          15
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageFooter",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 2,
+        "llm_error_count": 0,
+        "llm_tokens_used": 5015,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data/am25s09"
+}
