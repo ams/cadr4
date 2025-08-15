@@ -1,6 +1,5 @@
 -- Twelve-Input Parity Checker/Generator
 -- AMD Am93S48
--- doc/ttl/am93s48.pdf
 
 library ieee;
 use ieee.std_logic_1164.all;

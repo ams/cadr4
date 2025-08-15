@@ -1,6 +1,5 @@
 -- (512x8) 4096-Bit TTL PROM
 -- Texas Instruments SN74S472
--- doc/ttl/sn74s472.pdf
 
 library ieee;
 use ieee.std_logic_1164.all;

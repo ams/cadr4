@@ -1,6 +1,5 @@
 -- Logic Delay Module
 -- Engineered Components Company TTLDM Generic Model
--- doc/ttl/ttldm.pdf
 
 library ieee;
 use ieee.std_logic_1164.all;

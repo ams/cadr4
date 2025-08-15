@@ -1,6 +1,5 @@
 -- Dual 4-2 Input AND-OR gates
 -- Fairchild 9S42
--- doc/ttl/dm9s42.pdf
 
 library ieee;
 use ieee.std_logic_1164.all;

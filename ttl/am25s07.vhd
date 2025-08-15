@@ -1,6 +1,5 @@
 -- Hex Parallel D Registers with Register Enable
 -- AMD Am25S07
--- doc/ttl/am25s07.pdf
 
 library ieee;
 use ieee.std_logic_1164.all;

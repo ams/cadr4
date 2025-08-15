@@ -1,6 +1,5 @@
 -- 4096 X 1 Bt Static RAM
 -- Intel 2147H
--- doc/ttl/d2147.pdf
 
 library ieee;
 use ieee.std_logic_1164.all;

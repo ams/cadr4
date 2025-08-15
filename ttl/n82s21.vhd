@@ -1,6 +1,5 @@
 -- 32x2 WWRM (Write-While-Read Memory) RAM
 -- Signetics N82S21
--- doc/ttl/n82s21.pdf
 
 -- A Write While Read Memory element is a RAM provided with output latches,
 -- in such a way that (read out) data may be retained in the latches either 

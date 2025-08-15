@@ -1,6 +1,5 @@
 -- Dual 8-Bit Shift Register
 -- Fairchild DM9328
--- doc/ttl/dm9328.pdf
 
 library ieee;
 use ieee.std_logic_1164.all;

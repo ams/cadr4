@@ -1,6 +1,5 @@
 -- (32x8) 256-Bit TTL PROM
 -- National Semiconductor 74S188
--- doc/ttl/sn74s188.pdf
 
 library ieee;
 use ieee.std_logic_1164.all;

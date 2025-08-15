@@ -32,11 +32,14 @@ begin
     disable_b => disable_b
     );
 
-  -- External pull-ups on bus (weak high)
-  bus1 <= 'H' when bus1 = 'Z' else bus1;
-  bus2 <= 'H' when bus2 = 'Z' else bus2;
-  bus3 <= 'H' when bus3 = 'Z' else bus3;
-  bus4 <= 'H' when bus4 = 'Z' else bus4;
+  -- Model weak pull-up resistors on the bus lines.
+  -- In an open-collector system, the bus is pulled high by resistors.
+  -- When the driver is active, it pulls the line low ('0').
+  -- When the driver is inactive ('Z'), the resistor pulls it high ('H').
+  bus1 <= 'H';
+  bus2 <= 'H';
+  bus3 <= 'H';
+  bus4 <= 'H';
 
   process
   begin
@@ -47,7 +50,9 @@ begin
     wait for 10 ns;
     assert out1 = '0' and out2 = '0' and out3 = '0' and out4 = '0'
       report "Test 1a failed: enabled mode, outputs should match inputs" severity error;
-    -- When inputs are low, open collector outputs are high-Z, pulled high by external resistors
+    -- When inputs are low, open collector outputs are high-Z, so bus is pulled high.
+    report "DEBUG: bus1=" & std_logic'image(bus1) & " bus2=" & std_logic'image(bus2) & 
+           " bus3=" & std_logic'image(bus3) & " bus4=" & std_logic'image(bus4);
     assert bus1 = 'H' and bus2 = 'H' and bus3 = 'H' and bus4 = 'H'
       report "Test 1b failed: enabled mode, bus should be pulled high when inputs low" severity error;
 
@@ -57,7 +62,7 @@ begin
     assert out1 = '1' and out2 = '0' and out3 = '1' and out4 = '0'
       report "Test 2a failed: enabled mode, outputs should match inputs" severity error;
     assert bus1 = '0' and bus2 = 'H' and bus3 = '0' and bus4 = 'H'
-      report "Test 2b failed: enabled mode, bus should be 0 when input high, H when low" severity error;
+      report "Test 2b failed: enabled mode, bus incorrect for mixed inputs" severity error;
 
     -- Test 3: Enabled mode with all inputs high
     in1 <= '1'; in2 <= '1'; in3 <= '1'; in4 <= '1';
@@ -72,11 +77,11 @@ begin
     disable_a <= '1'; disable_b <= '0';
     in1 <= '0'; in2 <= '0'; in3 <= '0'; in4 <= '0';  -- Don't matter when disabled
     wait for 10 ns;
-    -- Bus should be pulled high, outputs should read those values
+    -- Bus should be pulled high when disabled
     assert bus1 = 'H' and bus2 = 'H' and bus3 = 'H' and bus4 = 'H'
       report "Test 4a failed: disabled mode, bus should be pulled high" severity error;
     assert out1 = '1' and out2 = '1' and out3 = '1' and out4 = '1'
-      report "Test 4b failed: disabled mode, outputs should read bus high" severity error;
+      report "Test 4b failed: disabled mode, outputs should read bus H as high" severity error;
 
     -- Test 5: External driver overrides pull-up
     disable_a <= '1'; disable_b <= '0';

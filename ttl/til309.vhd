@@ -1,6 +1,5 @@
 -- Numeric Displays With Logic
 -- Texas Instruments TIL309
--- doc/ttl/til309.pdf
 
 library ieee;
 use ieee.std_logic_1164.all;

@@ -1,6 +1,5 @@
 -- Four-Bit Shifter with Three-State Outputs
 -- AMD Am25S10
--- doc/ttl/am25s10.pdf
 
 library ieee;
 use ieee.std_logic_1164.all;

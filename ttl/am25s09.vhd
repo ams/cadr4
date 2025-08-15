@@ -1,6 +1,5 @@
 -- Quad Two-Input High-Speed Register
 -- AMD Am25S09
--- doc/ttl/am25s09.pdf
 
 library ieee;
 use ieee.std_logic_1164.all;
