@@ -61,27 +61,24 @@ If the file contains "ignore" in its first line, the file is ignored, `--read-wa
 
 ## File Organization
 
-- cadr: cadr components based on CADR schematics
-- dip: dip components used by cadr components
+- cadr: cadr and icmem components based on CADR schematics
+- cadr1: busint components based on CADR1 schematics
+- cosim: cosimulation sources (vhdl <-> c)
+- dip: dip components used by cadr, icmem and busint components
 - doc: various documents and resources
-- ghdl-uart:
 - helper: non-CADR components required to run cadr_tb
 - rom: ROM files loaded to CADR (P)ROMs and RAMs
 - scripts: utility scripts
-- soap: utility to generate cadr_*_suds.vhd files
+- soap: utility to generate SUDS (*_suds.vhd) files
 - ttl: ttl components used by dip components
 
 Each folder have a README.md containing more information.
 
-|   cadr_tb     |
-| cadr |        |
-| dip  | helper |
-| ttl  |        |
-|     GHDL      |
-
 ## Packages
 
-- work.cadr: cadr components
+- work.cadr_book: cadr components
+- work.icmem_book: icmem components
+- work.busint_book: busint components
 - work.dip: dip components
 - work.amd,ecc,fairchild,intel,signetics,sn74,other: ttl components
 - work.misc: misc functions and procedures (no components)

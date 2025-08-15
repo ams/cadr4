@@ -22,3 +22,7 @@ The schematics in PNG format.
 ## ttl
 
 The datasheets of TTL components as well as ISCAS-85 gate-level models of 74181 and 74182.
+
+# ttl.dm
+
+The markdown version of pdf files under ttl folder. The conversion is done using [marker](https://github.com/datalab-to/marker) using local GPU and also remote LLM (Gemini).
