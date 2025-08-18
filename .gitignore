@@ -14,5 +14,7 @@ __pycache__/
 .surfer/
 .vscode/
 build/
+cosim_vhpidirect_test/
+cosim_vpi_test/
 soap/soap
 vivado/

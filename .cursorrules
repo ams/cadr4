@@ -2,7 +2,7 @@
 
 - This project is a digitally accurate functional simulation of the MIT CADR Lisp Machine.
 - This project is not a timing verification, hence the components have no delays unless the component itself is a delay.
-- This project will not be synthesized. It will be simulated using GHDL with LLVM backend.
+- This project will not be synthesized. It will be simulated using GHDL with LLVM backend. At the moment, GHDL version 6.0.0-dev is used.
 - This project complies with VHDL-2008. You MUST write VHDL-2008 compliant code.
 
 # General Guidelines
