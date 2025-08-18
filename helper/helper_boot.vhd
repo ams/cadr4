@@ -1,14 +1,13 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-entity helper_required_signals is
+entity helper_boot is
   port (
-    \-halt\: out std_logic := '1';
     \-lm boot\: out std_logic
   );
 end entity;
 
-architecture structural of helper_required_signals is
+architecture structural of helper_boot is
 begin
   process
   begin

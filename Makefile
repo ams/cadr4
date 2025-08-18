@@ -114,7 +114,7 @@ $(BUILDDIR)/work-obj$(GHDLSTD).cf: $(SRCS)
 # %_tb has no %.vhd etc. dependency because these are resolved in cf
 # ghdl make is like an extra layer over make build system
 
-$(BUILDDIR)/%_tb: $(BUILDDIR)/work-obj$(GHDLSTD).cf $(COSIM_VPI)
+$(BUILDDIR)/%_tb: $(BUILDDIR)/work-obj$(GHDLSTD).cf
 	mkdir -p $(BUILDDIR)
 	$(GHDL) make $(GHDLMAKEOPTIONS) --std=$(GHDLSTD) --workdir=$(BUILDDIR) -o $@ $(notdir $@)
 
@@ -222,12 +222,19 @@ endif
 
 # --workdir does not work for this purpose with ghdl run
 .PHONY: cosim-run-tb
-cosim-run-tb: $(TB)
+cosim-run-tb: $(TB) $(COSIM_VPI)
 	$< $(GHDLSIMOPTIONS) --vpi=$(COSIM_VPI)
 
 .PHONY: run-tb
 run-tb: $(TB)
 	$< $(GHDLSIMOPTIONS)
+
+.PHONY: cosim-wf-tb
+cosim-wf-tb: $(TB) $(COSIM_VPI)
+ifeq ($(WAVEOPTFILERECREATE),1)	
+	$(RM) $(WAVEOPTFILE)
+endif
+	$< $(GHDLSIMOPTIONS) --vpi=$(COSIM_VPI) $(GHDLWAVEOPTIONS) $(GHDLSTOPTIMEOPTION)
 
 .PHONY: wf-tb
 wf-tb: $(TB)
@@ -235,6 +242,11 @@ ifeq ($(WAVEOPTFILERECREATE),1)
 	$(RM) $(WAVEOPTFILE)
 endif
 	$< $(GHDLSIMOPTIONS) $(GHDLWAVEOPTIONS) $(GHDLSTOPTIMEOPTION)
+
+.PHONY: cosim-surfer-tb
+cosim-surfer-tb: $(TB)
+	TB=$(TB) make cosim-wf-tb
+	surfer $(WAVEFILE)
 
 .PHONY: surfer-tb
 surfer-tb: $(TB)
@@ -251,11 +263,19 @@ run-%: $(BUILDDIR)/%_tb
 	TB=$< make run-tb
 
 # wf targets
+.PHONY: cosim-wf-%
+cosim-wf-%: $(BUILDDIR)/%_tb
+	TB=$< make cosim-wf-tb
+
 .PHONY: wf-%
 wf-%: $(BUILDDIR)/%_tb
 	TB=$< make wf-tb
 
 # surfer targets
+.PHONY: cosim-surfer-%
+cosim-surfer-%: $(BUILDDIR)/%_tb
+	TB=$< make cosim-surfer-tb
+
 .PHONY: surfer-%
 surfer-%: $(BUILDDIR)/%_tb
 	TB=$< make surfer-tb
@@ -286,6 +306,9 @@ print-config:
 	$(info GHDLMAKEOPTIONS: $(GHDLMAKEOPTIONS))
 	$(info GHDLIMPORTOPTIONS: $(GHDLIMPORTOPTIONS))
 	$(info GHDLSIMOPTIONS: $(GHDLSIMOPTIONS))
+	$(info CADR4_TILONCONSOLE: $(CADR4_TILONCONSOLE))
+	$(info CADR4_STOPTIME: $(CADR4_STOPTIME))
+	$(info CADR4_NOASSERTS: $(CADR4_NOASSERTS))
 # this is to avoid make complaining about nothing to be done
 	@echo > /dev/null
 
@@ -301,9 +324,9 @@ help:
 	@echo "make clean: clean build directory"
 	@echo "make help: show this help"
 	@echo "make print-config: show sources, tbs etc."
-	@echo "make run-X: run testbench X (build/X_tb)"
-	@echo "make wf-X: run testbench X (build/X_tb) to create waveforms"
-	@echo "make surfer-X: same as wf-X but also runs surfer with the waveform file"
+	@echo "make (cosim-)run-X: run testbench X (build/X_tb), add cosim- to use VPI"
+	@echo "make (cosim-)wf-X: run testbench X (build/X_tb) to create waveforms, add cosim- to use VPI"
+	@echo "make (cosim-)surfer-X: same as wf-X but also runs surfer with the waveform file, add cosim- to use VPI"
 	@echo "make regen: regenerate (fast-promh-cadr, fast-promh-icmem, busint, packages)"
 	@echo "make regenerate-packages: regenerate packages (dip, helper, ttls)"
 	@echo "make regenerate-fast-promh-cadr-suds: autogenerate fast promh cadr suds sources"
