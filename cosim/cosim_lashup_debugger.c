@@ -33,10 +33,10 @@ static vpiHandle dbd_h[16];
 
 // Forward declarations
 static void register_rw_callback();
-
-void process_udp_commands();
+void process_udp_commands(p_cb_data cb_data);
 void read_debug_response();
-void send_udp_response();
+void check_for_ack();
+void send_udp_response(p_cb_data cb_data);
 
 // Terminate simulation with error
 static void terminate_simulation_with_error(const char* error_msg) {
@@ -80,7 +80,7 @@ PLI_INT32 main_callback(p_cb_data cb_data) {
         
         switch (debug_state) {
             case DEBUG_IDLE:
-                process_udp_commands();
+                process_udp_commands(cb_data);
                 break;
                 
             case DEBUG_WAITING_ACK:
@@ -94,7 +94,7 @@ PLI_INT32 main_callback(p_cb_data cb_data) {
                 break;
                 
             case DEBUG_SENDING_UDP:
-                send_udp_response();
+                send_udp_response(cb_data);
                 break;
         }
         
@@ -140,6 +140,7 @@ static void register_rw_callback() {
 
 // Initialize UDP socket
 static void init_udp_socket() {
+
     sockfd = socket(AF_INET, SOCK_DGRAM, 0);
 
     if (sockfd < 0) {
@@ -226,7 +227,7 @@ static vpiHandle find_testbench_handle(const char** testbench_names, char** foun
 
 // Initialize VPI handles and UDP socket
 PLI_INT32 start_of_simulation_cb(p_cb_data cb_data) {
-    vpi_printf("=== START OF SIMULATION CALLBACK CALLED ===\n");
+    
     (void)cb_data;
     
     // Get VPI handles for debug interface - determine testbench name dynamically
@@ -248,52 +249,37 @@ PLI_INT32 start_of_simulation_cb(p_cb_data cb_data) {
         vpi_printf("No testbench found, terminating simulation\n");
         vpi_control(vpiFinish, 1);
         return 0;
-    }
-    
-    vpi_printf("Debugger is attached to %s\n", tb_name);
+    }    
 
     char signal_path[256];
     
     // Set up debuggee_tb debug interface signals
     sprintf(signal_path, "%s.\\-debug in req\\", tb_name);
     debug_req_n_h = get_handle(signal_path);
-    vpi_printf("Found signal: %s\n", signal_path);
     
     sprintf(signal_path, "%s.\\debug in ack\\", tb_name);
     debug_ack_h = get_handle(signal_path);
-    vpi_printf("Found signal: %s (handle=%p)\n", signal_path, debug_ack_h);
-    
-    // Test reading the ACK signal immediately
-    if (debug_ack_h) {
-        int ack_test = read_scalar(debug_ack_h);
-        vpi_printf("Initial ACK value read: %d\n", ack_test);
-    } else {
-        vpi_printf("ERROR: Failed to get ACK signal handle!\n");
-    }
-    
+        
     sprintf(signal_path, "%s.\\debug in a0\\", tb_name);
     debug_a0_h = get_handle(signal_path);
-    vpi_printf("Found signal: %s\n", signal_path);
     
     sprintf(signal_path, "%s.\\debug in a1\\", tb_name);
     debug_a1_h = get_handle(signal_path);
-    vpi_printf("Found signal: %s\n", signal_path);
     
     sprintf(signal_path, "%s.\\debug in wr\\", tb_name);
     debug_wr_h = get_handle(signal_path);
-    vpi_printf("Found signal: %s\n", signal_path);
     
     // Get debug data bus handles
     for (int i = 0; i < 16; i++) {
         sprintf(signal_path, "%s.dbd%d", tb_name, i);
         dbd_h[i] = get_handle(signal_path);
-        vpi_printf("Found signal: %s\n", signal_path);
+        
     }
-    
+
+    vpi_printf("Debugger is attached to %s\n", tb_name);
+
     // Initialize UDP socket
     init_udp_socket();
-    
-    // ACK checking is now handled in main callback
     
     // Register main callback (read-write for signal control)
     register_rw_callback();
@@ -303,6 +289,7 @@ PLI_INT32 start_of_simulation_cb(p_cb_data cb_data) {
 
 // Cleanup on simulation end
 PLI_INT32 end_of_simulation_cb(p_cb_data cb_data) {
+
     (void)cb_data;
     
     if (sockfd >= 0) {
@@ -315,7 +302,6 @@ PLI_INT32 end_of_simulation_cb(p_cb_data cb_data) {
 }
 
 void register_vpi_callbacks() {
-    vpi_printf("=== VPI MODULE LOADING - register_vpi_callbacks called ===\n");
 
     s_cb_data cb_data;
     vpiHandle cb_handle;
@@ -327,11 +313,9 @@ void register_vpi_callbacks() {
     cb_data.value = NULL;
     cb_data.user_data = NULL;
 
-    vpi_printf("Attempting to register start of simulation callback...\n");
     cb_handle = vpi_register_cb(&cb_data);
 
     if (!cb_handle) {
-        vpi_printf("ERROR: Failed to register start of simulation callback\n");
         terminate_simulation_with_error("Failed to register start of simulation callback");
     } else {
         vpi_printf("Start of simulation callback registered successfully\n");
@@ -348,11 +332,14 @@ void register_vpi_callbacks() {
 
     if (!cb_handle) {
         terminate_simulation_with_error("Failed to register end of simulation callback");
+    } else {
+        vpi_printf("End of simulation callback registered successfully\n");
     }
 }
 
 // State machine functions
-void process_udp_commands() {
+void process_udp_commands(p_cb_data cb_data) {
+    
     if (sockfd < 0) {
         vpi_printf("ERROR: Cannot process UDP commands - socket not initialized\n");
         return;
@@ -363,8 +350,13 @@ void process_udp_commands() {
                         (struct sockaddr *)&cliaddr, &cliaddr_len);
     
     if (n > 0) {
+
+        // simulation time in nanoseconds
+        const uint64_t sim_time_ns = (((uint64_t)cb_data->time->high << 32) | (uint64_t)cb_data->time->low) / 1000;
+
         buffer[n] = '\0';
-        vpi_printf("Received UDP command: %s\n", buffer);
+
+        vpi_printf("Received UDP command: %s @ %lluns\n", buffer, sim_time_ns);
         
         char cmd;
         int addr, data;
@@ -399,7 +391,6 @@ void process_udp_commands() {
             // Assert request
             write_scalar(debug_req_n_h, 0);
             debug_state = DEBUG_WAITING_ACK;
-            vpi_printf("Debug request asserted for read (debug_req_n_h=0)\n");
             
         } else {
             // Error
@@ -415,9 +406,6 @@ void check_for_ack() {
     int a0_value = read_scalar(debug_a0_h);
     int a1_value = read_scalar(debug_a1_h);
     int wr_value = read_scalar(debug_wr_h);
-    vpi_printf("Debug REQ check: value=%d (should be 0)\n", req_value);
-    vpi_printf("Debug A1=%d, A0=%d, WR=%d\n", a1_value, a0_value, wr_value);
-    vpi_printf("Debug ACK check: value=%d (VHDL reports ACK asserted but C reads %d)\n", ack_value, ack_value);
     if (ack_value) {
         vpi_printf("Debug ACK received\n");
         debug_state = DEBUG_READING_RESPONSE;
@@ -425,6 +413,7 @@ void check_for_ack() {
 }
 
 void read_debug_response() {
+
     int is_read_op = !read_scalar(debug_wr_h);
     
     if (is_read_op) {
@@ -448,13 +437,17 @@ void read_debug_response() {
     debug_state = DEBUG_SENDING_UDP;
 }
 
-void send_udp_response() {
+void send_udp_response(p_cb_data cb_data) {
+
+    // simulation time in nanoseconds
+    const uint64_t sim_time_ns = (((uint64_t)cb_data->time->high << 32) | (uint64_t)cb_data->time->low) / 1000;
+
     if (sockfd < 0) {
         vpi_printf("ERROR: Cannot send UDP response - socket not initialized\n");
     } else {
         sendto(sockfd, pending_response, strlen(pending_response), 0,
                (struct sockaddr *)&cliaddr, cliaddr_len);
-        vpi_printf("Sent UDP response: %s\n", pending_response);
+        vpi_printf("Sent UDP response: %s @ %luns\n", pending_response, sim_time_ns);
     }
     
     // Deassert debug request to complete handshake
