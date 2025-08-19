@@ -352,7 +352,7 @@ void process_udp_commands(p_cb_data cb_data) {
     if (n > 0) {
 
         // simulation time in nanoseconds
-        const uint64_t sim_time_ns = (((uint64_t)cb_data->time->high << 32) | (uint64_t)cb_data->time->low) / 1000;
+        const uint64_t sim_time_ns = (((uint64_t)cb_data->time->high << 32) | (uint64_t)cb_data->time->low) / 1000000;
 
         buffer[n] = '\0';
 
@@ -440,7 +440,7 @@ void read_debug_response() {
 void send_udp_response(p_cb_data cb_data) {
 
     // simulation time in nanoseconds
-    const uint64_t sim_time_ns = (((uint64_t)cb_data->time->high << 32) | (uint64_t)cb_data->time->low) / 1000;
+    const uint64_t sim_time_ns = (((uint64_t)cb_data->time->high << 32) | (uint64_t)cb_data->time->low) / 1000000;
 
     if (sockfd < 0) {
         vpi_printf("ERROR: Cannot send UDP response - socket not initialized\n");

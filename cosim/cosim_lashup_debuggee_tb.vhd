@@ -24,6 +24,7 @@ architecture sim of cosim_lashup_debuggee_tb is
     signal clk : std_logic := '0';
     
 begin
+
     -- Initialize data bus to high impedance
     dbd0 <= 'Z'; dbd1 <= 'Z'; dbd2 <= 'Z'; dbd3 <= 'Z';
     dbd4 <= 'Z'; dbd5 <= 'Z'; dbd6 <= 'Z'; dbd7 <= 'Z';
