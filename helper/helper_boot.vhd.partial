@@ -1,0 +1,9 @@
+  process
+  begin
+    \-lm boot\ <= '1';
+    wait for 50 ns;
+    \-lm boot\ <= '0';
+    wait for 50 ns;
+    \-lm boot\ <= '1';
+    wait;
+  end process;

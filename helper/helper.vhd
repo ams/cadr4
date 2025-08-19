@@ -3,12 +3,6 @@ use ieee.std_logic_1164.all;
 
 package helper is
 
-  component helper_boot is
-  port (
-      \-lm boot\: out std_logic
-    );
-  end component;
-
   component helper_bus_interface_cable is
   port (
       -- cadr:bcpins

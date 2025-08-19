@@ -417,7 +417,25 @@ class vEntity(vInterface):
         for package_name in sorted(package_names):
             print(f"use work.{package_name}.all;", file=f)
 
-    def dump_entity(self, f) -> None:
+    def _append_custom_instructions(self, f, custom_file) -> None:
+        """Append custom instructions from file after component instantiations."""
+        try:
+            with open(custom_file, 'r') as custom_f:
+                print("", file=f)
+                print("  -- Custom instructions from file:", file=f)
+                for line in custom_f:
+                    # Remove trailing newline and print with proper indentation
+                    line = line.rstrip('\n\r')
+                    if line.strip():  # Only print non-empty lines
+                        print(f"  {line}", file=f)
+                    else:
+                        print("", file=f)
+        except FileNotFoundError:
+            verbose(f"vEntity._append_custom_instructions: Custom file {custom_file} not found, skipping")
+        except Exception as e:
+            verbose(f"vEntity._append_custom_instructions: Error reading custom file {custom_file}: {e}")
+
+    def dump_entity(self, f, custom_file=None) -> None:
         print("library ieee;", file=f)
         print("use ieee.std_logic_1164.all;", file=f)
 
@@ -441,6 +459,10 @@ class vEntity(vInterface):
                 verbose(f"vEntity.dump_entity: skipping component {component.name} with no ports")
                 continue
             component.dump_component_instantiation(f)
+
+        # Append custom instructions if provided
+        if custom_file is not None:
+            self._append_custom_instructions(f, custom_file)
 
         print("end architecture;", file=f);  
 
@@ -660,6 +682,10 @@ def main():
         help="The name of the testbench")
 
     parser.add_argument(
+        "--custom-file",
+        help="Optional file containing custom instructions to append after component instantiations")
+
+    parser.add_argument(
         "testbench_filepath",
         help="Testbench file path")
     
@@ -689,7 +715,7 @@ def main():
 
     verbose(f"vSystem.main: generating testbench file: {args.testbench_filepath}")
     with open(args.testbench_filepath, "w") as f:
-        tb.dump_entity(f)
+        tb.dump_entity(f, args.custom_file)
 
 
 if __name__ == "__main__":

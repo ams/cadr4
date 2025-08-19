@@ -1,8 +1,14 @@
 
 # helper
 
-This folder contains helper components.
+This folder contains helper components. helper components are required for cadr_tb to run. 
 
-helper components are required for cadr_tb to run. There are a few external (bus interface) signals that has to be driven until the bus interface is implemented.
+- helper_boot.vhd.partial: added to cadr_boot_tb during autogeneration to trigger booting
 
-At the moment, boot is initiated with helper_spy, loading the mode register's PROG.BOOT. There is actually no such register, selecting mode register (eadr=0101), setting spy7 (spy7=1) and enabling db (debug?) write (\-dbwrite\=0), drives \-boot\ to low in olord2 and initiates boot.
+- helper_bus_interface_cable.vhd: connects CADR (cadr, icmem) to CADR1 (busint)
+
+- helper_bus_monitor.vhd: combines scalar signals to vector (bus) signals to simplify signal monitoring, it has no functional effect.
+
+- helper_deassert_halt.vhd: deasserts -halt, this is required for CADR to start.
+
+- helper_stop_if_prom_fails.vhd: stops simulation when PC reaches #o313.
