@@ -7,7 +7,7 @@
 # use TIL replacement that prints to console during simulation
 CADR4_TILONCONSOLE  ?= 1
 # set to 0 for no limit
-CADR4_STOPTIME      ?= 10ms
+CADR4_STOPTIME      ?= 0
 # set to 1 to disable assertions to improve performance
 CADR4_NOASSERTS		?= 0
 
@@ -219,15 +219,11 @@ else
 GHDLWAVEOPTIONS := --wave=$(WAVEFILE)
 endif
 
-# cadr_tb runs with a time limit
-ifeq ($(TB),build/cadr_tb)
+# add stoptime if requested
 ifeq ($(CADR4_STOPTIME),0)
 GHDLSTOPTIMEOPTION :=
 else
 GHDLSTOPTIMEOPTION := --stop-time=$(CADR4_STOPTIME)
-endif
-else
-GHDLSTOPTIMEOPTION :=
 endif
 
 # --workdir does not work for this purpose with ghdl run

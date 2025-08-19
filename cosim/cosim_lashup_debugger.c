@@ -16,19 +16,27 @@ static int sockfd = -1;
 static struct sockaddr_in servaddr, cliaddr;
 static socklen_t cliaddr_len = sizeof(cliaddr);
 static char pending_response[BUFFER_SIZE] = {0};
-static int has_pending_response = 0;
 
-// Simple flags for debug operation
-static int debug_transaction_pending = 0;
+// Debug transaction state machine
+typedef enum {
+    DEBUG_IDLE = 0,
+    DEBUG_WAITING_ACK = 1,
+    DEBUG_READING_RESPONSE = 2,
+    DEBUG_SENDING_UDP = 3
+} debug_state_t;
+
+static debug_state_t debug_state = DEBUG_IDLE;
 
 // VPI handles for debug interface
 static vpiHandle debug_req_n_h, debug_ack_h, debug_a0_h, debug_a1_h, debug_wr_h;
 static vpiHandle dbd_h[16];
 
 // Forward declarations
-static void register_callback();
-PLI_INT32 process_udp_commands_cb(p_cb_data cb_data);
-PLI_INT32 check_transaction_completion_cb(p_cb_data cb_data);
+static void register_rw_callback();
+
+void process_udp_commands();
+void read_debug_response();
+void send_udp_response();
 
 // Terminate simulation with error
 static void terminate_simulation_with_error(const char* error_msg) {
@@ -66,37 +74,67 @@ static void write_scalar(vpiHandle handle, PLI_INT32 val) {
     vpi_put_value(handle, &value_s, NULL, vpiNoDelay);
 }
 
-PLI_INT32 callback(p_cb_data cb_data) {
-    check_transaction_completion_cb(cb_data);
-    process_udp_commands_cb(cb_data);
-    register_callback();
+PLI_INT32 main_callback(p_cb_data cb_data) {
+    while (1) {
+        debug_state_t old_state = debug_state;
+        
+        switch (debug_state) {
+            case DEBUG_IDLE:
+                process_udp_commands();
+                break;
+                
+            case DEBUG_WAITING_ACK:
+                if (read_scalar(debug_ack_h) == 1) {
+                    debug_state = DEBUG_READING_RESPONSE;
+                }
+                break;
+                
+            case DEBUG_READING_RESPONSE:
+                read_debug_response();
+                break;
+                
+            case DEBUG_SENDING_UDP:
+                send_udp_response();
+                break;
+        }
+        
+        // Special case: IDLE→WAITING_ACK needs a pause for VHDL to see signal changes
+        if (old_state == DEBUG_IDLE && debug_state == DEBUG_WAITING_ACK) {
+            break; // Wait for next callback to let VHDL respond
+        }
+        
+        // For all other cases: if no state change, wait for next callback
+        if (debug_state == old_state) {
+            break;
+        }
+        
+        // State changed and it's safe to continue - loop again
+    }
+    
+    // Re-register callback for next cycle
+    register_rw_callback();
     return 0;
 }
 
-// Helper function to register callback
-static void register_callback() {
-    
+// Helper function to register read-write callback
+static void register_rw_callback() {
     s_cb_data cb_data;
-
-    /*
     s_vpi_time time_s;    
     time_s.type = vpiSimTime;
     time_s.high = 0;
     time_s.low = 0;
     time_s.real = 0.0;
-    */
     
-    cb_data.reason = cbNextSimTime;
-    cb_data.cb_rtn = callback;
+    cb_data.reason = cbReadWriteSynch;
+    cb_data.cb_rtn = main_callback;
     cb_data.obj = NULL;
-    cb_data.time = NULL; //&time_s;
+    cb_data.time = &time_s;
     cb_data.value = NULL;
     cb_data.user_data = NULL;
     
     vpiHandle cb_handle = vpi_register_cb(&cb_data);
-
     if (!cb_handle) {
-        terminate_simulation_with_error("Failed to register callback");
+        terminate_simulation_with_error("Failed to register read-write callback");
     }
 }
 
@@ -150,170 +188,6 @@ static void init_udp_socket() {
     }
 }
 
-// Process incoming UDP commands (called in cbReadWriteSynch)
-PLI_INT32 process_udp_commands_cb(p_cb_data cb_data) {
-    (void)cb_data;
-    
-    if (sockfd < 0) return 0;
-    
-        // Check for new UDP commands if no transaction is pending
-    if (!debug_transaction_pending) {
-
-        char buffer[BUFFER_SIZE];
-        ssize_t n = recvfrom(sockfd, buffer, BUFFER_SIZE-1, 0, 
-                           (struct sockaddr *)&cliaddr, &cliaddr_len);
-        
-        if (n > 0) {
-            buffer[n] = '\0';
-            vpi_printf("Received UDP command: %s\n", buffer);
-            
-            char command;
-            int address, data;
-            int parse_result;
-            int is_write = 0;
-            
-            if (buffer[0] == 'R') {
-
-                parse_result = sscanf(buffer, "%c %x", &command, &address);
-
-                if (parse_result != 2) {
-                    strcpy(pending_response, "2 Invalid read command format");
-                    has_pending_response = 1;
-                    return 0;
-                }
-
-                is_write = 0;
-                data = 0;
-
-            } else if (buffer[0] == 'W') {
-
-                parse_result = sscanf(buffer, "%c %x %x", &command, &address, &data);
-
-                if (parse_result != 3) {
-                    strcpy(pending_response, "3 Invalid write command format");
-                    has_pending_response = 1;
-                    return 0;
-                }
-
-                is_write = 1;
-
-            } else {
-
-                strcpy(pending_response, "1 Unknown command");
-                has_pending_response = 1;
-                return 0;
-
-            }
-            
-            // Perform debug transaction immediately
-            vpi_printf("Performing %s transaction, addr=0x%X, data=0x%X\n", 
-                      is_write ? "WRITE" : "READ", address, data);
-            
-            // Set address and write flag
-            write_scalar(debug_a0_h, address & 1);
-            write_scalar(debug_a1_h, (address >> 1) & 1);
-            write_scalar(debug_wr_h, is_write);
-            
-            // Set data bus for write operations, or set to Z for read operations
-            if (is_write) {
-
-                for (int i = 0; i < 16; i++) {
-                    write_scalar(dbd_h[i], (data >> i) & 1);
-                }
-
-            } else {
-
-                // For read operations, set data bus to high impedance (Z)
-                s_vpi_value value_s;
-                value_s.format = vpiScalarVal;
-                value_s.value.scalar = vpiZ;
-
-                for (int i = 0; i < 16; i++) {
-                    vpi_put_value(dbd_h[i], &value_s, NULL, vpiNoDelay);
-                }
-
-            }
-            
-            // Assert debug request (active low)
-            write_scalar(debug_req_n_h, 0);
-            debug_transaction_pending = 1;
-            vpi_printf("Debug request asserted\n");
-        }
-    }
-    
-    return 0;
-}
-
-// Check for transaction completion (called in cbReadOnlySynch)
-PLI_INT32 check_transaction_completion_cb(p_cb_data cb_data) {
-    (void)cb_data;
-    
-    // Check if pending transaction completed
-    if (debug_transaction_pending && read_scalar(debug_ack_h)) {
-        vpi_printf("Debug ACK received\n");
-        
-        // Read data from bus for read operations
-        int read_data = 0;
-        int is_read_op = !read_scalar(debug_wr_h);
-
-        if (is_read_op) {  // Read operation
-
-            // Use vpi_get_value with vpiNoDelay to get current driven values
-            s_vpi_value value_s;
-
-            for (int i = 0; i < 16; i++) {
-                value_s.format = vpiIntVal;
-                vpi_get_value(dbd_h[i], &value_s);
-
-                if (value_s.value.integer == 1) {
-                    read_data |= (1 << i);
-                }
-
-            }
-
-            vpi_printf("Read data bits from bus: 0x%X\n", read_data);
-        }
-        
-        // Deassert debug request
-        write_scalar(debug_req_n_h, 1);
-        
-        // Don't release forced signals immediately - let them stay forced
-        // The signals will be released when the transaction completes
-        
-        debug_transaction_pending = 0;
-        
-        // Prepare response
-        if (!is_read_op) {  // Write operation
-
-            sprintf(pending_response, "0");
-            vpi_printf("Write complete, prepared response: '0'\n");
-
-        } else {  // Read operation
-
-            sprintf(pending_response, "0 %X", read_data);
-            vpi_printf("Read complete, prepared response: '0 %X'\n", read_data);
-
-        }
-
-        has_pending_response = 1;
-    }
-    
-    // Send pending UDP responses
-    if (has_pending_response) {
-
-        sendto(sockfd, pending_response, strlen(pending_response), 0,
-               (const struct sockaddr *)&cliaddr, cliaddr_len);
-
-        vpi_printf("Sent UDP response: %s\n", pending_response);
-        
-        // Clear the response
-        pending_response[0] = '\0';
-        has_pending_response = 0;
-    }
-    
-    return 0;
-}
-
 // Helper function to search module names and return first found testbench or NULL
 static vpiHandle find_testbench_handle(const char** testbench_names, char** found_name) {
 
@@ -352,6 +226,7 @@ static vpiHandle find_testbench_handle(const char** testbench_names, char** foun
 
 // Initialize VPI handles and UDP socket
 PLI_INT32 start_of_simulation_cb(p_cb_data cb_data) {
+    vpi_printf("=== START OF SIMULATION CALLBACK CALLED ===\n");
     (void)cb_data;
     
     // Get VPI handles for debug interface - determine testbench name dynamically
@@ -386,7 +261,15 @@ PLI_INT32 start_of_simulation_cb(p_cb_data cb_data) {
     
     sprintf(signal_path, "%s.\\debug in ack\\", tb_name);
     debug_ack_h = get_handle(signal_path);
-    vpi_printf("Found signal: %s\n", signal_path);
+    vpi_printf("Found signal: %s (handle=%p)\n", signal_path, debug_ack_h);
+    
+    // Test reading the ACK signal immediately
+    if (debug_ack_h) {
+        int ack_test = read_scalar(debug_ack_h);
+        vpi_printf("Initial ACK value read: %d\n", ack_test);
+    } else {
+        vpi_printf("ERROR: Failed to get ACK signal handle!\n");
+    }
     
     sprintf(signal_path, "%s.\\debug in a0\\", tb_name);
     debug_a0_h = get_handle(signal_path);
@@ -410,10 +293,10 @@ PLI_INT32 start_of_simulation_cb(p_cb_data cb_data) {
     // Initialize UDP socket
     init_udp_socket();
     
-    // Register synchronization callbacks
-    s_cb_data cb_data_s;
+    // ACK checking is now handled in main callback
     
-    register_callback();
+    // Register main callback (read-write for signal control)
+    register_rw_callback();
     
     return 0;
 }
@@ -432,6 +315,7 @@ PLI_INT32 end_of_simulation_cb(p_cb_data cb_data) {
 }
 
 void register_vpi_callbacks() {
+    vpi_printf("=== VPI MODULE LOADING - register_vpi_callbacks called ===\n");
 
     s_cb_data cb_data;
     vpiHandle cb_handle;
@@ -443,10 +327,14 @@ void register_vpi_callbacks() {
     cb_data.value = NULL;
     cb_data.user_data = NULL;
 
+    vpi_printf("Attempting to register start of simulation callback...\n");
     cb_handle = vpi_register_cb(&cb_data);
 
     if (!cb_handle) {
+        vpi_printf("ERROR: Failed to register start of simulation callback\n");
         terminate_simulation_with_error("Failed to register start of simulation callback");
+    } else {
+        vpi_printf("Start of simulation callback registered successfully\n");
     }
     
     cb_data.reason = cbEndOfSimulation;
@@ -461,6 +349,118 @@ void register_vpi_callbacks() {
     if (!cb_handle) {
         terminate_simulation_with_error("Failed to register end of simulation callback");
     }
+}
+
+// State machine functions
+void process_udp_commands() {
+    if (sockfd < 0) {
+        vpi_printf("ERROR: Cannot process UDP commands - socket not initialized\n");
+        return;
+    }
+    
+    char buffer[BUFFER_SIZE];
+    ssize_t n = recvfrom(sockfd, buffer, BUFFER_SIZE-1, 0, 
+                        (struct sockaddr *)&cliaddr, &cliaddr_len);
+    
+    if (n > 0) {
+        buffer[n] = '\0';
+        vpi_printf("Received UDP command: %s\n", buffer);
+        
+        char cmd;
+        int addr, data;
+        
+        if (sscanf(buffer, "%c %x %x", &cmd, &addr, &data) == 3 && cmd == 'W') {
+            // Write command
+            vpi_printf("Processing write command: addr=0x%X, data=0x%X\n", addr, data);
+            
+            // Set address
+            write_scalar(debug_a1_h, (addr >> 1) & 1);
+            write_scalar(debug_a0_h, addr & 1);
+            write_scalar(debug_wr_h, 1);
+            
+            // Set data on bus
+            for (int i = 0; i < 16; i++) {
+                write_scalar(dbd_h[i], (data >> i) & 1);
+            }
+            
+            // Assert request and transition to waiting state
+            write_scalar(debug_req_n_h, 0);
+            debug_state = DEBUG_WAITING_ACK;
+            
+        } else if (sscanf(buffer, "%c %x", &cmd, &addr) == 2 && cmd == 'R') {
+            // Read command  
+            vpi_printf("Processing read command: addr=0x%X\n", addr);
+            
+            // Set address
+            write_scalar(debug_a1_h, (addr >> 1) & 1);
+            write_scalar(debug_a0_h, addr & 1);
+            write_scalar(debug_wr_h, 0);
+            
+            // Assert request
+            write_scalar(debug_req_n_h, 0);
+            debug_state = DEBUG_WAITING_ACK;
+            vpi_printf("Debug request asserted for read (debug_req_n_h=0)\n");
+            
+        } else {
+            // Error
+            sprintf(pending_response, "1 Unknown command");
+            debug_state = DEBUG_SENDING_UDP;
+        }
+    }
+}
+
+void check_for_ack() {
+    int req_value = read_scalar(debug_req_n_h);
+    int ack_value = read_scalar(debug_ack_h);
+    int a0_value = read_scalar(debug_a0_h);
+    int a1_value = read_scalar(debug_a1_h);
+    int wr_value = read_scalar(debug_wr_h);
+    vpi_printf("Debug REQ check: value=%d (should be 0)\n", req_value);
+    vpi_printf("Debug A1=%d, A0=%d, WR=%d\n", a1_value, a0_value, wr_value);
+    vpi_printf("Debug ACK check: value=%d (VHDL reports ACK asserted but C reads %d)\n", ack_value, ack_value);
+    if (ack_value) {
+        vpi_printf("Debug ACK received\n");
+        debug_state = DEBUG_READING_RESPONSE;
+    }
+}
+
+void read_debug_response() {
+    int is_read_op = !read_scalar(debug_wr_h);
+    
+    if (is_read_op) {
+        // Read data from bus
+        int read_data = 0;
+        for (int i = 0; i < 16; i++) {
+            s_vpi_value value_s;
+            value_s.format = vpiIntVal;
+            vpi_get_value(dbd_h[i], &value_s);
+            if (value_s.value.integer == 1) {
+                read_data |= (1 << i);
+            }
+        }
+        sprintf(pending_response, "0 %X", read_data);
+        vpi_printf("Read complete, data=0x%X\n", read_data);
+    } else {
+        sprintf(pending_response, "0");
+        vpi_printf("Write complete\n");
+    }
+    
+    debug_state = DEBUG_SENDING_UDP;
+}
+
+void send_udp_response() {
+    if (sockfd < 0) {
+        vpi_printf("ERROR: Cannot send UDP response - socket not initialized\n");
+    } else {
+        sendto(sockfd, pending_response, strlen(pending_response), 0,
+               (struct sockaddr *)&cliaddr, cliaddr_len);
+        vpi_printf("Sent UDP response: %s\n", pending_response);
+    }
+    
+    // Deassert debug request to complete handshake
+    write_scalar(debug_req_n_h, 1);
+    
+    debug_state = DEBUG_IDLE;
 }
 
 void (*vlog_startup_routines[])() = {
