@@ -352,6 +352,29 @@ package dip is
     );
   end component;
 
+  component dip_74ls240 is
+  port (
+      p1  : in  std_logic;
+      p2  : in  std_logic;
+      p3  : out std_logic;
+      p4  : in  std_logic;
+      p5  : out std_logic;
+      p6  : in  std_logic;
+      p7  : out std_logic;
+      p8  : in  std_logic;
+      p9  : out std_logic;
+      p11 : in  std_logic;
+      p12 : out std_logic;
+      p13 : in  std_logic;
+      p14 : out std_logic;
+      p15 : in  std_logic;
+      p16 : out std_logic;
+      p17 : in  std_logic;
+      p18 : out std_logic;
+      p19 : in  std_logic
+      );
+  end component;
+
   component dip_74ls244 is
   port (
       p1  : in  std_logic;
@@ -415,6 +438,46 @@ package dip is
       p11 : in  std_logic; -- clk
       p1 : in  std_logic -- clr_n
     );
+  end component;
+
+  component dip_74ls374 is
+  port (
+      p1  : in  std_logic;
+      p2  : out std_logic;
+      p3  : in  std_logic;
+      p4  : in  std_logic;
+      p5  : out std_logic;
+      p6  : out std_logic;
+      p7  : in  std_logic;
+      p8  : in  std_logic;
+      p9  : out std_logic;
+      p11 : in  std_logic;
+      p12 : out std_logic;
+      p13 : in  std_logic;
+      p14 : in  std_logic;
+      p15 : out std_logic;
+      p16 : out std_logic;
+      p17 : in  std_logic;
+      p18 : in  std_logic;
+      p19 : out std_logic
+      );
+  end component;
+
+  component dip_74ls74 is
+  port (
+      p1  : in  std_logic;
+      p2  : in  std_logic;
+      p3  : in  std_logic;
+      p4  : in  std_logic;
+      p5  : out std_logic;
+      p6  : out std_logic;
+      p8  : out std_logic;
+      p9  : out std_logic;
+      p10 : in  std_logic;
+      p11 : in  std_logic;
+      p12 : in  std_logic;
+      p13 : in  std_logic
+      );
   end component;
 
   component dip_74s00 is
@@ -893,6 +956,26 @@ package dip is
       p11 : in  std_logic;
       p12 : in  std_logic;
       p13 : out std_logic;
+      p14 : in  std_logic;
+      p15 : in  std_logic
+      );
+  end component;
+
+  component dip_74s288 is
+  generic (fn : string := "");
+    port (
+      p1  : out std_logic;
+      p2  : out std_logic;
+      p3  : out std_logic;
+      p4  : out std_logic;
+      p5  : out std_logic;
+      p6  : out std_logic;
+      p7  : out std_logic;
+      p9  : out std_logic;
+      p10 : in  std_logic;
+      p11 : in  std_logic;
+      p12 : in  std_logic;
+      p13 : in  std_logic;
       p14 : in  std_logic;
       p15 : in  std_logic
       );
@@ -1405,10 +1488,5 @@ package dip is
       p17 : in  std_logic
       );
   end component;
-
-alias dip_74s288 is dip_5610;
-alias dip_74ls74 is dip_74s74;
-alias dip_74ls240 is dip_74s240;
-alias dip_74ls374 is dip_74s374;
 
 end package;

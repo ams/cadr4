@@ -1,7 +1,7 @@
 
 # dip
 
-This folder contains dip components.
+This folder contains dip components, meaning their port maps are pin numbers.
 
 The <PART> component in the schematic is represented by a dip_<PART> component.
 
@@ -9,4 +9,11 @@ A dip component is directly referenced from CADR schematics (CADR suds file). A 
 
 The main reason for having dip components is to make the wiring given in schematics explicit. It also makes debugging much easier.
 
-The drw files might have different bodies representing the same ICs. The aliases in the dip.vhd represents these (e.g. 74s02o). These are the same ICs, same IC packages, only the body in drw file is shown differently, hence they are named different.
+## Duplicates / Aliases
+
+Rather than using aliases, following components are duplicated, their port maps and architectures are the same:
+
+- dip_74s74 and dip_74ls74
+- dip_74s240 and dip_74ls240
+- dip_74s288 and dip_5610
+- dip_74s374 and dip_74ls374
