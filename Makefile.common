@@ -45,27 +45,22 @@ $(CADR_BOOT_TB_SRC): $(CREATE_TB_PY) $(CADR_DIR)/cadr_book.vhd $(ICMEM_DIR)/icme
 # run all except cadr_tb which might run forever
 .PHONY: check-cadr
 check-cadr: $(CADR_EXES)
-	for TB_EXE in $^; do TB=$$TB_EXE make run-tb || exit; done
+	for TB_EXE in $^; do make run-$$TB_EXE || exit; done
 
 .PHONY: check-icmem
 check-icmem: $(ICMEM_EXES)
-	for TB_EXE in $^; do TB=$$TB_EXE make run-tb || exit; done
 
 .PHONY: check-busint
 check-busint: $(BUSINT_EXES)
-	for TB_EXE in $^; do TB=$$TB_EXE make run-tb || exit; done
 
 .PHONY: check-dip
 check-dip: $(DIP_EXES)
-	for TB_EXE in $^; do TB=$$TB_EXE make run-tb || exit; done
 
 .PHONY: check-helper
 check-helper: $(HELPER_EXES)
-	for TB_EXE in $^; do TB=$$TB_EXE make run-tb || exit; done
 
 .PHONY: check-ttl
 check-ttl: $(TTL_EXES)
-	for TB_EXE in $^; do TB=$$TB_EXE make run-tb || exit; done
 
 .PHONY: check
 check: check-cadr check-icmem check-busint check-dip check-helper check-ttl

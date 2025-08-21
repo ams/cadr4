@@ -1,6 +1,9 @@
 # ghdl cannot work with parallel runs
 .NOTPARALLEL:
 
+# vhdl standard 2008
+GHDLSTD := 08
+
 # no debug, full optimization, since we are not debugging GHDL
 GHDLIMPORTOPTIONS	:= -v -g0 -O3
 GHDLMAKEOPTIONS		:= -v -g0 -O3 -Wno-delayed-checks
@@ -17,16 +20,16 @@ endif
 # building (and linking) a tb will build object files
 # all objects and _tb executables are build into $(BUILDDIR)
 
-$(BUILDDIR)/work-obj$(CADR4_HDLSTD).cf: $(SRCS)
+$(BUILDDIR)/work-obj$(GHDLSTD).cf: $(SRCS)
 	mkdir -p $(BUILDDIR)
-	$(CADR4_GHDL) import $(GHDLIMPORTOPTIONS) --std=$(CADR4_HDLSTD) --workdir=$(BUILDDIR) $^
+	$(CADR4_GHDL) import $(GHDLIMPORTOPTIONS) --std=$(GHDLSTD) --workdir=$(BUILDDIR) $^
 
 # %_tb has no %.vhd etc. dependency because these are resolved in cf
 # ghdl make is like an extra layer over make build system
 
-$(BUILDDIR)/%_tb: $(BUILDDIR)/work-obj$(CADR4_HDLSTD).cf
+$(BUILDDIR)/%_tb: $(BUILDDIR)/work-obj$(GHDLSTD).cf
 	mkdir -p $(BUILDDIR)
-	$(CADR4_GHDL) make $(GHDLMAKEOPTIONS) --std=$(CADR4_HDLSTD) --workdir=$(BUILDDIR) -o $@ $(notdir $@)
+	$(CADR4_GHDL) make $(GHDLMAKEOPTIONS) --std=$(GHDLSTD) --workdir=$(BUILDDIR) -o $@ $(notdir $@)
 
 # compile cosim vpi sources into objects
 # this rule is not very nicely written but i couldnt write it better
@@ -80,22 +83,22 @@ GHDLSTOPTIMEOPTION := --stop-time=$(CADR4_STOPTIME)
 endif
 
 .PHONY: run-%
-run-%: $(BUILDDIR)/%_tb
+run-%: $(BUILDDIR)/%
 	$< $(GHDLSIMOPTIONS)
 
 .PHONY: cosim-run-%
-cosim-run-%: $(BUILDDIR)/%_tb $(COSIM_VPI_LIB)
+cosim-run-%: $(BUILDDIR)/% $(COSIM_VPI_LIB)
 	$< $(GHDLSIMOPTIONS) --vpi=$(COSIM_VPI_LIB)
 
 .PHONY: wf-%
-wf-%: $(BUILDDIR)/%_tb
+wf-%: $(BUILDDIR)/%
 ifeq ($(WAVEOPTFILERECREATE),1)	
 	$(RM) $(WAVEOPTFILE)
 endif
 	$< $(GHDLSIMOPTIONS) $(GHDLWAVEOPTIONS) $(GHDLSTOPTIMEOPTION)
 
 .PHONY: cosim-wf-%
-cosim-wf-%: $(BUILDDIR)/%_tb $(COSIM_VPI_LIB)
+cosim-wf-%: $(BUILDDIR)/% $(COSIM_VPI_LIB)
 ifeq ($(WAVEOPTFILERECREATE),1)	
 	$(RM) $(WAVEOPTFILE)
 endif

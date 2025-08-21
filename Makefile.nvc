@@ -1,38 +1,23 @@
 .PARALLEL:
 
+# vhdl standard 2008
+NVCSTD := 08
+
 NVC_WORK_DIR 	:= $(BUILDDIR)/nvc
 NVC_FILE_LIST	:= $(BUILDDIR)/nvc.filelist
 # make tb unit names uppercase, nvc defaults to uppercase
 NVC_EXES		:= $(shell echo "$(EXES)" | tr '[:lower:]' '[:upper:]')
 
-NVC_GLOBAL_OPTS	:= --work=work:$(NVC_WORK_DIR) --std=$(CADR4_HDLSTD)
-NVC_GLOBAL_OPTS_WITH_COSIM := $(NVC_GLOBAL_OPTS) --load=$(COSIM_VHPI)
+NVC_RUNTIME_OPTIONS := --stats
+NVC_GLOBAL_OPTS	:= --work=work:$(NVC_WORK_DIR) --std=$(NVCSTD)
 
 # asserts can be disabled to improve performance
 ifeq ($(CADR4_NOASSERTS),1)
-NVC_RUNTIME_OPTIONS := --exit-severity=failure --stats
-NVC_GLOBAL_OPTS += --ieee-warnings=off
-NVC_GLOBAL_OPTS_WITH_COSIM += --ieee-warnings=off
+NVC_RUNTIME_OPTIONS += --exit-severity=failure
+NVC_GLOBAL_OPTS 	+= --ieee-warnings=off
 else
-NVC_RUNTIME_OPTIONS := --exit-severity=note --stats
+NVC_RUNTIME_OPTIONS += --exit-severity=note
 endif
-
-.NOTPARALLEL:
-
-$(NVC_FILE_LIST): $(SRCS)
-	mkdir -p $(BUILDDIR)
-	scripts/generate_tofl.py -o $@ $^
-
-$(NVC_WORK_DIR): $(NVC_FILE_LIST)
-	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) -a @$^
-	
-.PARALLEL:
-
-$(NVC_WORK_DIR)/WORK.%_TB.elab: $(NVC_WORK_DIR)
-	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) -e $*_TB
-
-.PHONY: all
-all: $(addprefix $(NVC_WORK_DIR)/,$(patsubst %,WORK.%.elab,$(NVC_EXES)))
 
 # add stoptime if requested
 ifeq ($(CADR4_STOPTIME),0)
@@ -41,18 +26,44 @@ else
 NVCSTOPTIMEOPTION := --stop-time=$(CADR4_STOPTIME)
 endif
 
+UC = $(shell echo '$1' | tr '[:lower:]' '[:upper:]')
+
+.NOTPARALLEL:
+
+$(NVC_FILE_LIST): $(SRCS)
+	mkdir -p $(BUILDDIR)
+	@scripts/generate_tofl.py -o $@ $^
+
+$(NVC_WORK_DIR): $(NVC_FILE_LIST)
+	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) -a @$^
+	
+.PARALLEL:
+
+$(NVC_WORK_DIR)/WORK.%.elab: $(NVC_WORK_DIR)
+	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) -e $*
+
+.PHONY: all
+all: $(addprefix $(NVC_WORK_DIR)/,$(patsubst %,WORK.%.elab,$(call UC,$(EXES))))
+
+# the complicated rules below with .SECONDEXPANSION is to expand the call UC
+# second time, otherwise it doesnt work
+
 .PHONY: run-%
-run-%: $(NVC_WORK_DIR)/WORK.%_TB.elab
-	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) -r $(NVC_RUNTIME_OPTIONS) $*_TB
+.SECONDEXPANSION:
+run-%: $(NVC_WORK_DIR)/WORK.$$(call UC,%).elab
+	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) -r $(NVC_RUNTIME_OPTIONS) $(call UC,$*)
 
 .PHONY: cosim-run-%
-cosim-run-%: $(NVC_WORK_DIR)/WORK.%_TB.elab $(COSIM_VHPI)
-	$(CADR4_NVC) $(NVC_GLOBAL_OPTS_WITH_COSIM) -r $(NVC_RUNTIME_OPTIONS) $*_TB
+.SECONDEXPANSION:
+cosim-run-%: $(NVC_WORK_DIR)/WORK.$$(call UC,%).elab $(COSIM_VHPI)
+	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) --load=$(COSIM_VHPI) -r $(NVC_RUNTIME_OPTIONS) $(call UC,$*)
 
 .PHONY: wf-%
-wf-%: $(NVC_WORK_DIR)/WORK.%_TB.elab
-	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) -r $(NVC_RUNTIME_OPTIONS) --format=fst --wave=$(BUILDDIR)/$*.fst $(NVCSTOPTIMEOPTION) $*_TB
+.SECONDEXPANSION:
+wf-%: $(NVC_WORK_DIR)/WORK.$$(call UC,%).elab
+	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) -r $(NVC_RUNTIME_OPTIONS) --format=fst --wave=$(BUILDDIR)/$*.fst $(NVCSTOPTIMEOPTION) $(call UC,$*)
 
 .PHONY: cosim-wf-%
-cosim-wf-%: $(NVC_WORK_DIR)/WORK.%_TB.elab $(COSIM_VHPI)
-	$(CADR4_NVC) $(NVC_GLOBAL_OPTS_WITH_COSIM) -r $(NVC_RUNTIME_OPTIONS) --format=fst --wave=$(BUILDDIR)/$*.fst $(NVCSTOPTIMEOPTION) $*_TB
+.SECONDEXPANSION:
+cosim-wf-%: $(NVC_WORK_DIR)/WORK.$$(call UC,%).elab $(COSIM_VHPI)
+	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) --load=$(COSIM_VHPI) -r $(NVC_RUNTIME_OPTIONS) --format=fst --wave=$(BUILDDIR)/$*.fst $(NVCSTOPTIMEOPTION) $(call UC,$*)

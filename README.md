@@ -21,6 +21,12 @@ chit-chat.  Feel free to send bugs directly to ams@gnu.org.
   - [Surfer](https://surfer-project.org)
   - [GTKWave](https://gtkwave.sourceforge.net/)
   
+### Makefile
+
+Makefile is divided into three parts; Makefile.config and Makefile.common are always used.
+
+Makefile.ghdl and Makefile.nvc are used depending on the value of the CADR4_HDLCOMPILER variable (ghdl or nvc). Default is ghdl.
+
 ### Build
 
 ```
@@ -32,14 +38,6 @@ make
 All build artifacts are created under `build` directory.
 
 ### Run
-
-#### Run Tests
-
-```
-make check
-```
-
-runs all available tests.
 
 #### Run CADR
 
@@ -56,6 +54,14 @@ Cosimulation (VPI) library is attached with cosim-run target is used. This makes
 ```
 make cosim-run-cadr
 ```
+
+#### Run Tests
+
+```
+make check
+```
+
+runs all available tests.
 
 ## waveform.opt file
 
