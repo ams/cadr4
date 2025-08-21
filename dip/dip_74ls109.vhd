@@ -21,7 +21,7 @@ entity dip_74ls109 is
     p14 : in  std_logic;
     p15 : in  std_logic
     );
-end dip_74ls109;
+end entity;
 
 architecture dip of dip_74ls109 is
 begin

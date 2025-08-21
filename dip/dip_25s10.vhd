@@ -21,7 +21,7 @@ entity dip_25s10 is
     p14 : out std_logic;
     p15 : out std_logic
     );
-end dip_25s10;
+end entity;
 
 architecture dip of dip_25s10 is
 begin

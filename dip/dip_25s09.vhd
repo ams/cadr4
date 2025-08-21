@@ -21,7 +21,7 @@ entity dip_25s09 is
     p14 : in  std_logic;
     p15 : out std_logic
     );
-end dip_25s09;
+end entity;
 
 architecture behavioral of dip_25s09 is
 begin
@@ -42,4 +42,4 @@ begin
       d0  => p14,
       dq  => p15
       );
-end behavioral;
+end architecture;

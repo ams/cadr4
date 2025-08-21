@@ -19,7 +19,7 @@ entity dip_7428 is
     p12 : in  std_logic;
     p13 : out std_logic
     );
-end dip_7428;
+end entity;
 
 architecture dip of dip_7428 is
 begin

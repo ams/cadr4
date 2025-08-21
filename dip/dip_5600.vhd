@@ -22,7 +22,7 @@ entity dip_5600 is
     p14 : in  std_logic;
     p15 : in  std_logic
     );
-end dip_5600;
+end entity;
 
 architecture dip of dip_5600 is
 begin
