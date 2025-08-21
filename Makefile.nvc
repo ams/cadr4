@@ -1,0 +1,90 @@
+.PARALLEL:
+
+NVC_WORK_DIR 	:= $(BUILDDIR)/nvc
+NVC_FILE_LIST	:= $(BUILDDIR)/nvc.filelist
+# make tb unit names uppercase, nvc defaults to uppercase
+NVC_EXES		:= $(shell echo "$(EXES)" | tr '[:lower:]' '[:upper:]')
+
+NVC_GLOBAL_OPTS	:= --work=work:$(NVC_WORK_DIR) --std=$(CADR4_HDLSTD)
+NVC_GLOBAL_OPTS_WITH_COSIM := $(NVC_GLOBAL_OPTS) --load=$(COSIM_VHPI)
+
+# asserts can be disabled to improve performance
+ifeq ($(CADR4_NOASSERTS),1)
+NVC_RUNTIME_OPTIONS := --exit-severity=failure --stats
+NVC_GLOBAL_OPTS += --ieee-warnings=off
+NVC_GLOBAL_OPTS_WITH_COSIM += --ieee-warnings=off
+else
+NVC_RUNTIME_OPTIONS := --exit-severity=note --stats
+endif
+
+.NOTPARALLEL:
+
+$(NVC_FILE_LIST): $(SRCS)
+	mkdir -p $(BUILDDIR)
+	scripts/generate_tofl.py -o $@ $^
+
+$(NVC_WORK_DIR): $(NVC_FILE_LIST)
+	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) -a @$^
+	
+.PARALLEL:
+
+$(NVC_WORK_DIR)/WORK.%_TB.elab: $(NVC_WORK_DIR)
+	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) -e $*_TB
+
+.PHONY: all
+all: $(addprefix $(NVC_WORK_DIR)/,$(patsubst %,WORK.%.elab,$(NVC_EXES)))
+
+# below is smart handling of wave opt file
+# if file does not exist, it is not used
+# if file exists
+## if first line is "recreate", then it is deleted and recreated
+## else if first line is "ignore", then it is ignored
+## else it is used
+
+WAVEOPTFILE := $(TB).opt
+WAVEFILE := $(BUILDDIR)/$(TB).ghw
+ifneq ("$(wildcard $(WAVEOPTFILE))","")
+WAVEOPTCONTENTS := $(shell head -1 $(WAVEOPTFILE))
+ifeq ("$(WAVEOPTCONTENTS)","recreate")
+$(info recreating wave opt file: $(WAVEOPTFILE))
+WAVEOPTFILERECREATE := 1
+NVCWAVEOPTIONS := --gtkw=$(WAVEFILE) --write-wave-opt=$(WAVEOPTFILE)
+else ifeq ("$(WAVEOPTCONTENTS)","ignore")
+$(info ignoring wave opt file: $(WAVEOPTFILE))
+GHDLWAVEOPTIONS := --wave=$(WAVEFILE)
+else
+$(info using wave opt file: $(WAVEOPTFILE))
+GHDLWAVEOPTIONS := --wave=$(WAVEFILE) --read-wave-opt=$(WAVEOPTFILE)
+endif
+else
+GHDLWAVEOPTIONS := --wave=$(WAVEFILE)
+endif
+
+# add stoptime if requested
+ifeq ($(CADR4_STOPTIME),0)
+NVCSTOPTIMEOPTION :=
+else
+NVCSTOPTIMEOPTION := --stop-time=$(CADR4_STOPTIME)
+endif
+
+.PHONY: run-%
+run-%: $(NVC_WORK_DIR)/WORK.%_TB.elab
+	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) -r $*_TB
+
+.PHONY: cosim-run-%
+cosim-run-%: $(NVC_WORK_DIR)/WORK.%_TB.elab $(COSIM_VHPI)
+	$(CADR4_NVC) $(NVC_GLOBAL_OPTS_WITH_COSIM) -r $*_TB
+
+.PHONY: wf-%
+wf-%: $(NVC_WORK_DIR)/WORK.%_TB.elab
+ifeq ($(WAVEOPTFILERECREATE),1)	
+	$(RM) $(WAVEOPTFILE)
+endif
+	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) -r $(NVC_RUNTIME_OPTIONS) $(NVCSTOPTIMEOPTION) $*_TB
+
+.PHONY: cosim-wf-%
+cosim-wf-%: $(NVC_WORK_DIR)/WORK.%_TB.elab $(COSIM_VHPI)
+ifeq ($(WAVEOPTFILERECREATE),1)	
+	$(RM) $(WAVEOPTFILE)
+endif
+	$(CADR4_NVC) $(NVC_GLOBAL_OPTS_WITH_COSIM) -r $(NVC_RUNTIME_OPTIONS) $(NVCSTOPTIMEOPTION) $*_TB
