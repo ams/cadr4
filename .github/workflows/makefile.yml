@@ -37,13 +37,13 @@ jobs:
 
     - name: Build nvc
       run: |
-	  	cd nvc
-		./autogen.sh
-		mkdir build
-		cd build
-		../configure
-		make
-		sudo make install
+        cd nvc
+        ./autogen.sh
+        mkdir build
+        cd build
+        ../configure
+        make
+        sudo make install
 
     - name : Build with nvc
       run: CADR4_HDLCOMPILER=nvc && make
