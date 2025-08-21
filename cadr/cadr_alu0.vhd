@@ -70,4 +70,4 @@ entity cadr_alu0 is
     yout3           : out    std_logic;
     yout7           : out    std_logic
   );
-end entity cadr_alu0;
+end entity;

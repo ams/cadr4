@@ -101,4 +101,4 @@ entity cadr_dspctl is
     dparl           : out    std_logic;
     dparok          : out    std_logic
   );
-end entity cadr_dspctl;
+end entity;

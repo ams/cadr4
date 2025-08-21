@@ -58,4 +58,4 @@ entity cadr_pdlptr is
     pdlptr9         : out    std_logic;
     pidrive         : out    std_logic
   );
-end entity cadr_pdlptr;
+end entity;

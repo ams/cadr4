@@ -75,4 +75,4 @@ entity cadr_pdlctl is
     pdlwrited       : out    std_logic;
     pwidx           : out    std_logic
   );
-end entity cadr_pdlctl;
+end entity;

@@ -63,4 +63,4 @@ entity cadr_dram2 is
     dpc13           : out    std_logic;
     dr              : out    std_logic
   );
-end entity cadr_dram2;
+end entity;

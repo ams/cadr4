@@ -67,4 +67,4 @@ entity cadr_spc is
     spcptr3         : out    std_logic;
     spcptr4         : out    std_logic
   );
-end entity cadr_spc;
+end entity;

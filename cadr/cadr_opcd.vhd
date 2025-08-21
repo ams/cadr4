@@ -71,4 +71,4 @@ entity cadr_opcd is
     mf9             : out    std_logic;
     zero16          : out    std_logic
   );
-end entity cadr_opcd;
+end entity;

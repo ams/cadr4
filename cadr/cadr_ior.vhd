@@ -126,4 +126,4 @@ entity cadr_ior is
     iob8            : out    std_logic;
     iob9            : out    std_logic
   );
-end entity cadr_ior;
+end entity;

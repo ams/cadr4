@@ -45,4 +45,4 @@ entity busint_wbuf is
     wbuf8           : out    std_logic;
     wbuf9           : out    std_logic
   );
-end entity busint_wbuf;
+end entity;

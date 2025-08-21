@@ -54,4 +54,4 @@ entity cadr_lcc is
     spc1a           : out    std_logic;
     spcmung         : out    std_logic
   );
-end entity cadr_lcc;
+end entity;

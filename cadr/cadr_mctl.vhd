@@ -71,4 +71,4 @@ entity cadr_mctl is
     mpassl          : out    std_logic;
     srcm            : out    std_logic
   );
-end entity cadr_mctl;
+end entity;

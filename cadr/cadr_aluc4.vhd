@@ -82,4 +82,4 @@ entity cadr_aluc4 is
     yy0             : out    std_logic;
     yy1             : out    std_logic
   );
-end entity cadr_aluc4;
+end entity;

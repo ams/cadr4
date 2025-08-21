@@ -39,4 +39,4 @@ entity icmem_clock2 is
     tpwp            : out    std_logic;
     tpwpiram        : out    std_logic
   );
-end entity icmem_clock2;
+end entity;

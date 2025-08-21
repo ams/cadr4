@@ -72,4 +72,4 @@ entity cadr_platch is
     m9              : out    std_logic;
     mparity         : out    std_logic
   );
-end entity cadr_platch;
+end entity;

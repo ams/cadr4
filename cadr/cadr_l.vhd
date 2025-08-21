@@ -73,4 +73,4 @@ entity cadr_l is
     lparity         : out    std_logic;
     lparl           : out    std_logic
   );
-end entity cadr_l;
+end entity;

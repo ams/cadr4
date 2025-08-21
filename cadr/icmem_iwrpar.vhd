@@ -57,4 +57,4 @@ entity icmem_iwrpar is
     iwrp3           : out    std_logic;
     iwrp4           : out    std_logic
   );
-end entity icmem_iwrpar;
+end entity;

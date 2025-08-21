@@ -71,4 +71,4 @@ entity busint_ubmap is
     udo9            : out    std_logic;
     writeok         : out    std_logic
   );
-end entity busint_ubmap;
+end entity;

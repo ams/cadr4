@@ -51,4 +51,4 @@ entity icmem_pctl is
     tilt0           : out    std_logic;
     tilt1           : out    std_logic
   );
-end entity icmem_pctl;
+end entity;

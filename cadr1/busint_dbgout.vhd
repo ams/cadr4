@@ -67,4 +67,4 @@ entity busint_dbgout is
     \spy adr3\      : out    std_logic;
     \spy adr4\      : out    std_logic
   );
-end entity busint_dbgout;
+end entity;

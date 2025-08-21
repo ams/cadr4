@@ -11,4 +11,4 @@ entity busint_clm is
     \-clk\          : out    std_logic;
     clk0            : out    std_logic
   );
-end entity busint_clm;
+end entity;

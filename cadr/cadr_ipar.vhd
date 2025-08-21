@@ -60,4 +60,4 @@ entity cadr_ipar is
     iparity         : out    std_logic;
     iparok          : out    std_logic
   );
-end entity cadr_ipar;
+end entity;

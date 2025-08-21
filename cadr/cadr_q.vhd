@@ -73,4 +73,4 @@ entity cadr_q is
     q8              : out    std_logic;
     q9              : out    std_logic
   );
-end entity cadr_q;
+end entity;

@@ -28,4 +28,4 @@ entity busint_xapar is
     \xao par even\  : out    std_logic;
     \xao par odd\   : out    std_logic
   );
-end entity busint_xapar;
+end entity;

@@ -55,4 +55,4 @@ entity busint_ubcyc is
     \ub17-14=map\   : out    std_logic;
     \write through enb\ : out    std_logic
   );
-end entity busint_ubcyc;
+end entity;

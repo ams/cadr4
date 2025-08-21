@@ -34,4 +34,4 @@ entity busint_requ is
     \ub xbus t100\  : out    std_logic;
     ubxrq           : out    std_logic
   );
-end entity busint_requ;
+end entity;

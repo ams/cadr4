@@ -71,4 +71,4 @@ entity cadr_dram0 is
     ir18b           : out    std_logic;
     ir19b           : out    std_logic
   );
-end entity cadr_dram0;
+end entity;

@@ -98,4 +98,4 @@ entity cadr_vmemdr is
     mf9             : out    std_logic;
     srcmap          : out    std_logic
   );
-end entity cadr_vmemdr;
+end entity;

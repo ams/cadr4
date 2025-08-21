@@ -71,4 +71,4 @@ entity cadr_dram1 is
     vmo18           : out    std_logic;
     vmo19           : out    std_logic
   );
-end entity cadr_dram1;
+end entity;

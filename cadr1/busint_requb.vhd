@@ -27,4 +27,4 @@ entity busint_requb is
     \ssyn t50\      : out    std_logic;
     \unibus request\ : out    std_logic
   );
-end entity busint_requb;
+end entity;

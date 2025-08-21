@@ -40,4 +40,4 @@ entity cadr_flag is
     jcond           : out    std_logic;
     sint            : out    std_logic
   );
-end entity cadr_flag;
+end entity;

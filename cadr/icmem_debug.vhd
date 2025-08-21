@@ -72,4 +72,4 @@ entity icmem_debug is
     i8              : out    std_logic;
     i9              : out    std_logic
   );
-end entity icmem_debug;
+end entity;

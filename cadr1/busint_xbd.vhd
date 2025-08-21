@@ -69,4 +69,4 @@ entity busint_xbd is
     bus8            : out    std_logic;
     bus9            : out    std_logic
   );
-end entity busint_xbd;
+end entity;

@@ -139,4 +139,4 @@ entity cadr_mds is
     mem8            : out    std_logic;
     mem9            : out    std_logic
   );
-end entity cadr_mds;
+end entity;

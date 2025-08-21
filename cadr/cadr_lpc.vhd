@@ -65,4 +65,4 @@ entity cadr_lpc is
     wpc8            : out    std_logic;
     wpc9            : out    std_logic
   );
-end entity cadr_lpc;
+end entity;

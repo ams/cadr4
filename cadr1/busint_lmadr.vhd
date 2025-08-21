@@ -63,4 +63,4 @@ entity busint_lmadr is
     xao8            : out    std_logic;
     xao9            : out    std_logic
   );
-end entity busint_lmadr;
+end entity;

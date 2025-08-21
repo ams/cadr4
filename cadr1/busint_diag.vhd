@@ -43,4 +43,4 @@ entity busint_diag is
     \-spy write\    : out    std_logic;
     \select spy\    : out    std_logic
   );
-end entity busint_diag;
+end entity;

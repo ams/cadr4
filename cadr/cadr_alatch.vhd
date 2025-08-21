@@ -109,4 +109,4 @@ entity cadr_alatch is
     a9              : out    std_logic;
     aparity         : out    std_logic
   );
-end entity cadr_alatch;
+end entity;

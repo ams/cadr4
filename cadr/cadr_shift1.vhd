@@ -77,4 +77,4 @@ entity cadr_shift1 is
     sa30            : out    std_logic;
     sa31            : out    std_logic
   );
-end entity cadr_shift1;
+end entity;

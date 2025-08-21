@@ -102,4 +102,4 @@ entity cadr_iwr is
     iwr8            : out    std_logic;
     iwr9            : out    std_logic
   );
-end entity cadr_iwr;
+end entity;

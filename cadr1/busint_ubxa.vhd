@@ -49,4 +49,4 @@ entity busint_ubxa is
     xao8            : out    std_logic;
     xao9            : out    std_logic
   );
-end entity busint_ubxa;
+end entity;

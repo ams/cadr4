@@ -74,4 +74,4 @@ entity cadr_actl is
     wadr8           : out    std_logic;
     wadr9           : out    std_logic
   );
-end entity cadr_actl;
+end entity;

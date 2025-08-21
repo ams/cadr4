@@ -45,4 +45,4 @@ entity cadr_vctl1 is
     wmapd           : out    std_logic;
     wrcyc           : out    std_logic
   );
-end entity cadr_vctl1;
+end entity;

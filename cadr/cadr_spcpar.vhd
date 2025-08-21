@@ -48,4 +48,4 @@ entity cadr_spcpar is
     spcwpar         : out    std_logic;
     spcwparh        : out    std_logic
   );
-end entity cadr_spcpar;
+end entity;

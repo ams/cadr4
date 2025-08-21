@@ -50,4 +50,4 @@ entity cadr_pdl0 is
     pdl31           : out    std_logic;
     pdlparity       : out    std_logic
   );
-end entity cadr_pdl0;
+end entity;

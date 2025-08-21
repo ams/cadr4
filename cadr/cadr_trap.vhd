@@ -54,4 +54,4 @@ entity cadr_trap is
     trapa           : out    std_logic;
     trapb           : out    std_logic
   );
-end entity cadr_trap;
+end entity;

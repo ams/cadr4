@@ -58,4 +58,4 @@ entity busint_datctl is
     \write through\ : out    std_logic;
     xwr             : out    std_logic
   );
-end entity busint_datctl;
+end entity;

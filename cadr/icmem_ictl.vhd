@@ -92,4 +92,4 @@ entity icmem_ictl is
     wp5c            : out    std_logic;
     wp5d            : out    std_logic
   );
-end entity icmem_ictl;
+end entity;

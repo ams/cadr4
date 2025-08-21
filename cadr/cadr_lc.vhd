@@ -105,4 +105,4 @@ entity cadr_lc is
     mf9             : out    std_logic;
     srclc           : out    std_logic
   );
-end entity cadr_lc;
+end entity;

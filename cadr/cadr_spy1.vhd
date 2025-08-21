@@ -105,4 +105,4 @@ entity cadr_spy1 is
     spy8            : out    std_logic;
     spy9            : out    std_logic
   );
-end entity cadr_spy1;
+end entity;

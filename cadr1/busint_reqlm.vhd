@@ -47,4 +47,4 @@ entity busint_reqlm is
     lmxrq           : out    std_logic;
     xack            : out    std_logic
   );
-end entity busint_reqlm;
+end entity;

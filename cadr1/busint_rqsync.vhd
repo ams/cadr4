@@ -45,4 +45,4 @@ entity busint_rqsync is
     ubxrqs          : out    std_logic;
     xrqs            : out    std_logic
   );
-end entity busint_rqsync;
+end entity;

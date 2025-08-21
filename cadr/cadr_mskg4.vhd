@@ -53,4 +53,4 @@ entity cadr_mskg4 is
     msk8            : out    std_logic;
     msk9            : out    std_logic
   );
-end entity cadr_mskg4;
+end entity;

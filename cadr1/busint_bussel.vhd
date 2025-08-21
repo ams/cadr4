@@ -70,4 +70,4 @@ entity busint_bussel is
     bus8            : out    std_logic;
     bus9            : out    std_logic
   );
-end entity busint_bussel;
+end entity;

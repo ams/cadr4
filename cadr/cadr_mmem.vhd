@@ -84,4 +84,4 @@ entity cadr_mmem is
     mmem9           : out    std_logic;
     mmemparity      : out    std_logic
   );
-end entity cadr_mmem;
+end entity;

@@ -75,4 +75,4 @@ entity cadr_alu1 is
     yout27          : out    std_logic;
     yout31          : out    std_logic
   );
-end entity cadr_alu1;
+end entity;

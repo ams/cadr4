@@ -53,4 +53,4 @@ entity icmem_clock1 is
     cyclecompleted  : out    std_logic;
     tprend          : out    std_logic
   );
-end entity icmem_clock1;
+end entity;

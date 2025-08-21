@@ -41,4 +41,4 @@ entity icmem_opcs is
     opcinha         : out    std_logic;
     opcinhb         : out    std_logic
   );
-end entity icmem_opcs;
+end entity;

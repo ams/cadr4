@@ -80,4 +80,4 @@ entity cadr_qctl is
     qs1             : out    std_logic;
     srcq            : out    std_logic
   );
-end entity cadr_qctl;
+end entity;

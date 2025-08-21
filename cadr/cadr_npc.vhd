@@ -97,4 +97,4 @@ entity cadr_npc is
     pccry3          : out    std_logic;
     pccry7          : out    std_logic
   );
-end entity cadr_npc;
+end entity;

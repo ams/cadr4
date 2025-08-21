@@ -54,4 +54,4 @@ entity busint_ubd is
     udo8            : out    std_logic;
     udo9            : out    std_logic
   );
-end entity busint_ubd;
+end entity;

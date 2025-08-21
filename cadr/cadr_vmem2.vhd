@@ -62,4 +62,4 @@ entity cadr_vmem2 is
     vmoparm         : out    std_logic;
     vmoparodd       : out    std_logic
   );
-end entity cadr_vmem2;
+end entity;

@@ -64,4 +64,4 @@ entity busint_dbgin is
     uao8            : out    std_logic;
     uao9            : out    std_logic
   );
-end entity busint_dbgin;
+end entity;

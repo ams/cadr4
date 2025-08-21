@@ -50,4 +50,4 @@ entity cadr_amem0 is
     amem31          : out    std_logic;
     amemparity      : out    std_logic
   );
-end entity cadr_amem0;
+end entity;

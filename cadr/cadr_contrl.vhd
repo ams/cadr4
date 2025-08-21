@@ -71,4 +71,4 @@ entity cadr_contrl is
     spush           : out    std_logic;
     spushd          : out    std_logic
   );
-end entity cadr_contrl;
+end entity;

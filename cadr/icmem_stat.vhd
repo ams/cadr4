@@ -98,4 +98,4 @@ entity icmem_stat is
     st8             : out    std_logic;
     st9             : out    std_logic
   );
-end entity icmem_stat;
+end entity;

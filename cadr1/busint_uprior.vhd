@@ -63,4 +63,4 @@ entity busint_uprior is
     nprd            : out    std_logic;
     sackd           : out    std_logic
   );
-end entity busint_uprior;
+end entity;

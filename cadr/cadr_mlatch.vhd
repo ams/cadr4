@@ -138,4 +138,4 @@ entity cadr_mlatch is
     mf9             : out    std_logic;
     mparity         : out    std_logic
   );
-end entity cadr_mlatch;
+end entity;

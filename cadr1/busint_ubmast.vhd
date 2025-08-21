@@ -53,4 +53,4 @@ entity busint_ubmast is
     \sack in\       : out    std_logic;
     \ssyn in\       : out    std_logic
   );
-end entity busint_ubmast;
+end entity;

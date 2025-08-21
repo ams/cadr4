@@ -69,4 +69,4 @@ entity cadr_vmem1 is
     vmap3a          : out    std_logic;
     vmap4a          : out    std_logic
   );
-end entity cadr_vmem1;
+end entity;

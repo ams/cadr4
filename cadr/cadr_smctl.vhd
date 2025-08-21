@@ -38,4 +38,4 @@ entity cadr_smctl is
     s3b             : out    std_logic;
     s4              : out    std_logic
   );
-end entity cadr_smctl;
+end entity;

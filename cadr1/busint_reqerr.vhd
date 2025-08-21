@@ -51,4 +51,4 @@ entity busint_reqerr is
     udo6            : out    std_logic;
     udo7            : out    std_logic
   );
-end entity busint_reqerr;
+end entity;

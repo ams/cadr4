@@ -70,4 +70,4 @@ entity busint_lmdata is
     mem8            : inout  std_logic;
     mem9            : inout  std_logic
   );
-end entity busint_lmdata;
+end entity;

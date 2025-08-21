@@ -48,4 +48,4 @@ entity cadr_amem1 is
     amem8           : out    std_logic;
     amem9           : out    std_logic
   );
-end entity cadr_amem1;
+end entity;

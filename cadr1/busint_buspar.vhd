@@ -40,4 +40,4 @@ entity busint_buspar is
     \bus par even\  : out    std_logic;
     \bus par odd\   : out    std_logic
   );
-end entity busint_buspar;
+end entity;

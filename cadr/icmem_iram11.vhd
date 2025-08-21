@@ -54,4 +54,4 @@ entity icmem_iram11 is
     pc8f            : out    std_logic;
     pc9f            : out    std_logic
   );
-end entity icmem_iram11;
+end entity;

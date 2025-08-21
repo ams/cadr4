@@ -108,4 +108,4 @@ entity busint_xd is
     xdi8            : out    std_logic;
     xdi9            : out    std_logic
   );
-end entity busint_xd;
+end entity;

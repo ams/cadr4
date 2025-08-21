@@ -154,4 +154,4 @@ entity cadr_ireg is
     ir8             : out    std_logic;
     ir9             : out    std_logic
   );
-end entity cadr_ireg;
+end entity;

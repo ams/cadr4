@@ -78,4 +78,4 @@ entity cadr_clockd is
     wp4b            : out    std_logic;
     wp4c            : out    std_logic
   );
-end entity cadr_clockd;
+end entity;

@@ -62,4 +62,4 @@ entity busint_ubintc is
     xao20           : out    std_logic;
     xao21           : out    std_logic
   );
-end entity busint_ubintc;
+end entity;

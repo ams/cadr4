@@ -32,4 +32,4 @@ entity icmem_spy0 is
     \-spy.sth\      : out    std_logic;
     \-spy.stl\      : out    std_logic
   );
-end entity icmem_spy0;
+end entity;

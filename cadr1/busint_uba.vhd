@@ -67,4 +67,4 @@ entity busint_uba is
     uba8            : out    std_logic;
     uba9            : out    std_logic
   );
-end entity busint_uba;
+end entity;

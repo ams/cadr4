@@ -108,4 +108,4 @@ entity cadr_vma is
     mf9             : out    std_logic;
     srcvma          : out    std_logic
   );
-end entity cadr_vma;
+end entity;

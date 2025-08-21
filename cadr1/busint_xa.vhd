@@ -70,4 +70,4 @@ entity busint_xa is
     \xbus extrq in\ : out    std_logic;
     \xbus intr in\  : out    std_logic
   );
-end entity busint_xa;
+end entity;

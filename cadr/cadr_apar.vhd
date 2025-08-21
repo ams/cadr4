@@ -81,4 +81,4 @@ entity cadr_apar is
     mparodd         : out    std_logic;
     pdlparok        : out    std_logic
   );
-end entity cadr_apar;
+end entity;

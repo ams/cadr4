@@ -87,4 +87,4 @@ entity cadr_spcw is
     spcw8           : out    std_logic;
     spcw9           : out    std_logic
   );
-end entity cadr_spcw;
+end entity;

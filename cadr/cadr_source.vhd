@@ -71,4 +71,4 @@ entity cadr_source is
     irdisp          : out    std_logic;
     irjump          : out    std_logic
   );
-end entity cadr_source;
+end entity;

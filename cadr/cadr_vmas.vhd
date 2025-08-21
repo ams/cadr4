@@ -143,4 +143,4 @@ entity cadr_vmas is
     mapi8           : out    std_logic;
     mapi9           : out    std_logic
   );
-end entity cadr_vmas;
+end entity;

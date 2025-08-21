@@ -354,7 +354,7 @@ def generate_entity_file(entity_name: str, signals: Dict[str, str], output_file)
             f.write(line + "\n")
         
         f.write("  );\n")
-        f.write(f"end entity {entity_name};\n")
+        f.write("end entity;\n")
     finally:
         # Only close if it's a file (not stdout)
         if output_file and f != sys.stdout:

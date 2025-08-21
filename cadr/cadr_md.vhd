@@ -115,4 +115,4 @@ entity cadr_md is
     mf9             : out    std_logic;
     srcmd           : out    std_logic
   );
-end entity cadr_md;
+end entity;

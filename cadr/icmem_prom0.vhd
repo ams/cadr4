@@ -62,4 +62,4 @@ entity icmem_prom0 is
     i8              : out    std_logic;
     i9              : out    std_logic
   );
-end entity icmem_prom0;
+end entity;

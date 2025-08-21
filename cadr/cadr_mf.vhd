@@ -77,4 +77,4 @@ entity cadr_mf is
     mfdrive         : out    std_logic;
     mfenb           : out    std_logic
   );
-end entity cadr_mf;
+end entity;

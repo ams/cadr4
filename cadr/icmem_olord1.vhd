@@ -59,4 +59,4 @@ entity icmem_olord1 is
     step            : out    std_logic;
     trapenb         : out    std_logic
   );
-end entity icmem_olord1;
+end entity;

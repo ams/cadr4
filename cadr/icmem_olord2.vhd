@@ -62,4 +62,4 @@ entity icmem_olord2 is
     reset           : out    std_logic;
     statstop        : out    std_logic
   );
-end entity icmem_olord2;
+end entity;

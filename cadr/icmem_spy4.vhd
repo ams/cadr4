@@ -67,4 +67,4 @@ entity icmem_spy4 is
     spy8            : out    std_logic;
     spy9            : out    std_logic
   );
-end entity icmem_spy4;
+end entity;

@@ -88,4 +88,4 @@ entity cadr_mo1 is
     ob30            : out    std_logic;
     ob31            : out    std_logic
   );
-end entity cadr_mo1;
+end entity;

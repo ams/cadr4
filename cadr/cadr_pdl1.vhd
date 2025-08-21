@@ -48,4 +48,4 @@ entity cadr_pdl1 is
     pdl8            : out    std_logic;
     pdl9            : out    std_logic
   );
-end entity cadr_pdl1;
+end entity;

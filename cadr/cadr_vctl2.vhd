@@ -47,4 +47,4 @@ entity cadr_vctl2 is
     vmaselb         : out    std_logic;
     wmap            : out    std_logic
   );
-end entity cadr_vctl2;
+end entity;

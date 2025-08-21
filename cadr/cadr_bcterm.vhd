@@ -42,4 +42,4 @@ entity cadr_bcterm is
     mem8            : inout  std_logic;
     mem9            : inout  std_logic
   );
-end entity cadr_bcterm;
+end entity;

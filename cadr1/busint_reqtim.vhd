@@ -21,4 +21,4 @@ entity busint_reqtim is
     \timeout 3\     : out    std_logic;
     \unused timeout\ : out    std_logic
   );
-end entity busint_reqtim;
+end entity;

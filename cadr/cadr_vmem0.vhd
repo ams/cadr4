@@ -36,4 +36,4 @@ entity cadr_vmem0 is
     vmoparok        : out    std_logic;
     vpari           : out    std_logic
   );
-end entity cadr_vmem0;
+end entity;

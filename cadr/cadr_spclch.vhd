@@ -109,4 +109,4 @@ entity cadr_spclch is
     spc9            : out    std_logic;
     spcpar          : out    std_logic
   );
-end entity cadr_spclch;
+end entity;
