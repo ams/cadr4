@@ -6,7 +6,7 @@ use ieee.std_logic_textio.all;
 library std;
 use std.textio.all;
 
-use work.sn74.all;
+use work.sn74.sn74181;
 
 entity sn74181_tb is
 end entity;
@@ -29,7 +29,7 @@ architecture testbench of sn74181_tb is
 
 begin
 
-  uut : entity work.sn74181(structural)
+  uut : sn74181
     port map (
       CNb_e  => s_cin_n,
       S_e    => s_s,
