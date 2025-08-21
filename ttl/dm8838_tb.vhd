@@ -4,7 +4,7 @@ use ieee.std_logic_1164.all;
 use work.fairchild.dm8838;
 
 entity dm8838_tb is
-end;
+end entity;
 
 architecture testbench of dm8838_tb is
 

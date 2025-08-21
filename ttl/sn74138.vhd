@@ -21,7 +21,7 @@ entity sn74138 is
     y6   : out std_logic;
     y7   : out std_logic
     );
-end;
+end entity;
 
 architecture behavioral of sn74138 is
   signal sel2_i, sel1_i, sel0_i, g1_i, g2a_i, g2b_i : std_logic;

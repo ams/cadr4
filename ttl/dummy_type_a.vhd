@@ -24,7 +24,7 @@ entity dummy_type_a is
     \-boot2\       : out std_logic; -- 13
     \-power reset\ : out std_logic  -- 12
     );
-end;
+end entity;
 
 architecture behavioral of dummy_type_a is
 begin
@@ -33,4 +33,4 @@ begin
   \-boot1\ <= 'H';
   \-boot2\ <= 'H';
   \-power reset\ <= '0', '1' after 20 ns; -- short delay then go high
-end;
+end architecture;

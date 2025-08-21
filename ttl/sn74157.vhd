@@ -24,7 +24,7 @@ entity sn74157 is
     y3 : out std_logic;
     y4 : out std_logic
     );
-end;
+end entity;
 
 architecture behavioral of sn74157 is
   signal enb_n_i, sel_i, a1_i, a2_i, a3_i, a4_i, b1_i, b2_i, b3_i, b4_i : std_logic;

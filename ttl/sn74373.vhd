@@ -29,7 +29,7 @@ entity sn74373 is
     o6     : out std_logic; -- Pin 16 (7Q)
     o7     : out std_logic  -- Pin 19 (8Q)
     );
-end;
+end entity;
 
 architecture behavioral of sn74373 is
   signal hold_n_i, oenb_n_i, i0_i, i1_i, i2_i, i3_i, i4_i, i5_i, i6_i, i7_i : std_logic;
@@ -82,4 +82,4 @@ begin
     end if;
   end process;
 
-end;
+end architecture;

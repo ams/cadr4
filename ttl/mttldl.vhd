@@ -13,7 +13,8 @@ entity mttldl is
     o1 : out std_logic; -- 10
     o2 : out std_logic  -- 8
   );
-end mttldl;
+end entity;
+
 
 architecture behavioral of mttldl is
   signal i0_int : std_logic;
@@ -26,4 +27,4 @@ begin
   o0 <= transport i0_int after delay;
   o1 <= transport i1_int after delay;
   o2 <= transport i2_int after delay;
-end;
+end architecture;

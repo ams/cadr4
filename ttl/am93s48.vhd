@@ -23,7 +23,7 @@ entity am93s48 is
     pe  : out std_logic; -- Pin 10
     po  : out std_logic  -- Pin 9
     );
-end;
+end entity;
 
 architecture functional of am93s48 is
   signal i0_i, i1_i, i2_i, i3_i, i4_i, i5_i, i6_i, i7_i, i8_i, i9_i, i10_i, i11_i : std_logic;
@@ -45,4 +45,4 @@ begin
   po <= i0_i xor i1_i xor i2_i xor i3_i xor i4_i xor i5_i xor i6_i xor i7_i xor i8_i xor i9_i xor i10_i xor i11_i;
   pe <= not po;
 
-end;
+end architecture;

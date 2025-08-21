@@ -24,7 +24,7 @@ entity sn74194 is
     q2 : out std_logic; -- Pin 13 (QC)
     q3 : out std_logic  -- Pin 12 (QD)
     );
-end;
+end entity;
 
 architecture behavioral of sn74194 is
   signal clk_i, sil_i, sir_i, clr_n_i, i0_i, i1_i, i2_i, i3_i, s0_i, s1_i : std_logic;
@@ -61,4 +61,4 @@ begin
   end process;
 
   q3 <= reg(3); q2 <= reg(2); q1 <= reg(1); q0 <= reg(0);
-end;
+end architecture;

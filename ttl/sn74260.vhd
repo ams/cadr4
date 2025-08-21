@@ -20,7 +20,7 @@ entity sn74260 is
     g2e   : in  std_logic; -- Pin 12
     g2y_n : out std_logic  -- Pin 13
     );
-end;
+end entity;
 
 architecture functional of sn74260 is
   signal g1a_i, g1b_i, g1c_i, g1d_i, g1e_i, g2a_i, g2b_i, g2c_i, g2d_i, g2e_i : std_logic;

@@ -28,7 +28,7 @@ entity sn74241 is
     bout2 : out std_logic; -- Pin 5 (2Y3)
     bout3 : out std_logic  -- Pin 3 (2Y4)
     );
-end;
+end entity;
 
 architecture behavioral of sn74241 is
   signal aenb_n_i, ain0_i, ain1_i, ain2_i, ain3_i : std_logic;
@@ -78,4 +78,4 @@ begin
     end if;
   end process;
 
-end;
+end architecture;

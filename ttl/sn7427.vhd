@@ -23,7 +23,7 @@ entity sn7427 is
 
     g1c   : in  std_logic  -- Pin 13
     );
-end;
+end entity;
 
 architecture functional of sn7427 is
   signal g1a_i, g1b_i, g1c_i, g2a_i, g2b_i, g2c_i, g3a_i, g3b_i, g3c_i : std_logic;
@@ -43,4 +43,4 @@ begin
   g2y_n <= not (g2a_i or g2b_i or g2c_i);
   g3y_n <= not (g3a_i or g3b_i or g3c_i);
 
-end;
+end architecture;

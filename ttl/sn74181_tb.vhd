@@ -9,7 +9,7 @@ use std.textio.all;
 use work.sn74.all;
 
 entity sn74181_tb is
-end;
+end entity;
 
 architecture testbench of sn74181_tb is
 
@@ -90,6 +90,6 @@ begin
     wait;
   end process;
 
-end;
+end architecture;
 
 

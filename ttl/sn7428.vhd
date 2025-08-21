@@ -23,7 +23,7 @@ entity sn7428 is
     g4b   : in  std_logic; -- Pin 13
     g4q_n : out std_logic  -- Pin 11
     );
-end;
+end entity;
 
 architecture functional of sn7428 is
   signal g1a_i, g1b_i, g2a_i, g2b_i, g3a_i, g3b_i, g4a_i, g4b_i : std_logic;
@@ -43,4 +43,4 @@ begin
   g3q_n <= g3a_i nor g3b_i;
   g4q_n <= g4a_i nor g4b_i;
 
-end;
+end architecture;

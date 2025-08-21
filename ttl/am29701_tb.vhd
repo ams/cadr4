@@ -5,7 +5,7 @@ use ieee.numeric_std.all;
 use work.amd.all;
 
 entity am29701_tb is
-end;
+end entity;
 
 architecture testbench of am29701_tb is
 

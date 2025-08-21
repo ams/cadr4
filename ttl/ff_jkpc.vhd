@@ -15,7 +15,7 @@ entity ff_jkpc is
     j, k     : in  std_logic;
     q, q_n   : out std_logic
     );
-end;
+end entity;
 
 architecture behavioral of ff_jkpc is
   signal q_int : std_logic := '0';
@@ -59,5 +59,5 @@ begin
     end if;
   end process;
 
-end;
+end architecture;
 

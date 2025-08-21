@@ -19,7 +19,7 @@ entity am26s10 is
     z2  : out std_logic; -- Non-inverting output 2
     z3  : out std_logic  -- Non-inverting output 3
     );
-end am26s10;
+end entity;
 
 architecture behavioral of am26s10 is
   signal e_n_i, i0_i, i1_i, i2_i, i3_i : std_logic;
@@ -67,4 +67,4 @@ begin
     end if;
   end process;
 
-end behavioral;
+end architecture;

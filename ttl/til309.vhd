@@ -16,7 +16,7 @@ entity til309 is
     test_n         : in  std_logic; -- Pin 15 (LT)
     l1, l2, l4, l8 : out std_logic  -- l1: Pin 4 (QA), l2: Pin 1 (QB), l4: Pin 2 (QC), l8: Pin 3 (QD)
     );
-end;
+end entity;
 
 architecture behavioral of til309 is
   signal i1_int     : std_logic;
@@ -60,4 +60,4 @@ begin
     end if;
     l8 <= disp(3); l4 <= disp(2); l2 <= disp(1); l1 <= disp(0);
   end process;
-end;
+end architecture;

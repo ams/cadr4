@@ -4,7 +4,7 @@ use ieee.std_logic_1164.all;
 use work.sn74.all;
 
 entity sn74244_tb is
-end;
+end entity;
 
 architecture testbench of sn74244_tb is
 
@@ -77,4 +77,4 @@ begin
     wait;
   end process;
 
-end;
+end architecture;

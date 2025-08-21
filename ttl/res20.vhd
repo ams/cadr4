@@ -22,7 +22,7 @@ entity res20 is
     r18 : out std_logic; -- 18
     r19 : out std_logic -- 19
     );
-end;
+end entity;
 
 architecture functional of res20 is
 begin
@@ -32,4 +32,4 @@ begin
   r10 <= 'H'; r11 <= 'H'; r12 <= 'H'; r13 <= 'H';
   r14 <= 'H'; r15 <= 'H'; r16 <= 'H'; r17 <= 'H';
   r18 <= 'H'; r19 <= 'H';
-end;
+end architecture;

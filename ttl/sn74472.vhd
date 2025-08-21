@@ -30,7 +30,7 @@ entity sn74472 is
     d7   : out std_logic;
     ce_n : in  std_logic
     );
-end;
+end entity;
 
 architecture behavioral of sn74472 is
   signal a0_i, a1_i, a2_i, a3_i, a4_i, a5_i, a6_i, a7_i, a8_i, ce_n_i : std_logic;  
@@ -70,4 +70,4 @@ begin
       d3 <= 'X'; d2 <= 'X'; d1 <= 'X'; d0 <= 'X';
     end if;
   end process;
-end;
+end architecture;

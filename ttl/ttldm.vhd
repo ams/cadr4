@@ -31,7 +31,8 @@ entity ttldm is
     tap4   : out std_logic := 'H';
     output : out std_logic := 'H'
     );
-end ttldm;
+end entity;
+
 
 architecture behavioral of ttldm is
   signal input_int : std_logic;
@@ -42,4 +43,4 @@ begin
   tap3 <= transport input_int after single_tap_delay * 3;
   tap4 <= transport input_int after single_tap_delay * 4;
   output <= transport input_int after single_tap_delay * 5;
-end;
+end architecture;

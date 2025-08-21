@@ -23,7 +23,7 @@ entity sn74175 is
     q3   : out std_logic;
     q3_n : out std_logic
     );
-end;
+end entity;
 
 architecture structural of sn74175 is
   signal clk_i, clr_n_i, d0_i, d1_i, d2_i, d3_i : std_logic;
@@ -41,4 +41,4 @@ begin
   u2 : entity work.ff_dpc port map (clk => clk_i, clr => clr_n_i, d => d2_i, q => q2, q_n => q2_n, enb_n => '0', pre => '1');
   u3 : entity work.ff_dpc port map (clk => clk_i, clr => clr_n_i, d => d3_i, q => q3, q_n => q3_n, enb_n => '0', pre => '1');
 
-end;
+end architecture;

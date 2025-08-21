@@ -24,7 +24,7 @@ entity sn74283 is
     s3 : out std_logic; -- Pin 10
     co : out std_logic  -- Pin 9
     );
-end;
+end entity;
 
 architecture behavioral of sn74283 is
   signal ci_i, a0_i, a1_i, a2_i, a3_i : std_logic;
@@ -66,4 +66,4 @@ begin
   s3 <= sum_result(3);
   co <= sum_result(4);
 
-end;
+end architecture;

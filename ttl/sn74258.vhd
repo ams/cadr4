@@ -25,7 +25,7 @@ entity sn74258 is
     d1 : in  std_logic;
     dy : out std_logic
     );
-end;
+end entity;
 
 architecture behavioral of sn74258 is
   signal enb_n_i, sel_i, a0_i, a1_i, b0_i, b1_i, c0_i, c1_i, d0_i, d1_i : std_logic;
@@ -76,4 +76,4 @@ begin
       dy <= 'X';
     end if;
   end process;
-end;
+end architecture;

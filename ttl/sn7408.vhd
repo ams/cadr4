@@ -22,7 +22,7 @@ entity sn7408 is
     g4b : in  std_logic; -- Pin 13
     g4q : out std_logic  -- Pin 11
     );
-end;
+end entity;
 
 architecture functional of sn7408 is
   signal g1a_i, g1b_i, g2a_i, g2b_i, g3a_i, g3b_i, g4a_i, g4b_i : std_logic;
@@ -42,4 +42,4 @@ begin
   g3q <= g3a_i and g3b_i;
   g4q <= g4a_i and g4b_i;
 
-end;
+end architecture;

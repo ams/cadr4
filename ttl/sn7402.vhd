@@ -23,7 +23,7 @@ entity sn7402 is
     g4b   : in  std_logic; -- Pin 12
     g4q_n : out std_logic  -- Pin 13
     );
-end;
+end entity;
 
 architecture functional of sn7402 is
   signal g1a_i, g1b_i, g2a_i, g2b_i, g3a_i, g3b_i, g4a_i, g4b_i : std_logic;
@@ -43,4 +43,4 @@ begin
   g3q_n <= not (g3a_i or g3b_i);
   g4q_n <= not (g4a_i or g4b_i);
 
-end;
+end architecture;

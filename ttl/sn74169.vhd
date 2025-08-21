@@ -21,7 +21,7 @@ entity sn74169 is
     -- Data outputs
     o3, o2, o1, o0 : out std_logic
     );
-end;
+end entity;
 
 architecture behavioral of sn74169 is
   signal clk_i, up_dn_i, load_n_i, enb_p_n_i, enb_t_n_i, i3_i, i2_i, i1_i, i0_i : std_logic;

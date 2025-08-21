@@ -4,7 +4,7 @@ use ieee.std_logic_1164.all;
 use work.sn74.all;
 
 entity sn74373_tb is
-end;
+end entity;
 
 architecture sim of sn74373_tb is
   signal hold_n, oenb_n : std_logic;
@@ -60,4 +60,4 @@ begin
 
     wait;
   end process;
-end;
+end architecture;

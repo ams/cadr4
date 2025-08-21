@@ -5,7 +5,7 @@ use ieee.numeric_std.all;
 use work.sn74.all;
 
 entity sn74182_tb is
-end;
+end entity;
 
 architecture testbench of sn74182_tb is
 

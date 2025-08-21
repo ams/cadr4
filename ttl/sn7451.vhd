@@ -18,7 +18,7 @@ entity sn7451 is
     g2d   : in  std_logic; -- Pin 1
     g2y   : out std_logic  -- Pin 8
     );
-end;
+end entity;
 
 architecture functional of sn7451 is
   signal g1a_i, g1b_i, g1c_i, g1d_i, g2a_i, g2b_i, g2c_i, g2d_i : std_logic;
@@ -39,4 +39,4 @@ begin
   -- Gate 2: (g2a AND g2b) OR (g2c AND g2d) then invert
   g2y <= not ((g2a_i and g2b_i) or (g2c_i and g2d_i));
 
-end;
+end architecture;

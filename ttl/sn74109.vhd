@@ -23,7 +23,7 @@ entity sn74109 is
     j2     : in  std_logic;
     clr2_n : in  std_logic
     );
-end;
+end entity;
 
 architecture structural of sn74109 is
   signal clr1_n_i, j1_i, k1_n_i, clk1_i, pre1_n_i, pre2_n_i, clk2_i, k2_n_i, j2_i, clr2_n_i : std_logic;
@@ -43,4 +43,4 @@ begin
   u0 : entity work.ff_jkpc port map (clk => clk1_i, pre => pre1_n_i, clr => clr1_n_i, j => j1_i, k => not k1_n_i, q => q1, q_n => q1_n);
   u1 : entity work.ff_jkpc port map (clk => clk2_i, pre => pre2_n_i, clr => clr2_n_i, j => j2_i, k => not k2_n_i, q => q2, q_n => q2_n);
 
-end;
+end architecture;

@@ -22,7 +22,7 @@ entity sn74151 is
     q    : out std_logic;
     q_n  : out std_logic
     );
-end;
+end entity;
 
 architecture behavioral of sn74151 is
   signal i0_i, i1_i, i2_i, i3_i, i4_i, i5_i, i6_i, i7_i : std_logic;

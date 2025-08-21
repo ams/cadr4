@@ -23,7 +23,7 @@ entity sn7438 is
     g4b   : in  std_logic;
     g4q_n : out std_logic
     );
-end;
+end entity;
 
 architecture functional of sn7438 is
   signal g1a_i, g1b_i, g2a_i, g2b_i, g3a_i, g3b_i, g4a_i, g4b_i : std_logic;
@@ -51,4 +51,4 @@ begin
   g3q_n <= '0' when g3_nand = '0' else 'Z' when g3_nand = '1' else g3_nand;
   g4q_n <= '0' when g4_nand = '0' else 'Z' when g4_nand = '1' else g4_nand;
 
-end;
+end architecture;

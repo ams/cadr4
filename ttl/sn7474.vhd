@@ -19,7 +19,7 @@ entity sn7474 is
     g2d   : in  std_logic; -- pin 12
     g2r_n : in  std_logic  -- pin 13
     );
-end;
+end entity;
 
 architecture functional of sn7474 is
   signal g1r_n_i, g1d_i, g1clk_i, g1s_n_i, g2s_n_i, g2clk_i, g2d_i, g2r_n_i : std_logic;
@@ -40,4 +40,4 @@ begin
   -- second flip-flop
   u2 : entity work.ff_dpc port map (clk => g2clk_i, pre => g2s_n_i, clr => g2r_n_i, d => g2d_i, q => g2q, q_n => g2q_n, enb_n => '0');
 
-end;
+end architecture;

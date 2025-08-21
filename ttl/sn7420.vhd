@@ -18,7 +18,7 @@ entity sn7420 is
     g2d   : in  std_logic; -- Pin 13
     g2y_n : out std_logic  -- Pin 8
     );
-end;
+end entity;
 
 architecture functional of sn7420 is
   signal g1a_i, g1b_i, g1c_i, g1d_i, g2a_i, g2b_i, g2c_i, g2d_i : std_logic;
@@ -36,4 +36,4 @@ begin
   g1y_n <= not (g1a_i and g1b_i and g1c_i and g1d_i);
   g2y_n <= not (g2a_i and g2b_i and g2c_i and g2d_i);
 
-end;
+end architecture;

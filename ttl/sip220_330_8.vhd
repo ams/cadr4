@@ -10,11 +10,11 @@ entity sip220_330_8 is
     r6 : inout std_logic; -- 6
     r7 : inout std_logic  -- 7
     );
-end;
+end entity;
 
 architecture functional of sip220_330_8 is
 begin
   -- Weak pull-up resistors - can be overridden by strong drivers
   r2 <= 'H'; r3 <= 'H'; r4 <= 'H'; 
   r5 <= 'H'; r6 <= 'H'; r7 <= 'H';
-end;
+end architecture;

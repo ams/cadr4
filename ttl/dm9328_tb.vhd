@@ -4,7 +4,7 @@ use ieee.std_logic_1164.all;
 use work.fairchild.dm9328;
 
 entity dm9328_tb is
-end;
+end entity;
 
 architecture testbench of dm9328_tb is
 
@@ -91,4 +91,4 @@ begin
     wait;
   end process;
 
-end;
+end architecture;

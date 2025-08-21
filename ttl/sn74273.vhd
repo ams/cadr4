@@ -24,7 +24,7 @@ entity sn74273 is
     q6    : out std_logic; -- Pin 16 (7Q)
     q7    : out std_logic  -- Pin 19 (8Q)
     );
-end;
+end entity;
 
 architecture behavioral of sn74273 is
   signal clr_n_i, clk_i : std_logic;
@@ -62,4 +62,4 @@ begin
   q6 <= q_int(6);
   q7 <= q_int(7);
 
-end;
+end architecture;

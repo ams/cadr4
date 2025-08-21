@@ -5,7 +5,7 @@ use std.textio.all;
 use work.sn74.all;
 
 entity sn74138_tb is
-end sn74138_tb;
+end entity;
 
 architecture testbench of sn74138_tb is
   signal sel2, sel1, sel0, g1, g2a, g2b : std_logic;
@@ -92,4 +92,4 @@ begin
 
     wait;
   end process;
-end testbench;
+end architecture;

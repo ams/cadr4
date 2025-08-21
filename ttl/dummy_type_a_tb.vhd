@@ -4,7 +4,7 @@ use ieee.std_logic_1164.all;
 use work.other.dummy_type_a;
 
 entity dummy_type_a_tb is
-end;
+end entity;
 
 architecture testbench of dummy_type_a_tb is
 
@@ -38,4 +38,4 @@ begin
     wait;
   end process;
 
-end;
+end architecture;

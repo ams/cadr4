@@ -24,7 +24,7 @@ entity sn7404 is
     g6a   : in  std_logic;
     g6q_n : out std_logic
     );
-end;
+end entity;
 
 architecture functional of sn7404 is
   signal g1a_i, g2a_i, g3a_i, g4a_i, g5a_i, g6a_i : std_logic;
@@ -44,4 +44,4 @@ begin
   g5q_n <= not g5a_i;
   g6q_n <= not g6a_i;
 
-end;
+end architecture;

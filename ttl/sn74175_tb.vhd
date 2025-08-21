@@ -4,7 +4,7 @@ use ieee.std_logic_1164.all;
 use work.sn74.all;
 
 entity sn74175_tb is
-end;
+end entity;
 
 architecture testbench of sn74175_tb is
   signal clk   : std_logic;

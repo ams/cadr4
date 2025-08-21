@@ -23,7 +23,7 @@ entity sn74139 is
     g2s0 : in  std_logic; -- Pin 14
     g2e_n: in  std_logic  -- Pin 15
     );
-end;
+end entity;
 
 architecture behavioral of sn74139 is
   signal g1e_n_i, g1s0_i, g1s1_i, g2e_n_i, g2s0_i, g2s1_i : std_logic;

@@ -4,7 +4,7 @@ use ieee.std_logic_1164.all;
 use work.fairchild.dm93s46;
 
 entity dm93s46_tb is
-end;
+end entity;
 
 architecture testbench of dm93s46_tb is
 

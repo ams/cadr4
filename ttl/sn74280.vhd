@@ -19,7 +19,7 @@ entity sn74280 is
     even : out std_logic;
     odd  : out std_logic
     );
-end;
+end entity;
 
 architecture behavioral of sn74280 is
   signal i0_i, i1_i, i2_i, i3_i, i4_i, i5_i, i6_i, i7_i, i8_i : std_logic;
@@ -53,4 +53,4 @@ begin
       odd    <= parity;
     end if;
   end process;
-end;
+end architecture;

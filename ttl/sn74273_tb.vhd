@@ -4,32 +4,13 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+library work;
+use work.sn74.sn74273;
+
 entity sn74273_tb is
-end;
+end entity;
 
 architecture sim of sn74273_tb is
-  component sn74273 is
-    port (
-      clr_n : in  std_logic;
-      clk   : in  std_logic;
-      d0    : in  std_logic;
-      d1    : in  std_logic;
-      d2    : in  std_logic;
-      d3    : in  std_logic;
-      d4    : in  std_logic;
-      d5    : in  std_logic;
-      d6    : in  std_logic;
-      d7    : in  std_logic;
-      q0    : out std_logic;
-      q1    : out std_logic;
-      q2    : out std_logic;
-      q3    : out std_logic;
-      q4    : out std_logic;
-      q5    : out std_logic;
-      q6    : out std_logic;
-      q7    : out std_logic
-      );
-  end component;
 
   signal clr_n : std_logic := '1';
   signal clk   : std_logic := '0';

@@ -37,7 +37,7 @@ entity sn74276 is
     q4     : out std_logic;
     q4_n   : out std_logic
     );
-end;
+end entity;
 
 architecture structural of sn74276 is
   signal clr_n_i, set_n_i : std_logic;
@@ -115,4 +115,4 @@ begin
       q_n => q4_n
     );
 
-end;
+end architecture;

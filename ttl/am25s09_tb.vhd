@@ -4,7 +4,7 @@ use ieee.std_logic_1164.all;
 use work.amd.am25s09;
 
 entity am25s09_tb is
-end;
+end entity;
 
 architecture testbench of am25s09_tb is
 

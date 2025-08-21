@@ -5,7 +5,7 @@ use ieee.numeric_std.all;
 use work.signetics.n82s21;
 
 entity n82s21_tb is
-end;
+end entity;
 
 architecture testbench of n82s21_tb is
 

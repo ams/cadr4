@@ -22,7 +22,7 @@ entity sn74133 is
     g   : in  std_logic; -- Pin 9
     q_n : out std_logic  -- Pin 8
     );
-end;
+end entity;
 
 architecture functional of sn74133 is
   signal a_i, b_i, c_i, d_i, e_i, f_i, g_i, h_i, i_i, j_i, k_i, l_i, m_i : std_logic;
@@ -44,4 +44,4 @@ begin
 
   q_n <= not (a_i and b_i and c_i and d_i and e_i and f_i and g_i and h_i and i_i and j_i and k_i and l_i and m_i);
 
-end;
+end architecture;

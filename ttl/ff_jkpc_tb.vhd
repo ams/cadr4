@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 entity ff_jkpc_tb is
-end;
+end entity;
 
 architecture testbench of ff_jkpc_tb is
 

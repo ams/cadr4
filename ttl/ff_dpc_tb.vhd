@@ -7,7 +7,7 @@ use ieee.numeric_std.all;
 use std.env.finish;
 
 entity ff_dpc_tb is
-end;
+end entity;
 
 architecture testbench of ff_dpc_tb is
   signal clk      : std_logic := '0';

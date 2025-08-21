@@ -21,7 +21,7 @@ entity dm8838 is
     disable_a : in std_logic; -- Disable A (active high)
     disable_b : in std_logic  -- Disable B (active high)
     );
-end dm8838;
+end entity;
 
 architecture behavioral of dm8838 is
   signal enabled : std_logic;
@@ -51,4 +51,4 @@ begin
           '1' when bus4 = 'Z' or bus4 = 'H' else
           bus4;
 
-end behavioral;
+end architecture;

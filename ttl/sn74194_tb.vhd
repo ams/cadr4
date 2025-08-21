@@ -4,7 +4,7 @@ use ieee.std_logic_1164.all;
 use work.sn74.all;
 
 entity sn74194_tb is
-end;
+end entity;
 
 architecture testbench of sn74194_tb is
 

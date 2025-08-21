@@ -19,7 +19,7 @@ entity sn7464 is
     b4    : in  std_logic; -- Pin 13
     a4    : in  std_logic  -- Pin 14
     );
-end;
+end entity;
 
 architecture functional of sn7464 is
   signal d4_i, b2_i, a2_i, c3_i, b3_i, a3_i, a1_i, b1_i, c4_i, b4_i, a4_i : std_logic;
@@ -40,4 +40,4 @@ begin
   -- 4-2-3-2 Input AND-OR-INVERT: ((a1 AND b1) OR (a2 AND b2) OR (a3 AND b3 AND c3) OR (a4 AND b4 AND c4 AND d4)) then invert
   \out\ <= not ((a1_i and b1_i) or (a2_i and b2_i) or (a3_i and b3_i and c3_i) or (a4_i and b4_i and c4_i and d4_i));
 
-end;
+end architecture;

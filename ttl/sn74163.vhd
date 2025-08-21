@@ -22,7 +22,7 @@ entity sn74163 is
     -- Data outputs
     d3, d2, d1, d0 : out std_logic
     );
-end;
+end entity;
 
 architecture behavioral of sn74163 is
   signal clk_i, clr_n_i, pe_n_i, enb_p_i, enb_t_i, i3_i, i2_i, i1_i, i0_i : std_logic;

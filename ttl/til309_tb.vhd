@@ -4,7 +4,7 @@ use ieee.std_logic_1164.all;
 use work.other.til309;
 
 entity til309_tb is
-end;
+end entity;
 
 architecture testbench of til309_tb is
 
@@ -93,4 +93,4 @@ begin
     wait;
   end process;
 
-end;
+end architecture;

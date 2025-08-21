@@ -18,7 +18,7 @@ entity ff_dpc is
     enb_n    : in  std_logic;
     q, q_n   : out std_logic
     );
-end;
+end entity;
 
 architecture behavioral of ff_dpc is
   signal clk_i, pre_i, clr_i, d_i, enb_n_i : std_logic;
@@ -54,4 +54,4 @@ begin
       end if;
     end if;
   end process;
-end; 
+end architecture;

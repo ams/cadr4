@@ -24,7 +24,7 @@ entity sn74153 is
     sela   : in  std_logic; -- Pin 14
     selb   : in  std_logic -- Pin 2
     );
-end;
+end entity;
 
 architecture behavioral of sn74153 is
   signal sela_i, selb_i, enb1_n_i, g1c0_i, g1c1_i, g1c2_i, g1c3_i : std_logic;

@@ -5,7 +5,7 @@ use ieee.numeric_std.all;
 use work.sn74.all;
 
 entity sn74139_tb is
-end;
+end entity;
 
 architecture testbench of sn74139_tb is
 
@@ -90,4 +90,4 @@ begin
     wait;
   end process;
 
-end architecture testbench;
+end architecture;

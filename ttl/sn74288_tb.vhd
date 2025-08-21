@@ -8,7 +8,7 @@ use work.sn74.sn74288;
 use work.misc.load_hex_file;
 
 entity sn74288_tb is
-end;
+end entity;
 
 architecture testbench of sn74288_tb is
 
@@ -73,4 +73,4 @@ begin
     wait;
   end process;
 
-end;
+end architecture;

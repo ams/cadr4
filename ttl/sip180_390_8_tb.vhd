@@ -4,7 +4,7 @@ use ieee.std_logic_1164.all;
 use work.other.all;
 
 entity sip180_390_8_tb is
-end;
+end entity;
 
 architecture testbench of sip180_390_8_tb is
 
@@ -42,4 +42,4 @@ begin
     wait;
   end process;
 
-end;
+end architecture;

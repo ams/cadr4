@@ -6,7 +6,7 @@ use std.env.all;
 use work.sn74.all;
 
 entity sn74169_tb is
-end;
+end entity;
 
 architecture testbench of sn74169_tb is
 

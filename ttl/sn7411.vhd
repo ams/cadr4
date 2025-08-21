@@ -21,7 +21,7 @@ entity sn7411 is
     g3c : in  std_logic; -- Pin 11
     g3y : out std_logic  -- Pin 8
     );
-end;
+end entity;
 
 architecture functional of sn7411 is
   signal g1a_i, g1b_i, g1c_i, g2a_i, g2b_i, g2c_i, g3a_i, g3b_i, g3c_i : std_logic;
@@ -41,4 +41,4 @@ begin
   g2y <= g2a_i and g2b_i and g2c_i;
   g3y <= g3a_i and g3b_i and g3c_i;
 
-end;
+end architecture;
