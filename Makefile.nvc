@@ -34,32 +34,6 @@ $(NVC_WORK_DIR)/WORK.%_TB.elab: $(NVC_WORK_DIR)
 .PHONY: all
 all: $(addprefix $(NVC_WORK_DIR)/,$(patsubst %,WORK.%.elab,$(NVC_EXES)))
 
-# below is smart handling of wave opt file
-# if file does not exist, it is not used
-# if file exists
-## if first line is "recreate", then it is deleted and recreated
-## else if first line is "ignore", then it is ignored
-## else it is used
-
-WAVEOPTFILE := $(TB).opt
-WAVEFILE := $(BUILDDIR)/$(TB).ghw
-ifneq ("$(wildcard $(WAVEOPTFILE))","")
-WAVEOPTCONTENTS := $(shell head -1 $(WAVEOPTFILE))
-ifeq ("$(WAVEOPTCONTENTS)","recreate")
-$(info recreating wave opt file: $(WAVEOPTFILE))
-WAVEOPTFILERECREATE := 1
-NVCWAVEOPTIONS := --gtkw=$(WAVEFILE) --write-wave-opt=$(WAVEOPTFILE)
-else ifeq ("$(WAVEOPTCONTENTS)","ignore")
-$(info ignoring wave opt file: $(WAVEOPTFILE))
-GHDLWAVEOPTIONS := --wave=$(WAVEFILE)
-else
-$(info using wave opt file: $(WAVEOPTFILE))
-GHDLWAVEOPTIONS := --wave=$(WAVEFILE) --read-wave-opt=$(WAVEOPTFILE)
-endif
-else
-GHDLWAVEOPTIONS := --wave=$(WAVEFILE)
-endif
-
 # add stoptime if requested
 ifeq ($(CADR4_STOPTIME),0)
 NVCSTOPTIMEOPTION :=
@@ -69,22 +43,16 @@ endif
 
 .PHONY: run-%
 run-%: $(NVC_WORK_DIR)/WORK.%_TB.elab
-	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) -r $*_TB
+	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) -r $(NVC_RUNTIME_OPTIONS) $*_TB
 
 .PHONY: cosim-run-%
 cosim-run-%: $(NVC_WORK_DIR)/WORK.%_TB.elab $(COSIM_VHPI)
-	$(CADR4_NVC) $(NVC_GLOBAL_OPTS_WITH_COSIM) -r $*_TB
+	$(CADR4_NVC) $(NVC_GLOBAL_OPTS_WITH_COSIM) -r $(NVC_RUNTIME_OPTIONS) $*_TB
 
 .PHONY: wf-%
 wf-%: $(NVC_WORK_DIR)/WORK.%_TB.elab
-ifeq ($(WAVEOPTFILERECREATE),1)	
-	$(RM) $(WAVEOPTFILE)
-endif
-	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) -r $(NVC_RUNTIME_OPTIONS) $(NVCSTOPTIMEOPTION) $*_TB
+	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) -r $(NVC_RUNTIME_OPTIONS) --format=fst --wave=$(BUILDDIR)/$*.fst $(NVCSTOPTIMEOPTION) $*_TB
 
 .PHONY: cosim-wf-%
 cosim-wf-%: $(NVC_WORK_DIR)/WORK.%_TB.elab $(COSIM_VHPI)
-ifeq ($(WAVEOPTFILERECREATE),1)	
-	$(RM) $(WAVEOPTFILE)
-endif
-	$(CADR4_NVC) $(NVC_GLOBAL_OPTS_WITH_COSIM) -r $(NVC_RUNTIME_OPTIONS) $(NVCSTOPTIMEOPTION) $*_TB
+	$(CADR4_NVC) $(NVC_GLOBAL_OPTS_WITH_COSIM) -r $(NVC_RUNTIME_OPTIONS) --format=fst --wave=$(BUILDDIR)/$*.fst $(NVCSTOPTIMEOPTION) $*_TB

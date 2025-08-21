@@ -422,7 +422,7 @@ class vEntity(vInterface):
         try:
             with open(custom_file, 'r') as custom_f:
                 print("", file=f)
-                print("  -- Custom instructions from file:", file=f)
+                print(f"  -- Custom instructions from file: {custom_file}", file=f)
                 for line in custom_f:
                     # Remove trailing newline and print with proper indentation
                     line = line.rstrip('\n\r')
