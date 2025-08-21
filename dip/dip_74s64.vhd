@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 library work;
-use work.sn74.all;
+use work.sn74.sn7464;
 
 entity dip_74s64 is
   port (
@@ -23,7 +23,7 @@ end entity;
 
 architecture dip of dip_74s64 is
 begin
-  U1 : sn74s64
+  U1 : sn7464
     port map (
       a1    => p9,
       b1    => p10,

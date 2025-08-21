@@ -4,7 +4,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-use work.sn74.sn74s181;
+use work.sn74.sn74181;
 
 entity dip_74s181 is
   port (    
@@ -43,7 +43,7 @@ end entity;
 architecture structural of dip_74s181 is
   signal s_f : std_logic_vector(3 downto 0);
 begin
-  U1 : sn74s181
+  U1 : sn74181
     port map (
       CN4b_e => p16,
       Y_e    => p17,
