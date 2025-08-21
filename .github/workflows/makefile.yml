@@ -24,10 +24,19 @@ jobs:
       run: sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
 
     - name: Fix libLLVM-18.so.18.1 path (symlink)
-      run: sudo ln -s /lib/x86_64-linux-gnu/libLLVM.so.18.1 /lib/x86_64-linux-gnu/libLLVM-18.so.18.1
+      run: sudo ln -s /lib/x86_64-linux-gnu/libLLVM.so.18.1 /lib/x86_64-linux-gnu/libLLVM-18.so.18.1	
 
     - name: Regen
       run: make regen
 
-    - name: Build
-      run: make
+    - name: Build with ghdl
+      run: CADR4_HDLCOMPILER=ghdl && make
+
+    - name: Get nvc
+      run: git clone https://github.com/nickg/nvc
+
+    - name: Build nvc
+      run: cd nvc && ./autogen.sh && ./configure && make && sudo make install
+
+    - name : Build with nvc
+      run: CADR4_HDLCOMPILER=nvc && make
