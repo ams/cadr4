@@ -36,7 +36,14 @@ jobs:
       run: git clone https://github.com/nickg/nvc
 
     - name: Build nvc
-      run: cd nvc && ./autogen.sh && ./configure && make && sudo make install
+      run: |
+	  	cd nvc
+		./autogen.sh
+		mkdir build
+		cd build
+		../configure
+		make
+		sudo make install
 
     - name : Build with nvc
       run: CADR4_HDLCOMPILER=nvc && make
