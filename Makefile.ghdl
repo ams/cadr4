@@ -45,7 +45,7 @@ $(COSIM_VPI_LIB): $(COSIM_VPI_COBJS)
 	$(CADR4_GHDL) --vpi-link -v $(CADR4_GHDL_VPI_LINKER) $(COSIM_VPI_COBJS) -o $@
 
 .PHONY: all
-all: $(addprefix $(BUILDDIR)/,$(EXES))
+all: $(addprefix $(BUILDDIR)/,$(EXES)) $(COSIM_VPI_LIB)
 
 # below is smart handling of wave opt file
 # if file does not exist, it is not used
