@@ -9,7 +9,7 @@ NVC_FILE_LIST	:= $(BUILDDIR)/nvc.filelist
 NVC_EXES		:= $(shell echo "$(EXES)" | tr '[:lower:]' '[:upper:]')
 
 NVC_RUNTIME_OPTIONS := --stats
-NVC_GLOBAL_OPTS	:= --work=work:$(NVC_WORK_DIR) --std=$(NVCSTD)
+NVC_GLOBAL_OPTS	:= --work=work:$(NVC_WORK_DIR) --std=$(NVCSTD) --vhpi-debug
 
 # asserts can be disabled to improve performance
 ifeq ($(CADR4_NOASSERTS),1)
@@ -46,7 +46,7 @@ $(NVC_WORK_DIR)/WORK.%.elab: | $(NVC_WORK_DIR)
 # compile and link cosim vhpi sources into cosim.so
 $(COSIM_VHPI_LIB): $(COSIM_VHPI_CSRCS)
 	mkdir -p $(BUILDDIR)
-	$(CADR4_NVC_VHPI_CC) -shared -fPIC -I$(CADR4_NVC_VHPI_USER_H_DIR) -o $(COSIM_VHPI_LIB) $^
+	$(CADR4_NVC_VHPI_CC) -shared -fPIC -Wl,-undefined,dynamic_lookup -I$(CADR4_NVC_VHPI_USER_H_DIR) -o $(COSIM_VHPI_LIB) $^
 
 .PHONY: all
 all: $(addprefix $(NVC_WORK_DIR)/,$(patsubst %,WORK.%.elab,$(call UC,$(EXES)))) $(COSIM_VHPI_LIB)
