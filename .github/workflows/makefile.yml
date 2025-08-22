@@ -14,8 +14,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Install build-essential
-      run: sudo apt-get install -y build-essential
+    - name: apt update
+      run: sudo apt-get update
+
+    - name: Install dependencies
+      run: sudo apt-get install -y software-properties-common build-essential
 
     - name: Install GHDL
       run: sudo apt-get install -y ghdl-llvm
@@ -32,6 +35,9 @@ jobs:
     - name: Build with ghdl
       run: CADR4_HDLCOMPILER=ghdl && make
 
+    - name: Install nvc dependencies
+      run: sudo apt-get install -y git autoconf flex pkg-config zlib1g-dev libzstd-dev
+
     - name: Get nvc
       run: git clone https://github.com/nickg/nvc
 
@@ -41,7 +47,7 @@ jobs:
         ./autogen.sh
         mkdir build
         cd build
-        ../configure
+        ../configure --with-llvm=/usr/lib/llvm-config-20
         make
         sudo make install
 
