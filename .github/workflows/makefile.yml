@@ -23,7 +23,7 @@ jobs:
     - name: Install GHDL
       run: sudo apt-get install -y ghdl-llvm
 
-    - name: Install latest LLVM (18 and 19)
+    - name: Install latest LLVM
       run: sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
 
     - name: Fix libLLVM-18.so.18.1 path (symlink)
@@ -33,7 +33,7 @@ jobs:
       run: make regen
 
     - name: Build with ghdl
-      run: CADR4_HDLCOMPILER=ghdl && make
+      run: make clean && CADR4_HDLCOMPILER=ghdl make
 
     - name: Install nvc dependencies
       run: sudo apt-get install -y git autoconf flex pkg-config zlib1g-dev libzstd-dev
@@ -47,9 +47,9 @@ jobs:
         ./autogen.sh
         mkdir build
         cd build
-        ../configure --with-llvm=/usr/lib/llvm-config-20
+        ../configure --with-llvm=/usr/bin/llvm-config-20
         make
         sudo make install
 
     - name : Build with nvc
-      run: CADR4_HDLCOMPILER=nvc && make
+      run: make clean && CADR4_HDLCOMPILER=nvc make
