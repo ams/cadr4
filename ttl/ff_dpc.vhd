@@ -48,6 +48,16 @@ begin
       q_int <= '0';
     elsif pre_i = 'X' or clr_i = 'X' then
       q_int <= 'X';
+    elsif pre_i = '1' and clr_i = '1' then
+      -- I dont know why but if this is not checked here, output becomes U
+      -- even though the signal is initialized to '0' at first
+      if q_int = 'U' then
+        q_int <= '0';
+      elsif enb_n_i = '0' then
+        if rising_edge(clk_i) then
+          q_int <= d_i;
+        end if;
+      end if;
     elsif enb_n_i = '0' then
       if rising_edge(clk_i) then
         q_int <= d_i;

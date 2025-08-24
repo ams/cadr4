@@ -40,6 +40,28 @@ begin
       q_int <= '0';
     elsif pre = 'X' or clr = 'X' then
       q_int <= 'X';
+    elsif pre = '1' and clr = '1' then
+      -- I dont know why but if this is not checked here, output becomes U
+      -- even though the signal is initialized to '0' at first
+      if q_int = 'U' then
+        q_int <= '0';
+      elsif rising_edge(clk) then
+        jk := j & k;
+        case jk is
+          when "00"   => null;           -- Hold state
+          when "01"   => q_int <= '0';   -- Reset
+          when "10"   => q_int <= '1';   -- Set
+          when "11"   =>                 -- Toggle
+            if q_int = '1' then
+              q_int <= '0';
+            elsif q_int = '0' then
+              q_int <= '1';
+            else
+              q_int <= 'X';  -- Unknown toggle result
+            end if;
+          when others => q_int <= 'X';   -- Unknown inputs
+        end case;
+      end if;
     elsif rising_edge(clk) then
       jk := j & k;
       case jk is

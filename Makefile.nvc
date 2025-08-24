@@ -19,11 +19,14 @@ else
 NVC_RUNTIME_OPTIONS += --exit-severity=note
 endif
 
+# this is a function and to be called with the testbench name as argument
+NVC_WAVE_OPTS = --format=$(CADR4_WAVEFORMAT) --wave=$(BUILDDIR)/$1.$(CADR4_WAVEFORMAT)
+
 # add stoptime if requested
 ifeq ($(CADR4_STOPTIME),0)
-NVCSTOPTIMEOPTION :=
+NVC_STOPTIME_OPTS :=
 else
-NVCSTOPTIMEOPTION := --stop-time=$(CADR4_STOPTIME)
+NVC_STOPTIME_OPTS := --stop-time=$(CADR4_STOPTIME)
 endif
 
 UC = $(shell echo '$1' | tr '[:lower:]' '[:upper:]')
@@ -40,7 +43,7 @@ $(NVC_WORK_DIR): $(NVC_FILE_LIST)
 .PARALLEL:
 
 # order-only prerequisite to ignore directory modification timestamps
-$(NVC_WORK_DIR)/WORK.%.elab: | $(NVC_WORK_DIR)
+$(NVC_WORK_DIR)/WORK.%.elab: $(SRCS) $(NVC_WORK_DIR)
 	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) -e $*
 
 # compile and link cosim vhpi sources into cosim.so
@@ -67,9 +70,9 @@ cosim-run-%: $(NVC_WORK_DIR)/WORK.$$(call UC,%).elab $(COSIM_VHPI_LIB)
 .PHONY: wf-%
 .SECONDEXPANSION:
 wf-%: $(NVC_WORK_DIR)/WORK.$$(call UC,%).elab
-	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) -r $(NVC_RUNTIME_OPTIONS) --format=fst --wave=$(BUILDDIR)/$*.fst $(NVCSTOPTIMEOPTION) $(call UC,$*)
+	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) -r $(NVC_RUNTIME_OPTIONS) $(call NVC_WAVE_OPTS,$*) $(NVC_STOPTIME_OPTS) $(call UC,$*)
 
 .PHONY: cosim-wf-%
 .SECONDEXPANSION:
 cosim-wf-%: $(NVC_WORK_DIR)/WORK.$$(call UC,%).elab $(COSIM_VHPI_LIB)
-	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) --load=$(COSIM_VHPI_LIB) -r $(NVC_RUNTIME_OPTIONS) --format=fst --wave=$(BUILDDIR)/$*.fst $(NVCSTOPTIMEOPTION) $(call UC,$*)
+	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) --load=$(COSIM_VHPI_LIB) -r $(NVC_RUNTIME_OPTIONS) $(call NVC_WAVE_OPTS,$*) $(NVC_STOPTIME_OPTS) $(call UC,$*)

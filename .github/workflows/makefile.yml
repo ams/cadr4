@@ -36,7 +36,7 @@ jobs:
       run: make clean && CADR4_HDLCOMPILER=ghdl make
 
     - name: Install nvc dependencies
-      run: sudo apt-get install -y git autoconf flex pkg-config zlib1g-dev libzstd-dev
+      run: sudo apt-get install -y git autoconf flex pkg-config zlib1g-dev libzstd-dev check
 
     - name: Get nvc
       run: git clone https://github.com/nickg/nvc

@@ -57,22 +57,33 @@ all: $(addprefix $(BUILDDIR)/,$(EXES)) $(COSIM_VPI_LIB)
 # cadr_tb is generated under build that is removed on clean
 # so use the opt file in project root for that
 WAVEOPTFILE := $(TB).opt
-WAVEFILE := $(BUILDDIR)/$(TB).ghw
+GHDL_WAVEOPT_OPTS :=
+
 ifneq ("$(wildcard $(WAVEOPTFILE))","")
 WAVEOPTCONTENTS := $(shell head -1 $(WAVEOPTFILE))
 ifeq ("$(WAVEOPTCONTENTS)","recreate")
 $(info recreating wave opt file: $(WAVEOPTFILE))
 WAVEOPTFILERECREATE := 1
-GHDLWAVEOPTIONS := --wave=$(WAVEFILE) --write-wave-opt=$(WAVEOPTFILE)
+GHDL_WAVEOPT_OPTS := --write-wave-opt=$(WAVEOPTFILE)
 else ifeq ("$(WAVEOPTCONTENTS)","ignore")
 $(info ignoring wave opt file: $(WAVEOPTFILE))
-GHDLWAVEOPTIONS := --wave=$(WAVEFILE)
 else
 $(info using wave opt file: $(WAVEOPTFILE))
-GHDLWAVEOPTIONS := --wave=$(WAVEFILE) --read-wave-opt=$(WAVEOPTFILE)
+GHDL_WAVEOPT_OPTS := --read-wave-opt=$(WAVEOPTFILE)
 endif
 else
-GHDLWAVEOPTIONS := --wave=$(WAVEFILE)
+endif
+
+# this is a function !
+WAVEFILE = $(BUILDDIR)/$1.$(CADR4_WAVEFORMAT)
+
+# GHDLWAVEOPTIONS is a function !
+ifeq ($(CADR4_WAVEFORMAT),ghw)
+GHDLWAVEOPTIONS = --wave=$(call WAVEFILE,$1) $(GHDL_WAVEOPT_OPTS)
+else ifeq ($(CADR4_WAVEFORMAT),vcd)
+GHDLWAVEOPTIONS = --vcd=$(call WAVEFILE,$1) $(GHDL_WAVEOPT_OPTS)
+else ifeq ($(CADR4_WAVEFORMAT),fst)
+GHDLWAVEOPTIONS = --fst=$(call WAVEFILE,$1) $(GHDL_WAVEOPT_OPTS)
 endif
 
 # add stoptime if requested
@@ -95,11 +106,11 @@ wf-%: $(BUILDDIR)/%
 ifeq ($(WAVEOPTFILERECREATE),1)	
 	$(RM) $(WAVEOPTFILE)
 endif
-	$< $(GHDLSIMOPTIONS) $(GHDLWAVEOPTIONS) $(GHDLSTOPTIMEOPTION)
+	$< $(GHDLSIMOPTIONS) $(call GHDLWAVEOPTIONS,$*) $(GHDLSTOPTIMEOPTION)
 
 .PHONY: cosim-wf-%
 cosim-wf-%: $(BUILDDIR)/% $(COSIM_VPI_LIB)
 ifeq ($(WAVEOPTFILERECREATE),1)	
 	$(RM) $(WAVEOPTFILE)
 endif
-	$< $(GHDLSIMOPTIONS) --vpi=$(COSIM_VPI_LIB) $(GHDLWAVEOPTIONS) $(GHDLSTOPTIMEOPTION)
+	$< $(GHDLSIMOPTIONS) --vpi=$(COSIM_VPI_LIB) $(call GHDLWAVEOPTIONS,$*) $(GHDLSTOPTIMEOPTION)

@@ -3,24 +3,24 @@ use ieee.std_logic_1164.all;
 
 entity res20 is
   port (
-    r2  : out std_logic; -- 2
-    r3  : out std_logic; -- 3
-    r4  : out std_logic; -- 4
-    r5  : out std_logic; -- 5
-    r6  : out std_logic; -- 6
-    r7  : out std_logic; -- 7
-    r8  : out std_logic; -- 8
-    r9  : out std_logic; -- 9
-    r10 : out std_logic; -- 10
-    r11 : out std_logic; -- 11
-    r12 : out std_logic; -- 12
-    r13 : out std_logic; -- 13
-    r14 : out std_logic; -- 14
-    r15 : out std_logic; -- 15
-    r16 : out std_logic; -- 16
-    r17 : out std_logic; -- 17
-    r18 : out std_logic; -- 18
-    r19 : out std_logic -- 19
+    r2  : inout std_logic; -- 2
+    r3  : inout std_logic; -- 3
+    r4  : inout std_logic; -- 4
+    r5  : inout std_logic; -- 5
+    r6  : inout std_logic; -- 6
+    r7  : inout std_logic; -- 7
+    r8  : inout std_logic; -- 8
+    r9  : inout std_logic; -- 9
+    r10 : inout std_logic; -- 10
+    r11 : inout std_logic; -- 11
+    r12 : inout std_logic; -- 12
+    r13 : inout std_logic; -- 13
+    r14 : inout std_logic; -- 14
+    r15 : inout std_logic; -- 15
+    r16 : inout std_logic; -- 16
+    r17 : inout std_logic; -- 17
+    r18 : inout std_logic; -- 18
+    r19 : inout std_logic -- 19
     );
 end entity;
 

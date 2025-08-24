@@ -24,9 +24,11 @@ entity icmem_olord2 is
     srun            : in     std_logic;
     v0parok         : in     std_logic;
     vmoparok        : in     std_logic;
+    \-boot1\        : inout  std_logic;
+    \-boot2\        : inout  std_logic;
+    hi1             : inout  std_logic;
+    hi2             : inout  std_logic;
     \-ape\          : out    std_logic;
-    \-boot1\        : out    std_logic;
-    \-boot2\        : out    std_logic;
     \-boot\         : out    std_logic;
     \-bus.power.reset\ : out    std_logic;
     \-bus.reset\    : out    std_logic;
@@ -54,8 +56,6 @@ entity icmem_olord2 is
     \prog.boot\     : out    std_logic;
     clk5a           : out    std_logic;
     err             : out    std_logic;
-    hi1             : out    std_logic;
-    hi2             : out    std_logic;
     highok          : out    std_logic;
     ldmode          : out    std_logic;
     mclk5a          : out    std_logic;

@@ -11,7 +11,7 @@ import re
 import sys
 import argparse
 from pathlib import Path
-from typing import Dict, Set, Tuple, List
+from typing import Dict, Set
 
 
 def parse_dip_components(dip_file: Path) -> Dict[str, Dict[str, str]]:
@@ -204,6 +204,12 @@ def extract_signals_from_suds(suds_file: Path) -> Set[str]:
     return signals
 
 
+
+
+
+
+
+
 def determine_signal_directions(suds_file: Path, dip_components: Dict[str, Dict[str, str]]) -> Dict[str, str]:
     """
     Determine signal directions by analyzing how they're connected to component pins.
@@ -294,6 +300,8 @@ def determine_signal_directions(suds_file: Path, dip_components: Dict[str, Dict[
                     else:  # inout
                         entity_direction = 'inout'
                     
+
+                    
                     # Handle conflicting directions (signal used as both input and output)
                     if signal in signal_directions:
                         if signal_directions[signal] != entity_direction:
@@ -367,14 +375,15 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  %(prog)s cadr/suds/cadr_actl_suds.vhd -d dip/dip.vhd > output.vhd
-  %(prog)s cadr/suds/cadr_alu0_suds.vhd -d dip/dip.vhd -o custom_alu0.vhd
+  %(prog)s -d dip/dip.vhd cadr/suds/cadr_actl_suds.vhd > output.vhd
+  %(prog)s -d dip/dip.vhd -o custom_alu0.vhd cadr/suds/cadr_alu0_suds.vhd
         """
     )
     
     parser.add_argument('suds_file', type=Path, help='Path to the SUDS file')
     parser.add_argument('-o', '--output', type=Path, help='Output entity file (default: print to stdout)')
     parser.add_argument('-d', '--dip-file', type=Path, required=True, help='Path to dip.vhd file')
+
     
     args = parser.parse_args()
     
@@ -419,6 +428,8 @@ Examples:
         print("Extracting signals from SUDS file...", file=sys.stderr)
         signals = extract_signals_from_suds(args.suds_file)
         print(f"Found {len(signals)} unique signals", file=sys.stderr)
+        
+
         
         # Determine signal directions
         print("Determining signal directions...", file=sys.stderr)

@@ -7,10 +7,10 @@ use work.other.dummy_type_a;
 entity dip_dummy is
   port (
     p12 : out std_logic;
-    p13 : out std_logic;
-    p14 : out std_logic;
-    p15 : out std_logic;
-    p16 : out std_logic
+    p13 : inout std_logic;
+    p14 : inout std_logic;
+    p15 : inout std_logic;
+    p16 : inout std_logic
     );
 end entity;
 
