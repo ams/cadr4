@@ -6,6 +6,7 @@
 *.dSYM/
 __pycache__/
 
+.continueignore
 .vimrc
 *.opt
 *.o
@@ -17,6 +18,8 @@ __pycache__/
 build/
 cosim_vhpidirect_test/
 cosim_vpi_test/
+doc/VHDL_2008.md
+doc/VHDL_2008.pdf
 soap/soap
 vivado/
 work/
