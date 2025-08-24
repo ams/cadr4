@@ -1,4 +1,12 @@
 
+# cosim_vpi
+
+This folder contains VPI cosimulation code used by GHDL.
+
+- cosim.c and cosim.h contains vlog_startup_routines and utility functions.
+
+- cosim_diagnostic_display: functions as diagnostic display, prints to console
+
 # Co-Simulation Lashup
 
 ## Signals

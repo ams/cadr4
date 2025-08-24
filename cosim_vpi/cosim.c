@@ -3,7 +3,7 @@
 #include <vpi_user.h>
 
 extern void cosim_util_startup();
-extern void cosim_5x_til309_startup();
+extern void cosim_diagnostic_display_startup();
 
 extern void cosim_test_startup();
 extern void cosim_assert_boot_startup();
@@ -11,7 +11,7 @@ extern void cosim_lashup_debugger_startup();
 
 void (*vlog_startup_routines[])() = {
     cosim_util_startup,
-    cosim_5x_til309_startup,
+    cosim_diagnostic_display_startup,
     //cosim_test_startup,
     //cosim_assert_boot_startup,
     //cosim_lashup_debugger_startup,

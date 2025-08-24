@@ -170,7 +170,7 @@ static PLI_INT32 start_of_simulation(p_cb_data cb_data) {
 }
 
 // Startup function
-void cosim_5x_til309_startup() {
+void cosim_diagnostic_display_startup() {
     // Register start of simulation callback
     s_cb_data cb_data;
     cb_data.reason = cbStartOfSimulation;
