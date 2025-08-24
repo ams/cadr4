@@ -54,6 +54,9 @@ $(COSIM_VHPI_LIB): $(COSIM_VHPI_CSRCS)
 .PHONY: all
 all: $(addprefix $(NVC_WORK_DIR)/,$(patsubst %,WORK.%.elab,$(call UC,$(EXES)))) $(COSIM_VHPI_LIB)
 
+.PHONY: cosim
+cosim: $(COSIM_VHPI_LIB)
+
 # the complicated rules below with .SECONDEXPANSION is to expand the call UC
 # second time, otherwise it doesnt work
 

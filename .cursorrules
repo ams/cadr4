@@ -43,5 +43,6 @@ example, to run cadr/cadr_alu_tb.vhd, you should execute `make run-cadr_alu_tb`.
 - CADR AI documents are at doc/ai folder.
 - Datasheets for TTL components in markdown format are under doc/ttl.md folder. For example, for TTL component X.vhd, it is doc/ttl.md/X/X.md.
 - VHDL-2008 language reference is at doc/VHDL_2008.md
+- Verilog-2005 language reference is at doc/Verilog_2005.md
 - GHDL documentation is at: https://ghdl.github.io/ghdl/
 - NVC documentation is at: https://www.nickg.me.uk/nvc/manual.html

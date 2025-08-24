@@ -37,7 +37,7 @@ $(BUILDDIR)/%_tb: $(BUILDDIR)/work-obj$(GHDLSTD).cf
 # depending on cosim (string) prefix
 $(COSIM_VPI_COBJS): $(BUILDDIR)/%.o: $(COSIM_VPI_DIR)/%.c
 	mkdir -p $(BUILDDIR)
-	$(CADR4_GHDL) --vpi-compile -v $(CADR4_GHDL_VPI_COMPILER) -c $< -o $@
+	$(CADR4_GHDL) --vpi-compile -v $(CADR4_GHDL_VPI_COMPILER) -I$(COSIM_VPI_DIR) -c $< -o $@
 
 # link cosim objects to cosim.vpi
 $(COSIM_VPI_LIB): $(COSIM_VPI_COBJS)
@@ -46,6 +46,9 @@ $(COSIM_VPI_LIB): $(COSIM_VPI_COBJS)
 
 .PHONY: all
 all: $(addprefix $(BUILDDIR)/,$(EXES)) $(COSIM_VPI_LIB)
+
+.PHONY: cosim
+cosim: $(COSIM_VPI_LIB)
 
 # below is smart handling of wave opt file
 # if file does not exist, it is not used

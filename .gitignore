@@ -18,6 +18,8 @@ __pycache__/
 build/
 cosim_vhpidirect_test/
 cosim_vpi_test/
+doc/Verilog_2005.md
+doc/Verilog_2005.pdf
 doc/VHDL_2008.md
 doc/VHDL_2008.pdf
 soap/soap
