@@ -1139,7 +1139,18 @@ package helper is
         \-adr18\  : in std_logic;
         \-adr19\  : in std_logic;
         \-adr20\  : in std_logic;
-        \-adr21\  : in std_logic
+        \-adr21\  : in std_logic;
+        -- PROMPC bus - 10 bits
+        \-prompc0\: in std_logic;
+        \-prompc1\: in std_logic;
+        \-prompc2\: in std_logic;
+        \-prompc3\: in std_logic;
+        \-prompc4\: in std_logic;
+        \-prompc5\: in std_logic;
+        \-prompc6\: in std_logic;
+        \-prompc7\: in std_logic;
+        \-prompc8\: in std_logic;
+        \-prompc9\: in std_logic
       );
   end component;
 
