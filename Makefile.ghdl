@@ -96,23 +96,23 @@ else
 GHDLSTOPTIMEOPTION := --stop-time=$(CADR4_STOPTIME)
 endif
 
-.PHONY: run-%
-run-%: $(BUILDDIR)/%
-	$< $(GHDLSIMOPTIONS)
+#.PHONY: run-%
+#run-%: $(BUILDDIR)/%
+#	$< $(GHDLSIMOPTIONS)
 
-.PHONY: cosim-run-%
-cosim-run-%: $(BUILDDIR)/% $(COSIM_VPI_LIB)
+.PHONY: run-%
+run-%: $(BUILDDIR)/% $(COSIM_VPI_LIB)
 	$< $(GHDLSIMOPTIONS) --vpi=$(COSIM_VPI_LIB)
 
-.PHONY: wf-%
-wf-%: $(BUILDDIR)/%
-ifeq ($(WAVEOPTFILERECREATE),1)	
-	$(RM) $(WAVEOPTFILE)
-endif
-	$< $(GHDLSIMOPTIONS) $(call GHDLWAVEOPTIONS,$*) $(GHDLSTOPTIMEOPTION)
+#.PHONY: wf-%
+#wf-%: $(BUILDDIR)/%
+#ifeq ($(WAVEOPTFILERECREATE),1)	
+#	$(RM) $(WAVEOPTFILE)
+#endif
+#	$< $(GHDLSIMOPTIONS) $(call GHDLWAVEOPTIONS,$*) $(GHDLSTOPTIMEOPTION)
 
-.PHONY: cosim-wf-%
-cosim-wf-%: $(BUILDDIR)/% $(COSIM_VPI_LIB)
+.PHONY: wf-%
+wf-%: $(BUILDDIR)/% $(COSIM_VPI_LIB)
 ifeq ($(WAVEOPTFILERECREATE),1)	
 	$(RM) $(WAVEOPTFILE)
 endif
