@@ -7,7 +7,7 @@
 
 #include "cosim.h"
 
-#define VPI_PRINTF(...) vpi_printf("cosim_5x_til309: " __VA_ARGS__)
+#define VPI_PRINTF(...) vpi_printf("cosim_diagnostic_display: " __VA_ARGS__)
 
 static vpiHandle display_signal_handles[5][5] = {NULL};
 static int prev_values[5][5];
@@ -38,7 +38,7 @@ static void register_display_callback()
 
     vpiHandle cb_handle = vpi_register_cb(&cb_data);
     if (!cb_handle) {
-        VPI_PRINTF("ERROR: Could not register display_callback\n");
+        cosim_finish_simulation("Could not register display_callback");
     }
 }
 
@@ -92,8 +92,7 @@ static PLI_INT32 display_callback(p_cb_data cb_data) {
         if (current_values[0][0]) printf("TILT1 ");
         else                      printf("      ");
         
-        double time_ns = cosim_s_vpi_time_to_ns(cb_data->time);
-        printf("%*.0lf ns", 7, time_ns);
+        printf("%*.0lf ns", 7, cosim_s_vpi_time_to_ns(cb_data->time));
 
         printf("\n");
         
@@ -169,9 +168,8 @@ static PLI_INT32 start_of_simulation(p_cb_data cb_data) {
     return 0;
 }
 
-// Startup function
-void cosim_diagnostic_display_startup() {
-    // Register start of simulation callback
+void cosim_diagnostic_display_startup() 
+{
     s_cb_data cb_data;
     cb_data.reason = cbStartOfSimulation;
     cb_data.cb_rtn = start_of_simulation;
@@ -183,7 +181,6 @@ void cosim_diagnostic_display_startup() {
     vpiHandle cb_handle = vpi_register_cb(&cb_data);
 
     if (!cb_handle) {
-        VPI_PRINTF("ERROR: Could not register start of simulation callback\n");
+        cosim_finish_simulation("Could not register start of simulation callback");
     }
 }
-

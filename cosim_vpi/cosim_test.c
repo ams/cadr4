@@ -2,12 +2,9 @@
 #include <stdio.h>
 #include <vpi_user.h>
 
-#define VPI_PRINTF(...) vpi_printf("cosim_test: " __VA_ARGS__)
+#include "cosim.h"
 
-static void terminate_simulation_with_error(const char* error_msg) {
-    VPI_PRINTF("CRITICAL ERROR: %s\n", error_msg);
-    vpi_control(vpiFinish, 1);
-}
+#define VPI_PRINTF(...) vpi_printf("cosim_test: " __VA_ARGS__)
 
 static PLI_INT32 start_of_simulation_cb(p_cb_data cb_data) 
 {
@@ -38,7 +35,7 @@ void cosim_test_startup()
     cb_handle = vpi_register_cb(&cb_data);
 
     if (!cb_handle) {
-        terminate_simulation_with_error("failed to register start of simulation callback");
+        cosim_finish_simulation("failed to register start of simulation callback");
     } else {
         VPI_PRINTF("start of simulation callback registered successfully\n");
     }
@@ -53,7 +50,7 @@ void cosim_test_startup()
     cb_handle = vpi_register_cb(&cb_data);
 
     if (!cb_handle) {
-        terminate_simulation_with_error("failed to register end of simulation callback");
+        cosim_finish_simulation("failed to register end of simulation callback");
     } else {
         VPI_PRINTF("end of simulation callback registered successfully\n");
     }

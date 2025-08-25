@@ -8,6 +8,8 @@
 #include <fcntl.h>
 #include <errno.h>
 
+#include "cosim.h"
+
 #define BUFFER_SIZE 256
 #define UDP_PORT 12345
 
@@ -427,7 +429,7 @@ void cosim_lashup_debugger_startup() {
     cb_handle = vpi_register_cb(&cb_data);
 
     if (!cb_handle) {
-        terminate_simulation_with_error("Failed to register start of simulation callback");
+        cosim_finish_simulation("Failed to register start of simulation callback");
     } else {
         VPI_PRINTF("Start of simulation callback registered successfully\n");
     }
@@ -442,7 +444,7 @@ void cosim_lashup_debugger_startup() {
     cb_handle = vpi_register_cb(&cb_data);
 
     if (!cb_handle) {
-        terminate_simulation_with_error("Failed to register end of simulation callback");
+        cosim_finish_simulation("Failed to register end of simulation callback");
     } else {
         VPI_PRINTF("End of simulation callback registered successfully\n");
     }
