@@ -8,9 +8,12 @@ __pycache__/
 
 .continueignore
 .vimrc
-*.opt
 *.o
 *.cf
+
+/*.include
+/*.exclude
+/wave.opt
 
 .continue/
 .surfer/

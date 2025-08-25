@@ -56,12 +56,8 @@ cosim: $(COSIM_VPI_LIB)
 ## if first line is "recreate", then it is deleted and recreated
 ## else if first line is "ignore", then it is ignored
 ## else it is used
-
-# cadr_tb is generated under build that is removed on clean
-# so use the opt file in project root for that
-WAVEOPTFILE := $(TB).opt
+WAVEOPTFILE := wave.opt
 GHDL_WAVEOPT_OPTS :=
-
 ifneq ("$(wildcard $(WAVEOPTFILE))","")
 WAVEOPTCONTENTS := $(shell head -1 $(WAVEOPTFILE))
 ifeq ("$(WAVEOPTCONTENTS)","recreate")

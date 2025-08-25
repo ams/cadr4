@@ -3,8 +3,10 @@
 # vhdl standard 2008
 NVCSTD := 08
 
-NVC_WORK_DIR 	:= $(BUILDDIR)/nvc
-NVC_FILE_LIST	:= $(BUILDDIR)/nvc.filelist
+NVC_WORK_DIR 		:= $(BUILDDIR)/nvc
+NVC_FILE_LIST		:= $(BUILDDIR)/nvc.filelist
+NVC_SIGNALS_FILE	:= $(BUILDDIR)/nvc.signals
+
 # make tb unit names uppercase, nvc defaults to uppercase
 NVC_EXES		:= $(shell echo "$(EXES)" | tr '[:lower:]' '[:upper:]')
 
@@ -20,7 +22,7 @@ NVC_RUNTIME_OPTIONS += --exit-severity=note
 endif
 
 # this is a function and to be called with the testbench name as argument
-NVC_WAVE_OPTS = --format=$(CADR4_WAVEFORMAT) --wave=$(BUILDDIR)/$1.$(CADR4_WAVEFORMAT)
+NVC_WAVE_OPTS = --format=$(CADR4_WAVEFORMAT) --wave=$(BUILDDIR)/$1.$(CADR4_WAVEFORMAT) --gtkw=$(NVC_SIGNALS_FILE)
 
 # add stoptime if requested
 ifeq ($(CADR4_STOPTIME),0)

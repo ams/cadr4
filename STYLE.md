@@ -1,12 +1,12 @@
 
 # VHDL
 
-- use only end entity;
+- use only end entity; (not entity name)
 
     entity X
     end entity;
 
-- use only end architecture;
+- use only end architecture; (not architecture name)
 
     architecture Y of X
     end architecture;
