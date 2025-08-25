@@ -49,7 +49,7 @@ $(NVC_WORK_DIR)/WORK.%.elab: $(SRCS) $(NVC_WORK_DIR)
 # compile and link cosim vhpi sources into cosim.so
 $(COSIM_VHPI_LIB): $(COSIM_VHPI_CSRCS)
 	mkdir -p $(BUILDDIR)
-	$(CADR4_NVC_VHPI_CC) -shared -fPIC -Wl,-undefined,dynamic_lookup -I$(CADR4_NVC_VHPI_USER_H_DIR) -o $(COSIM_VHPI_LIB) $^
+	$(CADR4_NVC_VHPI_CC) -shared -fPIC -Wl,-undefined,dynamic_lookup -I$(CADR4_NVC_VHPI_USER_H_DIR) -I$(COSIM_VHPI_DIR) -o $(COSIM_VHPI_LIB) $^
 
 .PHONY: all
 all: $(addprefix $(NVC_WORK_DIR)/,$(patsubst %,WORK.%.elab,$(call UC,$(EXES)))) $(COSIM_VHPI_LIB)
@@ -60,22 +60,22 @@ cosim: $(COSIM_VHPI_LIB)
 # the complicated rules below with .SECONDEXPANSION is to expand the call UC
 # second time, otherwise it doesnt work
 
+#.PHONY: run-%
+#.SECONDEXPANSION:
+#run-%: $(NVC_WORK_DIR)/WORK.$$(call UC,%).elab
+#	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) -r $(NVC_RUNTIME_OPTIONS) $(call UC,$*)
+
 .PHONY: run-%
 .SECONDEXPANSION:
-run-%: $(NVC_WORK_DIR)/WORK.$$(call UC,%).elab
-	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) -r $(NVC_RUNTIME_OPTIONS) $(call UC,$*)
-
-.PHONY: cosim-run-%
-.SECONDEXPANSION:
-cosim-run-%: $(NVC_WORK_DIR)/WORK.$$(call UC,%).elab $(COSIM_VHPI_LIB)
+run-%: $(NVC_WORK_DIR)/WORK.$$(call UC,%).elab $(COSIM_VHPI_LIB)
 	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) --load=$(COSIM_VHPI_LIB) -r $(NVC_RUNTIME_OPTIONS) $(call UC,$*)
+
+#.PHONY: wf-%
+#.SECONDEXPANSION:
+#wf-%: $(NVC_WORK_DIR)/WORK.$$(call UC,%).elab
+#	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) -r $(NVC_RUNTIME_OPTIONS) $(call NVC_WAVE_OPTS,$*) $(NVC_STOPTIME_OPTS) $(call UC,$*)
 
 .PHONY: wf-%
 .SECONDEXPANSION:
-wf-%: $(NVC_WORK_DIR)/WORK.$$(call UC,%).elab
-	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) -r $(NVC_RUNTIME_OPTIONS) $(call NVC_WAVE_OPTS,$*) $(NVC_STOPTIME_OPTS) $(call UC,$*)
-
-.PHONY: cosim-wf-%
-.SECONDEXPANSION:
-cosim-wf-%: $(NVC_WORK_DIR)/WORK.$$(call UC,%).elab $(COSIM_VHPI_LIB)
+wf-%: $(NVC_WORK_DIR)/WORK.$$(call UC,%).elab $(COSIM_VHPI_LIB)
 	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) --load=$(COSIM_VHPI_LIB) -r $(NVC_RUNTIME_OPTIONS) $(call NVC_WAVE_OPTS,$*) $(NVC_STOPTIME_OPTS) $(call UC,$*)
