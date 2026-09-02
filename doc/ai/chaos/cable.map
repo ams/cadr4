@@ -21,29 +21,63 @@ Along East wall
 Terminator near South window in 926
 (40 m)
 ---
-New host numbers:
-400	Terminator in 926
-55m + about 4 computers
-412	First machine in 936	(CADR4)
-414	Second machine in 936	(CADR5)
-416     Third machine in 936
-420     Fourth machine in 936
-35m + 1 possible computer in 902
-426	First machine on MC panel
-430	Second machine on MC panel  (CADR3)
-432	Third machine on MC panel   (MC)
-434	Fourth machine on MC panel
+New host numbers for Subnet 6:
+3000	Terminator in 926
+55m + 2 computers 
+3020	First machine in 936 (XX)
+3022	Second machine in 936	(CADR7)
+3024	Third machine in 936	(CADR-TEST)
+3026     Fourth machine in 936
+35m
+3032	First machine in 903/904 (Minirobot)
+3034    Second machine in 903/904 (CADR3)
+3036    Third machine in 903/904 (CADR5)
+10m
+3040	First machine on MC panel   (MC)
+3042	Second machine on MC panel (CADR23)  -- NOT REALLY THERE, HOWEVER
+3044	Third machine on MC panel  (CADR24)
+3046	Fourth machine on MC panel
 15m
-436	First machine in 906    (CADR1)
-440     Second machine in 906   (CADR2)
-442     Third machine in 906
-444     Fourth machine in 906
-45m
-450	First machine on AI panel (AI)
-452	Second machine on AI panel
-454     Third machine on AI panel
-456     Fourth machine on AI panel
+3050	First machine in 906    (CADR 1)
+3052     Second machine in 906  (CADR 18 is here now, but is assigned 3076)
+3054     Third machine in 906
+3056     Fourth machine in 906
+30m
+3060    CADR27 (mit-ai-file-computer)  stuck in
+
+3062	First machine by XGP (CADR 4)
+3064    Second machine by XGP (CADR 6)
+3066    Third machine by XGP  (CADR 15)  -- Really plugged in by AI
+3067	VAX/750 by XGP.  Assigning odd number to see if this works.  --RWK
+3070    Fourth machine by XGP (CADR 16)  -- Really plugged in by AI
+15m
+3072	First machine on AI panel (AI)
+3074	Second machine on AI panel (CADR 9)
+3076     Third machine on AI panel (CADR 18 even tho its in 906)
+3100     Fourth machine on AI panel CADR 19)
+
+3102    CADR20  stuck in.
+3104    CADR22  stuck in.
+
 30m to phone closet
+20m to 5th floor phone closet
+35m to 5th floor computer room
+3106	First machine in 5?? (RTS 11/70)
+3110	Second machine in 5??
+3112	Third machine in 5??
+3114	Fourth machine in 5??
+35m to 5th floor phone closet
+5m to 4th floor phone closet
+3120	First machine in 4?? (VAX)
+3122    Second machine in 4??
+3124    Third machine in 4??
+3126    Fourth machine in 4??
+5m to 3rd floor phone closet
+3140	First machine in 3?? (CADR 2)
+3142	Second machine in 3?? (CADR 8)
+3144	Third machine in 3??
+3146    Fourth machine in 3?? (TERMINUS)
+
 700m to Campus
 505	First host on Campus
 510     Plasma

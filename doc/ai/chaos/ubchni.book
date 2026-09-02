@@ -1,0 +1,45 @@
+;;; -*- Mode:LISP; -*-
+
+;;; Prints and Documentation for the Lisp Machine Disk Control board
+
+(LOAD "ai:lmio1;dplt pkg")
+(PKG-LOAD 'DPLT ':NOCONFIRM)
+
+(SETQ UBCHNI-PLT-FILES-LIST ' ("AI:CHAOS;LMDATP"
+			       "LMDETC"
+			       "LMLNDR"
+			       "LMMODU"
+			       "LMMYNM"
+			       "LMRBUF"
+			       "LMRCLK"
+			       "LMRCTL"
+			       "LMTBFC"
+			       "LMTBUF"
+			       "LMTCLK"
+			       "LMTURN"
+			       "LMUCON"
+			       "QADADR"
+			       "QADJPS"
+			       "QADTIM"
+			       "QUBBPL"
+			       "QUBINT"
+			       "QUBXCV"
+			       ))
+
+(SETQ UBCHNI-TXT-FILES-LIST '("AI:CHAOS;UBCHNI PRT"
+			   "AI:CHAOS;UBCHNI STF"
+			   "AI:CHAOS;UBCHNI UML"
+			   "AI:CHAOS;UBCHNI WLR"
+			   "AI:CHAOS;UBCHNI WLS"
+			   "AI:CHAOS;CHS DEFS"
+			   "AI:CHAOS;LMMODU PROM"
+			   "AI:CHAOS;LMMYNM PROMT"
+			   ))
+
+;;; Number of copies
+(SETQ DPLT:COPIES 1)
+
+(APPLY #'DPLT-PRINT-FILE UBCHNI-PLT-FILES-LIST)
+
+(APPLY #'PRINT-TXT-FILE UBCHNI-TXT-FILES-LIST)
+

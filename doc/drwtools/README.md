@@ -22,7 +22,7 @@ the original.
 | `batch.py` | renders many pages: `batch.py [--copy-drw] outdir a.drw b.drw ...`. A library named in a page (e.g. `CADR;BODIES DRW`) is the newest readable copy of that file in a directory of that name on the volume (from `data/scan.json`), i.e. the library page in the same `latest/<group>/` folder |
 | `compare.py` | side-by-side and red/blue overlay of a reference PNG and a rendered one |
 | `scan.py` | scans every `.drw` on the ITS tape dumps into `scan.json`: date, size, content hash, title, and whether the copy is readable |
-| `install.py` | copies the rendered pngs into `doc/schematics` and the drws plus the design files of their tape directories into `doc/ai`, writing a `drw-index.txt` in each |
+| `install.py` | copies the rendered pngs into `doc/schematics` and the drws plus the newest copy of the design files in each group's tape directories into `doc/ai`, writing a `drw-index.txt` in each |
 | `inventory.py` | builds `INVENTORY.md`, `inventory.json` and `drw-index.txt` from the scan |
 | `render_latest.py` | renders the latest readable version of every page in `inventory.json`, copying the drw next to the png |
 | `scan.json` | the scan as run on 2026-09-02 (regenerable from the tape dumps in two minutes) |
@@ -71,6 +71,12 @@ links. Tapes 701395 and 701298 have many such copies, but 7008261 has a
 truncated ictl too. Copies from dumps that did not keep the ITS dates
 (the chaos dumps) are "undated" and cannot be ranked; they inherit the date
 of a dated copy with identical content when one exists.
+
+The other design files (wire lists, ECOs, PROM images, ...) that `install.py`
+puts next to the drws follow the same rule across every tape directory
+named after the group: newest ITS date wins; of copies with the same date
+the larger one, since a truncated dump is the common damage; undated
+copies rank below every dated copy and among themselves by size.
 
 ## What the renderer knows about the plotter
 

@@ -4,11 +4,11 @@
 
 - schematics_dir/<group>/<page>.png   <- rendered_dir/<group>/<page>.png
 - ai_dir/<group>/<page>.drw           <- the newest readable drw on the tapes
-- ai_dir/<group>/<other files>        <- the design files from the tape
-  directories those drws came from (wire lists, ECOs, PROM images, ...);
-  where two directories of a group have the same file name the newer
-  file wins.  ITS housekeeping files, dump logs, numbered text versions,
-  mail, editor backups and XGP plot files are skipped.
+- ai_dir/<group>/<other files>        <- the design files (wire lists,
+  ECOs, PROM images, ...) from every tape directory named after the group
+  and from the directories the drws came from; the newest copy of each
+  file name wins (see rank).  ITS housekeeping files, dump logs, numbered
+  text versions, mail, editor backups and XGP plot files are skipped.
 
 Both folders get a drw-index.txt naming the source of every file.  Files
 listed in a previous drw-index.txt that are no longer selected are removed;
@@ -26,6 +26,12 @@ import zoneinfo
 ROOT = os.environ.get("ITS_TAPES", "")
 TZ = zoneinfo.ZoneInfo("America/New_York")
 GROUPS = {"cadr", "cadr1", "cadrdc", "cadrio", "cadrm", "cadrmw", "cadrtv", "chaos", "lmdoc", "cadrpc"}
+# groups whose other files are taken from every tape directory of that name,
+# not only from the directories the drws came from (newer wire lists sit in
+# directories that hold no drw).  Not lmdoc: those directories hold Lisp
+# Machine documentation of every kind, only the figures belong here.
+WIDE = GROUPS - {"lmdoc"}
+UNDATED_AFTER = 631152000  # 1990-01-01: no ITS file is that recent; a later mtime is the dump's copy time
 
 SKIP_EXT = {
     "(init)", "(file)", "(dir)", "mail", "bak", "old", "emacs", "msg", "tags", "log", "login", "logout",
@@ -33,7 +39,7 @@ SKIP_EXT = {
     "lispm9", "lspm10", "lspm11", "lspm12", "lspm13", "let", "let1", "let2", "let3", "let4", "let5",
     "dover", "dplots", "direct", "compar", "patch", "patxy", "patape", "mwtape", "mwt1", "mwt2",
     "mwt3", "nocr1", "nocr2", "nocr3", "xan1", "xan2", "xan3", "pfiles", "pc", "tem", "plt", "inp",
-    "setup", "sai", "plans", "caios", "i{o", "decks", "xylogi", "scrbin", "doc",
+    "setup", "sai", "plans", "caios", "i{o", "decks", "xylogi", "scrbin", "doc", "scn",
 }
 
 
@@ -44,7 +50,20 @@ def skip(fn):
 
 
 def date_of(p):
-    return datetime.datetime.fromtimestamp(os.stat(p).st_mtime, TZ).strftime("%d-%b-%y %H:%M").upper()
+    mt = os.stat(p).st_mtime
+    if mt >= UNDATED_AFTER:
+        return "undated"
+    return datetime.datetime.fromtimestamp(mt, TZ).strftime("%d-%b-%y %H:%M").upper()
+
+
+def rank(p):
+    """Order of the copies of a file: the newest ITS date wins.  Copies of
+    the same minute are the same ITS file; the larger one is kept, since a
+    truncated dump is the common damage.  Copies from dumps that lost the
+    ITS dates rank below every dated copy and among themselves by size."""
+    st = os.stat(p)
+    dated = st.st_mtime < UNDATED_AFTER
+    return (dated, round(st.st_mtime / 60) if dated else 0, st.st_size)
 
 
 def previous(index_path):
@@ -109,6 +128,11 @@ def main(inv_path, rendered, schem, ai):
         src = os.path.join(ROOT, e["latest"]["path"])
         plan[(g, e["name"])] = (float("inf"), src)
         src_dirs.setdefault(g, set()).add(os.path.dirname(src))
+    for dirpath, _, _ in os.walk(ROOT):
+        g = os.path.basename(dirpath).lower()
+        # a group directory inside a tape; ROOT/cadr itself is not a tape
+        if g in WIDE and "/" in os.path.relpath(dirpath, ROOT):
+            src_dirs.setdefault(g, set()).add(dirpath)
     for g, dirs in src_dirs.items():
         for d in sorted(dirs):
             for fn in os.listdir(d):
@@ -118,14 +142,14 @@ def main(inv_path, rendered, schem, ai):
                 if not os.path.isfile(p):
                     continue
                 key = (g, fn.lower())
-                mt = os.stat(p).st_mtime
-                if key not in plan or mt > plan[key][0]:
-                    plan[key] = (mt, p)
+                r = rank(p)
+                if key not in plan or r > plan[key][0]:
+                    plan[key] = (r, p)
     old = previous(os.path.join(ai, "drw-index.txt"))
     new = set()
     counts = {}
     with open(os.path.join(ai, "drw-index.txt"), "w") as ix:
-        ix.write("# <group>/<file> = this file on the ITS tape dumps (ITS file date, Boston time); drw = newest readable copy, other files from the same tape directories\n")
+        ix.write("# <group>/<file> = this file on the ITS tape dumps (ITS file date, Boston time); drw = newest readable copy, other files = newest copy in any tape directory of the group\n")
         for (g, fn), (mt, src) in sorted(plan.items()):
             rel = "%s/%s" % (g, fn)
             os.makedirs(os.path.join(ai, g), exist_ok=True)

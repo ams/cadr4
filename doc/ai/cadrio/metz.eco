@@ -1,0 +1,27 @@
+IOB ECO    for METZ ELECTRONICS  2/18/81
+
+these are the only additions neccessary for the IOB right now. [DRP]
+
+Decommit pins J3-23,30,31,32
+
+Add twisted pairs as follows: +video     FH1 : J3-3  (red)
+                              -video     FH2 : J3-23 (white)
+                              
+                                       E30-9 : J3-12 (red)
+                                       E30-7 : J3-32 (white)
+
+                                       E30-4 : J3-11 (red)
+                                       E30-5 : J3-31 (white)
+
+                                       F30-5 : J3-10 (red)
+                                       F30-4 : J3-30 (white)
+
+
+then add 6 jumpers to set timing:
+					B3-5 : B3-6      ;these two determine transmit
+				        B3-6 : B3-10     ;clock speed
+
+					B4-8 : B4-11     ;taps TD100 at 100 ns
+				       B11-6 : B11-13    ;taps TD100 at 60 ns
+				       A11-6 : A11-13    ;taps TD25 at 15 ns
+				       A11-7 : A11-8     ;taps TD25 at 10 ns

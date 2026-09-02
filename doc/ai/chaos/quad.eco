@@ -29,3 +29,44 @@ Fix interval timer bug
 F14-13 : B16-15		B16-11 : B16-15
 
 Then follow instructions in AI:CHAOS;QUAD SETUP
+
+----------------------------------------------------------------
+4MHz ECO
+
+LMTCLK:
+
+Change jumper B3-6 B3-7 to B3-6 B3-5.  This changes the speed of FCLK.
+On some boards, the following wiring may be needed to accomplish this:
+
+	Delete					Add
+	------					---
+	B3-6 B3-7
+	A3-8 B3-3
+	B3-3 B3-6				B3-3 B3-7
+						A3-8 B3-3
+						B3-5 B3-6
+
+LMDETC:
+
+Change timing jumpers.  Remove toplevel wrap on B4-6, B4-8, B11-6, A11-6, A11-8
+(only necessary on REV.'s 1 & 2) and then ADD:
+
+			B4-6  B4-13		;lengthen GENCLK
+			B4-8  B4-11
+			B11-6 B11-13
+			A11-6 A11-13
+			A11-7 A11-8
+
+NOTE: Some boards require removing B4-7 C1-14 before B4-6 B4-7 can be removed.
+      In this case, rewire C1-14 B4-6 before doing B4-6 B4-13.
+
+FCLK/2 fix to allow UNIBUS readout at 8 MHz while cable rate is 4 MHz.
+
+	Delete					Add
+	------					---
+	A6-7 A16-4
+	A6-7 D8-6				A6-7  A16-4
+	A6-8 D13-3				A8-11 D8-6
+	A6-8 E3-12				D13-3 E3-12
+						A9-3  E3-12
+

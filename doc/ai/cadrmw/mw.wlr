@@ -1418,7 +1418,7 @@ ADR [D] 0
 	D17-05            !.	 TI	-0.40	0.2	.9	A0	4116VG	4116VG	MEMDRH	B5
 	D16-05            .!	 TI	-0.40	0.2	.9	A0	4116VG	4116VG	MEMDRH	B6
 	D15-05            !.	 TI	-0.40	0.2	.9	A0	4116VG	4116VG	MEMDRH	B7
-	D14-05            .!	 TI	-0.40	0.2	.9	A0	4116VG	4116VG	MEMDRH	B8
+	D14-05            .!	 TI	-0.40	0.2	.9ÓA0	4116VG	4116VG	MEMDRH	B8
 	D13-05            !.	 TI	-0.40	0.2	.9	A0	4116VG	4116VG	MEMDRH	D1
 	D12-05            .!	 TI	-0.40	0.2	.9	A0	4116VG	4116VG	MEMDRH	D2
 	D11-05            !.	 TI	-0.40	0.2	.9	A0	4116VG	4116VG	MEMDRH	D3
@@ -3586,7 +3586,7 @@ VBB-0	H06-01            \	 IP	-5.0	0.20		-5V	4116VG	4116VG	MEMHRH	D8
 	F06-01            .!	 IP	-5.0	0.20	1.5	-5V	4116VG	4116VG	MEMFRH	D8
 	E06-01            !.	 IP	-5.0	0.20	1.5	-5V	4116VG	4116VG	MEMERH	D8
 	D06-01            .!	 IP	-5.0	0.20	1.5	-5V	4116VG	4116VG	MEMDRH	D8
-	C06-01            !.	 IP	-5.0	0.20	1.5	-5V	4116VG	4116VG	MEMCRH	D8
+	C06-01            !.	 IP	-5.0	0.20	1.5	-5V	4116VG	4116VG	MEMCRH	D9
 	B06-01            .!	 IP	-5.0	0.20	1.5	-5V	4116VG	4116VG	MEMBRH	D8
 	A06-01            !	 IP	-5.0	0.20	1.5	-5V	4116VG	4116VG	MEMARH	D8
 					-35.0/0.0	16.5				      NO DRIVE	____ 1
@@ -4930,7 +4930,7 @@ XBO 24	J28-04(06)        \	 TI	-0.54	0.3		IN0	26S10	26S10	MEMXBD	C3
 
 XBO 25	J28-05(07)        \	 TI	-0.54	0.3		IN1	26S10	26S10	MEMXBD	C3
 	C29-14            .!	 TOT	4.20	-5.0	6.0	DOUT	4116VG	4116VG	MEMCLH	D1
-	C28-14            !.	 TOT	4.20	-5.0	.9	DOUT	4116VG	4116VG	MEMCLH	D2
+	C28-14    $       !.	 TOT	4.20	-5.0	.9	DOUT	4116VG	4116VG	MEMCLH	D2
 	C27-14            .!	 TOT	4.20	-5.0	.9	DOUT	4116VG	4116VG	MEMCLH	D3
 	C26-14            !	 TOT	4.20	-5.0	.9	DOUT	4116VG	4116VG	MEMCLH	D4
 					-0.54(0.3)/4.20(-5.0)	13.2
@@ -5278,18 +5278,7 @@ SIGNAL NAME
 					0.0/100.0
 
 -XBUS3	BC1               .	 				CON		MWXBUS	A1
-	J22-15(17)        !	 TOC	100.0		2.2	-BUS3	26S10	26S10	MEMXBD	D8
-					0.0/100.0
-
--XBUS30	AE1               .	 				CON		MWXBUS	D1
-	J29-09(11)        !	 TOC	100.0		1.1	-BUS2	26S10	26S10	MEMXBD	C1
-					0.0/100.0
-
--XBUS31	AD2               .	 				CON		MWXBUS	D1
-	J29-15(17)        !	 TOC	100.0		1.5	-BUS3	26S10	26S10	MEMXBD	C1
-					0.0/100.0
-
--XBUS32	AD1               .	 				CON		MWXBUS	D1
+	J22-15(17)        !	 TOC	100.0		2.2	-BUDLfdm˘ò∞…Y&b`51p(Ùò.`ΩD``\`4[¸!U¶Õ¯¡ä≈ @Å @Å @Å8@$$/1Ò*”¯Üä)˘≠`ÂÙ±RÅ @Å @BA˙'√≈@`\`ÙòÆb%5+&dÙô6¶≈¯≤mMD`51bÙÑâ¡˜/b¡@\`4[1U&fb¢2@Å @Å @Å \% Ó5/1+Lbı dÂˆòµP≈˚î†@Å @ÅA)ÒÑ±`¡˜	≈8j[˙©≥…˚)±`%Hm&b`%1	b4ÙÑ∞\¡˜ò∞`π¯ä)ˆ¨B´M˘ô	ÉD                   .	 				CON		MWXBUS	D1
 	J30-02(04)        !	 TOC	100.0		1.7	-BUS0	26S10	26S10	MEMXBD	B8
 					0.0/100.0
 

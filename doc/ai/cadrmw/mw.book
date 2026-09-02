@@ -1,0 +1,45 @@
+;;; -*- Mode:LISP; -*-
+
+;;; Prints and Documentation for the CADR section of the CADR processor.
+
+(LOAD "ai:lmio1;dplt pkg")
+(PKG-LOAD 'DPLT)
+
+(SETQ MW-PLT-FILES-LIST '(
+			  "AI:CADRMW;MWXBUS"
+			  "AI:CADRMW;MEMADS"
+			  "AI:CADRMW;MEMALH"
+			  "AI:CADRMW;MEMARH"
+			  "AI:CADRMW;MEMBLH"
+			  "AI:CADRMW;MEMBRH"
+			  "AI:CADRMW;MEMCLH"
+			  "AI:CADRMW;MEMCRH"
+			  "AI:CADRMW;MEMCTL"
+			  "AI:CADRMW;MEMDLH"
+			  "AI:CADRMW;MEMDRH"
+			  "AI:CADRMW;MEMELH"
+			  "AI:CADRMW;MEMERH"
+			  "AI:CADRMW;MEMFLH"
+			  "AI:CADRMW;MEMFRH"
+			  "AI:CADRMW;MEMHLH"
+			  "AI:CADRMW;MEMHRH"
+			  "AI:CADRMW;MEMRAS"
+			  "AI:CADRMW;MEMRES"
+			  "AI:CADRMW;MEMXBA"
+			  "AI:CADRMW;MEMXBD"
+			  "AI:CADRMW;MEMV"
+			  ))
+
+(SETQ MW-TXT-FILES-LIST '(
+			  "AI:CADRMW;MW STF"
+			  "AI:CADRMW;MW UML"
+			  "AI:CADRMW;MW WLR"
+			  "AI:CADRMW;MW WLS"
+			  ))
+
+;;; Number of copies
+(SETQ DPLT:COPIES 4)
+
+(APPLY #'DPLT-PRINT-FILE MW-PLT-FILES-LIST)
+
+(APPLY #'PRINT-TXT-FILE MW-TXT-FILES-LIST)

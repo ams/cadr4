@@ -1429,7 +1429,7 @@
  RAMD A3           D  21 005           D  20 005      1                MIT01429
  RAMD A3           D  21 005           D  22 005      2                MIT01430
  RAMD A3           D  19 005           D  18 005      1                MIT01431
- RAMD A3           D  19 005  (        D  20 005      2                MIT01432
+ RAMD A3           D  19 005           D  20 005      2                MIT01432
  RAMD A3           D  17 005           D  16 005      1                MIT01433
  RAMD A3           D  17 005           D  18 005      2                MIT01434
  RAMD A3           D  15 005           C  14 016      1                MIT01435
@@ -1646,7 +1646,7 @@
  SYNC ADR 1        A  01 003           A  02 003      2                MIT01646
  SYNC ADR 1        B  02 003           B  03 003      1                MIT01647
  SYNC ADR 1        B  02 003           B  01 003      2                MIT01648
- SYNC ADR 1$       B  04 003           C  05 002      1                MIT01649
+ SYNC ADR 1        B  04 003           C  05 002      1                MIT01649
  SYNC ADR 1        B  04 003           B  03 003      2                MIT01650
  SYNC ADR 10       C  06 014           B  05 006      1                MIT01651
  SYNC ADR 10       B  04 014           B  03 014      1                MIT01652
@@ -2072,7 +2072,7 @@
  VDD-27            A  27 019           A  27 020      1                MIT02072
  VDD-27            A  27 019           B  27 020      2                MIT02073
  VDD-28            D  28 019           D  28 020      1                MIT02074
- VDD-28            C  28 019           C  28 020      1                ]IT02075
+ VDD-28            C  28 019           C  28 020      1                MIT02075
  VDD-28            C  28 019           D  28 020      2                MIT02076
  VDD-28            B  28 019           B  28 020      1                MIT02077
  VDD-28            B  28 019           C  28 020      2                MIT02078
@@ -2107,7 +2107,7 @@
  -XADDR 0  H       BJ 01 0V2           F  18 002      1                MIT02107
  -XADDR 1  H       BJ 01 0V1           F  18 004      1                MIT02108
  -XADDR 10  H      BJ 01 0P1           F  17 006      1                MIT02109
- -XADDR 11  H      BJ 01 0N2           F  17 008      1       0        MIT02110
+ -XADDR 11  H      BJ 01 0N2           F  17 008      1                MIT02110
  -XADDR 12  H      BJ 01 0M2           F  17 011      1                MIT02111
  -XADDR 13  H      BJ 01 0M1           F  17 013      1                MIT02112
  -XADDR 14  H      BJ 01 0L2           F  17 015      1                MIT02113

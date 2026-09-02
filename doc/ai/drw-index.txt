@@ -1,4 +1,4 @@
-# <group>/<file> = this file on the ITS tape dumps (ITS file date, Boston time); drw = newest readable copy, other files from the same tape directories
+# <group>/<file> = this file on the ITS tape dumps (ITS file date, Boston time); drw = newest readable copy, other files = newest copy in any tape directory of the group
 cadr/actl.drw            03-FEB-78 00:46 7008261/B7/cadr/actl.drw
 cadr/alatch.drw          02-FEB-78 22:25 7008261/B7/cadr/alatch.drw
 cadr/alu.drw             29-NOV-77 14:34 9004365/E/cadr/alu.drw
@@ -15,6 +15,7 @@ cadr/bodies.drw          05-FEB-80 01:12 1891/E/cadr/bodies.drw
 cadr/bodies.odrw         29-NOV-77 18:34 9004365/E/cadr/bodies.odrw
 cadr/bodies.qdrw         05-FEB-80 01:12 7008261/B7/cadr/bodies.qdrw
 cadr/busint.erface       07-FEB-78 00:16 7008261/B7/cadr/busint.erface
+cadr/cadr.book           14-DEC-80 12:19 ai_ka_arch_2of9_3050_53_21_aug_1982/E/cadr/cadr.book
 cadr/cadr.eco            03-MAR-82 13:46 7008261/B7/cadr/cadr.eco
 cadr/cadr4.lst           06-FEB-80 02:58 7008261/B7/cadr/cadr4.lst
 cadr/cadr4.mak           02-MAR-82 04:01 7008261/B7/cadr/cadr4.mak
@@ -145,15 +146,17 @@ cadr1/busint.aug         11-DEC-80 16:08 7008261/B7/cadr1/busint.aug
 cadr1/busint.bin         10-DEC-80 20:26 7008261/B7/cadr1/busint.bin
 cadr1/busint.book        04-OCT-81 08:52 7008261/B7/cadr1/busint.book
 cadr1/busint.eco         16-DEC-81 12:39 7008261/B7/cadr1/busint.eco
+cadr1/busint.eco1        21-NOV-78 22:49 7008105/B7/cadr1/busint.eco1
 cadr1/busint.fil         11-DEC-80 18:01 7008261/B7/cadr1/busint.fil
 cadr1/busint.prt         25-MAR-81 08:21 7008261/B7/cadr1/busint.prt
-cadr1/busint.ray         03-OCT-78 07:41 701395/B7/cadr1/busint.ray
+cadr1/busint.ray         04-MAR-79 00:48 7008105/B7/cadr1/busint.ray
 cadr1/busint.ray2        03-OCT-78 08:37 701395/B7/cadr1/busint.ray2
 cadr1/busint.stf         25-MAR-81 08:23 7008261/B7/cadr1/busint.stf
-cadr1/busint.txt         19-MAY-78 02:57 7009559/cadr1/busint.txt
+cadr1/busint.txt         10-DEC-80 16:00 stuff_for_ams2/3100085/E/cadr1/busint.txt
 cadr1/busint.uml         25-MAR-81 08:22 7008261/B7/cadr1/busint.uml
-cadr1/busint.wlr         03-MAR-80 11:32 7009559/cadr1/busint.wlr
+cadr1/busint.wlr         11-DEC-80 15:59 ai_ka_arch_2of9_3050_53_21_aug_1982/E/cadr1/busint.wlr
 cadr1/busint.wls         11-DEC-80 15:55 7008261/B7/cadr1/busint.wls
+cadr1/busint.wss         25-MAR-81 08:26 stuff_for_ams2/3100085/E/cadr1/busint.wss
 cadr1/buspar.drw         10-DEC-80 10:04 7008261/B7/cadr1/buspar.drw
 cadr1/buspar.wd          08-SEP-78 13:08 701395/B7/cadr1/buspar.wd
 cadr1/bussel.drw         10-DEC-80 10:05 7008261/B7/cadr1/bussel.drw
@@ -162,6 +165,7 @@ cadr1/caps.drw           10-DEC-80 10:06 7008261/B7/cadr1/caps.drw
 cadr1/caps.wd            08-SEP-78 13:09 701395/B7/cadr1/caps.wd
 cadr1/cdc.bin            10-MAY-78 00:30 7009559/cadr1/cdc.bin
 cadr1/cdc.fil            25-JUN-78 00:42 701395/B7/cadr1/cdc.fil
+cadr1/cdc.txt            25-JUN-78 00:42 7008105/B7/cadr1/cdc.txt
 cadr1/cdcadr.drw         23-APR-78 15:32 701395/B7/cadr1/cdcadr.drw
 cadr1/cdcbus.drw         23-APR-78 14:44 stuff_for_ams2/2100233/E/cadr1/cdcbus.drw
 cadr1/cdcctl.drw         23-APR-78 17:30 stuff_for_ams2/2100233/E/cadr1/cdcctl.drw
@@ -187,6 +191,7 @@ cadr1/diag.drw           10-DEC-80 10:26 7008261/B7/cadr1/diag.drw
 cadr1/diag.wd            08-SEP-78 17:41 701395/B7/cadr1/diag.wd
 cadr1/dpadr.drw          25-MAY-78 16:41 7008261/B7/cadr1/dpadr.drw
 cadr1/dpdata.drw         25-MAY-78 16:47 7009559/cadr1/dpdata.drw
+cadr1/dubspc.wires       21-OCT-78 20:57 7008105/B7/cadr1/dubspc.wires
 cadr1/init.drw           08-SEP-78 13:14 7009559/cadr1/init.drw
 cadr1/init.wd            08-SEP-78 13:14 701395/B7/cadr1/init.wd
 cadr1/lmadr.drw          10-DEC-80 10:27 7008261/B7/cadr1/lmadr.drw
@@ -241,14 +246,15 @@ cadrdc/clk60h.wd         03-JUL-79 02:15 stuff_for_ams2/2100233/E/cadrio/clk60h.
 cadrdc/clktim.wd         03-JUL-79 02:16 stuff_for_ams2/2100233/E/cadrio/clktim.wd
 cadrdc/clktod.wd         24-SEP-78 14:15 701395/B7/cadrio/clktod.wd
 cadrdc/color.map         01-FEB-78 08:24 701395/B7/cadrio/color.map
-cadrdc/dc.bin            06-FEB-80 01:18 7009559/cadrdc/dc.bin
+cadrdc/dc.bin            10-DEC-80 17:16 more-stuff-for-ams/ai_ka_arch_2of9_3050_53_21_aug_1982/E/cadrdc/dc.bin
 cadrdc/dc.book           12-AUG-81 20:34 more-stuff-for-ams/7008261/B7/cadrdc/dc.book
-cadrdc/dc.eco            09-AUG-80 23:49 7009559/cadrdc/dc.eco
+cadrdc/dc.eco            16-DEC-81 12:18 more-stuff-for-ams/ai_ka_arch_2of9_3050_53_21_aug_1982/E/cadrdc/dc.eco
 cadrdc/dc.prt            10-DEC-80 17:49 more-stuff-for-ams/7008261/B7/cadrdc/dc.prt
-cadrdc/dc.ray            06-FEB-80 00:59 more-stuff-for-ams/701298/BE7/cadrdc/dc.ray
+cadrdc/dc.ray            06-FEB-80 00:59 7009559/cadrdc/dc.ray
 cadrdc/dc.stf            10-DEC-80 17:51 more-stuff-for-ams/7008261/B7/cadrdc/dc.stf
-cadrdc/dc.txt            06-FEB-80 00:52 7009559/cadrdc/dc.txt
-cadrdc/dc.uml            28-FEB-80 19:43 7009559/cadrdc/dc.uml
+cadrdc/dc.txt            10-DEC-80 16:47 more-stuff-for-ams/ai_ka_arch_2of9_3050_53_21_aug_1982/E/cadrdc/dc.txt
+cadrdc/dc.uml            10-DEC-80 17:52 more-stuff-for-ams/ai_ka_arch_2of9_3050_53_21_aug_1982/E/cadrdc/dc.uml
+cadrdc/dc.wlr            10-DEC-80 20:00 more-stuff-for-ams/ai_ka_arch_2of9_3050_53_21_aug_1982/E/cadrdc/dc.wlr
 cadrdc/dc.wls            10-DEC-80 16:58 more-stuff-for-ams/7008261/B7/cadrdc/dc.wls
 cadrdc/dc.wss            10-DEC-80 18:00 more-stuff-for-ams/7008261/B7/cadrdc/dc.wss
 cadrdc/dcbusy.drw        07-OCT-80 21:32 more-stuff-for-ams/7008261/B7/cadrdc/dcbusy.drw
@@ -339,13 +345,13 @@ cadrdc/iobms2.wd         24-SEP-78 14:17 701395/B7/cadrio/iobms2.wd
 cadrdc/iobmse.wd         03-JUL-79 02:17 stuff_for_ams2/2100233/E/cadrio/iobmse.wd
 cadrdc/iobser.wd         03-JUL-79 02:39 stuff_for_ams2/2100233/E/cadrio/iobser.wd
 cadrdc/iobxcv.wd         03-JUL-79 02:17 stuff_for_ams2/2100233/E/cadrio/iobxcv.wd
-cadrdc/mk.bin            14-NOV-79 01:14 7009559/cadrdc/mk.bin
+cadrdc/mk.bin            14-NOV-79 01:14 more-stuff-for-ams/701298/BE7/cadrdc/mk.bin
 cadrdc/mk.eco            11-MAR-80 17:51 7009559/cadrdc/mk.eco
 cadrdc/mk.fil            07-NOV-79 08:10 7009559/cadrdc/mk.fil
 cadrdc/mk.stf            14-NOV-79 00:21 7009559/cadrdc/mk.stf
 cadrdc/mk.txt            07-NOV-79 08:11 7009559/cadrdc/mk.txt
-cadrdc/mk.uml            09-JUL-79 07:50 stuff_for_ams2/2100233/E/cadrio/mk.uml
-cadrdc/mk.wlr            09-JUL-79 07:51 stuff_for_ams2/2100233/E/cadrio/mk.wlr
+cadrdc/mk.uml            14-NOV-79 00:21 more-stuff-for-ams/7008105/B7/cadrdc/mk.uml
+cadrdc/mk.wlr            14-NOV-79 00:22 more-stuff-for-ams/7008105/B7/cadrdc/mk.wlr
 cadrdc/mk.wls            14-NOV-79 00:19 7009559/cadrdc/mk.wls
 cadrdc/mkbusy.drw        14-NOV-79 00:14 7009559/cadrdc/mkbusy.drw
 cadrdc/mkbusy.wd         09-JUL-79 06:45 stuff_for_ams2/2100233/E/cadrio/mkbusy.wd
@@ -459,6 +465,7 @@ cadrio/iobser.drw        11-DEC-80 11:15 ai_ka_arch_2of9_3050_53_21_aug_1982/E/c
 cadrio/iobser.wd         03-JUL-79 02:39 stuff_for_ams2/2100233/E/cadrio/iobser.wd
 cadrio/iobxcv.drw        11-DEC-80 11:16 7008261/B7/cadrio/iobxcv.drw
 cadrio/iobxcv.wd         03-JUL-79 02:17 stuff_for_ams2/2100233/E/cadrio/iobxcv.wd
+cadrio/metz.eco          21-FEB-81 18:11 stuff_for_ams2/3100085/E/cadrio/metz.eco
 cadrio/mk.bin            09-JUL-79 08:03 stuff_for_ams2/2100233/E/cadrio/mk.bin
 cadrio/mk.fil            10-JUN-79 23:02 stuff_for_ams2/2100233/E/cadrio/mk.fil
 cadrio/mk.stf            09-JUL-79 07:50 stuff_for_ams2/2100233/E/cadrio/mk.stf
@@ -485,6 +492,7 @@ cadrio/nmous1.drw        14-DEC-77 04:23 9004365/E/cadrio/nmous1.drw
 cadrio/nmous1.wd         14-DEC-77 04:24 9004365/E/cadrio/nmous1.wd
 cadrio/nmous2.drw        14-DEC-77 04:35 9004365/E/cadrio/nmous2.drw
 cadrio/nmous2.wd         14-DEC-77 04:35 9004365/E/cadrio/nmous2.wd
+cadrio/serial.eco        03-JUL-79 03:48 7008105/B7/cadrio/serial.eco
 cadrio/xbus.drw          31-MAR-78 04:32 701395/B7/cadrio/xbus.drw
 cadrio/xbus.wd           30-SEP-78 00:46 701395/B7/cadrio/xbus.wd
 cadrm/mcp0lh.drw         14-NOV-78 00:44 7009559/cadrm/mcp0lh.drw
@@ -499,6 +507,7 @@ cadrm/mem.augat          10-JUN-80 12:15 7008105/B7/cadrm/mem.augat
 cadrm/mem.bin            10-JUN-80 12:15 stuff_for_ams2/7005736/BE7/cadrm/mem.bin
 cadrm/mem.eco            14-AUG-80 01:48 7008105/B7/cadrm/mem.eco
 cadrm/mem.fil            09-JUN-80 22:04 7008105/B7/cadrm/mem.fil
+cadrm/mem.loc            14-NOV-78 00:07 stuff_for_ams2/2100233/E/cadrm/mem.loc
 cadrm/mem.ray            10-JUN-80 12:06 7008105/B7/cadrm/mem.ray
 cadrm/mem.stf            04-MAR-80 09:16 7009559/cadrm/mem.stf
 cadrm/mem.txt            09-JUN-80 22:20 7008105/B7/cadrm/mem.txt
@@ -508,20 +517,34 @@ cadrm/mem.wls            04-MAR-80 09:18 7008105/B7/cadrm/mem.wls
 cadrm/mem.wwinfo         12-JUN-80 11:16 7008105/B7/cadrm/mem.wwinfo
 cadrm/mem0lh.drw         14-NOV-78 00:27 7009559/cadrm/mem0lh.drw
 cadrm/mem0rh.drw         14-NOV-78 00:29 7009559/cadrm/mem0rh.drw
+cadrm/mem0rh.wd          27-SEP-78 21:54 701395/B7/cadrm/mem0rh.wd
 cadrm/mem1lh.drw         14-NOV-78 00:30 7008105/B7/cadrm/mem1lh.drw
+cadrm/mem1lh.wd          27-SEP-78 21:39 701395/B7/cadrm/mem1lh.wd
 cadrm/mem1rh.drw         14-NOV-78 00:32 7008105/B7/cadrm/mem1rh.drw
+cadrm/mem1rh.wd          27-SEP-78 22:09 701395/B7/cadrm/mem1rh.wd
 cadrm/mem2lh.drw         20-DEC-78 20:18 7008105/B7/cadrm/mem2lh.drw
+cadrm/mem2lh.wd          27-SEP-78 21:23 701395/B7/cadrm/mem2lh.wd
 cadrm/mem2rh.drw         14-NOV-78 00:37 7008105/B7/cadrm/mem2rh.drw
+cadrm/mem2rh.wd          27-SEP-78 22:10 701395/B7/cadrm/mem2rh.wd
 cadrm/mem3lh.drw         14-NOV-78 00:39 7009559/cadrm/mem3lh.drw
+cadrm/mem3lh.wd          27-SEP-78 23:49 701395/B7/cadrm/mem3lh.wd
 cadrm/mem3rh.drw         14-NOV-78 00:42 7008105/B7/cadrm/mem3rh.drw
+cadrm/mem3rh.wd          27-SEP-78 22:17 701395/B7/cadrm/mem3rh.wd
 cadrm/memadl.drw         29-JAN-79 09:51 7008105/B7/cadrm/memadl.drw
+cadrm/memadl.wd          27-SEP-78 20:07 701395/B7/cadrm/memadl.wd
 cadrm/memadr.drw         29-JAN-79 09:53 stuff_for_ams2/7005736/BE7/cadrm/memadr.drw
+cadrm/memadr.wd          27-SEP-78 20:09 701395/B7/cadrm/memadr.wd
 cadrm/memads.drw         03-MAR-79 21:41 7009559/cadrm/memads.drw
+cadrm/memads.wd          27-SEP-78 19:45 701395/B7/cadrm/memads.wd
 cadrm/memctl.drw         03-JAN-80 20:03 7009559/cadrm/memctl.drw
 cadrm/memctl.odr         29-JAN-79 10:02 7008105/B7/cadrm/memctl.odr
+cadrm/memctl.wd          27-SEP-78 20:00 701395/B7/cadrm/memctl.wd
 cadrm/memras.drw         27-SEP-78 19:46 7008105/B7/cadrm/memras.drw
+cadrm/memras.wd          27-SEP-78 19:46 701395/B7/cadrm/memras.wd
 cadrm/memxba.drw         29-JAN-79 10:05 7009559/cadrm/memxba.drw
+cadrm/memxba.wd          28-SEP-78 00:27 701395/B7/cadrm/memxba.wd
 cadrm/memxbd.drw         27-SEP-78 19:18 7008105/B7/cadrm/memxbd.drw
+cadrm/memxbd.wd          27-SEP-78 19:18 701395/B7/cadrm/memxbd.wd
 cadrm/pmaddr.drw         31-MAR-79 21:00 7008105/B7/cadrm/pmaddr.drw
 cadrm/pmbuf1.drw         31-MAR-79 05:26 7008105/B7/cadrm/pmbuf1.drw
 cadrm/pmbuf2.drw         31-MAR-79 05:28 7008105/B7/cadrm/pmbuf2.drw
@@ -554,20 +577,23 @@ cadrmw/memv.drw          06-FEB-80 04:54 7009559/cadrmw/memv.drw
 cadrmw/memxba.drw        02-JAN-80 23:31 7009559/cadrmw/memxba.drw
 cadrmw/memxbd.drw        19-DEC-79 06:47 7009559/cadrmw/memxbd.drw
 cadrmw/mw.bin            06-FEB-80 06:07 7009559/cadrmw/mw.bin
+cadrmw/mw.book           15-JAN-81 15:07 more-stuff-for-ams/7008261/B7/cadrmw/mw.book
 cadrmw/mw.fil            06-FEB-80 04:55 7009559/cadrmw/mw.fil
+cadrmw/mw.mw             03-JAN-80 02:03 more-stuff-for-ams/7008105/B7/cadrmw/mw.mw
 cadrmw/mw.notes          16-JUN-80 00:37 7009559/cadrmw/mw.notes
-cadrmw/mw.prt            08-JAN-80 21:31 more-stuff-for-ams/701298/BE7/cadrmw/mw.prt
-cadrmw/mw.stf            06-FEB-80 12:37 7009559/cadrmw/mw.stf
+cadrmw/mw.prt            08-JAN-80 21:31 7009559/cadrmw/mw.prt
+cadrmw/mw.stf            06-FEB-80 12:37 more-stuff-for-ams/7005736/BE7/cadrmw/mw.stf
 cadrmw/mw.txt            06-FEB-80 01:33 7009559/cadrmw/mw.txt
 cadrmw/mw.uml            06-FEB-80 01:38 7009559/cadrmw/mw.uml
-cadrmw/mw.wlr            06-FEB-80 01:34 7009559/cadrmw/mw.wlr
+cadrmw/mw.wlr            06-FEB-80 01:34 more-stuff-for-ams/701298/BE7/cadrmw/mw.wlr
 cadrmw/mw.wls            06-FEB-80 05:00 7009559/cadrmw/mw.wls
+cadrmw/mw.xan            06-FEB-80 05:02 more-stuff-for-ams/7008105/B7/cadrmw/mw.xan
 cadrmw/mwxbus.drw        02-JAN-80 20:04 7009559/cadrmw/mwxbus.drw
-cadrpc/dbg.bin           07-JUL-80 17:15 more-stuff-for-ams/701298/BE7/cadrpc/dbg.bin
+cadrpc/dbg.bin           07-JUL-80 17:15 7009559/cadrpc/dbg.bin
 cadrpc/dbg.mak           06-JUL-80 23:12 7009559/cadrpc/dbg.mak
 cadrpc/dbg.ray           07-JUL-80 16:47 7009559/cadrpc/dbg.ray
 cadrpc/dbg.stf           07-JUL-80 16:46 7009559/cadrpc/dbg.stf
-cadrpc/dbg.txt           06-JUL-80 23:19 7009559/cadrpc/dbg.txt
+cadrpc/dbg.txt           06-JUL-80 23:19 more-stuff-for-ams/7005736/BE7/cadrpc/dbg.txt
 cadrpc/dbg.uml           07-JUL-80 16:44 7009559/cadrpc/dbg.uml
 cadrpc/dbg.wlr           07-JUL-80 16:46 7009559/cadrpc/dbg.wlr
 cadrpc/dbg.wls           07-JUL-80 16:42 7009559/cadrpc/dbg.wls
@@ -594,7 +620,7 @@ cadrpc/opci.drw          26-MAR-80 16:59 7009559/cadrpc/opci.drw
 cadrpc/ouaprc.drw        26-MAR-80 17:08 7009559/cadrpc/ouaprc.drw
 cadrpc/pci.drw           03-JUL-80 03:22 7009559/cadrpc/pci.drw
 cadrpc/uaproc.drw        07-JUL-80 15:55 7009559/cadrpc/uaproc.drw
-cadrtv/arc.lmtv          19-APR-81 19:49 more-stuff-for-ams/3100085/E/cadrtv/arc.lmtv
+cadrtv/arc.lmtv          03-JUN-81 04:12 more-stuff-for-ams/ai_ka_arch_2of9_3050_53_21_aug_1982/E/cadrtv/arc.lmtv
 cadrtv/bod1.drw          14-JUL-78 21:56 7009559/cadrtv/bod1.drw
 cadrtv/bod2.drw          23-JAN-80 05:20 more-stuff-for-ams/701298/BE7/cadrtv/bod2.drw
 cadrtv/caps.drw          07-FEB-81 12:34 more-stuff-for-ams/7008261/B7/cadrtv/caps.drw
@@ -616,8 +642,8 @@ cadrtv/lmtv.order        09-JUN-79 04:21 7009559/cadrtv/lmtv.order
 cadrtv/lmtv.stf          28-MAY-79 21:29 7009559/cadrtv/lmtv.stf
 cadrtv/lmtv.txt          13-NOV-78 17:19 7009559/cadrtv/lmtv.txt
 cadrtv/lmtv.wwinfo       12-JUN-80 10:51 7009559/cadrtv/lmtv.wwinfo
-cadrtv/lmtv4b.augat      09-JUN-80 13:10 more-stuff-for-ams/701298/BE7/cadrtv/lmtv4b.augat
-cadrtv/lmtv4b.bin        08-DEC-80 00:30 more-stuff-for-ams/3100085/E/cadrtv/lmtv4b.bin
+cadrtv/lmtv4b.augat      09-JUN-80 13:10 7009559/cadrtv/lmtv4b.augat
+cadrtv/lmtv4b.bin        08-DEC-80 00:30 more-stuff-for-ams/ai_ka_arch_2of9_3050_53_21_aug_1982/E/cadrtv/lmtv4b.bin
 cadrtv/lmtv4b.eco        03-JUN-81 04:55 more-stuff-for-ams/7008261/B7/cadrtv/lmtv4b.eco
 cadrtv/lmtv4b.fil        07-DEC-80 20:45 more-stuff-for-ams/7008261/B7/cadrtv/lmtv4b.fil
 cadrtv/lmtv4b.prom       26-MAR-80 17:43 7009559/cadrtv/lmtv4b.prom
@@ -626,7 +652,7 @@ cadrtv/lmtv4b.ray        09-JUN-80 12:54 7009559/cadrtv/lmtv4b.ray
 cadrtv/lmtv4b.stf        07-DEC-80 23:52 more-stuff-for-ams/7008261/B7/cadrtv/lmtv4b.stf
 cadrtv/lmtv4b.txt        07-DEC-80 20:43 more-stuff-for-ams/7008261/B7/cadrtv/lmtv4b.txt
 cadrtv/lmtv4b.uml        07-DEC-80 23:52 more-stuff-for-ams/7008261/B7/cadrtv/lmtv4b.uml
-cadrtv/lmtv4b.wlr        29-FEB-80 12:44 7009559/cadrtv/lmtv4b.wlr
+cadrtv/lmtv4b.wlr        07-DEC-80 23:54 more-stuff-for-ams/ai_ka_arch_2of9_3050_53_21_aug_1982/E/cadrtv/lmtv4b.wlr
 cadrtv/lmtv4b.wls        08-DEC-80 00:23 more-stuff-for-ams/7008261/B7/cadrtv/lmtv4b.wls
 cadrtv/lmtv8b.fil        07-DEC-80 13:14 more-stuff-for-ams/3100085/E/cadrtv/lmtv8b.fil
 cadrtv/lmtv8b.prom       24-JAN-80 03:56 7009559/cadrtv/lmtv8b.prom
@@ -676,187 +702,202 @@ cadrtv/xbadr.drw         10-DEC-80 10:51 more-stuff-for-ams/7008261/B7/cadrtv/xb
 cadrtv/xbctl.drw         07-DEC-80 23:05 more-stuff-for-ams/7008261/B7/cadrtv/xbctl.drw
 cadrtv/xbdata.drw        07-DEC-80 23:04 more-stuff-for-ams/7008261/B7/cadrtv/xbdata.drw
 cadrtv/xbus.drw          07-DEC-80 23:01 more-stuff-for-ams/7008261/B7/cadrtv/xbus.drw
-chaos/$quad.eco          05-JUN-25 01:03 tots-chaos-dirs-its/7008261/chaos/$quad.eco
-chaos/bodies.drw         04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/bodies.drw
-chaos/bods.ndrw          05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/bods.ndrw
-chaos/cable.drw          05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/cable.drw
-chaos/cable.map          05-JUN-25 01:03 tots-chaos-dirs-its/701417/chaos/cable.map
-chaos/cable2.drw         05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/cable2.drw
-chaos/cable3.drw         05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/cable3.drw
-chaos/cables.info        05-JUN-25 01:03 tots-chaos-dirs-its/701417/chaos/cables.info
-chaos/ch10.spec          05-JUN-25 01:03 tots-chaos-dirs-its/7005406/chaos/ch10.spec
-chaos/chaos.defs         05-JUN-25 01:03 tots-chaos-dirs-its/9004365/chaos/chaos.defs
-chaos/chaos.fil          04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/chaos.fil
-chaos/chaos.stf          04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/chaos.stf
-chaos/chaos.txt          05-JUN-25 01:03 tots-chaos-dirs-its/9004365/chaos/chaos.txt
-chaos/chaos.uml          04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/chaos.uml
-chaos/chaos.wlr          04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/chaos.wlr
-chaos/chaos.wls          04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/chaos.wls
-chaos/chaos.wss          04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/chaos.wss
-chaos/chs.bin            04-JUN-25 15:43 tots-chaos-dirs-its/9004365/chaos/chs.bin
-chaos/chs.defs           05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/chs.defs
-chaos/chs.fil            05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/chs.fil
-chaos/chs.parts          04-JUN-25 15:43 tots-chaos-dirs-its/9004365/chaos/chs.parts
-chaos/chs.ray            05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/chs.ray
-chaos/chs.stf            05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/chs.stf
-chaos/chs.txt            05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/chs.txt
-chaos/chs.uml            05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/chs.uml
-chaos/chs.wlr            05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/chs.wlr
-chaos/chs.wls            05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/chs.wls
-chaos/chsdrw.txt         04-JUN-25 15:43 tots-chaos-dirs-its/9004365/chaos/chsdrw.txt
-chaos/chsplt.txt         05-JUN-25 01:03 tots-chaos-dirs-its/9004365/chaos/chsplt.txt
-chaos/chswir.txt         05-JUN-25 01:03 tots-chaos-dirs-its/9004365/chaos/chswir.txt
-chaos/chxtst.bin         04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/chxtst.bin
-chaos/coni.drw           04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/coni.drw
-chaos/coni.wd            04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/coni.wd
-chaos/datai.drw          04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/datai.drw
-chaos/datai.wd           04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/datai.wd
-chaos/datapa.drw         05-JUN-25 01:03 tots-chaos-dirs-its/9004365/chaos/datapa.drw
-chaos/detect.drw         04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/detect.drw
-chaos/detect.wd          04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/detect.wd
-chaos/fillst.txt         04-JUN-25 15:43 tots-chaos-dirs-its/9004365/chaos/fillst.txt
-chaos/foo.drw            04-JUN-25 15:43 tots-chaos-dirs-its/9004365/chaos/foo.drw
-chaos/icon.drw           05-JUN-25 01:03 tots-chaos-dirs-its/9004365/chaos/icon.drw
-chaos/inbods.drw         05-JUN-25 01:03 tots-chaos-dirs-its/701417/chaos/inbods.drw
-chaos/iobctl.drw         04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/iobctl.drw
-chaos/iobctl.wd          04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/iobctl.wd
-chaos/iobtrm.drw         04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/iobtrm.drw
-chaos/iobtrm.wd          04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/iobtrm.wd
-chaos/iobxcv.drw         04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/iobxcv.drw
-chaos/iobxcv.wd          04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/iobxcv.wd
-chaos/lindrv.drw         04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/lindrv.drw
-chaos/lindrv.wd          04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/lindrv.wd
-chaos/lmdatp.drw         05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/lmdatp.drw
-chaos/lmdatp.wd          05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/lmdatp.wd
-chaos/lmdetc.drw         05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/lmdetc.drw
-chaos/lmdetc.wd          05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/lmdetc.wd
-chaos/lmfile.txt         05-JUN-25 01:03 tots-chaos-dirs-its/7008261/chaos/lmfile.txt
-chaos/lmicon.drw         05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/lmicon.drw
-chaos/lmjpns.drw         05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/lmjpns.drw
-chaos/lmjpns.wd          05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/lmjpns.wd
-chaos/lmlndr.drw         05-JUN-25 01:03 tots-chaos-dirs-its/7008261/chaos/lmlndr.drw
-chaos/lmmodu.drw         05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/lmmodu.drw
-chaos/lmmodu.prom        05-JUN-25 01:03 tots-chaos-dirs-its/701417/chaos/lmmodu.prom
-chaos/lmmodu.prom2       05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/lmmodu.prom2
-chaos/lmmodu.promt       05-JUN-25 01:03 tots-chaos-dirs-its/701417/chaos/lmmodu.promt
-chaos/lmmodu.wd          05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/lmmodu.wd
-chaos/lmmynm.drw         05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/lmmynm.drw
-chaos/lmmynm.prom        05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/lmmynm.prom
-chaos/lmmynm.promt       05-JUN-25 01:03 tots-chaos-dirs-its/701417/chaos/lmmynm.promt
-chaos/lmmynm.wd          05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/lmmynm.wd
-chaos/lmquad.txt         04-JUN-25 15:43 tots-chaos-dirs-its/2100233/chaos/lmquad.txt
-chaos/lmrbuf.drw         05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/lmrbuf.drw
-chaos/lmrbuf.wd          05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/lmrbuf.wd
-chaos/lmrclk.drw         05-JUN-25 01:03 tots-chaos-dirs-its/701417/chaos/lmrclk.drw
-chaos/lmrclk.wd          05-JUN-25 01:03 tots-chaos-dirs-its/701417/chaos/lmrclk.wd
-chaos/lmrctl.drw         05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/lmrctl.drw
-chaos/lmrctl.odrw        05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/lmrctl.odrw
-chaos/lmrctl.wd          05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/lmrctl.wd
-chaos/lmtbfc.drw         05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/lmtbfc.drw
-chaos/lmtbfc.wd          05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/lmtbfc.wd
-chaos/lmtbuf.drw         05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/lmtbuf.drw
-chaos/lmtbuf.wd          05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/lmtbuf.wd
-chaos/lmtclk.drw         05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/lmtclk.drw
-chaos/lmtclk.wd          05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/lmtclk.wd
-chaos/lmturn.drw         05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/lmturn.drw
-chaos/lmturn.wd          05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/lmturn.wd
-chaos/lmucon.drw         05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/lmucon.drw
-chaos/lmucon.wd          05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/lmucon.wd
-chaos/modula.drw         04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/modula.drw
-chaos/modula.wd          04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/modula.wd
-chaos/my#.drw            05-JUN-25 01:03 tots-chaos-dirs-its/9004365/chaos/my#.drw
-chaos/mynum.drw          04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/mynum.drw
-chaos/mynum.wd           04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/mynum.wd
-chaos/myturn.drw         05-JUN-25 01:03 tots-chaos-dirs-its/7005142/chaos/myturn.drw
-chaos/myturn.wd          04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/myturn.wd
-chaos/n11con.drw         05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/n11con.drw
-chaos/n11con.wd          04-JUN-25 15:43 tots-chaos-dirs-its/9004365/chaos/n11con.wd
-chaos/nbods.drw          05-JUN-25 01:03 tots-chaos-dirs-its/2100233/chaos/nbods.drw
-chaos/ncpins.drw         04-JUN-25 15:43 tots-chaos-dirs-its/9004365/chaos/ncpins.drw
-chaos/ncpins.wd          04-JUN-25 15:43 tots-chaos-dirs-its/9004365/chaos/ncpins.wd
-chaos/ndatpa.drw         05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/ndatpa.drw
-chaos/ndatpa.wd          04-JUN-25 15:43 tots-chaos-dirs-its/9004365/chaos/ndatpa.wd
-chaos/ndetec.drw         05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/ndetec.drw
-chaos/ndetec.wd          04-JUN-25 15:43 tots-chaos-dirs-its/9004365/chaos/ndetec.wd
-chaos/nicon.drw          05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/nicon.drw
-chaos/nicon.wd           04-JUN-25 15:43 tots-chaos-dirs-its/9004365/chaos/nicon.wd
-chaos/njpins.drw         05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/njpins.drw
-chaos/njpins.wd          04-JUN-25 15:43 tots-chaos-dirs-its/9004365/chaos/njpins.wd
-chaos/nmynum.drw         05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/nmynum.drw
-chaos/nmynum.wd          04-JUN-25 15:43 tots-chaos-dirs-its/9004365/chaos/nmynum.wd
-chaos/nrbuf.drw          04-JUN-25 15:43 tots-chaos-dirs-its/9004365/chaos/nrbuf.drw
-chaos/nrbuf.wd           04-JUN-25 15:43 tots-chaos-dirs-its/9004365/chaos/nrbuf.wd
-chaos/ntbuf.drw          05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/ntbuf.drw
-chaos/ntbuf.wd           04-JUN-25 15:43 tots-chaos-dirs-its/9004365/chaos/ntbuf.wd
-chaos/ntbufc.drw         05-JUN-25 01:03 tots-chaos-dirs-its/701373/chaos/ntbufc.drw
-chaos/ntbufc.wd          04-JUN-25 15:43 tots-chaos-dirs-its/9004365/chaos/ntbufc.wd
-chaos/progck.drw         05-JUN-25 01:03 tots-chaos-dirs-its/7005142/chaos/progck.drw
-chaos/qadadr.drw         05-JUN-25 01:03 tots-chaos-dirs-its/7008261/chaos/qadadr.drw
-chaos/qadadr.wd          05-JUN-25 01:03 tots-chaos-dirs-its/701417/chaos/qadadr.wd
-chaos/qadchs.note        05-JUN-25 01:03 tots-chaos-dirs-its/701417/chaos/qadchs.note
-chaos/qadint.drw         05-JUN-25 01:03 tots-chaos-dirs-its/701417/chaos/qadint.drw
-chaos/qadint.wd          05-JUN-25 01:03 tots-chaos-dirs-its/701417/chaos/qadint.wd
-chaos/qadjps.drw         05-JUN-25 01:03 tots-chaos-dirs-its/7008261/chaos/qadjps.drw
-chaos/qadjps.wd          05-JUN-25 01:03 tots-chaos-dirs-its/701417/chaos/qadjps.wd
-chaos/qadspc.drw         05-JUN-25 01:03 tots-chaos-dirs-its/2100233/chaos/qadspc.drw
-chaos/qadspc.wd          05-JUN-25 01:03 tots-chaos-dirs-its/701417/chaos/qadspc.wd
-chaos/qadtim.drw         05-JUN-25 01:03 tots-chaos-dirs-its/7008261/chaos/qadtim.drw
-chaos/qadtim.wd          05-JUN-25 01:03 tots-chaos-dirs-its/701417/chaos/qadtim.wd
-chaos/qadxcv.drw         05-JUN-25 01:03 tots-chaos-dirs-its/701417/chaos/qadxcv.drw
-chaos/qadxcv.wd          05-JUN-25 01:03 tots-chaos-dirs-its/701417/chaos/qadxcv.wd
-chaos/qbchni.bin         05-JUN-25 01:03 tots-chaos-dirs-its/701417/chaos/qbchni.bin
-chaos/qbchni.book        04-JUN-25 15:43 tots-chaos-dirs-its/7008261/chaos/qbchni.book
-chaos/qbchni.eco         05-JUN-25 01:03 tots-chaos-dirs-its/7008261/chaos/qbchni.eco
-chaos/qbchni.fil         05-JUN-25 01:03 tots-chaos-dirs-its/7008261/chaos/qbchni.fil
-chaos/qbchni.stf         05-JUN-25 01:03 tots-chaos-dirs-its/7008261/chaos/qbchni.stf
-chaos/qbchni.uml         05-JUN-25 01:03 tots-chaos-dirs-its/7008261/chaos/qbchni.uml
-chaos/qbchni.wlr         05-JUN-25 01:03 tots-chaos-dirs-its/7008261/chaos/qbchni.wlr
-chaos/qbchni.wls         05-JUN-25 01:03 tots-chaos-dirs-its/7008261/chaos/qbchni.wls
-chaos/qbchwl.txt         05-JUN-25 01:03 tots-chaos-dirs-its/701417/chaos/qbchwl.txt
-chaos/qbcon.drw          05-JUN-25 01:03 tots-chaos-dirs-its/701417/chaos/qbcon.drw
-chaos/qbus.drw           05-JUN-25 01:03 tots-chaos-dirs-its/701417/chaos/qbus.drw
-chaos/qqbbpl.drw         05-JUN-25 01:03 tots-chaos-dirs-its/7008261/chaos/qqbbpl.drw
-chaos/qqbint.drw         05-JUN-25 01:03 tots-chaos-dirs-its/7008261/chaos/qqbint.drw
-chaos/qqbxcv.drw         05-JUN-25 01:03 tots-chaos-dirs-its/7008261/chaos/qqbxcv.drw
-chaos/quad.aug           04-JUN-25 15:43 tots-chaos-dirs-its/701417/chaos/quad.aug
-chaos/quad.eco           05-JUN-25 01:03 tots-chaos-dirs-its/701417/chaos/quad.eco
-chaos/quad.fil           05-JUN-25 01:03 tots-chaos-dirs-its/701417/chaos/quad.fil
-chaos/quad.mcr           05-JUN-25 01:03 tots-chaos-dirs-its/701417/chaos/quad.mcr
-chaos/quad.obin          04-JUN-25 15:43 tots-chaos-dirs-its/701417/chaos/quad.obin
-chaos/quad.ray           04-JUN-25 15:43 tots-chaos-dirs-its/2100233/chaos/quad.ray
-chaos/quad.ray1          04-JUN-25 15:43 tots-chaos-dirs-its/2100233/chaos/quad.ray1
-chaos/quad.ray2          04-JUN-25 15:43 tots-chaos-dirs-its/2100233/chaos/quad.ray2
-chaos/quad.stf           05-JUN-25 01:03 tots-chaos-dirs-its/701417/chaos/quad.stf
-chaos/quad.uml           05-JUN-25 01:03 tots-chaos-dirs-its/701417/chaos/quad.uml
-chaos/quad.wlr           05-JUN-25 01:03 tots-chaos-dirs-its/701417/chaos/quad.wlr
-chaos/quad.wls           05-JUN-25 01:03 tots-chaos-dirs-its/701417/chaos/quad.wls
-chaos/quadwl.txt         05-JUN-25 01:03 tots-chaos-dirs-its/701417/chaos/quadwl.txt
-chaos/qubint.drw         05-JUN-25 01:03 tots-chaos-dirs-its/7008261/chaos/qubint.drw
-chaos/qubxcv.drw         05-JUN-25 01:03 tots-chaos-dirs-its/7008261/chaos/qubxcv.drw
-chaos/rbuf.drw           05-JUN-25 01:03 tots-chaos-dirs-its/9004365/chaos/rbuf.drw
-chaos/rctl.drw           05-JUN-25 01:03 tots-chaos-dirs-its/9004365/chaos/rctl.drw
-chaos/rctl.wd            04-JUN-25 15:43 tots-chaos-dirs-its/9004365/chaos/rctl.wd
-chaos/rcvbuf.drw         04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/rcvbuf.drw
-chaos/rcvbuf.wd          04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/rcvbuf.wd
-chaos/rcvclk.drw         04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/rcvclk.drw
-chaos/rcvclk.wd          04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/rcvclk.wd
-chaos/rcvctl.drw         04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/rcvctl.drw
-chaos/rcvctl.wd          04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/rcvctl.wd
-chaos/speed.eco          05-JUN-25 01:03 tots-chaos-dirs-its/701417/chaos/speed.eco
-chaos/speed.mods         05-JUN-25 01:03 tots-chaos-dirs-its/701417/chaos/speed.mods
-chaos/tclk.drw           05-JUN-25 01:03 tots-chaos-dirs-its/7005142/chaos/tclk.drw
-chaos/tclk.wd            05-JUN-25 01:03 tots-chaos-dirs-its/7005142/chaos/tclk.wd
-chaos/tester.bin         05-JUN-25 01:03 tots-chaos-dirs-its/7005142/chaos/tester.bin
-chaos/ubchni.aug         05-JUN-25 01:03 tots-chaos-dirs-its/7008261/chaos/ubchni.aug
-chaos/ubchni.bin         04-JUN-25 15:43 tots-chaos-dirs-its/7008261/chaos/ubchni.bin
-chaos/xmtbuf.drw         04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/xmtbuf.drw
-chaos/xmtbuf.wd          04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/xmtbuf.wd
-chaos/xmtclk.drw         04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/xmtclk.drw
-chaos/xmtclk.wd          04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/xmtclk.wd
-chaos/xmtctl.drw         04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/xmtctl.drw
-chaos/xmtctl.wd          04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/xmtctl.wd
-chaos/xmtshf.drw         04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/xmtshf.drw
-chaos/xmtshf.wd          04-JUN-25 15:43 tots-chaos-dirs-its/7005406/chaos/xmtshf.wd
+chaos/$quad.eco          undated         tots-chaos-dirs-its/7008261/chaos/$quad.eco
+chaos/bodies.drw         undated         tots-chaos-dirs-its/7005406/chaos/bodies.drw
+chaos/bods.ndrw          undated         tots-chaos-dirs-its/701373/chaos/bods.ndrw
+chaos/cable.drw          undated         tots-chaos-dirs-its/701373/chaos/cable.drw
+chaos/cable.map          undated         tots-chaos-dirs-its/7008261/chaos/cable.map
+chaos/cable2.drw         undated         tots-chaos-dirs-its/701373/chaos/cable2.drw
+chaos/cable3.drw         undated         tots-chaos-dirs-its/701373/chaos/cable3.drw
+chaos/cables.info        undated         tots-chaos-dirs-its/701417/chaos/cables.info
+chaos/ch10.spec          undated         tots-chaos-dirs-its/7005406/chaos/ch10.spec
+chaos/chaos.defs         undated         tots-chaos-dirs-its/9004365/chaos/chaos.defs
+chaos/chaos.fil          undated         tots-chaos-dirs-its/7005406/chaos/chaos.fil
+chaos/chaos.stf          undated         tots-chaos-dirs-its/7005406/chaos/chaos.stf
+chaos/chaos.txt          undated         tots-chaos-dirs-its/9004365/chaos/chaos.txt
+chaos/chaos.uml          undated         tots-chaos-dirs-its/7005406/chaos/chaos.uml
+chaos/chaos.wlr          undated         tots-chaos-dirs-its/7005406/chaos/chaos.wlr
+chaos/chaos.wls          undated         tots-chaos-dirs-its/9004365/chaos/chaos.wls
+chaos/chaos.wss          undated         tots-chaos-dirs-its/7005406/chaos/chaos.wss
+chaos/chs.bin            undated         tots-chaos-dirs-its/9004365/chaos/chs.bin
+chaos/chs.defs           undated         tots-chaos-dirs-its/701417/chaos/chs.defs
+chaos/chs.fil            undated         tots-chaos-dirs-its/701373/chaos/chs.fil
+chaos/chs.parts          undated         tots-chaos-dirs-its/9004365/chaos/chs.parts
+chaos/chs.ray            undated         tots-chaos-dirs-its/701373/chaos/chs.ray
+chaos/chs.stf            undated         tots-chaos-dirs-its/701373/chaos/chs.stf
+chaos/chs.txt            undated         tots-chaos-dirs-its/701373/chaos/chs.txt
+chaos/chs.uml            undated         tots-chaos-dirs-its/701373/chaos/chs.uml
+chaos/chs.wlr            undated         tots-chaos-dirs-its/701373/chaos/chs.wlr
+chaos/chs.wls            undated         tots-chaos-dirs-its/701373/chaos/chs.wls
+chaos/chsdrw.txt         undated         tots-chaos-dirs-its/9004365/chaos/chsdrw.txt
+chaos/chsplt.txt         undated         tots-chaos-dirs-its/9004365/chaos/chsplt.txt
+chaos/chswir.txt         undated         tots-chaos-dirs-its/9004365/chaos/chswir.txt
+chaos/chxtst.bin         undated         tots-chaos-dirs-its/7005406/chaos/chxtst.bin
+chaos/coni.drw           undated         tots-chaos-dirs-its/7005406/chaos/coni.drw
+chaos/coni.wd            undated         tots-chaos-dirs-its/7005406/chaos/coni.wd
+chaos/datai.drw          undated         tots-chaos-dirs-its/7005406/chaos/datai.drw
+chaos/datai.wd           undated         tots-chaos-dirs-its/7005406/chaos/datai.wd
+chaos/datapa.drw         undated         tots-chaos-dirs-its/9004365/chaos/datapa.drw
+chaos/detect.drw         undated         tots-chaos-dirs-its/7005406/chaos/detect.drw
+chaos/detect.wd          undated         tots-chaos-dirs-its/7005406/chaos/detect.wd
+chaos/fillst.txt         undated         tots-chaos-dirs-its/9004365/chaos/fillst.txt
+chaos/foo.drw            undated         tots-chaos-dirs-its/9004365/chaos/foo.drw
+chaos/icon.drw           undated         tots-chaos-dirs-its/9004365/chaos/icon.drw
+chaos/inbods.drw         undated         tots-chaos-dirs-its/701417/chaos/inbods.drw
+chaos/iobctl.drw         undated         tots-chaos-dirs-its/7005406/chaos/iobctl.drw
+chaos/iobctl.wd          undated         tots-chaos-dirs-its/7005406/chaos/iobctl.wd
+chaos/iobtrm.drw         undated         tots-chaos-dirs-its/7005406/chaos/iobtrm.drw
+chaos/iobtrm.wd          undated         tots-chaos-dirs-its/7005406/chaos/iobtrm.wd
+chaos/iobxcv.drw         undated         tots-chaos-dirs-its/7005406/chaos/iobxcv.drw
+chaos/iobxcv.wd          undated         tots-chaos-dirs-its/7005406/chaos/iobxcv.wd
+chaos/lindrv.drw         undated         tots-chaos-dirs-its/7005406/chaos/lindrv.drw
+chaos/lindrv.wd          undated         tots-chaos-dirs-its/7005406/chaos/lindrv.wd
+chaos/lmdatp.drw         undated         tots-chaos-dirs-its/701373/chaos/lmdatp.drw
+chaos/lmdatp.wd          undated         tots-chaos-dirs-its/701373/chaos/lmdatp.wd
+chaos/lmdetc.drw         undated         tots-chaos-dirs-its/701373/chaos/lmdetc.drw
+chaos/lmdetc.wd          undated         tots-chaos-dirs-its/701373/chaos/lmdetc.wd
+chaos/lmfile.txt         undated         tots-chaos-dirs-its/7008261/chaos/lmfile.txt
+chaos/lmicon.drw         undated         tots-chaos-dirs-its/701373/chaos/lmicon.drw
+chaos/lmjpns.drw         undated         tots-chaos-dirs-its/701373/chaos/lmjpns.drw
+chaos/lmjpns.wd          undated         tots-chaos-dirs-its/701373/chaos/lmjpns.wd
+chaos/lmlndr.drw         undated         tots-chaos-dirs-its/7008261/chaos/lmlndr.drw
+chaos/lmmodu.drw         undated         tots-chaos-dirs-its/701373/chaos/lmmodu.drw
+chaos/lmmodu.prom        undated         tots-chaos-dirs-its/701417/chaos/lmmodu.prom
+chaos/lmmodu.prom2       undated         tots-chaos-dirs-its/701373/chaos/lmmodu.prom2
+chaos/lmmodu.promt       undated         tots-chaos-dirs-its/701417/chaos/lmmodu.promt
+chaos/lmmodu.wd          undated         tots-chaos-dirs-its/701417/chaos/lmmodu.wd
+chaos/lmmynm.drw         undated         tots-chaos-dirs-its/701373/chaos/lmmynm.drw
+chaos/lmmynm.prom        undated         tots-chaos-dirs-its/701373/chaos/lmmynm.prom
+chaos/lmmynm.promt       undated         tots-chaos-dirs-its/701417/chaos/lmmynm.promt
+chaos/lmmynm.wd          undated         tots-chaos-dirs-its/701417/chaos/lmmynm.wd
+chaos/lmquad.txt         undated         tots-chaos-dirs-its/2100233/chaos/lmquad.txt
+chaos/lmrbuf.drw         undated         tots-chaos-dirs-its/701373/chaos/lmrbuf.drw
+chaos/lmrbuf.wd          undated         tots-chaos-dirs-its/701417/chaos/lmrbuf.wd
+chaos/lmrclk.drw         undated         tots-chaos-dirs-its/701417/chaos/lmrclk.drw
+chaos/lmrclk.wd          undated         tots-chaos-dirs-its/701417/chaos/lmrclk.wd
+chaos/lmrctl.drw         undated         tots-chaos-dirs-its/701373/chaos/lmrctl.drw
+chaos/lmrctl.odrw        undated         tots-chaos-dirs-its/701373/chaos/lmrctl.odrw
+chaos/lmrctl.wd          undated         tots-chaos-dirs-its/701373/chaos/lmrctl.wd
+chaos/lmtbfc.drw         undated         tots-chaos-dirs-its/701373/chaos/lmtbfc.drw
+chaos/lmtbfc.wd          undated         tots-chaos-dirs-its/701417/chaos/lmtbfc.wd
+chaos/lmtbuf.drw         undated         tots-chaos-dirs-its/701373/chaos/lmtbuf.drw
+chaos/lmtbuf.wd          undated         tots-chaos-dirs-its/701417/chaos/lmtbuf.wd
+chaos/lmtclk.drw         undated         tots-chaos-dirs-its/701373/chaos/lmtclk.drw
+chaos/lmtclk.wd          undated         tots-chaos-dirs-its/701417/chaos/lmtclk.wd
+chaos/lmturn.drw         undated         tots-chaos-dirs-its/701373/chaos/lmturn.drw
+chaos/lmturn.wd          undated         tots-chaos-dirs-its/701417/chaos/lmturn.wd
+chaos/lmucon.drw         undated         tots-chaos-dirs-its/701373/chaos/lmucon.drw
+chaos/lmucon.wd          undated         tots-chaos-dirs-its/701417/chaos/lmucon.wd
+chaos/modula.drw         undated         tots-chaos-dirs-its/7005406/chaos/modula.drw
+chaos/modula.wd          undated         tots-chaos-dirs-its/7005406/chaos/modula.wd
+chaos/my#.drw            undated         tots-chaos-dirs-its/9004365/chaos/my#.drw
+chaos/mynum.drw          undated         tots-chaos-dirs-its/7005406/chaos/mynum.drw
+chaos/mynum.wd           undated         tots-chaos-dirs-its/7005406/chaos/mynum.wd
+chaos/myturn.drw         undated         tots-chaos-dirs-its/7005142/chaos/myturn.drw
+chaos/myturn.wd          undated         tots-chaos-dirs-its/9004365/chaos/myturn.wd
+chaos/n11con.drw         undated         tots-chaos-dirs-its/701373/chaos/n11con.drw
+chaos/n11con.wd          undated         tots-chaos-dirs-its/9004365/chaos/n11con.wd
+chaos/nbods.drw          undated         tots-chaos-dirs-its/2100233/chaos/nbods.drw
+chaos/ncpins.drw         undated         tots-chaos-dirs-its/9004365/chaos/ncpins.drw
+chaos/ncpins.wd          undated         tots-chaos-dirs-its/9004365/chaos/ncpins.wd
+chaos/ndatpa.drw         undated         tots-chaos-dirs-its/701373/chaos/ndatpa.drw
+chaos/ndatpa.wd          undated         tots-chaos-dirs-its/9004365/chaos/ndatpa.wd
+chaos/ndetec.drw         undated         tots-chaos-dirs-its/701373/chaos/ndetec.drw
+chaos/ndetec.wd          undated         tots-chaos-dirs-its/9004365/chaos/ndetec.wd
+chaos/nicon.drw          undated         tots-chaos-dirs-its/701373/chaos/nicon.drw
+chaos/nicon.wd           undated         tots-chaos-dirs-its/9004365/chaos/nicon.wd
+chaos/njpins.drw         undated         tots-chaos-dirs-its/701373/chaos/njpins.drw
+chaos/njpins.wd          undated         tots-chaos-dirs-its/9004365/chaos/njpins.wd
+chaos/nmynum.drw         undated         tots-chaos-dirs-its/701373/chaos/nmynum.drw
+chaos/nmynum.wd          undated         tots-chaos-dirs-its/9004365/chaos/nmynum.wd
+chaos/nrbuf.drw          undated         tots-chaos-dirs-its/9004365/chaos/nrbuf.drw
+chaos/nrbuf.wd           undated         tots-chaos-dirs-its/9004365/chaos/nrbuf.wd
+chaos/ntbuf.drw          undated         tots-chaos-dirs-its/701373/chaos/ntbuf.drw
+chaos/ntbuf.wd           undated         tots-chaos-dirs-its/9004365/chaos/ntbuf.wd
+chaos/ntbufc.drw         undated         tots-chaos-dirs-its/701373/chaos/ntbufc.drw
+chaos/ntbufc.wd          undated         tots-chaos-dirs-its/9004365/chaos/ntbufc.wd
+chaos/progck.drw         undated         tots-chaos-dirs-its/7005142/chaos/progck.drw
+chaos/qadadr.drw         undated         tots-chaos-dirs-its/7008261/chaos/qadadr.drw
+chaos/qadadr.wd          undated         tots-chaos-dirs-its/701417/chaos/qadadr.wd
+chaos/qadchs.note        undated         tots-chaos-dirs-its/701417/chaos/qadchs.note
+chaos/qadint.drw         undated         tots-chaos-dirs-its/701417/chaos/qadint.drw
+chaos/qadint.wd          undated         tots-chaos-dirs-its/701417/chaos/qadint.wd
+chaos/qadjps.drw         undated         tots-chaos-dirs-its/7008261/chaos/qadjps.drw
+chaos/qadjps.wd          undated         tots-chaos-dirs-its/701417/chaos/qadjps.wd
+chaos/qadspc.drw         undated         tots-chaos-dirs-its/2100233/chaos/qadspc.drw
+chaos/qadspc.wd          undated         tots-chaos-dirs-its/701417/chaos/qadspc.wd
+chaos/qadtim.drw         undated         tots-chaos-dirs-its/7008261/chaos/qadtim.drw
+chaos/qadtim.wd          undated         tots-chaos-dirs-its/701417/chaos/qadtim.wd
+chaos/qadxcv.drw         undated         tots-chaos-dirs-its/701417/chaos/qadxcv.drw
+chaos/qadxcv.wd          undated         tots-chaos-dirs-its/701417/chaos/qadxcv.wd
+chaos/qbchni.aug         undated         tots-chaos-dirs-its/3100086/chaos/qbchni.aug
+chaos/qbchni.bin         undated         tots-chaos-dirs-its/3100086/chaos/qbchni.bin
+chaos/qbchni.book        undated         tots-chaos-dirs-its/7008261/chaos/qbchni.book
+chaos/qbchni.eco         undated         tots-chaos-dirs-its/7008261/chaos/qbchni.eco
+chaos/qbchni.fil         undated         tots-chaos-dirs-its/7008261/chaos/qbchni.fil
+chaos/qbchni.prt         undated         tots-chaos-dirs-its/3100086/chaos/qbchni.prt
+chaos/qbchni.stf         undated         tots-chaos-dirs-its/701417/chaos/qbchni.stf
+chaos/qbchni.txt         undated         tots-chaos-dirs-its/3100086/chaos/qbchni.txt
+chaos/qbchni.uml         undated         tots-chaos-dirs-its/701417/chaos/qbchni.uml
+chaos/qbchni.wlr         undated         tots-chaos-dirs-its/7008261/chaos/qbchni.wlr
+chaos/qbchni.wls         undated         tots-chaos-dirs-its/7008261/chaos/qbchni.wls
+chaos/qbchni.wss         undated         tots-chaos-dirs-its/3100086/chaos/qbchni.wss
+chaos/qbchwl.txt         undated         tots-chaos-dirs-its/7007319/chaos/qbchwl.txt
+chaos/qbcon.drw          undated         tots-chaos-dirs-its/701417/chaos/qbcon.drw
+chaos/qbus.drw           undated         tots-chaos-dirs-its/701417/chaos/qbus.drw
+chaos/qqbbpl.drw         undated         tots-chaos-dirs-its/7008261/chaos/qqbbpl.drw
+chaos/qqbint.drw         undated         tots-chaos-dirs-its/7008261/chaos/qqbint.drw
+chaos/qqbxcv.drw         undated         tots-chaos-dirs-its/7008261/chaos/qqbxcv.drw
+chaos/quad.aug           undated         tots-chaos-dirs-its/701417/chaos/quad.aug
+chaos/quad.bin           undated         tots-chaos-dirs-its/701417-1/chaos/quad.bin
+chaos/quad.eco           undated         tots-chaos-dirs-its/701420/chaos/quad.eco
+chaos/quad.fil           undated         tots-chaos-dirs-its/7007319/chaos/quad.fil
+chaos/quad.mcr           undated         tots-chaos-dirs-its/701417/chaos/quad.mcr
+chaos/quad.obin          undated         tots-chaos-dirs-its/701417/chaos/quad.obin
+chaos/quad.ray           undated         tots-chaos-dirs-its/2100233/chaos/quad.ray
+chaos/quad.ray1          undated         tots-chaos-dirs-its/2100233/chaos/quad.ray1
+chaos/quad.ray2          undated         tots-chaos-dirs-its/2100233/chaos/quad.ray2
+chaos/quad.stf           undated         tots-chaos-dirs-its/7007319/chaos/quad.stf
+chaos/quad.uml           undated         tots-chaos-dirs-its/7007319/chaos/quad.uml
+chaos/quad.wlr           undated         tots-chaos-dirs-its/701417/chaos/quad.wlr
+chaos/quad.wls           undated         tots-chaos-dirs-its/701417/chaos/quad.wls
+chaos/quadwl.txt         undated         tots-chaos-dirs-its/7007319/chaos/quadwl.txt
+chaos/qubint.drw         undated         tots-chaos-dirs-its/7008261/chaos/qubint.drw
+chaos/qubxcv.drw         undated         tots-chaos-dirs-its/7008261/chaos/qubxcv.drw
+chaos/rbuf.drw           undated         tots-chaos-dirs-its/9004365/chaos/rbuf.drw
+chaos/rctl.drw           undated         tots-chaos-dirs-its/9004365/chaos/rctl.drw
+chaos/rctl.wd            undated         tots-chaos-dirs-its/9004365/chaos/rctl.wd
+chaos/rcvbuf.drw         undated         tots-chaos-dirs-its/7005406/chaos/rcvbuf.drw
+chaos/rcvbuf.wd          undated         tots-chaos-dirs-its/7005406/chaos/rcvbuf.wd
+chaos/rcvclk.drw         undated         tots-chaos-dirs-its/7005406/chaos/rcvclk.drw
+chaos/rcvclk.wd          undated         tots-chaos-dirs-its/7005406/chaos/rcvclk.wd
+chaos/rcvctl.drw         undated         tots-chaos-dirs-its/7005406/chaos/rcvctl.drw
+chaos/rcvctl.wd          undated         tots-chaos-dirs-its/7005406/chaos/rcvctl.wd
+chaos/speed.eco          undated         tots-chaos-dirs-its/701417/chaos/speed.eco
+chaos/speed.mods         undated         tots-chaos-dirs-its/701417/chaos/speed.mods
+chaos/tclk.drw           undated         tots-chaos-dirs-its/7005142/chaos/tclk.drw
+chaos/tclk.wd            undated         tots-chaos-dirs-its/7005142/chaos/tclk.wd
+chaos/tester.bin         undated         tots-chaos-dirs-its/701373/chaos/tester.bin
+chaos/ubchni.aug         undated         tots-chaos-dirs-its/7008261/chaos/ubchni.aug
+chaos/ubchni.bin         undated         tots-chaos-dirs-its/3100086/chaos/ubchni.bin
+chaos/ubchni.book        undated         tots-chaos-dirs-its/3100086/chaos/ubchni.book
+chaos/ubchni.fi1         undated         tots-chaos-dirs-its/3100086/chaos/ubchni.fi1
+chaos/ubchni.fil         undated         tots-chaos-dirs-its/3100086/chaos/ubchni.fil
+chaos/ubchni.prt         undated         tots-chaos-dirs-its/3100086/chaos/ubchni.prt
+chaos/ubchni.stf         undated         tots-chaos-dirs-its/3100086/chaos/ubchni.stf
+chaos/ubchni.txt         undated         tots-chaos-dirs-its/3100086/chaos/ubchni.txt
+chaos/ubchni.uml         undated         tots-chaos-dirs-its/3100086/chaos/ubchni.uml
+chaos/ubchni.wlr         undated         tots-chaos-dirs-its/3100086/chaos/ubchni.wlr
+chaos/ubchni.wls         undated         tots-chaos-dirs-its/3100086/chaos/ubchni.wls
+chaos/ubchni.wss         undated         tots-chaos-dirs-its/3100086/chaos/ubchni.wss
+chaos/xmtbuf.drw         undated         tots-chaos-dirs-its/7005406/chaos/xmtbuf.drw
+chaos/xmtbuf.wd          undated         tots-chaos-dirs-its/7005406/chaos/xmtbuf.wd
+chaos/xmtclk.drw         undated         tots-chaos-dirs-its/7005406/chaos/xmtclk.drw
+chaos/xmtclk.wd          undated         tots-chaos-dirs-its/7005406/chaos/xmtclk.wd
+chaos/xmtctl.drw         undated         tots-chaos-dirs-its/7005406/chaos/xmtctl.drw
+chaos/xmtctl.wd          undated         tots-chaos-dirs-its/7005406/chaos/xmtctl.wd
+chaos/xmtshf.drw         undated         tots-chaos-dirs-its/7005406/chaos/xmtshf.drw
+chaos/xmtshf.wd          undated         tots-chaos-dirs-its/7005406/chaos/xmtshf.wd
 lmdoc/chod1.drw          24-FEB-81 22:24 90108/lmdoc/chod1.drw
 lmdoc/chodam.drw         18-SEP-81 08:37 90108/lmdoc/chodam.drw
 lmdoc/chodi.drw          18-SEP-81 08:46 90108/lmdoc/chodi.drw|0
