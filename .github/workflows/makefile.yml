@@ -18,13 +18,10 @@ jobs:
       run: sudo apt-get update
 
     - name: Install dependencies
-      run: sudo apt-get install -y software-properties-common build-essential
+      run: sudo apt-get install -y build-essential
 
     - name: Install GHDL
       run: sudo apt-get install -y ghdl-llvm
-
-    - name: Install latest LLVM
-      run: sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
 
     - name: Fix libLLVM-18.so.18.1 path (symlink)
       run: sudo ln -s /lib/x86_64-linux-gnu/libLLVM.so.18.1 /lib/x86_64-linux-gnu/libLLVM-18.so.18.1	
@@ -35,21 +32,10 @@ jobs:
     - name: Build with ghdl
       run: make clean && CADR4_HDLCOMPILER=ghdl make
 
-    - name: Install nvc dependencies
-      run: sudo apt-get install -y git autoconf flex pkg-config zlib1g-dev libzstd-dev check
-
-    - name: Get nvc
-      run: git clone https://github.com/nickg/nvc
-
-    - name: Build nvc
+    - name: Install nvc 1.22.1
       run: |
-        cd nvc
-        ./autogen.sh
-        mkdir build
-        cd build
-        ../configure --with-llvm=/usr/bin/llvm-config-20
-        make
-        sudo make install
+        wget https://github.com/nickg/nvc/releases/download/r1.22.1/nvc_1.22.1-1_amd64_ubuntu-24.04.deb
+        sudo apt-get install -y ./nvc_1.22.1-1_amd64_ubuntu-24.04.deb
 
     - name : Build with nvc
       run: make clean && CADR4_HDLCOMPILER=nvc make
