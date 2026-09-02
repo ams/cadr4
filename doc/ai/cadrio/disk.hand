@@ -1,0 +1,29 @@
+Changes to be made to disk control boards (by hand)
+
+(Note: don't do this paragraph for MK boards.)
+Jumpers for 1-board version (use red wire):
+	(not to be installed if this DC is associated with a DM board)
+Add:	DE2 : DF2
+	DF2 : DH2
+	DN1 : DM2
+	ES2 : ET1
+	EP2 : ER2
+	ER2 : ES2
+
+Address jumpers (use red wire):
+Add:	J5-1 : J5-2
+	J5-3 : J5-4
+	J5-5 : J5-6
+	J5-7 : J5-8
+	J5-9 : J5-10
+	J5-11 : J5-12
+	J5-13 : J5-14
+
+Timeout Enable jumper (use red wire):
+Add:	J5-16 : J5-41 (the adjacent ground pin)
+
+Xbus Power OK jumper (use red wire):
+(For DC board)
+Add:	B5-3 : B5-4
+(For MK board)
+Add:	B12-5 : A11-5

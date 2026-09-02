@@ -1,0 +1,46 @@
+;;; -*- Mode:LISP; -*-
+
+;;; Prints and Documentation for the Lisp Machine TV board
+
+(SETQ LMTV-PLT-FILES-LIST '("AI:CADRTV;GEN4B"
+			    "CAPS"
+			    "COLOR"
+			    "ECLCLK"
+			    "ECLSIP"
+			    "ECLVID"
+			    "RAMA"
+			    "RAMB"
+			    "RAMC"
+			    "RAMD"
+			    "RAMADR"
+			    "RAMBUF"
+			    "RAMCAS"
+			    "RAMREG"
+			    "RAMSHF"
+			    "SYNADR"
+			    "SYNCLK"
+			    "SYNRAM"
+			    "SYNREG"
+			    "TVMA"
+			    "TVINC"
+			    "XBADR"
+			    "XBCTL"
+			    "XBDATA"
+			    "XBUS"))
+
+(SETQ LMTV-TXT-FILES-LIST '("AI:CADRTV;LMTV4B PRT"
+			    "AI:CADRTV;LMTV4B STF"
+			    "AI:CADRTV;LMTV4B UML"
+			    "AI:CADRTV;LMTV4B WLR"
+			    "AI:CADRTV;LMTV4B WLS"
+;		            "AI:CADRTV;LMTV4B WSS"
+			    "AI:CADRTV;CPT PROM"
+			    "AI:CADRTV;LMTV4B PROM"
+			    "AI:CADRTV;LMTV ORDER"))
+;;; Number of copies
+(SETQ DPLT:COPIES 2)
+
+(APPLY #'DPLT-PRINT-FILE LMTV-PLT-FILES-LIST)
+
+(APPLY #'PRINT-TXT-FILE LMTV-TXT-FILES-LIST)
+

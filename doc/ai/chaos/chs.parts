@@ -1,0 +1,191 @@
+				CHAOS;CHS WLS		20-JUN-77  1714
+DIPTYPE	BODY NAME	# SECTION	TOTAL DIPS	#SPARE SECTIONS	  MA		  @V
+
+9S42	9S42		  2		  1		  0
+	WITH LOCATIONS	  2		  1		  0		25.00MA		@5.00V
+
+26LS31	26LS31		  4		  1		  0
+	WITH LOCATIONS	  4		  1		  0		160.00MA	@5.00V
+
+26LS33	26LS33		  4		  1		  0
+	WITH LOCATIONS	  4		  1		  0		70.00MA		@5.00V
+
+26S02	26S02		  1		  1		  1
+	WITH LOCATIONS	  1		  1		  1		69.00MA		@5.00V
+
+74 27	7427O		  1		  1		  2
+	WITH LOCATIONS	  1		  1		  2		26.00MA		@5.00V
+
+74 164	164		  2
+	74164		  2		  4		  0
+	WITH LOCATIONS	  4		  4		  0		216.00MA	@5.00V
+
+74 165	74165		  2		  2		  0
+	WITH LOCATIONS	  2		  2		  0		126.00MA	@5.00V
+
+74 193	74193		  6
+	193		  3		  9		  0
+	WITH LOCATIONS	  9		  9		  0		918.00MA	@5.00V
+
+74 251	74251		  2		  2		  0
+	WITH LOCATIONS	  2		  2		  0		170.00MA	@5.00V
+
+74 279	279*		  1
+	279		  1		  1		  2
+	WITH LOCATIONS	  2		  1		  2		30.00MA		@5.00V
+
+74H183	H183		  1		  1		  1
+	WITH LOCATIONS	  1		  1		  1		75.00MA		@5.00V
+
+74S00	74S00		  21
+	74S00O		  5
+	S00		  6
+	OS00		  1
+	O00		  2		  9		  1
+	WITH LOCATIONS	  35		  9		  1		324.00MA	@5.00V
+
+74S02	74S02O		  1
+	74S02		  2
+	A02		  1		  1		  0
+	WITH LOCATIONS	  4		  1		  0		45.00MA		@5.00V
+
+74S04	74S04		  23
+	S04		  2
+	04		  3
+	O04		  1		  5		  1
+	WITH LOCATIONS	  29		  5		  1		270.00MA	@5.00V
+
+74S08	74S08		  2
+	74S08O		  2
+	O08		  1		  2		  3
+	WITH LOCATIONS	  5		  2		  3		136.00MA	@5.00V
+
+74S10	O10		  1
+	10		  2
+	74S10O		  1
+	74S10		  3		  3		  2
+	WITH LOCATIONS	  7		  3		  2		81.00MA		@5.00V
+
+î				CHAOS;CHS WLS		20-JUN-77  1714
+DIPTYPE	BODY NAME	# SECTION	TOTAL DIPS	#SPARE SECTIONS	  MA		  @V
+
+74S11	11		  2
+	O11		  1		  1		  0
+	WITH LOCATIONS	  3		  1		  0		42.00MA		@5.00V
+
+74S20	74S20		  2		  1		  0
+	WITH LOCATIONS	  2		  1		  0		18.00MA		@5.00V
+
+74S32	74S32O		  3
+	74S32		  2
+	3003		  1		  2		  2
+	WITH LOCATIONS	  6		  2		  2		136.00MA	@5.00V
+
+74S37	74S37		  6		  2		  2
+	WITH LOCATIONS	  6		  2		  2		160.00MA	@5.00V
+
+74S38	74S38		  12		  3		  0
+	WITH LOCATIONS	  12		  3		  0		240.00MA	@5.00V
+
+74S51	74S51		  1		  1		  1
+	WITH LOCATIONS	  1		  1		  1		22.00MA		@5.00V
+
+74S74	74S74		  8
+	74		  3
+	O74		  1
+	S74		  1		  7		  1
+	WITH LOCATIONS	  13		  7		  1		210.00MA	@5.00V
+
+74S86	74S86		  4		  1		  0
+	WITH LOCATIONS	  4		  1		  0		75.00MA		@5.00V
+
+74S112	S112		  7
+	74S112		  1		  4		  0
+	WITH LOCATIONS	  8		  4		  0		200.00MA	@5.00V
+
+74S112A	74S112A		  1		  1		  0
+	WITH LOCATIONS	  1		  1		  0		50.00MA		@5.00V
+
+74S133	74S133		  1		  1		  0
+	WITH LOCATIONS	  1		  1		  0		10.00MA		@5.00V
+
+74S138	74S138		  1		  1		  0
+	WITH LOCATIONS	  1		  1		  0		74.00MA		@5.00V
+
+74S153	74S153		  8		  8		  0
+	WITH LOCATIONS	  8		  8		  0		560.00MA	@5.00V
+
+74S161	74S161		  5
+	161		  1		  6		  0
+	WITH LOCATIONS	  6		  6		  0		960.00MA	@5.00V
+
+74S174	74S174		  1		  1		  0
+	WITH LOCATIONS	  1		  1		  0		144.00MA	@5.00V
+
+9401	9401		  2		  2		  0
+	WITH LOCATIONS	  2		  2		  0		140.00MA	@5.00V
+
+93425	93425A		  2		  2		  0
+	WITH LOCATIONS	  2		  2		  0		280.00MA	@5.00V
+
+COMPDP	CAP		  1
+	RES		  1		  1		  6
+	WITH LOCATIONS	  2		  1		  6	
+
+î				CHAOS;CHS WLS		20-JUN-77  1714
+DIPTYPE	BODY NAME	# SECTION	TOTAL DIPS	#SPARE SECTIONS	  MA		  @V
+
+DM8136	8136		  2		  2		  0
+	WITH LOCATIONS	  2		  2		  0		148.00MA	@5.00V
+
+DM8837	8837		  4		  2		  0
+	WITH LOCATIONS	  4		  2		  0		120.00MA	@5.00V
+
+DM8838	8838NG		  4		  4		  0
+	WITH LOCATIONS	  4		  4		  0		280.00MA	@5.00V
+
+DUMMY	SWITCH		  4
+	DUMMY		  2		  6		  0
+	WITH LOCATIONS	  6		  6		  0	
+
+EXAR-CL	XTAL		  1		  1		  0
+	WITH LOCATIONS	  1		  1		  0		35.00MA		@5.00V
+
+RESDIP	RESDIP		  2		  2		  0
+	WITH LOCATIONS	  2		  2		  0		150.00MA	@5.00V
+
+TD25	TD25		  1		  1		  0
+	WITH LOCATIONS	  1		  1		  0		49.00MA		@5.00V
+
+TD100	TD100		  2		  2		  0
+	WITH LOCATIONS	  2		  2		  0		98.00MA		@5.00V
+
+			  GRAND TOTAL =	  109(109)
+			WITH LOCATION= 	  109(109)
+NUMBER IN PARENS IS REAL (.GE.14 PINS) DIPS.
+
+TOTAL CURRENTS:
+6942.00MA	@5.00V
+
+
+	COMENT		  1		  1  TOTAL BODIES (NOT DIPS)
+
+CONS	PADDLE	# PINS	TOTAL PINS
+	  "A"	  18
+	  "B"	  13
+	  "C"	  20
+	  "D"	  4
+	  "J1"	  20	  75
+In addition, you will need the following:
+1.  +5.0V @ 7.0 A power supply
+2.  1 LG411 wirewrap board
+
+The following are clarifications of what is contained in the dip list above.
+1.  1 dip-oscillator, crystal, 32MHz (currently), TTL output
+2.  There are a couple dummies which get wired for appropriate 11-bus connections
+    They are explained in the drawings.
+3.  The dipswitches are used to set the host identification numbers.
+4.  There will be a small piece of circuitry, not yet designed, which will
+    actually connect to the net cable.  It will probably have an opto-isolator
+    and some linear components.  This part will have to wait a while.
+

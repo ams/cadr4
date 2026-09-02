@@ -1,0 +1,50 @@
+;;; -*- Mode:LISP; -*-
+
+;;; Prints and Documentation for the Lisp Machine Disk Control board
+
+(LOAD "ai:lmio1;dplt pkg")
+(PKG-LOAD 'DPLT)
+
+(SETQ DC-PLT-FILES-LIST '("AI:CADRDC;DCBUSY"
+			  "DCCAPS"
+			  "DCCCW"
+			  "DCCHAN"
+			  "DCCLK"
+			  "DCCLP"
+			  "DCCMD"
+			  "DCDA"
+			  "DCDBUS"
+			  "DCECC"
+			  "DCEDGE"
+			  "DCHDCM"
+			  "DCPAR"
+			  "DCPOSC"
+			  "DCRBUF"
+			  "DCREG"
+			  "DCSH"
+			  "DCSTS"
+			  "DCTMOT"
+			  "DCTRID"
+			  "DCTRSG"
+			  "DCUC"
+			  "DCUI"
+			  "DCWBUF"
+			  "DCXBSA"
+			  "DCXBUS"
+			  "XBUS"
+			  ))
+
+(SETQ DC-TXT-FILES-LIST '("AI:CADRDC;DC PRT"
+			  "AI:CADRDC;DC STF"
+			  "AI:CADRDC;DC UML"
+			  "AI:CADRDC;DC WLR"
+			  "AI:CADRDC;DC WLS"
+			  "AI:CADRDC;NEWDSK >"  ;DC microcode
+			  ))
+
+;;; Number of copies
+(SETQ DPLT:COPIES 2)
+
+(APPLY #'DPLT-PRINT-FILE DC-PLT-FILES-LIST)
+
+(APPLY #'PRINT-TXT-FILE DC-TXT-FILES-LIST)

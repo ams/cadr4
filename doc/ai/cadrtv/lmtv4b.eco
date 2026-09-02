@@ -1,0 +1,61 @@
+
+		LMTV4B  ECOs
+[Wirelist of 1/24/80] - This is for boards marked LMTV4B
+
+1.  7 Feb. 1981 JLK   Fix missing wires to supply -5.2V power 
+
+	Add
+	FB2 : E07-19 
+	EB2 : F08-19
+----------
+2.  6/2/81 Taft  This fixes brain damage associated with the routing of 
+		 output bits in four bit mode as opposed to "8 bit mode". 
+		 The original routing conflicted with the addressing of
+		 the color maps when the color was being used to load the
+		 maps. For true 8 bit mode, yet more corrections will be 
+		 needed later.
+
+	Delete:			Add:
+
+	FK1 - F11-9		FK1 - F09-14	;change COLOR runs
+	FL1 - F11-7		FL1 - F09-11	;to New COLOR runs.
+	FM1 - F11-5		FM1 - F09-9	;these wires are from 
+	FP1 - F11-3		FP1 - F09-6	;paddles to old or new 
+	FR1 - F09-14		FR1 - F11-9	;Outs.
+	FS1 - F09-11		FS1 - F11-7
+	FU1 - F09-9		FU1 - F11-5
+	FV1 - F09-6		FV1 - F11-3
+
+	F11-9 - D13-18		F09-14 - D13-18	;change COLOR runs to
+	F11-7 - D13-16		F09-11 - D13-16	;New COLOR runs.
+	F11-5 - D13-14		F09-9 - D13-14	;these wires are from
+	F11-3 - D13-12		F09-6 - D13-12	;old or new Outs to
+	F09-14 - D13-9    	F11-9 - D13-9	;XB Driven out.
+	F09-11 - D13-7		F11-7 - D13-7
+	F09-9 - D13-5		F11-5 - D13-5
+	F09-6 - D13-3		F11-3 - D13-3
+
+	F11-11 - F09-16				;Ram SHF at low
+	F11-13 - F09-13				;COLOR drive in    
+	F11-15 - F09-7				;to Color pics
+	F11-17 - F09-4				;MUX in
+
+	E30-17 - F11-11				;Ram SHF out to
+	E28-17 - F11-13				;Low 4 Color 
+	E26-17 - F11-15				;Drive in 
+	E24-17 - F11-17				
+
+				E22-17 - F11-11	;Ram SHF out to 
+				E20-17 - F11-13	;Hi 4 Color 
+				E18-17 - F11-15	;Drive in
+				E16-17 - F11-17	
+
+				E30-17 - F09-16	;Ram SHF out to
+				E28-17 - F09-13	;Lo COLOR
+				E26-17 - F09-7	;in at MUX
+				E24-17 - F09-4
+
+RAM SHF at high COLOR drv in to Color pix MUX in is already run.
+----------
+
+

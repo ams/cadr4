@@ -1,0 +1,984 @@
+# every .drw on the ITS tape dumps: group name date size content-hash tape path [latest]
+# date = ITS file date (Boston time) as printed in the SUDS title block; 'undated' = dump did not keep dates
+# content-hash = md5 of the decoded 36-bit words, so identical drawings match across dump formats
+cadr    actl.drw     02-OCT-76 00:02   19820 22a9456203 9004365                                       9004365/E/cons/actl.drw  UNREADABLE
+cadr    actl.drw     29-NOV-77 14:34   21118 158da4a28c 9004365                                       9004365/E/cadr/actl.drw 
+cadr    actl.drw     03-FEB-78 00:46   17079 f7a6cd3bfc 7008261                                       7008261/B7/cadr/actl.drw LATEST
+cadr    alatch.drw   02-JUN-75 08:30   21015 859c5c1c86 9004365                                       9004365/E/cons/alatch.drw  UNREADABLE
+cadr    alatch.drw   29-NOV-77 14:34   18127 3797fe6fbb 9004365                                       9004365/E/cadr/alatch.drw 
+cadr    alatch.drw   02-FEB-78 22:25    6820 2d8dba9d06 9006127                                       9006127/E/cadr/alatch.drw  UNREADABLE
+cadr    alatch.drw   02-FEB-78 22:25   16949 a77f7c2440 7008261                                       7008261/B7/cadr/alatch.drw LATEST
+cadr    alu.drw      28-MAY-75 22:05   17726 7cb3281c94 9004365                                       9004365/E/cons/alu.drw  UNREADABLE
+cadr    alu.drw      29-NOV-77 14:34   20410 a733c39f5d 9004365                                       9004365/E/cadr/alu.drw LATEST
+cadr    alu0.drw     undated            5006 71947a0601 stuff_for_ams2                                stuff_for_ams2/mit1/E/cadr/alu0.drw  UNREADABLE
+cadr    alu0.drw     29-SEP-78 00:50    5011 15d20425c8 9006127                                       9006127/E/cadr/alu0.drw  UNREADABLE
+cadr    alu0.drw     29-SEP-78 00:50    8472 95bb529de3 7008261                                       7008261/B7/cadr/alu0.drw LATEST
+cadr    alu1.drw     undated           10054 608918d801 9006127                                       9006127/default/cadr/alu1.drw  UNREADABLE
+cadr    alu1.drw     29-SEP-78 00:50   10839 06f3129939 7008261                                       7008261/B7/cadr/alu1.drw LATEST
+cadr    aluc4.drw    06-FEB-80 02:40   17700 2655ca9d6f 7008261                                       7008261/B7/cadr/aluc4.drw LATEST
+cadr    alucry.drw   17-AUG-76 23:42   19158 f3ce3abbcf 9004365                                       9004365/E/cons/alucry.drw  UNREADABLE
+cadr    alucry.drw   29-NOV-77 14:34   18328 6952869055 9004365                                       9004365/E/cadr/alucry.drw 
+cadr    alucry.drw   02-FEB-78 22:28   17061 de43b8654e 7008261                                       7008261/B7/cadr/alucry.drw LATEST
+cadr    amem0.drw    29-NOV-77 14:35   22246 cb8e6cea48 9004365                                       9004365/E/cadr/amem0.drw 
+cadr    amem0.drw    31-JAN-78 23:41    5008 5cddc54798 1891                                          1891/E/cadr/amem0.drw  UNREADABLE
+cadr    amem0.drw    31-JAN-78 23:41   11516 541f708d17 701395                                        701395/B7/cadr/amem0.drw 
+cadr    amem0.drw    31-JAN-78 23:41   21589 56003218ad 7008261                                       7008261/B7/cadr/amem0.drw LATEST
+cadr    amem1.drw    28-MAY-75 23:20   21143 8f2368fd11 9004365                                       9004365/E/cons/amem1.drw  UNREADABLE
+cadr    amem1.drw    29-NOV-77 14:35   21090 735202b8d2 9004365                                       9004365/E/cadr/amem1.drw 
+cadr    amem1.drw    31-JAN-78 23:42   15389 659a0967e4 701395                                        701395/B7/cadr/amem1.drw 
+cadr    amem1.drw    31-JAN-78 23:42   20420 cb13068cbf 7008261                                       7008261/B7/cadr/amem1.drw LATEST
+cadr    apar.drw     17-AUG-76 23:44   21213 099d72ca5b 9004365                                       9004365/E/cons/apar.drw  UNREADABLE
+cadr    apar.drw     29-NOV-77 14:35   13592 d952816b6e 9004365                                       9004365/E/cadr/apar.drw 
+cadr    apar.drw     23-JAN-78 04:40    8769 7de196e9bd 7008261                                       7008261/B7/cadr/apar.drw LATEST
+cadr    bcpins.drw   16-AUG-78 00:02    8960 7dbb18e02d 7008261                                       7008261/B7/cadr/bcpins.drw LATEST
+cadr    bcterm.drw   20-JUN-78 21:30    6267 d5723bb31c 7008261                                       7008261/B7/cadr/bcterm.drw LATEST
+cadr    bodies.drw   31-JAN-75 09:17   38698 8c18f5ba34 9004365                                       9004365/E/cons/bodies.drw  UNREADABLE
+cadr    bodies.drw   29-NOV-76 16:31   89773 8eb3882263 9004365                                       9004365/E/cons1/bodies.drw 
+cadr    bodies.drw   07-JUN-77 07:08   83152 8ef4e577bb 9004365                                       9004365/E/conswd/bodies.drw  UNREADABLE
+cadr    bodies.drw   03-OCT-78 00:44   41305 8e7d0fdc68 701395                                        701395/B7/cadr/bodies.drw 
+cadr    bodies.drw   03-OCT-78 00:44   73981 59c561ee49 7005087                                       7005087/B7/cadr/bodies.drw 
+cadr    bodies.drw   30-MAR-79 22:47   74051 5df8023a69 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadr/bodies.drw 
+cadr    bodies.drw   05-FEB-80 01:12   74121 e2289a30ac 1891                                          1891/E/cadr/bodies.drw LATEST
+cadr    caps.drw     15-FEB-78 22:36    1476 85344ade83 7008261                                       7008261/B7/cadr/caps.drw LATEST
+cadr    clock.drw    23-JUN-78 23:06   18368 ef4f28cb24 7008105                                       7008105/B7/cadr/clock.drw LATEST
+cadr    clock1.drw   30-AUG-78 15:55    9188 00122f3942 7008105                                       7008105/B7/cadr/clock1.drw LATEST
+cadr    clock2.drw   11-OCT-78 10:34   10911 30036fcdcd 7008261                                       7008261/B7/cadr/clock2.drw LATEST
+cadr    clockd.drw   08-MAY-78 02:04   13429 bf18ca6bd2 7008261                                       7008261/B7/cadr/clockd.drw LATEST
+cadr    contrl.drw   02-OCT-76 00:14   15327 814f157ef1 9004365                                       9004365/E/cons/contrl.drw 
+cadr    contrl.drw   06-JAN-78 01:12   15450 b29a3c21ce 7007813                                       7007813/B7/cons/contrl.drw 
+cadr    contrl.drw   15-FEB-78 12:23   12255 94d3bdb172 701395                                        701395/B7/cadr/contrl.drw  UNREADABLE
+cadr    contrl.drw   15-FEB-78 12:23   17280 6546c3dd82 7008261                                       7008261/B7/cadr/contrl.drw LATEST
+cadr    cpins.drw    10-JUL-75 07:30   15747 780d9e4ecf 2100236                                       2100236/E/cons/cpins.drw  UNREADABLE
+cadr    cpins.drw    17-AUG-76 23:58   15752 00878052d2 9004365                                       9004365/E/cons/cpins.drw  UNREADABLE
+cadr    cpins.drw    22-AUG-78 06:23   14601 4496527788 701395                                        701395/B7/cadr/cpins.drw  UNREADABLE
+cadr    cpins.drw    22-AUG-78 06:23   19669 09fd08cd97 7008261                                       7008261/B7/cadr/cpins.drw LATEST
+cadr    debug.drw    07-JUL-75 14:45   16357 e6bdc5fbea 9004365                                       9004365/E/cons/debug.drw  UNREADABLE
+cadr    debug.drw    26-JAN-78 16:52   10394 7401f80cab 7008105                                       7008105/B7/cadr/debug.drw LATEST
+cadr    dram.drw     17-NOV-74 22:31   24802 9e6eed02a9 19741205_1of3_AI_KA_Arch_1108-1112_1113p      19741205_1of3_AI_KA_Arch_1108-1112_1113p/E/cons/dram.drw  UNREADABLE
+cadr    dram.drw     10-JUL-75 04:04   25075 6b9af65e6a 9004365                                       9004365/E/cons/dram.drw  UNREADABLE
+cadr    dram.drw     17-AUG-77 02:58   20217 43d72dfcf0 9004365                                       9004365/E/cadr/dram.drw LATEST UNREADABLE
+cadr    dram0.drw    29-NOV-77 14:36   23480 62818f7677 9004365                                       9004365/E/cadr/dram0.drw 
+cadr    dram0.drw    16-AUG-78 00:07   23166 72ccb20d0a 7008261                                       7008261/B7/cadr/dram0.drw LATEST
+cadr    dram1.drw    29-NOV-77 14:36   23595 a9554efe7a 9004365                                       9004365/E/cadr/dram1.drw 
+cadr    dram1.drw    16-AUG-78 00:09   18446 deb33bbacb 701395                                        701395/B7/cadr/dram1.drw  UNREADABLE
+cadr    dram1.drw    16-AUG-78 00:09   23508 628b342a46 7008261                                       7008261/B7/cadr/dram1.drw LATEST
+cadr    dram2.drw    29-NOV-77 14:36   23500 40f762fa8f 9004365                                       9004365/E/cadr/dram2.drw 
+cadr    dram2.drw    16-AUG-78 00:10   21316 0c8c29e60f 7008261                                       7008261/B7/cadr/dram2.drw LATEST
+cadr    dspctl.drw   29-NOV-77 14:35   13496 f2ec78a518 9004365                                       9004365/E/cadr/dspctl.drw 
+cadr    dspctl.drw   02-FEB-78 22:33   12986 d16d9bf482 7008261                                       7008261/B7/cadr/dspctl.drw LATEST
+cadr    flag.drw     02-OCT-76 00:54   12609 fcebf59ccf 9004365                                       9004365/E/cons/flag.drw 
+cadr    flag.drw     17-AUG-78 09:57    7116 3f19919fa3 7008261                                       7008261/B7/cadr/flag.drw LATEST
+cadr    foo.drw      08-APR-76 20:57    9787 27a598e98a 9004365                                       9004365/E/cons/foo.drw  UNREADABLE
+cadr    foo.drw      20-AUG-77 21:33   19597 5c41322379 9004365                                       9004365/E/cadr/foo.drw LATEST UNREADABLE
+cadr    icaps.drw    11-OCT-78 10:21     912 95026333aa 7008261                                       7008261/B7/cadr/icaps.drw LATEST
+cadr    ictl.drw     29-JUN-75 17:27   15185 b30e1015e1 9004365                                       9004365/E/cons/ictl.drw  UNREADABLE
+cadr    ictl.drw     15-NOV-77 06:54   16237 5e27a5567e 9004365                                       9004365/E/cadr/ictl.drw 
+cadr    ictl.drw     06-FEB-78 23:36   10786 c694c5e041 7008261                                       7008261/B7/cadr/ictl.drw 
+cadr    ictl.drw     06-FEB-78 23:36   15822 de00eed32e 701395                                        701395/B7/cadr/ictl.drw LATEST
+cadr    init.drw     26-JUN-75 10:18     255 d39c23c410 2100236                                       2100236/E/cons/init.drw  UNREADABLE
+cadr    init.drw     18-JUN-76 19:10     255 3eaeda5ec2 9004365                                       9004365/E/cons/init.drw  UNREADABLE
+cadr    init.drw     30-SEP-76 23:28     250 9bb06aaf90 9004365                                       9004365/E/conswd/init.drw  UNREADABLE
+cadr    init.drw     29-NOV-77 16:50     285 08dc9c3311 9004365                                       9004365/E/cadr/init.drw 
+cadr    init.drw     03-JAN-78 23:11     310 42c7f1e976 701395                                        701395/B7/cadr/init.drw LATEST
+cadr    ior.drw      29-NOV-77 18:39    6957 5d662b9eed 9004365                                       9004365/E/cadr/ior.drw 
+cadr    ior.drw      22-JAN-78 06:19   14299 70d8106f28 7008261                                       7008261/B7/cadr/ior.drw LATEST
+cadr    ipar.drw     19-JUN-75 23:28    7902 1dc69339ac 9004365                                       9004365/E/cons/ipar.drw  UNREADABLE
+cadr    ipar.drw     22-JAN-78 06:22    7176 859f9fe108 7008261                                       7008261/B7/cadr/ipar.drw LATEST
+cadr    iram00.drw   17-AUG-78 09:08   20393 4741af5d33 7008261                                       7008261/B7/cadr/iram00.drw LATEST
+cadr    iram01.drw   17-AUG-78 09:09   15419 e8b563ac16 701395                                        701395/B7/cadr/iram01.drw 
+cadr    iram01.drw   17-AUG-78 09:09   20393 b09d2cdb14 7008261                                       7008261/B7/cadr/iram01.drw LATEST
+cadr    iram02.drw   17-AUG-78 09:10   20393 1386ef9ed0 7008261                                       7008261/B7/cadr/iram02.drw LATEST
+cadr    iram03.drw   17-AUG-78 09:11   15458 d60701f1c5 701395                                        701395/B7/cadr/iram03.drw 
+cadr    iram03.drw   17-AUG-78 09:11   20393 64782e11da 7008261                                       7008261/B7/cadr/iram03.drw LATEST
+cadr    iram10.drw   17-AUG-78 09:12   20443 ce3d2e0d14 7008261                                       7008261/B7/cadr/iram10.drw LATEST
+cadr    iram11.drw   17-AUG-78 09:13   20443 743511f61a 7008261                                       7008261/B7/cadr/iram11.drw LATEST
+cadr    iram12.drw   17-AUG-78 09:13   15494 7505d9306b 701395                                        701395/B7/cadr/iram12.drw 
+cadr    iram12.drw   17-AUG-78 09:13   20443 450b142272 7008261                                       7008261/B7/cadr/iram12.drw LATEST
+cadr    iram13.drw   17-AUG-78 09:14   20428 76604e8a8f 7008261                                       7008261/B7/cadr/iram13.drw LATEST
+cadr    iram20.drw   17-AUG-78 09:15   20443 d14b62c49c 7008261                                       7008261/B7/cadr/iram20.drw LATEST
+cadr    iram21.drw   17-AUG-78 09:15   10374 175035979e 701395                                        701395/B7/cadr/iram21.drw  UNREADABLE
+cadr    iram21.drw   17-AUG-78 09:15   20443 3901ada6b7 7008261                                       7008261/B7/cadr/iram21.drw LATEST
+cadr    iram22.drw   17-AUG-78 09:16   20443 1ab41510f8 7008261                                       7008261/B7/cadr/iram22.drw LATEST
+cadr    iram23.drw   17-AUG-78 09:16   15469 05ac0d56f1 701395                                        701395/B7/cadr/iram23.drw 
+cadr    iram23.drw   17-AUG-78 09:16   20443 82281289f7 7008261                                       7008261/B7/cadr/iram23.drw LATEST
+cadr    iram30.drw   17-AUG-78 09:17   17010 962b59291e 701395                                        701395/B7/cadr/iram30.drw 
+cadr    iram30.drw   17-AUG-78 09:17   21972 71a7827cb7 7008261                                       7008261/B7/cadr/iram30.drw LATEST
+cadr    iram31.drw   17-AUG-78 09:17   21972 498f52b06b 7008261                                       7008261/B7/cadr/iram31.drw LATEST
+cadr    iram32.drw   17-AUG-78 09:17   21972 44fd9b3557 7008261                                       7008261/B7/cadr/iram32.drw LATEST
+cadr    iram33.drw   17-AUG-78 09:18   21972 2e59475a97 7008261                                       7008261/B7/cadr/iram33.drw LATEST
+cadr    ireg.drw     29-NOV-77 18:19   17980 e5c4961809 9004365                                       9004365/E/cadr/ireg.drw 
+cadr    ireg.drw     24-JAN-78 07:34   12304 b7f8ed32ca 701395                                        701395/B7/cadr/ireg.drw 
+cadr    ireg.drw     24-JAN-78 07:34   17353 6f6a62a11a 7008261                                       7008261/B7/cadr/ireg.drw LATEST
+cadr    iwr.drw      02-FEB-78 14:02   10416 5972d41bc3 7008261                                       7008261/B7/cadr/iwr.drw LATEST
+cadr    iwrpar.drw   26-JAN-78 16:54    6898 a4160c7ddb 7008261                                       7008261/B7/cadr/iwrpar.drw LATEST
+cadr    l.drw        23-JUN-75 07:19   20832 a747d0b8d9 9004365                                       9004365/E/cons/l.drw  UNREADABLE
+cadr    l.drw        29-NOV-77 14:37   15856 92d922d064 9004365                                       9004365/E/cadr/l.drw 
+cadr    l.drw        24-JAN-78 07:36   11253 ed3570ca6a 7008261                                       7008261/B7/cadr/l.drw LATEST
+cadr    lc.drw       29-NOV-77 14:37   19506 402c94a0db 9004365                                       9004365/E/cadr/lc.drw 
+cadr    lc.drw       08-MAY-78 02:09   16085 1ab799d90e 7008261                                       7008261/B7/cadr/lc.drw LATEST
+cadr    lcc.drw      16-AUG-78 00:15   11959 2d5032220d 7008261                                       7008261/B7/cadr/lcc.drw LATEST
+cadr    lpc.drw      02-FEB-78 22:36   13133 3fd9e91d2a 7008261                                       7008261/B7/cadr/lpc.drw LATEST
+cadr    mask.drw     17-JUN-75 00:45   23302 8779d4c34a 9004365                                       9004365/E/cons/mask.drw  UNREADABLE
+cadr    mask.drw     29-NOV-77 14:39   23187 52800c410f 9004365                                       9004365/E/cadr/mask.drw 
+cadr    mask.drw     02-FEB-78 22:37   22891 84fd89d93c 7008105                                       7008105/B7/cadr/mask.drw LATEST
+cadr    mbcpin.drw   16-AUG-78 04:01    4567 74dc5acf79 7008261                                       7008261/B7/cadr/mbcpin.drw LATEST
+cadr    mcpins.drw   10-JUL-75 07:27   15747 8559765637 2100236                                       2100236/E/cons/mcpins.drw  UNREADABLE
+cadr    mcpins.drw   19-AUG-76 05:44   15752 b87a408a80 9004365                                       9004365/E/cons/mcpins.drw  UNREADABLE
+cadr    mcpins.drw   22-AUG-78 06:29   19654 31b597fa25 7008261                                       7008261/B7/cadr/mcpins.drw LATEST
+cadr    mctl.drw     20-JUN-75 02:11   19659 5b46829787 9004365                                       9004365/E/cons/mctl.drw  UNREADABLE
+cadr    mctl.drw     29-NOV-77 14:37   17765 117cb14bdd 9004365                                       9004365/E/cadr/mctl.drw 
+cadr    mctl.drw     30-MAR-79 22:48   12042 95166248fe 7008261                                       7008261/B7/cadr/mctl.drw LATEST
+cadr    md.drw       29-NOV-77 14:38   19102 cae292033c 9004365                                       9004365/E/cadr/md.drw 
+cadr    md.drw       16-AUG-78 00:16   18436 d7a526c630 7008261                                       7008261/B7/cadr/md.drw LATEST
+cadr    mds.drw      29-NOV-77 14:39   24158 339035215a 9004365                                       9004365/E/cadr/mds.drw 
+cadr    mds.drw      16-AUG-78 00:19   21090 647bcc6395 7008261                                       7008261/B7/cadr/mds.drw LATEST
+cadr    mf.drw       02-FEB-78 20:28    8559 14d8ad11f6 7008261                                       7008261/B7/cadr/mf.drw LATEST
+cadr    mlatch.drw   29-NOV-77 14:38   18127 f4c6f45718 9004365                                       9004365/E/cadr/mlatch.drw 
+cadr    mlatch.drw   23-JAN-78 06:33   15316 b0f23adddd 7008261                                       7008261/B7/cadr/mlatch.drw LATEST
+cadr    mmem.drw     17-JUN-75 00:47   21532 e6b6722643 9004365                                       9004365/E/cons/mmem.drw  UNREADABLE
+cadr    mmem.drw     29-NOV-77 14:38   22238 0a465f821a 9004365                                       9004365/E/cadr/mmem.drw 
+cadr    mmem.drw     02-FEB-78 22:39   14982 768567adaf stuff_for_ams2                                stuff_for_ams2/2100233/E/cadr/mmem.drw  UNREADABLE
+cadr    mmem.drw     02-FEB-78 22:39   21771 a61ede38c2 7008261                                       7008261/B7/cadr/mmem.drw LATEST
+cadr    mo0.drw      06-FEB-80 04:24   22033 cc6ad539da 7008261                                       7008261/B7/cadr/mo0.drw LATEST
+cadr    mo1.drw      06-FEB-80 06:38   22400 8f04f93bd8 7008261                                       7008261/B7/cadr/mo1.drw LATEST
+cadr    mskg4.drw    06-FEB-80 02:46   15945 410332a7a2 7008261                                       7008261/B7/cadr/mskg4.drw LATEST
+cadr    mskgen.drw   04-JUN-75 15:39   25283 170532346c 9004365                                       9004365/E/cons/mskgen.drw  UNREADABLE
+cadr    mskgen.drw   29-NOV-77 14:39   25502 04ca00ca31 9004365                                       9004365/E/cadr/mskgen.drw 
+cadr    mskgen.drw   16-AUG-78 00:38   16848 a7fdc7046c 701395                                        701395/B7/cadr/mskgen.drw  UNREADABLE
+cadr    mskgen.drw   30-MAR-79 22:50   21810 89be4b8c99 7008105                                       7008105/B7/cadr/mskgen.drw LATEST
+cadr    npc.drw      13-NOV-74 18:50   10041 69959c2ec8 19741205_1of3_AI_KA_Arch_1108-1112_1113p      19741205_1of3_AI_KA_Arch_1108-1112_1113p/E/cons/npc.drw  UNREADABLE
+cadr    npc.drw      29-MAY-75 00:19    9948 11ffe5a2e6 9004365                                       9004365/E/cons/npc.drw  UNREADABLE
+cadr    npc.drw      29-NOV-77 14:39   19736 cddb4e0000 9004365                                       9004365/E/cadr/npc.drw 
+cadr    npc.drw      14-FEB-78 22:53   17950 0e3fe2c838 7008261                                       7008261/B7/cadr/npc.drw LATEST
+cadr    ob.drw       29-MAY-75 00:27   22294 6b0a1cb267 9004365                                       9004365/E/cons/ob.drw  UNREADABLE
+cadr    ob.drw       29-NOV-77 14:39   22179 36a67566b4 9004365                                       9004365/E/cadr/ob.drw 
+cadr    ob.drw       22-JAN-78 23:11   22906 f0d7689fb9 701395                                        701395/B7/cadr/ob.drw LATEST
+cadr    olord.drw    23-JUN-78 23:22   22400 957266cf17 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadr/olord.drw LATEST
+cadr    olord1.drw   30-AUG-78 15:50   11353 0345b35c8c 7008261                                       7008261/B7/cadr/olord1.drw LATEST
+cadr    olord2.drw   11-OCT-78 10:45   16023 d77ad48283 7008261                                       7008261/B7/cadr/olord2.drw LATEST
+cadr    opcd.drw     02-FEB-78 20:29   12967 f99bab0e31 701395                                        701395/B7/cadr/opcd.drw LATEST
+cadr    opcs.drw     23-JUN-78 23:24   11383 985723ecde 7008261                                       7008261/B7/cadr/opcs.drw LATEST
+cadr    pctl.drw     27-FEB-78 03:45   14122 ce71a2aea6 7008261                                       7008261/B7/cadr/pctl.drw LATEST
+cadr    pdl0.drw     10-JUN-75 02:15   22354 1ed793da9f 9004365                                       9004365/E/cons/pdl0.drw  UNREADABLE
+cadr    pdl0.drw     29-NOV-77 14:39   22246 ebfe3b0f15 9004365                                       9004365/E/cadr/pdl0.drw 
+cadr    pdl0.drw     02-FEB-78 14:56   16534 e0b41917d7 701395                                        701395/B7/cadr/pdl0.drw 
+cadr    pdl0.drw     02-FEB-78 14:56   21589 c178c26fa6 7008261                                       7008261/B7/cadr/pdl0.drw LATEST
+cadr    pdl1.drw     29-MAY-75 00:45   21194 c81ec88121 9004365                                       9004365/E/cons/pdl1.drw  UNREADABLE
+cadr    pdl1.drw     29-NOV-77 14:40   21045 46fa4647e6 9004365                                       9004365/E/cadr/pdl1.drw 
+cadr    pdl1.drw     02-FEB-78 14:53   20375 779db15bd6 7008261                                       7008261/B7/cadr/pdl1.drw LATEST
+cadr    pdlctl.drw   23-JUN-75 07:26   13107 3a0c9fb1f7 2100236                                       2100236/E/cons/pdlctl.drw  UNREADABLE
+cadr    pdlctl.drw   21-MAR-77 05:28   13521 a4d83cd94c 9004365                                       9004365/E/cons/pdlctl.drw  UNREADABLE
+cadr    pdlctl.drw   29-NOV-77 14:40   13020 9347baca03 9004365                                       9004365/E/cadr/pdlctl.drw 
+cadr    pdlctl.drw   15-FEB-78 00:09   12595 e4ea7605a7 7008261                                       7008261/B7/cadr/pdlctl.drw LATEST
+cadr    pdlptr.drw   13-JUN-75 01:39    8472 970723074c 2100236                                       2100236/E/cons/pdlptr.drw  UNREADABLE
+cadr    pdlptr.drw   19-AUG-76 05:11    8507 1e43f08810 9004365                                       9004365/E/cons/pdlptr.drw 
+cadr    pdlptr.drw   29-NOV-77 14:40   19738 6fa20cd3ad 9004365                                       9004365/E/cadr/pdlptr.drw 
+cadr    pdlptr.drw   02-FEB-78 21:26   13002 8733a79bb0 7008261                                       7008261/B7/cadr/pdlptr.drw LATEST
+cadr    platch.drw   10-JUL-75 04:17   22483 20f7a714dd 9004365                                       9004365/E/cons/platch.drw  UNREADABLE
+cadr    platch.drw   29-NOV-77 14:40    9407 f1201f981d 9004365                                       9004365/E/cadr/platch.drw 
+cadr    platch.drw   23-JAN-78 06:31    8775 7b133998fe 7008261                                       7008261/B7/cadr/platch.drw LATEST
+cadr    prom.drw     31-JAN-78 20:41    6695 54cec63fe1 701395                                        701395/B7/cadr/prom.drw LATEST
+cadr    prom0.drw    06-FEB-78 04:16   10143 00dd96dc15 7008261                                       7008261/B7/cadr/prom0.drw LATEST
+cadr    prom1.drw    09-MAR-78 12:33    5063 2f4f384591 701395                                        701395/B7/cadr/prom1.drw  UNREADABLE
+cadr    prom1.drw    09-MAR-78 12:33   10143 d9a687d6ac 7008261                                       7008261/B7/cadr/prom1.drw LATEST
+cadr    q.drw        17-JUN-75 00:47   11385 c1dde9e040 9004365                                       9004365/E/cons/q.drw  UNREADABLE
+cadr    q.drw        29-NOV-77 14:40   11286 cefd48ab1f 9004365                                       9004365/E/cadr/q.drw 
+cadr    q.drw        14-FEB-78 21:17   10779 923f0f7255 7008261                                       7008261/B7/cadr/q.drw LATEST
+cadr    qctl.drw     29-NOV-77 14:40   13692 65a849932a 9004365                                       9004365/E/cadr/qctl.drw 
+cadr    qctl.drw     16-AUG-78 00:40    9163 b3d6def2bc 7008261                                       7008261/B7/cadr/qctl.drw LATEST
+cadr    ram0.drw     16-AUG-77 21:25   20689 67c25323c0 9004365                                       9004365/E/cadr/ram0.drw LATEST
+cadr    ram00.drw    17-NOV-74 20:02   24799 cc2cc116a3 19741205_1of3_AI_KA_Arch_1108-1112_1113p      19741205_1of3_AI_KA_Arch_1108-1112_1113p/E/cons/ram00.drw  UNREADABLE
+cadr    ram00.drw    04-MAR-75 18:02   24176 b988b54f36 9004365                                       9004365/E/cons/ram00.drw  UNREADABLE
+cadr    ram00.drw    14-NOV-77 16:28   19917 6e6890a4da 9004365                                       9004365/E/cadr/ram00.drw 
+cadr    ram00.drw    25-FEB-78 04:24    9907 afe433f24b 701395                                        701395/B7/cadr/ram00.drw  UNREADABLE
+cadr    ram00.drw    25-FEB-78 04:24   19982 0ea1e98963 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadr/ram00.drw LATEST
+cadr    ram01.drw    17-NOV-74 20:03   24799 1e77528276 19741205_1of3_AI_KA_Arch_1108-1112_1113p      19741205_1of3_AI_KA_Arch_1108-1112_1113p/E/cons/ram01.drw  UNREADABLE
+cadr    ram01.drw    04-MAR-75 18:04   24176 6ed9f2b3fe 9004365                                       9004365/E/cons/ram01.drw  UNREADABLE
+cadr    ram01.drw    14-NOV-77 16:34   19917 25dcb512bc 9004365                                       9004365/E/cadr/ram01.drw 
+cadr    ram01.drw    25-FEB-78 04:25   19982 37e7a30dfb 701395                                        701395/B7/cadr/ram01.drw LATEST
+cadr    ram02.drw    17-NOV-74 20:03   24799 96ed8a7613 19741205_1of3_AI_KA_Arch_1108-1112_1113p      19741205_1of3_AI_KA_Arch_1108-1112_1113p/E/cons/ram02.drw  UNREADABLE
+cadr    ram02.drw    04-MAR-75 18:12   24176 a8619ca2e2 9004365                                       9004365/E/cons/ram02.drw  UNREADABLE
+cadr    ram02.drw    14-NOV-77 16:46   19917 747f375e6c 9004365                                       9004365/E/cadr/ram02.drw 
+cadr    ram02.drw    25-FEB-78 04:26   19982 7c13671e7a stuff_for_ams2                                stuff_for_ams2/2100233/E/cadr/ram02.drw LATEST
+cadr    ram03.drw    14-NOV-77 16:47   19917 1b5b56c31a 9004365                                       9004365/E/cadr/ram03.drw 
+cadr    ram03.drw    25-FEB-78 04:27   19982 3f945eb635 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadr/ram03.drw LATEST
+cadr    ram10.drw    17-NOV-74 20:03   24799 df95742585 19741205_1of3_AI_KA_Arch_1108-1112_1113p      19741205_1of3_AI_KA_Arch_1108-1112_1113p/E/cons/ram10.drw  UNREADABLE
+cadr    ram10.drw    04-MAR-75 18:24   23546 4fde257179 9004365                                       9004365/E/cons/ram10.drw  UNREADABLE
+cadr    ram10.drw    14-NOV-77 16:48   19967 fc3896972c 9004365                                       9004365/E/cadr/ram10.drw 
+cadr    ram10.drw    25-FEB-78 04:28   14944 b9efccd038 701395                                        701395/B7/cadr/ram10.drw  UNREADABLE
+cadr    ram10.drw    25-FEB-78 04:28   20032 6450ac69e3 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadr/ram10.drw LATEST
+cadr    ram11.drw    17-NOV-74 20:03   24799 73f998ea79 19741205_1of3_AI_KA_Arch_1108-1112_1113p      19741205_1of3_AI_KA_Arch_1108-1112_1113p/E/cons/ram11.drw  UNREADABLE
+cadr    ram11.drw    04-MAR-75 18:25   23546 419d963fec 9004365                                       9004365/E/cons/ram11.drw  UNREADABLE
+cadr    ram11.drw    14-NOV-77 16:48   19967 0fb3855bfa 9004365                                       9004365/E/cadr/ram11.drw 
+cadr    ram11.drw    25-FEB-78 04:28   20032 c489cfae5b 701395                                        701395/B7/cadr/ram11.drw LATEST
+cadr    ram12.drw    17-NOV-74 20:03   24799 ed2ddd087e 19741205_1of3_AI_KA_Arch_1108-1112_1113p      19741205_1of3_AI_KA_Arch_1108-1112_1113p/E/cons/ram12.drw  UNREADABLE
+cadr    ram12.drw    04-MAR-75 18:26   23546 3ffdc9e914 9004365                                       9004365/E/cons/ram12.drw  UNREADABLE
+cadr    ram12.drw    14-NOV-77 16:49   19967 eb6114e504 9004365                                       9004365/E/cadr/ram12.drw 
+cadr    ram12.drw    25-FEB-78 04:29   20032 2f1ad4e223 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadr/ram12.drw LATEST
+cadr    ram13.drw    14-NOV-77 16:49   19952 fc641786ac 9004365                                       9004365/E/cadr/ram13.drw 
+cadr    ram13.drw    25-FEB-78 04:30   20017 d802402be4 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadr/ram13.drw LATEST
+cadr    ram20.drw    17-NOV-74 20:03   24799 8a87804f44 19741205_1of3_AI_KA_Arch_1108-1112_1113p      19741205_1of3_AI_KA_Arch_1108-1112_1113p/E/cons/ram20.drw  UNREADABLE
+cadr    ram20.drw    04-MAR-75 18:27   23546 ea6df91d84 9004365                                       9004365/E/cons/ram20.drw  UNREADABLE
+cadr    ram20.drw    14-NOV-77 16:50   19967 a18138262c 9004365                                       9004365/E/cadr/ram20.drw 
+cadr    ram20.drw    25-FEB-78 04:30   20032 d4230143bb stuff_for_ams2                                stuff_for_ams2/2100233/E/cadr/ram20.drw LATEST
+cadr    ram21.drw    17-NOV-74 20:03   24799 41f8868c2c 19741205_1of3_AI_KA_Arch_1108-1112_1113p      19741205_1of3_AI_KA_Arch_1108-1112_1113p/E/cons/ram21.drw  UNREADABLE
+cadr    ram21.drw    04-MAR-75 18:27   23546 8baaa4c12d 9004365                                       9004365/E/cons/ram21.drw  UNREADABLE
+cadr    ram21.drw    14-NOV-77 16:50   19967 fe69af8453 9004365                                       9004365/E/cadr/ram21.drw 
+cadr    ram21.drw    25-FEB-78 04:31   20032 731c00cba7 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadr/ram21.drw LATEST
+cadr    ram22.drw    17-NOV-74 20:03   24799 fabb27eb4f 19741205_1of3_AI_KA_Arch_1108-1112_1113p      19741205_1of3_AI_KA_Arch_1108-1112_1113p/E/cons/ram22.drw  UNREADABLE
+cadr    ram22.drw    04-MAR-75 18:28   23546 53ac3d53d9 9004365                                       9004365/E/cons/ram22.drw  UNREADABLE
+cadr    ram22.drw    15-NOV-77 07:11   19967 4bacf2f21e 9004365                                       9004365/E/cadr/ram22.drw 
+cadr    ram22.drw    25-FEB-78 04:32   20032 23b5ba2aa3 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadr/ram22.drw LATEST
+cadr    ram23.drw    15-NOV-77 07:12   19967 816cef0424 9004365                                       9004365/E/cadr/ram23.drw 
+cadr    ram23.drw    25-FEB-78 04:32   15050 a93e04b6c5 701395                                        701395/B7/cadr/ram23.drw 
+cadr    ram23.drw    25-FEB-78 04:32   20032 0146ec345f stuff_for_ams2                                stuff_for_ams2/2100233/E/cadr/ram23.drw LATEST
+cadr    ram30.drw    17-NOV-74 20:04   24799 a0eb3c2162 19741205_1of3_AI_KA_Arch_1108-1112_1113p      19741205_1of3_AI_KA_Arch_1108-1112_1113p/E/cons/ram30.drw  UNREADABLE
+cadr    ram30.drw    04-MAR-75 18:28   23546 f99c401d77 9004365                                       9004365/E/cons/ram30.drw  UNREADABLE
+cadr    ram30.drw    14-NOV-77 16:52   21457 df2bcd2035 9004365                                       9004365/E/cadr/ram30.drw 
+cadr    ram30.drw    25-FEB-78 04:33   21527 c3d06f0115 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadr/ram30.drw LATEST
+cadr    ram31.drw    17-NOV-74 20:04   24799 656fb9803e 19741205_1of3_AI_KA_Arch_1108-1112_1113p      19741205_1of3_AI_KA_Arch_1108-1112_1113p/E/cons/ram31.drw  UNREADABLE
+cadr    ram31.drw    04-MAR-75 18:29   23546 8426b2f2ed 9004365                                       9004365/E/cons/ram31.drw  UNREADABLE
+cadr    ram31.drw    15-NOV-77 07:13   21457 1589d25009 9004365                                       9004365/E/cadr/ram31.drw 
+cadr    ram31.drw    25-FEB-78 04:34   16549 bb81555b8d 701395                                        701395/B7/cadr/ram31.drw 
+cadr    ram31.drw    25-FEB-78 04:34   21527 3c8a38318a stuff_for_ams2                                stuff_for_ams2/2100233/E/cadr/ram31.drw LATEST
+cadr    ram32.drw    17-NOV-74 20:04   24799 f0918d19d9 19741205_1of3_AI_KA_Arch_1108-1112_1113p      19741205_1of3_AI_KA_Arch_1108-1112_1113p/E/cons/ram32.drw  UNREADABLE
+cadr    ram32.drw    04-MAR-75 18:29   23546 ce6e4885ca 9004365                                       9004365/E/cons/ram32.drw  UNREADABLE
+cadr    ram32.drw    14-NOV-77 16:53   21457 606b81db53 9004365                                       9004365/E/cadr/ram32.drw 
+cadr    ram32.drw    25-FEB-78 04:34   21527 4aefd09a83 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadr/ram32.drw LATEST
+cadr    ram33.drw    14-NOV-77 16:54   21457 6db61f9622 9004365                                       9004365/E/cadr/ram33.drw 
+cadr    ram33.drw    25-FEB-78 04:35   21527 a82ae048f0 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadr/ram33.drw LATEST
+cadr    shift0.drw   29-NOV-77 14:40   16484 31dd12cb00 9004365                                       9004365/E/cadr/shift0.drw 
+cadr    shift0.drw   22-JAN-78 23:46   15978 a49f506d91 7008261                                       7008261/B7/cadr/shift0.drw LATEST
+cadr    shift1.drw   29-MAY-75 01:02   16559 c7928bb4ad 9004365                                       9004365/E/cons/shift1.drw  UNREADABLE
+cadr    shift1.drw   29-NOV-77 14:40   16484 7ebb4d0670 9004365                                       9004365/E/cadr/shift1.drw 
+cadr    shift1.drw   22-JAN-78 23:48   15978 43d363f1af 7008261                                       7008261/B7/cadr/shift1.drw LATEST
+cadr    sips.drw     30-JUL-79 02:08    2911 8fcf0d07b6 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadr/sips.drw 
+cadr    sips.drw     15-SEP-79 13:27    4537 6cf4c231d0 7008105                                       7008105/B7/cadr/sips.drw LATEST
+cadr    smctl.drw    01-JUN-75 05:02    9151 bc48a89d3b 2100236                                       2100236/E/cons/smctl.drw  UNREADABLE
+cadr    smctl.drw    19-AUG-76 05:30    9785 16547c4a9a 9004365                                       9004365/E/cons/smctl.drw 
+cadr    smctl.drw    29-NOV-77 14:41    9592 34063bfc90 9004365                                       9004365/E/cadr/smctl.drw 
+cadr    smctl.drw    08-MAY-78 02:15   17560 34f15f38d3 701395                                        701395/B7/cadr/smctl.drw  UNREADABLE
+cadr    smctl.drw    08-MAY-78 02:15    7847 7fcf483369 7008261                                       7008261/B7/cadr/smctl.drw LATEST
+cadr    source.drw   16-AUG-78 00:44   12577 64ebff4d2e 7008261                                       7008261/B7/cadr/source.drw LATEST
+cadr    spc.drw      22-NOV-74 13:17   15179 a1cfa47cc0 19741205_1of3_AI_KA_Arch_1108-1112_1113p      19741205_1of3_AI_KA_Arch_1108-1112_1113p/E/cons/spc.drw  UNREADABLE
+cadr    spc.drw      10-JUL-75 04:17   18547 a7764698b9 9004365                                       9004365/E/cons/spc.drw  UNREADABLE
+cadr    spc.drw      29-NOV-77 14:41   22849 981c089934 9004365                                       9004365/E/cadr/spc.drw 
+cadr    spc.drw      02-FEB-78 22:43   19921 510d3ea216 701395                                        701395/B7/cadr/spc.drw 
+cadr    spc.drw      30-MAR-79 22:51   19921 d71ec21996 7008105                                       7008105/B7/cadr/spc.drw LATEST
+cadr    spclch.drw   29-NOV-77 14:41   23085 5f1f5f47f7 9004365                                       9004365/E/cadr/spclch.drw 
+cadr    spclch.drw   02-FEB-78 22:44   18312 dac78e9f9a 7008261                                       7008261/B7/cadr/spclch.drw LATEST
+cadr    spcpar.drw   29-NOV-77 14:41    6900 09a2d7ad24 9004365                                       9004365/E/cadr/spcpar.drw 
+cadr    spcpar.drw   23-JAN-78 00:33    5997 8c0bf801a0 7008261                                       7008261/B7/cadr/spcpar.drw LATEST
+cadr    spcw.drw     22-NOV-74 13:57   10044 dcae25bf98 19741205_1of3_AI_KA_Arch_1108-1112_1113p      19741205_1of3_AI_KA_Arch_1108-1112_1113p/E/cons/spcw.drw  UNREADABLE
+cadr    spcw.drw     10-JUL-75 04:26   16529 64ffeb0178 9004365                                       9004365/E/cons/spcw.drw  UNREADABLE
+cadr    spcw.drw     29-NOV-77 14:41   21583 fb0dd80f2f 9004365                                       9004365/E/cadr/spcw.drw 
+cadr    spcw.drw     23-JAN-78 06:29   14848 7c116238a1 701395                                        701395/B7/cadr/spcw.drw  UNREADABLE
+cadr    spcw.drw     23-JAN-78 06:29   12300 9a123ffbce 7008261                                       7008261/B7/cadr/spcw.drw LATEST
+cadr    spy0.drw     06-FEB-78 23:36    4794 091f8874f5 7008261                                       7008261/B7/cadr/spy0.drw LATEST
+cadr    spy1.drw     24-JAN-78 07:43   17259 84d193ab1b 7008261                                       7008261/B7/cadr/spy1.drw LATEST
+cadr    spy2.drw     16-AUG-78 00:46   17372 f058aa6b80 7008261                                       7008261/B7/cadr/spy2.drw LATEST
+cadr    spy4.drw     16-AUG-78 04:04   10604 241c0d0195 7008261                                       7008261/B7/cadr/spy4.drw LATEST
+cadr    stat.drw     23-JUN-78 23:25   18302 4f4bd60f7f 7008261                                       7008261/B7/cadr/stat.drw LATEST
+cadr    trap.drw     08-MAY-78 02:19    7125 c7e5e6b244 7008261                                       7008261/B7/cadr/trap.drw LATEST
+cadr    vctl.drw     16-AUG-76 02:02   17769 28d89c26a6 9004365                                       9004365/E/cons/vctl.drw  UNREADABLE
+cadr    vctl.drw     08-MAY-78 02:22    7388 87e1853c52 701395                                        701395/B7/cadr/vctl.drw  UNREADABLE
+cadr    vctl.drw     08-MAY-78 02:22   17520 8e3ea62e23 7005257                                       7005257/BE7/cadr/vctl.drw LATEST
+cadr    vctl1.drw    25-OCT-78 05:08   12065 601af5ea2c 7008261                                       7008261/B7/cadr/vctl1.drw LATEST
+cadr    vctl2.drw    16-AUG-78 01:38    8157 4d5bfc2f20 7008261                                       7008261/B7/cadr/vctl2.drw LATEST
+cadr    vma.drw      25-JUN-75 17:48   26132 32b7307194 9004365                                       9004365/E/cons/vma.drw  UNREADABLE
+cadr    vma.drw      29-NOV-77 14:42   19192 c3a4a1381d 9004365                                       9004365/E/cadr/vma.drw 
+cadr    vma.drw      02-FEB-78 20:44   11954 d71a70eed3 701395                                        701395/B7/cadr/vma.drw 
+cadr    vma.drw      02-FEB-78 20:44   17031 fc15c04477 7008261                                       7008261/B7/cadr/vma.drw LATEST
+cadr    vmas.drw     29-NOV-77 14:42   21688 7116c51797 9004365                                       9004365/E/cadr/vmas.drw 
+cadr    vmas.drw     08-MAY-78 02:24   16768 2fb6d80ee1 7008261                                       7008261/B7/cadr/vmas.drw LATEST
+cadr    vmem0.drw    29-NOV-77 14:42   20263 596783a10d 9004365                                       9004365/E/cadr/vmem0.drw 
+cadr    vmem0.drw    22-AUG-78 06:29   19501 bab9e4a810 7008261                                       7008261/B7/cadr/vmem0.drw LATEST
+cadr    vmem1.drw    21-JUN-75 05:03   14526 b4f2dd80cd 9004365                                       9004365/E/cons/vmem1.drw  UNREADABLE
+cadr    vmem1.drw    29-NOV-77 14:42   26430 f74b3d51e3 9004365                                       9004365/E/cadr/vmem1.drw 
+cadr    vmem1.drw    02-FEB-78 18:13   22620 6ba78c02ee 7008261                                       7008261/B7/cadr/vmem1.drw LATEST
+cadr    vmem2.drw    21-JUN-75 04:58   26871 4121b56823 9004365                                       9004365/E/cons/vmem2.drw  UNREADABLE
+cadr    vmem2.drw    29-NOV-77 14:42   24443 d91c2067ca 9004365                                       9004365/E/cadr/vmem2.drw 
+cadr    vmem2.drw    16-AUG-78 01:50   22234 86cb618fa8 7008261                                       7008261/B7/cadr/vmem2.drw LATEST
+cadr    vmemdr.drw   29-NOV-77 14:43   10415 dc654df73f 9004365                                       9004365/E/cadr/vmemdr.drw 
+cadr    vmemdr.drw   16-AUG-78 01:51   14337 742a040700 7008261                                       7008261/B7/cadr/vmemdr.drw LATEST
+cadr1   blank.drw    19-MAY-78 05:41   11812 59bcc9f6c5 7009559                                       7009559/cadr1/blank.drw LATEST
+cadr1   buspar.drw   07-JUN-77 07:00    6637 8417a7fe54 9004365                                       9004365/E/conswd/buspar.drw 
+cadr1   buspar.drw   08-SEP-78 13:08    4448 fff28699e2 701395                                        701395/B7/cadr1/buspar.drw 
+cadr1   buspar.drw   10-DEC-80 10:04    4863 784a8c81fc 7008261                                       7008261/B7/cadr1/buspar.drw LATEST
+cadr1   bussel.drw   18-OCT-76 19:51   14571 bab45fb753 9004365                                       9004365/E/conswd/bussel.drw 
+cadr1   bussel.drw   08-SEP-78 13:08   14619 80c5cf433a 7009559                                       7009559/cadr1/bussel.drw 
+cadr1   bussel.drw   10-DEC-80 10:05   15170 e7c508cad0 7008261                                       7008261/B7/cadr1/bussel.drw LATEST
+cadr1   busses.drw   20-MAY-77 08:42   14125 dfe01a751c 7009559                                       7009559/cadr1/busses.drw  UNREADABLE
+cadr1   busses.drw   20-MAY-77 12:22   17059 fe1c238092 9004365                                       9004365/E/cons1/busses.drw LATEST UNREADABLE
+cadr1   caps.drw     08-SEP-78 13:09     605 be002dbc7e 7008105                                       7008105/B7/cadr1/caps.drw 
+cadr1   caps.drw     10-DEC-80 10:06     787 27c68ccc7f 7008261                                       7008261/B7/cadr1/caps.drw LATEST
+cadr1   cdcadr.drw   29-NOV-76 23:41   15974 39b4de34ec 9004365                                       9004365/E/cons1/cdcadr.drw 
+cadr1   cdcadr.drw   23-APR-78 15:32   17646 67f6052288 701395                                        701395/B7/cadr1/cdcadr.drw LATEST
+cadr1   cdcbus.drw   29-NOV-76 23:42   12828 3201764bfe 9004365                                       9004365/E/cons1/cdcbus.drw 
+cadr1   cdcbus.drw   23-APR-78 14:44   12924 d5e2891b4e stuff_for_ams2                                stuff_for_ams2/2100233/E/cadr1/cdcbus.drw LATEST
+cadr1   cdcctl.drw   29-NOV-76 23:49    9994 99daf972f4 9004365                                       9004365/E/cons1/cdcctl.drw 
+cadr1   cdcctl.drw   23-APR-78 17:30   11343 cc6127a83f stuff_for_ams2                                stuff_for_ams2/2100233/E/cadr1/cdcctl.drw LATEST
+cadr1   cdcdi.drw    29-NOV-76 23:44   13617 a2bcc39c02 9004365                                       9004365/E/cons1/cdcdi.drw 
+cadr1   cdcdi.drw    23-APR-78 14:41   13643 3f16cc723c stuff_for_ams2                                stuff_for_ams2/2100233/E/cadr1/cdcdi.drw LATEST
+cadr1   cdcedg.drw   30-NOV-76 00:02   17270 917d7b6547 9004365                                       9004365/E/cons1/cdcedg.drw  UNREADABLE
+cadr1   cdcedg.drw   23-APR-78 15:51   10962 cbb382f3b9 701395                                        701395/B7/cadr1/cdcedg.drw LATEST
+cadr1   cdcflt.drw   23-APR-78 14:57    7629 71af1ece00 701395                                        701395/B7/cadr1/cdcflt.drw LATEST
+cadr1   cdclat.drw   25-JUN-78 00:50    9319 0eec553eba 701395                                        701395/B7/cadr1/cdclat.drw LATEST
+cadr1   cdcpar.drw   29-NOV-76 23:53    3555 d582b2e04e 9004365                                       9004365/E/cons1/cdcpar.drw 
+cadr1   cdcpar.drw   23-APR-78 15:31    3562 dee85e7d2d 701395                                        701395/B7/cadr1/cdcpar.drw LATEST
+cadr1   cdcres.drw   29-NOV-76 23:44    6082 214c5deff7 9004365                                       9004365/E/cons1/cdcres.drw 
+cadr1   cdcres.drw   23-APR-78 14:58    6108 df70bc90ea stuff_for_ams2                                stuff_for_ams2/2100233/E/cadr1/cdcres.drw LATEST
+cadr1   clm.drw      03-OCT-78 05:46   13323 59e4e3a3a1 7009559                                       7009559/cadr1/clm.drw 
+cadr1   clm.drw      10-DEC-80 10:04   14143 3fc1da2ff7 7008261                                       7008261/B7/cadr1/clm.drw LATEST
+cadr1   ctp.drw      08-SEP-78 13:11    2945 ebb076d2b2 7008261                                       7008261/B7/cadr1/ctp.drw LATEST
+cadr1   cubus.drw    03-OCT-78 07:16   13111 b4353776f2 701395                                        701395/B7/cadr1/cubus.drw  UNREADABLE
+cadr1   cubus.drw    03-OCT-78 07:16    7078 88d0351679 7008261                                       7008261/B7/cadr1/cubus.drw LATEST
+cadr1   cxbus.drw    03-OCT-78 04:47   13072 665130610e 7009559                                       7009559/cadr1/cxbus.drw 
+cadr1   cxbus.drw    10-DEC-80 10:09   13187 da3ae25f43 7008261                                       7008261/B7/cadr1/cxbus.drw LATEST
+cadr1   datctl.drw   07-JUN-77 07:00    7820 e1f92e6fea 9004365                                       9004365/E/conswd/datctl.drw 
+cadr1   datctl.drw   03-OCT-78 05:48   11942 27d5a3b588 7008105                                       7008105/B7/cadr1/datctl.drw 
+cadr1   datctl.drw   10-DEC-80 17:33   17121 ea6aa8931d 7008261                                       7008261/B7/cadr1/datctl.drw LATEST
+cadr1   dbgin.drw    03-OCT-78 04:51   13789 de76e225eb 7009559                                       7009559/cadr1/dbgin.drw 
+cadr1   dbgin.drw    10-DEC-80 10:25   18659 d6cace3709 7008261                                       7008261/B7/cadr1/dbgin.drw LATEST
+cadr1   dbgout.drw   03-OCT-78 04:51    8384 96f745a471 701395                                        701395/B7/cadr1/dbgout.drw  UNREADABLE
+cadr1   dbgout.drw   03-OCT-78 04:51   13453 82999609a8 7009559                                       7009559/cadr1/dbgout.drw 
+cadr1   dbgout.drw   10-DEC-80 10:26   16905 7771161707 7008261                                       7008261/B7/cadr1/dbgout.drw LATEST
+cadr1   diag.drw     08-SEP-78 17:41    5127 74867a6bb6 7009559                                       7009559/cadr1/diag.drw 
+cadr1   diag.drw     10-DEC-80 10:26    6781 ca27ed3919 7008261                                       7008261/B7/cadr1/diag.drw LATEST
+cadr1   dpadr.drw    25-MAY-78 16:41   10642 200c3dae64 701298                                        701298/BE7/cadr1/dpadr.drw  UNREADABLE
+cadr1   dpadr.drw    25-MAY-78 16:41   10642 5e18636187 7008261                                       7008261/B7/cadr1/dpadr.drw LATEST
+cadr1   dpdata.drw   25-MAY-78 16:47    6089 78f53ac653 701395                                        701395/B7/cadr1/dpdata.drw  UNREADABLE
+cadr1   dpdata.drw   25-MAY-78 16:47   16197 d25d10eca3 7009559                                       7009559/cadr1/dpdata.drw LATEST
+cadr1   init.drw     08-SEP-78 13:14     310 fc7007af20 7009559                                       7009559/cadr1/init.drw LATEST
+cadr1   lmadr.drw    03-MAR-79 23:49    9090 9144960484 7008105                                       7008105/B7/cadr1/lmadr.drw 
+cadr1   lmadr.drw    10-DEC-80 10:27    9903 88081b19d2 7008261                                       7008261/B7/cadr1/lmadr.drw LATEST
+cadr1   lmdata.drw   03-OCT-78 04:53   12419 79e13eb6fe 7009559                                       7009559/cadr1/lmdata.drw 
+cadr1   lmdata.drw   10-DEC-80 10:27   13779 81643ef0bf 7008261                                       7008261/B7/cadr1/lmdata.drw LATEST
+cadr1   memd1.drw    15-OCT-76 06:52   10710 17ce98ef74 9004365                                       9004365/E/conswd/memd1.drw  UNREADABLE
+cadr1   memd1.drw    21-MAR-78 15:16    5762 fec1e8363c 701395                                        701395/B7/cadr1/memd1.drw LATEST
+cadr1   rbuf.drw     08-SEP-78 13:15   12481 49de8c7940 701298                                        701298/BE7/cadr1/rbuf.drw 
+cadr1   rbuf.drw     08-SEP-78 13:15   12481 08debfedf0 7009559                                       7009559/cadr1/rbuf.drw 
+cadr1   rbuf.drw     10-DEC-80 10:28   13883 40e42e4157 7008261                                       7008261/B7/cadr1/rbuf.drw LATEST
+cadr1   reqerr.drw   03-OCT-78 05:54   10901 85afcc03c0 701395                                        701395/B7/cadr1/reqerr.drw 
+cadr1   reqerr.drw   10-DEC-80 10:40   17650 3f07d135ff 7008261                                       7008261/B7/cadr1/reqerr.drw LATEST
+cadr1   reqlm.drw    03-OCT-78 06:01   10051 d5decc937f 7008105                                       7008105/B7/cadr1/reqlm.drw 
+cadr1   reqlm.drw    03-OCT-78 06:01   10061 697cef7e00 stuff_for_ams2                                stuff_for_ams2/mit1/default/cadr1/reqlm.drw 
+cadr1   reqlm.drw    10-DEC-80 17:18   16246 65fbd755fe 7008261                                       7008261/B7/cadr1/reqlm.drw LATEST
+cadr1   reqtim.drw   03-OCT-78 06:13    7506 45481f0084 701395                                        701395/B7/cadr1/reqtim.drw  UNREADABLE
+cadr1   reqtim.drw   03-OCT-78 06:13    6354 3cd24eb718 7009559                                       7009559/cadr1/reqtim.drw 
+cadr1   reqtim.drw   10-DEC-80 15:26    9291 663310c6ce 7008261                                       7008261/B7/cadr1/reqtim.drw LATEST
+cadr1   requ.drw     03-OCT-78 06:04    8552 19ae8bb600 701395                                        701395/B7/cadr1/requ.drw  UNREADABLE
+cadr1   requ.drw     03-OCT-78 06:04    8600 3dbb81ba6e 7009559                                       7009559/cadr1/requ.drw 
+cadr1   requ.drw     10-DEC-80 15:36   13079 d7ed0975d9 7008261                                       7008261/B7/cadr1/requ.drw LATEST
+cadr1   requb.drw    08-SEP-78 13:17    4588 5a42af0251 7009559                                       7009559/cadr1/requb.drw 
+cadr1   requb.drw    10-DEC-80 15:23    7321 1c30ea2916 7008261                                       7008261/B7/cadr1/requb.drw LATEST
+cadr1   rqsync.drw   03-MAR-79 23:34   10664 b901b2e167 7008105                                       7008105/B7/cadr1/rqsync.drw 
+cadr1   rqsync.drw   10-DEC-80 11:32   14830 8323247775 7008261                                       7008261/B7/cadr1/rqsync.drw LATEST
+cadr1   uba.drw      08-SEP-78 13:18    8198 548861e749 701395                                        701395/B7/cadr1/uba.drw 
+cadr1   uba.drw      10-DEC-80 11:32    9058 9d11a402d0 7008261                                       7008261/B7/cadr1/uba.drw LATEST
+cadr1   ubcyc.drw    18-JUN-76 20:26   11518 0fe49b5936 9004365                                       9004365/E/cons/ubcyc.drw  UNREADABLE
+cadr1   ubcyc.drw    18-OCT-76 18:53   18810 09820016ff 9004365                                       9004365/E/conswd/ubcyc.drw  UNREADABLE
+cadr1   ubcyc.drw    08-SEP-78 13:18    9959 1257f6f387 7008105                                       7008105/B7/cadr1/ubcyc.drw 
+cadr1   ubcyc.drw    11-DEC-80 14:57   17874 dddcc1442d 7008261                                       7008261/B7/cadr1/ubcyc.drw LATEST
+cadr1   ubd.drw      08-SEP-78 13:18    9160 c4dcddfb00 7008105                                       7008105/B7/cadr1/ubd.drw 
+cadr1   ubd.drw      10-DEC-80 11:33   10255 d465b101fd 7008261                                       7008261/B7/cadr1/ubd.drw LATEST
+cadr1   ubintc.drw   03-OCT-78 06:05    9753 efe0b37e9a 701395                                        701395/B7/cadr1/ubintc.drw  UNREADABLE
+cadr1   ubintc.drw   03-OCT-78 06:05   11903 5b244a3f7d 7009559                                       7009559/cadr1/ubintc.drw 
+cadr1   ubintc.drw   10-DEC-80 11:34   15702 b628887212 7008261                                       7008261/B7/cadr1/ubintc.drw LATEST
+cadr1   ubmap.drw    08-SEP-78 13:19   12272 a5b482fdc3 7009559                                       7009559/cadr1/ubmap.drw 
+cadr1   ubmap.drw    10-DEC-80 11:35   14409 34d69b604c 7008261                                       7008261/B7/cadr1/ubmap.drw LATEST
+cadr1   ubmast.drw   03-OCT-78 05:31   14866 15a5006d0f 7009559                                       7009559/cadr1/ubmast.drw 
+cadr1   ubmast.drw   10-DEC-80 13:21   19503 bb23035fa2 7008261                                       7008261/B7/cadr1/ubmast.drw LATEST
+cadr1   ubxa.drw     08-SEP-78 13:30    5466 d258847b36 7009559                                       7009559/cadr1/ubxa.drw 
+cadr1   ubxa.drw     10-DEC-80 11:36    6017 7a6931f2a3 7008261                                       7008261/B7/cadr1/ubxa.drw LATEST
+cadr1   uprior.drw   03-OCT-78 06:05   16507 f366aa25b0 7008105                                       7008105/B7/cadr1/uprior.drw 
+cadr1   uprior.drw   10-DEC-80 13:15   21286 29fbb7beb6 7008261                                       7008261/B7/cadr1/uprior.drw LATEST
+cadr1   wbuf.drw     08-SEP-78 13:35    5899 66fe4837ba 7009559                                       7009559/cadr1/wbuf.drw 
+cadr1   wbuf.drw     10-DEC-80 11:37    6735 985deb4fa5 7008261                                       7008261/B7/cadr1/wbuf.drw LATEST
+cadr1   xa.drw       08-SEP-78 13:35   11957 07a8eb951a 7009559                                       7009559/cadr1/xa.drw 
+cadr1   xa.drw       10-DEC-80 11:52   13075 de360cd33c 7008261                                       7008261/B7/cadr1/xa.drw LATEST
+cadr1   xapar.drw    08-SEP-78 13:35    3662 7b9036eb10 7008105                                       7008105/B7/cadr1/xapar.drw 
+cadr1   xapar.drw    10-DEC-80 11:49    4238 eba2b56301 7008261                                       7008261/B7/cadr1/xapar.drw LATEST
+cadr1   xbd.drw      08-SEP-78 13:35    7155 c4144a3bf0 7009559                                       7009559/cadr1/xbd.drw 
+cadr1   xbd.drw      10-DEC-80 16:06    7706 a8025d2712 7008261                                       7008261/B7/cadr1/xbd.drw LATEST
+cadr1   xd.drw       08-SEP-78 13:35   13367 3a4dc138bc 7009559                                       7009559/cadr1/xd.drw 
+cadr1   xd.drw       10-DEC-80 11:50   14009 f4770b4511 7008261                                       7008261/B7/cadr1/xd.drw LATEST
+cadrdc  dcbusy.drw   30-SEP-78 00:56    5767 b6de1c4c8b stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/dcbusy.drw 
+cadrdc  dcbusy.drw   05-FEB-80 03:37    5854 b2c526412b 7009559                                       7009559/cadrdc/dcbusy.drw 
+cadrdc  dcbusy.drw   07-OCT-80 21:32    5860 0fc04ca14b more-stuff-for-ams                            more-stuff-for-ams/7008261/B7/cadrdc/dcbusy.drw LATEST
+cadrdc  dccaps.drw   09-JUL-79 05:39    2192 57a161c5c3 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/dccaps.drw LATEST
+cadrdc  dcccw.drw    30-SEP-78 00:59    9240 a7fd67ac71 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/dcccw.drw 
+cadrdc  dcccw.drw    07-OCT-80 21:32    9250 1feaac67db more-stuff-for-ams                            more-stuff-for-ams/7008261/B7/cadrdc/dcccw.drw LATEST
+cadrdc  dcchan.drw   30-SEP-78 01:04   14194 e6c3731edb stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/dcchan.drw 
+cadrdc  dcchan.drw   06-FEB-80 00:48   14209 ddb4f7c10f 7009559                                       7009559/cadrdc/dcchan.drw LATEST
+cadrdc  dcclk.drw    08-OCT-78 16:48   10619 d0650b6500 7009559                                       7009559/cadrdc/dcclk.drw LATEST
+cadrdc  dcclp.drw    10-JUN-79 21:52   14990 f1536903bc 7009559                                       7009559/cadrdc/dcclp.drw LATEST
+cadrdc  dccmd.drw    30-SEP-78 01:18    6223 3c6b664b03 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/dccmd.drw LATEST
+cadrdc  dcda.drw     30-SEP-78 01:36   18370 cf9f0d5bfe 7009559                                       7009559/cadrdc/dcda.drw LATEST
+cadrdc  dcdbus.drw   06-JUN-79 08:00    8376 a856db52a9 7009559                                       7009559/cadrdc/dcdbus.drw LATEST
+cadrdc  dcecc.drw    08-OCT-78 16:53   16066 337d1b8260 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/dcecc.drw LATEST
+cadrdc  dcedge.drw   30-SEP-78 01:45    6214 5d81bfaf3f 701395                                        701395/B7/cadrio/dcedge.drw 
+cadrdc  dcedge.drw   10-JUN-79 20:33    6344 02f32ae6b1 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/dcedge.drw 
+cadrdc  dcedge.drw   10-JUN-79 20:33    6344 d15b3cc897 more-stuff-for-ams                            more-stuff-for-ams/701298/BE7/cadrdc/dcedge.drw LATEST
+cadrdc  dchdcm.drw   10-JUN-79 20:34   14151 a3c750615c 7009559                                       7009559/cadrdc/dchdcm.drw LATEST
+cadrdc  dcpar.drw    30-SEP-78 01:50   10339 b9c225301c 701395                                        701395/B7/cadrio/dcpar.drw 
+cadrdc  dcpar.drw    03-MAR-79 22:00   10582 fc4db37a4b stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/dcpar.drw 
+cadrdc  dcpar.drw    06-FEB-80 00:54   10582 4d26da0a24 7009559                                       7009559/cadrdc/dcpar.drw LATEST
+cadrdc  dcposc.drw   30-SEP-78 01:53   13731 c7e2da044a stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/dcposc.drw LATEST
+cadrdc  dcrbuf.drw   30-SEP-78 04:07   14026 05dcbefc29 more-stuff-for-ams                            more-stuff-for-ams/701298/BE7/cadrdc/dcrbuf.drw  UNREADABLE
+cadrdc  dcrbuf.drw   30-SEP-78 04:07   14026 7f34842f73 7009559                                       7009559/cadrdc/dcrbuf.drw LATEST
+cadrdc  dcreg.drw    08-OCT-78 16:56   10383 f50c6f040b stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/dcreg.drw LATEST
+cadrdc  dcsh.drw     10-JUN-79 20:37    8856 000d192102 7009559                                       7009559/cadrdc/dcsh.drw LATEST
+cadrdc  dcsts.drw    03-MAR-79 22:03   16278 2cff0a403f stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/dcsts.drw 
+cadrdc  dcsts.drw    05-FEB-80 01:50   16620 3c3449ceb0 7009559                                       7009559/cadrdc/dcsts.drw LATEST
+cadrdc  dctmot.drw   30-SEP-78 02:10    6665 f0a4c4d325 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/dctmot.drw 
+cadrdc  dctmot.drw   05-FEB-80 01:58    6660 3c019411b4 7009559                                       7009559/cadrdc/dctmot.drw 
+cadrdc  dctmot.drw   07-OCT-80 22:12    6660 621830ae72 more-stuff-for-ams                            more-stuff-for-ams/7008261/B7/cadrdc/dctmot.drw LATEST
+cadrdc  dctrid.drw   08-OCT-78 17:01    9996 2b1a8e453b 701395                                        701395/B7/cadrio/dctrid.drw  UNREADABLE
+cadrdc  dctrid.drw   10-JUN-79 21:54   15936 defeb3e656 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/dctrid.drw LATEST
+cadrdc  dctrsg.drw   30-JUL-79 02:11   18297 60083b3b84 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/dctrsg.drw LATEST
+cadrdc  dcuc.drw     08-OCT-78 17:06   12232 ebee37d73d 701395                                        701395/B7/cadrio/dcuc.drw 
+cadrdc  dcuc.drw     10-JUN-79 20:40   12297 f566a99101 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/dcuc.drw LATEST
+cadrdc  dcud.drw     24-FEB-78 02:22   10744 ca84ccd7bc stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/dcud.drw LATEST
+cadrdc  dcui.drw     30-SEP-78 02:25   10683 a3dcf113fe 701395                                        701395/B7/cadrio/dcui.drw LATEST
+cadrdc  dcwbuf.drw   30-SEP-78 02:27   13882 c6a3922795 7009559                                       7009559/cadrdc/dcwbuf.drw LATEST
+cadrdc  dcxbsa.drw   30-SEP-78 02:28    9093 ff1a037d84 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/dcxbsa.drw LATEST
+cadrdc  dcxbus.drw   30-SEP-78 02:55   11998 645d9e9708 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/dcxbus.drw LATEST
+cadrdc  dmbkc0.drw   05-MAR-79 00:20   15121 b78e2f1559 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/dmbkc0.drw LATEST
+cadrdc  dmbkc1.drw   05-MAR-79 00:20   15121 0a3b2e3f02 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/dmbkc1.drw LATEST
+cadrdc  dmcabl.drw   24-APR-78 15:17   12485 f8c9be9033 701395                                        701395/B7/cadrio/dmcabl.drw  UNREADABLE
+cadrdc  dmcabl.drw   06-MAR-79 03:46   17602 836a561a6d stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/dmcabl.drw LATEST
+cadrdc  dmcaps.drw   27-JUN-78 02:39    2330 e631cd5928 701395                                        701395/B7/cadrio/dmcaps.drw 
+cadrdc  dmcaps.drw   06-MAR-79 03:41    4822 562ad42a07 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/dmcaps.drw LATEST
+cadrdc  dmedge.drw   23-MAR-78 23:53    5907 ef208d31ad 701395                                        701395/B7/cadrio/dmedge.drw 
+cadrdc  dmedge.drw   04-MAR-79 20:35    7180 0377e4cd0f stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/dmedge.drw LATEST
+cadrdc  dmio.drw     27-JUN-78 02:38   15947 b6cac980bf 701395                                        701395/B7/cadrio/dmio.drw  UNREADABLE
+cadrdc  dmio.drw     30-JUL-79 02:12   21555 decbb766d8 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/dmio.drw LATEST
+cadrdc  dmmux.drw    24-MAR-78 00:14   15026 83d3ee7b4d 701395                                        701395/B7/cadrio/dmmux.drw 
+cadrdc  dmmux.drw    06-MAR-79 04:25   15138 b7c7af7140 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/dmmux.drw LATEST
+cadrdc  dmrdwr.drw   06-MAR-79 04:32   22566 9e05d7e857 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/dmrdwr.drw LATEST
+cadrdc  dmsect.drw   06-MAR-79 04:07   11974 d7f1d5f122 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/dmsect.drw LATEST
+cadrdc  dmsel.drw    06-MAR-79 04:30   14750 e35875f31c stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/dmsel.drw LATEST
+cadrdc  dmseq.drw    24-MAR-78 00:13    9010 8925a0c68c 701395                                        701395/B7/cadrio/dmseq.drw 
+cadrdc  dmseq.drw    06-MAR-79 04:10    8920 efd2968cfb stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/dmseq.drw LATEST
+cadrdc  mkbusy.drw   14-JUN-79 04:49    5985 38eff3c0c2 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/mkbusy.drw 
+cadrdc  mkbusy.drw   14-NOV-79 00:14    5975 9cc3f8dd2b 7009559                                       7009559/cadrdc/mkbusy.drw LATEST
+cadrdc  mkclk.drw    14-JUN-79 04:50   10940 a003781034 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/mkclk.drw LATEST
+cadrdc  mkcmd.drw    09-JUL-79 05:46   13067 565500de4b stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/mkcmd.drw 
+cadrdc  mkcmd.drw    07-NOV-79 06:10   13072 f088cdc34f 7009559                                       7009559/cadrdc/mkcmd.drw LATEST
+cadrdc  mkdbus.drw   09-JUL-79 05:18    8169 8ccf30524d stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/mkdbus.drw LATEST
+cadrdc  mkpanl.drw   09-JUL-79 06:26    9017 2bfc1a37db stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/mkpanl.drw 
+cadrdc  mkpanl.drw   14-NOV-79 00:05   10296 0c0a2df273 7009559                                       7009559/cadrdc/mkpanl.drw LATEST
+cadrdc  mkrd.drw     09-MAR-80 04:58   17289 667e3cc343 7009559                                       7009559/cadrdc/mkrd.drw LATEST
+cadrdc  mksman.drw   09-JUL-79 06:42   15446 28c5826297 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/mksman.drw 
+cadrdc  mksman.drw   07-NOV-79 08:07   15446 1925cde745 7009559                                       7009559/cadrdc/mksman.drw LATEST
+cadrdc  mksts.drw    14-JUN-79 05:11   13497 9283aa39a6 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/mksts.drw 
+cadrdc  mksts.drw    07-NOV-79 08:09   13299 a2db6ebaf6 7009559                                       7009559/cadrdc/mksts.drw LATEST
+cadrdc  mkuc.drw     14-JUN-79 05:35   14332 8550200d1b stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/mkuc.drw LATEST
+cadrdc  mkui.drw     06-JUN-79 08:59   10698 7e2426ed7c stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/mkui.drw LATEST
+cadrdc  xbus.drw     19-DEC-79 00:54   11244 1615b6289c 7009559                                       7009559/cadrdc/xbus.drw LATEST
+cadrio  bodies.drw   02-JUL-79 22:41  136491 39332d1b31 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/bodies.drw 
+cadrio  bodies.drw   19-DEC-79 05:59  141231 0335350ff0 stuff_for_ams2                                stuff_for_ams2/7007318/B7/cadrio/bodies.drw 
+cadrio  bodies.drw   07-AUG-80 11:24  141231 d37052983a 7009559                                       7009559/cadrio/bodies.drw LATEST
+cadrio  clk60h.drw   24-SEP-78 13:27   17590 7d8f892e4e 701395                                        701395/B7/cadrio/clk60h.drw 
+cadrio  clk60h.drw   12-AUG-79 00:07   17556 aa970582ab 7009559                                       7009559/cadrio/clk60h.drw 
+cadrio  clk60h.drw   11-DEC-80 19:30   21422 3613114921 7008261                                       7008261/B7/cadrio/clk60h.drw LATEST
+cadrio  clktim.drw   03-JUL-79 00:27    8117 69a8ef1f49 7009559                                       7009559/cadrio/clktim.drw 
+cadrio  clktim.drw   11-DEC-80 18:40   12053 c3220b54ee 7008261                                       7008261/B7/cadrio/clktim.drw LATEST
+cadrio  clktod.drw   26-MAY-78 00:05   18996 4092541ba8 7008105                                       7008105/B7/cadrio/clktod.drw 
+cadrio  clktod.drw   11-DEC-80 10:50   20632 aed1019bce 7008261                                       7008261/B7/cadrio/clktod.drw LATEST
+cadrio  color.drw    01-FEB-78 09:35   14591 9274473065 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/color.drw LATEST
+cadrio  dcccw.drw    30-SEP-78 00:59    8876 54bdbad0f8 701395                                        701395/B7/cadrio/dcccw.drw LATEST UNREADABLE
+cadrio  dcda.drw     30-SEP-78 01:36    8242 bfaf67447d 701395                                        701395/B7/cadrio/dcda.drw LATEST UNREADABLE
+cadrio  dmbkc0.drw   19-MAR-78 00:33   10070 ed33472a04 701395                                        701395/B7/cadrio/dmbkc0.drw LATEST UNREADABLE
+cadrio  dmsect.drw   19-MAR-78 01:11   22005 755c98832e 701395                                        701395/B7/cadrio/dmsect.drw LATEST UNREADABLE
+cadrio  hexspc.drw   07-DEC-77 16:01    9529 d076f9edd5 9004365                                       9004365/E/cadrio/hexspc.drw 
+cadrio  hexspc.drw   18-APR-79 20:20    9319 d1ede397a9 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/hexspc.drw 
+cadrio  hexspc.drw   15-SEP-79 10:41    9319 989cd950cf 7008261                                       7008261/B7/cadrio/hexspc.drw LATEST
+cadrio  iobadr.drw   14-DEC-77 04:17    6026 28f45640d8 9004365                                       9004365/E/cadrio/iobadr.drw 
+cadrio  iobadr.drw   03-JUL-79 00:12    9288 ef75fbfbae stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/iobadr.drw 
+cadrio  iobadr.drw   11-SEP-79 16:17    9406 4520ad4451 7009559                                       7009559/cadrio/iobadr.drw 
+cadrio  iobadr.drw   11-DEC-80 18:41   14366 3f9fa0acbb 7008261                                       7008261/B7/cadrio/iobadr.drw LATEST
+cadrio  iobclk.drw   26-MAY-78 00:06    5920 d70acae9cd 701395                                        701395/B7/cadrio/iobclk.drw 
+cadrio  iobclk.drw   04-MAR-79 01:48    6324 770bf07ba4 7009559                                       7009559/cadrio/iobclk.drw 
+cadrio  iobclk.drw   11-DEC-80 11:09    9568 b5c7bde72b 7008261                                       7008261/B7/cadrio/iobclk.drw LATEST
+cadrio  iobcsr.drw   03-JUL-79 00:13    9291 b73d547ed7 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/iobcsr.drw 
+cadrio  iobcsr.drw   13-AUG-79 03:07    9231 b072fbbbfb 7009559                                       7009559/cadrio/iobcsr.drw 
+cadrio  iobcsr.drw   11-DEC-80 21:51   13501 d130b55568 7008261                                       7008261/B7/cadrio/iobcsr.drw LATEST
+cadrio  iobint.drw   03-JUL-79 02:12   17649 0d91df658c 7009559                                       7009559/cadrio/iobint.drw 
+cadrio  iobint.drw   11-DEC-80 10:39   20204 a1ca6c2446 7008261                                       7008261/B7/cadrio/iobint.drw LATEST
+cadrio  iobjps.drw   17-DEC-80 11:10    6577 727d131e96 7008261                                       7008261/B7/cadrio/iobjps.drw LATEST
+cadrio  iobkbd.drw   24-SEP-78 14:11   16626 e2e499d56a 701395                                        701395/B7/cadrio/iobkbd.drw  UNREADABLE
+cadrio  iobkbd.drw   28-JUL-79 00:12   13993 236a10b632 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/iobkbd.drw 
+cadrio  iobkbd.drw   04-MAR-80 15:21   14153 efa99d88f7 7009559                                       7009559/cadrio/iobkbd.drw 
+cadrio  iobkbd.drw   12-DEC-80 02:16   22963 fc288ef94c 7008261                                       7008261/B7/cadrio/iobkbd.drw LATEST
+cadrio  iobms2.drw   26-MAY-78 00:09   14663 86e5a2f943 701395                                        701395/B7/cadrio/iobms2.drw 
+cadrio  iobms2.drw   11-DEC-80 18:46   16985 44f8f49d88 7008261                                       7008261/B7/cadrio/iobms2.drw LATEST
+cadrio  iobmse.drw   18-APR-79 19:00   11202 a3ae71d4bd 7009559                                       7009559/cadrio/iobmse.drw 
+cadrio  iobmse.drw   11-DEC-80 11:43   13435 7cbc72b2fb 7008261                                       7008261/B7/cadrio/iobmse.drw LATEST
+cadrio  iobser.drw   03-JUL-79 02:39   10866 e5bfe5742a stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrio/iobser.drw 
+cadrio  iobser.drw   11-AUG-79 23:27   11646 39d66fad47 7008105                                       7008105/B7/cadrio/iobser.drw 
+cadrio  iobser.drw   11-DEC-80 11:15   16110 ab81494614 ai_ka_arch_2of9_3050_53_21_aug_1982           ai_ka_arch_2of9_3050_53_21_aug_1982/E/cadrio/iobser.drw LATEST
+cadrio  iobxcv.drw   14-DEC-77 00:35    9855 74515291c6 9004365                                       9004365/E/cadrio/iobxcv.drw 
+cadrio  iobxcv.drw   26-MAY-78 00:10    8597 fb4236542d 7009559                                       7009559/cadrio/iobxcv.drw 
+cadrio  iobxcv.drw   26-MAY-78 00:11   11626 3e0701a4c2 stuff_for_ams2                                stuff_for_ams2/7005736/B7/cadrio/iobxcv.drw 
+cadrio  iobxcv.drw   11-DEC-80 11:16   11409 9dcf94a07f 7008261                                       7008261/B7/cadrio/iobxcv.drw LATEST
+cadrio  newkb1.drw   14-DEC-77 04:32   11076 0c6d5e7dcf 9004365                                       9004365/E/cadrio/newkb1.drw LATEST
+cadrio  newkb2.drw   14-DEC-77 04:39    8836 7137aaefc9 9004365                                       9004365/E/cadrio/newkb2.drw LATEST
+cadrio  nmous1.drw   14-DEC-77 04:23   17513 406eded153 9004365                                       9004365/E/cadrio/nmous1.drw LATEST
+cadrio  nmous2.drw   14-DEC-77 04:35   16810 82aff5226e 9004365                                       9004365/E/cadrio/nmous2.drw LATEST
+cadrio  xbus.drw     31-MAR-78 04:32   10553 141d1ec352 701395                                        701395/B7/cadrio/xbus.drw LATEST
+cadrm   mcp0lh.drw   14-NOV-78 00:44    9788 6d41bb7c4f 7009559                                       7009559/cadrm/mcp0lh.drw LATEST
+cadrm   mcp0rh.drw   14-NOV-78 00:45    9211 d24a822e28 7009559                                       7009559/cadrm/mcp0rh.drw LATEST
+cadrm   mcp1lh.drw   14-NOV-78 00:46    9211 c0f71e2d7a 7009559                                       7009559/cadrm/mcp1lh.drw LATEST
+cadrm   mcp1rh.drw   14-NOV-78 00:46    9788 bebfbb4ea6 7008105                                       7008105/B7/cadrm/mcp1rh.drw LATEST
+cadrm   mcp2lh.drw   14-NOV-78 00:47    9788 4f13ae4a2f 7008105                                       7008105/B7/cadrm/mcp2lh.drw LATEST
+cadrm   mcp2rh.drw   14-NOV-78 00:47    9211 274fd320d0 7008105                                       7008105/B7/cadrm/mcp2rh.drw LATEST
+cadrm   mcp3lh.drw   14-NOV-78 00:47    9211 35f6942573 7008105                                       7008105/B7/cadrm/mcp3lh.drw LATEST
+cadrm   mcp3rh.drw   14-NOV-78 00:48    9788 bcfc335d59 7009559                                       7009559/cadrm/mcp3rh.drw LATEST
+cadrm   mem0lh.drw   14-NOV-78 00:27   30556 6709c6c229 7009559                                       7009559/cadrm/mem0lh.drw LATEST
+cadrm   mem0rh.drw   27-SEP-78 21:54   17111 b56a8678c9 701395                                        701395/B7/cadrm/mem0rh.drw  UNREADABLE
+cadrm   mem0rh.drw   14-NOV-78 00:29   28433 20dbe6a18c 7009559                                       7009559/cadrm/mem0rh.drw LATEST
+cadrm   mem1lh.drw   14-NOV-78 00:30   28428 b464344146 7008105                                       7008105/B7/cadrm/mem1lh.drw LATEST
+cadrm   mem1rh.drw   27-SEP-78 22:09   28844 4037c45048 701395                                        701395/B7/cadrm/mem1rh.drw  UNREADABLE
+cadrm   mem1rh.drw   14-NOV-78 00:32   25431 a4648785e3 stuff_for_ams2                                stuff_for_ams2/7005736/BE7/cadrm/mem1rh.drw 
+cadrm   mem1rh.drw   14-NOV-78 00:32   30551 bcff325dc1 7008105                                       7008105/B7/cadrm/mem1rh.drw LATEST
+cadrm   mem2lh.drw   20-DEC-78 20:18   30556 719d35b610 7008105                                       7008105/B7/cadrm/mem2lh.drw LATEST
+cadrm   mem2rh.drw   14-NOV-78 00:37   28433 ec08b8b65e 7008105                                       7008105/B7/cadrm/mem2rh.drw LATEST
+cadrm   mem3lh.drw   27-SEP-78 23:49   17071 2c09e4e2af 701395                                        701395/B7/cadrm/mem3lh.drw  UNREADABLE
+cadrm   mem3lh.drw   14-NOV-78 00:39   28428 3c6ffefabd 7009559                                       7009559/cadrm/mem3lh.drw LATEST
+cadrm   mem3rh.drw   14-NOV-78 00:42   30551 df925f7485 7008105                                       7008105/B7/cadrm/mem3rh.drw LATEST
+cadrm   memadl.drw   27-SEP-78 20:07    6380 3e87e85ac6 701395                                        701395/B7/cadrm/memadl.drw  UNREADABLE
+cadrm   memadl.drw   29-JAN-79 09:51   11477 d29c20004a 7008105                                       7008105/B7/cadrm/memadl.drw LATEST
+cadrm   memadr.drw   29-JAN-79 09:53   11477 b5b510bd3a 7008105                                       7008105/B7/cadrm/memadr.drw 
+cadrm   memadr.drw   29-JAN-79 09:53   18237 0f71fdbff8 stuff_for_ams2                                stuff_for_ams2/7005736/BE7/cadrm/memadr.drw LATEST
+cadrm   memads.drw   27-SEP-78 19:45    6726 52b903fb01 701395                                        701395/B7/cadrm/memads.drw 
+cadrm   memads.drw   03-MAR-79 21:41    6731 f9c6290a47 7009559                                       7009559/cadrm/memads.drw LATEST
+cadrm   memctl.drw   13-JUN-79 22:05   14843 de410b1a83 stuff_for_ams2                                stuff_for_ams2/2100233/E/cadrm/memctl.drw 
+cadrm   memctl.drw   03-JAN-80 20:03   14848 f5f6f349ce 7009559                                       7009559/cadrm/memctl.drw LATEST
+cadrm   memras.drw   27-SEP-78 19:46    7733 1c306459fc 7008105                                       7008105/B7/cadrm/memras.drw LATEST
+cadrm   memxba.drw   28-SEP-78 00:27    5603 1f24d2a66c 701395                                        701395/B7/cadrm/memxba.drw  UNREADABLE
+cadrm   memxba.drw   29-JAN-79 10:05   10706 603360e569 7009559                                       7009559/cadrm/memxba.drw LATEST
+cadrm   memxbd.drw   27-SEP-78 19:18   13023 f6ce2b096e 7008105                                       7008105/B7/cadrm/memxbd.drw LATEST
+cadrm   pmaddr.drw   31-MAR-79 21:00   12530 7c59095b5a 7008105                                       7008105/B7/cadrm/pmaddr.drw LATEST
+cadrm   pmbuf1.drw   31-MAR-79 05:26   19069 c6cf015434 7008105                                       7008105/B7/cadrm/pmbuf1.drw LATEST
+cadrm   pmbuf2.drw   31-MAR-79 05:28   13383 aec03e06c1 7008105                                       7008105/B7/cadrm/pmbuf2.drw LATEST
+cadrm   pmctl.drw    31-MAR-79 20:58   11490 3e0a2da336 7009559                                       7009559/cadrm/pmctl.drw LATEST
+cadrm   pmreg1.drw   31-MAR-79 21:00   10984 c280138ead 7008105                                       7008105/B7/cadrm/pmreg1.drw LATEST
+cadrm   pmreg2.drw   31-MAR-79 21:01   11372 4d93a9ce4e 7008105                                       7008105/B7/cadrm/pmreg2.drw LATEST
+cadrmw  board.drw    19-DEC-79 06:43   10263 0bd97fba74 7009559                                       7009559/cadrmw/board.drw LATEST
+cadrmw  dipm.drw     15-JAN-81 19:08   26965 f1100f73da more-stuff-for-ams                            more-stuff-for-ams/3100085/E/cadrmw/dipm.drw LATEST
+cadrmw  memads.drw   19-DEC-79 06:51    6728 480cac1aa4 7009559                                       7009559/cadrmw/memads.drw LATEST
+cadrmw  memalh.drw   19-DEC-79 04:14   15418 33000f3a0b 7009559                                       7009559/cadrmw/memalh.drw LATEST
+cadrmw  memarh.drw   02-JAN-80 19:33   29488 6da3cffb58 7009559                                       7009559/cadrmw/memarh.drw LATEST
+cadrmw  memblh.drw   19-DEC-79 04:15   15418 8f0fa2a25f 7009559                                       7009559/cadrmw/memblh.drw LATEST
+cadrmw  membrh.drw   02-JAN-80 19:35   29488 7e24970d4e 7009559                                       7009559/cadrmw/membrh.drw 
+cadrmw  membrh.drw   02-JAN-80 19:35   29488 9ba494ee10 more-stuff-for-ams                            more-stuff-for-ams/701298/BE7/cadrmw/membrh.drw LATEST
+cadrmw  memclh.drw   19-DEC-79 04:15   15418 32da53769b 7009559                                       7009559/cadrmw/memclh.drw LATEST
+cadrmw  memcrh.drw   02-JAN-80 19:36   29488 cca3c7999b 7009559                                       7009559/cadrmw/memcrh.drw LATEST
+cadrmw  memctl.drw   03-JAN-80 00:03   17226 92f0bc5e66 7009559                                       7009559/cadrmw/memctl.drw LATEST
+cadrmw  memdlh.drw   19-DEC-79 02:22   16384 e5afae955e 7009559                                       7009559/cadrmw/memdlh.drw LATEST
+cadrmw  memdrh.drw   02-JAN-80 19:36   28572 8e92fa3c3e 7009559                                       7009559/cadrmw/memdrh.drw LATEST
+cadrmw  memelh.drw   19-DEC-79 05:31   16384 22623aca25 more-stuff-for-ams                            more-stuff-for-ams/701298/BE7/cadrmw/memelh.drw 
+cadrmw  memelh.drw   19-DEC-79 05:31   16384 8d9904fdf6 7009559                                       7009559/cadrmw/memelh.drw LATEST
+cadrmw  memerh.drw   02-JAN-80 19:36   28572 dbacd936fb more-stuff-for-ams                            more-stuff-for-ams/701298/BE7/cadrmw/memerh.drw 
+cadrmw  memerh.drw   02-JAN-80 19:36   28572 a5c1a394a6 7009559                                       7009559/cadrmw/memerh.drw LATEST
+cadrmw  memflh.drw   03-JAN-80 00:09   16384 aebf8110d6 7009559                                       7009559/cadrmw/memflh.drw LATEST
+cadrmw  memfrh.drw   02-JAN-80 19:37   28572 063dd2e0b6 7009559                                       7009559/cadrmw/memfrh.drw LATEST
+cadrmw  memhlh.drw   03-JAN-80 00:09   16384 746a00aa04 7009559                                       7009559/cadrmw/memhlh.drw 
+cadrmw  memhlh.drw   03-JAN-80 00:09   16384 bd5e4c423e more-stuff-for-ams                            more-stuff-for-ams/701298/BE7/cadrmw/memhlh.drw LATEST
+cadrmw  memhrh.drw   02-JAN-80 19:38   28572 33d24786e8 7009559                                       7009559/cadrmw/memhrh.drw LATEST
+cadrmw  memras.drw   02-JAN-80 20:23   14643 d5af75726b 7009559                                       7009559/cadrmw/memras.drw LATEST
+cadrmw  memres.drw   19-DEC-79 06:47   19767 cbc53b7620 more-stuff-for-ams                            more-stuff-for-ams/701298/BE7/cadrmw/memres.drw 
+cadrmw  memres.drw   19-DEC-79 06:47   19767 bca5b4f61b 7009559                                       7009559/cadrmw/memres.drw LATEST
+cadrmw  memv.drw     06-FEB-80 04:54    4455 57b52c8dbc 7009559                                       7009559/cadrmw/memv.drw LATEST
+cadrmw  memxba.drw   02-JAN-80 23:31   10926 f11f0c7d74 7009559                                       7009559/cadrmw/memxba.drw LATEST
+cadrmw  memxbd.drw   19-DEC-79 06:47   16467 97a1f7b329 7009559                                       7009559/cadrmw/memxbd.drw LATEST
+cadrmw  mwxbus.drw   02-JAN-80 20:04    8598 2112f7d0bd 7009559                                       7009559/cadrmw/mwxbus.drw LATEST
+cadrpc  dbgadc.drw   03-JUL-80 03:23    6074 6fc37f6872 7009559                                       7009559/cadrpc/dbgadc.drw LATEST
+cadrpc  dbgblk.drw   07-JUN-80 00:17   14249 0b9d3965fa 7009559                                       7009559/cadrpc/dbgblk.drw LATEST
+cadrpc  dbgcap.drw   07-JUL-80 01:43    5003 2e8a3d6197 7009559                                       7009559/cadrpc/dbgcap.drw 
+cadrpc  dbgcap.drw   07-JUL-80 01:43   16954 a770d61b09 more-stuff-for-ams                            more-stuff-for-ams/7005736/BE7/cadrpc/dbgcap.drw LATEST
+cadrpc  dbgcon.drw   21-JUL-80 21:31   11922 6d9d537601 7009559                                       7009559/cadrpc/dbgcon.drw LATEST
+cadrpc  dbgres.drw   07-JUL-80 01:05    9340 e48b670180 7009559                                       7009559/cadrpc/dbgres.drw LATEST
+cadrpc  dbgsel.drw   08-JUN-80 09:06   14097 bc6184194b more-stuff-for-ams                            more-stuff-for-ams/7007318/B7/cadrpc/dbgsel.drw 
+cadrpc  dbgsel.drw   03-JUL-80 22:44   14097 ec9820e722 7009559                                       7009559/cadrpc/dbgsel.drw 
+cadrpc  dbgsel.drw   03-JUL-80 22:44   14097 fbd757a8c7 more-stuff-for-ams                            more-stuff-for-ams/701298/BE7/cadrpc/dbgsel.drw LATEST
+cadrpc  debug.drw    26-MAR-80 03:47   17242 2d9ed87f71 more-stuff-for-ams                            more-stuff-for-ams/7007318/B7/cadrpc/debug.drw 
+cadrpc  debug.drw    07-JUL-80 00:10   17137 c204b76f9e 7009559                                       7009559/cadrpc/debug.drw LATEST
+cadrpc  odadc.drw    07-JUN-80 00:07    6074 e837c5e1ee 7009559                                       7009559/cadrpc/odadc.drw LATEST
+cadrpc  odcon.drw    07-JUN-80 00:31   11877 18ffe4c642 7009559                                       7009559/cadrpc/odcon.drw LATEST
+cadrpc  odebug.drw   02-JUL-80 21:34   17137 ee71fd5842 7009559                                       7009559/cadrpc/odebug.drw 
+cadrpc  odebug.drw   02-JUL-80 21:34   26232 d6fa38f518 more-stuff-for-ams                            more-stuff-for-ams/7005736/BE7/cadrpc/odebug.drw LATEST
+cadrpc  odres.drw    26-MAR-80 04:39    9066 1648577f33 7009559                                       7009559/cadrpc/odres.drw LATEST
+cadrpc  odsel.drw    02-JUL-80 21:34   14092 ad6fe3083d 7009559                                       7009559/cadrpc/odsel.drw 
+cadrpc  odsel.drw    02-JUL-80 21:34   21086 07fb966fce more-stuff-for-ams                            more-stuff-for-ams/7005736/BE7/cadrpc/odsel.drw LATEST
+cadrpc  ooconn.drw   09-JUN-79 21:56    6965 324fd6c3d6 7009559                                       7009559/cadrpc/ooconn.drw LATEST
+cadrpc  oopic.drw    10-JUN-79 15:52   11976 c6622bbae3 7009559                                       7009559/cadrpc/oopic.drw LATEST
+cadrpc  oouap.drw    11-JUN-79 14:55   10169 6bcc13a435 7009559                                       7009559/cadrpc/oouap.drw LATEST
+cadrpc  opci.drw     26-MAR-80 16:59    6936 137bb9940b 7009559                                       7009559/cadrpc/opci.drw LATEST
+cadrpc  ouaprc.drw   26-MAR-80 17:08   19406 0030727bb8 7009559                                       7009559/cadrpc/ouaprc.drw LATEST
+cadrpc  pci.drw      03-JUL-80 03:22    6936 2bf369e72a 7009559                                       7009559/cadrpc/pci.drw LATEST
+cadrpc  uaproc.drw   07-JUL-80 15:55   21542 8c80529ce2 7009559                                       7009559/cadrpc/uaproc.drw LATEST
+cadrtv  bod1.drw     14-JUL-78 21:56  135390 056a664336 7009559                                       7009559/cadrtv/bod1.drw LATEST
+cadrtv  bod2.drw     23-JAN-80 05:20  115436 43574baac5 7009559                                       7009559/cadrtv/bod2.drw 
+cadrtv  bod2.drw     23-JAN-80 05:20  115436 909538e96f more-stuff-for-ams                            more-stuff-for-ams/701298/BE7/cadrtv/bod2.drw LATEST
+cadrtv  caps.drw     07-FEB-81 12:34    8788 5c97209e5d more-stuff-for-ams                            more-stuff-for-ams/7008261/B7/cadrtv/caps.drw LATEST
+cadrtv  color.drw    07-DEC-80 22:51   10976 1dfa720d68 more-stuff-for-ams                            more-stuff-for-ams/7008261/B7/cadrtv/color.drw LATEST
+cadrtv  eclbod.drw   23-JAN-80 04:23   14636 36ca43a7ea 7009559                                       7009559/cadrtv/eclbod.drw 
+cadrtv  eclbod.drw   08-DEC-80 00:12   14681 a1e7fd75c6 more-stuff-for-ams                            more-stuff-for-ams/7008261/B7/cadrtv/eclbod.drw LATEST
+cadrtv  eclcap.drw   24-JAN-80 08:43    8146 7074f33ebc 7009559                                       7009559/cadrtv/eclcap.drw LATEST
+cadrtv  eclclk.drw   08-JUL-79 14:53    8327 677f5935c8 7009559                                       7009559/cadrtv/eclclk.drw 
+cadrtv  eclclk.drw   07-DEC-80 22:49    7998 830a17efdb more-stuff-for-ams                            more-stuff-for-ams/7008261/B7/cadrtv/eclclk.drw LATEST
+cadrtv  eclsip.drw   11-OCT-78 14:49    4007 a686bce003 7009559                                       7009559/cadrtv/eclsip.drw 
+cadrtv  eclsip.drw   08-DEC-80 00:12    4240 7d2e537b33 more-stuff-for-ams                            more-stuff-for-ams/7008261/B7/cadrtv/eclsip.drw LATEST
+cadrtv  eclvid.drw   17-MAY-80 01:10   11692 bc1858ff38 7009559                                       7009559/cadrtv/eclvid.drw 
+cadrtv  eclvid.drw   07-DEC-80 22:44   14519 d73bb8143c more-stuff-for-ams                            more-stuff-for-ams/7008261/B7/cadrtv/eclvid.drw LATEST
+cadrtv  gen4b.drw    17-MAY-80 02:37    3339 875fcdb624 7009559                                       7009559/cadrtv/gen4b.drw 
+cadrtv  gen4b.drw    07-DEC-80 22:44    3087 a0ed1c7f38 more-stuff-for-ams                            more-stuff-for-ams/7008261/B7/cadrtv/gen4b.drw LATEST
+cadrtv  gen8b.drw    24-JAN-80 06:17    5366 8dda07c0cf 7009559                                       7009559/cadrtv/gen8b.drw 
+cadrtv  gen8b.drw    07-DEC-80 22:45    5366 a7fa159cfd more-stuff-for-ams                            more-stuff-for-ams/3100085/E/cadrtv/gen8b.drw LATEST
+cadrtv  lmram.drw    15-JUL-78 21:12   10434 7adca94d01 7009559                                       7009559/cadrtv/lmram.drw LATEST
+cadrtv  ncapa.drw    17-MAY-80 01:16    9216 36f84b2b2e 7009559                                       7009559/cadrtv/ncapa.drw LATEST
+cadrtv  ncapb.drw    17-MAY-80 01:17    9216 370678c72b 7009559                                       7009559/cadrtv/ncapb.drw LATEST
+cadrtv  ncapc.drw    17-MAY-80 01:17    9216 bf22379485 7009559                                       7009559/cadrtv/ncapc.drw LATEST
+cadrtv  ncapd.drw    17-MAY-80 01:17    9216 d5f111cffc 7009559                                       7009559/cadrtv/ncapd.drw LATEST
+cadrtv  necclk.drw   17-MAY-80 01:06    8023 90748a9f71 7009559                                       7009559/cadrtv/necclk.drw LATEST
+cadrtv  necsip.drw   17-MAY-80 01:09    4240 0ec0ace881 7009559                                       7009559/cadrtv/necsip.drw LATEST
+cadrtv  nraadr.drw   24-JAN-80 08:45   10507 7fc886c960 more-stuff-for-ams                            more-stuff-for-ams/701298/BE7/cadrtv/nraadr.drw 
+cadrtv  nraadr.drw   24-JAN-80 08:45   10507 d1043103be 7009559                                       7009559/cadrtv/nraadr.drw LATEST
+cadrtv  nrabuf.drw   24-JAN-80 08:46    8980 530e7d42d4 7009559                                       7009559/cadrtv/nrabuf.drw 
+cadrtv  nrabuf.drw   24-JAN-80 08:46   13558 b8a6994a13 more-stuff-for-ams                            more-stuff-for-ams/7005736/BE7/cadrtv/nrabuf.drw LATEST
+cadrtv  nracol.drw   24-JAN-80 08:46    7811 1ad3158c6c 7009559                                       7009559/cadrtv/nracol.drw LATEST
+cadrtv  nrama.drw    24-JAN-80 08:44   28338 0ca8c087d5 7009559                                       7009559/cadrtv/nrama.drw LATEST
+cadrtv  nramb.drw    24-JAN-80 08:44   28338 ff0ab1aef3 7009559                                       7009559/cadrtv/nramb.drw LATEST
+cadrtv  nramc.drw    24-JAN-80 08:44   28338 530af4ee57 7009559                                       7009559/cadrtv/nramc.drw LATEST
+cadrtv  nramd.drw    24-JAN-80 08:44   28338 a47f4e642c 7009559                                       7009559/cadrtv/nramd.drw LATEST
+cadrtv  nrashf.drw   24-JAN-80 08:47   19774 1d3c3ac9e7 7009559                                       7009559/cadrtv/nrashf.drw LATEST
+cadrtv  nsyadr.drw   17-MAY-80 01:04   14022 9b4478337c 7009559                                       7009559/cadrtv/nsyadr.drw LATEST
+cadrtv  nsyclk.drw   17-MAY-80 01:02    9014 3e5504f036 7009559                                       7009559/cadrtv/nsyclk.drw LATEST
+cadrtv  nsyram.drw   24-JAN-80 08:49   16739 ffc618d30a 7009559                                       7009559/cadrtv/nsyram.drw LATEST
+cadrtv  nsyreg.drw   17-MAY-80 01:03   12795 587b4c5416 7009559                                       7009559/cadrtv/nsyreg.drw LATEST
+cadrtv  ntvinc.drw   17-MAY-80 01:12    5408 b89af2e555 7009559                                       7009559/cadrtv/ntvinc.drw LATEST
+cadrtv  nxbctl.drw   17-MAY-80 00:57   15309 8c9847a3ef more-stuff-for-ams                            more-stuff-for-ams/701298/BE7/cadrtv/nxbctl.drw  UNREADABLE
+cadrtv  nxbctl.drw   17-MAY-80 00:57   15309 1714c11fbb 7009559                                       7009559/cadrtv/nxbctl.drw LATEST
+cadrtv  nxbus.drw    17-MAY-80 01:00   14885 10cda35a1c 7009559                                       7009559/cadrtv/nxbus.drw LATEST
+cadrtv  rama.drw     07-DEC-80 19:49   19840 be09720402 more-stuff-for-ams                            more-stuff-for-ams/7008261/B7/cadrtv/rama.drw LATEST
+cadrtv  ramadr.drw   11-OCT-78 09:18   10363 b0be44137b 7009559                                       7009559/cadrtv/ramadr.drw 
+cadrtv  ramadr.drw   07-DEC-80 22:50   12490 6e8e67306a more-stuff-for-ams                            more-stuff-for-ams/7008261/B7/cadrtv/ramadr.drw LATEST
+cadrtv  ramb.drw     07-DEC-80 19:50   19840 ad45354bde more-stuff-for-ams                            more-stuff-for-ams/7008261/B7/cadrtv/ramb.drw LATEST
+cadrtv  rambuf.drw   23-JAN-80 03:49    8980 b8a2a474c8 7009559                                       7009559/cadrtv/rambuf.drw 
+cadrtv  rambuf.drw   08-DEC-80 00:13    9566 6f88915eba more-stuff-for-ams                            more-stuff-for-ams/7008261/B7/cadrtv/rambuf.drw LATEST
+cadrtv  ramc.drw     07-DEC-80 19:57   19840 2d0c2f46ed more-stuff-for-ams                            more-stuff-for-ams/7008261/B7/cadrtv/ramc.drw LATEST
+cadrtv  ramcas.drw   24-JAN-80 08:46    6670 04a7aa96db 7009559                                       7009559/cadrtv/ramcas.drw 
+cadrtv  ramcas.drw   08-DEC-80 00:17    8068 9a649eba1b more-stuff-for-ams                            more-stuff-for-ams/7008261/B7/cadrtv/ramcas.drw LATEST
+cadrtv  ramcol.drw   08-AUG-78 11:06    4952 5b2202dfdf 7009559                                       7009559/cadrtv/ramcol.drw LATEST
+cadrtv  ramd.drw     07-DEC-80 19:53   19840 aa6c63afae more-stuff-for-ams                            more-stuff-for-ams/7008261/B7/cadrtv/ramd.drw LATEST
+cadrtv  rampwr.drw   17-MAY-80 01:15    1278 bdf0c23039 7009559                                       7009559/cadrtv/rampwr.drw LATEST
+cadrtv  ramreg.drw   24-JAN-80 08:47   14182 3f226f65cc 7009559                                       7009559/cadrtv/ramreg.drw 
+cadrtv  ramreg.drw   07-DEC-80 23:02   14883 6286fd0cb7 more-stuff-for-ams                            more-stuff-for-ams/7008261/B7/cadrtv/ramreg.drw LATEST
+cadrtv  ramshf.drw   12-OCT-78 09:12   19535 09b2cd006b 7009559                                       7009559/cadrtv/ramshf.drw 
+cadrtv  ramshf.drw   07-DEC-80 22:52   20047 8b6e243317 more-stuff-for-ams                            more-stuff-for-ams/7008261/B7/cadrtv/ramshf.drw LATEST
+cadrtv  synadr.drw   06-AUG-78 18:14   14027 0669e13bcd 7009559                                       7009559/cadrtv/synadr.drw 
+cadrtv  synadr.drw   07-DEC-80 22:53   16406 f8a531eb2d more-stuff-for-ams                            more-stuff-for-ams/7008261/B7/cadrtv/synadr.drw LATEST
+cadrtv  synclk.drw   11-OCT-78 12:56    7191 07d3a8e759 7009559                                       7009559/cadrtv/synclk.drw 
+cadrtv  synclk.drw   07-DEC-80 23:27   12141 627b8eb0c9 more-stuff-for-ams                            more-stuff-for-ams/7008261/B7/cadrtv/synclk.drw LATEST
+cadrtv  synmod.drw   28-MAY-79 21:01    6209 c4f1f1bbd5 7009559                                       7009559/cadrtv/synmod.drw LATEST
+cadrtv  synram.drw   05-AUG-78 17:28   14523 cf09510aa7 7009559                                       7009559/cadrtv/synram.drw 
+cadrtv  synram.drw   07-DEC-80 23:31   20011 e1d47a2ddf more-stuff-for-ams                            more-stuff-for-ams/7008261/B7/cadrtv/synram.drw LATEST
+cadrtv  synreg.drw   11-OCT-78 09:00   13783 43c1f90f13 7009559                                       7009559/cadrtv/synreg.drw 
+cadrtv  synreg.drw   07-DEC-80 22:57   17474 e72ccfa928 more-stuff-for-ams                            more-stuff-for-ams/7008261/B7/cadrtv/synreg.drw LATEST
+cadrtv  tvinc.drw    07-DEC-80 22:58    6803 371822d94c more-stuff-for-ams                            more-stuff-for-ams/7008261/B7/cadrtv/tvinc.drw LATEST
+cadrtv  tvma.drw     24-JAN-80 08:50    6774 400d3d7573 7009559                                       7009559/cadrtv/tvma.drw 
+cadrtv  tvma.drw     07-DEC-80 23:02    8264 bee2fc150e more-stuff-for-ams                            more-stuff-for-ams/7008261/B7/cadrtv/tvma.drw LATEST
+cadrtv  tvminc.drw   08-AUG-78 10:46    5058 0b5843b436 7009559                                       7009559/cadrtv/tvminc.drw 
+cadrtv  tvminc.drw   08-AUG-78 10:46    5068 5e2c3dab16 more-stuff-for-ams                            more-stuff-for-ams/mit1/default/cadrtv/tvminc.drw LATEST
+cadrtv  xbadr.drw    24-JAN-80 08:51   19576 a91886e5f8 7009559                                       7009559/cadrtv/xbadr.drw 
+cadrtv  xbadr.drw    10-DEC-80 10:51   21995 34d035706e more-stuff-for-ams                            more-stuff-for-ams/7008261/B7/cadrtv/xbadr.drw LATEST
+cadrtv  xbctl.drw    09-OCT-78 08:31   10430 f322a51899 7009559                                       7009559/cadrtv/xbctl.drw 
+cadrtv  xbctl.drw    07-DEC-80 23:05   21311 bfcd790422 more-stuff-for-ams                            more-stuff-for-ams/7008261/B7/cadrtv/xbctl.drw LATEST
+cadrtv  xbdata.drw   17-MAY-80 00:59   16206 d1fd752675 7009559                                       7009559/cadrtv/xbdata.drw 
+cadrtv  xbdata.drw   07-DEC-80 23:04   17391 ddfbd8ea91 more-stuff-for-ams                            more-stuff-for-ams/7008261/B7/cadrtv/xbdata.drw LATEST
+cadrtv  xbus.drw     28-MAY-79 21:05   14456 0ae982353a 7009559                                       7009559/cadrtv/xbus.drw 
+cadrtv  xbus.drw     07-DEC-80 23:01   15115 c56e756cb8 more-stuff-for-ams                            more-stuff-for-ams/7008261/B7/cadrtv/xbus.drw LATEST
+chaos   11con.drw    undated           14575 4a5a1a4373 tots-chaos-dirs-its                           tots-chaos-dirs-its/9004365/chaos/11con.drw LATEST UNREADABLE
+chaos   b2147.drw    undated            2550 3e96d47150 tots-chaos-dirs-its                           tots-chaos-dirs-its/701373/chaos/b2147.drw LATEST UNREADABLE
+chaos   bodies.drw   undated          143789 e392fac29c tots-chaos-dirs-its                           tots-chaos-dirs-its/7005406/chaos/bodies.drw LATEST
+chaos   bodies.drw   undated           90246 b618ca1d58 tots-chaos-dirs-its                           tots-chaos-dirs-its/9004365/chaos/bodies.drw  UNREADABLE
+chaos   bodies.drw   undated           89487 2c79769642 tots-chaos-dirs-its                           tots-chaos-dirs-its/7005142/chaos/bodies.drw  UNREADABLE
+chaos   bods.drw     undated           23318 3f33c47de1 tots-chaos-dirs-its                           tots-chaos-dirs-its/9004365/chaos/bods.drw LATEST UNREADABLE
+chaos   cable.drw    undated           16797 b37891ad79 tots-chaos-dirs-its                           tots-chaos-dirs-its/701373/chaos/cable.drw LATEST
+chaos   cable2.drw   undated           12028 6cc5d14a44 tots-chaos-dirs-its                           tots-chaos-dirs-its/701373/chaos/cable2.drw LATEST
+chaos   cable3.drw   undated            9245 2170b3aeac tots-chaos-dirs-its                           tots-chaos-dirs-its/701373/chaos/cable3.drw LATEST
+chaos   coni.drw     undated           13725 33c98e7245 tots-chaos-dirs-its                           tots-chaos-dirs-its/7005406/chaos/coni.drw LATEST
+chaos   cpins.drw    undated            8881 a123356e7f tots-chaos-dirs-its                           tots-chaos-dirs-its/9004365/chaos/cpins.drw LATEST UNREADABLE
+chaos   datai.drw    undated           10944 73addc9a3a tots-chaos-dirs-its                           tots-chaos-dirs-its/7005406/chaos/datai.drw LATEST
+chaos   datapa.drw   undated           19469 c38000db4c tots-chaos-dirs-its                           tots-chaos-dirs-its/9004365/chaos/datapa.drw LATEST
+chaos   detect.drw   undated           12527 0d852d7d74 tots-chaos-dirs-its                           tots-chaos-dirs-its/7005406/chaos/detect.drw LATEST
+chaos   detect.drw   undated           11372 002d50f080 tots-chaos-dirs-its                           tots-chaos-dirs-its/9004365/chaos/detect.drw  UNREADABLE
+chaos   foo.drw      undated            8215 c794b81fd2 tots-chaos-dirs-its                           tots-chaos-dirs-its/9004365/chaos/foo.drw LATEST
+chaos   icon.drw     undated           11659 959b167241 tots-chaos-dirs-its                           tots-chaos-dirs-its/9004365/chaos/icon.drw LATEST
+chaos   inbods.drw   undated            3180 1ade30aefc tots-chaos-dirs-its                           tots-chaos-dirs-its/701417/chaos/inbods.drw LATEST
+chaos   init.drw     undated             395 0041f2356f tots-chaos-dirs-its                           tots-chaos-dirs-its/9004365/chaos/init.drw LATEST UNREADABLE
+chaos   iobctl.drw   undated           12127 1be1de7734 tots-chaos-dirs-its                           tots-chaos-dirs-its/7005406/chaos/iobctl.drw LATEST
+chaos   iobtrm.drw   undated           31667 8d36f753f7 tots-chaos-dirs-its                           tots-chaos-dirs-its/7005406/chaos/iobtrm.drw LATEST
+chaos   iobxcv.drw   undated           21547 fda6dcc149 tots-chaos-dirs-its                           tots-chaos-dirs-its/7005406/chaos/iobxcv.drw LATEST
+chaos   lindrv.drw   undated           12524 8a0dd972f5 tots-chaos-dirs-its                           tots-chaos-dirs-its/7005406/chaos/lindrv.drw LATEST
+chaos   lmdatp.drw   undated           14560 9992b7ac61 tots-chaos-dirs-its                           tots-chaos-dirs-its/2100233/chaos/lmdatp.drw 
+chaos   lmdatp.drw   undated           14560 b25396fee2 tots-chaos-dirs-its                           tots-chaos-dirs-its/701417/chaos/lmdatp.drw 
+chaos   lmdatp.drw   undated           14679 922ccd8e91 tots-chaos-dirs-its                           tots-chaos-dirs-its/701373/chaos/lmdatp.drw LATEST
+chaos   lmdetc.drw   undated            9058 c170aeb1b8 tots-chaos-dirs-its                           tots-chaos-dirs-its/2100233/chaos/lmdetc.drw 
+chaos   lmdetc.drw   undated           11034 63c9254c2f tots-chaos-dirs-its                           tots-chaos-dirs-its/7007319/chaos/lmdetc.drw 
+chaos   lmdetc.drw   undated           12537 7158c6e2f5 tots-chaos-dirs-its                           tots-chaos-dirs-its/701417/chaos/lmdetc.drw 
+chaos   lmdetc.drw   undated           13406 bead835d12 tots-chaos-dirs-its                           tots-chaos-dirs-its/701373/chaos/lmdetc.drw LATEST
+chaos   lmicon.drw   undated           14250 62b05bcf02 tots-chaos-dirs-its                           tots-chaos-dirs-its/701373/chaos/lmicon.drw LATEST
+chaos   lmjpns.drw   undated           10305 66d965843a tots-chaos-dirs-its                           tots-chaos-dirs-its/2100233/chaos/lmjpns.drw 
+chaos   lmjpns.drw   undated           10305 6d4aea1d3f tots-chaos-dirs-its                           tots-chaos-dirs-its/7007319/chaos/lmjpns.drw 
+chaos   lmjpns.drw   undated           12458 de8b92f9f0 tots-chaos-dirs-its                           tots-chaos-dirs-its/701417/chaos/lmjpns.drw 
+chaos   lmjpns.drw   undated           10167 42b4a83662 tots-chaos-dirs-its                           tots-chaos-dirs-its/701373/chaos/lmjpns.drw LATEST
+chaos   lmlndr.drw   undated           10627 05812b0da8 tots-chaos-dirs-its                           tots-chaos-dirs-its/7008261/chaos/lmlndr.drw LATEST
+chaos   lmmodu.drw   undated           11019 701b33df01 tots-chaos-dirs-its                           tots-chaos-dirs-its/2100233/chaos/lmmodu.drw 
+chaos   lmmodu.drw   undated           11626 61b6187669 tots-chaos-dirs-its                           tots-chaos-dirs-its/7007319/chaos/lmmodu.drw 
+chaos   lmmodu.drw   undated           14514 63b3cc2391 tots-chaos-dirs-its                           tots-chaos-dirs-its/701417/chaos/lmmodu.drw 
+chaos   lmmodu.drw   undated            9749 aecf86eca6 tots-chaos-dirs-its                           tots-chaos-dirs-its/701373/chaos/lmmodu.drw LATEST
+chaos   lmmynm.drw   undated           18317 1086261abb tots-chaos-dirs-its                           tots-chaos-dirs-its/2100233/chaos/lmmynm.drw 
+chaos   lmmynm.drw   undated           19714 a147141b1b tots-chaos-dirs-its                           tots-chaos-dirs-its/7007319/chaos/lmmynm.drw 
+chaos   lmmynm.drw   undated           24567 b91680113f tots-chaos-dirs-its                           tots-chaos-dirs-its/701417/chaos/lmmynm.drw 
+chaos   lmmynm.drw   undated           18317 af442b33bb tots-chaos-dirs-its                           tots-chaos-dirs-its/701373/chaos/lmmynm.drw LATEST
+chaos   lmrbuf.drw   undated           11826 47ccea1047 tots-chaos-dirs-its                           tots-chaos-dirs-its/2100233/chaos/lmrbuf.drw 
+chaos   lmrbuf.drw   undated           12057 38cacf9500 tots-chaos-dirs-its                           tots-chaos-dirs-its/7007319/chaos/lmrbuf.drw 
+chaos   lmrbuf.drw   undated           16646 e32a5bc400 tots-chaos-dirs-its                           tots-chaos-dirs-its/701417/chaos/lmrbuf.drw 
+chaos   lmrbuf.drw   undated           11748 28ffc71dc8 tots-chaos-dirs-its                           tots-chaos-dirs-its/701373/chaos/lmrbuf.drw LATEST
+chaos   lmrclk.drw   undated           10319 7c35b3d241 tots-chaos-dirs-its                           tots-chaos-dirs-its/2100233/chaos/lmrclk.drw 
+chaos   lmrclk.drw   undated           10517 e40771f61e tots-chaos-dirs-its                           tots-chaos-dirs-its/7007319/chaos/lmrclk.drw 
+chaos   lmrclk.drw   undated           13558 8c1177d14f tots-chaos-dirs-its                           tots-chaos-dirs-its/701417/chaos/lmrclk.drw LATEST
+chaos   lmrctl.drw   undated            4404 52f208d0f8 tots-chaos-dirs-its                           tots-chaos-dirs-its/7007319/chaos/lmrctl.drw 
+chaos   lmrctl.drw   undated            7445 76e4c0a921 tots-chaos-dirs-its                           tots-chaos-dirs-its/701417/chaos/lmrctl.drw 
+chaos   lmrctl.drw   undated            4685 1d42ec1076 tots-chaos-dirs-its                           tots-chaos-dirs-its/701373/chaos/lmrctl.drw LATEST
+chaos   lmtbfc.drw   undated            9617 405e14782c tots-chaos-dirs-its                           tots-chaos-dirs-its/2100233/chaos/lmtbfc.drw 
+chaos   lmtbfc.drw   undated            9445 76c53bdfa4 tots-chaos-dirs-its                           tots-chaos-dirs-its/7007319/chaos/lmtbfc.drw 
+chaos   lmtbfc.drw   undated           13191 54ae9a497d tots-chaos-dirs-its                           tots-chaos-dirs-its/701417/chaos/lmtbfc.drw 
+chaos   lmtbfc.drw   undated            8930 0b19cb855b tots-chaos-dirs-its                           tots-chaos-dirs-its/701373/chaos/lmtbfc.drw LATEST
+chaos   lmtbuf.drw   undated           11878 dc93f5cec5 tots-chaos-dirs-its                           tots-chaos-dirs-its/7007319/chaos/lmtbuf.drw 
+chaos   lmtbuf.drw   undated           15593 daba6ca509 tots-chaos-dirs-its                           tots-chaos-dirs-its/701417/chaos/lmtbuf.drw 
+chaos   lmtbuf.drw   undated           11578 21c31ce5ef tots-chaos-dirs-its                           tots-chaos-dirs-its/701373/chaos/lmtbuf.drw LATEST
+chaos   lmtclk.drw   undated            3708 0cd785f38d tots-chaos-dirs-its                           tots-chaos-dirs-its/2100233/chaos/lmtclk.drw 
+chaos   lmtclk.drw   undated            3773 286dcd203c tots-chaos-dirs-its                           tots-chaos-dirs-its/7007319/chaos/lmtclk.drw 
+chaos   lmtclk.drw   undated            5889 1beb7f8782 tots-chaos-dirs-its                           tots-chaos-dirs-its/701417/chaos/lmtclk.drw 
+chaos   lmtclk.drw   undated            6346 76303cb424 tots-chaos-dirs-its                           tots-chaos-dirs-its/7008261/chaos/lmtclk.drw 
+chaos   lmtclk.drw   undated            2891 af1d206ebd tots-chaos-dirs-its                           tots-chaos-dirs-its/701373/chaos/lmtclk.drw LATEST
+chaos   lmturn.drw   undated            9998 11bb6e5110 tots-chaos-dirs-its                           tots-chaos-dirs-its/7007319/chaos/lmturn.drw 
+chaos   lmturn.drw   undated           13198 fd5c11b3d3 tots-chaos-dirs-its                           tots-chaos-dirs-its/701417/chaos/lmturn.drw 
+chaos   lmturn.drw   undated           14441 5240e61367 tots-chaos-dirs-its                           tots-chaos-dirs-its/701373/chaos/lmturn.drw LATEST
+chaos   lmucon.drw   undated           10087 172492fc7b tots-chaos-dirs-its                           tots-chaos-dirs-its/2100233/chaos/lmucon.drw 
+chaos   lmucon.drw   undated           11059 78147d7373 tots-chaos-dirs-its                           tots-chaos-dirs-its/7007319/chaos/lmucon.drw 
+chaos   lmucon.drw   undated           12882 79bdcfcc61 tots-chaos-dirs-its                           tots-chaos-dirs-its/701417/chaos/lmucon.drw 
+chaos   lmucon.drw   undated           13013 8096c2d79f tots-chaos-dirs-its                           tots-chaos-dirs-its/7008261/chaos/lmucon.drw 
+chaos   lmucon.drw   undated            9972 1ebe193bc3 tots-chaos-dirs-its                           tots-chaos-dirs-its/701373/chaos/lmucon.drw LATEST
+chaos   modula.drw   undated            9980 1ae3325044 tots-chaos-dirs-its                           tots-chaos-dirs-its/9004365/chaos/modula.drw  UNREADABLE
+chaos   modula.drw   undated           15419 675e3bb31f tots-chaos-dirs-its                           tots-chaos-dirs-its/7005406/chaos/modula.drw LATEST
+chaos   modula.drw   undated            9980 e526a36355 tots-chaos-dirs-its                           tots-chaos-dirs-its/701373/chaos/modula.drw  UNREADABLE
+chaos   modula.drw   undated           10222 e609bd14ff tots-chaos-dirs-its                           tots-chaos-dirs-its/7005142/chaos/modula.drw  UNREADABLE
+chaos   my#.drw      undated           15113 f099de757e tots-chaos-dirs-its                           tots-chaos-dirs-its/9004365/chaos/my#.drw LATEST
+chaos   mynum.drw    undated           14453 66b2ee916b tots-chaos-dirs-its                           tots-chaos-dirs-its/9004365/chaos/mynum.drw  UNREADABLE
+chaos   mynum.drw    undated           24619 1af340893d tots-chaos-dirs-its                           tots-chaos-dirs-its/7005406/chaos/mynum.drw LATEST
+chaos   myturn.drw   undated           11576 c1d803cfb9 tots-chaos-dirs-its                           tots-chaos-dirs-its/9004365/chaos/myturn.drw 
+chaos   myturn.drw   undated           13190 cd2f4af388 tots-chaos-dirs-its                           tots-chaos-dirs-its/7005406/chaos/myturn.drw 
+chaos   myturn.drw   undated           11666 18b3677eee tots-chaos-dirs-its                           tots-chaos-dirs-its/701373/chaos/myturn.drw 
+chaos   myturn.drw   undated           10963 f8a19f1d7c tots-chaos-dirs-its                           tots-chaos-dirs-its/7005142/chaos/myturn.drw LATEST
+chaos   n11con.drw   undated           16155 e581498354 tots-chaos-dirs-its                           tots-chaos-dirs-its/9004365/chaos/n11con.drw 
+chaos   n11con.drw   undated           16509 03d7619b48 tots-chaos-dirs-its                           tots-chaos-dirs-its/701373/chaos/n11con.drw LATEST
+chaos   nbods.drw    undated           32339 7337b1804b tots-chaos-dirs-its                           tots-chaos-dirs-its/701417/chaos/nbods.drw 
+chaos   nbods.drw    undated           28677 657cc60a31 tots-chaos-dirs-its                           tots-chaos-dirs-its/701373/chaos/nbods.drw 
+chaos   nbods.drw    undated           29385 a94a45e5dd tots-chaos-dirs-its                           tots-chaos-dirs-its/2100233/chaos/nbods.drw LATEST
+chaos   ncpins.drw   undated            6381 fa8631ce14 tots-chaos-dirs-its                           tots-chaos-dirs-its/9004365/chaos/ncpins.drw LATEST
+chaos   ncpins.drw   undated            6097 44e12bcca9 tots-chaos-dirs-its                           tots-chaos-dirs-its/701373/chaos/ncpins.drw  UNREADABLE
+chaos   ndatpa.drw   undated           21437 ab0e525a73 tots-chaos-dirs-its                           tots-chaos-dirs-its/9004365/chaos/ndatpa.drw 
+chaos   ndatpa.drw   undated           21560 fafdfb2cac tots-chaos-dirs-its                           tots-chaos-dirs-its/701373/chaos/ndatpa.drw LATEST
+chaos   ndetec.drw   undated           11464 ac6620661e tots-chaos-dirs-its                           tots-chaos-dirs-its/9004365/chaos/ndetec.drw 
+chaos   ndetec.drw   undated           14372 480c193e78 tots-chaos-dirs-its                           tots-chaos-dirs-its/701373/chaos/ndetec.drw LATEST
+chaos   nicon.drw    undated           14663 9eaa2bc858 tots-chaos-dirs-its                           tots-chaos-dirs-its/9004365/chaos/nicon.drw 
+chaos   nicon.drw    undated           14673 3e6f2d60e4 tots-chaos-dirs-its                           tots-chaos-dirs-its/701373/chaos/nicon.drw LATEST
+chaos   njpins.drw   undated            5041 1faf26e012 tots-chaos-dirs-its                           tots-chaos-dirs-its/9004365/chaos/njpins.drw 
+chaos   njpins.drw   undated            6295 e5247a5ba4 tots-chaos-dirs-its                           tots-chaos-dirs-its/701373/chaos/njpins.drw LATEST
+chaos   nmynum.drw   undated           18449 b08b9365d1 tots-chaos-dirs-its                           tots-chaos-dirs-its/9004365/chaos/nmynum.drw 
+chaos   nmynum.drw   undated           18520 6613b3eec9 tots-chaos-dirs-its                           tots-chaos-dirs-its/701373/chaos/nmynum.drw LATEST
+chaos   nrbuf.drw    undated           11453 56e0091833 tots-chaos-dirs-its                           tots-chaos-dirs-its/9004365/chaos/nrbuf.drw LATEST
+chaos   nrbuf.drw    undated           13969 d12cf1ae92 tots-chaos-dirs-its                           tots-chaos-dirs-its/701373/chaos/nrbuf.drw  UNREADABLE
+chaos   ntbuf.drw    undated           11249 881b9dbd07 tots-chaos-dirs-its                           tots-chaos-dirs-its/9004365/chaos/ntbuf.drw 
+chaos   ntbuf.drw    undated           13244 fbdb5d8056 tots-chaos-dirs-its                           tots-chaos-dirs-its/701373/chaos/ntbuf.drw LATEST
+chaos   ntbufc.drw   undated            6866 806cd2a842 tots-chaos-dirs-its                           tots-chaos-dirs-its/9004365/chaos/ntbufc.drw 
+chaos   ntbufc.drw   undated            9805 2c42baf562 tots-chaos-dirs-its                           tots-chaos-dirs-its/701373/chaos/ntbufc.drw LATEST
+chaos   progck.drw   undated            7249 6149d73d66 tots-chaos-dirs-its                           tots-chaos-dirs-its/9004365/chaos/progck.drw 
+chaos   progck.drw   undated            8670 a7037145ec tots-chaos-dirs-its                           tots-chaos-dirs-its/7005142/chaos/progck.drw LATEST
+chaos   qadadr.drw   undated            7614 b3415693d5 tots-chaos-dirs-its                           tots-chaos-dirs-its/2100233/chaos/qadadr.drw 
+chaos   qadadr.drw   undated           10782 efe546d10e tots-chaos-dirs-its                           tots-chaos-dirs-its/7007319/chaos/qadadr.drw 
+chaos   qadadr.drw   undated           16570 e18a44a577 tots-chaos-dirs-its                           tots-chaos-dirs-its/701417/chaos/qadadr.drw 
+chaos   qadadr.drw   undated           19935 69c1f2e9e5 tots-chaos-dirs-its                           tots-chaos-dirs-its/7008261/chaos/qadadr.drw LATEST
+chaos   qadint.drw   undated           16330 8fb3ccc724 tots-chaos-dirs-its                           tots-chaos-dirs-its/2100233/chaos/qadint.drw 
+chaos   qadint.drw   undated           16659 4e5447a007 tots-chaos-dirs-its                           tots-chaos-dirs-its/7007319/chaos/qadint.drw 
+chaos   qadint.drw   undated           20894 8b8477e41b tots-chaos-dirs-its                           tots-chaos-dirs-its/701417/chaos/qadint.drw LATEST
+chaos   qadjps.drw   undated           10595 80efe01803 tots-chaos-dirs-its                           tots-chaos-dirs-its/7007319/chaos/qadjps.drw 
+chaos   qadjps.drw   undated           12625 8327129ff3 tots-chaos-dirs-its                           tots-chaos-dirs-its/701417/chaos/qadjps.drw 
+chaos   qadjps.drw   undated            6552 2c2425e228 tots-chaos-dirs-its                           tots-chaos-dirs-its/7008261/chaos/qadjps.drw LATEST
+chaos   qadspc.drw   undated            9319 1494e18a0f tots-chaos-dirs-its                           tots-chaos-dirs-its/701417/chaos/qadspc.drw 
+chaos   qadspc.drw   undated            9319 1eef1b3d66 tots-chaos-dirs-its                           tots-chaos-dirs-its/2100233/chaos/qadspc.drw LATEST
+chaos   qadtim.drw   undated           11430 65f12cdff4 tots-chaos-dirs-its                           tots-chaos-dirs-its/2100233/chaos/qadtim.drw 
+chaos   qadtim.drw   undated           11045 6e5e3d9360 tots-chaos-dirs-its                           tots-chaos-dirs-its/7007319/chaos/qadtim.drw 
+chaos   qadtim.drw   undated           13996 7a7cb5118e tots-chaos-dirs-its                           tots-chaos-dirs-its/701417/chaos/qadtim.drw 
+chaos   qadtim.drw   undated           13996 403d039d38 tots-chaos-dirs-its                           tots-chaos-dirs-its/7008261/chaos/qadtim.drw LATEST
+chaos   qadxcv.drw   undated            8524 4d549b1fe9 tots-chaos-dirs-its                           tots-chaos-dirs-its/2100233/chaos/qadxcv.drw 
+chaos   qadxcv.drw   undated            8524 319fa66be0 tots-chaos-dirs-its                           tots-chaos-dirs-its/7007319/chaos/qadxcv.drw 
+chaos   qadxcv.drw   undated           10063 be5c94414e tots-chaos-dirs-its                           tots-chaos-dirs-its/701417/chaos/qadxcv.drw LATEST
+chaos   qbcon.drw    undated           19470 503370d889 tots-chaos-dirs-its                           tots-chaos-dirs-its/7007319/chaos/qbcon.drw 
+chaos   qbcon.drw    undated           20993 1a3555bf2b tots-chaos-dirs-its                           tots-chaos-dirs-its/701417/chaos/qbcon.drw LATEST
+chaos   qbus.drw     undated           20076 66c32a75a4 tots-chaos-dirs-its                           tots-chaos-dirs-its/7007319/chaos/qbus.drw 
+chaos   qbus.drw     undated           24124 ed16b5e156 tots-chaos-dirs-its                           tots-chaos-dirs-its/701417/chaos/qbus.drw LATEST
+chaos   qqbbpl.drw   undated            4362 f1948ff801 tots-chaos-dirs-its                           tots-chaos-dirs-its/7008261/chaos/qqbbpl.drw LATEST
+chaos   qqbint.drw   undated           14423 b4aed908c5 tots-chaos-dirs-its                           tots-chaos-dirs-its/7008261/chaos/qqbint.drw LATEST
+chaos   qqbxcv.drw   undated           13921 752f832f35 tots-chaos-dirs-its                           tots-chaos-dirs-its/7008261/chaos/qqbxcv.drw LATEST
+chaos   qubint.drw   undated           20884 c46f84da71 tots-chaos-dirs-its                           tots-chaos-dirs-its/7008261/chaos/qubint.drw LATEST
+chaos   qubxcv.drw   undated           13370 63e3f69f0a tots-chaos-dirs-its                           tots-chaos-dirs-its/7008261/chaos/qubxcv.drw LATEST
+chaos   rbuf.drw     undated           12145 eeedf2f291 tots-chaos-dirs-its                           tots-chaos-dirs-its/9004365/chaos/rbuf.drw LATEST
+chaos   rctl.drw     undated            5935 1351619658 tots-chaos-dirs-its                           tots-chaos-dirs-its/9004365/chaos/rctl.drw LATEST
+chaos   rcvbuf.drw   undated           21206 81d97d0162 tots-chaos-dirs-its                           tots-chaos-dirs-its/7005406/chaos/rcvbuf.drw LATEST
+chaos   rcvclk.drw   undated           13548 1239d5af84 tots-chaos-dirs-its                           tots-chaos-dirs-its/7005406/chaos/rcvclk.drw LATEST
+chaos   rcvctl.drw   undated            6019 3cc916d225 tots-chaos-dirs-its                           tots-chaos-dirs-its/7005406/chaos/rcvctl.drw LATEST
+chaos   tbuf.drw     undated           11234 726dbe7a53 tots-chaos-dirs-its                           tots-chaos-dirs-its/9004365/chaos/tbuf.drw LATEST UNREADABLE
+chaos   tbufin.drw   undated            7543 b5b375ae7f tots-chaos-dirs-its                           tots-chaos-dirs-its/9004365/chaos/tbufin.drw  UNREADABLE
+chaos   tbufin.drw   undated            7543 ed751a1926 tots-chaos-dirs-its                           tots-chaos-dirs-its/7005142/chaos/tbufin.drw LATEST UNREADABLE
+chaos   tclk.drw     undated            2634 46bf2ce785 tots-chaos-dirs-its                           tots-chaos-dirs-its/9004365/chaos/tclk.drw 
+chaos   tclk.drw     undated            2581 b89894ddf3 tots-chaos-dirs-its                           tots-chaos-dirs-its/7005142/chaos/tclk.drw LATEST
+chaos   wrdbts.drw   undated            2031 90f1cf6542 tots-chaos-dirs-its                           tots-chaos-dirs-its/9004365/chaos/wrdbts.drw LATEST UNREADABLE
+chaos   xcvr.drw     undated            3124 e304e4a94d tots-chaos-dirs-its                           tots-chaos-dirs-its/9004365/chaos/xcvr.drw LATEST UNREADABLE
+chaos   xmtbuf.drw   undated           13427 967b84c0aa tots-chaos-dirs-its                           tots-chaos-dirs-its/7005406/chaos/xmtbuf.drw LATEST
+chaos   xmtclk.drw   undated            5328 377a1bf4d2 tots-chaos-dirs-its                           tots-chaos-dirs-its/7005406/chaos/xmtclk.drw LATEST
+chaos   xmtctl.drw   undated            8018 dad3023018 tots-chaos-dirs-its                           tots-chaos-dirs-its/7005406/chaos/xmtctl.drw LATEST
+chaos   xmtshf.drw   undated           11883 671b072c8e tots-chaos-dirs-its                           tots-chaos-dirs-its/7005406/chaos/xmtshf.drw LATEST
+cons    amem.drw     28-MAY-75 23:14   21093 7f59eba141 9004365                                       9004365/E/cons/amem.drw LATEST UNREADABLE
+cons    bods1.drw    31-JAN-75 09:19     640 bcf88cadff 9004365                                       9004365/E/cons/bods1.drw LATEST UNREADABLE
+cons    boxctl.drw   22-NOV-74 11:59    2548 5566110428 19741205_1of3_AI_KA_Arch_1108-1112_1113p      19741205_1of3_AI_KA_Arch_1108-1112_1113p/E/cons/boxctl.drw  UNREADABLE
+cons    boxctl.drw   11-DEC-74 04:32    2542 3244609b95 9004365                                       9004365/E/cons/boxctl.drw LATEST UNREADABLE
+cons    boxlib.drw   22-NOV-74 11:16    1280 d7be60fb1a 9004365                                       9004365/E/cons/boxlib.drw LATEST UNREADABLE
+cons    cgnds.drw    10-JUL-75 07:31   14727 39c08b1d89 9004365                                       9004365/E/cons/cgnds.drw LATEST UNREADABLE
+cons    datbox.drw   01-JUL-75 12:34    6054 a236d82adf 9004365                                       9004365/E/cons/datbox.drw LATEST UNREADABLE
+cons    dispc.drw    10-JUL-75 04:05   15682 d5a9c77af0 9004365                                       9004365/E/cons/dispc.drw LATEST UNREADABLE
+cons    fubar.drw    19-AUG-76 06:50     505 e79471127b 9004365                                       9004365/E/cons/fubar.drw LATEST UNREADABLE
+cons    ilatch.drw   24-NOV-74 16:38   13291 9d24e3517a 19741205_1of3_AI_KA_Arch_1108-1112_1113p      19741205_1of3_AI_KA_Arch_1108-1112_1113p/E/cons/ilatch.drw  UNREADABLE
+cons    ilatch.drw   13-JUN-75 01:32   17563 71c184e3ab 2100236                                       2100236/E/cons/ilatch.drw  UNREADABLE
+cons    ilatch.drw   18-AUG-76 00:01   17732 b8af3e7ba3 9004365                                       9004365/E/cons/ilatch.drw LATEST
+cons    imod.drw     24-NOV-74 16:32   17092 08298b56bb 19741205_1of3_AI_KA_Arch_1108-1112_1113p      19741205_1of3_AI_KA_Arch_1108-1112_1113p/E/cons/imod.drw  UNREADABLE
+cons    imod.drw     07-JUL-75 15:12   17276 465a95ec09 2100236                                       2100236/E/cons/imod.drw  UNREADABLE
+cons    imod.drw     19-AUG-76 05:42   17346 a35906b3b0 9004365                                       9004365/E/cons/imod.drw LATEST UNREADABLE
+cons    iterm.drw    21-OCT-74 10:40    5043 9e459a55a2 19741205_1of3_AI_KA_Arch_1108-1112_1113p      19741205_1of3_AI_KA_Arch_1108-1112_1113p/E/cons/iterm.drw LATEST UNREADABLE
+cons    iwl.drw      10-JUL-75 07:26   18672 31f066233a 9004365                                       9004365/E/cons/iwl.drw LATEST UNREADABLE
+cons    iwpar.drw    04-MAR-75 18:36   11767 fdf66b6e09 9004365                                       9004365/E/cons/iwpar.drw LATEST UNREADABLE
+cons    m.drw        03-JUN-75 17:15   17139 b982ac0a64 9004365                                       9004365/E/cons/m.drw LATEST UNREADABLE
+cons    mcgnds.drw   10-JUL-75 07:27   14727 131e334385 9004365                                       9004365/E/cons/mcgnds.drw LATEST UNREADABLE
+cons    mdsel.drw    02-SEP-75 07:17   20300 7449d6f6ea 9004365                                       9004365/E/cons/mdsel.drw LATEST UNREADABLE
+cons    msel.drw     10-JUL-75 04:18   21915 e28da26f78 9004365                                       9004365/E/cons/msel.drw LATEST UNREADABLE
+cons    msel1.drw    25-JUN-75 09:35   21875 64684b603e 9004365                                       9004365/E/cons/msel1.drw LATEST UNREADABLE
+cons    mspy.drw     10-JUL-75 07:28   11617 d899312e22 2100236                                       2100236/E/cons/mspy.drw  UNREADABLE
+cons    mspy.drw     19-AUG-76 05:45   11667 c3cccc6cf3 9004365                                       9004365/E/cons/mspy.drw LATEST UNREADABLE
+cons    mspypn.drw   10-JUL-75 07:29   15312 381b091612 9004365                                       9004365/E/cons/mspypn.drw  UNREADABLE
+cons    mspypn.drw   10-JUL-75 07:29   15253 42046d5263 2100236                                       2100236/E/cons/mspypn.drw LATEST UNREADABLE
+cons    pc.drw       13-NOV-74 18:42   13927 cd4a4f6f09 19741205_1of3_AI_KA_Arch_1108-1112_1113p      19741205_1of3_AI_KA_Arch_1108-1112_1113p/E/cons/pc.drw  UNREADABLE
+cons    pc.drw       17-JUN-75 00:31    8362 fb989c4b15 9004365                                       9004365/E/cons/pc.drw LATEST UNREADABLE
+cons    pcpar.drw    10-JUL-75 07:32    7914 247d623704 2100236                                       2100236/E/cons/pcpar.drw  UNREADABLE
+cons    pcpar.drw    11-MAR-77 00:04    8474 5981908f22 9004365                                       9004365/E/cons/pcpar.drw LATEST UNREADABLE
+cons    pcs.drw      10-JUL-75 07:29   10342 a5da73d113 9004365                                       9004365/E/cons/pcs.drw LATEST UNREADABLE
+cons    ram.drw      15-NOV-74 18:37   24177 6c71a0e65c 19741205_1of3_AI_KA_Arch_1108-1112_1113p      19741205_1of3_AI_KA_Arch_1108-1112_1113p/E/cons/ram.drw LATEST UNREADABLE
+cons    rambuf.drw   18-OCT-74 20:09   18342 5c768571ca 19741205_1of3_AI_KA_Arch_1108-1112_1113p      19741205_1of3_AI_KA_Arch_1108-1112_1113p/E/cons/rambuf.drw LATEST UNREADABLE
+cons    sdctl.drw    01-JUN-75 06:34   12488 64a6de5550 2100236                                       2100236/E/cons/sdctl.drw  UNREADABLE
+cons    sdctl.drw    19-DEC-76 22:32   13343 c6fa14290e 9004365                                       9004365/E/cons/sdctl.drw LATEST
+cons    shift.drw    29-MAY-75 01:27   16559 5023515ceb 9004365                                       9004365/E/cons/shift.drw LATEST UNREADABLE
+cons    spy.drw      10-JUL-75 07:32   11612 b5bc77442b 9004365                                       9004365/E/cons/spy.drw LATEST UNREADABLE
+cons    spypin.drw   10-JUL-75 07:33    5523 d381900ee9 9004365                                       9004365/E/cons/spypin.drw LATEST UNREADABLE
+cons    t0.drw       19-AUG-76 07:20    6926 c1307e94e0 9004365                                       9004365/E/cons/t0.drw LATEST
+cons    t1.drw       19-AUG-76 06:33   12113 37e3972149 9004365                                       9004365/E/cons/t1.drw LATEST
+cons    t2.drw       19-AUG-76 06:57   21075 b95ac72756 9004365                                       9004365/E/cons/t2.drw LATEST UNREADABLE
+cons    td.drw       24-FEB-75 10:41    3173 d57b0c4b5c 9004365                                       9004365/E/cons/td.drw LATEST UNREADABLE
+cons    timing.drw   26-FEB-75 08:09    8201 f9fb7843fa 9004365                                       9004365/E/cons/timing.drw LATEST UNREADABLE
+cons    ubbuf.drw    27-MAY-76 11:52   12182 ac567df1c3 9004365                                       9004365/E/cons/ubbuf.drw LATEST
+cons    ubdint.drw   26-MAY-76 21:55    9596 67c428594e 9004365                                       9004365/E/cons/ubdint.drw LATEST UNREADABLE
+cons    ubint.drw    20-AUG-75 01:06   17639 d61c54836d 2100236                                       2100236/E/cons/ubint.drw  UNREADABLE
+cons    ubint.drw    27-JUN-76 19:33   17769 9664daa4c2 9004365                                       9004365/E/cons/ubint.drw LATEST
+cons    ubpag.drw    27-MAY-76 12:19   11546 ec8b7f763d 9004365                                       9004365/E/cons/ubpag.drw LATEST
+cons    vctlm.drw    19-DEC-76 22:28   14641 f20219bbd7 9004365                                       9004365/E/cons/vctlm.drw LATEST UNREADABLE
+cons    vgnds.drw    10-JUL-75 07:33   14732 4df75adebc 9004365                                       9004365/E/cons/vgnds.drw LATEST UNREADABLE
+cons    vmpx.drw     21-JUN-75 04:54   22426 718097eaa3 2100236                                       2100236/E/cons/vmpx.drw  UNREADABLE
+cons    vmpx.drw     19-AUG-76 05:31   22526 3dd3896632 9004365                                       9004365/E/cons/vmpx.drw LATEST
+cons    vpar.drw     25-JUN-75 17:28   12531 56c0841518 2100236                                       2100236/E/cons/vpar.drw  UNREADABLE
+cons    vpar.drw     19-AUG-76 05:32   12601 f4d8f91044 9004365                                       9004365/E/cons/vpar.drw LATEST UNREADABLE
+cons    vpins.drw    10-JUL-75 07:34   16017 c9d752cf1b 9004365                                       9004365/E/cons/vpins.drw LATEST UNREADABLE
+cons1   bakcdc.drw   01-DEC-76 03:12   17270 0d383afd18 9004365                                       9004365/E/cons1/bakcdc.drw LATEST UNREADABLE
+cons1   bakxbs.drw   30-NOV-76 21:54   11320 1d47235d10 9004365                                       9004365/E/cons1/bakxbs.drw LATEST UNREADABLE
+cons1   gdetai.drw   20-MAY-77 07:49    8216 50525eea78 9004365                                       9004365/E/cons1/gdetai.drw LATEST
+cons1   gplane.drw   20-MAY-77 07:55   14125 f071ed7ecc 9004365                                       9004365/E/cons1/gplane.drw LATEST UNREADABLE
+cons1   nback.drw    18-MAY-77 05:30    6288 f129b0170b 9004365                                       9004365/E/cons1/nback.drw LATEST
+cons1   nback1.drw   18-MAY-77 05:36    9424 c2a2189bbb 9004365                                       9004365/E/cons1/nback1.drw LATEST
+conswd  adiag.drw    06-OCT-76 06:35    5129 44cdea09b4 9004365                                       9004365/E/conswd/adiag.drw LATEST UNREADABLE
+conswd  busint.drw   11-OCT-76 03:01    8088 252e9ad130 9004365                                       9004365/E/conswd/busint.drw LATEST UNREADABLE
+conswd  dbods.drw    27-SEP-76 10:31    2865 e12888c966 9004365                                       9004365/E/conswd/dbods.drw LATEST UNREADABLE
+conswd  dec.drw      18-NOV-76 05:21   12603 e1b5109df1 9004365                                       9004365/E/conswd/dec.drw LATEST UNREADABLE
+conswd  deca1.drw    18-NOV-76 04:58   21104 234df5e348 9004365                                       9004365/E/conswd/deca1.drw LATEST
+conswd  deca1a.drw   16-NOV-76 06:59    7229 859a17fcaf 9004365                                       9004365/E/conswd/deca1a.drw LATEST UNREADABLE
+conswd  deca1h.drw   30-NOV-76 23:28   12783 7b92f283bf 9004365                                       9004365/E/conswd/deca1h.drw LATEST UNREADABLE
+conswd  deca1v.drw   18-NOV-76 04:38   23932 9b9889ceb9 9004365                                       9004365/E/conswd/deca1v.drw LATEST UNREADABLE
+conswd  deca2.drw    18-NOV-76 06:43   22437 b9c8f8d383 9004365                                       9004365/E/conswd/deca2.drw LATEST UNREADABLE
+conswd  deca2h.drw   18-NOV-76 06:59   26943 86660543af 9004365                                       9004365/E/conswd/deca2h.drw LATEST UNREADABLE
+conswd  deca2v.drw   18-NOV-76 06:55   20009 340c22c235 9004365                                       9004365/E/conswd/deca2v.drw LATEST UNREADABLE
+conswd  decc1.drw    18-NOV-76 05:00   25756 0af3a24a57 9004365                                       9004365/E/conswd/decc1.drw LATEST UNREADABLE
+conswd  decc1h.drw   18-NOV-76 03:46   23319 a9a4e1859b 9004365                                       9004365/E/conswd/decc1h.drw LATEST UNREADABLE
+conswd  decc1v.drw   18-NOV-76 02:39   25045 900732a3bc 9004365                                       9004365/E/conswd/decc1v.drw LATEST UNREADABLE
+conswd  decc2.drw    29-NOV-76 22:51   19253 743a14129c 9004365                                       9004365/E/conswd/decc2.drw LATEST UNREADABLE
+conswd  decc2h.drw   18-NOV-76 05:51   14480 d845910691 9004365                                       9004365/E/conswd/decc2h.drw LATEST UNREADABLE
+conswd  decc2v.drw   29-NOV-76 23:01   23117 aef28afd3f 9004365                                       9004365/E/conswd/decc2v.drw LATEST UNREADABLE
+conswd  dece1.drw    18-NOV-76 05:11   26199 8f6bee2a94 9004365                                       9004365/E/conswd/dece1.drw LATEST UNREADABLE
+conswd  dece1h.drw   18-NOV-76 05:14   22965 b0cb2ea382 9004365                                       9004365/E/conswd/dece1h.drw LATEST UNREADABLE
+conswd  dece1v.drw   18-NOV-76 05:13   27180 453c442db9 9004365                                       9004365/E/conswd/dece1v.drw LATEST UNREADABLE
+conswd  dece2.drw    29-NOV-76 22:54   19253 ebb1f700f4 9004365                                       9004365/E/conswd/dece2.drw LATEST UNREADABLE
+conswd  dece2h.drw   18-NOV-76 05:52   14480 b9a3dadaa7 9004365                                       9004365/E/conswd/dece2h.drw LATEST UNREADABLE
+conswd  dece2v.drw   29-NOV-76 23:06   22210 2742b583b3 9004365                                       9004365/E/conswd/dece2v.drw LATEST UNREADABLE
+conswd  decgnd.drw   16-NOV-76 01:06   13376 2fe6823038 9004365                                       9004365/E/conswd/decgnd.drw LATEST
+conswd  decrak.drw   18-NOV-76 05:31    2254 9eb99dbeea 9004365                                       9004365/E/conswd/decrak.drw LATEST UNREADABLE
+conswd  diabuf.drw   18-OCT-76 19:51    8103 fcea56172b 9004365                                       9004365/E/conswd/diabuf.drw LATEST UNREADABLE
+conswd  lmcgnd.drw   11-OCT-76 03:06   14732 f18c2a0806 9004365                                       9004365/E/conswd/lmcgnd.drw LATEST UNREADABLE
+conswd  lmpins.drw   18-OCT-76 20:05   17977 616617064f 9004365                                       9004365/E/conswd/lmpins.drw LATEST UNREADABLE
+conswd  lmxcv.drw    05-JAN-77 01:45   12276 250f13b6a4 9004365                                       9004365/E/conswd/lmxcv.drw LATEST UNREADABLE
+conswd  memd2.drw    13-OCT-76 20:15    8944 7448363f57 9004365                                       9004365/E/conswd/memd2.drw LATEST UNREADABLE
+conswd  req1.drw     18-OCT-76 18:51    7121 351d93805b 9004365                                       9004365/E/conswd/req1.drw LATEST
+conswd  req2.drw     18-OCT-76 18:53    7932 a17a1a34e8 9004365                                       9004365/E/conswd/req2.drw LATEST UNREADABLE
+conswd  sdctl.drw    10-OCT-76 18:16   13023 b3f27cf143 9004365                                       9004365/E/conswd/sdctl.drw LATEST UNREADABLE
+conswd  sync.drw     07-JUN-77 07:06   13774 aa1e4d23e3 9004365                                       9004365/E/conswd/sync.drw LATEST UNREADABLE
+conswd  timout.drw   07-JUN-77 07:09    4452 4d21c2dc5f 9004365                                       9004365/E/conswd/timout.drw LATEST UNREADABLE
+conswd  ubbuf.drw    18-OCT-76 21:12   21787 5969843ca9 9004365                                       9004365/E/conswd/ubbuf.drw LATEST
+conswd  ubbxcv.drw   11-OCT-76 03:12   10894 27d0f9b4e4 9004365                                       9004365/E/conswd/ubbxcv.drw LATEST UNREADABLE
+conswd  ubdint.drw   22-JUL-76 02:01   18503 c7ee7148b7 9004365                                       9004365/E/conswd/ubdint.drw LATEST
+conswd  ubibuf.drw   11-OCT-76 03:14   15295 6ce71858ba 9004365                                       9004365/E/conswd/ubibuf.drw LATEST UNREADABLE
+conswd  ubmsyn.drw   17-DEC-76 02:48   12431 ffdae233e3 9004365                                       9004365/E/conswd/ubmsyn.drw LATEST UNREADABLE
+conswd  ubpag.drw    18-OCT-76 20:37   19429 c707212995 9004365                                       9004365/E/conswd/ubpag.drw LATEST
+conswd  ubxcv.drw    20-OCT-76 06:23   16673 bf93f1bbfb 9004365                                       9004365/E/conswd/ubxcv.drw LATEST
+conswd  udosel.drw   18-OCT-76 21:20   14226 f971d6c1d5 9004365                                       9004365/E/conswd/udosel.drw LATEST
+conswd  unipin.drw   16-NOV-76 02:06    9529 3616cb29c6 9004365                                       9004365/E/conswd/unipin.drw LATEST UNREADABLE
+conswd  xadr.drw     18-OCT-76 21:00   15513 7058c7c091 9004365                                       9004365/E/conswd/xadr.drw LATEST UNREADABLE
+conswd  xxcv.drw     20-OCT-76 06:17   14105 475052dd60 9004365                                       9004365/E/conswd/xxcv.drw LATEST
+conswd  xxcv2.drw    05-JAN-77 01:44   12246 2c02871151 9004365                                       9004365/E/conswd/xxcv2.drw LATEST UNREADABLE
+lmdoc   chod1.drw    21-JUL-76 06:13   14732 c41098c44e 3100056                                       3100056/E/lmdoc/chod1.drw  UNREADABLE
+lmdoc   chod1.drw    17-OCT-79 08:20   14807 633730e2f8 mit3                                          mit3/default/lmdoc/chod1.drw 
+lmdoc   chod1.drw    24-FEB-81 22:24   14807 756838d3de 90108                                         90108/lmdoc/chod1.drw LATEST
+lmdoc   chodam.drw   30-MAR-78 06:31    7900 2ce7bcc545 3100056                                       3100056/E/lmdoc/chodam.drw 
+lmdoc   chodam.drw   17-OCT-79 08:21    7900 5e0f829ac1 ai_ka_arch_6of9_2827_31_2_jun_1981            ai_ka_arch_6of9_2827_31_2_jun_1981/E/lmdoc/chodam.drw 
+lmdoc   chodam.drw   18-SEP-81 08:37    7900 f8cc993926 90108                                         90108/lmdoc/chodam.drw LATEST
+lmdoc   chodi.drw    21-JUL-76 06:16    9355 565181db93 3100056                                       3100056/E/lmdoc/chodi.drw  UNREADABLE
+lmdoc   chodi.drw    17-OCT-79 08:21    9435 2058d15107 mit3                                          mit3/default/lmdoc/chodi.drw 
+lmdoc   chodi.drw    24-FEB-81 22:50    9435 c25ece4d2a ai_ka_arch_6of9_2827_31_2_jun_1981            ai_ka_arch_6of9_2827_31_2_jun_1981/E/lmdoc/chodi.drw 
+lmdoc   chodi.drw    18-SEP-81 08:46    9435 2a2da14ce1 90108                                         90108/lmdoc/chodi.drw|0 LATEST
+lmdoc   chodtm.drw   06-AUG-76 23:52   11479 c0962b45f9 3100056                                       3100056/E/lmdoc/chodtm.drw  UNREADABLE
+lmdoc   chodtm.drw   17-OCT-79 08:20   11509 381195bbe0 ai_ka_arch_6of9_2827_31_2_jun_1981            ai_ka_arch_6of9_2827_31_2_jun_1981/E/lmdoc/chodtm.drw 
+lmdoc   chodtm.drw   18-SEP-81 08:29    8830 ada8c2d4d9 90108                                         90108/lmdoc/chodtm.drw|0 LATEST
+lmdoc   fig1.drw     28-NOV-78 01:53    4320 2898b07def ai_ka_arch_6of9_2827_31_2_jun_1981            ai_ka_arch_6of9_2827_31_2_jun_1981/E/lmdoc/fig1.drw 
+lmdoc   fig1.drw     18-SEP-81 08:42    4330 834cd72a95 90108                                         90108/lmdoc/fig1.drw LATEST
+lmdoc   fig2.drw     22-MAY-79 02:53    9378 cbaaa6d039 90108                                         90108/lmdoc/fig2.drw LATEST
+lmdoc   fig3.drw     22-MAY-79 02:52    6837 980b638635 90108                                         90108/lmdoc/fig3.drw LATEST
+lmdoc   fig5.drw     22-MAY-79 02:52    6695 c7befc5430 90108                                         90108/lmdoc/fig5.drw LATEST

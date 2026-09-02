@@ -1,0 +1,44 @@
+-*-TEXT-*-
+
+		QBCHNI (Q-bus ChaosNet Interface)  ECO's 
+
+
+For Revision 3 QBCHNI (earlier revision boards should no longer exist)
+
+Fix QB:SYNC inversion
+
+Drawing:  QQBXCV
+
+		Unwire			Wire
+		------			----
+	   F07-11 : F08-11
+	   F07-11 : F06-12	   F06-12 : F11-16
+	   			   F07-11 : F11-15
+				   F07-11 : F08-11	;restore
+
+Fix board selection to depend on QB.BS7 rather than UBADDR16 and UBADDR17
+n
+Drawing:  QQBXCV, QADADR
+
+	   F07-3  : B13-13			;remove UBI0
+	   F06-7  : AC1				;flush QB.DAL.16 & 17
+	   F06-5  : AD1		   F06-7  : AP2	        ;QB.BS7* L
+	   F06-8  : F09-3	   F06-8  : F07-3	;QB.BS7 to latch
+	   F06-6  : F09-4
+	   F09-2  : E16-16
+	   F09-5  : E16-18	   E16-17 : E16-18
+				   E16-16 : F07-2
+
+Fix init problem  (reset interrupt logic with RESET rather than INIT)
+
+Drawing:  QQBINT
+
+	   B10-14 : E10-16
+	   E10-16 : F13-6	   B10-14 : E10-16	;restore
+				   F13-6  : B20-3	;RESET L
+
+NOTE: The interrupts for the Q-bus use the DEC DC003 Interrupt Protocol chip
+which unfortunately is an edge-triggered interrupt protocol, whereas the unibus
+version is level triggered.  This means, the software must clear interrupt
+enable and reset them (if desired) before returning.
+

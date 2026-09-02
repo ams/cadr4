@@ -1,0 +1,63 @@
+ECO record for DC (disk control)
+
+[Wire list of 3/4/79]
+-------
+1.  5/22/79  DAM	Fix read-compare of more than one block at a time.
+			Bug was that DONE condition was incorrect, disk-side
+			stopped one block too soon.
+
+Signal			Delete			Add
+-CMD0			D20-14 : C21-16
+CMD.TO.MEMORY					C21-5 : D20-14
+
+-------
+2.  5/22/79  DAM	Send XBUS initialize to DM board.
+
+Signal			Delete			Add
+XINIT						F20-16 : DD2
+
+-------
+3.  5/22/79  DAM	Some 67401's don't work as read-buffers.  Make their write
+			pulse wider.
+
+Signal			Delete			Add
+-BIT.CLK		D9-12 : D14-5		D9-2 : B10-14
+			D9-1 : D9-2		D9-1 : D9-2
+			D9-2 : D9-12		D14-5 : B10-14
+
+RBUF.ICLK		E10-5 : E9-5		B10-12 : E10-5
+			D9-11 : E10-5		E10-5 : E9-5
+
+RBUFSH						D9-11 : B10-15
+
+HI6						D9-12 : B10-13
+						B10-13 : B10-16
+						D13-8 : D9-12
+-------
+4.  5/26/79  DAM	25LS2536 on DCHDCM doesn't necessarily power up to the
+			correct state.  I'm not sure if this causes problems other
+			than spurious errors in the diagnostic.  Fix it to reset.
+
+Signal			Delete			Add
+HI3			A23-2 : B22-6		A23-18 : B22-6
+			A23-18 : A23-2
+
+XINIT L						A23-2 : A28-15
+-------
+5.  6/9/79  DAM		Make bits <23:22> of the MA register read back the type
+			of controller, in preparation for the Marksman controller.
+			Trident controller is type 0.
+
+Signal			Delete			Add
+XBO22						E29-13 : B23-5
+
+XBO23						E29-15 : B23-2
+
+GND						B23-3 : B23-4
+						B23-4 : B23-10
+-------
+Note 7/9/79.  The -BIT.CLK terminator has been moved from D09@1 to D14@1
+in some versions.  Look for wires on pins 1 and 2 to see which position
+is wired to accept the terminator dummy.  This is a consequence of ECO 3
+but wasn't done as part of ECO 3 to existing boards, only to new boards.
+-------

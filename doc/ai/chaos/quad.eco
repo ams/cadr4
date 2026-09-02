@@ -1,0 +1,31 @@
+Thursday, 6 March 1980  --- JLK					-*-TEXT-*-
+
+This is an ECO to fix the timing jumpers on QUAD CHAOS Rev. 2.
+
+
+Flush incorrect default jumper setting
+
+Delete			Add
+
+B11-4 : B04-13		B04-8 : B11-4
+B04-13 : B04-8
+
+Fix toplevel jumper wiring lossage
+
+A11-9 : E08-14		A11-8 : E08-14
+A11-8 : A11-9		A11-6 : C01-6
+A11-6 : C01-6
+A11-11 : A11-6
+
+Fix toplevel jumper lossage
+
+B03-3 : B03-6		B03-3 : B03-7
+B03-7 : B03-8		B03-7 : B03-8
+B03-6 : B03-7
+B03-5 : B03-10
+
+Fix interval timer bug
+
+F14-13 : B16-15		B16-11 : B16-15
+
+Then follow instructions in AI:CHAOS;QUAD SETUP

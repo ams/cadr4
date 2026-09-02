@@ -1,0 +1,101 @@
+;SKIP 1
+;TOPMAR 128
+;BOTMAR 0
+;VSP 4
+;KSET DSK:FONTS;20FG KST
+POWER CONTROL			TAFT;DBG UML		07-JUL-80  1644
+FILNAM.EXT[P,PN]	DATE	   TIME	MODULE(DWG NUM)	REV	AUTHOR
+	TITLE 1				PROJECT		NOMENCLATURE
+	TITLE 2				SHEET n OF m	BOARD TYPE
+	CARD LOC(VARIABLE SETTINGS)	NEXT HIGHER ASSEMBLY
+
+DBGADC.DRW[CAD,RPC]	03-JUL-80  0323				
+	DEBUGGER					NCP13
+	ANALOG CONVERSION				NCP13
+
+DBGCAP.DRW[CAD,RPC]	07-JUL-80  0143				
+	DEBUGGER					NCP13
+	BYPASS CAPACITORS				NCP13
+
+DBGCON.DRW[CAD,RPC]	07-JUL-80  1638				
+	DEBUGGER					NCP13
+	CONNECTORS					NCP13
+
+DBGRES.DRW[CAD,RPC]	07-JUL-80  0105				
+	DEBUGGER					NCP13
+	ANALOG INPUTS					NCP13
+
+DBGSEL.DRW[CAD,RPC]	03-JUL-80  2244				
+	DEBUGGER					NCP13
+	SELECT & CONTROL OUTPUTS			NCP13
+
+DEBUG.DRW[CAD,RPC]	07-JUL-80  0010				
+	DEBUGGER					NCP13
+	INTERFACE TO LM DEBUG PORT			NCP13
+
+PCI.DRW[CAD,RPC]	03-JUL-80  0322				
+	DEBUGGER					NCP13
+	PCI (UART) & EIA INTERFACE			NCP13
+
+UAPROC.DRW[CAD,RPC]	07-JUL-80  1555				
+	DEBUGGER					NCP13
+	MICROPROCESSOR					NCP13
+
+ÓPOWER CONTROL			TAFT;DBG UML		07-JUL-80  1644
+			*******	DIP MAP *******
+
+ÓPOWER CONTROL			TAFT;DBG UML		07-JUL-80  1645
+   ******* EDGE CONNECTIONS  Flags: (# Output, @ Terminator, ---- Dedicated ground, ++++ Dedicated power)  *******
+
+           -?-                          -?-                          -?-                          -?-               
+_____________________________________________________________________________________________________________________
+|00                          |00                          |00                          |00                          |
+|Å&00                          |00                          |00                          |00                          |Å'
+|00                          |00                          |00                          |00                          |
+|Å&00                          |00                          |00                          |00                          |Å'
+|00                          |00                          |00                          |00                          |
+|Å&00                          |00                          |00                          |00                          |Å'
+|00                          |00                          |00                          |00                          |
+|Å&00                          |00                          |00                          |00                          |Å'
+|00                          |00                          |00                          |00                          |
+|Å&00                          |00                          |00                          |00                          |Å'
+|00                          |00                          |00                          |00                          |
+|Å&00                          |00                          |00                          |00                          |Å'
+|00                          |00                          |00                          |00                          |
+|Å&00                          |00                          |00                          |00                          |Å'
+|00                          |00                          |00                          |00                          |
+|Å&00                          |00                          |00                          |00                          |Å'
+|00                          |00                          |00                          |00                          |
+|Å&00                          |00                          |00                          |00                          |Å'
+|00                          |00                          |00                          |00                          |
+|Å&00                          |00                          |00                          |00                          |Å'
+|00                          |00                          |00                          |00                          |
+|Å&00                          |00                          |00                          |00                          |Å'
+|00                          |00                          |00                          |00                          |
+|Å&00                          |00                          |00                          |00                          |Å'
+|00                          |00                          |00                          |00                          |
+|Å&00                          |00                          |00                          |00                          |Å'
+|00                          |00                          |00                          |00                          |
+|Å&00                          |00                          |00                          |00                          |Å'
+|00                          |00                          |00                          |00                          |
+|Å&00                          |00                          |00                          |00                          |Å'
+|00                          |00                          |00                          |00                          |
+|Å&00                          |00                          |00                          |00                          |Å'
+|00                          |00                          |00                          |00                          |
+|Å&00                          |00                          |00                          |00                          |Å'
+|00                          |00                          |00                          |00                          |
+|Å&00                          |00                          |00                          |00                          |Å'
+|00                          |00                          |00                          |00                          |
+|Å&00                          |00                          |00                          |00                          |Å'
+|00                          |00                          |00                          |00                          |
+|Å&00                          |00                          |00                          |00                          |Å'
+|00                          |00                          |00                          |00                          |
+|Å&00                          |00                          |00                          |00                          |Å'
+|00                          |00                          |00                          |00                          |
+|Å&00                          |00                          |00                          |00                          |Å'
+|00                          |00                          |00                          |00                          |
+|Å&00                          |00                          |00                          |00                          |Å'
+|00                          |00                          |00                          |00                          |
+|Å&00                          |00                          |00                          |00                          |Å'
+|00                          |00                          |00                          |00                          |
+|Å&00                          |00                          |00                          |00                          |Å'

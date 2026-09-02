@@ -1,0 +1,24 @@
+		COLOR MAP PINOUT		(LEBEL KLUDGE)
+
+Note, the card goes in the backplane UPSIDE-DOWN.  I.e. the
+legend "Artificial Intelligence" is to be upside-down, and the
+components are on the solder side, not the component side.
+
+A1 - nc			A2 - +5
+B1 - -BLANK		B2 - CLK^ (clocks addr into ram, data out)
+C1 - nc			C2 - GND
+D1 - nc			D2 - ADDR0
+E1 - nc			E2 - ADDR1
+F1 - nc			F2 - ADDR2
+H1 - nc			H2 - ADDR3
+J1 - nc			J2 - ADDR4
+K1 - nc			K2 - ADDR5
+L1 - nc			L2 - WDATA8
+M1 - nc			M2 - WDATA7
+N1 - nc			N2 - WDATA6
+P1 - nc			P2 - WDATA5
+R1 - -WRITE MEM		R2 - WDATA4
+S1 - nc			S2 - WDATA3
+T1 - GND		T2 - WDATA2
+U1 - -15 V		U2 - WDATA1
+V1 - +15 V		V2 - WDATA0

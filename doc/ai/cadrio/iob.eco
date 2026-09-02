@@ -1,0 +1,291 @@
+cadrio;iob eco
+ECO Log for I/O Boards   (see board status notebook for which boards have which ECOs)
+
+All ECOs which are commented out were for previous wirelists, and should
+no longer be done. -cent
+
+;ECO#1  11/11/78  Set TSREMPTY on power up.
+;
+;Signal			Delete			Add
+;
+;TOCLK		D13-17	C11-6		B15-13	B10-5
+;			B15-13	D13-17		B10-5	C11-6
+;SET TSREMPTY L					B10-6	D13-17
+;RESET L					E7-11   B10-4
+;-------
+;ECO#1.5 2/17/79 DAM	Fix damnable bug; can continue to drive Unibus when
+;			not selected. Caused interrupts to random addresses,
+;			maybe other lossages too.
+;			(This ECO is not a whole number because it stayed hidden
+;			in the CADR1 logbook until Sept. '80)
+;
+;Signal			Delete			Add
+;
+;HI3			C23-7 : C22-8		B23-15 : C23-4
+;			C23-16 : C23-4		C23-4 : C22-8
+;			C23-4 : C23-7		C23-16 : B23-15
+;-SELECT.746100 L				B23-14 : C23-7
+;-SELECT.764100					C23-5 : B23-16
+;BOARD.SELECT					C27-16 : E13-14
+;READ TOD SYNC		C27-16 : C27-15		C28-14 : C27-15
+;			C28-14 : C27-16
+;----------
+;
+;ECO#2  11/21/78  New Console Cabling 	[This was totally wrong!  Fixed 8/23/79 Moon]
+;
+;Signal			Add
+;
+;*-CLOCK		J11-1	J3-11
+;*KBDIN			J11-2	J3-12
+;*AUDIO			J11-5	J3-10
+;*VERB			J9-3	J3-13
+;*VERA			J9-4	J3-14
+;*HORB			J9-5	J3-15
+;*HORA			J9-6	J3-16
+;*HEADSW		A25-14	J3-17
+;*MIDSW			A25-16	J3-18
+;*TAILSW		A27-12	J3-19
+;H SYNC			FE1	J3-1
+;V SYNC			FE2	J3-2
+;+VIDEO			FH1	J3-3  these two wires are
+;-VIDEO			FH2	J3-23  a twisted pair
+;
+;Note twisted pair on backplane:
+;
+;H SYNC		2FE1,2FC2  15EU1,15ET1
+;V SYNC		2FE2,2FF1  15EV1,15ET1
+;VIDEO		2FH1,2FH2  15FH1,15FJ1
+;-------
+
+1/9/80	Consolidation: these are the ecos which are currently needed
+	on IOBs. The twisted pair are copied from the console cabling
+	above, the timing jumpers are from CHAOS;SPEED ECO by JLK. --cent
+
+first decommit pin J3-23, then add
+
+;H SYNC			FE1 : J3-1	;tw. pair with	
+;GND			FC2 : J3-21	;white wire to ground
+;V SYNC			FE2 : J3-2	;tw. pair with
+;GND			FF1 : J3-22	;white wire to ground
+
++VIDEO			FH1 : J3-3	;these two wires are
+-VIDEO			FH2 : J3-23	;a twisted pair
+
+;Timing Jumpers
+;[8/3/80: don't install these timing jumpers any more. all except the
+;	run B3-6 : B3-10/B3-5 : B3-10 are removed in ECO#5 -rg/jlk]
+;
+;Note: Add ONLY 5.35 MHz OR 8 MHz (not both!) 
+;
+;	5.35 MHz Operation		8 MHz Operation
+;
+;	B4-6 : B4-7			B4-6 : B4-7
+;	B4-8 : B4-9			B4-8 : B4-15
+;	B11-6 : B11-15			B11-6 : B11-15
+;	A11-6 : A11-13			A11-6 : A11-11
+;	A11-8 : A11-7			A11-8 : A11-9
+;
+;	B3-6 : B3-10	These are now	B3-5 : B3-10
+;	B3-5 : B3-7	wired in by	B3-6 : B3-7
+;			machine
+;-------
+
+ECO#3  1/30/80 Moon	Slow down keyboard clock for use with new keyboards.  Note,
+			this ECO should not be installed in machines that do not
+			have new keyboards, as it increases the chance of the old
+			keyboard rebooting the machine accidentally.
+;NOTE: this ECO undone by ECO 7.
+Signal			Delete			Add
+
+;1 USEC CLK		D24-4 : C21-17
+;			F23-4 : D24-4		F23-4 : C21-17
+;
+;TOD2						D24-4 : F23-8
+-------
+ECO#4  4/8/80 RG/Noble Larson	Supply power to video repeaters (-5V and GND)
+
+;;;NOTE that this ECO and JLK's (not-yet-documented) twinax video transmission
+;;;scheme are mutually exclusive. -cent
+
+;Signal			Add
+;GND			J03-4 : J03-24 (or any ground)
+;
+;-5V			DB2 : J03-5		
+;			EB2 : J03-6
+;			FB2 : J03-7
+;-------
+;ECO#5  8/3/80 RG/JLK  Change cable speed to 4 MHz.
+;
+;LMTCLK: Change jumper.				
+;
+;	Delete			Add
+;	B3-6 : B3-7		B3-3 : B3-7
+;	A3-8 : B3-3		A3-8 : B3-3
+;	B3-3 : B3-6		B3-5 : B3-6
+;
+;LMDETC: Change timing jumpers.
+;
+;	Delete			Add
+;	B4-7 : C1-14		C1-14 : B4-6
+;	B4-6 : B4-7		B4-6 : B4-13
+;
+;	all toplevel		B4-8 :  B4-11		;lengthen GENCLK
+;	wires on		B11-6 : B11-13
+;	B4-6			A11-6 : A11-13
+;	B4-8			A11-7 : A11-8
+;	B11-6			
+;	A11-6
+;	A11-8
+;
+;
+;FCLK/2 fix to allow UNIBUS readout at 8 MHz while cable rate is 4 MHz.
+;
+;	Delete			Add
+;	A6-7 : A16-4		A6-7 :  A16-4
+;	A6-7 : D8-6		A8-11 : D8-6
+;	A6-8 : D13-3		D13-3 : E3-12
+;	A6-8 : E3-12		A9-3 :  E3-12
+;
+;--------
+;ECO#6  10/30/80  JLK  Convert keyboard for differential signal transmission
+;		      (used only with new keyboards setup for this mode and
+;		       requires an ECO to the console connector).
+;
+;Stuff:					2DUMMY
+;	E30	75118			_______
+;	E30@2	2DUMMY  	       1|     |20
+;	F30	75118		       2|220pF|19	
+;					~~~~~~~
+;  this stuffing is now done at Metz ....drp 2/18/81
+
+
+Decommit J3-30,31,32; note that the wires to J3-10,11,12 are removed.  Old
+	IOBs run these wires indirectly through J11; for these, remove both
+	wires.
+
+;	Delete			Add
+;
+;	A27-5  : A27-6		E30-7  : E30-8  KBDIN-
+;	A27-4  : J3-12		E30-17 : E30-16 -DATA BITS & -KBD CLK
+;	C25-14 : J3-11		E30-3  : E30-4  KBDCLK+
+;	C25-11 : J3-10		E30-5  : E30-6  KBDCLK-
+;				E30-20 : E30-18 (power)
+;				E30-12 : E30-14 ************ changed by ECO #9
+;				D24-11 : E30-15 HI 3
+;				E30-14 : E30-15 ************ changed by ECO #8
+;				C25-14 : E30-16 (-DATA BITS & -KBD CLK from a nand gate
+;					         in rev 4 and earlier, but not in rev 6:
+;						 see 5/79 wirelist)
+;				A27-6  : E30-13 -KBDIN
+;				F30-20 : F30-18 (power)
+;				F30-17 : F30-16 AUDIO
+;				C25-11 : F30-16 AUDIO
+;				F30-3  : F30-4  AUDIO-
+;				F30-5  : F30-6  AUDIO+
+;				E30-12 : F30-15 HI 3
+;				E30-11 : E30-19 KBDIN RC
+;				E30-2  : E30-10 (ground to RC capacitor)
+;
+Then add twisted pair as follows:		
+
+;				J3-12 : E30-9, J3-32 : E30-7
+;				J3-11 : E30-5, J3-31 : E30-4 ****** see note on eco #9
+;				J3-10 : F30-5, J3-30 : F30-4
+
+Note: The keyboard connector wiring must be consistent with the console keyboard
+      connector wiring.  This is outlined in the console cable documentation.
+      The above can be used in single ended mode by supplying a 1volt bias
+      to J3-31 (-CLOCK) at either the IOB end or the keyboard end.
+--------
+;ECO#7  11/21/80  Moon	Speed up IOB clock to 8 microseconds per bit.
+;			This is for use with the new, new keyboard which
+;			has the mouse plugged into it.  Note, this ECO
+;			will cause the machine not to work with the older
+;			version of the Space Cadet keyboard.
+;			All but the last line of this ECO simply undoes ECO#3.
+;
+;Signal			Delete			Add
+;
+;1 USEC CLK		F23-4 : C21-17		F23-4 : D24-4
+;						D24-4 : C21-17
+;
+;TOD2			D24-4 : F23-8
+;
+;%C25-4			D24-13 : C25-4		D24-14 : C25-4
+;-------
+;ECO#8	1/31/81	RG,JLK	Fix typo in ECO#6
+;Signal			Delete			Add
+;			E30-14 : E30-15		E30-14 : E30-13
+;
+;ECO#9 5/13/81 RG,DRP another typo found in eco #6
+;			delete			add
+;			E30-12 : E30-14	       	E30-15 : E30-12
+;					
+;	ALSO: the sense of the KBDCLK+/KBDCLK- output of the 75118 differential
+;	      driver at E30 on old IOBs is opposite that of new IOBs.  Therefore
+;	      the twisted pair must be wired oppositely such that pin J3-11 has
+;	      a red wire on it and has a logical one on it in the ready state.
+;	      The symptom of of this potential bug is total lossage because the
+;	      kbd micro will send no characters unless it sees a high clock signal.
+;	      The wiring specified in eco#6 is correct for boards made from the
+;	      12/79 wirelist (rev 4) and earlier.  I'm not sure about rev 5,
+;	      because I don't have a copy.  Rev 6 (12/80) uses the wiring specified
+;	      in the consolidation of 2/18/81 below. When in doubt, use the scope.
+;
+
+2/18/81  Consolidation: the additions currently necessary for a new IOB follow:
+
+Decommit pins J3-23,30,31,32
+
+Add twisted pairs as follows: +video     FH1 : J3-3  (red)
+                              -video     FH2 : J3-23 (white)
+                              
+                                       E30-9 : J3-12 (red)
+                                       E30-7 : J3-32 (white)
+                                       
+                                       E30-4 : J3-11 (red)
+                                       E30-5 : J3-31 (white)
+
+                                       F30-5 : J3-10 (red)
+                                       F30-4 : J3-30 (white)
+
+then add 6 jumpers to set timing:
+  				       B3-5 : B3-6      ;these two determine transmit
+				       B3-6 : B3-10     ;clock speed
+
+				       B4-8 : B4-11     ;taps TD100 at 100 ns
+				       B11-6 : B11-13    ;taps TD100 at 60 ns
+				       A11-6 : A11-13    ;taps TD25 at 15 ns
+				       A11-7 : A11-8     ;taps TD25 at 10 ns
+
+
+ECO #10	12/13/81 Moon  	Output interrupts from 2651 for system 78.14
+Enables interupts on output for serial I/O.
+
+Add wire from A12-8 to C20-1.  Apply this only to IOB's wired for a 2651
+on an adaptor at A12.  Install whether or not a 2651 is actually present,
+although it makes no difference unless one is present.
+
+ECO #11 12/81 DRP	Separate High run for 9401 crc chips. observed to be noise
+			sensitive in some boards.
+
+delete			add
+
+			1K resistor from pin 1 to pin 20 of C09
+A09-12 : C09-5		C09-1 : C09-5
+C09-5 : C07-13		C09-5 :C07-13
+C07-13 : D06-13		D06-13 : A09-12
+
+ECO #12 12/81 DRP	Increase duty cycle of "fclk" and "-fclk" to 50%
+			Makes timing on crc chips less marginal
+
+delete			add
+
+			74S04 in E15
+BO3-17 : B05-4		B03-15 : B05-4 	;new source of fclk
+D03-4 : D08-6		B03-15 :D08-6
+D03-5 : B03-11		D03-5 : B03-11	;Carry still used to reset counter
+			A08-11 : E15-8  ;invert fclk
+B03-11 : A09-3		E15-9 : A09-3	;
+			E15-17 : E15-20 ;power for S04
+E03-12 :D03-5		A09-3 : E03-12

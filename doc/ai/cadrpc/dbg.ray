@@ -1,0 +1,539 @@
+              J01   26J01   25%%ABG04                              1   MIT00001
+              J01   24J02   24%%ABG04                              1   MIT00002
+              J01   24J01   25%%ABG04                              2   MIT00003
+              J02   25J02   26%%ABG04                              1   MIT00004
+              J02   25J02   24%%ABG04                              2   MIT00005
+              AB   G04AA    07%%ABG04                              1   MIT00006
+              AB   G04J02   26%%ABG04                              2   MIT00007
+              J01   12J01   26%%ABG04                              2   MIT00008
+              AA    20AB   G20%%ABG20                              1   MIT00009
+              AA    35AB   G36%%ABG36                              1   MIT00010
+              AA    33AA    35%%ABG36                              2   MIT00011
+              AB    50AA    46%%ABG44                              1   MIT00012
+              AA    45AB   G44%%ABG44                              1   MIT00013
+              AA    45AA    46%%ABG44                              2   MIT00014
+              AC    44AC    45%%ABG44                              1   MIT00015
+              AC    44AB   G44%%ABG44                              2   MIT00016
+              AE    09AE    12%%ADG12                              1   MIT00017
+              AD   G12AD    11%%ADG12                              1   MIT00018
+              AD   G12AE    12%%ADG12                              2   MIT00019
+              AD   G20AD    20%%ADG20                              1   MIT00020
+              AE    22AD   G20%%ADG20                              2   MIT00021
+              AD    30AD   G28%%ADG28                              1   MIT00022
+              AD    38AD   G36%%ADG36                              1   MIT00023
+              AE    40AD    38%%ADG36                              2   MIT00024
+              AD    48AD   G44%%ADG44                              1   MIT00025
+              J01   16J01   15%%AFG04                              1   MIT00026
+              J01   14J02   14%%AFG04                              1   MIT00027
+              J01   14J01   15%%AFG04                              2   MIT00028
+              J02   15J02   16%%AFG04                              1   MIT00029
+              J02   15J02   14%%AFG04                              2   MIT00030
+              J02   17AG    04%%AFG04                              1   MIT00031
+              J02   17J02   16%%AFG04                              2   MIT00032
+              AF   G04AF    05%%AFG04                              1   MIT00033
+              AF   G04AG    04%%AFG04                              2   MIT00034
+              J01   17J01   16%%AFG04                              2   MIT00035
+              AF    14AF   G12%%AFG12                              1   MIT00036
+              AF    22AF   G20%%AFG20                              1   MIT00037
+              AG    23AF    22%%AFG20                              2   MIT00038
+              AF    28AF   G28%%AFG28                              1   MIT00039
+              AF    31AF    28%%AFG28                              2   MIT00040
+              AF    39AF   G36%%AFG36                              1   MIT00041
+              AG    40AF    39%%AFG36                              2   MIT00042
+              AF    48AF   G44%%AFG44                              1   MIT00043
+              AH   G12AJ    12%%AHG12                              1   MIT00044
+              AH    10AH   G12%%AHG12                              2   MIT00045
+              AH   G20AH    22%%AHG20                              1   MIT00046
+              AH    24AJ    23%%AHG20                              1   MIT00047
+              AH    24AH    22%%AHG20                              2   MIT00048
+              AH    33AH   G36%%AHG36                              1   MIT00049
+              AH    50AJ    47%%AHG44                              1   MIT00050
+              AJ    46AH   G44%%AHG44                              1   MIT00051
+              AJ    46AJ    47%%AHG44                              2   MIT00052
+              AJ    42AH    41%%AHG44                              1   MIT00053
+              AJ    42AH   G44%%AHG44                              2   MIT00054
+              BC    15BB   G12%%BBG12                              1   MIT00055
+              BB    11BA    10%%BBG12                              1   MIT00056
+              BB    11BB   G12%%BBG12                              2   MIT00057
+              BB    22BB   G20%%BBG20                              1   MIT00058
+              BA    21BB    22%%BBG20                              2   MIT00059
+              BA    30BB    32%%BBG28                              1   MIT00060
+              BC    31BC    29%%BBG28                              1   MIT00061
+              BC    31BB    32%%BBG28                              2   MIT00062
+              BC    28BC    27%%BBG28                              1   MIT00063
+              BC    28BC    29%%BBG28                              2   MIT00064
+              BC    25BB   G28%%BBG28                              1   MIT00065
+              BC    25BC    27%%BBG28                              2   MIT00066
+              BA    40BB   G36%%BBG36                              1   MIT00067
+              BC    36BC    33%%BBG36                              1   MIT00068
+              BC    36BB   G36%%BBG36                              2   MIT00069
+              BC    49BC    50%%BBG44                              1   MIT00070
+              BA    50BA    46%%BBG44                              1   MIT00071
+              BA    50BC    50%%BBG44                              2   MIT00072
+              BB    42BB   G44%%BBG44                              1   MIT00073
+              BB    42BA    46%%BBG44                              2   MIT00074
+              J03   26J03   25%%BBG04                              1   MIT00075
+              J03   24J04   24%%BBG04                              1   MIT00076
+              J03   24J03   25%%BBG04                              2   MIT00077
+              J04   25J04   26%%BBG04                              1   MIT00078
+              J04   25J04   24%%BBG04                              2   MIT00079
+              BB   G04BC    07%%BBG04                              1   MIT00080
+              BB   G04J04   26%%BBG04                              2   MIT00081
+              BE    23BE    22%%BDG20                              1   MIT00082
+              BE    21BE    20%%BDG20                              1   MIT00083
+              BE    21BE    22%%BDG20                              2   MIT00084
+              BD   G20BD    17%%BDG20                              1   MIT00085
+              BD   G20BE    20%%BDG20                              2   MIT00086
+              BD    40BD   G36%%BDG36                              1   MIT00087
+              J03   23J03   22%%BDG04                              1   MIT00088
+              J03   21J03   20%%BDG04                              1   MIT00089
+              J03   21J03   22%%BDG04                              2   MIT00090
+              J03   19J03   18%%BDG04                              1   MIT00091
+              J03   19J03   20%%BDG04                              2   MIT00092
+              J04   18J04   19%%BDG04                              1   MIT00093
+              J04   18J03   18%%BDG04                              2   MIT00094
+              J04   20J04   21%%BDG04                              1   MIT00095
+              J04   20J04   19%%BDG04                              2   MIT00096
+              J04   22J04   23%%BDG04                              1   MIT00097
+              J04   22J04   21%%BDG04                              2   MIT00098
+              BD   G04BE    07%%BDG04                              1   MIT00099
+              BD   G04J04   23%%BDG04                              2   MIT00100
+              BE    15BD   G12%%BDG12                              1   MIT00101
+              BF    17BF   G20%%BFG20                              1   MIT00102
+              BE    32BE    30%%BDG28                              1   MIT00103
+              BD   G28BE    25%%BDG28                              1   MIT00104
+              BD   G28BE    30%%BDG28                              2   MIT00105
+              J03   14J03   15%%BFG04                              1   MIT00106
+              J03   16J03   17%%BFG04                              1   MIT00107
+              J03   16J03   15%%BFG04                              2   MIT00108
+              J04   17J04   16%%BFG04                              1   MIT00109
+              J04   17J03   17%%BFG04                              2   MIT00110
+              J04   15J04   14%%BFG04                              1   MIT00111
+              J04   15J04   16%%BFG04                              2   MIT00112
+              BF   G04BG    04%%BFG04                              1   MIT00113
+              BF   G04J04   14%%BFG04                              2   MIT00114
+              BG    28BF   G28%%BFG28                              1   MIT00115
+              BH    35BH   G36%%BHG36                              1   MIT00116
+              BH    36BH    37%%BHG36                              1   MIT00117
+              BH    36BH   G36%%BHG36                              2   MIT00118
+              BH    38BH    39%%BHG36                              1   MIT00119
+              BH    38BH    37%%BHG36                              2   MIT00120
+              BJ    35BH    35%%BHG36                              2   MIT00121
+              BJ    44BH   G44%%BHG44                              1   MIT00122
+              BH    43BH    44%%BHG44                              1   MIT00123
+              BH    43BH   G44%%BHG44                              2   MIT00124
+              BH    45BH    46%%BHG44                              1   MIT00125
+              BH    45BH    44%%BHG44                              2   MIT00126
+              BH    47BH    48%%BHG44                              1   MIT00127
+              BH    47BH    46%%BHG44                              2   MIT00128
+              BH    49BH    50%%BHG44                              1   MIT00129
+              BH    49BH    48%%BHG44                              2   MIT00130
+              BJ    46BJ    44%%BHG44                              2   MIT00131
+              AD   G04J02   23%%ADG04                              1   MIT00132
+              J02   22J02   21%%ADG04                              1   MIT00133
+              J02   22J02   23%%ADG04                              2   MIT00134
+              J02   20J02   19%%ADG04                              1   MIT00135
+              J02   20J02   21%%ADG04                              2   MIT00136
+              J02   18J01   18%%ADG04                              1   MIT00137
+              J02   18J02   19%%ADG04                              2   MIT00138
+              J01   19J01   20%%ADG04                              1   MIT00139
+              J01   19J01   18%%ADG04                              2   MIT00140
+              J01   21J01   22%%ADG04                              1   MIT00141
+              J01   21J01   20%%ADG04                              2   MIT00142
+              J01   23J01   09%%ADG04                              1   MIT00143
+              J01   23J01   22%%ADG04                              2   MIT00144
+              AC    15AB   V16+5.0VABV16                           1   MIT00145
+              AC    01AB   V08+5.0VABV08                           1   MIT00146
+              AC    22AB   V24+5.0VABV24                           1   MIT00147
+              AC    35AB   V32+5.0VABV32                           1   MIT00148
+              AA    50AB   V48+5.0VABV48                           1   MIT00149
+              AD    09AD   V08+5.0VADV08                           1   MIT00150
+              AE    11AD    09+5.0VADV08                           2   MIT00151
+              AD   V24AE    24+5.0VADV24                           1   MIT00152
+              AD    22AD   V24+5.0VADV24                           2   MIT00153
+              AE    32AD   V32+5.0VADV32                           1   MIT00154
+              AD   V40AD    40+5.0VADV40                           1   MIT00155
+              AE    42AD   V40+5.0VADV40                           2   MIT00156
+              AG    05AF   V08+5.0VAFV08                           1   MIT00157
+              AF    04AG    05+5.0VAFV08                           2   MIT00158
+              AG    15AF   V16+5.0VAFV16                           1   MIT00159
+              AF   V24AG    24+5.0VAFV24                           1   MIT00160
+              AF    23AF   V24+5.0VAFV24                           2   MIT00161
+              AG    32AF   V32+5.0VAFV32                           1   MIT00162
+              AF   V40AF    40+5.0VAFV40                           1   MIT00163
+              AG    42AF   V40+5.0VAFV40                           2   MIT00164
+              AH   V08AH    12+5.0VAHV08                           1   MIT00165
+              AJ    01AH   V08+5.0VAHV08                           2   MIT00166
+              AJ    13AH   V16+5.0VAHV16                           1   MIT00167
+              AH   V24AJ    24+5.0VAHV24                           1   MIT00168
+              AH    23AH   V24+5.0VAHV24                           2   MIT00169
+              AJ    34AH   V32+5.0VAHV32                           1   MIT00170
+              AH    42AH   V40+5.0VAHV40                           1   MIT00171
+              AJ    44AH    42+5.0VAHV40                           2   MIT00172
+              BB    01BB   V08+5.0VBBV08                           1   MIT00173
+              BB    12BA    11+5.0VBBV08                           1   MIT00174
+              BB    12BB   V08+5.0VBBV08                           2   MIT00175
+              BB    24BB   V24+5.0VBBV24                           1   MIT00176
+              BA    22BB    24+5.0VBBV24                           2   MIT00177
+              BB    34BB   V32+5.0VBBV32                           1   MIT00178
+              BA    32BB    34+5.0VBBV32                           2   MIT00179
+              BB    43BC    44+5.0VBBV40                           1   MIT00180
+              BC    43BC    42+5.0VBBV40                           1   MIT00181
+              BC    43BC    44+5.0VBBV40                           2   MIT00182
+              BC    41BB   V40+5.0VBBV40                           1   MIT00183
+              BC    41BC    42+5.0VBBV40                           2   MIT00184
+              BA    42BB    43+5.0VBBV40                           2   MIT00185
+              BC    46BC    48+5.0VBBV48                           1   MIT00186
+              BB   V48BB    47+5.0VBBV48                           1   MIT00187
+              BB   V48BC    48+5.0VBBV48                           2   MIT00188
+              BC    45BC    46+5.0VBBV48                           2   MIT00189
+              BD    01BD   V08+5.0VBDV08                           1   MIT00190
+              BC    17BB   V16+5.0VBBV16                           1   MIT00191
+              BE    17BD   V16+5.0VBDV16                           1   MIT00192
+              BD    19BE    17+5.0VBDV16                           2   MIT00193
+              BD    30BD   V32+5.0VBDV32                           1   MIT00194
+              BD    37BD   V40+5.0VBDV40                           1   MIT00195
+              BF    09BF   V08+5.0VBFV08                           1   MIT00196
+              BF    01BF    09+5.0VBFV08                           2   MIT00197
+              BF    18BF   V16+5.0VBFV16                           1   MIT00198
+              BG    26BF   V24+5.0VBFV24                           1   MIT00199
+              BF    27BG    26+5.0VBFV24                           2   MIT00200
+              BJ    03BH   V08+5.0VBHV08                           1   MIT00201
+              BH    34BH    33+5.0VBHV32                           1   MIT00202
+              BH    32BH   V32+5.0VBHV32                           1   MIT00203
+              BH    32BH    33+5.0VBHV32                           2   MIT00204
+              AD    33AD    26%AD24-03                             1   MIT00205
+              AH    44AE    36%AD32-10                             1   MIT00206
+              BB    25BB    28%BA24-10                             1   MIT00207
+              BB    27BD    48%BC43-09                             1   MIT00208
+              BD    49BD    50%BC43-09                             1   MIT00209
+              BD    49BD    48%BC43-09                             2   MIT00210
+              BE    11BC    03%BE09-03                             1   MIT00211
+              BF    28BE    27%BE31-02                             1   MIT00212
+              BF    31BF    28%BE31-02                             2   MIT00213
+              BF    32BE    31%BE32-02                             1   MIT00214
+              BJ    10BC    01%BG01-19                             1   MIT00215
+              BG    25BF    22ADC CLOCK                            1   MIT00216
+              BG    12AF    06ADR0                                 1   MIT00217
+              AF    24AF    32ADR0                                 1   MIT00218
+              AF    24AF    06ADR0                                 2   MIT00219
+              AC    36AA    29ADR0                                 1   MIT00220
+              AC    36AF    32ADR0                                 2   MIT00221
+              BJ    19BG    12ADR0                                 2   MIT00222
+              BG    10AF    09ADR1                                 1   MIT00223
+              AF    25AF    33ADR1                                 1   MIT00224
+              AF    25AF    09ADR1                                 2   MIT00225
+              AC    37AA    28ADR1                                 1   MIT00226
+              AC    37AF    33ADR1                                 2   MIT00227
+              BJ    20BG    10ADR1                                 2   MIT00228
+              AC    27AC    18ADR10                                1   MIT00229
+              AF    10AA    27ADR2                                 1   MIT00230
+              AC    38AF    34ADR2                                 1   MIT00231
+              AC    38AA    27ADR2                                 2   MIT00232
+              BJ    21AF    10ADR2                                 2   MIT00233
+              AF    13AF    15ADR3                                 1   MIT00234
+              AA    26AC    39ADR3                                 1   MIT00235
+              AA    26AF    15ADR3                                 2   MIT00236
+              AG    13AF    16ADR4                                 1   MIT00237
+              AA    25AC    40ADR4                                 1   MIT00238
+              AA    25AF    16ADR4                                 2   MIT00239
+              AG    10AF    17ADR5                                 1   MIT00240
+              AA    24AC    41ADR5                                 1   MIT00241
+              AA    24AF    17ADR5                                 2   MIT00242
+              AG    09AF    18ADR6                                 1   MIT00243
+              AA    23AC    42ADR6                                 1   MIT00244
+              AA    23AF    18ADR6                                 2   MIT00245
+              AG    06AF    19ADR7                                 1   MIT00246
+              AA    22AA    44ADR7                                 1   MIT00247
+              AA    22AF    19ADR7                                 2   MIT00248
+              AC    23AC    20ADR8                                 1   MIT00249
+              AC    24AC    19ADR9                                 1   MIT00250
+              AD    42AA    11ADR CLK                             1   MIT00251
+              AG    14AD    43ADR CLK^                             1   MIT00252
+              BD    24AC    12%%AC12                               1   MIT00253
+              BG    24BC    06%%BC06                               1   MIT00254
+              BC    05AG    20%%AG20                               1   MIT00255
+              BJ    22BD    05%%BD05                               1   MIT00256
+              BD    04AG    18%%AG18                               1   MIT00257
+              BG    21BD    07%%BD07                               1   MIT00258
+              BD    20AG    19%%AG19                               1   MIT00259
+              BD    06BD    20%%AG19                               2   MIT00260
+              BJ    09BF    07AUX CLK                              1   MIT00261
+              BD    09BD    34BKPL +12                             1   MIT00262
+              BD    35BJ    36BKPL +12                             1   MIT00263
+              BD    35BD    34BKPL +12                             2   MIT00264
+              BJ    16BD    36%%BC34                               1   MIT00265
+              BC    35BC    34%%BC34                               1   MIT00266
+              BC    35BD    36%%BC34                               2   MIT00267
+              BJ    38BD    32BKPL +5                              1   MIT00268
+              BD    33BC    32BKPL +5 SMPL                         1   MIT00269
+              BJ    18BD    33BKPL +5 SMPL                         2   MIT00270
+              BD    38BC    09BKPL -5                              1   MIT00271
+              BJ    37BD    38BKPL -5                              2   MIT00272
+              BC    37BC    38BKPL -5 SMPL                         1   MIT00273
+              BJ    17BC    37BKPL -5 SMPL                         2   MIT00274
+              AC    11J01   10%%AC11                               1   MIT00275
+              BJ    47AC    11%%AC11                               2   MIT00276
+              J01   11BA    49%%BA49                               1   MIT00277
+              BD    46BJ    48%%BA49                               1   MIT00278
+              BD    46BA    49%%BA49                               2   MIT00279
+              BA    47AF    46BOOT                                 1   MIT00280
+              AH    03AE    13BUS0                                 1   MIT00281
+              AH    15AH    26BUS0                                 1   MIT00282
+              AH    15AE    13BUS0                                 2   MIT00283
+              BA    35BB    36BUS0                                 1   MIT00284
+              BA    35AH    26BUS0                                 2   MIT00285
+              AH    38AF    43BUS0                                 1   MIT00286
+              AH    38BB    36BUS0                                 2   MIT00287
+              AH    27AH    16BUS1                                 1   MIT00288
+              AE    15AH    04BUS1                                 1   MIT00289
+              AE    15AH    16BUS1                                 2   MIT00290
+              AJ    38AH    27BUS1                                 2   MIT00291
+              AH    30AH    19BUS2                                 1   MIT00292
+              AE    17AH    07BUS2                                 1   MIT00293
+              AE    17AH    19BUS2                                 2   MIT00294
+              AJ    37AH    30BUS2                                 2   MIT00295
+              AH    31AH    20BUS3                                 1   MIT00296
+              AE    19AH    08BUS3                                 1   MIT00297
+              AE    19AH    20BUS3                                 2   MIT00298
+              AD    19AJ    08BUS4                                 1   MIT00299
+              AJ    20AJ    31BUS4                                 1   MIT00300
+              AJ    20AJ    08BUS4                                 2   MIT00301
+              AD    17AJ    07BUS5                                 1   MIT00302
+              AJ    19AJ    30BUS5                                 1   MIT00303
+              AJ    19AJ    07BUS5                                 2   MIT00304
+              AD    15AJ    04BUS6                                 1   MIT00305
+              AJ    16AJ    27BUS6                                 1   MIT00306
+              AJ    16AJ    04BUS6                                 2   MIT00307
+              AD    13AJ    03BUS7                                 1   MIT00308
+              AJ    15AJ    26BUS7                                 1   MIT00309
+              AJ    15AJ    03BUS7                                 2   MIT00310
+              BD    28BG    18%%BD28                               1   MIT00311
+              BJ    33BD    28%%BD28                               2   MIT00312
+              BJ    12BF    15-CTS IN                              1   MIT00313
+              AD    32AC    46DATA MEM REQ                         1   MIT00314
+              AF    20AD    32DATA MEM REQ                         2   MIT00315
+              AH    02BA    03DBG0                                 1   MIT00316
+              J02   01AH    02DBG0                                 2   MIT00317
+              AH    05BA    04DBG1                                 1   MIT00318
+              J02   02AH    05DBG1                                 2   MIT00319
+              AH    18BA    18DBG10                                1   MIT00320
+              J02   11AH    18DBG10                                2   MIT00321
+              AH    21BA    19DBG11                                1   MIT00322
+              J02   12AH    21DBG11                                2   MIT00323
+              AJ    21BB    19DBG12                                1   MIT00324
+              J02   13AJ    21DBG12                                2   MIT00325
+              AJ    18BB    18DBG13                                1   MIT00326
+              J01   01AJ    18DBG13                                2   MIT00327
+              BB    15AJ    17DBG14                                1   MIT00328
+              J01   02BB    15DBG14                                2   MIT00329
+              AJ    14BB    14DBG15                                1   MIT00330
+              J01   03AJ    14DBG15                                2   MIT00331
+              AH    06BA    07DBG2                                 1   MIT00332
+              J02   03AH    06DBG2                                 2   MIT00333
+              AH    09BA    08DBG3                                 1   MIT00334
+              J02   04AH    09DBG3                                 2   MIT00335
+              AJ    09BB    08DBG4                                 1   MIT00336
+              J02   05AJ    09DBG4                                 2   MIT00337
+              AJ    06BB    07DBG5                                 1   MIT00338
+              J02   06AJ    06DBG5                                 2   MIT00339
+              AJ    05BB    04DBG6                                 1   MIT00340
+              J02   07AJ    05DBG6                                 2   MIT00341
+              AJ    02BB    03DBG7                                 1   MIT00342
+              J02   08AJ    02DBG7                                 2   MIT00343
+              AH    14BA    14DBG8                                 1   MIT00344
+              J02   09AH    14DBG8                                 2   MIT00345
+              AH    17BA    15DBG9                                 1   MIT00346
+              J02   10AH    17DBG9                                 2   MIT00347
+              J01   04AH    40DBG A0                               1   MIT00348
+              J01   05AJ    40DBG A1                               1   MIT00349
+              AD    28AE    26-DBG ACK  H                          1   MIT00350
+              AE    48AD    28-DBG ACK  H                          2   MIT00351
+              J01   08AE    47DBG ACK IN                           1   MIT00352
+              AD    29AC    02DBG INT FREE                         1   MIT00353
+              AD    27AH    49-DBG REQ  H                          1   MIT00354
+              J01   07AD    27-DBG REQ  H                          2   MIT00355
+              J01   06AJ    35DBG WRITE                            1   MIT00356
+              AH    13AH    01-DBG WRITE                           1   MIT00357
+              AJ    36AH    13-DBG WRITE                           2   MIT00358
+              BJ    13BF    12-DCD IN                              1   MIT00359
+              AH    34AG    31%%AG31                               1   MIT00360
+              BA    12AG    26%%AG26                               1   MIT00361
+              AJ    22AG    30%%AG30                               1   MIT00362
+              BB    10BB    21%%AE37                               1   MIT00363
+              AE    37AE    44%%AE37                               1   MIT00364
+              AE    37BB    21%%AE37                               2   MIT00365
+              AE    43AE    27%%AE27                               1   MIT00366
+              BA    01AG    25%%AG25                               1   MIT00367
+              AJ    10AG    29%%AG29                               1   MIT00368
+              AF    27AF    21%%AF21                               1   MIT00369
+              AG    27AE    25%%AE25                               1   MIT00370
+              BJ    07BE    14-DSR IN                              1   MIT00371
+              BJ    05BC    12-DTR OUT                             1   MIT00372
+              J03   06BF    13EIA CTS IN                           1   MIT00373
+              J03   02BE    09EIA DATA IN                          1   MIT00374
+              J03   01BC    11EIA DATA OUT                         1   MIT00375
+              J03   07BF    10EIA DCD IN                           1   MIT00376
+              J03   04BE    12EIA DSR IN                           1   MIT00377
+              J03   03BC    14EIA DTR OUT                          1   MIT00378
+              J03   05BD    15EIA RTS OUT                          1   MIT00379
+              BA    43AJ    50%%AJ50                               1   MIT00380
+              BD    41BA    45%%BA45                               1   MIT00381
+              BJ    45BD    41%%BA45                               2   MIT00382
+              BG    22BD    22END OF CNVRT                         1   MIT00383
+              J04   09AC    07EXT IN 1                             1   MIT00384
+              J04   10AC    08EXT IN 2                             1   MIT00385
+              J04   11AC    09EXT IN 3                             1   MIT00386
+              AF    35AG    22-EXT SEL  H                          1   MIT00387
+              BC    13BC    19HI1                                  1   MIT00388
+              BC    22BA    34HI1                                  1   MIT00389
+              BC    22BC    19HI1                                  2   MIT00390
+              BB    38BD    43HI1                                  1   MIT00391
+              BB    38BA    34HI1                                  2   MIT00392
+              AH    47AH    45HI1                                  1   MIT00393
+              AH    47BD    43HI1                                  2   MIT00394
+              AF    45AF    37HI1                                  1   MIT00395
+              AF    45AH    45HI1                                  2   MIT00396
+              AF    29AC    28HI1                                  1   MIT00397
+              AF    29AF    37HI1                                  2   MIT00398
+              AA    06AA    05HI1                                  1   MIT00399
+              AA    06AC    28HI1                                  2   MIT00400
+              BD    13BC    13HI1                                  2   MIT00401
+              BE    18BD    21HI2                                  1   MIT00402
+              BD    23BE    24HI2                                  1   MIT00403
+              BD    23BD    21HI2                                  2   MIT00404
+              BF    24BF    25HI2                                  1   MIT00405
+              BF    24BE    24HI2                                  2   MIT00406
+              BD    44BB    45HI2                                  1   MIT00407
+              BD    44BF    25HI2                                  2   MIT00408
+              BB    49BA    48HI2                                  1   MIT00409
+              BB    49BB    45HI2                                  2   MIT00410
+              BA    44AJ    41HI2                                  1   MIT00411
+              BA    44BA    48HI2                                  2   MIT00412
+              J04   01AH    25LED0                                 1   MIT00413
+              J04   02AH    28LED1                                 1   MIT00414
+              J04   03AH    29LED2                                 1   MIT00415
+              J04   04AH    32LED3                                 1   MIT00416
+              J04   05AJ    32LED4                                 1   MIT00417
+              J04   06AJ    29LED5                                 1   MIT00418
+              J04   07AJ    28LED6                                 1   MIT00419
+              J04   08AJ    25LED7                                 1   MIT00420
+              BG    03BC    04PCI DATA IN                          1   MIT00421
+              BC    10BC    02%%BC02                               1   MIT00422
+              BC    21AG    21-PCI SEL  H                          1   MIT00423
+              BG    11BC    21-PCI SEL  H                          2   MIT00424
+              J04   12AC    14POWER OFF SW                         1   MIT00425
+              BB    48BB    40-POWER OK                            1   MIT00426
+              J01   13BB    50POWER OK OUT                         1   MIT00427
+              BD    45BJ    49POWER OK OUT                         1   MIT00428
+              BD    45BB    50POWER OK OUT                         2   MIT00429
+              J04   13AC    13POWER ON SW                          1   MIT00430
+              BD    42BB    46%%BB46                               1   MIT00431
+              BJ    43BD    42%%BB46                               2   MIT00432
+              BJ    39BD    39PROC +5                              1   MIT00433
+              BC    39BC    40PROC +5 SMPL                         1   MIT00434
+              BG    16BC    39PROC +5 SMPL                         2   MIT00435
+              BG    19BD    27%%BD27                               1   MIT00436
+              BJ    32BG    19%%BD27                               2   MIT00437
+              AD    45AD    34%%AD34                               1   MIT00438
+              AC    26AA    09%%AA09                               1   MIT00439
+              AD    44AC    26%%AA09                               2   MIT00440
+              BB    44BA    39%%BA39                               1   MIT00441
+              BJ    50AC    10%%AC10                               1   MIT00442
+              BC    20AF    26-READ  H                             1   MIT00443
+              AD    24AA    08-READ  H                             1   MIT00444
+              AD    24AF    26-READ  H                             2   MIT00445
+              BG    13BC    23%%BC23                               1   MIT00446
+              AE    38AD    47RESET                                1   MIT00447
+              BJ    08AE    38RESET                                2   MIT00448
+              BB    26BB    35-RESET                               1   MIT00449
+              BA    37AJ    45-RESET                               1   MIT00450
+              BA    37BB    35-RESET                               2   MIT00451
+              AF    42AD    46-RESET                               1   MIT00452
+              AF    42AJ    45-RESET                               2   MIT00453
+              AA    04BB    26-RESET                               2   MIT00454
+              BG    20BD    29%%BD29                               1   MIT00455
+              BJ    34BG    20%%BD29                               2   MIT00456
+              BJ    06BD    14-RTS OUT                             1   MIT00457
+              AH    46AF    30%%AF30                               1   MIT00458
+              BD    31BC    30%%BC30                               1   MIT00459
+              BG    17BD    31%%BC30                               2   MIT00460
+              AJ    48AF    38%%AF38                               1   MIT00461
+              BE    19AA    01UA CLK OUT                           1   MIT00462
+              BG    08BA    13UBUS0                                1   MIT00463
+              BA    02AF    07UBUS0                                1   MIT00464
+              BA    02BA    13UBUS0                                2   MIT00465
+              AD    12AA    12UBUS0                                1   MIT00466
+              AD    12AF    07UBUS0                                2   MIT00467
+              AA    30AA    43UBUS0                                1   MIT00468
+              AA    30AA    12UBUS0                                2   MIT00469
+              BJ    27BG    08UBUS0                                2   MIT00470
+              BG    07BA    16UBUS1                                1   MIT00471
+              BA    05AF    08UBUS1                                1   MIT00472
+              BA    05BA    16UBUS1                                2   MIT00473
+              AD    14AA    13UBUS1                                1   MIT00474
+              AD    14AF    08UBUS1                                2   MIT00475
+              AA    31AA    42UBUS1                                1   MIT00476
+              AA    31AA    13UBUS1                                2   MIT00477
+              BG    29BG    07UBUS1                                2   MIT00478
+              BG    06BA    06UBUS2                                1   MIT00479
+              BA    17AF    11UBUS2                                1   MIT00480
+              BA    17BA    06UBUS2                                2   MIT00481
+              AD    16AA    14UBUS2                                1   MIT00482
+              AD    16AF    11UBUS2                                2   MIT00483
+              AA    32AA    41UBUS2                                1   MIT00484
+              AA    32AA    14UBUS2                                2   MIT00485
+              BJ    29BG    06UBUS2                                2   MIT00486
+              BG    23BA    20UBUS3                                1   MIT00487
+              BA    09AF    12UBUS3                                1   MIT00488
+              BA    09BA    20UBUS3                                2   MIT00489
+              AD    18AA    15UBUS3                                1   MIT00490
+              AD    18AF    12UBUS3                                2   MIT00491
+              AC    33AA    40UBUS3                                1   MIT00492
+              AC    33AA    15UBUS3                                2   MIT00493
+              BG    05BG    23UBUS3                                2   MIT00494
+              BG    02BB    09UBUS4                                1   MIT00495
+              BB    20AG    12UBUS4                                1   MIT00496
+              BB    20BB    09UBUS4                                2   MIT00497
+              AE    20AA    16UBUS4                                1   MIT00498
+              AE    20AG    12UBUS4                                2   MIT00499
+              AC    32AA    39UBUS4                                1   MIT00500
+              AC    32AA    16UBUS4                                2   MIT00501
+              BJ    26BG    02UBUS4                                2   MIT00502
+              BG    01BB    06UBUS5                                1   MIT00503
+              BB    17AG    11UBUS5                                1   MIT00504
+              BB    17BB    06UBUS5                                2   MIT00505
+              AE    18AA    17UBUS5                                1   MIT00506
+              AE    18AG    11UBUS5                                2   MIT00507
+              AC    31AA    38UBUS5                                1   MIT00508
+              AC    31AA    17UBUS5                                2   MIT00509
+              BJ    25BG    01UBUS5                                2   MIT00510
+              BJ    24BB    16UBUS6                                1   MIT00511
+              BB    05AG    08UBUS6                                1   MIT00512
+              BB    05BB    16UBUS6                                2   MIT00513
+              AE    16AA    18UBUS6                                1   MIT00514
+              AE    16AG    08UBUS6                                2   MIT00515
+              AC    30AA    37UBUS6                                1   MIT00516
+              AC    30AA    18UBUS6                                2   MIT00517
+              BJ    01BJ    24UBUS6                                2   MIT00518
+              BJ    02BB    02UBUS7                                1   MIT00519
+              BB    13AG    07UBUS7                                1   MIT00520
+              BB    13BB    02UBUS7                                2   MIT00521
+              AE    14AA    19UBUS7                                1   MIT00522
+              AE    14AG    07UBUS7                                2   MIT00523
+              AC    29AA    36UBUS7                                1   MIT00524
+              AC    29AA    19UBUS7                                2   MIT00525
+              BJ    23BJ    02UBUS7                                2   MIT00526
+              BF    29BE    28VREF(+)                              1   MIT00527
+              BG    27BF    29VREF(+)                              2   MIT00528
+              BF    30BE    29VREF(-)                              1   MIT00529
+              BJ    28BF    30VREF(-)                              2   MIT00530
+              AA    10AD    25-WRITE  H                            1   MIT00531
+              AF    36AC    43-WRITE  H                            1   MIT00532
+              AF    36AD    25-WRITE  H                            2   MIT00533
+              AF    44AG    38%%AG38                               1   MIT00534
+              AJ    33AG    33%%AG33                               1   MIT00535
+              BB    37AG    36%%AG36                               1   MIT00536
+              BA    36AG    37%%AG37                               1   MIT00537
+              AD    01AA    02XTAL 1                               1   MIT00538
+              AD    02AA    03XTAL 2                               1   MIT00539
