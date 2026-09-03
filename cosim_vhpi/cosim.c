@@ -1,5 +1,4 @@
 #include <assert.h>
-#include <math.h>
 #include <stdio.h>
 #include <stdint.h>
 #include <vhpi_user.h>
@@ -20,6 +19,17 @@ void (*vhpi_startup_routines[])() = {
 static int time_precision;
 static double nanoseconds_per_tick;
 
+// 10 raised to an integer power without libm: the shared library must not
+// have undefined symbols on Linux (ghdl --vpi-link does not add -lm)
+static double power_of_ten(int exponent)
+{
+    double result = 1.0;
+    for (int i = 0; i < exponent; i++) result *= 10.0;
+    for (int i = 0; i > exponent; i--) result /= 10.0;
+    return result;
+}
+
+
 void cosim_util_startup()
 {
     vhpiPhysT res = vhpi_get_phys(vhpiResolutionLimitP, NULL);
@@ -36,7 +46,7 @@ void cosim_util_startup()
         cosim_finish_simulation("Unsupported resolution limit");
     }
 
-    nanoseconds_per_tick = pow(10.0, time_precision + 9);
+    nanoseconds_per_tick = power_of_ten(time_precision + 9);
 }
 
 double cosim_current_time_ns()

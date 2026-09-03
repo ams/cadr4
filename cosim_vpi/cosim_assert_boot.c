@@ -1,5 +1,4 @@
 
-#include <math.h>
 #include <stdio.h>
 #include <vpi_user.h>
 
@@ -13,15 +12,26 @@ static void terminate_simulation_with_error(const char* error_msg) {
 static PLI_INT32 time_precision;
 static double ticks_per_ns;
 
+// 10 raised to an integer power without libm: the shared library must not
+// have undefined symbols on Linux (ghdl --vpi-link does not add -lm)
+static double power_of_ten(int exponent)
+{
+    double result = 1.0;
+    for (int i = 0; i < exponent; i++) result *= 10.0;
+    for (int i = 0; i > exponent; i--) result /= 10.0;
+    return result;
+}
+
+
 // one tick is 10^time_precision seconds, so one ns is 10^(-9 - precision) ticks
 static void initialize_simulation_defaults()
 {
     time_precision = vpi_get(vpiTimePrecision, NULL);
-    ticks_per_ns = pow(10.0, -9 - time_precision);
+    ticks_per_ns = power_of_ten(-9 - time_precision);
 }
 
 static uint64_t ticks_from_ns(double ns) {
-    return (uint64_t) llround(ns * ticks_per_ns);
+    return (uint64_t) (ns * ticks_per_ns + 0.5);
 }
 
 static void setup_s_vpi_time_ns(double ns, s_vpi_time* t)

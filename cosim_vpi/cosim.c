@@ -1,4 +1,3 @@
-#include <math.h>
 #include <stdio.h>
 #include <vpi_user.h>
 
@@ -20,12 +19,23 @@ void (*vlog_startup_routines[])() = {
 static PLI_INT32 time_precision;
 static double nanoseconds_per_tick;
 
+// 10 raised to an integer power without libm: the shared library must not
+// have undefined symbols on Linux (ghdl --vpi-link does not add -lm)
+static double power_of_ten(int exponent)
+{
+    double result = 1.0;
+    for (int i = 0; i < exponent; i++) result *= 10.0;
+    for (int i = 0; i > exponent; i--) result /= 10.0;
+    return result;
+}
+
+
 void cosim_util_startup()
 {
     time_precision = vpi_get(vpiTimePrecision, NULL);
     //VPI_PRINTF("time precision: %d\n", time_precision);
 
-    nanoseconds_per_tick = pow(10.0, time_precision + 9);
+    nanoseconds_per_tick = power_of_ten(time_precision + 9);
     //VPI_PRINTF("nanoseconds per tick: %e\n", nanoseconds_per_tick);
 }
 
