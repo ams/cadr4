@@ -1176,6 +1176,8 @@ package helper is
         pc11    : in std_logic;
         pc12    : in std_logic;
         pc13    : in std_logic;
+        tpclk   : in std_logic;
+        iwrited : in std_logic;
         \-promenable\ : in std_logic
       );
   end component;

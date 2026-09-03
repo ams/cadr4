@@ -110,7 +110,7 @@ regen:
 .PHONY: regenerate-packages
 regenerate-packages:
 	python3 $(CREATE_PACKAGE_FROM_ENTITIES_PY) -p dip/dip.vhd -i dip/dip_*.vhd
-	python3 $(CREATE_PACKAGE_FROM_ENTITIES_PY) -p helper/helper.vhd -i helper/helper_*.vhd
+	python3 $(CREATE_PACKAGE_FROM_ENTITIES_PY) -p helper/helper.vhd -i helper/helper_*.vhd -e helper/*_tb.vhd
 	python3 $(CREATE_PACKAGE_FROM_ENTITIES_PY) -p ttl/amd.vhd -i ttl/am*.vhd -e ttl/*_tb.vhd
 	python3 $(CREATE_PACKAGE_FROM_ENTITIES_PY) -p ttl/ecc.vhd -i ttl/ttldm.vhd ttl/mttldl.vhd  -e ttl/*_tb.vhd
 	python3 $(CREATE_PACKAGE_FROM_ENTITIES_PY) -p ttl/fairchild.vhd -i ttl/dm*.vhd -e ttl/*_tb.vhd
