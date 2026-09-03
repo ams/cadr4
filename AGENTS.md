@@ -41,7 +41,7 @@ example, to run cadr/cadr_alu_tb.vhd, you should execute `make run-cadr_alu_tb`.
 - Original CADR paper is at: https://tumbleweed.nu/r/lm-3/uv/cadr.html
 - CADR schematics in PNG format are at doc/schematics folder.
 - CADR AI documents are at doc/ai folder.
-- Datasheets for TTL components in markdown format are under doc/ttl.md folder. For example, for TTL component X.vhd, it is doc/ttl.md/X/X.md.
+- Datasheets for TTL components in PDF format are under doc/ttl folder. For example, for TTL component X.vhd, it is doc/ttl/X.pdf.
 - VHDL-2008 language reference is at doc/VHDL_2008.md
 - Verilog-2005 language reference is at doc/Verilog_2005.md
 - GHDL documentation is at: https://ghdl.github.io/ghdl/
