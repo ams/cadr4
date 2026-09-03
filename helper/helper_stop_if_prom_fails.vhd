@@ -27,9 +27,11 @@ architecture behavioral of helper_stop_if_prom_fails is
   begin
     pc <= pc13 & pc12 & pc11 & pc10 & pc9 & pc8 & pc7 & pc6 & pc5 & pc4 & pc3 & pc2 & pc1 & pc0;
 
-    process (pc)
+    -- stop only while executing from the PROM; the same address in IRAM
+    -- is a normal microcode location once the machine runs from RAM
+    process (pc, \-promenable\)
     begin
-      if is_x(pc) then
+      if is_x(pc) or \-promenable\ /= '0' then
       elsif (unsigned(pc) = 8#313#) then
         std.env.stop;
       end if;

@@ -1,0 +1,3 @@
+# Net renames applied by scripts/fix-suds.soap4.py to the cadr pages.
+# Format: <page or *> <old name> => <new name>. Names as in the suds files.
+# No renames are needed on the cadr book at the moment.

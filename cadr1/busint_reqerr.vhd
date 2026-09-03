@@ -24,6 +24,7 @@ entity busint_reqerr is
     lmwr            : in     std_logic;
     xrd             : in     std_logic;
     \-free\         : inout  std_logic;
+    \-xbus ignpar in\ : inout  std_logic;
     \lm adr par error\ : inout  std_logic;
     \lm par error\  : inout  std_logic;
     \ub map error\  : inout  std_logic;
@@ -40,7 +41,6 @@ entity busint_reqerr is
     dbd6            : inout  std_logic;
     dbd7            : inout  std_logic;
     \-any par error\ : out    std_logic;
-    \-xbus ignpar in\ : out    std_logic;
     \xbus par out\  : out    std_logic;
     udo0            : out    std_logic;
     udo1            : out    std_logic;

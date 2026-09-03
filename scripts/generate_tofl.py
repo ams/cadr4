@@ -306,7 +306,8 @@ def topological_sort(dependency_graph: Dict[Path, Set[Path]]) -> List[Path]:
     all_files = set(dependency_graph.keys())
     for deps in dependency_graph.values():
         all_files.update(deps)
-    all_files = list(all_files)
+    # sorted so the output is deterministic (set iteration order is not)
+    all_files = sorted(all_files)
     
     # Categorize files
     categories = categorize_files(all_files)
@@ -324,7 +325,7 @@ def topological_sort(dependency_graph: Dict[Path, Set[Path]]) -> List[Path]:
             in_degree[file_path] += 1
     
     # Full topological sort
-    queue = deque([f for f in all_files if in_degree[f] == 0])
+    queue = deque(sorted(f for f in all_files if in_degree[f] == 0))
     topo_order = []
     
     while queue:
@@ -332,8 +333,8 @@ def topological_sort(dependency_graph: Dict[Path, Set[Path]]) -> List[Path]:
         topo_order.append(current)
         
         # Update in-degrees for files that depend on current
-        for file_path, deps in dependency_graph.items():
-            if current in deps:
+        for file_path in sorted(dependency_graph.keys()):
+            if current in dependency_graph[file_path]:
                 in_degree[file_path] -= 1
                 if in_degree[file_path] == 0:
                     queue.append(file_path)

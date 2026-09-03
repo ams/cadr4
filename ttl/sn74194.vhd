@@ -53,8 +53,8 @@ begin
       sel := s1_i & s0_i;
       case sel is
         when "00"   => null;                              -- hold
-        when "01"   => reg <= sir_i & reg(3 downto 1);    -- shift right
-        when "10"   => reg <= reg(2 downto 0) & sil_i;    -- shift left
+        when "01"   => reg <= reg(2 downto 0) & sir_i;    -- shift right: QA <- SR SER, QB <- QA, QC <- QB, QD <- QC
+        when "10"   => reg <= sil_i & reg(3 downto 1);    -- shift left:  QD <- SL SER, QC <- QD, QB <- QC, QA <- QB
         when others => reg <= i3_i & i2_i & i1_i & i0_i;  -- load
       end case;
     end if;

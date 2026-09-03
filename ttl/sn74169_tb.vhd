@@ -169,8 +169,10 @@ begin
     assert (o3 & o2 & o1 & o0) = "1010" report "Load priority test failed" severity error;
     load_n <= '1';
     
-    -- Test 8: Carry output conditions
-    -- Load 15 and check carry during up count
+    -- Test 8: ripple carry output
+    -- RCO_n = NOT(ENT_n = '0' AND ((U/D = '1' AND Q = 15) OR (U/D = '0' AND Q = 0)))
+    -- ENP_n, LOAD_n and the data inputs must not take part.
+    -- Load 15 (up mode, both enables low from test 7); clock edges are at 5 ns mod 10 ns
     i3 <= '1';
     i2 <= '1';
     i1 <= '1';
@@ -178,21 +180,57 @@ begin
     load_n <= '0';
     wait for 10 ns;
     load_n <= '1';
-    wait for 5 ns;
-    assert co_n = '0' report "Carry should be active at 15 with up count enabled" severity error;
-    
-    -- Load 0 and check carry during down count
+    wait for 1 ns;
+    assert (o3 & o2 & o1 & o0) = "1111" report "Load 15 failed" severity error;
+    assert co_n = '0' report "RCO should be active at 15 in up mode with ENT_n low" severity error;
+
+    -- ENP_n must not gate RCO (it stays high for the rest of the test, so the counter holds)
+    enb_p_n <= '1';
+    wait for 1 ns;
+    assert co_n = '0' report "RCO must be independent of ENP_n" severity error;
+
+    -- ENT_n does gate RCO
+    enb_t_n <= '1';
+    wait for 1 ns;
+    assert co_n = '1' report "RCO should be inactive with ENT_n high" severity error;
+    enb_t_n <= '0';
+    wait for 1 ns;
+    assert co_n = '0' report "RCO should be active again with ENT_n low" severity error;
+
+    -- LOAD_n and the data inputs must not affect RCO before the clock edge:
+    -- present 0000 with LOAD_n low in down mode while Q is still 1111
+    wait for 6 ns;          -- past the clock edge (counter holds, ENP_n high)
     up_dn <= '0';
     i3 <= '0';
     i2 <= '0';
     i1 <= '0';
     i0 <= '0';
     load_n <= '0';
-    wait for 5 ns;  -- Wait for combinational logic to settle
-    assert co_n = '0' report "Carry should be active at 0 with down count enabled" severity error;
-    wait for 5 ns;  -- Complete the clock cycle
-    load_n <= '1';
+    wait for 1 ns;
+    assert (o3 & o2 & o1 & o0) = "1111" report "Counter should still be 15 before the load edge" severity error;
+    assert co_n = '1' report "RCO must not depend on LOAD_n or the data inputs: Q is 15 in down mode" severity error;
+    load_n <= '1';          -- withdraw the load before the next clock edge
+    wait for 10 ns;
+    assert (o3 & o2 & o1 & o0) = "1111" report "Counter should hold with ENP_n high" severity error;
 
+    -- Load 0 and check RCO in down mode, with the data inputs at 1111 and LOAD_n low again
+    load_n <= '0';
+    wait for 10 ns;
+    load_n <= '1';
+    i3 <= '1';
+    i2 <= '1';
+    i1 <= '1';
+    i0 <= '1';
+    wait for 1 ns;
+    assert (o3 & o2 & o1 & o0) = "0000" report "Load 0 failed" severity error;
+    assert co_n = '0' report "RCO should be active at 0 in down mode with ENT_n low" severity error;
+    load_n <= '0';
+    wait for 1 ns;
+    assert co_n = '0' report "RCO must not depend on LOAD_n or the data inputs: Q is 0 in down mode" severity error;
+    load_n <= '1';
+    up_dn <= '1';
+    wait for 1 ns;
+    assert co_n = '1' report "RCO should be inactive at 0 in up mode" severity error;
     std.env.stop;
     
     wait;

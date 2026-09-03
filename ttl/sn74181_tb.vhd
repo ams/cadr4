@@ -48,6 +48,7 @@ begin
     variable a_val, b_val, s_val, expected_f : std_logic_vector(3 downto 0);
     variable mode_val, cin_val, expected_cn4b, expected_x, expected_y : std_logic;
     variable test_count : integer := 0;
+    variable pass_count : integer := 0;
   begin
     file_open(test_vectors, "ttl/sn74181_tb.txt", read_mode);
     
@@ -74,18 +75,22 @@ begin
       
       test_count := test_count + 1;
       
-      -- Check F, X, and Y outputs
-      if s_f = expected_f and s_x = expected_x and s_y = expected_y then
-        -- Test passed
+      -- Check F, CN4b (active-low carry out), X, and Y outputs
+      if s_f = expected_f and s_cout_n = expected_cn4b and s_x = expected_x and s_y = expected_y then
+        pass_count := pass_count + 1;
       else
         report "FAIL: Test " & integer'image(test_count) & 
-               " | A=" & to_bstring(s_a) & " B=" & to_bstring(s_b) & " S=" & to_bstring(s_s) & " CNb=" & std_logic'image(s_cin_n) &
+               " | A=" & to_bstring(s_a) & " B=" & to_bstring(s_b) & " M=" & std_logic'image(s_m) & " S=" & to_bstring(s_s) & " CNb=" & std_logic'image(s_cin_n) &
                " | F expected " & to_bstring(expected_f) & " got " & to_bstring(s_f) &
+               " | CN4b expected " & std_logic'image(expected_cn4b) & " got " & std_logic'image(s_cout_n) &
                " | X expected " & std_logic'image(expected_x) & " got " & std_logic'image(s_x) &
                " | Y expected " & std_logic'image(expected_y) & " got " & std_logic'image(s_y) severity error;
       end if;
     end loop;
     file_close(test_vectors);
+
+    assert test_count > 0 report "sn74181_tb: no test vectors read" severity error;
+    report "sn74181_tb: " & integer'image(pass_count) & " of " & integer'image(test_count) & " tests passed" severity note;
 
     wait;
   end process;

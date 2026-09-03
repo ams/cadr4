@@ -23,21 +23,21 @@ entity cadr_flag is
     ob29            : in     std_logic;
     r0              : in     std_logic;
     sintr           : in     std_logic;
-    \-alu32\        : out    std_logic;
+    \-alu32\        : inout  std_logic;
+    \int.enable\    : inout  std_logic;
+    \pgf.or.int.or.sb\ : inout  std_logic;
+    \pgf.or.int\    : inout  std_logic;
+    \sequence.break\ : inout  std_logic;
+    aluneg          : inout  std_logic;
+    conds0          : inout  std_logic;
+    conds1          : inout  std_logic;
+    conds2          : inout  std_logic;
+    sint            : inout  std_logic;
     \-ilong\        : out    std_logic;
     \-jcond\        : out    std_logic;
     \-statbit\      : out    std_logic;
-    \int.enable\    : out    std_logic;
     \lc byte mode\  : out    std_logic;
-    \pgf.or.int.or.sb\ : out    std_logic;
-    \pgf.or.int\    : out    std_logic;
     \prog.unibus.reset\ : out    std_logic;
-    \sequence.break\ : out    std_logic;
-    aluneg          : out    std_logic;
-    conds0          : out    std_logic;
-    conds1          : out    std_logic;
-    conds2          : out    std_logic;
-    jcond           : out    std_logic;
-    sint            : out    std_logic
+    jcond           : out    std_logic
   );
 end entity;

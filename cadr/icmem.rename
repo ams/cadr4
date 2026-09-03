@@ -1,0 +1,25 @@
+# Net renames applied by scripts/fix-suds.soap4.py to the icmem pages.
+# Format: <page or *> <old name> => <new name>. Names as in the suds files.
+# Every entry is a deviation from the drawing text and says why.
+
+# iram01 re-buffers the processor PC it receives as -PCB<n> into a local
+# PC<n>B; the processor board (lpc) has its own PC<n>B net with the same
+# name. The generated top level wires same-named signals together, so the
+# icmem copy is named after the pin it is derived from.
+iram01 pc0b => pcb0
+iram01 pc1b => pcb1
+iram01 pc2b => pcb2
+iram01 pc3b => pcb3
+iram01 pc4b => pcb4
+iram01 pc5b => pcb5
+iram01 pc6b => pcb6
+iram01 pc7b => pcb7
+iram01 pc8b => pcb8
+iram01 pc9b => pcb9
+iram01 pc10b => pcb10
+iram01 pc11b => pcb11
+
+# olord2 makes the icmem board's own -RESET (read by olord1); the processor
+# board makes its -RESET on clockd from the same RESET. Two boards, two
+# nets with one name, so the icmem one gets a board prefix.
+* \-reset\ => \-icmem reset\

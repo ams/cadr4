@@ -107,7 +107,7 @@ begin
 
     wait for 100 ns;
     assert false report "Test completed" severity note;
-    wait;
+    std.env.finish;
   end process;
 
 end;

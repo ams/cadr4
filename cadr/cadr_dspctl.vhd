@@ -59,8 +59,10 @@ entity cadr_dspctl is
     ir7             : in     std_logic;
     ir8             : in     std_logic;
     ir9             : in     std_logic;
+    \-dparh\        : inout  std_logic;
+    dpareven        : inout  std_logic;
+    dparl           : inout  std_logic;
     \-dmapbenb\     : out    std_logic;
-    \-dparh\        : out    std_logic;
     aa0             : out    std_logic;
     aa1             : out    std_logic;
     aa10            : out    std_logic;
@@ -97,8 +99,6 @@ entity cadr_dspctl is
     dmask4          : out    std_logic;
     dmask5          : out    std_logic;
     dmask6          : out    std_logic;
-    dpareven        : out    std_logic;
-    dparl           : out    std_logic;
     dparok          : out    std_logic
   );
 end entity;

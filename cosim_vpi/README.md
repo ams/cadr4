@@ -5,7 +5,7 @@ This folder contains VPI cosimulation code used by GHDL.
 
 - cosim.c and cosim.h contains vlog_startup_routines and utility functions.
 
-- cosim_diagnostic_display: functions as diagnostic display, prints to console
+- cosim_diagnostic_display: functions as diagnostic display, prints to console. It looks for `icmem_pctl_inst` under the root instance and stays silent when the design has no display (unit testbenches). The library is loaded by `make run-X` only for cadr_tb, cadr_boot_tb and the cosim testbenches.
 
 # Co-Simulation Lashup
 
@@ -169,8 +169,8 @@ Server → Client: "0 DEAD"
 
 Run the test suite:
 ```bash
-make cosim-run-cosim_lashup_debuggee &  # Start simulation
-python3 cosim/cosim_lashup_debugger_test.py [port]  # Run tests
+make run-cosim_lashup_debuggee_tb &  # Start simulation (GHDL; the debugger must be registered in cosim.c)
+python3 cosim_vpi/cosim_lashup_debugger_test.py [port]  # Run tests
 ```
 
 The test performs comprehensive read/write verification across all 4 memory addresses.

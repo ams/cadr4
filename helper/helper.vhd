@@ -47,7 +47,7 @@ package helper is
       -- spy0:15
       \-memgrant\: out std_logic;    
       -- wrcyc
-      \int\: in std_logic;
+      \int\: out std_logic;
       \mempar out\: in std_logic;
 
       -- cadr:mbcpin
@@ -99,7 +99,7 @@ package helper is
       \-adr1\: out std_logic;
       \-adr0\: out std_logic;
       -- -memrq
-      \-lm ack\: in std_logic;
+      \-lmack\: in std_logic;
       -- -loadmd
       \-lm ignpar\: in std_logic;
 
@@ -107,7 +107,7 @@ package helper is
       -- spy0:15
       \-lm grant\: in std_logic;
       -- wrcyc
-      \lm int\: out std_logic;
+      \lm int\: in std_logic;
       \mempar from lm\: out std_logic;
 
       -- connector J08

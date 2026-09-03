@@ -11,16 +11,16 @@ The tool supports two types of splitting:
 2. Stack splitting: When total capacity exceeds target RAM size, multiple stacks are created
 
 Examples:
-  python split-hex.py --from-hex data.hex --from-width 16 --to-width 8 --to-prefix output --to-words 256 --out-dir ./output
+  python split-hex.py --from-hex data.hex --from-width 16 --to-width 8 --to-prefix output --to-size 256 --out-dir ./output
     Split a 16-bit hex file into two 8-bit files with 256 words each
   
-  python split-hex.py --from-hex promh.mcr.9.hex --from-width 48 --to-width 8 --to-prefix promh9 --to-words 512 --out-dir ./rom --reverse
+  python split-hex.py --from-hex promh.mcr.9.hex --from-width 48 --to-width 8 --to-prefix promh9 --to-size 512 --out-dir ./rom --reverse
     Split a 48-bit hex file into six 8-bit files with 512 words each, reversed
     
-  python split-hex.py --from-hex data.hex --from-width 16 --to-width 8 --to-prefix output --to-words 256 --out-dir ./output --add-parity
+  python split-hex.py --from-hex data.hex --from-width 16 --to-width 8 --to-prefix output --to-size 256 --out-dir ./output --add-parity
     Split a 16-bit hex file into two 8-bit files plus a parity file with odd parity bits
     
-  python split-hex.py --from-hex data.hex --from-width 18 --from-hex-width 32 --to-width 8 --to-prefix output --to-words 256 --out-dir ./output
+  python split-hex.py --from-hex data.hex --from-width 18 --from-hex-width 32 --to-width 8 --to-prefix output --to-size 256 --out-dir ./output
     Split an 18-bit value stored in 32-bit hex format, using only the 18 LSBs
     
   python split-hex.py --from-hex data.hex --from-width 16 --from-size 1024 --to-width 8 --to-size 256 --to-prefix output --out-dir ./output
@@ -66,7 +66,7 @@ def write_hex_file(filename, hex_values):
 
 
 
-def split_hex(hex_file, from_width, to_width, prefix, out_dir, reverse=False, add_parity=False, from_hex_width=None, from_size=None, to_size=None, includes_parity=False):
+def split_hex(hex_file, from_width, to_width, prefix, out_dir, reverse=False, add_parity=False, from_hex_width=None, from_size=None, to_size=None, includes_parity=False, address_bit_reverse=False):
     """Split hex file based on bit width conversion and interleaving, with optional stacking."""
     
     # Validate inputs
@@ -165,9 +165,12 @@ def split_hex(hex_file, from_width, to_width, prefix, out_dir, reverse=False, ad
     
     # Create an array of word values (integers)
     words = []
+    masked_words = 0
     
-    # Load available hex data into words
-    words_to_read = min(hex_words_available, to_size)
+    # Load available hex data into words: the input covers every stack
+    words_to_read = min(hex_words_available, from_size)
+    if hex_words_available > from_size:
+        print(f"Warning: hex file has {hex_words_available} words, only the first {from_size} are used")
     
     # Read from hex into words
     for word_idx in range(words_to_read):
@@ -184,6 +187,8 @@ def split_hex(hex_file, from_width, to_width, prefix, out_dir, reverse=False, ad
             # Take LSB from_width bits
             mask = (1 << from_width) - 1
             word_value = full_value & mask
+            if full_value & ~mask:
+                masked_words += 1
         else:
             # from_width > from_hex_width, use all available bits
             word_value = full_value
@@ -200,10 +205,13 @@ def split_hex(hex_file, from_width, to_width, prefix, out_dir, reverse=False, ad
         words.append(word_value)
     
     print(f"Loaded {words_to_read} words from hex file")
+    if masked_words:
+        # e.g. a usim dump that carries the parity bit above the data bits
+        print(f"Note: {masked_words} words had bits above bit {from_width - 1} set; they were masked off")
     
     # add padding if needed with parity
-    if words_to_read < to_size:
-        padding_words = to_size - words_to_read
+    if words_to_read < from_size:
+        padding_words = from_size - words_to_read
         print(f"Adding {padding_words} padding words")
         if includes_parity:
             # For each padding word, create word with parity
@@ -229,6 +237,11 @@ def split_hex(hex_file, from_width, to_width, prefix, out_dir, reverse=False, ad
     print(f"Total words: {len(words)}")
     
     # Now process the words and distribute to output files
+    if address_bit_reverse and (to_size & (to_size - 1)) != 0:
+        print("Error: --address-bit-reverse needs a power-of-two --to-size")
+        sys.exit(1)
+    address_bits = to_size.bit_length() - 1
+
     for word_idx, word_value in enumerate(words):
         # Determine which stack this word belongs to
         stack_idx = word_idx // to_size if num_stacks > 1 else 0
@@ -249,6 +262,19 @@ def split_hex(hex_file, from_width, to_width, prefix, out_dir, reverse=False, ad
             
             # Store in the file corresponding to this bit position
             output_files[chunk_idx][stack_idx].append(hex_value)
+
+    # Chips whose address pins are wired in reverse order (vmem0: chip A0 is
+    # the most significant map index bit) need the words permuted so that
+    # logical word i lands at chip address bitrev(i)
+    if address_bit_reverse:
+        for i in range(num_output_files):
+            for j in range(num_stacks):
+                src = output_files[i][j]
+                dst = ["00"] * len(src)
+                for idx, value in enumerate(src):
+                    rev = int(format(idx, f"0{address_bits}b")[::-1], 2)
+                    dst[rev] = value
+                output_files[i][j] = dst
     
     # Write output files (naming: prefix.bitpos.stack.hex where bitpos indicates bit range)
     for i in range(num_output_files):
@@ -273,11 +299,11 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  %(prog)s --from-hex data.hex --from-width 16 --to-width 8 --to-prefix output --to-words 256 --out-dir ./output
+  %(prog)s --from-hex data.hex --from-width 16 --to-width 8 --to-prefix output --to-size 256 --out-dir ./output
     Word splitting: Split a 16-bit hex file into two 8-bit hex files with 256 words each
     Creates files: output.0.0.hex, output.1.0.hex
 
-  %(prog)s --from-hex promh.mcr.9.hex --from-width 48 --to-width 8 --to-prefix promh9 --to-words 512 --out-dir ./rom --reverse
+  %(prog)s --from-hex promh.mcr.9.hex --from-width 48 --to-width 8 --to-prefix promh9 --to-size 512 --out-dir ./rom --reverse
     Word splitting: Split a 48-bit hex file into six 8-bit hex files with 512 words each, reversed
     Creates files: promh9.0.0.hex, promh9.1.0.hex, promh9.2.0.hex, promh9.3.0.hex, promh9.4.0.hex, promh9.5.0.hex
 
@@ -289,11 +315,11 @@ Examples:
     Word splitting: Split an 8-bit hex file into eight 1-bit files with 64 values each
     Creates files: bits.0.0.hex, bits.1.0.hex, bits.2.0.hex, bits.3.0.hex, bits.4.0.hex, bits.5.0.hex, bits.6.0.hex, bits.7.0.hex
 
-  %(prog)s --from-hex data.hex --from-width 16 --to-width 8 --to-prefix output --to-words 256 --out-dir ./output --add-parity
+  %(prog)s --from-hex data.hex --from-width 16 --to-width 8 --to-prefix output --to-size 256 --out-dir ./output --add-parity
     Word splitting with parity: Split a 16-bit hex file with added parity into three 8-bit hex files (17 bits padded to 24 bits)
     Creates files: output.0.0.hex, output.1.0.hex, output.2.0.hex
 
-  %(prog)s --from-hex data.hex --from-width 18 --from-hex-width 32 --to-width 8 --to-prefix output --to-words 256 --out-dir ./output
+  %(prog)s --from-hex data.hex --from-width 18 --from-hex-width 32 --to-width 8 --to-prefix output --to-size 256 --out-dir ./output
     Word splitting: Split an 18-bit value stored in 32-bit hex format, using only the 18 LSBs
     Creates files: output.0.0.hex, output.1.0.hex, output.2.0.hex
 
@@ -338,7 +364,10 @@ Output format:
                        help='Reverse the order of entries in each output file')
     parser.add_argument('--add-parity', 
                        action='store_true',
-                       help='Calculate odd parity for each word and output it to a separate file')
+                       help='Calculate odd parity for each word and add it as the bit above the data (one more output file)')
+    parser.add_argument('--address-bit-reverse',
+                       action='store_true',
+                       help='Store logical word i at chip address bit-reverse(i) (for chips whose address pins are wired MSB-first)')
     parser.add_argument('--includes-parity', 
                        action='store_true',
                        help='Input data includes parity bits - calculate parity for padding areas')
@@ -357,7 +386,8 @@ Output format:
     
     split_hex(getattr(args, 'from_hex'), getattr(args, 'from_width'), getattr(args, 'to_width'), 
               getattr(args, 'to_prefix'), args.out_dir, args.reverse, args.add_parity, 
-              getattr(args, 'from_hex_width'), getattr(args, 'from_size'), getattr(args, 'to_size'), args.includes_parity)
+              getattr(args, 'from_hex_width'), getattr(args, 'from_size'), getattr(args, 'to_size'), args.includes_parity,
+              args.address_bit_reverse)
 
 
 if __name__ == "__main__":

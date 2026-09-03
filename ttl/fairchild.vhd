@@ -5,33 +5,33 @@ package fairchild is
 
   component dm8838 is
   port (
-      in1 : in    std_logic; -- Input 1
-      in2 : in    std_logic; -- Input 2  
-      in3 : in    std_logic; -- Input 3
-      in4 : in    std_logic; -- Input 4
-      out1 : out  std_logic; -- Output 1
-      out2 : out  std_logic; -- Output 2
-      out3 : out  std_logic; -- Output 3
-      out4 : out  std_logic; -- Output 4
-      bus1 : inout std_logic; -- Bidirectional bus 1
-      bus2 : inout std_logic; -- Bidirectional bus 2
-      bus3 : inout std_logic; -- Bidirectional bus 3
-      bus4 : inout std_logic; -- Bidirectional bus 4
-      disable_a : in std_logic; -- Disable A (active high)
-      disable_b : in std_logic  -- Disable B (active high)
+      in1 : in    std_logic; -- 14
+      in2 : in    std_logic; -- 11
+      in3 : in    std_logic; -- 2
+      in4 : in    std_logic; -- 5
+      out1 : out  std_logic; -- 13
+      out2 : out  std_logic; -- 10
+      out3 : out  std_logic; -- 3
+      out4 : out  std_logic; -- 6
+      bus1 : inout std_logic; -- 15
+      bus2 : inout std_logic; -- 12
+      bus3 : inout std_logic; -- 1
+      bus4 : inout std_logic; -- 4
+      disable_a : in std_logic; -- 9
+      disable_b : in std_logic  -- 7
       );
   end component;
 
   component dm9328 is
   port (
-      clr_n  : in  std_logic; -- 7
-      aq_n   : out std_logic; -- 1
-      aq     : out std_logic; -- 2
-      asel   : in  std_logic; -- 3
+      clr_n  : in  std_logic; -- 1 (MR, common to both registers)
+      aq_n   : out std_logic; -- 2
+      aq     : out std_logic; -- 3
+      asel   : in  std_logic; -- 4
       ai1    : in  std_logic; -- 5
-      ai0    : in  std_logic; -- 4
-      aclk   : in  std_logic; -- 6
-      comclk : in  std_logic; -- 9
+      ai0    : in  std_logic; -- 6
+      aclk   : in  std_logic; -- 7
+      comclk : in  std_logic; -- 9 (CP COM, common to both registers)
       bclk   : in  std_logic; -- 10
       bi0    : in  std_logic; -- 11
       bi1    : in  std_logic; -- 12
@@ -88,14 +88,14 @@ package fairchild is
       g2b1 : in  std_logic; -- Pin 4
       g2c1 : in  std_logic; -- Pin 5
       g2d1 : in  std_logic; -- Pin 6
-      out1 : out std_logic; -- Pin 8
-      g1a2 : in  std_logic; -- Pin 9
-      g1b2 : in  std_logic; -- Pin 10
-      g2a2 : in  std_logic; -- Pin 11
+      out1 : out std_logic; -- Pin 7
+      g1a2 : in  std_logic; -- Pin 15
+      g1b2 : in  std_logic; -- Pin 14
+      g2a2 : in  std_logic; -- Pin 13
       g2b2 : in  std_logic; -- Pin 12
-      g2c2 : in  std_logic; -- Pin 13
-      g2d2 : in  std_logic; -- Pin 14
-      out2 : out std_logic  -- Pin 15
+      g2c2 : in  std_logic; -- Pin 11
+      g2d2 : in  std_logic; -- Pin 10
+      out2 : out std_logic  -- Pin 9
       );
   end component;
 

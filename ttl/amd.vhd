@@ -85,19 +85,19 @@ package amd is
 
   component am26s10 is
   port (
-      e_n : in  std_logic; -- Active-low enable 
-      i0  : in  std_logic; -- Input 0
-      i1  : in  std_logic; -- Input 1  
-      i2  : in  std_logic; -- Input 2
-      i3  : in  std_logic; -- Input 3
-      b0  : inout std_logic; -- Inverting bidirectional bus 0
-      b1  : inout std_logic; -- Inverting bidirectional bus 1
-      b2  : inout std_logic; -- Inverting bidirectional bus 2
-      b3  : inout std_logic; -- Inverting bidirectional bus 3
-      z0  : out std_logic; -- Non-inverting output 0
-      z1  : out std_logic; -- Non-inverting output 1
-      z2  : out std_logic; -- Non-inverting output 2
-      z3  : out std_logic  -- Non-inverting output 3
+      e_n : in  std_logic; -- 12 Active-low enable
+      i0  : in  std_logic; -- 4 Input 0
+      i1  : in  std_logic; -- 5 Input 1
+      i2  : in  std_logic; -- 11 Input 2
+      i3  : in  std_logic; -- 13 Input 3
+      b0  : inout std_logic; -- 2 Inverting bidirectional bus 0
+      b1  : inout std_logic; -- 7 Inverting bidirectional bus 1
+      b2  : inout std_logic; -- 9 Inverting bidirectional bus 2
+      b3  : inout std_logic; -- 15 Inverting bidirectional bus 3
+      z0  : out std_logic; -- 3 Receiver output 0 (inverted bus)
+      z1  : out std_logic; -- 6 Receiver output 1 (inverted bus)
+      z2  : out std_logic; -- 10 Receiver output 2 (inverted bus)
+      z3  : out std_logic  -- 14 Receiver output 3 (inverted bus)
       );
   end component;
 

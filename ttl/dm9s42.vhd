@@ -14,14 +14,14 @@ entity dm9s42 is
     g2b1 : in  std_logic; -- Pin 4
     g2c1 : in  std_logic; -- Pin 5
     g2d1 : in  std_logic; -- Pin 6
-    out1 : out std_logic; -- Pin 8
-    g1a2 : in  std_logic; -- Pin 9
-    g1b2 : in  std_logic; -- Pin 10
-    g2a2 : in  std_logic; -- Pin 11
+    out1 : out std_logic; -- Pin 7
+    g1a2 : in  std_logic; -- Pin 15
+    g1b2 : in  std_logic; -- Pin 14
+    g2a2 : in  std_logic; -- Pin 13
     g2b2 : in  std_logic; -- Pin 12
-    g2c2 : in  std_logic; -- Pin 13
-    g2d2 : in  std_logic; -- Pin 14
-    out2 : out std_logic  -- Pin 15
+    g2c2 : in  std_logic; -- Pin 11
+    g2d2 : in  std_logic; -- Pin 10
+    out2 : out std_logic  -- Pin 9
     );
 end entity;
 

@@ -22,6 +22,19 @@ entity icmem_ictl is
     pc8             : in     std_logic;
     pc9             : in     std_logic;
     promdisabled    : in     std_logic;
+    \-iwriteda\     : inout  std_logic;
+    \-pc12b\        : inout  std_logic;
+    \-pc13b\        : inout  std_logic;
+    \-promdisabled\ : inout  std_logic;
+    iwriteda        : inout  std_logic;
+    iwritedb        : inout  std_logic;
+    iwritedc        : inout  std_logic;
+    iwritedd        : inout  std_logic;
+    ramdisable      : inout  std_logic;
+    wp5a            : inout  std_logic;
+    wp5b            : inout  std_logic;
+    wp5c            : inout  std_logic;
+    wp5d            : inout  std_logic;
     \-ice0a\        : out    std_logic;
     \-ice0b\        : out    std_logic;
     \-ice0c\        : out    std_logic;
@@ -54,9 +67,6 @@ entity icmem_ictl is
     \-iwen\         : out    std_logic;
     \-iweo\         : out    std_logic;
     \-iwep\         : out    std_logic;
-    \-iwriteda\     : out    std_logic;
-    \-pc12b\        : out    std_logic;
-    \-pc13b\        : out    std_logic;
     \-pcb0\         : out    std_logic;
     \-pcb10\        : out    std_logic;
     \-pcb11\        : out    std_logic;
@@ -80,16 +90,6 @@ entity icmem_ictl is
     \-pcc6\         : out    std_logic;
     \-pcc7\         : out    std_logic;
     \-pcc8\         : out    std_logic;
-    \-pcc9\         : out    std_logic;
-    \-promdisabled\ : out    std_logic;
-    iwriteda        : out    std_logic;
-    iwritedb        : out    std_logic;
-    iwritedc        : out    std_logic;
-    iwritedd        : out    std_logic;
-    ramdisable      : out    std_logic;
-    wp5a            : out    std_logic;
-    wp5b            : out    std_logic;
-    wp5c            : out    std_logic;
-    wp5d            : out    std_logic
+    \-pcc9\         : out    std_logic
   );
 end entity;

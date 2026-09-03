@@ -4,6 +4,10 @@
 # dspctl abd mskg4 PROM contents are the same
 # pay attention to parity also, 
 # because normal prom initialization correctly updates the parity
+#
+# stacked 93425A pairs: the chip whose pin 1 (active-low CS) is the
+# inverted select line (e.g. -dadr10a, -mapi23) holds words 1024..2047 and
+# gets the .1 file; the chip on the true select line gets the .0 file
 
 amem1.3a20 rom/fast-promh/amem.0.0.hex
 amem1.3a25 rom/fast-promh/amem.1.0.hex
@@ -39,42 +43,42 @@ amem0.3b07 rom/fast-promh/amem.30.0.hex
 amem0.3b11 rom/fast-promh/amem.31.0.hex
 amem0.3b06 rom/fast-promh/amem.32.0.hex 
 
-dram0.3f09 rom/fast-promh/dram.0.0.hex
-dram0.3f08 rom/fast-promh/dram.0.1.hex
-dram0.3f07 rom/fast-promh/dram.1.0.hex
-dram0.3f06 rom/fast-promh/dram.1.1.hex
-dram0.3f04 rom/fast-promh/dram.2.0.hex
-dram0.3f03 rom/fast-promh/dram.2.1.hex
-dram0.3f02 rom/fast-promh/dram.3.0.hex
-dram0.3f01 rom/fast-promh/dram.3.1.hex
-dram0.2f29 rom/fast-promh/dram.4.0.hex
-dram0.2f28 rom/fast-promh/dram.4.1.hex
-dram0.2f27 rom/fast-promh/dram.5.0.hex
-dram0.2f26 rom/fast-promh/dram.5.1.hex
-dram1.2f19 rom/fast-promh/dram.6.0.hex
-dram1.2f18 rom/fast-promh/dram.6.1.hex
-dram1.2f17 rom/fast-promh/dram.7.0.hex
-dram1.2f16 rom/fast-promh/dram.7.1.hex
-dram1.2f14 rom/fast-promh/dram.8.0.hex
-dram1.2f13 rom/fast-promh/dram.8.1.hex
-dram1.2f12 rom/fast-promh/dram.9.0.hex
-dram1.2f11 rom/fast-promh/dram.9.1.hex
-dram1.2f09 rom/fast-promh/dram.10.0.hex
-dram1.2f08 rom/fast-promh/dram.10.1.hex
-dram1.2f07 rom/fast-promh/dram.11.0.hex
-dram1.2f06 rom/fast-promh/dram.11.1.hex
-dram2.1f29 rom/fast-promh/dram.12.0.hex
-dram2.1f28 rom/fast-promh/dram.12.1.hex
-dram2.1f27 rom/fast-promh/dram.13.0.hex
-dram2.1f26 rom/fast-promh/dram.13.1.hex
-dram2.1f24 rom/fast-promh/dram.14.0.hex
-dram2.1f23 rom/fast-promh/dram.14.1.hex
-dram2.1f22 rom/fast-promh/dram.15.0.hex
-dram2.1f21 rom/fast-promh/dram.15.1.hex
-dram2.1f19 rom/fast-promh/dram.16.0.hex
-dram2.1f18 rom/fast-promh/dram.16.1.hex
-dram2.1f17 rom/fast-promh/dram.17.0.hex
-dram2.1f16 rom/fast-promh/dram.17.1.hex
+dram0.3f09 rom/fast-promh/dram.0.1.hex
+dram0.3f08 rom/fast-promh/dram.0.0.hex
+dram0.3f07 rom/fast-promh/dram.1.1.hex
+dram0.3f06 rom/fast-promh/dram.1.0.hex
+dram0.3f04 rom/fast-promh/dram.2.1.hex
+dram0.3f03 rom/fast-promh/dram.2.0.hex
+dram0.3f02 rom/fast-promh/dram.3.1.hex
+dram0.3f01 rom/fast-promh/dram.3.0.hex
+dram0.2f29 rom/fast-promh/dram.4.1.hex
+dram0.2f28 rom/fast-promh/dram.4.0.hex
+dram0.2f27 rom/fast-promh/dram.5.1.hex
+dram0.2f26 rom/fast-promh/dram.5.0.hex
+dram1.2f19 rom/fast-promh/dram.6.1.hex
+dram1.2f18 rom/fast-promh/dram.6.0.hex
+dram1.2f17 rom/fast-promh/dram.7.1.hex
+dram1.2f16 rom/fast-promh/dram.7.0.hex
+dram1.2f14 rom/fast-promh/dram.8.1.hex
+dram1.2f13 rom/fast-promh/dram.8.0.hex
+dram1.2f12 rom/fast-promh/dram.9.1.hex
+dram1.2f11 rom/fast-promh/dram.9.0.hex
+dram1.2f09 rom/fast-promh/dram.10.1.hex
+dram1.2f08 rom/fast-promh/dram.10.0.hex
+dram1.2f07 rom/fast-promh/dram.11.1.hex
+dram1.2f06 rom/fast-promh/dram.11.0.hex
+dram2.1f29 rom/fast-promh/dram.12.1.hex
+dram2.1f28 rom/fast-promh/dram.12.0.hex
+dram2.1f27 rom/fast-promh/dram.13.1.hex
+dram2.1f26 rom/fast-promh/dram.13.0.hex
+dram2.1f24 rom/fast-promh/dram.14.1.hex
+dram2.1f23 rom/fast-promh/dram.14.0.hex
+dram2.1f22 rom/fast-promh/dram.15.1.hex
+dram2.1f21 rom/fast-promh/dram.15.0.hex
+dram2.1f19 rom/fast-promh/dram.16.1.hex
+dram2.1f18 rom/fast-promh/dram.16.0.hex
+dram2.1f17 rom/fast-promh/dram.17.1.hex
+dram2.1f16 rom/fast-promh/dram.17.0.hex
 
 dspctl.2f22 rom/dspctl.2f22.hex
 

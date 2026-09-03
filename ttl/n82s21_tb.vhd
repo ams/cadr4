@@ -299,9 +299,11 @@ begin
     -- Step 3: Now bring wclk down to perform the write
     wclk_n <= '0';  -- falling edge - this should write i0='1', i1='0' to address 8
     wait for 5 ns;
-    -- Question: Is the write immediately reflected in outputs?
-    -- Expected: d0 should show 'Z' (from i0='1'), d1 should show '0' (from i1='0')
-    assert d0 = 'Z' and d1 = '0' report "Test 13a: Write not immediately reflected" severity note;
+    -- The write is level sensitive and the latch is transparent (L=1):
+    -- the data being written is visible at the outputs right away
+    -- (truth table: CE=1, C=0, W=0, L=1 -> "Data being written into memory").
+    -- d0 shows 'Z' (from i0='1'), d1 shows '0' (from i1='0')
+    assert d0 = 'Z' and d1 = '0' report "Test 13a: Write not immediately reflected" severity error;
     
     -- Step 4: Complete the write cycle
     wclk_n <= '1';
@@ -312,8 +314,9 @@ begin
     -- Step 5: Change address to see if outputs change to something else
     a4 <= '0'; a3 <= '1'; a2 <= '0'; a1 <= '0'; a0 <= '1'; -- address 9 (uninitialized)
     wait for 5 ns;
-    -- Should see different outputs (likely 'Z','Z' for uninitialized memory)
-    assert d0 = 'Z' and d1 = 'Z' report "Test 13c: Address change not reflected in outputs" severity note;
+    -- Address 9 was never written: uninitialised memory reads 'U' in this
+    -- project (load_hex_file with an empty file name)
+    assert d0 = 'U' and d1 = 'U' report "Test 13c: Address change not reflected in outputs" severity error;
     
     -- Step 6: Go back to address 8 to confirm our write is still there
     a4 <= '0'; a3 <= '1'; a2 <= '0'; a1 <= '0'; a0 <= '0'; -- address 8
@@ -335,7 +338,7 @@ begin
     wclk_n <= '0';  -- write i0='0', i1='1' to address 9
     wait for 5 ns;
     -- Check immediate reflection
-    assert d0 = '0' and d1 = 'Z' report "Test 13e: Second write not immediately reflected" severity note;
+    assert d0 = '0' and d1 = 'Z' report "Test 13e: Second write not immediately reflected" severity error;
     
     wclk_n <= '1';
     wait for 5 ns;
@@ -350,9 +353,77 @@ begin
     wait for 5 ns;
     assert d0 = '0' and d1 = 'Z' report "Test 13h: Second address data corrupted" severity error;
     
-    -- Clean up
+    -- Test 14: the write is level sensitive. While C and W are low the
+    -- addressed word follows the data inputs; the data present when the write
+    -- window closes is what stays stored. Changing the address while the
+    -- window is open writes the new address as well.
+    ce <= '1';
+    latch_n <= '1';
+    we0_n <= '0';
+    we1_n <= '0';
+    wclk_n <= '1';
+    i0 <= '0'; i1 <= '0';
+    a4 <= '0'; a3 <= '1'; a2 <= '0'; a1 <= '1'; a0 <= '0'; -- address 10
+    wait for 5 ns;
+    wclk_n <= '0';  -- open the write window
+    wait for 5 ns;
+    assert d0 = '0' and d1 = '0' report "Test 14a: address 10 not written with 00" severity error;
+    -- change the data while the window is open: the stored word follows
+    i0 <= '1'; i1 <= '0';
+    wait for 5 ns;
+    assert d0 = 'Z' and d1 = '0' report "Test 14b: data change during write not stored" severity error;
+    -- change the address while the window is open: address 11 is written too
+    a0 <= '1'; -- address 11
+    wait for 5 ns;
+    assert d0 = 'Z' and d1 = '0' report "Test 14c: address 11 not written during write" severity error;
+    i0 <= '0'; i1 <= '1';
+    wait for 5 ns;
+    assert d0 = '0' and d1 = 'Z' report "Test 14d: data change during write not stored" severity error;
+    wclk_n <= '1';  -- close the write window
+    wait for 5 ns;
+    assert d0 = '0' and d1 = 'Z' report "Test 14e: address 11 after write" severity error;
+    a0 <= '0'; -- address 10
+    wait for 5 ns;
+    assert d0 = 'Z' and d1 = '0' report "Test 14f: address 10 must hold the last data written before the address change" severity error;
+    -- data changes with the window closed do not write
+    i0 <= '1'; i1 <= '1';
+    wait for 5 ns;
+    assert d0 = 'Z' and d1 = '0' report "Test 14g: write with C high" severity error;
+
+    -- Test 15: address changed in the same simulation step as the write
+    -- strobe falls: the new address (12) is written, address 11 is untouched
+    a2 <= '1'; a1 <= '0'; a0 <= '0'; -- address 12
+    wclk_n <= '0';
+    wait for 5 ns;
+    wclk_n <= '1';
+    wait for 5 ns;
+    assert d0 = 'Z' and d1 = 'Z' report "Test 15a: address 12 not written" severity error;
+    a2 <= '0'; a1 <= '1'; a0 <= '1'; -- address 11
+    wait for 5 ns;
+    assert d0 = '0' and d1 = 'Z' report "Test 15b: address 11 corrupted by write to address 12" severity error;
     we0_n <= '1';
     we1_n <= '1';
+
+    -- Test 16: output hold. With L=0 the outputs keep the latched word
+    -- regardless of CE and of the address (truth table: CE=X, L=0).
+    a2 <= '0'; a1 <= '1'; a0 <= '0'; -- address 10: 1,0
+    latch_n <= '1';
+    wait for 5 ns;
+    assert d0 = 'Z' and d1 = '0' report "Test 16a: read address 10" severity error;
+    latch_n <= '0';  -- latch
+    wait for 5 ns;
+    ce <= '0';       -- disable the chip: outputs still hold
+    wait for 5 ns;
+    assert d0 = 'Z' and d1 = '0' report "Test 16b: latched outputs must hold with CE=0" severity error;
+    a0 <= '1';       -- address 11: 0,1 - not visible while latched
+    wait for 5 ns;
+    assert d0 = 'Z' and d1 = '0' report "Test 16c: latched outputs must hold on address change" severity error;
+    latch_n <= '1';  -- unlatch with CE=0: outputs disabled
+    wait for 5 ns;
+    assert d0 = 'Z' and d1 = 'Z' report "Test 16d: CE=0, L=1 must disable the outputs" severity error;
+    ce <= '1';       -- live data of address 11
+    wait for 5 ns;
+    assert d0 = '0' and d1 = 'Z' report "Test 16e: read address 11" severity error;
 
     wait;
   end process;

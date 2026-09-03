@@ -5,11 +5,11 @@ entity busint_xa is
   port (
     \-lm power reset\ : in     std_logic;
     \-xaddrdrive\   : in     std_logic;
+    \busint reset\  : in     std_logic;
     \xaddr par out\ : in     std_logic;
     \xbus extgrant out\ : in     std_logic;
     \xbus request\  : in     std_logic;
     clk0            : in     std_logic;
-    reset           : in     std_logic;
     xao0            : in     std_logic;
     xao1            : in     std_logic;
     xao10           : in     std_logic;
@@ -64,7 +64,7 @@ entity busint_xa is
     \-xbus power reset\ : inout  std_logic;
     \-xbus rq\      : inout  std_logic;
     \-xbus sync\    : inout  std_logic;
-    \lm power reset\ : out    std_logic;
+    \lm power reset\ : inout  std_logic;
     \xbus ack in\   : out    std_logic;
     \xbus busy in\  : out    std_logic;
     \xbus extrq in\ : out    std_logic;

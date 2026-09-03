@@ -44,6 +44,22 @@ entity cadr_shift0 is
     sa29            : in     std_logic;
     sa30            : in     std_logic;
     sa31            : in     std_logic;
+    sa0             : inout  std_logic;
+    sa1             : inout  std_logic;
+    sa10            : inout  std_logic;
+    sa11            : inout  std_logic;
+    sa12            : inout  std_logic;
+    sa13            : inout  std_logic;
+    sa14            : inout  std_logic;
+    sa15            : inout  std_logic;
+    sa2             : inout  std_logic;
+    sa3             : inout  std_logic;
+    sa4             : inout  std_logic;
+    sa5             : inout  std_logic;
+    sa6             : inout  std_logic;
+    sa7             : inout  std_logic;
+    sa8             : inout  std_logic;
+    sa9             : inout  std_logic;
     r0              : out    std_logic;
     r1              : out    std_logic;
     r10             : out    std_logic;
@@ -59,22 +75,6 @@ entity cadr_shift0 is
     r6              : out    std_logic;
     r7              : out    std_logic;
     r8              : out    std_logic;
-    r9              : out    std_logic;
-    sa0             : out    std_logic;
-    sa1             : out    std_logic;
-    sa10            : out    std_logic;
-    sa11            : out    std_logic;
-    sa12            : out    std_logic;
-    sa13            : out    std_logic;
-    sa14            : out    std_logic;
-    sa15            : out    std_logic;
-    sa2             : out    std_logic;
-    sa3             : out    std_logic;
-    sa4             : out    std_logic;
-    sa5             : out    std_logic;
-    sa6             : out    std_logic;
-    sa7             : out    std_logic;
-    sa8             : out    std_logic;
-    sa9             : out    std_logic
+    r9              : out    std_logic
   );
 end entity;

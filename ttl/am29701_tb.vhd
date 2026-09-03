@@ -105,11 +105,17 @@ begin
       s_i2 <= data_vec(1);
       s_i1 <= data_vec(0);
       
-      -- Write enable
+      -- Write enable; the outputs are disabled during the write
+      -- (function table: CS low, WE low -> output disabled)
       s_write_n <= '0';
       wait for 5 ns;
+      assert s_o1 = 'Z' and s_o2 = 'Z' and s_o3 = 'Z' and s_o4 = 'Z'
+        report "FAIL: Outputs should be high-Z during write at address " & to_string(addr_vec) severity error;
       s_write_n <= '1';
       wait for 5 ns;
+      -- write recovery: the written word is read back right away
+      assert std_logic_vector'(s_o4 & s_o3 & s_o2 & s_o1) = data_vec
+        report "FAIL: Read after write at address " & to_string(addr_vec) severity error;
       
       report "Written " & to_string(data_vec) & " to address " & to_string(addr_vec);
     end loop;
@@ -192,6 +198,31 @@ begin
                " got " & to_string(data_vec) severity error;
     end loop;
     
+    -- Test 7: outputs are disabled while WE is low, whatever CS is
+    report "Test 7: Output disable during write";
+    s_ce_n <= '0';
+    s_write_n <= '1';
+    s_a3 <= '0'; s_a2 <= '0'; s_a1 <= '0'; s_a0 <= '1';  -- Address 1
+    s_i4 <= '0'; s_i3 <= '0'; s_i2 <= '1'; s_i1 <= '0';  -- same data as stored
+    wait for 5 ns;
+    assert std_logic_vector'(s_o4 & s_o3 & s_o2 & s_o1) = "0010" report "Test 7 setup failed" severity error;
+    s_write_n <= '0';
+    wait for 5 ns;
+    assert s_o1 = 'Z' and s_o2 = 'Z' and s_o3 = 'Z' and s_o4 = 'Z'
+      report "FAIL: Outputs should be high-Z while WE is low (CS low)" severity error;
+    s_ce_n <= '1';
+    wait for 5 ns;
+    assert s_o1 = 'Z' and s_o2 = 'Z' and s_o3 = 'Z' and s_o4 = 'Z'
+      report "FAIL: Outputs should be high-Z while WE is low (CS high)" severity error;
+    s_write_n <= '1';
+    wait for 5 ns;
+    assert s_o1 = 'Z' and s_o2 = 'Z' and s_o3 = 'Z' and s_o4 = 'Z'
+      report "FAIL: Outputs should be high-Z while CS is high" severity error;
+    s_ce_n <= '0';
+    wait for 5 ns;
+    assert std_logic_vector'(s_o4 & s_o3 & s_o2 & s_o1) = "0010"
+      report "FAIL: Read after write disable" severity error;
+
     report "Test completed";
     wait;
   end process;

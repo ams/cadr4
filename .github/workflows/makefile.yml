@@ -12,30 +12,47 @@ jobs:
     runs-on: ubuntu-24.04
 
     steps:
-    - uses: actions/checkout@v3
-
-    - name: apt update
-      run: sudo apt-get update
+    - uses: actions/checkout@v4
 
     - name: Install dependencies
-      run: sudo apt-get install -y build-essential
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential ghdl-llvm
 
-    - name: Install GHDL
-      run: sudo apt-get install -y ghdl-llvm
+    - name: Work around the ghdl-llvm package's libLLVM soname
+      run: |
+        for f in /lib/x86_64-linux-gnu/libLLVM.so.*; do
+          v=${f##*libLLVM.so.}
+          t=/lib/x86_64-linux-gnu/libLLVM-${v%%.*}.so.$v
+          [ -e "$t" ] || sudo ln -s "$f" "$t"
+        done
 
-    - name: Fix libLLVM-18.so.18.1 path (symlink)
-      run: sudo ln -s /lib/x86_64-linux-gnu/libLLVM.so.18.1 /lib/x86_64-linux-gnu/libLLVM-18.so.18.1	
-
-    - name: Regen
-      run: make regen
+    - name: Regenerate and check that the committed generated files are current
+      run: |
+        make regen
+        git status --porcelain
+        git diff --stat
+        git diff --exit-code
 
     - name: Build with ghdl
       run: make clean && CADR4_HDLCOMPILER=ghdl make
+
+    - name: Test with ghdl
+      run: CADR4_HDLCOMPILER=ghdl make check
+
+    - name: Boot with ghdl
+      run: CADR4_HDLCOMPILER=ghdl CADR4_STOPTIME=200us make check-boot
 
     - name: Install nvc 1.22.1
       run: |
         wget https://github.com/nickg/nvc/releases/download/r1.22.1/nvc_1.22.1-1_amd64_ubuntu-24.04.deb
         sudo apt-get install -y ./nvc_1.22.1-1_amd64_ubuntu-24.04.deb
 
-    - name : Build with nvc
+    - name: Build with nvc
       run: make clean && CADR4_HDLCOMPILER=nvc make
+
+    - name: Test with nvc
+      run: CADR4_HDLCOMPILER=nvc make check
+
+    - name: Boot with nvc
+      run: CADR4_HDLCOMPILER=nvc CADR4_STOPTIME=200us make check-boot

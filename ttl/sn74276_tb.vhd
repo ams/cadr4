@@ -96,7 +96,7 @@ begin
     set_n <= '1';
     wait for 1 ns;
 
-    -- Test flip-flop 1: J=1, K̄=1 (hold), negative edge trigger
+    -- Test flip-flop 1: J=1, K̄=1 (set), negative edge trigger
     j1 <= '1'; k1_n <= '1';
     clk1_n <= '1'; clk1_n <= '0'; wait for 1 ns; clk1_n <= '1';
     wait for 1 ns;
@@ -121,7 +121,7 @@ begin
     wait for 1 ns;
     assert q2 = '1' and q2_n = '0';
 
-    -- Test flip-flop 2: J=0, K̄=0 (toggle), negative edge trigger
+    -- Test flip-flop 2: J=0, K̄=0 (reset), negative edge trigger
     j2 <= '0'; k2_n <= '0';
     clk2_n <= '0'; wait for 1 ns; clk2_n <= '1';
     wait for 1 ns;
@@ -133,15 +133,20 @@ begin
     wait for 1 ns;
     assert q3 = '0' and q3_n = '1';
 
-    -- Test flip-flop 4: J=0, K̄=0 (toggle), negative edge trigger
+    -- Test flip-flop 4: J=0, K̄=0 (reset), negative edge trigger
     j4 <= '0'; k4_n <= '0';
     clk4_n <= '1'; clk4_n <= '0'; wait for 1 ns; clk4_n <= '1';
     wait for 1 ns;
     assert q4 = '0' and q4_n = '1';
 
     -- Test that positive edges don't trigger (74276 is negative edge triggered)
-    j1 <= '1'; k1_n <= '1';
-    clk1_n <= '0'; clk1_n <= '1'; wait for 1 ns;  -- positive edge
+    j1 <= '0'; k1_n <= '1';                     -- J=0, K̄=1 (hold) while the clock goes low
+    wait for 1 ns;
+    clk1_n <= '0'; wait for 1 ns;                -- negative edge: hold, q1 stays 0
+    assert q1 = '0' and q1_n = '1';
+    j1 <= '1'; k1_n <= '1';                     -- J=1, K̄=1 (set) armed
+    wait for 1 ns;
+    clk1_n <= '1'; wait for 1 ns;                -- positive edge: must not trigger
     assert q1 = '0' and q1_n = '1';  -- should not change
 
     -- Verify asynchronous operations override synchronous

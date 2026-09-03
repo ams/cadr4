@@ -244,8 +244,10 @@ begin
       -- Wait for propagation
       wait for 30 ns;
       
-      -- Check results (F, X, and Y outputs) - try first CLA outputs
-      if s_f = v_f and x0_out = v_x and y0_out = v_y then
+      -- Check results: F (all eight slices), the active-low carry out of the
+      -- top slice, and X/Y of the first-level CLA (the vector file carries the
+      -- X/Y of the bits 0-15 look-ahead only)
+      if s_f = v_f and coutb = v_cout and x0_out = v_x and y0_out = v_y then
         pass_count := pass_count + 1;
       else
         report "FAIL: Test " & integer'image(test_count) & 
@@ -255,6 +257,7 @@ begin
                "' S=" & to_bstring(v_s) & 
                " CNb='" & std_logic'image(s_cin_n) & 
                "' Expected F=" & to_hstring(v_f) & " Got F=" & to_hstring(s_f) &
+               " Expected Coutb=" & std_logic'image(v_cout) & " Got Coutb=" & std_logic'image(coutb) &
                " Expected X=" & std_logic'image(v_x) & " Got X=" & std_logic'image(x0_out) &
                " Expected Y=" & std_logic'image(v_y) & " Got Y=" & std_logic'image(y0_out)
                severity error;
@@ -262,6 +265,9 @@ begin
     end loop;
     
     file_close(test_vectors_file);
+
+    assert test_count > 0 report "alu_32bit_tb: no test vectors read" severity error;
+    report "alu_32bit_tb: " & integer'image(pass_count) & " of " & integer'image(test_count) & " tests passed" severity note;
     
     wait;
   end process;

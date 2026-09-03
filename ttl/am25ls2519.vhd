@@ -1,6 +1,6 @@
 -- Quad Register with Two Independantly Controlled Three-State Outputs
 -- AMD Am25LS2519
--- ttl/doc/am25ls2519.pdf
+-- doc/ttl/am25ls2519.pdf
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -13,7 +13,7 @@ use work.misc.all;
 -- yi non-inverting three-state outputs
 -- wi three-state outputs with polarity control
 -- pol polarity control, when H, Wi is inverted
--- clr_n asynch clear, when L, internal flip-flips are reset to L
+-- clr_n asynch clear, when L, internal flip-flops are reset to L (outputs still controlled by oe_x_n and pol)
 
 -- pin numbers are for CERDIP package
 entity am25ls2519 is
@@ -60,15 +60,12 @@ begin
   u3 : entity work.ff_dpc port map (clk => cp_i, d => d2_i, q => q2, q_n => open, enb_n => e_n_i, pre => '1', clr => clr_n_i);
   u4 : entity work.ff_dpc port map (clk => cp_i, d => d3_i, q => q3, q_n => open, enb_n => e_n_i, pre => '1', clr => clr_n_i);
 
+  -- Output stages. The asynchronous clear resets only the flip-flops
+  -- (block diagram in doc/ttl/am25ls2519.pdf); the output enables and the
+  -- polarity control keep working while the clear is active.
   process (all)
   begin
-    -- Async clear takes priority over output enable
-    if clr_n_i = '0' then
-      y3 <= '0';
-      y2 <= '0';
-      y1 <= '0';
-      y0 <= '0';
-    elsif oe_y_n_i = '0' then
+    if oe_y_n_i = '0' then
       y3 <= q3;
       y2 <= q2;
       y1 <= q1;
@@ -85,13 +82,7 @@ begin
       y0 <= 'X';
     end if;
 
-    -- Async clear takes priority over output enable for W outputs too
-    if clr_n_i = '0' then
-      w3 <= '0';
-      w2 <= '0';
-      w1 <= '0';
-      w0 <= '0';
-    elsif oe_w_n_i = '0' then
+    if oe_w_n_i = '0' then
       if pol_i = '1' then
         w3 <= not q3;
         w2 <= not q2;
@@ -120,5 +111,5 @@ begin
       w0 <= 'X';
     end if;
   end process;
-  
+
 end architecture;

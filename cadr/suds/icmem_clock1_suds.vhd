@@ -5,7 +5,6 @@ use work.dip.all;
 use work.misc.all;
 
 architecture suds of icmem_clock1 is
-alias \-tpdone\ : std_logic is \-tpw60\;
 signal net_00 : std_logic;
 signal net_01 : std_logic;
 begin
@@ -21,4 +20,5 @@ clock1_1d12 : dip_td100 port map (p1 => \-tpr0\, p4 => \-tpr40\, p6 => \-tpr80\,
 clock1_1d13 : dip_td100 port map (p1 => \-tpr100\, p4 => \-tpr140\, p6 => \-tpr180\, p8 => \-tpr200\, p10 => \-tpr160\, p12 => \-tpr120\);
 clock1_1d14 : dip_td25 port map (p1 => \-tpr100\, p4 => \-tpr110\, p6 => \-tpr120a\, p8 => \-tpr125\, p10 => \-tpr115\, p12 => \-tpr105\);
 clock1_1d15 : dip_td25 port map (p1 => \-tpr60\, p4 => \-tpr70\, p6 => \-tpr80a\, p8 => \-tpr85\, p10 => \-tpr75\, p12 => \-tpr65\);
+\-tpdone\ <= \-tpw60\;
 end architecture;

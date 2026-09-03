@@ -12,6 +12,7 @@ use ieee.std_logic_1164.all;
 -- automatically connected in VHDL. These signals are written in comments.
 
 -- mem and spy are bidirectional data lines
+-- lm int is driven by busint (ubintc) and read by cadr (lcc)
 -- -ignpar is from busint, XBUS.IGNPAR
 -- -adr and -adrpar is from cpu
 -- -memrq is from cpu, -memack and -memgrant are from busint
@@ -61,7 +62,7 @@ entity helper_bus_interface_cable is
     -- spy0:15
     \-memgrant\: out std_logic;    
     -- wrcyc
-    \int\: in std_logic;
+    \int\: out std_logic;
     \mempar out\: in std_logic;
 
     -- cadr:mbcpin
@@ -113,7 +114,7 @@ entity helper_bus_interface_cable is
     \-adr1\: out std_logic;
     \-adr0\: out std_logic;
     -- -memrq
-    \-lm ack\: in std_logic;
+    \-lmack\: in std_logic;
     -- -loadmd
     \-lm ignpar\: in std_logic;
 
@@ -121,7 +122,7 @@ entity helper_bus_interface_cable is
     -- spy0:15
     \-lm grant\: in std_logic;
     -- wrcyc
-    \lm int\: out std_logic;
+    \lm int\: in std_logic;
     \mempar from lm\: out std_logic;
 
     -- connector J08
@@ -176,7 +177,7 @@ begin
   \-adr1\ <= \-vma1\;
   \-adr0\ <= \-vma0\;
   -- -memrq
-  \-memack\ <= \-lm ack\;
+  \-memack\ <= \-lmack\;
   -- -loadmd
   \-ignpar\ <= \-lm ignpar\;
 
@@ -184,7 +185,7 @@ begin
   -- spy0:15
   \-memgrant\ <= \-lm grant\;  
   -- wrcyc
-  \lm int\ <= \int\;
+  \int\ <= \lm int\;
   \mempar from lm\ <= \mempar out\;
 
   -- J08

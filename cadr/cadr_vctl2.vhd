@@ -23,6 +23,10 @@ entity cadr_vctl2 is
     wp1a            : in     std_logic;
     wp1b            : in     std_logic;
     wrcyc           : in     std_logic;
+    \-wmap\         : inout  std_logic;
+    mapwr0d         : inout  std_logic;
+    mapwr1d         : inout  std_logic;
+    nopa            : inout  std_logic;
     \-memdrive.a\   : out    std_logic;
     \-memdrive.b\   : out    std_logic;
     \-memprepare\   : out    std_logic;
@@ -35,14 +39,10 @@ entity cadr_vctl2 is
     \-vm1wpa\       : out    std_logic;
     \-vm1wpb\       : out    std_logic;
     \-vmaenb\       : out    std_logic;
-    \-wmap\         : out    std_logic;
     \use.md\        : out    std_logic;
     destmem         : out    std_logic;
-    mapwr0d         : out    std_logic;
-    mapwr1d         : out    std_logic;
     mdsela          : out    std_logic;
     mdselb          : out    std_logic;
-    nopa            : out    std_logic;
     vmasela         : out    std_logic;
     vmaselb         : out    std_logic;
     wmap            : out    std_logic

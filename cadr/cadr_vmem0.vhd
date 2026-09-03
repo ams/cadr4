@@ -24,16 +24,16 @@ entity cadr_vmem0 is
     memstart        : in     std_logic;
     srcmap          : in     std_logic;
     vmoparodd       : in     std_logic;
-    \-mapi23\       : out    std_logic;
-    \-use.map\      : out    std_logic;
-    \-vmap0\        : out    std_logic;
-    \-vmap1\        : out    std_logic;
-    \-vmap2\        : out    std_logic;
-    \-vmap3\        : out    std_logic;
-    \-vmap4\        : out    std_logic;
+    \-mapi23\       : inout  std_logic;
+    \-use.map\      : inout  std_logic;
+    \-vmap0\        : inout  std_logic;
+    \-vmap1\        : inout  std_logic;
+    \-vmap2\        : inout  std_logic;
+    \-vmap3\        : inout  std_logic;
+    \-vmap4\        : inout  std_logic;
+    vm0pari         : inout  std_logic;
+    vpari           : inout  std_logic;
     v0parok         : out    std_logic;
-    vm0pari         : out    std_logic;
-    vmoparok        : out    std_logic;
-    vpari           : out    std_logic
+    vmoparok        : out    std_logic
   );
 end entity;

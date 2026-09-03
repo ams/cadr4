@@ -23,7 +23,7 @@ entity sn74373 is
     o0     : out std_logic; -- Pin 2 (1Q)
     o1     : out std_logic; -- Pin 5 (2Q)
     o2     : out std_logic; -- Pin 6 (3Q)
-    o3     : out std_logic; -- Pin 10 (4Q)
+    o3     : out std_logic; -- Pin 9 (4Q)
     o4     : out std_logic; -- Pin 12 (5Q)
     o5     : out std_logic; -- Pin 15 (6Q)
     o6     : out std_logic; -- Pin 16 (7Q)

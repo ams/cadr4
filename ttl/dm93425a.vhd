@@ -46,25 +46,28 @@ begin
   we_n_i <= ttl_input(we_n);
   di_i <= ttl_input(di);
 
+  -- Output enable (logic diagram in doc/ttl/dm93425a.pdf): DOUT is driven
+  -- only with CS low and WE high; it floats when deselected or during a write.
   process(all)
     variable addr : unsigned(9 downto 0);
   begin
     if ce_n_i = '0' then
       addr := (a9_i, a8_i, a7_i, a6_i, a5_i, a4_i, a3_i, a2_i, a1_i, a0_i);
-      if is_x(addr) then
-        if we_n_i = '1' then
+      if we_n_i = '0' then
+        -- write: output disabled
+        do <= 'Z';
+        if not is_x(addr) then
+          ram(to_integer(addr))(0) <= di_i;
+        end if;
+      elsif we_n_i = '1' then
+        -- read
+        if is_x(addr) then
           do <= 'X';
+        else
+          do <= ram(to_integer(addr))(0);
         end if;
       else
-        if we_n_i = '0' then
-          -- Write
-          ram(to_integer(addr))(0) <= di_i;
-        elsif we_n_i = '1' then
-          -- Read (always happens when enabled)
-          do <= ram(to_integer(addr))(0);
-        else
-          -- do nothing
-        end if;
+        do <= 'X';
       end if;
     elsif ce_n_i = '1' then
       do <= 'Z';

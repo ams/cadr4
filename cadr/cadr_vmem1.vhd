@@ -38,17 +38,23 @@ entity cadr_vmem1 is
     mapi12          : in     std_logic;
     mapi8           : in     std_logic;
     mapi9           : in     std_logic;
-    \-mapi10a\      : out    std_logic;
+    \-mapi10a\      : inout  std_logic;
+    \-mapi11a\      : inout  std_logic;
+    \-mapi12a\      : inout  std_logic;
+    \-mapi8a\       : inout  std_logic;
+    \-mapi9a\       : inout  std_logic;
+    \-vm1lpar\      : inout  std_logic;
+    vm1mpar         : inout  std_logic;
+    vmap0a          : inout  std_logic;
+    vmap1a          : inout  std_logic;
+    vmap2a          : inout  std_logic;
+    vmap3a          : inout  std_logic;
+    vmap4a          : inout  std_logic;
     \-mapi10b\      : out    std_logic;
-    \-mapi11a\      : out    std_logic;
     \-mapi11b\      : out    std_logic;
-    \-mapi12a\      : out    std_logic;
     \-mapi12b\      : out    std_logic;
-    \-mapi8a\       : out    std_logic;
     \-mapi8b\       : out    std_logic;
-    \-mapi9a\       : out    std_logic;
     \-mapi9b\       : out    std_logic;
-    \-vm1lpar\      : out    std_logic;
     \-vmo0\         : out    std_logic;
     \-vmo10\        : out    std_logic;
     \-vmo11\        : out    std_logic;
@@ -61,12 +67,6 @@ entity cadr_vmem1 is
     \-vmo7\         : out    std_logic;
     \-vmo8\         : out    std_logic;
     \-vmo9\         : out    std_logic;
-    vm1mpar         : out    std_logic;
-    vm1pari         : out    std_logic;
-    vmap0a          : out    std_logic;
-    vmap1a          : out    std_logic;
-    vmap2a          : out    std_logic;
-    vmap3a          : out    std_logic;
-    vmap4a          : out    std_logic
+    vm1pari         : out    std_logic
   );
 end entity;

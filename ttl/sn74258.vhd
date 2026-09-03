@@ -1,4 +1,6 @@
 -- Quadruple 2-Line To 1-Line Inverse Data Selectors/Multiplexers
+-- Pin numbers as wired by dip_74s258: sections a .. d sit on the datasheet
+-- sections 4 .. 1 (each section stays together, so this is equivalent).
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -6,24 +8,24 @@ use work.misc.all;
 
 entity sn74258 is
   port (
-    enb_n : in std_logic;
-    sel   : in std_logic;
+    enb_n : in std_logic; -- Pin 15 (G, output control)
+    sel   : in std_logic; -- Pin 1 (A/B)
 
-    a0 : in  std_logic;
-    a1 : in  std_logic;
-    ay : out std_logic;
+    a0 : in  std_logic;   -- Pin 14 (4A)
+    a1 : in  std_logic;   -- Pin 13 (4B)
+    ay : out std_logic;   -- Pin 12 (4Y)
 
-    b0 : in  std_logic;
-    b1 : in  std_logic;
-    by : out std_logic;
+    b0 : in  std_logic;   -- Pin 11 (3A)
+    b1 : in  std_logic;   -- Pin 10 (3B)
+    by : out std_logic;   -- Pin 9 (3Y)
 
-    c0 : in  std_logic;
-    c1 : in  std_logic;
-    cy : out std_logic;
+    c0 : in  std_logic;   -- Pin 5 (2A)
+    c1 : in  std_logic;   -- Pin 6 (2B)
+    cy : out std_logic;   -- Pin 7 (2Y)
 
-    d0 : in  std_logic;
-    d1 : in  std_logic;
-    dy : out std_logic
+    d0 : in  std_logic;   -- Pin 2 (1A)
+    d1 : in  std_logic;   -- Pin 3 (1B)
+    dy : out std_logic    -- Pin 4 (1Y)
     );
 end entity;
 

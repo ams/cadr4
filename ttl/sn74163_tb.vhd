@@ -119,20 +119,23 @@ begin
     assert (d3 & d2 & d1 & d0) = "0000" report "Overflow to 0 failed" severity error;
     assert tc = '0' report "TC still active after overflow" severity error;
     
-    -- Test 5: Count from 0 to 15 continuously
-    wait for 150 ns; -- Let it count for several cycles
+    -- Test 5: Count from 0 to 15 continuously (15 clock edges: counter reaches 1111)
+    wait for 150 ns;
+    assert (d3 & d2 & d1 & d0) = "1111" report "Count to 15 after 15 clocks failed" severity error;
     
-    -- Test 6: Disable with enb_p = '0'
+    -- Test 6: Disable with enb_p = '0' (two clock edges): counter holds, TC stays active (ENT high, Q = 15)
     enb_p <= '0';
     enb_t <= '1';
     wait for 20 ns;
-    -- Check that counter doesn't change
+    assert (d3 & d2 & d1 & d0) = "1111" report "Counter should hold with enb_p low" severity error;
+    assert tc = '1' report "TC should be active at 15 with enb_t high even though enb_p is low" severity error;
     
-    -- Test 7: Disable with enb_t = '0'
+    -- Test 7: Disable with enb_t = '0' (two clock edges): counter holds, TC inactive
     enb_p <= '1';
     enb_t <= '0';
     wait for 20 ns;
-    -- Check that counter doesn't change
+    assert (d3 & d2 & d1 & d0) = "1111" report "Counter should hold with enb_t low" severity error;
+    assert tc = '0' report "TC should be inactive with enb_t low" severity error;
     
     -- Test 8: Load has priority over counting
     enb_p <= '1';
@@ -158,8 +161,8 @@ begin
     clr_n <= '1';
     pe_n <= '1';
     
-    -- Test 10: TC conditions
-    -- Load 15 and check TC with enables active
+    -- Test 10: TC = ENT AND (Q = 15); ENP does not take part
+    -- Load 15, then examine TC between clock edges (edges are at 5 ns mod 10 ns)
     i3 <= '1';
     i2 <= '1';
     i1 <= '1';
@@ -167,20 +170,25 @@ begin
     pe_n <= '0';
     wait for 10 ns;
     pe_n <= '1';
-    wait for 5 ns;
+    enb_p <= '1';
+    enb_t <= '1';
+    wait for 1 ns;
+    assert (d3 & d2 & d1 & d0) = "1111" report "Load 15 failed" severity error;
     assert tc = '1' report "TC should be active at 15 with both enables high" severity error;
     
-    -- Test TC with one enable low
+    -- ENP must not gate TC
     enb_p <= '0';
-    wait for 5 ns;
-    assert tc = '0' report "TC should be inactive with enb_p low" severity error;
+    wait for 1 ns;
+    assert tc = '1' report "TC must be independent of enb_p" severity error;
     
-    enb_p <= '1';
+    -- ENT does gate TC
     enb_t <= '0';
-    wait for 5 ns;
+    wait for 1 ns;
     assert tc = '0' report "TC should be inactive with enb_t low" severity error;
     enb_t <= '1';
-
+    wait for 10 ns;   -- one clock edge with enb_p low: counter holds at 15
+    assert (d3 & d2 & d1 & d0) = "1111" report "Counter should hold at 15 with enb_p low" severity error;
+    assert tc = '1' report "TC should be active at 15 with enb_t high and enb_p low" severity error;
     std.env.stop;
     
     wait;

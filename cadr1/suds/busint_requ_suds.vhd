@@ -33,4 +33,7 @@ requ_0e06 : dip_74s260 port map (p1 => net_05, p2 => net_04, p3 => \loadmd ack\,
 requ_0f01 : dip_td100 port map (p1 => \-uback\, p4 => open, p6 => open, p8 => net_11, p10 => net_09, p12 => open);
 requ_0f02 : dip_74s02 port map (p1 => open, p2 => 'Z', p3 => 'Z', p4 => net_12, p5 => \-uback\, p6 => \-ub read xbus\, p8 => \-ub read xbus\, p9 => net_11, p10 => net_05, p11 => \-uback\, p12 => \-ub write xbus\, p13 => net_04);
 requ_0f03 : dip_74s00 port map (p1 => 'Z', p2 => 'Z', p3 => open, p4 => \ubx grant a\, p5 => xack, p6 => \-uback\, p8 => \-rbufwe\, p9 => net_10, p10 => net_12, p11 => \ub xbus t0\, p12 => \-ub write xbus\, p13 => \-ub read xbus\);
+net_06 <= \-ub invalid\;
+net_08 <= \msyn in\;
+net_10 <= net_09;
 end architecture;

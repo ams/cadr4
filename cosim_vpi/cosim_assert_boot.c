@@ -10,27 +10,18 @@ static void terminate_simulation_with_error(const char* error_msg) {
     vpi_control(vpiFinish, 1);
 }
 
-static PLI_INT32 time_unit;
 static PLI_INT32 time_precision;
-static double ticks_per_second;
+static double ticks_per_ns;
 
+// one tick is 10^time_precision seconds, so one ns is 10^(-9 - precision) ticks
 static void initialize_simulation_defaults()
 {
-    time_unit = vpi_get(vpiTimeUnit, NULL);
-    VPI_PRINTF("time unit: %d\n", time_unit);
-
     time_precision = vpi_get(vpiTimePrecision, NULL);
-    VPI_PRINTF("time precision: %d\n", time_precision);
-
-    ticks_per_second = pow(10.0, time_precision);
+    ticks_per_ns = pow(10.0, -9 - time_precision);
 }
 
-static uint64_t ticks_from_s(double s) {
-    return (uint64_t) llround(s / ticks_per_second);
-}
-
-static uint64_t ticks_from_ns(double ns) { 
-    return (uint64_t) llround(ns * (1.0e-9 / time_precision)); 
+static uint64_t ticks_from_ns(double ns) {
+    return (uint64_t) llround(ns * ticks_per_ns);
 }
 
 static void setup_s_vpi_time_ns(double ns, s_vpi_time* t)
@@ -44,8 +35,8 @@ static PLI_INT32 start_of_simulation_cb(p_cb_data cb_data)
 {
     (void)cb_data;
 
-    
-    
+    initialize_simulation_defaults();
+
     vpiHandle boot_h = vpi_handle_by_name("cadr_tb.\\-lm boot\\", NULL);
 
     if (boot_h) 

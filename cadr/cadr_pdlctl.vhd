@@ -38,6 +38,12 @@ entity cadr_pdlctl is
     pdlptr9         : in     std_logic;
     tse4b           : in     std_logic;
     wp4a            : in     std_logic;
+    \-pdlpa\        : inout  std_logic;
+    \-pdlpb\        : inout  std_logic;
+    \-pwidx\        : inout  std_logic;
+    pdlenb          : inout  std_logic;
+    pdlwrite        : inout  std_logic;
+    pdlwrited       : inout  std_logic;
     \-destspcd\     : out    std_logic;
     \-imodd\        : out    std_logic;
     \-pdla0a\       : out    std_logic;
@@ -62,17 +68,11 @@ entity cadr_pdlctl is
     \-pdla9b\       : out    std_logic;
     \-pdlcnt\       : out    std_logic;
     \-pdldrive\     : out    std_logic;
-    \-pdlpa\        : out    std_logic;
-    \-pdlpb\        : out    std_logic;
     \-pdlwrited\    : out    std_logic;
-    \-pwidx\        : out    std_logic;
     \-pwpa\         : out    std_logic;
     \-pwpb\         : out    std_logic;
     \-pwpc\         : out    std_logic;
     imodd           : out    std_logic;
-    pdlenb          : out    std_logic;
-    pdlwrite        : out    std_logic;
-    pdlwrited       : out    std_logic;
     pwidx           : out    std_logic
   );
 end entity;

@@ -32,4 +32,5 @@ reqlm_0c11 : dip_74s64 port map (p1 => 'Z', p2 => \xbus ack in\, p3 => xwr, p4 =
 reqlm_0c12 : dip_74s260 port map (p1 => \-adr21\, p2 => \-adr20\, p3 => \-adr19\, p4 => 'Z', p5 => \adr=unibus\, p6 => open, p8 => 'Z', p9 => 'Z', p10 => 'Z', p11 => 'Z', p12 => \-adr18\, p13 => \-adr17\);
 reqlm_0c14 : dip_74s51 port map (p1 => net_05, p2 => 'Z', p3 => 'Z', p4 => 'Z', p5 => 'Z', p6 => open, p8 => net_04, p9 => lmxrq, p10 => \lmx grant a\, p13 => net_06);
 reqlm_0e09 : dip_74s08 port map (p1 => ubxrq, p2 => \lmx grant a\, p3 => net_06, p4 => \-ub to md\, p5 => \msyn in\, p6 => net_05, p8 => open, p9 => 'Z', p10 => 'Z', p11 => open, p12 => 'Z', p13 => 'Z');
+net_01 <= \adr=unibus\;
 end architecture;

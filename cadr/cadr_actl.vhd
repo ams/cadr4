@@ -32,6 +32,20 @@ entity cadr_actl is
     tse3a           : in     std_logic;
     tse4a           : in     std_logic;
     wp3a            : in     std_logic;
+    \-apass\        : inout  std_logic;
+    apass1          : inout  std_logic;
+    apass2          : inout  std_logic;
+    destd           : inout  std_logic;
+    wadr0           : inout  std_logic;
+    wadr1           : inout  std_logic;
+    wadr2           : inout  std_logic;
+    wadr3           : inout  std_logic;
+    wadr4           : inout  std_logic;
+    wadr5           : inout  std_logic;
+    wadr6           : inout  std_logic;
+    wadr7           : inout  std_logic;
+    wadr8           : inout  std_logic;
+    wadr9           : inout  std_logic;
     \-aadr0a\       : out    std_logic;
     \-aadr0b\       : out    std_logic;
     \-aadr1a\       : out    std_logic;
@@ -53,25 +67,11 @@ entity cadr_actl is
     \-aadr9a\       : out    std_logic;
     \-aadr9b\       : out    std_logic;
     \-amemenb\      : out    std_logic;
-    \-apass\        : out    std_logic;
     \-apassenb\     : out    std_logic;
     \-awpa\         : out    std_logic;
     \-awpb\         : out    std_logic;
     \-awpc\         : out    std_logic;
-    apass1          : out    std_logic;
-    apass2          : out    std_logic;
     apassenb        : out    std_logic;
-    destd           : out    std_logic;
-    destmd          : out    std_logic;
-    wadr0           : out    std_logic;
-    wadr1           : out    std_logic;
-    wadr2           : out    std_logic;
-    wadr3           : out    std_logic;
-    wadr4           : out    std_logic;
-    wadr5           : out    std_logic;
-    wadr6           : out    std_logic;
-    wadr7           : out    std_logic;
-    wadr8           : out    std_logic;
-    wadr9           : out    std_logic
+    destmd          : out    std_logic
   );
 end entity;

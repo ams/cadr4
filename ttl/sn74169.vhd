@@ -8,18 +8,18 @@ use work.misc.all;
 entity sn74169 is
   port (
     -- Control and status
-    co_n    : out std_logic;  -- Carry out (active low)
-    clk     : in  std_logic;  -- Clock
-    up_dn   : in  std_logic;  -- Up/Down control
-    load_n  : in  std_logic;  -- Parallel load enable (active low)
-    enb_p_n : in  std_logic;  -- Count enable parallel (active low)
-    enb_t_n : in  std_logic;  -- Count enable trickle (active low)
+    co_n    : out std_logic;        -- Pin 15 (RCO): ripple carry out (active low)
+    clk     : in  std_logic;        -- Pin 2 (CLK)
+    up_dn   : in  std_logic;        -- Pin 1 (U/D): up/down control
+    load_n  : in  std_logic;        -- Pin 9 (LOAD): parallel load enable (active low)
+    enb_p_n : in  std_logic;        -- Pin 7 (ENP): count enable parallel (active low)
+    enb_t_n : in  std_logic;        -- Pin 10 (ENT): count enable trickle (active low)
     
     -- Data inputs (parallel load)
-    i3, i2, i1, i0 : in  std_logic;
+    i3, i2, i1, i0 : in  std_logic; -- Pins 6, 5, 4, 3 (D, C, B, A)
     
     -- Data outputs
-    o3, o2, o1, o0 : out std_logic
+    o3, o2, o1, o0 : out std_logic  -- Pins 11, 12, 13, 14 (QD, QC, QB, QA)
     );
 end entity;
 
@@ -75,24 +75,19 @@ begin
   o1 <= cnt(1);
   o0 <= cnt(0);
 
-  -- terminal count / ripple-carry (active-low)
-  -- Terminal count occurs when:
-  -- 1. Both enables are active (low)
-  -- 2. Either:
-  --    a. Loading terminal count value (15 for up-count, 0 for down-count)
-  --    b. Counter is at terminal count (15 for up-count, 0 for down-count)
+  -- ripple carry output (active low)
+  -- RCO_n = NOT(ENT_n = '0' AND ((U/D = '1' AND Q = 15) OR (U/D = '0' AND Q = 0)))
+  -- Only ENT feeds forward into the carry output; ENP, LOAD and the data
+  -- inputs do not take part.
   process(all)
     variable at_terminal_count : boolean;
-    variable loading_terminal_count : boolean;
     variable cnt_std : std_logic_vector(3 downto 0);
   begin
     -- Convert counter to std_logic_vector for metavalue checking
     cnt_std := std_logic_vector(cnt);
-    
-    -- Initialize variables
+
     at_terminal_count := false;
-    loading_terminal_count := false;
-    
+
     -- Check if counter is at terminal count (only if counter is valid)
     if not is_x(cnt_std) then
       if up_dn_i = '1' then
@@ -101,18 +96,8 @@ begin
         at_terminal_count := (cnt_std = "0000");  -- down-count terminal (0)
       end if;
     end if;
-    
-    -- Check if loading a terminal count value
-    if load_n_i = '0' then
-      if up_dn_i = '1' then
-        loading_terminal_count := std_logic_vector'(i3_i & i2_i & i1_i & i0_i) = "1111";  -- loading 15
-      elsif up_dn_i = '0' then
-        loading_terminal_count := std_logic_vector'(i3_i & i2_i & i1_i & i0_i) = "0000";  -- loading 0
-      end if;
-    end if;
-    
-    -- Generate carry-out (active low)
-    if (enb_t_n_i = '0' and enb_p_n_i = '0') and (at_terminal_count or loading_terminal_count) then
+
+    if enb_t_n_i = '0' and at_terminal_count then
       co_n <= '0';  -- Active low terminal count
     else
       co_n <= '1';  -- Not at terminal count

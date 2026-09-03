@@ -71,13 +71,13 @@ entity cadr_apar is
     mparity         : in     std_logic;
     pdlenb          : in     std_logic;
     srcm            : in     std_logic;
-    aparl           : out    std_logic;
-    aparm           : out    std_logic;
+    aparl           : inout  std_logic;
+    aparm           : inout  std_logic;
+    mpareven        : inout  std_logic;
+    mparl           : inout  std_logic;
+    mparm           : inout  std_logic;
     aparok          : out    std_logic;
     mmemparok       : out    std_logic;
-    mpareven        : out    std_logic;
-    mparl           : out    std_logic;
-    mparm           : out    std_logic;
     mparodd         : out    std_logic;
     pdlparok        : out    std_logic
   );

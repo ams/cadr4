@@ -19,6 +19,7 @@ entity cadr_mctl is
     wadr3           : in     std_logic;
     wadr4           : in     std_logic;
     wp4b            : in     std_logic;
+    \-mpass\        : inout  std_logic;
     mmem0           : inout  std_logic;
     mmem1           : inout  std_logic;
     mmem10          : inout  std_logic;
@@ -52,6 +53,7 @@ entity cadr_mctl is
     mmem8           : inout  std_logic;
     mmem9           : inout  std_logic;
     mmemparity      : inout  std_logic;
+    mpass           : inout  std_logic;
     \-madr0a\       : out    std_logic;
     \-madr0b\       : out    std_logic;
     \-madr1a\       : out    std_logic;
@@ -62,12 +64,10 @@ entity cadr_mctl is
     \-madr3b\       : out    std_logic;
     \-madr4a\       : out    std_logic;
     \-madr4b\       : out    std_logic;
-    \-mpass\        : out    std_logic;
     \-mpassl\       : out    std_logic;
     \-mpassm\       : out    std_logic;
     \-mwpa\         : out    std_logic;
     \-mwpb\         : out    std_logic;
-    mpass           : out    std_logic;
     mpassl          : out    std_logic;
     srcm            : out    std_logic
   );

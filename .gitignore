@@ -6,8 +6,9 @@
 *.dSYM/
 __pycache__/
 
-.continueignore
 .vimrc
+
+.claude/
 *.o
 *.cf
 
@@ -15,17 +16,13 @@ __pycache__/
 /*.exclude
 /wave.opt
 
-.continue/
 .surfer/
 .vscode/
 build/
-cosim_vhpidirect_test/
-cosim_vpi_test/
 doc/Verilog_2005.md
 doc/Verilog_2005.pdf
 doc/VHDL_2008.md
 doc/VHDL_2008.pdf
 doc/drwtools/dumpwords
-soap/soap
 vivado/
 work/

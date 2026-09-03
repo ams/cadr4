@@ -24,14 +24,14 @@ entity busint_requ is
     ubwr            : in     std_logic;
     writeok         : in     std_logic;
     xack            : in     std_logic;
+    \-ub invalid\   : inout  std_logic;
+    \-uback\        : inout  std_logic;
+    \-ubxrq\        : inout  std_logic;
+    \ub xbus t0\    : inout  std_logic;
+    \ub xbus t100\  : inout  std_logic;
+    ubxrq           : inout  std_logic;
     \-rbufwe\       : out    std_logic;
-    \-ub invalid\   : out    std_logic;
     \-ub to md\     : out    std_logic;
-    \-uback\        : out    std_logic;
-    \-ubxrq\        : out    std_logic;
-    \ssyn out\      : out    std_logic;
-    \ub xbus t0\    : out    std_logic;
-    \ub xbus t100\  : out    std_logic;
-    ubxrq           : out    std_logic
+    \ssyn out\      : out    std_logic
   );
 end entity;

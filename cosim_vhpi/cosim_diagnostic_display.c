@@ -118,6 +118,7 @@ static void display_callback(const struct vhpiCbDataS* cb_data)
         printf("%*.0lf ns", 7, cosim_current_time_ns());
 
         printf("\n");
+        fflush(stdout);
         
         // Update previous values
         for (int i = 0; i < 5; i++) {
@@ -132,38 +133,49 @@ static void display_callback(const struct vhpiCbDataS* cb_data)
     return;
 }
 
-static void start_of_simulation(const vhpiCbDataT* cb_data) 
+static void start_of_simulation(const vhpiCbDataT* cb_data)
 {
     char* pctl_names[] = {
         "pctl_1f16",
         "pctl_1f17",
         "pctl_1f18",
         "pctl_1f19",
-        "pctl_1f20" 
+        "pctl_1f20"
     };
 
     char* til309_signals_names[] = {"p14", "p17", "p12", "p6", "p7"};
 
-    vhpiHandleT top_module_handle = vhpi_handle_by_name("cadr_boot_tb", NULL);
+    // the root instance is whatever top level was elaborated (cadr_tb,
+    // cadr_boot_tb or a unit testbench); the display only exists when the
+    // pctl page is instantiated, otherwise the display stays disabled
+    vhpiHandleT top_module_handle = vhpi_handle(vhpiRootInst, NULL);
 
-    assert (top_module_handle != NULL);
-    if (top_module_handle == NULL) { return; }
+    if (top_module_handle == NULL) {
+        VHPI_PRINTF("no root instance, display disabled\n");
+        return;
+    }
 
-    vhpiHandleT pctl_handle = vhpi_handle_by_name("icmem_pctl_inst", 
+    vhpiHandleT pctl_handle = vhpi_handle_by_name("icmem_pctl_inst",
         top_module_handle);
 
     vhpi_release_handle(top_module_handle);
 
-    assert (pctl_handle != NULL);
-    if (pctl_handle == NULL) { return; }
+    if (pctl_handle == NULL) {
+        VHPI_PRINTF("icmem_pctl_inst not found, display disabled\n");
+        return;
+    }
 
     vhpiHandleT display_handles[5] = {NULL};
 
     for (int i = 0; i < 5; i++) {
         display_handles[i] = vhpi_handle_by_name(pctl_names[i], pctl_handle);
-        assert (display_handles[i] != NULL);
-        if (display_handles[i] == NULL) { return; }
-    }    
+        if (display_handles[i] == NULL) {
+            VHPI_PRINTF("%s not found in icmem_pctl_inst, display disabled\n",
+                pctl_names[i]);
+            vhpi_release_handle(pctl_handle);
+            return;
+        }
+    }
 
     vhpi_release_handle(pctl_handle);
 
@@ -171,11 +183,16 @@ static void start_of_simulation(const vhpiCbDataT* cb_data)
         for (int j = 0; j < 5; j++) {
             display_signal_handles[i][j] = vhpi_handle_by_name(
                 til309_signals_names[j], display_handles[i]);
-            assert (display_signal_handles[i][j] != NULL);
+            if (display_signal_handles[i][j] == NULL) {
+                VHPI_PRINTF("%s.%s not found, display disabled\n",
+                    pctl_names[i], til309_signals_names[j]);
+                vhpi_release_handle(display_handles[i]);
+                return;
+            }
         }
         vhpi_release_handle(display_handles[i]);
     }
-    
+
     register_display_callback();
 }
 

@@ -1,4 +1,6 @@
 -- 13-Input Positive-NAND Gate
+-- Pin numbers below follow the datasheet (A..G = pins 1..7). dip_74s133 wires
+-- a..g to pins 7..1 (reversed), which is equivalent for a 13-input NAND.
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -7,20 +9,20 @@ use work.misc.all;
 
 entity sn74133 is
   port (
-    a   : in  std_logic; -- Pin 1
-    b   : in  std_logic; -- Pin 2
-    c   : in  std_logic; -- Pin 3
-    d   : in  std_logic; -- Pin 4
-    e   : in  std_logic; -- Pin 5
-    f   : in  std_logic; -- Pin 6
-    h   : in  std_logic; -- Pin 10
-    i   : in  std_logic; -- Pin 11
-    j   : in  std_logic; -- Pin 12
-    k   : in  std_logic; -- Pin 13
-    l   : in  std_logic; -- Pin 14
-    m   : in  std_logic; -- Pin 15
-    g   : in  std_logic; -- Pin 9
-    q_n : out std_logic  -- Pin 8
+    a   : in  std_logic;  -- Pin 1 (A)
+    b   : in  std_logic;  -- Pin 2 (B)
+    c   : in  std_logic;  -- Pin 3 (C)
+    d   : in  std_logic;  -- Pin 4 (D)
+    e   : in  std_logic;  -- Pin 5 (E)
+    f   : in  std_logic;  -- Pin 6 (F)
+    h   : in  std_logic;  -- Pin 10 (H)
+    i   : in  std_logic;  -- Pin 11 (I)
+    j   : in  std_logic;  -- Pin 12 (J)
+    k   : in  std_logic;  -- Pin 13 (K)
+    l   : in  std_logic;  -- Pin 14 (L)
+    m   : in  std_logic;  -- Pin 15 (M)
+    g   : in  std_logic;  -- Pin 7 (G)
+    q_n : out std_logic   -- Pin 9 (Y)
     );
 end entity;
 

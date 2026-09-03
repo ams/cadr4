@@ -77,10 +77,38 @@ begin
       a0 <= addr(0);
       wait for 1 ns;
       expected_data := expected(i);
-      assert (d7 & d6 & d5 & d4 & d3 & d2 & d1 & d0) = expected_data
+      assert std_logic_vector'(d7 & d6 & d5 & d4 & d3 & d2 & d1 & d0) = expected_data
         report "Mismatch at address " & integer'image(i)
         severity error;
     end loop;
+
+    -- CE high: all outputs float
+    a8 <= '0'; a7 <= '0'; a6 <= '0'; a5 <= '0'; a4 <= '0';
+    a3 <= '0'; a2 <= '0'; a1 <= '0'; a0 <= '0';
+    ce_n <= '1';
+    wait for 1 ns;
+    assert std_logic_vector'(d7 & d6 & d5 & d4 & d3 & d2 & d1 & d0) = "ZZZZZZZZ"
+      report "CE high: all outputs should float" severity error;
+    ce_n <= '0';
+
+    -- A few words compared against values read by hand from
+    -- doc/promh.9/promh9.1b17.hex (lines 1, 59, 63, 64), independent of
+    -- load_hex_file.
+    wait for 1 ns;
+    assert std_logic_vector'(d7 & d6 & d5 & d4 & d3 & d2 & d1 & d0) = x"00"
+      report "Address 0 should be 00" severity error;
+    a5 <= '1'; a4 <= '1'; a3 <= '1'; a1 <= '1'; -- address 58: 34
+    wait for 1 ns;
+    assert std_logic_vector'(d7 & d6 & d5 & d4 & d3 & d2 & d1 & d0) = x"34"
+      report "Address 58 should be 34" severity error;
+    a2 <= '1'; -- address 62: 08
+    wait for 1 ns;
+    assert std_logic_vector'(d7 & d6 & d5 & d4 & d3 & d2 & d1 & d0) = x"08"
+      report "Address 62 should be 08" severity error;
+    a0 <= '1'; -- address 63: 09
+    wait for 1 ns;
+    assert std_logic_vector'(d7 & d6 & d5 & d4 & d3 & d2 & d1 & d0) = x"09"
+      report "Address 63 should be 09" severity error;
 
     wait;
   end process;

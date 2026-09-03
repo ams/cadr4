@@ -13,10 +13,14 @@ entity icmem_clock2 is
     \-tpw45\        : in     std_logic;
     hi1             : in     std_logic;
     machrun         : in     std_logic;
-    \-clk0\         : out    std_logic;
-    \-mclk0\        : out    std_logic;
-    \-tpclk\        : out    std_logic;
-    \-tptse\        : out    std_logic;
+    \-clk0\         : inout  std_logic;
+    \-mclk0\        : inout  std_logic;
+    \-tpclk\        : inout  std_logic;
+    \-tptse\        : inout  std_logic;
+    tpclk           : inout  std_logic;
+    tptse           : inout  std_logic;
+    tpwp            : inout  std_logic;
+    tpwpiram        : inout  std_logic;
     \-tse1\         : out    std_logic;
     \-tse2\         : out    std_logic;
     \-tse3\         : out    std_logic;
@@ -33,10 +37,6 @@ entity icmem_clock2 is
     clk5            : out    std_logic;
     mclk1           : out    std_logic;
     mclk5           : out    std_logic;
-    mclk7           : out    std_logic;
-    tpclk           : out    std_logic;
-    tptse           : out    std_logic;
-    tpwp            : out    std_logic;
-    tpwpiram        : out    std_logic
+    mclk7           : out    std_logic
   );
 end entity;

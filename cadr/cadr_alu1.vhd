@@ -47,6 +47,7 @@ entity cadr_alu1 is
     m29             : in     std_logic;
     m30             : in     std_logic;
     m31             : in     std_logic;
+    m31b            : inout  std_logic;
     \a=m\           : out    std_logic;
     alu16           : out    std_logic;
     alu17           : out    std_logic;
@@ -65,7 +66,6 @@ entity cadr_alu1 is
     alu30           : out    std_logic;
     alu31           : out    std_logic;
     alu32           : out    std_logic;
-    m31b            : out    std_logic;
     xout19          : out    std_logic;
     xout23          : out    std_logic;
     xout27          : out    std_logic;

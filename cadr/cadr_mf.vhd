@@ -40,8 +40,10 @@ entity cadr_mf is
     pdlenb          : in     std_logic;
     spcenb          : in     std_logic;
     tse1a           : in     std_logic;
-    \-mfdrive\      : out    std_logic;
-    \-srcm\         : out    std_logic;
+    \-mfdrive\      : inout  std_logic;
+    \-srcm\         : inout  std_logic;
+    mfdrive         : inout  std_logic;
+    mfenb           : inout  std_logic;
     m0              : out    std_logic;
     m1              : out    std_logic;
     m10             : out    std_logic;
@@ -73,8 +75,6 @@ entity cadr_mf is
     m6              : out    std_logic;
     m7              : out    std_logic;
     m8              : out    std_logic;
-    m9              : out    std_logic;
-    mfdrive         : out    std_logic;
-    mfenb           : out    std_logic
+    m9              : out    std_logic
   );
 end entity;

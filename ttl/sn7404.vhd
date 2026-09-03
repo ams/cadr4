@@ -6,23 +6,23 @@ use work.misc.all;
 
 entity sn7404 is
   port (
-    g1a   : in  std_logic;
-    g1q_n : out std_logic;
+    g1a   : in  std_logic; -- Pin 1 (1A)
+    g1q_n : out std_logic; -- Pin 2 (1Y)
 
-    g2a   : in  std_logic;
-    g2q_n : out std_logic;
+    g2a   : in  std_logic; -- Pin 3 (2A)
+    g2q_n : out std_logic; -- Pin 4 (2Y)
 
-    g3a   : in  std_logic;
-    g3q_n : out std_logic;
+    g3a   : in  std_logic; -- Pin 5 (3A)
+    g3q_n : out std_logic; -- Pin 6 (3Y)
 
-    g4a   : in  std_logic;
-    g4q_n : out std_logic;
+    g4a   : in  std_logic; -- Pin 9 (4A)
+    g4q_n : out std_logic; -- Pin 8 (4Y)
 
-    g5a   : in  std_logic;
-    g5q_n : out std_logic;
+    g5a   : in  std_logic; -- Pin 11 (5A)
+    g5q_n : out std_logic; -- Pin 10 (5Y)
 
-    g6a   : in  std_logic;
-    g6q_n : out std_logic
+    g6a   : in  std_logic; -- Pin 13 (6A)
+    g6q_n : out std_logic  -- Pin 12 (6Y)
     );
 end entity;
 

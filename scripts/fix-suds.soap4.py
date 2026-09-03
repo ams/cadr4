@@ -235,11 +235,54 @@ def parse_generic_map_file(generic_map_file_path):
     
     return generic_mappings
 
-def fix_suds_file(file_path, page_name, verbose=False, generic_mappings=None):
+def parse_rename_map_file(rename_map_file_path):
+    """Parse a rename map: one entry per line, `<page> <old name> => <new name>`.
+
+    Page `*` applies to every page of the book. Names are written exactly as
+    they appear in the suds file (with or without the \\ escapes). The map is
+    the only place where a net name from the drawings is changed, so every
+    entry should carry a comment saying why."""
+    renames = defaultdict(dict)
+    try:
+        with open(rename_map_file_path, 'r') as f:
+            for line_no, line in enumerate(f, 1):
+                line = line.split('#', 1)[0].strip()
+                if not line:
+                    continue
+                m = re.match(r'^(\S+)\s+(.+?)\s*=>\s*(.+?)$', line)
+                if m is None:
+                    print(f"Error: {rename_map_file_path}:{line_no}: expected '<page> <old> => <new>'")
+                    sys.exit(1)
+                page, old, new = m.groups()
+                renames[page][old] = new
+    except FileNotFoundError:
+        print(f"Error: Could not find rename map file {rename_map_file_path}")
+        sys.exit(1)
+    return renames
+
+
+def apply_renames(signal, page_renames):
+    """Rename a port-map or assignment operand; both escaped and bare forms match."""
+    bare = signal[1:-1] if signal.startswith('\\') and signal.endswith('\\') else signal
+    for old, new in page_renames.items():
+        old_bare = old[1:-1] if old.startswith('\\') and old.endswith('\\') else old
+        if bare == old_bare:
+            new_bare = new[1:-1] if new.startswith('\\') and new.endswith('\\') else new
+            if re.match(r'^[a-zA-Z][a-zA-Z0-9_]*$', new_bare) and '__' not in new_bare and not new_bare.endswith('_'):
+                return new_bare
+            return f"\\{new_bare}\\"
+    return signal
+
+
+def fix_suds_file(file_path, page_name, verbose=False, generic_mappings=None, rename_mappings=None):
     """Fix the SUDS VHDL file according to the three issues."""
 
     if generic_mappings is None:
         generic_mappings = {}
+    page_renames = {}
+    if rename_mappings:
+        page_renames.update(rename_mappings.get('*', {}))
+        page_renames.update(rename_mappings.get(page_name, {}))
 
     # Parse component definitions
     dip_file_path = 'dip/dip.vhd'
@@ -261,9 +304,12 @@ def fix_suds_file(file_path, page_name, verbose=False, generic_mappings=None):
             if match:
                 existing_signals.add(match.group(1))
     
-    # Extract and parse component instantiations
+    # Extract and parse component instantiations; soap4 also emits net
+    # aliases (`a <= b;`) for the LH/HL polarity markers of the drawings,
+    # these are kept as they are (after renames)
     instantiations = []
     instantiation_lines = []
+    net_aliases = []
     
     for i in range(begin_line + 1, end_line):
         line = lines[i]
@@ -272,6 +318,21 @@ def fix_suds_file(file_path, page_name, verbose=False, generic_mappings=None):
             if inst:
                 instantiations.append(inst)
                 instantiation_lines.append(i)
+            else:
+                alias = re.match(r'^\s*(\\[^\\]+\\|[A-Za-z0-9_]+)\s*<=\s*(\\[^\\]+\\|[A-Za-z0-9_]+)\s*;\s*$', line)
+                if alias:
+                    lhs = apply_renames(alias.group(1), page_renames)
+                    rhs = apply_renames(alias.group(2), page_renames)
+                    net_aliases.append(f"{lhs} <= {rhs};\n")
+                else:
+                    print(f"Error: {file_path}:{i + 1}: unrecognised statement: {line.strip()}")
+                    sys.exit(1)
+
+    # Apply the rename map to every port association
+    if page_renames:
+        for inst in instantiations:
+            for pin_num, signal in list(inst['ports'].items()):
+                inst['ports'][pin_num] = apply_renames(signal, page_renames)
     
     # Apply generic mappings from file
     if page_name in generic_mappings:
@@ -392,6 +453,33 @@ def fix_suds_file(file_path, page_name, verbose=False, generic_mappings=None):
             new_line = f"{label} : {component} port map ({port_map_str});\n"
         
         result_lines.append(new_line)
+
+    # Orient the net aliases: the side that an instance output (or inout)
+    # pin drives on this page is the source. If neither side is driven here
+    # the anonymous net, else the left side as written by soap4, is driven.
+    driven = set()
+    for inst in instantiations:
+        resolved_name, component_def = resolve_component_name(inst['component'], components, aliases)
+        for pin_num, signal in inst['ports'].items():
+            if component_def['ports'].get(pin_num) in ('out', 'inout') and signal not in ('open',):
+                driven.add(signal)
+    oriented = set()
+    for line in net_aliases:
+        lhs, rhs = re.match(r'^\s*(\\[^\\]+\\|[A-Za-z0-9_]+)\s*<=\s*(\\[^\\]+\\|[A-Za-z0-9_]+)\s*;', line).groups()
+        lhs_driven = lhs in driven
+        rhs_driven = rhs in driven
+        if lhs_driven and not rhs_driven:
+            lhs, rhs = rhs, lhs
+        elif lhs_driven and rhs_driven:
+            print(f"Warning: {file_path}: both sides of net alias {lhs} <=> {rhs} are driven on this page")
+        elif not lhs_driven and not rhs_driven:
+            if rhs.startswith('net_') and not lhs.startswith('net_'):
+                lhs, rhs = rhs, lhs
+            elif not lhs.startswith('net_'):
+                print(f"Warning: {file_path}: neither side of net alias {lhs} <=> {rhs} is driven on this page, {lhs} is assumed to be the derived name")
+        oriented.add(f"{lhs} <= {rhs};\n")
+    # net aliases after the instantiations, sorted for a stable output
+    result_lines.extend(sorted(oriented))
     
     result_lines.extend(lines[end_line:])
     
@@ -406,6 +494,7 @@ def fix_suds_file(file_path, page_name, verbose=False, generic_mappings=None):
 def main():
     verbose = False
     generic_map_file = None
+    rename_map_file = None
     file_path = None
     page_override = None
     
@@ -421,6 +510,15 @@ def main():
                 sys.exit(1)
             generic_map_file = sys.argv[i + 1]
             i += 1  # Skip the filename argument
+        elif arg == "-r" or arg == "--rename-map":
+            if i + 1 >= len(sys.argv):
+                print("Error: -r/--rename-map option requires a filename")
+                sys.exit(1)
+            rename_map_file = sys.argv[i + 1]
+            i += 1
+        elif arg == "-h" or arg == "--help":
+            file_path = None
+            break
         elif arg == "-p" or arg == "--page":
             if i + 1 >= len(sys.argv):
                 print("Error: -p/--page option requires a page name (e.g., iram00)")
@@ -443,6 +541,7 @@ def main():
         print("  -p, --page PAGE        : Page name (mandatory), e.g., iram00, clock1, buspar")
         print("  -v                     : Verbose output")
         print("  -g, --generic-map FILE : Read generic mappings from FILE (Format: <page>.<label> <fn_value>)")
+        print("  -r, --rename-map FILE  : Read net renames from FILE (Format: <page or *> <old> => <new>)")
         sys.exit(1)
 
     if page_override is None:
@@ -456,7 +555,11 @@ def main():
         if verbose:
             print(f"Loaded {sum(len(page_mappings) for page_mappings in generic_mappings.values())} generic mappings from {generic_map_file}")
     
-    fix_suds_file(file_path, page_override, verbose, generic_mappings)
+    rename_mappings = None
+    if rename_map_file:
+        rename_mappings = parse_rename_map_file(rename_map_file)
+
+    fix_suds_file(file_path, page_override, verbose, generic_mappings, rename_mappings)
 
 if __name__ == "__main__":
     main() 

@@ -21,6 +21,11 @@ entity icmem_opcs is
     pc7             : in     std_logic;
     pc8             : in     std_logic;
     pc9             : in     std_logic;
+    opcclka         : inout  std_logic;
+    opcclkb         : inout  std_logic;
+    opcclkc         : inout  std_logic;
+    opcinha         : inout  std_logic;
+    opcinhb         : inout  std_logic;
     opc0            : out    std_logic;
     opc1            : out    std_logic;
     opc10           : out    std_logic;
@@ -34,11 +39,6 @@ entity icmem_opcs is
     opc6            : out    std_logic;
     opc7            : out    std_logic;
     opc8            : out    std_logic;
-    opc9            : out    std_logic;
-    opcclka         : out    std_logic;
-    opcclkb         : out    std_logic;
-    opcclkc         : out    std_logic;
-    opcinha         : out    std_logic;
-    opcinhb         : out    std_logic
+    opc9            : out    std_logic
   );
 end entity;

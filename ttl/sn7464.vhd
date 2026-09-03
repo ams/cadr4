@@ -6,18 +6,18 @@ use work.misc.all;
 
 entity sn7464 is
   port (
-    d4    : in  std_logic; -- Pin 1
-    b2    : in  std_logic; -- Pin 2
-    a2    : in  std_logic; -- Pin 3
-    c3    : in  std_logic; -- Pin 4
-    b3    : in  std_logic; -- Pin 5
-    a3    : in  std_logic; -- Pin 9
-    \out\ : out std_logic; -- Pin 8
-    a1    : in  std_logic; -- Pin 10
-    b1    : in  std_logic; -- Pin 11
-    c4    : in  std_logic; -- Pin 12
-    b4    : in  std_logic; -- Pin 13
-    a4    : in  std_logic  -- Pin 14
+    d4    : in  std_logic;  -- Pin 1 (A)
+    b2    : in  std_logic;  -- Pin 2 (E)
+    a2    : in  std_logic;  -- Pin 3 (F)
+    c3    : in  std_logic;  -- Pin 4 (G)
+    b3    : in  std_logic;  -- Pin 5 (H)
+    a3    : in  std_logic;  -- Pin 6 (I)
+    \out\ : out std_logic;  -- Pin 8 (Y)
+    a1    : in  std_logic;  -- Pin 9 (J)
+    b1    : in  std_logic;  -- Pin 10 (K)
+    c4    : in  std_logic;  -- Pin 11 (B)
+    b4    : in  std_logic;  -- Pin 12 (C)
+    a4    : in  std_logic   -- Pin 13 (D)
     );
 end entity;
 

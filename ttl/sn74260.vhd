@@ -6,19 +6,19 @@ use work.misc.all;
 
 entity sn74260 is
   port (
-    g1a   : in  std_logic; -- Pin 2
-    g1b   : in  std_logic; -- Pin 3
-    g1c   : in  std_logic; -- Pin 4
-    g1d   : in  std_logic; -- Pin 5
-    g1e   : in  std_logic; -- Pin 6
-    g1y_n : out std_logic; -- Pin 1
+    g1a   : in  std_logic;  -- Pin 1 (1A)
+    g1b   : in  std_logic;  -- Pin 2 (1B)
+    g1c   : in  std_logic;  -- Pin 3 (1C)
+    g1d   : in  std_logic;  -- Pin 12 (1D)
+    g1e   : in  std_logic;  -- Pin 13 (1E)
+    g1y_n : out std_logic;  -- Pin 5 (1Y)
 
-    g2a   : in  std_logic; -- Pin 8
-    g2b   : in  std_logic; -- Pin 9
-    g2c   : in  std_logic; -- Pin 10
-    g2d   : in  std_logic; -- Pin 11
-    g2e   : in  std_logic; -- Pin 12
-    g2y_n : out std_logic  -- Pin 13
+    g2a   : in  std_logic;  -- Pin 4 (2A)
+    g2b   : in  std_logic;  -- Pin 8 (2B)
+    g2c   : in  std_logic;  -- Pin 9 (2C)
+    g2d   : in  std_logic;  -- Pin 10 (2D)
+    g2e   : in  std_logic;  -- Pin 11 (2E)
+    g2y_n : out std_logic   -- Pin 6 (2Y)
     );
 end entity;
 

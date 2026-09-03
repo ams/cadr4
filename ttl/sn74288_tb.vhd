@@ -65,10 +65,36 @@ begin
       a0 <= addr(0);
       wait for 1 ns;
       expected_data := expected(i);
-      assert (o7 & o6 & o5 & o4 & o3 & o2 & o1 & o0) = expected_data
+      assert std_logic_vector'(o7 & o6 & o5 & o4 & o3 & o2 & o1 & o0) = expected_data
         report "Mismatch at address " & integer'image(i)
         severity error;
     end loop;
+
+    -- CE high: all outputs float
+    a4 <= '0'; a3 <= '0'; a2 <= '0'; a1 <= '0'; a0 <= '0';
+    ce_n <= '1';
+    wait for 1 ns;
+    assert std_logic_vector'(o7 & o6 & o5 & o4 & o3 & o2 & o1 & o0) = "ZZZZZZZZ"
+      report "CE high: all outputs should float" severity error;
+    ce_n <= '0';
+
+    -- A few words compared against values read by hand from
+    -- rom/dspctl.2f22.hex (lines 1, 5, 8, 32), independent of load_hex_file.
+    wait for 1 ns;
+    assert std_logic_vector'(o7 & o6 & o5 & o4 & o3 & o2 & o1 & o0) = x"00"
+      report "Address 0 should be 00" severity error;
+    a2 <= '1'; -- address 4: 0f
+    wait for 1 ns;
+    assert std_logic_vector'(o7 & o6 & o5 & o4 & o3 & o2 & o1 & o0) = x"0f"
+      report "Address 4 should be 0f" severity error;
+    a1 <= '1'; a0 <= '1'; -- address 7: 7f
+    wait for 1 ns;
+    assert std_logic_vector'(o7 & o6 & o5 & o4 & o3 & o2 & o1 & o0) = x"7f"
+      report "Address 7 should be 7f" severity error;
+    a4 <= '1'; a3 <= '1'; -- address 31: 00
+    wait for 1 ns;
+    assert std_logic_vector'(o7 & o6 & o5 & o4 & o3 & o2 & o1 & o0) = x"00"
+      report "Address 31 should be 00" severity error;
 
     wait;
   end process;

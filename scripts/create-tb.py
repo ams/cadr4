@@ -67,7 +67,12 @@ class vSignal:
             self.name:str = name
             self.escaped_name = self.name
 
-        self.set_default_value = False
+        # a testbench signal that no page drives keeps this value forever,
+        # so it gets its deasserted level ('1' for an active-low name, '0'
+        # otherwise; see get_default_value) instead of 'U', which would
+        # poison every gate that reads it. A driven signal takes the
+        # driver's value regardless of this default.
+        self.set_default_value = True
 
     def __str__(self) -> str:
         return f"signal {self.name}: {self.get_type()}"

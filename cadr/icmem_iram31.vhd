@@ -30,6 +30,18 @@ entity icmem_iram31 is
     iwr46           : in     std_logic;
     iwr47           : in     std_logic;
     iwr48           : in     std_logic;
+    pc0n            : inout  std_logic;
+    pc10n           : inout  std_logic;
+    pc11n           : inout  std_logic;
+    pc1n            : inout  std_logic;
+    pc2n            : inout  std_logic;
+    pc3n            : inout  std_logic;
+    pc4n            : inout  std_logic;
+    pc5n            : inout  std_logic;
+    pc6n            : inout  std_logic;
+    pc7n            : inout  std_logic;
+    pc8n            : inout  std_logic;
+    pc9n            : inout  std_logic;
     i36             : out    std_logic;
     i37             : out    std_logic;
     i38             : out    std_logic;
@@ -42,18 +54,6 @@ entity icmem_iram31 is
     i45             : out    std_logic;
     i46             : out    std_logic;
     i47             : out    std_logic;
-    i48             : out    std_logic;
-    pc0n            : out    std_logic;
-    pc10n           : out    std_logic;
-    pc11n           : out    std_logic;
-    pc1n            : out    std_logic;
-    pc2n            : out    std_logic;
-    pc3n            : out    std_logic;
-    pc4n            : out    std_logic;
-    pc5n            : out    std_logic;
-    pc6n            : out    std_logic;
-    pc7n            : out    std_logic;
-    pc8n            : out    std_logic;
-    pc9n            : out    std_logic
+    i48             : out    std_logic
   );
 end entity;

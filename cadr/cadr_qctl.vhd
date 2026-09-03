@@ -41,8 +41,10 @@ entity cadr_qctl is
     q8              : in     std_logic;
     q9              : in     std_logic;
     tse2            : in     std_logic;
+    \-qdrive\       : inout  std_logic;
+    qdrive          : inout  std_logic;
+    srcq            : inout  std_logic;
     \-alu31\        : out    std_logic;
-    \-qdrive\       : out    std_logic;
     mf0             : out    std_logic;
     mf1             : out    std_logic;
     mf10            : out    std_logic;
@@ -75,9 +77,7 @@ entity cadr_qctl is
     mf7             : out    std_logic;
     mf8             : out    std_logic;
     mf9             : out    std_logic;
-    qdrive          : out    std_logic;
     qs0             : out    std_logic;
-    qs1             : out    std_logic;
-    srcq            : out    std_logic
+    qs1             : out    std_logic
   );
 end entity;

@@ -27,9 +27,11 @@ all_dip_names = set(components) | set(aliases.keys())
 # Prepare regex for matching DIP instantiations
 DIP_INSTANCE_PATTERN = re.compile(r'\b(' + '|'.join(re.escape(name) for name in all_dip_names) + r')\b')
 
-# Find all *_suds.vhd files in cadr/
-cadr_dir = os.path.join(os.path.dirname(__file__), '../cadr')
-suds_files = [os.path.join(cadr_dir, f) for f in os.listdir(cadr_dir) if f.endswith('_suds.vhd')]
+# Find all *_suds.vhd files in cadr/suds and cadr1/suds
+suds_files = []
+for suds_dir in ('../cadr/suds', '../cadr1/suds'):
+    suds_dir = os.path.join(os.path.dirname(__file__), suds_dir)
+    suds_files += [os.path.join(suds_dir, f) for f in os.listdir(suds_dir) if f.endswith('_suds.vhd')]
 
 # Count occurrences
 counter = Counter()

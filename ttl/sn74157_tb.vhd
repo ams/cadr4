@@ -46,14 +46,14 @@ begin
   begin
     wait for 5 ns;
 
-    -- Test 1: Enable disabled (enb_n = '1') - all outputs should be 'Z'
+    -- Test 1: Strobe high (enb_n = '1') - all outputs low (the '157 is not three-state)
     enb_n <= '1';
     sel <= '0';
     a1 <= '1'; a2 <= '1'; a3 <= '1'; a4 <= '1';
     b1 <= '1'; b2 <= '1'; b3 <= '1'; b4 <= '1';
     wait for 10 ns;
-    assert y1 = 'Z' and y2 = 'Z' and y3 = 'Z' and y4 = 'Z'
-      report "Test 1 failed: outputs should be 'Z' when disabled" severity error;
+    assert y1 = '0' and y2 = '0' and y3 = '0' and y4 = '0'
+      report "Test 1 failed: outputs should be '0' when strobe is high" severity error;
 
     -- Test 2: Enable active, select A inputs (sel = '0')
     enb_n <= '0';
@@ -130,8 +130,8 @@ begin
 
     enb_n <= '1';
     wait for 10 ns;
-    assert y1 = 'Z' and y2 = 'Z' and y3 = 'Z' and y4 = 'Z'
-      report "Test 8b failed: after disable" severity error;
+    assert y1 = '0' and y2 = '0' and y3 = '0' and y4 = '0'
+      report "Test 8b failed: outputs should be '0' after strobe goes high" severity error;
 
     wait;
   end process;

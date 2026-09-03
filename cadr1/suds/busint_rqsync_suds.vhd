@@ -27,4 +27,5 @@ rqsync_0c07 : dip_mtd100 port map (p1 => 'Z', p3 => net_00, p5 => 'Z', p8 => ope
 rqsync_0c12 : dip_74s260 port map (p1 => 'Z', p2 => 'Z', p3 => 'Z', p4 => \-ubxrqs\, p5 => open, p6 => \ubx grant set\, p8 => gnd, p9 => gnd, p10 => \-free\, p11 => xrqs, p12 => 'Z', p13 => 'Z');
 rqsync_0c13 : dip_74s10 port map (p1 => 'Z', p2 => 'Z', p3 => 'Z', p4 => 'Z', p5 => 'Z', p6 => open, p8 => \int busy\, p9 => \-ubx grant\, p10 => \-lmx grant\, p11 => \-lmub grant\, p12 => open, p13 => 'Z');
 rqsync_0d05 : dip_74s00 port map (p1 => 'Z', p2 => 'Z', p3 => open, p4 => lmubrq, p5 => \lmub grant\, p6 => net_03, p8 => open, p9 => 'Z', p10 => 'Z', p11 => open, p12 => 'Z', p13 => 'Z');
+net_06 <= net_04;
 end architecture;

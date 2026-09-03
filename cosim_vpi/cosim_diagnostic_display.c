@@ -1,4 +1,3 @@
-#include <assert.h>
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -95,6 +94,7 @@ static PLI_INT32 display_callback(p_cb_data cb_data) {
         printf("%*.0lf ns", 7, cosim_s_vpi_time_to_ns(cb_data->time));
 
         printf("\n");
+        fflush(stdout);
         
         // Update previous values
         for (int i = 0; i < 5; i++) {
@@ -111,60 +111,64 @@ static PLI_INT32 display_callback(p_cb_data cb_data) {
     return 0;
 }
 
-static PLI_INT32 start_of_simulation(p_cb_data cb_data) {    
+static PLI_INT32 start_of_simulation(p_cb_data cb_data) {
 
     char* pctl_names[] = {
         "pctl_1f16",
         "pctl_1f17",
         "pctl_1f18",
         "pctl_1f19",
-        "pctl_1f20" 
+        "pctl_1f20"
     };
 
     char* til309_signals_names[] = {"p14", "p17", "p12", "p6", "p7"};
 
     vpiHandle top_iter = vpi_iterate(vpiModule, NULL);
-    vpiHandle top_module_handle = vpi_scan(top_iter);
+    vpiHandle top_module_handle = top_iter ? vpi_scan(top_iter) : NULL;
+    if (top_iter && top_module_handle) vpi_free_object(top_iter);
 
-    assert (top_module_handle != NULL);
-    if (top_module_handle == NULL) { return 1; }
+    if (top_module_handle == NULL) {
+        VPI_PRINTF("no top module, display disabled\n");
+        return 0;
+    }
 
-    vpiHandle pctl_handle = vpi_handle_by_name("icmem_pctl_inst", 
+    // the display only exists in a design that instantiates the pctl page
+    // (cadr_tb, cadr_boot_tb); unit testbenches simply get no display
+    vpiHandle pctl_handle = vpi_handle_by_name("icmem_pctl_inst",
         top_module_handle);
 
-    assert (pctl_handle != NULL);
-    if (pctl_handle == NULL) { return 1; }
-
-    PLI_INT32 pctl_type = vpi_get(vpiType, pctl_handle);
-    assert (pctl_type == vpiModule);
-    if (pctl_type != vpiModule) { return 1; }
+    if (pctl_handle == NULL || vpi_get(vpiType, pctl_handle) != vpiModule) {
+        VPI_PRINTF("icmem_pctl_inst not found, display disabled\n");
+        return 0;
+    }
 
     vpiHandle display_handles[5] = {NULL};
 
     for (int i = 0; i < 5; i++) {
         display_handles[i] = vpi_handle_by_name(pctl_names[i], pctl_handle);
-        assert (display_handles[i] != NULL);
-        if (display_handles[i] == NULL) { return 1; }
-        PLI_INT32 display_type = vpi_get(vpiType, display_handles[i]);
-        assert (display_type == vpiModule);
-        if (display_type != vpiModule) { return 1; }
-    }    
+        if (display_handles[i] == NULL ||
+            vpi_get(vpiType, display_handles[i]) != vpiModule) {
+            VPI_PRINTF("%s not found in icmem_pctl_inst, display disabled\n",
+                pctl_names[i]);
+            return 0;
+        }
+    }
 
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 5; j++) {
             display_signal_handles[i][j] = vpi_handle_by_name(
                 til309_signals_names[j], display_handles[i]);
-            assert (display_signal_handles[i][j] != NULL);
-            if (display_signal_handles[i][j] == NULL) { return 1; }
-            PLI_INT32 display_signal_type = vpi_get(vpiType, 
-                display_signal_handles[i][j]);
-            assert (display_signal_type == vpiNet);
-            if (display_signal_type != vpiNet) { return 1; }
+            if (display_signal_handles[i][j] == NULL ||
+                vpi_get(vpiType, display_signal_handles[i][j]) != vpiNet) {
+                VPI_PRINTF("%s.%s not found, display disabled\n",
+                    pctl_names[i], til309_signals_names[j]);
+                return 0;
+            }
         }
     }
-    
+
     register_display_callback();
-    
+
     return 0;
 }
 

@@ -89,7 +89,8 @@ begin
     wait for 5 ns;
     check_outputs('1', '0', '1', '0', "should load parallel data");
 
-    -- Test shift right
+    -- Test shift right (S1=L, S0=H): QA <- SR SER, QB <- QAn, QC <- QBn, QD <- QCn
+    -- Register holds QD..QA = 1010 from the parallel load.
     clk <= '0';
     s1 <= '0'; s0 <= '1';
     sir <= '1';
@@ -98,19 +99,32 @@ begin
 
     clk <= '1';
     wait for 5 ns;
-    check_outputs('1', '1', '0', '1', "should shift right");
+    check_outputs('0', '1', '0', '1', "should shift right (QD..QA = 0101)");
 
-    -- Test shift left
+    clk <= '0';
+    sir <= '0';
+    wait for 5 ns;
+    clk <= '1';
+    wait for 5 ns;
+    check_outputs('1', '0', '1', '0', "should shift right again (QD..QA = 1010)");
+
+    -- Test shift left (S1=H, S0=L): QD <- SL SER, QC <- QDn, QB <- QCn, QA <- QBn
     clk <= '0';
     s1 <= '1'; s0 <= '0';
     sil <= '1';
     wait for 5 ns;
-    check_outputs('1', '1', '0', '1', "should not change without clock");
+    check_outputs('1', '0', '1', '0', "should not change without clock");
 
     clk <= '1';
     wait for 5 ns;
-    check_outputs('1', '0', '1', '1', "should shift left");
+    check_outputs('1', '1', '0', '1', "should shift left (QD..QA = 1101)");
 
+    clk <= '0';
+    sil <= '0';
+    wait for 5 ns;
+    clk <= '1';
+    wait for 5 ns;
+    check_outputs('0', '1', '1', '0', "should shift left again (QD..QA = 0110)");
     -- Test clear during operation
     clr_n <= '0';
     wait for 5 ns;

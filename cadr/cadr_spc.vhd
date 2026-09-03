@@ -28,6 +28,7 @@ entity cadr_spc is
     spcw9           : in     std_logic;
     spcwpar         : in     std_logic;
     spush           : in     std_logic;
+    \-spccry\       : inout  std_logic;
     hi1             : inout  std_logic;
     hi10            : inout  std_logic;
     hi11            : inout  std_logic;
@@ -60,11 +61,10 @@ entity cadr_spc is
     spco8           : inout  std_logic;
     spco9           : inout  std_logic;
     spcopar         : inout  std_logic;
-    \-spccry\       : out    std_logic;
-    spcptr0         : out    std_logic;
-    spcptr1         : out    std_logic;
-    spcptr2         : out    std_logic;
-    spcptr3         : out    std_logic;
-    spcptr4         : out    std_logic
+    spcptr0         : inout  std_logic;
+    spcptr1         : inout  std_logic;
+    spcptr2         : inout  std_logic;
+    spcptr3         : inout  std_logic;
+    spcptr4         : inout  std_logic
   );
 end entity;

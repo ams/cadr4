@@ -7,21 +7,21 @@ use work.misc.all;
 
 entity sn74112 is
   port (
-    clr1_n : in  std_logic;
-    j1     : in  std_logic;
-    k1     : in  std_logic;
-    clk1   : in  std_logic;
-    pre1_n : in  std_logic;
-    q1     : out std_logic;
-    q1_n   : out std_logic;
+    clr1_n : in  std_logic; -- Pin 15 (1CLR)
+    j1     : in  std_logic; -- Pin 3 (1J)
+    k1     : in  std_logic; -- Pin 2 (1K)
+    clk1   : in  std_logic; -- Pin 1 (1CLK)
+    pre1_n : in  std_logic; -- Pin 4 (1PRE)
+    q1     : out std_logic; -- Pin 5 (1Q)
+    q1_n   : out std_logic; -- Pin 6 (1Q_n)
 
-    q2_n   : out std_logic;
-    q2     : out std_logic;
-    pre2_n : in  std_logic;
-    clk2   : in  std_logic;
-    k2     : in  std_logic;
-    j2     : in  std_logic;
-    clr2_n : in  std_logic
+    q2_n   : out std_logic; -- Pin 7 (2Q_n)
+    q2     : out std_logic; -- Pin 9 (2Q)
+    pre2_n : in  std_logic; -- Pin 10 (2PRE)
+    clk2   : in  std_logic; -- Pin 13 (2CLK)
+    k2     : in  std_logic; -- Pin 12 (2K)
+    j2     : in  std_logic; -- Pin 11 (2J)
+    clr2_n : in  std_logic  -- Pin 14 (2CLR)
     );
 end entity;
 

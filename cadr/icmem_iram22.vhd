@@ -29,6 +29,18 @@ entity icmem_iram22 is
     iwr33           : in     std_logic;
     iwr34           : in     std_logic;
     iwr35           : in     std_logic;
+    pc0k            : inout  std_logic;
+    pc10k           : inout  std_logic;
+    pc11k           : inout  std_logic;
+    pc1k            : inout  std_logic;
+    pc2k            : inout  std_logic;
+    pc3k            : inout  std_logic;
+    pc4k            : inout  std_logic;
+    pc5k            : inout  std_logic;
+    pc6k            : inout  std_logic;
+    pc7k            : inout  std_logic;
+    pc8k            : inout  std_logic;
+    pc9k            : inout  std_logic;
     i24             : out    std_logic;
     i25             : out    std_logic;
     i26             : out    std_logic;
@@ -40,18 +52,6 @@ entity icmem_iram22 is
     i32             : out    std_logic;
     i33             : out    std_logic;
     i34             : out    std_logic;
-    i35             : out    std_logic;
-    pc0k            : out    std_logic;
-    pc10k           : out    std_logic;
-    pc11k           : out    std_logic;
-    pc1k            : out    std_logic;
-    pc2k            : out    std_logic;
-    pc3k            : out    std_logic;
-    pc4k            : out    std_logic;
-    pc5k            : out    std_logic;
-    pc6k            : out    std_logic;
-    pc7k            : out    std_logic;
-    pc8k            : out    std_logic;
-    pc9k            : out    std_logic
+    i35             : out    std_logic
   );
 end entity;

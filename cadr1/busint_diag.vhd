@@ -7,6 +7,7 @@ entity busint_diag is
     \ub reg write pulse\ : in     std_logic;
     ubrd            : in     std_logic;
     ubwr            : in     std_logic;
+    \select spy\    : inout  std_logic;
     spy0            : inout  std_logic;
     spy1            : inout  std_logic;
     spy10           : inout  std_logic;
@@ -40,7 +41,6 @@ entity busint_diag is
     udo8            : inout  std_logic;
     udo9            : inout  std_logic;
     \-spy read\     : out    std_logic;
-    \-spy write\    : out    std_logic;
-    \select spy\    : out    std_logic
+    \-spy write\    : out    std_logic
   );
 end entity;

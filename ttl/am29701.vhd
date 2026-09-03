@@ -1,3 +1,6 @@
+-- 64-Bit (16x4) RAM with three-state outputs
+-- AMD Am29701 (replaced by Am27S07, function table in doc/ttl/am29701.pdf)
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -63,12 +66,15 @@ begin
     end if;
   end process;
   
-  -- Read process
-  process(ce_n_i, a3_i, a2_i, a1_i, a0_i, ram)
+  -- Read process. Function table (Am27S07/Am27LS07, doc/ttl/am29701.pdf):
+  --   CS=L, WE=L  write, outputs disabled
+  --   CS=L, WE=H  read, outputs = selected word
+  --   CS=H        deselect, outputs disabled
+  process(ce_n_i, write_n_i, a3_i, a2_i, a1_i, a0_i, ram)
     variable addr_vec : std_logic_vector(3 downto 0);
     variable addr_int : integer;
   begin
-    if ce_n_i = '0' then
+    if ce_n_i = '0' and write_n_i = '1' then
       addr_vec := a3_i & a2_i & a1_i & a0_i;
       if is_x(addr_vec) then
         -- Address contains metavalues, output should be unknown
@@ -78,23 +84,22 @@ begin
         o4 <= 'X';
       else
         addr_int := to_integer(unsigned(addr_vec));
-        if addr_int >= 0 and addr_int <= 15 then
-          o1 <= ram(addr_int)(0);
-          o2 <= ram(addr_int)(1);
-          o3 <= ram(addr_int)(2);
-          o4 <= ram(addr_int)(3);
-        else
-          o1 <= 'U';
-          o2 <= 'U';
-          o3 <= 'U';
-          o4 <= 'U';
-        end if;
+        o1 <= ram(addr_int)(0);
+        o2 <= ram(addr_int)(1);
+        o3 <= ram(addr_int)(2);
+        o4 <= ram(addr_int)(3);
       end if;
-    else
+    elsif ce_n_i = '1' or write_n_i = '0' then
+      -- deselected or writing: outputs disabled
       o1 <= 'Z';
       o2 <= 'Z';
       o3 <= 'Z';
       o4 <= 'Z';
+    else
+      o1 <= 'X';
+      o2 <= 'X';
+      o3 <= 'X';
+      o4 <= 'X';
     end if;
   end process;
 

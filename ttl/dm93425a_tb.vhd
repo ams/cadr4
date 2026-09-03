@@ -22,7 +22,7 @@ architecture testbench of dm93425a_tb is
   signal ce_n : std_logic := '0';
   signal we_n : std_logic := '0';
   signal di   : std_logic := '0';
-  signal do   : std_logic := '0';
+  signal do   : std_logic;
 
 begin
 
@@ -45,32 +45,77 @@ begin
 
   process
   begin
-    -- write 1 to address 0
+    -- Test 1: write '1' to address 0, chip selected. DOUT floats during the
+    -- write (logic diagram: output enabled only with CS low and WE high).
     ce_n <= '0';
     we_n <= '0';
     di   <= '1';
     a0 <= '0'; a1 <= '0'; a2 <= '0'; a3 <= '0'; a4 <= '0';
     a5 <= '0'; a6 <= '0'; a7 <= '0'; a8 <= '0'; a9 <= '0';
     wait for 1 ns;
+    assert do = 'Z'
+      report "Test 1 failed: DO must be 'Z' during write, got " & std_logic'image(do) severity error;
 
-    -- read back
+    -- Test 2: read back
     we_n <= '1';
     wait for 1 ns;
-    assert do = '1';
+    assert do = '1'
+      report "Test 2 failed: expected '1' at address 0, got " & std_logic'image(do) severity error;
 
-    -- write 0 to address 1
+    -- Test 3: write '0' to address 1 without deselecting. The output is
+    -- active (reading address 0) when WE drops, it must go to 'Z'.
     we_n <= '0'; di <= '0'; a0 <= '1';
     wait for 1 ns;
-
-    -- read back
+    assert do = 'Z'
+      report "Test 3a failed: DO must be 'Z' during write, got " & std_logic'image(do) severity error;
     we_n <= '1';
     wait for 1 ns;
-    assert do = '0';
+    assert do = '0'
+      report "Test 3b failed: expected '0' at address 1, got " & std_logic'image(do) severity error;
 
-    -- chip disabled
+    -- Test 4: address bits above a0. Write '1' to address 512 (a9) and to
+    -- address 32 (a5), then read everything back.
+    a0 <= '0'; a9 <= '1'; di <= '1';
+    wait for 1 ns;
+    we_n <= '0';
+    wait for 1 ns;
+    assert do = 'Z'
+      report "Test 4a failed: DO must be 'Z' during write, got " & std_logic'image(do) severity error;
+    a9 <= '0'; a5 <= '1';  -- address 32, still writing
+    wait for 1 ns;
+    assert do = 'Z'
+      report "Test 4b failed: DO must be 'Z' during write, got " & std_logic'image(do) severity error;
+    we_n <= '1';
+    wait for 1 ns;
+    assert do = '1'
+      report "Test 4c failed: expected '1' at address 32, got " & std_logic'image(do) severity error;
+    a5 <= '0'; a9 <= '1';  -- address 512
+    wait for 1 ns;
+    assert do = '1'
+      report "Test 4d failed: expected '1' at address 512, got " & std_logic'image(do) severity error;
+    a9 <= '0';             -- address 0
+    wait for 1 ns;
+    assert do = '1'
+      report "Test 4e failed: expected '1' at address 0, got " & std_logic'image(do) severity error;
+    a0 <= '1';             -- address 1
+    wait for 1 ns;
+    assert do = '0'
+      report "Test 4f failed: expected '0' at address 1, got " & std_logic'image(do) severity error;
+
+    -- Test 5: chip disabled, in read and in write mode
     ce_n <= '1';
     wait for 1 ns;
-    assert do = 'Z';
+    assert do = 'Z'
+      report "Test 5a failed: expected 'Z' when deselected, got " & std_logic'image(do) severity error;
+    we_n <= '0'; di <= '1';
+    wait for 1 ns;
+    assert do = 'Z'
+      report "Test 5b failed: expected 'Z' when deselected, got " & std_logic'image(do) severity error;
+    -- the write above must not have happened (address 1 still '0')
+    we_n <= '1'; ce_n <= '0';
+    wait for 1 ns;
+    assert do = '0'
+      report "Test 5c failed: write while deselected changed address 1" severity error;
 
     wait;
   end process;

@@ -10,35 +10,39 @@ package icmem_book is
       \-ilong\        : in     std_logic;
       sspeed0         : in     std_logic;
       sspeed1         : in     std_logic;
-      \-tpr0\         : out    std_logic;
-      \-tpr100\       : out    std_logic;
+      \-tpdone\       : inout  std_logic;
+      \-tpr0\         : inout  std_logic;
+      \-tpr100\       : inout  std_logic;
+      \-tpr115\       : inout  std_logic;
+      \-tpr125\       : inout  std_logic;
+      \-tpr140\       : inout  std_logic;
+      \-tpr160\       : inout  std_logic;
+      \-tpr40\        : inout  std_logic;
+      \-tpr60\        : inout  std_logic;
+      \-tpr75\        : inout  std_logic;
+      \-tpr85\        : inout  std_logic;
+      \-tprend\       : inout  std_logic;
+      \-tpw20\        : inout  std_logic;
+      \-tpw50\        : inout  std_logic;
+      \-tpw60\        : inout  std_logic;
+      cyclecompleted  : inout  std_logic;
       \-tpr105\       : out    std_logic;
       \-tpr10\        : out    std_logic;
       \-tpr110\       : out    std_logic;
-      \-tpr115\       : out    std_logic;
       \-tpr120\       : out    std_logic;
       \-tpr120a\      : out    std_logic;
-      \-tpr125\       : out    std_logic;
-      \-tpr140\       : out    std_logic;
       \-tpr15\        : out    std_logic;
-      \-tpr160\       : out    std_logic;
       \-tpr180\       : out    std_logic;
       \-tpr200\       : out    std_logic;
       \-tpr20\        : out    std_logic;
       \-tpr20a\       : out    std_logic;
       \-tpr25\        : out    std_logic;
-      \-tpr40\        : out    std_logic;
       \-tpr5\         : out    std_logic;
-      \-tpr60\        : out    std_logic;
       \-tpr65\        : out    std_logic;
       \-tpr70\        : out    std_logic;
-      \-tpr75\        : out    std_logic;
       \-tpr80\        : out    std_logic;
       \-tpr80a\       : out    std_logic;
-      \-tpr85\        : out    std_logic;
-      \-tprend\       : out    std_logic;
       \-tpw10\        : out    std_logic;
-      \-tpw20\        : out    std_logic;
       \-tpw25\        : out    std_logic;
       \-tpw30\        : out    std_logic;
       \-tpw30a\       : out    std_logic;
@@ -46,13 +50,10 @@ package icmem_book is
       \-tpw40\        : out    std_logic;
       \-tpw40a\       : out    std_logic;
       \-tpw45\        : out    std_logic;
-      \-tpw50\        : out    std_logic;
       \-tpw55\        : out    std_logic;
-      \-tpw60\        : out    std_logic;
       \-tpw65\        : out    std_logic;
       \-tpw70\        : out    std_logic;
       \-tpw75\        : out    std_logic;
-      cyclecompleted  : out    std_logic;
       tprend          : out    std_logic
     );
   end component;
@@ -69,10 +70,14 @@ package icmem_book is
       \-tpw45\        : in     std_logic;
       hi1             : in     std_logic;
       machrun         : in     std_logic;
-      \-clk0\         : out    std_logic;
-      \-mclk0\        : out    std_logic;
-      \-tpclk\        : out    std_logic;
-      \-tptse\        : out    std_logic;
+      \-clk0\         : inout  std_logic;
+      \-mclk0\        : inout  std_logic;
+      \-tpclk\        : inout  std_logic;
+      \-tptse\        : inout  std_logic;
+      tpclk           : inout  std_logic;
+      tptse           : inout  std_logic;
+      tpwp            : inout  std_logic;
+      tpwpiram        : inout  std_logic;
       \-tse1\         : out    std_logic;
       \-tse2\         : out    std_logic;
       \-tse3\         : out    std_logic;
@@ -89,11 +94,7 @@ package icmem_book is
       clk5            : out    std_logic;
       mclk1           : out    std_logic;
       mclk5           : out    std_logic;
-      mclk7           : out    std_logic;
-      tpclk           : out    std_logic;
-      tptse           : out    std_logic;
-      tpwp            : out    std_logic;
-      tpwpiram        : out    std_logic
+      mclk7           : out    std_logic
     );
   end component;
 
@@ -191,6 +192,19 @@ package icmem_book is
       pc8             : in     std_logic;
       pc9             : in     std_logic;
       promdisabled    : in     std_logic;
+      \-iwriteda\     : inout  std_logic;
+      \-pc12b\        : inout  std_logic;
+      \-pc13b\        : inout  std_logic;
+      \-promdisabled\ : inout  std_logic;
+      iwriteda        : inout  std_logic;
+      iwritedb        : inout  std_logic;
+      iwritedc        : inout  std_logic;
+      iwritedd        : inout  std_logic;
+      ramdisable      : inout  std_logic;
+      wp5a            : inout  std_logic;
+      wp5b            : inout  std_logic;
+      wp5c            : inout  std_logic;
+      wp5d            : inout  std_logic;
       \-ice0a\        : out    std_logic;
       \-ice0b\        : out    std_logic;
       \-ice0c\        : out    std_logic;
@@ -223,9 +237,6 @@ package icmem_book is
       \-iwen\         : out    std_logic;
       \-iweo\         : out    std_logic;
       \-iwep\         : out    std_logic;
-      \-iwriteda\     : out    std_logic;
-      \-pc12b\        : out    std_logic;
-      \-pc13b\        : out    std_logic;
       \-pcb0\         : out    std_logic;
       \-pcb10\        : out    std_logic;
       \-pcb11\        : out    std_logic;
@@ -249,17 +260,7 @@ package icmem_book is
       \-pcc6\         : out    std_logic;
       \-pcc7\         : out    std_logic;
       \-pcc8\         : out    std_logic;
-      \-pcc9\         : out    std_logic;
-      \-promdisabled\ : out    std_logic;
-      iwriteda        : out    std_logic;
-      iwritedb        : out    std_logic;
-      iwritedc        : out    std_logic;
-      iwritedd        : out    std_logic;
-      ramdisable      : out    std_logic;
-      wp5a            : out    std_logic;
-      wp5b            : out    std_logic;
-      wp5c            : out    std_logic;
-      wp5d            : out    std_logic
+      \-pcc9\         : out    std_logic
     );
   end component;
 
@@ -291,6 +292,18 @@ package icmem_book is
       iwr7            : in     std_logic;
       iwr8            : in     std_logic;
       iwr9            : in     std_logic;
+      pc0a            : inout  std_logic;
+      pc10a           : inout  std_logic;
+      pc11a           : inout  std_logic;
+      pc1a            : inout  std_logic;
+      pc2a            : inout  std_logic;
+      pc3a            : inout  std_logic;
+      pc4a            : inout  std_logic;
+      pc5a            : inout  std_logic;
+      pc6a            : inout  std_logic;
+      pc7a            : inout  std_logic;
+      pc8a            : inout  std_logic;
+      pc9a            : inout  std_logic;
       i0              : out    std_logic;
       i1              : out    std_logic;
       i10             : out    std_logic;
@@ -302,19 +315,7 @@ package icmem_book is
       i6              : out    std_logic;
       i7              : out    std_logic;
       i8              : out    std_logic;
-      i9              : out    std_logic;
-      pc0a            : out    std_logic;
-      pc10a           : out    std_logic;
-      pc11a           : out    std_logic;
-      pc1a            : out    std_logic;
-      pc2a            : out    std_logic;
-      pc3a            : out    std_logic;
-      pc4a            : out    std_logic;
-      pc5a            : out    std_logic;
-      pc6a            : out    std_logic;
-      pc7a            : out    std_logic;
-      pc8a            : out    std_logic;
-      pc9a            : out    std_logic
+      i9              : out    std_logic
     );
   end component;
 
@@ -346,6 +347,18 @@ package icmem_book is
       iwr7            : in     std_logic;
       iwr8            : in     std_logic;
       iwr9            : in     std_logic;
+      pcb0            : inout  std_logic;
+      pcb1            : inout  std_logic;
+      pcb10           : inout  std_logic;
+      pcb11           : inout  std_logic;
+      pcb2            : inout  std_logic;
+      pcb3            : inout  std_logic;
+      pcb4            : inout  std_logic;
+      pcb5            : inout  std_logic;
+      pcb6            : inout  std_logic;
+      pcb7            : inout  std_logic;
+      pcb8            : inout  std_logic;
+      pcb9            : inout  std_logic;
       i0              : out    std_logic;
       i1              : out    std_logic;
       i10             : out    std_logic;
@@ -357,19 +370,7 @@ package icmem_book is
       i6              : out    std_logic;
       i7              : out    std_logic;
       i8              : out    std_logic;
-      i9              : out    std_logic;
-      pc0b            : out    std_logic;
-      pc10b           : out    std_logic;
-      pc11b           : out    std_logic;
-      pc1b            : out    std_logic;
-      pc2b            : out    std_logic;
-      pc3b            : out    std_logic;
-      pc4b            : out    std_logic;
-      pc5b            : out    std_logic;
-      pc6b            : out    std_logic;
-      pc7b            : out    std_logic;
-      pc8b            : out    std_logic;
-      pc9b            : out    std_logic
+      i9              : out    std_logic
     );
   end component;
 
@@ -401,6 +402,18 @@ package icmem_book is
       iwr7            : in     std_logic;
       iwr8            : in     std_logic;
       iwr9            : in     std_logic;
+      pc0c            : inout  std_logic;
+      pc10c           : inout  std_logic;
+      pc11c           : inout  std_logic;
+      pc1c            : inout  std_logic;
+      pc2c            : inout  std_logic;
+      pc3c            : inout  std_logic;
+      pc4c            : inout  std_logic;
+      pc5c            : inout  std_logic;
+      pc6c            : inout  std_logic;
+      pc7c            : inout  std_logic;
+      pc8c            : inout  std_logic;
+      pc9c            : inout  std_logic;
       i0              : out    std_logic;
       i1              : out    std_logic;
       i10             : out    std_logic;
@@ -412,19 +425,7 @@ package icmem_book is
       i6              : out    std_logic;
       i7              : out    std_logic;
       i8              : out    std_logic;
-      i9              : out    std_logic;
-      pc0c            : out    std_logic;
-      pc10c           : out    std_logic;
-      pc11c           : out    std_logic;
-      pc1c            : out    std_logic;
-      pc2c            : out    std_logic;
-      pc3c            : out    std_logic;
-      pc4c            : out    std_logic;
-      pc5c            : out    std_logic;
-      pc6c            : out    std_logic;
-      pc7c            : out    std_logic;
-      pc8c            : out    std_logic;
-      pc9c            : out    std_logic
+      i9              : out    std_logic
     );
   end component;
 
@@ -456,6 +457,18 @@ package icmem_book is
       iwr7            : in     std_logic;
       iwr8            : in     std_logic;
       iwr9            : in     std_logic;
+      pc0d            : inout  std_logic;
+      pc10d           : inout  std_logic;
+      pc11d           : inout  std_logic;
+      pc1d            : inout  std_logic;
+      pc2d            : inout  std_logic;
+      pc3d            : inout  std_logic;
+      pc4d            : inout  std_logic;
+      pc5d            : inout  std_logic;
+      pc6d            : inout  std_logic;
+      pc7d            : inout  std_logic;
+      pc8d            : inout  std_logic;
+      pc9d            : inout  std_logic;
       i0              : out    std_logic;
       i1              : out    std_logic;
       i10             : out    std_logic;
@@ -467,19 +480,7 @@ package icmem_book is
       i6              : out    std_logic;
       i7              : out    std_logic;
       i8              : out    std_logic;
-      i9              : out    std_logic;
-      pc0d            : out    std_logic;
-      pc10d           : out    std_logic;
-      pc11d           : out    std_logic;
-      pc1d            : out    std_logic;
-      pc2d            : out    std_logic;
-      pc3d            : out    std_logic;
-      pc4d            : out    std_logic;
-      pc5d            : out    std_logic;
-      pc6d            : out    std_logic;
-      pc7d            : out    std_logic;
-      pc8d            : out    std_logic;
-      pc9d            : out    std_logic
+      i9              : out    std_logic
     );
   end component;
 
@@ -511,6 +512,18 @@ package icmem_book is
       iwr21           : in     std_logic;
       iwr22           : in     std_logic;
       iwr23           : in     std_logic;
+      pc0e            : inout  std_logic;
+      pc10e           : inout  std_logic;
+      pc11e           : inout  std_logic;
+      pc1e            : inout  std_logic;
+      pc2e            : inout  std_logic;
+      pc3e            : inout  std_logic;
+      pc4e            : inout  std_logic;
+      pc5e            : inout  std_logic;
+      pc6e            : inout  std_logic;
+      pc7e            : inout  std_logic;
+      pc8e            : inout  std_logic;
+      pc9e            : inout  std_logic;
       i12             : out    std_logic;
       i13             : out    std_logic;
       i14             : out    std_logic;
@@ -522,19 +535,7 @@ package icmem_book is
       i20             : out    std_logic;
       i21             : out    std_logic;
       i22             : out    std_logic;
-      i23             : out    std_logic;
-      pc0e            : out    std_logic;
-      pc10e           : out    std_logic;
-      pc11e           : out    std_logic;
-      pc1e            : out    std_logic;
-      pc2e            : out    std_logic;
-      pc3e            : out    std_logic;
-      pc4e            : out    std_logic;
-      pc5e            : out    std_logic;
-      pc6e            : out    std_logic;
-      pc7e            : out    std_logic;
-      pc8e            : out    std_logic;
-      pc9e            : out    std_logic
+      i23             : out    std_logic
     );
   end component;
 
@@ -566,6 +567,18 @@ package icmem_book is
       iwr21           : in     std_logic;
       iwr22           : in     std_logic;
       iwr23           : in     std_logic;
+      pc0f            : inout  std_logic;
+      pc10f           : inout  std_logic;
+      pc11f           : inout  std_logic;
+      pc1f            : inout  std_logic;
+      pc2f            : inout  std_logic;
+      pc3f            : inout  std_logic;
+      pc4f            : inout  std_logic;
+      pc5f            : inout  std_logic;
+      pc6f            : inout  std_logic;
+      pc7f            : inout  std_logic;
+      pc8f            : inout  std_logic;
+      pc9f            : inout  std_logic;
       i12             : out    std_logic;
       i13             : out    std_logic;
       i14             : out    std_logic;
@@ -577,19 +590,7 @@ package icmem_book is
       i20             : out    std_logic;
       i21             : out    std_logic;
       i22             : out    std_logic;
-      i23             : out    std_logic;
-      pc0f            : out    std_logic;
-      pc10f           : out    std_logic;
-      pc11f           : out    std_logic;
-      pc1f            : out    std_logic;
-      pc2f            : out    std_logic;
-      pc3f            : out    std_logic;
-      pc4f            : out    std_logic;
-      pc5f            : out    std_logic;
-      pc6f            : out    std_logic;
-      pc7f            : out    std_logic;
-      pc8f            : out    std_logic;
-      pc9f            : out    std_logic
+      i23             : out    std_logic
     );
   end component;
 
@@ -621,6 +622,18 @@ package icmem_book is
       iwr21           : in     std_logic;
       iwr22           : in     std_logic;
       iwr23           : in     std_logic;
+      pc0g            : inout  std_logic;
+      pc10g           : inout  std_logic;
+      pc11g           : inout  std_logic;
+      pc1g            : inout  std_logic;
+      pc2g            : inout  std_logic;
+      pc3g            : inout  std_logic;
+      pc4g            : inout  std_logic;
+      pc5g            : inout  std_logic;
+      pc6g            : inout  std_logic;
+      pc7g            : inout  std_logic;
+      pc8g            : inout  std_logic;
+      pc9g            : inout  std_logic;
       i12             : out    std_logic;
       i13             : out    std_logic;
       i14             : out    std_logic;
@@ -632,19 +645,7 @@ package icmem_book is
       i20             : out    std_logic;
       i21             : out    std_logic;
       i22             : out    std_logic;
-      i23             : out    std_logic;
-      pc0g            : out    std_logic;
-      pc10g           : out    std_logic;
-      pc11g           : out    std_logic;
-      pc1g            : out    std_logic;
-      pc2g            : out    std_logic;
-      pc3g            : out    std_logic;
-      pc4g            : out    std_logic;
-      pc5g            : out    std_logic;
-      pc6g            : out    std_logic;
-      pc7g            : out    std_logic;
-      pc8g            : out    std_logic;
-      pc9g            : out    std_logic
+      i23             : out    std_logic
     );
   end component;
 
@@ -676,6 +677,18 @@ package icmem_book is
       iwr21           : in     std_logic;
       iwr22           : in     std_logic;
       iwr23           : in     std_logic;
+      pc0h            : inout  std_logic;
+      pc10h           : inout  std_logic;
+      pc11h           : inout  std_logic;
+      pc1h            : inout  std_logic;
+      pc2h            : inout  std_logic;
+      pc3h            : inout  std_logic;
+      pc4h            : inout  std_logic;
+      pc5h            : inout  std_logic;
+      pc6h            : inout  std_logic;
+      pc7h            : inout  std_logic;
+      pc8h            : inout  std_logic;
+      pc9h            : inout  std_logic;
       i12             : out    std_logic;
       i13             : out    std_logic;
       i14             : out    std_logic;
@@ -687,19 +700,7 @@ package icmem_book is
       i20             : out    std_logic;
       i21             : out    std_logic;
       i22             : out    std_logic;
-      i23             : out    std_logic;
-      pc0h            : out    std_logic;
-      pc10h           : out    std_logic;
-      pc11h           : out    std_logic;
-      pc1h            : out    std_logic;
-      pc2h            : out    std_logic;
-      pc3h            : out    std_logic;
-      pc4h            : out    std_logic;
-      pc5h            : out    std_logic;
-      pc6h            : out    std_logic;
-      pc7h            : out    std_logic;
-      pc8h            : out    std_logic;
-      pc9h            : out    std_logic
+      i23             : out    std_logic
     );
   end component;
 
@@ -731,6 +732,18 @@ package icmem_book is
       iwr33           : in     std_logic;
       iwr34           : in     std_logic;
       iwr35           : in     std_logic;
+      pc0i            : inout  std_logic;
+      pc10i           : inout  std_logic;
+      pc11i           : inout  std_logic;
+      pc1i            : inout  std_logic;
+      pc2i            : inout  std_logic;
+      pc3i            : inout  std_logic;
+      pc4i            : inout  std_logic;
+      pc5i            : inout  std_logic;
+      pc6i            : inout  std_logic;
+      pc7i            : inout  std_logic;
+      pc8i            : inout  std_logic;
+      pc9i            : inout  std_logic;
       i24             : out    std_logic;
       i25             : out    std_logic;
       i26             : out    std_logic;
@@ -742,19 +755,7 @@ package icmem_book is
       i32             : out    std_logic;
       i33             : out    std_logic;
       i34             : out    std_logic;
-      i35             : out    std_logic;
-      pc0i            : out    std_logic;
-      pc10i           : out    std_logic;
-      pc11i           : out    std_logic;
-      pc1i            : out    std_logic;
-      pc2i            : out    std_logic;
-      pc3i            : out    std_logic;
-      pc4i            : out    std_logic;
-      pc5i            : out    std_logic;
-      pc6i            : out    std_logic;
-      pc7i            : out    std_logic;
-      pc8i            : out    std_logic;
-      pc9i            : out    std_logic
+      i35             : out    std_logic
     );
   end component;
 
@@ -786,6 +787,18 @@ package icmem_book is
       iwr33           : in     std_logic;
       iwr34           : in     std_logic;
       iwr35           : in     std_logic;
+      pc0j            : inout  std_logic;
+      pc10j           : inout  std_logic;
+      pc11j           : inout  std_logic;
+      pc1j            : inout  std_logic;
+      pc2j            : inout  std_logic;
+      pc3j            : inout  std_logic;
+      pc4j            : inout  std_logic;
+      pc5j            : inout  std_logic;
+      pc6j            : inout  std_logic;
+      pc7j            : inout  std_logic;
+      pc8j            : inout  std_logic;
+      pc9j            : inout  std_logic;
       i24             : out    std_logic;
       i25             : out    std_logic;
       i26             : out    std_logic;
@@ -797,19 +810,7 @@ package icmem_book is
       i32             : out    std_logic;
       i33             : out    std_logic;
       i34             : out    std_logic;
-      i35             : out    std_logic;
-      pc0j            : out    std_logic;
-      pc10j           : out    std_logic;
-      pc11j           : out    std_logic;
-      pc1j            : out    std_logic;
-      pc2j            : out    std_logic;
-      pc3j            : out    std_logic;
-      pc4j            : out    std_logic;
-      pc5j            : out    std_logic;
-      pc6j            : out    std_logic;
-      pc7j            : out    std_logic;
-      pc8j            : out    std_logic;
-      pc9j            : out    std_logic
+      i35             : out    std_logic
     );
   end component;
 
@@ -841,6 +842,18 @@ package icmem_book is
       iwr33           : in     std_logic;
       iwr34           : in     std_logic;
       iwr35           : in     std_logic;
+      pc0k            : inout  std_logic;
+      pc10k           : inout  std_logic;
+      pc11k           : inout  std_logic;
+      pc1k            : inout  std_logic;
+      pc2k            : inout  std_logic;
+      pc3k            : inout  std_logic;
+      pc4k            : inout  std_logic;
+      pc5k            : inout  std_logic;
+      pc6k            : inout  std_logic;
+      pc7k            : inout  std_logic;
+      pc8k            : inout  std_logic;
+      pc9k            : inout  std_logic;
       i24             : out    std_logic;
       i25             : out    std_logic;
       i26             : out    std_logic;
@@ -852,19 +865,7 @@ package icmem_book is
       i32             : out    std_logic;
       i33             : out    std_logic;
       i34             : out    std_logic;
-      i35             : out    std_logic;
-      pc0k            : out    std_logic;
-      pc10k           : out    std_logic;
-      pc11k           : out    std_logic;
-      pc1k            : out    std_logic;
-      pc2k            : out    std_logic;
-      pc3k            : out    std_logic;
-      pc4k            : out    std_logic;
-      pc5k            : out    std_logic;
-      pc6k            : out    std_logic;
-      pc7k            : out    std_logic;
-      pc8k            : out    std_logic;
-      pc9k            : out    std_logic
+      i35             : out    std_logic
     );
   end component;
 
@@ -896,6 +897,18 @@ package icmem_book is
       iwr33           : in     std_logic;
       iwr34           : in     std_logic;
       iwr35           : in     std_logic;
+      pc0l            : inout  std_logic;
+      pc10l           : inout  std_logic;
+      pc11l           : inout  std_logic;
+      pc1l            : inout  std_logic;
+      pc2l            : inout  std_logic;
+      pc3l            : inout  std_logic;
+      pc4l            : inout  std_logic;
+      pc5l            : inout  std_logic;
+      pc6l            : inout  std_logic;
+      pc7l            : inout  std_logic;
+      pc8l            : inout  std_logic;
+      pc9l            : inout  std_logic;
       i24             : out    std_logic;
       i25             : out    std_logic;
       i26             : out    std_logic;
@@ -907,19 +920,7 @@ package icmem_book is
       i32             : out    std_logic;
       i33             : out    std_logic;
       i34             : out    std_logic;
-      i35             : out    std_logic;
-      pc0l            : out    std_logic;
-      pc10l           : out    std_logic;
-      pc11l           : out    std_logic;
-      pc1l            : out    std_logic;
-      pc2l            : out    std_logic;
-      pc3l            : out    std_logic;
-      pc4l            : out    std_logic;
-      pc5l            : out    std_logic;
-      pc6l            : out    std_logic;
-      pc7l            : out    std_logic;
-      pc8l            : out    std_logic;
-      pc9l            : out    std_logic
+      i35             : out    std_logic
     );
   end component;
 
@@ -952,6 +953,18 @@ package icmem_book is
       iwr46           : in     std_logic;
       iwr47           : in     std_logic;
       iwr48           : in     std_logic;
+      pc0m            : inout  std_logic;
+      pc10m           : inout  std_logic;
+      pc11m           : inout  std_logic;
+      pc1m            : inout  std_logic;
+      pc2m            : inout  std_logic;
+      pc3m            : inout  std_logic;
+      pc4m            : inout  std_logic;
+      pc5m            : inout  std_logic;
+      pc6m            : inout  std_logic;
+      pc7m            : inout  std_logic;
+      pc8m            : inout  std_logic;
+      pc9m            : inout  std_logic;
       i36             : out    std_logic;
       i37             : out    std_logic;
       i38             : out    std_logic;
@@ -964,19 +977,7 @@ package icmem_book is
       i45             : out    std_logic;
       i46             : out    std_logic;
       i47             : out    std_logic;
-      i48             : out    std_logic;
-      pc0m            : out    std_logic;
-      pc10m           : out    std_logic;
-      pc11m           : out    std_logic;
-      pc1m            : out    std_logic;
-      pc2m            : out    std_logic;
-      pc3m            : out    std_logic;
-      pc4m            : out    std_logic;
-      pc5m            : out    std_logic;
-      pc6m            : out    std_logic;
-      pc7m            : out    std_logic;
-      pc8m            : out    std_logic;
-      pc9m            : out    std_logic
+      i48             : out    std_logic
     );
   end component;
 
@@ -1009,6 +1010,18 @@ package icmem_book is
       iwr46           : in     std_logic;
       iwr47           : in     std_logic;
       iwr48           : in     std_logic;
+      pc0n            : inout  std_logic;
+      pc10n           : inout  std_logic;
+      pc11n           : inout  std_logic;
+      pc1n            : inout  std_logic;
+      pc2n            : inout  std_logic;
+      pc3n            : inout  std_logic;
+      pc4n            : inout  std_logic;
+      pc5n            : inout  std_logic;
+      pc6n            : inout  std_logic;
+      pc7n            : inout  std_logic;
+      pc8n            : inout  std_logic;
+      pc9n            : inout  std_logic;
       i36             : out    std_logic;
       i37             : out    std_logic;
       i38             : out    std_logic;
@@ -1021,19 +1034,7 @@ package icmem_book is
       i45             : out    std_logic;
       i46             : out    std_logic;
       i47             : out    std_logic;
-      i48             : out    std_logic;
-      pc0n            : out    std_logic;
-      pc10n           : out    std_logic;
-      pc11n           : out    std_logic;
-      pc1n            : out    std_logic;
-      pc2n            : out    std_logic;
-      pc3n            : out    std_logic;
-      pc4n            : out    std_logic;
-      pc5n            : out    std_logic;
-      pc6n            : out    std_logic;
-      pc7n            : out    std_logic;
-      pc8n            : out    std_logic;
-      pc9n            : out    std_logic
+      i48             : out    std_logic
     );
   end component;
 
@@ -1066,6 +1067,18 @@ package icmem_book is
       iwr46           : in     std_logic;
       iwr47           : in     std_logic;
       iwr48           : in     std_logic;
+      pc0o            : inout  std_logic;
+      pc10o           : inout  std_logic;
+      pc11o           : inout  std_logic;
+      pc1o            : inout  std_logic;
+      pc2o            : inout  std_logic;
+      pc3o            : inout  std_logic;
+      pc4o            : inout  std_logic;
+      pc5o            : inout  std_logic;
+      pc6o            : inout  std_logic;
+      pc7o            : inout  std_logic;
+      pc8o            : inout  std_logic;
+      pc9o            : inout  std_logic;
       i36             : out    std_logic;
       i37             : out    std_logic;
       i38             : out    std_logic;
@@ -1078,19 +1091,7 @@ package icmem_book is
       i45             : out    std_logic;
       i46             : out    std_logic;
       i47             : out    std_logic;
-      i48             : out    std_logic;
-      pc0o            : out    std_logic;
-      pc10o           : out    std_logic;
-      pc11o           : out    std_logic;
-      pc1o            : out    std_logic;
-      pc2o            : out    std_logic;
-      pc3o            : out    std_logic;
-      pc4o            : out    std_logic;
-      pc5o            : out    std_logic;
-      pc6o            : out    std_logic;
-      pc7o            : out    std_logic;
-      pc8o            : out    std_logic;
-      pc9o            : out    std_logic
+      i48             : out    std_logic
     );
   end component;
 
@@ -1123,6 +1124,18 @@ package icmem_book is
       iwr46           : in     std_logic;
       iwr47           : in     std_logic;
       iwr48           : in     std_logic;
+      pc0p            : inout  std_logic;
+      pc10p           : inout  std_logic;
+      pc11p           : inout  std_logic;
+      pc1p            : inout  std_logic;
+      pc2p            : inout  std_logic;
+      pc3p            : inout  std_logic;
+      pc4p            : inout  std_logic;
+      pc5p            : inout  std_logic;
+      pc6p            : inout  std_logic;
+      pc7p            : inout  std_logic;
+      pc8p            : inout  std_logic;
+      pc9p            : inout  std_logic;
       i36             : out    std_logic;
       i37             : out    std_logic;
       i38             : out    std_logic;
@@ -1135,19 +1148,7 @@ package icmem_book is
       i45             : out    std_logic;
       i46             : out    std_logic;
       i47             : out    std_logic;
-      i48             : out    std_logic;
-      pc0p            : out    std_logic;
-      pc10p           : out    std_logic;
-      pc11p           : out    std_logic;
-      pc1p            : out    std_logic;
-      pc2p            : out    std_logic;
-      pc3p            : out    std_logic;
-      pc4p            : out    std_logic;
-      pc5p            : out    std_logic;
-      pc6p            : out    std_logic;
-      pc7p            : out    std_logic;
-      pc8p            : out    std_logic;
-      pc9p            : out    std_logic
+      i48             : out    std_logic
     );
   end component;
 
@@ -1201,11 +1202,11 @@ package icmem_book is
       iwr7            : in     std_logic;
       iwr8            : in     std_logic;
       iwr9            : in     std_logic;
-      iwr48           : out    std_logic;
-      iwrp1           : out    std_logic;
-      iwrp2           : out    std_logic;
-      iwrp3           : out    std_logic;
-      iwrp4           : out    std_logic
+      iwrp1           : inout  std_logic;
+      iwrp2           : inout  std_logic;
+      iwrp3           : inout  std_logic;
+      iwrp4           : inout  std_logic;
+      iwr48           : out    std_logic
     );
   end component;
 
@@ -1214,10 +1215,10 @@ package icmem_book is
       \-boot\         : in     std_logic;
       \-clock reset a\ : in     std_logic;
       \-errhalt\      : in     std_logic;
+      \-icmem reset\  : in     std_logic;
       \-ldclk\        : in     std_logic;
       \-ldmode\       : in     std_logic;
       \-ldopc\        : in     std_logic;
-      \-reset\        : in     std_logic;
       \-stc32\        : in     std_logic;
       \-tpr60\        : in     std_logic;
       \-wait\         : in     std_logic;
@@ -1229,6 +1230,21 @@ package icmem_book is
       spy4            : in     std_logic;
       spy5            : in     std_logic;
       statstop        : in     std_logic;
+      \-ssdone\       : inout  std_logic;
+      \-stathalt\     : inout  std_logic;
+      machrun         : inout  std_logic;
+      promdisable     : inout  std_logic;
+      run             : inout  std_logic;
+      speed0          : inout  std_logic;
+      speed0a         : inout  std_logic;
+      speed1          : inout  std_logic;
+      speed1a         : inout  std_logic;
+      speedclk        : inout  std_logic;
+      srun            : inout  std_logic;
+      ssdone          : inout  std_logic;
+      sstep           : inout  std_logic;
+      stathenb        : inout  std_logic;
+      step            : inout  std_logic;
       \-idebug\       : out    std_logic;
       \-ldstat\       : out    std_logic;
       \-lpc.hold\     : out    std_logic;
@@ -1238,33 +1254,18 @@ package icmem_book is
       \-opcclk\       : out    std_logic;
       \-opcinh\       : out    std_logic;
       \-run\          : out    std_logic;
-      \-ssdone\       : out    std_logic;
-      \-stathalt\     : out    std_logic;
       \-step\         : out    std_logic;
       \lpc.hold\      : out    std_logic;
       \stat.ovf\      : out    std_logic;
       errstop         : out    std_logic;
       idebug          : out    std_logic;
       ldstat          : out    std_logic;
-      machrun         : out    std_logic;
       nop11           : out    std_logic;
       opcclk          : out    std_logic;
       opcinh          : out    std_logic;
-      promdisable     : out    std_logic;
       promdisabled    : out    std_logic;
-      run             : out    std_logic;
-      speed0          : out    std_logic;
-      speed0a         : out    std_logic;
-      speed1          : out    std_logic;
-      speed1a         : out    std_logic;
-      speedclk        : out    std_logic;
-      srun            : out    std_logic;
-      ssdone          : out    std_logic;
       sspeed0         : out    std_logic;
       sspeed1         : out    std_logic;
-      sstep           : out    std_logic;
-      stathenb        : out    std_logic;
-      step            : out    std_logic;
       trapenb         : out    std_logic
     );
   end component;
@@ -1292,42 +1293,42 @@ package icmem_book is
       srun            : in     std_logic;
       v0parok         : in     std_logic;
       vmoparok        : in     std_logic;
+      \-ape\          : inout  std_logic;
       \-boot1\        : inout  std_logic;
       \-boot2\        : inout  std_logic;
+      \-boot\         : inout  std_logic;
+      \-clk5\         : inout  std_logic;
+      \-clock reset a\ : inout  std_logic;
+      \-clock reset b\ : inout  std_logic;
+      \-dpe\          : inout  std_logic;
+      \-halted\       : inout  std_logic;
+      \-higherr\      : inout  std_logic;
+      \-ipe\          : inout  std_logic;
+      \-lowerhighok\  : inout  std_logic;
+      \-mclk5\        : inout  std_logic;
+      \-mempe\        : inout  std_logic;
+      \-mpe\          : inout  std_logic;
+      \-pdlpe\        : inout  std_logic;
+      \-power reset\  : inout  std_logic;
+      \-prog.reset\   : inout  std_logic;
+      \-spe\          : inout  std_logic;
+      \-v0pe\         : inout  std_logic;
+      \-v1pe\         : inout  std_logic;
+      \power reset a\ : inout  std_logic;
+      \prog.boot\     : inout  std_logic;
+      clk5a           : inout  std_logic;
+      err             : inout  std_logic;
       hi1             : inout  std_logic;
       hi2             : inout  std_logic;
-      \-ape\          : out    std_logic;
-      \-boot\         : out    std_logic;
+      highok          : inout  std_logic;
+      ldmode          : inout  std_logic;
+      mclk5a          : inout  std_logic;
+      reset           : inout  std_logic;
       \-bus.power.reset\ : out    std_logic;
       \-bus.reset\    : out    std_logic;
-      \-clk5\         : out    std_logic;
-      \-clock reset a\ : out    std_logic;
-      \-clock reset b\ : out    std_logic;
-      \-dpe\          : out    std_logic;
       \-errhalt\      : out    std_logic;
-      \-halted\       : out    std_logic;
-      \-higherr\      : out    std_logic;
-      \-ipe\          : out    std_logic;
-      \-lowerhighok\  : out    std_logic;
-      \-mclk5\        : out    std_logic;
-      \-mempe\        : out    std_logic;
-      \-mpe\          : out    std_logic;
-      \-pdlpe\        : out    std_logic;
-      \-power reset\  : out    std_logic;
-      \-prog.reset\   : out    std_logic;
-      \-reset\        : out    std_logic;
-      \-spe\          : out    std_logic;
-      \-v0pe\         : out    std_logic;
-      \-v1pe\         : out    std_logic;
+      \-icmem reset\  : out    std_logic;
       \boot.trap\     : out    std_logic;
-      \power reset a\ : out    std_logic;
-      \prog.boot\     : out    std_logic;
-      clk5a           : out    std_logic;
-      err             : out    std_logic;
-      highok          : out    std_logic;
-      ldmode          : out    std_logic;
-      mclk5a          : out    std_logic;
-      reset           : out    std_logic;
       statstop        : out    std_logic
     );
   end component;
@@ -1352,6 +1353,11 @@ package icmem_book is
       pc7             : in     std_logic;
       pc8             : in     std_logic;
       pc9             : in     std_logic;
+      opcclka         : inout  std_logic;
+      opcclkb         : inout  std_logic;
+      opcclkc         : inout  std_logic;
+      opcinha         : inout  std_logic;
+      opcinhb         : inout  std_logic;
       opc0            : out    std_logic;
       opc1            : out    std_logic;
       opc10           : out    std_logic;
@@ -1365,12 +1371,7 @@ package icmem_book is
       opc6            : out    std_logic;
       opc7            : out    std_logic;
       opc8            : out    std_logic;
-      opc9            : out    std_logic;
-      opcclka         : out    std_logic;
-      opcclkb         : out    std_logic;
-      opcclkc         : out    std_logic;
-      opcinha         : out    std_logic;
-      opcinhb         : out    std_logic
+      opc9            : out    std_logic
     );
   end component;
 
@@ -1403,9 +1404,16 @@ package icmem_book is
       pc7             : in     std_logic;
       pc8             : in     std_logic;
       pc9             : in     std_logic;
+      \-promenable\   : inout  std_logic;
+      \-prompc9\      : inout  std_logic;
+      \bottom.1k\     : inout  std_logic;
+      dpe             : inout  std_logic;
+      ipe             : inout  std_logic;
+      promenable      : inout  std_logic;
+      tilt0           : inout  std_logic;
+      tilt1           : inout  std_logic;
       \-promce0\      : out    std_logic;
       \-promce1\      : out    std_logic;
-      \-promenable\   : out    std_logic;
       \-prompc0\      : out    std_logic;
       \-prompc1\      : out    std_logic;
       \-prompc2\      : out    std_logic;
@@ -1415,14 +1423,7 @@ package icmem_book is
       \-prompc6\      : out    std_logic;
       \-prompc7\      : out    std_logic;
       \-prompc8\      : out    std_logic;
-      \-prompc9\      : out    std_logic;
-      \bottom.1k\     : out    std_logic;
-      dpe             : out    std_logic;
-      i46             : out    std_logic;
-      ipe             : out    std_logic;
-      promenable      : out    std_logic;
-      tilt0           : out    std_logic;
-      tilt1           : out    std_logic
+      i46             : out    std_logic
     );
   end component;
 
@@ -1693,14 +1694,46 @@ package icmem_book is
       iwr7            : in     std_logic;
       iwr8            : in     std_logic;
       iwr9            : in     std_logic;
-      \-stc12\        : out    std_logic;
-      \-stc16\        : out    std_logic;
-      \-stc20\        : out    std_logic;
-      \-stc24\        : out    std_logic;
-      \-stc28\        : out    std_logic;
+      \-stc12\        : inout  std_logic;
+      \-stc16\        : inout  std_logic;
+      \-stc20\        : inout  std_logic;
+      \-stc24\        : inout  std_logic;
+      \-stc28\        : inout  std_logic;
+      \-stc4\         : inout  std_logic;
+      \-stc8\         : inout  std_logic;
+      st0             : inout  std_logic;
+      st1             : inout  std_logic;
+      st10            : inout  std_logic;
+      st11            : inout  std_logic;
+      st12            : inout  std_logic;
+      st13            : inout  std_logic;
+      st14            : inout  std_logic;
+      st15            : inout  std_logic;
+      st16            : inout  std_logic;
+      st17            : inout  std_logic;
+      st18            : inout  std_logic;
+      st19            : inout  std_logic;
+      st2             : inout  std_logic;
+      st20            : inout  std_logic;
+      st21            : inout  std_logic;
+      st22            : inout  std_logic;
+      st23            : inout  std_logic;
+      st24            : inout  std_logic;
+      st25            : inout  std_logic;
+      st26            : inout  std_logic;
+      st27            : inout  std_logic;
+      st28            : inout  std_logic;
+      st29            : inout  std_logic;
+      st3             : inout  std_logic;
+      st30            : inout  std_logic;
+      st31            : inout  std_logic;
+      st4             : inout  std_logic;
+      st5             : inout  std_logic;
+      st6             : inout  std_logic;
+      st7             : inout  std_logic;
+      st8             : inout  std_logic;
+      st9             : inout  std_logic;
       \-stc32\        : out    std_logic;
-      \-stc4\         : out    std_logic;
-      \-stc8\         : out    std_logic;
       spy0            : out    std_logic;
       spy1            : out    std_logic;
       spy10           : out    std_logic;
@@ -1716,39 +1749,7 @@ package icmem_book is
       spy6            : out    std_logic;
       spy7            : out    std_logic;
       spy8            : out    std_logic;
-      spy9            : out    std_logic;
-      st0             : out    std_logic;
-      st1             : out    std_logic;
-      st10            : out    std_logic;
-      st11            : out    std_logic;
-      st12            : out    std_logic;
-      st13            : out    std_logic;
-      st14            : out    std_logic;
-      st15            : out    std_logic;
-      st16            : out    std_logic;
-      st17            : out    std_logic;
-      st18            : out    std_logic;
-      st19            : out    std_logic;
-      st2             : out    std_logic;
-      st20            : out    std_logic;
-      st21            : out    std_logic;
-      st22            : out    std_logic;
-      st23            : out    std_logic;
-      st24            : out    std_logic;
-      st25            : out    std_logic;
-      st26            : out    std_logic;
-      st27            : out    std_logic;
-      st28            : out    std_logic;
-      st29            : out    std_logic;
-      st3             : out    std_logic;
-      st30            : out    std_logic;
-      st31            : out    std_logic;
-      st4             : out    std_logic;
-      st5             : out    std_logic;
-      st6             : out    std_logic;
-      st7             : out    std_logic;
-      st8             : out    std_logic;
-      st9             : out    std_logic
+      spy9            : out    std_logic
     );
   end component;
 

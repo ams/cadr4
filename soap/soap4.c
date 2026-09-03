@@ -34,6 +34,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
+#include <strings.h>
 #include <unistd.h>
 
 #include "soap4.h"
@@ -160,7 +161,7 @@ static char *
 fix_signal_name(char *s)
 {
 	static char b[256];
-    sprintf(b, "%s", s);    
+    snprintf(b, sizeof(b), "%s", s);
 
     char* p;
 
@@ -244,11 +245,11 @@ escape_signal_name(char *s)
 
     // if there is a special character, escape the name
 	if (strchr(s, ' ') || s[0] == '-' || s[0] == '@' || strchr(s, '=') || strchr(s, '.') || strchr(s, '/') || strchr(s, '-')) {    
-		sprintf(b, "\\%s\\", s);
+		snprintf(b, sizeof(b), "\\%s\\", s);
 	}
     else 
     {
-        sprintf(b, "%s", s);
+        snprintf(b, sizeof(b), "%s", s);
     }
 
     return strlwr(b);
@@ -1288,6 +1289,39 @@ assign_same_ids_of_points(void)
     }
 }
 
+// two labels on one wire (e.g. WRITE DATA > UB and C1 OUT on datctl): the
+// pairs are collected while propagating names and dumped as net aliases
+#define MAX_LABEL_ALIASES 256
+static char *label_aliases[MAX_LABEL_ALIASES][2];
+static size_t label_aliases_count = 0;
+
+static bool
+is_plain_net_name(const char *name)
+{
+    if (name == NULL || name[0] == 0) return false;
+    if (strcmp(name, "nc") == 0 || strcmp(name, "NC") == 0) return false;
+    if (strncasecmp(name, "vcc", 3) == 0) return false;
+    if (strncasecmp(name, "gnd", 3) == 0) return false;
+    if (name[0] == '@') return false;
+    return true;
+}
+
+static void
+add_label_alias(char *a, char *b)
+{
+    if (!is_plain_net_name(a) || !is_plain_net_name(b)) return;
+    for (size_t i = 0; i < label_aliases_count; i++) {
+        if ((strcmp(label_aliases[i][0], a) == 0 && strcmp(label_aliases[i][1], b) == 0) ||
+            (strcmp(label_aliases[i][0], b) == 0 && strcmp(label_aliases[i][1], a) == 0)) {
+            return;
+        }
+    }
+    assert (label_aliases_count < MAX_LABEL_ALIASES);
+    label_aliases[label_aliases_count][0] = a;
+    label_aliases[label_aliases_count][1] = b;
+    label_aliases_count++;
+}
+
 // it is easier to propagate net names once than running bfs on graph everytime
 
 // propagate the name of starting_point to all accessible points
@@ -1328,6 +1362,13 @@ propagate_net_name(struct point_s* starting_point)
 
             if (current->name != NULL) {
                 DEBUG("point already has net name:'%s'\n", current->name);
+                // a second label on the same wire: the net keeps the first
+                // name, the second one is emitted as a net alias so that
+                // pages using the other name still connect
+                if (current->size_of_text > 0 &&
+                    strcmp(current->name, starting_point->name) != 0) {
+                    add_label_alias(starting_point->name, current->name);
+                }
             } else {
                 current->name = starting_point->name;
             }
@@ -1512,6 +1553,81 @@ dump_raw(int dump_wide_flag, char *suds_filename)
 /* ---------------------------------------------------------------- */
 
 
+
+/* ---------------------------------------------------------------- */
+
+// LH, HL and LNLH are the SUDS polarity markers: a two pin body without
+// refdes drawn on a wire, giving the same node a second name of the other
+// polarity convention (e.g. LMWR L is also LMRD). The drawings use both
+// names on different pages, so the marker is emitted as a concurrent
+// assignment from the driven side to the label side, which keeps both
+// names alive as ports of the page.
+static bool
+is_net_alias_body(struct body_s *b)
+{
+    if (b->id == 0) return false;
+    if (b->refdes[0] != 0) return false;
+    if (b->name_of_body_def == NULL) return false;
+    return strcmp(b->name_of_body_def, "LH") == 0 ||
+           strcmp(b->name_of_body_def, "HL") == 0 ||
+           strcmp(b->name_of_body_def, "LNLH") == 0;
+}
+
+static void
+dump_vhdl_net_aliases(void)
+{
+    for (size_t i = 0; i < label_aliases_count; i++) {
+        char *a = managed_strdup(escape_signal_name(label_aliases[i][1]));
+        char *b = managed_strdup(escape_signal_name(label_aliases[i][0]));
+        DUMP_VHDL("%s <= %s;\n", a, b);
+    }
+
+    for (size_t i = 0; i < bodies_count; i++) {
+
+        struct body_s *b = &bodies[i];
+
+        if (!is_net_alias_body(b)) continue;
+
+        struct body_def_s *bd = find_body_def(b->name_of_body_def);
+
+        if (bd == NULL) {
+            fprintf(stderr, "warning: net alias body def '%s' not found, skipping\n",
+                b->name_of_body_def);
+            continue;
+        }
+
+        char *names[2] = {NULL, NULL};
+        size_t k = 0;
+
+        for (size_t j = 0; j < bd->pin_count && k < 2; j++) {
+            struct point_s *point = find_point(bd->pins[j].id, b->id);
+            if (point == NULL || point->name == NULL) continue;
+            names[k++] = point->name;
+        }
+
+        if (k != 2) {
+            fprintf(stderr, "warning: net alias body id %u ('%s') has %zu named pins, skipping\n",
+                b->id, b->name_of_body_def, k);
+            continue;
+        }
+
+        if (strcmp(names[0], names[1]) == 0) continue;
+
+        // which side drives the other is decided by fix-suds.soap4.py, which
+        // knows the pin directions of the dip components; here an anonymous
+        // net is put on the left so the plain wire case reads naturally
+        int alias = 0, source = 1;
+        if (strncmp(names[1], "net_", 4) == 0 && strncmp(names[0], "net_", 4) != 0) {
+            alias = 1; source = 0;
+        }
+
+        // escape_signal_name returns a static buffer
+        char *alias_name = managed_strdup(escape_signal_name(names[alias]));
+        char *source_name = managed_strdup(escape_signal_name(names[source]));
+
+        DUMP_VHDL("%s <= %s;\n", alias_name, source_name);
+    }
+}
 
 static void
 dump_vhdl(
@@ -1745,6 +1861,8 @@ dump_vhdl(
 
 		if (printed_once) DUMP_VHDL(");\n");
 	}
+
+    dump_vhdl_net_aliases();
 
 	DUMP_VHDL("end architecture;\n");
 

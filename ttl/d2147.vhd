@@ -64,23 +64,30 @@ begin
   di_int <= ttl_input(di);
   we_n_int <= ttl_input(we_n);
   
+  -- Truth table (doc/ttl/d2147.pdf):
+  --   CS=H        not selected, DOUT high-Z
+  --   CS=L, WE=L  write, DOUT high-Z
+  --   CS=L, WE=H  read, DOUT = stored bit
   process (all)
     variable addr : unsigned(11 downto 0);
   begin
     if ce_n_int = '0' then
       addr := (a11_int, a10_int, a9_int, a8_int, a7_int, a6_int, a5_int, a4_int, a3_int, a2_int, a1_int, a0_int);
-      if is_x(addr) then
-        if we_n_int = '1' then
+      if we_n_int = '0' then
+        -- write: output disabled
+        do <= 'Z';
+        if not is_x(addr) then
+          ram(to_integer(addr))(0) <= di_int;
+        end if;
+      elsif we_n_int = '1' then
+        -- read
+        if is_x(addr) then
           do <= 'X';
+        else
+          do <= ram(to_integer(addr))(0);
         end if;
       else
-        if we_n_int = '0' then
-          ram(to_integer(addr))(0) <= di_int;
-        elsif we_n_int = '1' then
-          do <= ram(to_integer(addr))(0);
-        else
-          -- do nothing
-        end if;
+        do <= 'X';
       end if;
     elsif ce_n_int = '1' then
       do <= 'Z';

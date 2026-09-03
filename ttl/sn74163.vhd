@@ -9,18 +9,18 @@ use work.misc.all;
 entity sn74163 is
   port (
     -- Control and status
-    tc      : out std_logic;  -- Terminal count
-    clk     : in  std_logic;  -- Clock
-    clr_n   : in  std_logic;  -- Synchronous clear (active low)
-    pe_n    : in  std_logic;  -- Parallel enable (active low)
-    enb_p   : in  std_logic;  -- Count enable parallel
-    enb_t   : in  std_logic;  -- Count enable trickle
+    tc      : out std_logic;        -- Pin 15 (RCO): terminal count
+    clk     : in  std_logic;        -- Pin 2 (CLK)
+    clr_n   : in  std_logic;        -- Pin 1 (CLR): synchronous clear (active low)
+    pe_n    : in  std_logic;        -- Pin 9 (LOAD): parallel enable (active low)
+    enb_p   : in  std_logic;        -- Pin 7 (ENP): count enable parallel
+    enb_t   : in  std_logic;        -- Pin 10 (ENT): count enable trickle
     
     -- Data inputs (parallel load)
-    i3, i2, i1, i0 : in  std_logic;
+    i3, i2, i1, i0 : in  std_logic; -- Pins 6, 5, 4, 3 (D, C, B, A)
     
     -- Data outputs
-    d3, d2, d1, d0 : out std_logic
+    d3, d2, d1, d0 : out std_logic  -- Pins 11, 12, 13, 14 (QD, QC, QB, QA)
     );
 end entity;
 
@@ -76,9 +76,8 @@ begin
   d3 <= cnt(3);
 
   -- terminal count generation
-  -- TC is high when:
-  -- 1. Both enables are active (high)
-  -- 2. Counter is at terminal count (15 for binary counter)
+  -- TC = ENT AND (Q = 15)
+  -- Only ENT feeds forward into the ripple carry output; ENP does not take part.
   process(all)
     variable at_terminal_count : boolean;
     variable cnt_std : std_logic_vector(3 downto 0);
@@ -95,7 +94,7 @@ begin
     end if;
     
     -- Generate terminal count output
-    if (enb_t_i = '1' and enb_p_i = '1') and at_terminal_count then
+    if enb_t_i = '1' and at_terminal_count then
       tc <= '1';  -- Active high terminal count
     else
       tc <= '0';  -- Not at terminal count

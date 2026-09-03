@@ -56,7 +56,7 @@ static vpiHandle get_handle(const char *name) {
 
     if (!handle) {
         char error_msg[256];
-        sprintf(error_msg, "Cannot find VPI handle for signal '%s'", name);
+        snprintf(error_msg, sizeof(error_msg), "Cannot find VPI handle for signal '%s'", name);
         terminate_simulation_with_error(error_msg);
         return NULL;
     }

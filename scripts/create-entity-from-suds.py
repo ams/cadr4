@@ -137,6 +137,14 @@ def extract_signals_from_suds(suds_file: Path) -> Set[str]:
     
     with open(suds_file, 'r') as f:
         content = f.read()
+
+    # operands of the net aliases (`a <= b;`) are ports as well
+    for lhs, rhs in re.findall(r'^\s*(\\[^\\]+\\|[A-Za-z0-9_]+)\s*<=\s*(\\[^\\]+\\|[A-Za-z0-9_]+)\s*;\s*$', content, re.MULTILINE):
+        for signal in (lhs, rhs):
+            if signal not in ['open', 'gnd', "'Z'", "'0'", "'1'"]:
+                if (signal and not signal.startswith('gnd') and not signal.startswith('vcc')
+                        and not signal.startswith('net_') and signal not in aliases):
+                    signals.add(signal)
     
     # Pattern to match port map statements
     # Matches: component_name : dip_component [generic map (...)] port map (pin => signal, ...)
@@ -222,6 +230,22 @@ def determine_signal_directions(suds_file: Path, dip_components: Dict[str, Dict[
     with open(suds_file, 'r') as f:
         content = f.read()
     
+    # Net aliases emitted by soap4 for the LH/HL polarity markers: `a <= b;`
+    # drives a from b, so a is an output of the page and b an input
+    alias_assign_pattern = r'^\s*(\\[^\\]+\\|[A-Za-z0-9_]+)\s*<=\s*(\\[^\\]+\\|[A-Za-z0-9_]+)\s*;\s*$'
+    for lhs, rhs in re.findall(alias_assign_pattern, content, re.MULTILINE):
+        for signal, entity_direction in ((lhs, 'out'), (rhs, 'in')):
+            if signal in ['open', 'gnd', "'Z'", "'0'", "'1'"]:
+                continue
+            if (signal.startswith('gnd') or signal.startswith('vcc')
+                    or signal.startswith('net_') or signal in aliases):
+                continue
+            if signal in signal_directions:
+                if signal_directions[signal] != entity_direction:
+                    signal_directions[signal] = 'inout'
+            else:
+                signal_directions[signal] = entity_direction
+
     # Pattern to match complete port map statements
     # Need to handle nested parentheses in signal names like \signal (name)\
     # Updated to handle optional generic map clause before port map
@@ -302,17 +326,14 @@ def determine_signal_directions(suds_file: Path, dip_components: Dict[str, Dict[
                     
 
                     
-                    # Handle conflicting directions (signal used as both input and output)
+                    # A signal used in more than one direction inside the page
+                    # becomes inout: reading an out port yields its driving value
+                    # (VHDL-2008 6.5.2), so a page that drives a bus and also reads
+                    # it (mds on mem0..31, iram on the i bus) would never see what
+                    # other pages drive. inout reads the resolved net.
                     if signal in signal_directions:
                         if signal_directions[signal] != entity_direction:
-                            # Only use inout if one of the directions is actually inout
-                            if signal_directions[signal] == 'inout' or entity_direction == 'inout':
-                                signal_directions[signal] = 'inout'
-                            # For in/out conflicts, prefer out (signal is generated internally)
-                            elif entity_direction == 'out' or signal_directions[signal] == 'out':
-                                signal_directions[signal] = 'out'
-                            else:
-                                signal_directions[signal] = 'in'
+                            signal_directions[signal] = 'inout'
                     else:
                         signal_directions[signal] = entity_direction
     

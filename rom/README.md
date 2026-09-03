@@ -13,7 +13,7 @@ promh.mcr.9.hex is the official and original PROM of CADR.
 
 This file is used to generate promh9/*.hex files. They can be regenerated with `make regenerate-hex-files`.
 
-To use this prom, promh9.table should be used with fix-suds.py. This is done by calling `make regenerate-promh9-suds`.
+To use this prom, promh9.table should be used with fix-suds.soap4.py. This is done by calling `make regenerate-promh9-cadr-suds` and `make regenerate-promh9-icmem-suds`.
 
 ## fast-promh.mcr.hex and fast-promh.table
 
@@ -23,7 +23,9 @@ amem.hex, dram.hex, mmem.hex and vmem0.hex contains the preloading values for A-
 
 These files are used to generate fast-promh/*.hex files. They can be regenerated with `make regenerate-hex-files`.
 
-To use this prom, fast-promh.table should be used with fix-suds.py. This is done by calling `make regenerate-fast-promh-suds`. This is the default and the suds file in the repo are generated like this.
+To use this prom, fast-promh.table should be used with fix-suds.soap4.py. This is done by calling `make regenerate-fast-promh-cadr-suds` and `make regenerate-fast-promh-icmem-suds` (what `make regen` does). This is the default and the suds files in the repo are generated like this.
+
+The usim dumps carry the odd parity bit above the data bits (e.g. the D-memory word 0x20000 is 17 zero data bits plus parity); split-hex masks it off and recomputes parity.
 
 # Details
 

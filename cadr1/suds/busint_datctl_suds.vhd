@@ -21,4 +21,11 @@ datctl_0c14 : dip_74s51 port map (p1 => 'Z', p2 => \dbub master\, p3 => \debug i
 datctl_0c15 : dip_74s64 port map (p1 => \hi 1-14\, p2 => \ubrd a\, p3 => \ub reg cyc t0\, p4 => \hi 1-14\, p5 => \hi 1-14\, p6 => \write data > ub\, p8 => \-ubdrive\, p9 => \ubrd a\, p10 => \select debug\, p11 => \ubrd a\, p12 => \ub17-14=map\, p13 => \msyn in\);
 datctl_0c17 : dip_74s51 port map (p1 => lmrd, p2 => \ubx grant a\, p3 => ubwr, p4 => \lmx grant\, p5 => lmwr, p6 => \-xdrive\, p8 => \-ub16>bus\, p9 => ubwr, p10 => \write through\, p13 => \lmub grant\);
 datctl_0c18 : dip_74s51 port map (p1 => lmrd, p2 => \ubx grant a\, p3 => \ubrd a\, p4 => \lmub grant\, p5 => lmwr, p6 => \-bus>ub\, p8 => \-xb>bus\, p9 => \ubx grant a\, p10 => \ubrd a\, p13 => \lmx grant a\);
+\c1 out\ <= \write data > ub\;
+\ubrd a\ <= \-ubwr a\;
+lmrd <= \-lmwr\;
+lmwr <= \-lmrd\;
+ubrd <= \-ubwr\;
+ubwr <= \-ubrd\;
+xrd <= \-xdrive\;
 end architecture;

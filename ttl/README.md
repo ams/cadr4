@@ -3,7 +3,7 @@
 
 This folder contains TTL components used in CADR.
 
-All components have a testbench with `_tb` suffix. Run `make ttl-check` to run all testbenches. Testbenches might not be necessarily 100% accurate.
+All components have a testbench with `_tb` suffix (the ones of mttldl and sn74124 are minimal). Run `make ttl-check` to run all testbenches. Testbenches might not be necessarily 100% accurate.
 
 FFs and (normal) Registers are using ff_dpc and ff_jkpc common implementations. Shift Registers, Counters and Latches (dm9328, sn74169 sn74194, sn74373, til309) are not using ff_ implementations.
 
@@ -54,13 +54,13 @@ Other than sn74 entities, all entity names are exact to original part names (ign
 
 # Packages
 
-- amd (am...): am25ls2519, am25s07, am25s09, am25s10, am93s48
-- ecc (ttldm): ttldm (ttldm-25, ttldm-50, ttldm-100, ttldm-250)
-- fairchild (dm...): dm9s42, dm93s46, dm9328, dm93425a
+- amd (am...): am25ls2519, am25s07, am25s09, am25s10, am26s10, am29701, am8304, am93s48
+- ecc: mttldl, ttldm (ttldm-25, ttldm-50, ttldm-100, ttldm-250)
+- fairchild (dm...): dm8838, dm9s42, dm93s46, dm9328, dm93425a
 - intel (d...): d2147
 - signetics (n...): n82s21
 - sn74 (sn74...) many sn74xx and sn74xxx
-- other: dummy_type_A, res20, sip220_330_8, sip330_470_8, til309
+- other: dummy_type_A, res20, sip180_390_8, sip220_330_8, sip330_470_8, til309
 
 # Levels of Abstraction
 
@@ -99,8 +99,7 @@ All ICs with open collector outputs are explicitly indicated.
 
 - am26s10: quad open collector bus transceiver
 - am8304: octal three-state bidirectional bus transceiver
-- dm8838: quad unified bus transceiver
-- 
+- dm8838: quad unified bus transceiver (open-collector drivers, inverting receivers)
 
 ## FF & Register & Counter
 

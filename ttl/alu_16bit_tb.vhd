@@ -168,8 +168,8 @@ begin
       -- Wait for propagation
       wait for 20 ns;
       
-      -- Check results
-      if f_output = v_f and xout = v_x and yout = v_y then
+      -- Check results (F, active-low carry out, X and Y)
+      if f_output = v_f and coutb = v_cout and xout = v_x and yout = v_y then
         pass_count := pass_count + 1;
       else
         report "FAIL: Test " & integer'image(test_count) & 
@@ -179,6 +179,7 @@ begin
                "' S=" & to_bstring(v_s) & 
                " CNb='" & std_logic'image(cnb) & 
                "' Expected F=" & to_hstring(v_f) & " Got F=" & to_hstring(f_output) &
+               " Expected Coutb=" & std_logic'image(v_cout) & " Got Coutb=" & std_logic'image(coutb) &
                " Expected X=" & std_logic'image(v_x) & " Got X=" & std_logic'image(xout) &
                " Expected Y=" & std_logic'image(v_y) & " Got Y=" & std_logic'image(yout)
                severity error;
@@ -186,6 +187,9 @@ begin
     end loop;
     
     file_close(test_vectors_file);
+
+    assert test_count > 0 report "alu_16bit_tb: no test vectors read" severity error;
+    report "alu_16bit_tb: " & integer'image(pass_count) & " of " & integer'image(test_count) & " tests passed" severity note;
     
     wait;
   end process;

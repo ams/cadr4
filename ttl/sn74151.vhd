@@ -7,20 +7,20 @@ use work.misc.ttl_input;
 
 entity sn74151 is
   port (
-    i0   : in std_logic;
-    i1   : in std_logic;
-    i2   : in std_logic;
-    i3   : in std_logic;
-    i4   : in std_logic;
-    i5   : in std_logic;
-    i6   : in std_logic;
-    i7   : in std_logic;
-    sel0 : in std_logic;
-    sel1 : in std_logic;
-    sel2 : in std_logic;
-    ce_n : in std_logic;
-    q    : out std_logic;
-    q_n  : out std_logic
+    i0   : in std_logic;  -- Pin 4 (D0)
+    i1   : in std_logic;  -- Pin 3 (D1)
+    i2   : in std_logic;  -- Pin 2 (D2)
+    i3   : in std_logic;  -- Pin 1 (D3)
+    i4   : in std_logic;  -- Pin 15 (D4)
+    i5   : in std_logic;  -- Pin 14 (D5)
+    i6   : in std_logic;  -- Pin 13 (D6)
+    i7   : in std_logic;  -- Pin 12 (D7)
+    sel0 : in std_logic;  -- Pin 11 (A)
+    sel1 : in std_logic;  -- Pin 10 (B)
+    sel2 : in std_logic;  -- Pin 9 (C)
+    ce_n : in std_logic;  -- Pin 7 (G, strobe)
+    q    : out std_logic; -- Pin 5 (Y)
+    q_n  : out std_logic  -- Pin 6 (W)
     );
 end entity;
 

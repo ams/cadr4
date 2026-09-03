@@ -1,25 +1,26 @@
-.PARALLEL:
-
 # vhdl standard 2008
 NVCSTD := 08
 
 NVC_WORK_DIR 		:= $(BUILDDIR)/nvc
 NVC_FILE_LIST		:= $(BUILDDIR)/nvc.filelist
+NVC_ANALYZED		:= $(BUILDDIR)/nvc.analyzed
 NVC_SIGNALS_FILE	:= $(BUILDDIR)/nvc.signals
-
-# make tb unit names uppercase, nvc defaults to uppercase
-NVC_EXES		:= $(shell echo "$(EXES)" | tr '[:lower:]' '[:upper:]')
 
 NVC_RUNTIME_OPTIONS := --stats
 NVC_GLOBAL_OPTS	:= --work=work:$(NVC_WORK_DIR) --std=$(NVCSTD) --vhpi-debug
 
-# asserts can be disabled to improve performance
+# a simulation stops at the first error-level assertion (testbenches fail
+# with severity error); asserts can be disabled to improve performance
 ifeq ($(CADR4_NOASSERTS),1)
 NVC_RUNTIME_OPTIONS += --exit-severity=failure
 NVC_GLOBAL_OPTS 	+= --ieee-warnings=off
 else
-NVC_RUNTIME_OPTIONS += --exit-severity=note
+NVC_RUNTIME_OPTIONS += --exit-severity=error
 endif
+
+# the cosimulation library is only loaded for the testbenches that use it
+# NVC_COSIM_OPTS is a function !
+NVC_COSIM_OPTS = $(if $(filter $1,$(COSIM_EXES)),--load=$(COSIM_VHPI_LIB))
 
 # this is a function and to be called with the testbench name as argument
 NVC_WAVE_OPTS = --format=$(CADR4_WAVEFORMAT) --wave=$(BUILDDIR)/$1.$(CADR4_WAVEFORMAT) --gtkw=$(NVC_SIGNALS_FILE)
@@ -33,19 +34,20 @@ endif
 
 UC = $(shell echo '$1' | tr '[:lower:]' '[:upper:]')
 
+# analysis and elaboration share the work library, so they run serially
 .NOTPARALLEL:
 
 $(NVC_FILE_LIST): $(SRCS)
 	mkdir -p $(BUILDDIR)
 	@scripts/generate_tofl.py -o $@ $^
 
-$(NVC_WORK_DIR): $(NVC_FILE_LIST)
-	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) -a @$^
-	
-.PARALLEL:
+# the stamp file records the last analysis, the work directory itself is
+# touched by every elaboration and cannot serve as a prerequisite
+$(NVC_ANALYZED): $(NVC_FILE_LIST)
+	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) -a @$<
+	touch $@
 
-# order-only prerequisite to ignore directory modification timestamps
-$(NVC_WORK_DIR)/WORK.%.elab: $(SRCS) $(NVC_WORK_DIR)
+$(NVC_WORK_DIR)/WORK.%.elab: $(NVC_ANALYZED)
 	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) -e $*
 
 # compile and link cosim vhpi sources into cosim.so
@@ -62,12 +64,10 @@ cosim: $(COSIM_VHPI_LIB)
 # the complicated rules below with .SECONDEXPANSION is to expand the call UC
 # second time, otherwise it doesnt work
 
-.PHONY: run-%
 .SECONDEXPANSION:
 run-%: $(NVC_WORK_DIR)/WORK.$$(call UC,%).elab $(COSIM_VHPI_LIB)
-	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) --load=$(COSIM_VHPI_LIB) -r $(NVC_RUNTIME_OPTIONS) $(call UC,$*)
+	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) $(call NVC_COSIM_OPTS,$*) -r $(NVC_RUNTIME_OPTIONS) $(NVC_STOPTIME_OPTS) $(call UC,$*)
 
-.PHONY: wf-%
 .SECONDEXPANSION:
 wf-%: $(NVC_WORK_DIR)/WORK.$$(call UC,%).elab $(COSIM_VHPI_LIB)
-	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) --load=$(COSIM_VHPI_LIB) -r $(NVC_RUNTIME_OPTIONS) $(call NVC_WAVE_OPTS,$*) $(NVC_STOPTIME_OPTS) $(call UC,$*)
+	$(CADR4_NVC) $(NVC_GLOBAL_OPTS) $(call NVC_COSIM_OPTS,$*) -r $(NVC_RUNTIME_OPTIONS) $(call NVC_WAVE_OPTS,$*) $(NVC_STOPTIME_OPTS) $(call UC,$*)

@@ -1,4 +1,6 @@
 -- 3-Line To 8-Line Decoder/Demultiplexer
+-- Pin numbers as wired by dip_74s138: g2a is on pin 5 (datasheet G2B) and g2b on
+-- pin 4 (datasheet G2A); both are active-low enables, so this is equivalent.
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -6,20 +8,20 @@ use work.misc.all;
 
 entity sn74138 is
   port (
-    sel2 : in  std_logic;
-    sel1 : in  std_logic;
-    sel0 : in  std_logic;
-    g1   : in  std_logic;
-    g2a  : in  std_logic;
-    g2b  : in  std_logic;
-    y0   : out std_logic;
-    y1   : out std_logic;
-    y2   : out std_logic;
-    y3   : out std_logic;
-    y4   : out std_logic;
-    y5   : out std_logic;
-    y6   : out std_logic;
-    y7   : out std_logic
+    sel2 : in  std_logic; -- Pin 3 (C)
+    sel1 : in  std_logic; -- Pin 2 (B)
+    sel0 : in  std_logic; -- Pin 1 (A)
+    g1   : in  std_logic; -- Pin 6 (G1)
+    g2a  : in  std_logic; -- Pin 5 (G2B)
+    g2b  : in  std_logic; -- Pin 4 (G2A)
+    y0   : out std_logic; -- Pin 15 (Y0)
+    y1   : out std_logic; -- Pin 14 (Y1)
+    y2   : out std_logic; -- Pin 13 (Y2)
+    y3   : out std_logic; -- Pin 12 (Y3)
+    y4   : out std_logic; -- Pin 11 (Y4)
+    y5   : out std_logic; -- Pin 10 (Y5)
+    y6   : out std_logic; -- Pin 9 (Y6)
+    y7   : out std_logic  -- Pin 7 (Y7)
     );
 end entity;
 
@@ -43,7 +45,7 @@ begin
     -- Check enable conditions first
     if g = '1' then
       -- Enabled: decode select inputs
-      sel := sel2 & sel1 & sel0;
+      sel := sel2_i & sel1_i & sel0_i;
       
       -- Handle all valid select combinations explicitly
       case sel is

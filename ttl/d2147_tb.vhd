@@ -98,19 +98,46 @@ begin
       report "Deselect test failed. Expected 'Z', got " & std_logic'image(do)
       severity error;
 
-    -- Test 6: Check DO is 'Z' during write
+    -- Test 6: write without deselecting the chip. Read a word (output
+    -- active), then drop WE with CS still low: DOUT must float during the
+    -- write (truth table: CS=L, WE=L -> High Z) and the written value must be
+    -- readable afterwards.
+    addr <= std_logic_vector(to_unsigned(0, 12));
     ce_n <= '0';
-    we_n <= '0';
+    we_n <= '1';
+    wait for 10 ns;
+    assert do = '1'
+      report "Test 6a failed: read before write, expected '1', got " & std_logic'image(do)
+      severity error;
+    di   <= '0';
+    we_n <= '0';  -- write '0' to address 0, chip still selected
+    wait for 10 ns;
+    assert do = 'Z'
+      report "Test 6b failed: DO must be 'Z' during write, got " & std_logic'image(do)
+      severity error;
+    -- move to another address while WE is still low
     addr <= std_logic_vector(to_unsigned(5, 12));
     di   <= '1';
-    wait for 1 ns; -- let signals propagate
-    assert do = 'Z'
-      report "DO not 'Z' during write. Got " & std_logic'image(do)
-      severity error;
     wait for 10 ns;
+    assert do = 'Z'
+      report "Test 6c failed: DO must stay 'Z' during write, got " & std_logic'image(do)
+      severity error;
+    we_n <= '1';  -- back to read, chip still selected
+    wait for 10 ns;
+    assert do = '1'
+      report "Test 6d failed: read back address 5, expected '1', got " & std_logic'image(do)
+      severity error;
+    addr <= std_logic_vector(to_unsigned(0, 12));
+    wait for 10 ns;
+    assert do = '0'
+      report "Test 6e failed: read back address 0, expected '0', got " & std_logic'image(do)
+      severity error;
     ce_n <= '1';
-    we_n <= '1';
-    
+    wait for 10 ns;
+    assert do = 'Z'
+      report "Test 6f failed: deselected, expected 'Z', got " & std_logic'image(do)
+      severity error;
+
     wait;
   end process;
 

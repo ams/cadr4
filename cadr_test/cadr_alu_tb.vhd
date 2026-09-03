@@ -230,7 +230,7 @@ begin
     variable pass_count : integer := 0;
   begin
     
-    file_open(test_vectors_file, "cadr/cadr_alu_tb.txt", read_mode);
+    file_open(test_vectors_file, "cadr_test/cadr_alu_tb.txt", read_mode);
     
     while not endfile(test_vectors_file) loop
       readline(test_vectors_file, test_line);
@@ -289,6 +289,12 @@ begin
     end loop;
     
     file_close(test_vectors_file);
+
+    assert test_count > 0
+      report "cadr_alu_tb: no test vectors read from cadr_test/cadr_alu_tb.txt" severity error;
+    assert pass_count = test_count
+      report "cadr_alu_tb: " & integer'image(test_count - pass_count) & " of " & integer'image(test_count) & " vectors failed" severity error;
+    report "cadr_alu_tb: " & integer'image(pass_count) & " of " & integer'image(test_count) & " vectors passed";
     
     wait;
   end process;

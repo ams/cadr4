@@ -35,8 +35,8 @@ entity busint_buspar is
     bus7            : in     std_logic;
     bus8            : in     std_logic;
     bus9            : in     std_logic;
-    \bus 0-11 par odd\ : out    std_logic;
-    \bus 12-23 par odd\ : out    std_logic;
+    \bus 0-11 par odd\ : inout  std_logic;
+    \bus 12-23 par odd\ : inout  std_logic;
     \bus par even\  : out    std_logic;
     \bus par odd\   : out    std_logic
   );

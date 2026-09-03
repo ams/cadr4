@@ -59,23 +59,35 @@ begin
     wait for 1 ns;
     assert q1 = '1' and q1_n = '0';
 
-    -- synchronous operations on flip-flop 1
+    -- synchronous operations on flip-flop 1 (q1 is 1 after the preset)
     pre1_n <= '1'; clr1_n <= '1';
-    j1 <= '1'; k1_n <= '1';
-    clk1 <= '0'; clk1 <= '1'; wait for 1 ns; clk1 <= '0';
+    j1 <= '0'; k1_n <= '0';                     -- J=0, K̄=0: reset (distinguishes from hold)
+    wait for 1 ns;
+    clk1 <= '1'; wait for 1 ns; clk1 <= '0';
+    wait for 1 ns;
+    assert q1 = '0' and q1_n = '1';
+
+    j1 <= '1'; k1_n <= '1';                     -- J=1, K̄=1: set
+    wait for 1 ns;
+    clk1 <= '1'; wait for 1 ns; clk1 <= '0';
+    wait for 1 ns;
     assert q1 = '1' and q1_n = '0';
 
-    k1_n <= '0';
+    k1_n <= '0';                                -- J=1, K̄=0: toggle
     wait for 1 ns;
     clk1 <= '1'; wait for 1 ns; clk1 <= '0';
     wait for 1 ns;
     assert q1 = '0' and q1_n = '1';
 
-    j1 <= '0'; k1_n <= '1';
+    clk1 <= '1'; wait for 1 ns; clk1 <= '0';    -- toggle again
+    wait for 1 ns;
+    assert q1 = '1' and q1_n = '0';
+
+    j1 <= '0'; k1_n <= '1';                     -- J=0, K̄=1: hold (distinguishes from reset/toggle)
+    wait for 1 ns;
     clk1 <= '1'; wait for 1 ns; clk1 <= '0';
     wait for 1 ns;
-    assert q1 = '0' and q1_n = '1';
-
+    assert q1 = '1' and q1_n = '0';
     -- asynchronous preset and clear on flip-flop 2
     clr2_n <= '1'; pre2_n <= '0';
     wait for 1 ns;

@@ -6,18 +6,18 @@ use work.misc.all;
 
 entity sn74280 is
   port (
-    i0 : in std_logic;
-    i1 : in std_logic;
-    i2 : in std_logic;
-    i3 : in std_logic;
-    i4 : in std_logic;
-    i5 : in std_logic;
-    i6 : in std_logic;
-    i7 : in std_logic;
-    i8 : in std_logic;
+    i0 : in std_logic;    -- Pin 1 (G)
+    i1 : in std_logic;    -- Pin 2 (H)
+    i2 : in std_logic;    -- Pin 4 (I)
+    i3 : in std_logic;    -- Pin 8 (A)
+    i4 : in std_logic;    -- Pin 9 (B)
+    i5 : in std_logic;    -- Pin 10 (C)
+    i6 : in std_logic;    -- Pin 11 (D)
+    i7 : in std_logic;    -- Pin 12 (E)
+    i8 : in std_logic;    -- Pin 13 (F)
 
-    even : out std_logic;
-    odd  : out std_logic
+    even : out std_logic; -- Pin 5 (sum even)
+    odd  : out std_logic  -- Pin 6 (sum odd)
     );
 end entity;
 

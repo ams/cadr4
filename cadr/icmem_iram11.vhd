@@ -29,6 +29,18 @@ entity icmem_iram11 is
     iwr21           : in     std_logic;
     iwr22           : in     std_logic;
     iwr23           : in     std_logic;
+    pc0f            : inout  std_logic;
+    pc10f           : inout  std_logic;
+    pc11f           : inout  std_logic;
+    pc1f            : inout  std_logic;
+    pc2f            : inout  std_logic;
+    pc3f            : inout  std_logic;
+    pc4f            : inout  std_logic;
+    pc5f            : inout  std_logic;
+    pc6f            : inout  std_logic;
+    pc7f            : inout  std_logic;
+    pc8f            : inout  std_logic;
+    pc9f            : inout  std_logic;
     i12             : out    std_logic;
     i13             : out    std_logic;
     i14             : out    std_logic;
@@ -40,18 +52,6 @@ entity icmem_iram11 is
     i20             : out    std_logic;
     i21             : out    std_logic;
     i22             : out    std_logic;
-    i23             : out    std_logic;
-    pc0f            : out    std_logic;
-    pc10f           : out    std_logic;
-    pc11f           : out    std_logic;
-    pc1f            : out    std_logic;
-    pc2f            : out    std_logic;
-    pc3f            : out    std_logic;
-    pc4f            : out    std_logic;
-    pc5f            : out    std_logic;
-    pc6f            : out    std_logic;
-    pc7f            : out    std_logic;
-    pc8f            : out    std_logic;
-    pc9f            : out    std_logic
+    i23             : out    std_logic
   );
 end entity;

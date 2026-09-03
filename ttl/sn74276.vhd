@@ -6,36 +6,36 @@ use work.misc.all;
 
 entity sn74276 is
   port (
-    clr_n  : in  std_logic;  -- Common clear (active low)
-    set_n  : in  std_logic;  -- Common preset (active low)
+    clr_n  : in  std_logic; -- Pin 1 (CLR): common clear (active low)
+    set_n  : in  std_logic; -- Pin 11 (PRE): common preset (active low)
     
     -- Flip-flop 1
-    j1     : in  std_logic;
-    k1_n   : in  std_logic;  -- K input (active low)
-    clk1_n : in  std_logic;  -- Clock 1 (negative edge)
-    q1     : out std_logic;
-    q1_n   : out std_logic;
+    j1     : in  std_logic; -- Pin 2 (1J)
+    k1_n   : in  std_logic; -- Pin 4 (1K_n): K input (active low)
+    clk1_n : in  std_logic; -- Pin 3 (1CLK): clock 1 (negative edge)
+    q1     : out std_logic; -- Pin 5 (1Q)
+    q1_n   : out std_logic; -- no pin (Q_n is not brought out)
     
     -- Flip-flop 2
-    j2     : in  std_logic;
-    k2_n   : in  std_logic;  -- K input (active low)
-    clk2_n : in  std_logic;  -- Clock 2 (negative edge)
-    q2     : out std_logic;
-    q2_n   : out std_logic;
+    j2     : in  std_logic; -- Pin 9 (2J)
+    k2_n   : in  std_logic; -- Pin 7 (2K_n): K input (active low)
+    clk2_n : in  std_logic; -- Pin 8 (2CLK): clock 2 (negative edge)
+    q2     : out std_logic; -- Pin 6 (2Q)
+    q2_n   : out std_logic; -- no pin (Q_n is not brought out)
     
     -- Flip-flop 3
-    j3     : in  std_logic;
-    k3_n   : in  std_logic;  -- K input (active low)
-    clk3_n : in  std_logic;  -- Clock 3 (negative edge)
-    q3     : out std_logic;
-    q3_n   : out std_logic;
+    j3     : in  std_logic; -- Pin 12 (3J)
+    k3_n   : in  std_logic; -- Pin 14 (3K_n): K input (active low)
+    clk3_n : in  std_logic; -- Pin 13 (3CLK): clock 3 (negative edge)
+    q3     : out std_logic; -- Pin 15 (3Q)
+    q3_n   : out std_logic; -- no pin (Q_n is not brought out)
     
     -- Flip-flop 4
-    j4     : in  std_logic;
-    k4_n   : in  std_logic;  -- K input (active low)
-    clk4_n : in  std_logic;  -- Clock 4 (negative edge)
-    q4     : out std_logic;
-    q4_n   : out std_logic
+    j4     : in  std_logic; -- Pin 19 (4J)
+    k4_n   : in  std_logic; -- Pin 17 (4K_n): K input (active low)
+    clk4_n : in  std_logic; -- Pin 18 (4CLK): clock 4 (negative edge)
+    q4     : out std_logic; -- Pin 16 (4Q)
+    q4_n   : out std_logic  -- no pin (Q_n is not brought out)
     );
 end entity;
 

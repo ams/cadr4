@@ -62,10 +62,51 @@ begin
     d3 <= '0'; d2 <= '0'; d1 <= '0'; d0 <= '0';
     wait for 10 ns;
 
-    -- Test 1: Asynchronous clear
+    -- Test 0: outputs disabled
+    assert y3 = 'Z' and y2 = 'Z' and y1 = 'Z' and y0 = 'Z'
+      report "Test 0 failed: Y outputs should be high-Z" severity error;
+    assert w3 = 'Z' and w2 = 'Z' and w1 = 'Z' and w0 = 'Z'
+      report "Test 0 failed: W outputs should be high-Z" severity error;
+
+    -- Test 1: Asynchronous clear. The clear resets only the flip-flops; the
+    -- output enables and the polarity control keep working.
+    e_n <= '0';
+    d3 <= '1'; d2 <= '1'; d1 <= '1'; d0 <= '1';  -- Load 1111
+    cp <= '1';
+    wait for 10 ns;
+    cp <= '0';
+    e_n <= '1';
+    oe_y_n <= '0';
+    wait for 10 ns;
+    assert y3 = '1' and y2 = '1' and y1 = '1' and y0 = '1'
+      report "Test 1a failed: register should hold 1111" severity error;
+    oe_y_n <= '1';
     clr_n <= '0';
     wait for 10 ns;
+    -- clear active, outputs disabled: still high-Z
+    assert y3 = 'Z' and y2 = 'Z' and y1 = 'Z' and y0 = 'Z'
+      report "Test 1b failed: Y outputs should stay high-Z during clear" severity error;
+    assert w3 = 'Z' and w2 = 'Z' and w1 = 'Z' and w0 = 'Z'
+      report "Test 1c failed: W outputs should stay high-Z during clear" severity error;
+    -- clear active, outputs enabled: Y = 0000, W = 1111 with POL high
+    oe_y_n <= '0';
+    oe_w_n <= '0';
+    pol <= '1';
+    wait for 10 ns;
+    assert y3 = '0' and y2 = '0' and y1 = '0' and y0 = '0'
+      report "Test 1d failed: Y outputs should be 0000 during clear" severity error;
+    assert w3 = '1' and w2 = '1' and w1 = '1' and w0 = '1'
+      report "Test 1e failed: W outputs should be inverted (1111) during clear with POL high" severity error;
+    pol <= '0';
+    wait for 10 ns;
+    assert w3 = '0' and w2 = '0' and w1 = '0' and w0 = '0'
+      report "Test 1f failed: W outputs should be 0000 during clear with POL low" severity error;
     clr_n <= '1';
+    wait for 10 ns;
+    assert y3 = '0' and y2 = '0' and y1 = '0' and y0 = '0'
+      report "Test 1g failed: register should stay cleared" severity error;
+    oe_y_n <= '1';
+    oe_w_n <= '1';
     wait for 10 ns;
 
     -- Test 2: Load data into register

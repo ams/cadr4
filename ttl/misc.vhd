@@ -9,8 +9,6 @@ package misc is
   constant gnd : std_logic := '0';
 
   procedure clkgen(signal clk : out std_logic; constant frequency : real);
-  function pullup(s   : std_logic) return std_logic;
-  function pulldown(s : std_logic) return std_logic;
   function ttl_input(i : std_logic) return std_logic;
   function string_cast(s: string; width: integer) return string;
   
@@ -44,27 +42,7 @@ package body misc is
     end loop;
   end procedure;
 
-  function pullup(s : std_logic) return std_logic is
-    variable pull : std_logic;
-  begin
-    case (s) is
-      when '1' | 'Z' => pull := '1';
-      when others    => pull := 'Z';
-    end case;
-    return pull;
-  end;
-
-  function pulldown(s : std_logic) return std_logic is
-    variable pull : std_logic;
-  begin
-    case (s) is
-      when '0' | 'Z' => pull := '0';
-      when others    => pull := 'Z';
-    end case;
-    return pull;
-  end;
-
-    -- Function to implement TTL input behavior
+  -- Function to implement TTL input behavior
   function ttl_input(i : std_logic) return std_logic is
   begin
     case i is
@@ -91,19 +69,23 @@ package body misc is
     variable result : word_array_t(0 to size - 1)(width - 1 downto 0);
     variable default_val : std_logic_vector(7 downto 0);
     variable temp_line : line;
+    variable line_text : line;
     variable word_index : integer := 0;
+    variable line_no : integer := 0;
+    variable extra_lines : integer := 0;
+    variable good : boolean;
   begin
     -- Check width parameter is valid
-    assert width >= 1 and width <= 8 
-      report "load_hex_file: width must be between 1 and 8, got " & integer'image(width) 
+    assert width >= 1 and width <= 8
+      report "load_hex_file: width must be between 1 and 8, got " & integer'image(width)
       severity failure;
-    
+
     -- Check if filename is empty and initialize to 'U' if so
     if filename'length = 0 then
       result := (others => (others => 'U'));
       return result;
     end if;
-    
+
     if filename'length > 0 and filename(filename'left) = ':' then
       -- Initialize all words with hex value after ':'
       if filename'length = 2 then
@@ -118,8 +100,11 @@ package body misc is
         result := (others => (others => 'U'));
         return result;
       end if;
-      hread(temp_line, default_val);
-      
+      hread(temp_line, default_val, good);
+      assert good
+        report "load_hex_file: Invalid hex value '" & filename & "'. Expected :X or :XX where X is hex digit."
+        severity failure;
+
       -- Initialize all words with default value (truncated to width)
       for i in 0 to size - 1 loop
         result(i) := default_val(width - 1 downto 0);
@@ -127,23 +112,41 @@ package body misc is
     else
       -- Load from file - initialize with 'U' first
       result := (others => (others => 'U'));
-      
+
       file_open(f, filename, read_mode);
-      
+
       -- Read bytes from file and assign directly to result
       while not endfile(f) and word_index < size loop
         readline(f, l);
+        line_no := line_no + 1;
         -- Assert that line is not empty
-        assert l'length > 0 
-          report "load_hex_file: Empty line found in hex file '" & filename & "' at word " & integer'image(word_index) 
+        assert l'length > 0
+          report "load_hex_file: Empty line in hex file '" & filename & "' at line " & integer'image(line_no)
           severity failure;
-        hread(l, byte_val);  -- Read two hex digits (1 byte)
+        line_text := new string'(l.all);  -- keep a copy, hread consumes the line
+        hread(l, byte_val, good);  -- Read two hex digits (1 byte)
+        assert good
+          report "load_hex_file: Bad hex value in hex file '" & filename & "' at line " & integer'image(line_no) & ": '" & line_text.all & "'"
+          severity failure;
+        deallocate(line_text);
         result(word_index) := byte_val(width - 1 downto 0);
         word_index := word_index + 1;
       end loop;
+
+      -- The file must not hold more words than the memory
+      while not endfile(f) loop
+        readline(f, l);
+        if l'length > 0 then
+          extra_lines := extra_lines + 1;
+        end if;
+      end loop;
+      assert extra_lines = 0
+        report "load_hex_file: hex file '" & filename & "' has " & integer'image(extra_lines) & " more line(s) than the memory size " & integer'image(size)
+        severity warning;
+
       file_close(f);
     end if;
-    
+
     return result;
   end function;
 

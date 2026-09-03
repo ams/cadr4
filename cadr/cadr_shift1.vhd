@@ -44,6 +44,22 @@ entity cadr_shift1 is
     sa7             : in     std_logic;
     sa8             : in     std_logic;
     sa9             : in     std_logic;
+    sa16            : inout  std_logic;
+    sa17            : inout  std_logic;
+    sa18            : inout  std_logic;
+    sa19            : inout  std_logic;
+    sa20            : inout  std_logic;
+    sa21            : inout  std_logic;
+    sa22            : inout  std_logic;
+    sa23            : inout  std_logic;
+    sa24            : inout  std_logic;
+    sa25            : inout  std_logic;
+    sa26            : inout  std_logic;
+    sa27            : inout  std_logic;
+    sa28            : inout  std_logic;
+    sa29            : inout  std_logic;
+    sa30            : inout  std_logic;
+    sa31            : inout  std_logic;
     r16             : out    std_logic;
     r17             : out    std_logic;
     r18             : out    std_logic;
@@ -59,22 +75,6 @@ entity cadr_shift1 is
     r28             : out    std_logic;
     r29             : out    std_logic;
     r30             : out    std_logic;
-    r31             : out    std_logic;
-    sa16            : out    std_logic;
-    sa17            : out    std_logic;
-    sa18            : out    std_logic;
-    sa19            : out    std_logic;
-    sa20            : out    std_logic;
-    sa21            : out    std_logic;
-    sa22            : out    std_logic;
-    sa23            : out    std_logic;
-    sa24            : out    std_logic;
-    sa25            : out    std_logic;
-    sa26            : out    std_logic;
-    sa27            : out    std_logic;
-    sa28            : out    std_logic;
-    sa29            : out    std_logic;
-    sa30            : out    std_logic;
-    sa31            : out    std_logic
+    r31             : out    std_logic
   );
 end entity;

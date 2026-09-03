@@ -5,21 +5,21 @@ package sn74 is
 
   component sn7400 is
   port (
-      g1a   : in  std_logic;
-      g1b   : in  std_logic;
-      g1q_n : out std_logic;
+      g1a   : in  std_logic; -- Pin 2 (1B)
+      g1b   : in  std_logic; -- Pin 1 (1A)
+      g1q_n : out std_logic; -- Pin 3 (1Y)
 
-      g2a   : in  std_logic;
-      g2b   : in  std_logic;
-      g2q_n : out std_logic;
+      g2a   : in  std_logic; -- Pin 5 (2B)
+      g2b   : in  std_logic; -- Pin 4 (2A)
+      g2q_n : out std_logic; -- Pin 6 (2Y)
 
-      g3a   : in  std_logic;
-      g3b   : in  std_logic;
-      g3q_n : out std_logic;
+      g3a   : in  std_logic; -- Pin 9 (3B)
+      g3b   : in  std_logic; -- Pin 10 (3A)
+      g3q_n : out std_logic; -- Pin 8 (3Y)
 
-      g4a   : in  std_logic;
-      g4b   : in  std_logic;
-      g4q_n : out std_logic
+      g4a   : in  std_logic; -- Pin 12 (4B)
+      g4b   : in  std_logic; -- Pin 13 (4A)
+      g4q_n : out std_logic  -- Pin 11 (4Y)
       );
   end component;
 
@@ -45,23 +45,23 @@ package sn74 is
 
   component sn7404 is
   port (
-      g1a   : in  std_logic;
-      g1q_n : out std_logic;
+      g1a   : in  std_logic; -- Pin 1 (1A)
+      g1q_n : out std_logic; -- Pin 2 (1Y)
 
-      g2a   : in  std_logic;
-      g2q_n : out std_logic;
+      g2a   : in  std_logic; -- Pin 3 (2A)
+      g2q_n : out std_logic; -- Pin 4 (2Y)
 
-      g3a   : in  std_logic;
-      g3q_n : out std_logic;
+      g3a   : in  std_logic; -- Pin 5 (3A)
+      g3q_n : out std_logic; -- Pin 6 (3Y)
 
-      g4a   : in  std_logic;
-      g4q_n : out std_logic;
+      g4a   : in  std_logic; -- Pin 9 (4A)
+      g4q_n : out std_logic; -- Pin 8 (4Y)
 
-      g5a   : in  std_logic;
-      g5q_n : out std_logic;
+      g5a   : in  std_logic; -- Pin 11 (5A)
+      g5q_n : out std_logic; -- Pin 10 (5Y)
 
-      g6a   : in  std_logic;
-      g6q_n : out std_logic
+      g6a   : in  std_logic; -- Pin 13 (6A)
+      g6q_n : out std_logic  -- Pin 12 (6Y)
       );
   end component;
 
@@ -106,21 +106,21 @@ package sn74 is
 
   component sn74109 is
   port (
-      clr1_n : in  std_logic;
-      j1     : in  std_logic;
-      k1_n   : in  std_logic;
-      clk1   : in  std_logic;
-      pre1_n : in  std_logic;
-      q1     : out std_logic;
-      q1_n   : out std_logic;
+      clr1_n : in  std_logic; -- Pin 1 (1CLR)
+      j1     : in  std_logic; -- Pin 2 (1J)
+      k1_n   : in  std_logic; -- Pin 3 (1K_n)
+      clk1   : in  std_logic; -- Pin 4 (1CLK)
+      pre1_n : in  std_logic; -- Pin 5 (1PRE)
+      q1     : out std_logic; -- Pin 6 (1Q)
+      q1_n   : out std_logic; -- Pin 7 (1Q_n)
 
-      q2_n   : out std_logic;
-      q2     : out std_logic;
-      pre2_n : in  std_logic;
-      clk2   : in  std_logic;
-      k2_n   : in  std_logic;
-      j2     : in  std_logic;
-      clr2_n : in  std_logic
+      q2_n   : out std_logic; -- Pin 9 (2Q_n)
+      q2     : out std_logic; -- Pin 10 (2Q)
+      pre2_n : in  std_logic; -- Pin 11 (2PRE)
+      clk2   : in  std_logic; -- Pin 12 (2CLK)
+      k2_n   : in  std_logic; -- Pin 13 (2K_n)
+      j2     : in  std_logic; -- Pin 14 (2J)
+      clr2_n : in  std_logic  -- Pin 15 (2CLR)
       );
   end component;
 
@@ -145,21 +145,21 @@ package sn74 is
 
   component sn74112 is
   port (
-      clr1_n : in  std_logic;
-      j1     : in  std_logic;
-      k1     : in  std_logic;
-      clk1   : in  std_logic;
-      pre1_n : in  std_logic;
-      q1     : out std_logic;
-      q1_n   : out std_logic;
+      clr1_n : in  std_logic; -- Pin 15 (1CLR)
+      j1     : in  std_logic; -- Pin 3 (1J)
+      k1     : in  std_logic; -- Pin 2 (1K)
+      clk1   : in  std_logic; -- Pin 1 (1CLK)
+      pre1_n : in  std_logic; -- Pin 4 (1PRE)
+      q1     : out std_logic; -- Pin 5 (1Q)
+      q1_n   : out std_logic; -- Pin 6 (1Q_n)
 
-      q2_n   : out std_logic;
-      q2     : out std_logic;
-      pre2_n : in  std_logic;
-      clk2   : in  std_logic;
-      k2     : in  std_logic;
-      j2     : in  std_logic;
-      clr2_n : in  std_logic
+      q2_n   : out std_logic; -- Pin 7 (2Q_n)
+      q2     : out std_logic; -- Pin 9 (2Q)
+      pre2_n : in  std_logic; -- Pin 10 (2PRE)
+      clk2   : in  std_logic; -- Pin 13 (2CLK)
+      k2     : in  std_logic; -- Pin 12 (2K)
+      j2     : in  std_logic; -- Pin 11 (2J)
+      clr2_n : in  std_logic  -- Pin 14 (2CLR)
       );
   end component;
 
@@ -172,39 +172,39 @@ package sn74 is
 
   component sn74133 is
   port (
-      a   : in  std_logic; -- Pin 1
-      b   : in  std_logic; -- Pin 2
-      c   : in  std_logic; -- Pin 3
-      d   : in  std_logic; -- Pin 4
-      e   : in  std_logic; -- Pin 5
-      f   : in  std_logic; -- Pin 6
-      h   : in  std_logic; -- Pin 10
-      i   : in  std_logic; -- Pin 11
-      j   : in  std_logic; -- Pin 12
-      k   : in  std_logic; -- Pin 13
-      l   : in  std_logic; -- Pin 14
-      m   : in  std_logic; -- Pin 15
-      g   : in  std_logic; -- Pin 9
-      q_n : out std_logic  -- Pin 8
+      a   : in  std_logic;  -- Pin 1 (A)
+      b   : in  std_logic;  -- Pin 2 (B)
+      c   : in  std_logic;  -- Pin 3 (C)
+      d   : in  std_logic;  -- Pin 4 (D)
+      e   : in  std_logic;  -- Pin 5 (E)
+      f   : in  std_logic;  -- Pin 6 (F)
+      h   : in  std_logic;  -- Pin 10 (H)
+      i   : in  std_logic;  -- Pin 11 (I)
+      j   : in  std_logic;  -- Pin 12 (J)
+      k   : in  std_logic;  -- Pin 13 (K)
+      l   : in  std_logic;  -- Pin 14 (L)
+      m   : in  std_logic;  -- Pin 15 (M)
+      g   : in  std_logic;  -- Pin 7 (G)
+      q_n : out std_logic   -- Pin 9 (Y)
       );
   end component;
 
   component sn74138 is
   port (
-      sel2 : in  std_logic;
-      sel1 : in  std_logic;
-      sel0 : in  std_logic;
-      g1   : in  std_logic;
-      g2a  : in  std_logic;
-      g2b  : in  std_logic;
-      y0   : out std_logic;
-      y1   : out std_logic;
-      y2   : out std_logic;
-      y3   : out std_logic;
-      y4   : out std_logic;
-      y5   : out std_logic;
-      y6   : out std_logic;
-      y7   : out std_logic
+      sel2 : in  std_logic; -- Pin 3 (C)
+      sel1 : in  std_logic; -- Pin 2 (B)
+      sel0 : in  std_logic; -- Pin 1 (A)
+      g1   : in  std_logic; -- Pin 6 (G1)
+      g2a  : in  std_logic; -- Pin 5 (G2B)
+      g2b  : in  std_logic; -- Pin 4 (G2A)
+      y0   : out std_logic; -- Pin 15 (Y0)
+      y1   : out std_logic; -- Pin 14 (Y1)
+      y2   : out std_logic; -- Pin 13 (Y2)
+      y3   : out std_logic; -- Pin 12 (Y3)
+      y4   : out std_logic; -- Pin 11 (Y4)
+      y5   : out std_logic; -- Pin 10 (Y5)
+      y6   : out std_logic; -- Pin 9 (Y6)
+      y7   : out std_logic  -- Pin 7 (Y7)
       );
   end component;
 
@@ -247,20 +247,20 @@ package sn74 is
 
   component sn74151 is
   port (
-      i0   : in std_logic;
-      i1   : in std_logic;
-      i2   : in std_logic;
-      i3   : in std_logic;
-      i4   : in std_logic;
-      i5   : in std_logic;
-      i6   : in std_logic;
-      i7   : in std_logic;
-      sel0 : in std_logic;
-      sel1 : in std_logic;
-      sel2 : in std_logic;
-      ce_n : in std_logic;
-      q    : out std_logic;
-      q_n  : out std_logic
+      i0   : in std_logic;  -- Pin 4 (D0)
+      i1   : in std_logic;  -- Pin 3 (D1)
+      i2   : in std_logic;  -- Pin 2 (D2)
+      i3   : in std_logic;  -- Pin 1 (D3)
+      i4   : in std_logic;  -- Pin 15 (D4)
+      i5   : in std_logic;  -- Pin 14 (D5)
+      i6   : in std_logic;  -- Pin 13 (D6)
+      i7   : in std_logic;  -- Pin 12 (D7)
+      sel0 : in std_logic;  -- Pin 11 (A)
+      sel1 : in std_logic;  -- Pin 10 (B)
+      sel2 : in std_logic;  -- Pin 9 (C)
+      ce_n : in std_logic;  -- Pin 7 (G, strobe)
+      q    : out std_logic; -- Pin 5 (Y)
+      q_n  : out std_logic  -- Pin 6 (W)
       );
   end component;
 
@@ -288,100 +288,100 @@ package sn74 is
 
   component sn74157 is
   port (
-      enb_n : in std_logic;
-      sel   : in std_logic;
+      enb_n : in std_logic; -- Pin 15 (G, strobe)
+      sel   : in std_logic; -- Pin 1 (A/B)
 
-      a1 : in std_logic;
-      a2 : in std_logic;
-      a3 : in std_logic;
-      a4 : in std_logic;
+      a1 : in std_logic;    -- Pin 14 (4A)
+      a2 : in std_logic;    -- Pin 11 (3A)
+      a3 : in std_logic;    -- Pin 5 (2A)
+      a4 : in std_logic;    -- Pin 2 (1A)
 
-      b1 : in std_logic;
-      b2 : in std_logic;
-      b3 : in std_logic;
-      b4 : in std_logic;
+      b1 : in std_logic;    -- Pin 13 (4B)
+      b2 : in std_logic;    -- Pin 10 (3B)
+      b3 : in std_logic;    -- Pin 6 (2B)
+      b4 : in std_logic;    -- Pin 3 (1B)
 
-      y1 : out std_logic;
-      y2 : out std_logic;
-      y3 : out std_logic;
-      y4 : out std_logic
+      y1 : out std_logic;   -- Pin 12 (4Y)
+      y2 : out std_logic;   -- Pin 9 (3Y)
+      y3 : out std_logic;   -- Pin 7 (2Y)
+      y4 : out std_logic    -- Pin 4 (1Y)
       );
   end component;
 
   component sn74163 is
   port (
       -- Control and status
-      tc      : out std_logic;  -- Terminal count
-      clk     : in  std_logic;  -- Clock
-      clr_n   : in  std_logic;  -- Synchronous clear (active low)
-      pe_n    : in  std_logic;  -- Parallel enable (active low)
-      enb_p   : in  std_logic;  -- Count enable parallel
-      enb_t   : in  std_logic;  -- Count enable trickle
+      tc      : out std_logic;        -- Pin 15 (RCO): terminal count
+      clk     : in  std_logic;        -- Pin 2 (CLK)
+      clr_n   : in  std_logic;        -- Pin 1 (CLR): synchronous clear (active low)
+      pe_n    : in  std_logic;        -- Pin 9 (LOAD): parallel enable (active low)
+      enb_p   : in  std_logic;        -- Pin 7 (ENP): count enable parallel
+      enb_t   : in  std_logic;        -- Pin 10 (ENT): count enable trickle
 
       -- Data inputs (parallel load)
-      i3, i2, i1, i0 : in  std_logic;
+      i3, i2, i1, i0 : in  std_logic; -- Pins 6, 5, 4, 3 (D, C, B, A)
 
       -- Data outputs
-      d3, d2, d1, d0 : out std_logic
+      d3, d2, d1, d0 : out std_logic  -- Pins 11, 12, 13, 14 (QD, QC, QB, QA)
       );
   end component;
 
   component sn74169 is
   port (
       -- Control and status
-      co_n    : out std_logic;  -- Carry out (active low)
-      clk     : in  std_logic;  -- Clock
-      up_dn   : in  std_logic;  -- Up/Down control
-      load_n  : in  std_logic;  -- Parallel load enable (active low)
-      enb_p_n : in  std_logic;  -- Count enable parallel (active low)
-      enb_t_n : in  std_logic;  -- Count enable trickle (active low)
+      co_n    : out std_logic;        -- Pin 15 (RCO): ripple carry out (active low)
+      clk     : in  std_logic;        -- Pin 2 (CLK)
+      up_dn   : in  std_logic;        -- Pin 1 (U/D): up/down control
+      load_n  : in  std_logic;        -- Pin 9 (LOAD): parallel load enable (active low)
+      enb_p_n : in  std_logic;        -- Pin 7 (ENP): count enable parallel (active low)
+      enb_t_n : in  std_logic;        -- Pin 10 (ENT): count enable trickle (active low)
 
       -- Data inputs (parallel load)
-      i3, i2, i1, i0 : in  std_logic;
+      i3, i2, i1, i0 : in  std_logic; -- Pins 6, 5, 4, 3 (D, C, B, A)
 
       -- Data outputs
-      o3, o2, o1, o0 : out std_logic
+      o3, o2, o1, o0 : out std_logic  -- Pins 11, 12, 13, 14 (QD, QC, QB, QA)
       );
   end component;
 
   component sn74174 is
   port (
-      clk   : in std_logic;
-      clr_n : in std_logic;
+      clk   : in std_logic; -- Pin 9 (CLK)
+      clr_n : in std_logic; -- Pin 1 (CLR)
 
-      d1 : in  std_logic;
-      d2 : in  std_logic;
-      d3 : in  std_logic;
-      d4 : in  std_logic;
-      d5 : in  std_logic;
-      d6 : in  std_logic;
-      q1 : out std_logic;
-      q2 : out std_logic;
-      q3 : out std_logic;
-      q4 : out std_logic;
-      q5 : out std_logic;
-      q6 : out std_logic
+      d1 : in  std_logic;   -- Pin 3 (1D)
+      d2 : in  std_logic;   -- Pin 4 (2D)
+      d3 : in  std_logic;   -- Pin 6 (3D)
+      d4 : in  std_logic;   -- Pin 11 (4D)
+      d5 : in  std_logic;   -- Pin 13 (5D)
+      d6 : in  std_logic;   -- Pin 14 (6D)
+      q1 : out std_logic;   -- Pin 2 (1Q)
+      q2 : out std_logic;   -- Pin 5 (2Q)
+      q3 : out std_logic;   -- Pin 7 (3Q)
+      q4 : out std_logic;   -- Pin 10 (4Q)
+      q5 : out std_logic;   -- Pin 12 (5Q)
+      q6 : out std_logic    -- Pin 15 (6Q)
       );
   end component;
 
   component sn74175 is
   port (
-      clk   : in std_logic;
-      clr_n : in std_logic;
+      clk   : in std_logic; -- Pin 9 (CLK)
+      clr_n : in std_logic; -- Pin 1 (CLR)
 
-      d0 : in std_logic;
-      d1 : in std_logic;
-      d2 : in std_logic;
-      d3 : in std_logic;
+      d0 : in std_logic;    -- Pin 4 (1D)
+      d1 : in std_logic;    -- Pin 5 (2D)
+      d2 : in std_logic;    -- Pin 12 (3D)
+      d3 : in std_logic;    -- Pin 13 (4D)
 
-      q0   : out std_logic;
-      q0_n : out std_logic;
-      q1   : out std_logic;
-      q1_n : out std_logic;
-      q2   : out std_logic;
-      q2_n : out std_logic;
-      q3   : out std_logic;
-      q3_n : out std_logic
+      q0   : out std_logic; -- Pin 2 (1Q)
+      q0_n : out std_logic; -- Pin 3 (1Q_n)
+      q1   : out std_logic; -- Pin 7 (2Q)
+      q1_n : out std_logic; -- Pin 6 (2Q_n)
+      q2   : out std_logic; -- Pin 10 (3Q)
+      q2_n : out std_logic; -- Pin 11 (3Q_n)
+      q3   : out std_logic; -- Pin 15 (4Q)
+      q3_n : out std_logic  -- Pin 14 (4Q_n)
       );
   end component;
 
@@ -552,42 +552,42 @@ package sn74 is
 
   component sn74258 is
   port (
-      enb_n : in std_logic;
-      sel   : in std_logic;
+      enb_n : in std_logic; -- Pin 15 (G, output control)
+      sel   : in std_logic; -- Pin 1 (A/B)
 
-      a0 : in  std_logic;
-      a1 : in  std_logic;
-      ay : out std_logic;
+      a0 : in  std_logic;   -- Pin 14 (4A)
+      a1 : in  std_logic;   -- Pin 13 (4B)
+      ay : out std_logic;   -- Pin 12 (4Y)
 
-      b0 : in  std_logic;
-      b1 : in  std_logic;
-      by : out std_logic;
+      b0 : in  std_logic;   -- Pin 11 (3A)
+      b1 : in  std_logic;   -- Pin 10 (3B)
+      by : out std_logic;   -- Pin 9 (3Y)
 
-      c0 : in  std_logic;
-      c1 : in  std_logic;
-      cy : out std_logic;
+      c0 : in  std_logic;   -- Pin 5 (2A)
+      c1 : in  std_logic;   -- Pin 6 (2B)
+      cy : out std_logic;   -- Pin 7 (2Y)
 
-      d0 : in  std_logic;
-      d1 : in  std_logic;
-      dy : out std_logic
+      d0 : in  std_logic;   -- Pin 2 (1A)
+      d1 : in  std_logic;   -- Pin 3 (1B)
+      dy : out std_logic    -- Pin 4 (1Y)
       );
   end component;
 
   component sn74260 is
   port (
-      g1a   : in  std_logic; -- Pin 2
-      g1b   : in  std_logic; -- Pin 3
-      g1c   : in  std_logic; -- Pin 4
-      g1d   : in  std_logic; -- Pin 5
-      g1e   : in  std_logic; -- Pin 6
-      g1y_n : out std_logic; -- Pin 1
+      g1a   : in  std_logic;  -- Pin 1 (1A)
+      g1b   : in  std_logic;  -- Pin 2 (1B)
+      g1c   : in  std_logic;  -- Pin 3 (1C)
+      g1d   : in  std_logic;  -- Pin 12 (1D)
+      g1e   : in  std_logic;  -- Pin 13 (1E)
+      g1y_n : out std_logic;  -- Pin 5 (1Y)
 
-      g2a   : in  std_logic; -- Pin 8
-      g2b   : in  std_logic; -- Pin 9
-      g2c   : in  std_logic; -- Pin 10
-      g2d   : in  std_logic; -- Pin 11
-      g2e   : in  std_logic; -- Pin 12
-      g2y_n : out std_logic  -- Pin 13
+      g2a   : in  std_logic;  -- Pin 4 (2A)
+      g2b   : in  std_logic;  -- Pin 8 (2B)
+      g2c   : in  std_logic;  -- Pin 9 (2C)
+      g2d   : in  std_logic;  -- Pin 10 (2D)
+      g2e   : in  std_logic;  -- Pin 11 (2E)
+      g2y_n : out std_logic   -- Pin 6 (2Y)
       );
   end component;
 
@@ -636,73 +636,73 @@ package sn74 is
 
   component sn74276 is
   port (
-      clr_n  : in  std_logic;  -- Common clear (active low)
-      set_n  : in  std_logic;  -- Common preset (active low)
+      clr_n  : in  std_logic; -- Pin 1 (CLR): common clear (active low)
+      set_n  : in  std_logic; -- Pin 11 (PRE): common preset (active low)
 
       -- Flip-flop 1
-      j1     : in  std_logic;
-      k1_n   : in  std_logic;  -- K input (active low)
-      clk1_n : in  std_logic;  -- Clock 1 (negative edge)
-      q1     : out std_logic;
-      q1_n   : out std_logic;
+      j1     : in  std_logic; -- Pin 2 (1J)
+      k1_n   : in  std_logic; -- Pin 4 (1K_n): K input (active low)
+      clk1_n : in  std_logic; -- Pin 3 (1CLK): clock 1 (negative edge)
+      q1     : out std_logic; -- Pin 5 (1Q)
+      q1_n   : out std_logic; -- no pin (Q_n is not brought out)
 
       -- Flip-flop 2
-      j2     : in  std_logic;
-      k2_n   : in  std_logic;  -- K input (active low)
-      clk2_n : in  std_logic;  -- Clock 2 (negative edge)
-      q2     : out std_logic;
-      q2_n   : out std_logic;
+      j2     : in  std_logic; -- Pin 9 (2J)
+      k2_n   : in  std_logic; -- Pin 7 (2K_n): K input (active low)
+      clk2_n : in  std_logic; -- Pin 8 (2CLK): clock 2 (negative edge)
+      q2     : out std_logic; -- Pin 6 (2Q)
+      q2_n   : out std_logic; -- no pin (Q_n is not brought out)
 
       -- Flip-flop 3
-      j3     : in  std_logic;
-      k3_n   : in  std_logic;  -- K input (active low)
-      clk3_n : in  std_logic;  -- Clock 3 (negative edge)
-      q3     : out std_logic;
-      q3_n   : out std_logic;
+      j3     : in  std_logic; -- Pin 12 (3J)
+      k3_n   : in  std_logic; -- Pin 14 (3K_n): K input (active low)
+      clk3_n : in  std_logic; -- Pin 13 (3CLK): clock 3 (negative edge)
+      q3     : out std_logic; -- Pin 15 (3Q)
+      q3_n   : out std_logic; -- no pin (Q_n is not brought out)
 
       -- Flip-flop 4
-      j4     : in  std_logic;
-      k4_n   : in  std_logic;  -- K input (active low)
-      clk4_n : in  std_logic;  -- Clock 4 (negative edge)
-      q4     : out std_logic;
-      q4_n   : out std_logic
+      j4     : in  std_logic; -- Pin 19 (4J)
+      k4_n   : in  std_logic; -- Pin 17 (4K_n): K input (active low)
+      clk4_n : in  std_logic; -- Pin 18 (4CLK): clock 4 (negative edge)
+      q4     : out std_logic; -- Pin 16 (4Q)
+      q4_n   : out std_logic  -- no pin (Q_n is not brought out)
       );
   end component;
 
   component sn7428 is
   port (
-      g1a   : in  std_logic; -- Pin 1
-      g1b   : in  std_logic; -- Pin 2
-      g1q_n : out std_logic; -- Pin 3
+      g1a   : in  std_logic;  -- Pin 2 (1A)
+      g1b   : in  std_logic;  -- Pin 3 (1B)
+      g1q_n : out std_logic;  -- Pin 1 (1Y)
 
-      g2a   : in  std_logic; -- Pin 4
-      g2b   : in  std_logic; -- Pin 5
-      g2q_n : out std_logic; -- Pin 6
+      g2a   : in  std_logic;  -- Pin 5 (2A)
+      g2b   : in  std_logic;  -- Pin 6 (2B)
+      g2q_n : out std_logic;  -- Pin 4 (2Y)
 
-      g3a   : in  std_logic; -- Pin 9
-      g3b   : in  std_logic; -- Pin 10
-      g3q_n : out std_logic; -- Pin 8
+      g3a   : in  std_logic;  -- Pin 8 (3A)
+      g3b   : in  std_logic;  -- Pin 9 (3B)
+      g3q_n : out std_logic;  -- Pin 10 (3Y)
 
-      g4a   : in  std_logic; -- Pin 12
-      g4b   : in  std_logic; -- Pin 13
-      g4q_n : out std_logic  -- Pin 11
+      g4a   : in  std_logic;  -- Pin 11 (4A)
+      g4b   : in  std_logic;  -- Pin 12 (4B)
+      g4q_n : out std_logic   -- Pin 13 (4Y)
       );
   end component;
 
   component sn74280 is
   port (
-      i0 : in std_logic;
-      i1 : in std_logic;
-      i2 : in std_logic;
-      i3 : in std_logic;
-      i4 : in std_logic;
-      i5 : in std_logic;
-      i6 : in std_logic;
-      i7 : in std_logic;
-      i8 : in std_logic;
+      i0 : in std_logic;    -- Pin 1 (G)
+      i1 : in std_logic;    -- Pin 2 (H)
+      i2 : in std_logic;    -- Pin 4 (I)
+      i3 : in std_logic;    -- Pin 8 (A)
+      i4 : in std_logic;    -- Pin 9 (B)
+      i5 : in std_logic;    -- Pin 10 (C)
+      i6 : in std_logic;    -- Pin 11 (D)
+      i7 : in std_logic;    -- Pin 12 (E)
+      i8 : in std_logic;    -- Pin 13 (F)
 
-      even : out std_logic;
-      odd  : out std_logic
+      even : out std_logic; -- Pin 5 (sum even)
+      odd  : out std_logic  -- Pin 6 (sum odd)
       );
   end component;
 
@@ -804,7 +804,7 @@ package sn74 is
       o0     : out std_logic; -- Pin 2 (1Q)
       o1     : out std_logic; -- Pin 5 (2Q)
       o2     : out std_logic; -- Pin 6 (3Q)
-      o3     : out std_logic; -- Pin 10 (4Q)
+      o3     : out std_logic; -- Pin 9 (4Q)
       o4     : out std_logic; -- Pin 12 (5Q)
       o5     : out std_logic; -- Pin 15 (6Q)
       o6     : out std_logic; -- Pin 16 (7Q)
@@ -814,44 +814,44 @@ package sn74 is
 
   component sn74374 is
   port (
-      clk   : in  std_logic;
-      oenb_n : in  std_logic;
-      i0 : in  std_logic;
-      i1 : in  std_logic;
-      i2 : in  std_logic;
-      i3 : in  std_logic;
-      i4 : in  std_logic;
-      i5 : in  std_logic;
-      i6 : in  std_logic;
-      i7 : in  std_logic;
-      o0 : out std_logic;
-      o1 : out std_logic;
-      o2 : out std_logic;
-      o3 : out std_logic;
-      o4 : out std_logic;
-      o5 : out std_logic;
-      o6 : out std_logic;
-      o7 : out std_logic
+      clk   : in  std_logic;  -- Pin 11 (CLK)
+      oenb_n : in  std_logic; -- Pin 1 (OC): output control (active low)
+      i0 : in  std_logic;     -- Pin 18 (8D)
+      i1 : in  std_logic;     -- Pin 17 (7D)
+      i2 : in  std_logic;     -- Pin 14 (6D)
+      i3 : in  std_logic;     -- Pin 13 (5D)
+      i4 : in  std_logic;     -- Pin 8 (4D)
+      i5 : in  std_logic;     -- Pin 7 (3D)
+      i6 : in  std_logic;     -- Pin 4 (2D)
+      i7 : in  std_logic;     -- Pin 3 (1D)
+      o0 : out std_logic;     -- Pin 19 (8Q)
+      o1 : out std_logic;     -- Pin 16 (7Q)
+      o2 : out std_logic;     -- Pin 15 (6Q)
+      o3 : out std_logic;     -- Pin 12 (5Q)
+      o4 : out std_logic;     -- Pin 9 (4Q)
+      o5 : out std_logic;     -- Pin 6 (3Q)
+      o6 : out std_logic;     -- Pin 5 (2Q)
+      o7 : out std_logic      -- Pin 2 (1Q)
       );
   end component;
 
   component sn7438 is
   port (
-      g1a   : in  std_logic;
-      g1b   : in  std_logic;
-      g1q_n : out std_logic;
+      g1a   : in  std_logic; -- Pin 1 (1A)
+      g1b   : in  std_logic; -- Pin 2 (1B)
+      g1q_n : out std_logic; -- Pin 3 (1Y)
 
-      g2a   : in  std_logic;
-      g2b   : in  std_logic;
-      g2q_n : out std_logic;
+      g2a   : in  std_logic; -- Pin 4 (2A)
+      g2b   : in  std_logic; -- Pin 5 (2B)
+      g2q_n : out std_logic; -- Pin 6 (2Y)
 
-      g3a   : in  std_logic;
-      g3b   : in  std_logic;
-      g3q_n : out std_logic;
+      g3a   : in  std_logic; -- Pin 10 (3B)
+      g3b   : in  std_logic; -- Pin 9 (3A)
+      g3q_n : out std_logic; -- Pin 8 (3Y)
 
-      g4a   : in  std_logic;
-      g4b   : in  std_logic;
-      g4q_n : out std_logic
+      g4a   : in  std_logic; -- Pin 13 (4B)
+      g4b   : in  std_logic; -- Pin 12 (4A)
+      g4q_n : out std_logic  -- Pin 11 (4Y)
       );
   end component;
 
@@ -897,35 +897,35 @@ package sn74 is
 
   component sn7464 is
   port (
-      d4    : in  std_logic; -- Pin 1
-      b2    : in  std_logic; -- Pin 2
-      a2    : in  std_logic; -- Pin 3
-      c3    : in  std_logic; -- Pin 4
-      b3    : in  std_logic; -- Pin 5
-      a3    : in  std_logic; -- Pin 9
-      \out\ : out std_logic; -- Pin 8
-      a1    : in  std_logic; -- Pin 10
-      b1    : in  std_logic; -- Pin 11
-      c4    : in  std_logic; -- Pin 12
-      b4    : in  std_logic; -- Pin 13
-      a4    : in  std_logic  -- Pin 14
+      d4    : in  std_logic;  -- Pin 1 (A)
+      b2    : in  std_logic;  -- Pin 2 (E)
+      a2    : in  std_logic;  -- Pin 3 (F)
+      c3    : in  std_logic;  -- Pin 4 (G)
+      b3    : in  std_logic;  -- Pin 5 (H)
+      a3    : in  std_logic;  -- Pin 6 (I)
+      \out\ : out std_logic;  -- Pin 8 (Y)
+      a1    : in  std_logic;  -- Pin 9 (J)
+      b1    : in  std_logic;  -- Pin 10 (K)
+      c4    : in  std_logic;  -- Pin 11 (B)
+      b4    : in  std_logic;  -- Pin 12 (C)
+      a4    : in  std_logic   -- Pin 13 (D)
       );
   end component;
 
   component sn7474 is
   port (
-      g1r_n : in  std_logic; -- pin 1
-      g1d   : in  std_logic; -- pin 2
-      g1clk : in  std_logic; -- pin 3
-      g1s_n : in  std_logic; -- pin 4
-      g1q   : out std_logic; -- pin 5
-      g1q_n : out std_logic; -- pin 6
-      g2q_n : out std_logic; -- pin 9
-      g2q   : out std_logic; -- pin 8
-      g2s_n : in  std_logic; -- pin 10
-      g2clk : in  std_logic; -- pin 11
-      g2d   : in  std_logic; -- pin 12
-      g2r_n : in  std_logic  -- pin 13
+      g1r_n : in  std_logic;  -- Pin 1 (1CLR)
+      g1d   : in  std_logic;  -- Pin 2 (1D)
+      g1clk : in  std_logic;  -- Pin 3 (1CLK)
+      g1s_n : in  std_logic;  -- Pin 4 (1PRE)
+      g1q   : out std_logic;  -- Pin 5 (1Q)
+      g1q_n : out std_logic;  -- Pin 6 (1Q_n)
+      g2q_n : out std_logic;  -- Pin 8 (2Q_n)
+      g2q   : out std_logic;  -- Pin 9 (2Q)
+      g2s_n : in  std_logic;  -- Pin 10 (2PRE)
+      g2clk : in  std_logic;  -- Pin 11 (2CLK)
+      g2d   : in  std_logic;  -- Pin 12 (2D)
+      g2r_n : in  std_logic   -- Pin 13 (2CLR)
       );
   end component;
 

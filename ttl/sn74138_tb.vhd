@@ -51,6 +51,33 @@ begin
         severity error;
     end loop;
 
+    -- Select inputs driven with weak or high-impedance levels:
+    -- 'Z' and 'H' must act as '1', 'L' as '0' (TTL input conditioning)
+    g1 <= '1';
+    g2a <= '0';
+    g2b <= '0';
+    sel2 <= 'Z'; sel1 <= 'L'; sel0 <= 'Z';   -- acts as "101"
+    wait for 10 ns;
+    exp := (others => '1');
+    exp(5) := '0';
+    act := y;
+    assert act = exp
+      report "Test failed for select Z/L/Z (should decode as 101)" &
+             " Expected: " & to_string(exp) &
+             " Actual: " & to_string(act)
+      severity error;
+
+    sel2 <= 'L'; sel1 <= 'H'; sel0 <= 'L';   -- acts as "010"
+    wait for 10 ns;
+    exp := (others => '1');
+    exp(2) := '0';
+    act := y;
+    assert act = exp
+      report "Test failed for select L/H/L (should decode as 010)" &
+             " Expected: " & to_string(exp) &
+             " Actual: " & to_string(act)
+      severity error;
+
     -- Test disabled state
     g1 <= '0';
     g2a <= '0';

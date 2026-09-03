@@ -32,11 +32,12 @@ entity cadr_opcd is
     opc8            : in     std_logic;
     opc9            : in     std_logic;
     tse1b           : in     std_logic;
-    \-opcdrive\     : out    std_logic;
-    \-zero16.drive\ : out    std_logic;
-    \zero12.drive\  : out    std_logic;
-    \zero16.drive\  : out    std_logic;
-    dcdrive         : out    std_logic;
+    \-opcdrive\     : inout  std_logic;
+    \-zero16.drive\ : inout  std_logic;
+    \zero12.drive\  : inout  std_logic;
+    \zero16.drive\  : inout  std_logic;
+    dcdrive         : inout  std_logic;
+    zero16          : inout  std_logic;
     mf0             : out    std_logic;
     mf1             : out    std_logic;
     mf10            : out    std_logic;
@@ -68,7 +69,6 @@ entity cadr_opcd is
     mf6             : out    std_logic;
     mf7             : out    std_logic;
     mf8             : out    std_logic;
-    mf9             : out    std_logic;
-    zero16          : out    std_logic
+    mf9             : out    std_logic
   );
 end entity;

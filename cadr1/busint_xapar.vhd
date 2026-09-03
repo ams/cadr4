@@ -25,7 +25,10 @@ entity busint_xapar is
     xao7            : in     std_logic;
     xao8            : in     std_logic;
     xao9            : in     std_logic;
-    \xao par even\  : out    std_logic;
-    \xao par odd\   : out    std_logic
+    \xao par even\  : inout  std_logic;
+    \xao par odd\   : inout  std_logic;
+    \-xao par even\ : out    std_logic;
+    \-xao par odd\  : out    std_logic;
+    \xaddr par out\ : out    std_logic
   );
 end entity;

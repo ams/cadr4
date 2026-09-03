@@ -1,0 +1,34 @@
+# Net renames applied by scripts/fix-suds.soap4.py to the busint pages.
+# Format: <page or *> <old name> => <new name>. Names as in the suds files.
+# Every entry is a deviation from the drawing text and says why.
+
+# uba labels the address lines with a space; every page that reads them
+# (ubcyc) uses the form without the space. Same wire, one name.
+uba \-uba 7\ => \-uba7\
+uba \-uba 8\ => \-uba8\
+uba \-uba 9\ => \-uba9\
+uba \-uba 12\ => \-uba12\
+uba \-uba 14\ => \-uba14\
+uba \-uba 15\ => \-uba15\
+
+# requb spells these with a space, the readers (ubmast, rqsync) without
+requb \lm need ub\ => lmneedub
+requb \lmub rq\ => lmubrq
+
+# ubmast drives these with one spelling and reads them (dbgin, datctl,
+# dbgout, requb, ubmast itself) with another
+ubmast \-lm ub granted\ => \-lmub granted\
+ubmast \-db ub granted\ => \-dbub granted\
+ubmast \db ub master\ => \dbub master\
+ubmast \-db ub master\ => \-dbub master\
+
+# busint has its own RESET (dbgin, from LM UNIBUS RESET L and the debug
+# register) which is a different net from the processor's RESET (olord2,
+# clockd). The generated top level wires same-named signals together, so
+# the busint one gets a board prefix.
+* reset => \busint reset\
+* \-reset\ => \-busint reset\
+
+# ubmast drives LM UB MASTER and requb reads it with that spelling, datctl
+# reads it as LMUB MASTER; one wire, one name
+* \lm ub master\ => \lmub master\

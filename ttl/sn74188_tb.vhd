@@ -82,6 +82,38 @@ begin
         severity error;
     end loop;
 
+    -- CE high: all outputs float. Address 0 holds 00, so every output is
+    -- driven low while enabled and must float once the chip is disabled.
+    a4 <= '0'; a3 <= '0'; a2 <= '0'; a1 <= '0'; a0 <= '0';
+    ce_n <= '0';
+    wait for 1 ns;
+    assert std_logic_vector'(o7 & o6 & o5 & o4 & o3 & o2 & o1 & o0) = "00000000"
+      report "Address 0 should drive all outputs low" severity error;
+    ce_n <= '1';
+    wait for 1 ns;
+    assert std_logic_vector'(o7 & o6 & o5 & o4 & o3 & o2 & o1 & o0) = "ZZZZZZZZ"
+      report "CE high: all outputs should float" severity error;
+    ce_n <= '0';
+
+    -- A few words compared against values read by hand from
+    -- rom/dspctl.2f22.hex (lines 1, 5, 8, 32), independent of load_hex_file.
+    -- Open-collector outputs: '0' for a 0 bit, 'Z' for a 1 bit.
+    wait for 1 ns;
+    assert std_logic_vector'(o7 & o6 & o5 & o4 & o3 & o2 & o1 & o0) = "00000000"
+      report "Address 0 should be 00" severity error;
+    a2 <= '1'; -- address 4: 0f
+    wait for 1 ns;
+    assert std_logic_vector'(o7 & o6 & o5 & o4 & o3 & o2 & o1 & o0) = "0000ZZZZ"
+      report "Address 4 should be 0f" severity error;
+    a1 <= '1'; a0 <= '1'; -- address 7: 7f
+    wait for 1 ns;
+    assert std_logic_vector'(o7 & o6 & o5 & o4 & o3 & o2 & o1 & o0) = "0ZZZZZZZ"
+      report "Address 7 should be 7f" severity error;
+    a4 <= '1'; a3 <= '1'; -- address 31: 00
+    wait for 1 ns;
+    assert std_logic_vector'(o7 & o6 & o5 & o4 & o3 & o2 & o1 & o0) = "00000000"
+      report "Address 31 should be 00" severity error;
+
     wait;
   end process;
 

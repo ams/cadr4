@@ -51,10 +51,10 @@ entity icmem_iwrpar is
     iwr7            : in     std_logic;
     iwr8            : in     std_logic;
     iwr9            : in     std_logic;
-    iwr48           : out    std_logic;
-    iwrp1           : out    std_logic;
-    iwrp2           : out    std_logic;
-    iwrp3           : out    std_logic;
-    iwrp4           : out    std_logic
+    iwrp1           : inout  std_logic;
+    iwrp2           : inout  std_logic;
+    iwrp3           : inout  std_logic;
+    iwrp4           : inout  std_logic;
+    iwr48           : out    std_logic
   );
 end entity;

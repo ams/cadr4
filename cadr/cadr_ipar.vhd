@@ -53,11 +53,11 @@ entity cadr_ipar is
     ir7             : in     std_logic;
     ir8             : in     std_logic;
     ir9             : in     std_logic;
-    ipar0           : out    std_logic;
-    ipar1           : out    std_logic;
-    ipar2           : out    std_logic;
-    ipar3           : out    std_logic;
-    iparity         : out    std_logic;
+    ipar0           : inout  std_logic;
+    ipar1           : inout  std_logic;
+    ipar2           : inout  std_logic;
+    ipar3           : inout  std_logic;
+    iparity         : inout  std_logic;
     iparok          : out    std_logic
   );
 end entity;

@@ -42,10 +42,10 @@ entity cadr_spcpar is
     spcw7           : in     std_logic;
     spcw8           : in     std_logic;
     spcw9           : in     std_logic;
-    \-spcwparl\     : out    std_logic;
-    spcparh         : out    std_logic;
+    \-spcwparl\     : inout  std_logic;
+    spcparh         : inout  std_logic;
+    spcwparh        : inout  std_logic;
     spcparok        : out    std_logic;
-    spcwpar         : out    std_logic;
-    spcwparh        : out    std_logic
+    spcwpar         : out    std_logic
   );
 end entity;

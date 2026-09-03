@@ -30,21 +30,21 @@ entity busint_reqlm is
     ubxrq           : in     std_logic;
     xrd             : in     std_logic;
     xwr             : in     std_logic;
+    \-lmxrq\        : inout  std_logic;
+    \-loadmd ack\   : inout  std_logic;
+    \-xack\         : inout  std_logic;
+    \adr=unibus\    : inout  std_logic;
+    \ub md load\    : inout  std_logic;
+    \xbus request\  : inout  std_logic;
+    lmxrq           : inout  std_logic;
+    xack            : inout  std_logic;
     \-lm grant\     : out    std_logic;
     \-lm ignpar\    : out    std_logic;
     \-lmack\        : out    std_logic;
-    \-lmxrq\        : out    std_logic;
-    \-loadmd ack\   : out    std_logic;
     \-loadmd\       : out    std_logic;
-    \-xack\         : out    std_logic;
     \-xbus request\ : out    std_logic;
-    \adr=unibus\    : out    std_logic;
     \lm memdrive enb\ : out    std_logic;
     \lmneedub (early)\ : out    std_logic;
-    \loadmd ack\    : out    std_logic;
-    \ub md load\    : out    std_logic;
-    \xbus request\  : out    std_logic;
-    lmxrq           : out    std_logic;
-    xack            : out    std_logic
+    \loadmd ack\    : out    std_logic
   );
 end entity;

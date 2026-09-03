@@ -8,12 +8,17 @@ GHDLSTD := 08
 GHDLIMPORTOPTIONS	:= -v -g0 -O3
 GHDLMAKEOPTIONS		:= -v -g0 -O3 -Wno-delayed-checks
 
-# asserts can be disabled to improve performance
+# a simulation stops at the first error-level assertion (testbenches fail
+# with severity error); asserts can be disabled to improve performance
 ifeq ($(CADR4_NOASSERTS),1)
 GHDLSIMOPTIONS := --assert-level=none --ieee-asserts=disable
 else
-GHDLSIMOPTIONS := --backtrace-severity=warning --assert-level=warning
+GHDLSIMOPTIONS := --assert-level=error
 endif
+
+# the cosimulation library is only loaded for the testbenches that use it
+# GHDLCOSIMOPTION is a function !
+GHDLCOSIMOPTION = $(if $(filter $1,$(COSIM_EXES)),--vpi=$(COSIM_VPI_LIB))
 
 # ghdl import and make works weird, all the build process is weird
 # there is no sane way to build object files manually in this way
@@ -92,13 +97,11 @@ else
 GHDLSTOPTIMEOPTION := --stop-time=$(CADR4_STOPTIME)
 endif
 
-.PHONY: run-%
 run-%: $(BUILDDIR)/% $(COSIM_VPI_LIB)
-	$< $(GHDLSIMOPTIONS) --vpi=$(COSIM_VPI_LIB)
+	$< $(GHDLSIMOPTIONS) $(call GHDLCOSIMOPTION,$*) $(GHDLSTOPTIMEOPTION)
 
-.PHONY: wf-%
 wf-%: $(BUILDDIR)/% $(COSIM_VPI_LIB)
-ifeq ($(WAVEOPTFILERECREATE),1)	
+ifeq ($(WAVEOPTFILERECREATE),1)
 	$(RM) $(WAVEOPTFILE)
 endif
-	$< $(GHDLSIMOPTIONS) --vpi=$(COSIM_VPI_LIB) $(call GHDLWAVEOPTIONS,$*) $(GHDLSTOPTIMEOPTION)
+	$< $(GHDLSIMOPTIONS) $(call GHDLCOSIMOPTION,$*) $(call GHDLWAVEOPTIONS,$*) $(GHDLSTOPTIMEOPTION)

@@ -30,9 +30,16 @@ entity icmem_pctl is
     pc7             : in     std_logic;
     pc8             : in     std_logic;
     pc9             : in     std_logic;
+    \-promenable\   : inout  std_logic;
+    \-prompc9\      : inout  std_logic;
+    \bottom.1k\     : inout  std_logic;
+    dpe             : inout  std_logic;
+    ipe             : inout  std_logic;
+    promenable      : inout  std_logic;
+    tilt0           : inout  std_logic;
+    tilt1           : inout  std_logic;
     \-promce0\      : out    std_logic;
     \-promce1\      : out    std_logic;
-    \-promenable\   : out    std_logic;
     \-prompc0\      : out    std_logic;
     \-prompc1\      : out    std_logic;
     \-prompc2\      : out    std_logic;
@@ -42,13 +49,6 @@ entity icmem_pctl is
     \-prompc6\      : out    std_logic;
     \-prompc7\      : out    std_logic;
     \-prompc8\      : out    std_logic;
-    \-prompc9\      : out    std_logic;
-    \bottom.1k\     : out    std_logic;
-    dpe             : out    std_logic;
-    i46             : out    std_logic;
-    ipe             : out    std_logic;
-    promenable      : out    std_logic;
-    tilt0           : out    std_logic;
-    tilt1           : out    std_logic
+    i46             : out    std_logic
   );
 end entity;

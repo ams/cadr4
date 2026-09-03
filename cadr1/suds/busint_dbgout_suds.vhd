@@ -18,4 +18,5 @@ dbgout_0b11 : dip_74s51 port map (p1 => \debug in wr\, p2 => 'Z', p3 => 'Z', p4 
 dbgout_0b12 : dip_74s02 port map (p1 => open, p2 => 'Z', p3 => 'Z', p4 => open, p5 => 'Z', p6 => 'Z', p8 => \dbub master\, p9 => \debug active\, p10 => \-dbd enb\, p11 => 'Z', p12 => 'Z', p13 => open);
 dbgout_0b21 : dip_8304 port map (p1 => udo7, p2 => udo6, p3 => udo5, p4 => udo4, p5 => udo3, p6 => udo2, p7 => udo1, p8 => udo0, p9 => \-dbd enb\, p11 => \ud > debug\, p12 => dbd0, p13 => dbd1, p14 => dbd2, p15 => dbd3, p16 => dbd4, p17 => dbd5, p18 => dbd6, p19 => dbd7);
 dbgout_0b22 : dip_8304 port map (p1 => udo15, p2 => udo14, p3 => udo13, p4 => udo12, p5 => udo11, p6 => udo10, p7 => udo9, p8 => udo8, p9 => \-dbd enb\, p11 => \ud > debug\, p12 => dbd8, p13 => dbd9, p14 => dbd10, p15 => dbd11, p16 => dbd12, p17 => dbd13, p18 => dbd14, p19 => dbd15);
+\ud > debug\ <= \-debug > ud\;
 end architecture;

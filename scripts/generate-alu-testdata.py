@@ -160,6 +160,59 @@ def sn74181_xy_function(a_val, b_val, sel_bits, mask):
     return X, Y
 
 
+def sn74181_carry(a_val, b_val, sel_bits, cin_logical, width):
+    """
+    Carry out of the '181 (or of a chain of '181s and '182s) in the
+    active-high data convention of the datasheet (Figure 2 / Table 2).
+
+    Internally the '181 forms two operands from A, B and S,
+        P = A | (B & S0) | (~B & S1)      ("propagate" operand)
+        G = A & ((B & S3) | (~B & S2))    ("generate" operand, bitwise a subset of P)
+    and in arithmetic mode (M = L) produces F = P PLUS G PLUS Cn, with Cn the
+    active-high carry in. Its look-ahead chain C[i+1] = P[i] & (G[i] | C[i]) is
+    exactly the carry of that addition (G is a subset of P), so the active-high
+    carry out Cn+4 is bit `width` of P + G + Cn. Wider ALUs built from '181s
+    and '182s compute the same carry over the full width.
+
+    The carry output comes from the look-ahead network regardless of M, so the
+    same expression gives Cn+4 in logic mode (M = H) as well.
+
+    Pin polarities (datasheet page 2, active-high data): the carry-in pin is
+    /Cn (low = carry in) and the carry-out pin is /Cn+4 (low = carry out).
+    `cin_logical` is the active-high carry in (1 = carry, pin /Cn = 0); the
+    returned carry is active-high (1 = carry out, pin /Cn+4 = 0) and the caller
+    inverts it to get the /Cn+4 pin level written to the vector file.
+
+    Datasheet cross-check (page 2 comparison table, active-high data): with
+    S = LHHL (A MINUS B MINUS 1 for /Cn = H, A MINUS B for /Cn = L) this gives
+    /Cn+4 = L exactly when A > B (/Cn = H) or A >= B (/Cn = L); see
+    check_table2_comparison().
+
+    Returns (carry_out, f) where f = (P + G + Cn) mod 2**width is the
+    arithmetic-mode result (used as a self-check against the operation tables).
+    """
+    mask = (1 << width) - 1
+    s0 = int(sel_bits[3])  # LSB
+    s1 = int(sel_bits[2])
+    s2 = int(sel_bits[1])
+    s3 = int(sel_bits[0])  # MSB
+    nb = (~b_val) & mask
+    p = a_val | (b_val if s0 else 0) | (nb if s1 else 0)
+    g = a_val & ((b_val if s3 else 0) | (nb if s2 else 0))
+    total = p + g + cin_logical
+    return (total >> width) & 1, total & mask
+
+
+def check_table2_comparison():
+    """Cross-check sn74181_carry against the A/B comparison table (datasheet page 2)."""
+    for a in range(16):
+        for b in range(16):
+            cout_nc, _ = sn74181_carry(a, b, '0110', 0, 4)  # /Cn = H: A MINUS B MINUS 1
+            cout_c, _ = sn74181_carry(a, b, '0110', 1, 4)   # /Cn = L: A MINUS B
+            assert cout_nc == (1 if a > b else 0), (a, b)   # /Cn+4 = L  <=>  A > B
+            assert cout_c == (1 if a >= b else 0), (a, b)   # /Cn+4 = L  <=>  A >= B
+
+
 def get_arith_ops_with_carry(mask):
     """
     Arithmetic operations with carry for different ALU widths.
@@ -205,7 +258,8 @@ def generate_tests(inputs, width):
                     full_res = op(a_val, b_val)
                     # Mask result to width and convert directly to binary
                     expected_result = full_res & mask
-                    expected_carry = 0  # Always 0
+                    # The carry output is not gated by M: same look-ahead expression as in arithmetic mode
+                    expected_carry, _ = sn74181_carry(a_val, b_val, sel, cin_logical, width)
                     # Calculate X and Y outputs
                     if width == 4:
                         expected_x, expected_y = sn74181_xy_function(a_val, b_val, sel, mask)
@@ -253,7 +307,10 @@ def generate_tests(inputs, width):
                     # Calculate result
                     full_res = op(a_val, b_val)
                     expected_result = full_res & mask
-                    expected_carry = 0  # Always 0
+                    # Carry out of the P + G + Cn addition (active high, inverted below for the /Cn+4 pin)
+                    expected_carry, f_check = sn74181_carry(a_val, b_val, sel, cin_logical, width)
+                    assert f_check == expected_result, \
+                        f'{name}: operation table and P + G + Cn disagree for A={a_val:x} B={b_val:x} S={sel} Cn={cin_logical}'
                     
                     # Calculate X and Y outputs
                     if width == 4:
@@ -296,6 +353,7 @@ def main():
     parser.add_argument('--width', type=int, choices=[4, 8, 16, 32], required=True, help='ALU width (4 for SN74181, 8 for 8-bit ALU, 16 for 16-bit ALU, 32 for CADR ALU)')
     args = parser.parse_args()
 
+    check_table2_comparison()
     inputs = generate_inputs(args.width)
     generate_tests(inputs, args.width)
 

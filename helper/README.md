@@ -11,4 +11,4 @@ This folder contains helper components. helper components are required for cadr_
 
 - helper_deassert_halt.vhd: deasserts -halt, this is required for CADR to start.
 
-- helper_stop_if_prom_fails.vhd: stops simulation when PC reaches #o313.
+- helper_stop_if_prom_fails.vhd: stops simulation when PC reaches #o313 while executing from the PROM.

@@ -12,12 +12,14 @@ cadr_<PAGE>_suds.vhd files. These can be regenerated with `make regenerate-fast-
 
 # Testbenches
 
-| Test                 | Description                    | Relevant Pages |
-| -------------------- | ------------------------------ | -------------- |
-| cadr_alu             | Tests 32-bit ALU               | alu0, alu1, aluc4 |
-| cadr_npc_ipc         | Tests IPC Adder in NPC         | npc |
-| cadr_prom            | Tests Prom Contents            | prom0, prom1 |
-| cadr                 | Complete CADR Run              | all pages |
+The page testbenches live in cadr_test/ and run with `make check-cadr`.
+
+| Test                 | Description                                   | Relevant Pages |
+| -------------------- | --------------------------------------------- | -------------- |
+| cadr_alu_tb          | Tests 32-bit ALU against generated vectors    | alu0, alu1, aluc4 |
+| cadr_npc_ipc_tb      | Tests next PC selection, PC register, PC + 1  | npc |
+| icmem_prom_tb        | Tests PROM contents against the mcr file      | prom0, prom1 |
+| cadr_boot_tb         | Complete CADR boot (`make check-boot`)        | all pages |
 
 # Special Initialization with promh.10
 
@@ -114,7 +116,7 @@ PDL, SPC, L2-MAP, IMEM are all zeroes.
 
 - After X ns, -POWER RESET is de-asserted which de-asserts -CLOCK RESET A/B. This completes the reset. (olord2)
 
-- In the hardware, it seems like the -POWER RESET pulse is due to the propagation delay of two inverters (olord2_1a20). Since cadr4 is not using any propagation delay, the cadr_olord2_suds are modified (automatically during make), and these inverters are removed. Instead, olord2_1a19 (dummy_type_a) generates the -POWER RESET pulse (initially asserted, after 20ns deasserted).
+- In the hardware, the -POWER RESET pulse comes from the RC network on olord2_1a19 (5k/10k and 82 uF, about a quarter of a second) squared up by two 74LS14 stages (olord2_1a20). Since cadr4 is not using any propagation delay, the icmem_olord2_suds are modified (automatically during make regen), the two inverters are removed and olord2_1a19 (dummy_type_a) generates the -POWER RESET pulse itself (initially asserted, after 20ns deasserted).
 
 - Since having -BOOT1 and -BOOT2 not asserted, -BOOT is not asserted, this pauses booting after reset is completed. CADR does not automatically boot, it requires an external input (IOB etc.) to start booting.
 
@@ -166,7 +168,7 @@ WADR contains the Write Address of the destination. WADR is selected as the addr
 
 Write pulses for A, M and PDL memories are generated with WPx signal together with relevant delayed/registered destination input (DESTD, DESTMD, PDLWRITED).
 
-WPx is generated from TPWP, which is a 40ns pulse in the second half of CLK (-TPW30 <-> -TPW70). It looks like it may pass the end of the cycle but actual WPx signals are gated with DESTD, DESTMD and PDLWRITED, so the write pulse for the memory ends at the end of the clock cycle.
+WPx is generated from TPWP. In the schematic TPWP is set by -TPW30 and reset by -TPW70, which in a delay-free simulation lets the write pulse run past the end of the cycle; cadr4 resets the TPWP latch with -TPW45 instead (the same tap the TPWPIRAM latch uses; see the clock2 patch in Makefile.common), so the write pulse is 30..45 ns into the cycle. The WPx signals are also gated with DESTD, DESTMD and PDLWRITED.
 
 With the write pulse, the address input (in WADR or PDLPDR or PDLIDX) and the data in L register, the write operation is completed at the end of the second cycle.
 
@@ -213,7 +215,13 @@ Uses 93425a.
 
 # Implementation Notes
 
-- gnd, vcc and all hiX signals are defined as constants with values 0 and 1. These are removed from port lists of cadr components. cadr_*_suds.vhd's are using them but effectively using the constants defined in work.misc package.
+- gnd and vcc are constants from work.misc and are not ports. The hiX signals (pull-up resistor packs) are ports of the pages that use them and are held high by the resistor pack models (dip_res20, dip_sip*).
+
+- A page port that the page both drives and reads (mem0..31 on mds, the i bus on the iram pages, -tpdone on clock1) is `inout`: reading an `out` port gives its driving value, not the resolved net, so the page would never see what other pages drive.
+
+- The drawings' polarity markers (a wire with a name in each polarity convention, e.g. LMWR L and LMRD on busint datctl) and wires with two labels are emitted by soap4 as `a <= b;` net aliases in the suds architectures, so both names exist as ports.
+
+- Net names that the drawings spell differently on different pages, and names that two boards use for different nets (busint RESET), are renamed while generating; see `cadr/cadr.rename`, `cadr/icmem.rename` and `cadr1/busint.rename`.
 
 # Which special purpose part is used where
 

@@ -1,4 +1,7 @@
 -- Quadruple 2-Input Positive-NAND Buffers with Open-Collector Outputs
+-- Pin numbers as wired by dip_74s38: gates 3 and 4 have their A and B inputs
+-- swapped with respect to the datasheet (3A = pin 9, 3B = pin 10, 4A = pin 12,
+-- 4B = pin 13), which is equivalent for a NAND gate.
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -7,21 +10,21 @@ use work.misc.all;
 
 entity sn7438 is
   port (
-    g1a   : in  std_logic;
-    g1b   : in  std_logic;
-    g1q_n : out std_logic;
+    g1a   : in  std_logic; -- Pin 1 (1A)
+    g1b   : in  std_logic; -- Pin 2 (1B)
+    g1q_n : out std_logic; -- Pin 3 (1Y)
 
-    g2a   : in  std_logic;
-    g2b   : in  std_logic;
-    g2q_n : out std_logic;
+    g2a   : in  std_logic; -- Pin 4 (2A)
+    g2b   : in  std_logic; -- Pin 5 (2B)
+    g2q_n : out std_logic; -- Pin 6 (2Y)
 
-    g3a   : in  std_logic;
-    g3b   : in  std_logic;
-    g3q_n : out std_logic;
+    g3a   : in  std_logic; -- Pin 10 (3B)
+    g3b   : in  std_logic; -- Pin 9 (3A)
+    g3q_n : out std_logic; -- Pin 8 (3Y)
 
-    g4a   : in  std_logic;
-    g4b   : in  std_logic;
-    g4q_n : out std_logic
+    g4a   : in  std_logic; -- Pin 13 (4B)
+    g4b   : in  std_logic; -- Pin 12 (4A)
+    g4q_n : out std_logic  -- Pin 11 (4Y)
     );
 end entity;
 
