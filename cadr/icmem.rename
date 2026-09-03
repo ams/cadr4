@@ -22,4 +22,19 @@ iram01 pc11b => pcb11
 # olord2 makes the icmem board's own -RESET (read by olord1); the processor
 # board makes its -RESET on clockd from the same RESET. Two boards, two
 # nets with one name, so the icmem one gets a board prefix.
+#
+# MIT's pin-by-pin wire lists settle it, one file per board, each -RESET run
+# with exactly one driver and no connector pin:
+#   doc/ai/cadrwd/icmem3.wlr:8091  -RESET, 4 pins: 1A06-08 olord2 (74S37,
+#     TO) drives 1A08-01, 1A09-01 and 1A04-01 on olord1.
+#   doc/ai/cadrwd/cadr4.wlr:15038  -RESET, 9 pins: 1B18-06 clockd (74S37,
+#     TO) drives 4C11-01, 3B26-01, 3D26-01, 3E12-01, 3E08-19, 1D28-12,
+#     1E20-01 and 1C23-01 on the cadr pages.
+# What crosses the boards is the positive RESET: icmem3.wlr:8087 has 1C08-08
+# (olord2, 74S10) driving 1A06-10, that same 74S37's input, while
+# cadr4.wlr:15034 has RESET as a ONE PIN RUN / NO DRIVE on 1B18-04, the
+# clockd 74S37's input, so the cadr board receives it from off board. Both
+# -RESET drivers therefore always carry the same value, which is why reading
+# the two boards as one file and merging by name never showed a conflict.
+# (uhdl's CADR4.netlist merges them; that is a reading error, not a wire-OR.)
 * \-reset\ => \-icmem reset\

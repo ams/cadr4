@@ -86,7 +86,7 @@ All ICs with open collector outputs are explicitly indicated.
 - sn74139: 2-4 demux
 - sn74151: 8-1 mux
 - sn74153: dual 4-1 demux
-- sn74157: 2-1 mux with tri-state outputs
+- sn74157: 2-1 mux (totem-pole outputs, the strobe forces them low; the tri-state part with this pinout is the '257)
 - sn74258: quad 2-1 inverse mux with tri-state outputs
 
 ## Line/Bus Drivers & Buffers
@@ -193,7 +193,7 @@ Because gate-model ALU would output U or X values if A or B contains U or X, a s
 
 ### Test Data
 
-Test data for these testbenches are generated with `scripts/generate-alu-testdata.py` script. It takes a width parameter and outputs a number of test vectors. The output is printed on stdout, each line is a bit string consisting of A,B,ALU MODE,ALU SEL,CARRY IN,EXPECTED RESULT,EXPECTED CARRY OUT bits. The width of A,B and EXPECTED RESULT depends on the width parameter provided (4, 8, 16 or 32 bits).
+Test data for these testbenches are generated with `scripts/generate-alu-testdata.py` script. It takes a width parameter and outputs a number of test vectors. The output is printed on stdout, each line is a bit string consisting of A,B,ALU MODE,ALU SEL,CARRY IN,EXPECTED RESULT,EXPECTED CARRY OUT,EXPECTED X,EXPECTED Y bits. The width of A,B and EXPECTED RESULT depends on the width parameter provided (4, 8, 16 or 32 bits). CARRY IN and EXPECTED CARRY OUT are pin values, so both are active low. EXPECTED X (carry propagate) and EXPECTED Y (carry generate) come from the sn74181 itself at width 4 and from the top level sn74182 at width 8, 16 and 32.
 
 ## sn74181 Function Table
 
