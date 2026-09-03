@@ -73,10 +73,19 @@ check-ttl:
 check: check-ttl check-dip check-helper check-cadr
 
 # boots through the PROM; helper_stop_if_prom_fails stops the run when the
-# PROM reaches 0313, CADR4_STOPTIME bounds it otherwise
+# PROM reaches 0313, CADR4_STOPTIME bounds it otherwise.
+#
+# Reaching 0313 has to be checked here rather than in the testbench: the
+# simulator exits 0 whether the helper stopped the run or CADR4_STOPTIME
+# expired first, and a watchdog inside the vhdl would itself be cut short by
+# a bound smaller than its own deadline. So require the helper's line.
 .PHONY: check-boot
 check-boot:
-	$(MAKE) --no-print-directory run-$(CADR_BOOT_TB_EXE)
+	$(MAKE) --no-print-directory run-$(CADR_BOOT_TB_EXE) > $(BUILDDIR)/boot.log 2>&1 \
+	  || { cat $(BUILDDIR)/boot.log; exit 1; }
+	@cat $(BUILDDIR)/boot.log
+	@grep -q "the PROM reached 313" $(BUILDDIR)/boot.log \
+	  || { echo "check-boot: the PROM never reached 313"; exit 1; }
 
 # ===== REGEN rules =====
 

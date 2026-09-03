@@ -53,6 +53,10 @@ architecture behavioral of helper_stop_if_prom_fails is
             report "helper_stop_if_prom_fails: PC is X while running from the PROM"
             severity error;
           if not is_x(pc) and unsigned(pc) = stop_pc then
+            -- check-boot greps for this line: reaching stop_pc is the only
+            -- thing that distinguishes a boot that worked from a run that
+            -- merely ended, and the simulator exits 0 either way
+            report "helper_stop_if_prom_fails: the PROM reached 313" severity note;
             std.env.stop;
           end if;
         end if;
