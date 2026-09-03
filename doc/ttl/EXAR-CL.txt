@@ -1,0 +1,37 @@
+EXAR-CL
+
+Not a part number. It is the DIPTYPE that MIT's SUDS body libraries
+(cadrio/bodies.drw, cadrtv/bod1.drw) give the body named `DIP OSC`, and
+the stuffing lists (iob.stf, lmtv.stf, ...) print the DIPTYPE, so the
+oscillator appears there as EXAR-CL. On the memory board's pages the same
+body is placed as DIPOSC (memctl.drw, E08).
+
+What it is: a 14-pin DIP crystal clock oscillator module, the hybrid kind
+with the crystal and its driver sealed in one can. Output on pin 8, ground
+on 7, +5 V on 14, as the netlists have it (memory board: E08 pin 8 drives
+CTL CLK). It runs from power-on and has no enable on this board.
+
+The frequency is NOT switch-controlled. It is fixed by the crystal inside
+the module, so each board's is a separate fact, and comes from the
+drawings or the ECO record rather than from any datasheet:
+
+  memory board   24 MHz       cadrm/mem.eco, ECO 1 (10 June 1979):
+                              "Add DIPS: 24 MHz crystal E08". The timing
+                              chain's taps are named -T40, -T80 ... as if
+                              a stage were 40 ns; a stage is 41 2/3.
+  I/O board      5.0688 MHz   cadrio/iobser.drw, the serial port's baud
+                              rate clock. iob.eco also names a 5.35 MHz or
+                              8 MHz option for another clock on the board;
+                              read the ECO before assuming either.
+  TV board       64 MHz       cadrtv/eclclk.drw and necclk.drw, divided
+                              to the 16 MHz and 12 MHz CLK0 the pages name.
+
+The DIP switch on the memory board (DIPSW at memxba 0F11) is a different
+part: it sets the board's address, bits 16-21, against a DM8136
+comparator. Nothing on these boards switches an oscillator's frequency.
+
+In muir (src/chip.rs) the module is an `Oscillator` with a rational
+period so that a crystal whose period is not a whole number of
+nanoseconds keeps time: `DIP_OSCILLATOR_PERIOD = (125, 3)` ns for 24 MHz.
+The bus interface's 74LS124 is the other oscillator kind, a VCO with an
+enable; that one has a datasheet (sn74124.pdf).
