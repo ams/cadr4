@@ -1909,11 +1909,12 @@ dump_vhdl(
 static void
 usage(char *argv[])
 {
-	fprintf(stderr, "usage: %s [-d] [-p] [-e <suds library file>] [-o <raw|vhdl|wide>] -x <entity prefix> <suds file>\n", argv[0]);
+	fprintf(stderr, "usage: %s [-d] [-p] [-e <suds library file>]... [-o <raw|vhdl|wide>] -x <entity prefix> <suds file>\n", argv[0]);
 	fprintf(stderr, "-d       enable debug (stderr)\n");
     fprintf(stderr, "-p       enable debug parsing (stderr)\n");
     fprintf(stderr, "-x       entity prefix\n");
-    fprintf(stderr, "-e       also load body definitions from <suds library file>\n");
+    fprintf(stderr, "-e       also load body definitions from <suds library file>,\n");
+    fprintf(stderr, "         repeatable, a page can name more than one library\n");
     fprintf(stderr, "-o raw   dump raw 18-bit words (stdout)\n");
     fprintf(stderr, "-o vhdl  dump VHDL (stdout)\n");
     fprintf(stderr, "-o wide  dump raw 18-bit words, wide format (stdout)\n");
@@ -1927,7 +1928,8 @@ int main(int argc, char *argv[])
 {
 	int c;
 
-    char *library_suds_filename = NULL;
+    char *library_suds_filenames[MAX_LIBRARY_FILE_SPECS];
+    size_t library_suds_filenames_count = 0;
     char *dump_format = NULL;
     int dump_raw_flag = 0; // 0 = no, 1 = raw, 2 = wide
     int dump_vhdl_flag = 0; // 0 = no, 1 = vhdl
@@ -1945,7 +1947,9 @@ int main(int argc, char *argv[])
                 entity_prefix = managed_strdup(optarg);
                 break;
             case 'e':
-                library_suds_filename = managed_strdup(optarg);
+                assert (library_suds_filenames_count < LEN(library_suds_filenames));
+                library_suds_filenames[library_suds_filenames_count++] =
+                    managed_strdup(optarg);
                 break;
             case 'o':
                 dump_format = managed_strdup(optarg);
@@ -1982,10 +1986,13 @@ int main(int argc, char *argv[])
         // clear everything
         parse_initialize(true);
 
-        if (library_suds_filename != NULL) {
+        // body definitions accumulate over every -e library, because a page
+        // can name more than one: dctrsg.drw names CADR;SIPS DRW and
+        // CADRIO;BODIES DRW
+        for (size_t i = 0; i < library_suds_filenames_count; i++) {
 
             half_words_len = unpack(
-                library_suds_filename, 
+                library_suds_filenames[i],
                 half_words,
                 MAX_HALF_WORDS);
 
