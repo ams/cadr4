@@ -81,6 +81,25 @@ are known to differ:
 Both boards carry the sync PROM; see `rom/README.md` for which image belongs in
 it and why it is the program the board runs at power-up.
 
+The two customising pages `gen4b` and `gen8b` carry no parts, only straps, so
+anything reading a netlist by walking components drops them silently. `gen4b`
+is what ties `ADR n` to `RAM ADR IN n-1` -- the shift that makes the video RAM
+address -- and for the LISPM TV there is a second, independent record of those
+joins: `lmtv4b.wlr` describes the board as wrapped, so a strapped wire appears
+there under both its names, the alias alone on one line and the pins under the
+other:
+
+    ADR 1
+    RAM ADR IN 0
+        A11-03(05)  74S253   RAMADR      <- the multiplexer input
+        F18-16      74LS240  XBADR       <- the driver
+
+(A net with one name carries its first pin on the header line, so the bare
+second line is unambiguous.) `ADR 15`/`ADR BANK SEL` and `MAPADR 15`/`MAPADR
+BANK` appear the same way. The revised SIMPLE TV has no wire list, so its
+sheet is the only record of its straps -- which is why installing its own
+`gen4b` matters and not just the LISPM TV's.
+
 | group | drw | other files | main sources |
 |---|---|---|---|
 | cadr | 126 | 16 | 7008261/B7/cadr, plus 1891, 9004365, 2100233, 701395 |
