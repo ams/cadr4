@@ -68,9 +68,17 @@ BOARD_FOLDER = {
 # never got an "n" name, so the LISPM TV sheet is the newest copy of each
 # and the SIMPLE TV would otherwise be 23 of its 29 pages.  Both copies keep
 # the name MIT gave them; the board folder is what separates them.
+#
+# gen4b and gen8b are the same case and matter more than the count suggests:
+# they carry no parts, only straps, and gen4b is what ties ADR n to
+# RAM ADR IN n-1, the shift that makes the video RAM address.  Without the
+# SIMPLE TV's own copy (17-MAY-80 and 24-JAN-80) its nraadr and nrashf name
+# RAM ADR IN and SHF IN with nothing on any installed page driving them.
 ALSO_INSTALL = {
     # (group, page name, title1 of the older board)
     ("cadrtv", "eclvid.drw", "SIMPLE TV"),
+    ("cadrtv", "gen4b.drw", "SIMPLE TV"),
+    ("cadrtv", "gen8b.drw", "SIMPLE TV"),
     ("cadrtv", "ramcas.drw", "SIMPLE TV"),
     ("cadrtv", "ramreg.drw", "SIMPLE TV"),
     ("cadrtv", "tvma.drw", "SIMPLE TV"),

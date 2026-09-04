@@ -681,6 +681,8 @@ cadrtv/lispm-tv/xbdata.drw        07-DEC-80 23:04 more-stuff-for-ams/7008261/B7/
 cadrtv/lispm-tv/xbus.drw          07-DEC-80 23:01 more-stuff-for-ams/7008261/B7/cadrtv/xbus.drw
 cadrtv/simple-tv/eclcap.drw       24-JAN-80 08:43 7009559/cadrtv/eclcap.drw
 cadrtv/simple-tv/eclvid.drw       17-MAY-80 01:10 7009559/cadrtv/eclvid.drw
+cadrtv/simple-tv/gen4b.drw        17-MAY-80 02:37 7009559/cadrtv/gen4b.drw
+cadrtv/simple-tv/gen8b.drw        24-JAN-80 06:17 7009559/cadrtv/gen8b.drw
 cadrtv/simple-tv/ncapa.drw        17-MAY-80 01:16 7009559/cadrtv/ncapa.drw
 cadrtv/simple-tv/ncapb.drw        17-MAY-80 01:17 7009559/cadrtv/ncapb.drw
 cadrtv/simple-tv/ncapc.drw        17-MAY-80 01:17 7009559/cadrtv/ncapc.drw
@@ -952,8 +954,8 @@ lmdoc/fig5.drw                    22-MAY-79 02:52 90108/lmdoc/fig5.drw
 #   cadrtv  eclclk.drw   installed: LISPM TV      07-DEC-80 22:49; also on the tapes: SIMPLE TV     08-JUL-79 14:53, not installed
 #   cadrtv  eclsip.drw   installed: LISPM TV      08-DEC-80 00:12; also on the tapes: SIMPLE TV     11-OCT-78 14:49, not installed
 #   cadrtv  eclvid.drw   installed: LISPM TV      07-DEC-80 22:44; also on the tapes: SIMPLE TV     17-MAY-80 01:10, installed in cadrtv/simple-tv
-#   cadrtv  gen4b.drw    installed: LISPM TV      07-DEC-80 22:44; also on the tapes: SIMPLE TV     17-MAY-80 02:37, not installed
-#   cadrtv  gen8b.drw    installed: LISPM TV      07-DEC-80 22:45; also on the tapes: SIMPLE TV     24-JAN-80 06:17, not installed
+#   cadrtv  gen4b.drw    installed: LISPM TV      07-DEC-80 22:44; also on the tapes: SIMPLE TV     17-MAY-80 02:37, installed in cadrtv/simple-tv
+#   cadrtv  gen8b.drw    installed: LISPM TV      07-DEC-80 22:45; also on the tapes: SIMPLE TV     24-JAN-80 06:17, installed in cadrtv/simple-tv
 #   cadrtv  ramadr.drw   installed: LISPM TV      07-DEC-80 22:50; also on the tapes: SIMPLE TV     11-OCT-78 09:18, not installed
 #   cadrtv  rambuf.drw   installed: LISPM TV      08-DEC-80 00:13; also on the tapes: SIMPLE TV     23-JAN-80 03:49, not installed
 #   cadrtv  ramcas.drw   installed: LISPM TV      08-DEC-80 00:17; also on the tapes: SIMPLE TV     24-JAN-80 08:46, installed in cadrtv/simple-tv

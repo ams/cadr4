@@ -40,15 +40,46 @@ newer board is a drop-in successor, and the two stayed in service together:
 `lmtv.eco` of 18-JUN-80 patches "old TV boards" for a check "extant only on
 new TV boards". Because the December 1980 sheets took the old page filenames,
 newest-wins alone would install the LISPM TV page and drop the SIMPLE TV one
-entirely. So each board's pages are in `cadrtv/simple-tv/` (32 drawings: the
-29 pages of `lmtv.stf`, one page added after that list was written and two
-superseded revisions) and `cadrtv/lispm-tv/` (26: the 25 of `lmtv4b.stf` plus
+entirely. So each board's pages are in `cadrtv/simple-tv/` (34 drawings: the
+29 pages of `lmtv.stf`, the two customising pages `gen4b` and `gen8b` that
+postdate that list, one further page added after it, and two superseded
+revisions) and `cadrtv/lispm-tv/` (26: the 25 of `lmtv4b.stf` plus
 the 8-bit `gen8b`), each under the name MIT gave it. Body libraries and pages
 belonging to neither board (`bod1`, `bod2`, `eclbod`, `lmram`) and all the
 design files stay at the top of the group. Which board a drawing belongs to
 is decided by its title block, not by a page list; the end of `drw-index.txt`
 names every drawing whose name carries more than one title block, installed
 or not. The rule is `BOARD_FOLDER` in `doc/drwtools/install.py`.
+
+**Do not use `lmtv.stf` as the SIMPLE TV's parts list.** It is 28-MAY-79, and
+it describes the board as it was before its own revision of January and May
+1980: it names the pages by their pre-rename names and dates them accordingly
+(`SYNRAM.DRW 05-AUG-78`, `XBCTL.DRW 09-OCT-78`), with no entry under `NSYRAM`,
+`NXBCTL` or any other `n` name. `lmtv.fil` and `lmtv.txt` of 13-NOV-78 list the
+same 29 pre-rename pages. So for the SIMPLE TV as it stands in `simple-tv/`
+there is no parts list, no wire list and no census on the tapes at all --
+`lmtv4b.stf`, `.wls`, `.wlr` and `.prt` are the LISPM TV's, same-day with its
+07/08-DEC-80 drawings. Where the older list and the revised sheets disagree the
+sheets win: `lmtv.stf` puts a 74LS244 in 0C05 and has no 74S472 anywhere,
+while `nsyram.drw` of 24-JAN-80 has the 74S472 in 0C05 and the 74LS244 moved
+to 0D05. (`lmtv.wwinfo`, whose 24-JAN-80 and 17-MAY-80 dates match the
+revision, is bare-board wire-wrap preparation for the Augat LG684, not a
+netlist.)
+
+The drawings are therefore the only census of the revised SIMPLE TV, and they
+give one -- 174 ICs against the LISPM TV's 175, differing where the two boards
+are known to differ:
+
+| | SIMPLE TV (`simple-tv/`) | LISPM TV (`lispm-tv/`) |
+|---|---|---|
+| video buffer | 64 x 4116VG | 64 x 2118 |
+| sync RAM | 8 x 2147 | 8 x 2141 |
+| video shift | 8 x 74S299 | 8 x 74LS299 |
+| sync PROM | 1 x 74S472, 0C05 | 1 x 74S472, 0C05 |
+| clock PROM | 1 x 74S288, 0D06 | 1 x 74S288, 0D06 |
+
+Both boards carry the sync PROM; see `rom/README.md` for which image belongs in
+it and why it is the program the board runs at power-up.
 
 | group | drw | other files | main sources |
 |---|---|---|---|
@@ -59,7 +90,7 @@ or not. The rule is `BOARD_FOLDER` in `doc/drwtools/install.py`.
 | cadrm | 29 | 28 | 7008105, 701395, 7009559 |
 | cadrmw | 24 | 13 | 7009559, 701298, 3100085, 7008105 |
 | cadrpc | 19 | 12 | 7009559, 7005736 |
-| cadrtv | 62 | 27 | 7009559, 7008261, ai_ka_arch_2of9 (1982) |
+| cadrtv | 64 | 27 | 7009559, 7008261, ai_ka_arch_2of9 (1982) |
 | chaos | 69 | 127 | tots-chaos-dirs-its (undated) |
 | lmdoc | 8 | 1 | 90108/lmdoc |
 
