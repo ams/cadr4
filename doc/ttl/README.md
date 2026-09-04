@@ -29,8 +29,25 @@ MIT lists by bare number keep the bare number: `2651.pdf` (Signetics PCI),
   Schottky and Low-Power Schottky Data Book, `67401.pdf` from the 1978 MMI
   Bipolar LSI Databook, `d2118.pdf` from the 1981 Intel Component Data
   Catalog, `9401.pdf` from the 1976 Fairchild Macrologic data book,
-  `mc10102.pdf` and `mc10212.pdf` from ON Semiconductor's MECL Data book
-  (DL122 rev. 7).
+  `mc10102.pdf`, `mc10105.pdf`, `mc10121.pdf`, `mc10124.pdf`,
+  `mc10125.pdf`, `mc10136.pdf`, `mc10141.pdf` and `mc10212.pdf` from ON
+  Semiconductor's MECL Data book (DL122 rev. 7).
+- The eight MECL files are the eight bodies MIT's own ECL body library for
+  the TV board, `doc/ai/cadrtv/eclbod.drw`, defines. Note that the two
+  translators do not carry the MECL supply pins the other six do:
+  `mc10124.pdf` and `mc10125.pdf` have Gnd on pin 16, VCC (+5.0 V) on
+  pin 9 and VEE (-5.2 V) on pin 8, not VCC1 on pin 1 / VCC2 on pin 16 /
+  VEE on pin 8.
+- `beckman-898.pdf` is BI Technologies' Models 898, 899 dual-in-line thick
+  film resistor network sheet, which covers the `898-3-R22` packs on the TV
+  board and the `898-3-R47` and `898-1-R1K` packs elsewhere. It is filed
+  under the family rather than a full part number because one sheet covers
+  them all: the suffixes are the circuit type and the resistance value.
+  BI Technologies is Beckman's successor, and the sheet is stamped
+  OBSOLETE; its schematics page is the authority for the `-3` isolated
+  circuit, eight resistors from pin k to pin 17-k. It is the vendor's file
+  byte for byte, so `qpdf --check` reports stale linearization hints on it;
+  the page data is intact.
 - `ttldm.pdf` and `mttldl.pdf` are Engineered Components Company delay-line
   datasheets: the TTLDM logic delay module and the multiple TTL military
   logic delay line.
