@@ -88,8 +88,23 @@ happens again is visible rather than silently mixed.
 The other design files (wire lists, ECOs, PROM images, ...) that `install.py`
 puts next to the drws follow the same rule across every tape directory
 named after the group: newest ITS date wins; of copies with the same date
-the larger one, since a truncated dump is the common damage; undated
-copies rank below every dated copy and among themselves by size.
+the undamaged one, judged by junk -- a byte a SUDS text file cannot hold, so
+a copy that had a `.bin` spliced into it reads as binary and one that took
+a shorter splice has a junk count where a clean copy has none; of copies
+that are equally clean the larger, since a truncated dump is the other
+common damage.  Undated copies rank by size alone: they are not known to be
+the same ITS file, so a shorter one carrying less junk is no evidence of a
+better copy.
+
+Damage that inserts is why junk comes before size.  The `stuff_for_ams2` and
+`more-stuff-for-ams` dumps splice one file into another, which makes the
+damaged copy the *largest* of its minute: `CADRM;MEM WLR` of 04-MAR-80 lost
+112 lines of the wire list to 2014 bytes of another file and still came out
+105 bytes longer than the two clean copies, and `CADRMW;MW STF` of 06-FEB-80
+came out 15057 bytes longer with its lines 188-285 echoed three times behind
+766-byte blocks of garbage.  Both had passed as good, since the trailer a
+wire list is checked by (`2751 TOTAL WIRES`, `388 TOTAL RUNS`) survives a
+splice intact.
 
 A name ending in a number is normally an ITS numbered text version and is
 skipped, since ITS kept them of everything. `VERSIONED` in `install.py`

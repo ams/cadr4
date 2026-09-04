@@ -514,7 +514,7 @@ cadrm/mem.ray                     10-JUN-80 12:06 7008105/B7/cadrm/mem.ray
 cadrm/mem.stf                     04-MAR-80 09:16 7009559/cadrm/mem.stf
 cadrm/mem.txt                     09-JUN-80 22:20 7008105/B7/cadrm/mem.txt
 cadrm/mem.uml                     04-MAR-80 09:17 7008105/B7/cadrm/mem.uml
-cadrm/mem.wlr                     04-MAR-80 09:29 stuff_for_ams2/7005736/BE7/cadrm/mem.wlr
+cadrm/mem.wlr                     04-MAR-80 09:29 7009559/cadrm/mem.wlr
 cadrm/mem.wls                     04-MAR-80 09:18 7008105/B7/cadrm/mem.wls
 cadrm/mem.wwinfo                  12-JUN-80 11:16 7008105/B7/cadrm/mem.wwinfo
 cadrm/mem0lh.drw                  14-NOV-78 00:27 7009559/cadrm/mem0lh.drw
@@ -584,10 +584,10 @@ cadrmw/mw.fil                     06-FEB-80 04:55 7009559/cadrmw/mw.fil
 cadrmw/mw.mw                      03-JAN-80 02:03 more-stuff-for-ams/7008105/B7/cadrmw/mw.mw
 cadrmw/mw.notes                   16-JUN-80 00:37 7009559/cadrmw/mw.notes
 cadrmw/mw.prt                     08-JAN-80 21:31 7009559/cadrmw/mw.prt
-cadrmw/mw.stf                     06-FEB-80 12:37 more-stuff-for-ams/7005736/BE7/cadrmw/mw.stf
+cadrmw/mw.stf                     06-FEB-80 12:37 7009559/cadrmw/mw.stf
 cadrmw/mw.txt                     06-FEB-80 01:33 7009559/cadrmw/mw.txt
 cadrmw/mw.uml                     06-FEB-80 01:38 7009559/cadrmw/mw.uml
-cadrmw/mw.wlr                     06-FEB-80 01:34 more-stuff-for-ams/701298/BE7/cadrmw/mw.wlr
+cadrmw/mw.wlr                     06-FEB-80 01:34 7009559/cadrmw/mw.wlr
 cadrmw/mw.wls                     06-FEB-80 05:00 7009559/cadrmw/mw.wls
 cadrmw/mw.xan                     06-FEB-80 05:02 more-stuff-for-ams/7008105/B7/cadrmw/mw.xan
 cadrmw/mwxbus.drw                 02-JAN-80 20:04 7009559/cadrmw/mwxbus.drw
@@ -595,7 +595,7 @@ cadrpc/dbg.bin                    07-JUL-80 17:15 7009559/cadrpc/dbg.bin
 cadrpc/dbg.mak                    06-JUL-80 23:12 7009559/cadrpc/dbg.mak
 cadrpc/dbg.ray                    07-JUL-80 16:47 7009559/cadrpc/dbg.ray
 cadrpc/dbg.stf                    07-JUL-80 16:46 7009559/cadrpc/dbg.stf
-cadrpc/dbg.txt                    06-JUL-80 23:19 more-stuff-for-ams/7005736/BE7/cadrpc/dbg.txt
+cadrpc/dbg.txt                    06-JUL-80 23:19 7009559/cadrpc/dbg.txt
 cadrpc/dbg.uml                    07-JUL-80 16:44 7009559/cadrpc/dbg.uml
 cadrpc/dbg.wlr                    07-JUL-80 16:46 7009559/cadrpc/dbg.wlr
 cadrpc/dbg.wls                    07-JUL-80 16:42 7009559/cadrpc/dbg.wls
@@ -610,7 +610,7 @@ cadrpc/debug.drw                  07-JUL-80 00:10 7009559/cadrpc/debug.drw
 cadrpc/odadc.drw                  07-JUN-80 00:07 7009559/cadrpc/odadc.drw
 cadrpc/odbg.bin                   26-MAR-80 18:50 more-stuff-for-ams/701298/BE7/cadrpc/odbg.bin
 cadrpc/odbg.wlr                   26-MAR-80 18:45 7009559/cadrpc/odbg.wlr
-cadrpc/odbg.wls                   26-MAR-80 18:44 more-stuff-for-ams/7005736/BE7/cadrpc/odbg.wls
+cadrpc/odbg.wls                   26-MAR-80 18:44 7009559/cadrpc/odbg.wls
 cadrpc/odcon.drw                  07-JUN-80 00:31 7009559/cadrpc/odcon.drw
 cadrpc/odebug.drw                 02-JUL-80 21:34 more-stuff-for-ams/7005736/BE7/cadrpc/odebug.drw
 cadrpc/odres.drw                  26-MAR-80 04:39 7009559/cadrpc/odres.drw

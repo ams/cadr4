@@ -140,14 +140,44 @@ def date_of(p):
     return datetime.datetime.fromtimestamp(mt, TZ).strftime("%d-%b-%y %H:%M").upper()
 
 
+# Bytes a SUDS text file is made of: tab, newline, formfeed, return, the
+# printing ASCII, and 0356, the marker SUDS puts before a page heading.
+# Anything else in one is junk from another file (see junk).
+SUDS_TEXT = frozenset(b"\t\n\x0c\r\xee") | frozenset(range(0x20, 0x7f))
+JUNK_TEXT = 0.25   # a copy with less junk than this is a text file, not an ITS binary
+
+
+def junk(p):
+    """(is it a text file, how much junk is in it).  Junk is a byte a SUDS
+    text file cannot contain; the ITS binaries (.bin, .aug, the chaos .wd)
+    are 45 to 75 per cent such bytes and every copy of one is, so a copy
+    under JUNK_TEXT is text and the count then measures its damage."""
+    with open(p, "rb") as f:
+        b = f.read()
+    n = sum(1 for c in b if c not in SUDS_TEXT)
+    return (bool(b) and n < JUNK_TEXT * len(b), n)
+
+
 def rank(p):
     """Order of the copies of a file: the newest ITS date wins.  Copies of
-    the same minute are the same ITS file; the larger one is kept, since a
-    truncated dump is the common damage.  Copies from dumps that lost the
-    ITS dates rank below every dated copy and among themselves by size."""
+    the same minute are the same ITS file, and of those the undamaged one is
+    kept: a text copy over a binary one (a dump that spliced a .bin into a
+    wire list reads as binary), then the one with the least junk, then the
+    larger, since a truncated dump is the other common damage.  Copies from
+    dumps that lost the ITS dates rank below every dated copy and among
+    themselves by size alone: they are not known to be the same ITS file, so
+    a shorter one carrying less junk is no evidence of a better copy.
+
+    The junk terms are what keep the 04-MAR-80 CADRM;MEM WLR of the
+    stuff_for_ams2 dump from being installed: it is the largest copy of that
+    minute because 2014 bytes of another file were spliced into it, taking
+    112 lines of the wire list with them."""
     st = os.stat(p)
     dated = st.st_mtime < UNDATED_AFTER
-    return (dated, round(st.st_mtime / 60) if dated else 0, st.st_size)
+    if not dated:
+        return (False, 0, False, 0, st.st_size)
+    text, n = junk(p)
+    return (True, round(st.st_mtime / 60), text, -n if text else 0, st.st_size)
 
 
 def superseded(entries):
