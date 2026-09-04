@@ -185,10 +185,11 @@ class Drawing:
         self.type_names = []
         while not r.next_word_is(0):
             self.type_names.append(r.s7())
-        # each library filespec is three SIXBIT words (FN1, FN2, DIR); there
-        # is no "library bits" word in these version-23 files.  soap4 reads
-        # the filespec as a NUL-terminated string and then a bits word, which
-        # only lands right when FN1 is exactly 6 chars long (BODIES DRW).
+        # each library filespec is three SIXBIT words (FN1, FN2 -- three
+        # characters, the library bits fill the right half of the word --
+        # and DIR), and not the NUL-terminated string plus bits word
+        # suds.txt describes; see the same reading in soap4.c parse_header.
+        # only FN1 is used to find the library file.
         self.library_file_specs = []
         while not r.next_word_is(0):
             fn1, fn2, sdir = (self.sixbit(r.word()) for _ in range(3))

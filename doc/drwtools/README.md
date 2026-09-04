@@ -17,7 +17,7 @@ the original.
 |---|---|
 | `unpack.c` | John Wilson's decoder for ITS "evacuated" 36-bit files (from Brad Parker's cpus-cadr/suds) |
 | `dumpwords.c` | tiny main around `unpack.c`: prints one 18-bit halfword per line |
-| `suds.py` | SUDS `.drw` parser (port of cadr4/soap/soap4.c, with the library filespec fix) |
+| `suds.py` | SUDS `.drw` parser (port of cadr4/soap/soap4.c) |
 | `render.py` | the renderer: `render.py page.drw out.png -L libdir [-L libdir]` |
 | `batch.py` | renders many pages: `batch.py [--copy-drw] outdir a.drw b.drw ...`. A library named in a page (e.g. `CADR;BODIES DRW`) is the newest readable copy of that file in a directory of that name on the volume (from `data/scan.json`), i.e. the library page in the same `latest/<group>/` folder |
 | `compare.py` | side-by-side and red/blue overlay of a reference PNG and a rendered one |

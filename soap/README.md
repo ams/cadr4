@@ -46,6 +46,8 @@ The differences from soap are:
 
 - soap4 handles merging bodies belonging to a single reference designator. It only outputs one component instantiation.
 
+- soap4 reads a library filespec in the header as three SIXBIT words (file name, extension in the left half with the library bits in the right half, directory) and not as the 6-bit ASCIZ string plus BITS word suds.txt describes. 6-bit ASCIZ stops at the first space, which is SIXBIT's pad character, so soap reads any library name shorter than six characters (`CADRTV;BOD2 DRW`, `CADR;SIPS DRW`) out of step and then misparses the rest of the page. `CADR;BODIES DRW` and `CADRIO;BODIES DRW` fill their word, which is why the cadr and cadr1 books never showed it.
+
 Some cases not handled are:
 
 - Another name for the same net (for example -TPW60 = -TPDONE in CLOCK1) is not handled, this should be an alias but it also depends on which of these are driving or which is declared as port.

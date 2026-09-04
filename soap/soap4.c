@@ -478,6 +478,27 @@ parse_7bit_ascii(void)
     return parse_string(7);
 }
 
+// One SIXBIT word: six characters, ascii 32-95, padded on the right with
+// spaces.  chars says how many of the six the field uses.  Unlike 6-bit
+// ASCIZ above, a space is padding here and not a terminator.
+static char*
+parse_sixbit(size_t chars)
+{
+    assert (chars >= 1 && chars <= 6);
+
+    WORD word = read_word();
+
+    char buffer[7];
+    for (size_t i = 0; i < chars; i++) {
+        buffer[i] = ((word >> (30 - 6*i)) & 0x3f) + 32;
+    }
+    buffer[chars] = 0;
+
+    while (chars > 0 && buffer[chars-1] == ' ') buffer[--chars] = 0;
+
+    return managed_strdup(buffer);
+}
+
 __attribute__((unused))
 inline static char*
 parse_9bit_ascii(void)
@@ -532,14 +553,28 @@ parse_header(void)
         header->type_names_of_library_bodies_count++;
 	}
 
+	// A library filespec is three SIXBIT words and not the ASCIZ string
+	// plus BITS word suds.txt describes: file name, then the extension in
+	// the left half with the library bits in the right half (200000 in every
+	// version 23 drawing under doc/ai), then the directory.  Read as 6-bit
+	// ASCIZ it stops at the first space, which is SIXBIT's pad character,
+	// so any name shorter than six characters (BOD2, SIPS) puts every
+	// later word out of step.  CADR;BODIES DRW and CADRIO;BODIES DRW fill
+	// their word, which is why the cadr and cadr1 books never showed it.
+	// Kept as one ITS filespec string, '<directory>;<name> <extension>'.
 	while (1) {
 		BREAK_IF_NEXT_WORD_IS(0);
         assert (header->library_file_specs_count < MAX_LIBRARY_FILE_SPECS);
-        header->library_file_specs[header->library_file_specs_count] = parse_6bit_ascii();
+        char *library_name = parse_sixbit(6);
+        char *library_extension = parse_sixbit(3);
+        char *library_directory = parse_sixbit(6);
+        char library_file_spec[32];
+        snprintf(library_file_spec, sizeof(library_file_spec), "%s;%s %s",
+            library_directory, library_name, library_extension);
+        header->library_file_specs[header->library_file_specs_count] =
+            managed_strdup(library_file_spec);
 		DEBUG("\tlibrary filespec '%s'\n", header->library_file_specs[header->library_file_specs_count]);
         header->library_file_specs_count++;
-        WORD library_bits = read_word();
-        DEBUG_WORD("\tlibrary bits", library_bits);
 	}
 
     DEBUG("/HEADER(%zu)\n", half_words_idx);
