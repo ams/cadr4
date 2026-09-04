@@ -8,9 +8,13 @@ tapes that can be read; the end of `drw-index.txt` lists the pages that
 have no readable copy at all (absent here) and would list any page where a
 newer copy exists but is unreadable (there is none).
 
-All 448 pages are here: the 323 pages that existed before (tumbleweed.nu
+All 454 pages are here: the 323 pages that existed before (tumbleweed.nu
 XGP plots) were replaced, and 125 pages were added (cadrpc, and the cadr,
-cadr1, cadrdc, cadrio, cadrtv and chaos pages that had no png). For 231 of
+cadr1, cadrdc, cadrio, cadrtv and chaos pages that had no png), plus the six
+SIMPLE TV pages of cadrtv that the December 1980 LISPM TV redesign had taken
+the filenames of. cadrtv is split into `simple-tv/` and `lispm-tv/`, one
+folder per board, since the two boards share page names; see
+`doc/ai/README.md`. For 231 of
 the replaced pages the tumbleweed plot was already the newest version. For
 the other 92 pages a newer drawing existed on the tapes (mostly tape
 7008261, Dec 1980, for cadr1, cadrio and cadrtv; 1981 for lmdoc); the chaos

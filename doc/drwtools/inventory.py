@@ -89,7 +89,9 @@ for (g, name), copies in sorted(pages.items()):
         "latest": {"date": ref["date"], "path": ref["path"], "size": ref["size"], "ok": ref["ok"]},
         "undated_distinct": len(set(c["words"] for c in undated) - set(c["words"] for c in dated)),
         "newer_unreadable": [c["path"] for c in newer_unreadable],
-        "copies": [{"date": c["date"], "path": c["path"], "size": c["size"], "words": c["words"], "ok": c["ok"], "tape": c["tape"], "from_group": c.get("from_group")} for c in copies],
+        # ascending by date, so copies[-1] of a selection is its newest;
+        # title1 tells apart two boards that reused the same page names
+        "copies": [{"date": c["date"], "path": c["path"], "size": c["size"], "words": c["words"], "ok": c["ok"], "tape": c["tape"], "from_group": c.get("from_group"), "title1": c.get("title1")} for c in copies],
         "distinct_contents": len(contents),
     })
 

@@ -22,9 +22,9 @@ the original.
 | `batch.py` | renders many pages: `batch.py [--copy-drw] outdir a.drw b.drw ...`. A library named in a page (e.g. `CADR;BODIES DRW`) is the newest readable copy of that file in a directory of that name on the volume (from `data/scan.json`), i.e. the library page in the same `latest/<group>/` folder |
 | `compare.py` | side-by-side and red/blue overlay of a reference PNG and a rendered one |
 | `scan.py` | scans every `.drw` on the ITS tape dumps into `scan.json`: date, size, content hash, title, and whether the copy is readable |
-| `install.py` | copies the rendered pngs into `doc/schematics` and the drws plus the newest copy of the design files in each group's tape directories into `doc/ai`, writing a `drw-index.txt` in each |
+| `install.py` | copies the rendered pngs into `doc/schematics` and the drws plus the newest copy of the design files in each group's tape directories into `doc/ai`, writing a `drw-index.txt` in each. `BOARD_FOLDER` and `ALSO_INSTALL` there split a group that holds two boards under the same page names, which the newest-wins rule would silently mix |
 | `inventory.py` | builds `INVENTORY.md`, `inventory.json` and `drw-index.txt` from the scan |
-| `render_latest.py` | renders the latest readable version of every page in `inventory.json`, copying the drw next to the png |
+| `render_latest.py` | renders the latest readable version of every page in `inventory.json`, copying the drw next to the png, into the folder `install.py` will file it under, and renders the `ALSO_INSTALL` pages too |
 | `scan.json` | the scan as run on 2026-09-02 (regenerable from the tape dumps in two minutes) |
 | `INVENTORY.md`, `inventory.json`, `drw-index.txt` | the inventory as built on 2026-09-02: every copy of every drawing on the tape dumps and the newest readable one per page |
 
@@ -57,6 +57,7 @@ scripts read the drawings and their libraries from there.
     python3 scan.py scan.json                                    # ~2 min, all tapes
     python3 inventory.py scan.json .                             # INVENTORY.md, inventory.json, drw-index.txt
     python3 render_latest.py inventory.json OUT                  # OUT/<group>/: latest version of every page, png + drw
+    python3 install.py inventory.json OUT ../schematics ../ai    # into the doc folders
 
 ## Which copy of a drawing is used
 
@@ -71,6 +72,18 @@ links. Tapes 701395 and 701298 have many such copies, but 7008261 has a
 truncated ictl too. Copies from dumps that did not keep the ITS dates
 (the chaos dumps) are "undated" and cannot be ranked; they inherit the date
 of a dated copy with identical content when one exists.
+
+One thing that rule cannot see is a board that was redesigned in place, its
+new sheets taking the old page filenames: "newest" is then the successor
+board's page, and the older board's page is not installed at all. cadrtv is
+such a case, the SIMPLE TV replaced in December 1980 by the LISPM TV under
+the same names. `BOARD_FOLDER` in `install.py` gives such a group one
+subfolder per board and `ALSO_INSTALL` names the pages whose older copy is
+installed as well, so both boards are complete and every page keeps the name
+MIT gave it. The title block (`title1` in the SUDS trailer) is what says
+which board a drawing belongs to. The end of both `drw-index.txt` files lists
+every name that carries more than one title block, so a group where this
+happens again is visible rather than silently mixed.
 
 The other design files (wire lists, ECOs, PROM images, ...) that `install.py`
 puts next to the drws follow the same rule across every tape directory
