@@ -14,6 +14,7 @@
 "version": 21,
 "title1": "BOX",
 "title2": "",
+"board": "DECPC",
 "libs": [
 [
 "AP:@",
@@ -79,6 +80,7 @@
 "version": 23,
 "title1": "CONS",
 "title2": "A AND M BUSSES",
+"board": "PG21",
 "libs": [],
 "bodies": 16,
 "points": 111,
@@ -130,6 +132,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "REQUEST SYNCHRONIZER",
+"board": "LG684",
 "libs": [],
 "bodies": 21,
 "points": 201,
@@ -153,6 +156,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "XBUS & UNIBUS TIMEOUT",
+"board": "LG684",
 "libs": [],
 "bodies": 9,
 "points": 105,
@@ -176,6 +180,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "DIAGNOSTIC BUS",
+"board": "LG684",
 "libs": [],
 "bodies": 5,
 "points": 92,
@@ -199,6 +204,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "XBUS TO BUS",
+"board": "LG684",
 "libs": [],
 "bodies": 4,
 "points": 146,
@@ -222,6 +228,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "CABLES TO PROCESSOR",
+"board": "LG684",
 "libs": [],
 "bodies": 8,
 "points": 226,
@@ -245,6 +252,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "PROCESSOR DATA XCVR",
+"board": "LG684",
 "libs": [],
 "bodies": 11,
 "points": 254,
@@ -268,6 +276,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "XBUS REQ & ACK",
+"board": "LG684",
 "libs": [],
 "bodies": 23,
 "points": 191,
@@ -291,6 +300,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "DATA PATH - ADDRESS",
+"board": "",
 "libs": [],
 "bodies": 15,
 "points": 183,
@@ -314,6 +324,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "DEBUGER DATA PATH",
+"board": "LG684",
 "libs": [],
 "bodies": 12,
 "points": 245,
@@ -337,6 +348,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "UNIBUS BUS GRANT",
+"board": "LG684",
 "libs": [],
 "bodies": 19,
 "points": 306,
@@ -360,6 +372,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "UNIBUS MASTERSHIP",
+"board": "LG684",
 "libs": [],
 "bodies": 29,
 "points": 245,
@@ -383,6 +396,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "XBUS ADDRESS TRANSCEIVERS",
+"board": "LG684",
 "libs": [],
 "bodies": 9,
 "points": 248,
@@ -406,6 +420,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "WRITE BUFFER",
+"board": "LG684",
 "libs": [],
 "bodies": 4,
 "points": 122,
@@ -429,6 +444,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "UNIBUS SLAVE RESPONSE",
+"board": "LG684",
 "libs": [],
 "bodies": 16,
 "points": 208,
@@ -452,6 +468,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "BUS PARITY",
+"board": "LG684",
 "libs": [],
 "bodies": 3,
 "points": 84,
@@ -475,6 +492,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "XBUS BACKPLANE CONNS",
+"board": "LG684",
 "libs": [],
 "bodies": 12,
 "points": 220,
@@ -498,6 +516,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "UNIBUS ADDRESS TO XBUS",
+"board": "LG684",
 "libs": [],
 "bodies": 3,
 "points": 110,
@@ -521,6 +540,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "XBUS DATA TRANSCEIVERS",
+"board": "LG684",
 "libs": [],
 "bodies": 9,
 "points": 272,
@@ -544,6 +564,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "XBUS REQUEST FROM UNIBUS",
+"board": "LG684",
 "libs": [],
 "bodies": 23,
 "points": 143,
@@ -567,6 +588,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "BUS FROM UNIBUS",
+"board": "LG684",
 "libs": [],
 "bodies": 8,
 "points": 292,
@@ -590,6 +612,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "UNIBUS DATA TRANSCEIVERS",
+"board": "LG684",
 "libs": [],
 "bodies": 6,
 "points": 188,
@@ -613,6 +636,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "ADDRESS FROM LISP MACHINE",
+"board": "LG684",
 "libs": [],
 "bodies": 6,
 "points": 184,
@@ -636,6 +660,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "UNIBUS MAP",
+"board": "LG684",
 "libs": [],
 "bodies": 8,
 "points": 252,
@@ -659,6 +684,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "BYPASS CAPACITORS",
+"board": "LG684",
 "libs": [],
 "bodies": 6,
 "points": 0,
@@ -682,6 +708,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "READ BUFFER",
+"board": "LG684",
 "libs": [],
 "bodies": 8,
 "points": 264,
@@ -705,6 +732,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "LM & DEBUG TO UNIBUS",
+"board": "LG684",
 "libs": [],
 "bodies": 9,
 "points": 78,
@@ -728,6 +756,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "UNIBUS ADDRESS TRANSCEIVERS",
+"board": "LG684",
 "libs": [],
 "bodies": 6,
 "points": 166,
@@ -751,6 +780,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "TEST POINTS",
+"board": "LG684",
 "libs": [],
 "bodies": 0,
 "points": 50,
@@ -774,6 +804,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "DEBUGEE DATA PATH",
+"board": "LG684",
 "libs": [],
 "bodies": 15,
 "points": 260,
@@ -797,6 +828,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "XBUS ADDRESS PARITY",
+"board": "LG684",
 "libs": [],
 "bodies": 4,
 "points": 66,
@@ -820,6 +852,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "ERROR LOGIC",
+"board": "LG684",
 "libs": [],
 "bodies": 16,
 "points": 203,
@@ -843,6 +876,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "UNIBUS INTERRUPT CONTROL",
+"board": "LG684",
 "libs": [],
 "bodies": 13,
 "points": 232,
@@ -866,6 +900,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "DATA PATH CONTROL",
+"board": "LG684",
 "libs": [],
 "bodies": 34,
 "points": 224,
@@ -889,6 +924,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "UNIBUS SPC CONNS",
+"board": "LG684",
 "libs": [],
 "bodies": 0,
 "points": 118,
@@ -912,6 +948,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "UNIBUS TRANSCEIVER",
+"board": "LG684",
 "libs": [],
 "bodies": 8,
 "points": 196,
@@ -935,6 +972,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "60 CYCLE CLOCK & GPIO",
+"board": "LG684",
 "libs": [],
 "bodies": 20,
 "points": 352,
@@ -958,6 +996,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "KEYBOARD, MOUSE CLOCK SYNC",
+"board": "LG684",
 "libs": [],
 "bodies": 9,
 "points": 122,
@@ -981,6 +1020,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "UNIBUS ADDRESS",
+"board": "LG684",
 "libs": [],
 "bodies": 14,
 "points": 183,
@@ -1004,6 +1044,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "TIME OF DAY CLOCKS",
+"board": "LG684",
 "libs": [],
 "bodies": 12,
 "points": 392,
@@ -1027,6 +1068,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "MOUSE 2",
+"board": "LG684",
 "libs": [],
 "bodies": 15,
 "points": 320,
@@ -1050,6 +1092,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "MOUSE INTERFACE",
+"board": "LG684",
 "libs": [],
 "bodies": 11,
 "points": 223,
@@ -1073,6 +1116,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "KEYBOARD & MOUSE CSR",
+"board": "LG684",
 "libs": [],
 "bodies": 10,
 "points": 177,
@@ -1096,6 +1140,7 @@
 "version": 23,
 "title1": "HEX SPC SLOT",
 "title2": "BACKPLANE CONNECTIONS",
+"board": "LG684",
 "libs": [],
 "bodies": 0,
 "points": 168,
@@ -1119,6 +1164,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "KEYBOARD CONTROL",
+"board": "LG684",
 "libs": [],
 "bodies": 22,
 "points": 363,
@@ -1142,6 +1188,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "UNIBUS INTERRUPT",
+"board": "LG684",
 "libs": [],
 "bodies": 32,
 "points": 261,
@@ -1165,6 +1212,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "CONN TO TRANSCEIVER",
+"board": "LG684",
 "libs": [],
 "bodies": 0,
 "points": 40,
@@ -1188,6 +1236,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "INTERVAL TIMER",
+"board": "LG684",
 "libs": [],
 "bodies": 9,
 "points": 196,
@@ -1211,6 +1260,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "DISPATCH CONTROL",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -1240,6 +1290,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "PROM 512-1023",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -1269,6 +1320,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 4K-8K, 24-35",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -1298,6 +1350,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 0K-4K, 24-35",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -1327,6 +1380,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "PROM 0-511",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -1356,6 +1410,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "SPC MEMORY PARITY",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -1385,6 +1440,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM8K-12K, 24-35",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -1414,6 +1470,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "VMA REGISTER",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -1443,6 +1500,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 12K-16K, 24-35",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -1472,6 +1530,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "M MEMORY LATCH",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -1501,6 +1560,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "OLD PC SAVE SHIFTER",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -1530,6 +1590,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "ALU CARRY AND FUNCTION",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -1559,6 +1620,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "PROM CONTROL",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -1588,6 +1650,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "MAP OUTPUT DRIVE",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -1617,6 +1680,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "OVERLORD",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -1646,6 +1710,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 12K-16K, 36-48",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -1675,6 +1740,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "INSTRUCTION REGISTER",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -1704,6 +1770,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 8K-12K, 36-48",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -1733,6 +1800,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "PDL INDEX AND POINTER",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -1762,6 +1830,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "ALU CARRY AND FUNCTION",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -1791,6 +1860,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "PDL BUFFER CONTROL",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -1820,6 +1890,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "SHIFTER LEFT",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -1849,6 +1920,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "OVERLORD",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -1878,6 +1950,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 0K-4K, 36-48",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -1907,6 +1980,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 4K-8K, 36-48",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -1936,6 +2010,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "SHIFTER RIGHT",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -1965,6 +2040,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "PARITY ERROR TRAP",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -1994,6 +2070,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "L REGISTER",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2023,6 +2100,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "SPC MEMORY LATCH",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2052,6 +2130,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "CONNECTOR PINS",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2081,6 +2160,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "VMA INPUT SELECTOR",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2110,6 +2190,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "BYPASS CAPACITORS",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2139,6 +2220,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "BUS INTERFACE CABLES",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2168,6 +2250,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "MEMORY DATA REGISTER",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2197,6 +2280,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "VMEMORY CONTROL",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2226,6 +2310,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "CLOCK DISTRIBUTION",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2255,6 +2340,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "A MEMORY LATCH",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2284,6 +2370,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "MASTER CLOCK",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2313,6 +2400,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "LOCATION COUNTER",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2342,6 +2430,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "VMA/MD CONTROL",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2371,6 +2460,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "DRIVE MF ONTO M",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2400,6 +2490,7 @@
 "version": 23,
 "title1": "CONS",
 "title2": "FLAGS,CONDITIONALS",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2429,6 +2520,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "SPC WRITE DATA SEL",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2458,6 +2550,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "IWR PARITY",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2487,6 +2580,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "ALU0",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2516,6 +2610,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "LC CONTROL",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2545,6 +2640,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "BUSINT CABLE TERMINATION",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2574,6 +2670,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "PC, SPC CONTROL",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2603,6 +2700,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "PDP11 EXAMINE (OPC, FLAG1, PC)",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2632,6 +2730,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "ALU1",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2661,6 +2760,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "MEMORY DATA SELECTOR",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2690,6 +2790,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "PDL BUFFER LATCH",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2719,6 +2820,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "Q REGISTER",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2748,6 +2850,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "STATISTICS COUNTER",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2777,6 +2880,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "(CMEM) CONNECTOR PINS",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2806,6 +2910,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "M MEMORY",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2835,6 +2940,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "BYPASS CAPACITORS",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2864,6 +2970,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "SOURCE, DEST, OP DECODE",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2893,6 +3000,7 @@
 "version": 23,
 "title1": "CONS",
 "title2": "SHIFT/MASK CONTROL",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2922,6 +3030,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "PDL BUFFER LEFT",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2951,6 +3060,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "PDL BUFFER RIGHT",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -2980,6 +3090,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "PDP11 EXAMINE (A, M, FLAG2)",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3009,6 +3120,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "VIRTUAL MEMORY MAP STAGE 1",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3038,6 +3150,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "VIRTUAL MEMORY MAP STAGE 0",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3067,6 +3180,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "I RAM CONTROL",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3096,6 +3210,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "PDP11 EXAMINE CONTROL",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3125,6 +3240,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "IR PARITY",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3154,6 +3270,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "PDP11 EXAMINE (IR, OB)",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3183,6 +3300,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "VIRTUAL MEMORY MAP STAGE 1",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3212,6 +3330,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "Q REGISTER CONTROL",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3241,6 +3360,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "DISPATCH RAM",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3270,6 +3390,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "NPC,IPC,PC",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3299,6 +3420,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 0K-4K, 0-11",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3328,6 +3450,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 4K-8K, 0-11",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3357,6 +3480,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "A&M PARITY",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3386,6 +3510,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "DISPATCH RAM",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3415,6 +3540,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "A MEMORY LEFT",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3444,6 +3570,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 12K-16K, 0-11",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3473,6 +3600,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 8K-12K, 0-11",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3502,6 +3630,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "A CONTROL",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3531,6 +3660,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "A MEMORY RIGHT",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3560,6 +3690,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "DISPATCH RAM",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3589,6 +3720,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "INST. MODIFY OR",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3618,6 +3750,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "M CONTROL",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3647,6 +3780,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "LAST PC",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3676,6 +3810,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 8K-12K, 12-23",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3705,6 +3840,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3734,6 +3870,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "MASKER/OUTPUT SELECT",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3763,6 +3900,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "MASK GENERATION",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3792,6 +3930,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 4K-8K 12-23",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3821,6 +3960,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 0K-4K, 12-24",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3850,6 +3990,7 @@
 "version": 23,
 "title1": "CADR (CMEM)",
 "title2": "BUS INTERFACE CABLES",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3879,6 +4020,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "MASKER/OUTPUT SELECT",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3908,6 +4050,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "INSTRUCTION WRITE REGISTER",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -3951,6 +4094,7 @@
 "version": 23,
 "title1": "",
 "title2": "",
+"board": "LG684",
 "libs": [],
 "bodies": 0,
 "points": 0,
@@ -3974,6 +4118,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "Cycle Timing",
+"board": "MPG216",
 "libs": [],
 "bodies": 16,
 "points": 187,
@@ -3997,6 +4142,7 @@
 "version": 23,
 "title1": "CONS",
 "title2": "MAIN DATA PATHS",
+"board": "MPG216",
 "libs": [],
 "bodies": 54,
 "points": 249,
@@ -4020,6 +4166,7 @@
 "version": 23,
 "title1": "Lisp Machine",
 "title2": "System Configuration",
+"board": "",
 "libs": [],
 "bodies": 17,
 "points": 56,
@@ -4043,6 +4190,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "Main Control Paths",
+"board": "MPG216",
 "libs": [],
 "bodies": 25,
 "points": 140,
@@ -4066,6 +4214,7 @@
 "version": 23,
 "title1": "",
 "title2": "",
+"board": "",
 "libs": [],
 "bodies": 62,
 "points": 128,
@@ -4089,6 +4238,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "A and M Busses",
+"board": "PG21",
 "libs": [],
 "bodies": 16,
 "points": 111,
@@ -4112,6 +4262,7 @@
 "version": 23,
 "title1": "SIMPLE DATA PATH DIAGRAM",
 "title2": "",
+"board": "",
 "libs": [],
 "bodies": 34,
 "points": 112,
@@ -4135,6 +4286,7 @@
 "version": 23,
 "title1": "MIT LOCAL NETWORK - CHAOS",
 "title2": "",
+"board": "",
 "libs": [],
 "bodies": 29,
 "points": 104,
@@ -4158,6 +4310,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "UNIBUS TRANSCEIVER",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -4187,6 +4340,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "UNIBUS ADDRESS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -4216,6 +4370,7 @@
 "version": 23,
 "title1": "KEYBOARD INTERFACE",
 "title2": "SHIFT REGISTER",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -4245,6 +4400,7 @@
 "version": 23,
 "title1": "KEYBOARD INTERFACE",
 "title2": "CONTROL",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -4274,6 +4430,7 @@
 "version": 23,
 "title1": "MOUSE",
 "title2": "INPUT TO UNIBUS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -4303,6 +4460,7 @@
 "version": 23,
 "title1": "MOUSE INTERFACE",
 "title2": "POSITION TRACKER",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -4332,6 +4490,7 @@
 "version": 23,
 "title1": "HEX SPC SLOT",
 "title2": "BACKPLANE CONNECTIONS",
+"board": "LG684",
 "libs": [],
 "bodies": 0,
 "points": 166,
@@ -4383,6 +4542,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "PG21",
 "libs": [
 [
 "K0H-)F",
@@ -4413,6 +4573,7 @@
 "version": 21,
 "title1": "MEM INTERFACE",
 "title2": "ROWS A,B VERTICAL WIRES",
+"board": "PG21",
 "libs": [
 [
 "ISX<N$",
@@ -4492,6 +4653,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "PG21",
 "libs": [
 [
 "K0H-)D",
@@ -4522,6 +4684,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "PG21",
 "libs": [
 [
 "K0H-)D",
@@ -4566,6 +4729,7 @@
 "version": 21,
 "title1": "MEM INTERFACE",
 "title2": "UNIBUS BUFFER",
+"board": "PG21",
 "libs": [
 [
 ";M*;!H",
@@ -4595,6 +4759,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "PG21",
 "libs": [
 [
 "A5:<P",
@@ -4644,6 +4809,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "DECPC",
 "libs": [
 [
 "I5)E0",
@@ -4774,6 +4940,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "PG21",
 "libs": [
 [
 "ISX<N*",
@@ -4839,6 +5006,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "PG21",
 "libs": [
 [
 "ISX<N.",
@@ -4954,6 +5122,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "DECPC",
 "libs": [
 [
 "ASYH",
@@ -5017,6 +5186,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "PG21",
 "libs": [
 [
 "BODIES",
@@ -5046,6 +5216,7 @@
 "version": 21,
 "title1": "MEM INTERFACE",
 "title2": "UB OUT SELECT",
+"board": "PG21",
 "libs": [
 [
 ";M*;!D",
@@ -5131,6 +5302,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "PG21",
 "libs": [
 [
 "ILV\\P",
@@ -5241,6 +5413,7 @@
 "version": 21,
 "title1": "MEM INTERFACE",
 "title2": "BUS PARITY",
+"board": "PG21",
 "libs": [
 [
 "BODIES",
@@ -5270,6 +5443,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "PG21",
 "libs": [
 [
 "ISX<N$",
@@ -5335,6 +5509,7 @@
 "version": 21,
 "title1": "MEM INTERFACE",
 "title2": "XBUS XCV",
+"board": "PG21",
 "libs": [
 [
 "9-J;%@",
@@ -5392,6 +5567,7 @@
 "version": 21,
 "title1": "MEM INTERFACE",
 "title2": "ROWS A,B - SLOTS 1-16",
+"board": "PG21",
 "libs": [
 [
 "A5:<>*",
@@ -5421,6 +5597,7 @@
 "version": 21,
 "title1": "MEM INTERFACE",
 "title2": "UNIBUS TO BUS",
+"board": "PG21",
 "libs": [
 [
 "<,'+4",
@@ -5575,6 +5752,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "PG21",
 "libs": [
 [
 "K0H-)D",
@@ -5604,6 +5782,7 @@
 "version": 21,
 "title1": "MEM INTERFACE",
 "title2": "UB XCVRS",
+"board": "PG21",
 "libs": [
 [
 "IL&@",
@@ -5687,6 +5866,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "PG21",
 "libs": [
 [
 "ISX<N&",
@@ -5752,6 +5932,7 @@
 "version": 21,
 "title1": "MEM INTERFACE",
 "title2": "PAGE REGISTER",
+"board": "PG21",
 "libs": [
 [
 "I1:<22",
@@ -5781,6 +5962,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "PG21",
 "libs": [
 [
 "K0H-)D",
@@ -5881,6 +6063,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "PG21",
 "libs": [
 [
 "H18X",
@@ -5935,6 +6118,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "PG21",
 "libs": [
 [
 "K0H-)D",
@@ -5965,6 +6149,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "PG21",
 "libs": [
 [
 "ISX<N&",
@@ -6030,6 +6215,7 @@
 "version": 21,
 "title1": "CONS",
 "title2": "MEMORY INPUT MPXR",
+"board": "MPG21",
 "libs": [
 [
 "<.&;@",
@@ -6199,6 +6385,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "PG21",
 "libs": [
 [
 "K0H-)D",
@@ -6229,6 +6416,7 @@
 "version": 21,
 "title1": "MEM INTERFACE",
 "title2": "DATA PATH CONTROL",
+"board": "PG21",
 "libs": [
 [
 "BODIES",
@@ -6272,6 +6460,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "DECPC",
 "libs": [
 [
 "I5)E0",
@@ -6332,6 +6521,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "PG21",
 "libs": [
 [
 "ISX<N$",
@@ -6411,6 +6601,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "PG21",
 "libs": [
 [
 ";M)E-B",
@@ -6605,6 +6796,7 @@
 "version": 21,
 "title1": "CDC ADAPTOR",
 "title2": "DATA LINES",
+"board": "LG411",
 "libs": [
 [
 "BODIES",
@@ -6634,6 +6826,7 @@
 "version": 21,
 "title1": "CDC ADAPTOR",
 "title2": "DATA LINE TERMINATORS",
+"board": "LG411",
 "libs": [
 [
 "BODIES",
@@ -6677,6 +6870,7 @@
 "version": 21,
 "title1": "CDC ADAPTOR",
 "title2": "BUS DATA XCVRS",
+"board": "LG411",
 "libs": [
 [
 "9-J;%@",
@@ -6706,6 +6900,7 @@
 "version": 21,
 "title1": "DETAILS FOR GROUND PLANE",
 "title2": "SOCKET SIDE",
+"board": "DECPC",
 "libs": [
 [
 "ISXX",
@@ -6804,6 +6999,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "DECPC",
 "libs": [
 [
 "KUV@",
@@ -6854,6 +7050,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "PG21",
 "libs": [
 [
 "G4Y\\.6",
@@ -7232,6 +7429,7 @@
 "version": 21,
 "title1": "CDC ADAPTOR",
 "title2": "ADDRESS XCVRS",
+"board": "LG411",
 "libs": [
 [
 "9-J;%@",
@@ -7261,6 +7459,7 @@
 "version": 21,
 "title1": "CDC ADAPTOR",
 "title2": "ADDRESS PARITY",
+"board": "LG411",
 "libs": [
 [
 "BODIES",
@@ -7290,6 +7489,7 @@
 "version": 21,
 "title1": "CDC ADAPTOR",
 "title2": "CONTROL LOGIC",
+"board": "LG411",
 "libs": [
 [
 "BODIES",
@@ -7319,6 +7519,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "PG21",
 "libs": [
 [
 "G4Y\\.6",
@@ -7683,6 +7884,7 @@
 "version": 21,
 "title1": "CONS",
 "title2": "UNIBUS INTERFACE",
+"board": "",
 "libs": [
 [
 "J1:4T",
@@ -7797,6 +7999,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "DISPATCH CONTROL",
+"board": "MPG216",
 "libs": [],
 "bodies": 9,
 "points": 156,
@@ -7820,6 +8023,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 8K-12K, 36-48",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -7849,6 +8053,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 12K-16K, 36-48",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -7878,6 +8083,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "SPC MEMORY PARITY",
+"board": "MPG216",
 "libs": [],
 "bodies": 6,
 "points": 124,
@@ -7901,6 +8107,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 4K-8K, 36-48",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -7930,6 +8137,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "VMA REGISTER",
+"board": "MPG216",
 "libs": [],
 "bodies": 10,
 "points": 316,
@@ -7953,6 +8161,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 0K-4K, 36-48",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -7982,6 +8191,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "M MEMORY LATCH",
+"board": "MPG216",
 "libs": [],
 "bodies": 10,
 "points": 364,
@@ -8005,6 +8215,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 0K-4K, 24-35",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -8034,6 +8245,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "MAP OUTPUT DRIVE",
+"board": "MPG216",
 "libs": [],
 "bodies": 4,
 "points": 146,
@@ -8057,6 +8269,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -8086,6 +8299,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 4K-8K, 24-35",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -8115,6 +8329,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "PDL INDEX AND POINTER",
+"board": "MPG216",
 "libs": [],
 "bodies": 11,
 "points": 370,
@@ -8138,6 +8353,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "ALU CARRY AND FUNCTION",
+"board": "MPG216",
 "libs": [],
 "bodies": 23,
 "points": 290,
@@ -8161,6 +8377,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "PDL BUFFER CONTROL",
+"board": "MPG216",
 "libs": [],
 "bodies": 12,
 "points": 197,
@@ -8184,6 +8401,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 12K-16K, 24-35",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -8213,6 +8431,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "SHIFTER",
+"board": "MPG216",
 "libs": [],
 "bodies": 12,
 "points": 348,
@@ -8236,6 +8455,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "SHIFTER",
+"board": "MPG216",
 "libs": [],
 "bodies": 12,
 "points": 348,
@@ -8259,6 +8479,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM8K-12K, 24-35",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -8288,6 +8509,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "L REGISTER",
+"board": "MPG216",
 "libs": [],
 "bodies": 7,
 "points": 230,
@@ -8311,6 +8533,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "SPC MEMORY LATCH",
+"board": "MPG216",
 "libs": [],
 "bodies": 12,
 "points": 442,
@@ -8334,6 +8557,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "VMA INPUT SELECTOR",
+"board": "MPG216",
 "libs": [],
 "bodies": 14,
 "points": 396,
@@ -8357,6 +8581,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "MEMORY DATA REGISTER",
+"board": "MPG216",
 "libs": [],
 "bodies": 10,
 "points": 316,
@@ -8380,6 +8605,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "A MEMORY LATCH",
+"board": "MPG216",
 "libs": [],
 "bodies": 10,
 "points": 364,
@@ -8403,6 +8629,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "LOCATION COUNTER",
+"board": "MPG216",
 "libs": [],
 "bodies": 11,
 "points": 353,
@@ -8426,6 +8653,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "",
+"board": "MPG216",
 "libs": [],
 "bodies": 0,
 "points": 0,
@@ -8449,6 +8677,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "SPC WRITE DATA SEL",
+"board": "MPG216",
 "libs": [],
 "bodies": 13,
 "points": 404,
@@ -8472,6 +8701,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "MASKER",
+"board": "MPG216",
 "libs": [],
 "bodies": 16,
 "points": 480,
@@ -8495,6 +8725,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "OUTPUT SELECTORS",
+"board": "MPG216",
 "libs": [],
 "bodies": 16,
 "points": 452,
@@ -8518,6 +8749,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "MEMORY DATA SELECTOR",
+"board": "MPG216",
 "libs": [],
 "bodies": 12,
 "points": 373,
@@ -8541,6 +8773,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "PDL BUFFER LATCH",
+"board": "MPG216",
 "libs": [],
 "bodies": 5,
 "points": 182,
@@ -8564,6 +8797,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "Q REGISTER",
+"board": "MPG216",
 "libs": [],
 "bodies": 8,
 "points": 232,
@@ -8587,6 +8821,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "M MEMORY",
+"board": "MPG216",
 "libs": [],
 "bodies": 17,
 "points": 497,
@@ -8610,6 +8845,7 @@
 "version": 23,
 "title1": "CONS",
 "title2": "SHIFT/MASK CONTROL",
+"board": "MPG216",
 "libs": [],
 "bodies": 18,
 "points": 161,
@@ -8633,6 +8869,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "PDL BUFFER",
+"board": "MPG216",
 "libs": [],
 "bodies": 17,
 "points": 500,
@@ -8656,6 +8893,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "PDL BUFFER",
+"board": "MPG216",
 "libs": [],
 "bodies": 16,
 "points": 472,
@@ -8679,6 +8917,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "VIRTUAL MEMORY MAP STAGE 1",
+"board": "MPG216",
 "libs": [],
 "bodies": 17,
 "points": 456,
@@ -8702,6 +8941,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "MASK GENERATION",
+"board": "MPG216",
 "libs": [],
 "bodies": 16,
 "points": 448,
@@ -8725,6 +8965,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "VIRTUAL MEMORY MAP STAGE 0",
+"board": "MPG216",
 "libs": [],
 "bodies": 14,
 "points": 404,
@@ -8748,6 +8989,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "I RAM CONTROL",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -8791,6 +9033,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "VIRTUAL MEMORY MAP STAGE 1",
+"board": "MPG216",
 "libs": [],
 "bodies": 17,
 "points": 498,
@@ -8814,6 +9057,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "Q REGISTER CONTROL",
+"board": "MPG216",
 "libs": [],
 "bodies": 6,
 "points": 158,
@@ -8837,6 +9081,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "DISPATCH RAM",
+"board": "MPG216",
 "libs": [],
 "bodies": 21,
 "points": 474,
@@ -8860,6 +9105,7 @@
 "version": 21,
 "title1": "CADR",
 "title2": "",
+"board": "MPG21",
 "libs": [
 [
 ";M*;!H",
@@ -8889,6 +9135,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "",
+"board": "MPG216",
 "libs": [],
 "bodies": 13,
 "points": 384,
@@ -8912,6 +9159,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -8941,6 +9189,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "ALU",
+"board": "MPG216",
 "libs": [],
 "bodies": 9,
 "points": 407,
@@ -8964,6 +9213,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 8K-12K, 12-23",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -8993,6 +9243,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "A&M PARITY",
+"board": "MPG216",
 "libs": [],
 "bodies": 8,
 "points": 180,
@@ -9016,6 +9267,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "DISPATCH RAM",
+"board": "MPG216",
 "libs": [],
 "bodies": 21,
 "points": 476,
@@ -9039,6 +9291,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "A MEMORY",
+"board": "MPG216",
 "libs": [],
 "bodies": 17,
 "points": 500,
@@ -9062,6 +9315,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 0K-4K, 12-24",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -9091,6 +9345,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "A CONTROL",
+"board": "MPG216",
 "libs": [],
 "bodies": 15,
 "points": 323,
@@ -9114,6 +9369,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 4K-8K 12-23",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -9143,6 +9399,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "A MEMORY",
+"board": "MPG216",
 "libs": [],
 "bodies": 16,
 "points": 472,
@@ -9166,6 +9423,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "DISPATCH RAM",
+"board": "MPG216",
 "libs": [],
 "bodies": 21,
 "points": 474,
@@ -9189,6 +9447,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -9218,6 +9477,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "M CONTROL",
+"board": "MPG216",
 "libs": [],
 "bodies": 10,
 "points": 207,
@@ -9241,6 +9501,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 4K-8K, 0-11",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -9270,6 +9531,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "SPC MEMORY AND POINTER",
+"board": "MPG216",
 "libs": [],
 "bodies": 14,
 "points": 433,
@@ -9293,6 +9555,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 0K-4K, 0-11",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -9322,6 +9585,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 8K-12K, 0-11",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -9365,6 +9629,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 12K-16K, 0-11",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -9394,6 +9659,7 @@
 "version": 19,
 "title1": "CONS",
 "title2": "RAMS",
+"board": "MPG21",
 "libs": [
 [
 ";M*;!H",
@@ -9438,6 +9704,7 @@
 "version": 21,
 "title1": "CONS",
 "title2": "MEMORY INPUT MPXR",
+"board": "MPG21",
 "libs": [
 [
 ";M*;%J",
@@ -9467,6 +9734,7 @@
 "version": 19,
 "title1": "CONS",
 "title2": "RAMS",
+"board": "MPG21",
 "libs": [
 [
 ";M*;!H",
@@ -9525,6 +9793,7 @@
 "version": 19,
 "title1": "",
 "title2": "",
+"board": "W940",
 "libs": [
 [
 "IQ9@",
@@ -9595,6 +9864,7 @@
 "version": 19,
 "title1": "CONS",
 "title2": "RAMS",
+"board": "MPG21",
 "libs": [
 [
 ";M*;!H",
@@ -9639,6 +9909,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "MPG21",
 "libs": [
 [
 "<,J;!R",
@@ -9878,6 +10149,7 @@
 "version": 19,
 "title1": "CONS",
 "title2": "RAMS",
+"board": "MPG21",
 "libs": [
 [
 ";M*;!H",
@@ -9908,6 +10180,7 @@
 "version": 19,
 "title1": "CONS",
 "title2": "RAMS",
+"board": "MPG21",
 "libs": [
 [
 ";M*;!H",
@@ -9938,6 +10211,7 @@
 "version": 21,
 "title1": "CONS",
 "title2": "PDL INDEX AND POINTER",
+"board": "MPG21",
 "libs": [
 [
 "9-:;!N",
@@ -10149,6 +10423,7 @@
 "version": 21,
 "title1": "CONS",
 "title2": "SOURCE&DEST CODES",
+"board": "MPG21",
 "libs": [
 [
 "GTV#\"8",
@@ -10265,6 +10540,7 @@
 "version": 19,
 "title1": "CONS",
 "title2": "DISPATCH CONTROL",
+"board": "MPG21",
 "libs": [
 [
 "9-:;!P",
@@ -10295,6 +10571,7 @@
 "version": 19,
 "title1": "",
 "title2": "",
+"board": "MPG21",
 "libs": [
 [
 "A0I]@",
@@ -10354,6 +10631,7 @@
 "version": 21,
 "title1": "CONS",
 "title2": "TIMING",
+"board": "MPG21",
 "libs": [
 [
 ";M*;-D",
@@ -10383,6 +10661,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "MPG21",
 "libs": [
 [
 ";M*;%H",
@@ -10468,6 +10747,7 @@
 "version": 21,
 "title1": "CONS",
 "title2": "TIMING",
+"board": "MPG21",
 "libs": [
 [
 ";M*;%J",
@@ -10511,6 +10791,7 @@
 "version": 21,
 "title1": "CONS",
 "title2": "UNIBUS INTERFACE",
+"board": "LG411",
 "libs": [
 [
 ";M&+",
@@ -10652,6 +10933,7 @@
 "version": 21,
 "title1": "",
 "title2": "\u007f@\u0010",
+"board": "MPG21",
 "libs": [
 [
 "IL&@",
@@ -10761,6 +11043,7 @@
 "version": 21,
 "title1": "CONS",
 "title2": "FLAGS,CONDITIONALS",
+"board": "MPG21",
 "libs": [
 [
 ";M*;!P",
@@ -10846,6 +11129,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "MPG21",
 "libs": [
 [
 ";M*;AL",
@@ -10945,6 +11229,7 @@
 "version": 21,
 "title1": "CONS",
 "title2": "SHIFT/MASK CONTROL",
+"board": "MPG21",
 "libs": [
 [
 ";M*;AL",
@@ -11016,6 +11301,7 @@
 "version": 19,
 "title1": "CONS",
 "title2": "VIRTUAL MEM MAP,STAGE 1",
+"board": "MPG21",
 "libs": [
 [
 "<LVC%J",
@@ -11241,6 +11527,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "MPG21",
 "libs": [
 [
 ";M*;%J",
@@ -11270,6 +11557,7 @@
 "version": 19,
 "title1": "CONS",
 "title2": "MASK GENERATION",
+"board": "MPG21",
 "libs": [
 [
 ";M*;!H",
@@ -11356,6 +11644,7 @@
 "version": 19,
 "title1": "CONS",
 "title2": "VIRTUAL MEM MAP,STAGE 0",
+"board": "MPG21",
 "libs": [
 [
 "<LVC%J",
@@ -11581,6 +11870,7 @@
 "version": 19,
 "title1": "CONS",
 "title2": "NPC",
+"board": "MPG21",
 "libs": [
 [
 ";M*;%J",
@@ -11709,6 +11999,7 @@
 "version": 21,
 "title1": "CONS",
 "title2": "INSTRUCTION LATCH",
+"board": "MPG21",
 "libs": [
 [
 "9-:;!P",
@@ -11934,6 +12225,7 @@
 "version": 19,
 "title1": "CONS",
 "title2": "DISPATCH MEMORY",
+"board": "MPG21",
 "libs": [
 [
 "<,J;%D",
@@ -11992,6 +12284,7 @@
 "version": 23,
 "title1": "",
 "title2": "",
+"board": "",
 "libs": [],
 "bodies": 8,
 "points": 37,
@@ -12015,6 +12308,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "DEBUGER DATA PATH",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -12045,6 +12339,7 @@
 "version": 23,
 "title1": "CDC ADAPTOR",
 "title2": "FLAT CABLE CONNECTORS",
+"board": "LG683",
 "libs": [],
 "bodies": 0,
 "points": 140,
@@ -12068,6 +12363,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "BUS PARITY",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -12111,6 +12407,7 @@
 "version": 23,
 "title1": "CDC ADAPTOR",
 "title2": "MEMOUT LATCHES",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -12140,6 +12437,7 @@
 "version": 23,
 "title1": "XBUS",
 "title2": "BACKPLANE CONNECTIONS",
+"board": "LG683",
 "libs": [],
 "bodies": 0,
 "points": 200,
@@ -12163,6 +12461,7 @@
 "version": 23,
 "title1": "CDC ADAPTOR",
 "title2": "ADDRESS XCVRS",
+"board": "LG683",
 "libs": [],
 "bodies": 11,
 "points": 289,
@@ -12186,6 +12485,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "UNIBUS ADDRESS TRANSCEIVERS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -12229,6 +12529,7 @@
 "version": 23,
 "title1": "CDC ADAPTOR",
 "title2": "ADDRESS PARITY",
+"board": "LG683",
 "libs": [
 [
 "BODIES",
@@ -12258,6 +12559,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "ERROR LOGIC",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -12301,6 +12603,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "XBUS BACKPLANE CONNS",
+"board": "LG684",
 "libs": [],
 "bodies": 0,
 "points": 230,
@@ -12325,6 +12628,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "SINGLE TRIDENT",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -12355,6 +12659,7 @@
 "version": 23,
 "title1": "DISK MULTIPLEXOR",
 "title2": "EDGE CONNECTIONS",
+"board": "LG683",
 "libs": [],
 "bodies": 0,
 "points": 114,
@@ -12378,6 +12683,7 @@
 "version": 23,
 "title1": "DISK MULTIPLEXOR",
 "title2": "CLOCK, DATA MULTIPLEX",
+"board": "LG683",
 "libs": [
 [
 "BODIES",
@@ -12407,6 +12713,7 @@
 "version": 23,
 "title1": "DISK MULTIPLEXOR",
 "title2": "POWER SEQUENCING",
+"board": "LG683",
 "libs": [
 [
 "BODIES",
@@ -12436,6 +12743,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "MICROCODE INSTRUCTION",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -12465,6 +12773,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "60 CYCLE CLOCK & GPIO",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -12494,6 +12803,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "KEYBOARD, MOUSE CLOCK SYNC",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -12523,6 +12833,7 @@
 "version": 23,
 "title1": "DISK MULTIPLEXOR",
 "title2": "I/O EXCEPT R/W",
+"board": "LG683",
 "libs": [
 [
 "BODIES",
@@ -12553,6 +12864,7 @@
 "version": 23,
 "title1": "DISK MULTIPLEXOR",
 "title2": "CABLES",
+"board": "LG683",
 "libs": [],
 "bodies": 1,
 "points": 225,
@@ -12577,6 +12889,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "MOUSE 2",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -12620,6 +12933,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "EDGE CONNECTIONS",
+"board": "LG684",
 "libs": [],
 "bodies": 6,
 "points": 108,
@@ -12671,6 +12985,7 @@
 "version": 23,
 "title1": "",
 "title2": "DISK MULTIPLEXOR",
+"board": "LG683",
 "libs": [
 [
 "BODIES",
@@ -12701,6 +13016,7 @@
 "version": 23,
 "title1": "XBUS",
 "title2": "BACKPLANE CONNECTIONS",
+"board": "LG684",
 "libs": [],
 "bodies": 0,
 "points": 198,
@@ -12738,6 +13054,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "MICROCODE CONTROL",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -12767,6 +13084,7 @@
 "version": 23,
 "title1": "DISK MULTIPLEXOR",
 "title2": "CAPACITORS, HI",
+"board": "LG683",
 "libs": [
 [
 "BODIES",
@@ -12796,6 +13114,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "PARITY",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -12839,6 +13158,7 @@
 "version": 23,
 "title1": "XBUS MEMORY",
 "title2": "ADDRESS SOURCE",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -12896,6 +13216,7 @@
 "version": 23,
 "title1": "XBUS MEMORY",
 "title2": "ADDRESS DISTRIBUTION LEFT",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -12926,6 +13247,7 @@
 "version": 23,
 "title1": "XBUS MEMORY",
 "title2": "BANK 1 RIGHT",
+"board": "LG684",
 "libs": [],
 "bodies": 52,
 "points": 603,
@@ -12978,6 +13300,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 4K-8K, 36-48",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -13007,6 +13330,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "VMA REGISTER",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -13036,6 +13360,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 12K-16K, 24-35",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -13065,6 +13390,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -13094,6 +13420,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "OPC, DC, ZERO DRIVE",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -13123,6 +13450,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "INSTRUCTION REGISTER",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -13152,6 +13480,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 12K-16K, 24-35",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -13181,6 +13510,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 0K-4K, 36-48",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -13210,6 +13540,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "CONNECTOR PINS",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -13240,6 +13571,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -13269,6 +13601,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "PDP11 EXAMINE CONTROL",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -13299,6 +13632,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "VMEMORY CONTROL",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -13329,6 +13663,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "OUTPUT SELECTORS",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -13358,6 +13693,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "PC, SPC CONTROL",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -13388,6 +13724,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "SOURCE, DEST, OP DECODE",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -13418,6 +13755,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "PDL BUFFER LEFT",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -13461,6 +13799,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "I RAM CONTROL",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -13490,6 +13829,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 4K-8K, 0-11",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -13533,6 +13873,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "A MEMORY LEFT",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -13576,6 +13917,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 12K-16K, 0-11",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -13605,6 +13947,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 4K-8K 12-23",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -13634,6 +13977,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "A MEMORY RIGHT",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -13663,6 +14007,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 4K-8K, 0-11",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -13692,6 +14037,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "SPC MEMORY AND POINTER",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -13721,6 +14067,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 8K-12K, 12-23",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -13764,6 +14111,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "BYPASS CAPACITORS",
+"board": "LG684",
 "libs": [],
 "bodies": 24,
 "points": 0,
@@ -13801,6 +14149,7 @@
 "version": 19,
 "title1": "CONS",
 "title2": "PDL INDEX AND POINTER",
+"board": "MPG21",
 "libs": [
 [
 ";M*;%L",
@@ -14011,6 +14360,7 @@
 "version": 19,
 "title1": "CONS",
 "title2": "PDL BUFFER CONTROL",
+"board": "MPG21",
 "libs": [
 [
 ";M*;-N",
@@ -14041,6 +14391,7 @@
 "version": 19,
 "title1": "CONS",
 "title2": "IMOD & DEBUG",
+"board": "MPG21",
 "libs": [
 [
 "I1:<22",
@@ -14071,6 +14422,7 @@
 "version": 19,
 "title1": "CONS",
 "title2": "SOURCE&DEST CODES",
+"board": "MPG21",
 "libs": [
 [
 ";M*;!P",
@@ -14143,6 +14495,7 @@
 "version": 19,
 "title1": "CONS",
 "title2": "MEMORY PARITY",
+"board": "MPG21",
 "libs": [
 [
 ";M*;AL",
@@ -14257,6 +14610,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "TRANSMIT BUFFER",
+"board": "LG684",
 "libs": [],
 "bodies": 10,
 "points": 245,
@@ -14280,6 +14634,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "CONN TO TRANSCEIVER",
+"board": "LG684",
 "libs": [],
 "bodies": 12,
 "points": 160,
@@ -14303,6 +14658,7 @@
 "version": 23,
 "title1": "LSI-11 (Q-Bus) Chaosnet",
 "title2": "Bus Interface",
+"board": "LG683",
 "libs": [],
 "bodies": 13,
 "points": 378,
@@ -14326,6 +14682,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "UNIBUS OUTPUT",
+"board": "LG684",
 "libs": [],
 "bodies": 8,
 "points": 296,
@@ -14349,6 +14706,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "DETECTOR",
+"board": "LG684",
 "libs": [],
 "bodies": 17,
 "points": 155,
@@ -14372,6 +14730,7 @@
 "version": 23,
 "title1": "QUAD SPC SLOT",
 "title2": "BACKPLANE CONNECTIONS",
+"board": "LG683",
 "libs": [],
 "bodies": 0,
 "points": 168,
@@ -14395,6 +14754,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "MY TURN TIMER",
+"board": "LG684",
 "libs": [],
 "bodies": 10,
 "points": 199,
@@ -14418,6 +14778,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "RECEIVER BUFFER",
+"board": "LG684",
 "libs": [],
 "bodies": 12,
 "points": 253,
@@ -14441,6 +14802,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "TRANSMIT CONTROL",
+"board": "LG684",
 "libs": [],
 "bodies": 18,
 "points": 158,
@@ -14464,6 +14826,7 @@
 "version": 23,
 "title1": "QUAD SPC BOARD",
 "title2": "UNIBUS INTERRUPT",
+"board": "LG683",
 "libs": [],
 "bodies": 30,
 "points": 300,
@@ -14487,6 +14850,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "CONN TO TRANSCEIVER",
+"board": "LG683",
 "libs": [],
 "bodies": 12,
 "points": 164,
@@ -14510,6 +14874,7 @@
 "version": 23,
 "title1": "QUAD BOARD CHAOS NET",
 "title2": "UNIBUS TRANSCEIVER",
+"board": "LG683",
 "libs": [],
 "bodies": 7,
 "points": 176,
@@ -14533,6 +14898,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "SERIAL MODULATOR",
+"board": "LG684",
 "libs": [],
 "bodies": 14,
 "points": 168,
@@ -14556,6 +14922,7 @@
 "version": 23,
 "title1": "",
 "title2": "",
+"board": "LG684",
 "libs": [],
 "bodies": 0,
 "points": 0,
@@ -14579,6 +14946,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "FIND MSGS DESTINED FOR ME",
+"board": "LG684",
 "libs": [],
 "bodies": 18,
 "points": 373,
@@ -14602,6 +14970,7 @@
 "version": 23,
 "title1": "LSI-11 (Q-Bus) Chaosnet",
 "title2": "CSR,Reply,IREQ,Decode",
+"board": "LG683",
 "libs": [],
 "bodies": 26,
 "points": 295,
@@ -14625,6 +14994,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "TRANSMIT CLOCK",
+"board": "LG684",
 "libs": [],
 "bodies": 5,
 "points": 79,
@@ -14648,6 +15018,7 @@
 "version": 23,
 "title1": "",
 "title2": "",
+"board": "LG684",
 "libs": [],
 "bodies": 0,
 "points": 0,
@@ -14671,6 +15042,7 @@
 "version": 23,
 "title1": "QUAD SPC BOARD",
 "title2": "UNIBUS ADDRESS",
+"board": "LG683",
 "libs": [],
 "bodies": 20,
 "points": 216,
@@ -14694,6 +15066,7 @@
 "version": 23,
 "title1": "QUAD SPC BOARD",
 "title2": "INTERVAL TIMER",
+"board": "LG683",
 "libs": [],
 "bodies": 13,
 "points": 227,
@@ -14717,6 +15090,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "RECEIVE CONTROL",
+"board": "LG684",
 "libs": [],
 "bodies": 11,
 "points": 76,
@@ -14740,6 +15114,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "RECEIVE CLOCK",
+"board": "LG684",
 "libs": [],
 "bodies": 13,
 "points": 154,
@@ -14763,6 +15138,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "UNIBUS CONTROL",
+"board": "LG684",
 "libs": [],
 "bodies": 15,
 "points": 160,
@@ -14786,6 +15162,7 @@
 "version": 23,
 "title1": "QUAD SPC BOARD",
 "title2": "UNIBUS INTERRUPT",
+"board": "LG683",
 "libs": [],
 "bodies": 30,
 "points": 300,
@@ -14809,6 +15186,7 @@
 "version": 23,
 "title1": "Q-BUS CHAOS NET",
 "title2": "Q-BUS TRANSCEIVER",
+"board": "LG683",
 "libs": [],
 "bodies": 10,
 "points": 221,
@@ -14832,6 +15210,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "LINE DRIVERS",
+"board": "LG684",
 "libs": [],
 "bodies": 12,
 "points": 124,
@@ -14855,6 +15234,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "CONN TO TRANSCEIVER",
+"board": "LG683",
 "libs": [],
 "bodies": 0,
 "points": 40,
@@ -14878,6 +15258,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "TRANSMIT CLOCK",
+"board": "LG684",
 "libs": [],
 "bodies": 6,
 "points": 83,
@@ -14901,6 +15282,7 @@
 "version": 23,
 "title1": "Q-BUS CHAOS NET",
 "title2": "INTERRUPT LOGIC",
+"board": "LG683",
 "libs": [],
 "bodies": 19,
 "points": 148,
@@ -14924,6 +15306,7 @@
 "version": 23,
 "title1": "QUAD SPC BOARD",
 "title2": "UNIBUS ADDRESS",
+"board": "LG683",
 "libs": [],
 "bodies": 17,
 "points": 246,
@@ -14947,6 +15330,7 @@
 "version": 23,
 "title1": "QUAD SPC BOARD",
 "title2": "INTERVAL TIMER",
+"board": "LG683",
 "libs": [],
 "bodies": 13,
 "points": 227,
@@ -14970,6 +15354,7 @@
 "version": 23,
 "title1": "Q-BUS CHAOS NET",
 "title2": "BACKPLANE",
+"board": "LG683",
 "libs": [],
 "bodies": 1,
 "points": 72,
@@ -14993,6 +15378,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "UNIBUS CONTROL",
+"board": "LG684",
 "libs": [],
 "bodies": 15,
 "points": 159,
@@ -15016,6 +15402,7 @@
 "version": 23,
 "title1": "QUAD BOARD CHAOS NET",
 "title2": "UNIBUS TRANSCEIVER",
+"board": "LG683",
 "libs": [],
 "bodies": 10,
 "points": 238,
@@ -15039,6 +15426,7 @@
 "version": 21,
 "title1": "CHAOS NETWORK",
 "title2": "PROGRAMABLE REAL TIME CLOCK",
+"board": "LG411",
 "libs": [
 [
 "BODIES",
@@ -15068,6 +15456,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "LG411",
 "libs": [
 [
 "BODS",
@@ -15097,6 +15486,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "LG411",
 "libs": [
 [
 "BODS",
@@ -15126,6 +15516,7 @@
 "version": 21,
 "title1": "CAIOS NETWORK",
 "title2": "RECIEVE CONTROL",
+"board": "LG411",
 "libs": [
 [
 "BODIES",
@@ -15155,6 +15546,7 @@
 "version": 21,
 "title1": "UNIFACE",
 "title2": "EDGE CONNECTORS",
+"board": "LG411",
 "libs": [
 [
 "ASYL6<",
@@ -15184,6 +15576,7 @@
 "version": 21,
 "title1": "CHAOS NET",
 "title2": "UNIBUS DATA PATHS",
+"board": "LG411",
 "libs": [
 [
 ";M*;%J",
@@ -15213,6 +15606,7 @@
 "version": 21,
 "title1": "CHAOS NET",
 "title2": "INTERRUPT CONTROL",
+"board": "LG411",
 "libs": [
 [
 "BODS",
@@ -15256,6 +15650,7 @@
 "version": 21,
 "title1": "CAIOS NETWORK",
 "title2": "PREAMBLE DETECTION",
+"board": "LG411",
 "libs": [
 [
 "BODIES",
@@ -15299,6 +15694,7 @@
 "version": 21,
 "title1": "CHAOS NET",
 "title2": "OPTO ISOLATOR",
+"board": "DECPC",
 "libs": [
 [
 ":,VS",
@@ -15384,6 +15780,7 @@
 "version": 21,
 "title1": "CAIOS NETWORK",
 "title2": "TRANSMIT CLOCK",
+"board": "LG411",
 "libs": [
 [
 "BODIES",
@@ -15441,6 +15838,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "LG411",
 "libs": [
 [
 "BODS",
@@ -15470,6 +15868,7 @@
 "version": 21,
 "title1": "CAIOS NETWORK",
 "title2": "MY TURN TIMER",
+"board": "LG411",
 "libs": [
 [
 "BODIES",
@@ -15513,6 +15912,7 @@
 "version": 21,
 "title1": "CAIOS NETWORK (22)",
 "title2": "INTERUPT CONTROL",
+"board": "LG411",
 "libs": [
 [
 "BODIES",
@@ -15542,6 +15942,7 @@
 "version": 21,
 "title1": "CAIOS NETWORK (20)",
 "title2": "PARALLEL DATA PATHS",
+"board": "LG411",
 "libs": [
 [
 "BODIES",
@@ -15571,6 +15972,7 @@
 "version": 21,
 "title1": "CHAOS NET",
 "title2": "UNIBUS CONTROL",
+"board": "LG411",
 "libs": [
 [
 "BODS",
@@ -15600,6 +16002,7 @@
 "version": 21,
 "title1": "CAIOS NETWORK (16)",
 "title2": "RECIEVER BUFFER",
+"board": "LG411",
 "libs": [
 [
 "BODIES",
@@ -15629,6 +16032,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "LG411",
 "libs": [
 [
 "BODS",
@@ -15658,6 +16062,7 @@
 "version": 21,
 "title1": "MEM INTERFACE",
 "title2": "UB XCVRS",
+"board": "PG21",
 "libs": [
 [
 "<.&;B<",
@@ -15757,6 +16162,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "LG411",
 "libs": [
 [
 "BODS",
@@ -15786,6 +16192,7 @@
 "version": 21,
 "title1": "CHAOS NETWORK",
 "title2": "RECEIVER BUFFER",
+"board": "LG411",
 "libs": [
 [
 "BODS",
@@ -15815,6 +16222,7 @@
 "version": 21,
 "title1": "",
 "title2": "",
+"board": "W940",
 "libs": [
 [
 "9-6(",
@@ -15960,6 +16368,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "TRANSMIT BUFFER",
+"board": "LG684",
 "libs": [
 [
 "NBODS",
@@ -15989,6 +16398,7 @@
 "version": 21,
 "title1": "CHAOS NET",
 "title2": "CONN TO TRANSCEIVER",
+"board": "LG411",
 "libs": [
 [
 "BODS",
@@ -16018,6 +16428,7 @@
 "version": 21,
 "title1": "CHAOS NET",
 "title2": "FIND MSGS DESTINED FOR ME",
+"board": "LG411",
 "libs": [
 [
 "BODS",
@@ -16047,6 +16458,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "CONN TO TRANSCEIVER",
+"board": "LG684",
 "libs": [
 [
 "NBODS",
@@ -16090,6 +16502,7 @@
 "version": 21,
 "title1": "CHAOS NET",
 "title2": "UNIBUS DATA PATHS",
+"board": "LG411",
 "libs": [
 [
 ";M*;%J",
@@ -16119,6 +16532,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "UNIBUS OUTPUT",
+"board": "LG684",
 "libs": [],
 "bodies": 8,
 "points": 296,
@@ -16142,6 +16556,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "DETECTOR",
+"board": "LG684",
 "libs": [
 [
 "NBODS",
@@ -16171,6 +16586,7 @@
 "version": 21,
 "title1": "CHAOS NET",
 "title2": "INTERRUPT CONTROL",
+"board": "LG411",
 "libs": [
 [
 "BODS",
@@ -16200,6 +16616,7 @@
 "version": 23,
 "title1": "CABLE INTERFACE",
 "title2": "TRANSMIT AND RECEIVE",
+"board": "LG684",
 "libs": [],
 "bodies": 27,
 "points": 120,
@@ -16223,6 +16640,7 @@
 "version": 23,
 "title1": "CABLE INTERFACE",
 "title2": "FAULT PROTECTION",
+"board": "LG684",
 "libs": [],
 "bodies": 17,
 "points": 91,
@@ -16246,6 +16664,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "MY TURN TIMER",
+"board": "LG684",
 "libs": [],
 "bodies": 9,
 "points": 218,
@@ -16269,6 +16688,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "RECEIVER BUFFER",
+"board": "LG684",
 "libs": [
 [
 "NBODS",
@@ -16298,6 +16718,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "TRANSMIT CONTROL",
+"board": "LG684",
 "libs": [
 [
 "NBODS",
@@ -16327,6 +16748,7 @@
 "version": 21,
 "title1": "CHAOS NET",
 "title2": "DETECTOR",
+"board": "LG411",
 "libs": [
 [
 "BODS",
@@ -16370,6 +16792,7 @@
 "version": 21,
 "title1": "CAIOS NETWORK",
 "title2": "MY TURN TIMER",
+"board": "LG411",
 "libs": [
 [
 "BODIES",
@@ -16399,6 +16822,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "INTERRUPT CONTROL",
+"board": "LG684",
 "libs": [
 [
 "NBODS",
@@ -16428,6 +16852,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "SERIAL MODULATOR",
+"board": "LG684",
 "libs": [
 [
 "NBODS",
@@ -16457,6 +16882,7 @@
 "version": 21,
 "title1": "CHAOS NET",
 "title2": "UNIBUS CONTROL",
+"board": "LG411",
 "libs": [
 [
 "BODS",
@@ -16486,6 +16912,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "FIND MSGS DESTINED FOR ME",
+"board": "LG684",
 "libs": [
 [
 "NBODS",
@@ -16515,6 +16942,7 @@
 "version": 21,
 "title1": "CHAOS NET",
 "title2": "TRANSMIT BUFFER",
+"board": "LG411",
 "libs": [
 [
 "BODS",
@@ -16544,6 +16972,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "TRANSMIT CLOCK",
+"board": "LG684",
 "libs": [],
 "bodies": 3,
 "points": 34,
@@ -16567,6 +16996,7 @@
 "version": 23,
 "title1": "",
 "title2": "",
+"board": "LG684",
 "libs": [],
 "bodies": 0,
 "points": 0,
@@ -16604,6 +17034,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "RECEIVE CONTROL",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -16633,6 +17064,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "UNIBUS CONTROL",
+"board": "LG684",
 "libs": [
 [
 "NBODS",
@@ -16662,6 +17094,7 @@
 "version": 23,
 "title1": "CABLE INTERFACE",
 "title2": "LOCAL SIDE",
+"board": "LG684",
 "libs": [],
 "bodies": 30,
 "points": 200,
@@ -16685,6 +17118,7 @@
 "version": 21,
 "title1": "CHAOS NET",
 "title2": "TRANSMIT CONTROL",
+"board": "LG411",
 "libs": [
 [
 "BODS",
@@ -16728,6 +17162,7 @@
 "version": 21,
 "title1": "CHAOS NETWORK",
 "title2": "PROGRAMABLE REAL TIME CLOCK",
+"board": "LG411",
 "libs": [
 [
 "BODIES",
@@ -16771,6 +17206,7 @@
 "version": 21,
 "title1": "CAIOS NETWORK",
 "title2": "TRANSMIT CLOCK",
+"board": "LG411",
 "libs": [
 [
 "BODIES",
@@ -16800,6 +17236,7 @@
 "version": 21,
 "title1": "CAIOS NETWORK",
 "title2": "MY TURN TIMER",
+"board": "LG411",
 "libs": [
 [
 "BODIES",
@@ -16857,6 +17294,7 @@
 "version": 23,
 "title1": "PDP10 CHAOS",
 "title2": "DATAI",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -16886,6 +17324,7 @@
 "version": 23,
 "title1": "PDP10 CHAOS",
 "title2": "IO BUSS TRANSCEIVERS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -16915,6 +17354,7 @@
 "version": 23,
 "title1": "PDP10 CHAOS",
 "title2": "TRANSMIT BUFFER",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -16944,6 +17384,7 @@
 "version": 23,
 "title1": "PDP10 CHAOS",
 "title2": "IOB CONTROL, INTERRUPT",
+"board": "LG684",
 "libs": [
 [
 "SIPS",
@@ -16978,6 +17419,7 @@
 "version": 23,
 "title1": "PDP10 CHAOS",
 "title2": "RECEIVE CLOCK",
+"board": "LG684",
 "libs": [],
 "bodies": 13,
 "points": 154,
@@ -17001,6 +17443,7 @@
 "version": 23,
 "title1": "PDP10 CHAOS",
 "title2": "RECEIVE CONTROL",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -17030,6 +17473,7 @@
 "version": 23,
 "title1": "PDP10 CHAOS",
 "title2": "DETECTOR",
+"board": "LG684",
 "libs": [],
 "bodies": 17,
 "points": 155,
@@ -17053,6 +17497,7 @@
 "version": 23,
 "title1": "PDP10 CHAOS",
 "title2": "FIND MSGS DESTINED FOR ME",
+"board": "LG684",
 "libs": [],
 "bodies": 18,
 "points": 373,
@@ -17076,6 +17521,7 @@
 "version": 23,
 "title1": "PDP10 CHAOS",
 "title2": "MY TURN TIMER",
+"board": "LG684",
 "libs": [],
 "bodies": 10,
 "points": 199,
@@ -17099,6 +17545,7 @@
 "version": 23,
 "title1": "PDP10 CHAOS",
 "title2": "DATAO SHIFT",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -17128,6 +17575,7 @@
 "version": 23,
 "title1": "PDP10 CHAOS",
 "title2": "RECEIVE BUFFER",
+"board": "LG684",
 "libs": [],
 "bodies": 17,
 "points": 315,
@@ -17151,6 +17599,7 @@
 "version": 23,
 "title1": "PDP10 CHAOS",
 "title2": "LINE DRIVERS",
+"board": "LG684",
 "libs": [],
 "bodies": 10,
 "points": 163,
@@ -17174,6 +17623,7 @@
 "version": 23,
 "title1": "PDP10 CHAOS",
 "title2": "TRANSMIT CONTROL",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -17203,6 +17653,7 @@
 "version": 23,
 "title1": "PDP10 CHAOS",
 "title2": "IOB TERMINATION, CABLES",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -17232,6 +17683,7 @@
 "version": 23,
 "title1": "PDP10 CHAOS",
 "title2": "TRANSMIT CLOCK",
+"board": "LG684",
 "libs": [],
 "bodies": 4,
 "points": 63,
@@ -17255,6 +17707,7 @@
 "version": 23,
 "title1": "PDP10 CHAOS",
 "title2": "SERIAL MODULATOR",
+"board": "LG684",
 "libs": [],
 "bodies": 13,
 "points": 178,
@@ -17278,6 +17731,7 @@
 "version": 23,
 "title1": "PDP10 CHAOS",
 "title2": "CONI, CONO",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -17307,6 +17761,7 @@
 "version": 23,
 "title1": "CONS",
 "title2": "UNIBUS INTERFACE",
+"board": "LG684",
 "libs": [],
 "bodies": 0,
 "points": 7,
@@ -17330,6 +17785,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "CONN TO TRANSCEIVER",
+"board": "LG684",
 "libs": [
 [
 "NBODS",
@@ -17359,6 +17815,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "UNIBUS OUTPUT",
+"board": "LG684",
 "libs": [],
 "bodies": 8,
 "points": 296,
@@ -17382,6 +17839,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "DETECTOR",
+"board": "LG684",
 "libs": [
 [
 "NBODS",
@@ -17411,6 +17869,7 @@
 "version": 23,
 "title1": "QUAD SPC SLOT",
 "title2": "BACKPLANE CONNECTIONS",
+"board": "LG683",
 "libs": [],
 "bodies": 0,
 "points": 168,
@@ -17434,6 +17893,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "RECEIVER BUFFER",
+"board": "LG684",
 "libs": [
 [
 "NBODS",
@@ -17463,6 +17923,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "TRANSMIT CONTROL",
+"board": "LG684",
 "libs": [
 [
 "NBODS",
@@ -17492,6 +17953,7 @@
 "version": 23,
 "title1": "QUAD SPC BOARD",
 "title2": "UNIBUS INTERRUPT",
+"board": "LG683",
 "libs": [
 [
 "BODIES",
@@ -17521,6 +17983,7 @@
 "version": 23,
 "title1": "QUAD BOARD CHAOS NET",
 "title2": "UNIBUS TRANSCEIVER",
+"board": "LG683",
 "libs": [
 [
 "BODIES",
@@ -17550,6 +18013,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "SERIAL MODULATOR",
+"board": "LG684",
 "libs": [
 [
 "NBODS",
@@ -17579,6 +18043,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "FIND MSGS DESTINED FOR ME",
+"board": "LG684",
 "libs": [
 [
 "NBODS",
@@ -17608,6 +18073,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "TRANSMIT CLOCK",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -17637,6 +18103,7 @@
 "version": 23,
 "title1": "",
 "title2": "",
+"board": "LG684",
 "libs": [],
 "bodies": 0,
 "points": 0,
@@ -17660,6 +18127,7 @@
 "version": 23,
 "title1": "QUAD SPC BOARD",
 "title2": "UNIBUS ADDRESS",
+"board": "LG683",
 "libs": [
 [
 "BODIES",
@@ -17689,6 +18157,7 @@
 "version": 23,
 "title1": "QUAD SPC BOARD",
 "title2": "INTERVAL TIMER",
+"board": "LG683",
 "libs": [
 [
 "BODIES",
@@ -17718,6 +18187,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "RECEIVE CLOCK",
+"board": "LG684",
 "libs": [
 [
 "NBODS",
@@ -17747,6 +18217,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "UNIBUS CONTROL",
+"board": "LG684",
 "libs": [
 [
 "NBODS",
@@ -17776,6 +18247,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "TRANSMIT BUFFER",
+"board": "LG684",
 "libs": [
 [
 "NBODS",
@@ -17805,6 +18277,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "CONN TO TRANSCEIVER",
+"board": "LG684",
 "libs": [
 [
 "NBODS",
@@ -17834,6 +18307,7 @@
 "version": 23,
 "title1": "LSI-11 (Q-Bus) Chaosnet",
 "title2": "Bus Interface",
+"board": "LG683",
 "libs": [
 [
 "BODIES",
@@ -17863,6 +18337,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "DETECTOR",
+"board": "LG684",
 "libs": [
 [
 "NBODS",
@@ -17892,6 +18367,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "MY TURN TIMER",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -17921,6 +18397,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "RECEIVER BUFFER",
+"board": "LG684",
 "libs": [
 [
 "NBODS",
@@ -17950,6 +18427,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "TRANSMIT CONTROL",
+"board": "LG684",
 "libs": [
 [
 "NBODS",
@@ -17979,6 +18457,7 @@
 "version": 23,
 "title1": "QUAD SPC BOARD",
 "title2": "UNIBUS INTERRUPT",
+"board": "LG683",
 "libs": [
 [
 "BODIES",
@@ -18008,6 +18487,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "CONN TO TRANSCEIVER",
+"board": "LG683",
 "libs": [
 [
 "NBODS",
@@ -18037,6 +18517,7 @@
 "version": 23,
 "title1": "QUAD BOARD CHAOS NET",
 "title2": "UNIBUS TRANSCEIVER",
+"board": "LG683",
 "libs": [
 [
 "BODIES",
@@ -18066,6 +18547,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "SERIAL MODULATOR",
+"board": "LG684",
 "libs": [
 [
 "NBODS",
@@ -18095,6 +18577,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "FIND MSGS DESTINED FOR ME",
+"board": "LG684",
 "libs": [
 [
 "SIPS",
@@ -18129,6 +18612,7 @@
 "version": 23,
 "title1": "LSI-11 (Q-Bus) Chaosnet",
 "title2": "CSR,Reply,IREQ,Decode",
+"board": "LG683",
 "libs": [
 [
 "NBODS",
@@ -18158,6 +18642,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "TRANSMIT CLOCK",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -18187,6 +18672,7 @@
 "version": 23,
 "title1": "QUAD SPC BOARD",
 "title2": "UNIBUS ADDRESS",
+"board": "LG683",
 "libs": [
 [
 "BODIES",
@@ -18216,6 +18702,7 @@
 "version": 23,
 "title1": "QUAD SPC BOARD",
 "title2": "INTERVAL TIMER",
+"board": "LG683",
 "libs": [
 [
 "BODIES",
@@ -18245,6 +18732,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "RECEIVE CONTROL",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -18274,6 +18762,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "RECEIVE CLOCK",
+"board": "LG684",
 "libs": [
 [
 "NBODS",
@@ -18303,6 +18792,7 @@
 "version": 23,
 "title1": "LISP MACHINE CHAOS NET",
 "title2": "UNIBUS CONTROL",
+"board": "LG684",
 "libs": [
 [
 "NBODS",
@@ -18332,6 +18822,7 @@
 "version": 23,
 "title1": "PROCESSOR DATA PATHS",
 "title2": "",
+"board": "",
 "libs": [],
 "bodies": 17,
 "points": 56,
@@ -18355,6 +18846,7 @@
 "version": 23,
 "title1": "CONS",
 "title2": "A AND M BUSSES",
+"board": "PG21",
 "libs": [],
 "bodies": 16,
 "points": 111,
@@ -18378,6 +18870,7 @@
 "version": 23,
 "title1": "",
 "title2": "",
+"board": "MPG216",
 "libs": [],
 "bodies": 16,
 "points": 248,
@@ -18401,6 +18894,7 @@
 "version": 23,
 "title1": "CONS",
 "title2": "MAIN CONTROL PATHS",
+"board": "MPG216",
 "libs": [],
 "bodies": 25,
 "points": 140,
@@ -18424,6 +18918,7 @@
 "version": 23,
 "title1": "",
 "title2": "",
+"board": "LG684",
 "libs": [],
 "bodies": 0,
 "points": 0,
@@ -18447,6 +18942,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "REQUEST SYNCHRONIZER",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -18476,6 +18972,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "XBUS REQ & ACK",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -18505,6 +19002,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "UNIBUS BUS GRANT",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -18534,6 +19032,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "UNIBUS SLAVE RESPONSE",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -18563,6 +19062,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "UNIBUS DATA TRANSCEIVERS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -18592,6 +19092,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "ADDRESS FROM LISP MACHINE",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -18621,6 +19122,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "BYPASS CAPACITORS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -18650,6 +19152,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "XBUS ADDRESS PARITY",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -18679,6 +19182,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "DATA PATH CONTROL",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -18708,6 +19212,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "TIME OF DAY CLOCKS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -18737,6 +19242,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "SERIAL COMMUNICATIONS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -18766,6 +19272,7 @@
 "version": 23,
 "title1": "PC MEMORY",
 "title2": "BUFFERS 2",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -18795,6 +19302,7 @@
 "version": 23,
 "title1": "XBUS MEMORY",
 "title2": "RAS/CAS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -18824,6 +19332,7 @@
 "version": 23,
 "title1": "PC MEMORY",
 "title2": "BUFFERS 1",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -18853,6 +19362,7 @@
 "version": 23,
 "title1": "XBUS MEMORY",
 "title2": "XBUS DATA",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -18882,6 +19392,7 @@
 "version": 23,
 "title1": "XBUS MEMORY",
 "title2": "ADDRESS DISTRIBUTION RIGHT",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -18911,6 +19422,7 @@
 "version": 23,
 "title1": "XBUS MEMORY",
 "title2": "BANK 2 RIGHT",
+"board": "LG684",
 "libs": [],
 "bodies": 16,
 "points": 600,
@@ -18934,6 +19446,7 @@
 "version": 23,
 "title1": "XBUS MEMORY",
 "title2": "CAPS - BANK 1 RIGHT",
+"board": "LG684",
 "libs": [],
 "bodies": 35,
 "points": 153,
@@ -18957,6 +19470,7 @@
 "version": 23,
 "title1": "XBUS MEMORY",
 "title2": "CAPS - BANK 2 LEFT",
+"board": "LG684",
 "libs": [],
 "bodies": 35,
 "points": 153,
@@ -18980,6 +19494,7 @@
 "version": 23,
 "title1": "PC MEMORY",
 "title2": "ADDRESS STUFF",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -19009,6 +19524,7 @@
 "version": 23,
 "title1": "XBUS MEMORY",
 "title2": "BANK 1 LH",
+"board": "LG684",
 "libs": [],
 "bodies": 16,
 "points": 600,
@@ -19032,6 +19548,7 @@
 "version": 23,
 "title1": "XBUS MEMORY",
 "title2": "ADDRESS DISTRIBUTION LEFT",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -19061,6 +19578,7 @@
 "version": 23,
 "title1": "PC MEMORY",
 "title2": "READ DATA REGISTER",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -19090,6 +19608,7 @@
 "version": 23,
 "title1": "XBUS MEMORY",
 "title2": "BANK 1 RH",
+"board": "LG684",
 "libs": [],
 "bodies": 17,
 "points": 636,
@@ -19113,6 +19632,7 @@
 "version": 23,
 "title1": "XBUS MEMORY",
 "title2": "BANK 3 RH",
+"board": "LG684",
 "libs": [],
 "bodies": 17,
 "points": 636,
@@ -19136,6 +19656,7 @@
 "version": 23,
 "title1": "XBUS MEMORY",
 "title2": "CAPS - BANK 2 RIGHT",
+"board": "LG684",
 "libs": [],
 "bodies": 33,
 "points": 144,
@@ -19159,6 +19680,7 @@
 "version": 23,
 "title1": "PC MEMORY",
 "title2": "WRITE DATA REGISTER",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -19188,6 +19710,7 @@
 "version": 23,
 "title1": "XBUS MEMORY",
 "title2": "BANK 2 LEFT",
+"board": "LG684",
 "libs": [],
 "bodies": 17,
 "points": 636,
@@ -19211,6 +19734,7 @@
 "version": 23,
 "title1": "XBUS MEMORY",
 "title2": "CAPS - BANK 3 LEFT",
+"board": "LG684",
 "libs": [],
 "bodies": 33,
 "points": 144,
@@ -19234,6 +19758,7 @@
 "version": 23,
 "title1": "SIPS",
 "title2": "LIBRARY",
+"board": "LG684",
 "libs": [],
 "bodies": 0,
 "points": 0,
@@ -19257,6 +19782,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "PDP11 DEBUG INSTRUCTION",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -19286,6 +19812,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "MASTER CLOCK",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -19315,6 +19842,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "MASKER",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -19344,6 +19872,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "MASK GENERATION",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -19373,6 +19902,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "MASTER CLOCK",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -19402,6 +19932,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "SPC MEMORY AND POINTER",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -19431,6 +19962,7 @@
 "version": 23,
 "title1": "CONS",
 "title2": "MAIN DATA PATHS",
+"board": "MPG216",
 "libs": [],
 "bodies": 54,
 "points": 249,
@@ -19454,6 +19986,7 @@
 "version": 23,
 "title1": "CONS",
 "title2": "MAIN CONTROL PATHS",
+"board": "MPG216",
 "libs": [],
 "bodies": 25,
 "points": 140,
@@ -19477,6 +20010,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "DATA PATH - ADDRESS",
+"board": "",
 "libs": [],
 "bodies": 15,
 "points": 183,
@@ -19501,6 +20035,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "READ BUFFER",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -19530,6 +20065,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "TV MA INC",
+"board": "LG684",
 "libs": [
 [
 "BOD2",
@@ -19559,6 +20095,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "XBUS ADDRESS LOGIC",
+"board": "LG684",
 "libs": [
 [
 "BOD2",
@@ -19588,6 +20125,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "VDD AND VBB WIRING",
+"board": "LG684",
 "libs": [],
 "bodies": 0,
 "points": 16,
@@ -19611,6 +20149,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "COLOR MAP",
+"board": "LG684",
 "libs": [
 [
 "BOD2",
@@ -19640,6 +20179,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "SYNC PROGRAM REG & REPEAT",
+"board": "LG684",
 "libs": [
 [
 "BOD2",
@@ -19669,6 +20209,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "64 BIT SHIFT REGISTER",
+"board": "LG684",
 "libs": [
 [
 "BOD2",
@@ -19698,6 +20239,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "TV MA INC",
+"board": "LG684",
 "libs": [
 [
 "BOD2",
@@ -19727,6 +20269,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "COLOR MAP",
+"board": "LG684",
 "libs": [
 [
 "BOD2",
@@ -19756,6 +20299,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "MECL VIDEO",
+"board": "LG684",
 "libs": [
 [
 "ECLBOD",
@@ -19785,6 +20329,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "MODE REGISTER",
+"board": "LG684",
 "libs": [
 [
 "BOD2",
@@ -19814,6 +20359,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "64 BIT SHIFT REGISTER",
+"board": "LG684",
 "libs": [
 [
 "BOD2",
@@ -19843,6 +20389,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "SYNC PROGRAM RAM",
+"board": "LG684",
 "libs": [
 [
 "BOD2",
@@ -19872,6 +20419,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "RAM CAS/RAS",
+"board": "LG684",
 "libs": [
 [
 "BOD2",
@@ -19901,6 +20449,7 @@
 "version": 23,
 "title1": "TV2 DATA PATH",
 "title2": "16K 64 BIT MEMORY",
+"board": "LG684",
 "libs": [],
 "bodies": 21,
 "points": 165,
@@ -19924,6 +20473,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "ADDRESS BUFFERS",
+"board": "LG684",
 "libs": [
 [
 "BOD2",
@@ -19953,6 +20503,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "TV MA",
+"board": "LG684",
 "libs": [
 [
 "BOD2",
@@ -19982,6 +20533,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "MECL SIP TERMINATORS",
+"board": "LG684",
 "libs": [
 [
 "ECLBOD",
@@ -20011,6 +20563,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "BYPASS CAPS",
+"board": "LG684",
 "libs": [
 [
 "BOD2",
@@ -20040,6 +20593,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "SYNC PROGRAM RAM",
+"board": "LG684",
 "libs": [
 [
 "BOD2",
@@ -20069,6 +20623,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "MECL SIP TERMINATORS",
+"board": "LG684",
 "libs": [
 [
 "ECLBOD",
@@ -20098,6 +20653,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "ADDRESS BUFFERS",
+"board": "LG684",
 "libs": [
 [
 "BOD2",
@@ -20127,6 +20683,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "RAM OUTPUT REGISTERS",
+"board": "LG684",
 "libs": [
 [
 "BOD2",
@@ -20156,6 +20713,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "CUSTOMIZE FOR 4 BIT VERSION",
+"board": "LG684",
 "libs": [],
 "bodies": 1,
 "points": 48,
@@ -20179,6 +20737,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "SYNC PROGRAM REG & REPEAT",
+"board": "LG684",
 "libs": [
 [
 "BOD2",
@@ -20208,6 +20767,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "MODE REGISTER",
+"board": "LG684",
 "libs": [
 [
 "BOD2",
@@ -20237,6 +20797,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "CUSTOMIZING FOR 8B VERSION",
+"board": "LG684",
 "libs": [],
 "bodies": 2,
 "points": 84,
@@ -20260,6 +20821,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "XBUS CONTROL",
+"board": "LG684",
 "libs": [
 [
 "BOD2",
@@ -20289,6 +20851,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "RAMS",
+"board": "LG684",
 "libs": [],
 "bodies": 16,
 "points": 600,
@@ -20312,6 +20875,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "MECL CLOCK",
+"board": "LG684",
 "libs": [
 [
 "ECLBOD",
@@ -20341,6 +20905,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "CLOCK GENERATOR",
+"board": "LG684",
 "libs": [
 [
 "BOD2",
@@ -20370,6 +20935,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "RAM ADDRESS LOGIC",
+"board": "LG684",
 "libs": [
 [
 "BOD2",
@@ -20399,6 +20965,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "MECL CLOCK",
+"board": "LG684",
 "libs": [
 [
 "ECLBOD",
@@ -20428,6 +20995,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "SYNC PROGRAM ADDRESS",
+"board": "LG684",
 "libs": [
 [
 "BOD2",
@@ -20457,6 +21025,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "RAMS",
+"board": "LG684",
 "libs": [],
 "bodies": 16,
 "points": 600,
@@ -20480,6 +21049,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "RAM ADDRESS LOGIC",
+"board": "LG684",
 "libs": [
 [
 "BOD2",
@@ -20509,6 +21079,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "RAMS",
+"board": "LG684",
 "libs": [],
 "bodies": 16,
 "points": 600,
@@ -20532,6 +21103,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "XBUS DATA XCVR",
+"board": "LG684",
 "libs": [
 [
 "BOD2",
@@ -20561,6 +21133,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "RAMS",
+"board": "LG684",
 "libs": [],
 "bodies": 16,
 "points": 600,
@@ -20584,6 +21157,7 @@
 "version": 23,
 "title1": "XBUS",
 "title2": "BACKPLANE CONNECTIONS",
+"board": "LG684",
 "libs": [],
 "bodies": 0,
 "points": 256,
@@ -20607,6 +21181,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "RAM CAPS",
+"board": "LG684",
 "libs": [],
 "bodies": 33,
 "points": 144,
@@ -20630,6 +21205,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "RAM CAPS",
+"board": "LG684",
 "libs": [],
 "bodies": 33,
 "points": 144,
@@ -20653,6 +21229,7 @@
 "version": 23,
 "title1": "LIBRARY",
 "title2": "ECL",
+"board": "LG684",
 "libs": [],
 "bodies": 14,
 "points": 124,
@@ -20676,6 +21253,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "RAM CAPS",
+"board": "LG684",
 "libs": [],
 "bodies": 33,
 "points": 144,
@@ -20699,6 +21277,7 @@
 "version": 23,
 "title1": "XBUS",
 "title2": "BACKPLANE CONNECTIONS",
+"board": "LG684",
 "libs": [],
 "bodies": 0,
 "points": 268,
@@ -20722,6 +21301,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "MECL VIDEO",
+"board": "LG684",
 "libs": [
 [
 "BOD2",
@@ -20751,6 +21331,7 @@
 "version": 23,
 "title1": "",
 "title2": "",
+"board": "LG684",
 "libs": [],
 "bodies": 8,
 "points": 126,
@@ -20774,6 +21355,7 @@
 "version": 23,
 "title1": "CONS",
 "title2": "UNIBUS INTERFACE",
+"board": "LG684",
 "libs": [],
 "bodies": 2,
 "points": 51,
@@ -20797,6 +21379,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "SYNC PROGRAM ADDRESS",
+"board": "LG684",
 "libs": [
 [
 "BOD2",
@@ -20826,6 +21409,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "RAM CAPS",
+"board": "LG684",
 "libs": [],
 "bodies": 33,
 "points": 144,
@@ -20849,6 +21433,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "XBUS & UNIBUS TIMEOUT",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -20878,6 +21463,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "DIAGNOSTIC BUS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -20907,6 +21493,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "XBUS TO BUS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -20936,6 +21523,7 @@
 "version": 23,
 "title1": "",
 "title2": "",
+"board": "",
 "libs": [],
 "bodies": 0,
 "points": 232,
@@ -20959,6 +21547,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "CABLES TO PROCESSOR",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -20988,6 +21577,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "PROCESSOR DATA XCVR",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -21017,6 +21607,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "DEBUGER DATA PATH",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -21046,6 +21637,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "UNIBUS MASTERSHIP",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -21075,6 +21667,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "XBUS ADDRESS TRANSCEIVERS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -21104,6 +21697,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "WRITE BUFFER",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -21133,6 +21727,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "XBUS BACKPLANE CONNS",
+"board": "LG684",
 "libs": [],
 "bodies": 12,
 "points": 218,
@@ -21156,6 +21751,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "UNIBUS ADDRESS TO XBUS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -21185,6 +21781,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "XBUS DATA TRANSCEIVERS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -21214,6 +21811,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -21243,6 +21841,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "XBUS REQUEST FROM UNIBUS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -21272,6 +21871,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "BUS FROM UNIBUS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -21301,6 +21901,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "UNIBUS MAP",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -21330,6 +21931,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "READ BUFFER",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -21373,6 +21975,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "LM & DEBUG TO UNIBUS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -21402,6 +22005,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "DATA PATH - XBUS DATA",
+"board": "",
 "libs": [],
 "bodies": 18,
 "points": 284,
@@ -21425,6 +22029,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "DEBUGEE DATA PATH",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -21454,6 +22059,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "UNIBUS INTERRUPT CONTROL",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -21483,6 +22089,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "UNIBUS TRANSCEIVER",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -21512,6 +22119,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "60 CYCLE CLOCK & GPIO",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -21541,6 +22149,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "KEYBOARD, MOUSE CLOCK SYNC",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -21570,6 +22179,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "UNIBUS ADDRESS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -21599,6 +22209,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "MOUSE INTERFACE",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -21628,6 +22239,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "KEYBOARD & MOUSE CSR",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -21657,6 +22269,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "KEYBOARD CONTROL",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -21686,6 +22299,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "UNIBUS INTERRUPT",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -21715,6 +22329,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "INTERVAL TIMER",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -21744,6 +22359,7 @@
 "version": 23,
 "title1": "CONS",
 "title2": "UNIBUS INTERFACE",
+"board": "LG684",
 "libs": [],
 "bodies": 0,
 "points": 7,
@@ -21767,6 +22383,7 @@
 "version": 23,
 "title1": "DEBUGGER",
 "title2": "ANALOG CONVERSION",
+"board": "NCP13",
 "libs": [
 [
 "LMBODS",
@@ -21801,6 +22418,7 @@
 "version": 23,
 "title1": "DEBUGGER",
 "title2": "INTERFACE TO LM DEBUG PORT",
+"board": "NCP13",
 "libs": [
 [
 "LMBODS",
@@ -21830,6 +22448,7 @@
 "version": 23,
 "title1": "DEBUGGER",
 "title2": "PCI (UART) & EIA INTERFACE",
+"board": "NCP13",
 "libs": [
 [
 "LMBODS",
@@ -21859,6 +22478,7 @@
 "version": 23,
 "title1": "DEBUGGER",
 "title2": "PIC (UART) AND EIA INTERFACE",
+"board": "LG683",
 "libs": [
 [
 "UA",
@@ -21893,6 +22513,7 @@
 "version": 23,
 "title1": "DEBUGGER",
 "title2": "MICROPROCESSOR",
+"board": "NCP13",
 "libs": [
 [
 "M6810",
@@ -21932,6 +22553,7 @@
 "version": 23,
 "title1": "DEBUGGER",
 "title2": "DATA PATHS",
+"board": "",
 "libs": [
 [
 "DIABOD",
@@ -21961,6 +22583,7 @@
 "version": 23,
 "title1": "DEBUGGER",
 "title2": "ANALOG CONVERSION",
+"board": "NCP13",
 "libs": [
 [
 "LMBODS",
@@ -21995,6 +22618,7 @@
 "version": 23,
 "title1": "DEBUGGER",
 "title2": "INTERFACE TO LM DEBUG PORT",
+"board": "NCP13",
 "libs": [
 [
 "LMBODS",
@@ -22024,6 +22648,7 @@
 "version": 23,
 "title1": "DEBUGGER",
 "title2": "SELECT & CONTROL OUTPUTS",
+"board": "NCP13",
 "libs": [
 [
 "AD0808",
@@ -22058,6 +22683,7 @@
 "version": 23,
 "title1": "DEBUGGER",
 "title2": "SELECT & CONTROL OUTPUTS",
+"board": "NCP13",
 "libs": [
 [
 "AD0808",
@@ -22092,6 +22718,7 @@
 "version": 23,
 "title1": "DEBUGGER",
 "title2": "CONNECTORS",
+"board": "NCP13",
 "libs": [],
 "bodies": 0,
 "points": 208,
@@ -22115,6 +22742,7 @@
 "version": 23,
 "title1": "DEBUGGER",
 "title2": "MICROPROCESSOR",
+"board": "NCP13",
 "libs": [
 [
 "LMBODS",
@@ -22144,6 +22772,7 @@
 "version": 23,
 "title1": "DEBUGGER",
 "title2": "CONNECTORS",
+"board": "NCP13",
 "libs": [],
 "bodies": 0,
 "points": 208,
@@ -22167,6 +22796,7 @@
 "version": 23,
 "title1": "DEBUGGER",
 "title2": "BYPASS CAPACITORS",
+"board": "NCP13",
 "libs": [],
 "bodies": 16,
 "points": 64,
@@ -22190,6 +22820,7 @@
 "version": 23,
 "title1": "DEBUGGER",
 "title2": "EDGE CONNECTORS",
+"board": "LG683",
 "libs": [
 [
 "BODIES",
@@ -22219,6 +22850,7 @@
 "version": 23,
 "title1": "DEBUGGER",
 "title2": "ANALOG INPUTS",
+"board": "NCP13",
 "libs": [
 [
 "VREF",
@@ -22258,6 +22890,7 @@
 "version": 23,
 "title1": "DEBUGGER",
 "title2": "PCI (UART) & EIA INTERFACE",
+"board": "NCP13",
 "libs": [
 [
 "LMBODS",
@@ -22287,6 +22920,7 @@
 "version": 23,
 "title1": "DEBUGGER",
 "title2": "ANALOG INPUTS",
+"board": "NCP13",
 "libs": [],
 "bodies": 32,
 "points": 116,
@@ -22310,6 +22944,7 @@
 "version": 23,
 "title1": "DEBUGGER",
 "title2": "MICROPROCESSOR",
+"board": "LG683",
 "libs": [
 [
 "UA",
@@ -22344,6 +22979,7 @@
 "version": 23,
 "title1": "XBUS MEMORY",
 "title2": "XBUS ADDRESS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -22373,6 +23009,7 @@
 "version": 23,
 "title1": "XBUS MEMORY",
 "title2": "CONTROL",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -22402,6 +23039,7 @@
 "version": 23,
 "title1": "XBUS MEMORY",
 "title2": "ADDRESS SOURCE",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -22431,6 +23069,7 @@
 "version": 23,
 "title1": "XBUS MEMORY",
 "title2": "CAPS BANK 3 RIGHT",
+"board": "LG684",
 "libs": [],
 "bodies": 35,
 "points": 153,
@@ -22454,6 +23093,7 @@
 "version": 23,
 "title1": "XBUS MEMORY",
 "title2": "BANK 0 RIGHT",
+"board": "LG684",
 "libs": [],
 "bodies": 16,
 "points": 600,
@@ -22477,6 +23117,7 @@
 "version": 23,
 "title1": "XBUS MEMORY",
 "title2": "BANK 3 LH",
+"board": "LG684",
 "libs": [],
 "bodies": 16,
 "points": 600,
@@ -22500,6 +23141,7 @@
 "version": 23,
 "title1": "XBUS MEMORY",
 "title2": "CAPS - BANK 0 RIGHT",
+"board": "LG684",
 "libs": [],
 "bodies": 35,
 "points": 153,
@@ -22523,6 +23165,7 @@
 "version": 23,
 "title1": "XBUS MEMORY",
 "title2": "CAPS - BANK 0 RIGHT",
+"board": "LG684",
 "libs": [],
 "bodies": 33,
 "points": 144,
@@ -22546,6 +23189,7 @@
 "version": 23,
 "title1": "XBUS MEMORY",
 "title2": "BANK 0 LEFT",
+"board": "LG684",
 "libs": [],
 "bodies": 17,
 "points": 636,
@@ -22569,6 +23213,7 @@
 "version": 23,
 "title1": "XBUS MEMORY",
 "title2": "CAPS BANK 1 LEFT",
+"board": "LG684",
 "libs": [],
 "bodies": 33,
 "points": 144,
@@ -22592,6 +23237,7 @@
 "version": 23,
 "title1": "PC MEMORY",
 "title2": "CONTROL",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -22621,6 +23267,7 @@
 "version": 23,
 "title1": "MULTIWIRE MEMORY",
 "title2": "ROW F RIGHT",
+"board": "L8X30",
 "libs": [],
 "bodies": 16,
 "points": 600,
@@ -22644,6 +23291,7 @@
 "version": 23,
 "title1": "MULTIWIRE MEMORY",
 "title2": "XBUS ADDRESS",
+"board": "L8X30",
 "libs": [
 [
 "BODIES",
@@ -22673,6 +23321,7 @@
 "version": 23,
 "title1": "MULTIWIRE MEMORY",
 "title2": "CONTROL",
+"board": "L8X30",
 "libs": [
 [
 "BODIES",
@@ -22702,6 +23351,7 @@
 "version": 23,
 "title1": "MULTIWIRE MEMORY",
 "title2": "ROW A LEFT",
+"board": "L8X30",
 "libs": [],
 "bodies": 8,
 "points": 307,
@@ -22725,6 +23375,7 @@
 "version": 23,
 "title1": "MULTIWIRE MEMORY",
 "title2": "ROW D RIGHT",
+"board": "L8X30",
 "libs": [],
 "bodies": 16,
 "points": 600,
@@ -22748,6 +23399,7 @@
 "version": 23,
 "title1": "MULTIWIRE MEMORY",
 "title2": "ROW C LEFT",
+"board": "L8X30",
 "libs": [],
 "bodies": 8,
 "points": 307,
@@ -22771,6 +23423,7 @@
 "version": 23,
 "title1": "MULTIWIRE MEMORY",
 "title2": "RAS/CAS",
+"board": "L8X30",
 "libs": [
 [
 "BODIES",
@@ -22800,6 +23453,7 @@
 "version": 23,
 "title1": "MULTIWIRE MEMORY",
 "title2": "VCC AND VBB CONNECTIONS",
+"board": "L8X30",
 "libs": [],
 "bodies": 25,
 "points": 60,
@@ -22823,6 +23477,7 @@
 "version": 23,
 "title1": "MULTIWIRE MEMORY",
 "title2": "ROW D LEFT",
+"board": "L8X30",
 "libs": [],
 "bodies": 9,
 "points": 336,
@@ -22846,6 +23501,7 @@
 "version": 23,
 "title1": "MULTIWIRE MEMORY",
 "title2": "ROW B RIGHT",
+"board": "L8X30",
 "libs": [],
 "bodies": 16,
 "points": 614,
@@ -22869,6 +23525,7 @@
 "version": 23,
 "title1": "MULTIWIRE MEMORY",
 "title2": "XBUS DATA",
+"board": "L8X30",
 "libs": [
 [
 "BODIES",
@@ -22898,6 +23555,7 @@
 "version": 23,
 "title1": "MULTIWIRE MEMORY",
 "title2": "ROW B LEFT",
+"board": "L8X30",
 "libs": [],
 "bodies": 8,
 "points": 307,
@@ -22921,6 +23579,7 @@
 "version": 23,
 "title1": "MULTIWIRE MEMORY",
 "title2": "ROW E RIGHT",
+"board": "L8X30",
 "libs": [],
 "bodies": 16,
 "points": 600,
@@ -22944,6 +23603,7 @@
 "version": 23,
 "title1": "MULTIWIRE MEMORY",
 "title2": "ROW C RIGHT",
+"board": "L8X30",
 "libs": [],
 "bodies": 16,
 "points": 614,
@@ -22967,6 +23627,7 @@
 "version": 23,
 "title1": "MULTIWIRE MEMORY",
 "title2": "ROW D LEFT",
+"board": "L8X30",
 "libs": [],
 "bodies": 9,
 "points": 336,
@@ -22990,6 +23651,7 @@
 "version": 23,
 "title1": "MULTIWIRE MEMORY",
 "title2": "ADDRESS SOURCE",
+"board": "L8X30",
 "libs": [
 [
 "BODIES",
@@ -23019,6 +23681,7 @@
 "version": 23,
 "title1": "MULTIWIRE MEMORY",
 "title2": "ROW A RIGHT",
+"board": "L8X30",
 "libs": [],
 "bodies": 16,
 "points": 614,
@@ -23042,6 +23705,7 @@
 "version": 23,
 "title1": "MULTIWIRE MEMORY",
 "title2": "ROW F LEFT",
+"board": "L8X30",
 "libs": [],
 "bodies": 9,
 "points": 336,
@@ -23065,6 +23729,7 @@
 "version": 23,
 "title1": "MULTIWIRE MEMORY",
 "title2": "SERIES RESISTORS",
+"board": "L8X30",
 "libs": [
 [
 "BODIES",
@@ -23094,6 +23759,7 @@
 "version": 23,
 "title1": "MULTIWIRE MEMORY",
 "title2": "ROW H LEFT",
+"board": "L8X30",
 "libs": [],
 "bodies": 9,
 "points": 336,
@@ -23117,6 +23783,7 @@
 "version": 23,
 "title1": "XBUS",
 "title2": "BACKPLANE CONNECTIONS",
+"board": "LG684",
 "libs": [],
 "bodies": 0,
 "points": 156,
@@ -23140,6 +23807,7 @@
 "version": 23,
 "title1": "MULTIWIRE MEMORY",
 "title2": "BOARD LAYOUT - \"PIN\" SIDE",
+"board": "",
 "libs": [],
 "bodies": 287,
 "points": 0,
@@ -23163,6 +23831,7 @@
 "version": 23,
 "title1": "MULTIWIRE MEMORY",
 "title2": "ROW H RIGHT",
+"board": "L8X30",
 "libs": [],
 "bodies": 16,
 "points": 600,
@@ -23186,6 +23855,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "COMMAND LIST POINTER",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -23215,6 +23885,7 @@
 "version": 23,
 "title1": "MARKSMAN CONTROL",
 "title2": "DISK INTERFACE",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -23244,6 +23915,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "TIMEOUT",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -23273,6 +23945,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "HEADER COMPARE",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -23302,6 +23975,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "DISK BUS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -23331,6 +24005,7 @@
 "version": 23,
 "title1": "MARKSMAN CONTROL",
 "title2": "COMMAND",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -23360,6 +24035,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "READ BUFFER",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -23389,6 +24065,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "BUSY, LOSSAGE",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -23418,6 +24095,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "DISK ADDRESS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -23447,6 +24125,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "SHIFT REGISTER",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -23476,6 +24155,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "WRITE BUFFER",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -23505,6 +24185,7 @@
 "version": 23,
 "title1": "MARKSMAN",
 "title2": "RECEIVER/DRIVER",
+"board": "LG684",
 "libs": [
 [
 "SIPS",
@@ -23539,6 +24220,7 @@
 "version": 23,
 "title1": "MARKSMAN CONTROL",
 "title2": "CONTROL PANEL",
+"board": "LG684",
 "libs": [
 [
 "SIPS",
@@ -23573,6 +24255,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "DMA CHANNEL CONTROL",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -23602,6 +24285,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "STATUS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -23631,6 +24315,7 @@
 "version": 23,
 "title1": "MARKSMAN CONTROL",
 "title2": "STATUS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -23660,6 +24345,7 @@
 "version": 23,
 "title1": "XBUS",
 "title2": "BACKPLANE CONNECTIONS",
+"board": "LG684",
 "libs": [],
 "bodies": 0,
 "points": 210,
@@ -23683,6 +24369,7 @@
 "version": 23,
 "title1": "MARKSMAN CONTROL",
 "title2": "BUSY, LOSSAGE",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -23712,6 +24399,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "PARITY",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -23741,6 +24429,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "CLOCKS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -23770,6 +24459,7 @@
 "version": 21,
 "title1": "CONS",
 "title2": "PC,SPC CONTROL",
+"board": "MPG21",
 "libs": [
 [
 ";M*;-D",
@@ -23841,6 +24531,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "SERIAL COMMUNICATIONS",
+"board": "LG684",
 "libs": [],
 "bodies": 12,
 "points": 207,
@@ -24186,6 +24877,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "VMEMORY CONTROL",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -24215,6 +24907,7 @@
 "version": 23,
 "title1": "CONS",
 "title2": "UNIBUS INTERFACE",
+"board": "LG684",
 "libs": [],
 "bodies": 0,
 "points": 7,
@@ -24238,6 +24931,7 @@
 "version": 23,
 "title1": "CDC ADAPTOR",
 "title2": "DATA LINES",
+"board": "LG683",
 "libs": [
 [
 "BODIES",
@@ -24267,6 +24961,7 @@
 "version": 23,
 "title1": "CDC ADAPTOR",
 "title2": "DATA LINE TERMINATORS",
+"board": "LG683",
 "libs": [
 [
 "BODIES",
@@ -24296,6 +24991,7 @@
 "version": 23,
 "title1": "CDC ADAPTOR",
 "title2": "BUS DATA XCVRS",
+"board": "LG683",
 "libs": [],
 "bodies": 9,
 "points": 236,
@@ -24319,6 +25015,7 @@
 "version": 23,
 "title1": "CDC ADAPTOR",
 "title2": "CONTROL LOGIC",
+"board": "LG683",
 "libs": [
 [
 "BODIES",
@@ -24348,6 +25045,7 @@
 "version": 23,
 "title1": "DISK MULTIPLEXOR",
 "title2": "READ/WRITE",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -24377,6 +25075,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "SINGLE TRIDENT",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -24406,6 +25105,7 @@
 "version": 23,
 "title1": "DISK MULTIPLEXOR",
 "title2": "EDGE CONNECTIONS",
+"board": "LG684",
 "libs": [],
 "bodies": 0,
 "points": 142,
@@ -24429,6 +25129,7 @@
 "version": 23,
 "title1": "DISK MULTIPLEXOR",
 "title2": "CLOCK, DATA MULTIPLEX",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -24458,6 +25159,7 @@
 "version": 23,
 "title1": "DISK MULTIPLEXOR",
 "title2": "POWER SEQUENCING",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -24487,6 +25189,7 @@
 "version": 23,
 "title1": "MARKSMAN CONTROL",
 "title2": "MICROCODE INSTRUCTION",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -24516,6 +25219,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "COMMAND",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -24545,6 +25249,7 @@
 "version": 23,
 "title1": "MARKSMAN CONTROL",
 "title2": "DISK INTERFACE",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -24574,6 +25279,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "XBUS DATA TRANSCEIVERS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -24603,6 +25309,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "TIMEOUT",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -24632,6 +25339,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "UNIBUS ADDRESS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -24661,6 +25369,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "XBUS ADDRESS XCVRS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -24690,6 +25399,7 @@
 "version": 23,
 "title1": "DISK MULTIPLEXOR",
 "title2": "I/O EXCEPT R/W",
+"board": "LG684",
 "libs": [
 [
 "SIPS",
@@ -24724,6 +25434,7 @@
 "version": 23,
 "title1": "DISK MULTIPLEXOR",
 "title2": "CABLES",
+"board": "LG684",
 "libs": [],
 "bodies": 1,
 "points": 320,
@@ -24747,6 +25458,7 @@
 "version": 23,
 "title1": "MARKSMAN CONTROL",
 "title2": "COMMAND",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -24776,6 +25488,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "REGISTER ADDRESSING",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -24805,6 +25518,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "BUSY, LOSSAGE",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -24834,6 +25548,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "CAPACITORS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -24863,6 +25578,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "EDGE CONNECTIONS",
+"board": "LG684",
 "libs": [],
 "bodies": 7,
 "points": 108,
@@ -24886,6 +25602,7 @@
 "version": 23,
 "title1": "MARKSMAN CONTROL",
 "title2": "CLOCKS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -24915,6 +25632,7 @@
 "version": 23,
 "title1": "MARKSMAN CONTROL",
 "title2": "CONTROL PANEL",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -24944,6 +25662,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "BIT POSITION COUNTER",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -24973,6 +25692,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "KEYBOARD & MOUSE CSR",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -25002,6 +25722,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "DMA CHANNEL CONTROL",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -25031,6 +25752,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "STATUS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -25060,6 +25782,7 @@
 "version": 23,
 "title1": "HEX SPC SLOT",
 "title2": "BACKPLANE CONNECTIONS",
+"board": "LG684",
 "libs": [],
 "bodies": 0,
 "points": 168,
@@ -25083,6 +25806,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "CHANNEL CONTROL WORD",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -25112,6 +25836,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "KEYBOARD CONTROL",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -25141,6 +25866,7 @@
 "version": 23,
 "title1": "MARKSMAN CONTROL",
 "title2": "MICROCODE CONTROL",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -25170,6 +25896,7 @@
 "version": 23,
 "title1": "MARKSMAN CONTROL",
 "title2": "STATUS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -25199,6 +25926,7 @@
 "version": 23,
 "title1": "COLOR MAP CONTROL",
 "title2": "",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -25228,6 +25956,7 @@
 "version": 23,
 "title1": "MARKSMAN CONTROL",
 "title2": "DISK BUS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -25257,6 +25986,7 @@
 "version": 23,
 "title1": "DISK MULTIPLEXOR",
 "title2": "SECTOR PULSE DECODE",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -25286,6 +26016,7 @@
 "version": 23,
 "title1": "DISK MULTIPLEXOR",
 "title2": "UNIT SELECT",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -25315,6 +26046,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "MICRO PROGRAM COUNTER",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -25344,6 +26076,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "SERIAL COMMUNICATIONS",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -25373,6 +26106,7 @@
 "version": 23,
 "title1": "DISK MULTIPLEXOR",
 "title2": "BLOCK COUNTERS 0-3",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -25402,6 +26136,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "MICROCODE CONTROL",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -25431,6 +26166,7 @@
 "version": 23,
 "title1": "DISK MULTIPLEXOR",
 "title2": "CAPACITORS, HI",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -25460,6 +26196,7 @@
 "version": 23,
 "title1": "MARKSMAN CONTROL",
 "title2": "BUSY, LOSSAGE",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -25489,6 +26226,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "ERROR CHECKING AND CORRECTION",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -25518,6 +26256,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "TRIDENT SIGNAL CABLE",
+"board": "LG684",
 "libs": [
 [
 "SIPS",
@@ -25552,6 +26291,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "PARITY",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -25581,6 +26321,7 @@
 "version": 23,
 "title1": "CONS",
 "title2": "UNIBUS INTERFACE",
+"board": "LG684",
 "libs": [],
 "bodies": 0,
 "points": 7,
@@ -25604,6 +26345,7 @@
 "version": 23,
 "title1": "DISK MULTIPLEXOR",
 "title2": "BLOCK COUNTERS 4-7",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -25633,6 +26375,7 @@
 "version": 23,
 "title1": "XBUS MEMORY",
 "title2": "CONTROL",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -25662,6 +26405,7 @@
 "version": 23,
 "title1": "SIPS",
 "title2": "LIBRARY",
+"board": "LG684",
 "libs": [],
 "bodies": 0,
 "points": 0,
@@ -25685,6 +26429,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 8K-12K, 36-48",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -25714,6 +26459,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 12K-16K, 36-48",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -25743,6 +26489,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 4K-8K, 36-48",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -25772,6 +26519,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 0K-4K, 36-48",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -25801,6 +26549,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 0K-4K, 24-35",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -25830,6 +26579,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 4K-8K, 24-35",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -25859,6 +26609,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 12K-16K, 24-35",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -25888,6 +26639,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM8K-12K, 24-35",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -25917,6 +26669,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "OVERLORD",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -25960,6 +26713,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -25989,6 +26743,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 8K-12K, 12-23",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -26018,6 +26773,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 0K-4K, 12-24",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -26047,6 +26803,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 0K-4K, 0-11",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -26076,6 +26833,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 8K-12K, 0-11",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -26105,6 +26863,7 @@
 "version": 23,
 "title1": "CADR",
 "title2": "RAM 12K-16K, 0-11",
+"board": "MPG216",
 "libs": [
 [
 "BODIES",
@@ -26134,6 +26893,7 @@
 "version": 23,
 "title1": "",
 "title2": "",
+"board": "LG684",
 "libs": [],
 "bodies": 0,
 "points": 0,
@@ -26157,6 +26917,7 @@
 "version": 23,
 "title1": "XBUS MEMORY",
 "title2": "ADDRESS DISTRIBUTION RIGHT",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -26186,6 +26947,7 @@
 "version": 23,
 "title1": "XBUS MEMORY",
 "title2": "BANK 1 RH",
+"board": "LG684",
 "libs": [],
 "bodies": 17,
 "points": 508,
@@ -26209,6 +26971,7 @@
 "version": 23,
 "title1": "I/O BOARD",
 "title2": "UNIBUS TRANSCEIVER",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -26238,6 +27001,7 @@
 "version": 23,
 "title1": "CBUS",
 "title2": "XBUS REQ & ACK",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -26281,6 +27045,7 @@
 "version": 23,
 "title1": "LISPM TV",
 "title2": "XBus Address Selector",
+"board": "LG684",
 "libs": [],
 "bodies": 23,
 "points": 402,
@@ -26304,6 +27069,7 @@
 "version": 23,
 "title1": "LISPM TV",
 "title2": "Sync Program Reg & Repeat",
+"board": "LG684",
 "libs": [],
 "bodies": 17,
 "points": 245,
@@ -26327,6 +27093,7 @@
 "version": 23,
 "title1": "LISPM TV",
 "title2": "64-bit Video Shift Register",
+"board": "LG684",
 "libs": [],
 "bodies": 8,
 "points": 411,
@@ -26350,6 +27117,7 @@
 "version": 23,
 "title1": "LISPM TV",
 "title2": "MECL Video",
+"board": "LG684",
 "libs": [
 [
 "ECLBOD",
@@ -26379,6 +27147,7 @@
 "version": 23,
 "title1": "LISPM TV",
 "title2": "Ram RAS/CAS",
+"board": "LG684",
 "libs": [],
 "bodies": 8,
 "points": 117,
@@ -26402,6 +27171,7 @@
 "version": 23,
 "title1": "LISPM TV",
 "title2": "Address Buffers",
+"board": "LG684",
 "libs": [],
 "bodies": 5,
 "points": 166,
@@ -26425,6 +27195,7 @@
 "version": 23,
 "title1": "LISPM TV",
 "title2": "TV Mem Address Adder",
+"board": "LG684",
 "libs": [],
 "bodies": 3,
 "points": 94,
@@ -26448,6 +27219,7 @@
 "version": 23,
 "title1": "LISPM TV",
 "title2": "TV Mem Address Counter",
+"board": "LG684",
 "libs": [],
 "bodies": 6,
 "points": 135,
@@ -26471,6 +27243,7 @@
 "version": 23,
 "title1": "LISPM TV",
 "title2": "MECL SIP Terminators",
+"board": "LG684",
 "libs": [
 [
 "ECLBOD",
@@ -26500,6 +27273,7 @@
 "version": 23,
 "title1": "LISPM TV",
 "title2": "Sync Program Memory",
+"board": "LG684",
 "libs": [],
 "bodies": 11,
 "points": 377,
@@ -26523,6 +27297,7 @@
 "version": 23,
 "title1": "LISPM TV",
 "title2": "Ram Output Registers",
+"board": "LG684",
 "libs": [],
 "bodies": 8,
 "points": 292,
@@ -26546,6 +27321,7 @@
 "version": 23,
 "title1": "LISPM TV",
 "title2": "Customize for 4-bit Version",
+"board": "LG684",
 "libs": [],
 "bodies": 0,
 "points": 48,
@@ -26569,6 +27345,7 @@
 "version": 23,
 "title1": "LISPM TV",
 "title2": "Mode Reg and Xbus Control",
+"board": "LG684",
 "libs": [],
 "bodies": 25,
 "points": 270,
@@ -26592,6 +27369,7 @@
 "version": 23,
 "title1": "LISPM TV",
 "title2": "Sync Clocking",
+"board": "LG684",
 "libs": [],
 "bodies": 19,
 "points": 124,
@@ -26615,6 +27393,7 @@
 "version": 23,
 "title1": "LISPM TV",
 "title2": "Ram Address Logic",
+"board": "LG684",
 "libs": [],
 "bodies": 7,
 "points": 207,
@@ -26638,6 +27417,7 @@
 "version": 23,
 "title1": "LISPM TV",
 "title2": "MECL Clock",
+"board": "LG684",
 "libs": [
 [
 "ECLBOD",
@@ -26667,6 +27447,7 @@
 "version": 23,
 "title1": "LISPM TV",
 "title2": "Bypass Caps",
+"board": "LG684",
 "libs": [],
 "bodies": 38,
 "points": 124,
@@ -26690,6 +27471,7 @@
 "version": 23,
 "title1": "LISPM TV",
 "title2": "Xbus Data Transceiver",
+"board": "LG684",
 "libs": [],
 "bodies": 14,
 "points": 320,
@@ -26713,6 +27495,7 @@
 "version": 23,
 "title1": "LISPM TV",
 "title2": "Color Map Interface",
+"board": "LG684",
 "libs": [],
 "bodies": 6,
 "points": 146,
@@ -26736,6 +27519,7 @@
 "version": 23,
 "title1": "LIBRARY",
 "title2": "ECL",
+"board": "LG684",
 "libs": [],
 "bodies": 14,
 "points": 124,
@@ -26759,6 +27543,7 @@
 "version": 23,
 "title1": "LISPM TV",
 "title2": "Video Memory: Row D",
+"board": "LG684",
 "libs": [],
 "bodies": 16,
 "points": 436,
@@ -26782,6 +27567,7 @@
 "version": 23,
 "title1": "LISPM TV",
 "title2": "Backplane Connections",
+"board": "LG684",
 "libs": [],
 "bodies": 0,
 "points": 260,
@@ -26805,6 +27591,7 @@
 "version": 23,
 "title1": "LISPM TV",
 "title2": "Video Memory: Row A",
+"board": "LG684",
 "libs": [],
 "bodies": 16,
 "points": 436,
@@ -26828,6 +27615,7 @@
 "version": 23,
 "title1": "LISPM TV",
 "title2": "Video Memory: Row C",
+"board": "LG684",
 "libs": [],
 "bodies": 16,
 "points": 436,
@@ -26851,6 +27639,7 @@
 "version": 23,
 "title1": "LISPM TV",
 "title2": "Sync Program Address",
+"board": "LG684",
 "libs": [],
 "bodies": 7,
 "points": 272,
@@ -26874,6 +27663,7 @@
 "version": 23,
 "title1": "LISPM TV",
 "title2": "Video Memory: Row B",
+"board": "LG684",
 "libs": [],
 "bodies": 16,
 "points": 436,
@@ -26897,6 +27687,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "TIMEOUT",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -26926,6 +27717,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "BUSY, LOSSAGE",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -26955,6 +27747,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "CHANNEL CONTROL WORD",
+"board": "LG684",
 "libs": [
 [
 "BODIES",
@@ -26984,6 +27777,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "MODE REGISTER",
+"board": "LG684",
 "libs": [
 [
 "BOD2",
@@ -27014,6 +27808,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "RAM ADDRESS LOGIC",
+"board": "LG684",
 "libs": [
 [
 "BOD2",
@@ -27043,6 +27838,7 @@
 "version": 23,
 "title1": "",
 "title2": "",
+"board": "LG684",
 "libs": [],
 "bodies": 8,
 "points": 126,
@@ -27066,6 +27862,7 @@
 "version": 23,
 "title1": "DEBUGGER",
 "title2": "SELECT & CONTROL OUTPUTS",
+"board": "NCP13",
 "libs": [
 [
 "AD0808",
@@ -27100,6 +27897,7 @@
 "version": 23,
 "title1": "MULTIWIRE MEMORY",
 "title2": "ROW D LEFT",
+"board": "L8X30",
 "libs": [],
 "bodies": 9,
 "points": 336,
@@ -27123,6 +27921,7 @@
 "version": 23,
 "title1": "MULTIWIRE MEMORY",
 "title2": "ROW B RIGHT",
+"board": "L8X30",
 "libs": [],
 "bodies": 16,
 "points": 614,
@@ -27146,6 +27945,7 @@
 "version": 23,
 "title1": "MULTIWIRE MEMORY",
 "title2": "ROW E RIGHT",
+"board": "L8X30",
 "libs": [],
 "bodies": 16,
 "points": 600,
@@ -27169,6 +27969,7 @@
 "version": 23,
 "title1": "MULTIWIRE MEMORY",
 "title2": "SERIES RESISTORS",
+"board": "L8X30",
 "libs": [
 [
 "BODIES",
@@ -27198,6 +27999,7 @@
 "version": 23,
 "title1": "MULTIWIRE MEMORY",
 "title2": "ROW H LEFT",
+"board": "L8X30",
 "libs": [],
 "bodies": 9,
 "points": 336,
@@ -27235,6 +28037,7 @@
 "version": 23,
 "title1": "DISK CONTROL",
 "title2": "EDGE CONNECTIONS",
+"board": "LG684",
 "libs": [],
 "bodies": 7,
 "points": 108,
@@ -27258,6 +28061,7 @@
 "version": 23,
 "title1": "DEBUGGER",
 "title2": "INTERFACE TO LM DEBUG PORT",
+"board": "NCP13",
 "libs": [
 [
 "LMBODS",
@@ -27287,6 +28091,7 @@
 "version": 23,
 "title1": "DEBUGGER",
 "title2": "SELECT & CONTROL OUTPUTS",
+"board": "NCP13",
 "libs": [
 [
 "AD0808",
@@ -27321,6 +28126,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "ADDRESS BUFFERS",
+"board": "LG684",
 "libs": [
 [
 "BOD2",
@@ -27350,6 +28156,7 @@
 "version": 23,
 "title1": "DEBUGGER",
 "title2": "INTERFACE TO LM DEBUG PORT",
+"board": "NCP13",
 "libs": [
 [
 "LMBODS",
@@ -27379,6 +28186,7 @@
 "version": 23,
 "title1": "DEBUGGER",
 "title2": "SELECT & CONTROL OUTPUTS",
+"board": "NCP13",
 "libs": [
 [
 "AD0808",
@@ -27413,6 +28221,7 @@
 "version": 23,
 "title1": "DEBUGGER",
 "title2": "BYPASS CAPACITORS",
+"board": "NCP13",
 "libs": [],
 "bodies": 16,
 "points": 64,
@@ -27436,6 +28245,7 @@
 "version": 23,
 "title1": "LISPM TV",
 "title2": "Customizing for 8-bit Version",
+"board": "LG684",
 "libs": [],
 "bodies": 2,
 "points": 84,
@@ -27459,6 +28269,7 @@
 "version": 23,
 "title1": "MULTIWIRE MEMORY",
 "title2": "BOARD LAYOUT - \"PIN\" SIDE",
+"board": "",
 "libs": [],
 "bodies": 287,
 "points": 344,
@@ -27482,6 +28293,7 @@
 "version": 23,
 "title1": "SIMPLE TV",
 "title2": "TV MA INC",
+"board": "LG684",
 "libs": [
 [
 "BOD2",

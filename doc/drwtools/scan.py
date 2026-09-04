@@ -4,7 +4,9 @@ The folder holding the tape dumps is taken from the ITS_TAPES environment
 variable (or the second argument).
 
 Output: JSON list of records {path, size, mtime, date, md5, ok, title1,
-title2, version, libs, words} where `words` is a hash of the parsed
+title2, board, version, libs, words} where `board` is the board type from
+the title block (LG684, LG411, LG683 ...), which tells apart the several
+boards whose pages share a directory and a page name, and `words` is a hash of the parsed
 36-bit word stream (so two dumps of the same ITS file compare equal even
 if the 8-bit encodings differ).
 """
@@ -50,6 +52,7 @@ def scan(root, out):
                 rec["nwords"] = len(words.split())
                 d = suds.Drawing(p)
                 rec.update(version=d.version, title1=d.trailer["title1"], title2=d.trailer["title2"],
+                           board=(d.nomenclature_type or "").strip(),
                            libs=d.library_file_specs, bodies=len(d.bodies), points=len(d.points),
                            parsed=d.end_index, total=d.total_halfwords)
                 # sanity: SUDS versions 21 and 23 are understood (19 is not),

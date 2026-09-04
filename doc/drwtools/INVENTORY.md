@@ -444,27 +444,27 @@ Source: every `.drw` on the ITS tape dumps (981 files). Dates are the ITS file d
 | iobtrm | PDP10 CHAOS / IOB TERMINATION, CABLES | undated | tots-chaos-dirs-its/7005406/chaos/iobtrm.drw | 1 (older: 1 undated variant(s)) |
 | iobxcv | PDP10 CHAOS / IO BUSS TRANSCEIVERS | undated | tots-chaos-dirs-its/7005406/chaos/iobxcv.drw | 1 (older: 1 undated variant(s)) |
 | lindrv | PDP10 CHAOS / LINE DRIVERS | undated | tots-chaos-dirs-its/7005406/chaos/lindrv.drw | 1 (older: 1 undated variant(s)) |
-| lmdatp | LISP MACHINE CHAOS NET / UNIBUS OUTPUT | undated | tots-chaos-dirs-its/701373/chaos/lmdatp.drw | 3 (older: 3 undated variant(s)) |
-| lmdetc | LISP MACHINE CHAOS NET / DETECTOR | undated | tots-chaos-dirs-its/701373/chaos/lmdetc.drw | 4 (older: 4 undated variant(s)) |
+| lmdatp | LISP MACHINE CHAOS NET / UNIBUS OUTPUT | undated | tots-chaos-dirs-its/701417/chaos/lmdatp.drw | 3 (older: 3 undated variant(s)) |
+| lmdetc | LISP MACHINE CHAOS NET / DETECTOR | undated | tots-chaos-dirs-its/701417/chaos/lmdetc.drw | 4 (older: 4 undated variant(s)) |
 | lmicon | LISP MACHINE CHAOS NET / INTERRUPT CONTROL | undated | tots-chaos-dirs-its/701373/chaos/lmicon.drw | 1 (older: 1 undated variant(s)) |
-| lmjpns | LISP MACHINE CHAOS NET / CONN TO TRANSCEIVER | undated | tots-chaos-dirs-its/701373/chaos/lmjpns.drw | 4 (older: 4 undated variant(s)) |
+| lmjpns | LISP MACHINE CHAOS NET / CONN TO TRANSCEIVER | undated | tots-chaos-dirs-its/701417/chaos/lmjpns.drw | 4 (older: 4 undated variant(s)) |
 | lmlndr | LISP MACHINE CHAOS NET / LINE DRIVERS | undated | tots-chaos-dirs-its/7008261/chaos/lmlndr.drw | 1 (older: 1 undated variant(s)) |
-| lmmodu | LISP MACHINE CHAOS NET / SERIAL MODULATOR | undated | tots-chaos-dirs-its/701373/chaos/lmmodu.drw | 4 (older: 4 undated variant(s)) |
-| lmmynm | LISP MACHINE CHAOS NET / FIND MSGS DESTINED FOR ME | undated | tots-chaos-dirs-its/701373/chaos/lmmynm.drw | 4 (older: 4 undated variant(s)) |
-| lmrbuf | LISP MACHINE CHAOS NET / RECEIVER BUFFER | undated | tots-chaos-dirs-its/701373/chaos/lmrbuf.drw | 4 (older: 4 undated variant(s)) |
+| lmmodu | LISP MACHINE CHAOS NET / SERIAL MODULATOR | undated | tots-chaos-dirs-its/701417/chaos/lmmodu.drw | 4 (older: 4 undated variant(s)) |
+| lmmynm | LISP MACHINE CHAOS NET / FIND MSGS DESTINED FOR ME | undated | tots-chaos-dirs-its/701417/chaos/lmmynm.drw | 4 (older: 4 undated variant(s)) |
+| lmrbuf | LISP MACHINE CHAOS NET / RECEIVER BUFFER | undated | tots-chaos-dirs-its/701417/chaos/lmrbuf.drw | 4 (older: 4 undated variant(s)) |
 | lmrclk | LISP MACHINE CHAOS NET / RECEIVE CLOCK | undated | tots-chaos-dirs-its/701417/chaos/lmrclk.drw | 3 (older: 3 undated variant(s)) |
-| lmrctl | LISP MACHINE CHAOS NET / RECEIVE CONTROL | undated | tots-chaos-dirs-its/701373/chaos/lmrctl.drw | 3 (older: 3 undated variant(s)) |
-| lmtbfc | LISP MACHINE CHAOS NET / TRANSMIT CONTROL | undated | tots-chaos-dirs-its/701373/chaos/lmtbfc.drw | 4 (older: 4 undated variant(s)) |
-| lmtbuf | LISP MACHINE CHAOS NET / TRANSMIT BUFFER | undated | tots-chaos-dirs-its/701373/chaos/lmtbuf.drw | 3 (older: 3 undated variant(s)) |
-| lmtclk | LISP MACHINE CHAOS NET / TRANSMIT CLOCK | undated | tots-chaos-dirs-its/701373/chaos/lmtclk.drw | 5 (older: 5 undated variant(s)) |
-| lmturn | LISP MACHINE CHAOS NET / MY TURN TIMER | undated | tots-chaos-dirs-its/701373/chaos/lmturn.drw | 3 (older: 3 undated variant(s)) |
-| lmucon | LISP MACHINE CHAOS NET / UNIBUS CONTROL | undated | tots-chaos-dirs-its/701373/chaos/lmucon.drw | 5 (older: 5 undated variant(s)) |
+| lmrctl | LISP MACHINE CHAOS NET / RECEIVE CONTROL | undated | tots-chaos-dirs-its/701417/chaos/lmrctl.drw | 3 (older: 3 undated variant(s)) |
+| lmtbfc | LISP MACHINE CHAOS NET / TRANSMIT CONTROL | undated | tots-chaos-dirs-its/701417/chaos/lmtbfc.drw | 4 (older: 4 undated variant(s)) |
+| lmtbuf | LISP MACHINE CHAOS NET / TRANSMIT BUFFER | undated | tots-chaos-dirs-its/701417/chaos/lmtbuf.drw | 3 (older: 3 undated variant(s)) |
+| lmtclk | LISP MACHINE CHAOS NET / TRANSMIT CLOCK | undated | tots-chaos-dirs-its/701417/chaos/lmtclk.drw | 5 (older: 5 undated variant(s)) |
+| lmturn | LISP MACHINE CHAOS NET / MY TURN TIMER | undated | tots-chaos-dirs-its/701417/chaos/lmturn.drw | 3 (older: 3 undated variant(s)) |
+| lmucon | LISP MACHINE CHAOS NET / UNIBUS CONTROL | undated | tots-chaos-dirs-its/701417/chaos/lmucon.drw | 5 (older: 5 undated variant(s)) |
 | modula | PDP10 CHAOS / SERIAL MODULATOR | undated | tots-chaos-dirs-its/7005406/chaos/modula.drw | 4 (older: 4 undated variant(s)) |
 | my# | CAIOS NETWORK / PREAMBLE DETECTION | undated | tots-chaos-dirs-its/9004365/chaos/my#.drw | 1 (older: 1 undated variant(s)) |
 | mynum | PDP10 CHAOS / FIND MSGS DESTINED FOR ME | undated | tots-chaos-dirs-its/7005406/chaos/mynum.drw | 2 (older: 2 undated variant(s)) |
-| myturn | CAIOS NETWORK / MY TURN TIMER | undated | tots-chaos-dirs-its/7005142/chaos/myturn.drw | 4 (older: 4 undated variant(s)) |
+| myturn | PDP10 CHAOS / MY TURN TIMER | undated | tots-chaos-dirs-its/7005406/chaos/myturn.drw | 4 (older: 4 undated variant(s)) |
 | n11con | CHAOS NET / UNIBUS CONTROL | undated | tots-chaos-dirs-its/701373/chaos/n11con.drw | 2 (older: 2 undated variant(s)) |
-| nbods |  | undated | tots-chaos-dirs-its/2100233/chaos/nbods.drw | 3 (older: 3 undated variant(s)) |
+| nbods |  | undated | tots-chaos-dirs-its/701417/chaos/nbods.drw | 3 (older: 3 undated variant(s)) |
 | ncpins | UNIFACE / EDGE CONNECTORS | undated | tots-chaos-dirs-its/9004365/chaos/ncpins.drw | 2 (older: 2 undated variant(s)) |
 | ndatpa | CHAOS NET / UNIBUS DATA PATHS | undated | tots-chaos-dirs-its/701373/chaos/ndatpa.drw | 2 (older: 2 undated variant(s)) |
 | ndetec | CHAOS NET / DETECTOR | undated | tots-chaos-dirs-its/701373/chaos/ndetec.drw | 2 (older: 2 undated variant(s)) |
@@ -477,9 +477,9 @@ Source: every `.drw` on the ITS tape dumps (981 files). Dates are the ITS file d
 | progck | CHAOS NETWORK / PROGRAMABLE REAL TIME CLOCK | undated | tots-chaos-dirs-its/7005142/chaos/progck.drw | 2 (older: 2 undated variant(s)) |
 | qadadr | QUAD SPC BOARD / UNIBUS ADDRESS | undated | tots-chaos-dirs-its/7008261/chaos/qadadr.drw | 4 (older: 4 undated variant(s)) |
 | qadint | QUAD SPC BOARD / UNIBUS INTERRUPT | undated | tots-chaos-dirs-its/701417/chaos/qadint.drw | 3 (older: 3 undated variant(s)) |
-| qadjps | LISP MACHINE CHAOS NET / CONN TO TRANSCEIVER | undated | tots-chaos-dirs-its/7008261/chaos/qadjps.drw | 3 (older: 3 undated variant(s)) |
-| qadspc | QUAD SPC SLOT / BACKPLANE CONNECTIONS | undated | tots-chaos-dirs-its/2100233/chaos/qadspc.drw | 2 (older: 2 undated variant(s)) |
-| qadtim | QUAD SPC BOARD / INTERVAL TIMER | undated | tots-chaos-dirs-its/7008261/chaos/qadtim.drw | 4 (older: 4 undated variant(s)) |
+| qadjps | LISP MACHINE CHAOS NET / CONN TO TRANSCEIVER | undated | tots-chaos-dirs-its/701417/chaos/qadjps.drw | 3 (older: 3 undated variant(s)) |
+| qadspc | QUAD SPC SLOT / BACKPLANE CONNECTIONS | undated | tots-chaos-dirs-its/701417/chaos/qadspc.drw | 2 (older: 2 undated variant(s)) |
+| qadtim | QUAD SPC BOARD / INTERVAL TIMER | undated | tots-chaos-dirs-its/701417/chaos/qadtim.drw | 4 (older: 4 undated variant(s)) |
 | qadxcv | QUAD BOARD CHAOS NET / UNIBUS TRANSCEIVER | undated | tots-chaos-dirs-its/701417/chaos/qadxcv.drw | 3 (older: 3 undated variant(s)) |
 | qbcon | LSI-11 (Q-Bus) Chaosnet / CSR,Reply,IREQ,Decode | undated | tots-chaos-dirs-its/701417/chaos/qbcon.drw | 2 (older: 2 undated variant(s)) |
 | qbus | LSI-11 (Q-Bus) Chaosnet / Bus Interface | undated | tots-chaos-dirs-its/701417/chaos/qbus.drw | 2 (older: 2 undated variant(s)) |
@@ -495,7 +495,7 @@ Source: every `.drw` on the ITS tape dumps (981 files). Dates are the ITS file d
 | rcvctl | PDP10 CHAOS / RECEIVE CONTROL | undated | tots-chaos-dirs-its/7005406/chaos/rcvctl.drw | 1 (older: 1 undated variant(s)) |
 | tbuf |  | undated (NO READABLE COPY) | tots-chaos-dirs-its/9004365/chaos/tbuf.drw | 1 (older: 1 undated variant(s)) |
 | tbufin |  | undated (NO READABLE COPY) | tots-chaos-dirs-its/7005142/chaos/tbufin.drw | 2 (older: 2 undated variant(s)) |
-| tclk | CAIOS NETWORK / TRANSMIT CLOCK | undated | tots-chaos-dirs-its/7005142/chaos/tclk.drw | 2 (older: 2 undated variant(s)) |
+| tclk | CAIOS NETWORK / TRANSMIT CLOCK | undated | tots-chaos-dirs-its/9004365/chaos/tclk.drw | 2 (older: 2 undated variant(s)) |
 | wrdbts |  | undated (NO READABLE COPY) | tots-chaos-dirs-its/9004365/chaos/wrdbts.drw | 1 (older: 1 undated variant(s)) |
 | xcvr | CHAOS NET / OPTO ISOLATOR | undated (NO READABLE COPY) | tots-chaos-dirs-its/9004365/chaos/xcvr.drw | 1 (older: 1 undated variant(s)) |
 | xmtbuf | PDP10 CHAOS / TRANSMIT BUFFER | undated | tots-chaos-dirs-its/7005406/chaos/xmtbuf.drw | 1 (older: 1 undated variant(s)) |

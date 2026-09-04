@@ -57,8 +57,29 @@ UNDATED_AFTER = 631152000  # 1990-01-01: no ITS file is that recent; a later mti
 # the LISPM TV's 102, which adds COMP VIDEO OUT and TTL VIDEO DRIVE.  They
 # stayed in service together -- lmtv.eco of 18-JUN-80 patches "old TV
 # boards" for a check that is "extant only on new TV boards".
+#
+# chaos is the worse case: it holds the drawings of five machines under one
+# directory, and three of them use the same page names.  The Lisp Machine's
+# lm* pages are the Chaosnet half of the CADR I/O board -- CADRIO;IOB WLR
+# indexes all thirteen of them along with the fourteen cadrio pages -- while
+# the plain-named set (iobctl, iobtrm, iobxcv ...) is the PDP-10's interface
+# and looks exactly like the I/O board's own pages.  Globbing chaos/*.drw,
+# or matching iob*, mixes the two machines silently.  The board type in the
+# title block separates them: LG411 is the CAIOS board, LG683 the Q-bus and
+# QUAD boards, and the two LG684 sets are told apart by title1.  The
+# libraries, the cable pages and the odd DECPC and PG21 sheets have no board
+# of their own and stay at the top of the group.
+#
+# A key is (board type, title1); None matches anything, and the more
+# specific key wins.
 BOARD_FOLDER = {
-    "cadrtv": {"SIMPLE TV": "simple-tv", "XBUS": "simple-tv", "LISPM TV": "lispm-tv"},
+    "cadrtv": {(None, "SIMPLE TV"): "simple-tv",
+               (None, "XBUS"): "simple-tv",
+               (None, "LISPM TV"): "lispm-tv"},
+    "chaos": {("LG684", "LISP MACHINE CHAOS NET"): "lispm",
+              ("LG684", "PDP10 CHAOS"): "pdp10",
+              ("LG411", None): "caios",
+              ("LG683", None): "quad"},
 }
 
 # Pages whose older board's copy is installed as well.  In its own revision
@@ -89,8 +110,13 @@ ALSO_INSTALL = {
 
 def page_dir(e):
     """<group>, or <group>/<board> in a group that holds more than one."""
-    folder = BOARD_FOLDER.get(e["group"], {}).get((e.get("title1") or "").strip())
-    return "%s/%s" % (e["group"], folder) if folder else e["group"]
+    folders = BOARD_FOLDER.get(e["group"], {})
+    board = (e.get("board") or "").strip()
+    title = (e.get("title1") or "").strip()
+    for key in ((board, title), (board, None), (None, title)):
+        if key in folders:
+            return "%s/%s" % (e["group"], folders[key])
+    return e["group"]
 
 
 SKIP_EXT = {
@@ -158,15 +184,47 @@ def junk(p):
     return (bool(b) and n < JUNK_TEXT * len(b), n)
 
 
+# The chaos dumps lost their ITS dates, so their copies cannot be ordered by
+# date and their mtimes are only when the tape was unpacked.  These are the
+# tape directories in the order that agrees with CADRIO;IOB WLR; see the
+# longer note on CHAOS_UNDATED in inventory.py, which must name the same
+# directories in the same order and which explains why only the lm* pages
+# are ordered by it.  There it picks the drw; here it picks the per-page
+# wire dumps (lmturn.wd and the rest) that pair one to one with a drawing
+# and come out of the same directories.  Scored the same way as the
+# drawings -- how much of the page each names of what iob.wlr names on it --
+# the 701417 dumps win or tie every page: lmdetc 16 against 11, lmturn 20
+# against 6, lmdatp 32 against 31, lmrctl level.
+#
+# Only the .wd dumps, not every lm* file.  lmfile.txt is the group's page
+# list rather than one page's, and the 701417 copy of it lists LMJPNS where
+# iob.wlr indexes LMLNDR, so the directory holding the finished drawings
+# does not hold the finished page list.
+CHAOS_UNDATED = ["701417", "7008261", "701373", "7007319", "2100233"]
+
+
+def chaos_dir_rank(p):
+    """Index of the tape directory of p in CHAOS_UNDATED, worst if absent or
+    if p is not a Lisp Machine Chaosnet page's wire dump."""
+    parts = os.path.relpath(p, ROOT).split(os.sep)
+    d = parts[1] if len(parts) > 1 else ""
+    fn = os.path.basename(p).lower()
+    page_dump = fn.startswith("lm") and fn.endswith(".wd")
+    return CHAOS_UNDATED.index(d) if page_dump and d in CHAOS_UNDATED else len(CHAOS_UNDATED)
+
+
 def rank(p):
     """Order of the copies of a file: the newest ITS date wins.  Copies of
     the same minute are the same ITS file, and of those the undamaged one is
     kept: a text copy over a binary one (a dump that spliced a .bin into a
     wire list reads as binary), then the one with the least junk, then the
     larger, since a truncated dump is the other common damage.  Copies from
-    dumps that lost the ITS dates rank below every dated copy and among
-    themselves by size alone: they are not known to be the same ITS file, so
-    a shorter one carrying less junk is no evidence of a better copy.
+    dumps that lost the ITS dates rank below every dated copy, and among
+    themselves by the CHAOS_UNDATED order of the tape directory they came
+    from and then by size: they are not known to be the same ITS file, so a
+    shorter one carrying less junk is no evidence of a better copy.  The
+    third and fourth terms are the junk terms for a dated copy and the
+    directory rank for an undated one; the two are never compared.
 
     The junk terms are what keep the 04-MAR-80 CADRM;MEM WLR of the
     stuff_for_ams2 dump from being installed: it is the largest copy of that
@@ -175,7 +233,7 @@ def rank(p):
     st = os.stat(p)
     dated = st.st_mtime < UNDATED_AFTER
     if not dated:
-        return (False, 0, False, 0, st.st_size)
+        return (False, 0, False, -chaos_dir_rank(p), st.st_size)
     text, n = junk(p)
     return (True, round(st.st_mtime / 60), text, -n if text else 0, st.st_size)
 
@@ -194,7 +252,8 @@ def superseded(entries):
         if not copies:
             raise SystemExit("install.py: no readable %r copy of %s/%s on the tapes" % (title1, g, name))
         c = copies[-1]
-        e = {"group": g, "name": name, "title1": title1, "title2": None, "superseded_by": src[0]["title1"],
+        e = {"group": g, "name": name, "title1": title1, "title2": None, "board": c.get("board"),
+             "superseded_by": src[0]["title1"],
              "latest": {"date": c["date"], "path": c["path"], "size": c["size"], "ok": True},
              "copies": [], "newer_unreadable": [], "undated_distinct": 0, "distinct_contents": 1}
         if page_dir(e) == page_dir(src[0]):

@@ -10,8 +10,14 @@ microcode images (bin, prom, mcr, map) and the like. Where two directories
 had the same file name, the file with the newer ITS date won; of two copies
 with the same date the larger one, since a truncated dump is the common
 damage. Copies from dumps that lost the ITS dates (the chaos dumps) are
-`undated` and rank below every dated copy; among undated copies the largest
-is kept, the best guess without dates. For lmdoc only the directories
+`undated` and rank below every dated copy. Among undated copies of a Lisp
+Machine Chaosnet page the tape directory decides, in the `CHAOS_UNDATED`
+order of `doc/drwtools/inventory.py`: several of those pages survive in
+three to five revisions, nothing in the file says which is which, and the
+order is the one that agrees with `cadrio/iob.wlr`, the wire list the board
+was built from. Among any other undated copies the largest is kept, the
+best guess without dates. `doc/drwtools/check-copies.py` checks the
+result. For lmdoc only the directories
 the drws came from were used; the many lmdoc directories on the tapes hold
 Lisp Machine documentation of every kind. ITS
 housekeeping files, dump logs, numbered text versions, mail, editor backups
@@ -29,8 +35,29 @@ tapes that can be read; the end of `drw-index.txt` lists the pages that
 have no readable copy at all (absent here) and would list any page where a
 newer copy exists but is unreadable (there is none).
 
-The one group with subfolders is cadrtv, which holds two boards under one
-set of page names. The SIMPLE TV, the black and white display of `lmtv.stf`
+Two groups have subfolders, cadrtv and chaos, because each holds more than
+one board under one set of page names. In both, `BOARD_FOLDER` in
+`doc/drwtools/install.py` files each page under its board, taken from the
+board type and title block that SUDS prints in the title block; the
+libraries and the pages belonging to no one board stay at the top of the
+group.
+
+chaos is the worse case: five machines share the directory and three of them
+use the same page names. The Lisp Machine's `lm*` pages are the Chaosnet
+half of the CADR I/O board -- `cadrio/iob.wlr` indexes all thirteen of them
+together with the fourteen `cadrio` pages, and `iob.stf` titles `iobjps`
+"LISP MACHINE CHAOS NET" -- while the plain-named set is the PDP-10's
+interface, whose `iobctl`, `iobtrm` and `iobxcv` look exactly like the I/O
+board's own pages. Globbing `chaos/*.drw`, or matching `iob*`, used to mix
+the two machines silently. So the pages are now in `chaos/lispm/` (15, board
+type LG684, "LISP MACHINE CHAOS NET"), `chaos/pdp10/` (17, LG684, "PDP10
+CHAOS", the 17 of `chaos.fil`, dated 22-JUL-81), `chaos/caios/` (17, LG411,
+the "CAIOS NETWORK" / "CHAOS NET" board of `chs.fil` and `chs.stf`,
+05-SEP-78) and `chaos/quad/` (13, LG683, the QUAD SPC and Q-bus boards).
+The body libraries (`bodies`, `inbods`, `nbods`), the three `cable` pages
+and `foo` belong to no one board and stay at the top of `chaos/`.
+
+The cadrtv case is the older one. The SIMPLE TV, the black and white display of `lmtv.stf`
 (29 pages, ITS directory `MAR;RTV`), was replaced in December 1980 by the
 LISPM TV of `lmtv4b.stf` / `lmtv8b.fil` (25 pages, `CAD;RTV`), which added a
 colour map and 4- and 8-bit modes. Both are board type LG684 and their

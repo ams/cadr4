@@ -50,6 +50,42 @@ for (g, name) in list(pages):
                 pages[(g, name)].append(r)
 
 UNDATED_AFTER = 631152000  # 1990-01-01: no ITS drawing is that recent
+
+# The chaos dumps lost their ITS dates, so the several surviving copies of
+# most lm* pages cannot be ordered by date, and their mtimes are only when
+# the tape was unpacked in 2025 -- two of the directories share one to the
+# second.  Sorting on that picked a working revision of twelve of the
+# fourteen Lisp Machine Chaosnet pages: parts moved, wires redrawn and not
+# relabelled, chips named by the short body definitions ('164' for
+# '74LS164', whose pins come out in the opposite order), and the 9S42s that
+# the finished drawings have already replaced with 74S51s.  Nothing in the
+# file says which revision it is, so the directories are ranked here by
+# which one agrees with CADRIO;IOB WLR, the wire list the board was built
+# from: extracting all 27 I/O board pages in this order and comparing
+# against it leaves no net split and none merged, where the copies picked
+# by mtime left 39 split and 14 merged.  doc/drwtools/check-copies.py
+# checks the result.  install.py keeps the same list for the per-page dumps
+# that come out of the same directories.
+#
+# Only the lm* pages: the wire list covers those and the cadrio pages, and
+# nothing here says which copy of the other two page sets in chaos/ -- the
+# CAIOS board's n* pages and the PDP-10's plain-named ones -- is the right
+# one.  Ordering those by this list moves chaos/myturn.drw from the PDP-10's
+# page to the CAIOS board's, a page of a different machine under the same
+# name, so they keep the old size-among-undated rule.
+CHAOS_UNDATED = ["701417", "7008261", "701373", "7007319", "2100233"]
+
+
+def undated_rank(r):
+    """Order undated copies: for a Lisp Machine Chaosnet page the directory
+    that agrees with the wire list first, then the larger, since a truncated
+    dump is the common damage."""
+    d = r["path"].split("/")[1] if "/" in r["path"] else ""
+    lm = r["name"].startswith("lm")
+    at = CHAOS_UNDATED.index(d) if lm and d in CHAOS_UNDATED else len(CHAOS_UNDATED)
+    return (r["ok"], -at, r["size"])
+
+
 by_words = defaultdict(list)
 for r in recs:
     by_words[r["words"]].append(r)
@@ -79,19 +115,21 @@ for (g, name), copies in sorted(pages.items()):
     contents = {}
     for c in copies:
         contents.setdefault(c["words"], []).append(c)
-    # pages with only undated copies: use a readable one (fewest defects)
+    # pages with only undated copies: no date orders them, so rank them by
+    # the tape directory the finished revisions came from (CHAOS_UNDATED)
     if latest is None:
         und_ok = [c for c in undated if c["ok"]]
-        latest = und_ok[-1] if und_ok else None
+        latest = max(und_ok, key=undated_rank) if und_ok else None
     ref = latest or copies[-1]
     inventory.append({
         "group": g, "name": name, "title1": ref.get("title1"), "title2": ref.get("title2"),
+        "board": ref.get("board"),
         "latest": {"date": ref["date"], "path": ref["path"], "size": ref["size"], "ok": ref["ok"]},
         "undated_distinct": len(set(c["words"] for c in undated) - set(c["words"] for c in dated)),
         "newer_unreadable": [c["path"] for c in newer_unreadable],
         # ascending by date, so copies[-1] of a selection is its newest;
         # title1 tells apart two boards that reused the same page names
-        "copies": [{"date": c["date"], "path": c["path"], "size": c["size"], "words": c["words"], "ok": c["ok"], "tape": c["tape"], "from_group": c.get("from_group"), "title1": c.get("title1")} for c in copies],
+        "copies": [{"date": c["date"], "path": c["path"], "size": c["size"], "words": c["words"], "ok": c["ok"], "tape": c["tape"], "from_group": c.get("from_group"), "title1": c.get("title1"), "board": c.get("board")} for c in copies],
         "distinct_contents": len(contents),
     })
 

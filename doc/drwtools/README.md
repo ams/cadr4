@@ -22,7 +22,8 @@ the original.
 | `batch.py` | renders many pages: `batch.py [--copy-drw] outdir a.drw b.drw ...`. A library named in a page (e.g. `CADR;BODIES DRW`) is the newest readable copy of that file in a directory of that name on the volume (from `data/scan.json`), i.e. the library page in the same `latest/<group>/` folder |
 | `compare.py` | side-by-side and red/blue overlay of a reference PNG and a rendered one |
 | `scan.py` | scans every `.drw` on the ITS tape dumps into `scan.json`: date, size, content hash, title, and whether the copy is readable |
-| `install.py` | copies the rendered pngs into `doc/schematics` and the drws plus the newest copy of the design files in each group's tape directories into `doc/ai`, writing a `drw-index.txt` in each. `BOARD_FOLDER` and `ALSO_INSTALL` there split a group that holds two boards under the same page names, which the newest-wins rule would silently mix, and `VERSIONED` names the files whose `.<n>` is an ITS version number rather than an editor backup |
+| `install.py` | copies the rendered pngs into `doc/schematics` and the drws plus the newest copy of the design files in each group's tape directories into `doc/ai`, writing a `drw-index.txt` in each. `BOARD_FOLDER` and `ALSO_INSTALL` there split a group that holds more than one board under the same page names, which the newest-wins rule would silently mix (cadrtv holds two boards, chaos five), and `VERSIONED` names the files whose `.<n>` is an ITS version number rather than an editor backup |
+| `check-copies.py` | checks that the Lisp Machine Chaosnet pages installed in `doc/ai/chaos/lispm` are the finished revision and not one of the working copies the undated chaos dumps also hold, by extracting each with cadr4's `soap4` and comparing against `cadrio/iob.wlr`. Run it after `install.py` |
 | `inventory.py` | builds `INVENTORY.md`, `inventory.json` and `drw-index.txt` from the scan |
 | `render_latest.py` | renders the latest readable version of every page in `inventory.json`, copying the drw next to the png, into the folder `install.py` will file it under, and renders the `ALSO_INSTALL` pages too |
 | `scan.json` | the scan as run on 2026-09-02 (regenerable from the tape dumps in two minutes) |
@@ -58,6 +59,7 @@ scripts read the drawings and their libraries from there.
     python3 inventory.py scan.json .                             # INVENTORY.md, inventory.json, drw-index.txt
     python3 render_latest.py inventory.json OUT                  # OUT/<group>/: latest version of every page, png + drw
     python3 install.py inventory.json OUT ../schematics ../ai    # into the doc folders
+    python3 check-copies.py                                      # the chaos copies are the right ones
 
 ## Which copy of a drawing is used
 
