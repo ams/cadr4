@@ -876,9 +876,21 @@ parse_points(void)
             char *name = parse_7bit_ascii();
             DEBUG("\t\tparsed name '%s'\n", name);
 
-            pnt->name = managed_strdup(fix_signal_name(
-                fix_bus_signal_name_in_cadr1(name)));
-            DEBUG("\t\tfinal name '%s'\n", pnt->name);
+            char *fixed = fix_signal_name(fix_bus_signal_name_in_cadr1(name));
+
+            // A text that is nothing but a comment -- ';...', or the ascii
+            // 23 SUDS writes for a line break inside one -- comes back
+            // empty from fix_signal_name.  It names no signal, so leave the
+            // point unnamed and let it take the net's name from a
+            // neighbouring point or from assign_anonymous_net_names.
+            // Keeping the empty string instead loses the whole net: the
+            // vhdl output asserts on it and a netlist reader drops every
+            // pin on it.  LMTBFC of the Chaosnet half of the I/O board has
+            // seven such comments, three of them on pins, and they cost it
+            // nine pins that CADRIO;IOB WLR places.
+            pnt->name = (fixed[0] == 0) ? NULL : managed_strdup(fixed);
+            DEBUG("\t\tfinal name '%s'\n",
+                pnt->name == NULL ? "(comment only: no signal name)" : pnt->name);
 
         }
     

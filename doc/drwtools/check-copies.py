@@ -38,9 +38,11 @@ LM_PAGES = ["lmdatp", "lmdetc", "lmjpns", "lmlndr", "lmmodu", "lmmynm",
             "lmrbuf", "lmrclk", "lmrctl", "lmtbfc", "lmtbuf", "lmtclk",
             "lmturn", "lmucon"]
 
-# lmtbfc defeats soap4 in every copy on the tapes: a reader gap, not a copy
-# problem, so it is not evidence either way about which copy is installed.
-UNPARSEABLE = {"lmtbfc"}
+# Every lm* page reads.  lmtbfc used to defeat soap4 in every copy on the
+# tapes -- a reader gap, not a copy problem -- until the comment-only point
+# names it carries stopped being taken for signal names; see the note at the
+# point name in soap/soap4.c.
+UNPARSEABLE = set()
 
 # Body definitions named by number alone.  cadrio/bodies.drw defines the
 # same chips twice, as '164' and as '74LS164' and so on, and their pins come
@@ -121,7 +123,17 @@ def main():
             if b19 and pin in b19:
                 fail("lmturn", "B19 pin %d is wired to %r; iob.wlr lists it unconnected" % (pin, b19[pin]))
 
-    # 4. lmmynm: D11 is the two pull-up packs the wire list and iob.wls count
+    # 4. lmtbfc: C15 gate 1 drives UB>TSR, which iob.wlr gives as
+    # C15-01 -11XMT, C15-02 -11WTBUF, C15-03 UB>TSR TO 20.00/-1.00.  The
+    # comment-only names on this page used to cost it these pins.
+    if "lmtbfc" in vhdl:
+        c15 = pins(vhdl["lmtbfc"], "c15")
+        for pin, net in ((1, "-11xmt"), (2, "-11wtbuf"), (3, "ub>tsr")):
+            if c15 is None or c15.get(pin) != net:
+                fail("lmtbfc", "C15 pin %d is %r, iob.wlr says %r"
+                     % (pin, c15 and c15.get(pin), net))
+
+    # 5. lmmynm: D11 is the two pull-up packs the wire list and iob.wls count
     if "lmmynm" in vhdl:
         _, _, dbg = soap("lmmynm", debug=True)
         if "body def name 'P SIP1000-10'" not in dbg:
