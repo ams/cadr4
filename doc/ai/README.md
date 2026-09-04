@@ -15,7 +15,14 @@ is kept, the best guess without dates. For lmdoc only the directories
 the drws came from were used; the many lmdoc directories on the tapes hold
 Lisp Machine documentation of every kind. ITS
 housekeeping files, dump logs, numbered text versions, mail, editor backups
-and XGP plot files were not kept. Files already here that were not
+and XGP plot files were not kept, except that where the number is the version
+MIT printed rather than an editor's backup the highest version was kept:
+`newdsk.31`, the DC board's microcode that `dc.book` prints as
+`AI:CADRDC;NEWDSK >`, and `mksman.39`, the Marksman controller's, which the
+`mksman.mcr` listing and the `mksman.d03`/`d04`/`d05` PROM images beside it
+were assembled from, and `lmprom.3`, "LMTV Clock PROM 74S288" of 22-AUG-78,
+the SIMPLE TV's D06 that `lmtv4b.prom` and `lmtv8b.prom` later replaced
+(`VERSIONED` in `doc/drwtools/install.py`). Files already here that were not
 overwritten were left in place. `drw-index.txt` lists every copied file with
 its ITS date and source path. Each page is the newest copy on the
 tapes that can be read; the end of `drw-index.txt` lists the pages that
@@ -47,12 +54,12 @@ or not. The rule is `BOARD_FOLDER` in `doc/drwtools/install.py`.
 |---|---|---|---|
 | cadr | 126 | 16 | 7008261/B7/cadr, plus 1891, 9004365, 2100233, 701395 |
 | cadr1 | 47 | 53 | 7008261/B7/cadr1, 701395, 7009559, ai_ka_arch_2of9 (1982) |
-| cadrdc | 49 | 89 | 7009559, 2100233, 7008261, ai_ka_arch_2of9 (1982) |
+| cadrdc | 49 | 91 | 7009559, 2100233, 7008261, ai_ka_arch_2of9 (1982) |
 | cadrio | 21 | 95 | 2100233, 7008261/B7/cadrio, 701395 |
 | cadrm | 29 | 28 | 7008105, 701395, 7009559 |
 | cadrmw | 24 | 13 | 7009559, 701298, 3100085, 7008105 |
 | cadrpc | 19 | 12 | 7009559, 7005736 |
-| cadrtv | 62 | 26 | 7009559, 7008261, ai_ka_arch_2of9 (1982) |
+| cadrtv | 62 | 27 | 7009559, 7008261, ai_ka_arch_2of9 (1982) |
 | chaos | 69 | 127 | tots-chaos-dirs-its (undated) |
 | lmdoc | 8 | 1 | 90108/lmdoc |
 

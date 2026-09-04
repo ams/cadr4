@@ -10,7 +10,8 @@
   ECOs, PROM images, ...) from every tape directory named after the group
   and from the directories the drws came from; the newest copy of each
   file name wins (see rank).  ITS housekeeping files, dump logs, numbered
-  text versions, mail, editor backups and XGP plot files are skipped.
+  text versions, mail, editor backups and XGP plot files are skipped, except
+  the numbered versions named in VERSIONED, whose highest version is taken.
 
 <dir> is the group, or <group>/<board> in a group that holds more than one
 board under the same page names (BOARD_FOLDER); the design files stay at the
@@ -98,6 +99,30 @@ def skip(fn):
     ext = fn.rsplit(".", 1)[-1] if "." in fn else ""
     return (fn.startswith("-") or fn.startswith("_") or "|" in fn or fn.endswith("#")
             or re.search(r"\.\d+$", fn) is not None or ext in SKIP_EXT or fn == ".DS_Store")
+
+
+# Files whose ".<n>" is an ITS version number and not an editor backup.
+# skip() drops every name ending in a number, which is right for the numbered
+# text versions ITS kept of everything (the chaos Lisp sources alone leave
+# dozens of them) and wrong where the number is the version MIT printed:
+# dc.book prints "AI:CADRDC;NEWDSK >" among the DC board's text files, so the
+# print set is missing the board's microcode without it.  ">" is the highest
+# version and that is the one installed, which is also the one the rest of the
+# group agrees with: the MKSMAN MCR listing and the MKSMAN D03/D04/D05 PROM
+# images installed next to it were assembled from MKSMAN 39.  Older versions
+# stay on the tapes.
+VERSIONED = {
+    # (group, file name without the version)
+    ("cadrdc", "newdsk"),   # DC microcode, the "NEWDSK >" of dc.book
+    ("cadrdc", "mksman"),   # Marksman control microcode, "Based on NEWDSK 31"
+    ("cadrtv", "lmprom"),   # "LMTV Clock PROM 74S288", the SIMPLE TV's D06
+}
+
+
+def versioned(group, fn):
+    """The ITS version number of a VERSIONED file, else None."""
+    stem, _, n = fn.lower().rpartition(".")
+    return int(n) if n.isdigit() and (group, stem) in VERSIONED else None
 
 
 def date_of(p):
@@ -243,18 +268,28 @@ def main(inv_path, rendered, schem, ai):
         # a group directory inside a tape; ROOT/cadr itself is not a tape
         if g in WIDE and "/" in os.path.relpath(dirpath, ROOT):
             src_dirs.setdefault(g, set()).add(dirpath)
+    highest = {}
     for g, dirs in src_dirs.items():
         for d in sorted(dirs):
             for fn in os.listdir(d):
-                if ".drw" in fn.lower() or skip(fn):
-                    continue
                 p = os.path.join(d, fn)
-                if not os.path.isfile(p):
+                if ".drw" in fn.lower() or not os.path.isfile(p):
                     continue
-                key = (g, fn.lower())
-                r = rank(p)
-                if key not in plan or r > plan[key][0]:
-                    plan[key] = (r, p)
+                v = versioned(g, fn)
+                if v is not None:
+                    key = (g, fn.lower().rpartition(".")[0])
+                    r = (v,) + rank(p)
+                    if key not in highest or r > highest[key][0]:
+                        highest[key] = (r, p)
+                elif not skip(fn):
+                    key = (g, fn.lower())
+                    r = rank(p)
+                    if key not in plan or r > plan[key][0]:
+                        plan[key] = (r, p)
+    for (g, stem), (_, p) in sorted(highest.items()):
+        fn = os.path.basename(p)
+        plan[(g, fn.lower())] = (float("inf"), p)
+        print("also installing %s/%s: the highest version of %s on the tapes" % (g, fn, stem.upper()))
     old = previous(os.path.join(ai, "drw-index.txt"))
     new = set()
     counts = {}

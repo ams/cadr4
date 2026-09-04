@@ -364,6 +364,7 @@ cadrdc/mkdbus.wd                  09-JUL-79 06:47 stuff_for_ams2/2100233/E/cadri
 cadrdc/mkpanl.drw                 14-NOV-79 00:05 7009559/cadrdc/mkpanl.drw
 cadrdc/mkpanl.wd                  09-JUL-79 06:47 stuff_for_ams2/2100233/E/cadrio/mkpanl.wd
 cadrdc/mkrd.drw                   09-MAR-80 04:58 7009559/cadrdc/mkrd.drw
+cadrdc/mksman.39                  22-OCT-79 01:31 7009559/cadrdc/mksman.39
 cadrdc/mksman.d03                 25-OCT-79 03:01 7009559/cadrdc/mksman.d03
 cadrdc/mksman.d04                 25-OCT-79 03:02 7009559/cadrdc/mksman.d04
 cadrdc/mksman.d05                 25-OCT-79 03:02 7009559/cadrdc/mksman.d05
@@ -376,6 +377,7 @@ cadrdc/mkuc.drw                   14-JUN-79 05:35 stuff_for_ams2/2100233/E/cadri
 cadrdc/mkuc.wd                    09-JUL-79 06:49 stuff_for_ams2/2100233/E/cadrio/mkuc.wd
 cadrdc/mkui.drw                   06-JUN-79 08:59 stuff_for_ams2/2100233/E/cadrio/mkui.drw
 cadrdc/mkui.wd                    09-JUL-79 06:49 stuff_for_ams2/2100233/E/cadrio/mkui.wd
+cadrdc/newdsk.31                  31-JUL-78 20:40 7009559/cadrdc/newdsk.31
 cadrdc/newdsk.trans               18-OCT-79 00:51 7009559/cadrdc/newdsk.trans
 cadrdc/xbus.drw                   19-DEC-79 00:54 7009559/cadrdc/xbus.drw
 cadrdc/xbus.wd                    30-SEP-78 00:46 701395/B7/cadrio/xbus.wd
@@ -625,6 +627,7 @@ cadrtv/bod1.drw                   14-JUL-78 21:56 7009559/cadrtv/bod1.drw
 cadrtv/bod2.drw                   23-JAN-80 05:20 more-stuff-for-ams/701298/BE7/cadrtv/bod2.drw
 cadrtv/cpt.prom                   05-MAY-80 17:16 7009559/cadrtv/cpt.prom
 cadrtv/eclbod.drw                 08-DEC-80 00:12 more-stuff-for-ams/7008261/B7/cadrtv/eclbod.drw
+cadrtv/lmprom.3                   22-AUG-78 04:16 7009559/cadrtv/lmprom.3
 cadrtv/lmram.drw                  15-JUL-78 21:12 7009559/cadrtv/lmram.drw
 cadrtv/lmtv.book                  03-OCT-81 11:19 more-stuff-for-ams/7008261/B7/cadrtv/lmtv.book
 cadrtv/lmtv.eco                   14-AUG-80 02:41 7009559/cadrtv/lmtv.eco

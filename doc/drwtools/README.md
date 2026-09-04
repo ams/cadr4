@@ -22,7 +22,7 @@ the original.
 | `batch.py` | renders many pages: `batch.py [--copy-drw] outdir a.drw b.drw ...`. A library named in a page (e.g. `CADR;BODIES DRW`) is the newest readable copy of that file in a directory of that name on the volume (from `data/scan.json`), i.e. the library page in the same `latest/<group>/` folder |
 | `compare.py` | side-by-side and red/blue overlay of a reference PNG and a rendered one |
 | `scan.py` | scans every `.drw` on the ITS tape dumps into `scan.json`: date, size, content hash, title, and whether the copy is readable |
-| `install.py` | copies the rendered pngs into `doc/schematics` and the drws plus the newest copy of the design files in each group's tape directories into `doc/ai`, writing a `drw-index.txt` in each. `BOARD_FOLDER` and `ALSO_INSTALL` there split a group that holds two boards under the same page names, which the newest-wins rule would silently mix |
+| `install.py` | copies the rendered pngs into `doc/schematics` and the drws plus the newest copy of the design files in each group's tape directories into `doc/ai`, writing a `drw-index.txt` in each. `BOARD_FOLDER` and `ALSO_INSTALL` there split a group that holds two boards under the same page names, which the newest-wins rule would silently mix, and `VERSIONED` names the files whose `.<n>` is an ITS version number rather than an editor backup |
 | `inventory.py` | builds `INVENTORY.md`, `inventory.json` and `drw-index.txt` from the scan |
 | `render_latest.py` | renders the latest readable version of every page in `inventory.json`, copying the drw next to the png, into the folder `install.py` will file it under, and renders the `ALSO_INSTALL` pages too |
 | `scan.json` | the scan as run on 2026-09-02 (regenerable from the tape dumps in two minutes) |
@@ -90,6 +90,17 @@ puts next to the drws follow the same rule across every tape directory
 named after the group: newest ITS date wins; of copies with the same date
 the larger one, since a truncated dump is the common damage; undated
 copies rank below every dated copy and among themselves by size.
+
+A name ending in a number is normally an ITS numbered text version and is
+skipped, since ITS kept them of everything. `VERSIONED` in `install.py`
+names the files where the number is instead the version MIT printed, and
+of those the highest version is installed: `CADRDC;NEWDSK >`, the DC
+board's microcode that `dc.book` prints with its wire lists, and
+`CADRDC;MKSMAN >`, the Marksman controller's, which the `MKSMAN MCR`
+listing and the `MKSMAN D03`/`D04`/`D05` PROM images next to it were
+assembled from; and `CADRTV;LMPROM >`, the SIMPLE TV's 74S288 clock PROM,
+which has no `.prom` name of its own the way `lmtv4b.prom` and
+`lmtv8b.prom` do.
 
 ## What the renderer knows about the plotter
 
