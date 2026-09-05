@@ -23,6 +23,7 @@ import zoneinfo
 
 from PIL import Image, ImageDraw, ImageFont
 
+import corrections
 import suds
 
 UNIT = 2                      # px per SUDS unit
@@ -510,6 +511,7 @@ def load_library(path):
 def render_file(path, out_path, search_dirs, name_str=None, scale=None, resolver=None):
     d = suds.Drawing(path)
     warn = set()
+    warn.update(corrections.apply(d, path))
     libs = []
     used = []
     for spec in d.library_file_specs:

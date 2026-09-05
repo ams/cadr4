@@ -43,3 +43,26 @@ compiler, and the macOS fonts Menlo and Courier):
 `drw-index.txt` here is the index written by that last step. See
 `doc/drwtools/README.md` for the plotter rules the renderer follows and its
 known limits.
+
+## Corrections
+
+One page is not rendered exactly as it is drawn. `cadr1/reqlm.png` prints
+`UBX GRANT A` at E09 pin 2, where the 10-DEC-80 drawing says
+`LMX GRANT A`. E09 makes the Unibus master's term of XBUS REQUEST
+(`UBXRQ AND grant AND -UB TO MD AND MSYN IN`), so the grant there is the
+Unibus master's own; `LMX GRANT A` is the processor's, and never comes for
+a Unibus master's cycle, which as drawn would leave a Unibus-to-Xbus cycle
+through the map granted and never requesting the Xbus. The 3-OCT-78
+revision of the page (ITS tape 7008105) draws the whole term as a single
+9S42 at C14 and names that input `UBX GRANT A`; redrawing the page changed
+the label by one letter. `busint.wlr` of 11-DEC-80 was generated from the
+new drawing and carries the same error (E09-02 sits in its `LMX GRANT A`
+block), and no ECO touches it.
+
+The drawing itself is left alone: `doc/ai/cadr1/reqlm.drw` is the file MIT
+left, and the correction is made where the drawing is read.
+`doc/drwtools/corrections.py` holds the table and makes it on the rendered
+page; the same correction is made on the generated VHDL by the `reqlm`
+patch in cadr4's `Makefile.common`, and `cadr1/busint_reqlm_tb.vhd` is the
+check that it is still there. Every correction is also listed at the end of
+`drw-index.txt`.

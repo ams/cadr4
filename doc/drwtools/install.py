@@ -28,7 +28,10 @@ import os
 import re
 import shutil
 import sys
+import textwrap
 import zoneinfo
+
+import corrections
 
 ROOT = os.environ.get("ITS_TAPES", "")
 TZ = zoneinfo.ZoneInfo("America/New_York")
@@ -289,8 +292,9 @@ def other_title_blocks(all_entries):
 def notes(all_entries):
     """Comment lines for the indexes: pages that could not be installed
     because no copy on the tapes is readable, pages where a newer copy exists
-    but is unreadable (the older readable one is installed), and names that
-    carry more than one title block."""
+    but is unreadable (the older readable one is installed), names that
+    carry more than one title block, and the drawing errors that are
+    corrected downstream of the drawing (drwtools/corrections.py)."""
     out = []
     missing = [e for e in all_entries if not e["latest"]["ok"]]
     if missing:
@@ -321,6 +325,17 @@ def notes(all_entries):
             out.append("#   %-7s %-12s installed: %-13s %s; also on the tapes: %-13s %s, %s" % (
                 e["group"], e["name"], e["title1"], e["latest"]["date"], c["title1"], c["date"],
                 ("installed in " + page_dir(dict(e, title1=c["title1"]))) if also else "not installed"))
+    if corrections.CORRECTIONS:
+        out.append("#")
+        out.append("# drawing errors corrected downstream: the drawing says the label named below, and is")
+        out.append("# installed as MIT left it.  The rendered png (drwtools/corrections.py) and cadr4's")
+        out.append("# generated VHDL (the page's patch in Makefile.common) carry the corrected name instead,")
+        out.append("# so both say what the board has to have been wired as:")
+        for (group, page), items in sorted(corrections.CORRECTIONS.items()):
+            for refdes, pin, old_label, new_label, why in items:
+                out.append("#   %-7s %-12s %s-%d: drawn %s, corrected to %s" % (
+                    group, page, refdes.lstrip("0"), pin, old_label, new_label))
+                out += ["#     " + ln for ln in textwrap.wrap(" ".join(why.split()), 86)]
     return "\n".join(out) + "\n"
 
 

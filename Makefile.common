@@ -294,6 +294,26 @@ ifeq ($(PAGE),reqtim)
 else ifeq ($(PAGE),uprior)
 	sed $(SEDOPTIONS) 's/uprior_0f17 : dip_dummy4/uprior_0f17 : dip_dummy4_uprior_f13/g' $(BUSINT_SUDS_DIR)/$(SUDS_FILE)
 	sed $(SEDOPTIONS) 's/uprior_0f18 : dip_dummy4/uprior_0f18 : dip_dummy4_uprior_f14/g' $(BUSINT_SUDS_DIR)/$(SUDS_FILE)
+# reqlm E09-2, the input of the 74S08 whose other input is UBXRQ, is
+# labelled LMX GRANT A on the 10-DEC-80 drawing. That gate makes the
+# Unibus master's term of XBUS REQUEST (UBXRQ AND grant AND -UB TO MD AND
+# MSYN IN), so the grant has to be the Unibus master's, UBX GRANT A; LMX
+# GRANT A is the processor's own and never comes for a Unibus master's
+# cycle (LMX GRANT SET at rqsync A07 needs -LMXRQ), which would leave a
+# Unibus-to-Xbus cycle through the map granted and never requesting.
+# The 3-OCT-78 revision of the page (ITS tape 7008105) draws the whole
+# term as one 9S42 at C14 and names that input UBX GRANT A; the label was
+# changed by one letter when the page was redrawn. busint.wlr of
+# 11-DEC-80 was generated from the new drawing the next day and carries
+# the same error (E09-02 in the LMX GRANT A block), and no ECO touches
+# it. The grep is the post-condition: a soap4 output the patch no longer
+# matches stops the regeneration instead of quietly dropping the
+# correction, and busint_reqlm_tb fails if it is dropped anyway.
+# doc/drwtools/corrections.py makes the same correction on the png.
+else ifeq ($(PAGE),reqlm)
+	sed $(SEDOPTIONS) 's/^\(reqlm_0e09 : dip_74s08 port map .*\)p2 => \\lmx grant a\\,/\1p2 => \\ubx grant a\\,/' $(BUSINT_SUDS_DIR)/$(SUDS_FILE)
+	@grep -q '^reqlm_0e09 .*p2 => \\ubx grant a\\,' $(BUSINT_SUDS_DIR)/$(SUDS_FILE) \
+	  || { echo "reqlm: E09-2 was not corrected to UBX GRANT A, the patch in Makefile.common no longer matches"; exit 1; }
 endif
 	python3 $(FIXSUDS_PY) --generic-map rom/busint.table --rename-map $(BUSINT_RENAME) --page $(PAGE) $(BUSINT_SUDS_DIR)/$(SUDS_FILE)
 	python3 $(CREATE_ENTITY_FROM_SUDS_PY) -o $(BUSINT_DIR)/$(ENTITY_FILE) -d dip/dip.vhd $(BUSINT_SUDS_DIR)/$(SUDS_FILE)

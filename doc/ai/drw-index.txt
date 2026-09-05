@@ -974,3 +974,17 @@ lmdoc/fig5.drw                    22-MAY-79 02:52 90108/lmdoc/fig5.drw
 #   lmdoc   chodam.drw   installed: CADR          18-SEP-81 08:37; also on the tapes: CONS          17-OCT-79 08:21, not installed
 #   lmdoc   chodi.drw    installed: CADR          18-SEP-81 08:46; also on the tapes: CONS          24-FEB-81 22:50, not installed
 #   lmdoc   fig1.drw     installed: Lisp Machine  18-SEP-81 08:42; also on the tapes: PROCESSOR DATA PATHS 28-NOV-78 01:53, not installed
+#
+# drawing errors corrected downstream: the drawing says the label named below, and is
+# installed as MIT left it.  The rendered png (drwtools/corrections.py) and cadr4's
+# generated VHDL (the page's patch in Makefile.common) carry the corrected name instead,
+# so both say what the board has to have been wired as:
+#   cadr1   reqlm        E09-2: drawn LMX GRANT A, corrected to UBX GRANT A
+#     E09 makes the Unibus master's term of XBUS REQUEST (UBXRQ AND grant AND -UB TO MD AND
+#     MSYN IN), so the grant is the Unibus master's. LMX GRANT A is the processor's own and
+#     never comes for a Unibus master's cycle, which would leave a Unibus-to-Xbus cycle
+#     through the map granted and never requesting. The 3-OCT-78 revision of the page (ITS
+#     tape 7008105) draws the whole term as one 9S42 at C14 and names that input UBX GRANT
+#     A; the label was changed by one letter when the page was redrawn on 10-DEC-80.
+#     busint.wlr of 11-DEC-80 was generated from the new drawing and carries the same error,
+#     and no ECO touches it.

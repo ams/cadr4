@@ -22,6 +22,7 @@ entity busint_reqlm is
     \msyn in\       : in     std_logic;
     \nxm timeout\   : in     std_logic;
     \ssyn t150\     : in     std_logic;
+    \ubx grant a\   : in     std_logic;
     \ubx grant\     : in     std_logic;
     \unibus request\ : in     std_logic;
     \xbus ack in\   : in     std_logic;

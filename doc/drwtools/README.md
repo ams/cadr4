@@ -19,6 +19,7 @@ the original.
 | `dumpwords.c` | tiny main around `unpack.c`: prints one 18-bit halfword per line |
 | `suds.py` | SUDS `.drw` parser (port of cadr4/soap/soap4.c) |
 | `render.py` | the renderer: `render.py page.drw out.png -L libdir [-L libdir]` |
+| `corrections.py` | the drawing errors corrected while rendering: one entry per wrong label, found through the body pin it belongs to, with the evidence for the correction. `render.py` applies them and reports each one; `install.py` lists them at the end of the indexes it writes. cadr4 makes the same corrections on the generated VHDL with a patch in `Makefile.common` |
 | `batch.py` | renders many pages: `batch.py [--copy-drw] outdir a.drw b.drw ...`. A library named in a page (e.g. `CADR;BODIES DRW`) is the newest readable copy of that file in a directory of that name on the volume (from `data/scan.json`), i.e. the library page in the same `latest/<group>/` folder |
 | `compare.py` | side-by-side and red/blue overlay of a reference PNG and a rendered one |
 | `scan.py` | scans every `.drw` on the ITS tape dumps into `scan.json`: date, size, content hash, title, and whether the copy is readable |
