@@ -5,11 +5,11 @@ use work.sn74.sn74124;
 
 -- see sn74124 for more info
 
--- REQTIM 0A01 runs at 2 us; see sn74124 for MIT's citations.  The period is
--- set by an external capacitor, so it is a property of the socket: a second
--- instance with a different cap overrides the generic.
+-- REQTIM 0A01 runs at 850 ns; see sn74124 for the data sheet this comes from.
+-- The period is set by an external capacitor, so it is a property of the
+-- socket: a second instance with a different cap overrides the generic.
 entity dip_74ls124 is
-  generic (period : time := 2 us);
+  generic (period : time := 850 ns);
   port (
   --p1  : in  std_logic;                  -- 2fc
   p2  : in std_logic;                  -- 1fc

@@ -164,7 +164,7 @@ package sn74 is
   end component;
 
   component sn74124 is
-  generic (period : time := 2 us);
+  generic (period : time := 850 ns);
     port (
       en_n : in  std_logic; -- Pin 6 (-1EN)
       y    : out std_logic  -- Pin 7 (1Y)
