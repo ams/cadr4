@@ -8,6 +8,33 @@ This folder contains PROM and RAM hex files and generic-map tables, plus
 
 dspctl and mskg4 uses dspctl.2f22.hex and mskg4.*.hex files.
 
+Neither is a usim dump and neither has a surviving MIT image: no `.prom`
+listing for these nine parts exists anywhere on the ITS tapes, and MIT's own
+PROM census, `cadrpt/prom.list` (DRP 2/21/81), records them as parts to be
+programmed without giving their contents. What survives is the CADR paper.
+
+The eight mskg4 images are its table transcribed. `lmdoc/cadr.164` -- AI Memo
+528, the version of 15-MAY-80 -- carries all 32 entries of both mask memories
+in binary under "Output of mask memories", and the **Details** section below
+is that table verbatim. Sliced per the schematic's bit assignment it
+reproduces every one of the eight files exactly, 32 of 32 words each, so the
+memo is the authority if they ever need rebuilding. MSKG4's own page confirms
+the slicing independently: 2D11/2D12 drive MSK24-31, 2E11/2E12 MSK16-23,
+2D16/2D17 MSK8-15 and 2E16/2E17 MSK0-7, the `11`/`16` pair addressed by
+MSKL0-4 and the `12`/`17` pair by MSKR0-4.
+
+dspctl.2f22.hex is weaker: a formula, not a table. The same memo says IR<7-5>
+is the "Length of byte (not minus 1!)" and that "all but the low K bits are
+masked out, where K is the contents of the length field". The PROM is
+addressed by IR5-IR7 alone -- A3, A4 and -CE are all grounded -- and drives
+DMASK0-6, so address K holds the low K bits set: 00, 01, 03, 07, 0f, 1f, 3f,
+7f, then 24 unused words.
+
+Part types are MIT's, from `prom.list`: the eight mskg4 parts are 74S188
+32x8 and 2F22 is a 74S288 32x8. The wire list calls them 5600 and 5610 and
+`cadrwd/dspctl.wd` calls 2F22 an 82S123, which agree -- 5600 and 74S188 are
+the open-collector 32x8, 5610, 74S288 and 82S123 the tri-state one.
+
 ## promh.mcr.9.hex and promh9.table
 
 promh.mcr.9.hex is the official and original PROM of CADR.
@@ -30,8 +57,9 @@ The usim dumps carry the odd parity bit above the data bits (e.g. the D-memory w
 
 ## reqtim.0a02.hex, uprior.0d09.hex and busint.table
 
-These two are the busint board's PROMs, and unlike everything above they are
-not derived from a usim dump: each is MIT's own listing in `mit/cadr1/`
+These two are the busint board's PROMs, and unlike the memory and microcode
+images above they are not derived from a usim dump (nor, unlike dspctl and
+mskg4, from the CADR paper): each is MIT's own listing in `mit/cadr1/`
 converted octal to hex, one word per line, in order. `busint.table` maps them
 onto the components, and `make regen` applies it. The conversion is exact --
 32 of 32 words for reqtim, 512 of 512 for uprior -- so `mit/cadr1/*.prom` is
@@ -128,6 +156,12 @@ Three cautions:
   `END` -- the `U` lines after it are the cross-reference index, not data.
 
 # Details
+
+The mask memory table below is quoted from AI Memo 528, *CADR*, by Knight,
+Moon, Holloway and Steele -- section "Output of mask memories". On the tapes
+it is `lmdoc/cadr.164`, the version of 15-MAY-80; the paper is the one this
+project's `CLAUDE.md` links under References. The 22-MAY-79 version,
+`cadr.161`, does not carry the table.
 
 ## DSPCTL
 
