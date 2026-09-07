@@ -17,7 +17,9 @@ use work.misc.all;
 -- 2nd edition, section 7, pages 7-123..7-128.  TI deleted the LS part later --
 -- the 1981 supplement removes every reference to it and the 1981 edition says
 -- it "has been replaced by the SN54LS629 and SN74LS629" -- so a search finds
--- only the S part, and doc/ttl/sn74124.pdf is that S part, not this one.
+-- only the S part.  doc/ttl/sn74124.pdf is those six pages; doc/ttl/sn74s124.pdf
+-- is TI's S sheet, which is the part the board carries only after busint.eco
+-- item 5 below.
 --
 -- Three properties come from the LS sheet, and the S differs on all three:
 --

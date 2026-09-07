@@ -781,7 +781,8 @@ Header template for files:
    removes every reference to the SN54LS124/SN74LS124 and the 1981 edition
    says they "have been replaced by the SN54LS629 and SN74LS629", so the
    current TI link below is the S part and the LS sheet survives only in
-   the 1976 book.  LS and S differ in period, idle level and phase.
+   the 1976 book.  LS and S differ in period, idle level and phase, so both
+   are stored: sn74124.pdf is the LS, sn74s124.pdf the S.
    LS: The TTL Data Book for Design Engineers, 2nd ed. 1976, section 7,
    pages 7-123..7-128 (bulletin DL-S 7612025, March 1974 rev October 1976)
    http://bitsavers.trailing-edge.com/components/ti/_dataBooks/1976_TI_The_TTL_Data_Book_2ed/07.pdf

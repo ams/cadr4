@@ -34,6 +34,7 @@ In muir (src/chip.rs) the module is an `Oscillator` with a rational
 period so that a crystal whose period is not a whole number of
 nanoseconds keeps time: `DIP_OSCILLATOR_PERIOD = (125, 3)` ns for 24 MHz.
 The bus interface's 74LS124 is the other oscillator kind, a VCO with an
-enable.  Note sn74124.pdf is TI's S part, which differs from the LS the
-board carries in period, idle level and phase; the LS sheet is in the
-1976 TTL Data Book, section 7, and is cited in ttl/sn74124.vhd.
+enable; that one has a datasheet (sn74124.pdf, the LS pages of the 1976
+TTL Data Book).  sn74s124.pdf beside it is TI's S part, which differs in
+period, idle level and phase and is what the board carries only after
+busint.eco item 5 of 1981.

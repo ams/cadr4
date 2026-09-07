@@ -13,8 +13,9 @@ end entity;
 -- The TTL Data Book for Design Engineers, 2nd edition, section 7, pages
 -- 7-123..7-128.  TI later deleted the LS part -- the 1981 supplement removes
 -- all references to it and the 1981 edition says it "has been replaced by the
--- SN54LS629 and SN74LS629" -- so doc/ttl/sn74124.pdf is the S part and the LS
--- sheet survives only in the 1976 book.  Three properties come from it:
+-- SN54LS629 and SN74LS629" -- so the LS sheet survives only in the 1976 book.
+-- doc/ttl/sn74124.pdf is those six pages; doc/ttl/sn74s124.pdf is the S sheet
+-- a search finds instead.  Three properties come from the LS one:
 --
 --   "While the enable input is low, the output is enabled.  While the enable
 --   input is high, the output is high."
