@@ -292,7 +292,8 @@ package dip is
   end component;
 
   component dip_74ls124 is
-  port (
+  generic (period : time := 2 us);
+    port (
     --p1  : in  std_logic;                  -- 2fc
     p2  : in std_logic;                  -- 1fc
     p3  : in std_logic;                  -- 1rng

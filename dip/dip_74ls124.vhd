@@ -5,7 +5,12 @@ use work.sn74.sn74124;
 
 -- see sn74124 for more info
 
-entity dip_74ls124 is port (
+-- REQTIM 0A01 runs at 2 us; see sn74124 for MIT's citations.  The period is
+-- set by an external capacitor, so it is a property of the socket: a second
+-- instance with a different cap overrides the generic.
+entity dip_74ls124 is
+  generic (period : time := 2 us);
+  port (
   --p1  : in  std_logic;                  -- 2fc
   p2  : in std_logic;                  -- 1fc
   p3  : in std_logic;                  -- 1rng
@@ -27,8 +32,10 @@ end entity;
 
 architecture dip of dip_74ls124 is
 begin
-  u1 : sn74124 port map (
-    en_n => p6,
-    y => p7
-  );
+  u1 : sn74124
+    generic map (period => period)
+    port map (
+      en_n => p6,
+      y => p7
+      );
 end architecture;
