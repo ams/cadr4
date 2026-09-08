@@ -24,6 +24,7 @@ the original.
 | `compare.py` | side-by-side and red/blue overlay of a reference PNG and a rendered one |
 | `scan.py` | scans every `.drw` on the ITS tape dumps into `scan.json`: date, size, content hash, title, and whether the copy is readable |
 | `install.py` | copies the rendered pngs into `doc/schematics` and the drws plus the newest copy of the design files in each group's tape directories into `doc/ai`, writing a `drw-index.txt` in each. `BOARD_FOLDER` and `ALSO_INSTALL` there split a group that holds more than one board under the same page names, which the newest-wins rule would silently mix (cadrtv holds two boards, chaos five), and `VERSIONED` names the files whose `.<n>` is an ITS version number rather than an editor backup |
+| `itsdir.py` | reads the `_file_.(dir)` ITS directory blocks: what each tape directory *held*, dumped or not, with each file's ITS date. Answers "did this file ever exist?", which `find` cannot. `--find 'DM *'` searches every block, `--verify` checks the reader against the dumps |
 | `check-copies.py` | checks that the Lisp Machine Chaosnet pages installed in `doc/ai/chaos/lispm` are the finished revision and not one of the working copies the undated chaos dumps also hold, by extracting each with cadr4's `soap4` and comparing against `cadrio/iob.wlr`. Run it after `install.py` |
 | `inventory.py` | builds `INVENTORY.md`, `inventory.json` and `drw-index.txt` from the scan |
 | `render_latest.py` | renders the latest readable version of every page in `inventory.json`, copying the drw next to the png, into the folder `install.py` will file it under, and renders the `ALSO_INSTALL` pages too |
@@ -61,6 +62,30 @@ scripts read the drawings and their libraries from there.
     python3 render_latest.py inventory.json OUT                  # OUT/<group>/: latest version of every page, png + drw
     python3 install.py inventory.json OUT ../schematics ../ai    # into the doc folders
     python3 check-copies.py                                      # the chaos copies are the right ones
+
+## What a tape directory held
+
+`scan.json` and the inventory cover the drawings that were *dumped*.  The
+`_file_.(dir)` beside them is the ITS directory block, which lists what the
+directory *held*, with each file's ITS date, whether or not the dump caught
+its contents; a few tapes (701440) are directory-only and hold nothing else.
+So a file missing from every block never existed, where a file missing from
+the dumps merely was not copied.
+
+    python3 itsdir.py $ITS_TAPES/7009559/cadrdc     # one directory
+    python3 itsdir.py --find 'DM *'                 # every block on the tapes
+    python3 itsdir.py --verify                      # must report 0 unexplained
+
+`--verify` is the regression test: it checks every dumped file against its
+own directory block, and the only files it may fail to account for are ones
+SIXBIT cannot spell (lower case, `~`, `}`).  Run it after changing the
+reader.
+
+This is how the DISK MULTIPLEXOR question was settled: no block on any tape
+lists a `DM WLR`, from the first CADRIO listing of June 1979 to the last
+CADRDC listing of August 1982, while every other board of that set has one.
+A `DM RAY`, the SUDS wire-run list, does appear -- written 06-Mar-1979
+05:35:08, gone by that August, its contents on no tape.
 
 ## Which copy of a drawing is used
 
