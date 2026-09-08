@@ -32,6 +32,25 @@ MIT lists by bare number keep the bare number: `2651.pdf` (Signetics PCI),
   data book, `mc10102.pdf`, `mc10105.pdf`, `mc10121.pdf`, `mc10124.pdf`,
   `mc10125.pdf`, `mc10136.pdf`, `mc10141.pdf` and `mc10212.pdf` from ON
   Semiconductor's MECL Data book (DL122 rev. 7).
+- `am25ls2538.pdf` is the one part here that cadr4 does not model: the
+  Am25LS2538 one-of-eight decoder at DMSECT 0E05 on the DISK MULTIPLEXOR,
+  which decodes the controller's unit number. It is kept here because all
+  datasheets for the CADR boards live in this directory, whichever project
+  models the board. The file is a standalone printing of the whole sheet,
+  section 9 pages 9-131 to 9-137, document 03664B, complete and contiguous
+  (9-138 is where `am25ls2539.pdf` starts). AMD's 1983 Bipolar
+  Microprocessor Logic and Interface data book carries the same sheet at
+  page 9-145, a different printing that agrees pin for pin. Its own PIN
+  DESCRIPTION table gives the select inputs as pins 6, 7 and 17 for A, B
+  and C, A least significant; the outputs are not contiguous, Y0-Y2 on
+  3, 2, 1, Y3 and Y4 on 19 and 18, Y5 to Y7 on 8, 9 and 11.
+- 20 of the 115 sheets here are image-only scans with no usable text layer,
+  so `grep` and `pdftotext` see nothing of their contents; a few return only
+  the scanning service's watermark. Searching the directory for a part number
+  will silently miss them, and they have to be rendered and read instead.
+  `am25ls2539.pdf` is the case that has already cost a search: its page 1
+  RELATED PRODUCTS table names the 2538, the 2536, the 2537 and the 2548,
+  and no text search can find any of them there.
 - The eight MECL files are the eight bodies MIT's own ECL body library for
   the TV board, `doc/ai/cadrtv/eclbod.drw`, defines. Note that the two
   translators do not carry the MECL supply pins the other six do:
