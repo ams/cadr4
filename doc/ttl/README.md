@@ -43,7 +43,10 @@ MIT lists by bare number keep the bare number: `2651.pdf` (Signetics PCI),
   page 9-145, a different printing that agrees pin for pin. Its own PIN
   DESCRIPTION table gives the select inputs as pins 6, 7 and 17 for A, B
   and C, A least significant; the outputs are not contiguous, Y0-Y2 on
-  3, 2, 1, Y3 and Y4 on 19 and 18, Y5 to Y7 on 8, 9 and 11.
+  3, 2, 1, Y3 and Y4 on 19 and 18, Y5 to Y7 on 8, 9 and 11. That scrambled
+  output order is what confirms the sheet: wired against 0E05 it puts
+  ADDRESS UNIT 0 to 7 in exact sequence, which a wrong pinout could not do
+  -- it would have produced a permutation.
 - 20 of the 115 sheets here are image-only scans with no usable text layer,
   so `grep` and `pdftotext` see nothing of their contents; a few return only
   the scanning service's watermark. Searching the directory for a part number

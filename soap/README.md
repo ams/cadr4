@@ -36,7 +36,7 @@ The main and actually only purpose of soap4 is to output a VHDL file given a drw
 
 It also comes with soap4.h for the struct definitions.
 
-It has one exceptional hack, for BUSINT CABLE TERMINATION (bcterm) drw, because this file incorrectly has duplicate reference designators. The duplicates are changed to 1B16, 1B21 and 1B26.
+It has hacks in `apply_hacks()` for three pages that come out with duplicate reference designators: BUSINT CABLE TERMINATION (bcterm, 1B15/1B20/1B25 renamed to 1B16/1B21/1B26), XBUS & UNIBUS TIMEOUT (reqtim, 0B03 renamed to 0B04) and UNIBUS BUS GRANT (uprior, 0F13/0F14 renamed to 0F17/0F18). These drawings are **not** in error, and each replacement designator is itself a real location holding a different part elsewhere in the same book; see the known issue below.
 
 The differences from soap are:
 
@@ -53,6 +53,62 @@ The differences from soap are:
 Some cases not handled are:
 
 - Another name for the same net (for example -TPW60 = -TPDONE in CLOCK1) is not handled, this should be an alias but it also depends on which of these are driving or which is declared as port.
+
+## Known issue: soap4 discards the field that separates two parts at one card location
+
+A SUDS body carries `CARD LOC (OPT),,BODY LOC` (suds.txt). soap4 builds the
+reference designator from BODY LOC bits 17-15 (digit), 14-12 (letter) and 11-6
+(number), and drops bits 5-0. `doc/drwtools/suds.py` drops them too.
+
+Those low six bits are what MIT's own stuffing lists and parts lists print as an
+`@nn` suffix on a card location: `dm.stf` has `B06@03` and `B06@20` for two
+SIP100-8 packs at one location, and `dc.prt`'s 75452 row reads
+`A02, A02@03, B01`. Parsing the DM drawings and taking `body_loc & 0o77`
+reproduces every one of `dm.stf`'s 30 `@nn` entries, so the field is carried per
+body in the drawing and the listing program only prints it. Bodies with no
+suffix have low6 = 0.
+
+So a drawing that appears to have "duplicate reference designators" usually does
+not: it has two physical parts at one card location, which SUDS distinguishes and
+soap4 cannot, because soap4 merges all bodies sharing a designator into one
+component instantiation. `bcterm`'s 1B15 is the clearest case -- the board really
+holds a 93S48 there, drawn on `iwrpar` with low6 = 0, plus two SIP220/330-8
+terminators at low6 3 and 20 drawn on `bcterm`.
+
+The three `apply_hacks()` renames are that collision, patched by relabelling a
+body rather than by keeping the field, and the labels chosen are not free: 1B16
+is a 74S472 on `prom1` and a 74S374 on `md`, 1B21 is used by `iram20`/`ram20`,
+1B26 by `iram21`/`ram21`/`vmas`, 0B04 is a 74S241 on `dbgout`, and 0F17 and 0F18
+are both 8838s on `ubd`. So each rename asserts that a terminator pack or a
+DUMMY4 is the same package as an unrelated real device somewhere else in the
+book. Nothing currently breaks, because a designator is only an instance label
+within one page architecture and `build/cadr_tb.vhd` wires the pages by signal
+name rather than by designator -- but anything that later keys on designators
+across pages would inherit a false identity.
+
+**The meaning of the number is not documented.** suds.txt names BODY LOC but
+never defines its sub-fields, and no SUDS manual found so far does either. Only
+seven values occur across every `.stf` and `.prt` on the tape dumps -- @01 @02
+@03 @10 @11 @12 @20 -- and half-width parts pair as {3,20}. That is suggestive of
+a position within the location, but it is unsourced; treat the field as an opaque
+discriminator, which is all that package identity needs.
+
+Scope, measured over the 456 installed pages: 314 card locations hold more than
+one distinct low6 value, but most are capacitor and resistor pages, and on
+`cadrpc` and `chaos/caios` the designator decode degenerates entirely (one
+"location" holding an 8748, a 6810 and a 2716). Locations where two genuinely
+modelled parts coexist: 56 over all boards, and within `cadr/` and `cadr1/`,
+which is all cadr4 builds from, only four pages -- the three hacked above plus
+`lmdata.drw` 0A28/0A29/0A30, three more {3,20} SIP180/390-8 pairs that are not
+patched. Every affected body is a resistor pack or a DUMMY, never a modelled TTL
+entity, so the simulation is not wrong; the designators are.
+
+To revisit: carrying the low six bits into the designator would remove all three
+hacks and the false labels, but it changes every generated designator in
+every page architecture, so it needs `make check` on both ghdl and nvc and a
+careful look at `git diff` over the generated files. A smaller step is to make
+soap4 fail loudly when it merges two bodies whose low6 differ, so the next
+occurrence surfaces instead of needing a hand-written rename.
 
 ## resources
 
